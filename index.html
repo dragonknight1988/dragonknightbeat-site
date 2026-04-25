@@ -761,6 +761,44 @@
         </div>
     </footer>
 
+    <!-- ===== Article Data ===== -->
+    <script id="articles-data" type="application/json">
+    [
+        {
+            "id": "gpt5-multimodal",
+            "category": "AI 大模型",
+            "categoryClass": "ai",
+            "title": "GPT-5 多模态能力突破：跨越文本、图像、视频的统一理解",
+            "date": "2026-04-25",
+            "content": "OpenAI 最新一代模型 GPT-5 在跨模态理解上取得了重大突破，首次实现了真正意义的统一多模态推理。\n\n## 核心突破\n\nGPT-5 不再需要单独为文本、图像、视频训练不同的模块。它采用了一个统一的 Transformer 架构，将所有模态的数据映射到同一个语义空间中进行处理。\n\n### 主要特性\n- **真正跨模态理解**：可以同时分析文本、图像、视频中的内容，理解它们之间的关联\n- **推理能力跃升**：在数学、代码、逻辑推理等基准测试中提升了 40%\n- **上下文窗口扩展**：支持高达 200 万 token 的超长上下文\n\n### 影响与展望\nGPT-5 的发布标志着 AI 从单模态走向全模态的关键转折。未来，AI 助手将能像人类一样，通过多种感官同时理解世界。"
+        },
+        {
+            "id": "xiaomi-su7-ultra",
+            "category": "汽车科技",
+            "categoryClass": "auto",
+            "title": "小米 SU7 Ultra 技术解析：三电机 + 赛道模式如何定义新性能标杆",
+            "date": "2026-04-24",
+            "content": "小米汽车发布了巅峰之作 SU7 Ultra，以三电机全轮驱动系统重新定义了性能标杆。\n\n## 技术亮点\n\n### 三电机系统\nSU7 Ultra 采用了前轴一台、后轴两台的三电机布局，综合功率超过 1500 马力。\n\n### 赛道模式\n- **智能扭矩矢量控制**，过弯极限大幅提升\n- **专属赛道热管理系统**，保证持续高性能输出\n- **可调悬架系统**，兼顾舒适与运动\n\n### 市场定位\nSU7 Ultra 定位高性能电动轿跑，直接对标特斯拉 Model S Plaid 和保时捷 Taycan Turbo GT。"
+        },
+        {
+            "id": "starship-flight5",
+            "category": "航空航天",
+            "categoryClass": "space",
+            "title": "SpaceX 星舰第五飞：超重型助推器精准回收创造历史",
+            "date": "2026-04-23",
+            "content": "SpaceX 星舰完成了又一次里程碑式试飞，筷子式捕获塔成功捕捉超重型助推器。\n\n## 飞行概要\n\n### 发射与上升\n星舰从 Starbase 发射台顺利升空，33 台猛禽发动机全部正常工作。\n\n### 助推器回收\n超重型助推器在分离后完成翻转和返场推进，精准返回发射塔，被筷子机械臂稳稳接住——这是继第四次试飞后的又一次成功回收。\n\n### 星舰本体\n星舰本体成功进入预定轨道，完成了一系列在轨测试后，成功在印度洋预定海域溅落。\n\n### 意义\n此次飞行验证了星舰系统的可重复使用能力，为未来的月球和火星任务奠定了坚实基础。"
+        },
+        {
+            "id": "claude-opus-review",
+            "category": "AI 大模型",
+            "categoryClass": "ai",
+            "title": "Claude 3.5 Opus 深度评测：代码能力与推理能力登顶",
+            "date": "2026-04-22",
+            "content": "Anthropic 最新旗舰模型 Claude 3.5 Opus 在编程、数学推理等基准测试中刷新了多项纪录。\n\n## 评测要点\n\n### 代码能力\n在 SWE-bench 编程基准测试中，Claude 3.5 Opus 准确率达到了 65%，大幅领先竞品。\n\n### 推理能力\n- **GPQA 研究生级别问答**：89% 准确率\n- **MATH 数学推理**：96% 准确率\n- **NarrativeQA 长文本**：领先竞品\n\n### 安全与对齐\nAnthropic 一贯重视 AI 安全，Claude 3.5 Opus 在多个安全评估指标上表现优异，幻觉率降至新低。"
+        }
+    ]
+    </script>
+
     <script>
         // ===== Stars Animation =====
         const canvas = document.getElementById('stars-canvas');
@@ -881,6 +919,203 @@
                 }
             });
         });
+
+        // ===== Article Modal =====
+        const articlesData = JSON.parse(document.getElementById('articles-data').textContent);
+
+        const modal = document.createElement('div');
+        modal.className = 'article-modal';
+        modal.innerHTML = `
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" aria-label="关闭">\u2715</button>
+                <div class="modal-category"></div>
+                <h2 class="modal-title"></h2>
+                <div class="modal-date"></div>
+                <div class="modal-body"></div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        const modalOverlay = modal.querySelector('.modal-overlay');
+        const modalClose = modal.querySelector('.modal-close');
+        const modalCategory = modal.querySelector('.modal-category');
+        const modalTitle = modal.querySelector('.modal-title');
+        const modalDate = modal.querySelector('.modal-date');
+        const modalBody = modal.querySelector('.modal-body');
+
+        function openModal(articleId) {
+            const article = articlesData.find(a => a.id === articleId);
+            if (!article) return;
+            modalCategory.textContent = article.category;
+            modalCategory.className = 'modal-category ' + article.categoryClass;
+            modalTitle.textContent = article.title;
+            modalDate.textContent = article.date;
+            let html = article.content.split('\n').map(line => {
+                if (line.startsWith('### ')) return `<h4>${line.slice(4)}</h4>`;
+                if (line.startsWith('## ')) return `<h3>${line.slice(3)}</h3>`;
+                if (line.startsWith('- **')) {
+                    const end = line.indexOf('**', 4);
+                    return `<li><strong>${line.slice(4, end)}</strong>${line.slice(end + 2)}</li>`;
+                }
+                if (line.startsWith('- ')) return `<li>${line.slice(2)}</li>`;
+                if (line.trim() === '') return '<br>';
+                return `<p>${line}</p>`;
+            }).join('');
+            modalBody.innerHTML = html;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalOverlay.addEventListener('click', closeModal);
+        modalClose.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+        document.querySelectorAll('.post-card').forEach((card, i) => {
+            card.addEventListener('click', () => {
+                if (articlesData[i]) openModal(articlesData[i].id);
+            });
+        });
     </script>
+
+    <style>
+        .article-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .article-modal.active {
+            display: flex;
+            animation: modalFadeIn 0.3s ease;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+        }
+        .modal-content {
+            position: relative;
+            z-index: 1;
+            background: #0d0d2a;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 0 60px rgba(0, 243, 255, 0.15);
+            animation: modalSlideUp 0.3s ease;
+        }
+        @keyframes modalSlideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text-secondary);
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .modal-close:hover {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0,243,255,0.3);
+        }
+        .modal-category {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            margin-bottom: 16px;
+        }
+        .modal-category.ai { background: rgba(0,243,255,0.1); color: var(--neon-cyan); }
+        .modal-category.auto { background: rgba(0,255,157,0.1); color: var(--neon-green); }
+        .modal-category.space { background: rgba(157,0,255,0.1); color: var(--neon-purple); }
+        .modal-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .modal-date {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .modal-body h3 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--neon-cyan);
+            margin: 24px 0 12px;
+        }
+        .modal-body h4 {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin: 20px 0 8px;
+        }
+        .modal-body p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        .modal-body li {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-left: 20px;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+            list-style: none;
+        }
+        .modal-body li::before {
+            content: '\u25b8 ';
+            color: var(--neon-cyan);
+        }
+        .modal-body strong {
+            color: var(--text-primary);
+        }
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: rgba(0,243,255,0.2);
+            border-radius: 3px;
+        }
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(0,243,255,0.4);
+        }
+    </style>
 </body>
 </html>
