@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DragonKnightBeat · 科技前沿探索</title>
+    <title data-i18n="site.title">DragonKnightBeat · 科技前沿探索</title>
     <meta name="description" content="DragonKnightBeat - 科技前沿探索，聚焦 AI·汽车·航空航天三大领域">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,10 +102,37 @@
             letter-spacing: 2px;
         }
         .nav-logo .emoji { -webkit-text-fill-color: initial; }
+        .lang-switch {
+            display: flex;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            padding: 2px;
+            margin-right: 16px;
+        }
+        .lang-switch .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .lang-switch .lang-btn:hover {
+            color: var(--text-primary);
+        }
+        .lang-switch .lang-btn.active {
+            background: var(--gradient-main);
+            color: #fff;
+        }
         .nav-links {
             display: flex;
             gap: 32px;
             list-style: none;
+            align-items: center;
         }
         .nav-links a {
             color: var(--text-secondary);
@@ -546,8 +573,82 @@
             }
             .nav-links.open { display: flex; }
             .nav-toggle { display: block; }
+            .lang-switch { margin-right: 0; align-self: flex-start; }
         }
     </style>
+    <script id="i18n-data" type="application/json">
+    {
+        "site.title": "DragonKnightBeat · Tech Frontier",
+        "nav.categories": "Focus",
+        "nav.latest": "Latest",
+        "nav.features": "Features",
+        "hero.badge": "✦ Tech Frontier Explorer",
+        "hero.subtitle": "AI · Auto · Aerospace — three frontiers,<br>one deep perspective on tomorrow's technology.",
+        "hero.cta1": "Explore →",
+        "hero.cta2": "Latest Posts",
+        "hero.scroll": "SCROLL",
+        "stats.domains": "Core Domains",
+        "stats.articles": "+ In-Depth Articles",
+        "stats.updates": "× 24 Updates",
+        "stats.knight": "🐉 Dragon Knight",
+        "categories.tag": "Focus Areas",
+        "categories.title": "Explore the Frontiers",
+        "categories.desc": "Three tech frontiers, deep tracking & analysis",
+        "cat.ai.title": "AI & LLM",
+        "cat.ai.desc": "Latest breakthroughs in GPT, Claude, Gemini — multimodal, embodied AI, AI Agents",
+        "cat.ai.tag1": "Multimodal",
+        "cat.auto.title": "Auto Tech",
+        "cat.auto.desc": "Deep dives into autonomous driving, EVs, connected vehicles — legacy & new players",
+        "cat.auto.tag1": "Autonomous",
+        "cat.auto.tag2": "Smart Cabin",
+        "cat.space.title": "Aerospace",
+        "cat.space.desc": "SpaceX, China space program, commercial space, satellite internet & deep space exploration",
+        "cat.space.tag1": "Commercial",
+        "cat.space.tag2": "Deep Space",
+        "cat.space.tag3": "Satellite",
+        "posts.tag": "Latest",
+        "posts.title": "Recent Updates",
+        "posts.desc": "Stay ahead — never miss a beat in tech",
+        "post.gpt5.title": "GPT-5 Multimodal Breakthrough",
+        "post.gpt5.desc": "OpenAI's latest achieves unified multimodal reasoning across text, image, and video.",
+        "post.gpt5.date": "2026-04-25",
+        "post.su7.title": "Xiaomi SU7 Ultra Deep Dive",
+        "post.su7.desc": "Xiaomi's tri-motor AWD system redefines EV performance benchmarks.",
+        "post.su7.date": "2026-04-24",
+        "post.starship.title": "Starship Flight 5: History Made",
+        "post.starship.desc": "Super Heavy booster caught by the chopstick tower in a flawless return.",
+        "post.starship.date": "2026-04-23",
+        "post.claude.title": "Claude 3.5 Opus Review",
+        "post.claude.desc": "Anthropic's flagship tops coding & reasoning benchmarks across the board.",
+        "post.claude.date": "2026-04-22",
+        "post.readmore": "Read →",
+        "features.tag": "Features",
+        "features.title": "What We Offer",
+        "features.desc": "Beyond news — real depth",
+        "feat.1.title": "Tech Deep Dive",
+        "feat.1.desc": "Not just headlines — go deep into the why and how",
+        "feat.2.title": "Trend Analysis",
+        "feat.2.desc": "Data-driven insights into industry shifts and future directions",
+        "feat.3.title": "Unique Perspective",
+        "feat.3.desc": "Cross-domain analysis from the Dragon Knight's unique viewpoint",
+        "feat.4.title": "Flash Briefing",
+        "feat.4.desc": "Critical tech news delivered instantly",
+        "feat.5.title": "Future Forecast",
+        "feat.5.desc": "Trend-based foresight — anticipate the next inflection point",
+        "feat.6.title": "Curated Resources",
+        "feat.6.desc": "Handpicked papers, tools, and open-source projects",
+        "footer.tagline": "Tech Frontier Exploration",
+        "footer.copyright": "© 2026 DragonKnightBeat.com · Tech Frontier Exploration",
+        "article.gpt5.content_zh": "OpenAI 最新一代模型 GPT-5 在跨模态理解上取得了重大突破，首次实现了真正意义的统一多模态推理。\n\n## 核心突破\n\nGPT-5 不再需要单独为文本、图像、视频训练不同的模块。它采用了一个统一的 Transformer 架构，将所有模态的数据映射到同一个语义空间中进行处理。\n\n### 主要特性\n- **真正跨模态理解**：可以同时分析文本、图像、视频中的内容，理解它们之间的关联\n- **推理能力跃升**：在数学、代码、逻辑推理等基准测试中提升了 40%\n- **上下文窗口扩展**：支持高达 200 万 token 的超长上下文\n\n### 影响与展望\nGPT-5 的发布标志着 AI 从单模态走向全模态的关键转折。未来，AI 助手将能像人类一样，通过多种感官同时理解世界。",
+        "article.gpt5.content_en": "OpenAI's latest model, GPT-5, has achieved a major breakthrough in cross-modal understanding, realizing true unified multimodal reasoning for the first time.\n\n## Core Breakthroughs\n\nGPT-5 no longer requires separate modules for text, images, and video. It uses a unified Transformer architecture that maps all modalities into the same semantic space for processing.\n\n### Key Features\n- **True Cross-Modal Understanding**: Simultaneously analyze text, images, and video, understanding their interconnections\n- **Reasoning Leap**: 40% improvement on math, code, and logic reasoning benchmarks\n- **Extended Context Window**: Supports up to 2 million token ultra-long context\n\n### Impact & Outlook\nGPT-5 marks a critical turning point from single-modality to full-modality AI. In the future, AI assistants will understand the world through multiple senses simultaneously, just like humans.",
+        "article.su7.content_zh": "小米汽车发布了巅峰之作 SU7 Ultra，以三电机全轮驱动系统重新定义了性能标杆。\n\n## 技术亮点\n\n### 三电机系统\nSU7 Ultra 采用了前轴一台、后轴两台的三电机布局，综合功率超过 1500 马力。\n\n### 赛道模式\n- **智能扭矩矢量控制**，过弯极限大幅提升\n- **专属赛道热管理系统**，保证持续高性能输出\n- **可调悬架系统**，兼顾舒适与运动\n\n### 市场定位\nSU7 Ultra 定位高性能电动轿跑，直接对标特斯拉 Model S Plaid 和保时捷 Taycan Turbo GT。",
+        "article.su7.content_en": "Xiaomi Auto has released its masterpiece, the SU7 Ultra, redefining performance benchmarks with a tri-motor all-wheel drive system.\n\n## Technical Highlights\n\n### Tri-Motor System\nThe SU7 Ultra features a three-motor layout — one on the front axle and two on the rear — with combined power exceeding 1500 horsepower.\n\n### Track Mode\n- **Intelligent Torque Vectoring**: Dramatically improves cornering limits\n- **Dedicated Track Thermal Management**: Ensures sustained high-performance output\n- **Adjustable Suspension**: Balances comfort and sportiness\n\n### Market Positioning\nThe SU7 Ultra is positioned as a high-performance electric sport sedan, directly competing with the Tesla Model S Plaid and Porsche Taycan Turbo GT.",
+        "article.starship.content_zh": "SpaceX 星舰完成了又一次里程碑式试飞，筷子式捕获塔成功捕捉超重型助推器。\n\n## 飞行概要\n\n### 发射与上升\n星舰从 Starbase 发射台顺利升空，33 台猛禽发动机全部正常工作。\n\n### 助推器回收\n超重型助推器在分离后完成翻转和返场推进，精准返回发射塔，被筷子机械臂稳稳接住——这是继第四次试飞后的又一次成功回收。\n\n### 星舰本体\n星舰本体成功进入预定轨道，完成了一系列在轨测试后，成功在印度洋预定海域溅落。\n\n### 意义\n此次飞行验证了星舰系统的可重复使用能力，为未来的月球和火星任务奠定了坚实基础。",
+        "article.starship.content_en": "SpaceX's Starship achieved another milestone flight, with the chopstick capture tower successfully catching the Super Heavy booster.\n\n## Flight Summary\n\n### Launch & Ascent\nStarship lifted off smoothly from the Starbase launch pad, with all 33 Raptor engines operating nominally.\n\n### Booster Recovery\nAfter separation, the Super Heavy booster completed its flip and boostback burn, precisely returning to the launch tower where the chopstick arms caught it securely — another successful recovery following the fourth test flight.\n\n### Starship Upper Stage\nThe Starship upper stage successfully reached its planned orbit, completed a series of in-orbit tests, then made a successful splashdown in the Indian Ocean.\n\n### Significance\nThis flight validated Starship's reusability, laying a solid foundation for future lunar and Mars missions.",
+        "article.claude.content_zh": "Anthropic 最新旗舰模型 Claude 3.5 Opus 在编程、数学推理等基准测试中刷新了多项纪录。\n\n## 评测要点\n\n### 代码能力\n在 SWE-bench 编程基准测试中，Claude 3.5 Opus 准确率达到了 65%，大幅领先竞品。\n\n### 推理能力\n- **GPQA 研究生级别问答**：89% 准确率\n- **MATH 数学推理**：96% 准确率\n- **NarrativeQA 长文本**：领先竞品\n\n### 安全与对齐\nAnthropic 一贯重视 AI 安全，Claude 3.5 Opus 在多个安全评估指标上表现优异，幻觉率降至新低。",
+        "article.claude.content_en": "Anthropic's latest flagship model, Claude 3.5 Opus, has set multiple records on programming and math reasoning benchmarks.\n\n## Review Highlights\n\n### Coding Ability\nOn the SWE-bench programming benchmark, Claude 3.5 Opus achieved 65% accuracy, significantly outperforming competitors.\n\n### Reasoning Ability\n- **GPQA Graduate-Level Q&A**: 89% accuracy\n- **MATH Reasoning**: 96% accuracy\n- **NarrativeQA Long Text**: Leading competitors\n\n### Safety & Alignment\nAnthropic has always prioritized AI safety, and Claude 3.5 Opus performs excellently across multiple safety evaluation metrics, with hallucination rates hitting new lows."
+    }
+    </script>
 </head>
 <body>
     <!-- Stars Canvas -->
@@ -559,10 +660,14 @@
         <div class="navbar-inner">
             <a href="/" class="nav-logo"><span class="emoji">🐉</span> DRAGONKNIGHTBEAT</a>
             <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="zh">中文</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#categories" class="active">领域</a></li>
-                <li><a href="#posts">最新</a></li>
-                <li><a href="#features">特色</a></li>
+                <li><a href="#categories" class="active" data-i18n="nav.categories">领域</a></li>
+                <li><a href="#posts" data-i18n="nav.latest">最新</a></li>
+                <li><a href="#features" data-i18n="nav.features">特色</a></li>
             </ul>
         </div>
     </nav>
@@ -570,19 +675,19 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content container">
-            <div class="hero-badge">✦ 科技前沿探索者</div>
+            <div class="hero-badge" data-i18n="hero.badge">✦ 科技前沿探索者</div>
             <h1 class="hero-title">DRAGONKNIGHT<br>BEAT</h1>
-            <p class="hero-subtitle">
+            <p class="hero-subtitle" data-i18n="hero.subtitle">
                聚焦 AI 大模型 · 汽车科技 · 航空航天三大前沿领域，<br>
                以深度视角解读科技变革，追踪未来趋势。
             </p>
             <div class="hero-cta">
-                <a href="#categories" class="btn-primary">探索领域 →</a>
-                <a href="#posts" class="btn-secondary">最新文章</a>
+                <a href="#categories" class="btn-primary" data-i18n="hero.cta1">探索领域 →</a>
+                <a href="#posts" class="btn-secondary" data-i18n="hero.cta2">最新文章</a>
             </div>
         </div>
         <div class="scroll-indicator">
-            <span>SCROLL</span>
+            <span data-i18n="hero.scroll">SCROLL</span>
             <div class="line"></div>
         </div>
     </section>
@@ -593,19 +698,19 @@
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number" data-target="3">0</div>
-                    <div class="stat-label">核心领域</div>
+                    <div class="stat-label" data-i18n="stats.domains">核心领域</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="99">0</div>
-                    <div class="stat-label">+ 深度文章</div>
+                    <div class="stat-label" data-i18n="stats.articles">+ 深度文章</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="7">0</div>
-                    <div class="stat-label">× 24 更新</div>
+                    <div class="stat-label" data-i18n="stats.updates">× 24 更新</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="1">0</div>
-                    <div class="stat-label">🐉 龙骑士</div>
+                    <div class="stat-label" data-i18n="stats.knight">🐉 龙骑士</div>
                 </div>
             </div>
         </div>
@@ -615,39 +720,39 @@
     <section id="categories">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Focus Areas</div>
-                <h2 class="section-title">探索前沿领域</h2>
-                <p class="section-desc">三大科技前沿，深度追踪与分析</p>
+                <div class="section-tag" data-i18n="categories.tag">Focus Areas</div>
+                <h2 class="section-title" data-i18n="categories.title">探索前沿领域</h2>
+                <p class="section-desc" data-i18n="categories.desc">三大科技前沿，深度追踪与分析</p>
             </div>
             <div class="categories-grid">
                 <div class="category-card ai">
                     <span class="icon">🤖</span>
-                    <h3>AI 大模型</h3>
-                    <p>GPT、Claude、Gemini 最新突破，多模态、具身智能、AI Agent 前沿追踪</p>
+                    <h3 data-i18n="cat.ai.title">AI 大模型</h3>
+                    <p data-i18n="cat.ai.desc">GPT、Claude、Gemini 最新突破，多模态、具身智能、AI Agent 前沿追踪</p>
                     <div class="tech-tags">
                         <span>LLM</span>
-                        <span>多模态</span>
+                        <span data-i18n="cat.ai.tag1">多模态</span>
                         <span>Agent</span>
                     </div>
                 </div>
                 <div class="category-card auto">
                     <span class="icon">🚗</span>
-                    <h3>汽车科技</h3>
-                    <p>智能驾驶、电动汽车、车联网技术深度解析，新势力与传统车企创新跟踪</p>
+                    <h3 data-i18n="cat.auto.title">汽车科技</h3>
+                    <p data-i18n="cat.auto.desc">智能驾驶、电动汽车、车联网技术深度解析，新势力与传统车企创新跟踪</p>
                     <div class="tech-tags">
-                        <span>自动驾驶</span>
+                        <span data-i18n="cat.auto.tag1">自动驾驶</span>
                         <span>EV</span>
-                        <span>智能座舱</span>
+                        <span data-i18n="cat.auto.tag2">智能座舱</span>
                     </div>
                 </div>
                 <div class="category-card space">
                     <span class="icon">🚀</span>
-                    <h3>航空航天</h3>
-                    <p>SpaceX、中国航天、商业航天动态，卫星互联网与深空探索最新进展</p>
+                    <h3 data-i18n="cat.space.title">航空航天</h3>
+                    <p data-i18n="cat.space.desc">SpaceX、中国航天、商业航天动态，卫星互联网与深空探索最新进展</p>
                     <div class="tech-tags">
-                        <span>商业航天</span>
-                        <span>深空</span>
-                        <span>卫星</span>
+                        <span data-i18n="cat.space.tag1">商业航天</span>
+                        <span data-i18n="cat.space.tag2">深空</span>
+                        <span data-i18n="cat.space.tag3">卫星</span>
                     </div>
                 </div>
             </div>
@@ -658,45 +763,45 @@
     <section id="posts">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Latest</div>
-                <h2 class="section-title">最新动态</h2>
-                <p class="section-desc">追踪科技前沿，不错过每一个重要时刻</p>
+                <div class="section-tag" data-i18n="posts.tag">Latest</div>
+                <h2 class="section-title" data-i18n="posts.title">最新动态</h2>
+                <p class="section-desc" data-i18n="posts.desc">追踪科技前沿，不错过每一个重要时刻</p>
             </div>
             <div class="posts-grid">
                 <article class="post-card ai">
-                    <span class="post-category">AI 大模型</span>
-                    <h4>GPT-5 多模态能力突破：跨越文本、图像、视频的统一理解</h4>
-                    <p>OpenAI 最新一代模型在跨模态理解上取得重大进展，首次实现真正意义的统一多模态推理。</p>
+                    <span class="post-category" data-i18n="cat.ai.title">AI 大模型</span>
+                    <h4 data-i18n="post.gpt5.title">GPT-5 多模态能力突破：跨越文本、图像、视频的统一理解</h4>
+                    <p data-i18n="post.gpt5.desc">OpenAI 最新一代模型在跨模态理解上取得重大进展，首次实现真正意义的统一多模态推理。</p>
                     <div class="post-meta">
-                        <span>2026-04-25</span>
-                        <span class="read-more">阅读 →</span>
+                        <span data-i18n="post.gpt5.date">2026-04-25</span>
+                        <span class="read-more" data-i18n="post.readmore">阅读 →</span>
                     </div>
                 </article>
                 <article class="post-card auto">
-                    <span class="post-category">汽车科技</span>
-                    <h4>小米 SU7 Ultra 技术解析：三电机 + 赛道模式如何定义新性能标杆</h4>
-                    <p>小米汽车发布巅峰之作，三电机全轮驱动系统实现惊人的动力输出与精准操控。</p>
+                    <span class="post-category" data-i18n="cat.auto.title">汽车科技</span>
+                    <h4 data-i18n="post.su7.title">小米 SU7 Ultra 技术解析：三电机 + 赛道模式如何定义新性能标杆</h4>
+                    <p data-i18n="post.su7.desc">小米汽车发布巅峰之作，三电机全轮驱动系统实现惊人的动力输出与精准操控。</p>
                     <div class="post-meta">
-                        <span>2026-04-24</span>
-                        <span class="read-more">阅读 →</span>
+                        <span data-i18n="post.su7.date">2026-04-24</span>
+                        <span class="read-more" data-i18n="post.readmore">阅读 →</span>
                     </div>
                 </article>
                 <article class="post-card space">
-                    <span class="post-category">航空航天</span>
-                    <h4>SpaceX 星舰第五飞：超重型助推器精准回收创造历史</h4>
-                    <p>星舰完成又一次里程碑式试飞，筷子式捕获塔成功捕捉超重型助推器。</p>
+                    <span class="post-category" data-i18n="cat.space.title">航空航天</span>
+                    <h4 data-i18n="post.starship.title">SpaceX 星舰第五飞：超重型助推器精准回收创造历史</h4>
+                    <p data-i18n="post.starship.desc">星舰完成又一次里程碑式试飞，筷子式捕获塔成功捕捉超重型助推器。</p>
                     <div class="post-meta">
-                        <span>2026-04-23</span>
-                        <span class="read-more">阅读 →</span>
+                        <span data-i18n="post.starship.date">2026-04-23</span>
+                        <span class="read-more" data-i18n="post.readmore">阅读 →</span>
                     </div>
                 </article>
                 <article class="post-card ai">
-                    <span class="post-category">AI 大模型</span>
-                    <h4>Claude 3.5 Opus 深度评测：代码能力与推理能力登顶</h4>
-                    <p>Anthropic 最新旗舰模型在编程、数学推理等基准测试中刷新多项纪录。</p>
+                    <span class="post-category" data-i18n="cat.ai.title">AI 大模型</span>
+                    <h4 data-i18n="post.claude.title">Claude 3.5 Opus 深度评测：代码能力与推理能力登顶</h4>
+                    <p data-i18n="post.claude.desc">Anthropic 最新旗舰模型在编程、数学推理等基准测试中刷新多项纪录。</p>
                     <div class="post-meta">
-                        <span>2026-04-22</span>
-                        <span class="read-more">阅读 →</span>
+                        <span data-i18n="post.claude.date">2026-04-22</span>
+                        <span class="read-more" data-i18n="post.readmore">阅读 →</span>
                     </div>
                 </article>
             </div>
@@ -707,40 +812,40 @@
     <section id="features">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Features</div>
-                <h2 class="section-title">特色栏目</h2>
-                <p class="section-desc">不止资讯，更有深度</p>
+                <div class="section-tag" data-i18n="features.tag">Features</div>
+                <h2 class="section-title" data-i18n="features.title">特色栏目</h2>
+                <p class="section-desc" data-i18n="features.desc">不止资讯，更有深度</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <span class="feat-icon">🔬</span>
-                    <h4>技术深度解读</h4>
-                    <p>不只是新闻摘要——深入技术底层，讲清楚"为什么"和"怎么做到的"</p>
+                    <h4 data-i18n="feat.1.title">技术深度解读</h4>
+                    <p data-i18n="feat.1.desc">不只是新闻摘要——深入技术底层，讲清楚"为什么"和"怎么做到的"</p>
                 </div>
                 <div class="feature-card">
                     <span class="feat-icon">📊</span>
-                    <h4>行业趋势分析</h4>
-                    <p>以数据和事实为基础，洞察科技行业格局变化与未来走向</p>
+                    <h4 data-i18n="feat.2.title">行业趋势分析</h4>
+                    <p data-i18n="feat.2.desc">以数据和事实为基础，洞察科技行业格局变化与未来走向</p>
                 </div>
                 <div class="feature-card">
                     <span class="feat-icon">🎯</span>
-                    <h4>独家视角</h4>
-                    <p>龙骑士的独特观点，跨领域关联分析，发现不一样的科技叙事</p>
+                    <h4 data-i18n="feat.3.title">独家视角</h4>
+                    <p data-i18n="feat.3.desc">龙骑士的独特观点，跨领域关联分析，发现不一样的科技叙事</p>
                 </div>
                 <div class="feature-card">
                     <span class="feat-icon">⚡</span>
-                    <h4>实时快讯</h4>
-                    <p>重要科技动态第一时间送达，不错过任何关键信息</p>
+                    <h4 data-i18n="feat.4.title">实时快讯</h4>
+                    <p data-i18n="feat.4.desc">重要科技动态第一时间送达，不错过任何关键信息</p>
                 </div>
                 <div class="feature-card">
                     <span class="feat-icon">🔮</span>
-                    <h4>未来预测</h4>
-                    <p>基于趋势的前瞻分析，预见技术变革的下一个拐点</p>
+                    <h4 data-i18n="feat.5.title">未来预测</h4>
+                    <p data-i18n="feat.5.desc">基于趋势的前瞻分析，预见技术变革的下一个拐点</p>
                 </div>
                 <div class="feature-card">
                     <span class="feat-icon">💎</span>
-                    <h4>精选资源</h4>
-                    <p>精选论文、工具、开源项目推荐，提升你的技术视野</p>
+                    <h4 data-i18n="feat.6.title">精选资源</h4>
+                    <p data-i18n="feat.6.desc">精选论文、工具、开源项目推荐，提升你的技术视野</p>
                 </div>
             </div>
         </div>
@@ -751,11 +856,11 @@
         <div class="container">
             <div class="footer-logo">🐉 DRAGONKNIGHTBEAT</div>
             <div class="footer-links">
-                <a href="#categories">领域</a>
-                <a href="#posts">最新</a>
-                <a href="#features">特色</a>
+                <a href="#categories" data-i18n="nav.categories">领域</a>
+                <a href="#posts" data-i18n="nav.latest">最新</a>
+                <a href="#features" data-i18n="nav.features">特色</a>
             </div>
-            <div class="footer-copy">
+            <div class="footer-copy" data-i18n="footer.copyright">
                 © 2026 DragonKnightBeat.com · 科技前沿探索
             </div>
         </div>
@@ -981,6 +1086,142 @@
                 if (articlesData[i]) openModal(articlesData[i].id);
             });
         });
+
+        // ===== Internationalization (i18n) =====
+        const i18nData = JSON.parse(document.getElementById('i18n-data').textContent);
+
+        function applyLanguage(lang) {
+            if (!lang) lang = 'zh';
+            const isEn = lang === 'en';
+
+            // Update html lang attribute
+            document.documentElement.lang = isEn ? 'en' : 'zh-CN';
+
+            // Update data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                let translation;
+                if (isEn) {
+                    translation = i18nData[key];
+                } else {
+                    // For zh, restore original content from the HTML
+                    // Store original text on first load
+                    if (!el._originalText) {
+                        el._originalText = el.innerHTML;
+                    }
+                    translation = el._originalText;
+                }
+                if (translation !== undefined && translation !== null) {
+                    el.innerHTML = translation;
+                }
+            });
+
+            // Update modal category text
+            const modalCat = document.querySelector('.modal-category');
+            if (modalCat && modalCat._originalText === undefined) {
+                modalCat._originalText = modalCat.textContent;
+            }
+            // Modal category is set dynamically in openModal, so we handle it there
+
+            // Update active lang button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Save preference
+            localStorage.setItem('lang', lang);
+        }
+
+        // Override openModal to support i18n for category label
+        const _origOpenModal = openModal;
+        const currentLang = localStorage.getItem('lang') || 'zh';
+        openModal = function(articleId) {
+            const article = articlesData.find(a => a.id === articleId);
+            if (!article) return;
+            modalCategory.textContent = article.category;
+            if (currentLang === 'en') {
+                // Map category to English
+                const catMap = {
+                    'AI 大模型': i18nData['cat.ai.title'] || 'AI & LLM',
+                    '汽车科技': i18nData['cat.auto.title'] || 'Auto Tech',
+                    '航空航天': i18nData['cat.space.title'] || 'Aerospace'
+                };
+                modalCategory.textContent = catMap[article.category] || article.category;
+            }
+            modalCategory.className = 'modal-category ' + article.categoryClass;
+
+            if (currentLang === 'en') {
+                // Use English title
+                const titleKey = {
+                    'gpt5-multimodal': 'post.gpt5.title',
+                    'xiaomi-su7-ultra': 'post.su7.title',
+                    'starship-flight5': 'post.starship.title',
+                    'claude-opus-review': 'post.claude.title'
+                };
+                modalTitle.textContent = i18nData[titleKey[article.id]] || article.title;
+
+                // Use English content
+                const contentKey = {
+                    'gpt5-multimodal': 'article.gpt5.content_en',
+                    'xiaomi-su7-ultra': 'article.su7.content_en',
+                    'starship-flight5': 'article.starship.content_en',
+                    'claude-opus-review': 'article.claude.content_en'
+                };
+                let enContent = i18nData[contentKey[article.id]];
+                if (enContent) {
+                    let html = enContent.split('\n').map(line => {
+                        if (line.startsWith('### ')) return `<h4>${line.slice(4)}</h4>`;
+                        if (line.startsWith('## ')) return `<h3>${line.slice(3)}</h3>`;
+                        if (line.startsWith('- **')) {
+                            const end = line.indexOf('**', 4);
+                            return `<li><strong>${line.slice(4, end)}</strong>${line.slice(end + 2)}</li>`;
+                        }
+                        if (line.startsWith('- ')) return `<li>${line.slice(2)}</li>`;
+                        if (line.trim() === '') return '<br>';
+                        return `<p>${line}</p>`;
+                    }).join('');
+                    modalBody.innerHTML = html;
+                }
+            } else {
+                modalTitle.textContent = article.title;
+                let html = article.content.split('\n').map(line => {
+                    if (line.startsWith('### ')) return `<h4>${line.slice(4)}</h4>`;
+                    if (line.startsWith('## ')) return `<h3>${line.slice(3)}</h3>`;
+                    if (line.startsWith('- **')) {
+                        const end = line.indexOf('**', 4);
+                        return `<li><strong>${line.slice(4, end)}</strong>${line.slice(end + 2)}</li>`;
+                    }
+                    if (line.startsWith('- ')) return `<li>${line.slice(2)}</li>`;
+                    if (line.trim() === '') return '<br>';
+                    return `<p>${line}</p>`;
+                }).join('');
+                modalBody.innerHTML = html;
+            }
+
+            modalDate.textContent = article.date;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        // Attach lang switch events
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.dataset.lang;
+                applyLanguage(lang);
+            });
+        });
+
+        // Apply saved language on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('lang') || 'zh';
+            applyLanguage(savedLang);
+        });
+
+        // Also run immediately if DOM already loaded
+        if (document.readyState !== 'loading') {
+            const savedLang = localStorage.getItem('lang') || 'zh';
+            applyLanguage(savedLang);
+        }
     </script>
 
     <style>
