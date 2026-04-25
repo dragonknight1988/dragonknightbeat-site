@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DragonKnightBeat · 科技前沿探索</title>
+    <meta name="description" content="DragonKnightBeat - 科技前沿探索，聚焦 AI·汽车·航空航天三大领域">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            --bg-primary: #0a0a1a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --neon-cyan: #00f3ff;
+            --neon-purple: #9d00ff;
+            --neon-green: #00ff9d;
+            --text-primary: #e0e0ff;
+            --text-secondary: #8888aa;
+            --glow-cyan: 0 0 20px rgba(0, 243, 255, 0.3);
+            --glow-purple: 0 0 20px rgba(157, 0, 255, 0.3);
+            --gradient-main: linear-gradient(135deg, #00f3ff, #9d00ff);
+            --font-display: 'Orbitron', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        /* ===== Reset ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        a { color: var(--neon-cyan); text-decoration: none; transition: all 0.3s; }
+        a:hover { color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); }
+
+        /* ===== Stars Background ===== */
+        #stars-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ===== Grid Overlay ===== */
+        .grid-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ===== Container ===== */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== Navigation ===== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 26, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+            transition: all 0.3s;
+        }
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 243, 255, 0.1);
+        }
+        .navbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+        .nav-logo .emoji { -webkit-text-fill-color: initial; }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--gradient-main);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 800px;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid var(--neon-cyan);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            color: var(--neon-cyan);
+            letter-spacing: 3px;
+            margin-bottom: 32px;
+            animation: pulse-border 2s ease-in-out infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 5px rgba(0, 243, 255, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(0, 243, 255, 0.6); }
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+        @keyframes glow-pulse {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: var(--gradient-main);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--glow-cyan);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.5);
+            color: #fff;
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(224, 224, 255, 0.2);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: var(--glow-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* ===== Scroll Indicator ===== */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            letter-spacing: 2px;
+            animation: float 2s ease-in-out infinite;
+        }
+        .scroll-indicator .line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--neon-cyan), transparent);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* ===== Section Shared ===== */
+        section { padding: 100px 0; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .section-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--neon-cyan);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .section-tag::before { content: '< '; }
+        .section-tag::after { content: ' />'; }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ===== Categories ===== */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 900px) {
+            .categories-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .categories-grid { grid-template-columns: 1fr; }
+        }
+        .category-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            right: 0; bottom: 0;
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+        .category-card.ai::before { background: radial-gradient(circle at center, rgba(0,243,255,0.08), transparent); }
+        .category-card.auto::before { background: radial-gradient(circle at center, rgba(0,255,157,0.08), transparent); }
+        .category-card.space::before { background: radial-gradient(circle at center, rgba(157,0,255,0.08), transparent); }
+        .category-card:hover::before { opacity: 1; }
+        .category-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--neon-cyan);
+        }
+        .category-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .category-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        .category-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .category-card .tech-tags {
+            margin-top: 20px;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .category-card .tech-tags span {
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-secondary);
+        }
+        .category-card.ai .tech-tags span { border-color: rgba(0,243,255,0.2); color: var(--neon-cyan); }
+        .category-card.auto .tech-tags span { border-color: rgba(0,255,157,0.2); color: var(--neon-green); }
+        .category-card.space .tech-tags span { border-color: rgba(157,0,255,0.2); color: var(--neon-purple); }
+
+        /* ===== Latest Posts ===== */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .posts-grid { grid-template-columns: 1fr; }
+        }
+        .post-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+        .post-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0,243,255,0.3);
+            box-shadow: 0 8px 40px rgba(0,243,255,0.05);
+        }
+        .post-card .post-category {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            margin-bottom: 12px;
+        }
+        .post-card.ai .post-category { background: rgba(0,243,255,0.1); color: var(--neon-cyan); }
+        .post-card.auto .post-category { background: rgba(0,255,157,0.1); color: var(--neon-green); }
+        .post-card.space .post-category { background: rgba(157,0,255,0.1); color: var(--neon-purple); }
+        .post-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .post-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .post-card .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+        }
+        .post-card .post-meta .read-more {
+            color: var(--neon-cyan);
+            font-size: 0.75rem;
+        }
+
+        /* ===== Features ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 900px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        .feature-card .feat-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .feature-card h4 {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* ===== Terminal/Stats Bar ===== */
+        .stats-bar {
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid rgba(0,243,255,0.1);
+            border-bottom: 1px solid rgba(0,243,255,0.1);
+            padding: 40px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+        }
+        .stat-item .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-item .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-top: 4px;
+            font-family: var(--font-mono);
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 48px 0 32px;
+            text-align: center;
+        }
+        footer .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        footer .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        footer .footer-copy {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+        }
+
+        /* ===== Mobile Nav ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 64px; left: 0; right: 0;
+                flex-direction: column;
+                background: rgba(10,10,26,0.98);
+                backdrop-filter: blur(20px);
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(0,243,255,0.1);
+            }
+            .nav-links.open { display: flex; }
+            .nav-toggle { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars Canvas -->
+    <canvas id="stars-canvas"></canvas>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="nav-logo"><span class="emoji">🐉</span> DRAGONKNIGHTBEAT</a>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#categories" class="active">领域</a></li>
+                <li><a href="#posts">最新</a></li>
+                <li><a href="#features">特色</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content container">
+            <div class="hero-badge">✦ 科技前沿探索者</div>
+            <h1 class="hero-title">DRAGONKNIGHT<br>BEAT</h1>
+            <p class="hero-subtitle">
+               聚焦 AI 大模型 · 汽车科技 · 航空航天三大前沿领域，<br>
+               以深度视角解读科技变革，追踪未来趋势。
+            </p>
+            <div class="hero-cta">
+                <a href="#categories" class="btn-primary">探索领域 →</a>
+                <a href="#posts" class="btn-secondary">最新文章</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>SCROLL</span>
+            <div class="line"></div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="3">0</div>
+                    <div class="stat-label">核心领域</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="99">0</div>
+                    <div class="stat-label">+ 深度文章</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="7">0</div>
+                    <div class="stat-label">× 24 更新</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="1">0</div>
+                    <div class="stat-label">🐉 龙骑士</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Focus Areas</div>
+                <h2 class="section-title">探索前沿领域</h2>
+                <p class="section-desc">三大科技前沿，深度追踪与分析</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card ai">
+                    <span class="icon">🤖</span>
+                    <h3>AI 大模型</h3>
+                    <p>GPT、Claude、Gemini 最新突破，多模态、具身智能、AI Agent 前沿追踪</p>
+                    <div class="tech-tags">
+                        <span>LLM</span>
+                        <span>多模态</span>
+                        <span>Agent</span>
+                    </div>
+                </div>
+                <div class="category-card auto">
+                    <span class="icon">🚗</span>
+                    <h3>汽车科技</h3>
+                    <p>智能驾驶、电动汽车、车联网技术深度解析，新势力与传统车企创新跟踪</p>
+                    <div class="tech-tags">
+                        <span>自动驾驶</span>
+                        <span>EV</span>
+                        <span>智能座舱</span>
+                    </div>
+                </div>
+                <div class="category-card space">
+                    <span class="icon">🚀</span>
+                    <h3>航空航天</h3>
+                    <p>SpaceX、中国航天、商业航天动态，卫星互联网与深空探索最新进展</p>
+                    <div class="tech-tags">
+                        <span>商业航天</span>
+                        <span>深空</span>
+                        <span>卫星</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Posts -->
+    <section id="posts">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Latest</div>
+                <h2 class="section-title">最新动态</h2>
+                <p class="section-desc">追踪科技前沿，不错过每一个重要时刻</p>
+            </div>
+            <div class="posts-grid">
+                <article class="post-card ai">
+                    <span class="post-category">AI 大模型</span>
+                    <h4>GPT-5 多模态能力突破：跨越文本、图像、视频的统一理解</h4>
+                    <p>OpenAI 最新一代模型在跨模态理解上取得重大进展，首次实现真正意义的统一多模态推理。</p>
+                    <div class="post-meta">
+                        <span>2026-04-25</span>
+                        <span class="read-more">阅读 →</span>
+                    </div>
+                </article>
+                <article class="post-card auto">
+                    <span class="post-category">汽车科技</span>
+                    <h4>小米 SU7 Ultra 技术解析：三电机 + 赛道模式如何定义新性能标杆</h4>
+                    <p>小米汽车发布巅峰之作，三电机全轮驱动系统实现惊人的动力输出与精准操控。</p>
+                    <div class="post-meta">
+                        <span>2026-04-24</span>
+                        <span class="read-more">阅读 →</span>
+                    </div>
+                </article>
+                <article class="post-card space">
+                    <span class="post-category">航空航天</span>
+                    <h4>SpaceX 星舰第五飞：超重型助推器精准回收创造历史</h4>
+                    <p>星舰完成又一次里程碑式试飞，筷子式捕获塔成功捕捉超重型助推器。</p>
+                    <div class="post-meta">
+                        <span>2026-04-23</span>
+                        <span class="read-more">阅读 →</span>
+                    </div>
+                </article>
+                <article class="post-card ai">
+                    <span class="post-category">AI 大模型</span>
+                    <h4>Claude 3.5 Opus 深度评测：代码能力与推理能力登顶</h4>
+                    <p>Anthropic 最新旗舰模型在编程、数学推理等基准测试中刷新多项纪录。</p>
+                    <div class="post-meta">
+                        <span>2026-04-22</span>
+                        <span class="read-more">阅读 →</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Features</div>
+                <h2 class="section-title">特色栏目</h2>
+                <p class="section-desc">不止资讯，更有深度</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feat-icon">🔬</span>
+                    <h4>技术深度解读</h4>
+                    <p>不只是新闻摘要——深入技术底层，讲清楚"为什么"和"怎么做到的"</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feat-icon">📊</span>
+                    <h4>行业趋势分析</h4>
+                    <p>以数据和事实为基础，洞察科技行业格局变化与未来走向</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feat-icon">🎯</span>
+                    <h4>独家视角</h4>
+                    <p>龙骑士的独特观点，跨领域关联分析，发现不一样的科技叙事</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feat-icon">⚡</span>
+                    <h4>实时快讯</h4>
+                    <p>重要科技动态第一时间送达，不错过任何关键信息</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feat-icon">🔮</span>
+                    <h4>未来预测</h4>
+                    <p>基于趋势的前瞻分析，预见技术变革的下一个拐点</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feat-icon">💎</span>
+                    <h4>精选资源</h4>
+                    <p>精选论文、工具、开源项目推荐，提升你的技术视野</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">🐉 DRAGONKNIGHTBEAT</div>
+            <div class="footer-links">
+                <a href="#categories">领域</a>
+                <a href="#posts">最新</a>
+                <a href="#features">特色</a>
+            </div>
+            <div class="footer-copy">
+                © 2026 DragonKnightBeat.com · 科技前沿探索
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== Stars Animation =====
+        const canvas = document.getElementById('stars-canvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        const NUM_STARS = 200;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Star {
+            constructor() {
+                this.reset(true);
+            }
+            reset(init = false) {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.8 + 0.2;
+                this.pulseSpeed = Math.random() * 0.02 + 0.005;
+                this.pulseOffset = Math.random() * Math.PI * 2;
+                this.color = ['rgba(255,255,255,', 'rgba(0,243,255,', 'rgba(157,0,255,'][Math.floor(Math.random() * 3)];
+            }
+            update(time) {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.reset();
+                }
+                this.currentOpacity = this.opacity * (0.5 + 0.5 * Math.sin(time * this.pulseSpeed + this.pulseOffset));
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color + this.currentOpacity + ')';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < NUM_STARS; i++) {
+            stars.push(new Star());
+        }
+
+        let animTime = 0;
+        function animateStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            animTime += 0.016;
+            stars.forEach(s => { s.update(animTime); s.draw(); });
+            requestAnimationFrame(animateStars);
+        }
+        animateStars();
+
+        // ===== Navbar Scroll Effect =====
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // ===== Mobile Nav Toggle =====
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close nav on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // ===== Stats Counter Animation =====
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const updateCounter = () => {
+                    const current = parseInt(counter.innerText);
+                    const increment = Math.ceil(target / 30);
+                    if (current < target) {
+                        counter.innerText = Math.min(current + increment, target);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        // Trigger counter animation on scroll
+        const statsSection = document.querySelector('.stats-bar');
+        let counted = false;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !counted) {
+                    counted = true;
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.3 });
+        if (statsSection) observer.observe(statsSection);
+
+        // ===== Smooth Scroll =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
