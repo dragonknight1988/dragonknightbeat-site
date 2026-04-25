@@ -1116,12 +1116,8 @@
                 }
             });
 
-            // Update modal category text
-            const modalCat = document.querySelector('.modal-category');
-            if (modalCat && modalCat._originalText === undefined) {
-                modalCat._originalText = modalCat.textContent;
-            }
-            // Modal category is set dynamically in openModal, so we handle it there
+            // Refresh modal if it's open
+            refreshModalLanguage();
 
             // Update active lang button
             document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -1132,26 +1128,32 @@
             localStorage.setItem('lang', lang);
         }
 
+        // Current open article ID for language switch refresh
+        let currentArticleId = null;
+
         // Override openModal to support i18n for category label
         const _origOpenModal = openModal;
-        const currentLang = localStorage.getItem('lang') || 'zh';
         openModal = function(articleId) {
             const article = articlesData.find(a => a.id === articleId);
             if (!article) return;
-            modalCategory.textContent = article.category;
-            if (currentLang === 'en') {
-                // Map category to English
+            currentArticleId = articleId;
+            const lang = localStorage.getItem('lang') || 'zh';
+            
+            // Category
+            if (lang === 'en') {
                 const catMap = {
                     'AI 大模型': i18nData['cat.ai.title'] || 'AI & LLM',
                     '汽车科技': i18nData['cat.auto.title'] || 'Auto Tech',
                     '航空航天': i18nData['cat.space.title'] || 'Aerospace'
                 };
                 modalCategory.textContent = catMap[article.category] || article.category;
+            } else {
+                modalCategory.textContent = article.category;
             }
             modalCategory.className = 'modal-category ' + article.categoryClass;
 
-            if (currentLang === 'en') {
-                // Use English title
+            // Title & Date
+            if (lang === 'en') {
                 const titleKey = {
                     'gpt5-multimodal': 'post.gpt5.title',
                     'xiaomi-su7-ultra': 'post.su7.title',
@@ -1159,17 +1161,21 @@
                     'claude-opus-review': 'post.claude.title'
                 };
                 modalTitle.textContent = i18nData[titleKey[article.id]] || article.title;
+            } else {
+                modalTitle.textContent = article.title;
+            }
 
-                // Use English content
+            // Content
+            if (lang === 'en') {
                 const contentKey = {
                     'gpt5-multimodal': 'article.gpt5.content_en',
                     'xiaomi-su7-ultra': 'article.su7.content_en',
                     'starship-flight5': 'article.starship.content_en',
                     'claude-opus-review': 'article.claude.content_en'
                 };
-                let enContent = i18nData[contentKey[article.id]];
+                const enContent = i18nData[contentKey[article.id]];
                 if (enContent) {
-                    let html = enContent.split('\n').map(line => {
+                    modalBody.innerHTML = enContent.split('\n').map(line => {
                         if (line.startsWith('### ')) return `<h4>${line.slice(4)}</h4>`;
                         if (line.startsWith('## ')) return `<h3>${line.slice(3)}</h3>`;
                         if (line.startsWith('- **')) {
@@ -1180,11 +1186,9 @@
                         if (line.trim() === '') return '<br>';
                         return `<p>${line}</p>`;
                     }).join('');
-                    modalBody.innerHTML = html;
                 }
             } else {
-                modalTitle.textContent = article.title;
-                let html = article.content.split('\n').map(line => {
+                modalBody.innerHTML = article.content.split('\n').map(line => {
                     if (line.startsWith('### ')) return `<h4>${line.slice(4)}</h4>`;
                     if (line.startsWith('## ')) return `<h3>${line.slice(3)}</h3>`;
                     if (line.startsWith('- **')) {
@@ -1195,13 +1199,19 @@
                     if (line.trim() === '') return '<br>';
                     return `<p>${line}</p>`;
                 }).join('');
-                modalBody.innerHTML = html;
             }
 
             modalDate.textContent = article.date;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         };
+
+        // When language switches while modal is open, refresh content
+        function refreshModalLanguage() {
+            if (currentArticleId && modal.classList.contains('active')) {
+                openModal(currentArticleId);
+            }
+        }
 
         // Attach lang switch events
         document.querySelectorAll('.lang-btn').forEach(btn => {
