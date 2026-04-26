@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Smart Alarm · 技术支持 - DragonKnightBeat</title>
+<meta name="description" content="Smart Holiday Alarm（智能假日闹钟）官方技术支持 - 常见问题、使用指南、联系支持">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+    --bg-primary: #0a0a1a;
+    --bg-card: rgba(255,255,255,0.03);
+    --neon-cyan: #00f3ff;
+    --neon-purple: #9d00ff;
+    --neon-green: #00ff9d;
+    --neon-gold: #ffd700;
+    --neon-orange: #ff6b00;
+    --text-primary: #e0e0ff;
+    --text-secondary: #8888aa;
+    --glow-cyan: 0 0 20px rgba(0,243,255,0.3);
+    --glow-gold: 0 0 20px rgba(255,215,0,0.3);
+    --gradient-main: linear-gradient(135deg,#00f3ff,#9d00ff);
+    --gradient-alarm: linear-gradient(135deg,#ff6b00,#ffd700);
+    --font-display: 'Orbitron',sans-serif;
+    --font-body: 'Inter',sans-serif;
+    --font-mono: 'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);overflow-x:hidden;min-height:100vh}
+a{color:var(--neon-cyan);text-decoration:none;transition:all .3s}
+a:hover{color:var(--neon-green);text-shadow:0 0 10px var(--neon-green)}
+#stars-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.grid-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(0,243,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,243,255,0.03) 1px,transparent 1px);background-size:60px 60px;z-index:0;pointer-events:none}
+.container{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 24px}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,243,255,0.1);transition:all .3s}
+.navbar.scrolled{box-shadow:0 4px 30px rgba(0,243,255,0.1)}
+.navbar-inner{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-display);font-size:1rem;font-weight:700;background:var(--gradient-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:2px}
+.nav-logo .emoji{-webkit-text-fill-color:initial}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+.nav-links a{color:var(--text-secondary);font-size:.85rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gradient-main);transition:width .3s}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a:hover{color:var(--text-primary)}
+.nav-toggle{display:none;background:none;border:none;color:var(--text-primary);font-size:1.5rem;cursor:pointer}
+@media(max-width:768px){
+.nav-links{display:none;position:fixed;top:60px;left:0;right:0;flex-direction:column;background:rgba(10,10,26,0.98);backdrop-filter:blur(20px);padding:24px;gap:16px;border-bottom:1px solid rgba(0,243,255,0.1)}
+.nav-links.open{display:flex}
+.nav-toggle{display:block}
+}
+.hero{min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 0 60px;position:relative}
+.hero-content{max-width:700px}
+.hero-badge{display:inline-block;padding:8px 20px;border:1px solid var(--neon-orange);border-radius:50px;font-size:.75rem;font-family:var(--font-mono);color:var(--neon-orange);letter-spacing:3px;margin-bottom:32px;animation:pulse-border 2s ease-in-out infinite}
+@keyframes pulse-border{0%,100%{box-shadow:0 0 5px rgba(255,107,0,0.2)}50%{box-shadow:0 0 20px rgba(255,107,0,0.6)}}
+.hero-title{font-family:var(--font-display);font-size:clamp(2rem,6vw,3.5rem);font-weight:900;line-height:1.15;margin-bottom:20px}
+.hero-title .alarm-gradient{background:var(--gradient-alarm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-subtitle{font-size:clamp(.9rem,2vw,1.1rem);color:var(--text-secondary);margin-bottom:36px;line-height:1.6}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--gradient-alarm);color:#fff;border:none;border-radius:8px;font-size:.95rem;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:all .3s;box-shadow:var(--glow-gold)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(255,215,0,0.5);color:#fff}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:transparent;color:var(--text-primary);border:1px solid rgba(224,224,255,0.2);border-radius:8px;font-size:.95rem;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:all .3s}
+.btn-secondary:hover{border-color:var(--neon-orange);box-shadow:0 0 20px rgba(255,107,0,0.3);transform:translateY(-2px)}
+.scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-secondary);font-size:.7rem;font-family:var(--font-mono);letter-spacing:2px;animation:float 2s ease-in-out infinite}
+.scroll-indicator .line{width:1px;height:40px;background:linear-gradient(to bottom,var(--neon-orange),transparent)}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
+section{padding:80px 0}
+.section-header{text-align:center;margin-bottom:48px}
+.section-tag{display:inline-block;font-family:var(--font-mono);font-size:.75rem;color:var(--neon-orange);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
+.section-tag::before{content:'< '}
+.section-tag::after{content:' />'}
+.section-title{font-family:var(--font-display);font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:700;margin-bottom:16px}
+.section-desc{color:var(--text-secondary);font-size:1rem;max-width:600px;margin:0 auto;line-height:1.6}
+.faq-list{display:flex;flex-direction:column;gap:16px}
+.faq-item{background:var(--bg-card);border:1px solid rgba(255,255,255,0.05);border-radius:12px;overflow:hidden;transition:all .3s}
+.faq-item:hover{border-color:rgba(0,243,255,0.15)}
+.faq-question{padding:20px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none}
+.faq-question h3{font-size:1rem;font-weight:600;line-height:1.4;flex:1}
+.faq-question .faq-icon{font-size:.8rem;color:var(--neon-cyan);transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease}
+.faq-item.open .faq-answer{max-height:600px;padding:0 24px 20px}
+.faq-answer p{color:var(--text-secondary);line-height:1.7;margin-bottom:8px;font-size:.92rem}
+.faq-answer ul{list-style:none;padding:0}
+.faq-answer li{color:var(--text-secondary);line-height:1.7;margin-bottom:6px;padding-left:20px;position:relative;font-size:.92rem}
+.faq-answer li::before{content:'\25B8';position:absolute;left:0;color:var(--neon-cyan)}
+.faq-answer code{font-family:var(--font-mono);font-size:.85rem;background:rgba(0,243,255,0.08);padding:2px 8px;border-radius:4px;color:var(--neon-cyan)}
+.faq-answer strong{color:var(--text-primary)}
+.guide-steps{display:flex;flex-direction:column;gap:28px}
+.guide-step{display:flex;gap:20px;align-items:flex-start}
+.guide-step .step-number{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:var(--gradient-alarm);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:1.1rem;box-shadow:0 0 15px rgba(255,107,0,0.3)}
+.guide-step .step-content{flex:1;padding-top:8px}
+.guide-step .step-content h3{font-size:1.1rem;margin-bottom:8px}
+.guide-step .step-content p{color:var(--text-secondary);line-height:1.7;margin-bottom:6px;font-size:.92rem}
+.guide-step .step-content ul{list-style:none;padding:0}
+.guide-step .step-content li{color:var(--text-secondary);line-height:1.7;margin-bottom:4px;padding-left:20px;position:relative;font-size:.92rem}
+.guide-step .step-content li::before{content:'\25B8';position:absolute;left:0;color:var(--neon-orange)}
+.guide-step .step-content code{font-family:var(--font-mono);font-size:.85rem;background:rgba(255,107,0,0.1);padding:2px 8px;border-radius:4px;color:var(--neon-orange)}
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:600px){.features-grid{grid-template-columns:1fr}}
+.feature-card{background:var(--bg-card);border:1px solid rgba(255,255,255,0.05);border-radius:14px;padding:28px 24px;transition:all .3s}
+.feature-card:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,107,0,0.2)}
+.feature-card .feat-icon{font-size:2rem;margin-bottom:12px;display:block}
+.feature-card h4{font-family:var(--font-display);font-size:.85rem;margin-bottom:8px;letter-spacing:1px;color:var(--neon-gold)}
+.feature-card p{color:var(--text-secondary);font-size:.85rem;line-height:1.6}
+.contact-card{background:var(--bg-card);border:1px solid rgba(255,107,0,0.15);border-radius:16px;padding:40px;text-align:center;max-width:500px;margin:0 auto}
+.contact-card .contact-icon{font-size:3rem;margin-bottom:16px;display:block}
+.contact-card h3{font-size:1.2rem;margin-bottom:8px}
+.contact-card p{color:var(--text-secondary);margin-bottom:20px;line-height:1.6}
+.contact-card .contact-email{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:rgba(255,107,0,0.1);border:1px solid rgba(255,107,0,0.3);border-radius:8px;font-family:var(--font-mono);font-size:.9rem;color:var(--neon-orange);transition:all .3s}
+.contact-card .contact-email:hover{background:rgba(255,107,0,0.2);box-shadow:0 0 20px rgba(255,107,0,0.3)}
+.app-info-bar{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,107,0,0.1);border-bottom:1px solid rgba(255,107,0,0.1);padding:36px 0}
+.app-info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+@media(max-width:600px){.app-info-grid{grid-template-columns:repeat(2,1fr);gap:24px}}
+.app-info-item .info-label{color:var(--text-secondary);font-size:.75rem;font-family:var(--font-mono);margin-bottom:8px}
+.app-info-item .info-value{font-size:1rem;font-weight:600}
+footer{border-top:1px solid rgba(255,255,255,0.05);padding:48px 0 32px;text-align:center}
+footer .footer-logo{font-family:var(--font-display);font-size:1rem;margin-bottom:16px;background:var(--gradient-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+footer .footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:24px;flex-wrap:wrap}
+footer .footer-links a{color:var(--text-secondary);font-size:.85rem}
+footer .footer-copy{color:var(--text-secondary);font-size:.75rem;font-family:var(--font-mono)}
+.back-to-top{position:fixed;bottom:32px;right:32px;width:44px;height:44px;background:rgba(255,107,0,0.15);border:1px solid rgba(255,107,0,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--neon-orange);font-size:1.2rem;cursor:pointer;z-index:50;opacity:0;visibility:hidden;transition:all .3s}
+.back-to-top.visible{opacity:1;visibility:visible}
+.back-to-top:hover{background:rgba(255,107,0,0.3);box-shadow:0 0 20px rgba(255,107,0,0.4);transform:translateY(-3px)}
+.version-notice{background:rgba(255,107,0,0.05);border:1px solid rgba(255,107,0,0.1);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:12px;margin-bottom:32px;font-size:.85rem}
+.version-notice .notice-icon{font-size:1.5rem}
+.version-notice p{color:var(--text-secondary);line-height:1.5}
+.version-notice strong{color:var(--neon-orange)}
+.release-list{display:flex;flex-direction:column;gap:24px}
+.release-item{background:var(--bg-card);border:1px solid rgba(255,255,255,0.05);border-radius:14px;padding:24px}
+.release-item:hover{border-color:rgba(0,243,255,0.15)}
+.release-version{font-family:var(--font-display);font-size:1rem;color:var(--neon-cyan);margin-bottom:4px}
+.release-date{color:var(--text-secondary);font-size:.8rem;font-family:var(--font-mono);margin-bottom:12px}
+.release-item ul{list-style:none;padding:0}
+.release-item li{color:var(--text-secondary);line-height:1.7;margin-bottom:4px;padding-left:20px;position:relative;font-size:.9rem}
+.release-item li::before{content:'\25B8';position:absolute;left:0;color:var(--neon-cyan)}
+
+</style>
+</head>
+<body>
+<canvas id="stars-canvas"></canvas>
+<div class="grid-overlay"></div>
+<nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+        <a href="https://dragonknightbeat.com" class="nav-logo"><span class="emoji">&#x1F409;</span> DRAGONKNIGHTBEAT</a>
+        <button class="nav-toggle" id="navToggle">&#9776;</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="https://dragonknightbeat.com">首页</a></li>
+            <li><a href="#faq">常见问题</a></li>
+            <li><a href="#guide">使用指南</a></li>
+            <li><a href="#releases">更新日志</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+    </div>
+</nav>
+<section class="hero">
+    <div class="hero-content container">
+        <div class="hero-badge">&#x23F0; SMART ALARM SUPPORT</div>
+        <h1 class="hero-title"><span class="alarm-gradient">Smart Alarm</span><br>技术支持</h1>
+        <p class="hero-subtitle">智能假日闹钟 · 官方技术支持中心<br>找到常见问题的解答，获取使用指南，或联系我们获取帮助</p>
+        <div class="hero-cta">
+            <a href="#faq" class="btn-primary">常见问题 &#x2192;</a>
+            <a href="#guide" class="btn-secondary">使用指南</a>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <span>SCROLL</span>
+        <div class="line"></div>
+    </div>
+</section>
+<section class="app-info-bar">
+    <div class="container">
+        <div class="app-info-grid">
+            <div class="app-info-item">
+                <div class="info-label">最新版本</div>
+                <div class="info-value" style="color:var(--neon-cyan)">1.0.0</div>
+            </div>
+            <div class="app-info-item">
+                <div class="info-label">平台</div>
+                <div class="info-value" style="color:var(--neon-orange)">iOS</div>
+            </div>
+            <div class="app-info-item">
+                <div class="info-label">最低系统</div>
+                <div class="info-value">iOS 16.0</div>
+            </div>
+            <div class="app-info-item">
+                <div class="info-label">类别</div>
+                <div class="info-value" style="color:var(--neon-green)">工具 / 生产力</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="features">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Features</div>
+            <h2 class="section-title">功能概览</h2>
+            <p class="section-desc">Smart Alarm 为你带来的核心功能</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feat-icon">&#x1F4C5;</span>
+                <h4>智能假日识别</h4>
+                <p>自动识别中国法定节假日，调休日智能提醒，假期特制闹铃模式</p>
+            </div>
+            <div class="feature-card">
+                <span class="feat-icon">&#x1F3B5;</span>
+                <h4>9种内置铃声</h4>
+                <p>从经典蜂鸣到自然鸟鸣，从钢琴和弦到紧急提醒，满足多种场景</p>
+            </div>
+            <div class="feature-card">
+                <span class="feat-icon">&#x1F3A4;</span>
+                <h4>自定义录音</h4>
+                <p>录制自己的闹铃声音，让最爱的人声或音乐唤醒你</p>
+            </div>
+            <div class="feature-card">
+                <span class="feat-icon">&#x1F507;</span>
+                <h4>跳过周末</h4>
+                <p>工作闹钟周末自动跳过，假期结束后自动恢复，无需手动管理</p>
+            </div>
+            <div class="feature-card">
+                <span class="feat-icon">&#x1F504;</span>
+                <h4>重复模式</h4>
+                <p>支持每日、工作日、自定义星期重复，灵活的闹钟周期设置</p>
+            </div>
+            <div class="feature-card">
+                <span class="feat-icon">&#x1F3A8;</span>
+                <h4>赛博朋克设计</h4>
+                <p>霓虹橙金主题配色，沉浸式深色界面，视觉与功能完美融合</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="faq">
+<div class="container">
+<div class="section-header">
+<div class="section-tag">FAQ</div>
+<h2 class="section-title">常见问题</h2>
+<p class="section-desc">快速解答你可能遇到的疑问</p>
+</div>
+<div class="faq-list">
+<div class="faq-item open">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F4F1; 如何下载 Smart Alarm？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>Smart Alarm 目前处于测试阶段，尚未上架 App Store。你可以通过以下方式获取：</p>
+<ul>
+<li>TestFlight 内测 — 联系开发团队获取邀请链接</li>
+<li>自行构建 — 从开源仓库克隆源码，在 Xcode 中编译运行</li>
+</ul>
+<p>正式上架后，可在 App Store 搜索 Smart Holiday Alarm 或 智能假日闹钟 下载。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F514; 所有闹铃听起来都一样，怎么办？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>这是 v1.0.0 之前的已知问题，不同铃声播放了同一个系统短音，现已修复。</p>
+<p>请更新到最新版本，即可体验9种不同风格的闹铃声：</p>
+<ul>
+<li>Classic Alarm — 880Hz 蜂鸣器音</li>
+<li>Gentle Wake — 440Hz 温暖低音</li>
+<li>Digital Rhythm — 短促脉冲节奏</li>
+<li>Marimba — 柔和三角波木琴音</li>
+<li>Dingdong — 高音铃铛音</li>
+<li>Bird Song — 交替高频鸟鸣</li>
+<li>Piano — 大三和弦</li>
+<li>Good Morning — C大调上行音阶</li>
+<li>Emergency — 快速交替高低音</li>
+</ul>
+<p>更新后仍有问题，请尝试重启应用或重新安装。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F4C5; 节假日数据不准确或缺失？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>Smart Alarm 内置了 2024-2027 年度的中国法定节假日和调休数据。如发现数据不准确：</p>
+<ul>
+<li>检查更新 — 确认使用的是最新版本</li>
+<li>手动刷新 — 在节假日页面下拉刷新</li>
+<li>联系支持 — 超出内置范围或数据有误，请通过下方联系方式告知</li>
+</ul>
+<p>节假日数据为静态内置，未来版本将支持在线自动更新。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F3A4; 如何使用自定义录音作为闹铃？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>进入闹钟编辑界面，在铃声选择中点击「自定义录音」选项：</p>
+<ul>
+<li>点击「录制新声音」按钮启动录音</li>
+<li>录音完成后自动保存，可在铃声列表中看到新录音</li>
+<li>录音文件支持最长 30 秒</li>
+<li>可以为每个闹钟独立选择不同的录音</li>
+</ul>
+<p>录制时请确保麦克风权限已授予。如未收到权限请求，请在系统设置中手动开启。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F507; 如何设置周末自动跳过？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>在闹钟编辑页面中：</p>
+<ul>
+<li>开启「跳过周末」开关</li>
+<li>启用后，闹钟在周六和周日不会响铃</li>
+<li>如果周六/周日是法定节假日补班日，闹钟会智能恢复响铃</li>
+<li>节假日期间，工作日闹钟也会自动暂停</li>
+</ul>
+<p>这个功能特别适合工作日闹钟，让你在周末和假期睡个懒觉。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F5D1; 如何删除闹钟？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>在闹钟列表页面上，对想要删除的闹钟：</p>
+<ul>
+<li>左滑闹钟条目，点击红色删除按钮</li>
+<li>或点击编辑按钮进入闹钟编辑页面，在页面底部点击「删除闹钟」</li>
+</ul>
+<p>删除操作不可撤销，请谨慎操作。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F4C4; 闹钟数据会备份吗？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>闹钟数据默认存储在本地设备上。如果你开启了 iCloud 备份：</p>
+<ul>
+<li>换机时通过 iOS 整机恢复可以恢复闹钟数据</li>
+<li>目前不支持跨设备同步或云端管理</li>
+<li>卸载应用将导致所有闹钟数据丢失</li>
+</ul>
+<p>未来版本将考虑加入 iCloud 同步功能。卸载前请确保记下重要闹钟设置。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="guide">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Guide</div>
+            <h2 class="section-title">使用指南</h2>
+            <p class="section-desc">快速上手 Smart Alarm</p>
+        </div>
+        <div class="guide-steps">
+            <div class="guide-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>创建第一个闹钟</h3>
+                    <p>点击主界面底部的 <strong>+</strong> 按钮进入新建闹钟页面</p>
+                    <ul>
+                        <li>设置闹钟时间（时:分）</li>
+                        <li>选择重复模式：仅一次 / 每日 / 工作日 / 自定义</li>
+                        <li>选择闹铃铃声：从9种内置铃声或自定义录音中选择</li>
+                        <li>可选：开启「跳过周末」或「智能假日模式」</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="guide-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>编辑闹钟</h3>
+                    <p>在闹钟列表中找到要编辑的闹钟，点击进入编辑页面</p>
+                    <ul>
+                        <li>修改时间、铃声、重复模式等设置</li>
+                        <li>临时关闭闹钟：使用列表右侧的开关</li>
+                        <li>点击「保存」应用更改</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="guide-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>查看节假日</h3>
+                    <p>在节假日页面可以查看全年法定节假日和调休安排</p>
+                    <ul>
+                        <li>支持 2024、2026、2027 年度数据</li>
+                        <li>下拉刷新获取最新数据</li>
+                        <li>开启智能模式后，闹钟会自动适应节假日安排</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="guide-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>录制自定义铃声</h3>
+                    <p>在闹钟编辑页面的铃声选择中，点击「自定义录音」</p>
+                    <ul>
+                        <li>点击录制按钮开始录音（最长 30 秒）</li>
+                        <li>录音完成后自动保存到铃声库</li>
+                        <li>可在任意闹钟设置中选择使用</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="releases">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Changelog</div>
+            <h2 class="section-title">更新日志</h2>
+            <p class="section-desc">了解 Smart Alarm 的版本更新历史</p>
+        </div>
+        <div class="version-notice">
+            <span class="notice-icon">&#x2139;</span>
+            <p>当前最新版本：<strong>v1.0.0</strong> — 初始发布版本</p>
+        </div>
+        <div class="release-list">
+            <div class="release-item">
+                <div class="release-version">v1.0.0</div>
+                <div class="release-date">2026-04-26</div>
+                <p>初始发布版本</p>
+                <ul>
+                    <li>中国法定节假日智能识别（2024/2026/2027）</li>
+                    <li>闹钟管理：添加、编辑、删除闹钟</li>
+                    <li>9种内置闹铃铃声（classic/gentle/digital/marimba/dingdong/bird/piano/goodmorning/emergency）</li>
+                    <li>自定义录音功能（最长 30 秒）</li>
+                    <li>跳过周末模式</li>
+                    <li>重复模式支持（每日/工作日/自定义）</li>
+                    <li>赛博朋克风格 AppIcon</li>
+                    <li>深色模式沉浸式 UI</li>
+                    <li>支持 iOS 16.0+</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Contact</div>
+            <h2 class="section-title">联系我们</h2>
+            <p class="section-desc">遇到问题或建议？我们随时倾听</p>
+        </div>
+        <div class="contact-card">
+            <span class="contact-icon">&#x1F4E7;</span>
+            <h3>发送邮件</h3>
+            <p>发送你遇到的问题或功能建议，我们会在 24 小时内回复</p>
+            <a href="mailto:support@dragonknightbeat.com" class="contact-email">
+                &#x2709; support@dragonknightbeat.com
+            </a>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="footer-logo">&#x1F409; DRAGONKNIGHTBEAT</div>
+        <div class="footer-links">
+            <a href="https://dragonknightbeat.com">首页</a>
+            <a href="#faq">常见问题</a>
+            <a href="#guide">使用指南</a>
+            <a href="#releases">更新日志</a>
+            <a href="#contact">联系我们</a>
+        </div>
+        <div class="footer-copy">
+            &copy; 2026 DragonKnightBeat.com &middot; Smart Alarm 官方技术支持
+        </div>
+    </div>
+</footer>
+<div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#x2191;</div>
+<script>
+
+window.addEventListener('scroll',function(){var n=document.getElementById('navbar');n.classList.toggle('scrolled',window.scrollY>50);var t=document.getElementById('backToTop');if(t)t.classList.toggle('visible',window.scrollY>300)});
+document.getElementById('navToggle').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open')});
+function toggleFaq(el){var p=el.parentElement;p.classList.toggle('open')}
+document.querySelectorAll('.faq-item:not(.open) .faq-answer').forEach(function(a){a.style.maxHeight='0'});
+
+
+var canvas=document.getElementById('stars-canvas'),ctx=canvas.getContext('2d'),stars=[];
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+resizeCanvas();window.addEventListener('resize',resizeCanvas);
+function Star(){this.reset=true;this.reset(true)}
+Star.prototype.reset=function(init){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.size=Math.random()*2;this.speedX=(Math.random()-0.5)*0.3;this.speedY=(Math.random()-0.5)*0.3;this.opacity=Math.random()*0.8+0.2;this.pulseSpeed=Math.random()*0.02+0.005;this.pulseOffset=Math.random()*Math.PI*2;this.color=['rgba(255,255,255,','rgba(0,243,255,','rgba(157,0,255,'][Math.floor(Math.random()*3)]};
+Star.prototype.update=function(t){this.x+=this.speedX;this.y+=this.speedY;if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();this.currentOpacity=this.opacity*(0.5+0.5*Math.sin(t*this.pulseSpeed+this.pulseOffset))};
+Star.prototype.draw=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=this.color+this.currentOpacity+')';ctx.fill()};
+for(var i=0;i<200;i++)stars.push(new Star());
+var animTime=0;
+function animateStars(){ctx.clearRect(0,0,canvas.width,canvas.height);animTime+=0.016;stars.forEach(function(s){s.update(animTime);s.draw()});requestAnimationFrame(animateStars)}
+animateStars();
+
+</script>
+</body>
+</html>
