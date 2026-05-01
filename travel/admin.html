@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>石头旅行记 · 管理后台</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a1a;
+  --card: #12122a;
+  --card2: #1a1a3a;
+  --accent: #ff6b35;
+  --accent2: #f0a500;
+  --text: #e0d5c0;
+  --text2: #8a8070;
+  --border: #2a2a4a;
+  --success: #4ade80;
+  --danger: #ef4444;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* Login */
+.login-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+.login-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+}
+.login-box h1 { font-size: 24px; margin-bottom: 8px; }
+.login-box p { color: var(--text2); margin-bottom: 24px; font-size: 14px; }
+.login-box input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+.login-box input:focus { outline: none; border-color: var(--accent); }
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.login-box .hint { margin-top: 16px; font-size: 12px; color: var(--text2); text-align: center; }
+.login-box .hint code { background: var(--card2); padding: 2px 6px; border-radius: 4px; }
+
+/* Main Layout */
+.app-container { display: none; height: 100vh; overflow: hidden; }
+.app-container.active { display: flex; flex-direction: column; }
+
+/* Top Bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.top-bar h1 { font-size: 18px; font-weight: 600; }
+.top-bar .count { color: var(--text2); font-size: 13px; margin-left: 8px; }
+.top-bar-actions { display: flex; gap: 8px; }
+.top-bar-actions button {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card2);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+}
+.top-bar-actions .btn-add { background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none; color: white; }
+.top-bar-actions .btn-save { background: var(--success); border: none; color: #000; font-weight: 600; }
+
+/* Main content */
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+.dest-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dest-item:hover { background: var(--card2); }
+.dest-item.active { background: var(--card2); border-left: 3px solid var(--accent); }
+.dest-item .name { font-weight: 500; font-size: 14px; }
+.dest-item .subname { color: var(--text2); font-size: 12px; margin-top: 2px; }
+
+/* Editor */
+.editor {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  max-width: 800px;
+}
+.editor h2 { font-size: 22px; margin-bottom: 4px; }
+.editor .id-label { color: var(--text2); font-size: 12px; margin-bottom: 20px; }
+
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; color: var(--text2); margin-bottom: 6px; }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
+.form-group textarea { resize: vertical; min-height: 60px; font-family: inherit; }
+
+.form-row { display: flex; gap: 12px; }
+.form-row .form-group { flex: 1; }
+
+/* Highlights list */
+.highlights-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.highlight-tag {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 10px;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 13px;
+}
+.highlight-tag .del { cursor: pointer; color: var(--danger); font-size: 16px; line-height: 1; }
+.add-highlight-row { display: flex; gap: 8px; margin-top: 8px; }
+.add-highlight-row input { flex: 1; }
+.add-highlight-row button { padding: 6px 12px; background: var(--accent); border: none; border-radius: 8px; color: white; cursor: pointer; }
+
+/* Itinerary */
+.itinerary-toggle { margin: 8px 0; }
+.itinerary-toggle label { cursor: pointer; display: flex; align-items: center; gap: 8px; }
+.itinerary-toggle input[type="checkbox"] { width: auto; accent-color: var(--accent); }
+
+.itinerary-days { margin-left: 16px; padding-left: 12px; border-left: 2px solid var(--border); }
+
+/* Gallery */
+.gallery-emojis { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.gallery-emojis .emoji-item {
+  font-size: 28px; padding: 4px; cursor: pointer; transition: transform 0.2s;
+}
+.gallery-emojis .emoji-item:hover { transform: scale(1.3); }
+
+/* Status */
+.status-bar {
+  padding: 8px 16px;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.status-bar.success { color: var(--success); }
+.status-bar.error { color: var(--danger); }
+.status-bar.loading { color: var(--accent2); }
+
+/* Toast */
+.toast {
+  position: fixed; top: 20px; right: 20px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.success { background: #166534; }
+.toast.error { background: #991b1b; }
+
+/* Mobile */
+@media (max-width: 700px) {
+  .sidebar { display: none; }
+  .sidebar.mobile-show { display: block; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 100; width: 100%; }
+  .editor { padding: 16px; max-width: 100%; }
+  .form-row { flex-direction: column; gap: 0; }
+  .top-bar h1 { font-size: 15px; }
+  .top-bar .count { font-size: 11px; }
+  .back-btn { display: inline !important; }
+}
+.back-btn { display: none; }
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text2);
+}
+.empty-state .icon { font-size: 48px; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <h1>🔐 管理后台</h1>
+    <p>输入密码以管理目的地</p>
+    <input type="password" id="passwordInput" placeholder="密码" autocomplete="off">
+    <button onclick="login()">进入管理后台</button>
+    <div class="hint">
+      默认密码：<code>stone2026</code><br>
+      <small>可在代码中修改 PASSWORD 变量</small>
+    </div>
+  </div>
+</div>
+
+<!-- App -->
+<div class="app-container" id="appContainer">
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button class="back-btn" onclick="showSidebar()" style="padding:6px 10px;border:1px solid var(--border);background:var(--card2);border-radius:8px;color:var(--text);cursor:pointer;">←</button>
+      <h1>🪨 石头旅行记</h1>
+      <span class="count" id="countLabel">0 个目的地</span>
+    </div>
+    <div class="top-bar-actions">
+      <button onclick="refresh()">🔄 刷新</button>
+      <button class="btn-add" onclick="addNew()">+ 新增</button>
+      <button class="btn-save" onclick="saveAll()" id="saveBtn" disabled>💾 保存</button>
+    </div>
+  </div>
+
+  <!-- Status -->
+  <div class="status-bar" id="statusBar">就绪</div>
+
+  <!-- Content -->
+  <div class="main-content">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div id="destList"></div>
+    </div>
+
+    <!-- Editor -->
+    <div class="editor" id="editor">
+      <div class="empty-state" id="emptyState">
+        <div class="icon">🗺️</div>
+        <div>选择一个目的地，或新增一个</div>
+      </div>
+      <div id="editorContent" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ============ CONFIG ============
+// 修改这个密码为你的自定义密码
+const PASSWORD = "stone2026";
+// 🔑 记得修改上面的密码！
+const DATA_URL = "https://raw.githubusercontent.com/dragonknight1988/dragonknightbeat-site/gh-pages/travel/data/destinations.json";
+const GITHUB_API = "https://api.github.com/repos/dragonknight1988/dragonknightbeat-site/contents/travel/data/destinations.json";
+const BRANCH = "gh-pages";
+
+// ============ STATE ============
+let destinations = [];
+let selectedId = null;
+let hasChanges = false;
+let githubToken = "";
+
+// ============ AUTH ============
+function login() {
+  const pw = document.getElementById("passwordInput").value;
+  if (pw === PASSWORD) {
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("appContainer").classList.add("active");
+    loadData();
+  } else {
+    alert("密码错误！");
+  }
+}
+
+// 允许回车登录
+document.getElementById("passwordInput").addEventListener("keydown", e => {
+  if (e.key === "Enter") login();
+});
+
+// ============ DATA LOADING ============
+async function loadData() {
+  setStatus("加载中...", "loading");
+  try {
+    const r = await fetch(DATA_URL);
+    destinations = await r.json();
+    renderList();
+    updateCount();
+    setStatus("已加载 " + destinations.length + " 个目的地", "success");
+  } catch(e) {
+    setStatus("加载失败: " + e.message, "error");
+  }
+}
+
+async function refresh() {
+  selectedId = null;
+  await loadData();
+  showEmptyState();
+  markChanges(false);
+}
+
+// ============ RENDER LIST ============
+function renderList() {
+  const list = document.getElementById("destList");
+  list.innerHTML = destinations.map(d => `
+    <div class="dest-item ${d.id === selectedId ? 'active' : ''}" onclick="selectDest('${d.id}')" data-id="${d.id}">
+      <div class="name">${d.zh.gallery?.[0] || '🌍'} ${esc(d.zh.name)}</div>
+      <div class="subname">${esc(d.zh.subtitle) || '—'}</div>
+    </div>
+  `).join("");
+}
+
+function esc(s) {
+  const d = document.createElement("div");
+  d.textContent = s || "";
+  return d.innerHTML;
+}
+
+function updateCount() {
+  document.getElementById("countLabel").textContent = destinations.length + " 个目的地";
+}
+
+// ============ SELECTION ============
+function selectDest(id) {
+  selectedId = id;
+  renderList();
+  renderEditor(id);
+  // 移动端隐藏 sidebar
+  if (window.innerWidth <= 700) {
+    document.getElementById("sidebar").classList.remove("mobile-show");
+  }
+}
+
+function showSidebar() {
+  document.getElementById("sidebar").classList.toggle("mobile-show");
+}
+
+function showEmptyState() {
+  document.getElementById("emptyState").style.display = "flex";
+  document.getElementById("editorContent").style.display = "none";
+}
+
+// ============ EDITOR ============
+function renderEditor(id) {
+  const d = destinations.find(x => x.id === id);
+  if (!d) return;
+  
+  document.getElementById("emptyState").style.display = "none";
+  const ec = document.getElementById("editorContent");
+  ec.style.display = "block";
+  
+  const zh = d.zh;
+  
+  ec.innerHTML = `
+    <h2 contenteditable="true" onblur="updateField('${id}','name',this.textContent)" class="editable-title">${esc(zh.name)}</h2>
+    <div class="id-label">ID: ${d.id}</div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>副标题</label>
+        <input value="${esc(zh.subtitle)}" onchange="updateField('${id}','subtitle',this.value)">
+      </div>
+      <div class="form-group">
+        <label>分类标签</label>
+        <select onchange="updateField('${id}','badge',this.value)">
+          ${["🏔️ 自然风光","⛩️ 人文历史","🏝️ 海岛度假","🍜 美食休闲","🏙️ 都市探索","🌊 秘境湖泊","🌋 自然奇观","🏞️ 江南水乡","🌴 热带度假","❄️ 四季皆美","🌸 古城风韵"].map(b =>
+            `<option ${zh.badge === b ? 'selected' : ''}>${b}</option>`
+          ).join("")}
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>简介</label>
+      <textarea rows="3" onchange="updateField('${id}','intro',this.value)">${esc(zh.intro)}</textarea>
+    </div>
+
+    <div class="form-group">
+      <label>必去亮点</label>
+      <div class="highlights-list" id="highlights-${id}">
+        ${(zh.highlights || []).map((h,i) => `
+          <span class="highlight-tag">
+            ${esc(h)}
+            <span class="del" onclick="removeHighlight('${id}',${i})">×</span>
+          </span>
+        `).join("")}
+      </div>
+      <div class="add-highlight-row">
+        <input id="newHighlight-${id}" placeholder="添加亮点" onkeydown="if(event.key==='Enter')addHighlight('${id}')">
+        <button onclick="addHighlight('${id}')">添加</button>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>🍽️ 美食推荐</label>
+        <textarea rows="2" onchange="updateField('${id}','food',this.value)">${esc(zh.food)}</textarea>
+      </div>
+      <div class="form-group">
+        <label>🏨 住宿建议</label>
+        <textarea rows="2" onchange="updateField('${id}','accommodation',this.value)">${esc(zh.accommodation)}</textarea>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>🚗 交通指南</label>
+        <textarea rows="2" onchange="updateField('${id}','transport',this.value)">${esc(zh.transport)}</textarea>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>📅 最佳季节</label>
+        <input value="${esc(zh.bestSeason)}" onchange="updateField('${id}','bestSeason',this.value)">
+      </div>
+      <div class="form-group">
+        <label>💰 预算参考</label>
+        <input value="${esc(zh.budget)}" onchange="updateField('${id}','budget',this.value)">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>🗺️ 行程方案</label>
+      ${[3,5,10].map(n => {
+        const key = 'itinerary' + n;
+        const val = zh[key];
+        const hasIt = val && Object.keys(val).length > 0;
+        return `
+          <div class="itinerary-toggle">
+            <label><input type="checkbox" ${hasIt ? 'checked' : ''} onchange="toggleItinerary('${id}',${n},this.checked)"> ${n} 日游</label>
+            ${hasIt ? `
+              <div class="itinerary-days">
+                ${Array.from({length:n},(_,i) => i+1).map(day => {
+                  const dayKey = 'day' + day;
+                  return `
+                    <div class="form-group" style="margin:6px 0">
+                      <label>Day ${day}</label>
+                      <input value="${esc(val[dayKey] || '')}" onchange="updateItineraryDay('${id}',${n},${day},this.value)">
+                    </div>
+                  `;
+                }).join("")}
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join("")}
+    </div>
+
+    <div class="form-group">
+      <label>🎨 画廊 Emoji</label>
+      <div class="gallery-emojis" id="gallery-${id}">
+        ${(zh.gallery || []).map((g,i) => `
+          <span class="emoji-item" onclick="removeGallery('${id}',${i})">${g}</span>
+        `).join("")}
+      </div>
+      <div class="add-highlight-row" style="margin-top:4px">
+        <input id="newGallery-${id}" placeholder="如 🏔️🌊🌸" style="width:120px" onkeydown="if(event.key==='Enter')addGallery('${id}')">
+        <button onclick="addGallery('${id}')">添加</button>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;display:flex;gap:8px;">
+      <button onclick="deleteDest('${id}')" style="padding:8px 16px;background:var(--danger);border:none;border-radius:8px;color:white;cursor:pointer;">🗑️ 删除此目的地</button>
+    </div>
+  `;
+}
+
+// ============ FIELD UPDATES ============
+function updateField(id, field, value) {
+  const d = destinations.find(x => x.id === id);
+  if (d) { d.zh[field] = value; markChanges(true); }
+}
+
+function addHighlight(id) {
+  const inp = document.getElementById("newHighlight-" + id);
+  const v = inp.value.trim();
+  if (!v) return;
+  const d = destinations.find(x => x.id === id);
+  if (d) {
+    if (!d.zh.highlights) d.zh.highlights = [];
+    d.zh.highlights.push(v);
+    inp.value = "";
+    markChanges(true);
+    renderEditor(id);
+    renderList();
+  }
+}
+
+function removeHighlight(id, idx) {
+  const d = destinations.find(x => x.id === id);
+  if (d) { d.zh.highlights.splice(idx, 1); markChanges(true); renderEditor(id); }
+}
+
+function toggleItinerary(id, days, on) {
+  const d = destinations.find(x => x.id === id);
+  if (!d) return;
+  const key = 'itinerary' + days;
+  if (on) {
+    const obj = {};
+    for (let i = 1; i <= days; i++) obj['day' + i] = "";
+    d.zh[key] = obj;
+  } else {
+    d.zh[key] = undefined;
+  }
+  markChanges(true);
+  renderEditor(id);
+}
+
+function updateItineraryDay(id, days, day, value) {
+  const d = destinations.find(x => x.id === id);
+  if (!d) return;
+  const key = 'itinerary' + days;
+  if (d.zh[key]) d.zh[key]['day' + day] = value;
+  markChanges(true);
+}
+
+function addGallery(id) {
+  const inp = document.getElementById("newGallery-" + id);
+  const v = inp.value.trim();
+  if (!v) return;
+  const d = destinations.find(x => x.id === id);
+  if (d) {
+    if (!d.zh.gallery) d.zh.gallery = [];
+    // split multiple emojis
+    [...v].forEach(ch => { if (ch.trim()) d.zh.gallery.push(ch); });
+    inp.value = "";
+    markChanges(true);
+    renderEditor(id);
+  }
+}
+
+function removeGallery(id, idx) {
+  const d = destinations.find(x => x.id === id);
+  if (d) { d.zh.gallery.splice(idx, 1); markChanges(true); renderEditor(id); }
+}
+
+// ============ ADD / DELETE ============
+function addNew() {
+  const name = prompt("输入新目的地名称：");
+  if (!name || !name.trim()) return;
+  
+  const id = name.trim().toLowerCase().replace(/[^a-z0-9]/g,"-").replace(/-+/g,"-").replace(/^-|-$/g,"");
+  
+  const newDest = {
+    "id": id || "new-" + Date.now(),
+    "zh": {
+      "name": name.trim(),
+      "subtitle": "",
+      "badge": "🏔️ 自然风光",
+      "intro": "待完善",
+      "highlights": ["待探索"],
+      "food": "",
+      "accommodation": "",
+      "transport": "",
+      "bestSeason": "",
+      "budget": "",
+      "gallery": ["🌍"]
+    }
+  };
+  
+  destinations.push(newDest);
+  markChanges(true);
+  renderList();
+  updateCount();
+  selectDest(newDest.id);
+  setStatus("已添加 " + name, "success");
+}
+
+function deleteDest(id) {
+  if (!confirm("确定删除此目的地？")) return;
+  const d = destinations.find(x => x.id === id);
+  destinations = destinations.filter(x => x.id !== id);
+  if (selectedId === id) { selectedId = null; showEmptyState(); }
+  markChanges(true);
+  renderList();
+  updateCount();
+  setStatus("已删除 " + (d?.zh?.name || ""), "success");
+}
+
+// ============ CHANGES ============
+function markChanges(changed) {
+  hasChanges = changed;
+  document.getElementById("saveBtn").disabled = !changed;
+}
+
+// ============ SAVE (GitHub API) ============
+async function saveAll() {
+  if (!hasChanges) return;
+  
+  // 如果没有 token 则弹出提示输入
+  if (!githubToken) {
+    githubToken = prompt("请输入 GitHub Personal Access Token：\n（需要 repo 权限）\n\n获取：github.com/settings/tokens");
+    if (!githubToken) return;
+  }
+  
+  setStatus("正在保存到 GitHub...", "loading");
+  document.getElementById("saveBtn").disabled = true;
+  
+  try {
+    // 1. 获取当前文件 SHA
+    let sha = "";
+    try {
+      const metaR = await fetch(GITHUB_API + "?ref=" + BRANCH, {
+        headers: { "Authorization": "Bearer " + githubToken, "Accept": "application/vnd.github.v3+json" }
+      });
+      if (metaR.ok) {
+        const meta = await metaR.json();
+        sha = meta.sha || "";
+      }
+    } catch(e) { /* 新文件没有 SHA */ }
+    
+    // 2. 编码 JSON
+    const json = JSON.stringify(destinations, null, 2);
+    const content = btoa(unescape(encodeURIComponent(json)));
+    
+    // 3. PUT 到 GitHub
+    const body = { message: "🪨 Auto-save from web editor", content, sha, branch: BRANCH };
+    const r = await fetch(GITHUB_API, {
+      method: "PUT",
+      headers: {
+        "Authorization": "Bearer " + githubToken,
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    });
+    
+    if (!r.ok) {
+      const err = await r.json();
+      throw new Error(err.message || "HTTP " + r.status);
+    }
+    
+    markChanges(false);
+    setStatus("✅ 已保存并推送到线上！1-2分钟后生效", "success");
+    showToast("✅ 保存成功！", "success");
+  } catch(e) {
+    setStatus("❌ 保存失败: " + e.message, "error");
+    showToast("❌ 保存失败: " + e.message, "error");
+    document.getElementById("saveBtn").disabled = false;
+  }
+}
+
+// ============ UTILITIES ============
+function setStatus(msg, type) {
+  const sb = document.getElementById("statusBar");
+  sb.textContent = msg;
+  sb.className = "status-bar " + (type || "");
+}
+
+function showToast(msg, type) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.className = "toast " + (type || "") + " show";
+  setTimeout(() => t.classList.remove("show"), 3000);
+}
+
+// ============ KEYBOARD SHORTCUTS ============
+document.addEventListener("keydown", e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === "s") {
+    e.preventDefault();
+    saveAll();
+  }
+});
+
+// ============ INIT ============
+</script>
+</body>
+</html>
