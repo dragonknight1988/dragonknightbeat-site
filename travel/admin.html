@@ -618,7 +618,8 @@ function deleteDest(id) {
   if (!confirm("确定删除此目的地？")) return;
   const d = destinations.find(x => x.id === id);
   destinations = destinations.filter(x => x.id !== id);
-  if (selectedId === id) { selectedId = null; showEmptyState(); }
+  selectedId = null;
+  showEmptyState();
   markChanges(true);
   renderList();
   updateCount();
