@@ -634,8 +634,12 @@ async function saveAll() {
   
   // 如果没有 token 则弹出提示输入
   if (!githubToken) {
-    githubToken = prompt("请输入 GitHub Personal Access Token：\n（需要 repo 权限）\n\n获取：github.com/settings/tokens");
+    githubToken = localStorage.getItem("github_token") || "";
+  }
+  if (!githubToken) {
+    githubToken = prompt("请输入 GitHub Personal Access Token：\n（需要 repo 权限）\n\n申请网址打不开？让我直接在电脑上帮你生成！");
     if (!githubToken) return;
+    localStorage.setItem("github_token", githubToken);
   }
   
   setStatus("正在保存到 GitHub...", "loading");
