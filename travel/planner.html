@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 行程规划器 · 石头旅行记 · DragonKnightBeat</title>
+    <meta name="description" content="AI 智能行程规划器 - 输入需求，自动生成完美旅行计划">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a1a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --neon-cyan: #00f3ff;
+            --neon-purple: #9d00ff;
+            --neon-green: #00ff9d;
+            --travel-orange: #ff6b35;
+            --travel-sand: #e8c57a;
+            --travel-gold: #f0a500;
+            --text-primary: #e0e0ff;
+            --text-secondary: #8888aa;
+            --glow-cyan: 0 0 20px rgba(0, 243, 255, 0.3);
+            --glow-orange: 0 0 20px rgba(255, 107, 53, 0.3);
+            --gradient-main: linear-gradient(135deg, #00f3ff, #9d00ff);
+            --gradient-travel: linear-gradient(135deg, #ff6b35, #f0a500);
+            --font-display: 'Orbitron', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-hand: 'Ma Shan Zheng', cursive;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        a { color: var(--travel-orange); text-decoration: none; transition: all 0.3s; }
+        a:hover { color: var(--travel-gold); text-shadow: 0 0 10px var(--travel-gold); }
+
+        #stars-canvas {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0; pointer-events: none;
+        }
+        .grid-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0; pointer-events: none;
+        }
+        .container {
+            position: relative; z-index: 1;
+            max-width: 900px; margin: 0 auto; padding: 0 24px;
+        }
+
+        /* ===== Nav ===== */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(10,10,26,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,107,53,0.1);
+        }
+        .navbar-inner {
+            max-width: 1200px; margin: 0 auto; padding: 14px 24px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo {
+            font-family: var(--font-hand);
+            font-size: 1.4rem;
+            background: var(--gradient-travel);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-logo-sub {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--travel-sand);
+            -webkit-text-fill-color: var(--travel-sand);
+            margin-left: 4px;
+        }
+        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--gradient-travel);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--text-primary); }
+        @media (max-width: 600px) { .nav-links { gap: 12px; } .nav-links a { font-size: 0.75rem; } }
+
+        /* ===== Page Header ===== */
+        .page-header {
+            padding-top: 100px;
+            padding-bottom: 40px;
+            text-align: center;
+        }
+        .page-header .badge {
+            display: inline-block;
+            padding: 6px 18px;
+            border: 1px solid var(--travel-orange);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            color: var(--travel-orange);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            animation: pulse-border 2s ease-in-out infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 5px rgba(255,107,53,0.2); }
+            50% { box-shadow: 0 0 20px rgba(255,107,53,0.6); }
+        }
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .page-header h1 .hl {
+            background: var(--gradient-travel);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ===== Form ===== */
+        .planner-form {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 40px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .form-group { margin-bottom: 0; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        .form-group label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--travel-sand);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--travel-orange);
+            box-shadow: 0 0 15px rgba(255,107,53,0.15);
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: #555; }
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ff6b35' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+        }
+        .form-group select option {
+            background: #0d0d2a;
+            color: var(--text-primary);
+        }
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .pref-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .pref-tag {
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .pref-tag:hover {
+            border-color: var(--travel-orange);
+            color: var(--travel-orange);
+        }
+        .pref-tag.selected {
+            background: rgba(255,107,53,0.15);
+            border-color: var(--travel-orange);
+            color: var(--travel-orange);
+        }
+        .btn-generate {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-top: 24px;
+            background: var(--gradient-travel);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--glow-orange);
+        }
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(255,107,53,0.5);
+        }
+        .btn-generate:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ===== Result ===== */
+        .result-section { display: none; margin-bottom: 60px; }
+        .result-section.visible { display: block; animation: fadeSlideUp 0.5s ease; }
+        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .result-header .result-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            background: rgba(255,107,53,0.1);
+            border: 1px solid rgba(255,107,53,0.2);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            color: var(--travel-orange);
+            margin-bottom: 12px;
+        }
+        .result-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        .result-header .result-summary {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .result-header .result-meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .result-header .result-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.03);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            color: var(--text-secondary);
+        }
+
+        .day-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.3s;
+        }
+        .day-card:hover {
+            border-color: rgba(255,107,53,0.15);
+        }
+        .day-card .day-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .day-card .day-num {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--travel-orange);
+        }
+        .day-card .day-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        .day-card .day-content p {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-bottom: 4px;
+        }
+        .day-card .day-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        .day-card .day-tags span {
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            background: rgba(255,107,53,0.05);
+            border: 1px solid rgba(255,107,53,0.1);
+            color: var(--travel-sand);
+        }
+
+        .result-footer {
+            text-align: center;
+            margin-top: 32px;
+        }
+        .btn-new-plan {
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-new-plan:hover {
+            border-color: var(--travel-orange);
+            color: var(--travel-orange);
+        }
+
+        /* ===== Loading ===== */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 999;
+            background: rgba(10,10,26,0.8);
+            backdrop-filter: blur(15px);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .loading-overlay.active { display: flex; }
+        .loading-spinner {
+            width: 50px; height: 50px;
+            border: 3px solid rgba(255,107,53,0.1);
+            border-top-color: var(--travel-orange);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 24px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text {
+            font-family: var(--font-hand);
+            font-size: 1.3rem;
+            color: var(--travel-orange);
+            margin-bottom: 8px;
+        }
+        .loading-sub {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        @keyframes dots {
+            0% { content: ''; }
+            33% { content: '.'; }
+            66% { content: '..'; }
+            100% { content: '...'; }
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 32px 0 20px;
+            text-align: center;
+        }
+        footer .footer-logo {
+            font-family: var(--font-hand);
+            font-size: 1rem;
+            margin-bottom: 10px;
+            background: var(--gradient-travel);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        footer .footer-copy { color: var(--text-secondary); font-size: 0.7rem; font-family: var(--font-mono); }
+
+        /* ===== Travel Tip ===== */
+        .travel-tip {
+            background: linear-gradient(135deg, rgba(255,107,53,0.06), transparent);
+            border: 1px solid rgba(255,107,53,0.1);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .travel-tip .tip-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .travel-tip .tip-text { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5; }
+        .travel-tip .tip-text strong { color: var(--travel-orange); }
+    </style>
+</head>
+<body>
+    <canvas id="stars-canvas"></canvas>
+    <div class="grid-overlay"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-logo">🪨 石头旅行记 <span class="nav-logo-sub">· PLANNER</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">← 目的地</a></li>
+                <li><a href="index.html#planner">行程规划</a></li>
+                <li><a href="../index.html">🐉 首页</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">石头正在为你规划旅程...</div>
+        <div class="loading-sub">分析目的地、安排每日行程、推荐美食住宿...</div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="badge">✈️ AI TRAVEL PLANNER</div>
+            <h1><span class="hl">AI</span> 行程规划器</h1>
+            <p>
+                告诉石头你想去哪里、玩多久、怎么玩，<br>
+                自动为你生成完整的旅行计划
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Tip -->
+        <div class="travel-tip">
+            <span class="tip-icon">💡</span>
+            <div class="tip-text">
+                <strong>石头小贴士：</strong> 目的地选得越具体、偏好越详细，生成的行程就越贴合你的需求！也可以先从<a href="index.html" style="color: var(--neon-cyan);">精选目的地</a>中找灵感。
+            </div>
+        </div>
+
+        <!-- Form -->
+        <div class="planner-form" id="plannerForm">
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label>🌍 目的地</label>
+                    <input type="text" id="destination" placeholder="例如：大理、京都、冰岛、成都……" value="">
+                </div>
+                <div class="form-group">
+                    <label>📅 行程天数</label>
+                    <select id="days">
+                        <option value="1">1 天</option>
+                        <option value="2">2 天</option>
+                        <option value="3" selected>3 天</option>
+                        <option value="4">4 天</option>
+                        <option value="5">5 天</option>
+                        <option value="7">7 天</option>
+                        <option value="10">10 天</option>
+                        <option value="14">14 天</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>💰 预算级别</label>
+                    <select id="budget">
+                        <option value="穷游">🎒 穷游（精打细算）</option>
+                        <option value="舒适" selected>🌟 舒适（性价比之选）</option>
+                        <option value="豪华">👑 豪华（不差钱）</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>👥 同行</label>
+                    <select id="companion">
+                        <option value="独行">🧑 独行</option>
+                        <option value="情侣" selected>💑 情侣/伴侣</option>
+                        <option value="朋友">👫 朋友</option>
+                        <option value="家庭">👨‍👩‍👧‍👦 家庭</option>
+                        <option value="带父母">🙏 带父母</option>
+                        <option value="亲子">👶 亲子</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>🌡️ 气候偏好</label>
+                    <select id="climate">
+                        <option value="随意">🌍 随意</option>
+                        <option value="避暑">❄️ 避暑（凉快）</option>
+                        <option value="避寒">☀️ 避寒（温暖）</option>
+                        <option value="四季">🌸 四季皆可</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label>🎯 旅行偏好（可多选）</label>
+                    <div class="pref-tags" id="prefTags">
+                        <span class="pref-tag" data-pref="自然">🏔️ 自然风光</span>
+                        <span class="pref-tag" data-pref="人文">⛩️ 人文历史</span>
+                        <span class="pref-tag" data-pref="美食">🍜 美食探索</span>
+                        <span class="pref-tag" data-pref="购物">🛍️ 购物逛街</span>
+                        <span class="pref-tag" data-pref="拍照">📸 摄影打卡</span>
+                        <span class="pref-tag" data-pref="徒步">🥾 徒步登山</span>
+                        <span class="pref-tag" data-pref="休闲">🧘 休闲放松</span>
+                        <span class="pref-tag" data-pref="冒险">🎢 冒险刺激</span>
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label>📝 其他要求（可选）</label>
+                    <textarea id="notes" placeholder="有什么特别想去的地方吗？比如：想体验当地特色手工艺、想住有特色的民宿、不能吃辣……"></textarea>
+                </div>
+            </div>
+            <button class="btn-generate" id="btnGenerate">🚀 AI 生成行程计划</button>
+        </div>
+
+        <!-- Result -->
+        <div class="result-section" id="resultSection">
+            <div class="result-header">
+                <div class="result-badge">✈️ YOUR ITINERARY</div>
+                <h2 id="resultTitle">你的旅行计划</h2>
+                <p class="result-summary" id="resultSummary"></p>
+                <div class="result-meta" id="resultMeta"></div>
+            </div>
+            <div id="resultDays"></div>
+            <div class="result-footer">
+                <button class="btn-new-plan" onclick="window.scrollTo({top:0,behavior:'smooth'});document.getElementById('resultSection').classList.remove('visible');">🔄 重新规划</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">🪨 石头旅行记 · AI Planner</div>
+            <div class="footer-copy">© 2026 DragonKnightBeat.com · AI 生成内容仅供参考</div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== Stars =====
+        const canvas = document.getElementById('stars-canvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+        class Star {
+            constructor() { this.reset(true); }
+            reset() {
+                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.8; this.opacity = Math.random() * 0.8 + 0.2;
+                this.speedX = (Math.random() - 0.5) * 0.2; this.speedY = (Math.random() - 0.5) * 0.2;
+                this.pulseSpeed = Math.random() * 0.02 + 0.005; this.pulseOffset = Math.random() * Math.PI * 2;
+                this.color = ['rgba(255,255,255,', 'rgba(255,107,53,'][Math.floor(Math.random() * 2)];
+            }
+            update(t) {
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+                this.currentOpacity = this.opacity * (0.5 + 0.5 * Math.sin(t * this.pulseSpeed + this.pulseOffset));
+            }
+            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = this.color + this.currentOpacity + ')'; ctx.fill(); }
+        }
+        for (let i = 0; i < 120; i++) stars.push(new Star());
+        let t = 0;
+        function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); t += 0.016; stars.forEach(s => { s.update(t); s.draw(); }); requestAnimationFrame(animate); }
+        animate();
+
+        // ===== Pref Tags =====
+        document.getElementById('prefTags').addEventListener('click', (e) => {
+            const tag = e.target.closest('.pref-tag');
+            if (tag) tag.classList.toggle('selected');
+        });
+
+        // ===== Load destinations for form auto-fill =====
+        let destinations = [];
+        fetch('data/destinations.json').then(r => r.json()).then(d => { destinations = d; });
+
+        // ===== URL params =====
+        const params = new URLSearchParams(window.location.search);
+        const destParam = params.get('dest');
+        if (destParam) {
+            document.getElementById('destination').value = decodeURIComponent(destParam);
+        }
+
+        // ===== Generate =====
+        const btnGenerate = document.getElementById('btnGenerate');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        const DESTINATION_DATA = {
+            "models": {
+                "大理": {
+                    "tags": ["🏔️ 苍山洱海", "🌸 古城风韵", "🍜 白族美食"],
+                    "foods": ["酸辣鱼", "大理砂锅鱼", "乳扇", "烤饵块", "凉鸡米线"],
+                    "accommodationTips": ["古城民宿200-500元", "洱海海景民宿500-1500元", "喜洲白族院落100-300元"],
+                    "transportTips": ["飞机到大理机场", "高铁到昆明转大理", "昆明自驾4h"]
+                },
+                "京都": {
+                    "tags": ["⛩️ 千年古都", "🌸 樱花/红叶", "🍣 京料理"],
+                    "foods": ["抹茶甜品", "汤豆腐", "寿喜烧", "和果子", "京漬物"],
+                    "accommodationTips": ["京都站周边酒店400-800元", "祇园町屋800-2500元", "岚山温泉1500-5000元"],
+                    "transportTips": ["大阪关西机场坐Haruka", "新干线东京2.5h"]
+                },
+                "冰岛": {
+                    "tags": ["🌋 火山冰川", "🌌 极光", "♨️ 地热温泉"],
+                    "foods": ["冰岛热狗", "羊肉汤", "Skyr酸奶", "海鲜", "发酵鲨鱼（体验）"],
+                    "accommodationTips": ["雷克雅未克800-1800元", "环岛民宿600-1200元", "旺季需提前3月"],
+                    "transportTips": ["凯夫拉维克机场", "环岛自驾最佳", "需四驱车"]
+                },
+                "西安": {
+                    "tags": ["🏯 十三朝古都", "🗡️ 兵马俑", "🥟 面食天堂"],
+                    "foods": ["肉夹馍", "羊肉泡馍", "凉皮", "biangbiang面", "葫芦鸡"],
+                    "accommodationTips": ["钟楼周边200-400元", "品质民宿400-800元", "大雁塔区800-1500元"],
+                    "transportTips": ["咸阳机场", "西安北站高铁", "地铁覆盖主要景点"]
+                },
+                "三亚": {
+                    "tags": ["🏖️ 热带海滩", "🐠 潜水", "🌴 度假胜地"],
+                    "foods": ["文昌鸡", "椰子鸡", "海鲜大餐", "清补凉", "抱罗粉"],
+                    "accommodationTips": ["亚龙湾/海棠湾800-3000元", "三亚湾300-800元", "大东海200-600元"],
+                    "transportTips": ["凤凰机场", "建议租车150-300元/天"]
+                },
+                "成都": {
+                    "tags": ["🐼 大熊猫", "🌶️ 美食之都", "🍵 茶文化"],
+                    "foods": ["火锅", "钵钵鸡", "串串香", "担担面", "夫妻肺片"],
+                    "accommodationTips": ["春熙路400-800元", "宽窄巷子民宿300-600元", "高新区200-400元"],
+                    "transportTips": ["双流/天府机场", "成都东站高铁", "地铁超方便"]
+                },
+                "东京": {
+                    "tags": ["🗼 未来都市", "🎮 二次元圣地", "🍣 米其林之都"],
+                    "foods": ["寿司", "拉面", "天妇罗", "鳗鱼饭", "和牛"],
+                    "accommodationTips": ["新宿/涩谷500-1000元", "上野/浅草300-600元", "胶囊旅馆150-300元"],
+                    "transportTips": ["成田/羽田机场", "西瓜卡一卡刷", "JR Pass跨城市"]
+                },
+                "桂林": {
+                    "tags": ["🏔️ 山水甲天下", "🚣 漓江竹筏", "🌾 龙脊梯田"],
+                    "foods": ["桂林米粉", "阳朔啤酒鱼", "田螺酿", "荔浦芋扣肉"],
+                    "accommodationTips": ["桂林市区150-400元", "阳朔西街200-600元", "龙脊民宿100-300元"],
+                    "transportTips": ["两江机场", "桂林站高铁", "阳朔高铁站需转车"]
+                },
+                "泸沽湖": {
+                    "tags": ["🌊 高原明珠", "💃 摩梭文化", "🛶 猪槽船"],
+                    "foods": ["猪膘肉", "咣当酒", "烤乳猪", "野生菌火锅", "酸菜鱼"],
+                    "accommodationTips": ["大落水200-600元", "里格半岛400-1000元", "蒗放村600-1500元"],
+                    "transportTips": ["丽江转车4h盘山路", "宁蒗机场有航班"]
+                },
+                "北海道": {
+                    "tags": ["❄️ 粉雪天堂", "♨️ 温泉之乡", "🦀 海鲜王国"],
+                    "foods": ["海鲜丼", "帝王蟹", "味噌拉面", "汤咖喱", "白色恋人"],
+                    "accommodationTips": ["札幌500-1000元", "小樽400-800元", "温泉旅馆800-3000元"],
+                    "transportTips": ["新千岁机场", "JR北海道Pass", "冬季需雪地驾经验"]
+                },
+                "杭州": {
+                    "tags": ["🏞️ 西湖山水", "🍵 龙井茶香", "🎋 江南风韵"],
+                    "foods": ["西湖醋鱼", "东坡肉", "龙井虾仁", "叫花鸡", "藕粉"],
+                    "accommodationTips": ["西湖周边400-1000元", "延安路300-600元", "龙井民宿300-800元"],
+                    "transportTips": ["萧山机场", "杭州东站高铁", "地铁覆盖+骑行最佳"]
+                },
+                "巴厘岛": {
+                    "tags": ["🌴 神仙之岛", "🌊 冲浪天堂", "🛕 印度教文化"],
+                    "foods": ["烤乳猪Babi Guling", "脏鸭餐", "印尼炒饭", "沙爹串", "金巴兰海鲜"],
+                    "accommodationTips": ["库塔200-500元", "乌布300-800元", "努沙杜瓦500-2000元"],
+                    "transportTips": ["努拉莱伊机场", "包车250-400元/天", "租摩托50元/天"]
+                }
+            }
+        };
+
+        function getDefaultDataForDest(destName) {
+            // Fuzzy match
+            for (const [key, data]) { if (destName.includes(key) || key.includes(destName)) return data; }
+            return null;
+        }
+
+        function generatePlan() {
+            const dest = document.getElementById('destination').value.trim();
+            const days = parseInt(document.getElementById('days').value);
+            const budget = document.getElementById('budget').value;
+            const companion = document.getElementById('companion').value;
+            const climate = document.getElementById('climate').value;
+            const notes = document.getElementById('notes').value.trim();
+
+            const selectedPrefs = Array.from(document.querySelectorAll('.pref-tag.selected'))
+                .map(t => t.textContent.trim());
+            const prefsText = selectedPrefs.length ? selectedPrefs.join('、') : '任意';
+
+            if (!dest) {
+                document.getElementById('destination').focus();
+                document.getElementById('destination').style.borderColor = '#ff4444';
+                setTimeout(() => document.getElementById('destination').style.borderColor = '', 2000);
+                return;
+            }
+
+            // Show loading
+            loadingOverlay.classList.add('active');
+            btnGenerate.disabled = true;
+
+            // Simulate AI generation (with good-looking mock data)
+            setTimeout(() => {
+                loadingOverlay.classList.remove('active');
+                btnGenerate.disabled = false;
+                renderResult(dest, days, budget, companion, climate, prefsText, notes, selectedPrefs);
+            }, 2000);
+        }
+
+        function renderResult(dest, days, budget, companion, climate, prefsText, notes, selectedPrefs) {
+            const destData = getDefaultDataForDest(dest);
+            const tags = destData ? destData.tags : ['🏔️ 探索', '🍜 美食', '📸 拍照'];
+            const foods = destData ? destData.foods : [];
+            const accTips = destData ? destData.accommodationTips : [];
+            const transTips = destData ? destData.transportTips : [];
+
+            const companionMap = {
+                '独行': '🧑 独行', '情侣': '💑 情侣', '朋友': '👫 朋友',
+                '家庭': '👨‍👩‍👧‍👦 家庭', '带父母': '🙏 带父母', '亲子': '👶 亲子'
+            };
+
+            document.getElementById('resultTitle').textContent = `🗺️ ${dest} · ${days}日游计划`;
+            document.getElementById('resultSummary').textContent = 
+                `石头为你精心规划的${dest}${days}日旅程，预算级别：${budget}，适合${companionMap[companion] || companion}出行`;
+
+            document.getElementById('resultMeta').innerHTML = `
+                <span>📅 ${days} 天</span>
+                <span>💰 ${budget}</span>
+                <span>👥 ${companionMap[companion] || companion}</span>
+                <span>🎯 ${prefsText}</span>
+            `;
+
+            // Generate day content using template data
+            const daysHtml = [];
+            const activities = prepareActivities(dest, days, foods, destData);
+            const destinations = ['景点A', '景点B', '景点C']; // will be filled
+
+            for (let i = 1; i <= days; i++) {
+                const dayData = activities[i] || {
+                    morning: `上午探索${dest}地标或当地特色街区`,
+                    afternoon: `下午参观${dest}最值得一去的景点和体验`,
+                    evening: `晚上品尝当地特色美食，感受${dest}的夜生活`,
+                    tags: tags
+                };
+
+                const foodRec = foods.length ? foods[i % foods.length] : '当地特色美食';
+
+                daysHtml.push(`
+                    <div class="day-card">
+                        <div class="day-header">
+                            <span class="day-num">DAY ${i}</span>
+                            <span class="day-label">第${i}天 · ${i === 1 ? '抵达日' : i === days ? '返程日' : '游览日'}</span>
+                        </div>
+                        <div class="day-content">
+                            <p>🌅 <strong style="color: var(--travel-orange);">上午</strong>：${dayData.morning}</p>
+                            <p>☀️ <strong style="color: var(--travel-orange);">下午</strong>：${dayData.afternoon}</p>
+                            <p>🌙 <strong style="color: var(--travel-orange);">晚上</strong>：${dayData.evening}</p>
+                            <p>🍽️ <strong style="color: var(--travel-sand);">推荐美食</strong>：${foodRec}</p>
+                            ${i === 1 && accTips.length ? `<p>🏨 <strong style="color: var(--travel-sand);">住宿提示</strong>：${accTips[i % accTips.length]}</p>` : ''}
+                            ${i === 1 && transTips.length ? `<p>🚗 <strong style="color: var(--travel-sand);">交通提示</strong>：${transTips[i % transTips.length]}</p>` : ''}
+                        </div>
+                        <div class="day-tags">
+                            ${dayData.tags.map(t => `<span>${t}</span>`).join('')}
+                        </div>
+                    </div>
+                `);
+            }
+
+            document.getElementById('resultDays').innerHTML = daysHtml.join('');
+            document.getElementById('resultSection').classList.add('visible');
+            document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function prepareActivities(dest, days, foods, destData) {
+            const activities = {};
+            const firstDayDest = destData ? destData.tags[0]?.replace(/[🏔️⛩️🌋🏯🏖️🐼🗼🎋🌊❄️🌴\s]/g, '').trim() || dest : dest;
+
+            for (let i = 1; i <= days; i++) {
+                const isFirst = i === 1;
+                const isLast = i === days;
+                const mid = Math.ceil(days / 2);
+
+                let morning, afternoon, evening;
+                const tags = destData ? destData.tags : ['🏔️ 探索 ' + dest];
+
+                if (days <= 3) {
+                    if (i === 1) {
+                        morning = `抵达${dest}，入住酒店/民宿，简单安顿后开始探索`;
+                        afternoon = `游览${dest}的标志性景点和街区`;
+                        evening = `品尝当地美食，逛逛夜市或步行街`;
+                    } else if (i === days) {
+                        morning = `打卡未尽兴的景点，或自由活动`;
+                        afternoon = `购买伴手礼，整理行装`;
+                        evening = `结束愉快的${dest}之旅，返程`;
+                    } else {
+                        morning = `深度游览${dest}周边经典景点`;
+                        afternoon = `体验当地特色活动或文化项目`;
+                        evening = `享用丰盛晚餐，放松休闲`;
+                    }
+                } else {
+                    if (isFirst) {
+                        morning = `抵达${dest}，入住并熟悉周边环境`;
+                        afternoon = `探索${dest}核心景区`;
+                        evening = `品尝地道${dest}美食，感受夜生活`;
+                    } else if (isLast) {
+                        morning = `自由活动，推荐去${destData && destData.highlights ? destData.highlights[i % destData.highlights.length] || '热门打卡地标' : '最想再去的地方'}`;
+                        afternoon = `买伴手礼，整理行李`;
+                        evening = `结束旅程，满载回忆返程`;
+                    } else if (i <= mid) {
+                        morning = `继续探索${dest}的各大景点和文化地标`;
+                        afternoon = `体验当地特色活动或自然风光`;
+                        evening = `品尝${foods[i % foods.length] || '当地特色'}，悠闲散步`;
+                    } else {
+                        morning = `前往${dest}周边小众景点或自然风光`;
+                        afternoon = `深度体验当地文化或参加特色活动`;
+                        evening = `回顾旅程精彩瞬间，记录旅行故事`;
+                    }
+                }
+
+                activities[i] = {
+                    morning,
+                    afternoon,
+                    evening,
+                    tags: tags.length > 2 ? [tags[i % tags.length], tags[(i + 1) % tags.length]] : tags
+                };
+            }
+
+            return activities;
+        }
+
+        document.getElementById('btnGenerate').addEventListener('click', generatePlan);
+
+        document.getElementById('destination').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') generatePlan();
+        });
+
+        // Handle notes textarea resize
+        document.querySelectorAll('textarea').forEach(ta => {
+            ta.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = Math.min(this.scrollHeight, 150) + 'px';
+            });
+        });
+    </script>
+</body>
+</html>

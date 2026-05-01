@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>石头旅行记 · 龙骑游 · DragonKnightBeat</title>
+    <meta name="description" content="石头旅行记 - 探索世界目的地，AI智能规划你的旅行">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS Variables (inherit from main site) ===== */
+        :root {
+            --bg-primary: #0a0a1a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --neon-cyan: #00f3ff;
+            --neon-purple: #9d00ff;
+            --neon-green: #00ff9d;
+            --travel-orange: #ff6b35;
+            --travel-sand: #e8c57a;
+            --travel-gold: #f0a500;
+            --text-primary: #e0e0ff;
+            --text-secondary: #8888aa;
+            --glow-cyan: 0 0 20px rgba(0, 243, 255, 0.3);
+            --glow-orange: 0 0 20px rgba(255, 107, 53, 0.3);
+            --gradient-main: linear-gradient(135deg, #00f3ff, #9d00ff);
+            --gradient-travel: linear-gradient(135deg, #ff6b35, #f0a500);
+            --gradient-earth: linear-gradient(135deg, #00f3ff, #ff6b35);
+            --font-display: 'Orbitron', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-hand: 'Ma Shan Zheng', cursive;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        a { color: var(--travel-orange); text-decoration: none; transition: all 0.3s; }
+        a:hover { color: var(--travel-gold); text-shadow: 0 0 10px var(--travel-gold); }
+
+        /* ===== Stars ===== */
+        #stars-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .grid-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== Navigation ===== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 26, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+            transition: all 0.3s;
+        }
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(255, 107, 53, 0.1);
+        }
+        .navbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-family: var(--font-hand);
+            font-size: 1.5rem;
+            font-weight: 400;
+            background: var(--gradient-travel);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-logo-sub {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--travel-sand);
+            letter-spacing: 2px;
+            margin-left: 4px;
+            -webkit-text-fill-color: var(--travel-sand);
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--gradient-travel);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary) !important;
+            font-size: 0.8rem !important;
+        }
+        .back-link:hover { color: var(--neon-cyan) !important; }
+        .back-link::after { display: none !important; }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 60px; left: 0; right: 0;
+                flex-direction: column;
+                background: rgba(10,10,26,0.98);
+                backdrop-filter: blur(20px);
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(255,107,53,0.1);
+            }
+            .nav-links.open { display: flex; }
+            .nav-toggle { display: block; }
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(255,107,53,0.05) 0%, transparent 50%);
+            animation: heroGlow 8s ease-in-out infinite;
+        }
+        @keyframes heroGlow {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(5%, 5%); }
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 750px; }
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid var(--travel-orange);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            color: var(--travel-orange);
+            letter-spacing: 3px;
+            margin-bottom: 24px;
+            animation: pulse-border 2s ease-in-out infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 5px rgba(255,107,53,0.2); }
+            50% { box-shadow: 0 0 20px rgba(255,107,53,0.6); }
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 7vw, 4rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .hero-title .icon-big { font-size: clamp(2.5rem, 5vw, 4rem); }
+        .hero-title .travel-highlight {
+            background: var(--gradient-travel);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-title .stone-name {
+            font-family: var(--font-hand);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            background: var(--gradient-travel);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.7;
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: var(--gradient-travel);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--glow-orange);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(255,107,53,0.5); color: #fff; }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(224,224,255,0.2);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { border-color: var(--travel-orange); box-shadow: var(--glow-orange); transform: translateY(-2px); }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            letter-spacing: 2px;
+            animation: float 2s ease-in-out infinite;
+        }
+        .scroll-indicator .line {
+            width: 1px;
+            height: 30px;
+            background: linear-gradient(to bottom, var(--travel-orange), transparent);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        /* ===== Section Shared ===== */
+        section { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--travel-orange);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .section-tag::before { content: '< '; }
+        .section-tag::after { content: ' />'; }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ===== Destinations Grid ===== */
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        @media (max-width: 1000px) { .destinations-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .destinations-grid { grid-template-columns: 1fr; } }
+
+        .dest-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .dest-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,107,53,0.05), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+        .dest-card:hover::before { opacity: 1; }
+        .dest-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255,107,53,0.3);
+            box-shadow: 0 8px 30px rgba(255,107,53,0.08);
+        }
+        .dest-card .dest-emoji {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .dest-card .dest-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,107,53,0.2);
+            color: var(--travel-orange);
+            background: rgba(255,107,53,0.05);
+        }
+        .dest-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+        .dest-card .dest-subtitle {
+            color: var(--travel-sand);
+            font-size: 0.8rem;
+            font-family: var(--font-hand);
+            margin-bottom: 12px;
+        }
+        .dest-card .dest-preview {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .dest-card .dest-tags {
+            margin-top: 16px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .dest-card .dest-tags span {
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            color: var(--text-secondary);
+        }
+
+        /* ===== Categories Filter ===== */
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filter-btn:hover {
+            border-color: var(--travel-orange);
+            color: var(--travel-orange);
+        }
+        .filter-btn.active {
+            background: var(--gradient-travel);
+            border-color: transparent;
+            color: #fff;
+        }
+
+        /* ===== Planner Promo Section ===== */
+        .planner-promo {
+            background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(240,165,0,0.05));
+            border: 1px solid rgba(255,107,53,0.15);
+            border-radius: 20px;
+            padding: 48px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        @media (max-width: 768px) {
+            .planner-promo { flex-direction: column; text-align: center; padding: 32px 24px; }
+        }
+        .planner-promo .planner-icon {
+            font-size: 4rem;
+            flex-shrink: 0;
+        }
+        .planner-promo .planner-text { flex: 1; }
+        .planner-promo h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+        .planner-promo p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .btn-planner {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--gradient-travel);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--glow-orange);
+        }
+        .btn-planner:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(255,107,53,0.5); color: #fff; }
+
+        /* ===== Footer ===== */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 0 24px;
+            text-align: center;
+        }
+        footer .footer-logo {
+            font-family: var(--font-hand);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            background: var(--gradient-travel);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        footer .footer-links a { color: var(--text-secondary); font-size: 0.8rem; }
+        footer .footer-copy {
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+        }
+
+        /* ===== Filter Animation ===== */
+        .dest-card {
+            transition: all 0.4s ease;
+        }
+        .dest-card.hidden {
+            display: none;
+        }
+
+        /* ===== Global Stats ===== */
+        .travel-stats {
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid rgba(255,107,53,0.08);
+            border-bottom: 1px solid rgba(255,107,53,0.08);
+            padding: 32px 0;
+        }
+        .travel-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        @media (max-width: 600px) { .travel-stats-grid { grid-template-columns: repeat(2, 1fr); } }
+        .travel-stat .stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-travel);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .travel-stat .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            margin-top: 4px;
+            font-family: var(--font-mono);
+        }
+
+        /* ===== Modal ===== */
+        .dest-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .dest-modal.active { display: flex; animation: modalFadeIn 0.3s ease; }
+        @keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .modal-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(10px);
+        }
+        .modal-content {
+            position: relative;
+            z-index: 1;
+            background: #0d0d2a;
+            border: 1px solid rgba(255,107,53,0.2);
+            border-radius: 16px;
+            padding: 36px;
+            max-width: 720px;
+            width: 92%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 0 60px rgba(255,107,53,0.12);
+            animation: modalSlideUp 0.3s ease;
+        }
+        @keyframes modalSlideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-close {
+            position: absolute;
+            top: 14px; right: 14px;
+            background: none;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--text-secondary);
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.95rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s;
+        }
+        .modal-close:hover { border-color: var(--travel-orange); color: var(--travel-orange); box-shadow: 0 0 15px rgba(255,107,53,0.3); }
+        .modal-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,107,53,0.2);
+            color: var(--travel-orange);
+            background: rgba(255,107,53,0.05);
+        }
+        .modal-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+        .modal-subtitle {
+            color: var(--travel-sand);
+            font-size: 0.9rem;
+            font-family: var(--font-hand);
+            margin-bottom: 16px;
+        }
+        .modal-gallery {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-gallery span {
+            font-size: 1.8rem;
+        }
+        .modal-section {
+            margin-bottom: 20px;
+        }
+        .modal-section h4 {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            color: var(--travel-orange);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .modal-section p {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+        .modal-section ul {
+            list-style: none;
+        }
+        .modal-section ul li {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.7;
+            padding-left: 16px;
+            position: relative;
+        }
+        .modal-section ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--travel-orange);
+        }
+        .modal-section .itinerary-day {
+            background: rgba(255,107,53,0.03);
+            border-left: 2px solid var(--travel-orange);
+            padding: 8px 14px;
+            margin-bottom: 6px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .modal-section .itinerary-day strong {
+            color: var(--travel-orange);
+            font-family: var(--font-mono);
+        }
+        .modal-actions {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn-sm {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        .modal-actions .btn-plan {
+            background: var(--gradient-travel);
+            color: #fff;
+        }
+        .modal-actions .btn-plan:hover { transform: translateY(-2px); box-shadow: var(--glow-orange); color: #fff; }
+        .modal-actions .btn-close {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .modal-actions .btn-close:hover { border-color: var(--text-primary); color: var(--text-primary); }
+        .modal-content::-webkit-scrollbar { width: 5px; }
+        .modal-content::-webkit-scrollbar-track { background: transparent; }
+        .modal-content::-webkit-scrollbar-thumb { background: rgba(255,107,53,0.2); border-radius: 3px; }
+        .modal-content::-webkit-scrollbar-thumb:hover { background: rgba(255,107,53,0.4); }
+    </style>
+</head>
+<body>
+    <canvas id="stars-canvas"></canvas>
+    <div class="grid-overlay"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-logo">🪨 石头旅行记 <span class="nav-logo-sub">· TRAVEL</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#destinations" class="active">目的地</a></li>
+                <li><a href="#planner">行程规划</a></li>
+                <li><a href="planner.html" class="back-link" style="color: var(--travel-orange) !important;">✈️ 智能规划器 →</a></li>
+                <li><a href="../index.html" class="back-link">← 返回首页</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content container">
+            <div class="hero-badge">🪨 TRAVEL EXPLORER</div>
+            <h1 class="hero-title">
+                <span class="stone-name">石头旅行记</span><br>
+                <span class="travel-highlight">Only One Stone Tells a Story</span>
+            </h1>
+            <p class="hero-subtitle">
+                每一块石头都有自己的旅行故事。<br>
+                探索世界各地的目的地，用 AI 智能规划你的完美旅程。<br>
+                从大理的风花雪月到冰岛的极光星辰，让石头陪你走遍世界。
+            </p>
+            <div class="hero-cta">
+                <a href="#destinations" class="btn-primary">探索目的地 →</a>
+                <a href="planner.html" class="btn-secondary">✈️ AI 规划旅程</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>SCROLL</span>
+            <div class="line"></div>
+        </div>
+    </section>
+
+    <!-- Travel Stats -->
+    <section class="travel-stats">
+        <div class="container">
+            <div class="travel-stats-grid">
+                <div class="travel-stat">
+                    <div class="stat-number" data-target="12">0</div>
+                    <div class="stat-label">精选目的地</div>
+                </div>
+                <div class="travel-stat">
+                    <div class="stat-number" data-target="60">0</div>
+                    <div class="stat-label">+ 行程方案</div>
+                </div>
+                <div class="travel-stat">
+                    <div class="stat-number" data-target="5">0</div>
+                    <div class="stat-label">国家/地区</div>
+                </div>
+                <div class="travel-stat">
+                    <div class="stat-number" data-target="7">0</div>
+                    <div class="stat-label">天 · 智能规划</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations -->
+    <section id="destinations">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Destinations</div>
+                <h2 class="section-title">精选目的地</h2>
+                <p class="section-desc">每一处都是石头精心挑选的旅行故事</p>
+            </div>
+
+            <div class="filter-bar" id="filterBar">
+                <button class="filter-btn active" data-filter="all">🌍 全部</button>
+                <button class="filter-btn" data-filter="自然风光">🏔️ 自然风光</button>
+                <button class="filter-btn" data-filter="人文历史">⛩️ 人文历史</button>
+                <button class="filter-btn" data-filter="海岛度假">🏝️ 海岛度假</button>
+                <button class="filter-btn" data-filter="美食休闲">🍜 美食休闲</button>
+                <button class="filter-btn" data-filter="都市探索">🏙️ 都市探索</button>
+                <button class="filter-btn" data-filter="秘境湖泊">🌊 秘境湖泊</button>
+                <button class="filter-btn" data-filter="自然奇观">🌋 自然奇观</button>
+                <button class="filter-btn" data-filter="江南水乡">🏞️ 江南水乡</button>
+                <button class="filter-btn" data-filter="热带度假">🌴 热带度假</button>
+            </div>
+
+            <div class="destinations-grid" id="destGrid"></div>
+        </div>
+    </section>
+
+    <!-- Planner Promo -->
+    <section id="planner">
+        <div class="container">
+            <div class="planner-promo">
+                <div class="planner-icon">✈️</div>
+                <div class="planner-text">
+                    <h3>🪨 AI 智能行程规划器</h3>
+                    <p>
+                        不知道去哪里玩？行程不知道怎么安排？让石头来帮你！<br>
+                        输入目的地、天数、预算和偏好，AI 自动为你生成完整的旅行计划。<br>
+                        包括每日行程、景点推荐、美食指南、住宿建议、预算估算——一站式搞定！
+                    </p>
+                    <a href="planner.html" class="btn-planner">🚀 开始规划旅程</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">🪨 石头旅行记 · Stone Travel</div>
+            <div class="footer-links">
+                <a href="#destinations">目的地</a>
+                <a href="planner.html">行程规划</a>
+                <a href="../index.html">🐉 DragonKnightBeat</a>
+            </div>
+            <div class="footer-copy">© 2026 DragonKnightBeat.com · 石头旅行记</div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="dest-modal" id="destModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="关闭">✕</button>
+            <div class="modal-badge" id="modalBadge"></div>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div class="modal-subtitle" id="modalSubtitle"></div>
+            <div class="modal-gallery" id="modalGallery"></div>
+
+            <div class="modal-section">
+                <h4>📖 石头笔记</h4>
+                <p id="modalIntro"></p>
+            </div>
+
+            <div class="modal-section">
+                <h4>⭐ 必去亮点</h4>
+                <ul id="modalHighlights"></ul>
+            </div>
+
+            <div class="modal-section">
+                <h4>🍽️ 美食</h4>
+                <p id="modalFood"></p>
+            </div>
+
+            <div class="modal-section">
+                <h4>🏨 住宿推荐</h4>
+                <p id="modalAccommodation"></p>
+            </div>
+
+            <div class="modal-section">
+                <h4>🚗 交通指南</h4>
+                <p id="modalTransport"></p>
+            </div>
+
+            <div class="modal-section">
+                <h4>📅 最佳季节</h4>
+                <p id="modalBestSeason"></p>
+            </div>
+
+            <div class="modal-section">
+                <h4>💰 预算参考</h4>
+                <p id="modalBudget"></p>
+            </div>
+
+            <div class="modal-section" id="modalItinerarySection">
+                <h4>🗺️ 推荐行程</h4>
+                <div id="modalItinerary"></div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-sm btn-plan" id="modalPlanBtn">✈️ 用 AI 规划此行程</button>
+                <button class="btn-sm btn-close" id="modalCloseBtn">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== Stars Animation =====
+        const canvas = document.getElementById('stars-canvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        const NUM_STARS = 150;
+
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Star {
+            constructor() { this.reset(true); }
+            reset(init) {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.8;
+                this.speedX = (Math.random() - 0.5) * 0.2;
+                this.speedY = (Math.random() - 0.5) * 0.2;
+                this.opacity = Math.random() * 0.8 + 0.2;
+                this.pulseSpeed = Math.random() * 0.02 + 0.005;
+                this.pulseOffset = Math.random() * Math.PI * 2;
+                this.color = ['rgba(255,255,255,', 'rgba(255,107,53,'][Math.floor(Math.random() * 2)];
+            }
+            update(time) {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+                this.currentOpacity = this.opacity * (0.5 + 0.5 * Math.sin(time * this.pulseSpeed + this.pulseOffset));
+            }
+            draw() {
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color + this.currentOpacity + ')';
+                ctx.fill();
+            }
+        }
+        for (let i = 0; i < NUM_STARS; i++) stars.push(new Star());
+        let animTime = 0;
+        function animateStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            animTime += 0.016;
+            stars.forEach(s => { s.update(animTime); s.draw(); });
+            requestAnimationFrame(animateStars);
+        }
+        animateStars();
+
+        // ===== Navbar Scroll =====
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+
+        // ===== Mobile Nav =====
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+
+        // ===== Smooth Scroll =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // ===== Stats Counter =====
+        function animateCounters() {
+            document.querySelectorAll('.stat-number').forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const update = () => {
+                    const current = parseInt(counter.innerText);
+                    const increment = Math.ceil(target / 30);
+                    if (current < target) {
+                        counter.innerText = Math.min(current + increment, target);
+                        requestAnimationFrame(update);
+                    } else { counter.innerText = target; }
+                };
+                update();
+            });
+        }
+        const statsSection = document.querySelector('.travel-stats');
+        let counted = false;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !counted) { counted = true; animateCounters(); }
+            });
+        }, { threshold: 0.3 });
+        if (statsSection) observer.observe(statsSection);
+
+        // ===== Load Destinations =====
+        let destinations = [];
+
+        async function loadDestinations() {
+            try {
+                const response = await fetch('data/destinations.json');
+                destinations = await response.json();
+                renderDestinations(destinations);
+            } catch (e) {
+                console.error('加载目的地数据失败:', e);
+                document.getElementById('destGrid').innerHTML = '<p style="color: var(--text-secondary); text-align: center;">加载数据失败，请刷新页面重试 🥲</p>';
+            }
+        }
+
+        function renderDestinations(data) {
+            const grid = document.getElementById('destGrid');
+            grid.innerHTML = data.map(d => {
+                const info = d.zh;
+                return `
+                    <div class="dest-card" data-id="${d.id}" data-badge="${info.badge}">
+                        <span class="dest-emoji">${info.gallery[0]}</span>
+                        <div class="dest-badge">${info.badge}</div>
+                        <h3>${info.name}</h3>
+                        <div class="dest-subtitle">${info.subtitle}</div>
+                        <div class="dest-preview">${info.intro.slice(0, 80)}…</div>
+                        <div class="dest-tags">
+                            ${info.highlights.slice(0, 3).map(h => `<span>${h}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Click handler
+            document.querySelectorAll('.dest-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const id = card.dataset.id;
+                    const dest = destinations.find(d => d.id === id);
+                    if (dest) openModal(dest);
+                });
+            });
+        }
+
+        // ===== Modal =====
+        const modal = document.getElementById('destModal');
+        const modalOverlay = modal.querySelector('.modal-overlay');
+        const modalClose = modal.querySelector('.modal-close');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+        const modalPlanBtn = document.getElementById('modalPlanBtn');
+
+        function openModal(dest) {
+            const info = dest.zh;
+
+            document.getElementById('modalBadge').textContent = info.badge;
+            document.getElementById('modalTitle').textContent = info.name;
+            document.getElementById('modalSubtitle').textContent = info.subtitle;
+            document.getElementById('modalGallery').innerHTML = info.gallery.map(g => `<span>${g}</span>`).join('');
+            document.getElementById('modalIntro').textContent = info.intro;
+            document.getElementById('modalFood').textContent = info.food;
+            document.getElementById('modalAccommodation').textContent = info.accommodation;
+            document.getElementById('modalTransport').textContent = info.transport;
+            document.getElementById('modalBestSeason').textContent = info.bestSeason;
+            document.getElementById('modalBudget').textContent = info.budget;
+
+            // Highlights
+            document.getElementById('modalHighlights').innerHTML = info.highlights.map(h => `<li>${h}</li>`).join('');
+
+            // Itinerary
+            const itineraryDiv = document.getElementById('modalItinerary');
+            let itineraryHtml = '';
+
+            const tab3 = info.itinerary3 || info.itinerary || null;
+            const tab5 = info.itinerary5 || null;
+            const tab10 = info.itinerary10 || null;
+
+            if (tab3) {
+                itineraryHtml += `<div style="margin-bottom: 12px;"><span style="color: var(--travel-orange); font-family: var(--font-mono); font-size: 0.75rem;">3日游行程</span></div>`;
+                Object.entries(tab3).forEach(([day, text]) => {
+                    const dayNum = day.replace('day', '');
+                    itineraryHtml += `<div class="itinerary-day"><strong>Day ${dayNum}</strong>：${text}</div>`;
+                });
+            }
+            if (tab5) {
+                itineraryHtml += `<div style="margin-top: 16px; margin-bottom: 12px;"><span style="color: var(--travel-orange); font-family: var(--font-mono); font-size: 0.75rem;">5日游行程</span></div>`;
+                Object.entries(tab5).forEach(([day, text]) => {
+                    const dayNum = day.replace('day', '');
+                    itineraryHtml += `<div class="itinerary-day"><strong>Day ${dayNum}</strong>：${text}</div>`;
+                });
+            }
+            if (tab10) {
+                itineraryHtml += `<div style="margin-top: 16px; margin-bottom: 12px;"><span style="color: var(--travel-orange); font-family: var(--font-mono); font-size: 0.75rem;">10日游行程</span></div>`;
+                Object.entries(tab10).forEach(([day, text]) => {
+                    const dayNum = day.replace('day', '');
+                    itineraryHtml += `<div class="itinerary-day"><strong>Day ${dayNum}</strong>：${text}</div>`;
+                });
+            }
+
+            if (!itineraryHtml) itineraryHtml = '<p style="color: var(--text-secondary);">暂无行程方案，试试 AI 规划器！</p>';
+            itineraryDiv.innerHTML = itineraryHtml;
+
+            // Plan button
+            modalPlanBtn.onclick = () => {
+                window.location.href = `planner.html?dest=${encodeURIComponent(info.name)}`;
+            };
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalOverlay.addEventListener('click', closeModal);
+        modalClose.addEventListener('click', closeModal);
+        modalCloseBtn.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+        // ===== Filter =====
+        document.getElementById('filterBar').addEventListener('click', (e) => {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
+
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.dataset.filter;
+            const cards = document.querySelectorAll('.dest-card');
+
+            if (filter === 'all') {
+                cards.forEach(c => c.classList.remove('hidden'));
+            } else {
+                cards.forEach(c => {
+                    const badge = c.dataset.badge || '';
+                    if (badge.includes(filter)) {
+                        c.classList.remove('hidden');
+                    } else {
+                        c.classList.add('hidden');
+                    }
+                });
+            }
+        });
+
+        // ===== Init =====
+        loadDestinations();
+    </script>
+</body>
+</html>
