@@ -396,8 +396,13 @@ function renderEditor(id) {
   const zh = d.zh;
   
   ec.innerHTML = `
-    <h2 contenteditable="true" onblur="updateField('${id}','name',this.textContent)" class="editable-title">${esc(zh.name)}</h2>
-    <div class="id-label">ID: ${d.id}</div>
+    <div style="display:flex;justify-content:space-between;align-items:start;">
+      <div>
+        <h2 contenteditable="true" onblur="updateField('${id}','name',this.textContent)" class="editable-title">${esc(zh.name)}</h2>
+        <div class="id-label">ID: ${d.id}</div>
+      </div>
+      <button onclick="deleteDest('${id}')" style="padding:8px 16px;background:var(--danger);border:none;border-radius:8px;color:white;cursor:pointer;flex-shrink:0;">🗑️ 删除</button>
+    </div>
 
     <div class="form-row">
       <div class="form-group">
@@ -504,9 +509,7 @@ function renderEditor(id) {
       </div>
     </div>
 
-    <div style="margin-top:24px;display:flex;gap:8px;">
-      <button onclick="deleteDest('${id}')" style="padding:8px 16px;background:var(--danger);border:none;border-radius:8px;color:white;cursor:pointer;">🗑️ 删除此目的地</button>
-    </div>
+
   `;
 }
 
