@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猫咪笔记 BulletNote - 技术支持</title>
+    <meta name="description" content="猫咪笔记 (BulletNote) iOS App 技术支持与帮助中心 - 子弹笔记、番茄钟、情绪追踪、习惯打卡">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a0a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0ff;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+            position: relative;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb);
+            border-radius: 3px;
+        }
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #a855f7 100%);
+            box-shadow: 0 8px 32px rgba(240, 147, 251, 0.4);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 52px;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #e0e0ff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: #8888bb;
+            margin-top: 8px;
+            font-weight: 400;
+        }
+        .subtitle span { color: #a78bfa; }
+
+        /* Sections */
+        section {
+            margin: 40px 0;
+            padding: 32px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(8px);
+        }
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 .icon { font-size: 24px; }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .faq-q {
+            font-weight: 600;
+            font-size: 16px;
+            color: #f0d6ff;
+            margin-bottom: 6px;
+        }
+        .faq-q::before { content: '❓ '; }
+        .faq-a {
+            color: #9999bb;
+            font-size: 15px;
+            padding-left: 24px;
+        }
+        .faq-a code {
+            background: rgba(255,255,255,0.08);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #f0a6ff;
+        }
+
+        /* Feature Tags */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        .feature-tag {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 14px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .feature-tag:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+            border-color: rgba(167, 139, 250, 0.4);
+        }
+
+        /* Contact */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .contact-btn.email {
+            background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(240,147,251,0.2));
+            color: #c4b5fd;
+        }
+        .contact-btn.email:hover {
+            background: linear-gradient(135deg, rgba(167,139,250,0.4), rgba(240,147,251,0.4));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(167,139,250,0.3);
+        }
+
+        /* Version Info */
+        .version-info {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 16px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            margin-top: 16px;
+        }
+        .version-info-item {
+            text-align: center;
+        }
+        .version-info-item .label {
+            font-size: 12px;
+            color: #6666aa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .version-info-item .value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #c4b5fd;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            color: #555588;
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        footer a { color: #8888bb; }
+        footer a:hover { color: #a78bfa; }
+
+        @media (max-width: 600px) {
+            .container { padding: 20px 16px 60px; }
+            h1 { font-size: 28px; }
+            section { padding: 24px 20px; }
+            .feature-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="app-icon">🐱</div>
+            <h1>猫咪笔记</h1>
+            <p class="subtitle">BulletNote · <span>v1.0</span></p>
+            <p style="margin-top:12px; color:#9999bb; font-size:15px;">
+                你的橘猫管家 — 子弹笔记 · 番茄钟 · 情绪追踪 · 习惯打卡 · 语音速记
+            </p>
+        </header>
+
+        <!-- Features -->
+        <section>
+            <h2><span class="icon">✨</span> 功能一览</h2>
+            <div class="feature-grid">
+                <div class="feature-tag">📝 子弹笔记系统</div>
+                <div class="feature-tag">🗣️ 语音速记</div>
+                <div class="feature-tag">🍅 番茄钟专注</div>
+                <div class="feature-tag">😊 情绪追踪</div>
+                <div class="feature-tag">⭐ 习惯打卡</div>
+                <div class="feature-tag">📋 每日复盘</div>
+                <div class="feature-tag">🐱 橘猫吉祥物</div>
+                <div class="feature-tag">🌐 中英文切换</div>
+                <div class="feature-tag">📅 月度日历</div>
+                <div class="feature-tag">📂 集子管理</div>
+                <div class="feature-tag">🔥 连续打卡</div>
+                <div class="feature-tag">📊 数据可视化</div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section>
+            <h2><span class="icon">💬</span> 常见问题</h2>
+
+            <div class="faq-item">
+                <div class="faq-q">语音速记无法使用怎么办？</div>
+                <div class="faq-a">
+                    语音识别需要真机（iPhone/iPad）运行，模拟器不支持。请确保已在 <strong>设置 → 隐私与安全性 → 语音识别</strong> 中允许猫咪笔记使用麦克风。<br>
+                    <em>首次使用时，App 会自动弹出权限请求，请点击"允许"。</em>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">如何切换语言？</div>
+                <div class="faq-a">
+                    在主界面菜单（左上角 ☰）中点击 <code>🌐 语言</code> → 选择 <strong>中文</strong> 或 <strong>English</strong>，界面即刻切换，无需重启 App。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">数据会丢失吗？如何备份？</div>
+                <div class="faq-a">
+                    猫咪笔记使用 SwiftData 本地存储。数据默认保存在设备本地。建议开启 iCloud 备份：<strong>设置 → 你的名字 → iCloud → iCloud 云备份</strong>，确保猫咪笔记数据被包含在内。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">番茄钟时长可以自定义吗？</div>
+                <div class="faq-a">
+                    支持 15、25、30、45、60 分钟五种时长选择。在番茄钟界面点击时长按钮即可切换。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">如何创建集子（Collection）？</div>
+                <div class="faq-a">
+                    在集子管理页面点击右上角 <code>+</code> 按钮，输入集子名称和 emoji 图标即可创建。集子用于收集团类笔记/事项，支持进度条追踪。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">每日复盘如何分享？</div>
+                <div class="faq-a">
+                    在复盘卡片页面，点击右上角的 <strong>分享按钮</strong>（📤），即可将复盘卡片保存为图片或分享到微信、微博等社交平台。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">App 需要联网吗？</div>
+                <div class="faq-a">
+                    猫咪笔记的核心功能完全离线可用，无需联网。语音识别在首次使用时需要联网下载识别模型。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">橘猫有哪些互动方式？</div>
+                <div class="faq-a">
+                    橘猫会根据不同时段和你的使用行为做出反应：<br>
+                    🌅 早安问候 → 📝 完成任务庆祝 🎉 → 🔥 连续打卡火焰徽章 → 🌙 深夜催睡提醒。共有 50+ 条暖心语录。
+                </div>
+            </div>
+        </section>
+
+        <!-- Version & Contact -->
+        <section>
+            <h2><span class="icon">📮</span> 联系与版本</h2>
+
+            <div class="version-info">
+                <div class="version-info-item">
+                    <div class="label">当前版本</div>
+                    <div class="value">v1.0</div>
+                </div>
+                <div class="version-info-item">
+                    <div class="label">平台</div>
+                    <div class="value">iOS 17+</div>
+                </div>
+                <div class="version-info-item">
+                    <div class="label">大小</div>
+                    <div class="value">约 25 MB</div>
+                </div>
+                <div class="version-info-item">
+                    <div class="label">语言</div>
+                    <div class="value">中文 · English</div>
+                </div>
+            </div>
+
+            <p style="margin: 20px 0 12px; color: #9999bb;">
+                如有问题、建议、反馈，请联系我们：
+            </p>
+            <div class="contact-links">
+                <a href="mailto:bulletnote@dragonknightbeat.com" class="contact-btn email">
+                    ✉️ bulletnote@dragonknightbeat.com
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                🐱 猫咪笔记 · BulletNote
+            </p>
+            <p style="margin-top: 8px;">
+                © 2026 Wang Long. All rights reserved.
+            </p>
+            <p style="margin-top: 12px;">
+                <a href="https://dragonknightbeat.com">← DragonKnightBeat</a>
+                 · 
+                <a href="https://dragonknightbeat.com/travel">石头旅行记</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

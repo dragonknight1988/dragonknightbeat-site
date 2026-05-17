@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AudioTestLab · 技术支持 - DragonKnightBeat</title>
+<meta name="description" content="AudioTestLab 官方技术支持 - 音频信号发生器与声音分析工具">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+    --bg-primary: #0a0a1a;
+    --bg-card: rgba(255,255,255,0.03);
+    --neon-cyan: #00f3ff;
+    --neon-purple: #9d00ff;
+    --neon-green: #00ff9d;
+    --neon-sound: #ff6b35;
+    --neon-wave: #00d4ff;
+    --text-primary: #e0e0ff;
+    --text-secondary: #8888aa;
+    --glow-cyan: 0 0 20px rgba(0,243,255,0.3);
+    --glow-sound: 0 0 20px rgba(255,107,53,0.3);
+    --gradient-main: linear-gradient(135deg,#00f3ff,#9d00ff);
+    --gradient-sound: linear-gradient(135deg,#ff6b35,#ffd700);
+    --font-display: 'Orbitron',sans-serif;
+    --font-body: 'Inter',sans-serif;
+    --font-mono: 'JetBrains Mono',monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);overflow-x:hidden;min-height:100vh}
+a{color:var(--neon-cyan);text-decoration:none;transition:all .3s}
+a:hover{color:var(--neon-green);text-shadow:0 0 10px var(--neon-green)}
+#stars-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.grid-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(0,243,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,243,255,0.03) 1px,transparent 1px);background-size:60px 60px;z-index:0;pointer-events:none}
+.container{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 24px}
+
+/* Nav */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,243,255,0.1);transition:all .3s}
+.navbar.scrolled{box-shadow:0 4px 30px rgba(0,243,255,0.1)}
+.navbar-inner{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-display);font-size:1rem;font-weight:700;background:var(--gradient-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:2px}
+.nav-logo .emoji{-webkit-text-fill-color:initial}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+.nav-links a{color:var(--text-secondary);font-size:.85rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gradient-main);transition:width .3s}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a:hover{color:var(--text-primary)}
+.nav-toggle{display:none;background:none;border:none;color:var(--text-primary);font-size:1.5rem;cursor:pointer}
+@media(max-width:768px){
+.nav-links{display:none;position:fixed;top:60px;left:0;right:0;flex-direction:column;background:rgba(10,10,26,0.98);backdrop-filter:blur(20px);padding:24px;gap:16px;border-bottom:1px solid rgba(0,243,255,0.1)}
+.nav-links.open{display:flex}
+.nav-toggle{display:block}
+}
+
+/* Hero */
+.hero{min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 0 60px;position:relative}
+.hero-content{max-width:700px}
+.hero-badge{display:inline-block;padding:8px 20px;border:1px solid var(--neon-sound);border-radius:50px;font-size:.75rem;font-family:var(--font-mono);color:var(--neon-sound);letter-spacing:3px;margin-bottom:32px;animation:pulse-border 2s ease-in-out infinite}
+@keyframes pulse-border{0%,100%{box-shadow:0 0 5px rgba(255,107,53,0.2)}50%{box-shadow:0 0 20px rgba(255,107,53,0.6)}}
+.hero-title{font-family:var(--font-display);font-size:clamp(2rem,6vw,3.5rem);font-weight:900;line-height:1.15;margin-bottom:20px}
+.hero-title .sound-gradient{background:var(--gradient-sound);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-subtitle{font-size:clamp(.9rem,2vw,1.1rem);color:var(--text-secondary);margin-bottom:36px;line-height:1.6}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--gradient-sound);color:#fff;border:none;border-radius:8px;font-size:.95rem;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:all .3s;box-shadow:var(--glow-sound)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(255,215,0,0.5);color:#fff}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:transparent;color:var(--text-primary);border:1px solid rgba(224,224,255,0.2);border-radius:8px;font-size:.95rem;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:all .3s}
+.btn-secondary:hover{border-color:var(--neon-sound);box-shadow:0 0 20px rgba(255,107,53,0.3);transform:translateY(-2px)}
+.scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-secondary);font-size:.7rem;font-family:var(--font-mono);letter-spacing:2px;animation:float 2s ease-in-out infinite}
+.scroll-indicator .line{width:1px;height:40px;background:linear-gradient(to bottom,var(--neon-sound),transparent)}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
+
+/* Sections */
+section{padding:80px 0}
+.section-header{text-align:center;margin-bottom:48px}
+.section-tag{display:inline-block;font-family:var(--font-mono);font-size:.75rem;color:var(--neon-sound);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
+.section-tag::before{content:'< '}
+.section-tag::after{content:' />'}
+.section-title{font-family:var(--font-display);font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:700;margin-bottom:16px}
+.section-desc{color:var(--text-secondary);font-size:1rem;max-width:600px;margin:0 auto;line-height:1.6}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:16px}
+.faq-item{background:var(--bg-card);border:1px solid rgba(255,255,255,0.05);border-radius:12px;overflow:hidden;transition:all .3s}
+.faq-item:hover{border-color:rgba(0,243,255,0.15)}
+.faq-question{padding:20px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none}
+.faq-question h3{font-size:1rem;font-weight:600;line-height:1.4;flex:1}
+.faq-question .faq-icon{font-size:.8rem;color:var(--neon-cyan);transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease}
+.faq-item.open .faq-answer{max-height:600px;padding:0 24px 20px}
+.faq-answer p{color:var(--text-secondary);line-height:1.7;margin-bottom:8px;font-size:.92rem}
+.faq-answer ul{list-style:none;padding:0}
+.faq-answer li{color:var(--text-secondary);line-height:1.7;margin-bottom:6px;padding-left:20px;position:relative;font-size:.92rem}
+.faq-answer li::before{content:'\25B8';position:absolute;left:0;color:var(--neon-cyan)}
+.faq-answer code{font-family:var(--font-mono);font-size:.85rem;background:rgba(0,243,255,0.08);padding:2px 8px;border-radius:4px;color:var(--neon-cyan)}
+.faq-answer strong{color:var(--text-primary)}
+
+/* Guide Steps */
+.guide-steps{display:flex;flex-direction:column;gap:28px}
+.guide-step{display:flex;gap:20px;align-items:flex-start}
+.guide-step .step-number{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:var(--gradient-sound);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:1.1rem;box-shadow:0 0 15px rgba(255,107,53,0.3)}
+.guide-step .step-content{flex:1;padding-top:8px}
+.guide-step .step-content h3{font-size:1.1rem;margin-bottom:8px}
+.guide-step .step-content p{color:var(--text-secondary);line-height:1.7;margin-bottom:6px;font-size:.92rem}
+.guide-step .step-content ul{list-style:none;padding:0}
+.guide-step .step-content li{color:var(--text-secondary);line-height:1.7;margin-bottom:4px;padding-left:20px;position:relative;font-size:.92rem}
+.guide-step .step-content li::before{content:'\25B8';position:absolute;left:0;color:var(--neon-sound)}
+.guide-step .step-content code{font-family:var(--font-mono);font-size:.85rem;background:rgba(255,107,53,0.1);padding:2px 8px;border-radius:4px;color:var(--neon-sound)}
+
+/* Features Grid */
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:600px){.features-grid{grid-template-columns:1fr}}
+.feature-card{background:var(--bg-card);border:1px solid rgba(255,255,255,0.05);border-radius:14px;padding:28px 24px;transition:all .3s}
+.feature-card:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,107,53,0.2)}
+.feature-card .feat-icon{font-size:2rem;margin-bottom:12px;display:block}
+.feature-card h4{font-family:var(--font-display);font-size:.85rem;margin-bottom:8px;letter-spacing:1px;color:var(--neon-cyan)}
+.feature-card p{color:var(--text-secondary);font-size:.85rem;line-height:1.6}
+
+/* Contact */
+.contact-card{background:var(--bg-card);border:1px solid rgba(255,107,53,0.15);border-radius:16px;padding:40px;text-align:center;max-width:500px;margin:0 auto}
+.contact-card .contact-icon{font-size:3rem;margin-bottom:16px;display:block}
+.contact-card h3{font-size:1.2rem;margin-bottom:8px}
+.contact-card p{color:var(--text-secondary);margin-bottom:20px;line-height:1.6}
+.contact-card .contact-email{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.3);border-radius:8px;font-family:var(--font-mono);font-size:.9rem;color:var(--neon-sound);transition:all .3s}
+.contact-card .contact-email:hover{background:rgba(255,107,53,0.2);box-shadow:0 0 20px rgba(255,107,53,0.3)}
+
+/* App Info */
+.app-info-bar{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,107,53,0.1);border-bottom:1px solid rgba(255,107,53,0.1);padding:36px 0}
+.app-info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+@media(max-width:600px){.app-info-grid{grid-template-columns:repeat(2,1fr);gap:24px}}
+.app-info-item .info-label{color:var(--text-secondary);font-size:.75rem;font-family:var(--font-mono);margin-bottom:8px}
+.app-info-item .info-value{font-size:1rem;font-weight:600}
+
+/* Footer */
+footer{border-top:1px solid rgba(255,255,255,0.05);padding:48px 0 32px;text-align:center}
+footer .footer-logo{font-family:var(--font-display);font-size:1rem;margin-bottom:16px;background:var(--gradient-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+footer .footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:24px;flex-wrap:wrap}
+footer .footer-links a{color:var(--text-secondary);font-size:.85rem}
+footer .footer-copy{color:var(--text-secondary);font-size:.75rem;font-family:var(--font-mono)}
+.back-to-top{position:fixed;bottom:32px;right:32px;width:44px;height:44px;background:rgba(255,107,53,0.15);border:1px solid rgba(255,107,53,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--neon-sound);font-size:1.2rem;cursor:pointer;z-index:50;opacity:0;visibility:hidden;transition:all .3s}
+.back-to-top.visible{opacity:1;visibility:visible}
+.back-to-top:hover{background:rgba(255,107,53,0.3);box-shadow:0 0 20px rgba(255,107,53,0.4);transform:translateY(-3px)}
+.version-notice{background:rgba(255,107,53,0.05);border:1px solid rgba(255,107,53,0.1);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:12px;margin-bottom:32px;font-size:.85rem}
+.version-notice .notice-icon{font-size:1.5rem}
+.version-notice p{color:var(--text-secondary);line-height:1.5}
+.version-notice strong{color:var(--neon-cyan)}
+
+</style>
+</head>
+<body>
+<canvas id="stars-canvas"></canvas>
+<div class="grid-overlay"></div>
+
+<!-- Nav -->
+<nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+        <a href="https://dragonknightbeat.com" class="nav-logo"><span class="emoji">&#x1F409;</span> DRAGONKNIGHTBEAT</a>
+        <button class="nav-toggle" id="navToggle">&#9776;</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="https://dragonknightbeat.com">首页</a></li>
+            <li><a href="#faq">常见问题</a></li>
+            <li><a href="#guide">使用指南</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content container">
+        <div class="hero-badge">&#x1F50A; AUDIOTESTLAB SUPPORT</div>
+        <h1 class="hero-title"><span class="sound-gradient">AudioTestLab</span><br>技术支持</h1>
+        <p class="hero-subtitle">音频信号发生器与声音分析工具 · 官方技术支持中心<br>找到常见问题的解答，获取使用指南，或联系我们获取帮助</p>
+        <div class="hero-cta">
+            <a href="#faq" class="btn-primary">常见问题 &#x2192;</a>
+            <a href="#guide" class="btn-secondary">使用指南</a>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <span>SCROLL</span>
+        <div class="line"></div>
+    </div>
+</section>
+
+<!-- App Info -->
+<section class="app-info-bar">
+    <div class="container">
+        <div class="app-info-grid">
+            <div class="app-info-item">
+                <div class="info-label">最新版本</div>
+                <div class="info-value" style="color:var(--neon-cyan)">1.0</div>
+            </div>
+            <div class="app-info-item">
+                <div class="info-label">平台</div>
+                <div class="info-value" style="color:var(--neon-sound)">iOS / iPadOS</div>
+            </div>
+            <div class="app-info-item">
+                <div class="info-label">最低系统</div>
+                <div class="info-value">iOS 17.0</div>
+            </div>
+            <div class="app-info-item">
+                <div class="info-label">类别</div>
+                <div class="info-value" style="color:var(--neon-green)">工具 / 音频</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section id="features">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Features</div>
+            <h2 class="section-title">功能概览</h2>
+            <p class="section-desc">AudioTestLab 为你带来的核心功能</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feat-icon">&#x1F50A;</span>
+                <h4>信号发生器</h4>
+                <p>6种波形：正弦波、方波、三角波、锯齿波、白噪声、粉红噪声。频率范围 20Hz-20kHz。</p>
+            </div>
+            <div class="feature-card">
+                <span class="feat-icon">&#x1F4CA;</span>
+                <h4>实时频谱分析</h4>
+                <p>FFT频谱分析，实时显示频谱分布，频谱质心、基频检测等高级分析功能。</p>
+            </div>
+            <div class="feature-card">
+                <span class="feat-icon">&#x1F4DD;</span>
+                <h4>声音测量仪表</h4>
+                <p>声压级(dB SPL)、响度(sone/phon)、尖锐度(acum)实时测量，多维度声音特性分析。</p>
+            </div>
+            <div class="feature-card">
+                <span class="feat-icon">&#x1F31C;</span>
+                <h4>睡眠监测</h4>
+                <p>呼噜声自动检测，夜间低频能量分析，生成详细的睡眠质量报告和建议。</p>
+            </div>
+            <div class="feature-card">
+                <span class="feat-icon">&#x1F3B6;</span>
+                <h4>波形与频谱图</h4>
+                <p>实时波形显示+频谱柱状图，直观可视化音频信号的时域和频域特征。</p>
+            </div>
+            <div class="feature-card">
+                <span class="feat-icon">&#x1F3A8;</span>
+                <h4>赛博朋克设计</h4>
+                <p>霓虹橙青主题配色，沉浸式深色界面，专业工具美学与功能完美融合。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+<div class="container">
+<div class="section-header">
+<div class="section-tag">FAQ</div>
+<h2 class="section-title">常见问题</h2>
+<p class="section-desc">快速解答你可能遇到的疑问</p>
+</div>
+<div class="faq-list">
+
+<div class="faq-item open">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F4F1; 如何下载 AudioTestLab？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>AudioTestLab 已在 App Store 上架，你可以：</p>
+<ul>
+<li><strong>在 App Store 搜索</strong> "AudioTestLab" 或 "音频测试实验室"</li>
+<li><strong>通过链接</strong>：在 App Store 中打开搜索，输入 AudioTestLab</li>
+</ul>
+<p>支持 iPhone 和 iPad，最低系统要求 iOS 17.0。</p>
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F3A4; 为什么麦克风没有声音？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>如果你在模拟器上运行，请注意：</p>
+<ul>
+<li>iPhone/iPad 模拟器 <strong>不支持麦克风</strong>，请使用真机测试</li>
+<li>第一次使用麦克风时，系统会弹出权限请求，请点击「允许」</li>
+<li>如果误点了拒绝，请前往：系统设置 &gt; AudioTestLab &gt; 麦克风，开启权限</li>
+</ul>
+<p>真机上首次使用需要先授予麦克风权限才能开始声音分析。</p>
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F50A; dB SPL 测量准确吗？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>AudioTestLab 的 dB SPL 值为估算值，<strong>未经设备校准</strong>。</p>
+<ul>
+<li>使用归一化 dBFS → dB SPL 映射公式，提供相对准确的声压级参考</li>
+<li>不同 iPhone/iPad 型号的麦克风灵敏度不同，读数会有差异</li>
+<li>如需精确测量，建议使用专业的声级计进行交叉校准</li>
+<li>应用内的读数适合相对比较和环境声音定性分析</li>
+</ul>
+<p>界面中已标注 "* dB SPL 为估算值，未经过设备校准" 提示。</p>
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F3B5; 支持哪些波形信号？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>信号发生器支持 6 种波形类型：</p>
+<ul>
+<li><strong>正弦波</strong> — 纯净单频音，适合频率响应测试</li>
+<li><strong>方波</strong> — 含奇次谐波，适合响应速度测试</li>
+<li><strong>三角波</strong> — 柔和谐波，适合信号处理</li>
+<li><strong>锯齿波</strong> — 丰富谐波，适合失真测试</li>
+<li><strong>白噪声</strong> — 全频段均匀能量</li>
+<li><strong>粉红噪声</strong> — 每倍频程等能量，符合人耳感知</li>
+</ul>
+<p>频率范围 20Hz-20kHz，幅度 0%-100% 可调。</p>
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F31C; 睡眠监测是如何工作的？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>睡眠监测功能通过麦克风实时分析环境声音，自动检测呼噜声：</p>
+<ul>
+<li>每秒进行一次频谱分析</li>
+<li>检测低频（100-400Hz）能量占比判断呼噜</li>
+<li>连续 3 秒以上检测到呼噜模式才记为一次呼噜事件</li>
+<li>监测结束后生成完整报告：呼噜次数、总时长、最大响度、质量评分</li>
+<li>质量评分基于呼噜时间占比、响度、尖锐度和频率综合计算</li>
+</ul>
+<p>建议将 iPhone 放置在床头柜上，靠近头部位置以获得最佳检测效果。</p>
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F4C8; 睡眠报告中的质量评分如何计算？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>质量评分范围为 0-100，基于以下因素综合计算：</p>
+<ul>
+<li><strong>呼噜时间占比</strong>（主要扣分项）：占比越高，扣分越多</li>
+<li><strong>呼噜响度</strong>：超过 40dB 开始扣分，越响扣分越多</li>
+<li><strong>呼噜尖锐度</strong>：尖锐度 > 1.5 acum 扣分</li>
+<li><strong>呼噜频率</strong>：每小时超过 10 次扣分</li>
+<li><strong>不打呼噜</strong>：默认 95 分（优秀）</li>
+</ul>
+<p>评分等级：90+ 优秀 | 75-89 良好 | 50-74 一般 | 30-49 较差 | &lt;30 很差</p>
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<h3>&#x1F4F1; 有录制指示器吗？录音时如何知道 App 在录制？</h3>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-answer">
+<p>当 AudioTestLab 正在使用麦克风录音时：</p>
+<ul>
+<li>iOS 系统会在状态栏显示 <strong>橙色圆点</strong>（麦克风使用指示器）</li>
+<li>App 内会在屏幕顶部显示 <strong>红色录制指示条</strong>，包含：</li>
+<li style="padding-left:40px;">&#x25B8; 红色脉冲圆点动画</li>
+<li style="padding-left:40px;">文字提示：如"● 录音中 - 声音分析仪"或"● 录音中 - 睡眠监测"</li>
+<li>该指示条在录音期间持续显示，无法关闭或隐藏</li>
+</ul>
+<p>如果你看到红色指示条，说明麦克风正在工作；如果不在录音状态，指示条自动消失。</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- Guide -->
+<section id="guide">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Guide</div>
+            <h2 class="section-title">使用指南</h2>
+            <p class="section-desc">快速上手 AudioTestLab</p>
+        </div>
+        <div class="guide-steps">
+            <div class="guide-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>生成音频信号</h3>
+                    <p>在「信号发生器」标签页，可以生成各种测试音频信号</p>
+                    <ul>
+                        <li>选择波形类型：正弦波 / 方波 / 三角波 / 锯齿波 / 白噪声 / 粉红噪声</li>
+                        <li>拖动滑块调节频率（20Hz-20kHz）和幅度（0%-100%）</li>
+                        <li>点击播放按钮开始播放，同时可看到实时波形和频谱分析</li>
+                        <li>播放时自动显示 dB SPL、频谱质心、尖锐度等测量数据</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="guide-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>分析环境声音</h3>
+                    <p>在「声音分析仪」标签页，使用麦克风分析周围环境声音</p>
+                    <ul>
+                        <li>点击「开始分析」，授权麦克风权限后即进入分析模式</li>
+                        <li>实时显示波形图、频谱图和声压级仪表</li>
+                        <li>查看详细信息：瞬时/峰值/RMS dB、频谱质心、基频、响度等</li>
+                        <li>点击「停止分析」退出</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="guide-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>使用睡眠监测</h3>
+                    <p>在「睡眠监测」标签页，整夜监测呼噜声</p>
+                    <ul>
+                        <li>将设备放置在床头柜上，点击「开始监测」</li>
+                        <li>App 会持续分析环境声音，自动检测呼噜</li>
+                        <li>实时显示当前 dB 值、低频占比和呼噜状态</li>
+                        <li>监测结束后点击停止，生成完整的睡眠质量报告</li>
+                        <li>报告包含质量评分、统计数据和健康建议</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="guide-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>读取睡眠报告</h3>
+                    <p>睡眠监测结束后，应用会生成详细的睡眠报告</p>
+                    <ul>
+                        <li>质量评分（0-100）+ 评分等级</li>
+                        <li>监测时长、呼噜次数、总呼噜时长</li>
+                        <li>平均/最大呼噜响度、最长呼噜事件</li>
+                        <li>每小时趋势图：红色柱状图表示呼噜时长，紫色点表示呼噜次数</li>
+                        <li>个性化健康建议，指导改善睡眠质量</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">Contact</div>
+            <h2 class="section-title">联系我们</h2>
+            <p class="section-desc">遇到问题或建议？我们随时倾听</p>
+        </div>
+        <div class="contact-card">
+            <span class="contact-icon">&#x1F4E7;</span>
+            <h3>发送邮件</h3>
+            <p>发送你遇到的问题或功能建议，我们会在 24 小时内回复</p>
+            <a href="mailto:support@dragonknightbeat.com" class="contact-email">
+                &#x2709; support@dragonknightbeat.com
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-logo">&#x1F409; DRAGONKNIGHTBEAT</div>
+        <div class="footer-links">
+            <a href="https://dragonknightbeat.com">首页</a>
+            <a href="#faq">常见问题</a>
+            <a href="#guide">使用指南</a>
+            <a href="#contact">联系我们</a>
+        </div>
+        <div class="footer-copy">
+            &copy; 2026 DragonKnightBeat.com &middot; AudioTestLab 官方技术支持
+        </div>
+    </div>
+</footer>
+
+<div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#x2191;</div>
+
+<script>
+// Navbar scroll
+window.addEventListener('scroll',function(){
+    document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
+    var t=document.getElementById('backToTop');
+    if(t)t.classList.toggle('visible',window.scrollY>300)
+});
+document.getElementById('navToggle').addEventListener('click',function(){
+    document.getElementById('navLinks').classList.toggle('open')
+});
+
+// FAQ toggle
+function toggleFaq(el){var p=el.parentElement;p.classList.toggle('open')}
+document.querySelectorAll('.faq-item:not(.open) .faq-answer').forEach(function(a){a.style.maxHeight='0'});
+
+// Stars
+var canvas=document.getElementById('stars-canvas'),ctx=canvas.getContext('2d'),stars=[];
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+resizeCanvas();window.addEventListener('resize',resizeCanvas);
+function Star(){this.reset=true;this.reset(true)}
+Star.prototype.reset=function(init){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.size=Math.random()*2;this.speedX=(Math.random()-0.5)*0.3;this.speedY=(Math.random()-0.5)*0.3;this.opacity=Math.random()*0.8+0.2;this.pulseSpeed=Math.random()*0.02+0.005;this.pulseOffset=Math.random()*Math.PI*2;this.color=['rgba(255,255,255,','rgba(0,243,255,','rgba(157,0,255,'][Math.floor(Math.random()*3)]};
+Star.prototype.update=function(t){this.x+=this.speedX;this.y+=this.speedY;if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();this.currentOpacity=this.opacity*(0.5+0.5*Math.sin(t*this.pulseSpeed+this.pulseOffset))};
+Star.prototype.draw=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=this.color+this.currentOpacity+')';ctx.fill()};
+for(var i=0;i<200;i++)stars.push(new Star());
+var animTime=0;
+function animateStars(){ctx.clearRect(0,0,canvas.width,canvas.height);animTime+=0.016;stars.forEach(function(s){s.update(animTime);s.draw()});requestAnimationFrame(animateStars)}
+animateStars();
+</script>
+</body>
+</html>
