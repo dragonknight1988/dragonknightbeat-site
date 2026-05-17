@@ -1,0 +1,29 @@
+{
+  "date": "2026-05-17",
+  "contents": [
+    {
+      "id": "prog-2026-05-17",
+      "date": "2026-05-17",
+      "title": "Swift 闭包捕获列表",
+      "summary": "闭包可以捕获并存储对外部常量和变量的引用。捕获列表定义了闭包体内引用变量的规则，是避免循环引用和意外行为的关键。",
+      "difficulty": "中级",
+      "concept": "在 Swift 中，闭包是引用类型，它们可以捕获创建它们的上下文中的常量和变量。捕获列表是写在闭包参数列表之前的方括号内的表达式，用于指定闭包如何捕获变量。\n\n默认情况下，闭包会以强引用的方式捕获外部变量。这意味着如果闭包捕获了 self 或某个对象的属性，可能会导致循环引用。捕获列表可以让你指定捕获为 weak 或 unowned 引用，从而打破循环引用。\n\n捕获列表的语法：[weak self, unowned delegate] 等。在捕获列表中声明的变量，在闭包体内使用的是捕获时的值（值捕获），而非引用捕获。",
+      "codeExample": {
+        "language": "Swift",
+        "code": "class NetworkManager {\n    var onComplete: (() -> Void)?\n    \n    func fetchData() {\n        // 使用 weak 捕获避免循环引用\n        DispatchQueue.global().async { [weak self] in\n            guard let self = self else { return }\n            print(\"数据加载完成\")\n            self.onComplete?()\n        }\n    }\n    \n    func captureExample() {\n        var x = 10\n        let closure = { [x] in\n            print(\"x 的值: \\(x)\")  // 输出 10，即使之后 x 改变\n        }\n        x = 20\n        closure()  // 仍然输出 10\n    }\n}",
+        "explanation": "第一个例子中，[weak self] 确保闭包不会强持有 self，从而避免循环引用。第二个例子中，[x] 是值捕获，闭包在创建时捕获了 x 的值（10），而不是引用。即使后续 x 被修改为 20，闭包内的 x 仍然是 10。"
+      },
+      "keyPoints": [
+        "闭包默认强引用捕获外部变量，可能导致循环引用",
+        "捕获列表使用 [weak self] 打破循环引用，配合 guard let self = self 安全使用",
+        "值捕获 [x] 在闭包创建时捕获变量的快照，而非引用",
+        "unowned 引用假设被引用对象永远不会为 nil，使用需谨慎",
+        "多个捕获项用逗号分隔：[weak self, unowned delegate]"
+      ],
+      "exercise": {
+        "description": "写一个函数 createIncrementer，它接收一个步进值 step，返回一个闭包。每次调用闭包时，返回的值增加 step。注意思考：如何用捕获列表控制闭包内的计数值？",
+        "hint": "用 var total = 0 作为外部变量，闭包捕获 total 的引用（默认），每次调用时 total += step，然后 return total。捕获列表可以用来捕获初始值快照。"
+      }
+    }
+  ]
+}
