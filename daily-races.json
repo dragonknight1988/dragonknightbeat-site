@@ -431,19 +431,19 @@
     {
       "id": "race-t004",
       "category": "trail",
-      "name": "2026 宁海越野赛",
-      "date": "2026-04-17",
-      "endDate": "04-19",
+      "name": "2026 宁海越野赛（秋季赛）",
+      "date": "2026-11-14",
+      "endDate": "11-15",
       "location": "浙江·宁海",
-      "status": "finished",
+      "status": "upcoming",
       "registration": {
-        "status": "closed",
+        "status": "not_open",
         "startDate": null,
         "endDate": null,
         "website": null,
-        "note": "已完赛，2027年预计2027年初开放"
+        "note": "预计2026年中开放秋季赛报名"
       },
-      "description": "宁海越野赛是UTMB世界系列赛成员赛事之一。赛道穿越宁海国家登山健身步道，设105公里、60公里、25公里等项目。",
+      "description": "宁海越野赛秋季赛延续春季赛的经典赛道，穿越宁海国家登山健身步道，设105公里、60公里、25公里等项目。",
       "highlights": [
         "UTMB世界系列赛成员",
         "国家登山步道",
