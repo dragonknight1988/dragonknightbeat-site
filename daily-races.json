@@ -352,6 +352,177 @@
       ],
       "website": null,
       "source": "CrossFit中国"
+    },
+    {
+      "id": "race-t001",
+      "category": "trail",
+      "name": "2026 TNF100 北京越野跑挑战赛",
+      "date": "2026-05-09",
+      "endDate": "05-10",
+      "location": "北京·海淀",
+      "status": "finished",
+      "registration": {
+        "status": "closed",
+        "startDate": null,
+        "endDate": null,
+        "website": null,
+        "note": "已完赛，2027年预计2027年初开放报名"
+      },
+      "description": "TNF100是全球知名越野跑赛事系列，北京站是TNF100中国首站。设100公里、50公里、25公里等项目，赛道穿越北京西山风景区。",
+      "highlights": [
+        "中国最知名越野赛之一",
+        "100km/50km/25km",
+        "西山赛道",
+        "TNF系列赛"
+      ],
+      "website": null,
+      "source": "The North Face"
+    },
+    {
+      "id": "race-t002",
+      "category": "trail",
+      "name": "2026 崇礼168超级越野赛",
+      "date": "2026-07-10",
+      "endDate": "07-13",
+      "location": "河北·张家口·崇礼",
+      "status": "open_registration",
+      "registration": {
+        "status": "open",
+        "startDate": null,
+        "endDate": null,
+        "website": null,
+        "note": "多组别可选，报名进行中"
+      },
+      "description": "崇礼168超级越野赛是国内规模最大的越野赛之一，设有168公里、100公里、70公里、50公里、30公里等多个组别，赛道穿越崇礼冬奥赛区。",
+      "highlights": [
+        "国内最大越野赛",
+        "冬奥赛区赛道",
+        "多组别可选",
+        "168/100/70/50/30km"
+      ],
+      "website": null,
+      "source": "三夫赛事"
+    },
+    {
+      "id": "race-t003",
+      "category": "trail",
+      "name": "2026 柴古唐斯括苍越野赛",
+      "date": "2026-10-24",
+      "endDate": "10-26",
+      "location": "浙江·临海",
+      "status": "upcoming",
+      "registration": {
+        "status": "not_open",
+        "startDate": null,
+        "endDate": null,
+        "website": null,
+        "note": "关注官方公众号获取报名信息"
+      },
+      "description": "柴古唐斯括苍越野赛被誉为中国最虐越野赛之一，以高难度赛道和极致虐爽体验闻名。设115公里、85公里、55公里等项目。",
+      "highlights": [
+        "中国最虐越野赛",
+        "括苍山",
+        "泥巴赛道",
+        "高口碑赛事"
+      ],
+      "website": null,
+      "source": "柴古唐斯组委会"
+    },
+    {
+      "id": "race-t004",
+      "category": "trail",
+      "name": "2026 宁海越野赛",
+      "date": "2026-04-17",
+      "endDate": "04-19",
+      "location": "浙江·宁海",
+      "status": "finished",
+      "registration": {
+        "status": "closed",
+        "startDate": null,
+        "endDate": null,
+        "website": null,
+        "note": "已完赛，2027年预计2027年初开放"
+      },
+      "description": "宁海越野赛是UTMB世界系列赛成员赛事之一。赛道穿越宁海国家登山健身步道，设105公里、60公里、25公里等项目。",
+      "highlights": [
+        "UTMB世界系列赛成员",
+        "国家登山步道",
+        "江南山水"
+      ],
+      "website": null,
+      "source": "宁海越野赛组委会"
+    },
+    {
+      "id": "race-t005",
+      "category": "trail",
+      "name": "2026 广州100越野赛",
+      "date": "2026-12-05",
+      "endDate": "12-06",
+      "location": "广州",
+      "status": "upcoming",
+      "registration": {
+        "status": "not_open",
+        "startDate": null,
+        "endDate": null,
+        "website": null,
+        "note": "预计年中开放报名"
+      },
+      "description": "广州100越野赛是国内城市越野跑赛事，赛道穿越广州山野步道，设100公里、60公里、30公里等组别。",
+      "highlights": [
+        "城市越野",
+        "广州山野",
+        "100/60/30km"
+      ],
+      "website": null,
+      "source": "广州100组委会"
+    },
+    {
+      "id": "race-t006",
+      "category": "trail",
+      "name": "2026 莫干山越野赛",
+      "date": "2026-11-07",
+      "endDate": "11-08",
+      "location": "浙江·莫干山",
+      "status": "upcoming",
+      "registration": {
+        "status": "not_open",
+        "startDate": null,
+        "endDate": null,
+        "website": null,
+        "note": "预计2026年中开放报名"
+      },
+      "description": "莫干山越野赛赛道穿越莫干山国家级风景名胜区，以竹林、古道、秋色为特色。设70公里、35公里等项目。",
+      "highlights": [
+        "竹林赛道",
+        "秋色古道",
+        "莫干山风景区"
+      ],
+      "website": null,
+      "source": "莫干山越野赛组委会"
+    },
+    {
+      "id": "race-t007",
+      "category": "trail",
+      "name": "2026 全国越野跑锦标赛",
+      "date": "2026-03-15",
+      "endDate": "03-16",
+      "location": "待定",
+      "status": "finished",
+      "registration": {
+        "status": "closed",
+        "startDate": null,
+        "endDate": null,
+        "website": null,
+        "note": "已完赛"
+      },
+      "description": "全国越野跑锦标赛是中国田径协会主办的官方越野跑赛事，各省市代表队参赛。",
+      "highlights": [
+        "田协官方赛事",
+        "全国锦标赛",
+        "各省代表队"
+      ],
+      "website": null,
+      "source": "中国田径协会"
     }
   ]
 }
