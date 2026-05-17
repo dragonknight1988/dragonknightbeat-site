@@ -1,0 +1,178 @@
+{
+  "date": "2026-05-17",
+  "briefing": {
+    "date": "2026-05-17",
+    "quote": "技术的每一次突破，都在为下个时代铺路。每天三分钟，掌握科技最前沿。",
+    "sections": [
+      {
+        "id": "openclaw",
+        "title": "OpenClaw 最新动态",
+        "icon": "🦞",
+        "articles": [
+          {
+            "id": "brief-001",
+            "title": "OpenClaw v2026.4.14 发布：更稳定的定时任务系统",
+            "summary": "新版本优化了 cron 调度器，支持更精确的定时任务执行和更丰富的交付选项。",
+            "detail": "OpenClaw 最新版本 v2026.4.14 带来了多项重要更新：cron 调度器全面升级，支持更稳定的任务排队和重试机制；新增 --account 选项，支持多账户消息分发；网关 Gateway 架构优化，连接稳定性大幅提升。本次更新还修复了若干边缘情况下的 400 错误和超时问题。",
+            "source": "OpenClaw 官方"
+          },
+          {
+            "id": "brief-002",
+            "title": "ClawHub 技能市场突破 1000+ 技能",
+            "summary": "ClawHub 社区增长迅速，开发者可以搜索、安装和发布自定义技能。",
+            "detail": "ClawHub 技能市场已收录超过 1000 个社区技能，涵盖天气查询、GitHub 操作、飞书文档、1Password 集成等热门场景。开发者可以通过 clawhub CLI 一键搜索和安装，也可以将自己的技能打包发布到市场。技能生态的繁荣极大扩展了 AI Agent 的能力边界。",
+            "source": "ClawHub"
+          },
+          {
+            "id": "brief-003",
+            "title": "AGENTS.md 2.0：更智能的会话管理策略",
+            "summary": "新的 AGENTS.md 示例提供了分组聊天的行为准则和心跳策略的最佳实践。",
+            "detail": "OpenClaw 社区分享了更新的 AGENTS.md 模板，重点增加了群聊场景下的智能化响应策略：何时参与对话、何时保持静默、如何自然地使用表情反应。同时还优化了心跳检查的工作流，支持任务批量和轮换调度，减少不必要的 API 调用消耗。",
+            "source": "OpenClaw 社区"
+          }
+        ]
+      },
+      {
+        "id": "skills",
+        "title": "热门技能推荐",
+        "icon": "🧩",
+        "articles": [
+          {
+            "id": "brief-010",
+            "title": "Weather skill：跨平台天气查询利器",
+            "summary": "无需 API Key，通过 wttr.in 和 Open-Meteo 即可获取实时天气和预报。",
+            "detail": "Weather skill 是 ClawHub 上下载量最高的技能之一。它支持全球任意城市的实时天气查询和 7 日预报，无需任何 API Key 配置。底层调用 wttr.in 和 Open-Meteo 的免费 API，覆盖了国内外绝大多数城市的天气数据。适合需要每日天气简报的用户。",
+            "source": "ClawHub"
+          },
+          {
+            "id": "brief-011",
+            "title": "SVG Draw skill：AI 生成自定义插画",
+            "summary": "无需图像库，通过 SVG 文本直接生成高质量 PNG 图片，适合 App 图标和插画。",
+            "detail": "SVG Draw skill 是免费开源技能，通过系统 rsvg-convert 将 SVG 矢量图渲染为 PNG。支持渐变、滤镜、动画等高级 SVG 特性。已在多个场景验证：App 图标生成、吉祥物设计、数据可视化。配合 AI 模型可以快速生成定制化视觉内容，无需设计师介入。",
+            "source": "ClawHub"
+          },
+          {
+            "id": "brief-012",
+            "title": "GitHub Issues 自动化：Issue → 修复 → PR 全流程",
+            "summary": "AI Agent 自动识别 GitHub Issue，生成修复代码并提交 Pull Request。",
+            "detail": "gh-issues skill 实现了 Issue 处理的完整自动化闭环：自动扫描仓库中的 Open Issue → 分析问题描述 → 定位相关代码 → 生成修复方案 → 创建分支 → 提交 PR。支持按标签筛选、里程碑追踪、多仓库协作。大幅提升开源项目维护效率。",
+            "source": "ClawHub"
+          }
+        ]
+      },
+      {
+        "id": "ios_apps",
+        "title": "热门 iOS 应用动态",
+        "icon": "📲",
+        "articles": [
+          {
+            "id": "brief-020",
+            "title": "SwiftUI 6 带来全新动画框架",
+            "summary": "WWDC 2025 后 SwiftUI 迎来重大更新，PhaseAnimator 和 KeyframeAnimator 让复杂动画更易实现。",
+            "detail": "SwiftUI 6 引入了 PhaseAnimator 和 KeyframeAnimator 两个全新动画框架。PhaseAnimator 支持多阶段动画序列，适合页面切换和加载动画；KeyframeAnimator 提供了类似 CSS Keyframe 的精确控制能力。此外，SwiftData 也获得关系查询和批量更新优化，进一步巩固了 SwiftUI 在 iOS 开发中的主导地位。",
+            "source": "WWDC 2025"
+          },
+          {
+            "id": "brief-021",
+            "title": "智能家居 App 接入 Matter 协议成标配",
+            "summary": "iOS 智能家居应用加速接入 Matter 标准协议，跨平台设备互操作成为现实。",
+            "detail": "主流智能家居 App 持续拥抱 Matter 协议，实现跨品牌、跨平台的统一控制：灯光、门锁、传感器、家电等品类覆盖越来越全。HomeKit 框架也持续升级，新增对 Matter 1.3 标准的支持，包括能源管理设备和智能窗帘等新品类。用户不再需要为每个品牌安装独立 App。",
+            "source": "科技媒体综合报道"
+          }
+        ]
+      },
+      {
+        "id": "gadgets",
+        "title": "科技新锐",
+        "icon": "🔬",
+        "articles": [
+          {
+            "id": "brief-030",
+            "title": "AI 编程助手进入「自主编码」阶段",
+            "summary": "最新 AI 编程工具已支持理解复杂需求并自动生成完整的生产级代码。",
+            "detail": "AI 编程助手正在从「补全代码」进化到「自主编码」阶段。最新一代工具可以理解自然语言描述的产品需求，自动设计架构、拆分模块、编写测试用例、甚至部署上线。研究表明使用 AI 编程助手的团队开发效率提升 3-5 倍，Bug 率降低 40%。但同时也引发了对代码质量和安全性的新讨论。",
+            "source": "TechCrunch"
+          },
+          {
+            "id": "brief-031",
+            "title": "RISC-V 芯片生态加速成熟",
+            "summary": "开源指令集架构 RISC-V 在 AI 加速和 IoT 领域获得重大突破。",
+            "detail": "RISC-V 开源芯片架构在 2025 年迎来快速发展：多家厂商推出了面向 AI 推理的高性能 RISC-V 处理器，性能已达到 ARM 中端水平；IoT 领域 RISC-V 凭借低功耗和灵活性优势快速渗透；中国厂商在 RISC-V 生态中扮演重要角色，推出了多款面向特定场景的定制芯片。开源硬件正在重塑半导体行业格局。",
+            "source": "半导体行业观察"
+          }
+        ]
+      }
+    ]
+  },
+  "hotProjects": {
+    "date": "2026-05-17",
+    "quote": "风口不是追来的，是看准趋势提前布局的。",
+    "summary": "今日市场热度集中 AI 应用层，多模态大模型落地加速，智能硬件赛道迎来新一轮融资热潮。",
+    "projects": [
+      {
+        "id": "hot-001",
+        "rank": 1,
+        "name": "多模态 AI Agent 应用",
+        "heat": "🔥🔥🔥🔥🔥",
+        "heatLevel": 5,
+        "oneLiner": "大模型从「对话」升级到「能看、能听、能操作」，AI Agent 进入实用化阶段。",
+        "whyHot": "多家大模型厂商推出支持多模态交互的 Agent 平台，可理解图片、视频和语音，并直接操作软件界面。资本持续涌入，头部 AI 创业公司新一轮融资均超亿美元。企业级应用场景（客服、数据分析、自动化办公）率先落地。",
+        "highlights": [
+          "OpenAI、Google、Anthropic 相继推出多模态 Agent 平台",
+          "国内智谱 AI、百川智能等发布对标产品，支持中文场景优化",
+          "SaaS 集成 AI Agent 成新趋势，Salesforce、Notion 均已接入",
+          "AI Agent 开发框架（LangChain、CrewAI）月下载量突破千万"
+        ],
+        "riskTip": "竞争激烈，技术迭代快，初创企业需找准垂直场景而非做通用平台。"
+      },
+      {
+        "id": "hot-002",
+        "rank": 2,
+        "name": "智能穿戴设备 2.0",
+        "heat": "🔥🔥🔥🔥",
+        "heatLevel": 4,
+        "oneLiner": "AI 加持的智能眼镜和戒指成为新一代人机交互入口，健康监测功能持续进化。",
+        "whyHot": "Meta Ray-Ban、Apple Vision Pro 推动 AI 眼镜走向大众，轻量化设计让全天佩戴成为可能。智能戒指市场增长迅速，无感健康监测（血氧、心率、睡眠、体温）成为新刚需。多家手机厂商入局智能穿戴生态，市场教育成本大幅降低。",
+        "highlights": [
+          "Meta Ray-Ban 销量突破 200 万副，成最畅销 AI 眼镜",
+          "智能戒指赛道融资同比增长 150%，健康监测精度获 FDA 认证",
+          "Apple Watch 新增血压趋势监测和睡眠呼吸暂停检测",
+          "华为、小米推出 AI 眼镜产品线，支持实时翻译和导航"
+        ],
+        "riskTip": "隐私和数据安全仍是消费者核心顾虑，需在产品设计中优先保护。"
+      },
+      {
+        "id": "hot-003",
+        "rank": 3,
+        "name": "AI 编程与低代码平台",
+        "heat": "🔥🔥🔥🔥",
+        "heatLevel": 4,
+        "oneLiner": "AI 让软件开发门槛大幅降低，自然语言描述即可生成完整应用。",
+        "whyHot": "Cursor、Windsurf、Replit 等 AI 编程工具月活高速增长，Github Copilot 用户突破 1000 万。低代码/无代码平台引入 AI 能力后，非技术人员也能通过对话式操作搭建业务应用。企业数字化需求旺盛，推动 AI 辅助开发市场持续扩大。",
+        "highlights": [
+          "Github Copilot 升级为 Agent 模式，可自主修复 Bug 并优化代码",
+          "Replit Agent 支持自然语言创建完整 Web 应用，无需写代码",
+          "Bolt.new 等 AI 网站生成工具引爆开发社区",
+          "低代码平台 Mendix、OutSystems 集成 AI 助手，开发效率提升 5 倍"
+        ],
+        "riskTip": "AI 生成代码的质量和安全审计仍是挑战，企业需建立完善的代码审查流程。"
+      },
+      {
+        "id": "hot-004",
+        "rank": 4,
+        "name": "合成数据与 AI 训练",
+        "heat": "🔥🔥🔥",
+        "heatLevel": 3,
+        "oneLiner": "真实数据枯竭，合成数据成为大模型训练的新燃料。",
+        "whyHot": "高质量训练数据日益稀缺，合成数据技术快速成熟。多家创业公司推出面向垂直行业（医疗、金融、自动驾驶）的合成数据平台。研究表明，混合真实数据与合成数据的训练效果优于纯真实数据。数据隐私法规趋严推动合成数据需求增长。",
+        "highlights": [
+          "Gartner 预测 2030 年 AI 训练数据的 60% 将来自合成数据",
+          "英伟达发布 Cosmos 平台，可生成物理世界合成数据",
+          "医疗影像、金融交易等敏感领域合成数据需求快速增长",
+          "合成数据质量评估标准正在建立，数据多样性问题得到改善"
+        ],
+        "riskTip": "数据分布偏移可能导致模型在真实场景下表现下降，需持续验证。"
+      }
+    ]
+  }
+}
