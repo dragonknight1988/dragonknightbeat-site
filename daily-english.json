@@ -1,181 +1,120 @@
 {
-  "date": "2026年5月17日 星期日",
-  "quote": {
-    "text": "The secret of getting ahead is getting started.",
-    "translation": "领先的秘诀就是开始行动。"
-  },
-  "vocabulary": [
-    {
-      "word": "acquisition",
-      "phonetic": "ˌækwɪˈzɪʃən",
-      "pos": "n.",
-      "definition": "收购；并购",
-      "example": "The startup's acquisition by the tech giant was valued at $2 billion.",
-      "translation": "这家初创公司被科技巨头收购，估值20亿美元。"
+  "date": "2026-05-18",
+  "content": {
+    "id": "en-2026-05-18",
+    "date": "2026-05-18",
+    "topic": "环境与可持续发展",
+    "quote": {
+      "quote": "The more clearly we can focus our attention on the wonders and realities of the universe about us, the less taste we shall have for destruction.",
+      "author": "Rachel Carson",
+      "translation": "我们越能清晰地关注我们周围宇宙的奇迹与现实，就越不会想要去破坏它。",
+      "explanation": "这句名言强调了认知与行为之间的关系。当我们真正理解和欣赏自然的美与价值时，就会自发地产生保护它的意愿，而不是去破坏。它常用于倡导环保教育、提升公众自然意识的场景。"
     },
-    {
-      "word": "leverage",
-      "phonetic": "ˈlevərɪdʒ",
-      "pos": "v.",
-      "definition": "利用；杠杆效应",
-      "example": "Companies leverage AI to streamline their supply chain operations.",
-      "translation": "公司利用AI来优化供应链运营。"
-    },
-    {
-      "word": "benchmark",
-      "phonetic": "ˈbentʃmɑːrk",
-      "pos": "n.",
-      "definition": "基准；标杆",
-      "example": "Revenue growth is the key benchmark for the company's performance.",
-      "translation": "营收增长是衡量公司业绩的关键基准。"
-    },
-    {
-      "word": "subsidiary",
-      "phonetic": "səbˈsɪdieri",
-      "pos": "n.",
-      "definition": "子公司",
-      "example": "The company established a subsidiary in Singapore to expand into Southeast Asia.",
-      "translation": "该公司在新加坡设立了子公司，以拓展东南亚市场。"
-    },
-    {
-      "word": "compliance",
-      "phonetic": "kəmˈplaɪəns",
-      "pos": "n.",
-      "definition": "合规；遵守",
-      "example": "All employees must undergo compliance training annually.",
-      "translation": "所有员工必须每年接受合规培训。"
-    },
-    {
-      "word": "liquidity",
-      "phonetic": "lɪˈkwɪdəti",
-      "pos": "n.",
-      "definition": "流动性",
-      "example": "The company maintains strong liquidity to weather market downturns.",
-      "translation": "公司保持强劲的流动性以应对市场低迷。"
-    },
-    {
-      "word": "dividend",
-      "phonetic": "ˈdɪvɪdend",
-      "pos": "n.",
-      "definition": "股息；红利",
-      "example": "The board announced a quarterly dividend of $0.85 per share.",
-      "translation": "董事会宣布每股0.85美元的季度股息。"
-    },
-    {
-      "word": "arbitration",
-      "phonetic": "ˌɑːrbɪˈtreɪʃən",
-      "pos": "n.",
-      "definition": "仲裁",
-      "example": "The contract dispute was resolved through international arbitration.",
-      "translation": "合同纠纷通过国际仲裁得以解决。"
-    },
-    {
-      "word": "depreciation",
-      "phonetic": "dɪˌpriːʃiˈeɪʃən",
-      "pos": "n.",
-      "definition": "折旧；贬值",
-      "example": "The machine's depreciation is calculated over a 10-year period.",
-      "translation": "该机器的折旧按10年期限计算。"
-    },
-    {
-      "word": "collateral",
-      "phonetic": "kəˈlætərəl",
-      "pos": "n.",
-      "definition": "抵押物",
-      "example": "The bank required the property as collateral for the loan.",
-      "translation": "银行要求以该房产作为贷款抵押物。"
-    }
-  ],
-  "pattern": {
-    "pattern": "[Subject] [Verb] part of a broader pattern.",
-    "translation": "[主语] [动词] 是更广泛趋势的一部分。",
-    "examples": [
+    "vocabulary": [
       {
-        "english": "Meta cutting 8,000 jobs is part of a broader pattern across Silicon Valley.",
-        "chinese": "Meta裁减8000人是整个硅谷更广泛趋势的一部分。"
+        "word": "sustainable",
+        "phonetic": "/səˈsteɪnəbl/",
+        "partOfSpeech": "adjective",
+        "definition": "可持续的，能长期维持的",
+        "example": "Our company is committed to sustainable growth that respects the environment.",
+        "translation": "我们公司致力于尊重环境的可持续增长。"
       },
       {
-        "english": "The wage freeze is part of a broader pattern of cost-cutting measures.",
-        "chinese": "冻结工资是更广泛削减成本措施的一部分。"
+        "word": "biodiversity",
+        "phonetic": "/ˌbaɪoʊdaɪˈvɜːrsəti/",
+        "partOfSpeech": "noun",
+        "definition": "生物多样性",
+        "example": "Protecting forests is crucial for maintaining global biodiversity.",
+        "translation": "保护森林对于维持全球生物多样性至关重要。"
       },
       {
-        "english": "Her resignation is part of a broader pattern of senior management exits.",
-        "chinese": "她的辞职是高层管理人员陆续离职这一更广泛趋势的一部分。"
-      }
-    ]
-  },
-  "grammar": {
-    "title": "Past Perfect vs. Simple Past",
-    "explanation": "当描述两个先后发生的过去动作时，先发生的用 Past Perfect（had + 过去分词），后发生的用 Simple Past。若两动作并发或没有先后强调，都用 Simple Past。",
-    "examples": [
-      {
-        "correct": "By May 2026, Meta had sent the memo before the news leaked.",
-        "translation": "到2026年5月，Meta在消息泄露前已发出通知。",
-        "note": "先发送→后泄露，两动作先后关系明确。"
+        "word": "renewable",
+        "phonetic": "/rɪˈnuːəbl/",
+        "partOfSpeech": "adjective",
+        "definition": "可再生的（能源）",
+        "example": "Investment in renewable energy sources like solar and wind is increasing.",
+        "translation": "对太阳能和风能等可再生能源的投资正在增加。"
       },
       {
-        "correct": "Tech companies cut costs and invested in AI simultaneously.",
-        "translation": "科技公司同时削减成本并投资AI。",
-        "note": "两动作同时发生，都用 Simple Past。"
+        "word": "emission",
+        "phonetic": "/ɪˈmɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "排放物（尤指废气）",
+        "example": "The new policy aims to reduce carbon emissions from factories.",
+        "translation": "新政策旨在减少工厂的碳排放。"
       },
       {
-        "correct": "She had already resigned when the CEO announced the restructuring.",
-        "translation": "CEO宣布重组时，她已经辞职了。",
-        "note": "辞职行为在宣布之前已经完成。"
+        "word": "conservation",
+        "phonetic": "/ˌkɑːnsərˈveɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "（对自然环境的）保护，保存",
+        "example": "Conservation efforts have helped the panda population to recover.",
+        "translation": "保护工作已帮助大熊猫数量得以恢复。"
+      },
+      {
+        "word": "deplete",
+        "phonetic": "/dɪˈpliːt/",
+        "partOfSpeech": "verb",
+        "definition": "耗尽，使枯竭",
+        "example": "Overfishing has severely depleted fish stocks in the ocean.",
+        "translation": "过度捕捞已严重耗尽了海洋中的鱼类资源。"
+      },
+      {
+        "word": "resilience",
+        "phonetic": "/rɪˈzɪliəns/",
+        "partOfSpeech": "noun",
+        "definition": "恢复力，复原力",
+        "example": "Building resilient ecosystems is key to adapting to climate change.",
+        "translation": "建立具有恢复力的生态系统是适应气候变化的关键。"
+      },
+      {
+        "word": "carbon footprint",
+        "phonetic": "/ˈkɑːrbən ˌfʊtprɪnt/",
+        "partOfSpeech": "noun",
+        "definition": "碳足迹（个人或活动产生的温室气体总量）",
+        "example": "You can reduce your carbon footprint by using public transport.",
+        "translation": "你可以通过使用公共交通来减少你的碳足迹。"
+      },
+      {
+        "word": "ecosystem",
+        "phonetic": "/ˈiːkoʊsɪstəm/",
+        "partOfSpeech": "noun",
+        "definition": "生态系统",
+        "example": "Coral reefs are delicate marine ecosystems that are very sensitive to pollution.",
+        "translation": "珊瑚礁是对污染非常敏感的脆弱海洋生态系统。"
+      },
+      {
+        "word": "advocate",
+        "phonetic": "/ˈædvəkeɪt/",
+        "partOfSpeech": "verb",
+        "definition": "提倡，主张",
+        "example": "Many scientists advocate for stricter regulations on plastic waste.",
+        "translation": "许多科学家主张对塑料废弃物实施更严格的规定。"
       }
     ],
-    "commonMistakes": [
-      {
-        "wrong": "I seen the report yesterday.",
-        "correct": "I saw the report yesterday.",
-        "note": "Simple Past 用 saw 而非过去分词 seen。seen 必须搭配 has/have/had。"
-      },
-      {
-        "wrong": "After the meeting finished, we had left.",
-        "correct": "After the meeting had finished, we left.",
-        "note": "会议先结束（先发生），所以我们离开时会议已结束。先发生的用 Past Perfect。"
-      }
-    ]
-  },
-  "pronunciation": {
-    "word": "acquisition",
-    "phonetic": "/ˌækwɪˈzɪʃən/",
-    "tips": "重音在第三音节「zi」。注意「s」发 /z/ 音而非 /s/。结尾「tion」读 /ʃən/，不要读成 /ʃən/。",
-    "examples": [
-      "The acquisition closed at $2B.",
-      "knowledge acquisition",
-      "data acquisition system"
-    ]
-  },
-  "reading": {
-    "title": "AI and the Future of Work",
-    "english": "The landscape of work is changing faster than ever before. Artificial intelligence is not just a buzzword; it is actively reshaping how companies operate and how employees approach their daily tasks. A recent report from McKinsey suggests that by 2030, up to 30% of work activities could be automated across various industries. However, this does not mean that humans will become obsolete. Instead, the nature of work will shift toward more creative, strategic, and interpersonal roles. Skills such as critical thinking, emotional intelligence, and adaptability are becoming increasingly valuable. Companies that invest in upskilling their workforce will be better positioned to thrive in this new era. The key is not to fear the change but to embrace it as an opportunity for growth.",
-    "chinese": "工作的格局正以前所未有的速度发生变化。人工智能不仅仅是一个流行词——它正在积极重塑公司的运营方式和员工的日常工作方式。麦肯锡最近的一份报告指出，到2030年，各行业高达30%的工作活动可能实现自动化。然而，这并不意味着人类将变得多余。相反，工作的性质将向更具创造力、战略性和人际交往能力的角色转变。批判性思维、情商和适应能力等技能正变得越来越有价值。投资于员工技能提升的公司将在这一新时代中处于更有利的位置。关键在于不要害怕变化，而是将其视为成长的机遇。",
-    "keywords": [
-      {
-        "word": "reshaping",
-        "phonetic": "ˌriːˈʃeɪpɪŋ",
-        "pos": "v.",
-        "definition": "重塑；重新塑造",
-        "example": "AI is reshaping the global economy.",
-        "translation": "人工智能正在重塑全球经济。"
-      },
-      {
-        "word": "automated",
-        "phonetic": "ˈɔːtəmeɪtɪd",
-        "pos": "adj.",
-        "definition": "自动化的",
-        "example": "Many routine tasks are now fully automated.",
-        "translation": "许多常规任务现已完全自动化。"
-      },
-      {
-        "word": "upskilling",
-        "phonetic": "ˈʌpˌskɪlɪŋ",
-        "pos": "n.",
-        "definition": "技能提升",
-        "example": "The company launched an upskilling program for all employees.",
-        "translation": "公司为所有员工启动了技能提升计划。"
-      }
-    ]
+    "pattern": {
+      "pattern": "It is imperative to + 动词原形... (in order to + 动词原形...) / (for + 名词/动名词...).",
+      "example": "It is imperative to adopt circular economic models in order to reduce waste and resource depletion.",
+      "translation": "为了减少浪费和资源枯竭，采用循环经济模式是势在必行的。",
+      "usage": "此句型用于表达做某事的紧迫性和必要性，语气强烈正式。常用于提出解决方案、强调重要行动或进行呼吁的语境中，特别是在报告、演讲或学术写作里。"
+    },
+    "grammar": {
+      "title": "现在完成时在环保语境中的应用（强调持续影响）",
+      "explanation": "现在完成时（have/has + 过去分词）常用于环保话题，因为它可以强调过去开始的行动或状态对现在产生的、仍然可见或相关的持续影响或结果。它连接了过去的因与现在的果。",
+      "examples": [
+        "Human activities have significantly altered the global climate over the past century. (过去一个世纪的人类活动已经显著改变了全球气候，其影响持续至今。)",
+        "Since the industrial revolution, we have released unprecedented amounts of greenhouse gases into the atmosphere. (自工业革命以来，我们已向大气中排放了前所未有的大量温室气体，这些气体至今仍在产生影响。)"
+      ]
+    },
+    "pronunciation": {
+      "word": "sustainable",
+      "phonetic": "/səˈsteɪnəbl/",
+      "tips": "注意重音在第二个音节 `/ˈsteɪ/` 上。第一个音节是弱读的 `/sə/`（类似‘瑟’的轻音）。核心音节 `/steɪ/` 发音类似‘斯旦’，但元音是双元音 /eɪ/。最后 `-able` 发 `/əbl/`。"
+    },
+    "reading": {
+      "title": "Beyond Individual Action: The Power of Collective Impact",
+      "content": "While individual actions like recycling and saving energy are important, achieving true environmental sustainability requires a broader perspective. Systemic change, driven by collective action, is essential. This involves communities pressuring corporations to adopt greener practices, citizens voting for environmentally-conscious leaders, and nations collaborating on international agreements like the Paris Accord. For instance, widespread demand for electric vehicles compels automakers to innovate, while collective advocacy has led to bans on single-use plastics in many cities. Sustainable development is not just about personal carbon footprints; it's about reshaping economies, policies, and societal norms to live within the planet's ecological boundaries. Every voice added to the chorus demanding change amplifies the pressure for a sustainable future.",
+      "translation": "虽然回收利用和节约能源等个人行动很重要，但实现真正的环境可持续性需要更广阔的视角。由集体行动驱动的系统性变革至关重要。这包括社区向企业施压要求其采用更环保的做法，公民投票支持具有环保意识的领导人，以及各国在《巴黎协定》等国际协议上进行合作。例如，对电动汽车的广泛需求迫使汽车制造商进行创新，而集体的倡导已使许多城市禁止使用一次性塑料。可持续发展不仅仅是关于个人的碳足迹；它是关于重塑经济、政策和社会规范，以在地球的生态边界内生活。每一个加入要求变革的合唱的声音，都放大了对可持续未来的压力。"
+    }
   }
 }
