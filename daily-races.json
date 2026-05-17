@@ -4,77 +4,77 @@
     {
       "id": "race-m001",
       "category": "marathon",
+      "name": "2026 上海马拉松",
+      "date": "2026-11-29",
+      "endDate": null,
+      "location": "上海·外滩",
+      "status": "open_registration",
+      "registration": {
+        "status": "open",
+        "startDate": "2026-04-15",
+        "endDate": "2026-07-15",
+        "website": "https://www.shmarathon.com",
+        "note": "报名进行中，可通过官网或上马App报名"
+      },
+      "description": "上海马拉松创办于1996年，世界田联白金标赛事。赛道从外滩出发，途经黄浦江畔、静安寺、淮海路等上海地标。2026年设全程马拉松、健康跑两个项目。",
+      "highlights": [
+        "世界田联白金标",
+        "沿黄浦江赛道",
+        "高水准组织",
+        "2026年新增健康跑项目"
+      ],
+      "website": "https://www.shmarathon.com",
+      "source": "上海市体育局"
+    },
+    {
+      "id": "race-m002",
+      "category": "marathon",
+      "name": "贵阳马拉松 2026",
+      "date": "2026-06-16",
+      "endDate": null,
+      "location": "贵州·贵阳·观山湖区",
+      "status": "open_registration",
+      "registration": {
+        "status": "open",
+        "startDate": "2026-04-01",
+        "endDate": "2026-05-31",
+        "website": "https://www.guiyangmarathon.com",
+        "note": "报名即将截止，欲报从速"
+      },
+      "description": "贵阳马拉松创办于2014年，赛道贯穿观山湖区多个公园和景点，以凉爽气候和优美赛道著称。2026年设全程、半程、迷你跑三个项目。",
+      "highlights": [
+        "避暑胜地开跑",
+        "公园城市赛道",
+        "赛道爬升友好",
+        "适合PB的赛道"
+      ],
+      "website": "https://www.guiyangmarathon.com",
+      "source": "贵阳市体育局"
+    },
+    {
+      "id": "race-m003",
+      "category": "marathon",
       "name": "2026 北京马拉松",
-      "date": "2026-10-19",
+      "date": "2026-10-18",
       "endDate": null,
       "location": "北京·天安门广场",
       "status": "upcoming",
       "registration": {
         "status": "not_open",
-        "startDate": "2026-08-01",
-        "endDate": "2026-08-31",
+        "startDate": "2026-07-01",
+        "endDate": "2026-08-15",
         "website": "https://www.beijing-marathon.com",
-        "note": "抽签制，建议提前关注官方公告"
+        "note": "预计7月开放报名，关注官网公告"
       },
-      "description": "北京马拉松创办于1981年，是中国历史最悠久的马拉松赛事之一，也是世界田联金标赛事。每年吸引数万名跑者参与，从天安门广场出发，途经长安街、鸟巢等北京地标。",
+      "description": "北京马拉松创办于1981年，中国历史最悠久的马拉松，世界田联金标赛事。从天安门广场出发，途经长安街、鸟巢等北京地标。",
       "highlights": [
-        "世界田联金标赛事",
+        "世界田联金标",
         "从天安门广场出发",
         "途经北京多个地标",
         "完赛奖牌设计精美"
       ],
       "website": "https://www.beijing-marathon.com",
       "source": "中国田径协会"
-    },
-    {
-      "id": "race-m002",
-      "category": "marathon",
-      "name": "2026 上海马拉松",
-      "date": "2026-11-30",
-      "endDate": null,
-      "location": "上海·外滩",
-      "status": "upcoming",
-      "registration": {
-        "status": "not_open",
-        "startDate": "2026-09-15",
-        "endDate": "2026-10-15",
-        "website": "https://www.shmarathon.com",
-        "note": "抽签+直通制"
-      },
-      "description": "上海马拉松创办于1996年，世界田联白金标赛事。赛道从外滩出发，途经黄浦江畔、静安寺、淮海路等上海地标。",
-      "highlights": [
-        "世界田联白金标",
-        "沿黄浦江赛道",
-        "高水准组织",
-        "丰富补给站"
-      ],
-      "website": "https://www.shmarathon.com",
-      "source": "上海市体育局"
-    },
-    {
-      "id": "race-m003",
-      "category": "marathon",
-      "name": "2026 无锡马拉松",
-      "date": "2026-03-22",
-      "endDate": null,
-      "location": "江苏·无锡·太湖",
-      "status": "finished",
-      "registration": {
-        "status": "closed",
-        "startDate": "2025-12-20",
-        "endDate": "2026-01-20",
-        "website": "https://wuximarathon.com",
-        "note": "2027年赛事预计2026年底开放"
-      },
-      "description": "无锡马拉松以「人在画中跑」闻名，赛道沿太湖畔展开，春季樱花季开跑，被誉为中国最美马拉松之一。",
-      "highlights": [
-        "樱花赛道",
-        "太湖美景",
-        "高完赛率",
-        "口碑最佳赛事之一"
-      ],
-      "website": "https://wuximarathon.com",
-      "source": "无锡市体育局"
     },
     {
       "id": "race-m004",
@@ -86,10 +86,10 @@
       "status": "upcoming",
       "registration": {
         "status": "not_open",
-        "startDate": "2026-10-01",
-        "endDate": "2026-10-31",
+        "startDate": "2026-09-01",
+        "endDate": "2026-10-15",
         "website": "https://www.guangzhou-marathon.com",
-        "note": "预计10月开放报名"
+        "note": "预计9月开放报名"
       },
       "description": "广州马拉松创办于2012年，世界田联金标赛事。赛道沿珠江两岸展开，途经广州塔、花城广场等地标。",
       "highlights": [
@@ -102,7 +102,57 @@
       "source": "广州市体育局"
     },
     {
+      "id": "race-m005",
+      "category": "marathon",
+      "name": "2026 无锡马拉松",
+      "date": "2026-03-22",
+      "endDate": null,
+      "location": "江苏·无锡·太湖",
+      "status": "finished",
+      "registration": {
+        "status": "closed",
+        "startDate": "2025-12-20",
+        "endDate": "2026-01-20",
+        "website": "https://wuximarathon.com",
+        "note": "已结束，2027年赛事预计年底开放"
+      },
+      "description": "无锡马拉松以「人在画中跑」闻名，赛道沿太湖畔展开，春季樱花季开跑，被誉为中国最美马拉松之一。",
+      "highlights": [
+        "樱花赛道",
+        "太湖美景",
+        "高完赛率",
+        "口碑最佳赛事之一"
+      ],
+      "website": "https://wuximarathon.com",
+      "source": "无锡市体育局"
+    },
+    {
       "id": "race-h001",
+      "category": "hyrox",
+      "name": "HYROX 杭州站 2026",
+      "date": "2026-06-20",
+      "endDate": null,
+      "location": "杭州·杭州国际博览中心",
+      "status": "open_registration",
+      "registration": {
+        "status": "open",
+        "startDate": "2026-03-01",
+        "endDate": "2026-06-01",
+        "website": "https://hyrox.com/events/hangzhou-2026",
+        "note": "下个月开赛，报名即将截止"
+      },
+      "description": "HYROX杭州站将在杭州国际博览中心举办。标准HYROX赛制：8轮1公里跑步+功能性训练站（推雪橇、拉雪橇、划船机、农夫行走、波比跳、滑雪测功仪等）。设个人组、双人组和4人接力组。",
+      "highlights": [
+        "即将开赛",
+        "标准赛制",
+        "个人/双人/接力",
+        "杭州新场地"
+      ],
+      "website": "https://hyrox.com/events/hangzhou-2026",
+      "source": "HYROX官方"
+    },
+    {
+      "id": "race-h002",
       "category": "hyrox",
       "name": "HYROX 上海站 2026",
       "date": "2026-09-12",
@@ -114,20 +164,20 @@
         "startDate": "2026-05-01",
         "endDate": "2026-08-31",
         "website": "https://hyrox.com/events/shanghai-2026",
-        "note": "早鸟价已开放"
+        "note": "早鸟价已开放，名额有限"
       },
-      "description": "HYROX是全球发展最快的室内健身竞赛，融合1公里跑步与功能性训练站。每名选手需完成8轮跑步+训练站组合（推雪橇、划船机、农夫行走、波比跳等）。设个人、双人、接力组。",
+      "description": "HYROX上海站首次在国家会展中心举办。8轮1km跑步+功能性训练站。训练站包括推雪橇、划船机、农夫行走、波比跳、滑雪测功仪等。",
       "highlights": [
         "全球赛事品牌",
-        "8个功能性训练站",
-        "个人/双人/接力",
+        "8个训练站",
+        "各水平均可参赛",
         "成绩全球排名"
       ],
       "website": "https://hyrox.com/events/shanghai-2026",
       "source": "HYROX官方"
     },
     {
-      "id": "race-h002",
+      "id": "race-h003",
       "category": "hyrox",
       "name": "HYROX 北京站 2026",
       "date": "2026-11-07",
@@ -141,12 +191,12 @@
         "website": "https://hyrox.com/events/beijing-2026",
         "note": "预计7月开放报名"
       },
-      "description": "HYROX北京站首次在华北地区举办。8轮1km跑步+功能性训练。训练站：滑雪测功仪、推雪橇、拉雪橇、农夫行走、划船机、波比跳等。",
+      "description": "HYROX北京站首次在华北地区举办。8轮1km跑步+功能性训练。训练站包含滑雪测功仪、推雪橇、拉雪橇、农夫行走、划船机、波比跳等。适合各级水平选手。",
       "highlights": [
         "首次华北举办",
         "标准HYROX赛道",
-        "多个组别",
-        "适合各级水平"
+        "多个组别选择",
+        "适合健身入门到精英"
       ],
       "website": "https://hyrox.com/events/beijing-2026",
       "source": "HYROX官方"
@@ -166,7 +216,7 @@
         "website": "https://www.quanliyouxi.com",
         "note": "团队报名有优惠"
       },
-      "description": "「全力游戏」是中国顶级的CrossFit综合体能赛事，被誉为「中国的CrossFit比赛」。赛事设有个人男子组、个人女子组和团队组三个类别，比拼内容包括抓举、挺举、引体向上、波比跳、划船、吊环撑、药球等多种功能性体能项目。每年吸引全国数百名顶级CrossFit运动员参赛。",
+      "description": "「全力游戏」是中国顶级的CrossFit综合体能赛事，被誉为「中国的CrossFit比赛」。设有个人男子组、个人女子组和团队组，内容包括抓举、挺举、引体向上、波比跳、划船、吊环撑、药球等。每年吸引全国数百名顶级CrossFit运动员参赛。",
       "highlights": [
         "中国顶级CrossFit赛事",
         "个人/团队组别",
@@ -191,7 +241,7 @@
         "website": "https://games.crossfit.com",
         "note": "2027年预计2026年底开放"
       },
-      "description": "CrossFit Open是CrossFit Games的第一阶段海选，面向全球所有人开放。每周公布一套训练，参赛者在认证场馆完成并上传成绩。2026年共3周3个训练项目。",
+      "description": "CrossFit Open是CrossFit Games第一阶段海选，面向全球所有人开放。每周公布一套训练，在认证场馆完成并上传成绩。2026年共3周3个项目。",
       "highlights": [
         "全球最大体能赛事",
         "3周3个项目",
@@ -205,8 +255,8 @@
       "id": "race-c003",
       "category": "crossfit",
       "name": "2026 CrossFit 亚洲锦标赛",
-      "date": "2026-05-30",
-      "endDate": "06-01",
+      "date": "2026-05-28",
+      "endDate": "05-31",
       "location": "韩国·首尔",
       "status": "finished",
       "registration": {
@@ -214,13 +264,13 @@
         "startDate": "2026-01-15",
         "endDate": "2026-03-15",
         "website": "https://asia.crossfitgames.com",
-        "note": "CrossFit Open晋级者优先"
+        "note": "刚结束，关注下一届"
       },
-      "description": "CrossFit亚洲锦标赛是CrossFit Games的亚洲区半决赛，由CrossFit Open晋级的亚洲顶尖运动员参赛。优胜者将获得前往美国参加CrossFit Games总决赛的资格。",
+      "description": "CrossFit亚洲锦标赛是CrossFit Games亚洲区半决赛，由CrossFit Open晋级的亚洲顶尖运动员参赛。优胜者获得参加美国总决赛资格。",
       "highlights": [
         "CrossFit半决赛",
-        "亚洲顶尖竞技",
-        "优胜者赴美总决赛",
+        "亚洲顶尖",
+        "优胜者赴美",
         "高强度对决"
       ],
       "website": "https://asia.crossfitgames.com",
@@ -229,7 +279,7 @@
     {
       "id": "race-c004",
       "category": "crossfit",
-      "name": "2026 中国CrossFit公开赛（CFRD）",
+      "name": "2026 中国CrossFit公开赛",
       "date": "2026-08-22",
       "endDate": "08-23",
       "location": "北京",
@@ -241,12 +291,12 @@
         "website": "https://crossfit.cn",
         "note": "关注CrossFit中国官网"
       },
-      "description": "中国CrossFit公开赛是国内CrossFit社区的重要赛事，由CrossFit中国官方组织。设个人组和团队组，参赛者将在两天内完成多项体能挑战。赛事旨在推广CrossFit文化，发掘国内优秀运动员。",
+      "description": "中国CrossFit公开赛由CrossFit中国官方组织。设个人组和团队组，两天内完成多项体能挑战。旨在推广CrossFit文化，发掘国内优秀运动员。",
       "highlights": [
-        "国内CrossFit官方赛事",
+        "国内官方赛事",
         "多项全能挑战",
         "个人/团队组",
-        "专业裁判和计时系统"
+        "专业裁判和计时"
       ],
       "website": "https://crossfit.cn",
       "source": "CrossFit中国"
