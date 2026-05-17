@@ -1,5 +1,6 @@
 {
   "date": "2026-05-17",
+  "last_verified": "2026-05-17",
   "events": [
     {
       "id": "race-m001",
@@ -16,7 +17,7 @@
         "website": "https://www.shang-ma.com",
         "note": "报名进行中，可通过上马官网或上马App报名"
       },
-      "description": "上海马拉松创办于1996年，世界田联白金标赛事。赛道从外滩出发，途经黄浦江畔、静安寺、淮海路等上海地标。",
+      "description": "上海马拉松创办于1996年，世界田联白金标赛事。赛道从外滩出发，途经黄浦江畔、静安寺、淮海路等地标。",
       "highlights": [
         "世界田联白金标",
         "沿黄浦江赛道",
@@ -38,13 +39,12 @@
         "startDate": "2026-03-01",
         "endDate": "2026-04-30",
         "website": null,
-        "note": "报名已截止，已结束抽签"
+        "note": "报名已截止，抽签已完成"
       },
-      "description": "贵阳马拉松创办于2014年，赛道贯穿观山湖区多个公园和景点，以凉爽气候和优美赛道著称。2026年赛事报名及抽签已结束。",
+      "description": "贵阳马拉松创办于2014年，赛道贯穿观山湖区多个公园。报名及抽签已结束。",
       "highlights": [
         "避暑胜地开跑",
-        "公园城市赛道",
-        "赛道爬升友好"
+        "公园城市赛道"
       ],
       "website": null,
       "source": "贵阳市体育局"
@@ -64,7 +64,7 @@
         "website": "https://www.beijing-marathon.com",
         "note": "预计7月开放报名"
       },
-      "description": "北京马拉松创办于1981年，中国历史最悠久的马拉松，世界田联金标赛事。从天安门广场出发，途经长安街、鸟巢等北京地标。",
+      "description": "北京马拉松创办于1981年，世界田联金标赛事。从天安门出发，途经长安街、鸟巢。",
       "highlights": [
         "世界田联金标",
         "从天安门广场出发",
@@ -83,12 +83,12 @@
       "status": "upcoming",
       "registration": {
         "status": "not_open",
-        "startDate": "2026-09-01",
-        "endDate": "2026-10-15",
+        "startDate": null,
+        "endDate": null,
         "website": null,
-        "note": "预计9月开放报名，官网待确认"
+        "note": "报名时间待公布"
       },
-      "description": "广州马拉松创办于2012年，世界田联金标赛事。赛道沿珠江两岸展开，途经广州塔、花城广场等地标。",
+      "description": "广州马拉松创办于2012年，世界田联金标赛事。赛道沿珠江两岸展开。",
       "highlights": [
         "世界田联金标",
         "珠江两岸赛道",
@@ -110,7 +110,7 @@
         "startDate": "2025-12-20",
         "endDate": "2026-01-20",
         "website": "https://wuximarathon.com",
-        "note": "已结束，2027年预计2026年底开放"
+        "note": "已结束"
       },
       "description": "无锡马拉松以「人在画中跑」闻名，赛道沿太湖畔展开，春季樱花季开跑。",
       "highlights": [
@@ -124,73 +124,140 @@
     {
       "id": "race-h001",
       "category": "hyrox",
-      "name": "HYROX 杭州站 2026",
-      "date": "2026-06-20",
-      "endDate": null,
-      "location": "杭州·杭州国际博览中心",
-      "status": "closed",
+      "name": "24/7 FITNESS HYROX Shanghai",
+      "date": "2026-05-16",
+      "endDate": "05-17",
+      "location": "上海",
+      "status": "finished",
       "registration": {
         "status": "closed",
-        "startDate": "2026-03-01",
-        "endDate": "2026-05-15",
-        "website": "https://hyrox.com",
-        "note": "名额已满，已停止报名"
+        "startDate": null,
+        "endDate": null,
+        "website": "https://hyrox.com/event/hyrox-shanghai/",
+        "note": "已完赛（5月16-17日）"
       },
-      "description": "HYROX杭州站将在杭州国际博览中心举办。标准赛制：8轮1公里跑步+功能性训练站（推雪橇、拉雪橇、划船机、农夫行走等）。设个人、双人、接力组。",
+      "description": "24/7 FITNESS冠名的HYROX上海站。HYROX是融合1公里跑步与功能性训练的室内健身赛事。",
       "highlights": [
-        "标准赛制",
-        "个人/双人/接力",
-        "名额已满"
+        "HYROX标准赛制",
+        "8轮1km跑步+功能性训练"
       ],
-      "website": "https://hyrox.com",
+      "website": "https://hyrox.com/event/hyrox-shanghai/",
       "source": "HYROX官方"
     },
     {
       "id": "race-h002",
       "category": "hyrox",
-      "name": "HYROX 上海站 2026",
-      "date": "2026-09-12",
-      "endDate": null,
-      "location": "上海·国家会展中心",
-      "status": "open_registration",
+      "name": "TORRAS HYROX Hangzhou",
+      "date": "2026-06-20",
+      "endDate": "06-21",
+      "location": "杭州",
+      "status": "closed",
       "registration": {
-        "status": "open",
-        "startDate": "2026-05-01",
-        "endDate": "2026-08-15",
-        "website": "https://hyrox.com",
-        "note": "可至HYROX官网查询报名"
+        "status": "closed",
+        "startDate": null,
+        "endDate": null,
+        "website": "https://hyrox.com/event/hyrox-hangzhou/",
+        "note": "名额已满"
       },
-      "description": "HYROX上海站首次在国家会展中心举办。8轮1km跑步+功能性训练站（推雪橇、划船机、农夫行走等）。",
+      "description": "TORRAS冠名的HYROX杭州站。设个人组、双人组和4人接力组。",
       "highlights": [
-        "全球赛事品牌",
-        "8个训练站",
-        "各水平均可参赛"
+        "标准赛制",
+        "个人/双人/接力",
+        "名额已满"
       ],
-      "website": "https://hyrox.com",
+      "website": "https://hyrox.com/event/hyrox-hangzhou/",
       "source": "HYROX官方"
     },
     {
       "id": "race-h003",
       "category": "hyrox",
-      "name": "HYROX 北京站 2026",
-      "date": "2026-11-07",
-      "endDate": null,
-      "location": "北京·国家会议中心",
+      "name": "HYROX Shenzhen",
+      "date": "2026-08-01",
+      "endDate": "08-02",
+      "location": "深圳",
       "status": "upcoming",
       "registration": {
         "status": "not_open",
-        "startDate": "2026-07-01",
-        "endDate": "2026-10-15",
-        "website": "https://hyrox.com",
-        "note": "预计7月开放报名，关注HYROX官网"
+        "startDate": null,
+        "endDate": null,
+        "website": "https://hyrox.com/event/hyrox-shenzhen/",
+        "note": "关注HYROX官网获取报名信息"
+      },
+      "description": "HYROX深圳站。8轮1km跑步+功能性训练站。",
+      "highlights": [
+        "标准赛制",
+        "深圳首站"
+      ],
+      "website": "https://hyrox.com/event/hyrox-shenzhen/",
+      "source": "HYROX官方"
+    },
+    {
+      "id": "race-h004",
+      "category": "hyrox",
+      "name": "HYROX Beijing",
+      "date": "2026-09-12",
+      "endDate": "09-13",
+      "location": "北京",
+      "status": "upcoming",
+      "registration": {
+        "status": "not_open",
+        "startDate": null,
+        "endDate": null,
+        "website": "https://hyrox.com/event/hyrox-beijing-0912/",
+        "note": "关注HYROX官网获取报名信息"
       },
       "description": "HYROX北京站首次在华北地区举办。8轮1km跑步+功能性训练。",
       "highlights": [
         "首次华北举办",
-        "标准HYROX赛道",
-        "多个组别选择"
+        "标准HYROX赛道"
       ],
-      "website": "https://hyrox.com",
+      "website": "https://hyrox.com/event/hyrox-beijing-0912/",
+      "source": "HYROX官方"
+    },
+    {
+      "id": "race-h005",
+      "category": "hyrox",
+      "name": "HYROX Guangzhou",
+      "date": "2026-10-17",
+      "endDate": "10-18",
+      "location": "广州",
+      "status": "upcoming",
+      "registration": {
+        "status": "not_open",
+        "startDate": null,
+        "endDate": null,
+        "website": "https://hyrox.com/event/hyrox-guangzhou/",
+        "note": "关注HYROX官网获取报名信息"
+      },
+      "description": "HYROX广州站。8轮1km跑步+功能性训练站。",
+      "highlights": [
+        "标准赛制",
+        "羊城新赛事"
+      ],
+      "website": "https://hyrox.com/event/hyrox-guangzhou/",
+      "source": "HYROX官方"
+    },
+    {
+      "id": "race-h006",
+      "category": "hyrox",
+      "name": "HYROX Shanghai (第二场)",
+      "date": "2026-10-31",
+      "endDate": "11-01",
+      "location": "上海",
+      "status": "upcoming",
+      "registration": {
+        "status": "not_open",
+        "startDate": null,
+        "endDate": null,
+        "website": "https://hyrox.com/event/hyrox-shanghai-1031/",
+        "note": "关注HYROX官网获取报名信息"
+      },
+      "description": "HYROX上海站第二场（10月档期）。8轮1km跑步+功能性训练站。",
+      "highlights": [
+        "标准赛制",
+        "上海第二场"
+      ],
+      "website": "https://hyrox.com/event/hyrox-shanghai-1031/",
       "source": "HYROX官方"
     },
     {
@@ -206,13 +273,12 @@
         "startDate": "2026-03-01",
         "endDate": "2026-06-30",
         "website": null,
-        "note": "报名信息请搜索「全力游戏」官方渠道"
+        "note": "搜索「全力游戏」官方渠道获取报名信息"
       },
-      "description": "全力游戏是中国顶级的CrossFit综合体能赛事。设有个人男子组、个人女子组和团队组，内容包括抓举、挺举、引体向上、波比跳、划船等项目。",
+      "description": "全力游戏是中国顶级的CrossFit综合体能赛事。设个人组和团队组。",
       "highlights": [
         "中国顶级CrossFit赛事",
-        "个人/团队组别",
-        "多项目综合体能"
+        "个人/团队组别"
       ],
       "website": null,
       "source": "全力游戏组委会"
@@ -223,7 +289,7 @@
       "name": "2026 CrossFit Open（全球海选）",
       "date": "2026-02-15",
       "endDate": "03-15",
-      "location": "线上报名·全球",
+      "location": "线上·全球",
       "status": "finished",
       "registration": {
         "status": "closed",
@@ -232,7 +298,7 @@
         "website": "https://games.crossfit.com",
         "note": "2027年预计2026年底开放"
       },
-      "description": "CrossFit Open是CrossFit Games第一阶段海选，全球开放。每周公布一套训练，在认证场馆完成并上传成绩。",
+      "description": "CrossFit Open是CrossFit Games第一阶段海选，全球开放。",
       "highlights": [
         "全球最大体能赛事",
         "3周3个项目",
@@ -248,19 +314,18 @@
       "date": "2026-05-28",
       "endDate": "05-31",
       "location": "韩国·首尔",
-      "status": "finished",
+      "status": "upcoming",
       "registration": {
         "status": "closed",
         "startDate": "2026-01-15",
         "endDate": "2026-03-15",
         "website": "https://games.crossfit.com",
-        "note": "已结束"
+        "note": "即将开赛"
       },
       "description": "CrossFit亚洲锦标赛是CrossFit Games亚洲区半决赛。",
       "highlights": [
         "CrossFit半决赛",
-        "亚洲顶尖",
-        "优胜者赴美"
+        "亚洲顶尖"
       ],
       "website": "https://games.crossfit.com",
       "source": "CrossFit官方"
@@ -275,17 +340,17 @@
       "status": "upcoming",
       "registration": {
         "status": "not_open",
-        "startDate": "2026-06-01",
-        "endDate": "2026-08-01",
-        "website": "https://games.crossfit.com",
-        "note": "关注CrossFit Games官网"
+        "startDate": null,
+        "endDate": null,
+        "website": null,
+        "note": "报名信息待公布"
       },
       "description": "中国CrossFit公开赛由CrossFit中国组织。设个人组和团队组。",
       "highlights": [
         "国内官方赛事",
         "个人/团队组"
       ],
-      "website": "https://games.crossfit.com",
+      "website": null,
       "source": "CrossFit中国"
     }
   ]
