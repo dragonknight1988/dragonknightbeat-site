@@ -22,7 +22,91 @@
       ],
       "exercise": {
         "description": "写一个函数 createIncrementer，它接收一个步进值 step，返回一个闭包。每次调用闭包时，返回的值增加 step。注意思考：如何用捕获列表控制闭包内的计数值？",
-        "hint": "用 var total = 0 作为外部变量，闭包捕获 total 的引用（默认），每次调用时 total += step，然后 return total。捕获列表可以用来捕获初始值快照。"
+        "hint": "用 var total = 0 作为外部变量，闭包捕获 total 的引用（默认），每次调用时 total += step，然后 return total。捕获列表可以用来捕获初始值快照。",
+        "challenges": [
+          {
+            "id": "ch-1",
+            "type": "fillBlank",
+            "question": "完成闭包捕获列表，防止循环引用：",
+            "codeContext": null,
+            "segments": [
+              {
+                "type": "text",
+                "content": "DispatchQueue.global().async { ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "weak self",
+                  "unowned self",
+                  "self",
+                  "strong self"
+                ],
+                "correctAnswer": "weak self"
+              },
+              {
+                "type": "text",
+                "content": " in\n    guard let self = self else { return }\n    self.onComplete?()\n}",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              }
+            ],
+            "options": null,
+            "correctAnswer": "weak self",
+            "explanation": "使用 [weak self] 让闭包弱引用 self，避免循环引用。配合 guard let self = self 安全解包后使用。"
+          },
+          {
+            "id": "ch-2",
+            "type": "multipleChoice",
+            "question": "Swift 中闭包默认以什么方式捕获外部变量？",
+            "codeContext": null,
+            "segments": null,
+            "options": [
+              "值捕获（复制值）",
+              "弱引用捕获",
+              "强引用捕获",
+              "隐式解包"
+            ],
+            "correctAnswer": "强引用捕获",
+            "explanation": "闭包默认以强引用方式捕获外部变量，这意味着被捕获的变量会保持引用计数+1。如需打破循环引用，需显式使用捕获列表。"
+          },
+          {
+            "id": "ch-3",
+            "type": "codePrediction",
+            "question": "以下代码输出什么？",
+            "codeContext": "var x = 10\nlet closure = { [x] in\n    print(x)\n}\nx = 20\nclosure()",
+            "segments": null,
+            "options": [
+              "10",
+              "20",
+              "nil",
+              "编译错误"
+            ],
+            "correctAnswer": "10",
+            "explanation": "[x] 是值捕获，闭包在创建时捕获了 x 的当前值（10）。后续 x 被修改为 20，但闭包内的 x 仍然是创建时的快照值 10。"
+          },
+          {
+            "id": "ch-4",
+            "type": "multipleChoice",
+            "question": "在捕获列表中使用 unowned 和 weak 的主要区别是什么？",
+            "codeContext": null,
+            "segments": null,
+            "options": [
+              "没有区别，可以互换使用",
+              "unowned 引用的对象可能为 nil，weak 不会",
+              "weak 引用的对象释放后自动变为 nil，unowned 假设对象永远存在",
+              "unowned 只能用在值类型上"
+            ],
+            "correctAnswer": "weak 引用的对象释放后自动变为 nil，unowned 假设对象永远存在",
+            "explanation": "weak 引用是可选类型，当引用的对象释放后自动变为 nil。unowned 假设被引用对象永远不会为 nil，访问已释放的 unowned 引用会导致运行时崩溃。只有在确定 self 不会被释放时才用 unowned。"
+          }
+        ]
       }
     }
   ]
