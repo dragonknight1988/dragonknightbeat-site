@@ -7,8 +7,6 @@
 import json, os, sys, subprocess, argparse, requests
 from datetime import datetime
 
-SITE_DIR = os.path.expanduser("~/.openclaw/workspace/dragonknightbeat-site")
-JSON_PATH = os.path.join(SITE_DIR, "daily-programming.json")
 
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "sk-e08c986a456f4fed99d8250596e7f9e8")
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
@@ -133,24 +131,15 @@ def generate_programming_content(user_topic=None):
     return None
 
 
-def git_push():
-    try:
-        os.chdir(SITE_DIR)
-        subprocess.run(["git", "add", "-A"], capture_output=True, check=True)
-        subprocess.run(["git", "commit", "-m", f"auto-update daily programming {datetime.now().strftime('%Y-%m-%d')}"], capture_output=True)
-        r = subprocess.run(["git", "push", "origin", "gh-pages"], capture_output=True, text=True, timeout=30)
-        if r.returncode == 0: print("✅ 已推送到 GitHub Pages")
-        else: print(f"⚠️ {r.stderr[:200]}")
-    except Exception as e: print(f"⚠️ {e}")
-
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--output", default=JSON_PATH, help=f"输出路径（默认 {JSON_PATH}）")
+    parser = argparse.ArgumentParser(description="生成每日编程学习 JSON")
+    parser.add_argument("--output", default="daily-programming.json",
+                        help="输出文件路径（默认 daily-programming.json）")
     parser.add_argument("--topic", default=None, help="指定技术栈")
     args = parser.parse_args()
 
-    print(f"💻 生成 {datetime.now().strftime('%Y-%m-%d')} 编程学习内容（DeepSeek V4）...")
+    print(f"💻 生成 {datetime.now().strftime(\"%Y-%m-%d\")} 编程学习内容（DeepSeek V4）...")
 
     content = generate_programming_content(args.topic)
     if content:
@@ -160,7 +149,6 @@ def main():
         topic = content.get("contents", [{}])[0].get("title", "")
         diff = content.get("contents", [{}])[0].get("difficulty", "")
         print(f"   主题: {topic} | 难度: {diff}")
-        git_push()
     else:
         print("❌ 生成失败")
         sys.exit(1)
@@ -168,3 +156,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

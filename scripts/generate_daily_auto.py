@@ -7,8 +7,6 @@
 import json, os, sys, subprocess, argparse, requests
 from datetime import datetime
 
-SITE_DIR = os.path.expanduser("~/.openclaw/workspace/dragonknightbeat-site")
-JSON_PATH = os.path.join(SITE_DIR, "daily-auto.json")
 
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "sk-e08c986a456f4fed99d8250596e7f9e8")
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
@@ -95,31 +93,21 @@ def generate():
     return None
 
 
-def git_push():
-    try:
-        os.chdir(SITE_DIR)
-        subprocess.run(["git", "add", "-A"], capture_output=True, check=True)
-        subprocess.run(["git", "commit", "-m", f"auto-update daily auto {datetime.now().strftime('%Y-%m-%d')}"], capture_output=True)
-        r = subprocess.run(["git", "push", "origin", "gh-pages"], capture_output=True, text=True, timeout=30)
-        if r.returncode == 0: print("✅ 已推送到 GitHub Pages")
-        else: print(f"⚠️ {r.stderr[:200]}")
-    except Exception as e: print(f"⚠️ {e}")
-
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--output", default=JSON_PATH, help=f"输出路径（默认 {JSON_PATH}）")
+    parser = argparse.ArgumentParser(description="生成每日汽车新闻日报 JSON")
+    parser.add_argument("--output", default="daily-auto.json",
+                        help="输出文件路径（默认 daily-auto.json）")
     args = parser.parse_args()
 
-    print(f"🚗 生成 {datetime.now().strftime('%Y-%m-%d')} 汽车新闻日报（DeepSeek V4）...")
+    print(f"🚗 生成 {datetime.now().strftime(\"%Y-%m-%d\")} 汽车新闻日报（DeepSeek V4）...")
     content = generate()
     if content:
         with open(args.output, "w", encoding="utf-8") as f:
             json.dump(content, f, ensure_ascii=False, indent=2)
         articles = sum(len(s.get("articles", [])) for s in content.get("sections", []))
         print(f"✅ 已写入: {args.output}")
-        print(f"   板块: {len(content.get('sections', []))} 个 | 文章: {articles} 篇")
-        git_push()
+        print(f"   板块: {len(content.get(\"sections\", []))} 个 | 文章: {articles} 篇")
     else:
         print("❌ 生成失败")
         sys.exit(1)
@@ -127,3 +115,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
