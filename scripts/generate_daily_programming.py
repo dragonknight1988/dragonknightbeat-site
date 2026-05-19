@@ -125,13 +125,36 @@ def generate_programming_content(user_topic=None):
     js = clean.find("{")
     je = clean.rfind("}") + 1
     if js >= 0 and je > js:
-        try:
-            return json.loads(clean[js:je])
-        except json.JSONDecodeError as e:
-            print(f"❌ JSON 解析失败: {e}")
-            print(f"输出前500字: {result[:500]}")
-            return None
+        data = repair_json(clean[js:je])
+        if data:
+            return data
+        print(f"❌ JSON 解析失败，输出前500字: {result[:500]}")
+        return None
     return None
+
+
+def repair_json(text):
+    """尝试修复 AI 生成的不规范 JSON"""
+    import re
+    try:
+        # 第1轮：严格解析
+        return json.loads(text)
+    except json.JSONDecodeError:
+        try:
+            # 第2轮：允许控制字符
+            return json.loads(text, strict=False)
+        except json.JSONDecodeError:
+            try:
+                # 第3轮：清理常见问题
+                fixed = text
+                # 移除尾随逗号（, ] → ] / , } → }）
+                fixed = re.sub(r',\s*\]', ']', fixed)
+                fixed = re.sub(r',\s*\}', '}', fixed)
+                # 修复非法控制字符（ASCII 0-31 除了 \t \n \r）
+                fixed = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', '', fixed)
+                return json.loads(fixed, strict=False)
+            except json.JSONDecodeError:
+                return None
 
 
 
