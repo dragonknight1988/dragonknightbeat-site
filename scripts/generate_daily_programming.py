@@ -139,7 +139,7 @@ def main():
     parser.add_argument("--topic", default=None, help="指定技术栈")
     args = parser.parse_args()
 
-    print(f"💻 生成 {datetime.now().strftime(\"%Y-%m-%d\")} 编程学习内容（DeepSeek V4）...")
+    print(f"💻 生成 {datetime.now().strftime('%Y-%m-%d')} 编程学习内容（DeepSeek V4）...")
 
     content = generate_programming_content(args.topic)
     if content:

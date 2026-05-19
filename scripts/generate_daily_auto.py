@@ -100,14 +100,14 @@ def main():
                         help="输出文件路径（默认 daily-auto.json）")
     args = parser.parse_args()
 
-    print(f"🚗 生成 {datetime.now().strftime(\"%Y-%m-%d\")} 汽车新闻日报（DeepSeek V4）...")
+    print(f"🚗 生成 {datetime.now().strftime('%Y-%m-%d')} 汽车新闻日报（DeepSeek V4）...")
     content = generate()
     if content:
         with open(args.output, "w", encoding="utf-8") as f:
             json.dump(content, f, ensure_ascii=False, indent=2)
         articles = sum(len(s.get("articles", [])) for s in content.get("sections", []))
         print(f"✅ 已写入: {args.output}")
-        print(f"   板块: {len(content.get(\"sections\", []))} 个 | 文章: {articles} 篇")
+        print(f"   板块: {len(content.get('sections', []))} 个 | 文章: {articles} 篇")
     else:
         print("❌ 生成失败")
         sys.exit(1)
