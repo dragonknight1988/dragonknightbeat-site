@@ -5,7 +5,10 @@
 """
 
 import json, os, sys, subprocess, argparse, requests
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
+
+# 北京时区
+BJ_TZ = timezone(timedelta(hours=8))
 
 
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "sk-e08c986a456f4fed99d8250596e7f9e8")
@@ -32,7 +35,7 @@ def call_deepseek(system_prompt, user_prompt, max_tokens=8000):
 
 
 def generate():
-    today = datetime.now().strftime("%Y-%m-%d")
+    today = datetime.now(BJ_TZ).strftime("%Y-%m-%d")
 
     system_prompt = f"""你是一位专业的汽车新闻编辑。请生成今日汽车新闻日报，输出JSON格式。
 
@@ -100,7 +103,7 @@ def main():
                         help="输出文件路径（默认 daily-auto.json）")
     args = parser.parse_args()
 
-    print(f"🚗 生成 {datetime.now().strftime('%Y-%m-%d')} 汽车新闻日报（DeepSeek V4）...")
+    print(f"🚗 生成 {datetime.now(BJ_TZ).strftime('%Y-%m-%d')} 汽车新闻日报（DeepSeek V4）...")
     content = generate()
     if content:
         with open(args.output, "w", encoding="utf-8") as f:

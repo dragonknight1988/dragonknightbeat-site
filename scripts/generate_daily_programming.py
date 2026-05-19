@@ -5,7 +5,10 @@
 """
 
 import json, os, sys, subprocess, argparse, requests
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
+
+# 北京时区
+BJ_TZ = timezone(timedelta(hours=8))
 
 
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "sk-e08c986a456f4fed99d8250596e7f9e8")
@@ -42,7 +45,7 @@ def call_deepseek(system_prompt, user_prompt, max_tokens=6000):
 
 
 def generate_programming_content(user_topic=None):
-    today = datetime.now().strftime("%Y-%m-%d")
+    today = datetime.now(BJ_TZ).strftime("%Y-%m-%d")
     day_of_year = datetime.now().timetuple().tm_yday
     chosen_tech = user_topic or TECH_STACKS[day_of_year % len(TECH_STACKS)]
     difficulty = DIFFICULTIES[day_of_year % len(DIFFICULTIES)]
@@ -139,7 +142,7 @@ def main():
     parser.add_argument("--topic", default=None, help="指定技术栈")
     args = parser.parse_args()
 
-    print(f"💻 生成 {datetime.now().strftime('%Y-%m-%d')} 编程学习内容（DeepSeek V4）...")
+    print(f"💻 生成 {datetime.now(BJ_TZ).strftime('%Y-%m-%d')} 编程学习内容（DeepSeek V4）...")
 
     content = generate_programming_content(args.topic)
     if content:

@@ -8,7 +8,10 @@
 """
 
 import json, os, sys, argparse, time, requests
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
+
+# 北京时区
+BJ_TZ = timezone(timedelta(hours=8))
 
 # DeepSeek API 配置（API Key 从环境变量读取）
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
@@ -59,7 +62,7 @@ def call_deepseek(system_prompt, user_prompt, max_tokens=8192):
 
 def build_news_content():
     """构建当日新闻内容，带重试机制"""
-    today = datetime.now().strftime("%Y-%m-%d")
+    today = datetime.now(BJ_TZ).strftime("%Y-%m-%d")
 
     system_prompt = """你是一个专业的新闻编辑。根据你的知识，生成 5 个分类的今日新闻摘要。
 要求：
@@ -149,7 +152,7 @@ def main():
                         help="输出文件路径（默认 daily-news.json）")
     args = parser.parse_args()
 
-    print(f"📰 生成 {datetime.now().strftime('%Y-%m-%d')} 新闻晨报（DeepSeek）...")
+    print(f"📰 生成 {datetime.now(BJ_TZ).strftime('%Y-%m-%d')} 新闻晨报（DeepSeek）...")
     print(f"🔑 API Key: {'已设置' if DEEPSEEK_API_KEY else '未设置'}")
 
     content = build_news_content()
