@@ -13,7 +13,7 @@ from datetime import datetime
 # DeepSeek API 配置（API Key 从环境变量读取）
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1"
-DEEPSEEK_MODEL = "deepseek-reasoner"
+DEEPSEEK_MODEL = "deepseek-v4-flash"
 
 
 def call_deepseek(system_prompt, user_prompt, max_tokens=8192):
