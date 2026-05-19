@@ -47,6 +47,6 @@ jobs:
             echo "⚠️  无变更"
           else
             git commit -m "auto: 💻 每日编程学习 $(date +%Y-%m-%d)"
-            git push
+            git push --force
             echo "✅ 已推送"
           fi
