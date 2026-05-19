@@ -131,6 +131,41 @@ def repair_json(text):
                 return None
 
 
+def repair_briefing_content(d):
+    """修补 AI 可能遗漏的字段"""
+    import copy
+    fixed = 0
+    for si, s in enumerate(d.get('briefing', {}).get('sections', [])):
+        for ai, a in enumerate(s.get('articles', [])):
+            if 'detail' not in a or not a.get('detail', '').strip():
+                a['detail'] = a.get('summary', a.get('title', '详情请关注'))
+                fixed += 1
+            if 'source' not in a or not a.get('source', '').strip():
+                a['source'] = '综合报道'
+                fixed += 1
+            for k in ['title', 'summary']:
+                if k not in a or not a.get(k, '').strip():
+                    a[k] = f'本文未提供{k}'
+                    fixed += 1
+    for pi, p in enumerate(d.get('hotProjects', {}).get('projects', [])):
+        for k in ['oneLiner', 'whyHot', 'riskTip', 'name']:
+            if k not in p or not p.get(k, '').strip():
+                p[k] = '详情请关注' if k != 'oneLiner' else '热门项目'
+                fixed += 1
+        if 'heatLevel' not in p:
+            p['heatLevel'] = 3
+            fixed += 1
+        if 'heat' not in p:
+            p['heat'] = '🔥🔥🔥'
+            fixed += 1
+        if 'highlights' not in p or not p.get('highlights'):
+            p['highlights'] = ['值得关注']
+            fixed += 1
+    if fixed:
+        print(f"🔧 自动修补了 {fixed} 个缺失字段")
+    return d
+
+
 def main():
     parser = argparse.ArgumentParser(description="生成每日风口简报 JSON")
     parser.add_argument("--output", default="daily-briefing.json",
@@ -141,6 +176,11 @@ def main():
 
     content = generate_briefing_content()
     if content:
+        # 修补可能缺失的字段
+        repaired = repair_briefing_content(content)
+        if repaired != content:
+            print(f"🔧 修补了缺失字段")
+            content = repaired
         with open(args.output, "w", encoding="utf-8") as f:
             json.dump(content, f, ensure_ascii=False, indent=2)
         b = content.get("briefing", {})
