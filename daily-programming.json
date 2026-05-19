@@ -1,0 +1,98 @@
+{
+  "date": "2026-05-20",
+  "contents": [
+    {
+      "id": "prog-2026-05-20",
+      "date": "2026-05-20",
+      "title": "GitHub Actions 高级工作流：矩阵构建与缓存优化",
+      "summary": "掌握生产级 CI/CD 流水线中的矩阵策略、依赖缓存、条件执行与安全保障，实现高效、可维护的 DevOps 自动化。",
+      "difficulty": "高级",
+      "concept": "在现代 DevOps 实践中，GitHub Actions 已成为最受欢迎的 CI/CD 平台之一。高级场景下，单纯地运行测试已远远不够，我们需要面对多平台兼容、构建缓存、并行加速、安全性审计等挑战。\n\n矩阵策略 (Matrix Strategy) 允许你在一个工作流中定义多个变量组合（如操作系统、语言版本、环境变量），Actions 会自动为每一种组合生成独立的 Job，实现高效的并行测试。例如，你可以同时运行 Node 16/18/20 在 ubuntu-latest、windows-latest 和 macos-latest 上，大幅缩短总执行时间。但需要注意，矩阵会浪费资源如果无需全部组合，因此常结合 `include` / `exclude` 进行精细控制。\n\n缓存依赖是加速 CI/CD 的核心手段。GitHub Actions 提供了 `actions/cache` 动作，可以缓存 npm、Maven、pip 等包管理器下载的依赖文件，避免每次运行都从远程下载。高级用法包括自定义缓存键、多层级缓存（如锁定文件 + runner OS），以及 `restore-keys` 实现部分命中回退。缓存失效策略直接影响构建速度，例如当 `package-lock.json` 变化时才完全失效。\n\n条件执行与安全上下文化也是高级主题。通过 `if` 条件，可以基于触发事件、分支、路径、甚至前序步骤输出，控制作业或步骤是否运行。例如，只在 main 分支或标签推送时执行部署，或基于 PR 标签跳过某些测试。此外，使用环境变量、Secrets 管理敏感信息，并通过 OIDC 令牌替代密码凭证，提升安全性。\n\n另一个关键实践是工作流 Linting 与配置即代码。GitHub Actions 支持使用 `actionlint` 检查语法错误，结合 Git 分支保护策略（如要求状态检查、线性历史）保障流水线质量。高级团队还会使用自托管的 Runner，并通过 `groups` / `labels` 控制资源分配。\n\n最后，可观测性和反馈机制不可忽视。善用 `actions/upload-artifact` 保留构建产物，结合 Workflow Run 的 Webhook 或 Slack/Teams 通知，实现全链路监控。矩阵作业中通过 `continue-on-error` 允许某些失败不阻断整体，同时收集错误日志。本日内容将带你从日常使用进阶到架构级优化。",
+      "codeExample": {
+        "language": "YAML",
+        "code": "# .github/workflows/ci.yml - 高级矩阵构建与缓存示例\nname: Advanced CI\n\non:\n  push:\n    branches: [ main, develop ]\n  pull_request:\n    branches: [ main ]\n  workflow_dispatch:   # 允许手动触发\n\njobs:\n  lint:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - name: Run actionlint\n        uses: reviewdog/action-actionlint@v1\n        with:\n          github_token: ${{ secrets.GITHUB_TOKEN }}\n          fail_on_error: true\n\n  test:\n    needs: lint\n    strategy:\n      matrix:\n        os: [ubuntu-latest, windows-latest, macos-latest]\n        node: [18, 20, 22]\n        # 排除 Node 22 + Windows (已知不兼容)\n        exclude:\n          - os: windows-latest\n            node: 22\n        # 增加一个额外的变体: Node 18 + ubuntu-22.04 专门测试\n        include:\n          - os: ubuntu-22.04\n            node: 18\n    runs-on: ${{ matrix.os }}\n\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Setup Node.js ${{ matrix.node }}\n        uses: actions/setup-node@v4\n        with:\n          node-version: ${{ matrix.node }}\n\n      # 缓存 node_modules 基于 package-lock.json 和 runner OS\n      - name: Cache npm dependencies\n        uses: actions/cache@v3\n        id: cache-npm\n        with:\n          path: ~/.npm\n          key: ${{ runner.os }}-node-${{ matrix.node }}-${{ hashFiles('**/package-lock.json') }}\n          restore-keys: |\n            ${{ runner.os }}-node-${{ matrix.node }}-\n            ${{ runner.os }}-node-\n\n      - name: Install dependencies\n        run: npm ci\n        # 如果缓存命中，npm ci 会非常快\n\n      - name: Run tests\n        run: npm test\n\n      - name: Upload coverage (only ubuntu and main branch)\n        if: matrix.os == 'ubuntu-latest' && github.ref == 'refs/heads/main'\n        uses: actions/upload-artifact@v4\n        with:\n          name: coverage-${{ matrix.node }}\n          path: coverage/\n\n  deploy:\n    needs: test\n    if: github.event_name == 'push' && github.ref == 'refs/heads/main'\n    runs-on: ubuntu-latest\n    steps:\n      - name: Deploy to production\n        run: echo \"Deploying... (simulated)\"\n        # 实际场景: 使用 actions/deploy-pages 或自定义脚本",
+        "explanation": "**整体结构：** 工作流包含三个作业：lint、test、deploy。lint 在 test 之前运行，确保语法正确；test 使用矩阵策略并行运行多个操作系统和 Node 版本的组合；deploy 只在 main 分支推送时执行。\n\n**矩阵策略：** 通过 `matrix` 定义 `os` 和 `node` 的笛卡尔积，`exclude` 排除不兼容组合（Node 22 + Windows），`include` 增加特殊组合（ubuntu-22.04 + Node 18）。`runs-on` 动态引用 `${{ matrix.os }}`。\n\n**缓存机制：** `actions/cache` 动作缓存路径 `~/.npm`（npm 全局缓存），key 包含 runner OS、Node 版本和 `package-lock.json` 哈希。如果 key 精确命中则直接恢复，否则使用 `restore-keys` 部分匹配。缓存是否命中通过 `steps.cache-npm.outputs.cache-hit` 判断（代码中未使用但可进一步优化）。\n\n**条件执行：** `if` 表达式控制上传覆盖率产物只在 ubuntu-latest + main 分支时执行；deploy 作业只在 push 到 main 且 test 成功后运行。`needs` 确保依赖顺序。\n\n**安全保障：** 使用 `secrets.GITHUB_TOKEN` 自动提供认证，actionlint 检查工作流语法，避免 YAML 错误。"
+      },
+      "keyPoints": [
+        "矩阵策略本质是 Job 的笛卡尔积组合，适用于多平台/多版本兼容性测试",
+        "使用 `exclude` / `include` 精细控制矩阵组合，避免资源浪费与不兼容",
+        "缓存依赖时 key 应包含关键文件哈希（如 lockfile）和运行环境标识，利用 `restore-keys` 降级匹配",
+        "条件执行 `if` 可基于上下文对象（`github`、`env`、`steps` output）实现分支/标签/路径过滤",
+        "作业依赖 `needs` 定义 DAG，结合 `continue-on-error` 与 `fail-fast` 控制失败行为"
+      ],
+      "exercise": {
+        "description": "优化一个现有的 CI 工作流：当前工作流在每个 PR 上运行测试（Node 16/18 在 ubuntu-latest），但未使用缓存，且每次运行都下载所有依赖。此外，缺少 lint 检查。请修改工作流文件，增加矩阵策略（包含 windows 和 macos）、缓存 npm 依赖、添加 lint 作业，并只在 push 到 main 时部署。",
+        "hint": "参考代码示例中的结构：将原单一 job 拆分为 lint → test（矩阵）→ deploy (有条件)。缓存 key 使用 `hashFiles('**/package-lock.json')`。注意维护作业间的 `needs` 关系。",
+        "challenges": [
+          {
+            "id": "ch-1",
+            "type": "fillBlank",
+            "question": "在 GitHub Actions 中，矩阵策略的 `strategy.matrix` 项是定义一个 _____ 集合，Actions 会为每个组合创建独立的 Job。",
+            "codeContext": null,
+            "segments": [
+              {
+                "type": "text",
+                "content": "在 GitHub Actions 中，矩阵策略的 `strategy.matrix` 项是定义一个 ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "笛卡尔积",
+                  "并集",
+                  "交集",
+                  "列表"
+                ],
+                "correctAnswer": "笛卡尔积"
+              },
+              {
+                "type": "text",
+                "content": " 集合，Actions 会为每个组合创建独立的 Job。",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              }
+            ],
+            "options": null,
+            "correctAnswer": "笛卡尔积",
+            "explanation": "矩阵策略基于所有变量组合的笛卡尔积生成 Job，保证每个组合都运行一次。"
+          },
+          {
+            "id": "ch-2",
+            "type": "multipleChoice",
+            "question": "以下哪个是缓存 npm 依赖时推荐使用的路径？",
+            "codeContext": "cache 动作的 path 参数",
+            "segments": null,
+            "options": [
+              "node_modules",
+              "~/.npm",
+              "package-lock.json",
+              "./cache"
+            ],
+            "correctAnswer": "~/.npm",
+            "explanation": "npm 的全局缓存目录是 `~/.npm`（Linux/macOS）或 `%AppData%/npm-cache`（Windows），`actions/cache` 跨平台自动处理。缓存 `node_modules` 虽然更快但可能导致缓存膨胀且易出错；推荐缓存包管理器自身的缓存。"
+          },
+          {
+            "id": "ch-3",
+            "type": "codePrediction",
+            "question": "假设有以下矩阵定义，请问最终会生成几个 Job？",
+            "codeContext": "```yaml\nstrategy:\n  matrix:\n    os: [ubuntu, windows]\n    node: [14, 16, 18]\n    exclude:\n      - os: windows\n        node: 14\n```",
+            "segments": null,
+            "options": [
+              "6",
+              "5",
+              "4",
+              "3"
+            ],
+            "correctAnswer": "5",
+            "explanation": "笛卡尔积为 2×3=6，排除 (windows,14) 一组，剩余 5 个 Job。"
+          }
+        ]
+      }
+    }
+  ]
+}
