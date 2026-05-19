@@ -106,14 +106,29 @@ def generate_briefing_content():
     js = clean.find("{")
     je = clean.rfind("}") + 1
     if js >= 0 and je > js:
-        try:
-            return json.loads(clean[js:je])
-        except json.JSONDecodeError as e:
-            print(f"❌ JSON 解析失败: {e}")
-            print(f"输出前500字: {result[:500]}")
-            return None
+        data = repair_json(clean[js:je])
+        if data:
+            return data
+        print(f"❌ JSON 解析失败，输出前500字: {result[:500]}")
+        return None
     return None
 
+
+def repair_json(text):
+    import re
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        try:
+            return json.loads(text, strict=False)
+        except:
+            try:
+                fixed = re.sub(r',\s*\]', ']', text)
+                fixed = re.sub(r',\s*\}', '}', fixed)
+                fixed = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', '', fixed)
+                return json.loads(fixed, strict=False)
+            except:
+                return None
 
 
 def main():
