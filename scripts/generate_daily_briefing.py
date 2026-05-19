@@ -119,7 +119,7 @@ def main():
                         help="输出文件路径（默认 daily-briefing.json）")
     args = parser.parse_args()
 
-    print(f"📡 生成 {datetime.now().strftime(\"%Y-%m-%d\")} 风口简报（DeepSeek V4）...")
+    print(f"📡 生成 {datetime.now().strftime('%Y-%m-%d')} 风口简报（DeepSeek V4）...")
 
     content = generate_briefing_content()
     if content:
@@ -130,7 +130,7 @@ def main():
         total_articles = sum(len(s.get("articles", [])) for s in b.get("sections", []))
         total_projects = len(hp.get("projects", []))
         print(f"✅ 已写入: {args.output}")
-        print(f"   资讯: {len(b.get(\"sections\", []))} 个板块, {total_articles} 篇文章")
+        print(f"   资讯: {len(b.get('sections', []))} 个板块, {total_articles} 篇文章")
         print(f"   风口: {total_projects} 个项目")
     else:
         print("❌ 生成失败")
