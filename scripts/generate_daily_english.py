@@ -8,7 +8,10 @@
 """
 
 import json, os, sys, argparse, requests
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
+
+# 北京时区
+BJ_TZ = timezone(timedelta(hours=8))
 
 # DeepSeek API 配置（API Key 从环境变量读取）
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
@@ -67,7 +70,7 @@ def call_deepseek(system_prompt, user_prompt, max_tokens=5000):
 
 def generate_english_content(topic=None):
     """用 AI 生成当日英语学习内容"""
-    today = datetime.now().strftime("%Y-%m-%d")
+    today = datetime.now(BJ_TZ).strftime("%Y-%m-%d")
 
     # 轮换主题
     day_of_year = datetime.now().timetuple().tm_yday
@@ -159,7 +162,7 @@ def main():
     parser.add_argument("--topic", default=None, help="指定主题")
     args = parser.parse_args()
 
-    print(f"📖 生成 {datetime.now().strftime('%Y-%m-%d')} 英语晨读（DeepSeek）...")
+    print(f"📖 生成 {datetime.now(BJ_TZ).strftime('%Y-%m-%d')} 英语晨读（DeepSeek）...")
     print(f"🔑 API Key: {'已设置' if DEEPSEEK_API_KEY else '未设置'}")
 
     content = generate_english_content(args.topic)
