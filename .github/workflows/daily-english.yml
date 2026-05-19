@@ -13,11 +13,15 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: ⬇️ 检出 gh-pages 分支
+      - name: ⬇️ 检出仓库（所有分支）
         uses: actions/checkout@v4
         with:
-          ref: gh-pages
           fetch-depth: 0
+
+      - name: 📂 从 main 分支获取生成脚本
+        run: |
+          git checkout origin/main -- scripts/
+          ls -la scripts/
 
       - name: 🐍 设置 Python
         uses: actions/setup-python@v5
@@ -27,10 +31,20 @@ jobs:
       - name: 📦 安装依赖
         run: pip install requests
 
+      - name: ‼️ 切换到 gh-pages 分支（保留脚本）
+        run: |
+          cp -r scripts /tmp/scripts
+          git checkout gh-pages
+          cp -r /tmp/scripts scripts
+
       - name: 🤖 生成英语晨读
         run: python3 scripts/generate_daily_english.py --output daily-english.json
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+
+      - name: 🔍 验证输出
+        run: |
+          ls -la daily-english.json 2>/dev/null && echo "✅ 文件存在" || echo "❌ 文件不存在"
 
       - name: 🚀 提交并推送
         run: |
