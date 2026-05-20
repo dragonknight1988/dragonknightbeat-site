@@ -1,0 +1,25 @@
+name: 每日编程学习
+
+on:
+  schedule:
+    - cron: '30 22 * * *'   # 北京 06:30
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - run: python3 scripts/generate_daily_programming.py
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'auto: 💻 每日编程学习'
+          branch: gh-pages
