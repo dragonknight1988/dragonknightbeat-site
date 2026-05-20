@@ -1,120 +1,120 @@
 {
-  "date": "2026-05-20",
+  "date": "2026-05-21",
   "content": {
-    "id": "en-2026-05-20",
-    "date": "2026-05-20",
-    "topic": "人工智能与科技",
+    "id": "en-2026-05-21",
+    "date": "2026-05-21",
+    "topic": "商业与金融",
     "quote": {
-      "quote": "The development of full artificial intelligence could spell the end of the human race.",
-      "author": "Stephen Hawking",
-      "translation": "完全人工智能的发展可能意味着人类种族的终结。",
-      "explanation": "霍金以警示的口吻提醒我们，AI的潜力虽有巨大价值，但也需谨慎管理，否则可能带来不可逆转的后果。"
+      "quote": "The stock market is a device for transferring money from the impatient to the patient.",
+      "author": "Warren Buffett",
+      "translation": "股市是一种将资金从急躁者转移到耐心者手中的工具。",
+      "explanation": "这句话强调了长期投资和耐心在股市中的重要性，常用于投资策略讨论或金融教育场景。"
     },
     "vocabulary": [
       {
-        "word": "algorithm",
-        "phonetic": "/ˈælɡəˌrɪðəm/",
+        "word": "dividend",
+        "phonetic": "/ˈdɪvɪdend/",
         "partOfSpeech": "noun",
-        "definition": "算法",
-        "example": "The recommendation algorithm analyzes user behavior to suggest personalized content.",
-        "translation": "推荐算法分析用户行为以推荐个性化内容。"
+        "definition": "股息，红利",
+        "example": "Shareholders expect the company to increase its dividend payout this quarter.",
+        "translation": "股东们期望公司本季度增加股息支付。"
       },
       {
-        "word": "autonomous",
-        "phonetic": "/ɔːˈtɒnəməs/",
-        "partOfSpeech": "adjective",
-        "definition": "自主的；自治的",
-        "example": "Autonomous vehicles rely on sensors and machine learning to navigate roads safely.",
-        "translation": "自动驾驶汽车依赖传感器和机器学习来安全导航道路。"
-      },
-      {
-        "word": "bias",
-        "phonetic": "/ˈbaɪəs/",
+        "word": "equity",
+        "phonetic": "/ˈekwəti/",
         "partOfSpeech": "noun",
-        "definition": "偏见；偏差",
-        "example": "Mitigating bias in training data is crucial for developing fair AI systems.",
-        "translation": "减轻训练数据中的偏见对于开发公平的AI系统至关重要。"
+        "definition": "股权；净资产",
+        "example": "The startup raised $5 million in equity financing from venture capitalists.",
+        "translation": "这家初创公司从风险投资者那里筹集了500万美元的股权融资。"
       },
       {
-        "word": "compute",
-        "phonetic": "/kəmˈpjuːt/",
+        "word": "leverage",
+        "phonetic": "/ˈlevərɪdʒ/",
+        "partOfSpeech": "noun",
+        "definition": "杠杆作用；举债经营",
+        "example": "High leverage can amplify gains but also increases the risk of bankruptcy.",
+        "translation": "高杠杆可以放大收益，但也增加了破产风险。"
+      },
+      {
+        "word": "diversification",
+        "phonetic": "/daɪˌvɜːrsɪfɪˈkeɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "多元化；分散投资",
+        "example": "Diversification across asset classes reduces portfolio volatility during market downturns.",
+        "translation": "跨资产类别的多元化投资降低了市场低迷期间投资组合的波动性。"
+      },
+      {
+        "word": "portfolio",
+        "phonetic": "/pɔːrtˈfoʊlioʊ/",
+        "partOfSpeech": "noun",
+        "definition": "投资组合；作品集",
+        "example": "The fund manager rebalanced the portfolio to increase exposure to emerging markets.",
+        "translation": "基金经理重新平衡了投资组合，增加对新兴市场的敞口。"
+      },
+      {
+        "word": "hedge",
+        "phonetic": "/hedʒ/",
         "partOfSpeech": "verb/noun",
-        "definition": "计算；运算能力",
-        "example": "Deep learning models require massive compute resources for training.",
-        "translation": "深度学习模型需要庞大的计算资源来进行训练。"
+        "definition": "对冲；规避风险",
+        "example": "Companies often use futures contracts to hedge against currency fluctuations.",
+        "translation": "公司经常使用期货合约来对冲货币波动风险。"
       },
       {
-        "word": "disruptive",
-        "phonetic": "/dɪsˈrʌptɪv/",
-        "partOfSpeech": "adjective",
-        "definition": "颠覆性的；破坏性的",
-        "example": "Disruptive technologies like generative AI are reshaping entire industries.",
-        "translation": "像生成式AI这样的颠覆性技术正在重塑整个行业。"
-      },
-      {
-        "word": "embedding",
-        "phonetic": "/ɪmˈbedɪŋ/",
+        "word": "liquidity",
+        "phonetic": "/lɪˈkwɪdəti/",
         "partOfSpeech": "noun",
-        "definition": "嵌入（向量表示）",
-        "example": "Word embeddings capture semantic relationships between words in a vector space.",
-        "translation": "词嵌入在向量空间中捕捉单词之间的语义关系。"
+        "definition": "流动性；变现能力",
+        "example": "Central banks injected liquidity into the banking system to stabilize credit markets.",
+        "translation": "中央银行向银行体系注入流动性以稳定信贷市场。"
       },
       {
-        "word": "inference",
-        "phonetic": "/ˈɪnfərəns/",
+        "word": "volatility",
+        "phonetic": "/ˌvɑːləˈtɪləti/",
         "partOfSpeech": "noun",
-        "definition": "推理；推断",
-        "example": "The inference engine processes user queries and generates responses in real time.",
-        "translation": "推理引擎实时处理用户查询并生成响应。"
+        "definition": "波动性；易变性",
+        "example": "High volatility in oil prices makes it difficult for airlines to budget fuel costs.",
+        "translation": "油价的高波动性使航空公司难以预算燃油成本。"
       },
       {
-        "word": "neural",
-        "phonetic": "/ˈnjʊərəl/",
-        "partOfSpeech": "adjective",
-        "definition": "神经的；神经网络的",
-        "example": "Convolutional neural networks excel at image recognition tasks.",
-        "translation": "卷积神经网络在图像识别任务中表现出色。"
-      },
-      {
-        "word": "overfit",
-        "phonetic": "/ˌoʊvərˈfɪt/",
-        "partOfSpeech": "verb",
-        "definition": "过拟合",
-        "example": "To avoid overfitting, the model was regularized and validated on a separate dataset.",
-        "translation": "为了避免过拟合，模型经过了正则化处理，并在独立数据集上进行了验证。"
-      },
-      {
-        "word": "paradigm",
-        "phonetic": "/ˈpærədaɪm/",
+        "word": "depreciation",
+        "phonetic": "/dɪˌpriːʃiˈeɪʃn/",
         "partOfSpeech": "noun",
-        "definition": "范式；典范",
-        "example": "The shift from rule-based systems to deep learning represents a major paradigm shift in AI.",
-        "translation": "从基于规则的系统到深度学习的转变代表了AI领域的重大范式转变。"
+        "definition": "折旧；贬值",
+        "example": "The annual depreciation of machinery is calculated using the straight-line method.",
+        "translation": "机器设备的年度折旧采用直线法计算。"
+      },
+      {
+        "word": "amortization",
+        "phonetic": "/ˌæmərtɪˈzeɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "摊销；分期偿还",
+        "example": "The loan amortization schedule shows monthly payments of principal and interest.",
+        "translation": "贷款摊销表显示了每月本金和利息的还款额。"
       }
     ],
     "pattern": {
-      "pattern": "Subject + relies on + noun + to + verb phrase",
-      "example": "The success of AI relies on high-quality data to train accurate models.",
-      "translation": "AI的成功依赖于高质量数据来训练精确的模型。",
-      "usage": "用于描述某事物依赖某条件或资源来实现特定目标，常用于科技和商务场景。"
+      "pattern": "Given that + [事实/条件], it is advisable to + [建议/行动]",
+      "example": "Given that the market is highly volatile, it is advisable to maintain a diversified portfolio.",
+      "translation": "鉴于市场高度波动，建议保持多元化的投资组合。",
+      "usage": "该句型用于在商业分析中基于某个已知条件提出合理的建议或决策，常出现在财务报告、投资建议中。"
     },
     "grammar": {
-      "title": "条件句中的虚拟语气（与现在事实相反）",
-      "explanation": "虚拟语气用于表达与当前事实相反的假设或愿望。结构为：If + 主语 + 过去式（were/动词过去式），主语 + would/could/might + 动词原形。例如：If AI were perfect, it would solve all our problems.（如果AI完美，它就能解决我们所有问题。）注意be动词统一用were。",
+      "title": "虚拟语气在商务条件句中的运用（Subjunctive Mood in Business Conditionals）",
+      "explanation": "在商业英语中，虚拟语气常用于表达与事实相反或不太可能发生的假设，特别是在讨论风险、替代方案或未来不确定性时。典型结构：If + 主语 + 过去式（were/did）, 主语 + would/could/might + 动词原形。例如：If interest rates were lower, we would expand our operations. 注意此时were不受主语人称影响。",
       "examples": [
-        "If the algorithm were unbiased, the results would be more reliable.",
-        "If we had more compute power, we could train the model in hours instead of weeks."
+        "If the company had hedged its currency exposure, it could have avoided the loss.",
+        "Were the merger to go through, the combined entity would dominate the market."
       ]
     },
     "pronunciation": {
-      "word": "algorithm",
-      "phonetic": "/ˈælɡəˌrɪðəm/",
-      "tips": "重音在第一个音节 'al'，发/æ/音，注意 'rith' 部分发/rɪð/，快速连读为 'al-go-rith-um'，最后一个音节 'm' 要清晰发音。"
+      "word": "entrepreneurship",
+      "phonetic": "/ˌɑːntrəprəˈnɜːrʃɪp/",
+      "tips": "重音在第三个音节 'neur'，注意 'entre' 中的 't' 发音接近轻弹音，'ship' 末尾的 'p' 不要爆破太强。"
     },
     "reading": {
-      "title": "The Ethical Frontier of Autonomous Systems",
-      "content": "As autonomous systems become increasingly integrated into daily life, from self-driving cars to AI-powered diagnostic tools, the ethical implications demand rigorous scrutiny. These systems make decisions based on algorithms trained on vast datasets, yet they often operate as black boxes, leaving users uncertain about how outcomes are reached. Transparency and accountability are not just technical challenges but societal imperatives. For instance, when an autonomous vehicle faces an unavoidable accident, how should it prioritize lives? Such dilemmas highlight the need for interdisciplinary collaboration between engineers, ethicists, and policymakers. Without clear regulatory frameworks, the promise of AI could be undermined by unintended consequences. The path forward requires not only innovation but also a commitment to ethical design, ensuring that technology serves humanity rather than endangers it.",
-      "translation": "随着自主系统日益融入日常生活——从自动驾驶汽车到AI驱动的诊断工具——其伦理影响要求严格的审查。这些系统基于训练于海量数据集上的算法做出决策，但往往以黑箱方式运作，让用户不确定结果是如何得出的。透明度和问责制不仅是技术挑战，更是社会必需。例如，当自动驾驶汽车面临不可避免的事故时，它应如何优先保护生命？此类困境突显了工程师、伦理学家和政策制定者之间跨学科合作的必要性。没有明确的监管框架，AI的承诺可能被意外后果所削弱。前进的道路不仅需要创新，还需要对伦理设计的承诺，确保技术服务于人类而不是危害人类。"
+      "title": "The Rise of ESG Investing",
+      "content": "Environmental, social, and governance (ESG) investing has transitioned from a niche strategy to a mainstream approach in global finance. Asset managers now integrate ESG criteria into their investment decisions, recognizing that sustainable practices can mitigate long-term risks and enhance returns. A 2025 report by the Global Sustainable Investment Alliance showed that ESG assets under management exceeded $50 trillion, representing over one-third of total professionally managed assets. Critics argue that inconsistent rating systems and 'greenwashing' remain challenges. Nevertheless, the trend reflects a fundamental shift: investors increasingly view corporate responsibility as a driver of financial performance, not just an ethical choice.",
+      "translation": "环境、社会和治理（ESG）投资已从边缘策略转变为全球金融的主流方法。资产管理公司现在将ESG标准纳入其投资决策，认识到可持续实践可以降低长期风险并提高回报。全球可持续投资联盟2025年的一份报告显示，ESG资产管理规模超过50万亿美元，占专业管理资产总额的三分之一以上。批评者认为，评级体系不一致和“漂绿”仍是挑战。尽管如此，这一趋势反映了根本性转变：投资者越来越将企业责任视为财务表现的驱动因素，而不仅仅是道德选择。"
     }
   }
 }
