@@ -1,38 +1,38 @@
 {
-  "date": "2026-05-20",
+  "date": "2026-05-21",
   "contents": [
     {
-      "id": "prog-2026-05-20",
-      "date": "2026-05-20",
-      "title": "Swift中的可选类型（Optionals）",
-      "summary": "理解可选类型的概念、nil安全以及如何安全地解包可选值。",
-      "difficulty": "初级",
-      "concept": "可选类型（Optional）是 Swift 语言的核心特性之一，用于安全地表示值可能缺失的情况。在 Objective-C 中，nil 仅适用于对象指针，而 Swift 将 nil 的概念扩展到所有类型（包括 Int、String 等值类型）。声明可选类型只需在类型后加问号（?），例如 var name: String? 表示 name 可以存储一个字符串或 nil。\n\n可选类型本质上是一个枚举：Optional.none（nil）和 Optional.some（包装的值）。这种设计强制开发者显式处理 nil 情况，避免空指针崩溃。实际工程中，最常见的错误是滥用强制解包（!）。例如，从服务器获取的数据可能为 nil，如果直接强制解包，一旦值为 nil 就会导致运行时崩溃。因此，建议始终使用安全解包方式。\n\n安全解包的首选方式是可选绑定（Optional Binding）：if let 或 guard let。if let 在条件成立时创建一个临时常量，作用域仅在 if 块内；guard let 则要求值必须存在，否则执行 else 分支提前退出（常用于函数开头）。此外，nil 合并运算符（??）提供默认值，例如 let displayName = userName ?? \"Guest\"，这在 UI 展示中非常实用。\n\n在 SwiftUI 中，可选类型同样常见。例如 @State var text: String? 用于存储可选的输入内容。结合 SwiftUI 的 TextField 等视图时，需要解包后使用。工程实践中，我们经常将可选值与用户界面绑定，并在解包时提供合理的默认值，以提高应用的健壮性。\n\n隐式解包可选类型（Implicitly Unwrapped Optional, 如 String!）是另一种可选类型，它假定值在访问时一定存在，但如果为 nil 仍会崩溃。通常只用于属性在初始化后不会改变且必须非 nil 的场景（如 Interface Builder 连接）。对于初级开发者，应尽量避免使用隐式解包，直到完全理解其风险。\n\n可选链（Optional Chaining, 如 user?.address?.city）允许在可选值上安全访问属性和方法，如果链中任一环节为 nil，整个表达式返回 nil。这种方式可以编写简洁且安全的代码。总之，掌握可选类型是 Swift 开发者迈向专业的第一步，它体现了 Swift 安全性和表达性的设计哲学。",
+      "id": "prog-2026-05-21",
+      "date": "2026-05-21",
+      "title": "掌握Python装饰器：从基础到高阶应用",
+      "summary": "深入理解装饰器原理，掌握如何创建带参数装饰器、类装饰器，并应用于日志、性能监控等场景。",
+      "difficulty": "中级",
+      "concept": "装饰器（Decorator）是Python中一种强大而优雅的语法糖，允许在不修改原函数定义的情况下，动态地给函数或类添加额外功能。其本质是一个接受函数作为参数并返回新函数（或可调用对象）的高阶函数。理解装饰器需要先掌握闭包（Closure）的概念：内部函数捕获外部函数的变量，即使外部函数已经返回，内部函数依然可以访问这些变量。\n\n实际工程中，最常见的是使用 `@decorator` 语法，它等价于 `func = decorator(func)`。但直接使用外层函数作为装饰器会丢失原函数的元信息（如 `__name__`, `__doc__`），因此标准库 `functools.wraps` 不可或缺。它通过将原函数的属性复制到包装函数上，确保调试和文档生成不受影响。\n\n带参数的装饰器（如 `@retry(times=3)`）实际上是两层嵌套：外层接收用户参数，返回真正的装饰器。类装饰器则通过实现 `__call__` 方法，让类的实例可被调用，适合需要维护状态的场景。需要注意装饰器的执行顺序：多个装饰器堆叠时，调用顺序是从上到下（离函数定义最近的先应用），但执行顺序是从内到外（最内层的装饰器先执行原函数）。\n\n一个优秀的装饰器应该遵循最小惊讶原则：尽量透明，不改变函数签名（除非有意为之），使用 `functools.wraps` 保留元数据，并考虑异常处理。例如，计时装饰器如果抛出异常可能会干扰程序，应使用 `try/finally` 确保计时准确。\n\n在企业级代码中，装饰器常用于：AOP（面向切面编程）实现日志记录、权限校验、缓存、重试、事务管理等。合理使用装饰器可以极大减少重复代码，提升可维护性。但也要避免滥用：如果装饰器内部逻辑复杂或涉及I/O，可能会降低可测试性，此时可以考虑将核心逻辑与装饰器分离。",
       "codeExample": {
-        "language": "Swift",
-        "code": "// 可选类型声明与安全解包示例\nimport Foundation\n\n// 声明一个可选字符串变量，初始值为 nil\nvar nickname: String? = nil\n\n// 使用 if let 安全解包\nif let unwrappedName = nickname {\n    print(\"昵称是：\\(unwrappedName)\")\n} else {\n    print(\"没有昵称，使用默认值\")\n}\n\n// 使用 nil 合并运算符提供默认值\nlet displayName = nickname ?? \"默认用户\"\nprint(\"显示名称：\\(displayName)\")\n\n// 在函数中使用 guard let 提前退出\nfunc greet(with name: String?) {\n    guard let safeName = name else {\n        print(\"没有名字，无法问候\")\n        return\n    }\n    print(\"你好，\\(safeName)！\")\n}\n\ngreet(with: \"Alice\")   // 输出：你好，Alice！\ngreet(with: nil)       // 输出：没有名字，无法问候\n\n// 可选链示例\nstruct Person {\n    var pet: Pet?\n}\nstruct Pet {\n    var name: String\n}\n\nlet person = Person(pet: Pet(name: \"旺财\"))\nif let petName = person.pet?.name {\n    print(\"宠物的名字是：\\(petName)\")\n} else {\n    print(\"没有宠物\")\n}\n// 如果 person.pet 为 nil，则 petName 为 nil，不会崩溃",
-        "explanation": "代码首先声明了一个可选字符串 nickname 并赋值为 nil。使用 `if let` 解包：如果 nickname 有值，则将其赋给常量 unwrappedName 并在 if 块中使用；否则执行 else 块。nil 合并运算符 `??` 在 nickname 为 nil 时返回默认字符串。`guard let` 用于函数 greet 的开头：如果 name 为 nil 则提前返回，否则继续执行后续代码（使用解包后的 safeName）。可选链示例中，`person.pet?.name` 安全地访问 pet 的 name 属性，如果 pet 为 nil 则整个表达式返回 nil。"
+        "language": "Python",
+        "code": "import functools\nimport time\nimport random\n\n# ========== 1. 基础计时装饰器（演示functools.wraps）==========\ndef timer(func):\n    \"\"\"计算函数执行时间（毫秒）\"\"\"\n    @functools.wraps(func)  # 保留原函数的__name__等属性\n    def wrapper(*args, **kwargs):\n        start = time.perf_counter()\n        try:\n            result = func(*args, **kwargs)\n            return result\n        finally:\n            # 使用finally确保无论是否异常都计算时间\n            elapsed = (time.perf_counter() - start) * 1000\n            print(f\"{func.__name__} 耗时 {elapsed:.2f} ms\")\n    return wrapper\n\n@timer\ndef slow_add(a, b):\n    \"\"\"模拟耗时加法\"\"\"\n    time.sleep(0.1)\n    return a + b\n\nprint(slow_add(3, 4))          # 运行并打印时间\nprint(\"函数名:\", slow_add.__name__)  # 输出 slow_add（没有wraps会变成wrapper）\n\n# ========== 2. 带参数的装饰器（可配置重试次数和延迟）==========\ndef retry(max_attempts=3, delay=0.5):\n    \"\"\"装饰器工厂：失败时重试指定次数\"\"\"\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            for attempt in range(1, max_attempts + 1):\n                try:\n                    return func(*args, **kwargs)\n                except Exception as e:\n                    print(f\"第 {attempt} 次调用 {func.__name__} 失败: {e}\")\n                    if attempt < max_attempts:\n                        time.sleep(delay)\n                    else:\n                        raise  # 最后一次重试失败时抛出异常\n            return None\n        return wrapper\n    return decorator\n\n@retry(max_attempts=3, delay=0.2)\ndef unreliable_divide(a, b):\n    \"\"\"模拟可能因随机数失败的函数\"\"\"\n    if random.random() < 0.6:  # 60%概率失败\n        raise ValueError(\"随机出错\")\n    return a / b\n\n# 执行几次验证\nfor _ in range(2):\n    try:\n        print(\"结果:\", unreliable_divide(10, 2))\n    except Exception:\n        print(\"最终失败\")\n\n# ========== 3. 类装饰器（状态保持）==========\nclass CountCalls:\n    \"\"\"类装饰器：统计函数调用次数\"\"\"\n    def __init__(self, func):\n        functools.update_wrapper(self, func)  # 手动更新元数据\n        self.func = func\n        self.count = 0\n\n    def __call__(self, *args, **kwargs):\n        self.count += 1\n        print(f\"调用第 {self.count} 次\")\n        return self.func(*args, **kwargs)\n\n@CountCalls\ndef say_hello(name):\n    return f\"Hello, {name}!\"\n\nprint(say_hello(\"Alice\"))\nprint(say_hello(\"Bob\"))",
+        "explanation": "代码分为三个示例：\n1. **基础计时装饰器**：展示了 `@functools.wraps` 的必要性——如果没有它，`slow_add.__name__` 会变成 `wrapper`。`try/finally` 确保即使函数抛出异常也能打印耗时。\n2. **带参数的重试装饰器**：外层函数 `retry` 接收配置参数并返回真正的装饰器。内部 `wrapper` 使用循环实现重试，超过最大次数后抛出原始异常。该模式常用于网络请求等不稳定场景。\n3. **类装饰器**：通过 `__init__` 保存原函数，`__call__` 使得实例可被调用。使用 `functools.update_wrapper` 手动更新元数据（等效于 `@wraps`）。类装饰器可以维护状态（如调用计数），适合需要跨调用保持数据的场景。"
       },
       "keyPoints": [
-        "可选类型用 `?` 声明，表示变量可以存储 nil 或对应类型的值",
-        "强制解包（`!`）风险高，仅在你确定值非 nil 时使用",
-        "`if let` 和 `guard let` 是安全解包的首选方式",
-        "nil 合并运算符 `??` 能为可选值提供默认值，简化代码",
-        "可选链（`?.`）允许在可选值上安全调用属性或方法"
+        "装饰器本质是接受函数并返回函数的高阶函数，`@` 语法只是语法糖",
+        "始终使用 `functools.wraps` 保留原函数元数据，避免调试困扰",
+        "带参数装饰器需要三层嵌套：参数工厂 → 装饰器 → 包装函数",
+        "多重装饰器执行顺序：调用时从外到内（栈式）；定义时离函数近的先应用",
+        "类装饰器通过 `__call__` 实现实例化时执行装饰逻辑，适合状态管理"
       ],
       "exercise": {
-        "description": "编写一个函数 `printIfNonEmpty(_ text: String?)`，该函数接受一个可选的字符串参数。如果字符串不为 nil 且不为空（即 isEmpty 为 false），则打印该字符串；否则打印默认文本 \"默认文本\"。",
-        "hint": "使用 `guard let` 先解包可选值，然后用 `!text.isEmpty` 检查是否非空；或者使用 `if let` 结合条件判断。",
+        "description": "编写一个装饰器 `@log_call`，要求：\n1. 记录函数的调用时间、参数、返回值或异常信息。\n2. 支持可选的日志文件路径参数（如 `@log_call(log_file='app.log')`），默认输出到控制台。\n3. 使用 `functools.wraps` 保留原函数属性。\n\n完成后再实现一个 `@memoize` 装饰器，缓存函数的计算结果（带过期时间参数），用于优化重复计算。",
+        "hint": "可以先实现基础版本，再扩展参数化。日志需要格式化时间戳（`datetime.now()`）。memoize 可以用字典存储结果，key 由参数序列化得到（注意可变参数问题，可使用 `pickle.dumps` 或 `repr`）。过期时间可以在字典中同时存储时间戳。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，声明一个可选整数并初始化为 nil。",
-            "codeContext": "var myNumber: ______ = nil",
+            "question": "以下代码缺少关键步骤，请选择正确的选项填入空白处，使装饰器能保留原函数元数据。",
+            "codeContext": "import functools\n\ndef my_decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        return func(*args, **kwargs)\n    return wrapper\n\n@my_decorator\ndef greet(name):\n    \"\"\"Greet someone\"\"\"\n    return f\"Hello {name}\"\n\nprint(greet.__name__)  # 期望打印 'greet'\nprint(greet.__doc__)   # 期望打印 'Greet someone'",
             "segments": [
               {
                 "type": "text",
-                "content": "var myNumber: ",
+                "content": "要使上述装饰器正确保留元数据，必须在 wrapper 定义前使用 ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,52 +42,52 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "Int",
-                  "Int?"
+                  "@functools.wraps(func)",
+                  "@functools.wraps(wrapper)",
+                  "functools.update_wrapper(func, wrapper)"
                 ],
-                "correctAnswer": "Int?"
+                "correctAnswer": "@functools.wraps(func)"
               },
               {
                 "type": "text",
-                "content": " = nil",
+                "content": "，该行代码的作用是将原函数的名称、文档等属性复制到包装函数上。",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "Int?",
-            "explanation": "在类型后面加问号 `?` 表示可选类型，因此 `Int?` 可以存储整数或 nil。"
+            "correctAnswer": "@functools.wraps(func)",
+            "explanation": "`@functools.wraps(func)` 是一个装饰器，它把 `func` 的属性（`__name__`, `__doc__`, `__module__` 等）复制到 `wrapper` 上，这样外部访问 `greet.__name__` 时就不会返回 `'wrapper'` 而是 `'greet'`。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "以下哪种方式是安全地解包可选值的推荐做法？",
-            "codeContext": null,
-            "segments": null,
+            "question": "下面关于装饰器堆叠执行顺序的描述，哪一项是正确的？",
+            "codeContext": "@decorator1\n@decorator2\ndef func():\n    pass\n# 等价于 func = decorator1(decorator2(func))",
             "options": [
-              "A. 强制解包（!）",
-              "B. if let 可选绑定",
-              "C. 隐式解包可选类型（!）",
-              "D. 直接使用可选值"
+              "调用 func() 时，decorator1 的包装代码先执行，然后 decorator2 的包装代码，最后执行原函数 func",
+              "调用 func() 时，decorator2 的包装代码先执行，然后 decorator1 的包装代码，最后执行原函数 func",
+              "定义时，decorator2 先装饰 func，然后 decorator1 再装饰结果；调用时，从内到外执行：先执行 decorator1 的包装，再 decorator2 的包装，最后原函数",
+              "定义时，decorator1 先装饰 decorator2，再装饰 func；调用时，decorator2 的包装先执行，然后 decorator1"
             ],
-            "correctAnswer": "B. if let 可选绑定",
-            "explanation": "强制解包（!）如果值为 nil 会导致运行时崩溃；隐式解包同样有崩溃风险；直接使用可选值无法传递给需要非可选类型的上下文。`if let` 或 `guard let` 在值为 nil 时不会崩溃，是安全的解包方式。"
+            "correctAnswer": "定义时，decorator2 先装饰 func，然后 decorator1 再装饰结果；调用时，从内到外执行：先执行 decorator1 的包装，再 decorator2 的包装，最后原函数",
+            "explanation": "装饰器堆叠时，离函数定义最近的装饰器先应用（即先装饰原函数），构成一个嵌套结构。调用时，最外层装饰器（代码上最上面的）的包装函数先被调用，然后它内部调用下一层装饰器的包装，直到原函数。因此选项描述正确。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "阅读以下代码，输出是什么？",
-            "codeContext": "var name: String? = \"Alice\"\nlet greeting = \"Hello, \" + (name ?? \"Guest\")\nprint(greeting)",
+            "question": "执行以下代码，输出结果是什么？",
+            "codeContext": "def deco_a(func):\n    print('A outer')\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        print('A before')\n        result = func(*args, **kwargs)\n        print('A after')\n        return result\n    return wrapper\n\ndef deco_b(func):\n    print('B outer')\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        print('B before')\n        result = func(*args, **kwargs)\n        print('B after')\n        return result\n    return wrapper\n\n@deco_a\n@deco_b\ndef hello():\n    print('hello!')\n\nprint('--- 调用前 ---')\nhello()",
             "segments": null,
             "options": [
-              "A. Hello, Alice",
-              "B. Hello, Guest",
-              "C. 编译错误",
-              "D. Hello, Optional(\"Alice\")"
+              "A outer\\nB outer\\n--- 调用前 ---\\nA before\\nB before\\nhello!\\nB after\\nA after",
+              "B outer\\nA outer\\n--- 调用前 ---\\nB before\\nA before\\nhello!\\nA after\\nB after",
+              "A outer\\nB outer\\n--- 调用前 ---\\nB before\\nA before\\nhello!\\nA after\\nB after",
+              "B outer\\nA outer\\n--- 调用前 ---\\nA before\\nB before\\nhello!\\nB after\\nA after"
             ],
-            "correctAnswer": "A. Hello, Alice",
-            "explanation": "`name` 是可选字符串，值为 \"Alice\"，因此 `name ?? \"Guest\"` 返回 \"Alice\"，拼接后得到 \"Hello, Alice\"。如果 `name` 为 nil，则会输出 \"Hello, Guest\"。"
+            "correctAnswer": "B outer\\nA outer\\n--- 调用前 ---\\nA before\\nB before\\nhello!\\nB after\\nA after",
+            "explanation": "装饰器的定义顺序：`@deco_b` 先装饰 `hello`，此时打印 'B outer'；然后 `@deco_a` 装饰被 deco_b 包装后的结果，打印 'A outer'。所以定义时输出顺序为 B outer、A outer。调用 `hello()` 时，实际上调用的是 deco_a 返回的 wrapper，因此先打印 'A before'，内部调用 deco_b 的 wrapper，打印 'B before'，接着执行原 `hello` 打印 'hello!'，然后返回栈，打印 'B after'、'A after'。因此完整输出是 B outer、A outer、--- 调用前 ---、A before、B before、hello!、B after、A after。"
           }
         ]
       }
