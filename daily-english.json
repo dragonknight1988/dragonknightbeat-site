@@ -7,114 +7,114 @@
     "quote": {
       "quote": "The stock market is filled with individuals who know the price of everything, but the value of nothing.",
       "author": "Philip Fisher",
-      "translation": "股市里充斥着那些知道每样东西的价格，却对价值一无所知的人。",
-      "explanation": "这句话强调投资中价值判断的重要性，提醒投资者不要被短期价格波动所迷惑，而应关注资产的长期内在价值。常用于金融领域的风险教育或投资理念分享。"
+      "translation": "股市里到处都是知道每样东西的价格，却不知道其价值的人。",
+      "explanation": "这句话提醒投资者不要只看短期价格波动，而要关注资产的长期内在价值。常用于价值投资讨论或金融教育场景。"
     },
     "vocabulary": [
       {
         "word": "equity",
         "phonetic": "/ˈekwəti/",
-        "partOfSpeech": "n.",
-        "definition": "股权；公平",
-        "example": "The company issued new equity to raise capital for expansion.",
-        "translation": "该公司发行新股以筹集扩张资金。"
+        "partOfSpeech": "noun",
+        "definition": "股权；净资产",
+        "example": "The company raised capital by issuing equity shares to investors.",
+        "translation": "该公司通过向投资者发行股权来筹集资金。"
       },
       {
         "word": "dividend",
         "phonetic": "/ˈdɪvɪdend/",
-        "partOfSpeech": "n.",
+        "partOfSpeech": "noun",
         "definition": "股息；红利",
-        "example": "Shareholders received a quarterly dividend of $0.50 per share.",
-        "translation": "股东每股获得0.50美元的季度股息。"
+        "example": "Shareholders will receive a quarterly dividend of $0.50 per share.",
+        "translation": "股东将获得每股0.50美元的季度股息。"
       },
       {
         "word": "leverage",
         "phonetic": "/ˈlevərɪdʒ/",
-        "partOfSpeech": "n.",
-        "definition": "杠杆作用；影响力",
-        "example": "High financial leverage can amplify both gains and losses.",
-        "translation": "高财务杠杆会放大收益和损失。"
+        "partOfSpeech": "noun",
+        "definition": "杠杆；影响力",
+        "example": "The company used debt leverage to finance its expansion.",
+        "translation": "该公司利用债务杠杆为扩张融资。"
       },
       {
         "word": "liquidity",
         "phonetic": "/lɪˈkwɪdəti/",
-        "partOfSpeech": "n.",
-        "definition": "流动性；变现能力",
-        "example": "Central banks injected liquidity into the market to stabilize the banking system.",
-        "translation": "中央银行向市场注入流动性以稳定银行体系。"
-      },
-      {
-        "word": "hedge",
-        "phonetic": "/hedʒ/",
-        "partOfSpeech": "v.",
-        "definition": "对冲；套期保值",
-        "example": "Investors often hedge their portfolios against inflation using gold or commodities.",
-        "translation": "投资者常利用黄金或大宗商品对冲投资组合的通胀风险。"
-      },
-      {
-        "word": "amortization",
-        "phonetic": "/əˌmɔːrtɪˈzeɪʃən/",
-        "partOfSpeech": "n.",
-        "definition": "摊销；分期偿还",
-        "example": "The loan amortization schedule shows monthly principal and interest payments.",
-        "translation": "贷款摊销表显示了每月的本金和利息支付额。"
-      },
-      {
-        "word": "bull market",
-        "phonetic": "/bʊl ˈmɑːrkɪt/",
-        "partOfSpeech": "n.",
-        "definition": "牛市",
-        "example": "A bull market typically occurs when investor confidence is high and the economy is strong.",
-        "translation": "牛市通常发生在投资者信心高涨且经济强劲之时。"
-      },
-      {
-        "word": "bear market",
-        "phonetic": "/ber ˈmɑːrkɪt/",
-        "partOfSpeech": "n.",
-        "definition": "熊市",
-        "example": "During a bear market, stock prices fall by 20% or more from recent highs.",
-        "translation": "在熊市中，股价从近期高点下跌20%或更多。"
+        "partOfSpeech": "noun",
+        "definition": "流动性",
+        "example": "Central banks maintain liquidity in the financial system during crises.",
+        "translation": "危机期间，中央银行维持金融体系的流动性。"
       },
       {
         "word": "diversification",
-        "phonetic": "/daɪˌvɜːrsɪfɪˈkeɪʃən/",
-        "partOfSpeech": "n.",
-        "definition": "多元化；分散投资",
+        "phonetic": "/daɪˌvɜːrsɪfɪˈkeɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "多样化；分散投资",
         "example": "Diversification across asset classes reduces portfolio risk.",
         "translation": "跨资产类别的分散投资降低了投资组合风险。"
       },
       {
-        "word": "underwrite",
-        "phonetic": "/ˌʌndərˈraɪt/",
-        "partOfSpeech": "v.",
-        "definition": "承销；承保",
-        "example": "The investment bank agreed to underwrite the initial public offering.",
-        "translation": "投行同意承销这次首次公开募股。"
+        "word": "hedge",
+        "phonetic": "/hedʒ/",
+        "partOfSpeech": "verb",
+        "definition": "对冲；规避风险",
+        "example": "Investors often hedge against currency fluctuations using futures contracts.",
+        "translation": "投资者常使用期货合约对冲汇率波动。"
+      },
+      {
+        "word": "amortization",
+        "phonetic": "/əˌmɔːrtɪˈzeɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "摊销；分期偿还",
+        "example": "The loan amortization schedule shows monthly principal payments.",
+        "translation": "贷款摊销表显示了每月本金偿还额。"
+      },
+      {
+        "word": "arbitrage",
+        "phonetic": "/ˈɑːrbətrɑːʒ/",
+        "partOfSpeech": "noun",
+        "definition": "套利",
+        "example": "Price differences between exchanges allow traders to profit from arbitrage.",
+        "translation": "交易所之间的价差使交易者能从套利中获利。"
+      },
+      {
+        "word": "depreciation",
+        "phonetic": "/dɪˌpriːʃiˈeɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "折旧；贬值",
+        "example": "The company recorded $2 million in depreciation on its equipment.",
+        "translation": "公司在其设备上记录了200万美元的折旧。"
+      },
+      {
+        "word": "yield",
+        "phonetic": "/jiːld/",
+        "partOfSpeech": "noun",
+        "definition": "收益率；回报",
+        "example": "The bond's yield to maturity is 4.5%.",
+        "translation": "该债券的到期收益率为4.5%。"
       }
     ],
     "pattern": {
-      "pattern": "Subject + is/are + likely/unlikely to + verb... (be likely to do / be unlikely to do)",
-      "example": "The company is likely to report strong earnings this quarter due to cost cutting.",
-      "translation": "由于削减成本，该公司本季度很可能会公布强劲的盈利。",
-      "usage": "用于表达对未来的预测或可能性，常用于商业报告、市场分析中。be likely to 表示很可能，be unlikely to 表示不太可能。"
+      "pattern": "[Subject] [verb] [amount] in [financial metric] due to [reason].",
+      "example": "The firm reported a 15% increase in net profit due to cost-cutting measures.",
+      "translation": "由于削减成本措施，该公司报告净利润增长了15%。",
+      "usage": "用于描述财务指标变化及其原因，常用于财报分析或商业报告。"
     },
     "grammar": {
-      "title": "条件句中的虚拟语气 (Type 2 Conditional)",
-      "explanation": "Type 2 条件句用于描述与现在事实相反或不可能发生的情况。结构：If + 主语 + 过去式动词（be用were），主语 + would/could/might + 动词原形。例如：If the interest rate rose significantly, many businesses would struggle to repay their loans. 注意：在虚拟语气中，无论主语是单数还是复数，be动词统一用were。",
+      "title": "现在完成时在商业报告中的用法",
+      "explanation": "现在完成时（have/has + 过去分词）常用于描述从过去持续到现在的行为或变化，强调对当前的影响。在商业金融中，常用来报告新的发展、趋势或已发生的改变。",
       "examples": [
-        "If the market crashed tomorrow, investors would panic.",
-        "If I were the CEO, I would focus on innovation."
+        "The company has expanded its operations into three new markets this year.",
+        "Interest rates have risen steadily since the beginning of the quarter."
       ]
     },
     "pronunciation": {
-      "word": "amortization",
-      "phonetic": "/əˌmɔːrtɪˈzeɪʃən/",
-      "tips": "重音在倒数第二个音节 'zeɪ'，注意第一个音节 'ə' 是弱读。尝试分解：a-mor-ti-ZA-tion，最后一音节 'ʃən' 读作 'shun'。"
+      "word": "arbitrage",
+      "phonetic": "/ˈɑːrbətrɑːʒ/",
+      "tips": "重音在第一个音节，注意末尾的 /ɑːʒ/ 类似于中文“阿之”但更柔和，要振动声带。"
     },
     "reading": {
-      "title": "The Role of Central Banks in Modern Finance",
-      "content": "Central banks play a pivotal role in maintaining financial stability and controlling inflation. They set key interest rates, regulate commercial banks, and act as lenders of last resort during crises. For instance, during the 2008 global financial crisis, the Federal Reserve slashed rates to near zero and launched quantitative easing to inject liquidity. More recently, central banks have employed forward guidance to influence market expectations. Their policies directly affect currency value, bond yields, and stock market sentiment. Understanding central bank actions is essential for any investor navigating the complex world of finance.",
-      "translation": "中央银行在维护金融稳定和控制通胀中扮演关键角色。它们设定关键利率，监管商业银行，并在危机时充当最后贷款人。例如，2008年全球金融危机期间，美联储将利率降至接近零，并推出量化宽松以注入流动性。最近，中央银行使用前瞻指引来影响市场预期。它们的政策直接影响货币价值、债券收益率和股市情绪。理解央行行动对于任何在复杂金融世界中航行的投资者都至关重要。"
+      "title": "The Role of Central Banks in Maintaining Financial Stability",
+      "content": "Central banks play a crucial role in ensuring the smooth functioning of financial markets. By setting key interest rates and conducting open market operations, they influence liquidity and control inflation. During periods of economic turmoil, central banks may implement quantitative easing—buying government bonds to inject money into the economy. This helps stabilize asset prices and encourage lending. However, such policies also carry risks, such as potential asset bubbles. A well-balanced approach is essential to sustain long-term growth. Understanding these mechanisms is vital for investors and business leaders.",
+      "translation": "中央银行在确保金融市场平稳运行方面发挥着关键作用。通过设定关键利率和进行公开市场操作，它们影响流动性并控制通胀。在经济动荡时期，央行可能实施量化宽松——购买政府债券以向经济注入资金。这有助于稳定资产价格并鼓励放贷。然而，这类政策也伴随着风险，如潜在的资产泡沫。采取平衡的方法对于维持长期增长至关重要。理解这些机制对投资者和商业领袖至关重要。"
     }
   }
 }
