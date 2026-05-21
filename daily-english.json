@@ -1,120 +1,120 @@
 {
-  "date": "2026-05-21",
+  "date": "2026-05-22",
   "content": {
-    "id": "en-2026-05-21",
-    "date": "2026-05-21",
-    "topic": "商业与金融",
+    "id": "en-2026-05-22",
+    "date": "2026-05-22",
+    "topic": "职场与沟通",
     "quote": {
-      "quote": "The stock market is filled with individuals who know the price of everything, but the value of nothing.",
-      "author": "Philip Fisher",
-      "translation": "股市里到处都是知道每样东西的价格，却不知道其价值的人。",
-      "explanation": "这句话提醒投资者不要只看短期价格波动，而要关注资产的长期内在价值。常用于价值投资讨论或金融教育场景。"
+      "quote": "The single biggest problem in communication is the illusion that it has taken place.",
+      "author": "George Bernard Shaw",
+      "translation": "沟通中最大的问题，是误以为沟通已经发生了。",
+      "explanation": "肖伯纳这句话提醒我们，在职场中仅仅说出信息并不等于有效沟通。真正的沟通需要确认对方理解，避免想当然的幻觉。"
     },
     "vocabulary": [
       {
-        "word": "equity",
-        "phonetic": "/ˈekwəti/",
-        "partOfSpeech": "noun",
-        "definition": "股权；净资产",
-        "example": "The company raised capital by issuing equity shares to investors.",
-        "translation": "该公司通过向投资者发行股权来筹集资金。"
+        "word": "clarity",
+        "phonetic": "/ˈklærəti/",
+        "partOfSpeech": "n.",
+        "definition": "清晰，明确",
+        "example": "In a meeting, clarity is more important than speed.",
+        "translation": "在会议中，清晰比速度更重要。"
       },
       {
-        "word": "dividend",
-        "phonetic": "/ˈdɪvɪdend/",
-        "partOfSpeech": "noun",
-        "definition": "股息；红利",
-        "example": "Shareholders will receive a quarterly dividend of $0.50 per share.",
-        "translation": "股东将获得每股0.50美元的季度股息。"
+        "word": "concise",
+        "phonetic": "/kənˈsaɪs/",
+        "partOfSpeech": "adj.",
+        "definition": "简洁的，简明的",
+        "example": "A concise email saves everyone's time.",
+        "translation": "一封简洁的邮件节省了每个人的时间。"
       },
       {
-        "word": "leverage",
-        "phonetic": "/ˈlevərɪdʒ/",
-        "partOfSpeech": "noun",
-        "definition": "杠杆；影响力",
-        "example": "The company used debt leverage to finance its expansion.",
-        "translation": "该公司利用债务杠杆为扩张融资。"
+        "word": "feedback",
+        "phonetic": "/ˈfiːdbæk/",
+        "partOfSpeech": "n.",
+        "definition": "反馈，意见",
+        "example": "We value constructive feedback from our colleagues.",
+        "translation": "我们重视来自同事的建设性反馈。"
       },
       {
-        "word": "liquidity",
-        "phonetic": "/lɪˈkwɪdəti/",
-        "partOfSpeech": "noun",
-        "definition": "流动性",
-        "example": "Central banks maintain liquidity in the financial system during crises.",
-        "translation": "危机期间，中央银行维持金融体系的流动性。"
+        "word": "collaborate",
+        "phonetic": "/kəˈlæbəreɪt/",
+        "partOfSpeech": "v.",
+        "definition": "合作，协作",
+        "example": "Teams must collaborate across departments to achieve success.",
+        "translation": "团队必须跨部门协作才能取得成功。"
       },
       {
-        "word": "diversification",
-        "phonetic": "/daɪˌvɜːrsɪfɪˈkeɪʃn/",
-        "partOfSpeech": "noun",
-        "definition": "多样化；分散投资",
-        "example": "Diversification across asset classes reduces portfolio risk.",
-        "translation": "跨资产类别的分散投资降低了投资组合风险。"
+        "word": "persuade",
+        "phonetic": "/pərˈsweɪd/",
+        "partOfSpeech": "v.",
+        "definition": "说服，劝说",
+        "example": "She tried to persuade the manager to adopt a new strategy.",
+        "translation": "她试图说服经理采纳一项新策略。"
       },
       {
-        "word": "hedge",
-        "phonetic": "/hedʒ/",
-        "partOfSpeech": "verb",
-        "definition": "对冲；规避风险",
-        "example": "Investors often hedge against currency fluctuations using futures contracts.",
-        "translation": "投资者常使用期货合约对冲汇率波动。"
+        "word": "negotiate",
+        "phonetic": "/nɪˈɡoʊʃieɪt/",
+        "partOfSpeech": "v.",
+        "definition": "谈判，协商",
+        "example": "We need to negotiate a mutually beneficial agreement.",
+        "translation": "我们需要谈判达成一个互利的协议。"
       },
       {
-        "word": "amortization",
-        "phonetic": "/əˌmɔːrtɪˈzeɪʃn/",
-        "partOfSpeech": "noun",
-        "definition": "摊销；分期偿还",
-        "example": "The loan amortization schedule shows monthly principal payments.",
-        "translation": "贷款摊销表显示了每月本金偿还额。"
+        "word": "rapport",
+        "phonetic": "/ræˈpɔːr/",
+        "partOfSpeech": "n.",
+        "definition": "融洽关系，共鸣",
+        "example": "Building rapport with clients is essential for long-term business.",
+        "translation": "与客户建立融洽关系对于长期业务至关重要。"
       },
       {
-        "word": "arbitrage",
-        "phonetic": "/ˈɑːrbətrɑːʒ/",
-        "partOfSpeech": "noun",
-        "definition": "套利",
-        "example": "Price differences between exchanges allow traders to profit from arbitrage.",
-        "translation": "交易所之间的价差使交易者能从套利中获利。"
+        "word": "articulate",
+        "phonetic": "/ɑːrˈtɪkjuleɪt/",
+        "partOfSpeech": "v.",
+        "definition": "明确表达，清楚地说话",
+        "example": "He was able to articulate his ideas clearly during the presentation.",
+        "translation": "他在演示中能够清楚地表达自己的想法。"
       },
       {
-        "word": "depreciation",
-        "phonetic": "/dɪˌpriːʃiˈeɪʃn/",
-        "partOfSpeech": "noun",
-        "definition": "折旧；贬值",
-        "example": "The company recorded $2 million in depreciation on its equipment.",
-        "translation": "公司在其设备上记录了200万美元的折旧。"
+        "word": "deadline",
+        "phonetic": "/ˈdedlaɪn/",
+        "partOfSpeech": "n.",
+        "definition": "截止日期，最后期限",
+        "example": "Please submit the report before the Friday deadline.",
+        "translation": "请在周五的截止日期前提交报告。"
       },
       {
-        "word": "yield",
-        "phonetic": "/jiːld/",
-        "partOfSpeech": "noun",
-        "definition": "收益率；回报",
-        "example": "The bond's yield to maturity is 4.5%.",
-        "translation": "该债券的到期收益率为4.5%。"
+        "word": "agenda",
+        "phonetic": "/əˈdʒendə/",
+        "partOfSpeech": "n.",
+        "definition": "议程，议事日程",
+        "example": "Let's stick to the agenda to keep the meeting efficient.",
+        "translation": "让我们坚持议程，保持会议高效。"
       }
     ],
     "pattern": {
-      "pattern": "[Subject] [verb] [amount] in [financial metric] due to [reason].",
-      "example": "The firm reported a 15% increase in net profit due to cost-cutting measures.",
-      "translation": "由于削减成本措施，该公司报告净利润增长了15%。",
-      "usage": "用于描述财务指标变化及其原因，常用于财报分析或商业报告。"
+      "pattern": "I just wanted to follow up on...",
+      "example": "I just wanted to follow up on the proposal we discussed last week.",
+      "translation": "我只是想跟进一下我们上周讨论的提案。",
+      "usage": "用于礼貌地提醒对方或询问进展，常用于电子邮件或职场对话中，既不显得唐突又能推动工作。"
     },
     "grammar": {
-      "title": "现在完成时在商业报告中的用法",
-      "explanation": "现在完成时（have/has + 过去分词）常用于描述从过去持续到现在的行为或变化，强调对当前的影响。在商业金融中，常用来报告新的发展、趋势或已发生的改变。",
+      "title": "现在完成时的职场用法",
+      "explanation": "现在完成时 (have/has + 过去分词) 用于强调过去动作与现在的关联。在职场沟通中，常用来报告未明确时间的完成事项或经历。例如：'I have prepared the slides.' 暗示现在幻灯片准备好了。",
       "examples": [
-        "The company has expanded its operations into three new markets this year.",
-        "Interest rates have risen steadily since the beginning of the quarter."
+        "She has already sent the meeting notes to everyone.",
+        "We have not yet received the client's feedback."
       ]
     },
     "pronunciation": {
-      "word": "arbitrage",
-      "phonetic": "/ˈɑːrbətrɑːʒ/",
-      "tips": "重音在第一个音节，注意末尾的 /ɑːʒ/ 类似于中文“阿之”但更柔和，要振动声带。"
+      "word": "rapport",
+      "phonetic": "/ræˈpɔːr/",
+      "tips": "注意重音在第二个音节，'ræ' 要短促，'pɔːr' 像 'pore' 但嘴唇更圆。避免把第一个音节读成 'ray'。"
     },
     "reading": {
-      "title": "The Role of Central Banks in Maintaining Financial Stability",
-      "content": "Central banks play a crucial role in ensuring the smooth functioning of financial markets. By setting key interest rates and conducting open market operations, they influence liquidity and control inflation. During periods of economic turmoil, central banks may implement quantitative easing—buying government bonds to inject money into the economy. This helps stabilize asset prices and encourage lending. However, such policies also carry risks, such as potential asset bubbles. A well-balanced approach is essential to sustain long-term growth. Understanding these mechanisms is vital for investors and business leaders.",
-      "translation": "中央银行在确保金融市场平稳运行方面发挥着关键作用。通过设定关键利率和进行公开市场操作，它们影响流动性并控制通胀。在经济动荡时期，央行可能实施量化宽松——购买政府债券以向经济注入资金。这有助于稳定资产价格并鼓励放贷。然而，这类政策也伴随着风险，如潜在的资产泡沫。采取平衡的方法对于维持长期增长至关重要。理解这些机制对投资者和商业领袖至关重要。"
+      "title": "Why Clear Communication Matters at Work",
+      "content": "In today's fast-paced workplace, clear communication is not just a skill—it's a necessity. Misunderstandings can lead to missed deadlines, low morale, and even lost clients. One common mistake is assuming that sending a message equals successful communication. In reality, true communication requires both parties to share the same understanding. Active listening, asking clarifying questions, and summarizing key points can dramatically improve collaboration. For example, after a meeting, sending a brief email to recap decisions and action items ensures everyone is aligned. Cultivating these habits builds trust, reduces errors, and fosters a positive team culture. Remember, effective communication is the bridge between confusion and clarity.",
+      "translation": "在当今快节奏的职场中，清晰沟通不仅是一项技能，更是一种必需品。误解可能导致错过截止日期、士气低落，甚至失去客户。一个常见错误是认为发送消息就等于成功沟通。实际上，真正的沟通需要双方拥有相同的理解。积极倾听、提出澄清问题以及总结要点可以显著改善协作。例如，会议结束后发送一封简短的邮件来总结决策和待办事项，可以确保大家步调一致。培养这些习惯能够建立信任、减少错误，并培养积极的团队文化。记住，有效沟通是连接困惑与清晰的桥梁。"
     }
   }
 }
