@@ -1,38 +1,38 @@
 {
-  "date": "2026-05-21",
+  "date": "2026-05-22",
   "contents": [
     {
-      "id": "prog-2026-05-21",
-      "date": "2026-05-21",
-      "title": "生成器与协程：迭代器的优雅进阶",
-      "summary": "深入理解生成器的工作原理，掌握 yield 和 yield from，并了解如何用生成器实现协程，为异步编程打下基础。",
+      "id": "prog-2026-05-22",
+      "date": "2026-05-22",
+      "title": "Promise 并发控制：封装带限流的异步任务队列",
+      "summary": "学习如何实现一个限制最大并发数的异步任务调度器，避免同时发起过多网络请求或 IO 操作。",
       "difficulty": "中级",
-      "concept": "生成器（Generator）是 Python 中优雅处理数据流的工具。与一次性生成所有元素的列表不同，生成器允许你按需（惰性）产生值，从而大幅减少内存占用。例如，处理一个数十亿行的日志文件时，使用列表会直接撑爆内存，而生成器只需维护函数栈帧的状态，每次返回一行。\n\nyield 关键字是生成器的核心。当 Python 执行到 yield 时，它会返回当前值，并冻结函数的所有局部变量和执行状态。再次调用 next() 或 send() 时，函数会从上次暂停的位置继续执行。这种状态保持机制使得生成器不仅是迭代器，还能通过 send() 实现双向通信——调用方可以传值进入生成器内部，这对构建协程至关重要。\n\nyield from 是 Python 3.3 引入的语法糖，用于将生成器中的部分工作委托给子生成器。假设你需要扁平化一个深层嵌套的列表，传统的写法需要多层循环和 yield；而使用 yield from，可以直接代理一个递归生成器，代码更简洁，并且自动处理子生成器的 next()、send()、throw() 等操作。这使得生成器组合变得异常灵活。\n\n更进一步，生成器可以摇身一变成为协程。协程本质上是一个可以多次进入和退出的函数，通过 yield 接收外部数据。典型的例子是累加器协程：它内部维护状态，每次通过 send() 传入新值，并返回当前累计结果。注意，协程必须先调用 next() 或 send(None) 进行“预激”，让它运行到第一个 yield 处，否则直接 send() 会抛出 TypeError。工程中常用装饰器来自动预激，避免遗忘。\n\n实际工程中，生成器常用于流式数据处理（如实时日志解析、WebSocket 消息流）、大数据集的逐条消费（如数据库游标）、以及流水线架构。一个经典场景是：将读取文件、过滤、转换、输出四个步骤分别实现为生成器，然后用 for 循环串联，每个步骤只处理一条记录，整体内存消耗固定。但要注意生成器是“一次性”的，迭代过后便不可复用；若需多次迭代，可考虑使用 itertools.tee 或直接转列表（小数据时）。\n\n理解生成器也是迈向 Python 异步编程（async/await）的桥梁。实际上，早期 Python 的协程就是基于生成器实现的（使用 @asyncio.coroutine 和 yield from）。如今 async/await 虽然语法不同，但其底层调度原理与生成器协程高度相似。掌握生成器，能让你在理解事件循环、任务切换时更加通透。",
+      "concept": "在实际项目中，我们经常需要同时发起多个异步操作，比如批量上传文件、并行请求 API 接口。如果不加限制，大量并发会瞬间耗尽系统资源（如端口、内存），甚至导致服务端拒绝服务。因此，**并发控制**成为一项必备技能。\n\n核心思想是利用一个“运行中计数器”和一个“等待队列”。当新任务被添加时，如果当前运行数小于最大并发数，则立即执行；否则将任务推入队列。每当一个任务完成（无论成功或失败），就减少运行计数，并从队列中取出下一个任务执行。这样就能保证任何时候同时运行的任务数不超过设定的阈值。\n\n具体实现可以使用 `async/await` 或纯 Promise 链。推荐使用 `async/await` 配合 `while` 循环，让代码更直观。需要注意：任务函数必须返回 Promise，并且调度器要妥善处理任务中的拒绝（reject），不能因为单个任务失败就阻塞后续任务。通常的做法是：在调度器内部用 `try/catch` 捕获错误，或者将 reject 的 Promise 转换为 resolved 但返回特定错误标识，以保证 `finally` 逻辑总能执行。\n\n一个成熟的并发控制工具还要支持动态添加任务、取消队列、获取当前状态等。社区有 `p-limit`、`async` 库的 `eachLimit` 等。理解其原理后，你就能根据业务需求定制更灵活的调度器（如带重试、超时、优先级等）。",
       "codeExample": {
-        "language": "Python",
-        "code": "# 协程示例：计算累计平均值\n\ndef averager():\n    \"\"\"协程：每次接收一个数字，返回当前平均值\"\"\"\n    total = 0.0\n    count = 0\n    average = None\n    while True:\n        term = yield average      # 接收外部发送的值，并返回当前平均值\n        total += term\n        count += 1\n        average = total / count\n\n# 使用协程\ncoro = averager()\nnext(coro)                        # 预激协程到第一个 yield 处\nprint(coro.send(10))              # 输出 10.0\nprint(coro.send(20))              # 输出 15.0\nprint(coro.send(30))              # 输出 20.0",
-        "explanation": "1. `averager()` 是生成器函数，内部维护 total 和 count 状态。\n2. 首次调用 `next(coro)` 使函数运行到 `yield average` 处，此时 average 为 None，但未打印（因为 yield 返回值被 `next` 丢弃）。\n3. `coro.send(10)` 将 10 赋给 `term`，然后执行累加，重新赋值 average，循环回到 `yield average` 并返回当前平均值（10.0）。\n4. 后续每次 send 都会更新平均值并返回。注意：协程必须预激，否则直接 send 会抛出 TypeError。"
+        "language": "TypeScript",
+        "code": "// 并发限制器类\nclass ConcurrencyLimiter {\n  private maxConcurrency: number;          // 最大并发数\n  private runningCount: number = 0;         // 当前正在运行的任务数\n  private queue: Array<{                   // 等待队列，存放待执行的任务及解析器\n    task: () => Promise<any>;\n    resolve: (value: any) => void;\n    reject: (reason?: any) => void;\n  }> = [];\n\n  constructor(maxConcurrency: number) {\n    if (maxConcurrency < 1) {\n      throw new Error('最大并发数必须 >= 1');\n    }\n    this.maxConcurrency = maxConcurrency;\n  }\n\n  // 添加一个任务，返回该任务结果的 Promise\n  add<T>(task: () => Promise<T>): Promise<T> {\n    return new Promise<T>((resolve, reject) => {\n      // 将任务及其回调打包存入队列\n      this.queue.push({ task, resolve, reject });\n      // 尝试执行下一个任务\n      this.runNext();\n    });\n  }\n\n  // 处理下一个任务（私有方法）\n  private runNext(): void {\n    // 如果正在运行的任务数达到上限，或者队列为空，则不做操作\n    if (this.runningCount >= this.maxConcurrency || this.queue.length === 0) {\n      return;\n    }\n\n    // 从队列头部取出一个任务并执行\n    const item = this.queue.shift()!;\n    this.runningCount++;\n\n    // 执行任务，并确保完成时处理后续\n    item.task()\n      .then((result) => {\n        item.resolve(result);           // 将成功结果传给外部调用者\n      })\n      .catch((error) => {\n        item.reject(error);             // 将失败原因传给外部调用者\n      })\n      .finally(() => {\n        this.runningCount--;            // 任务结束，减少运行计数\n        this.runNext();                 // 从队列拉取下个任务\n      });\n  }\n}\n\n// 使用示例：模拟异步请求\n// 创建一个最大并发为 2 的限制器\nconst limiter = new ConcurrencyLimiter(2);\n\n// 模拟异步任务：延迟一段时间后返回\nconst delay = (ms: number, value: string): Promise<string> =>\n  new Promise((resolve) => setTimeout(() => resolve(value), ms));\n\n// 依次添加 4 个任务\nlimiter.add(() => delay(1000, 'Task 1')).then(console.log);\nlimiter.add(() => delay(500,  'Task 2')).then(console.log);\nlimiter.add(() => delay(800,  'Task 3')).then(console.log);\nlimiter.add(() => delay(300,  'Task 4')).then(console.log);\n\n// 预期行为：\n// 同时启动 Task 1 和 Task 2（并发=2）。\n// 500ms 后 Task 2 完成，释放一个槽位，启动 Task 3。\n// 800ms 后 Task 3 完成（此时 Task 1 仍在运行），启动 Task 4。\n// 1000ms 后 Task 1 完成。\n// 1300ms 后 Task 4 完成。\n// 最终输出顺序：Task 2, Task 3, Task 1, Task 4",
+        "explanation": "1. **类结构**：`ConcurrencyLimiter` 维护最大并发数、当前运行数和一个队列。队列中每个元素包含待执行的任务函数 `task`，以及该任务对应的 `resolve` 和 `reject`，用于将任务结果传递回 `add()` 返回的 Promise。\n2. **add 方法**：返回一个新的 Promise，内部将用户任务和它的 resolve/reject 打包存入队列，然后调用 `runNext()`。\n3. **runNext 方法**：如果当前运行数未达上限且队列非空，则从队列头部取出一个任务，运行计数加 1，并执行任务。任务完成时（无论成功失败），通过 `finally` 减少运行计数，并递归调用 `runNext` 以启动下一个任务。\n4. **错误处理**：任务 reject 时，我们调用 `item.reject` 将错误传给调用方；同时 `finally` 仍然会执行，确保并发控制不受影响。\n5. **使用示例**：创建限制器后，用 `limiter.add` 包装异步函数。注意每个任务必须返回 Promise。输出顺序验证了并发控制在 2 时的执行效果。"
       },
       "keyPoints": [
-        "生成器函数使用 yield 返回值并保留函数状态，实现惰性计算。",
-        "生成器支持 send()、throw()、close() 方法，实现与调用方的双向通信。",
-        "yield from 可以简化生成器中的嵌套迭代，自动转发 next、send 和 throw。",
-        "协程是可以通过 send() 接收数据的生成器，常用于状态机或数据流处理。",
-        "生成器适合处理大数据流，节约内存，但注意其单次迭代特性。"
+        "并发控制的核心是维护“运行计数”和“等待队列”，确保同时执行的任务数不超过上限。",
+        "通过 Promise 包装和队列操作，将异步任务的调度统一管理，避免回调地狱。",
+        "错误处理要谨慎：单个任务失败不应阻塞后续任务，使用 `finally` 保证计数正确。",
+        "实际开发中可使用 `p-limit` 等成熟库，但理解原理有助于定制更复杂的行为（如优先级、超时、重试）。",
+        "注意任务函数的类型约束：必须返回 Promise，以便调度器获知完成时机。"
       ],
       "exercise": {
-        "description": "使用生成器实现一个可暂停的斐波那契数列生成器，要求能够通过 send() 方法重置数列的起始值（例如发送一个新起始值，让后续从该值开始计算）。",
-        "hint": "定义生成器函数 fib_generator()，使用 a, b = 0, 1 初始化。每次循环 yield 当前 a，并通过 yield 接收外部发送的值。如果发送的值不为 None，则重置 a, b 为新的起始对（例如发送 5 时，将 a=5, b=5? 注意斐波那契递推需要两个起始值，可简化为发送新起始值后，重置 a=发送值, b=发送值+1 或固定规则）。实际可以这样设计：send(True) 表示重置为 (0,1)，send(False) 或不 send 则正常递推。",
+        "description": "请基于上面的 `ConcurrencyLimiter` 类，实现一个“请求限流器”，用于控制对某个 API 的并发请求数量。要求：添加 `getQueueLength()` 方法返回当前等待队列长度；添加 `clearQueue()` 方法清空队列并拒绝所有未执行的任务。然后编写一个小测试：创建并发数为 3 的限流器，添加 6 个随机延迟的请求，观察它们的执行顺序。",
+        "hint": "扩展已有的类，新增方法 `getQueueLength()` 直接返回 `this.queue.length`；`clearQueue()` 需要遍历队列，对每个元素的 `reject` 调用一个自定义错误（如 'Queue cleared'），然后清空数组。注意清空后要确保 `runningCount` 不受影响（因为只清空了等待中的任务）。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "在使用生成器协程前，必须调用 ______ 来激活生成器，使其运行到第一个 yield 表达式处。",
-            "codeContext": null,
+            "question": "请补全以下代码，使 `ConcurrencyLimiter` 的 `add` 方法正确返回 Promise 并执行队列调度。",
+            "codeContext": "add<T>(task: () => Promise<T>): Promise<T> {\n  return new Promise<T>((resolve, reject) => {\n    // ___________ (1) ___________\n    // ___________ (2) ___________\n  });\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "在使用生成器协程前，必须调用 ",
+                "content": "return new Promise<T>((resolve, reject) => {\n  ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,47 +42,69 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "next(coro)",
-                  "coro.next()",
-                  "coro.__next__()",
-                  "coro.send(None)"
+                  "this.queue.push({ task, resolve, reject });",
+                  "this.queue.push({ task });"
                 ],
-                "correctAnswer": "next(coro)"
+                "correctAnswer": "this.queue.push({ task, resolve, reject });"
+              },
+              {
+                "type": "text",
+                "content": "\n  ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "this.runNext();",
+                  "this.processQueue();"
+                ],
+                "correctAnswer": "this.runNext();"
+              },
+              {
+                "type": "text",
+                "content": "\n});",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "next(coro)",
-            "explanation": "next(coro) 是激活生成器的标准方式，等效于 coro.send(None)。"
+            "correctAnswer": "this.queue.push({ task, resolve, reject });\nthis.runNext();",
+            "explanation": "我们需要将任务及其 Promise 的 resolve/reject 一起存入队列，以便完成时回调。然后调用 runNext() 尝试立即执行（如果并发未满）。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "yield from 语句的主要作用是什么？",
+            "question": "在上面的 ConcurrencyLimiter 中，如果一个任务执行出错（reject），以下说法正确的是？",
             "codeContext": null,
             "segments": null,
             "options": [
-              "从生成器中返回多个值",
-              "简化生成器中的嵌套迭代，自动转发 send 和 throw",
-              "将生成器转换为列表",
-              "用于异常处理"
+              "A. 该错误会让调度器停止工作，后续任务不再执行。",
+              "B. 该错误会被调度器捕获并忽略，不影响其他任务。",
+              "C. 该错误会被传递给调用该任务的 add() 返回的 Promise，同时调度器继续运行下一个任务。",
+              "D. 如果 reject 没有在任务内部被 catch，则整个进程会抛出未处理的 Promise 错误。"
             ],
-            "correctAnswer": "简化生成器中的嵌套迭代，自动转发 send 和 throw",
-            "explanation": "yield from 将控制权委托给子生成器，自动处理 next、send、throw 等操作，简化嵌套生成器的编码。"
+            "correctAnswer": "C. 该错误会被传递给调用该任务的 add() 返回的 Promise，同时调度器继续运行下一个任务。",
+            "explanation": "在 runNext 中，我们使用了 .catch() 来捕获错误并调用 item.reject，将错误传给外部。同时 .finally() 始终会执行，从而减少计数并调用 runNext() 启动下一个任务。因此调度器不会中断。选项 A 错误，选项 B 错误（错误没有被忽略，而是传递了），选项 D 错误（因为我们在调度器内部已经 catch 了，不会导致进程抛错）。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "执行以下代码，输出是什么？",
-            "codeContext": "def fib():\n    a, b = 0, 1\n    while True:\n        reset = yield a\n        if reset:\n            a, b = 0, 1\n        else:\n            a, b = b, a + b\n\nf = fib()\nnext(f)\nprint(f.send(False))\nprint(f.send(False))\nprint(f.send(True))\nprint(f.send(False))",
+            "question": "假设有以下代码，并且我们重写了 ConcurrencyLimiter 的 runNext 方法，在 finally 中先打印 'task finished' 再调用 runNext。请问控制台输出的顺序是什么？",
+            "codeContext": "const limiter = new ConcurrencyLimiter(1); // 最大并发 1\nlimiter.add(() => Promise.resolve('A')).then(console.log);\nlimiter.add(() => Promise.resolve('B')).then(console.log);\nlimiter.add(() => Promise.resolve('C')).then(console.log);",
             "segments": null,
             "options": [
-              "1, 2, 0, 1",
-              "0, 1, 1, 2",
-              "1, 1, 0, 1",
-              "0, 1, 0, 1"
+              "A. A, B, C",
+              "B. A, task finished, B, task finished, C, task finished",
+              "C. A, B, C, task finished (打印三次)",
+              "D. task finished (三次), A, B, C"
             ],
-            "correctAnswer": "1, 1, 0, 1",
-            "explanation": "第一次 next(f) 启动，yield a 返回 0 但未打印。第一次 send(False) 发送 False，reset=False，执行 else，a,b = b,a+b → (1,1)，yield a=1，打印 1。第二次 send(False) 同样，a,b = 1,2，yield a=1，打印 1。第三次 send(True) 发送 True，reset=True，重置 a,b=0,1，yield a=0，打印 0。第四次 send(False) 发送 False，else，a,b = 1,1，yield a=1，打印 1。因此输出 1, 1, 0, 1。"
+            "correctAnswer": "B. A, task finished, B, task finished, C, task finished",
+            "explanation": "并发为 1 时，任务串行执行。第一个任务执行完并 resolve('A')，触发 then 打印 'A'，然后在 finally 中打印 'task finished'，再启动第二个任务；第二个任务同理。所以输出顺序是 A, task finished, B, task finished, C, task finished。注意：由于 Promise 微任务调度，'A' 可能在 'task finished' 之前打印（then 在 catch/finally 之前注册），但实际 JavaScript 执行时，then 和 finally 都是微任务，且注册顺序是先 then 后 finally？严格来说，then 和 finally 是两个独立的回调，但执行顺序取决于 Promise 状态设置。当 promise 被 resolve 时，会先执行 then 的回调，然后再执行 finally 的回调？实际上，如果 then 和 finally 都绑在同一个 promise 上，then 的回调先注册，finally 后注册，所以 resolve 后会先调用 then，再调用 finally。因此 'A' 先打印，然后打印 'task finished'。所以选项 B 正确。"
           }
         ]
       }
