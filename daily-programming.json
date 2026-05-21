@@ -1,38 +1,38 @@
 {
-  "date": "2026-05-20",
+  "date": "2026-05-22",
   "contents": [
     {
-      "id": "prog-2026-05-20",
-      "date": "2026-05-20",
-      "title": "Swift中的可选类型（Optionals）",
-      "summary": "理解可选类型的概念、nil安全以及如何安全地解包可选值。",
-      "difficulty": "初级",
-      "concept": "可选类型（Optional）是 Swift 语言的核心特性之一，用于安全地表示值可能缺失的情况。在 Objective-C 中，nil 仅适用于对象指针，而 Swift 将 nil 的概念扩展到所有类型（包括 Int、String 等值类型）。声明可选类型只需在类型后加问号（?），例如 var name: String? 表示 name 可以存储一个字符串或 nil。\n\n可选类型本质上是一个枚举：Optional.none（nil）和 Optional.some（包装的值）。这种设计强制开发者显式处理 nil 情况，避免空指针崩溃。实际工程中，最常见的错误是滥用强制解包（!）。例如，从服务器获取的数据可能为 nil，如果直接强制解包，一旦值为 nil 就会导致运行时崩溃。因此，建议始终使用安全解包方式。\n\n安全解包的首选方式是可选绑定（Optional Binding）：if let 或 guard let。if let 在条件成立时创建一个临时常量，作用域仅在 if 块内；guard let 则要求值必须存在，否则执行 else 分支提前退出（常用于函数开头）。此外，nil 合并运算符（??）提供默认值，例如 let displayName = userName ?? \"Guest\"，这在 UI 展示中非常实用。\n\n在 SwiftUI 中，可选类型同样常见。例如 @State var text: String? 用于存储可选的输入内容。结合 SwiftUI 的 TextField 等视图时，需要解包后使用。工程实践中，我们经常将可选值与用户界面绑定，并在解包时提供合理的默认值，以提高应用的健壮性。\n\n隐式解包可选类型（Implicitly Unwrapped Optional, 如 String!）是另一种可选类型，它假定值在访问时一定存在，但如果为 nil 仍会崩溃。通常只用于属性在初始化后不会改变且必须非 nil 的场景（如 Interface Builder 连接）。对于初级开发者，应尽量避免使用隐式解包，直到完全理解其风险。\n\n可选链（Optional Chaining, 如 user?.address?.city）允许在可选值上安全访问属性和方法，如果链中任一环节为 nil，整个表达式返回 nil。这种方式可以编写简洁且安全的代码。总之，掌握可选类型是 Swift 开发者迈向专业的第一步，它体现了 Swift 安全性和表达性的设计哲学。",
+      "id": "prog-2026-05-22",
+      "date": "2026-05-22",
+      "title": "Promise 并发控制：封装带限流的异步任务队列",
+      "summary": "学习如何实现一个限制最大并发数的异步任务调度器，避免同时发起过多网络请求或 IO 操作。",
+      "difficulty": "中级",
+      "concept": "在实际项目中，我们经常需要同时发起多个异步操作，比如批量上传文件、并行请求 API 接口。如果不加限制，大量并发会瞬间耗尽系统资源（如端口、内存），甚至导致服务端拒绝服务。因此，**并发控制**成为一项必备技能。\n\n核心思想是利用一个“运行中计数器”和一个“等待队列”。当新任务被添加时，如果当前运行数小于最大并发数，则立即执行；否则将任务推入队列。每当一个任务完成（无论成功或失败），就减少运行计数，并从队列中取出下一个任务执行。这样就能保证任何时候同时运行的任务数不超过设定的阈值。\n\n具体实现可以使用 `async/await` 或纯 Promise 链。推荐使用 `async/await` 配合 `while` 循环，让代码更直观。需要注意：任务函数必须返回 Promise，并且调度器要妥善处理任务中的拒绝（reject），不能因为单个任务失败就阻塞后续任务。通常的做法是：在调度器内部用 `try/catch` 捕获错误，或者将 reject 的 Promise 转换为 resolved 但返回特定错误标识，以保证 `finally` 逻辑总能执行。\n\n一个成熟的并发控制工具还要支持动态添加任务、取消队列、获取当前状态等。社区有 `p-limit`、`async` 库的 `eachLimit` 等。理解其原理后，你就能根据业务需求定制更灵活的调度器（如带重试、超时、优先级等）。",
       "codeExample": {
-        "language": "Swift",
-        "code": "// 可选类型声明与安全解包示例\nimport Foundation\n\n// 声明一个可选字符串变量，初始值为 nil\nvar nickname: String? = nil\n\n// 使用 if let 安全解包\nif let unwrappedName = nickname {\n    print(\"昵称是：\\(unwrappedName)\")\n} else {\n    print(\"没有昵称，使用默认值\")\n}\n\n// 使用 nil 合并运算符提供默认值\nlet displayName = nickname ?? \"默认用户\"\nprint(\"显示名称：\\(displayName)\")\n\n// 在函数中使用 guard let 提前退出\nfunc greet(with name: String?) {\n    guard let safeName = name else {\n        print(\"没有名字，无法问候\")\n        return\n    }\n    print(\"你好，\\(safeName)！\")\n}\n\ngreet(with: \"Alice\")   // 输出：你好，Alice！\ngreet(with: nil)       // 输出：没有名字，无法问候\n\n// 可选链示例\nstruct Person {\n    var pet: Pet?\n}\nstruct Pet {\n    var name: String\n}\n\nlet person = Person(pet: Pet(name: \"旺财\"))\nif let petName = person.pet?.name {\n    print(\"宠物的名字是：\\(petName)\")\n} else {\n    print(\"没有宠物\")\n}\n// 如果 person.pet 为 nil，则 petName 为 nil，不会崩溃",
-        "explanation": "代码首先声明了一个可选字符串 nickname 并赋值为 nil。使用 `if let` 解包：如果 nickname 有值，则将其赋给常量 unwrappedName 并在 if 块中使用；否则执行 else 块。nil 合并运算符 `??` 在 nickname 为 nil 时返回默认字符串。`guard let` 用于函数 greet 的开头：如果 name 为 nil 则提前返回，否则继续执行后续代码（使用解包后的 safeName）。可选链示例中，`person.pet?.name` 安全地访问 pet 的 name 属性，如果 pet 为 nil 则整个表达式返回 nil。"
+        "language": "TypeScript",
+        "code": "// 并发限制器类\nclass ConcurrencyLimiter {\n  private maxConcurrency: number;          // 最大并发数\n  private runningCount: number = 0;         // 当前正在运行的任务数\n  private queue: Array<{                   // 等待队列，存放待执行的任务及解析器\n    task: () => Promise<any>;\n    resolve: (value: any) => void;\n    reject: (reason?: any) => void;\n  }> = [];\n\n  constructor(maxConcurrency: number) {\n    if (maxConcurrency < 1) {\n      throw new Error('最大并发数必须 >= 1');\n    }\n    this.maxConcurrency = maxConcurrency;\n  }\n\n  // 添加一个任务，返回该任务结果的 Promise\n  add<T>(task: () => Promise<T>): Promise<T> {\n    return new Promise<T>((resolve, reject) => {\n      // 将任务及其回调打包存入队列\n      this.queue.push({ task, resolve, reject });\n      // 尝试执行下一个任务\n      this.runNext();\n    });\n  }\n\n  // 处理下一个任务（私有方法）\n  private runNext(): void {\n    // 如果正在运行的任务数达到上限，或者队列为空，则不做操作\n    if (this.runningCount >= this.maxConcurrency || this.queue.length === 0) {\n      return;\n    }\n\n    // 从队列头部取出一个任务并执行\n    const item = this.queue.shift()!;\n    this.runningCount++;\n\n    // 执行任务，并确保完成时处理后续\n    item.task()\n      .then((result) => {\n        item.resolve(result);           // 将成功结果传给外部调用者\n      })\n      .catch((error) => {\n        item.reject(error);             // 将失败原因传给外部调用者\n      })\n      .finally(() => {\n        this.runningCount--;            // 任务结束，减少运行计数\n        this.runNext();                 // 从队列拉取下个任务\n      });\n  }\n}\n\n// 使用示例：模拟异步请求\n// 创建一个最大并发为 2 的限制器\nconst limiter = new ConcurrencyLimiter(2);\n\n// 模拟异步任务：延迟一段时间后返回\nconst delay = (ms: number, value: string): Promise<string> =>\n  new Promise((resolve) => setTimeout(() => resolve(value), ms));\n\n// 依次添加 4 个任务\nlimiter.add(() => delay(1000, 'Task 1')).then(console.log);\nlimiter.add(() => delay(500,  'Task 2')).then(console.log);\nlimiter.add(() => delay(800,  'Task 3')).then(console.log);\nlimiter.add(() => delay(300,  'Task 4')).then(console.log);\n\n// 预期行为：\n// 同时启动 Task 1 和 Task 2（并发=2）。\n// 500ms 后 Task 2 完成，释放一个槽位，启动 Task 3。\n// 800ms 后 Task 3 完成（此时 Task 1 仍在运行），启动 Task 4。\n// 1000ms 后 Task 1 完成。\n// 1300ms 后 Task 4 完成。\n// 最终输出顺序：Task 2, Task 3, Task 1, Task 4",
+        "explanation": "1. **类结构**：`ConcurrencyLimiter` 维护最大并发数、当前运行数和一个队列。队列中每个元素包含待执行的任务函数 `task`，以及该任务对应的 `resolve` 和 `reject`，用于将任务结果传递回 `add()` 返回的 Promise。\n2. **add 方法**：返回一个新的 Promise，内部将用户任务和它的 resolve/reject 打包存入队列，然后调用 `runNext()`。\n3. **runNext 方法**：如果当前运行数未达上限且队列非空，则从队列头部取出一个任务，运行计数加 1，并执行任务。任务完成时（无论成功失败），通过 `finally` 减少运行计数，并递归调用 `runNext` 以启动下一个任务。\n4. **错误处理**：任务 reject 时，我们调用 `item.reject` 将错误传给调用方；同时 `finally` 仍然会执行，确保并发控制不受影响。\n5. **使用示例**：创建限制器后，用 `limiter.add` 包装异步函数。注意每个任务必须返回 Promise。输出顺序验证了并发控制在 2 时的执行效果。"
       },
       "keyPoints": [
-        "可选类型用 `?` 声明，表示变量可以存储 nil 或对应类型的值",
-        "强制解包（`!`）风险高，仅在你确定值非 nil 时使用",
-        "`if let` 和 `guard let` 是安全解包的首选方式",
-        "nil 合并运算符 `??` 能为可选值提供默认值，简化代码",
-        "可选链（`?.`）允许在可选值上安全调用属性或方法"
+        "并发控制的核心是维护“运行计数”和“等待队列”，确保同时执行的任务数不超过上限。",
+        "通过 Promise 包装和队列操作，将异步任务的调度统一管理，避免回调地狱。",
+        "错误处理要谨慎：单个任务失败不应阻塞后续任务，使用 `finally` 保证计数正确。",
+        "实际开发中可使用 `p-limit` 等成熟库，但理解原理有助于定制更复杂的行为（如优先级、超时、重试）。",
+        "注意任务函数的类型约束：必须返回 Promise，以便调度器获知完成时机。"
       ],
       "exercise": {
-        "description": "编写一个函数 `printIfNonEmpty(_ text: String?)`，该函数接受一个可选的字符串参数。如果字符串不为 nil 且不为空（即 isEmpty 为 false），则打印该字符串；否则打印默认文本 \"默认文本\"。",
-        "hint": "使用 `guard let` 先解包可选值，然后用 `!text.isEmpty` 检查是否非空；或者使用 `if let` 结合条件判断。",
+        "description": "请基于上面的 `ConcurrencyLimiter` 类，实现一个“请求限流器”，用于控制对某个 API 的并发请求数量。要求：添加 `getQueueLength()` 方法返回当前等待队列长度；添加 `clearQueue()` 方法清空队列并拒绝所有未执行的任务。然后编写一个小测试：创建并发数为 3 的限流器，添加 6 个随机延迟的请求，观察它们的执行顺序。",
+        "hint": "扩展已有的类，新增方法 `getQueueLength()` 直接返回 `this.queue.length`；`clearQueue()` 需要遍历队列，对每个元素的 `reject` 调用一个自定义错误（如 'Queue cleared'），然后清空数组。注意清空后要确保 `runningCount` 不受影响（因为只清空了等待中的任务）。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，声明一个可选整数并初始化为 nil。",
-            "codeContext": "var myNumber: ______ = nil",
+            "question": "请补全以下代码，使 `ConcurrencyLimiter` 的 `add` 方法正确返回 Promise 并执行队列调度。",
+            "codeContext": "add<T>(task: () => Promise<T>): Promise<T> {\n  return new Promise<T>((resolve, reject) => {\n    // ___________ (1) ___________\n    // ___________ (2) ___________\n  });\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "var myNumber: ",
+                "content": "return new Promise<T>((resolve, reject) => {\n  ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,52 +42,69 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "Int",
-                  "Int?"
+                  "this.queue.push({ task, resolve, reject });",
+                  "this.queue.push({ task });"
                 ],
-                "correctAnswer": "Int?"
+                "correctAnswer": "this.queue.push({ task, resolve, reject });"
               },
               {
                 "type": "text",
-                "content": " = nil",
+                "content": "\n  ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "this.runNext();",
+                  "this.processQueue();"
+                ],
+                "correctAnswer": "this.runNext();"
+              },
+              {
+                "type": "text",
+                "content": "\n});",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "Int?",
-            "explanation": "在类型后面加问号 `?` 表示可选类型，因此 `Int?` 可以存储整数或 nil。"
+            "correctAnswer": "this.queue.push({ task, resolve, reject });\nthis.runNext();",
+            "explanation": "我们需要将任务及其 Promise 的 resolve/reject 一起存入队列，以便完成时回调。然后调用 runNext() 尝试立即执行（如果并发未满）。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "以下哪种方式是安全地解包可选值的推荐做法？",
+            "question": "在上面的 ConcurrencyLimiter 中，如果一个任务执行出错（reject），以下说法正确的是？",
             "codeContext": null,
             "segments": null,
             "options": [
-              "A. 强制解包（!）",
-              "B. if let 可选绑定",
-              "C. 隐式解包可选类型（!）",
-              "D. 直接使用可选值"
+              "A. 该错误会让调度器停止工作，后续任务不再执行。",
+              "B. 该错误会被调度器捕获并忽略，不影响其他任务。",
+              "C. 该错误会被传递给调用该任务的 add() 返回的 Promise，同时调度器继续运行下一个任务。",
+              "D. 如果 reject 没有在任务内部被 catch，则整个进程会抛出未处理的 Promise 错误。"
             ],
-            "correctAnswer": "B. if let 可选绑定",
-            "explanation": "强制解包（!）如果值为 nil 会导致运行时崩溃；隐式解包同样有崩溃风险；直接使用可选值无法传递给需要非可选类型的上下文。`if let` 或 `guard let` 在值为 nil 时不会崩溃，是安全的解包方式。"
+            "correctAnswer": "C. 该错误会被传递给调用该任务的 add() 返回的 Promise，同时调度器继续运行下一个任务。",
+            "explanation": "在 runNext 中，我们使用了 .catch() 来捕获错误并调用 item.reject，将错误传给外部。同时 .finally() 始终会执行，从而减少计数并调用 runNext() 启动下一个任务。因此调度器不会中断。选项 A 错误，选项 B 错误（错误没有被忽略，而是传递了），选项 D 错误（因为我们在调度器内部已经 catch 了，不会导致进程抛错）。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "阅读以下代码，输出是什么？",
-            "codeContext": "var name: String? = \"Alice\"\nlet greeting = \"Hello, \" + (name ?? \"Guest\")\nprint(greeting)",
+            "question": "假设有以下代码，并且我们重写了 ConcurrencyLimiter 的 runNext 方法，在 finally 中先打印 'task finished' 再调用 runNext。请问控制台输出的顺序是什么？",
+            "codeContext": "const limiter = new ConcurrencyLimiter(1); // 最大并发 1\nlimiter.add(() => Promise.resolve('A')).then(console.log);\nlimiter.add(() => Promise.resolve('B')).then(console.log);\nlimiter.add(() => Promise.resolve('C')).then(console.log);",
             "segments": null,
             "options": [
-              "A. Hello, Alice",
-              "B. Hello, Guest",
-              "C. 编译错误",
-              "D. Hello, Optional(\"Alice\")"
+              "A. A, B, C",
+              "B. A, task finished, B, task finished, C, task finished",
+              "C. A, B, C, task finished (打印三次)",
+              "D. task finished (三次), A, B, C"
             ],
-            "correctAnswer": "A. Hello, Alice",
-            "explanation": "`name` 是可选字符串，值为 \"Alice\"，因此 `name ?? \"Guest\"` 返回 \"Alice\"，拼接后得到 \"Hello, Alice\"。如果 `name` 为 nil，则会输出 \"Hello, Guest\"。"
+            "correctAnswer": "B. A, task finished, B, task finished, C, task finished",
+            "explanation": "并发为 1 时，任务串行执行。第一个任务执行完并 resolve('A')，触发 then 打印 'A'，然后在 finally 中打印 'task finished'，再启动第二个任务；第二个任务同理。所以输出顺序是 A, task finished, B, task finished, C, task finished。注意：由于 Promise 微任务调度，'A' 可能在 'task finished' 之前打印（then 在 catch/finally 之前注册），但实际 JavaScript 执行时，then 和 finally 都是微任务，且注册顺序是先 then 后 finally？严格来说，then 和 finally 是两个独立的回调，但执行顺序取决于 Promise 状态设置。当 promise 被 resolve 时，会先执行 then 的回调，然后再执行 finally 的回调？实际上，如果 then 和 finally 都绑在同一个 promise 上，then 的回调先注册，finally 后注册，所以 resolve 后会先调用 then，再调用 finally。因此 'A' 先打印，然后打印 'task finished'。所以选项 B 正确。"
           }
         ]
       }
