@@ -4,35 +4,35 @@
     {
       "id": "prog-2026-05-21",
       "date": "2026-05-21",
-      "title": "Python 装饰器深入：从基础到工程实践",
-      "summary": "掌握 Python 装饰器的核心原理、带参数装饰器、类装饰器，以及在实际项目中的常见用法（日志、计时、缓存等）。",
+      "title": "Python 装饰器：从基础到工程实战",
+      "summary": "深入理解装饰器原理，掌握带参数装饰器、类装饰器及常用场景（日志、性能计时、权限校验）",
       "difficulty": "中级",
-      "concept": "装饰器是 Python 中一种强大的语法特性，它允许你在不修改原函数代码的前提下，动态地给函数添加额外的功能。本质上，装饰器是一个高阶函数（接受一个函数作为参数并返回一个新函数）。当你使用 @decorator 语法时，Python 会将被装饰的函数作为参数传递给装饰器函数，并用返回的新函数替代原函数。这种机制在框架开发（如 Flask/Django 的路由、权限校验）、日志记录、性能分析、缓存等场景中非常实用。\n\n在编写装饰器时，一个常见的陷阱是丢失原函数的元信息（如 __name__、__doc__）。为了解决这个问题，应当使用标准库中的 functools.wraps 装饰器，它会将原函数的属性复制到包装函数上。此外，装饰器也可以接受参数（如指定日志级别、缓存过期时间），这时需要再嵌套一层函数来接收参数并返回真正的装饰器。类装饰器也是一种替代方案，通过实现 __call__ 方法，类可以像函数一样被装饰，适合需要维护状态的场景。\n\n实际工程中，装饰器常被用于：1) 自动记录函数调用日志；2) 测量函数执行时间；3) 实现重试机制（如网络请求失败自动重试）；4) 缓存计算结果（如 LRU 缓存）；5) 权限校验（如检查用户角色）。使用装饰器可以极大地减少重复代码，提高可维护性。需要注意的是，多个装饰器的执行顺序是从下到上（离函数定义最近的先应用），而执行包装函数时是从上到下（最外层先执行）。理解这一顺序对调试和设计装饰器链至关重要。",
+      "concept": "装饰器是 Python 中一种强大的语法特性，它允许在不修改原函数代码的前提下，给函数或类附加额外的行为。本质上，装饰器就是一个接受函数作为参数并返回新函数的高阶函数。理解闭包是掌握装饰器的关键：内层函数可以捕获外层函数的局部变量（包括传入的函数），从而在调用时执行附加逻辑。在实际工程中，装饰器广泛应用于日志记录、性能计时、权限校验、缓存、重试等场景。例如，在 Web 框架 Flask 或 Django 中，路由装饰器 `@app.route()` 将 URL 与视图函数绑定；在测试框架 pytest 中，`@pytest.fixture` 装饰器用于定义测试夹具。值得注意的是，使用 `functools.wraps` 保留原函数的元信息（如 `__name__`, `__doc__`）是一个好习惯，否则装饰后的函数会丢失这些属性，导致调试困难。此外，带参数的装饰器需要额外一层嵌套，这在实现可配置的装饰器（如指定重试次数或日志级别）时非常实用。类装饰器则提供了另一种风格，特别适合需要状态维护的场景（如统计调用次数）。熟练掌握装饰器能显著提升代码的复用性和可维护性，是 Python 中级开发者的必备技能。",
       "codeExample": {
         "language": "Python",
-        "code": "import functools\nimport time\n\ndef log_execution(func):\n    \"\"\"一个简单的日志装饰器，记录函数调用信息\"\"\"\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        print(f\"[LOG] 调用函数 {func.__name__}，参数 args={args}, kwargs={kwargs}\")\n        result = func(*args, **kwargs)\n        print(f\"[LOG] {func.__name__} 返回 {result}\")\n        return result\n    return wrapper\n\ndef timed(repeat=1):\n    \"\"\"带参数的计时装饰器，可指定重复执行次数以消除随机误差\"\"\"\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            total_time = 0.0\n            for _ in range(repeat):\n                start = time.perf_counter()\n                result = func(*args, **kwargs)\n                end = time.perf_counter()\n                total_time += (end - start)\n            avg_time = total_time / repeat\n            print(f\"[TIMER] {func.__name__} 平均执行时间: {avg_time*1000:.3f}ms (重复 {repeat} 次)\")\n            return result\n        return wrapper\n    return decorator\n\n# 单个装饰器用法\n@log_execution\ndef add(a, b):\n    \"\"\"返回两个数的和\"\"\"\n    return a + b\n\n# 带参数的装饰器用法\n@timed(repeat=5)\ndef multiply(x, y):\n    return x * y\n\nif __name__ == \"__main__\":\n    add(3, 5)\n    multiply(4, 7)",
-        "explanation": "代码定义了两个装饰器：`log_execution` 是一个基础装饰器，直接接受函数并返回包装函数；`timed` 是一个带参数的装饰器，通过额外一层 `decorator` 函数来接收参数 `repeat`，返回真正的装饰器。`@functools.wraps(func)` 用于保留原函数的元信息。`@log_execution` 和 `@timed(repeat=5)` 分别展示了两种用法。在 `__main__` 中调用 `add` 和 `multiply` 时会触发装饰器的包装逻辑，输出日志和计时信息。"
+        "code": "import functools\nimport time\n\n# ---------- 基础装饰器：计算函数执行时间 ----------\ndef timer_decorator(func):\n    \"\"\"打印函数执行时间（秒）\"\"\"\n    @functools.wraps(func)  # 保留原函数元数据\n    def wrapper(*args, **kwargs):\n        start = time.perf_counter()\n        result = func(*args, **kwargs)\n        end = time.perf_counter()\n        print(f\"{func.__name__} took {end - start:.4f} seconds\")\n        return result\n    return wrapper\n\n@timer_decorator\ndef slow_function(n):\n    \"\"\"模拟耗时操作\"\"\"\n    time.sleep(0.1)\n    return sum(range(n))\n\n# ---------- 带参数的装饰器 ----------\ndef retry_decorator(max_retries=3, delay=1.0):\n    \"\"\"失败时重试，支持自定义重试次数和延迟\"\"\"\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            for attempt in range(max_retries):\n                try:\n                    return func(*args, **kwargs)\n                except Exception as e:\n                    print(f\"Attempt {attempt+1} failed: {e}\")\n                    time.sleep(delay)\n            raise RuntimeError(f\"{func.__name__} failed after {max_retries} attempts\")\n        return wrapper\n    return decorator\n\n@retry_decorator(max_retries=3, delay=0.5)\ndef unstable_service(x):\n    \"\"\"模拟不稳定的外部服务\"\"\"\n    import random\n    if random.random() < 0.7:\n        raise ConnectionError(\"Service unavailable\")\n    return x * 2\n\n# ---------- 类装饰器：统计函数调用次数 ----------\nclass CountCalls:\n    def __init__(self, func):\n        functools.update_wrapper(self, func)\n        self.func = func\n        self.calls = 0\n\n    def __call__(self, *args, **kwargs):\n        self.calls += 1\n        print(f\"Call {self.calls} of {self.func.__name__}\")\n        return self.func(*args, **kwargs)\n\n@CountCalls\ndef greet(name):\n    return f\"Hello, {name}!\"\n\n# 运行测试\nif __name__ == \"__main__\":\n    print(\"--- Timer decorator ---\")\n    print(slow_function(10000))\n    print(\"\\n--- Retry decorator ---\")\n    print(unstable_service(10))\n    print(\"\\n--- Class decorator ---\")\n    print(greet(\"Alice\"))\n    print(greet(\"Bob\"))",
+        "explanation": "代码包含三种典型装饰器实现：1）基础装饰器 `timer_decorator`：用 `@functools.wraps` 保留元数据，内部 `wrapper` 记录开始/结束时间并打印耗时。2）带参数装饰器 `retry_decorator`：外层函数接收配置参数（`max_retries`, `delay`），返回真正的装饰器，内层 `wrapper` 在捕获异常时按策略重试。3）类装饰器 `CountCalls`：通过实现 `__call__` 使实例可调用，并维护 `calls` 状态统计调用次数。注意类装饰器需用 `functools.update_wrapper` 手动复制元数据。最后测试展示了各装饰器的效果。"
       },
       "keyPoints": [
-        "装饰器本质是返回函数的高阶函数，用于在不修改原函数代码的前提下扩展功能。",
-        "使用 `@functools.wraps` 保留被装饰函数的元信息（如 `__name__`, `__doc__`）。",
-        "带参数的装饰器需要嵌套三层函数：外层接收参数，中层接收函数，内层接收调用参数。",
-        "多个装饰器的执行顺序：装饰时从下到上（近函数先应用），执行时从上到下（远函数先执行）。",
-        "类装饰器通过实现 `__call__` 方法支持状态维护，适合复杂场景。"
+        "装饰器本质是接受函数并返回新函数的高阶函数，须牢记闭包原理",
+        "使用 `functools.wraps` 保留原函数元信息，避免调试困难",
+        "带参数装饰器需要三层嵌套：外层接收参数，中层接收函数，内层处理逻辑",
+        "类装饰器通过 `__call__` 实现，适合维护状态的场景",
+        "工程中常用场景：日志、性能监控、权限校验、缓存、重试、注册表等"
       ],
       "exercise": {
-        "description": "编写一个装饰器 `type_check`，用于验证被装饰函数的所有参数是否为指定类型。当调用函数时，如果某个参数类型不匹配，则抛出 `TypeError` 并给出清晰的错误信息。装饰器应支持同时为多个参数指定类型（例如 `@type_check(int, str)` 表示第一个参数为 int，第二个为 str）。提示：使用 `inspect.signature` 获取参数名和类型信息，但本题为了简化，只需假设参数顺序与类型顺序一一对应。",
-        "hint": "1. 装饰器接收可变数量的类型参数（如 `*types`）。2. 在 `wrapper` 中遍历 `args` 和 `types`，用 `isinstance(arg, typ)` 检查。3. 如果类型不匹配，抛出 `TypeError` 并指明参数位置和期望/实际类型。4. 使用 `functools.wraps` 保留原函数信息。",
+        "description": "编写一个装饰器 `validate_input`，用于验证被装饰函数的参数是否均为正整数（大于0的整数）。如果参数不合法，抛出 `ValueError` 并给出错误提示。装饰器需支持任意参数（*args, **kwargs），并保留原函数元信息。",
+        "hint": "在 wrapper 内部先遍历 args 和 kwargs 的值，检查每个值是否为 int 且 > 0。可借助 `isinstance(v, int)` 和 `v > 0`。注意保留 `functools.wraps`。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全下面代码，使装饰器 `greet_decorator` 正确地将原函数的返回结果加上前缀 'Hello: '。",
-            "codeContext": "def greet_decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        result = func(*args, **kwargs)\n        return ___①___\n    return ___②___\n\n@greet_decorator\ndef name():\n    return \"Alice\"\n\nprint(name())  # 期望输出: Hello: Alice",
+            "question": "补全下面的装饰器代码，使其能验证所有参数为正整数，并保留原函数元信息。",
+            "codeContext": "import functools\n\ndef validate_input(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        # 请补全验证逻辑\n        for arg in args:\n            if not isinstance(arg, int) or arg <= 0:\n                raise ValueError(f\"参数 {arg} 不是正整数\")\n        for key, value in kwargs.items():\n            ___  # 此处应填写验证代码\n        return func(*args, **kwargs)\n    return wrapper\n\n@validate_input\ndef add(x, y):\n    return x + y",
             "segments": [
               {
                 "type": "text",
-                "content": "def greet_decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        result = func(*args, **kwargs)\n        return ",
+                "content": "for key, value in kwargs.items():\n    ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,75 +40,44 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[填写验证代码]",
                 "options": [
-                  "'Hello: ' + result",
-                  "'Hello: ' + func()",
-                  "result + 'Hello: '",
-                  "f'Hello: {result}'"
+                  "if not isinstance(value, int) or value <= 0: raise ValueError(f\"参数 {key}={value} 不是正整数\")",
+                  "if not type(value) == int or value < 0: raise ValueError",
+                  "if value <= 0: raise ValueError"
                 ],
-                "correctAnswer": "'Hello: ' + result"
-              },
-              {
-                "type": "text",
-                "content": "\n    return ",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "wrapper",
-                  "func",
-                  "greet_decorator",
-                  "functools.wraps(func)"
-                ],
-                "correctAnswer": "wrapper"
-              },
-              {
-                "type": "text",
-                "content": "\n\n@greet_decorator\ndef name():\n    return \"Alice\"\n\nprint(name())  # 期望输出: Hello: Alice",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
+                "correctAnswer": "if not isinstance(value, int) or value <= 0: raise ValueError(f\"参数 {key}={value} 不是正整数\")"
               }
             ],
-            "options": null,
-            "correctAnswer": "'Hello: ' + result 和 wrapper",
-            "explanation": "第一个空需要将原函数结果与前缀拼接，注意字符串拼接顺序；第二个空是返回包装函数 `wrapper`，这样装饰器才能替换原函数。"
+            "correctAnswer": "if not isinstance(value, int) or value <= 0: raise ValueError(f\"参数 {key}={value} 不是正整数\")",
+            "explanation": "需要同时检查类型为 int 且大于0，使用 isinstance 更规范，同时用 f-string 给出明确错误信息。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 `functools.wraps` 的作用，下列哪项描述最准确？",
-            "codeContext": null,
-            "segments": null,
+            "question": "下列关于装饰器的说法，哪一项是错误的？",
             "options": [
-              "将原函数的调用参数自动传递到装饰器中",
-              "复制原函数的元信息（如 `__name__`, `__doc__`）到包装函数，避免元信息丢失",
-              "使装饰器能够接收额外的参数",
-              "确保装饰器只生效一次"
+              "装饰器可以应用于函数和类",
+              "使用 `@functools.wraps(func)` 可以保留原函数的 `__name__` 和 `__doc__`",
+              "带参数的装饰器必须使用三层嵌套函数",
+              "类装饰器不能用于装饰类"
             ],
-            "correctAnswer": "复制原函数的元信息（如 `__name__`, `__doc__`）到包装函数，避免元信息丢失",
-            "explanation": "`functools.wraps` 是一个装饰器，它将被装饰函数的 `__name__`, `__doc__`, `__module__` 等属性复制到包装函数上，以便调试和文档生成时看到原函数的信息。其他选项属于带参数装饰器或缓存机制，与 `wraps` 无关。"
+            "correctAnswer": "类装饰器不能用于装饰类",
+            "explanation": "类装饰器既可以装饰函数（通过实现 `__call__`），也可以装饰类（通过接收类作为参数并返回新类）。选项C说法正确（带参数装饰器通常需要三层嵌套，但也有其他实现方式如使用类），但题目问的是错误选项，因此D是错误的。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "执行以下代码后，输出是什么？",
-            "codeContext": "def decorator1(func):\n    def wrapper(*args, **kwargs):\n        print('before1')\n        result = func(*args, **kwargs)\n        print('after1')\n        return result\n    return wrapper\n\ndef decorator2(func):\n    def wrapper(*args, **kwargs):\n        print('before2')\n        result = func(*args, **kwargs)\n        print('after2')\n        return result\n    return wrapper\n\n@decorator1\n@decorator2\ndef greet():\n    print('greet')\n\ngreet()",
-            "segments": null,
+            "question": "执行以下代码后，最终输出什么？",
+            "codeContext": "import functools\n\ndef decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        print(\"before\")\n        result = func(*args, **kwargs)\n        print(\"after\")\n        return result\n    return wrapper\n\n@decorator\ndef say_hello():\n    print(\"hello\")\n\nsay_hello()",
             "options": [
-              "before1\\nbefore2\\ngreet\\nafter2\\nafter1",
-              "before2\\nbefore1\\ngreet\\nafter1\\nafter2",
-              "before1\\nafter1\\nbefore2\\nafter2\\ngreet",
-              "greet\\nbefore1\\nafter1\\nbefore2\\nafter2"
+              "before\\nhello\\nafter",
+              "hello\\nbefore\\nafter",
+              "before\\nafter\\nhello",
+              "hello"
             ],
-            "correctAnswer": "before1\\nbefore2\\ngreet\\nafter2\\nafter1",
-            "explanation": "多个装饰器的应用顺序是从下到上：`@decorator1` 装饰的是 `@decorator2` 处理后的函数。因此 `decorator2` 先被应用，`decorator1` 后应用。执行时，`decorator1` 的 `wrapper` 先执行（打印 before1），然后调用 `decorator2` 的 `wrapper`（打印 before2），接着调用原始 `greet`（打印 greet），返回后依次打印 after2 和 after1。"
+            "correctAnswer": "before\\nhello\\nafter",
+            "explanation": "装饰器 `decorator` 返回的 `wrapper` 会先打印 'before'，然后执行原函数 `say_hello`（打印 'hello'），最后打印 'after'。因此输出顺序为 before, hello, after。"
           }
         ]
       }
