@@ -1,11 +1,8 @@
 name: 📡 每日风口简报
 
 on:
-  schedule:
-    - cron: '0 23 * * *'
   push:
-    branches: [main]
-    paths: ['.github/workflows/daily-briefing.yml']
+    branches: [gh-pages]
   workflow_dispatch:
 
 permissions:
@@ -17,20 +14,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: gh-pages
           fetch-depth: 0
-      - name: 📂 获取脚本
-        run: git checkout origin/main -- scripts/
+      - name: 📂 从 main 取脚本
+        run: |
+          git fetch origin main
+          git checkout origin/main -- scripts/
       - name: 🐍 设置 Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: 📦 安装依赖
         run: pip install requests
-      - name: ‼️ 切换到 gh-pages
-        run: |
-          cp -r scripts /tmp/scripts
-          git checkout gh-pages
-          cp -r /tmp/scripts scripts
       - name: 🤖 生成风口简报
         run: python3 scripts/generate_daily_briefing.py --output daily-briefing.json
         env:
@@ -43,7 +38,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "⚠️ 无变更"
           else
-            git commit -m "auto: 📡 每日风口简报 $(date +%Y-%m-%d)"
-            git push --force
+            git commit -m "auto: 📡 $(date +%H:%M) $(date +%Y-%m-%d)"
+            git push
             echo "✅ 已推送"
           fi
