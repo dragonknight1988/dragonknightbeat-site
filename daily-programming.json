@@ -4,35 +4,35 @@
     {
       "id": "prog-2026-05-21",
       "date": "2026-05-21",
-      "title": "掌握Python装饰器：从基础到高阶应用",
-      "summary": "深入理解装饰器原理，掌握如何创建带参数装饰器、类装饰器，并应用于日志、性能监控等场景。",
+      "title": "Python 装饰器深入：带参数的装饰器与类装饰器",
+      "summary": "学习如何创建带参数的装饰器以及类实现装饰器，掌握在API速率限制和日志增强中的实际应用",
       "difficulty": "中级",
-      "concept": "装饰器（Decorator）是Python中一种强大而优雅的语法糖，允许在不修改原函数定义的情况下，动态地给函数或类添加额外功能。其本质是一个接受函数作为参数并返回新函数（或可调用对象）的高阶函数。理解装饰器需要先掌握闭包（Closure）的概念：内部函数捕获外部函数的变量，即使外部函数已经返回，内部函数依然可以访问这些变量。\n\n实际工程中，最常见的是使用 `@decorator` 语法，它等价于 `func = decorator(func)`。但直接使用外层函数作为装饰器会丢失原函数的元信息（如 `__name__`, `__doc__`），因此标准库 `functools.wraps` 不可或缺。它通过将原函数的属性复制到包装函数上，确保调试和文档生成不受影响。\n\n带参数的装饰器（如 `@retry(times=3)`）实际上是两层嵌套：外层接收用户参数，返回真正的装饰器。类装饰器则通过实现 `__call__` 方法，让类的实例可被调用，适合需要维护状态的场景。需要注意装饰器的执行顺序：多个装饰器堆叠时，调用顺序是从上到下（离函数定义最近的先应用），但执行顺序是从内到外（最内层的装饰器先执行原函数）。\n\n一个优秀的装饰器应该遵循最小惊讶原则：尽量透明，不改变函数签名（除非有意为之），使用 `functools.wraps` 保留元数据，并考虑异常处理。例如，计时装饰器如果抛出异常可能会干扰程序，应使用 `try/finally` 确保计时准确。\n\n在企业级代码中，装饰器常用于：AOP（面向切面编程）实现日志记录、权限校验、缓存、重试、事务管理等。合理使用装饰器可以极大减少重复代码，提升可维护性。但也要避免滥用：如果装饰器内部逻辑复杂或涉及I/O，可能会降低可测试性，此时可以考虑将核心逻辑与装饰器分离。",
+      "concept": "装饰器是Python中用于修改函数或方法行为的强大工具。中级阶段需要掌握两层嵌套的装饰器（带参数）以及类装饰器。带参数的装饰器需要三层函数嵌套：外层接收装饰器参数，中间层接收被装饰函数，内层接收原始参数。实际工程中常见于API限流装饰器（如@rate_limit(calls=5, period=60)），通过闭包保存状态。类装饰器通过实现__call__方法，利用实例状态管理（如计数、缓存），比函数装饰器更易维护复杂状态。注意：使用functools.wraps保持元数据，避免调试困难。工程经验：将装饰器参数设计为可选，通过默认值提供简单用法，同时支持高级配置。",
       "codeExample": {
-        "language": "Python",
-        "code": "import functools\nimport time\nimport random\n\n# ========== 1. 基础计时装饰器（演示functools.wraps）==========\ndef timer(func):\n    \"\"\"计算函数执行时间（毫秒）\"\"\"\n    @functools.wraps(func)  # 保留原函数的__name__等属性\n    def wrapper(*args, **kwargs):\n        start = time.perf_counter()\n        try:\n            result = func(*args, **kwargs)\n            return result\n        finally:\n            # 使用finally确保无论是否异常都计算时间\n            elapsed = (time.perf_counter() - start) * 1000\n            print(f\"{func.__name__} 耗时 {elapsed:.2f} ms\")\n    return wrapper\n\n@timer\ndef slow_add(a, b):\n    \"\"\"模拟耗时加法\"\"\"\n    time.sleep(0.1)\n    return a + b\n\nprint(slow_add(3, 4))          # 运行并打印时间\nprint(\"函数名:\", slow_add.__name__)  # 输出 slow_add（没有wraps会变成wrapper）\n\n# ========== 2. 带参数的装饰器（可配置重试次数和延迟）==========\ndef retry(max_attempts=3, delay=0.5):\n    \"\"\"装饰器工厂：失败时重试指定次数\"\"\"\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            for attempt in range(1, max_attempts + 1):\n                try:\n                    return func(*args, **kwargs)\n                except Exception as e:\n                    print(f\"第 {attempt} 次调用 {func.__name__} 失败: {e}\")\n                    if attempt < max_attempts:\n                        time.sleep(delay)\n                    else:\n                        raise  # 最后一次重试失败时抛出异常\n            return None\n        return wrapper\n    return decorator\n\n@retry(max_attempts=3, delay=0.2)\ndef unreliable_divide(a, b):\n    \"\"\"模拟可能因随机数失败的函数\"\"\"\n    if random.random() < 0.6:  # 60%概率失败\n        raise ValueError(\"随机出错\")\n    return a / b\n\n# 执行几次验证\nfor _ in range(2):\n    try:\n        print(\"结果:\", unreliable_divide(10, 2))\n    except Exception:\n        print(\"最终失败\")\n\n# ========== 3. 类装饰器（状态保持）==========\nclass CountCalls:\n    \"\"\"类装饰器：统计函数调用次数\"\"\"\n    def __init__(self, func):\n        functools.update_wrapper(self, func)  # 手动更新元数据\n        self.func = func\n        self.count = 0\n\n    def __call__(self, *args, **kwargs):\n        self.count += 1\n        print(f\"调用第 {self.count} 次\")\n        return self.func(*args, **kwargs)\n\n@CountCalls\ndef say_hello(name):\n    return f\"Hello, {name}!\"\n\nprint(say_hello(\"Alice\"))\nprint(say_hello(\"Bob\"))",
-        "explanation": "代码分为三个示例：\n1. **基础计时装饰器**：展示了 `@functools.wraps` 的必要性——如果没有它，`slow_add.__name__` 会变成 `wrapper`。`try/finally` 确保即使函数抛出异常也能打印耗时。\n2. **带参数的重试装饰器**：外层函数 `retry` 接收配置参数并返回真正的装饰器。内部 `wrapper` 使用循环实现重试，超过最大次数后抛出原始异常。该模式常用于网络请求等不稳定场景。\n3. **类装饰器**：通过 `__init__` 保存原函数，`__call__` 使得实例可被调用。使用 `functools.update_wrapper` 手动更新元数据（等效于 `@wraps`）。类装饰器可以维护状态（如调用计数），适合需要跨调用保持数据的场景。"
+        "language": "python",
+        "code": "import time\nimport functools\nfrom typing import Callable, Any\n\n# 带参数的装饰器：API速率限制\ndef rate_limit(calls: int = 5, period: int = 60) -> Callable:\n    \"\"\"限制函数在给定时间段内的调用次数\"\"\"\n    def decorator(func: Callable) -> Callable:\n        # 使用列表存储时间戳，以便在闭包中修改\n        timestamps = []\n        \n        @functools.wraps(func)\n        def wrapper(*args, **kwargs) -> Any:\n            now = time.time()\n            # 移除过期的时间戳\n            timestamps[:] = [t for t in timestamps if now - t < period]\n            if len(timestamps) >= calls:\n                raise RuntimeError(f\"Rate limit exceeded: {calls} calls per {period}s\")\n            timestamps.append(now)\n            return func(*args, **kwargs)\n        return wrapper\n    return decorator\n\n# 类装饰器：记录函数调用统计\nclass CallLogger:\n    def __init__(self, func: Callable):\n        functools.update_wrapper(self, func)\n        self.func = func\n        self.call_count = 0\n        self.total_time = 0.0\n    \n    def __call__(self, *args, **kwargs) -> Any:\n        start = time.time()\n        result = self.func(*args, **kwargs)\n        elapsed = time.time() - start\n        self.call_count += 1\n        self.total_time += elapsed\n        print(f\"{self.func.__name__} called {self.call_count} times, total time: {self.total_time:.3f}s\")\n        return result\n\n# 使用示例\n@rate_limit(calls=3, period=10)\n@CallLogger\ndef fetch_data(url: str) -> str:\n    \"\"\"模拟API请求\"\"\"\n    time.sleep(0.1)  # 模拟延迟\n    return f\"Data from {url}\"\n\n# 测试\nif __name__ == \"__main__\":\n    for i in range(5):\n        try:\n            result = fetch_data(\"https://api.example.com\")\n            print(f\"Request {i+1}: {result}\")\n        except RuntimeError as e:\n            print(f\"Request {i+1}: {e}\")\n        time.sleep(1)  # 每次请求间隔1秒",
+        "explanation": "以上代码展示了两种中级装饰器：1) rate_limit是带参数的装饰器，使用三层嵌套。外层接收calls和period参数，内层通过列表timestamps维护调用记录。超过限制时抛出RuntimeError。2) CallLogger是类装饰器，通过__call__方法拦截调用，记录次数和耗时。注意使用functools.update_wrapper保持原始函数元数据。实际运行时，由于@CallLogger在@rate_limit内部，堆叠顺序影响执行：先经过频率限制，再记录日志。测试中连续5次请求，前3次成功，第4次因超过3次/10秒限制而失败。"
       },
       "keyPoints": [
-        "装饰器本质是接受函数并返回函数的高阶函数，`@` 语法只是语法糖",
-        "始终使用 `functools.wraps` 保留原函数元数据，避免调试困扰",
-        "带参数装饰器需要三层嵌套：参数工厂 → 装饰器 → 包装函数",
-        "多重装饰器执行顺序：调用时从外到内（栈式）；定义时离函数近的先应用",
-        "类装饰器通过 `__call__` 实现实例化时执行装饰逻辑，适合状态管理"
+        "带参数装饰器需要三层嵌套：外层接收参数，中间层接收函数，内层接收原参数",
+        "functools.wraps或update_wrapper保持被装饰函数的元数据（如__name__, __doc__）",
+        "类装饰器通过实现__call__方法，适合维护复杂状态（如计数器、缓存）",
+        "装饰器堆叠顺序影响执行：从下到上应用，从上到下执行",
+        "工程中使用可选参数设计装饰器，通过默认值提供简单用法，同时支持高级配置"
       ],
       "exercise": {
-        "description": "编写一个装饰器 `@log_call`，要求：\n1. 记录函数的调用时间、参数、返回值或异常信息。\n2. 支持可选的日志文件路径参数（如 `@log_call(log_file='app.log')`），默认输出到控制台。\n3. 使用 `functools.wraps` 保留原函数属性。\n\n完成后再实现一个 `@memoize` 装饰器，缓存函数的计算结果（带过期时间参数），用于优化重复计算。",
-        "hint": "可以先实现基础版本，再扩展参数化。日志需要格式化时间戳（`datetime.now()`）。memoize 可以用字典存储结果，key 由参数序列化得到（注意可变参数问题，可使用 `pickle.dumps` 或 `repr`）。过期时间可以在字典中同时存储时间戳。",
+        "description": "实现一个带参数的装饰器 retry，用于重试失败的操作。装饰器接收 max_retries（最大重试次数，默认3）和 delay（重试间隔秒数，默认1）。被装饰函数抛出任何异常时，等待delay秒后重试，直到成功或达到最大次数。同时使用类装饰器 Timed 记录每次调用的耗时（秒，保留2位小数）。堆叠两个装饰器：@retry(max_retries=2, delay=2) 和 @Timed，应用于一个可能随机失败的函数 risky_operation()。",
+        "hint": "1) retry装饰器内部使用循环，捕获Exception，注意避免无限循环。2) Timed类装饰器在__call__中记录开始和结束时间。3) 堆叠顺序：@retry 在 @Timed 上面，意味着retry先包装Timed的实例，所以重试时每次调用都会记录时间。4) 使用time.sleep实现延迟。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "以下代码缺少关键步骤，请选择正确的选项填入空白处，使装饰器能保留原函数元数据。",
-            "codeContext": "import functools\n\ndef my_decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        return func(*args, **kwargs)\n    return wrapper\n\n@my_decorator\ndef greet(name):\n    \"\"\"Greet someone\"\"\"\n    return f\"Hello {name}\"\n\nprint(greet.__name__)  # 期望打印 'greet'\nprint(greet.__doc__)   # 期望打印 'Greet someone'",
+            "question": "补全 retry 装饰器中内层 wrapper 函数的逻辑，使得在函数成功时返回结果，失败时重试直到达到最大次数。",
+            "codeContext": "def retry(max_retries: int = 3, delay: float = 1.0):\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            last_exception = None\n            for attempt in range(1, max_retries + 1):\n                try:\n                    return func(*args, **kwargs)\n                except Exception as e:\n                    last_exception = e\n                    print(f\"Attempt {attempt} failed: {e}\")\n                    if attempt < max_retries:\n                        time.sleep(delay)\n            # 填空处\n            ___  # 应填入什么？\n        return wrapper\n    return decorator",
             "segments": [
               {
                 "type": "text",
-                "content": "要使上述装饰器正确保留元数据，必须在 wrapper 定义前使用 ",
+                "content": "def retry(max_retries: int = 3, delay: float = 1.0):\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            last_exception = None\n            for attempt in range(1, max_retries + 1):\n                try:\n                    return func(*args, **kwargs)\n                except Exception as e:\n                    last_exception = e\n                    print(f\"Attempt {attempt} failed: {e}\")\n                    if attempt < max_retries:\n                        time.sleep(delay)\n            # 填空处\n            ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,52 +42,41 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "@functools.wraps(func)",
-                  "@functools.wraps(wrapper)",
-                  "functools.update_wrapper(func, wrapper)"
+                  "A. return None",
+                  "B. raise last_exception",
+                  "C. return last_exception",
+                  "D. pass"
                 ],
-                "correctAnswer": "@functools.wraps(func)"
-              },
-              {
-                "type": "text",
-                "content": "，该行代码的作用是将原函数的名称、文档等属性复制到包装函数上。",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
+                "correctAnswer": "B"
               }
             ],
-            "options": null,
-            "correctAnswer": "@functools.wraps(func)",
-            "explanation": "`@functools.wraps(func)` 是一个装饰器，它把 `func` 的属性（`__name__`, `__doc__`, `__module__` 等）复制到 `wrapper` 上，这样外部访问 `greet.__name__` 时就不会返回 `'wrapper'` 而是 `'greet'`。"
+            "correctAnswer": "B",
+            "explanation": "当所有重试都失败时，应该抛出最后一次捕获的异常，以便调用者知道操作失败。选项A返回None会掩盖错误，选项C返回异常对象不符合预期，选项D会导致函数隐式返回None。因此正确做法是raise last_exception。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "下面关于装饰器堆叠执行顺序的描述，哪一项是正确的？",
-            "codeContext": "@decorator1\n@decorator2\ndef func():\n    pass\n# 等价于 func = decorator1(decorator2(func))",
+            "question": "在堆叠装饰器 @retry(max_retries=2, delay=1) 和 @Timed 时，如果 risky_operation 连续失败两次，Timed 装饰器会记录多少次调用？",
             "options": [
-              "调用 func() 时，decorator1 的包装代码先执行，然后 decorator2 的包装代码，最后执行原函数 func",
-              "调用 func() 时，decorator2 的包装代码先执行，然后 decorator1 的包装代码，最后执行原函数 func",
-              "定义时，decorator2 先装饰 func，然后 decorator1 再装饰结果；调用时，从内到外执行：先执行 decorator1 的包装，再 decorator2 的包装，最后原函数",
-              "定义时，decorator1 先装饰 decorator2，再装饰 func；调用时，decorator2 的包装先执行，然后 decorator1"
+              "A. 1次",
+              "B. 2次",
+              "C. 3次",
+              "D. 0次"
             ],
-            "correctAnswer": "定义时，decorator2 先装饰 func，然后 decorator1 再装饰结果；调用时，从内到外执行：先执行 decorator1 的包装，再 decorator2 的包装，最后原函数",
-            "explanation": "装饰器堆叠时，离函数定义最近的装饰器先应用（即先装饰原函数），构成一个嵌套结构。调用时，最外层装饰器（代码上最上面的）的包装函数先被调用，然后它内部调用下一层装饰器的包装，直到原函数。因此选项描述正确。"
+            "correctAnswer": "B",
+            "explanation": "堆叠顺序@retry在@Timed之上，意味着retry包装的是Timed包装后的函数。所以每次重试时，实际上调用的是Timed实例的__call__方法，因此每次尝试（包括第一次和重试）都会触发Timed的记录。第一次失败后重试一次（共2次），所以记录2次调用。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "执行以下代码，输出结果是什么？",
-            "codeContext": "def deco_a(func):\n    print('A outer')\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        print('A before')\n        result = func(*args, **kwargs)\n        print('A after')\n        return result\n    return wrapper\n\ndef deco_b(func):\n    print('B outer')\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        print('B before')\n        result = func(*args, **kwargs)\n        print('B after')\n        return result\n    return wrapper\n\n@deco_a\n@deco_b\ndef hello():\n    print('hello!')\n\nprint('--- 调用前 ---')\nhello()",
-            "segments": null,
+            "question": "以下代码的输出是什么？",
+            "codeContext": "import random\n\nclass Timed:\n    def __init__(self, func):\n        self.func = func\n    def __call__(self, *args, **kwargs):\n        import time\n        start = time.time()\n        result = self.func(*args, **kwargs)\n        elapsed = time.time() - start\n        print(f\"耗时: {elapsed:.2f}s\")\n        return result\n\ndef retry(max_retries=2, delay=0):\n    def decorator(func):\n        import functools\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            for attempt in range(1, max_retries + 1):\n                try:\n                    return func(*args, **kwargs)\n                except:\n                    if attempt == max_retries:\n                        raise\n                    print(\"重试\")\n            return None\n        return wrapper\n    return decorator\n\n@retry(max_retries=3, delay=0)\n@Timed\ndef test():\n    if random.random() < 0.7:\n        raise ValueError(\"失败\")\n    return \"成功\"\n\nfor i in range(2):\n    try:\n        print(test())\n    except:\n        print(\"异常\")\n    print(\"---\")",
             "options": [
-              "A outer\\nB outer\\n--- 调用前 ---\\nA before\\nB before\\nhello!\\nB after\\nA after",
-              "B outer\\nA outer\\n--- 调用前 ---\\nB before\\nA before\\nhello!\\nA after\\nB after",
-              "A outer\\nB outer\\n--- 调用前 ---\\nB before\\nA before\\nhello!\\nA after\\nB after",
-              "B outer\\nA outer\\n--- 调用前 ---\\nA before\\nB before\\nhello!\\nB after\\nA after"
+              "A. 可能输出：\\n重试\\n重试\\n异常\\n---\\n重试\\n耗时: 0.00s\\n成功\\n---",
+              "B. 可能输出：\\n耗时: 0.00s\\n成功\\n---\\n重试\\n耗时: 0.00s\\n成功\\n---"
             ],
-            "correctAnswer": "B outer\\nA outer\\n--- 调用前 ---\\nA before\\nB before\\nhello!\\nB after\\nA after",
-            "explanation": "装饰器的定义顺序：`@deco_b` 先装饰 `hello`，此时打印 'B outer'；然后 `@deco_a` 装饰被 deco_b 包装后的结果，打印 'A outer'。所以定义时输出顺序为 B outer、A outer。调用 `hello()` 时，实际上调用的是 deco_a 返回的 wrapper，因此先打印 'A before'，内部调用 deco_b 的 wrapper，打印 'B before'，接着执行原 `hello` 打印 'hello!'，然后返回栈，打印 'B after'、'A after'。因此完整输出是 B outer、A outer、--- 调用前 ---、A before、B before、hello!、B after、A after。"
+            "correctAnswer": "A",
+            "explanation": "堆叠顺序：test先被Timed装饰，再被retry装饰。所以retry的wrapper内部调用的是Timed实例。当test函数失败时，异常被retry捕获并重试，但Timed只在成功时打印（因为失败时self.func抛出异常，__call__中未捕获，所以不会执行到print语句）。选项A展示了失败时重试两次后抛出异常，以及第二次调用成功时Timed打印耗时。选项B没有重试和异常，不符合随机失败概率。"
           }
         ]
       }
