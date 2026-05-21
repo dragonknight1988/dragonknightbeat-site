@@ -4,35 +4,35 @@
     {
       "id": "prog-2026-05-21",
       "date": "2026-05-21",
-      "title": "Python 上下文管理器：从入门到工程实践",
-      "summary": "深入理解上下文管理器的原理，掌握自定义上下文管理器和 contextlib 的使用，写出更安全、更简洁的资源管理代码。",
+      "title": "Python 装饰器深入：带参数的装饰器与类装饰器",
+      "summary": "学习如何创建带参数的装饰器以及类实现装饰器，掌握在API速率限制和日志增强中的实际应用",
       "difficulty": "中级",
-      "concept": "上下文管理器是 Python 中用于资源管理（如文件、锁、数据库连接）的核心机制。其本质是实现了 __enter__ 和 __exit__ 方法的对象，通过 with 语句自动完成资源的获取与释放。\n\n在实际工程中，上下文管理器不仅用于文件操作，还广泛用于数据库事务、计时器、临时改变配置、锁定临界区等场景。理解其执行流程：__enter__ 在进入 with 块时调用，返回值通过 as 绑定给变量；__exit__ 在退出 with 块时调用，无论是否发生异常。若处理异常，__exit__ 可以返回 True 来抑制异常，否则异常会继续传播。\n\nPython 提供了 contextlib 模块，大大简化了上下文管理器的创建。最常用的是 @contextmanager 装饰器，它允许用生成器函数定义上下文管理器：yield 之前的部分对应 __enter__，之后的部分对应 __exit__。注意 yield 语句只能出现一次，且若发生异常，异常会通过生成器的 throw() 方法传递给 yield 语句。\n\n在异步编程中，还有异步上下文管理器（__aenter__ / __aexit__），配合 async with 使用。例如 aiohttp 的 ClientSession 通常用 async with 管理连接池的生命周期。\n\n最佳实践：1) 尽量使用 with 代替 try...finally 以提升可读性；2) 当需要管理多个资源时，可以嵌套 with 或使用 contextlib.ExitStack（尤其适用于动态数量的资源）；3) 自定义上下文管理器时，注意 __exit__ 的四个参数（self, exc_type, exc_val, exc_tb），并谨慎决定是否抑制异常。",
+      "concept": "装饰器是Python中用于修改函数或方法行为的强大工具。中级阶段需要掌握两层嵌套的装饰器（带参数）以及类装饰器。带参数的装饰器需要三层函数嵌套：外层接收装饰器参数，中间层接收被装饰函数，内层接收原始参数。实际工程中常见于API限流装饰器（如@rate_limit(calls=5, period=60)），通过闭包保存状态。类装饰器通过实现__call__方法，利用实例状态管理（如计数、缓存），比函数装饰器更易维护复杂状态。注意：使用functools.wraps保持元数据，避免调试困难。工程经验：将装饰器参数设计为可选，通过默认值提供简单用法，同时支持高级配置。",
       "codeExample": {
-        "language": "Python",
-        "code": "# 1. 自定义上下文管理器：数据库连接模拟\nclass DatabaseConnection:\n    def __init__(self, host):\n        self.host = host\n        self.connected = False\n\n    def __enter__(self):\n        # 模拟连接\n        print(f\"Connecting to {self.host}...\")\n        self.connected = True\n        return self  # 通过 as 绑定给变量\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        # 模拟断开\n        print(f\"Disconnecting from {self.host}...\")\n        self.connected = False\n        # 如果出现异常，打印日志但选择不抑制（返回 False）\n        if exc_type:\n            print(f\"Error occurred: {exc_val}\")\n        # 返回 False 表示异常会继续传播，返回 True 则抑制\n        return False\n\n# 使用自定义上下文管理器\nwith DatabaseConnection(\"localhost\") as db:\n    print(f\"Is connected: {db.connected}\")\n    # 模拟操作\n    data = [1, 2, 3]\n    print(\"Processing data...\")\n# 退出后自动断开\nprint(f\"After with: {db.connected}\")\n\nprint(\"\\n\" + \"=\"*50)\n\n# 2. 使用 @contextmanager 简化\nfrom contextlib import contextmanager\n\n@contextmanager\ndef timer(name):\n    import time\n    start = time.time()\n    print(f\"Starting {name}...\")\n    yield  # 在这里执行 with 块内的代码\n    elapsed = time.time() - start\n    print(f\"{name} took {elapsed:.3f} seconds\")\n\nwith timer(\"data_processing\"):\n    # 模拟耗时操作\n    sum(range(1_000_000))\n\nprint(\"\\n\" + \"=\"*50)\n\n# 3. ExitStack 管理动态资源\nfrom contextlib import ExitStack\n\ndef process_files(file_paths):\n    with ExitStack() as stack:\n        files = [stack.enter_context(open(f, 'r')) for f in file_paths]\n        # 所有文件会在 with 块退出时自动关闭\n        for f in files:\n            print(f.readline().strip())\n\n# 假设有 files.txt 和 data.txt 两个文件\n# process_files(['files.txt', 'data.txt'])",
-        "explanation": "代码包含三个示例：1) 自定义 DatabaseConnection 类演示了 __enter__/__exit__ 的完整用法，其中 __exit__ 返回 False 以便异常继续传播；2) 使用 @contextmanager 装饰器创建计时器上下文管理器，展示了生成器方式简洁性；3) ExitStack 用于动态管理可变数量的资源（如多个文件），自动完成清理。"
+        "language": "python",
+        "code": "import time\nimport functools\nfrom typing import Callable, Any\n\n# 带参数的装饰器：API速率限制\ndef rate_limit(calls: int = 5, period: int = 60) -> Callable:\n    \"\"\"限制函数在给定时间段内的调用次数\"\"\"\n    def decorator(func: Callable) -> Callable:\n        # 使用列表存储时间戳，以便在闭包中修改\n        timestamps = []\n        \n        @functools.wraps(func)\n        def wrapper(*args, **kwargs) -> Any:\n            now = time.time()\n            # 移除过期的时间戳\n            timestamps[:] = [t for t in timestamps if now - t < period]\n            if len(timestamps) >= calls:\n                raise RuntimeError(f\"Rate limit exceeded: {calls} calls per {period}s\")\n            timestamps.append(now)\n            return func(*args, **kwargs)\n        return wrapper\n    return decorator\n\n# 类装饰器：记录函数调用统计\nclass CallLogger:\n    def __init__(self, func: Callable):\n        functools.update_wrapper(self, func)\n        self.func = func\n        self.call_count = 0\n        self.total_time = 0.0\n    \n    def __call__(self, *args, **kwargs) -> Any:\n        start = time.time()\n        result = self.func(*args, **kwargs)\n        elapsed = time.time() - start\n        self.call_count += 1\n        self.total_time += elapsed\n        print(f\"{self.func.__name__} called {self.call_count} times, total time: {self.total_time:.3f}s\")\n        return result\n\n# 使用示例\n@rate_limit(calls=3, period=10)\n@CallLogger\ndef fetch_data(url: str) -> str:\n    \"\"\"模拟API请求\"\"\"\n    time.sleep(0.1)  # 模拟延迟\n    return f\"Data from {url}\"\n\n# 测试\nif __name__ == \"__main__\":\n    for i in range(5):\n        try:\n            result = fetch_data(\"https://api.example.com\")\n            print(f\"Request {i+1}: {result}\")\n        except RuntimeError as e:\n            print(f\"Request {i+1}: {e}\")\n        time.sleep(1)  # 每次请求间隔1秒",
+        "explanation": "以上代码展示了两种中级装饰器：1) rate_limit是带参数的装饰器，使用三层嵌套。外层接收calls和period参数，内层通过列表timestamps维护调用记录。超过限制时抛出RuntimeError。2) CallLogger是类装饰器，通过__call__方法拦截调用，记录次数和耗时。注意使用functools.update_wrapper保持原始函数元数据。实际运行时，由于@CallLogger在@rate_limit内部，堆叠顺序影响执行：先经过频率限制，再记录日志。测试中连续5次请求，前3次成功，第4次因超过3次/10秒限制而失败。"
       },
       "keyPoints": [
-        "上下文管理器通过 __enter__ 和 __exit__ 实现资源获取与释放",
-        "with 语句保证无论是否异常都会调用 __exit__",
-        "contextlib.contextmanager 装饰器可用生成器快速创建上下文管理器",
-        "__exit__ 返回 True 可抑制异常，通常应谨慎使用",
-        "ExitStack 适用于动态数量资源的统一管理"
+        "带参数装饰器需要三层嵌套：外层接收参数，中间层接收函数，内层接收原参数",
+        "functools.wraps或update_wrapper保持被装饰函数的元数据（如__name__, __doc__）",
+        "类装饰器通过实现__call__方法，适合维护复杂状态（如计数器、缓存）",
+        "装饰器堆叠顺序影响执行：从下到上应用，从上到下执行",
+        "工程中使用可选参数设计装饰器，通过默认值提供简单用法，同时支持高级配置"
       ],
       "exercise": {
-        "description": "编写一个上下文管理器，它能够临时修改环境变量（例如修改 os.environ 中的某个键值对），并在退出时自动恢复原始值。要求使用 contextlib.contextmanager 实现。",
-        "hint": "在 yield 之前保存原值并设置新值，在 yield 之后恢复原值。注意处理键不存在等情况（可以保存 None 标记不存在，之后删除该键）。",
+        "description": "实现一个带参数的装饰器 retry，用于重试失败的操作。装饰器接收 max_retries（最大重试次数，默认3）和 delay（重试间隔秒数，默认1）。被装饰函数抛出任何异常时，等待delay秒后重试，直到成功或达到最大次数。同时使用类装饰器 Timed 记录每次调用的耗时（秒，保留2位小数）。堆叠两个装饰器：@retry(max_retries=2, delay=2) 和 @Timed，应用于一个可能随机失败的函数 risky_operation()。",
+        "hint": "1) retry装饰器内部使用循环，捕获Exception，注意避免无限循环。2) Timed类装饰器在__call__中记录开始和结束时间。3) 堆叠顺序：@retry 在 @Timed 上面，意味着retry先包装Timed的实例，所以重试时每次调用都会记录时间。4) 使用time.sleep实现延迟。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "请补全下面的上下文管理器，实现临时修改环境变量。",
-            "codeContext": "import os\nfrom contextlib import contextmanager\n\n@contextmanager\ndef temp_environ(key, value):\n    original_value = os.environ.get(key)\n    os.environ[key] = value\n    try:\n        yield\n    finally:\n        if original_value is None:\n            ___  # 恢复为未设置状态\n        else:\n            os.environ[key] = original_value",
+            "question": "补全 retry 装饰器中内层 wrapper 函数的逻辑，使得在函数成功时返回结果，失败时重试直到达到最大次数。",
+            "codeContext": "def retry(max_retries: int = 3, delay: float = 1.0):\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            last_exception = None\n            for attempt in range(1, max_retries + 1):\n                try:\n                    return func(*args, **kwargs)\n                except Exception as e:\n                    last_exception = e\n                    print(f\"Attempt {attempt} failed: {e}\")\n                    if attempt < max_retries:\n                        time.sleep(delay)\n            # 填空处\n            ___  # 应填入什么？\n        return wrapper\n    return decorator",
             "segments": [
               {
                 "type": "text",
-                "content": "        if original_value is None:\n            ",
+                "content": "def retry(max_retries: int = 3, delay: float = 1.0):\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            last_exception = None\n            for attempt in range(1, max_retries + 1):\n                try:\n                    return func(*args, **kwargs)\n                except Exception as e:\n                    last_exception = e\n                    print(f\"Attempt {attempt} failed: {e}\")\n                    if attempt < max_retries:\n                        time.sleep(delay)\n            # 填空处\n            ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,53 +42,41 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "del os.environ[key]",
-                  "os.environ.pop(key, None)",
-                  "os.environ[key] = ''"
+                  "A. return None",
+                  "B. raise last_exception",
+                  "C. return last_exception",
+                  "D. pass"
                 ],
-                "correctAnswer": "del os.environ[key]"
-              },
-              {
-                "type": "text",
-                "content": "\n        else:\n            os.environ[key] = original_value",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
+                "correctAnswer": "B"
               }
             ],
-            "options": null,
-            "correctAnswer": "del os.environ[key]",
-            "explanation": "如果原始值不存在，应该删除该键以完全恢复原样，而不是设置空字符串。使用 del 语句可以移除该环境变量。"
+            "correctAnswer": "B",
+            "explanation": "当所有重试都失败时，应该抛出最后一次捕获的异常，以便调用者知道操作失败。选项A返回None会掩盖错误，选项C返回异常对象不符合预期，选项D会导致函数隐式返回None。因此正确做法是raise last_exception。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于上下文管理器的 __exit__ 方法，以下哪个说法是正确的？",
-            "codeContext": null,
-            "segments": null,
+            "question": "在堆叠装饰器 @retry(max_retries=2, delay=1) 和 @Timed 时，如果 risky_operation 连续失败两次，Timed 装饰器会记录多少次调用？",
             "options": [
-              "__exit__ 在 with 块正常结束时不会被调用",
-              "__exit__ 必须返回 False 否则会忽略异常",
-              "__exit__ 返回 True 会抑制当前异常",
-              "__exit__ 的参数顺序为 exc_type, exc_tb, exc_val"
+              "A. 1次",
+              "B. 2次",
+              "C. 3次",
+              "D. 0次"
             ],
-            "correctAnswer": "__exit__ 返回 True 会抑制当前异常",
-            "explanation": "__exit__ 返回 True 表示异常已被处理，with 块外部不再抛出该异常；返回 False 则异常继续传播。注意参数顺序是 exc_type, exc_val, exc_tb。"
+            "correctAnswer": "B",
+            "explanation": "堆叠顺序@retry在@Timed之上，意味着retry包装的是Timed包装后的函数。所以每次重试时，实际上调用的是Timed实例的__call__方法，因此每次尝试（包括第一次和重试）都会触发Timed的记录。第一次失败后重试一次（共2次），所以记录2次调用。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "执行以下代码，输出是什么？",
-            "codeContext": "class MyContext:\n    def __enter__(self):\n        print('enter')\n        return self\n    def __exit__(self, *args):\n        print('exit')\n        return True\n\ntry:\n    with MyContext() as c:\n        raise ValueError('oops')\n    print('after with')\nexcept:\n    print('caught')\nprint('done')",
-            "segments": null,
+            "question": "以下代码的输出是什么？",
+            "codeContext": "import random\n\nclass Timed:\n    def __init__(self, func):\n        self.func = func\n    def __call__(self, *args, **kwargs):\n        import time\n        start = time.time()\n        result = self.func(*args, **kwargs)\n        elapsed = time.time() - start\n        print(f\"耗时: {elapsed:.2f}s\")\n        return result\n\ndef retry(max_retries=2, delay=0):\n    def decorator(func):\n        import functools\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            for attempt in range(1, max_retries + 1):\n                try:\n                    return func(*args, **kwargs)\n                except:\n                    if attempt == max_retries:\n                        raise\n                    print(\"重试\")\n            return None\n        return wrapper\n    return decorator\n\n@retry(max_retries=3, delay=0)\n@Timed\ndef test():\n    if random.random() < 0.7:\n        raise ValueError(\"失败\")\n    return \"成功\"\n\nfor i in range(2):\n    try:\n        print(test())\n    except:\n        print(\"异常\")\n    print(\"---\")",
             "options": [
-              "enter\\nexit\\nafter with\\ndone",
-              "enter\\nexit\\ncaught\\ndone",
-              "enter\\nexit\\nafter with\\ncaught\\ndone",
-              "enter\\ncaught\\nexit\\ndone"
+              "A. 可能输出：\\n重试\\n重试\\n异常\\n---\\n重试\\n耗时: 0.00s\\n成功\\n---",
+              "B. 可能输出：\\n耗时: 0.00s\\n成功\\n---\\n重试\\n耗时: 0.00s\\n成功\\n---"
             ],
-            "correctAnswer": "enter\\nexit\\nafter with\\ndone",
-            "explanation": "__exit__ 返回 True 抑制了 ValueError，因此异常不会传播到外部，except 块不会执行，继续执行后面的 print('after with') 和 print('done')。"
+            "correctAnswer": "A",
+            "explanation": "堆叠顺序：test先被Timed装饰，再被retry装饰。所以retry的wrapper内部调用的是Timed实例。当test函数失败时，异常被retry捕获并重试，但Timed只在成功时打印（因为失败时self.func抛出异常，__call__中未捕获，所以不会执行到print语句）。选项A展示了失败时重试两次后抛出异常，以及第二次调用成功时Timed打印耗时。选项B没有重试和异常，不符合随机失败概率。"
           }
         ]
       }
