@@ -5,116 +5,116 @@
     "date": "2026-05-21",
     "topic": "商业与金融",
     "quote": {
-      "quote": "The stock market is a device for transferring money from the impatient to the patient.",
-      "author": "Warren Buffett",
-      "translation": "股市是一种将资金从急躁者转移到耐心者手中的工具。",
-      "explanation": "这句话强调了长期投资和耐心在股市中的重要性，常用于投资策略讨论或金融教育场景。"
+      "quote": "The stock market is filled with individuals who know the price of everything, but the value of nothing.",
+      "author": "Philip Fisher",
+      "translation": "股市里充斥着那些知道每样东西的价格，却对价值一无所知的人。",
+      "explanation": "这句话强调投资中价值判断的重要性，提醒投资者不要被短期价格波动所迷惑，而应关注资产的长期内在价值。常用于金融领域的风险教育或投资理念分享。"
     },
     "vocabulary": [
       {
-        "word": "dividend",
-        "phonetic": "/ˈdɪvɪdend/",
-        "partOfSpeech": "noun",
-        "definition": "股息，红利",
-        "example": "Shareholders expect the company to increase its dividend payout this quarter.",
-        "translation": "股东们期望公司本季度增加股息支付。"
-      },
-      {
         "word": "equity",
         "phonetic": "/ˈekwəti/",
-        "partOfSpeech": "noun",
-        "definition": "股权；净资产",
-        "example": "The startup raised $5 million in equity financing from venture capitalists.",
-        "translation": "这家初创公司从风险投资者那里筹集了500万美元的股权融资。"
+        "partOfSpeech": "n.",
+        "definition": "股权；公平",
+        "example": "The company issued new equity to raise capital for expansion.",
+        "translation": "该公司发行新股以筹集扩张资金。"
+      },
+      {
+        "word": "dividend",
+        "phonetic": "/ˈdɪvɪdend/",
+        "partOfSpeech": "n.",
+        "definition": "股息；红利",
+        "example": "Shareholders received a quarterly dividend of $0.50 per share.",
+        "translation": "股东每股获得0.50美元的季度股息。"
       },
       {
         "word": "leverage",
         "phonetic": "/ˈlevərɪdʒ/",
-        "partOfSpeech": "noun",
-        "definition": "杠杆作用；举债经营",
-        "example": "High leverage can amplify gains but also increases the risk of bankruptcy.",
-        "translation": "高杠杆可以放大收益，但也增加了破产风险。"
-      },
-      {
-        "word": "diversification",
-        "phonetic": "/daɪˌvɜːrsɪfɪˈkeɪʃn/",
-        "partOfSpeech": "noun",
-        "definition": "多元化；分散投资",
-        "example": "Diversification across asset classes reduces portfolio volatility during market downturns.",
-        "translation": "跨资产类别的多元化投资降低了市场低迷期间投资组合的波动性。"
-      },
-      {
-        "word": "portfolio",
-        "phonetic": "/pɔːrtˈfoʊlioʊ/",
-        "partOfSpeech": "noun",
-        "definition": "投资组合；作品集",
-        "example": "The fund manager rebalanced the portfolio to increase exposure to emerging markets.",
-        "translation": "基金经理重新平衡了投资组合，增加对新兴市场的敞口。"
-      },
-      {
-        "word": "hedge",
-        "phonetic": "/hedʒ/",
-        "partOfSpeech": "verb/noun",
-        "definition": "对冲；规避风险",
-        "example": "Companies often use futures contracts to hedge against currency fluctuations.",
-        "translation": "公司经常使用期货合约来对冲货币波动风险。"
+        "partOfSpeech": "n.",
+        "definition": "杠杆作用；影响力",
+        "example": "High financial leverage can amplify both gains and losses.",
+        "translation": "高财务杠杆会放大收益和损失。"
       },
       {
         "word": "liquidity",
         "phonetic": "/lɪˈkwɪdəti/",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "n.",
         "definition": "流动性；变现能力",
-        "example": "Central banks injected liquidity into the banking system to stabilize credit markets.",
-        "translation": "中央银行向银行体系注入流动性以稳定信贷市场。"
+        "example": "Central banks injected liquidity into the market to stabilize the banking system.",
+        "translation": "中央银行向市场注入流动性以稳定银行体系。"
       },
       {
-        "word": "volatility",
-        "phonetic": "/ˌvɑːləˈtɪləti/",
-        "partOfSpeech": "noun",
-        "definition": "波动性；易变性",
-        "example": "High volatility in oil prices makes it difficult for airlines to budget fuel costs.",
-        "translation": "油价的高波动性使航空公司难以预算燃油成本。"
-      },
-      {
-        "word": "depreciation",
-        "phonetic": "/dɪˌpriːʃiˈeɪʃn/",
-        "partOfSpeech": "noun",
-        "definition": "折旧；贬值",
-        "example": "The annual depreciation of machinery is calculated using the straight-line method.",
-        "translation": "机器设备的年度折旧采用直线法计算。"
+        "word": "hedge",
+        "phonetic": "/hedʒ/",
+        "partOfSpeech": "v.",
+        "definition": "对冲；套期保值",
+        "example": "Investors often hedge their portfolios against inflation using gold or commodities.",
+        "translation": "投资者常利用黄金或大宗商品对冲投资组合的通胀风险。"
       },
       {
         "word": "amortization",
-        "phonetic": "/ˌæmərtɪˈzeɪʃn/",
-        "partOfSpeech": "noun",
+        "phonetic": "/əˌmɔːrtɪˈzeɪʃən/",
+        "partOfSpeech": "n.",
         "definition": "摊销；分期偿还",
-        "example": "The loan amortization schedule shows monthly payments of principal and interest.",
-        "translation": "贷款摊销表显示了每月本金和利息的还款额。"
+        "example": "The loan amortization schedule shows monthly principal and interest payments.",
+        "translation": "贷款摊销表显示了每月的本金和利息支付额。"
+      },
+      {
+        "word": "bull market",
+        "phonetic": "/bʊl ˈmɑːrkɪt/",
+        "partOfSpeech": "n.",
+        "definition": "牛市",
+        "example": "A bull market typically occurs when investor confidence is high and the economy is strong.",
+        "translation": "牛市通常发生在投资者信心高涨且经济强劲之时。"
+      },
+      {
+        "word": "bear market",
+        "phonetic": "/ber ˈmɑːrkɪt/",
+        "partOfSpeech": "n.",
+        "definition": "熊市",
+        "example": "During a bear market, stock prices fall by 20% or more from recent highs.",
+        "translation": "在熊市中，股价从近期高点下跌20%或更多。"
+      },
+      {
+        "word": "diversification",
+        "phonetic": "/daɪˌvɜːrsɪfɪˈkeɪʃən/",
+        "partOfSpeech": "n.",
+        "definition": "多元化；分散投资",
+        "example": "Diversification across asset classes reduces portfolio risk.",
+        "translation": "跨资产类别的分散投资降低了投资组合风险。"
+      },
+      {
+        "word": "underwrite",
+        "phonetic": "/ˌʌndərˈraɪt/",
+        "partOfSpeech": "v.",
+        "definition": "承销；承保",
+        "example": "The investment bank agreed to underwrite the initial public offering.",
+        "translation": "投行同意承销这次首次公开募股。"
       }
     ],
     "pattern": {
-      "pattern": "Given that + [事实/条件], it is advisable to + [建议/行动]",
-      "example": "Given that the market is highly volatile, it is advisable to maintain a diversified portfolio.",
-      "translation": "鉴于市场高度波动，建议保持多元化的投资组合。",
-      "usage": "该句型用于在商业分析中基于某个已知条件提出合理的建议或决策，常出现在财务报告、投资建议中。"
+      "pattern": "Subject + is/are + likely/unlikely to + verb... (be likely to do / be unlikely to do)",
+      "example": "The company is likely to report strong earnings this quarter due to cost cutting.",
+      "translation": "由于削减成本，该公司本季度很可能会公布强劲的盈利。",
+      "usage": "用于表达对未来的预测或可能性，常用于商业报告、市场分析中。be likely to 表示很可能，be unlikely to 表示不太可能。"
     },
     "grammar": {
-      "title": "虚拟语气在商务条件句中的运用（Subjunctive Mood in Business Conditionals）",
-      "explanation": "在商业英语中，虚拟语气常用于表达与事实相反或不太可能发生的假设，特别是在讨论风险、替代方案或未来不确定性时。典型结构：If + 主语 + 过去式（were/did）, 主语 + would/could/might + 动词原形。例如：If interest rates were lower, we would expand our operations. 注意此时were不受主语人称影响。",
+      "title": "条件句中的虚拟语气 (Type 2 Conditional)",
+      "explanation": "Type 2 条件句用于描述与现在事实相反或不可能发生的情况。结构：If + 主语 + 过去式动词（be用were），主语 + would/could/might + 动词原形。例如：If the interest rate rose significantly, many businesses would struggle to repay their loans. 注意：在虚拟语气中，无论主语是单数还是复数，be动词统一用were。",
       "examples": [
-        "If the company had hedged its currency exposure, it could have avoided the loss.",
-        "Were the merger to go through, the combined entity would dominate the market."
+        "If the market crashed tomorrow, investors would panic.",
+        "If I were the CEO, I would focus on innovation."
       ]
     },
     "pronunciation": {
-      "word": "entrepreneurship",
-      "phonetic": "/ˌɑːntrəprəˈnɜːrʃɪp/",
-      "tips": "重音在第三个音节 'neur'，注意 'entre' 中的 't' 发音接近轻弹音，'ship' 末尾的 'p' 不要爆破太强。"
+      "word": "amortization",
+      "phonetic": "/əˌmɔːrtɪˈzeɪʃən/",
+      "tips": "重音在倒数第二个音节 'zeɪ'，注意第一个音节 'ə' 是弱读。尝试分解：a-mor-ti-ZA-tion，最后一音节 'ʃən' 读作 'shun'。"
     },
     "reading": {
-      "title": "The Rise of ESG Investing",
-      "content": "Environmental, social, and governance (ESG) investing has transitioned from a niche strategy to a mainstream approach in global finance. Asset managers now integrate ESG criteria into their investment decisions, recognizing that sustainable practices can mitigate long-term risks and enhance returns. A 2025 report by the Global Sustainable Investment Alliance showed that ESG assets under management exceeded $50 trillion, representing over one-third of total professionally managed assets. Critics argue that inconsistent rating systems and 'greenwashing' remain challenges. Nevertheless, the trend reflects a fundamental shift: investors increasingly view corporate responsibility as a driver of financial performance, not just an ethical choice.",
-      "translation": "环境、社会和治理（ESG）投资已从边缘策略转变为全球金融的主流方法。资产管理公司现在将ESG标准纳入其投资决策，认识到可持续实践可以降低长期风险并提高回报。全球可持续投资联盟2025年的一份报告显示，ESG资产管理规模超过50万亿美元，占专业管理资产总额的三分之一以上。批评者认为，评级体系不一致和“漂绿”仍是挑战。尽管如此，这一趋势反映了根本性转变：投资者越来越将企业责任视为财务表现的驱动因素，而不仅仅是道德选择。"
+      "title": "The Role of Central Banks in Modern Finance",
+      "content": "Central banks play a pivotal role in maintaining financial stability and controlling inflation. They set key interest rates, regulate commercial banks, and act as lenders of last resort during crises. For instance, during the 2008 global financial crisis, the Federal Reserve slashed rates to near zero and launched quantitative easing to inject liquidity. More recently, central banks have employed forward guidance to influence market expectations. Their policies directly affect currency value, bond yields, and stock market sentiment. Understanding central bank actions is essential for any investor navigating the complex world of finance.",
+      "translation": "中央银行在维护金融稳定和控制通胀中扮演关键角色。它们设定关键利率，监管商业银行，并在危机时充当最后贷款人。例如，2008年全球金融危机期间，美联储将利率降至接近零，并推出量化宽松以注入流动性。最近，中央银行使用前瞻指引来影响市场预期。它们的政策直接影响货币价值、债券收益率和股市情绪。理解央行行动对于任何在复杂金融世界中航行的投资者都至关重要。"
     }
   }
 }
