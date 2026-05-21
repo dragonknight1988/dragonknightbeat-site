@@ -4,35 +4,35 @@
     {
       "id": "prog-2026-05-22",
       "date": "2026-05-22",
-      "title": "Promise 并发控制：封装带限流的异步任务队列",
-      "summary": "学习如何实现一个限制最大并发数的异步任务调度器，避免同时发起过多网络请求或 IO 操作。",
+      "title": "掌握 TypeScript 中的类型守卫与类型缩小",
+      "summary": "学习如何使用类型守卫（typeof、instanceof、in、自定义类型谓词）和类型缩小技术，更安全地处理联合类型。",
       "difficulty": "中级",
-      "concept": "在实际项目中，我们经常需要同时发起多个异步操作，比如批量上传文件、并行请求 API 接口。如果不加限制，大量并发会瞬间耗尽系统资源（如端口、内存），甚至导致服务端拒绝服务。因此，**并发控制**成为一项必备技能。\n\n核心思想是利用一个“运行中计数器”和一个“等待队列”。当新任务被添加时，如果当前运行数小于最大并发数，则立即执行；否则将任务推入队列。每当一个任务完成（无论成功或失败），就减少运行计数，并从队列中取出下一个任务执行。这样就能保证任何时候同时运行的任务数不超过设定的阈值。\n\n具体实现可以使用 `async/await` 或纯 Promise 链。推荐使用 `async/await` 配合 `while` 循环，让代码更直观。需要注意：任务函数必须返回 Promise，并且调度器要妥善处理任务中的拒绝（reject），不能因为单个任务失败就阻塞后续任务。通常的做法是：在调度器内部用 `try/catch` 捕获错误，或者将 reject 的 Promise 转换为 resolved 但返回特定错误标识，以保证 `finally` 逻辑总能执行。\n\n一个成熟的并发控制工具还要支持动态添加任务、取消队列、获取当前状态等。社区有 `p-limit`、`async` 库的 `eachLimit` 等。理解其原理后，你就能根据业务需求定制更灵活的调度器（如带重试、超时、优先级等）。",
+      "concept": "在 TypeScript 中，联合类型允许一个变量拥有多种可能的类型。但当我们访问其属性或调用方法时，TypeScript 会要求我们先通过某种检查来确认当前具体是哪种类型，这个过程称为“类型缩小”。类型守卫则是那些能够触发类型缩小的表达式或函数，它们帮助编译器在代码块内将变量的范围收窄到更具体的类型。\n\n最基础的类型守卫是 `typeof` 操作符，它适用于原始类型（string、number、boolean、symbol、bigint、undefined、object、function）。但 `typeof` 无法区分 `null` 和 `object`，也无法用于类实例。此时 `instanceof` 就派上用场了，它检查对象的原型链是否匹配某个构造函数，适用于类或内置对象（如 Date、Array）。\n\n对于对象类型，`in` 操作符可以检查某个属性是否存在，从而缩窄类型。例如在联合类型 `{ type: 'a'; value: number } | { type: 'b'; label: string }` 中，我们可以通过判断 `'value' in obj` 来区分两种形态。更灵活的是自定义类型谓词：通过编写返回类型为 `arg is SomeType` 的函数，我们可以封装复杂的类型检查逻辑，让它在条件语句中生效。\n\n在实际工程项目中，类型守卫不仅提升了代码安全性，还增强了可读性。一个常见实践是使用可区分联合（Discriminated Unions），通过一个共同的字面量属性（如 `kind`）来区分变体。在 switch 语句或 if-else 链中，配合穷举检查（利用 `never` 类型）确保所有分支都被覆盖，避免遗漏。\n\n尽管类型断言（`as`）也可以人为地告诉编译器类型，但应该谨慎使用。类型守卫是更安全的做法，因为它让编译器在运行时检查的基础上自动推理类型，而不是强制覆盖。建议优先使用类型守卫，将断言保留在无法通过类型守卫解决的边界场景。\n\n总之，掌握类型守卫与类型缩小是中级 TypeScript 开发者的必备技能。它让你能写出更健壮、自文档化的代码，同时减少运行时错误。通过联合类型与精确的守卫，你可以优雅地处理复杂数据流，并利用 TypeScript 的类型系统实现类似函数式编程的模式匹配。",
       "codeExample": {
         "language": "TypeScript",
-        "code": "// 并发限制器类\nclass ConcurrencyLimiter {\n  private maxConcurrency: number;          // 最大并发数\n  private runningCount: number = 0;         // 当前正在运行的任务数\n  private queue: Array<{                   // 等待队列，存放待执行的任务及解析器\n    task: () => Promise<any>;\n    resolve: (value: any) => void;\n    reject: (reason?: any) => void;\n  }> = [];\n\n  constructor(maxConcurrency: number) {\n    if (maxConcurrency < 1) {\n      throw new Error('最大并发数必须 >= 1');\n    }\n    this.maxConcurrency = maxConcurrency;\n  }\n\n  // 添加一个任务，返回该任务结果的 Promise\n  add<T>(task: () => Promise<T>): Promise<T> {\n    return new Promise<T>((resolve, reject) => {\n      // 将任务及其回调打包存入队列\n      this.queue.push({ task, resolve, reject });\n      // 尝试执行下一个任务\n      this.runNext();\n    });\n  }\n\n  // 处理下一个任务（私有方法）\n  private runNext(): void {\n    // 如果正在运行的任务数达到上限，或者队列为空，则不做操作\n    if (this.runningCount >= this.maxConcurrency || this.queue.length === 0) {\n      return;\n    }\n\n    // 从队列头部取出一个任务并执行\n    const item = this.queue.shift()!;\n    this.runningCount++;\n\n    // 执行任务，并确保完成时处理后续\n    item.task()\n      .then((result) => {\n        item.resolve(result);           // 将成功结果传给外部调用者\n      })\n      .catch((error) => {\n        item.reject(error);             // 将失败原因传给外部调用者\n      })\n      .finally(() => {\n        this.runningCount--;            // 任务结束，减少运行计数\n        this.runNext();                 // 从队列拉取下个任务\n      });\n  }\n}\n\n// 使用示例：模拟异步请求\n// 创建一个最大并发为 2 的限制器\nconst limiter = new ConcurrencyLimiter(2);\n\n// 模拟异步任务：延迟一段时间后返回\nconst delay = (ms: number, value: string): Promise<string> =>\n  new Promise((resolve) => setTimeout(() => resolve(value), ms));\n\n// 依次添加 4 个任务\nlimiter.add(() => delay(1000, 'Task 1')).then(console.log);\nlimiter.add(() => delay(500,  'Task 2')).then(console.log);\nlimiter.add(() => delay(800,  'Task 3')).then(console.log);\nlimiter.add(() => delay(300,  'Task 4')).then(console.log);\n\n// 预期行为：\n// 同时启动 Task 1 和 Task 2（并发=2）。\n// 500ms 后 Task 2 完成，释放一个槽位，启动 Task 3。\n// 800ms 后 Task 3 完成（此时 Task 1 仍在运行），启动 Task 4。\n// 1000ms 后 Task 1 完成。\n// 1300ms 后 Task 4 完成。\n// 最终输出顺序：Task 2, Task 3, Task 1, Task 4",
-        "explanation": "1. **类结构**：`ConcurrencyLimiter` 维护最大并发数、当前运行数和一个队列。队列中每个元素包含待执行的任务函数 `task`，以及该任务对应的 `resolve` 和 `reject`，用于将任务结果传递回 `add()` 返回的 Promise。\n2. **add 方法**：返回一个新的 Promise，内部将用户任务和它的 resolve/reject 打包存入队列，然后调用 `runNext()`。\n3. **runNext 方法**：如果当前运行数未达上限且队列非空，则从队列头部取出一个任务，运行计数加 1，并执行任务。任务完成时（无论成功失败），通过 `finally` 减少运行计数，并递归调用 `runNext` 以启动下一个任务。\n4. **错误处理**：任务 reject 时，我们调用 `item.reject` 将错误传给调用方；同时 `finally` 仍然会执行，确保并发控制不受影响。\n5. **使用示例**：创建限制器后，用 `limiter.add` 包装异步函数。注意每个任务必须返回 Promise。输出顺序验证了并发控制在 2 时的执行效果。"
+        "code": "// 定义一个联合类型，可以是字符串、数字或布尔值\ntype Primitive = string | number | boolean;\n\nfunction processValue(value: Primitive): string {\n  // 使用 typeof 类型守卫缩小类型\n  if (typeof value === \"string\") {\n    // 这里 value 被窄化为 string\n    return `String: ${value.toUpperCase()}`;\n  } else if (typeof value === \"number\") {\n    // 窄化为 number\n    return `Number: ${value.toFixed(2)}`;\n  } else {\n    // 此时只剩下 boolean\n    return `Boolean: ${value ? \"yes\" : \"no\"}`;\n  }\n}\n\n// 测试\nconsole.log(processValue(\"hello\"));   // String: HELLO\nconsole.log(processValue(42));        // Number: 42.00\nconsole.log(processValue(true));      // Boolean: yes",
+        "explanation": "函数 `processValue` 接受一个 `Primitive` 联合类型的参数。第一行 `if (typeof value === \"string\")` 是一个类型守卫，它告诉 TypeScript：在这个 `if` 块内，`value` 一定是 `string` 类型，因此可以安全地调用 `toUpperCase()`。类似地，第二个 `else if` 将 `value` 缩小为 `number`，可以使用 `toFixed`。最后的 `else` 分支中，TypeScript 自动推断出剩下的类型是 `boolean`，所以我们直接访问了 `value` 的布尔值。整个过程无需任何类型断言，完全由编译器通过类型守卫自动完成类型窄化。"
       },
       "keyPoints": [
-        "并发控制的核心是维护“运行计数”和“等待队列”，确保同时执行的任务数不超过上限。",
-        "通过 Promise 包装和队列操作，将异步任务的调度统一管理，避免回调地狱。",
-        "错误处理要谨慎：单个任务失败不应阻塞后续任务，使用 `finally` 保证计数正确。",
-        "实际开发中可使用 `p-limit` 等成熟库，但理解原理有助于定制更复杂的行为（如优先级、超时、重试）。",
-        "注意任务函数的类型约束：必须返回 Promise，以便调度器获知完成时机。"
+        "`typeof` 类型守卫：适用于 string、number、boolean、symbol、bigint、undefined、object、function。",
+        "`instanceof` 类型守卫：用于检查对象是否属于某个类（如 `arr instanceof Array`）。",
+        "`in` 操作符：检查对象是否拥有某个属性，从而区分不同对象结构。",
+        "自定义类型谓词：通过 `arg is Type` 返回布尔值，实现复杂的类型检查。",
+        "可区分联合（Discriminated Unions）与穷举检查：用 `never` 类型确保所有分支都已被处理。"
       ],
       "exercise": {
-        "description": "请基于上面的 `ConcurrencyLimiter` 类，实现一个“请求限流器”，用于控制对某个 API 的并发请求数量。要求：添加 `getQueueLength()` 方法返回当前等待队列长度；添加 `clearQueue()` 方法清空队列并拒绝所有未执行的任务。然后编写一个小测试：创建并发数为 3 的限流器，添加 6 个随机延迟的请求，观察它们的执行顺序。",
-        "hint": "扩展已有的类，新增方法 `getQueueLength()` 直接返回 `this.queue.length`；`clearQueue()` 需要遍历队列，对每个元素的 `reject` 调用一个自定义错误（如 'Queue cleared'），然后清空数组。注意清空后要确保 `runningCount` 不受影响（因为只清空了等待中的任务）。",
+        "description": "编写一个函数 `handleInput`，它接受一个参数 `input` 类型为 `string | number | number[]`。根据输入类型返回不同的结果：如果 input 是 string，返回它的长度；如果是 number，返回它的平方；如果是 number 数组，返回元素之和。要求使用类型守卫来实现类型缩小。",
+        "hint": "你可以使用 `typeof` 来区分 string 和 number，使用 `Array.isArray`（这也是一个类型守卫，由 TypeScript 标准库提供）来识别数组。注意在 else 分支中要处理剩余类型。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "请补全以下代码，使 `ConcurrencyLimiter` 的 `add` 方法正确返回 Promise 并执行队列调度。",
-            "codeContext": "add<T>(task: () => Promise<T>): Promise<T> {\n  return new Promise<T>((resolve, reject) => {\n    // ___________ (1) ___________\n    // ___________ (2) ___________\n  });\n}",
+            "question": "在下面的函数中，缺失的类型守卫片段应该填写什么？",
+            "codeContext": "function formatValue(value: string | number | number[]): string {\n  if (/* 填空 */) {\n    return `Number: ${value}`;\n  } else if (Array.isArray(value)) {\n    return `Array with ${value.length} elements`;\n  } else {\n    return `String: ${value}`;\n  }\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "return new Promise<T>((resolve, reject) => {\n  ",
+                "content": "function formatValue(value: string | number | number[]): string {\n  if (",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,69 +42,53 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "this.queue.push({ task, resolve, reject });",
-                  "this.queue.push({ task });"
+                  "typeof value === 'number'",
+                  "typeof value === 'string'",
+                  "value instanceof Number"
                 ],
-                "correctAnswer": "this.queue.push({ task, resolve, reject });"
+                "correctAnswer": "typeof value === 'number'"
               },
               {
                 "type": "text",
-                "content": "\n  ",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "this.runNext();",
-                  "this.processQueue();"
-                ],
-                "correctAnswer": "this.runNext();"
-              },
-              {
-                "type": "text",
-                "content": "\n});",
+                "content": ") {\n    return `Number: ${value}`;\n  } else if (Array.isArray(value)) {\n    return `Array with ${value.length} elements`;\n  } else {\n    return `String: ${value}`;\n  }\n}",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "this.queue.push({ task, resolve, reject });\nthis.runNext();",
-            "explanation": "我们需要将任务及其 Promise 的 resolve/reject 一起存入队列，以便完成时回调。然后调用 runNext() 尝试立即执行（如果并发未满）。"
+            "correctAnswer": "typeof value === 'number'",
+            "explanation": "我们需要在 if 后面检查 value 是否为 number。使用 `typeof value === 'number'` 可以将 value 窄化为 number 类型，从而可以在代码块内直接使用 number 的方法（此处隐式转换为字符串）。选项 `typeof value === 'string'` 会反转逻辑，`value instanceof Number` 检查的是对象类型的 Number 包装器，不是原始 number。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "在上面的 ConcurrencyLimiter 中，如果一个任务执行出错（reject），以下说法正确的是？",
+            "question": "以下哪个选项是有效的自定义类型谓词，用于检查一个值是否为 `Date` 类型？",
             "codeContext": null,
             "segments": null,
             "options": [
-              "A. 该错误会让调度器停止工作，后续任务不再执行。",
-              "B. 该错误会被调度器捕获并忽略，不影响其他任务。",
-              "C. 该错误会被传递给调用该任务的 add() 返回的 Promise，同时调度器继续运行下一个任务。",
-              "D. 如果 reject 没有在任务内部被 catch，则整个进程会抛出未处理的 Promise 错误。"
+              "function isDate(value: unknown): value is Date { return value instanceof Date; }",
+              "function isDate(value: unknown): boolean { return value instanceof Date; }",
+              "function isDate(value: unknown): Date { return value instanceof Date; }",
+              "function isDate(value: unknown): value is boolean { return value instanceof Date; }"
             ],
-            "correctAnswer": "C. 该错误会被传递给调用该任务的 add() 返回的 Promise，同时调度器继续运行下一个任务。",
-            "explanation": "在 runNext 中，我们使用了 .catch() 来捕获错误并调用 item.reject，将错误传给外部。同时 .finally() 始终会执行，从而减少计数并调用 runNext() 启动下一个任务。因此调度器不会中断。选项 A 错误，选项 B 错误（错误没有被忽略，而是传递了），选项 D 错误（因为我们在调度器内部已经 catch 了，不会导致进程抛错）。"
+            "correctAnswer": "function isDate(value: unknown): value is Date { return value instanceof Date; }",
+            "explanation": "自定义类型谓词必须使用 `parameter is Type` 的返回类型形式。选项1正是这种形式，并且实例化检查正确。选项2返回 `boolean`，虽然可以用于逻辑判断，但不会触发类型缩小。选项3返回 `Date` 对象，不是布尔值，编译错误。选项4虽然使用了 `is`，但返回类型写成了 `boolean`，与实际检查不符。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "假设有以下代码，并且我们重写了 ConcurrencyLimiter 的 runNext 方法，在 finally 中先打印 'task finished' 再调用 runNext。请问控制台输出的顺序是什么？",
-            "codeContext": "const limiter = new ConcurrencyLimiter(1); // 最大并发 1\nlimiter.add(() => Promise.resolve('A')).then(console.log);\nlimiter.add(() => Promise.resolve('B')).then(console.log);\nlimiter.add(() => Promise.resolve('C')).then(console.log);",
+            "question": "这段代码执行后，`console.log` 会输出什么？",
+            "codeContext": "type Shape = \n  | { kind: 'circle'; radius: number }\n  | { kind: 'square'; side: number };\n\nfunction area(shape: Shape): number {\n  if (shape.kind === 'circle') {\n    return Math.PI * shape.radius ** 2;\n  } else if (shape.kind === 'square') {\n    return shape.side ** 2;\n  } else {\n    const _exhaustiveCheck: never = shape;\n    return _exhaustiveCheck;\n  }\n}\n\nconsole.log(area({ kind: 'circle', radius: 5 }));",
             "segments": null,
             "options": [
-              "A. A, B, C",
-              "B. A, task finished, B, task finished, C, task finished",
-              "C. A, B, C, task finished (打印三次)",
-              "D. task finished (三次), A, B, C"
+              "25π",
+              "78.5",
+              "25",
+              "编译错误或运行时错误"
             ],
-            "correctAnswer": "B. A, task finished, B, task finished, C, task finished",
-            "explanation": "并发为 1 时，任务串行执行。第一个任务执行完并 resolve('A')，触发 then 打印 'A'，然后在 finally 中打印 'task finished'，再启动第二个任务；第二个任务同理。所以输出顺序是 A, task finished, B, task finished, C, task finished。注意：由于 Promise 微任务调度，'A' 可能在 'task finished' 之前打印（then 在 catch/finally 之前注册），但实际 JavaScript 执行时，then 和 finally 都是微任务，且注册顺序是先 then 后 finally？严格来说，then 和 finally 是两个独立的回调，但执行顺序取决于 Promise 状态设置。当 promise 被 resolve 时，会先执行 then 的回调，然后再执行 finally 的回调？实际上，如果 then 和 finally 都绑在同一个 promise 上，then 的回调先注册，finally 后注册，所以 resolve 后会先调用 then，再调用 finally。因此 'A' 先打印，然后打印 'task finished'。所以选项 B 正确。"
+            "correctAnswer": "78.5",
+            "explanation": "传递给 area 的对象是 `{ kind: 'circle', radius: 5 }`，进入第一个分支，计算 `Math.PI * 5 ** 2`，结果是 π*25 ≈ 78.53981633974483，四舍五入保留一位小数约为 78.5。选项 \"25π\" 是未计算的表达式，不是数值输出。代码中未定义穷举检查分支不会执行，因此不会出错。"
           }
         ]
       }
