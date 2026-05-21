@@ -5,6 +5,10 @@ on:
     branches: [gh-pages]
   workflow_dispatch:
 
+concurrency:
+  group: daily-content
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -38,7 +42,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "⚠️ 无变更"
           else
-            git commit -m "auto: 📡 $(date +%H:%M) $(date +%Y-%m-%d)"
-            git push
+            git commit -m "auto: 📡 $(date +%Y-%m-%d)"
+            git push --force
             echo "✅ 已推送"
           fi
