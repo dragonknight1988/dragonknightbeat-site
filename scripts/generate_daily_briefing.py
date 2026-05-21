@@ -1,45 +1,200 @@
 #!/usr/bin/env python3
-"""每日风口简报 JSON 生成器 — GitHub Actions 版"""
-import json, os, sys, requests
+"""
+每日风口简报 JSON 生成器 (DeepSeek V4)
+用法: python3 generate_daily_briefing.py [--output 路径]
+"""
+
+import json, os, sys, subprocess, argparse, requests
 from datetime import datetime, timezone, timedelta
 
+# 北京时区
 BJ_TZ = timezone(timedelta(hours=8))
-today = datetime.now(BJ_TZ).strftime("%Y-%m-%d")
-OUTPUT = os.environ.get("OUTPUT_DIR", ".") + "/daily-briefing.json"
-API_KEY = os.environ.get("DEEPSEEK_API_KEY")
-if not API_KEY:
-    print("❌ 未设置 DEEPSEEK_API_KEY"); sys.exit(1)
 
-def main():
-    sp = f"""你是一位专业的科技情报分析师。生成高质量每日风口简报。
-输出JSON，不要markdown代码块：
-{{"date":"{today}","briefing":{{"date":"{today}","quote":"今日引语","sections":[
-{{"id":"openclaw","title":"OpenClaw 最新动态","icon":"🦞","articles":[{{"id":"brief-001","title":"标题","summary":"摘要","detail":"详情","source":"来源"}}]}},
-{{"id":"hotSkills","title":"热门技能推荐","icon":"🎯","articles":[{{"id":"brief-004","title":"标题","summary":"摘要","detail":"详情","source":"来源"}}]}},
-{{"id":"appTrends","title":"趋势洞察","icon":"📱","articles":[{{"id":"brief-007","title":"标题","summary":"摘要","detail":"详情","source":"来源"}}]}},
-{{"id":"techFrontier","title":"科技新锐","icon":"🚀","articles":[{{"id":"brief-010","title":"标题","summary":"摘要","detail":"详情","source":"来源"}}]}}
-]}}}}
-要求：信息要新，不要编造，使用你知道的最新行业动态。OpenClaw相关可以写社区动态或技术趋势。每个分类3篇文章。"""
 
-    resp = requests.post("https://api.deepseek.com/chat/completions",
-        headers={"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"},
-        json={"model": "deepseek-chat", "messages": [
-            {"role": "system", "content": sp},
-            {"role": "user", "content": f"生成{today}每日风口简报"}
-        ], "max_tokens": 8000, "temperature": 0.7}, timeout=300)
-    resp.raise_for_status()
-    result = resp.json()["choices"][0]["message"]["content"]
+DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "sk-e08c986a456f4fed99d8250596e7f9e8")
+DEEPSEEK_BASE_URL = "https://api.deepseek.com"
+DEEPSEEK_MODEL = "deepseek-v4-flash"
+
+
+def call_deepseek(system_prompt, user_prompt, max_tokens=8000):
+    headers = {
+        "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
+        "Content-Type": "application/json"
+    }
+    payload = {
+        "model": DEEPSEEK_MODEL,
+        "messages": [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}],
+        "max_tokens": max_tokens, "temperature": 0.7
+    }
+    try:
+        resp = requests.post(f"{DEEPSEEK_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=300)
+        resp.raise_for_status()
+        data = resp.json()
+        print(f"📊 Token: 输入 {data['usage']['prompt_tokens']} | 输出 {data['usage']['completion_tokens']}")
+        return data["choices"][0]["message"]["content"]
+    except Exception as e:
+        print(f"❌ API 调用失败: {e}")
+        return None
+
+
+def generate_briefing_content():
+    today = datetime.now(BJ_TZ).strftime("%Y-%m-%d")
+
+    system_prompt = f"""你是一位专业的科技情报分析师。请生成一份高质量的每日风口简报。
+
+输出格式必须为 JSON，严格符合以下结构（不要输出任何其他内容）：
+{{
+  "date": "{today}",
+  "briefing": {{
+    "date": "{today}",
+    "quote": "每日一句资讯感悟",
+    "sections": [
+      {{
+        "id": "openclaw",
+        "title": "OpenClaw 最新动态",
+        "icon": "🦞",
+        "articles": [
+          {{
+            "id": "brief-xxx",
+            "title": "文章标题",
+            "summary": "一句话摘要（30-50字）",
+            "detail": "详细内容（100-200字）",
+            "source": "来源"
+          }}
+        ]
+      }}
+    ]
+  }},
+  "hotProjects": {{
+    "date": "{today}",
+    "quote": "每日一句创业/投资箴言",
+    "summary": "一句话总结今日最大风口趋势",
+    "projects": [
+      {{
+        "id": "hot-xxx", "rank": 1, "name": "风口项目名称",
+        "heat": "🔥🔥🔥🔥🔥", "heatLevel": 5,
+        "oneLiner": "一句话概括（50字以内）",
+        "whyHot": "为什么火（80-100字）",
+        "highlights": ["关注点1", "关注点2", "关注点3", "关注点4"],
+        "riskTip": "风险提示"
+      }}
+    ]
+  }}
+}}
+
+具体要求：
+- briefing.sections 包含4个分类：OpenClaw动态、热门技能推荐、iOS应用动态、科技新锐
+- 每个分类 2-3 篇文章
+- hotProjects 包含 3-4 个风口项目
+- 所有内容基于当前日期和真实的科技趋势
+- 使用中文，语言专业但不晦涩"""
+
+    result = call_deepseek(
+        system_prompt,
+        f"请生成 {today} 的每日风口简报。要求4个资讯板块共10-12篇文章，3-4个风口项目。",
+        max_tokens=8000
+    )
+    if not result:
+        return None
 
     clean = result.strip()
-    for p in ["```json", "```"]:
-        if clean.startswith(p): clean = clean[len(p):]
+    if clean.startswith("```json"): clean = clean[7:]
+    elif clean.startswith("```"): clean = clean[3:]
     if clean.endswith("```"): clean = clean[:-3]
-    js = clean.find("{"); je = clean.rfind("}") + 1
-    data = json.loads(clean[js:je])
+    clean = clean.strip()
 
-    with open(OUTPUT, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"✅ {OUTPUT}")
+    js = clean.find("{")
+    je = clean.rfind("}") + 1
+    if js >= 0 and je > js:
+        data = repair_json(clean[js:je])
+        if data:
+            return data
+        print(f"❌ JSON 解析失败，输出前500字: {result[:500]}")
+        return None
+    return None
+
+
+def repair_json(text):
+    import re
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        try:
+            return json.loads(text, strict=False)
+        except:
+            try:
+                fixed = re.sub(r',\s*\]', ']', text)
+                fixed = re.sub(r',\s*\}', '}', fixed)
+                fixed = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', '', fixed)
+                return json.loads(fixed, strict=False)
+            except:
+                return None
+
+
+def repair_briefing_content(d):
+    """修补 AI 可能遗漏的字段"""
+    import copy
+    fixed = 0
+    for si, s in enumerate(d.get('briefing', {}).get('sections', [])):
+        for ai, a in enumerate(s.get('articles', [])):
+            if 'detail' not in a or not a.get('detail', '').strip():
+                a['detail'] = a.get('summary', a.get('title', '详情请关注'))
+                fixed += 1
+            if 'source' not in a or not a.get('source', '').strip():
+                a['source'] = '综合报道'
+                fixed += 1
+            for k in ['title', 'summary']:
+                if k not in a or not a.get(k, '').strip():
+                    a[k] = f'本文未提供{k}'
+                    fixed += 1
+    for pi, p in enumerate(d.get('hotProjects', {}).get('projects', [])):
+        for k in ['oneLiner', 'whyHot', 'riskTip', 'name']:
+            if k not in p or not p.get(k, '').strip():
+                p[k] = '详情请关注' if k != 'oneLiner' else '热门项目'
+                fixed += 1
+        if 'heatLevel' not in p:
+            p['heatLevel'] = 3
+            fixed += 1
+        if 'heat' not in p:
+            p['heat'] = '🔥🔥🔥'
+            fixed += 1
+        if 'highlights' not in p or not p.get('highlights'):
+            p['highlights'] = ['值得关注']
+            fixed += 1
+    if fixed:
+        print(f"🔧 自动修补了 {fixed} 个缺失字段")
+    return d
+
+
+def main():
+    parser = argparse.ArgumentParser(description="生成每日风口简报 JSON")
+    parser.add_argument("--output", default="daily-briefing.json",
+                        help="输出文件路径（默认 daily-briefing.json）")
+    args = parser.parse_args()
+
+    print(f"📡 生成 {datetime.now(BJ_TZ).strftime('%Y-%m-%d')} 风口简报（DeepSeek V4）...")
+
+    content = generate_briefing_content()
+    if content:
+        # 修补可能缺失的字段
+        repaired = repair_briefing_content(content)
+        if repaired != content:
+            print(f"🔧 修补了缺失字段")
+            content = repaired
+        with open(args.output, "w", encoding="utf-8") as f:
+            json.dump(content, f, ensure_ascii=False, indent=2)
+        b = content.get("briefing", {})
+        hp = content.get("hotProjects", {})
+        total_articles = sum(len(s.get("articles", [])) for s in b.get("sections", []))
+        total_projects = len(hp.get("projects", []))
+        print(f"✅ 已写入: {args.output}")
+        print(f"   资讯: {len(b.get('sections', []))} 个板块, {total_articles} 篇文章")
+        print(f"   风口: {total_projects} 个项目")
+    else:
+        print("❌ 生成失败")
+        sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
+
