@@ -1,9 +1,9 @@
 name: 📡 每日风口简报
 
 on:
-  push:
-    branches: [gh-pages]
   workflow_dispatch:
+  schedule:
+    - cron: '0 23 * * *'
 
 concurrency:
   group: daily-content
@@ -30,8 +30,8 @@ jobs:
           python-version: '3.12'
       - name: 📦 安装依赖
         run: pip install requests
-      - name: 🤖 生成风口简报
-        run: python3 scripts/generate_daily_briefing.py --output daily-briefing.json
+      - name: 🤖 生成
+        run: python3 scripts/generate_daily-briefing.py --output daily-briefing.json
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
       - name: 🚀 提交并推送
@@ -42,7 +42,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "⚠️ 无变更"
           else
-            git commit -m "auto: 📡 $(date +%Y-%m-%d)"
-            git push --force
+            git commit -m "auto: daily-briefing $(date +%Y-%m-%d)"
+            git push origin gh-pages
             echo "✅ 已推送"
           fi
