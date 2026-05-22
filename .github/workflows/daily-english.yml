@@ -60,6 +60,6 @@ jobs:
             echo "⚠️  无变更，跳过提交"
           else
             git commit -m "auto: 📖 每日英语晨读 $(date +%Y-%m-%d)"
-            git fetch origin gh-pages && git rebase origin/gh-pages && git push --force
+            for i in 1 2 3; do git fetch origin gh-pages && git rebase origin/gh-pages && git push --force && break; echo "⚠️  第$i次推送失败，5秒后重试..."; sleep 5; done
             echo "✅ 已推送到 gh-pages"
           fi
