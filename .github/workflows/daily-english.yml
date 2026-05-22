@@ -3,13 +3,8 @@ name: 📖 每日英语晨读
 on:
   schedule:
     - cron: '30 22 * * *'  # 北京时间 06:30
-  push:
-    branches: [main]
   workflow_dispatch:
 
-concurrency:
-  group: gh-pages-english
-  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -60,6 +55,6 @@ jobs:
             echo "⚠️  无变更，跳过提交"
           else
             git commit -m "auto: 📖 每日英语晨读 $(date +%Y-%m-%d)"
-            for i in 1 2 3; do git fetch origin gh-pages && git rebase origin/gh-pages && git push --force && break; echo "⚠️  第$i次推送失败，5秒后重试..."; sleep 5; done
+            git push --force
             echo "✅ 已推送到 gh-pages"
           fi

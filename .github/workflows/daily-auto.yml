@@ -3,13 +3,8 @@ name: 🚗 每日汽车新闻
 on:
   schedule:
     - cron: '0 0 * * *'    # 北京时间 08:00
-  push:
-    branches: [main]
   workflow_dispatch:
 
-concurrency:
-  group: gh-pages-auto
-  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -53,6 +48,6 @@ jobs:
             echo "⚠️  无变更"
           else
             git commit -m "auto: 🚗 每日汽车新闻 $(date +%Y-%m-%d)"
-            for i in 1 2 3; do git fetch origin gh-pages && git rebase origin/gh-pages && git push --force && break; echo "⚠️  第$i次推送失败，5秒后重试..."; sleep 5; done
+            git push --force
             echo "✅ 已推送"
           fi
