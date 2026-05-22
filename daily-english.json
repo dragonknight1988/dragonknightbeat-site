@@ -7,114 +7,114 @@
     "quote": {
       "quote": "The single biggest problem in communication is the illusion that it has taken place.",
       "author": "George Bernard Shaw",
-      "translation": "沟通中最大的问题是它已经发生的错觉。",
-      "explanation": "这句话提醒我们在职场沟通中不要想当然地认为对方已经理解，需要确认和反馈，避免误解。"
+      "translation": "沟通中最大的问题是已经发生沟通的错觉。",
+      "explanation": "这句名言强调在职场中，仅仅发送信息不等于有效沟通。许多误解源于人们以为自己已经表达清楚，而对方却未能理解。它提醒我们在工作中要主动确认理解，避免想当然。"
     },
     "vocabulary": [
       {
-        "word": "collaborate",
-        "phonetic": "/kəˈlæbəreɪt/",
-        "partOfSpeech": "verb",
-        "definition": "合作，协作",
-        "example": "Our teams need to collaborate more effectively on this project.",
-        "translation": "我们的团队需要在这个项目上更有效地协作。"
-      },
-      {
-        "word": "deadline",
-        "phonetic": "/ˈdedlaɪn/",
+        "word": "collaboration",
+        "phonetic": "/kəˌlæb.əˈreɪ.ʃən/",
         "partOfSpeech": "noun",
-        "definition": "截止日期",
-        "example": "We must finish the report before the Friday deadline.",
-        "translation": "我们必须在周五截止日期之前完成报告。"
-      },
-      {
-        "word": "negotiate",
-        "phonetic": "/nɪˈɡoʊʃieɪt/",
-        "partOfSpeech": "verb",
-        "definition": "谈判，协商",
-        "example": "She managed to negotiate a better contract for her team.",
-        "translation": "她成功为团队谈判了更好的合同。"
-      },
-      {
-        "word": "persuade",
-        "phonetic": "/pərˈsweɪd/",
-        "partOfSpeech": "verb",
-        "definition": "说服",
-        "example": "He persuaded the client to accept our proposal.",
-        "translation": "他说服客户接受了我们的提案。"
-      },
-      {
-        "word": "feedback",
-        "phonetic": "/ˈfiːdbæk/",
-        "partOfSpeech": "noun",
-        "definition": "反馈",
-        "example": "Please provide constructive feedback on my presentation.",
-        "translation": "请对我的演示提供建设性的反馈。"
+        "definition": "合作；协作",
+        "example": "Our team’s collaboration on the project led to outstanding results.",
+        "translation": "我们团队在这个项目上的协作带来了出色的成果。"
       },
       {
         "word": "agenda",
-        "phonetic": "/əˈdʒendə/",
+        "phonetic": "/əˈdʒen.də/",
         "partOfSpeech": "noun",
-        "definition": "议程，议事日程",
-        "example": "Let's set a clear agenda for the meeting.",
-        "translation": "让我们为会议设定一个清晰的议程。"
+        "definition": "议程；待办事项",
+        "example": "Please send the meeting agenda in advance so everyone can prepare.",
+        "translation": "请提前发送会议议程，以便大家做好准备。"
       },
       {
         "word": "stakeholder",
-        "phonetic": "/ˈsteɪkˌhoʊldər/",
+        "phonetic": "/ˈsteɪkˌhoʊl.dər/",
         "partOfSpeech": "noun",
         "definition": "利益相关者",
-        "example": "We need to consider all stakeholders before making a decision.",
-        "translation": "在做决定之前，我们需要考虑所有利益相关者。"
+        "example": "We need to consider the expectations of all stakeholders before making a decision.",
+        "translation": "在做决定之前，我们需要考虑所有利益相关者的期望。"
       },
       {
-        "word": "delegate",
-        "phonetic": "/ˈdelɪɡeɪt/",
+        "word": "articulate",
+        "phonetic": "/ɑːrˈtɪk.jə.lət/",
         "partOfSpeech": "verb",
-        "definition": "授权，委派",
-        "example": "A good manager knows how to delegate tasks effectively.",
-        "translation": "一个好的管理者知道如何有效地委派任务。"
+        "definition": "明确表达；清晰地阐述",
+        "example": "She articulated her concerns about the deadline during the meeting.",
+        "translation": "她在会议上明确表达了对截止日期的担忧。"
       },
       {
-        "word": "conflict",
-        "phonetic": "/ˈkɑːnflɪkt/",
-        "partOfSpeech": "noun",
-        "definition": "冲突",
-        "example": "Open communication can help resolve workplace conflicts.",
-        "translation": "开放沟通可以帮助解决职场冲突。"
+        "word": "reiterate",
+        "phonetic": "/riːˈɪt.ə.reɪt/",
+        "partOfSpeech": "verb",
+        "definition": "重申；反复强调",
+        "example": "Let me reiterate the key points to ensure everyone is on the same page.",
+        "translation": "让我重申关键点，确保大家意见一致。"
       },
       {
-        "word": "etiquette",
-        "phonetic": "/ˈetɪket/",
+        "word": "consensus",
+        "phonetic": "/kənˈsen.səs/",
         "partOfSpeech": "noun",
-        "definition": "礼仪，礼节",
-        "example": "Understanding business email etiquette is essential for professional communication.",
-        "translation": "了解商务邮件礼仪对于专业沟通至关重要。"
+        "definition": "共识；一致意见",
+        "example": "After a long discussion, the team finally reached a consensus on the new strategy.",
+        "translation": "经过长时间的讨论，团队终于就新策略达成了共识。"
+      },
+      {
+        "word": "diplomatic",
+        "phonetic": "/ˌdɪp.ləˈmæt.ɪk/",
+        "partOfSpeech": "adjective",
+        "definition": "外交的；有策略的；委婉的",
+        "example": "He gave a diplomatic answer that avoided offending anyone in the room.",
+        "translation": "他给出了一个委婉的回答，避免冒犯在场的任何人。"
+      },
+      {
+        "word": "micromanage",
+        "phonetic": "/ˈmaɪ.kroʊˌmæn.ɪdʒ/",
+        "partOfSpeech": "verb",
+        "definition": "微观管理；事无巨细地管理",
+        "example": "Good leaders trust their teams and avoid micromanaging every detail.",
+        "translation": "好的领导信任团队，避免对每个细节进行微观管理。"
+      },
+      {
+        "word": "confidentiality",
+        "phonetic": "/ˌkɑːn.fɪ.den.ʃiˈæl.ə.ti/",
+        "partOfSpeech": "noun",
+        "definition": "保密性；机密",
+        "example": "All employees must sign a confidentiality agreement to protect company data.",
+        "translation": "所有员工必须签署保密协议以保护公司数据。"
+      },
+      {
+        "word": "escalate",
+        "phonetic": "/ˈes.kə.leɪt/",
+        "partOfSpeech": "verb",
+        "definition": "升级；加剧；上报",
+        "example": "If the issue cannot be resolved at our level, we should escalate it to the manager.",
+        "translation": "如果问题无法在我们这个层面解决，我们应该上报给经理。"
       }
     ],
     "pattern": {
-      "pattern": "I would appreciate it if you could + 动词原形 ...",
-      "example": "I would appreciate it if you could review this document by tomorrow.",
-      "translation": "如果您能在明天之前审阅这份文件，我将不胜感激。",
-      "usage": "用于礼貌地请求对方做某事，尤其适用于正式或需要尊重的职场场合。"
+      "pattern": "I’d like to follow up on [topic].",
+      "example": "I’d like to follow up on the budget proposal we discussed last week.",
+      "translation": "我想跟进一下上周我们讨论的预算提案。",
+      "usage": "用于职场中礼貌地提醒或继续讨论之前的话题，显示主动性和专业度。"
     },
     "grammar": {
-      "title": "被动语态在职场沟通中的应用",
-      "explanation": "在职场中，主动语态强调执行者，被动语态强调动作本身或结果。被动语态可以使表达更客观、委婉，例如避免直接指责某人。结构：be + 过去分词 (+ by...)。",
+      "title": "主动语态 vs. 被动语态在职场沟通中的应用",
+      "explanation": "在职场写作和交流中，选择主动语态或被动语态会影响语气和清晰度。主动语态（如“We completed the report”）强调执行者，更直接有力。被动语态（如“The report was completed”）可以弱化责任人，或在不知道执行者时使用。例如，在反馈问题或批评时，被动语态可以显得更委婉：“The deadline was missed”比“You missed the deadline”更少指责意味。",
       "examples": [
-        "The report was finished on time. (强调报告已完成，而非谁完成的)",
-        "A mistake was made in the budget. (不直接指出责任人，减少对立)"
+        "主动：Our team resolved the issue quickly. （强调团队能力）",
+        "被动：The issue was resolved quickly. （避免指明责任人，适合中性陈述）"
       ]
     },
     "pronunciation": {
-      "word": "persuade",
-      "phonetic": "/pərˈsweɪd/",
-      "tips": "注意重音在第二音节 'sweɪd'，发音时'per'弱读，类似pər，不要读成/pɜːr/。'sweɪd'中的 'w' 要发清楚，类似 's-way-d'。"
+      "word": "articulate",
+      "phonetic": "/ɑːrˈtɪk.jə.lət/",
+      "tips": "重音在第二个音节 'tic'。注意 /ɑːr/ 类似于中文'啊'的发音但带卷舌，/jə/ 像'呀'的弱读，结尾 /lət/ 不要读成'雷特'，舌头抵住上齿龈。"
     },
     "reading": {
-      "title": "The Art of Constructive Feedback in the Workplace",
-      "content": "Providing constructive feedback is a crucial skill in professional communication. It helps colleagues grow and improves team performance. However, many people struggle with delivering feedback without causing offense. The key is to focus on specific behaviors rather than personal traits. For example, instead of saying \"You are always late,\" try \"I noticed you arrived late to the last three meetings. Is there anything I can help with?\" This approach demonstrates respect and encourages open dialogue. Additionally, timing matters: give feedback promptly but privately. Remember, the goal is to support improvement, not to criticize. When done correctly, feedback becomes a powerful tool for building trust and enhancing collaboration.",
-      "translation": "提供建设性反馈是职场沟通中的一项关键技能。它有助于同事成长并提升团队表现。然而，许多人在给予反馈时难以避免冒犯对方。关键在于关注具体行为而非个人特质。例如，不要说“你总是迟到”，而是说“我注意到你最近三次会议都迟到了。有什么我能帮忙的吗？”这种方式体现了尊重，并鼓励开放对话。此外，时机很重要：及时但私下给予反馈。记住，目标是支持改进，而不是批评。如果运用得当，反馈可以成为建立信任和加强协作的有力工具。"
+      "title": "The Art of Nonverbal Communication in the Workplace",
+      "content": "In today’s fast-paced business environment, verbal communication often takes center stage, but nonverbal cues can speak even louder. Eye contact, posture, gestures, and facial expressions all contribute to the message we send. For instance, maintaining steady eye contact conveys confidence and sincerity, while crossed arms may signal defensiveness or disagreement. Research shows that up to 93% of communication effectiveness is determined by nonverbal elements. Therefore, being mindful of your body language during meetings, presentations, and even casual conversations can significantly improve professional relationships. Furthermore, cultural differences play a crucial role: a gesture considered polite in one country might be offensive in another. For example, the “OK” hand sign is positive in many Western cultures but vulgar in some parts of South America. To excel in global workplaces, we must learn to read and adapt our nonverbal signals accordingly. Mastering this silent language not only prevents misunderstandings but also builds trust and rapport with colleagues and clients.",
+      "translation": "在当今快节奏的商业环境中，口头沟通往往占据中心舞台，但非语言线索可能更具说服力。眼神接触、姿势、手势和面部表情都影响着我们传递的信息。例如，保持稳定的眼神接触传达自信和真诚，而交叉双臂可能表示防备或反对。研究表明，高达93%的沟通效果由非语言元素决定。因此，在会议、演示甚至日常交谈中留意自己的肢体语言，可以显著改善职业关系。此外，文化差异起着关键作用：在一个国家被视为礼貌的手势在另一个国家可能具有冒犯性。例如，“OK”手势在许多西方文化中是积极的，但在南美部分地区却是粗俗的。为了在全球职场中脱颖而出，我们必须学会解读并调整自己的非语言信号。掌握这一无声的语言不仅能防止误解，还能与同事和客户建立信任和融洽关系。"
     }
   }
 }
