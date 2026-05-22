@@ -7,115 +7,115 @@
     "quote": {
       "quote": "The single biggest problem in communication is the illusion that it has taken place.",
       "author": "George Bernard Shaw",
-      "translation": "沟通中最大的问题是，人们误以为沟通已经发生了。",
-      "explanation": "这句话提醒我们在职场中，仅仅发送信息不等于有效沟通；需要确认对方理解，避免误解。常用于讨论反馈或团队协作时强调清晰沟通的重要性。"
+      "translation": "沟通中最大的问题在于人们误以为沟通已经发生了。",
+      "explanation": "这句话强调了有效沟通的难度，提醒我们在职场中不要假设对方已经理解了你的意思，而应该主动确认和反馈。"
     },
     "vocabulary": [
       {
         "word": "collaborate",
         "phonetic": "/kəˈlæbəreɪt/",
-        "partOfSpeech": "verb",
-        "definition": "合作；协作",
-        "example": "We need to collaborate closely with the marketing team to launch the campaign on time.",
-        "translation": "我们需要与市场团队紧密合作，按时推出活动。"
-      },
-      {
-        "word": "clarify",
-        "phonetic": "/ˈklærɪfaɪ/",
-        "partOfSpeech": "verb",
-        "definition": "澄清；阐明",
-        "example": "Could you clarify your point about the deadline? I'm not sure I understood you correctly.",
-        "translation": "你能澄清一下关于截止日期的观点吗？我不确定我理解得对不对。"
-      },
-      {
-        "word": "feedback",
-        "phonetic": "/ˈfiːdbæk/",
-        "partOfSpeech": "noun",
-        "definition": "反馈；意见",
-        "example": "I appreciate your constructive feedback on my presentation; it will help me improve.",
-        "translation": "我很感谢你对我演示的 constructive feedback（建设性反馈），它会帮助我改进。"
-      },
-      {
-        "word": "negotiate",
-        "phonetic": "/nɪˈɡoʊʃieɪt/",
-        "partOfSpeech": "verb",
-        "definition": "谈判；协商",
-        "example": "We need to negotiate the terms of the contract before signing it.",
-        "translation": "在签合同之前，我们需要协商条款。"
+        "partOfSpeech": "动词",
+        "definition": "合作，协作",
+        "example": "We need to collaborate closely with the marketing team to launch this campaign.",
+        "translation": "我们需要与市场部紧密合作来推出这个活动。"
       },
       {
         "word": "stakeholder",
         "phonetic": "/ˈsteɪkˌhoʊldər/",
-        "partOfSpeech": "noun",
-        "definition": "利益相关者",
-        "example": "As a project manager, you must keep all stakeholders informed about the progress.",
-        "translation": "作为项目经理，你必须让所有利益相关者了解进展情况。"
+        "partOfSpeech": "名词",
+        "definition": "利益相关者，股东",
+        "example": "Before making a decision, we must consider all stakeholders involved.",
+        "translation": "在做出决定前，我们必须考虑所有相关的利益相关者。"
       },
       {
         "word": "concise",
         "phonetic": "/kənˈsaɪs/",
-        "partOfSpeech": "adjective",
-        "definition": "简洁的；简明的",
-        "example": "A concise email is more likely to be read and understood quickly.",
-        "translation": "简洁的邮件更容易被快速阅读和理解。"
+        "partOfSpeech": "形容词",
+        "definition": "简明的，简洁的",
+        "example": "Keep your email concise and to the point to save everyone's time.",
+        "translation": "让你的邮件简明扼要，节省大家的时间。"
       },
       {
         "word": "escalate",
         "phonetic": "/ˈeskəleɪt/",
-        "partOfSpeech": "verb",
-        "definition": "升级；扩大（问题或冲突）",
-        "example": "If the issue cannot be resolved at our level, we may need to escalate it to senior management.",
-        "translation": "如果问题在我们层面无法解决，我们可能需要将其上报给高层管理。"
+        "partOfSpeech": "动词",
+        "definition": "升级，加剧",
+        "example": "If the client complaint is not resolved quickly, it may escalate to senior management.",
+        "translation": "如果客户的投诉没有迅速解决，可能会升级到高级管理层。"
+      },
+      {
+        "word": "deadline",
+        "phonetic": "/ˈdedlaɪn/",
+        "partOfSpeech": "名词",
+        "definition": "截止日期，最后期限",
+        "example": "We have a tight deadline next Friday, so let's prioritize the most critical tasks.",
+        "translation": "我们下周五有一个紧迫的截止日期，所以让我们优先处理最关键的任务。"
+      },
+      {
+        "word": "negotiate",
+        "phonetic": "/nɪˈɡoʊʃieɪt/",
+        "partOfSpeech": "动词",
+        "definition": "谈判，协商",
+        "example": "We need to negotiate a better contract term with the supplier.",
+        "translation": "我们需要与供应商谈判一个更好的合同条款。"
       },
       {
         "word": "agenda",
         "phonetic": "/əˈdʒendə/",
-        "partOfSpeech": "noun",
-        "definition": "议程；待办事项",
-        "example": "Please share the meeting agenda with all participants beforehand so they can prepare.",
-        "translation": "请提前与所有参会者分享会议议程，以便他们做好准备。"
+        "partOfSpeech": "名词",
+        "definition": "议程，议事日程",
+        "example": "Please send the meeting agenda to all participants a day in advance.",
+        "translation": "请提前一天将会议议程发送给所有参与者。"
       },
       {
-        "word": "diplomatic",
-        "phonetic": "/ˌdɪpləˈmætɪk/",
-        "partOfSpeech": "adjective",
-        "definition": "外交的；有策略的；委婉的",
-        "example": "When giving negative feedback, it's important to be diplomatic to avoid hurting feelings.",
-        "translation": "给予负面反馈时，保持委婉很重要，以免伤害感情。"
+        "word": "feedback",
+        "phonetic": "/ˈfiːdbæk/",
+        "partOfSpeech": "名词",
+        "definition": "反馈，意见",
+        "example": "I appreciate your constructive feedback on my presentation.",
+        "translation": "我感谢你对我的演示提出的建设性反馈。"
       },
       {
-        "word": "consensus",
-        "phonetic": "/kənˈsensəs/",
-        "partOfSpeech": "noun",
-        "definition": "共识；一致意见",
-        "example": "After a lengthy discussion, we finally reached a consensus on the budget allocation.",
-        "translation": "经过长时间的讨论，我们终于就预算分配达成了共识。"
+        "word": "implement",
+        "phonetic": "/ˈɪmplɪment/",
+        "partOfSpeech": "动词",
+        "definition": "实施，执行",
+        "example": "Our team is ready to implement the new software system next month.",
+        "translation": "我们的团队准备在下个月实施新的软件系统。"
+      },
+      {
+        "word": "confidential",
+        "phonetic": "/ˌkɑːnfɪˈdenʃl/",
+        "partOfSpeech": "形容词",
+        "definition": "机密的，保密的",
+        "example": "Please keep this report confidential and do not share it outside the department.",
+        "translation": "请对这份报告保密，不要分享给部门以外的人。"
       }
     ],
     "pattern": {
-      "pattern": "Could you please [verb]? (礼貌请求句型)",
-      "example": "Could you please clarify the deadline for this report?",
-      "translation": "你能澄清一下这份报告的最后期限吗？",
-      "usage": "用于职场中礼貌地请求别人做某事，比 'Can you' 更正式、更委婉。搭配动词如 clarify, explain, send, review 等。"
+      "pattern": "I’d like to + 动词原形 + (目的/请求)",
+      "example": "I’d like to schedule a follow-up meeting to discuss the project timeline.",
+      "translation": "我想安排一次后续会议来讨论项目时间表。",
+      "usage": "用于礼貌地表达自己的意愿或请求，在职场沟通中非常实用，比直接说'I want to'更委婉。"
     },
     "grammar": {
-      "title": "被动语态在职场沟通中的使用",
-      "explanation": "被动语态 (be + past participle) 常用于职场沟通中，当动作执行者不重要、未知或想避免指责时。例如：'The report was submitted late.' 比 'You submitted the report late.' 更委婉。常用于正式邮件或会议记录中。",
+      "title": "现在完成时表示“经验与影响”",
+      "explanation": "现在完成时（have/has + 过去分词）常用于谈论过去发生但与现在有关联的动作或经历。在职场中，常用来强调“已经完成某事”或“至今为止的经验”。关键时间状语：already, yet, ever, never, just, recently, so far。",
       "examples": [
-        "The meeting has been rescheduled to Friday.",
-        "The decision was made after careful consideration.",
-        "This issue must be addressed immediately."
+        "I have already sent the revised proposal to the client.",
+        "Have you ever worked with a cross-functional team before?",
+        "We haven't received any feedback from the HR department yet."
       ]
     },
     "pronunciation": {
-      "word": "consensus",
-      "phonetic": "/kənˈsensəs/",
-      "tips": "重音在第二个音节 'sen'，注意 /s/ 音要清晰，不要读成 /z/。结尾 /əs/ 发音轻短。"
+      "word": "collaborate",
+      "phonetic": "/kəˈlæbəreɪt/",
+      "tips": "重音在第二个音节'læb'上，注意第一个音节读得更弱（kə），最后的'rate'不要发成/reɪt/中的长音，而是清晰的/reɪt/。可以拆解为：co-lla-bo-rate。"
     },
     "reading": {
-      "title": "The Art of Active Listening in the Workplace",
-      "content": "Active listening is more than just hearing words; it involves fully concentrating, understanding, and responding thoughtfully. In a professional setting, this skill can prevent misunderstandings and build trust. For example, when a colleague shares a concern, paraphrasing what they said—'So if I understand correctly, you're worried about the deadline?'—shows you value their input. It also encourages open dialogue. To practice active listening, maintain eye contact, avoid interrupting, and ask clarifying questions. This approach not only improves teamwork but also helps resolve conflicts more efficiently. Remember, effective communication is a two-way street; listening is just as important as speaking.",
-      "translation": "主动倾听不仅仅是听到词语；它需要全神贯注、理解并深思熟虑地回应。在职场中，这种技能可以防止误解并建立信任。例如，当同事表达担忧时，复述他们的话——'所以如果我理解正确，你担心的是截止日期？'——表明你重视他们的意见。这也能鼓励开诚布公的对话。要练习主动倾听，保持眼神交流，避免打断，并提出澄清性问题。这种方法不仅能改善团队合作，还能更有效地解决冲突。记住，有效沟通是双向的；倾听与说话同样重要。"
+      "title": "Effective Communication in the Workplace",
+      "content": "Effective communication is the cornerstone of any successful organization. It involves not only speaking clearly but also listening actively and responding appropriately. In many workplaces, misunderstandings arise because people assume that their message has been understood without checking. To avoid this, professionals should adopt the practice of 'closing the loop' — that is, confirming that the recipient has grasped the intended meaning. Additionally, choosing the right channel for communication is crucial: a quick question might be best sent via instant messaging, while complex feedback warrants a face-to-face meeting. By being mindful of clarity, brevity, and empathy, employees can significantly reduce conflict and increase productivity.",
+      "translation": "有效沟通是任何成功组织的基石。它不仅仅是清晰地说话，还包括积极倾听和恰当回应。在许多职场中，误解的产生是因为人们假设自己的信息已经被理解，而没有去确认。为了避免这种情况，专业人士应该采用“闭环”的做法——即确认接收者已经领会了预期的含义。此外，选择合适的沟通渠道至关重要：一个快速的问题可能最好通过即时消息发送，而复杂的反馈则需要面对面会议。通过注意清晰度、简洁性和同理心，员工可以显著减少冲突并提高生产力。"
     }
   }
 }
