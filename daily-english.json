@@ -7,115 +7,114 @@
     "quote": {
       "quote": "The single biggest problem in communication is the illusion that it has taken place.",
       "author": "George Bernard Shaw",
-      "translation": "沟通中最大的问题，是误以为沟通已经发生。",
-      "explanation": "这句话揭示了职场中常见的沟通误区——发送信息不等于有效传达。适用于提醒团队避免假设对方已理解，强调确认反馈的重要性。"
+      "translation": "沟通中最大的问题是人们误以为已经沟通过了。",
+      "explanation": "这句话提醒我们，沟通不仅仅是信息的发送，更重要的是确保信息被准确接收和理解。在职场中，常因假设对方已明白而导致误解，因此需要主动确认反馈。"
     },
     "vocabulary": [
       {
-        "word": "articulate",
-        "phonetic": "/ɑːrˈtɪkjuleɪt/",
-        "partOfSpeech": "verb",
-        "definition": "清晰表达（思想、观点）",
-        "example": "She was able to articulate her concerns during the quarterly review meeting.",
-        "translation": "她在季度回顾会上清晰地表达了自己的担忧。"
+        "word": "stakeholder",
+        "phonetic": "/ˈsteɪkˌhoʊldər/",
+        "partOfSpeech": "n.",
+        "definition": "利益相关者",
+        "example": "We need to align with all stakeholders before launching the project.",
+        "translation": "在启动项目之前，我们需要与所有利益相关者达成一致。"
       },
       {
         "word": "concise",
         "phonetic": "/kənˈsaɪs/",
-        "partOfSpeech": "adjective",
-        "definition": "简明的，扼要的",
-        "example": "A concise email saves time and reduces the risk of miscommunication.",
-        "translation": "简短的邮件能节省时间，并降低误解风险。"
+        "partOfSpeech": "adj.",
+        "definition": "简洁的",
+        "example": "A concise email saves time and reduces misunderstandings.",
+        "translation": "一封简洁的邮件可以节省时间并减少误解。"
       },
       {
-        "word": "collaborate",
-        "phonetic": "/kəˈlæbəreɪt/",
-        "partOfSpeech": "verb",
-        "definition": "合作，协作",
-        "example": "The marketing and sales teams need to collaborate more closely to launch the campaign.",
-        "translation": "市场部和销售部需要更紧密地协作以推出这次活动。"
+        "word": "feedback",
+        "phonetic": "/ˈfiːdbæk/",
+        "partOfSpeech": "n.",
+        "definition": "反馈",
+        "example": "Please provide constructive feedback on my presentation.",
+        "translation": "请对我的演示提供建设性的反馈。"
       },
       {
-        "word": "delegate",
-        "phonetic": "/ˈdelɪɡeɪt/",
-        "partOfSpeech": "verb",
-        "definition": "授权，委派（任务）",
-        "example": "Effective managers know how to delegate tasks according to each team member's strengths.",
-        "translation": "高效的管理者懂得根据每位团队成员的优势来委派任务。"
+        "word": "clarify",
+        "phonetic": "/ˈklærɪfaɪ/",
+        "partOfSpeech": "v.",
+        "definition": "澄清，阐明",
+        "example": "Could you clarify your point about the deadline change?",
+        "translation": "你能澄清一下关于截止日期变更的观点吗？"
       },
       {
-        "word": "facilitate",
-        "phonetic": "/fəˈsɪlɪteɪt/",
-        "partOfSpeech": "verb",
-        "definition": "促进，使便利",
-        "example": "The facilitator used visual aids to facilitate cross-departmental brainstorming.",
-        "translation": "引导员使用视觉辅助工具来促进跨部门的头脑风暴。"
+        "word": "agenda",
+        "phonetic": "/əˈdʒendə/",
+        "partOfSpeech": "n.",
+        "definition": "议程",
+        "example": "Let's stick to the agenda to avoid wasting time.",
+        "translation": "让我们遵循议程以避免浪费时间。"
       },
       {
-        "word": "negotiate",
-        "phonetic": "/nɪˈɡoʊʃieɪt/",
-        "partOfSpeech": "verb",
-        "definition": "谈判，协商",
-        "example": "We need to negotiate the terms of the contract before signing.",
-        "translation": "我们需要在签署前就合同条款进行协商。"
+        "word": "collaboration",
+        "phonetic": "/kəˌlæbəˈreɪʃən/",
+        "partOfSpeech": "n.",
+        "definition": "协作",
+        "example": "Cross-departmental collaboration is key to innovation.",
+        "translation": "跨部门协作是创新的关键。"
       },
       {
-        "word": "prioritize",
-        "phonetic": "/praɪˈɔːrətaɪz/",
-        "partOfSpeech": "verb",
-        "definition": "优先处理，排列优先级",
-        "example": "During a crisis, you must prioritize tasks based on urgency and impact.",
-        "translation": "危机时刻，你必须根据紧急程度和影响来优先处理任务。"
+        "word": "articulate",
+        "phonetic": "/ɑːrˈtɪkjuleɪt/",
+        "partOfSpeech": "v.",
+        "definition": "清晰地表达",
+        "example": "She was able to articulate her ideas effectively during the meeting.",
+        "translation": "她在会议中能够有效地表达自己的想法。"
       },
       {
-        "word": "rapport",
-        "phonetic": "/ræˈpɔːr/",
-        "partOfSpeech": "noun",
-        "definition": "融洽关系，亲和",
-        "example": "Building rapport with international clients often involves understanding their cultural norms.",
-        "translation": "与国际客户建立融洽关系通常需要理解他们的文化习惯。"
+        "word": "follow-up",
+        "phonetic": "/ˈfɑːloʊ ʌp/",
+        "partOfSpeech": "n.",
+        "definition": "后续行动",
+        "example": "We need a follow-up meeting to discuss the action items.",
+        "translation": "我们需要一个后续会议来讨论行动事项。"
       },
       {
-        "word": "consensus",
-        "phonetic": "/kənˈsensəs/",
-        "partOfSpeech": "noun",
-        "definition": "共识，一致意见",
-        "example": "After hours of debate, the committee finally reached a consensus on the budget.",
-        "translation": "经过数小时的辩论，委员会终于就预算达成了共识。"
+        "word": "persuade",
+        "phonetic": "/pərˈsweɪd/",
+        "partOfSpeech": "v.",
+        "definition": "说服",
+        "example": "He used data to persuade the team to adopt the new strategy.",
+        "translation": "他用数据说服团队采用新策略。"
       },
       {
-        "word": "escalate",
-        "phonetic": "/ˈeskəleɪt/",
-        "partOfSpeech": "verb",
-        "definition": "升级；加剧；逐级上报",
-        "example": "If the client's complaint is not resolved, we may need to escalate the issue to senior management.",
-        "translation": "如果客户的投诉未能解决，我们可能需要将问题升级至高层管理。"
+        "word": "deadline",
+        "phonetic": "/ˈdedlaɪn/",
+        "partOfSpeech": "n.",
+        "definition": "截止日期",
+        "example": "The deadline for submitting the report is next Friday.",
+        "translation": "提交报告的截止日期是下周五。"
       }
     ],
     "pattern": {
-      "pattern": "I would appreciate it if you could + 动词原形...",
-      "example": "I would appreciate it if you could send me the revised proposal by Friday.",
-      "translation": "如果您能在周五之前把修订后的提案发给我，我将不胜感激。",
-      "usage": "这是一个非常礼貌且经典的职场请求句型，常用于邮件或正式沟通中，表达对对方配合的感谢预期，避免显得命令式。"
+      "pattern": "Could you please [动词] [宾语]?",
+      "example": "Could you please clarify the project timeline?",
+      "translation": "你能澄清一下项目时间表吗？",
+      "usage": "这是一个礼貌的请求句型，常用于职场中询问信息或寻求帮助，使语气更委婉。"
     },
     "grammar": {
-      "title": "被动语态在正式书面沟通中的运用",
-      "explanation": "在职场报告、会议纪要或邮件中，使用被动语态可以突出动作的承受者，弱化执行者，使语气更客观、正式。结构为：be (适当形式) + 过去分词。常用于描述流程、结果或后续行动。",
+      "title": "被动语态在职场沟通中的应用",
+      "explanation": "被动语态（be + 过去分词）在职场中常用来强调动作的承受者而非执行者，使语气更客观或避免指责。例如：'The report was submitted late.'（报告提交晚了）比 'You submitted the report late.' 更委婉。",
       "examples": [
-        "The contract was signed last Monday. (合同于上周一签署。)",
-        "The meeting has been rescheduled to next Thursday. (会议已改期至下周四。)",
-        "All errors must be corrected before submission. (所有错误必须在提交前修正。)"
+        "The meeting has been rescheduled to next Monday.",
+        "All feedback will be collected by the end of the day."
       ]
     },
     "pronunciation": {
-      "word": "collaborate",
-      "phonetic": "/kəˈlæbəreɪt/",
-      "tips": "重音在第二个音节 'lab' 上，末尾 'rate' 读作 /reɪt/。注意不要读成 /ˈkɒləbreɪt/。练习时先慢读 ka-LAB-uh-rayt，逐渐加快。"
+      "word": "collaboration",
+      "phonetic": "/kəˌlæbəˈreɪʃən/",
+      "tips": "注意重音在倒数第二个音节 'reɪ'，发音时不要丢失第二个 'l'，口腔保持放松，结尾 'ʃən' 像 'shun'。"
     },
     "reading": {
-      "title": "The Art of Constructive Feedback",
-      "content": "In today's fast-paced workplace, the ability to give and receive feedback effectively is a cornerstone of professional growth. Constructive feedback is not about pointing out flaws; it is a collaborative process aimed at improvement. When delivering feedback, focus on specific behaviors rather than personality traits. For example, instead of saying 'You are always late to meetings,' try 'I noticed that you arrived after the meeting started three times last week. Is there a scheduling conflict we can address?' This approach reduces defensiveness and opens a dialogue. Receiving feedback with grace is equally crucial—take a moment to process the input, ask clarifying questions, and express gratitude. In a culture where feedback is normalized, teams achieve higher productivity and stronger trust. Ultimately, mastering this skill transforms workplace communication from a source of tension into a driver of innovation.",
-      "translation": "在当今快节奏的职场中，有效给出和接收反馈的能力是职业成长的基石。建设性反馈不是挑错，而是以改进为目标的协作过程。给出反馈时，聚焦具体行为而非人格特质。例如，不要说“你开会总是迟到”，而应说“我注意到上周你有三次在会议开始后才到。是否有我们可以协调的日程冲突？”这种方式能减少防御心态，开启对话。优雅地接收反馈同样至关重要——花时间消化信息，提出澄清性问题，并表达感谢。在将反馈常态化的文化中，团队能实现更高的生产力和更强的信任。最终，掌握这项技能能将职场沟通从紧张之源转变为创新驱动力。"
+      "title": "The Art of Clear Communication at Work",
+      "content": "In today's fast-paced workplace, effective communication is more than just exchanging information. It requires clarity, empathy, and intentional follow-up. One common pitfall is assuming that a message has been understood once it is sent. To avoid this, professionals should practice active listening, ask clarifying questions, and summarize key points at the end of discussions. Additionally, choosing the right communication channel matters: a quick instant message may work for simple updates, but sensitive feedback deserves a face-to-face conversation. Mastering these skills not only reduces errors but also builds trust among team members. Remember, great communication is a two-way street—it involves both speaking and understanding.",
+      "translation": "在当今快节奏的职场中，有效的沟通不仅仅是交换信息。它需要清晰、同理心和有意识的后续跟进。一个常见的陷阱是假设信息一旦发送就会被理解。为了避免这种情况，专业人士应该练习主动倾听，提出澄清性问题，并在讨论结束时总结要点。此外，选择合适的沟通渠道很重要：简单的即时消息可用于简短更新，但敏感的反馈需要面对面交谈。掌握这些技能不仅能减少错误，还能在团队成员之间建立信任。记住，良好的沟通是双向的——既包括表达也包括理解。"
     }
   }
 }
