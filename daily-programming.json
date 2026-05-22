@@ -4,35 +4,35 @@
     {
       "id": "prog-2026-05-22",
       "date": "2026-05-22",
-      "title": "闭包与柯里化：高阶函数的工程实践与类型安全",
-      "summary": "掌握闭包的核心机制，理解柯里化在实际开发中的作用，并用 TypeScript 为柯里化函数添加精确的类型注解。",
+      "title": "TypeScript 类型守卫与类型收窄 (Type Guards & Narrowing)",
+      "summary": "掌握通过类型守卫（typeof、instanceof、自定义谓词等）在条件分支中安全地缩小联合类型，减少类型断言，提升代码健壮性。",
       "difficulty": "中级",
-      "concept": "闭包是 JavaScript 中最强大也最容易被误解的特性之一。简单来说，闭包是指一个函数能够“记住”并访问其词法作用域中的变量，即使该函数在其词法作用域之外执行。这种能力让函数可以携带状态，成为高阶函数和函数式编程的基石。在实际工程中，闭包常被用于创建私有变量、实现工厂函数、以及缓存中间结果。例如，一个防抖函数利用闭包保存定时器 ID，每次触发时清除并重设定时器，从而避免频繁执行。\n\n柯里化（Currying）是闭包的典型应用。它将一个接受多个参数的函数转换为一系列接受单一参数的函数嵌套，每一步返回一个闭包，等待下一个参数。这种转换让我们可以“部分应用”参数，延迟计算或复用配置。比如，一个通用的日志函数 `log(level, message)` 通过柯里化变成 `const info = log('INFO'); info('App started');`。这种方式在编写可配置的中间件、API 请求封装以及事件处理器中非常常见。\n\n在 TypeScript 中，为柯里化函数添加类型注解需要精确描述参数链和返回值类型。基本思路是利用泛型和函数重载，或者利用条件类型推断参数元组。虽然类型推导可以自动完成很多工作，但手工编写类型声明能帮助我们更好地理解 TypeScript 的类型系统，并避免运行时错误。例如，定义一个两参数的柯里化函数类型：`type Curried<A, B, R> = (a: A) => (b: B) => R;`。对于更长的参数列表，可以使用递归类型。\n\n工程经验中需要注意闭包导致的意外变量共享问题。比如循环中使用闭包时，如果不使用 `let` 或立即执行函数，所有闭包共享同一个变量引用，导致结果不符合预期。这也是一个经典面试题。解决方案包括使用块级作用域（`let`）或利用闭包本身捕获当前值。另外，闭包会保持对外部变量的引用，可能造成内存泄漏，尤其是 DOM 事件回调中引用大对象时，需要及时解除引用。\n\n柯里化虽然强大，但过度使用也会让代码难以调试和维护。建议在需要**参数复用**或**延迟执行**的场景下使用，比如日志级别、HTTP 请求配置、格式化函数等。不要为了炫技而牺牲可读性。TypeScript 的类型系统让柯里化函数的调用更加安全，编辑器能提供准确的代码提示，降低出错概率。",
+      "concept": "类型守卫（Type Guard）是 TypeScript 中能够保证某个值在特定作用域内属于某种类型的一种表达式。当我们面对联合类型（如 string | number）时，编译器无法确定具体是哪个成员，因此不允许直接调用该类型特有的方法（例如 string 的 .toUpperCase()）。类型守卫通过运行时检查，帮助编译器在条件分支内将类型收窄为更具体的子类型。\n\n最基础的类型守卫是 typeof 操作符，它可以区分基本类型（如 'string'、'number'、'boolean' 等）。例如 `if (typeof value === 'string')` 之后，value 在该分支中被自动推断为 string 类型。instanceof 则用于区分类的实例。对于更复杂的结构（如对象中某个属性的存在或自定义接口），我们可以使用 in 操作符或自定义类型谓词函数。\n\n自定义类型谓词（Type Predicate）是强大的工具，其语法为 `value is Type`。例如：`function isString(value: unknown): value is string { return typeof value === 'string'; }`。这个函数的返回值类型是 `value is string`，编译器会将其视为一个类型守卫。当你在 if 条件中调用此函数时，value 的类型会被收窄为 string。这种方式可以将类型检查逻辑封装复用，特别适合复杂的数据验证场景。\n\n实际工程中，类型守卫可以显著减少不必要的类型断言（as T），使代码更安全。例如，处理 API 返回的联合数据（如 `User | Admin`）时，通过属性判别（如 `'role' in user`）或可区分联合（Discriminated Union）配合 switch 语句，可以优雅地分支处理。TypeScript 的控制流分析（Control Flow Analysis）会基于这些守卫自动完成类型收窄，甚至支持函数联合类型的调用签名缩小。\n\n需要注意的是，类型守卫只影响检查所在的作用域（通常是 if 块、else 块或 switch case）。另外，如果条件中使用了逻辑运算符（&&、||、!），类型也会随之收窄。掌握这些技巧后，你可以写出更精确、错误更少的类型代码，减少运行时错误。",
       "codeExample": {
         "language": "TypeScript",
-        "code": "// 定义一个简单的柯里化函数，用于计算折扣后的价格\n// 基础版：接受折扣率和原价，返回最终价格\nfunction discount(rate: number): (price: number) => number {\n  // 内部函数形成闭包，捕获 rate 变量\n  return (price: number) => {\n    return price * (1 - rate);\n  };\n}\n\n// 创建特定折扣率的函数\nconst tenPercentOff = discount(0.1);   // 九折\nconst twentyPercentOff = discount(0.2); // 八折\n\nconsole.log(tenPercentOff(100));    // 90\nconsole.log(twentyPercentOff(100)); // 80\n\n// 更通用的柯里化：支持任意数量的参数\n// 使用函数重载描述类型\nfunction curry<T extends any[], R>(fn: (...args: T) => R): CurriedArgs<T, R>;\n\n// 工具类型：递归地将参数列表转换为嵌套函数\ntype CurriedArgs<T extends any[], R> =\n  T extends [infer First, ...infer Rest]\n    ? (arg: First) => CurriedArgs<Rest, R>\n    : R;\n\n// 实现（这里简化为固定长度，实际应用需处理变长）\nfunction curry<T extends any[], R>(fn: (...args: T) => R): any {\n  return function curried(...args: any[]) {\n    if (args.length >= fn.length) {\n      return fn(...args);\n    } else {\n      return (...nextArgs: any[]) => curried(...args, ...nextArgs);\n    }\n  };\n}\n\n// 使用例子：一个求和函数\nfunction add(a: number, b: number, c: number) {\n  return a + b + c;\n}\n\nconst curriedAdd = curry(add);\nconsole.log(curriedAdd(1)(2)(3)); // 6\nconsole.log(curriedAdd(1, 2)(3)); // 6",
-        "explanation": "第一部分演示了基础的柯里化：`discount` 函数接受 `rate`，返回一个新函数（闭包），该闭包捕获 `rate`，并在收到 `price` 后计算折扣价。第二部分展示了如何用 TypeScript 为变长柯里化函数编写类型。`CurriedArgs` 是一个递归条件类型，它通过 `infer` 分解参数列表，每次提取第一个参数类型 `First`，剩余参数类型 `Rest`，然后生成 `(arg: First) => CurriedArgs<Rest, R>` 的嵌套类型。当参数列表为空时直接返回 `R`。实现部分用 `fn.length` 判断参数是否够数，不够则返回一个新闭包等待剩余参数。注意：实际生产中使用成熟的库（如 lodash 的 curry）更可靠，这里仅用于教学演示。"
+        "code": "// 定义联合类型：可能为字符串或数字\nfunction processInput(input: string | number): string {\n    // 使用 typeof 类型守卫缩窄为 string\n    if (typeof input === 'string') {\n        // 此处 input 被自动推断为 string\n        return input.toUpperCase();\n    }\n    // 如果前面条件不成立，TypeScript 知道此时 input 一定是 number\n    // 这里可以使用 number 特有的方法\n    return `Number: ${input.toFixed(2)}`;\n}\n\n// 自定义类型谓词：检查值是否为字符串\nfunction isString(value: unknown): value is string {\n    return typeof value === 'string';\n}\n\n// 使用自定义谓词处理数组\nconst mixed: unknown[] = ['hello', 42, 'world', true];\nconst stringsOnly = mixed.filter(isString);  // filter 根据谓词推断类型为 string[]\nconsole.log(stringsOnly);  // ['hello', 'world']\n\n// 可区分联合（Discriminated Union）配合 switch\ninterface Cat { type: 'cat'; meow: () => void; }\ninterface Dog { type: 'dog'; bark: () => void; }\ntype Pet = Cat | Dog;\n\nfunction handlePet(pet: Pet) {\n    switch (pet.type) {\n        case 'cat':\n            // 此处 pet 自动收窄为 Cat\n            pet.meow();\n            break;\n        case 'dog':\n            pet.bark();\n            break;\n    }\n}",
+        "explanation": "第一部分定义了一个处理 string | number 联合类型的函数 `processInput`。使用 `typeof input === 'string'` 作为类型守卫，在 if 分支内 input 被收窄为 string，可以安全调用 .toUpperCase()。在后续代码（else 分支）中，TypeScript 会自动推断 input 为 number，因此可以使用 .toFixed()。\n\n第二部分演示自定义类型谓词 `isString`，它返回 `value is string` 类型。当用于数组的 .filter() 时，TypeScript 能够理解过滤后数组中只有 string 类型的元素，无需额外断言。\n\n第三部分展示了可区分联合（Discriminated Union）的经典用法：通过一个字面量属性（如 type）作为判别器，配合 switch 语句在每个 case 中自动收窄类型，避免手动检查和断言。"
       },
       "keyPoints": [
-        "闭包是函数 + 其词法环境的组合，能保持对外部变量的引用",
-        "柯里化将多参数函数转化为单参数嵌套函数，实现参数复用和延迟执行",
-        "TypeScript 可以通过递归条件类型和 infer 为柯里化函数提供精确的类型推断",
-        "工程中慎用闭包：注意循环变量共享和内存泄漏问题",
-        "柯里化的典型场景：日志等级、HTTP 配置、格式函数等需要部分应用的场景"
+        "typeof 类型守卫：用于基础类型（string, number, boolean, symbol, undefined）",
+        "instanceof 类型守卫：用于区分类的实例",
+        "自定义类型谓词：function isX(value: unknown): value is X 封装复杂检查",
+        "in 操作符守卫：检查对象是否包含某个属性，用于接口联合",
+        "可区分联合 (Discriminated Union)：通过字面量属性进行模式匹配，switch 配合使用"
       ],
       "exercise": {
-        "description": "使用闭包和柯里化实现一个简单的状态机：可以设置初始状态，然后通过调用返回的函数进行状态转移。要求用 TypeScript 写出类型安全的代码。",
-        "hint": "考虑定义一个 createStateMachine 函数，接受初始状态和转移表（record<当前状态, record<事件, 下一个状态>>）。返回一个对象，包含 getState 和 transition 方法。transition 方法接受事件，返回新的状态（或不变）。利用闭包保存当前状态。",
+        "description": "编写一个函数，接收一个参数 value: string | number | boolean。当 value 为 string 时返回其长度；为 number 时返回其平方；为 boolean 时返回其取反后的布尔值。要求使用自定义类型谓词来提高类型安全性，不要使用 any 或 as 断言。",
+        "hint": "先定义三个类型谓词：isString、isNumber、isBoolean。然后在函数体内依次使用 if-else-if 判断，每个分支中 TypeScript 会自动收窄类型。注意处理完所有类型后，最后可能需 catch-all 分支。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全以下柯里化函数的类型声明，使其能正确推断返回值类型。",
-            "codeContext": "function curry<A, B, C, R>(fn: (a: A, b: B, c: C) => R): ______ {\n  return (a: A) => (b: B) => (c: C) => fn(a, b, c);\n}",
+            "question": "补全下列自定义类型谓词函数：",
+            "codeContext": "// 判断值是否为 string 的类型谓词\nfunction isString(value: unknown): value is __ {\n    return typeof value === 'string';\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "function curry<A, B, C, R>(fn: (a: A, b: B, c: C) => R): ",
+                "content": "function isString(value: unknown): value is ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,54 +42,54 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "R",
-                  "(a: A) => (b: B) => (c: C) => R",
-                  "(a: A) => (b: B) => (c: C) => R",
-                  "CurriedFn<A, B, C, R>"
+                  "string",
+                  "String",
+                  "'string'",
+                  "unknown"
                 ],
-                "correctAnswer": "(a: A) => (b: B) => (c: C) => R"
+                "correctAnswer": "string"
               },
               {
                 "type": "text",
-                "content": "",
+                "content": " {\n    return typeof value === 'string';\n}",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "(a: A) => (b: B) => (c: C) => R",
-            "explanation": "柯里化函数需要返回一个接收第一个参数 A 的函数，依次返回接收 B、C 的函数，最终返回 R。选项 `(a: A) => (b: B) => (c: C) => R` 正是准确的嵌套函数类型。"
+            "correctAnswer": "string",
+            "explanation": "类型谓词返回的类型标注为 value is 类型名称，这里应为小写的 string，表示 TypeScript 类型系统中的 string 类型。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "以下关于闭包可能导致内存泄漏的说法，哪一项是正确的？",
+            "question": "以下哪个说法关于 TypeScript 类型守卫是正确的？",
             "codeContext": null,
             "segments": null,
             "options": [
-              "只要使用了闭包就必然造成内存泄漏",
-              "闭包中的变量如果不再被使用，GC 会立刻回收",
-              "当闭包引用了大型 DOM 元素且闭包长期存在时，可能导致该 DOM 无法被回收",
-              "使用 let 声明变量可以完全避免闭包内存泄漏"
+              "类型守卫只能在条件语句中使用 typeof",
+              "自定义类型谓词函数返回值类型必须是 boolean",
+              "instanceof 类型守卫可以区分任意两个值，即使它们不是类",
+              "使用可区分联合时，判别属性可以是数字或布尔值"
             ],
-            "correctAnswer": "当闭包引用了大型 DOM 元素且闭包长期存在时，可能导致该 DOM 无法被回收",
-            "explanation": "闭包会保持对外部变量的引用，如果这个变量是一个大型对象（如 DOM 元素），且闭包一直存在（比如事件监听未移除），则该对象无法被垃圾回收，造成内存泄漏。A 选项太过绝对；B 选项错在 GC 不会“立刻”回收，且如果仍有引用则不会回收；D 选项使用 let 只解决循环中的共享问题，与内存泄漏无关。"
+            "correctAnswer": "自定义类型谓词函数返回值类型必须是 boolean",
+            "explanation": "自定义类型谓词函数的返回值类型必须写为 `value is Type`，但实际上这个函数必须返回 boolean 值（true/false）。选项A错误因为还有 instanceof、in、自定义谓词等多种守卫。选项C错误，instanceof 只能用于检测对象是否是类的实例。选项D错误，判别属性必须是字符串字面量（或数字字面量、布尔字面量），但常用字符串。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "执行以下代码，控制台会输出什么？",
-            "codeContext": "function createCounter() {\n  let count = 0;\n  return {\n    increment: () => { count++; },\n    decrement: () => { count--; },\n    getCount: () => count\n  };\n}\n\nconst counter = createCounter();\ncounter.increment();\ncounter.increment();\nconsole.log(counter.getCount());\ncounter.decrement();\nconsole.log(counter.getCount());",
+            "question": "执行以下代码，控制台输出什么？",
+            "codeContext": "function process(x: string | number) {\n    if (typeof x === 'string') {\n        console.log(x.toUpperCase());\n    } else {\n        console.log(x + 10);\n    }\n}\n\nprocess('hello');\nprocess(5);",
             "segments": null,
             "options": [
-              "2 1",
-              "2 2",
-              "1 0",
-              "1 2"
+              "HELLO  15",
+              "hello  5",
+              "'HELLO' 15",
+              "HELLO  NaN"
             ],
-            "correctAnswer": "2 1",
-            "explanation": "`createCounter` 利用闭包维护私有变量 `count`。先两次 `increment`，`count` 变为 2，输出 2；然后一次 `decrement`，`count` 减为 1，输出 1。所以输出为 \"2 1\"。"
+            "correctAnswer": "HELLO  15",
+            "explanation": "第一次调用 process('hello')，typeof 守卫为 string，调用 toUpperCase() 输出 'HELLO'。第二次调用 process(5)，else 分支中 x 是 number，执行 x + 10 得到 15。注意 console.log 会打印多个值用空格分隔，但这里在两个console.log中分别调用，因此输出为两行。题目中要求的是“控制台输出什么”，实际会输出两行：第一行 'HELLO'，第二行 15。选项中使用空格分隔表示两行内容。HELLO 15 表示第一行HELLO，第二行15。"
           }
         ]
       }
