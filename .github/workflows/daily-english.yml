@@ -60,6 +60,6 @@ jobs:
             echo "⚠️  无变更，跳过提交"
           else
             git commit -m "auto: 📖 每日英语晨读 $(date +%Y-%m-%d)"
-            git push --force-with-lease
+            git fetch origin gh-pages && git rebase origin/gh-pages && git push --force
             echo "✅ 已推送到 gh-pages"
           fi
