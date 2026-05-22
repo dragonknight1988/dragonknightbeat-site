@@ -4,35 +4,35 @@
     {
       "id": "prog-2026-05-22",
       "date": "2026-05-22",
-      "title": "TypeScript 类型守卫与类型收窄 (Type Guards & Narrowing)",
-      "summary": "掌握通过类型守卫（typeof、instanceof、自定义谓词等）在条件分支中安全地缩小联合类型，减少类型断言，提升代码健壮性。",
+      "title": "TypeScript 泛型进阶：工具类型与条件类型",
+      "summary": "深入理解 TypeScript 内置工具类型（Partial, Required, Pick, Omit 等）以及条件类型的用法，掌握在实际项目中高效转换和约束类型的技巧。",
       "difficulty": "中级",
-      "concept": "类型守卫（Type Guard）是 TypeScript 中能够保证某个值在特定作用域内属于某种类型的一种表达式。当我们面对联合类型（如 string | number）时，编译器无法确定具体是哪个成员，因此不允许直接调用该类型特有的方法（例如 string 的 .toUpperCase()）。类型守卫通过运行时检查，帮助编译器在条件分支内将类型收窄为更具体的子类型。\n\n最基础的类型守卫是 typeof 操作符，它可以区分基本类型（如 'string'、'number'、'boolean' 等）。例如 `if (typeof value === 'string')` 之后，value 在该分支中被自动推断为 string 类型。instanceof 则用于区分类的实例。对于更复杂的结构（如对象中某个属性的存在或自定义接口），我们可以使用 in 操作符或自定义类型谓词函数。\n\n自定义类型谓词（Type Predicate）是强大的工具，其语法为 `value is Type`。例如：`function isString(value: unknown): value is string { return typeof value === 'string'; }`。这个函数的返回值类型是 `value is string`，编译器会将其视为一个类型守卫。当你在 if 条件中调用此函数时，value 的类型会被收窄为 string。这种方式可以将类型检查逻辑封装复用，特别适合复杂的数据验证场景。\n\n实际工程中，类型守卫可以显著减少不必要的类型断言（as T），使代码更安全。例如，处理 API 返回的联合数据（如 `User | Admin`）时，通过属性判别（如 `'role' in user`）或可区分联合（Discriminated Union）配合 switch 语句，可以优雅地分支处理。TypeScript 的控制流分析（Control Flow Analysis）会基于这些守卫自动完成类型收窄，甚至支持函数联合类型的调用签名缩小。\n\n需要注意的是，类型守卫只影响检查所在的作用域（通常是 if 块、else 块或 switch case）。另外，如果条件中使用了逻辑运算符（&&、||、!），类型也会随之收窄。掌握这些技巧后，你可以写出更精确、错误更少的类型代码，减少运行时错误。",
+      "concept": "TypeScript 的类型系统不仅支持基础泛型，还提供了一系列内置的“工具类型”（Utility Types），它们本质上是泛型类型的转换器。例如，`Partial<T>` 将对象类型 T 的所有属性变为可选，`Required<T>` 则将所有属性变为必填，`Readonly<T>` 使属性只读。这些工具类型通常由映射类型（Mapped Type）实现，如 `{ [K in keyof T]?: T[K] }`。在实际工程中，当我们从 API 获取一部分字段进行更新时，`Partial` 极为常用；而 `Pick<T, K>` 与 `Omit<T, K>` 则能精确提取或排除对象的某些属性，常用于构建 DTO（数据传输对象）或过滤敏感字段。\n\n更进一步，条件类型（Conditional Types）允许我们根据条件动态选择类型：`T extends U ? X : Y`。它类似于类型层面的三元表达式。例如，`type IsString<T> = T extends string ? true : false`。条件类型与联合类型结合时，会自动分配（Distributive）——若 T 是联合类型，则每个成员单独参与判断，最后结果合并为联合。这一特性在实现复杂类型逻辑时非常强大，比如将函数参数类型提取出来：`type ArgumentsType<T> = T extends (...args: infer A) => any ? A : never`。\n\n`infer` 关键字是条件类型的精髓，它允许我们在条件类型中“推断”出一个新类型变量，并用于后续类型构建。例如，`type ReturnType<T>` 就是通过 `T extends (...args: any[]) => infer R ? R : any` 实现的。实际工作中，我们经常需要提取 Promise 内部的类型：`type Unpacked<T> = T extends Promise<infer U> ? U : T`。\n\n除了以上常见工具类型，TypeScript 还提供了 `Record<K,T>` 用于构造对象键值映射，`Exclude<T,U>` 与 `Extract<T,U>` 用于从联合类型中排除或选取类型，`NonNullable<T>` 移除 null/undefined 等。掌握这些工具类型能让你的类型定义更加简洁、可维护。在使用时需注意不要过度滥用——当类型逻辑变得过于复杂时，使用简单的类型别名或接口声明可能更优。\n\n另外，条件类型也广泛用于 React 组件 props 的约束、Redux action 的类型安全推导等场景。例如，根据不同的 action type 推断对应的 payload 类型，从而保证 reducer 中的 switch 分支是类型安全的。通过高级工具类型和条件类型的组合，我们可以设计出高度可复用的类型工厂，减少手动类型声明带来的错误。",
       "codeExample": {
         "language": "TypeScript",
-        "code": "// 定义联合类型：可能为字符串或数字\nfunction processInput(input: string | number): string {\n    // 使用 typeof 类型守卫缩窄为 string\n    if (typeof input === 'string') {\n        // 此处 input 被自动推断为 string\n        return input.toUpperCase();\n    }\n    // 如果前面条件不成立，TypeScript 知道此时 input 一定是 number\n    // 这里可以使用 number 特有的方法\n    return `Number: ${input.toFixed(2)}`;\n}\n\n// 自定义类型谓词：检查值是否为字符串\nfunction isString(value: unknown): value is string {\n    return typeof value === 'string';\n}\n\n// 使用自定义谓词处理数组\nconst mixed: unknown[] = ['hello', 42, 'world', true];\nconst stringsOnly = mixed.filter(isString);  // filter 根据谓词推断类型为 string[]\nconsole.log(stringsOnly);  // ['hello', 'world']\n\n// 可区分联合（Discriminated Union）配合 switch\ninterface Cat { type: 'cat'; meow: () => void; }\ninterface Dog { type: 'dog'; bark: () => void; }\ntype Pet = Cat | Dog;\n\nfunction handlePet(pet: Pet) {\n    switch (pet.type) {\n        case 'cat':\n            // 此处 pet 自动收窄为 Cat\n            pet.meow();\n            break;\n        case 'dog':\n            pet.bark();\n            break;\n    }\n}",
-        "explanation": "第一部分定义了一个处理 string | number 联合类型的函数 `processInput`。使用 `typeof input === 'string'` 作为类型守卫，在 if 分支内 input 被收窄为 string，可以安全调用 .toUpperCase()。在后续代码（else 分支）中，TypeScript 会自动推断 input 为 number，因此可以使用 .toFixed()。\n\n第二部分演示自定义类型谓词 `isString`，它返回 `value is string` 类型。当用于数组的 .filter() 时，TypeScript 能够理解过滤后数组中只有 string 类型的元素，无需额外断言。\n\n第三部分展示了可区分联合（Discriminated Union）的经典用法：通过一个字面量属性（如 type）作为判别器，配合 switch 语句在每个 case 中自动收窄类型，避免手动检查和断言。"
+        "code": "// 示例：综合使用工具类型和条件类型\n\n// 1. 基础工具类型\ninterface User {\n  id: number;\n  name: string;\n  email: string;\n  age?: number;\n  isAdmin: boolean;\n}\n\n// 让所有属性变为可选\ntype PartialUser = Partial<User>;\n// 等价于 { id?: number; name?: string; email?: string; age?: number; isAdmin?: boolean }\n\n// 只取 id 和 name\ntype UserIdName = Pick<User, 'id' | 'name'>;\n\n// 排除 email 和 isAdmin\ntype UserWithoutSensitive = Omit<User, 'email' | 'isAdmin'>;\n\n// 2. 条件类型与 infer\n// 提取 Promise 内部的类型\ntype Unwrap<T> = T extends Promise<infer U> ? U : T;\n\n// 测试\ntype ResolvedString = Unwrap<Promise<string>>; // string\ntype JustNumber = Unwrap<number>; // number\n\n// 提取函数第一个参数的类型\ntype FirstArgument<T> = T extends (arg: infer A, ...rest: any[]) => any ? A : never;\n\nfunction greet(name: string, age: number): void {}\ntype GreetArg = FirstArgument<typeof greet>; // string\n\n// 3. 实际应用：构建类型安全的响应处理器\n// 假设我们有一个类似 Redux Action 的结构\ntype Action =\n  | { type: 'ADD_TODO'; payload: { text: string } }\n  | { type: 'DELETE_TODO'; payload: { id: number } }\n  | { type: 'TOGGLE_TODO'; payload: { id: number } };\n\n// 根据 type 提取对应的 payload 类型\ntype ExtractPayload<T, ActionType extends string> = \n  T extends { type: ActionType; payload: infer P } ? P : never;\n\ntype AddTodoPayload = ExtractPayload<Action, 'ADD_TODO'>; // { text: string }\ntype DeleteTodoPayload = ExtractPayload<Action, 'DELETE_TODO'>; // { id: number }\n\n// 4. 内置工具类型 Record\n// 创建一个以字符串为键，值为 User 的对象\ntype UserMap = Record<string, User>;\nconst users: UserMap = {\n  '001': { id: 1, name: 'Alice', email: 'alice@example.com', isAdmin: false },\n};",
+        "explanation": "代码分为四部分：第一部分展示了 Partial、Pick、Omit 的简单用法，它们是最常用的工具类型；第二部分自定义了 Unwrap 和 FirstArgument 两个条件类型，演示了 infer 如何从 Promise 和函数签名中提取类型；第三部分模拟了一个联合 Action 类型，并通过条件类型 ExtractPayload 根据 type 字段精准地推导出 payload 类型，在 redux reducer 中非常实用；第四部分使用了 Record 工具类型快速构建索引类型。"
       },
       "keyPoints": [
-        "typeof 类型守卫：用于基础类型（string, number, boolean, symbol, undefined）",
-        "instanceof 类型守卫：用于区分类的实例",
-        "自定义类型谓词：function isX(value: unknown): value is X 封装复杂检查",
-        "in 操作符守卫：检查对象是否包含某个属性，用于接口联合",
-        "可区分联合 (Discriminated Union)：通过字面量属性进行模式匹配，switch 配合使用"
+        "工具类型本质上是泛型转换函数，利用映射类型实现（如 Partial 通过 { [K in keyof T]?: T[K] }）。",
+        "条件类型 (T extends U ? X : Y) 结合 infer 关键字可以在类型级别进行模式匹配和推断。",
+        "Pick 和 Omit 用于从对象类型中选择或排除属性，是构建子类型的利器。",
+        "条件类型对联合类型是分布式的，每个成员独立判断。",
+        "Record<K,T> 用于快速创建键值对映射，常用于字典或缓存类型。"
       ],
       "exercise": {
-        "description": "编写一个函数，接收一个参数 value: string | number | boolean。当 value 为 string 时返回其长度；为 number 时返回其平方；为 boolean 时返回其取反后的布尔值。要求使用自定义类型谓词来提高类型安全性，不要使用 any 或 as 断言。",
-        "hint": "先定义三个类型谓词：isString、isNumber、isBoolean。然后在函数体内依次使用 if-else-if 判断，每个分支中 TypeScript 会自动收窄类型。注意处理完所有类型后，最后可能需 catch-all 分支。",
+        "description": "请完成以下关于 TypeScript 工具类型和条件类型的练习。假设你正在开发一个用户管理系统，需要定义灵活的类型来处理不同场景。",
+        "hint": "仔细阅读题目中的类型定义，注意联合类型的分配特性以及 infer 的使用位置。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全下列自定义类型谓词函数：",
-            "codeContext": "// 判断值是否为 string 的类型谓词\nfunction isString(value: unknown): value is __ {\n    return typeof value === 'string';\n}",
+            "question": "补全以下代码，使得 `AdminUserType` 只包含 `User` 中的 `id`、`name` 和 `role` 属性。",
+            "codeContext": "interface User {\n  id: number;\n  name: string;\n  email: string;\n  role: 'admin' | 'user';\n  createdAt: Date;\n}\n\n// 请补全下面的类型定义\ntype AdminUserType = ???;\n\n// 最终结果应类似于 { id: number; name: string; role: 'admin' | 'user' }",
             "segments": [
               {
                 "type": "text",
-                "content": "function isString(value: unknown): value is ",
+                "content": "type AdminUserType = ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,54 +42,47 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "string",
-                  "String",
-                  "'string'",
-                  "unknown"
+                  "Pick<User, 'id' | 'name' | 'role'>",
+                  "Omit<User, 'email' | 'createdAt'>",
+                  "Omit<User, 'id' | 'name' | 'role'>",
+                  "Pick<User, 'email' | 'createdAt'>"
                 ],
-                "correctAnswer": "string"
-              },
-              {
-                "type": "text",
-                "content": " {\n    return typeof value === 'string';\n}",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
+                "correctAnswer": "Pick<User, 'id' | 'name' | 'role'>"
               }
             ],
             "options": null,
-            "correctAnswer": "string",
-            "explanation": "类型谓词返回的类型标注为 value is 类型名称，这里应为小写的 string，表示 TypeScript 类型系统中的 string 类型。"
+            "correctAnswer": "Pick<User, 'id' | 'name' | 'role'>",
+            "explanation": "Pick 从 T 中挑选出指定键形成新类型。这里需要保留 id、name、role，所以用 Pick。Omit 是排除指定键，如果使用 Omit<User, 'email' | 'createdAt'> 也可以达到同样效果，但题目要求用 Pick 更直接。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "以下哪个说法关于 TypeScript 类型守卫是正确的？",
-            "codeContext": null,
+            "question": "给定以下条件类型定义，`type IsStringOrNumber<T> = T extends string | number ? true : false;` 那么 `type Result = IsStringOrNumber<boolean | string>;` 的结果是什么？",
+            "codeContext": "type IsStringOrNumber<T> = T extends string | number ? true : false;\ntype Result = IsStringOrNumber<boolean | string>;",
             "segments": null,
             "options": [
-              "类型守卫只能在条件语句中使用 typeof",
-              "自定义类型谓词函数返回值类型必须是 boolean",
-              "instanceof 类型守卫可以区分任意两个值，即使它们不是类",
-              "使用可区分联合时，判别属性可以是数字或布尔值"
+              "true",
+              "false",
+              "boolean",
+              "true | false"
             ],
-            "correctAnswer": "自定义类型谓词函数返回值类型必须是 boolean",
-            "explanation": "自定义类型谓词函数的返回值类型必须写为 `value is Type`，但实际上这个函数必须返回 boolean 值（true/false）。选项A错误因为还有 instanceof、in、自定义谓词等多种守卫。选项C错误，instanceof 只能用于检测对象是否是类的实例。选项D错误，判别属性必须是字符串字面量（或数字字面量、布尔字面量），但常用字符串。"
+            "correctAnswer": "true | false",
+            "explanation": "条件类型在联合类型上是分布式的：`boolean | string` 会分别判断 `boolean`（false）和 `string`（true），最终结果为 `false | true`，即 `true | false`。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "执行以下代码，控制台输出什么？",
-            "codeContext": "function process(x: string | number) {\n    if (typeof x === 'string') {\n        console.log(x.toUpperCase());\n    } else {\n        console.log(x + 10);\n    }\n}\n\nprocess('hello');\nprocess(5);",
+            "question": "这段代码中 `StringType` 的类型是什么？",
+            "codeContext": "type ExtractString<T> = T extends string ? T : never;\ntype Test = 'hello' | 42 | 'world' | true;\ntype StringType = ExtractString<Test>;",
             "segments": null,
             "options": [
-              "HELLO  15",
-              "hello  5",
-              "'HELLO' 15",
-              "HELLO  NaN"
+              "'hello' | 'world'",
+              "'hello' | 42 | 'world'",
+              "never",
+              "'hello' | 'world' | 42"
             ],
-            "correctAnswer": "HELLO  15",
-            "explanation": "第一次调用 process('hello')，typeof 守卫为 string，调用 toUpperCase() 输出 'HELLO'。第二次调用 process(5)，else 分支中 x 是 number，执行 x + 10 得到 15。注意 console.log 会打印多个值用空格分隔，但这里在两个console.log中分别调用，因此输出为两行。题目中要求的是“控制台输出什么”，实际会输出两行：第一行 'HELLO'，第二行 15。选项中使用空格分隔表示两行内容。HELLO 15 表示第一行HELLO，第二行15。"
+            "correctAnswer": "'hello' | 'world'",
+            "explanation": "ExtractString 利用条件类型的分布式特性对联合类型的每个成员进行判断：'hello' 是 string，保留；42 不是，变为 never；'world' 保留；true 变为 never。联合类型中 never 会被自动忽略，最终结果为 'hello' | 'world'。"
           }
         ]
       }
