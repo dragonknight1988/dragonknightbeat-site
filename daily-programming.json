@@ -4,35 +4,35 @@
     {
       "id": "prog-2026-05-22",
       "date": "2026-05-22",
-      "title": "掌握 TypeScript 类型守卫与类型谓词",
-      "summary": "学习如何通过 typeof、instanceof、in、自定义类型谓词以及可辨识联合缩小类型范围，减少运行时错误，写出更安全的代码。",
+      "title": "闭包与柯里化：高阶函数的工程实践与类型安全",
+      "summary": "掌握闭包的核心机制，理解柯里化在实际开发中的作用，并用 TypeScript 为柯里化函数添加精确的类型注解。",
       "difficulty": "中级",
-      "concept": "类型守卫是 TypeScript 在运行时执行的一种检查，它能够告诉编译器在特定代码块中变量的具体类型。这对于处理联合类型至关重要——没有类型守卫，我们只能访问所有类型的共有成员。实际开发中，常见的类型守卫包括：\n\n1. **typeof 守卫**：用于检查基本类型（string、number、boolean、symbol、undefined、object、function、bigint）。注意 `typeof null` 返回 \"object\"，所以不要用它检查 null。\n\n2. **instanceof 守卫**：用于检查对象是否属于某个类。在类继承或构造函数场景中非常实用。\n\n3. **in 守卫**：检查对象是否拥有特定属性。常与可辨识联合（discriminated unions）配合，通过字面量属性区分不同分支。\n\n4. **自定义类型谓词**：函数的返回类型写成 `x is Type` 的形式，告诉 TypeScript 如果函数返回 true，则参数的类型被收窄。这是最灵活的方式，可以封装复杂的检查逻辑。\n\n工程经验：在高复杂度的联合类型（如 Redux Action 或 API 响应）中，推荐使用可辨识联合，并通过 switch/case 配合类型守卫，每个 case 中类型自动收窄。避免使用过多的类型断言（as），类型守卫让代码更健壮，重构时编译器能自动验证。\n\n另外，注意类型守卫只在当前作用域有效，并且不能被跨函数调用。如果你希望将一个检查逻辑复用，使用自定义类型谓词函数是一个好习惯。",
+      "concept": "闭包是 JavaScript 中最强大也最容易被误解的特性之一。简单来说，闭包是指一个函数能够“记住”并访问其词法作用域中的变量，即使该函数在其词法作用域之外执行。这种能力让函数可以携带状态，成为高阶函数和函数式编程的基石。在实际工程中，闭包常被用于创建私有变量、实现工厂函数、以及缓存中间结果。例如，一个防抖函数利用闭包保存定时器 ID，每次触发时清除并重设定时器，从而避免频繁执行。\n\n柯里化（Currying）是闭包的典型应用。它将一个接受多个参数的函数转换为一系列接受单一参数的函数嵌套，每一步返回一个闭包，等待下一个参数。这种转换让我们可以“部分应用”参数，延迟计算或复用配置。比如，一个通用的日志函数 `log(level, message)` 通过柯里化变成 `const info = log('INFO'); info('App started');`。这种方式在编写可配置的中间件、API 请求封装以及事件处理器中非常常见。\n\n在 TypeScript 中，为柯里化函数添加类型注解需要精确描述参数链和返回值类型。基本思路是利用泛型和函数重载，或者利用条件类型推断参数元组。虽然类型推导可以自动完成很多工作，但手工编写类型声明能帮助我们更好地理解 TypeScript 的类型系统，并避免运行时错误。例如，定义一个两参数的柯里化函数类型：`type Curried<A, B, R> = (a: A) => (b: B) => R;`。对于更长的参数列表，可以使用递归类型。\n\n工程经验中需要注意闭包导致的意外变量共享问题。比如循环中使用闭包时，如果不使用 `let` 或立即执行函数，所有闭包共享同一个变量引用，导致结果不符合预期。这也是一个经典面试题。解决方案包括使用块级作用域（`let`）或利用闭包本身捕获当前值。另外，闭包会保持对外部变量的引用，可能造成内存泄漏，尤其是 DOM 事件回调中引用大对象时，需要及时解除引用。\n\n柯里化虽然强大，但过度使用也会让代码难以调试和维护。建议在需要**参数复用**或**延迟执行**的场景下使用，比如日志级别、HTTP 请求配置、格式化函数等。不要为了炫技而牺牲可读性。TypeScript 的类型系统让柯里化函数的调用更加安全，编辑器能提供准确的代码提示，降低出错概率。",
       "codeExample": {
         "language": "TypeScript",
-        "code": "// 定义一个可辨识联合：不同形状，共享 kind 属性\ninterface Circle {\n  kind: 'circle';\n  radius: number;\n}\ninterface Rectangle {\n  kind: 'rectangle';\n  width: number;\n  height: number;\n}\ntype Shape = Circle | Rectangle;\n\n// 自定义类型谓词：判断是否为圆形\nfunction isCircle(shape: Shape): shape is Circle {\n  return shape.kind === 'circle';\n}\n\n// 使用 typeof 守卫处理基本类型\nfunction processValue(value: string | number) {\n  if (typeof value === 'string') {\n    // 这里 value 被收窄为 string\n    return value.toUpperCase();\n  }\n  // 这里 value 被收窄为 number\n  return value.toFixed(2);\n}\n\n// 使用 switch 与 kind 守卫（可辨识联合）\nfunction calculateArea(shape: Shape): number {\n  switch (shape.kind) {\n    case 'circle':\n      // shape 被收窄为 Circle\n      return Math.PI * shape.radius ** 2;\n    case 'rectangle':\n      // shape 被收窄为 Rectangle\n      return shape.width * shape.height;\n    default:\n      // 穷尽性检查：如果 Shape 新增类型，此处会报错\n      const _exhaustive: never = shape;\n      return _exhaustive;\n  }\n}\n\n// 使用 in 守卫\ninterface Bird { fly(): void; layEggs(): void; }\ninterface Fish { swim(): void; layEggs(): void; }\nfunction getPet(): Bird | Fish { /* some logic */ return {} as Bird | Fish; }\nconst pet = getPet();\nif ('fly' in pet) {\n  // pet 被收窄为 Bird\n  pet.fly();\n} else {\n  pet.swim();\n}",
-        "explanation": "代码首先定义了 Circle 和 Rectangle 接口，并通过 `kind` 属性构成可辨识联合。`isCircle` 是自定义类型谓词，返回 `shape is Circle`。`processValue` 演示 typeof 守卫的基本用法，区分 string 和 number。`calculateArea` 使用 switch 匹配 `kind` 属性，每个 case 内类型自动收窄为对应的具体类型，并且在 default 分支中使用 never 类型实现穷尽性检查，确保当 Shape 新增类型时代码不会遗漏。最后展示了 `in` 守卫的使用，通过属性名称存在性检查缩小联合类型。"
+        "code": "// 定义一个简单的柯里化函数，用于计算折扣后的价格\n// 基础版：接受折扣率和原价，返回最终价格\nfunction discount(rate: number): (price: number) => number {\n  // 内部函数形成闭包，捕获 rate 变量\n  return (price: number) => {\n    return price * (1 - rate);\n  };\n}\n\n// 创建特定折扣率的函数\nconst tenPercentOff = discount(0.1);   // 九折\nconst twentyPercentOff = discount(0.2); // 八折\n\nconsole.log(tenPercentOff(100));    // 90\nconsole.log(twentyPercentOff(100)); // 80\n\n// 更通用的柯里化：支持任意数量的参数\n// 使用函数重载描述类型\nfunction curry<T extends any[], R>(fn: (...args: T) => R): CurriedArgs<T, R>;\n\n// 工具类型：递归地将参数列表转换为嵌套函数\ntype CurriedArgs<T extends any[], R> =\n  T extends [infer First, ...infer Rest]\n    ? (arg: First) => CurriedArgs<Rest, R>\n    : R;\n\n// 实现（这里简化为固定长度，实际应用需处理变长）\nfunction curry<T extends any[], R>(fn: (...args: T) => R): any {\n  return function curried(...args: any[]) {\n    if (args.length >= fn.length) {\n      return fn(...args);\n    } else {\n      return (...nextArgs: any[]) => curried(...args, ...nextArgs);\n    }\n  };\n}\n\n// 使用例子：一个求和函数\nfunction add(a: number, b: number, c: number) {\n  return a + b + c;\n}\n\nconst curriedAdd = curry(add);\nconsole.log(curriedAdd(1)(2)(3)); // 6\nconsole.log(curriedAdd(1, 2)(3)); // 6",
+        "explanation": "第一部分演示了基础的柯里化：`discount` 函数接受 `rate`，返回一个新函数（闭包），该闭包捕获 `rate`，并在收到 `price` 后计算折扣价。第二部分展示了如何用 TypeScript 为变长柯里化函数编写类型。`CurriedArgs` 是一个递归条件类型，它通过 `infer` 分解参数列表，每次提取第一个参数类型 `First`，剩余参数类型 `Rest`，然后生成 `(arg: First) => CurriedArgs<Rest, R>` 的嵌套类型。当参数列表为空时直接返回 `R`。实现部分用 `fn.length` 判断参数是否够数，不够则返回一个新闭包等待剩余参数。注意：实际生产中使用成熟的库（如 lodash 的 curry）更可靠，这里仅用于教学演示。"
       },
       "keyPoints": [
-        "类型守卫是运行时检查，帮助编译器在特定代码块中推断更精确的类型。",
-        "typeof 守卫适用于基本类型，但注意 typeof null 返回 'object'。",
-        "instanceof 守卫用于检查类实例，适合基于类的类型区分。",
-        "自定义类型谓词（`arg is Type`）是复用复杂类型检查的最佳实践。",
-        "可辨识联合搭配 switch/case 和 default 分支中的 never 类型可以实现穷尽性检查。"
+        "闭包是函数 + 其词法环境的组合，能保持对外部变量的引用",
+        "柯里化将多参数函数转化为单参数嵌套函数，实现参数复用和延迟执行",
+        "TypeScript 可以通过递归条件类型和 infer 为柯里化函数提供精确的类型推断",
+        "工程中慎用闭包：注意循环变量共享和内存泄漏问题",
+        "柯里化的典型场景：日志等级、HTTP 配置、格式函数等需要部分应用的场景"
       ],
       "exercise": {
-        "description": "你正在处理一个表示不同用户状态的联合类型：`type UserState = LoggedIn | Guest | Loading`。请实现一个函数 `getDisplayName(state: UserState): string`，根据不同的状态返回显示名称：LoggedIn 返回用户名，Guest 返回 '访客'，Loading 返回 '加载中...'。要求：1）定义三个接口并正确使用可辨识联合；2）使用 switch 类型守卫；3）在 default 分支中添加 never 穷尽性检查。然后补全下面的代码练习。",
-        "hint": "定义三个接口，每个接口有一个 `status` 属性，值为不同的字面量字符串。利用 `status` 作为可辨识联合的鉴别属性。在 switch 中匹配 `status`，每个 case 内类型会自动收窄。",
+        "description": "使用闭包和柯里化实现一个简单的状态机：可以设置初始状态，然后通过调用返回的函数进行状态转移。要求用 TypeScript 写出类型安全的代码。",
+        "hint": "考虑定义一个 createStateMachine 函数，接受初始状态和转移表（record<当前状态, record<事件, 下一个状态>>）。返回一个对象，包含 getState 和 transition 方法。transition 方法接受事件，返回新的状态（或不变）。利用闭包保存当前状态。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全自定义类型谓词函数 `isLoggedIn`，使其正确收窄类型。",
-            "codeContext": "interface LoggedIn { status: 'loggedIn'; userName: string; }\ninterface Guest { status: 'guest'; }\ninterface Loading { status: 'loading'; }\ntype UserState = LoggedIn | Guest | Loading;\n\n// 补全下面的函数声明\nfunction isLoggedIn(state: UserState): ________ {\n  return state.status === 'loggedIn';\n}",
+            "question": "补全以下柯里化函数的类型声明，使其能正确推断返回值类型。",
+            "codeContext": "function curry<A, B, C, R>(fn: (a: A, b: B, c: C) => R): ______ {\n  return (a: A) => (b: B) => (c: C) => fn(a, b, c);\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "function isLoggedIn(state: UserState): ",
+                "content": "function curry<A, B, C, R>(fn: (a: A, b: B, c: C) => R): ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,54 +42,54 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "boolean",
-                  "state is LoggedIn",
-                  "LoggedIn",
-                  "state as LoggedIn"
+                  "R",
+                  "(a: A) => (b: B) => (c: C) => R",
+                  "(a: A) => (b: B) => (c: C) => R",
+                  "CurriedFn<A, B, C, R>"
                 ],
-                "correctAnswer": "state is LoggedIn"
+                "correctAnswer": "(a: A) => (b: B) => (c: C) => R"
               },
               {
                 "type": "text",
-                "content": " {\n  return state.status === 'loggedIn';\n}",
+                "content": "",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "state is LoggedIn",
-            "explanation": "自定义类型谓词的返回类型必须写成 `parameterName is Type` 的形式，这样 TypeScript 才能根据返回值缩小类型。如果只写 `boolean`，不会触发类型收窄。"
+            "correctAnswer": "(a: A) => (b: B) => (c: C) => R",
+            "explanation": "柯里化函数需要返回一个接收第一个参数 A 的函数，依次返回接收 B、C 的函数，最终返回 R。选项 `(a: A) => (b: B) => (c: C) => R` 正是准确的嵌套函数类型。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "以下哪种类型守卫无法用于区分 `LoggedIn` 和 `Guest` 接口（它们都没有共同的属性值或实例关系）？",
-            "codeContext": "interface LoggedIn { status: 'loggedIn'; userName: string; }\ninterface Guest { status: 'guest'; }\n// 假设你有一个 UserState 类型的变量",
+            "question": "以下关于闭包可能导致内存泄漏的说法，哪一项是正确的？",
+            "codeContext": null,
             "segments": null,
             "options": [
-              "typeof 守卫（检查 typeof state）",
-              "in 守卫（检查 'userName' in state）",
-              "instanceof 守卫",
-              "自定义类型谓词"
+              "只要使用了闭包就必然造成内存泄漏",
+              "闭包中的变量如果不再被使用，GC 会立刻回收",
+              "当闭包引用了大型 DOM 元素且闭包长期存在时，可能导致该 DOM 无法被回收",
+              "使用 let 声明变量可以完全避免闭包内存泄漏"
             ],
-            "correctAnswer": "instanceof 守卫",
-            "explanation": "instanceof 守卫只对类（class）有效，而这里 LoggedIn 和 Guest 都是接口（interface），不是类，所以无法使用 instanceof。typeof 可以检查基本类型，但对象类型均返回 'object'，无法区分。in 守卫可以检查 'userName' 属性是否存在，从而区分 LoggedIn 和 Guest。自定义类型谓词也可以。"
+            "correctAnswer": "当闭包引用了大型 DOM 元素且闭包长期存在时，可能导致该 DOM 无法被回收",
+            "explanation": "闭包会保持对外部变量的引用，如果这个变量是一个大型对象（如 DOM 元素），且闭包一直存在（比如事件监听未移除），则该对象无法被垃圾回收，造成内存泄漏。A 选项太过绝对；B 选项错在 GC 不会“立刻”回收，且如果仍有引用则不会回收；D 选项使用 let 只解决循环中的共享问题，与内存泄漏无关。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码的输出是什么？",
-            "codeContext": "type Shape = \n  | { kind: 'circle'; radius: number }\n  | { kind: 'square'; side: number };\n\nfunction getArea(shape: Shape): number {\n  if (shape.kind === 'circle') {\n    return Math.PI * shape.radius ** 2;\n  }\n  // 注意这里没有 else，且只处理了 circle\n  // 但是 TypeScript 会推断下面的分支\n  return shape.side ** 2;\n}\n\nconsole.log(getArea({ kind: 'square', side: 5 }));",
+            "question": "执行以下代码，控制台会输出什么？",
+            "codeContext": "function createCounter() {\n  let count = 0;\n  return {\n    increment: () => { count++; },\n    decrement: () => { count--; },\n    getCount: () => count\n  };\n}\n\nconst counter = createCounter();\ncounter.increment();\ncounter.increment();\nconsole.log(counter.getCount());\ncounter.decrement();\nconsole.log(counter.getCount());",
             "segments": null,
             "options": [
-              "25",
-              "NaN",
-              "运行时错误：shape.side is undefined",
-              "编译错误：shape.side 不存在于 Shape 类型"
+              "2 1",
+              "2 2",
+              "1 0",
+              "1 2"
             ],
-            "correctAnswer": "25",
-            "explanation": "虽然代码只对 circle 进行了类型守卫判断，但 TypeScript 在 if 分支后将 shape 类型收窄为 'square'（因为联合类型中剩下的成员）。所以 `shape.side` 访问是安全的，计算 5 的平方得到 25。注意：如果 `shape.kind` 既不是 'circle' 也不是 'square'，则不会进入函数，但类型系统假设所有可能都已处理。"
+            "correctAnswer": "2 1",
+            "explanation": "`createCounter` 利用闭包维护私有变量 `count`。先两次 `increment`，`count` 变为 2，输出 2；然后一次 `decrement`，`count` 减为 1，输出 1。所以输出为 \"2 1\"。"
           }
         ]
       }
