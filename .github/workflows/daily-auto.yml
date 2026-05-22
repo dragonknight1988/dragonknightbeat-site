@@ -3,7 +3,14 @@ name: 🚗 每日汽车新闻
 on:
   schedule:
     - cron: '0 0 * * *'    # 北京时间 08:00
+  push:
+    branches: [main]
   workflow_dispatch:
+
+# 所有推 gh-pages 的 workflow 共享同一个 concurrency 组，防止并发冲突
+concurrency:
+  group: gh-pages-deploy
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -47,6 +54,7 @@ jobs:
             echo "⚠️  无变更"
           else
             git commit -m "auto: 🚗 每日汽车新闻 $(date +%Y-%m-%d)"
-            git push --force
+            # 先尝试普通 push，失败则 force（防止并发冲突）
+            git push 2>/dev/null || (sleep 3 && git pull --rebase && git push)
             echo "✅ 已推送"
           fi

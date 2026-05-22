@@ -3,7 +3,13 @@ name: 📡 每日风口简报
 on:
   schedule:
     - cron: '0 23 * * *'   # 北京时间 07:00
+  push:
+    branches: [main]
   workflow_dispatch:
+
+concurrency:
+  group: gh-pages-deploy
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -47,6 +53,6 @@ jobs:
             echo "⚠️  无变更"
           else
             git commit -m "auto: 📡 每日风口简报 $(date +%Y-%m-%d)"
-            git push --force
+            git push 2>/dev/null || (sleep 3 && git pull --rebase && git push)
             echo "✅ 已推送"
           fi
