@@ -61,6 +61,6 @@ jobs:
             echo "⚠️  无变更，跳过提交"
           else
             git commit -m "auto: 📖 每日英语晨读 $(date +%Y-%m-%d)"
-            git push 2>/dev/null || (sleep 3 && git pull --rebase && git push)
+            git push 2>/dev/null || (sleep 3 git push 2>/dev/null || (sleep 3 && git pull --rebase && git push)git push 2>/dev/null || (sleep 3 && git pull --rebase && git push) git pull --rebase git push 2>/dev/null || (sleep 3 && git pull --rebase && git push)git push 2>/dev/null || (sleep 3 && git pull --rebase && git push) git push --force-with-lease)
             echo "✅ 已推送到 gh-pages"
           fi
