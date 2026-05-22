@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: gh-pages-deploy
+  group: gh-pages-english
   cancel-in-progress: false
 
 permissions:

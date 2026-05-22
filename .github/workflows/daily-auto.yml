@@ -9,7 +9,7 @@ on:
 
 # 所有推 gh-pages 的 workflow 共享同一个 concurrency 组，防止并发冲突
 concurrency:
-  group: gh-pages-deploy
+  group: gh-pages-auto
   cancel-in-progress: false
 
 permissions:
