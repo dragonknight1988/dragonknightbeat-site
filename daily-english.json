@@ -7,114 +7,115 @@
     "quote": {
       "quote": "The single biggest problem in communication is the illusion that it has taken place.",
       "author": "George Bernard Shaw",
-      "translation": "沟通中最大的问题是已经发生沟通的错觉。",
-      "explanation": "这句名言强调在职场中，仅仅发送信息不等于有效沟通。许多误解源于人们以为自己已经表达清楚，而对方却未能理解。它提醒我们在工作中要主动确认理解，避免想当然。"
+      "translation": "沟通中最大的问题是，人们误以为沟通已经发生了。",
+      "explanation": "这句话提醒我们在职场中，仅仅发送信息不等于有效沟通；需要确认对方理解，避免误解。常用于讨论反馈或团队协作时强调清晰沟通的重要性。"
     },
     "vocabulary": [
       {
-        "word": "collaboration",
-        "phonetic": "/kəˌlæb.əˈreɪ.ʃən/",
-        "partOfSpeech": "noun",
+        "word": "collaborate",
+        "phonetic": "/kəˈlæbəreɪt/",
+        "partOfSpeech": "verb",
         "definition": "合作；协作",
-        "example": "Our team’s collaboration on the project led to outstanding results.",
-        "translation": "我们团队在这个项目上的协作带来了出色的成果。"
+        "example": "We need to collaborate closely with the marketing team to launch the campaign on time.",
+        "translation": "我们需要与市场团队紧密合作，按时推出活动。"
       },
       {
-        "word": "agenda",
-        "phonetic": "/əˈdʒen.də/",
+        "word": "clarify",
+        "phonetic": "/ˈklærɪfaɪ/",
+        "partOfSpeech": "verb",
+        "definition": "澄清；阐明",
+        "example": "Could you clarify your point about the deadline? I'm not sure I understood you correctly.",
+        "translation": "你能澄清一下关于截止日期的观点吗？我不确定我理解得对不对。"
+      },
+      {
+        "word": "feedback",
+        "phonetic": "/ˈfiːdbæk/",
         "partOfSpeech": "noun",
-        "definition": "议程；待办事项",
-        "example": "Please send the meeting agenda in advance so everyone can prepare.",
-        "translation": "请提前发送会议议程，以便大家做好准备。"
+        "definition": "反馈；意见",
+        "example": "I appreciate your constructive feedback on my presentation; it will help me improve.",
+        "translation": "我很感谢你对我演示的 constructive feedback（建设性反馈），它会帮助我改进。"
+      },
+      {
+        "word": "negotiate",
+        "phonetic": "/nɪˈɡoʊʃieɪt/",
+        "partOfSpeech": "verb",
+        "definition": "谈判；协商",
+        "example": "We need to negotiate the terms of the contract before signing it.",
+        "translation": "在签合同之前，我们需要协商条款。"
       },
       {
         "word": "stakeholder",
-        "phonetic": "/ˈsteɪkˌhoʊl.dər/",
+        "phonetic": "/ˈsteɪkˌhoʊldər/",
         "partOfSpeech": "noun",
         "definition": "利益相关者",
-        "example": "We need to consider the expectations of all stakeholders before making a decision.",
-        "translation": "在做决定之前，我们需要考虑所有利益相关者的期望。"
+        "example": "As a project manager, you must keep all stakeholders informed about the progress.",
+        "translation": "作为项目经理，你必须让所有利益相关者了解进展情况。"
       },
       {
-        "word": "articulate",
-        "phonetic": "/ɑːrˈtɪk.jə.lət/",
-        "partOfSpeech": "verb",
-        "definition": "明确表达；清晰地阐述",
-        "example": "She articulated her concerns about the deadline during the meeting.",
-        "translation": "她在会议上明确表达了对截止日期的担忧。"
-      },
-      {
-        "word": "reiterate",
-        "phonetic": "/riːˈɪt.ə.reɪt/",
-        "partOfSpeech": "verb",
-        "definition": "重申；反复强调",
-        "example": "Let me reiterate the key points to ensure everyone is on the same page.",
-        "translation": "让我重申关键点，确保大家意见一致。"
-      },
-      {
-        "word": "consensus",
-        "phonetic": "/kənˈsen.səs/",
-        "partOfSpeech": "noun",
-        "definition": "共识；一致意见",
-        "example": "After a long discussion, the team finally reached a consensus on the new strategy.",
-        "translation": "经过长时间的讨论，团队终于就新策略达成了共识。"
-      },
-      {
-        "word": "diplomatic",
-        "phonetic": "/ˌdɪp.ləˈmæt.ɪk/",
+        "word": "concise",
+        "phonetic": "/kənˈsaɪs/",
         "partOfSpeech": "adjective",
-        "definition": "外交的；有策略的；委婉的",
-        "example": "He gave a diplomatic answer that avoided offending anyone in the room.",
-        "translation": "他给出了一个委婉的回答，避免冒犯在场的任何人。"
-      },
-      {
-        "word": "micromanage",
-        "phonetic": "/ˈmaɪ.kroʊˌmæn.ɪdʒ/",
-        "partOfSpeech": "verb",
-        "definition": "微观管理；事无巨细地管理",
-        "example": "Good leaders trust their teams and avoid micromanaging every detail.",
-        "translation": "好的领导信任团队，避免对每个细节进行微观管理。"
-      },
-      {
-        "word": "confidentiality",
-        "phonetic": "/ˌkɑːn.fɪ.den.ʃiˈæl.ə.ti/",
-        "partOfSpeech": "noun",
-        "definition": "保密性；机密",
-        "example": "All employees must sign a confidentiality agreement to protect company data.",
-        "translation": "所有员工必须签署保密协议以保护公司数据。"
+        "definition": "简洁的；简明的",
+        "example": "A concise email is more likely to be read and understood quickly.",
+        "translation": "简洁的邮件更容易被快速阅读和理解。"
       },
       {
         "word": "escalate",
-        "phonetic": "/ˈes.kə.leɪt/",
+        "phonetic": "/ˈeskəleɪt/",
         "partOfSpeech": "verb",
-        "definition": "升级；加剧；上报",
-        "example": "If the issue cannot be resolved at our level, we should escalate it to the manager.",
-        "translation": "如果问题无法在我们这个层面解决，我们应该上报给经理。"
+        "definition": "升级；扩大（问题或冲突）",
+        "example": "If the issue cannot be resolved at our level, we may need to escalate it to senior management.",
+        "translation": "如果问题在我们层面无法解决，我们可能需要将其上报给高层管理。"
+      },
+      {
+        "word": "agenda",
+        "phonetic": "/əˈdʒendə/",
+        "partOfSpeech": "noun",
+        "definition": "议程；待办事项",
+        "example": "Please share the meeting agenda with all participants beforehand so they can prepare.",
+        "translation": "请提前与所有参会者分享会议议程，以便他们做好准备。"
+      },
+      {
+        "word": "diplomatic",
+        "phonetic": "/ˌdɪpləˈmætɪk/",
+        "partOfSpeech": "adjective",
+        "definition": "外交的；有策略的；委婉的",
+        "example": "When giving negative feedback, it's important to be diplomatic to avoid hurting feelings.",
+        "translation": "给予负面反馈时，保持委婉很重要，以免伤害感情。"
+      },
+      {
+        "word": "consensus",
+        "phonetic": "/kənˈsensəs/",
+        "partOfSpeech": "noun",
+        "definition": "共识；一致意见",
+        "example": "After a lengthy discussion, we finally reached a consensus on the budget allocation.",
+        "translation": "经过长时间的讨论，我们终于就预算分配达成了共识。"
       }
     ],
     "pattern": {
-      "pattern": "I’d like to follow up on [topic].",
-      "example": "I’d like to follow up on the budget proposal we discussed last week.",
-      "translation": "我想跟进一下上周我们讨论的预算提案。",
-      "usage": "用于职场中礼貌地提醒或继续讨论之前的话题，显示主动性和专业度。"
+      "pattern": "Could you please [verb]? (礼貌请求句型)",
+      "example": "Could you please clarify the deadline for this report?",
+      "translation": "你能澄清一下这份报告的最后期限吗？",
+      "usage": "用于职场中礼貌地请求别人做某事，比 'Can you' 更正式、更委婉。搭配动词如 clarify, explain, send, review 等。"
     },
     "grammar": {
-      "title": "主动语态 vs. 被动语态在职场沟通中的应用",
-      "explanation": "在职场写作和交流中，选择主动语态或被动语态会影响语气和清晰度。主动语态（如“We completed the report”）强调执行者，更直接有力。被动语态（如“The report was completed”）可以弱化责任人，或在不知道执行者时使用。例如，在反馈问题或批评时，被动语态可以显得更委婉：“The deadline was missed”比“You missed the deadline”更少指责意味。",
+      "title": "被动语态在职场沟通中的使用",
+      "explanation": "被动语态 (be + past participle) 常用于职场沟通中，当动作执行者不重要、未知或想避免指责时。例如：'The report was submitted late.' 比 'You submitted the report late.' 更委婉。常用于正式邮件或会议记录中。",
       "examples": [
-        "主动：Our team resolved the issue quickly. （强调团队能力）",
-        "被动：The issue was resolved quickly. （避免指明责任人，适合中性陈述）"
+        "The meeting has been rescheduled to Friday.",
+        "The decision was made after careful consideration.",
+        "This issue must be addressed immediately."
       ]
     },
     "pronunciation": {
-      "word": "articulate",
-      "phonetic": "/ɑːrˈtɪk.jə.lət/",
-      "tips": "重音在第二个音节 'tic'。注意 /ɑːr/ 类似于中文'啊'的发音但带卷舌，/jə/ 像'呀'的弱读，结尾 /lət/ 不要读成'雷特'，舌头抵住上齿龈。"
+      "word": "consensus",
+      "phonetic": "/kənˈsensəs/",
+      "tips": "重音在第二个音节 'sen'，注意 /s/ 音要清晰，不要读成 /z/。结尾 /əs/ 发音轻短。"
     },
     "reading": {
-      "title": "The Art of Nonverbal Communication in the Workplace",
-      "content": "In today’s fast-paced business environment, verbal communication often takes center stage, but nonverbal cues can speak even louder. Eye contact, posture, gestures, and facial expressions all contribute to the message we send. For instance, maintaining steady eye contact conveys confidence and sincerity, while crossed arms may signal defensiveness or disagreement. Research shows that up to 93% of communication effectiveness is determined by nonverbal elements. Therefore, being mindful of your body language during meetings, presentations, and even casual conversations can significantly improve professional relationships. Furthermore, cultural differences play a crucial role: a gesture considered polite in one country might be offensive in another. For example, the “OK” hand sign is positive in many Western cultures but vulgar in some parts of South America. To excel in global workplaces, we must learn to read and adapt our nonverbal signals accordingly. Mastering this silent language not only prevents misunderstandings but also builds trust and rapport with colleagues and clients.",
-      "translation": "在当今快节奏的商业环境中，口头沟通往往占据中心舞台，但非语言线索可能更具说服力。眼神接触、姿势、手势和面部表情都影响着我们传递的信息。例如，保持稳定的眼神接触传达自信和真诚，而交叉双臂可能表示防备或反对。研究表明，高达93%的沟通效果由非语言元素决定。因此，在会议、演示甚至日常交谈中留意自己的肢体语言，可以显著改善职业关系。此外，文化差异起着关键作用：在一个国家被视为礼貌的手势在另一个国家可能具有冒犯性。例如，“OK”手势在许多西方文化中是积极的，但在南美部分地区却是粗俗的。为了在全球职场中脱颖而出，我们必须学会解读并调整自己的非语言信号。掌握这一无声的语言不仅能防止误解，还能与同事和客户建立信任和融洽关系。"
+      "title": "The Art of Active Listening in the Workplace",
+      "content": "Active listening is more than just hearing words; it involves fully concentrating, understanding, and responding thoughtfully. In a professional setting, this skill can prevent misunderstandings and build trust. For example, when a colleague shares a concern, paraphrasing what they said—'So if I understand correctly, you're worried about the deadline?'—shows you value their input. It also encourages open dialogue. To practice active listening, maintain eye contact, avoid interrupting, and ask clarifying questions. This approach not only improves teamwork but also helps resolve conflicts more efficiently. Remember, effective communication is a two-way street; listening is just as important as speaking.",
+      "translation": "主动倾听不仅仅是听到词语；它需要全神贯注、理解并深思熟虑地回应。在职场中，这种技能可以防止误解并建立信任。例如，当同事表达担忧时，复述他们的话——'所以如果我理解正确，你担心的是截止日期？'——表明你重视他们的意见。这也能鼓励开诚布公的对话。要练习主动倾听，保持眼神交流，避免打断，并提出澄清性问题。这种方法不仅能改善团队合作，还能更有效地解决冲突。记住，有效沟通是双向的；倾听与说话同样重要。"
     }
   }
 }
