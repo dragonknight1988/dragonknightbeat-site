@@ -7,114 +7,114 @@
     "quote": {
       "quote": "The single biggest problem in communication is the illusion that it has taken place.",
       "author": "George Bernard Shaw",
-      "translation": "沟通中最大的问题是人们误以为已经沟通过了。",
-      "explanation": "这句话提醒我们，沟通不仅仅是信息的发送，更重要的是确保信息被准确接收和理解。在职场中，常因假设对方已明白而导致误解，因此需要主动确认反馈。"
+      "translation": "沟通中最大的问题是它已经发生的错觉。",
+      "explanation": "这句话提醒我们在职场沟通中不要想当然地认为对方已经理解，需要确认和反馈，避免误解。"
     },
     "vocabulary": [
       {
-        "word": "stakeholder",
-        "phonetic": "/ˈsteɪkˌhoʊldər/",
-        "partOfSpeech": "n.",
-        "definition": "利益相关者",
-        "example": "We need to align with all stakeholders before launching the project.",
-        "translation": "在启动项目之前，我们需要与所有利益相关者达成一致。"
+        "word": "collaborate",
+        "phonetic": "/kəˈlæbəreɪt/",
+        "partOfSpeech": "verb",
+        "definition": "合作，协作",
+        "example": "Our teams need to collaborate more effectively on this project.",
+        "translation": "我们的团队需要在这个项目上更有效地协作。"
       },
       {
-        "word": "concise",
-        "phonetic": "/kənˈsaɪs/",
-        "partOfSpeech": "adj.",
-        "definition": "简洁的",
-        "example": "A concise email saves time and reduces misunderstandings.",
-        "translation": "一封简洁的邮件可以节省时间并减少误解。"
+        "word": "deadline",
+        "phonetic": "/ˈdedlaɪn/",
+        "partOfSpeech": "noun",
+        "definition": "截止日期",
+        "example": "We must finish the report before the Friday deadline.",
+        "translation": "我们必须在周五截止日期之前完成报告。"
+      },
+      {
+        "word": "negotiate",
+        "phonetic": "/nɪˈɡoʊʃieɪt/",
+        "partOfSpeech": "verb",
+        "definition": "谈判，协商",
+        "example": "She managed to negotiate a better contract for her team.",
+        "translation": "她成功为团队谈判了更好的合同。"
+      },
+      {
+        "word": "persuade",
+        "phonetic": "/pərˈsweɪd/",
+        "partOfSpeech": "verb",
+        "definition": "说服",
+        "example": "He persuaded the client to accept our proposal.",
+        "translation": "他说服客户接受了我们的提案。"
       },
       {
         "word": "feedback",
         "phonetic": "/ˈfiːdbæk/",
-        "partOfSpeech": "n.",
+        "partOfSpeech": "noun",
         "definition": "反馈",
         "example": "Please provide constructive feedback on my presentation.",
         "translation": "请对我的演示提供建设性的反馈。"
       },
       {
-        "word": "clarify",
-        "phonetic": "/ˈklærɪfaɪ/",
-        "partOfSpeech": "v.",
-        "definition": "澄清，阐明",
-        "example": "Could you clarify your point about the deadline change?",
-        "translation": "你能澄清一下关于截止日期变更的观点吗？"
-      },
-      {
         "word": "agenda",
         "phonetic": "/əˈdʒendə/",
-        "partOfSpeech": "n.",
-        "definition": "议程",
-        "example": "Let's stick to the agenda to avoid wasting time.",
-        "translation": "让我们遵循议程以避免浪费时间。"
+        "partOfSpeech": "noun",
+        "definition": "议程，议事日程",
+        "example": "Let's set a clear agenda for the meeting.",
+        "translation": "让我们为会议设定一个清晰的议程。"
       },
       {
-        "word": "collaboration",
-        "phonetic": "/kəˌlæbəˈreɪʃən/",
-        "partOfSpeech": "n.",
-        "definition": "协作",
-        "example": "Cross-departmental collaboration is key to innovation.",
-        "translation": "跨部门协作是创新的关键。"
+        "word": "stakeholder",
+        "phonetic": "/ˈsteɪkˌhoʊldər/",
+        "partOfSpeech": "noun",
+        "definition": "利益相关者",
+        "example": "We need to consider all stakeholders before making a decision.",
+        "translation": "在做决定之前，我们需要考虑所有利益相关者。"
       },
       {
-        "word": "articulate",
-        "phonetic": "/ɑːrˈtɪkjuleɪt/",
-        "partOfSpeech": "v.",
-        "definition": "清晰地表达",
-        "example": "She was able to articulate her ideas effectively during the meeting.",
-        "translation": "她在会议中能够有效地表达自己的想法。"
+        "word": "delegate",
+        "phonetic": "/ˈdelɪɡeɪt/",
+        "partOfSpeech": "verb",
+        "definition": "授权，委派",
+        "example": "A good manager knows how to delegate tasks effectively.",
+        "translation": "一个好的管理者知道如何有效地委派任务。"
       },
       {
-        "word": "follow-up",
-        "phonetic": "/ˈfɑːloʊ ʌp/",
-        "partOfSpeech": "n.",
-        "definition": "后续行动",
-        "example": "We need a follow-up meeting to discuss the action items.",
-        "translation": "我们需要一个后续会议来讨论行动事项。"
+        "word": "conflict",
+        "phonetic": "/ˈkɑːnflɪkt/",
+        "partOfSpeech": "noun",
+        "definition": "冲突",
+        "example": "Open communication can help resolve workplace conflicts.",
+        "translation": "开放沟通可以帮助解决职场冲突。"
       },
       {
-        "word": "persuade",
-        "phonetic": "/pərˈsweɪd/",
-        "partOfSpeech": "v.",
-        "definition": "说服",
-        "example": "He used data to persuade the team to adopt the new strategy.",
-        "translation": "他用数据说服团队采用新策略。"
-      },
-      {
-        "word": "deadline",
-        "phonetic": "/ˈdedlaɪn/",
-        "partOfSpeech": "n.",
-        "definition": "截止日期",
-        "example": "The deadline for submitting the report is next Friday.",
-        "translation": "提交报告的截止日期是下周五。"
+        "word": "etiquette",
+        "phonetic": "/ˈetɪket/",
+        "partOfSpeech": "noun",
+        "definition": "礼仪，礼节",
+        "example": "Understanding business email etiquette is essential for professional communication.",
+        "translation": "了解商务邮件礼仪对于专业沟通至关重要。"
       }
     ],
     "pattern": {
-      "pattern": "Could you please [动词] [宾语]?",
-      "example": "Could you please clarify the project timeline?",
-      "translation": "你能澄清一下项目时间表吗？",
-      "usage": "这是一个礼貌的请求句型，常用于职场中询问信息或寻求帮助，使语气更委婉。"
+      "pattern": "I would appreciate it if you could + 动词原形 ...",
+      "example": "I would appreciate it if you could review this document by tomorrow.",
+      "translation": "如果您能在明天之前审阅这份文件，我将不胜感激。",
+      "usage": "用于礼貌地请求对方做某事，尤其适用于正式或需要尊重的职场场合。"
     },
     "grammar": {
       "title": "被动语态在职场沟通中的应用",
-      "explanation": "被动语态（be + 过去分词）在职场中常用来强调动作的承受者而非执行者，使语气更客观或避免指责。例如：'The report was submitted late.'（报告提交晚了）比 'You submitted the report late.' 更委婉。",
+      "explanation": "在职场中，主动语态强调执行者，被动语态强调动作本身或结果。被动语态可以使表达更客观、委婉，例如避免直接指责某人。结构：be + 过去分词 (+ by...)。",
       "examples": [
-        "The meeting has been rescheduled to next Monday.",
-        "All feedback will be collected by the end of the day."
+        "The report was finished on time. (强调报告已完成，而非谁完成的)",
+        "A mistake was made in the budget. (不直接指出责任人，减少对立)"
       ]
     },
     "pronunciation": {
-      "word": "collaboration",
-      "phonetic": "/kəˌlæbəˈreɪʃən/",
-      "tips": "注意重音在倒数第二个音节 'reɪ'，发音时不要丢失第二个 'l'，口腔保持放松，结尾 'ʃən' 像 'shun'。"
+      "word": "persuade",
+      "phonetic": "/pərˈsweɪd/",
+      "tips": "注意重音在第二音节 'sweɪd'，发音时'per'弱读，类似pər，不要读成/pɜːr/。'sweɪd'中的 'w' 要发清楚，类似 's-way-d'。"
     },
     "reading": {
-      "title": "The Art of Clear Communication at Work",
-      "content": "In today's fast-paced workplace, effective communication is more than just exchanging information. It requires clarity, empathy, and intentional follow-up. One common pitfall is assuming that a message has been understood once it is sent. To avoid this, professionals should practice active listening, ask clarifying questions, and summarize key points at the end of discussions. Additionally, choosing the right communication channel matters: a quick instant message may work for simple updates, but sensitive feedback deserves a face-to-face conversation. Mastering these skills not only reduces errors but also builds trust among team members. Remember, great communication is a two-way street—it involves both speaking and understanding.",
-      "translation": "在当今快节奏的职场中，有效的沟通不仅仅是交换信息。它需要清晰、同理心和有意识的后续跟进。一个常见的陷阱是假设信息一旦发送就会被理解。为了避免这种情况，专业人士应该练习主动倾听，提出澄清性问题，并在讨论结束时总结要点。此外，选择合适的沟通渠道很重要：简单的即时消息可用于简短更新，但敏感的反馈需要面对面交谈。掌握这些技能不仅能减少错误，还能在团队成员之间建立信任。记住，良好的沟通是双向的——既包括表达也包括理解。"
+      "title": "The Art of Constructive Feedback in the Workplace",
+      "content": "Providing constructive feedback is a crucial skill in professional communication. It helps colleagues grow and improves team performance. However, many people struggle with delivering feedback without causing offense. The key is to focus on specific behaviors rather than personal traits. For example, instead of saying \"You are always late,\" try \"I noticed you arrived late to the last three meetings. Is there anything I can help with?\" This approach demonstrates respect and encourages open dialogue. Additionally, timing matters: give feedback promptly but privately. Remember, the goal is to support improvement, not to criticize. When done correctly, feedback becomes a powerful tool for building trust and enhancing collaboration.",
+      "translation": "提供建设性反馈是职场沟通中的一项关键技能。它有助于同事成长并提升团队表现。然而，许多人在给予反馈时难以避免冒犯对方。关键在于关注具体行为而非个人特质。例如，不要说“你总是迟到”，而是说“我注意到你最近三次会议都迟到了。有什么我能帮忙的吗？”这种方式体现了尊重，并鼓励开放对话。此外，时机很重要：及时但私下给予反馈。记住，目标是支持改进，而不是批评。如果运用得当，反馈可以成为建立信任和加强协作的有力工具。"
     }
   }
 }
