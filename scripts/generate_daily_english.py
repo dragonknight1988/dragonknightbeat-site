@@ -115,7 +115,8 @@ def generate_english_content(topic=None):
     "pronunciation": {{
       "word": "发音练习单词",
       "phonetic": "/音标/",
-      "tips": "发音技巧提示"
+      "tips": "发音技巧提示",
+      "examples": ["包含该发音单词的例句1", "包含该发音单词的例句2"]
     }},
     "reading": {{
       "title": "阅读文章标题",
