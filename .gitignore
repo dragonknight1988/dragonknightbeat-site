@@ -1,0 +1,6 @@
+# 环境变量和密钥
+.env
+*.log
+__pycache__/
+.DS_Store
+
