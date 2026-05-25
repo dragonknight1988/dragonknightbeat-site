@@ -1,30 +1,33 @@
 #!/usr/bin/env python3
 """
-每日新闻晨报 JSON 生成器
+每日新闻晨报 JSON 生成器（增强版 v3）
 用法: python3 generate_daily_news.py [--output 输出路径]
-默认输出到当前目录的 daily-news.json
 
-适配 GitHub Actions 运行，API Key 从环境变量读取。
+功能：
+1. 从百度热搜 API + Bing 新闻抓取实时新闻标题
+2. 将真实新闻标题作为 context 喂给 AI
+3. AI 基于实时新闻生成每日晨报 JSON
+
+适配 ECS crontab 运行，API Key 从 .env 环境变量读取。
 """
 
-import json, os, sys, argparse, time, requests
+import json, os, sys, argparse, time, requests, re, urllib.parse
 from datetime import datetime, timezone, timedelta
 
-# 北京时区
 BJ_TZ = timezone(timedelta(hours=8))
 
-# DeepSeek API 配置（API Key 从环境变量读取）
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1"
 DEEPSEEK_MODEL = "deepseek-v4-flash"
 
+USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
+# ========== API 调用 ==========
 
 def call_deepseek(system_prompt, user_prompt, max_tokens=8192):
-    """调用 DeepSeek API 生成内容"""
     if not DEEPSEEK_API_KEY:
-        print("❌ 未设置 DEEPSEEK_API_KEY 环境变量")
+        print("ERROR: DEEPSEEK_API_KEY not set")
         return None
-
     headers = {
         "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
         "Content-Type": "application/json"
@@ -38,135 +41,203 @@ def call_deepseek(system_prompt, user_prompt, max_tokens=8192):
         "max_tokens": max_tokens,
         "temperature": 0.7
     }
-
     try:
-        resp = requests.post(
-            f"{DEEPSEEK_BASE_URL}/chat/completions",
-            headers=headers,
-            json=payload,
-            timeout=300  # reasoner 可能较慢
-        )
+        resp = requests.post(f"{DEEPSEEK_BASE_URL}/chat/completions",
+                             headers=headers, json=payload, timeout=300)
         resp.raise_for_status()
         data = resp.json()
         content = data["choices"][0]["message"]["content"]
-        print(f"📝 API 原始输出长度: {len(content)} 字符")
-        # 打印 token 用量
+        print(f"API raw output: {len(content)} chars")
         usage = data.get("usage", {})
         if usage:
-            print(f"📊 Token: 输入 {usage.get('prompt_tokens', '?')} | 输出 {usage.get('completion_tokens', '?')} | 总计 {usage.get('total_tokens', '?')}")
+            print(f"Tokens: in {usage.get('prompt_tokens','?')} | out {usage.get('completion_tokens','?')} | total {usage.get('total_tokens','?')}")
         return content
     except Exception as e:
-        print(f"❌ API 调用失败: {e}")
+        print(f"API call failed: {e}")
         return None
 
 
-def build_news_content():
-    """构建当日新闻内容，带重试机制"""
-    today = datetime.now(BJ_TZ).strftime("%Y-%m-%d")
+# ========== 新闻抓取 ==========
 
-    system_prompt = """你是一个专业的新闻编辑。根据你的知识，生成 5 个分类的今日新闻摘要。
+def fetch_baidu_hot():
+    """从百度热搜API获取实时热点（最可靠）"""
+    print("Fetching Baidu Hot Search...")
+    results = []
+    try:
+        r = requests.get(
+            "https://top.baidu.com/api/board?tab=realtime",
+            headers={"User-Agent": USER_AGENT, "Accept": "application/json",
+                     "Referer": "https://top.baidu.com/"},
+            timeout=10
+        )
+        data = r.json()
+        cards = data.get("data", {}).get("cards", [])
+        if cards:
+            for item in cards[0].get("content", []):
+                title = item.get("word", "") or item.get("query", "")
+                hot = item.get("hotScore", "")
+                if title:
+                    results.append(f"[{hot}] {title}")
+        print(f"  Got {len(results)} Baidu hot topics")
+        return results
+    except Exception as e:
+        print(f"  Baidu API error: {e}")
+        return results
+
+
+def fetch_bing_news(max_items=15):
+    """从必应新闻抓取补充"""
+    print("Fetching Bing News...")
+    results = {}
+    try:
+        r = requests.get(
+            "https://cn.bing.com/news/search?q=%E8%A6%81%E9%97%BB&setlang=zh-Hans-CN",
+            headers={"User-Agent": USER_AGENT}, timeout=10
+        )
+        r.encoding = "utf-8"
+        titles = re.findall(r'<a[^>]*class="title"[^>]*>(.*?)</a>', r.text, re.DOTALL)
+        for t in titles:
+            t2 = re.sub(r'<[^>]+>', '', t).strip()
+            if t2 and len(t2) > 6:
+                results[t2] = True
+    except Exception as e:
+        print(f"  Bing error: {e}")
+
+    print(f"  Got {len(results)} Bing headlines")
+    return list(results.keys())[:max_items]
+
+
+def fetch_news_headlines():
+    """聚合所有新闻源，返回纯文本"""
+    all_news = []
+    all_news.extend(fetch_baidu_hot())
+    all_news.extend(fetch_bing_news())
+
+    seen = set()
+    unique = []
+    for t in all_news:
+        t_clean = re.sub(r'\s+', ' ', t).strip()
+        if t_clean not in seen and len(t_clean) > 4:
+            seen.add(t_clean)
+            unique.append(t_clean[:80])
+
+    print(f"\nTotal {len(unique)} real news headlines collected")
+    if unique:
+        print(f"First: {unique[0][:50]}...")
+
+    context_lines = [
+        "以下是从互联网实时抓取到的今日新闻标题（请参考使用）：",
+    ]
+    for i, t in enumerate(unique, 1):
+        context_lines.append(f"{i}. {t}")
+    context_lines.append(f"抓取时间: {datetime.now(BJ_TZ).strftime('%Y-%m-%d %H:%M')} 北京时间")
+    return "\n".join(context_lines)
+
+
+# ========== 生成主体 ==========
+
+def build_news_content():
+    today = datetime.now(BJ_TZ).strftime("%Y-%m-%d")
+    news_context = fetch_news_headlines()
+
+    system_prompt = f"""你是一个专业的新闻编辑。以下是今日实时抓取到的新闻标题：
+
+{news_context}
+
+请基于以上实时新闻（结合你自己的知识补充细节），生成 {today} 的新闻简报JSON。
+
 要求：
-- 每个分类 3-5 条新闻
-- 每条新闻包含标题和 1-2 句简短描述
-- 语言简洁、客观、新闻用语规范
-- 输出格式为 JSON，严格符合以下结构，不要使用markdown代码块包裹，直接输出JSON：
-{
-  "date": "2026-05-17",
+- 5个分类，每类3-5条新闻
+- 每条新闻包含标题和1-2句摘要
+- **必须基于真实新闻**，不要编造不存在的事件
+- 重大事件（航天、科技、政治、财经）必须优先收录
+- 语言客观简洁
+- 直接输出JSON，不要markdown代码块
+
+JSON结构：
+{{
+  "date": "{today}",
   "sections": [
-    {
+    {{
       "id": "domestic",
       "title": "国内时政",
       "icon": "🇨🇳",
       "articles": [
-        {
-          "id": "news-001",
-          "title": "...",
-          "summary": "..."
-        }
+        {{"id": "news-001", "title": "...", "summary": "..."}}
       ]
-    }
+    }}
   ]
-}
+}}
 
-分类：domestic(国内时政), international(国际时政), finance(财经动态), tech(科技前沿), other(其他要闻)
-注意：id 需全局唯一，articles不能为空"""
+分类ID：domestic(国内时政), international(国际时政), finance(财经动态), tech(科技前沿), other(其他要闻)
+注意：id需全局唯一，articles不能为空"""
 
-    # 重试最多 3 次
+    user_prompt = f"今天是{today}。请基于实时新闻数据生成新闻简报JSON。确保包含今天所有重大新闻事件。不要截断输出。"
+
     max_retries = 3
     for attempt in range(1, max_retries + 1):
-        print(f"\n📡 API 调用第 {attempt}/{max_retries} 次...")
-        result = call_deepseek(
-            system_prompt,
-            f"今天是{today}。请根据你的知识生成今日新闻简报JSON，确保完整输出，不要截断。"
-        )
+        print(f"\nAPI call {attempt}/{max_retries}...")
+        result = call_deepseek(system_prompt, user_prompt, max_tokens=8192)
         if not result:
-            print("❌ API 返回空，重试...")
+            print("Empty, retrying...")
             continue
 
-        # 提取 JSON：先尝试去掉 markdown 代码块标记
         clean = result.strip()
-        if clean.startswith("```json"):
-            clean = clean[7:]
-        if clean.startswith("```"):
-            clean = clean[3:]
-        if clean.endswith("```"):
-            clean = clean[:-3]
+        if clean.startswith("```json"): clean = clean[7:]
+        elif clean.startswith("```"): clean = clean[3:]
+        if clean.endswith("```"): clean = clean[:-3]
         clean = clean.strip()
 
-        json_start = clean.find("{")
-        json_end = clean.rfind("}") + 1
-        if json_start >= 0 and json_end > json_start:
-            json_str = clean[json_start:json_end]
+        js = clean.find("{")
+        je = clean.rfind("}") + 1
+        if js >= 0 and je > js:
             try:
-                data = json.loads(json_str)
+                data = json.loads(clean[js:je])
                 data["date"] = today
-                # 校验 sections
                 sections = data.get("sections", [])
                 total = sum(len(s.get("articles", [])) for s in sections)
                 if total == 0 or len(sections) < 3:
-                    print(f"⚠️  新闻内容不完整（{total}条/{len(sections)}分类），重试...")
+                    print(f"Incomplete ({total} articles / {len(sections)} cats), retry...")
                     time.sleep(2)
                     continue
-                print(f"✅ JSON 解析成功: {total} 条新闻 / {len(sections)} 个分类")
+                print(f"OK: {total} articles / {len(sections)} categories")
                 return data
             except json.JSONDecodeError as e:
-                print(f"❌ JSON 解析失败 (attempt {attempt}): {e}")
-                if attempt < max_retries:
-                    print(f"   输出前200字: {json_str[:200]}")
+                print(f"JSON error: {e}")
+                if attempt < 3:
                     time.sleep(2)
                 continue
         else:
-            print(f"❌ 未找到 JSON (attempt {attempt})")
-            if attempt < max_retries:
-                print(f"   输出前200字: {result[:200]}")
+            print("No JSON found")
+            if attempt < 3:
                 time.sleep(2)
             continue
 
-    print("❌ 重试耗尽，新闻内容生成失败")
+    print("All retries failed")
     return None
 
 
 def main():
-    parser = argparse.ArgumentParser(description="生成每日新闻晨报 JSON")
-    parser.add_argument("--output", default="daily-news.json",
-                        help="输出文件路径（默认 daily-news.json）")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", default="daily-news.json")
     args = parser.parse_args()
 
-    print(f"📰 生成 {datetime.now(BJ_TZ).strftime('%Y-%m-%d')} 新闻晨报（DeepSeek）...")
-    print(f"🔑 API Key: {'已设置' if DEEPSEEK_API_KEY else '未设置'}")
+    ts = datetime.now(BJ_TZ).strftime('%Y-%m-%d')
+    print(f"Generating {ts} daily news (DeepSeek V4 + real news API)...")
+    print(f"API Key: {'SET' if DEEPSEEK_API_KEY else 'NOT SET'}")
 
     content = build_news_content()
     if content:
         with open(args.output, "w", encoding="utf-8") as f:
             json.dump(content, f, ensure_ascii=False, indent=2)
-        sections = content.get("sections", [])
-        total = sum(len(s.get("articles", [])) for s in sections)
-        print(f"✅ 已写入: {args.output}")
-        print(f"   共 {total} 条新闻，{len(sections)} 个分类")
-        for s in sections:
-            print(f"   {s.get('icon', '')} {s.get('title', '')}: {len(s.get('articles', []))} 条")
+        secs = content.get("sections", [])
+        total = sum(len(s.get("articles", [])) for s in secs)
+        print(f"Written: {args.output}")
+        print(f"{total} articles, {len(secs)} categories")
+        for s in secs:
+            print(f"  {s.get('icon','')} {s.get('title','')}: {len(s.get('articles',[]))}")
     else:
-        print("❌ 生成失败")
+        print("FAILED")
         sys.exit(1)
 
 
