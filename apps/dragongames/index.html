@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>龙骑士游戏 - 技术支持 | DragonKnightBeat</title>
+    <meta name="description" content="龙骑士游戏 iOS App - 斗地主/德州扑克/24点 在线棋牌游戏平台，AI对战，多人联机">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:linear-gradient(135deg,#0f0f1a,#1a1a2e,#2d1b4e); color:#e0e0ff; min-height:100vh; line-height:1.7; }
+        .container { max-width:800px; margin:0 auto; padding:40px 24px 80px; }
+        header { text-align:center; padding:60px 0 40px; position:relative; }
+        header::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:120px; height:3px; background:linear-gradient(90deg,#f97316,#ec4899,#a855f7); border-radius:3px; }
+        .app-icon { width:100px; height:100px; border-radius:22px; background:linear-gradient(135deg,#f97316,#ff6b35,#e040a0); box-shadow:0 8px 32px rgba(249,115,22,0.4); display:inline-flex; align-items:center; justify-content:center; font-size:52px; margin-bottom:16px; }
+        h1 { font-size:36px; font-weight:800; background:linear-gradient(135deg,#fbd38d,#f97316); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .subtitle { font-size:16px; color:#8888bb; margin-top:8px; }
+        .subtitle span { color:#f97316; }
+        section { margin:40px 0; padding:32px; background:rgba(255,255,255,0.04); border-radius:20px; border:1px solid rgba(255,255,255,0.06); backdrop-filter:blur(8px); }
+        h2 { font-size:22px; font-weight:700; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+        h2 .icon { font-size:24px; }
+        .game-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-top:10px; }
+        .game-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:24px 20px; text-align:center; transition:all .3s; }
+        .game-card:hover { background:rgba(255,255,255,0.1); transform:translateY(-4px); border-color:rgba(249,115,22,0.4); }
+        .game-card .emoji { font-size:40px; margin-bottom:10px; }
+        .game-card h3 { font-size:18px; font-weight:700; color:#fde68a; margin-bottom:6px; }
+        .game-card p { font-size:13px; color:#9999bb; line-height:1.5; }
+        .feature-tag { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px 16px; font-size:14px; transition:all .2s; display:flex; align-items:center; gap:8px; }
+        .feature-tag:hover { background:rgba(255,255,255,0.1); transform:translateY(-2px); border-color:rgba(249,115,22,0.4); }
+        .feature-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
+        .faq-item { margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.06); }
+        .faq-item:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+        .faq-q { font-weight:600; font-size:16px; color:#fde68a; margin-bottom:6px; }
+        .faq-q::before { content:'❓ '; }
+        .faq-a { color:#9999bb; font-size:15px; padding-left:24px; }
+        .faq-a code { background:rgba(255,255,255,0.08); padding:2px 8px; border-radius:4px; font-size:13px; color:#f0a6ff; }
+        .contact-links { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
+        .contact-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:12px; font-size:15px; font-weight:600; text-decoration:none; transition:all .3s; border:1px solid rgba(255,255,255,0.1); }
+        .contact-btn.email { background:linear-gradient(135deg,rgba(249,115,22,0.2),rgba(236,72,153,0.2)); color:#fdba74; }
+        .contact-btn.email:hover { background:linear-gradient(135deg,rgba(249,115,22,0.4),rgba(236,72,153,0.4)); transform:translateY(-2px); box-shadow:0 4px 20px rgba(249,115,22,0.3); }
+        .version-info { display:flex; gap:24px; flex-wrap:wrap; justify-content:center; padding:16px; background:rgba(255,255,255,0.03); border-radius:12px; margin-top:16px; }
+        .version-info-item { text-align:center; }
+        .version-info-item .label { font-size:12px; color:#6666aa; text-transform:uppercase; letter-spacing:1px; }
+        .version-info-item .value { font-size:16px; font-weight:600; color:#fdba74; }
+        .disclaimer { font-size:13px; color:#7777aa; margin-top:16px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px; border-left:3px solid #8888bb; }
+        footer { text-align:center; padding:40px 0 20px; color:#555588; font-size:13px; border-top:1px solid rgba(255,255,255,0.05); }
+        footer a { color:#8888bb; }
+        footer a:hover { color:#f97316; }
+        @media (max-width:600px){ .container{padding:20px 16px 60px;} h1{font-size:28px;} section{padding:24px 20px;} .game-cards{grid-template-columns:1fr;} .feature-grid{grid-template-columns:1fr 1fr;} }
+    </style>
+</head>
+<body><div class="container">
+    <header>
+        <div class="app-icon">🎮</div>
+        <h1>龙骑士游戏</h1>
+        <p class="subtitle">DragonGames · <span>v1.0</span></p>
+        <p style="margin-top:12px; color:#9999bb; font-size:15px;">
+            斗地主 · 德州扑克 · 24点 · AI对战 · 在线棋牌游戏平台
+        </p>
+    </header>
+
+    <section>
+        <h2><span class="icon">🎮</span> 游戏一览</h2>
+        <div class="game-cards">
+            <div class="game-card">
+                <div class="emoji">🃏</div>
+                <h3>斗地主</h3>
+                <p>经典三人斗地主智能AI对战，完整叫地主/抢地主/炸弹/火箭机制，出牌提示，20秒倒计时</p>
+            </div>
+            <div class="game-card">
+                <div class="emoji">♠️</div>
+                <h3>德州扑克</h3>
+                <p>单人AI模式，翻牌/转牌/河牌全流程，跟注/加注/All-in/弃牌，智能AI策略</p>
+            </div>
+            <div class="game-card">
+                <div class="emoji">🔢</div>
+                <h3>24点</h3>
+                <p>数学智力挑战，三档难度（简单/普通/困难），计时计分，暴力穷举解法提示</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2><span class="icon">✨</span> 功能特色</h2>
+        <div class="feature-grid">
+            <div class="feature-tag">🤖 AI 智能对手</div>
+            <div class="feature-tag">🎴 完整牌型识别</div>
+            <div class="feature-tag">💡 出牌提示功能</div>
+            <div class="feature-tag">⏱ 20秒出牌倒计时</div>
+            <div class="feature-tag">🎨 赛博龙纹暗黑主题</div>
+            <div class="feature-tag">🔄 自动重连机制</div>
+            <div class="feature-tag">📊 实时积分显示</div>
+            <div class="feature-tag">🔊 游戏音效</div>
+        </div>
+    </section>
+
+    <section>
+        <h2><span class="icon">💬</span> 常见问题</h2>
+        <div class="faq-item"><div class="faq-q">游戏需要联网吗？</div><div class="faq-a">需要。游戏数据通过服务器实时交互，单人AI模式同样需要在联网环境下进行。</div></div>
+        <div class="faq-item"><div class="faq-q">AI对手智能吗？</div><div class="faq-a">AI采用多级策略：先手优先出顺子/连对/飞机，跟牌出最弱能赢的牌。斗地主AI有炸弹策略判断，德州扑克AI有手牌评估和弃牌策略。</div></div>
+        <div class="faq-item"><div class="faq-q">游戏连接不上？</div><div class="faq-a">请确保网络连接正常。如持续无法连接，可通过下方邮箱反馈，我们会尽快排查。</div></div>
+        <div class="faq-item"><div class="faq-q">游戏数据保存吗？</div><div class="faq-a">当前版本支持单次游戏过程中的积分记录，关闭App后积分重置。游戏过程中断线后可在有效期内重连。</div></div>
+        <div class="faq-item"><div class="faq-q">游戏有内购或广告吗？</div><div class="faq-a">当前版本完全免费，无广告、无内购。</div></div>
+    </section>
+
+    <section>
+        <h2><span class="icon">📮</span> 联系与版本</h2>
+        <div class="version-info">
+            <div class="version-info-item"><div class="label">当前版本</div><div class="value">v1.0</div></div>
+            <div class="version-info-item"><div class="label">平台</div><div class="value">iOS 17+</div></div>
+            <div class="version-info-item"><div class="label">大小</div><div class="value">约 12 MB</div></div>
+            <div class="version-info-item"><div class="label">语言</div><div class="value">中文</div></div>
+        </div>
+        <p style="margin:20px 0 12px; color:#9999bb;">如有问题、建议、反馈，请联系我们：</p>
+        <div class="contact-links">
+            <a href="mailto:798928932@qq.com" class="contact-btn email">✉️ 798928932@qq.com</a>
+        </div>
+        <div class="disclaimer">
+            ⚠️ 游戏内容由 AI 辅助生成，仅供娱乐参考。游戏规则和AI策略可能存在不完善之处，欢迎反馈改进意见。
+        </div>
+    </section>
+    <footer>
+        <p>🎮 龙骑士游戏 · DragonGames</p>
+        <p style="margin-top:8px;">© 2026 Wang Long. All rights reserved.</p>
+        <p style="margin-top:12px;"><a href="https://dragonknightbeat.com">← DragonKnightBeat</a></p>
+    </footer>
+</div></body>
+</html>

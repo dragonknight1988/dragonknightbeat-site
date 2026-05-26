@@ -1,38 +1,38 @@
 {
-  "date": "2026-05-20",
+  "date": "2026-05-27",
   "contents": [
     {
-      "id": "prog-2026-05-20",
-      "date": "2026-05-20",
-      "title": "Swift中的可选类型（Optionals）",
-      "summary": "理解可选类型的概念、nil安全以及如何安全地解包可选值。",
-      "difficulty": "初级",
-      "concept": "可选类型（Optional）是 Swift 语言的核心特性之一，用于安全地表示值可能缺失的情况。在 Objective-C 中，nil 仅适用于对象指针，而 Swift 将 nil 的概念扩展到所有类型（包括 Int、String 等值类型）。声明可选类型只需在类型后加问号（?），例如 var name: String? 表示 name 可以存储一个字符串或 nil。\n\n可选类型本质上是一个枚举：Optional.none（nil）和 Optional.some（包装的值）。这种设计强制开发者显式处理 nil 情况，避免空指针崩溃。实际工程中，最常见的错误是滥用强制解包（!）。例如，从服务器获取的数据可能为 nil，如果直接强制解包，一旦值为 nil 就会导致运行时崩溃。因此，建议始终使用安全解包方式。\n\n安全解包的首选方式是可选绑定（Optional Binding）：if let 或 guard let。if let 在条件成立时创建一个临时常量，作用域仅在 if 块内；guard let 则要求值必须存在，否则执行 else 分支提前退出（常用于函数开头）。此外，nil 合并运算符（??）提供默认值，例如 let displayName = userName ?? \"Guest\"，这在 UI 展示中非常实用。\n\n在 SwiftUI 中，可选类型同样常见。例如 @State var text: String? 用于存储可选的输入内容。结合 SwiftUI 的 TextField 等视图时，需要解包后使用。工程实践中，我们经常将可选值与用户界面绑定，并在解包时提供合理的默认值，以提高应用的健壮性。\n\n隐式解包可选类型（Implicitly Unwrapped Optional, 如 String!）是另一种可选类型，它假定值在访问时一定存在，但如果为 nil 仍会崩溃。通常只用于属性在初始化后不会改变且必须非 nil 的场景（如 Interface Builder 连接）。对于初级开发者，应尽量避免使用隐式解包，直到完全理解其风险。\n\n可选链（Optional Chaining, 如 user?.address?.city）允许在可选值上安全访问属性和方法，如果链中任一环节为 nil，整个表达式返回 nil。这种方式可以编写简洁且安全的代码。总之，掌握可选类型是 Swift 开发者迈向专业的第一步，它体现了 Swift 安全性和表达性的设计哲学。",
+      "id": "prog-2026-05-27",
+      "date": "2026-05-27",
+      "title": "Kotlin 协程的结构化并发与并发作用域深度剖析",
+      "summary": "掌握结构化并发原则，理解 CoroutineScope、SupervisorJob 与协程异常处理的最佳实践，写出健壮且可取消的并发代码。",
+      "difficulty": "高级",
+      "concept": "结构化并发是 Kotlin 协程的核心理念，它确保协程的生命周期被严格绑定到某个作用域，从而避免协程泄漏。每一个协程都必须在一个 CoroutineScope 中启动，当作用域被取消时，其内部所有子协程都会自动取消。这种自上而下的取消传播机制与 Job 的父子层级紧密相关。在高级应用中，我们不仅要管理取消，还要精细控制异常传播。默认的 Job 会将未捕获的异常同时向上传播给父协程，导致整个作用域失败。而 SupervisorJob 则允许子协程独立处理自己的异常，不影响同级协程。这对于实现诸如“并发请求中一个失败不影响其他”的场景至关重要。另一个关键点是协程的并发作用域：coroutineScope 与 supervisorScope 是两个作用域构建器。coroutineScope 会等待所有子协程完成，且任何一个子协程抛出异常都会导致整个作用域失败（其他子协程会被取消）；而 supervisorScope 则只将异常暴露给当前协程，不传播给同级或父级。在实际工程中，结合 coroutineScope 与 try-catch 可以精细控制错误的收集和重试逻辑。此外，结构化并发还体现在协程上下文的继承上：子协程默认继承父协程的 CoroutineContext，包括调度器和 Job。但通过指定 Job（如 SupervisorJob）可以构建非默认的异常处理策略。需要特别注意的是，使用 GlobalScope 或自定义的顶级作用域会破坏结构化并发，应尽量避免。在性能优化层面，理解协程的挂起与恢复、以及 Dispatchers 的切分策略，可以避免线程阻塞和上下文切换的开销，但这是更深层次的话题。",
       "codeExample": {
-        "language": "Swift",
-        "code": "// 可选类型声明与安全解包示例\nimport Foundation\n\n// 声明一个可选字符串变量，初始值为 nil\nvar nickname: String? = nil\n\n// 使用 if let 安全解包\nif let unwrappedName = nickname {\n    print(\"昵称是：\\(unwrappedName)\")\n} else {\n    print(\"没有昵称，使用默认值\")\n}\n\n// 使用 nil 合并运算符提供默认值\nlet displayName = nickname ?? \"默认用户\"\nprint(\"显示名称：\\(displayName)\")\n\n// 在函数中使用 guard let 提前退出\nfunc greet(with name: String?) {\n    guard let safeName = name else {\n        print(\"没有名字，无法问候\")\n        return\n    }\n    print(\"你好，\\(safeName)！\")\n}\n\ngreet(with: \"Alice\")   // 输出：你好，Alice！\ngreet(with: nil)       // 输出：没有名字，无法问候\n\n// 可选链示例\nstruct Person {\n    var pet: Pet?\n}\nstruct Pet {\n    var name: String\n}\n\nlet person = Person(pet: Pet(name: \"旺财\"))\nif let petName = person.pet?.name {\n    print(\"宠物的名字是：\\(petName)\")\n} else {\n    print(\"没有宠物\")\n}\n// 如果 person.pet 为 nil，则 petName 为 nil，不会崩溃",
-        "explanation": "代码首先声明了一个可选字符串 nickname 并赋值为 nil。使用 `if let` 解包：如果 nickname 有值，则将其赋给常量 unwrappedName 并在 if 块中使用；否则执行 else 块。nil 合并运算符 `??` 在 nickname 为 nil 时返回默认字符串。`guard let` 用于函数 greet 的开头：如果 name 为 nil 则提前返回，否则继续执行后续代码（使用解包后的 safeName）。可选链示例中，`person.pet?.name` 安全地访问 pet 的 name 属性，如果 pet 为 nil 则整个表达式返回 nil。"
+        "language": "Kotlin",
+        "code": "import kotlinx.coroutines.*\nimport java.io.IOException\n\nfun main() = runBlocking {\n    // 使用 supervisorScope：子协程异常不会取消同级\n    supervisorScope {\n        val job1 = launch {\n            delay(100)\n            println(\"Job1 completed\")\n        }\n        val job2 = launch {\n            delay(50)\n            throw IOException(\"Job2 failed\")\n        }\n        // 等待所有子协程（包括失败的）\n        joinAll(job1, job2)\n    }\n    println(\"SupervisorScope finished. Job1 still ran.\")\n\n    println(\"---\")\n\n    // 使用 coroutineScope：子协程异常会取消整个作用域\n    try {\n        coroutineScope {\n            val job3 = launch {\n                delay(100)\n                println(\"Job3 completed\")\n            }\n            val job4 = launch {\n                delay(50)\n                throw IOException(\"Job4 failed\")\n            }\n            // job3 会被自动取消\n        }\n    } catch (e: IOException) {\n        println(\"Caught exception: ${e.message}\")\n    }\n    println(\"CoroutineScope finished.\")\n}\n\n// 辅助函数：等待多个 Job\nprivate suspend fun joinAll(vararg jobs: Job) {\n    jobs.forEach { it.join() }\n}",
+        "explanation": "代码首先演示了 supervisorScope：两个子协程 job1 和 job2 并发执行。job2 抛出 IOException 异常，但 job1 不受影响并正常完成。supervisorScope 本身不会因为子协程异常而失败，但异常仍然会从子协程抛出到当前协程（即 supervisorScope 内部），需要用 try-catch 捕获（本例中未捕获，但异常不会传播到 runBlocking）。后面是 coroutineScope：一旦 job4 抛出异常，整个作用域立即取消，job3 被自动取消，coroutineScope 将异常抛出，我们在外部捕获。这展示了两种作用域的不同异常传播行为。"
       },
       "keyPoints": [
-        "可选类型用 `?` 声明，表示变量可以存储 nil 或对应类型的值",
-        "强制解包（`!`）风险高，仅在你确定值非 nil 时使用",
-        "`if let` 和 `guard let` 是安全解包的首选方式",
-        "nil 合并运算符 `??` 能为可选值提供默认值，简化代码",
-        "可选链（`?.`）允许在可选值上安全调用属性或方法"
+        "结构化并发保证协程生命周期与作用域绑定，避免泄漏",
+        "Job 层级是取消传播的基础，子协程抛出未捕获异常会向上传播",
+        "SupervisorJob 允许子协程独立处理异常，不影响同级",
+        "coroutineScope 和 supervisorScope 分别提供”全部或全不“和”相互隔离“的并发模型",
+        "实际工程中优先使用结构化作用域，避免 GlobalScope"
       ],
       "exercise": {
-        "description": "编写一个函数 `printIfNonEmpty(_ text: String?)`，该函数接受一个可选的字符串参数。如果字符串不为 nil 且不为空（即 isEmpty 为 false），则打印该字符串；否则打印默认文本 \"默认文本\"。",
-        "hint": "使用 `guard let` 先解包可选值，然后用 `!text.isEmpty` 检查是否非空；或者使用 `if let` 结合条件判断。",
+        "description": "设计一个后台图片加载器，使用 supervisorScope 同时发起多个图片下载协程。如果某个下载失败，需要记录错误但不应中断其他下载。下载完成后（无论成功或失败），统计成功、失败数量并输出。",
+        "hint": "使用 launch 在 supervisorScope 内启动多个协程，每个下载任务返回 Result<T> 类型，最后汇总结果。可以使用 try-catch 包装每个协程的代码，避免异常被吞掉。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，声明一个可选整数并初始化为 nil。",
-            "codeContext": "var myNumber: ______ = nil",
+            "question": "补全代码，使得 supervisorScope 内子协程的取消不会影响同级。在 ?????? 处填写正确的作用域构建器。",
+            "codeContext": "suspend fun loadUrls(urls: List<String>): List<Result<String>> = ?????? {\n    val results = mutableListOf<Result<String>>()\n    val jobs = urls.map { url ->\n        launch {\n            try {\n                // 模拟下载\n                delay(100)\n                Result.success(url)\n            } catch (e: Exception) {\n                Result.failure(e)\n            }.also { results.add(it) }\n        }\n    }\n    jobs.forEach { it.join() }\n    return results\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "var myNumber: ",
+                "content": "suspend fun loadUrls(urls: List<String>): List<Result<String>> = ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,52 +42,53 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "Int",
-                  "Int?"
+                  "coroutineScope",
+                  "supervisorScope",
+                  "runBlocking"
                 ],
-                "correctAnswer": "Int?"
+                "correctAnswer": "supervisorScope"
               },
               {
                 "type": "text",
-                "content": " = nil",
+                "content": " { ... }",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "Int?",
-            "explanation": "在类型后面加问号 `?` 表示可选类型，因此 `Int?` 可以存储整数或 nil。"
+            "correctAnswer": "supervisorScope",
+            "explanation": "因为我们需要一个子协程的失败不影响其他子协程，supervisorScope 正好提供这种隔离。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "以下哪种方式是安全地解包可选值的推荐做法？",
+            "question": "在结构化并发中，如果父协程被取消，子协程会发生什么？",
             "codeContext": null,
             "segments": null,
             "options": [
-              "A. 强制解包（!）",
-              "B. if let 可选绑定",
-              "C. 隐式解包可选类型（!）",
-              "D. 直接使用可选值"
+              "子协程继续运行直到完成",
+              "子协程会被自动取消",
+              "子协程会抛出一个 CancellationException",
+              "只有使用 SupervisorJob 时子协程才会被取消"
             ],
-            "correctAnswer": "B. if let 可选绑定",
-            "explanation": "强制解包（!）如果值为 nil 会导致运行时崩溃；隐式解包同样有崩溃风险；直接使用可选值无法传递给需要非可选类型的上下文。`if let` 或 `guard let` 在值为 nil 时不会崩溃，是安全的解包方式。"
+            "correctAnswer": "子协程会被自动取消",
+            "explanation": "结构化并发确保父协程取消时，所有子协程都被取消，无论 Job 类型如何。这是协程层级的基本保证。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "阅读以下代码，输出是什么？",
-            "codeContext": "var name: String? = \"Alice\"\nlet greeting = \"Hello, \" + (name ?? \"Guest\")\nprint(greeting)",
+            "question": "下列代码的输出是什么？",
+            "codeContext": "runBlocking {\n    coroutineScope {\n        launch {\n            delay(100)\n            println(\"A\")\n        }\n        launch {\n            delay(50)\n            throw RuntimeException()\n        }\n    }\n    println(\"B\")\n}",
             "segments": null,
             "options": [
-              "A. Hello, Alice",
-              "B. Hello, Guest",
-              "C. 编译错误",
-              "D. Hello, Optional(\"Alice\")"
+              "A  B",
+              "抛出异常，不会输出任何内容",
+              "B",
+              "A"
             ],
-            "correctAnswer": "A. Hello, Alice",
-            "explanation": "`name` 是可选字符串，值为 \"Alice\"，因此 `name ?? \"Guest\"` 返回 \"Alice\"，拼接后得到 \"Hello, Alice\"。如果 `name` 为 nil，则会输出 \"Hello, Guest\"。"
+            "correctAnswer": "抛出异常，不会输出任何内容",
+            "explanation": "子协程抛出 RuntimeException 后，coroutineScope 会立即取消所有子协程并抛出异常到 runBlocking，因此 A 的 delay 尚未完成即被取消，B 也无法执行。"
           }
         ]
       }

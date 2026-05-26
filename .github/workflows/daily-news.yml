@@ -2,9 +2,9 @@ name: 📰 每日新闻晨报
 
 on:
   schedule:
-    - cron: '0 22 * * *'  # 北京时间 06:00 = UTC 22:00
-  workflow_dispatch:
-
+    # 北京时间 06:00 = UTC 22:00 (前一天)
+    - cron: '0 22 * * *'
+  workflow_dispatch:  # 支持手动触发
 
 permissions:
   contents: write
@@ -16,7 +16,7 @@ jobs:
       - name: ⬇️ 检出仓库（所有分支）
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # 需要所有分支历史
 
       - name: 📂 从 main 分支获取生成脚本
         run: |
@@ -33,8 +33,10 @@ jobs:
 
       - name: ‼️ 切换到 gh-pages 分支（保留 scripts 目录）
         run: |
+          # 先保存脚本
           cp -r scripts /tmp/scripts
           git checkout gh-pages
+          # 恢复脚本
           cp -r /tmp/scripts scripts
 
       - name: 🤖 生成新闻
