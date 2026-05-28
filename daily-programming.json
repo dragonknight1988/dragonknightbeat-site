@@ -1,38 +1,38 @@
 {
-  "date": "2026-05-27",
+  "date": "2026-05-28",
   "contents": [
     {
-      "id": "prog-2026-05-27",
-      "date": "2026-05-27",
-      "title": "Kotlin 协程的结构化并发与并发作用域深度剖析",
-      "summary": "掌握结构化并发原则，理解 CoroutineScope、SupervisorJob 与协程异常处理的最佳实践，写出健壮且可取消的并发代码。",
-      "difficulty": "高级",
-      "concept": "结构化并发是 Kotlin 协程的核心理念，它确保协程的生命周期被严格绑定到某个作用域，从而避免协程泄漏。每一个协程都必须在一个 CoroutineScope 中启动，当作用域被取消时，其内部所有子协程都会自动取消。这种自上而下的取消传播机制与 Job 的父子层级紧密相关。在高级应用中，我们不仅要管理取消，还要精细控制异常传播。默认的 Job 会将未捕获的异常同时向上传播给父协程，导致整个作用域失败。而 SupervisorJob 则允许子协程独立处理自己的异常，不影响同级协程。这对于实现诸如“并发请求中一个失败不影响其他”的场景至关重要。另一个关键点是协程的并发作用域：coroutineScope 与 supervisorScope 是两个作用域构建器。coroutineScope 会等待所有子协程完成，且任何一个子协程抛出异常都会导致整个作用域失败（其他子协程会被取消）；而 supervisorScope 则只将异常暴露给当前协程，不传播给同级或父级。在实际工程中，结合 coroutineScope 与 try-catch 可以精细控制错误的收集和重试逻辑。此外，结构化并发还体现在协程上下文的继承上：子协程默认继承父协程的 CoroutineContext，包括调度器和 Job。但通过指定 Job（如 SupervisorJob）可以构建非默认的异常处理策略。需要特别注意的是，使用 GlobalScope 或自定义的顶级作用域会破坏结构化并发，应尽量避免。在性能优化层面，理解协程的挂起与恢复、以及 Dispatchers 的切分策略，可以避免线程阻塞和上下文切换的开销，但这是更深层次的话题。",
+      "id": "prog-2026-05-28",
+      "date": "2026-05-28",
+      "title": "Flutter中的StatelessWidget与StatefulWidget",
+      "summary": "学习Flutter中两种核心Widget的区别以及如何在实际项目中合理选择",
+      "difficulty": "初级",
+      "concept": "在Flutter中，一切皆为Widget。Widget主要分为两大类：StatelessWidget（无状态组件）和StatefulWidget（有状态组件）。StatelessWidget一旦构建完毕，其内部数据不可变，UI完全由传入的参数决定，无法在运行时改变。例如显示一个静态文本或图标。而StatefulWidget则拥有可变的状态（State），当状态改变时会触发重新构建（rebuild），从而更新UI。StatefulWidget由两部分组成：一个继承StatefulWidget的类（不可变，用于配置）和一个继承State的类（可变，持有状态逻辑）。\n\n理解它们的区别是Flutter开发的基石。实际工程中，如果一个组件不需要根据用户交互或外部数据变化而改变，就优先使用StatelessWidget，因为它更简单、性能更好（无需管理状态对象的生命周期）。反之，如果组件内部需要记录用户操作（如点击计数）、动画或异步数据加载，则需要StatefulWidget。\n\nStatefulWidget的生命周期包括：createState → initState → didChangeDependencies → build → setState（触发更新） → didUpdateWidget → dispose。熟悉这些生命周期有助于正确初始化和清理资源，比如在initState中获取数据，在dispose中取消订阅。许多初级开发者容易滥用StatefulWidget，将本可以用StatelessWidget+回调实现的功能复杂化。一个常见原则是：尽量将状态上提（lifting state up），让父组件使用StatefulWidget，子组件用StatelessWidget接收参数和回调。",
       "codeExample": {
-        "language": "Kotlin",
-        "code": "import kotlinx.coroutines.*\nimport java.io.IOException\n\nfun main() = runBlocking {\n    // 使用 supervisorScope：子协程异常不会取消同级\n    supervisorScope {\n        val job1 = launch {\n            delay(100)\n            println(\"Job1 completed\")\n        }\n        val job2 = launch {\n            delay(50)\n            throw IOException(\"Job2 failed\")\n        }\n        // 等待所有子协程（包括失败的）\n        joinAll(job1, job2)\n    }\n    println(\"SupervisorScope finished. Job1 still ran.\")\n\n    println(\"---\")\n\n    // 使用 coroutineScope：子协程异常会取消整个作用域\n    try {\n        coroutineScope {\n            val job3 = launch {\n                delay(100)\n                println(\"Job3 completed\")\n            }\n            val job4 = launch {\n                delay(50)\n                throw IOException(\"Job4 failed\")\n            }\n            // job3 会被自动取消\n        }\n    } catch (e: IOException) {\n        println(\"Caught exception: ${e.message}\")\n    }\n    println(\"CoroutineScope finished.\")\n}\n\n// 辅助函数：等待多个 Job\nprivate suspend fun joinAll(vararg jobs: Job) {\n    jobs.forEach { it.join() }\n}",
-        "explanation": "代码首先演示了 supervisorScope：两个子协程 job1 和 job2 并发执行。job2 抛出 IOException 异常，但 job1 不受影响并正常完成。supervisorScope 本身不会因为子协程异常而失败，但异常仍然会从子协程抛出到当前协程（即 supervisorScope 内部），需要用 try-catch 捕获（本例中未捕获，但异常不会传播到 runBlocking）。后面是 coroutineScope：一旦 job4 抛出异常，整个作用域立即取消，job3 被自动取消，coroutineScope 将异常抛出，我们在外部捕获。这展示了两种作用域的不同异常传播行为。"
+        "language": "Dart",
+        "code": "import 'package:flutter/material.dart';\n\nvoid main() => runApp(MyApp());\n\nclass MyApp extends StatelessWidget {\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      home: Scaffold(\n        appBar: AppBar(title: Text('Widget示例')),\n        body: Center(\n          child: MyCounter(), // 使用StatefulWidget\n        ),\n      ),\n    );\n  }\n}\n\n// StatelessWidget示例：纯展示\nclass Greeting extends StatelessWidget {\n  final String name;\n  Greeting(this.name);\n\n  @override\n  Widget build(BuildContext context) {\n    return Text('你好，$name！'); // 不会改变\n  }\n}\n\n// StatefulWidget示例：计数器\nclass MyCounter extends StatefulWidget {\n  @override\n  _MyCounterState createState() => _MyCounterState();\n}\n\nclass _MyCounterState extends State<MyCounter> {\n  int _count = 0; // 状态变量\n\n  void _increment() {\n    setState(() {\n      _count++; // 通知Flutter：状态已变，请重建\n    });\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return Column(\n      mainAxisAlignment: MainAxisAlignment.center,\n      children: [\n        Greeting('Flutter'), // 调用StatelessWidget\n        Text('计数：$_count', style: TextStyle(fontSize: 24)),\n        ElevatedButton(\n          onPressed: _increment,\n          child: Text('点击增加'),\n        ),\n      ],\n    );\n  }\n}",
+        "explanation": "代码创建了一个简单的Flutter应用。`MyApp`是StatelessWidget，它配置了MaterialApp并显示`MyCounter`。`Greeting`是另一个StatelessWidget，接收`name`参数并显示文本，它不会随时间变化。`MyCounter`是StatefulWidget：`createState`返回`_MyCounterState`对象，其中定义了`_count`变量和`_increment`方法。每次点击按钮调用`_increment`，通过`setState`通知框架`_count`已增加，框架随即调用`build`重建UI，从而显示新计数。注意：状态变量以下划线开头表示私有，这是Dart的推荐做法。"
       },
       "keyPoints": [
-        "结构化并发保证协程生命周期与作用域绑定，避免泄漏",
-        "Job 层级是取消传播的基础，子协程抛出未捕获异常会向上传播",
-        "SupervisorJob 允许子协程独立处理异常，不影响同级",
-        "coroutineScope 和 supervisorScope 分别提供”全部或全不“和”相互隔离“的并发模型",
-        "实际工程中优先使用结构化作用域，避免 GlobalScope"
+        "StatelessWidget适用于不依赖可变状态的静态UI",
+        "StatefulWidget通过State对象管理可变数据，使用setState触发重建",
+        "StatefulWidget生命周期：createState → initState → build → setState → dispose",
+        "避免在所有地方都使用StatefulWidget，优先考虑StatelessWidget + 回调提升状态",
+        "实际开发中，常用父组件作为StatefulWidget，子组件作为StatelessWidget接收数据和事件"
       ],
       "exercise": {
-        "description": "设计一个后台图片加载器，使用 supervisorScope 同时发起多个图片下载协程。如果某个下载失败，需要记录错误但不应中断其他下载。下载完成后（无论成功或失败），统计成功、失败数量并输出。",
-        "hint": "使用 launch 在 supervisorScope 内启动多个协程，每个下载任务返回 Result<T> 类型，最后汇总结果。可以使用 try-catch 包装每个协程的代码，避免异常被吞掉。",
+        "description": "改造下面的代码：将`MyCounter`改为StatelessWidget，通过父组件传递`count`和`onIncrement`回调来实现相同的计数器功能。写出改造后的父组件（StatefulWidget）和子组件（StatelessWidget）代码。",
+        "hint": "父组件持有状态`_count`和`_increment`方法，子组件通过构造函数接收`count`和`onPressed`回调，点击按钮调用父组件传入的回调即可。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，使得 supervisorScope 内子协程的取消不会影响同级。在 ?????? 处填写正确的作用域构建器。",
-            "codeContext": "suspend fun loadUrls(urls: List<String>): List<Result<String>> = ?????? {\n    val results = mutableListOf<Result<String>>()\n    val jobs = urls.map { url ->\n        launch {\n            try {\n                // 模拟下载\n                delay(100)\n                Result.success(url)\n            } catch (e: Exception) {\n                Result.failure(e)\n            }.also { results.add(it) }\n        }\n    }\n    jobs.forEach { it.join() }\n    return results\n}",
+            "question": "完成以下关于StatefulWidget的语句：在State类中更新UI之前，必须调用______方法。",
+            "codeContext": "setState(() { _count++; });",
             "segments": [
               {
                 "type": "text",
-                "content": "suspend fun loadUrls(urls: List<String>): List<Result<String>> = ",
+                "content": "在State类中更新UI之前，必须调用",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,55 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[填写方法名]",
                 "options": [
-                  "coroutineScope",
-                  "supervisorScope",
-                  "runBlocking"
+                  "setState",
+                  "initState",
+                  "build",
+                  "dispose"
                 ],
-                "correctAnswer": "supervisorScope"
+                "correctAnswer": "setState"
               },
               {
                 "type": "text",
-                "content": " { ... }",
+                "content": "方法。",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "supervisorScope",
-            "explanation": "因为我们需要一个子协程的失败不影响其他子协程，supervisorScope 正好提供这种隔离。"
+            "correctAnswer": "setState",
+            "explanation": "setState会通知Flutter框架状态已改变，需要重新调用build方法更新UI。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "在结构化并发中，如果父协程被取消，子协程会发生什么？",
+            "question": "以下关于StatelessWidget和StatefulWidget的说法，哪一项是正确的？",
             "codeContext": null,
             "segments": null,
             "options": [
-              "子协程继续运行直到完成",
-              "子协程会被自动取消",
-              "子协程会抛出一个 CancellationException",
-              "只有使用 SupervisorJob 时子协程才会被取消"
+              "StatelessWidget可以拥有可变状态，但需要通过setState更新",
+              "StatefulWidget的性能总是低于StatelessWidget，因此应尽量避免使用",
+              "StatelessWidget的build方法只调用一次，之后不会重新执行",
+              "StatefulWidget的State对象在widget从树中移除后仍然存在"
             ],
-            "correctAnswer": "子协程会被自动取消",
-            "explanation": "结构化并发确保父协程取消时，所有子协程都被取消，无论 Job 类型如何。这是协程层级的基本保证。"
+            "correctAnswer": "C",
+            "explanation": "A错误：StatelessWidget没有可变状态；B错误：适当使用StatefulWidget并没有明显性能问题；D错误：State对象会在dispose时被清理。C正确：StatelessWidget的build方法仅在创建时执行一次，除非父节点重建导致其重建。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "下列代码的输出是什么？",
-            "codeContext": "runBlocking {\n    coroutineScope {\n        launch {\n            delay(100)\n            println(\"A\")\n        }\n        launch {\n            delay(50)\n            throw RuntimeException()\n        }\n    }\n    println(\"B\")\n}",
+            "question": "阅读以下代码，当点击按钮一次后，控制台会输出什么？",
+            "codeContext": "class _MyWidgetState extends State<MyWidget> {\n  int _a = 0;\n  void _tap() {\n    _a = 5;\n    setState(() {});\n    print(_a);\n  }\n  @override\n  Widget build(BuildContext context) { return ElevatedButton(onPressed: _tap, child: Text('点击')); }\n}",
             "segments": null,
             "options": [
-              "A  B",
-              "抛出异常，不会输出任何内容",
-              "B",
-              "A"
+              "0",
+              "5",
+              "null",
+              "Flutter会报错"
             ],
-            "correctAnswer": "抛出异常，不会输出任何内容",
-            "explanation": "子协程抛出 RuntimeException 后，coroutineScope 会立即取消所有子协程并抛出异常到 runBlocking，因此 A 的 delay 尚未完成即被取消，B 也无法执行。"
+            "correctAnswer": "5",
+            "explanation": "setState的回调中我们只写了一个空函数，但在此之前已经将_a赋值为5，所以打印结果为5。注意：setState即使没有实际变化，也会触发build重建，但这里确实改变了状态。"
           }
         ]
       }
