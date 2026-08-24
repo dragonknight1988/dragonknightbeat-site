@@ -1,33 +1,33 @@
 #!/usr/bin/env python3
 """
-每日风口简报 JSON 生成器 (DeepSeek V4)
+每日风口简报 JSON 生成器 (MiMo Pro)
 用法: python3 generate_daily_briefing.py [--output 路径]
 """
 
-import json, os, sys, subprocess, argparse, requests
+import json, os, sys, subprocess, argparse, re, requests
 from datetime import datetime, timezone, timedelta
 
 # 北京时区
 BJ_TZ = timezone(timedelta(hours=8))
 
 
-DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "sk-e08c986a456f4fed99d8250596e7f9e8")
-DEEPSEEK_BASE_URL = "https://api.deepseek.com"
-DEEPSEEK_MODEL = "deepseek-v4-flash"
+MIMO_API_KEY = os.environ.get("MIMO_API_KEY", "tp-c6irsm5360gu18hd64hlmz47ltg54c5rbszghj45t5z96c31")
+MIMO_BASE_URL = "https://token-plan-cn.xiaomimimo.com/v1"
+MIMO_MODEL = "xiaomi/mimo-v2.5-pro"
 
 
-def call_deepseek(system_prompt, user_prompt, max_tokens=8000):
+def call_mimo(system_prompt, user_prompt, max_tokens=8000):
     headers = {
-        "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
+        "Authorization": f"Bearer {MIMO_API_KEY}",
         "Content-Type": "application/json"
     }
     payload = {
-        "model": DEEPSEEK_MODEL,
+        "model": MIMO_MODEL,
         "messages": [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}],
         "max_tokens": max_tokens, "temperature": 0.7
     }
     try:
-        resp = requests.post(f"{DEEPSEEK_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=300)
+        resp = requests.post(f"{MIMO_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=300)
         resp.raise_for_status()
         data = resp.json()
         print(f"📊 Token: 输入 {data['usage']['prompt_tokens']} | 输出 {data['usage']['completion_tokens']}")
@@ -59,6 +59,7 @@ def generate_briefing_content():
             "title": "文章标题",
             "summary": "一句话摘要（30-50字）",
             "detail": "详细内容（100-200字）",
+            "impact": "影响分析（50-100字，对行业/用户的实际影响）",
             "source": "来源"
           }}
         ]
@@ -89,7 +90,7 @@ def generate_briefing_content():
 - 所有内容基于当前日期和真实的科技趋势
 - 使用中文，语言专业但不晦涩"""
 
-    result = call_deepseek(
+    result = call_mimo(
         system_prompt,
         f"请生成 {today} 的每日风口简报。要求4个资讯板块共10-12篇文章，3-4个风口项目。",
         max_tokens=8000
@@ -98,9 +99,9 @@ def generate_briefing_content():
         return None
 
     clean = result.strip()
-    if clean.startswith("```json"): clean = clean[7:]
-    elif clean.startswith("```"): clean = clean[3:]
-    if clean.endswith("```"): clean = clean[:-3]
+    # Remove markdown code fences (robust)
+    clean = re.sub(r'^```\w*\s*', '', clean)
+    clean = re.sub(r'\s*```\s*$', '', clean)
     clean = clean.strip()
 
     js = clean.find("{")
@@ -172,7 +173,7 @@ def main():
                         help="输出文件路径（默认 daily-briefing.json）")
     args = parser.parse_args()
 
-    print(f"📡 生成 {datetime.now(BJ_TZ).strftime('%Y-%m-%d')} 风口简报（DeepSeek V4）...")
+    print(f"📡 生成 {datetime.now(BJ_TZ).strftime('%Y-%m-%d')} 风口简报（MiMo Pro）...")
 
     content = generate_briefing_content()
     if content:

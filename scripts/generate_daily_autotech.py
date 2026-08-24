@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-每日汽车技术知识 JSON 生成器 (DeepSeek V4)
+每日汽车技术知识 JSON 生成器 (MiMo Pro)
 用法: python3 generate_daily_autotech.py [--output 路径]
 """
 
-import json, os, sys, argparse, requests
+import json, os, sys, argparse, re, requests
 from datetime import datetime, timezone, timedelta
 
 BJ_TZ = timezone(timedelta(hours=8))
 
-DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "sk-e08c986a456f4fed99d8250596e7f9e8")
-DEEPSEEK_BASE_URL = "https://api.deepseek.com"
-DEEPSEEK_MODEL = "deepseek-v4-flash"
+MIMO_API_KEY = os.environ.get("MIMO_API_KEY", "tp-c6irsm5360gu18hd64hlmz47ltg54c5rbszghj45t5z96c31")
+MIMO_BASE_URL = "https://token-plan-cn.xiaomimimo.com/v1"
+MIMO_MODEL = "xiaomi/mimo-v2.5"
 
 CATEGORIES = [
     "新能源汽车", "发动机与动力系统", "底盘与悬挂", "电气与电子",
@@ -20,15 +20,15 @@ CATEGORIES = [
 ]
 
 
-def call_deepseek(system_prompt, user_prompt, max_tokens=6000):
-    headers = {"Authorization": f"Bearer {DEEPSEEK_API_KEY}", "Content-Type": "application/json"}
+def call_mimo(system_prompt, user_prompt, max_tokens=6000):
+    headers = {"Authorization": f"Bearer {MIMO_API_KEY}", "Content-Type": "application/json"}
     payload = {
-        "model": DEEPSEEK_MODEL,
+        "model": MIMO_MODEL,
         "messages": [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}],
         "max_tokens": max_tokens, "temperature": 0.7
     }
     try:
-        resp = requests.post(f"{DEEPSEEK_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=300)
+        resp = requests.post(f"{MIMO_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=300)
         resp.raise_for_status()
         data = resp.json()
         print(f"📊 Token: 输入 {data['usage']['prompt_tokens']} | 输出 {data['usage']['completion_tokens']}")
@@ -98,14 +98,13 @@ def generate_article():
 注意：3道测验题必须基于文章内容，必须有唯一正确答案。"""
 
     user_prompt = f"请为 {today} 生成一篇关于「{category}」的汽车技术知识文章，含3道测验题。要求专业、准确、有深度。"
-    result = call_deepseek(system_prompt, user_prompt, max_tokens=6000)
+    result = call_mimo(system_prompt, user_prompt, max_tokens=6000)
     if not result:
         return None
 
     clean = result.strip()
-    if clean.startswith("```json"): clean = clean[7:]
-    elif clean.startswith("```"): clean = clean[3:]
-    if clean.endswith("```"): clean = clean[:-3]
+    clean = re.sub(r'^```\w*\s*', '', clean)
+    clean = re.sub(r'\s*```\s*$', '', clean)
     clean = clean.strip()
 
     js = clean.find("{")
@@ -148,7 +147,7 @@ def main():
     parser.add_argument("--output", default="daily-autotech.json", help="输出路径")
     args = parser.parse_args()
 
-    print(f"🔧 生成 {datetime.now(BJ_TZ).strftime('%Y-%m-%d')} 汽车技术知识文章（DeepSeek V4）...")
+    print(f"🔧 生成 {datetime.now(BJ_TZ).strftime('%Y-%m-%d')} 汽车技术知识文章（MiMo Pro）...")
     content = generate_article()
     if content:
         with open(args.output, "w", encoding="utf-8") as f:

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日新闻晨报 - 技术支持 | DragonKnightBeat</title>
+    <meta name="description" content="每日新闻晨报 iOS App - 每天7点推送精选新闻，五大分类：国内时政/国际时政/财经动态/科技前沿/其他要闻">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0ff;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+        header { text-align: center; padding: 60px 0 40px; position: relative; }
+        header::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 120px; height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed, #f59e0b);
+            border-radius: 3px;
+        }
+        .app-icon {
+            width: 100px; height: 100px; border-radius: 22px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #f59e0b 100%);
+            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.4);
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 52px; margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 36px; font-weight: 800;
+            background: linear-gradient(135deg, #e0e0ff, #60a5fa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle { font-size: 16px; color: #8888bb; margin-top: 8px; font-weight: 400; }
+        .subtitle span { color: #60a5fa; }
+        section {
+            margin: 40px 0; padding: 32px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(8px);
+        }
+        h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        h2 .icon { font-size: 24px; }
+        .faq-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .faq-q { font-weight: 600; font-size: 16px; color: #f0d6ff; margin-bottom: 6px; }
+        .faq-q::before { content: '❓ '; }
+        .faq-a { color: #9999bb; font-size: 15px; padding-left: 24px; }
+        .faq-a code { background: rgba(255,255,255,0.08); padding: 2px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f0a6ff; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+        .feature-tag {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px; padding: 14px 16px; font-size: 14px;
+            transition: all 0.2s; display: flex; align-items: center; gap: 8px;
+        }
+        .feature-tag:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); border-color: rgba(96, 165, 250, 0.4); }
+        .contact-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+        .contact-btn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
+            border-radius: 12px; font-size: 15px; font-weight: 600; text-decoration: none;
+            transition: all 0.3s; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .contact-btn.email { background: linear-gradient(135deg, rgba(96,165,250,0.2), rgba(124,58,237,0.2)); color: #93c5fd; }
+        .contact-btn.email:hover { background: linear-gradient(135deg, rgba(96,165,250,0.4), rgba(124,58,237,0.4)); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(96,165,250,0.3); }
+        .version-info { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; margin-top: 16px; }
+        .version-info-item { text-align: center; }
+        .version-info-item .label { font-size: 12px; color: #6666aa; text-transform: uppercase; letter-spacing: 1px; }
+        .version-info-item .value { font-size: 16px; font-weight: 600; color: #93c5fd; }
+        footer { text-align: center; padding: 40px 0 20px; color: #555588; font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer a { color: #8888bb; }
+        footer a:hover { color: #60a5fa; }
+        @media (max-width: 600px) { .container { padding: 20px 16px 60px; } h1 { font-size: 28px; } section { padding: 24px 20px; } .feature-grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="app-icon">📰</div>
+        <h1>每日新闻晨报</h1>
+        <p class="subtitle">Daily News · <span>v1.1</span></p>
+        <p style="margin-top:12px; color:#9999bb; font-size:15px;">
+            每天7:00推送精选新闻 — 国内时政 · 国际时政 · 财经动态 · 科技前沿 · 其他要闻
+        </p>
+    </header>
+
+    <section>
+        <h2><span class="icon">✨</span> 功能一览</h2>
+        <div class="feature-grid">
+            <div class="feature-tag">📰 五大分类新闻</div>
+            <div class="feature-tag">🌅 每日7点推送</div>
+            <div class="feature-tag">🔖 文章收藏</div>
+            <div class="feature-tag">📋 分类浏览</div>
+            <div class="feature-tag">📱 深色模式</div>
+            <div class="feature-tag">🔗 复制分享</div>
+            <div class="feature-tag">💾 离线缓存</div>
+            <div class="feature-tag">🔄 下拉刷新</div>
+        </div>
+    </section>
+
+    <section>
+        <h2><span class="icon">💬</span> 常见问题</h2>
+        <div class="faq-item">
+            <div class="faq-q">新闻数据从哪里来？</div>
+            <div class="faq-a">每日新闻晨报的数据由 DragonKnightBeat 编辑团队每日精选整理，涵盖国内时政、国际时政、财经动态、科技前沿、其他要闻五大板块。数据每日自动更新。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">App 需要联网吗？</div>
+            <div class="faq-a">首次打开或刷新时需要联网获取最新新闻。已阅读的新闻会自动缓存到本地，支持离线查看。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">新闻更新频率？</div>
+            <div class="faq-a">每天7:00自动更新当日新闻。您也可以下拉手动刷新获取最新内容。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">如何收藏文章？</div>
+            <div class="faq-a">在文章详情页点击右上角 ♡ 按钮即可收藏。已收藏的文章可在"收藏"标签页中查看和管理。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">App 支持哪些设备？</div>
+            <div class="faq-a">支持 iPhone 和 iPad，需 iOS 17.0 及以上版本。适配横竖屏。</div>
+        </div>
+    </section>
+
+    <section>
+        <h2><span class="icon">📮</span> 联系与版本</h2>
+        <div class="version-info">
+            <div class="version-info-item"><div class="label">当前版本</div><div class="value">v1.1</div></div>
+            <div class="version-info-item"><div class="label">平台</div><div class="value">iOS 17+</div></div>
+            <div class="version-info-item"><div class="label">大小</div><div class="value">约 8 MB</div></div>
+            <div class="version-info-item"><div class="label">语言</div><div class="value">中文</div></div>
+        </div>
+        <p style="margin: 20px 0 12px; color: #9999bb;">如有问题、建议、反馈，请联系我们：</p>
+        <div class="contact-links">
+            <a href="mailto:support@dragonknightbeat.com" class="contact-btn email">✉️ support@dragonknightbeat.com</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>📰 每日新闻晨报 · Daily News</p>
+        <p style="margin-top: 8px;">© 2026 Wang Long. All rights reserved.</p>
+        <p style="margin-top: 12px;">
+            <a href="https://dragonknightbeat.com">← DragonKnightBeat</a>
+        </p>
+    </footer>
+</div>
+</body>
+</html>

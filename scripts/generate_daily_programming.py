@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 """
-每日编程学习 JSON 生成器 (DeepSeek V4)
+每日编程学习 JSON 生成器 (MiMo Pro)
 用法: python3 generate_daily_programming.py [--output 路径] [--topic "Swift/React/Python"]
 """
 
-import json, os, sys, subprocess, argparse, requests
+import json, os, sys, subprocess, argparse, requests, re
 from datetime import datetime, timezone, timedelta
 
 # 北京时区
 BJ_TZ = timezone(timedelta(hours=8))
 
 
-DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "sk-e08c986a456f4fed99d8250596e7f9e8")
-DEEPSEEK_BASE_URL = "https://api.deepseek.com"
-DEEPSEEK_MODEL = "deepseek-v4-flash"
+MIMO_API_KEY = os.environ.get("MIMO_API_KEY", "tp-c6irsm5360gu18hd64hlmz47ltg54c5rbszghj45t5z96c31")
+MIMO_BASE_URL = "https://token-plan-cn.xiaomimimo.com/v1"
+MIMO_MODEL = "xiaomi/mimo-v2.5-pro"
 
 TECH_STACKS = [
     "Swift / SwiftUI", "Python", "JavaScript / TypeScript",
@@ -23,18 +23,18 @@ TECH_STACKS = [
 DIFFICULTIES = ["初级", "中级", "中级", "高级"]
 
 
-def call_deepseek(system_prompt, user_prompt, max_tokens=6000):
+def call_mimo(system_prompt, user_prompt, max_tokens=6000):
     headers = {
-        "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
+        "Authorization": f"Bearer {MIMO_API_KEY}",
         "Content-Type": "application/json"
     }
     payload = {
-        "model": DEEPSEEK_MODEL,
+        "model": MIMO_MODEL,
         "messages": [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}],
         "max_tokens": max_tokens, "temperature": 0.8
     }
     try:
-        resp = requests.post(f"{DEEPSEEK_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=300)
+        resp = requests.post(f"{MIMO_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=300)
         resp.raise_for_status()
         data = resp.json()
         print(f"📊 Token: 输入 {data['usage']['prompt_tokens']} | 输出 {data['usage']['completion_tokens']}")
@@ -108,7 +108,7 @@ def generate_programming_content(user_topic=None):
 - 每个 topic 要有实用价值，能直接用在工作中"""
 
     print(f"💻 技术栈: {chosen_tech} | 难度: {difficulty}")
-    result = call_deepseek(
+    result = call_mimo(
         system_prompt,
         f"请生成以【{chosen_tech}】为主题、难度为「{difficulty}」的今日编程学习内容，日期：{today}",
         max_tokens=6000
@@ -117,9 +117,8 @@ def generate_programming_content(user_topic=None):
         return None
 
     clean = result.strip()
-    if clean.startswith("```json"): clean = clean[7:]
-    elif clean.startswith("```"): clean = clean[3:]
-    if clean.endswith("```"): clean = clean[:-3]
+    clean = re.sub(r'^```\w*\s*', '', clean)
+    clean = re.sub(r'\s*```\s*$', '', clean)
     clean = clean.strip()
 
     js = clean.find("{")
@@ -165,10 +164,20 @@ def main():
     parser.add_argument("--topic", default=None, help="指定技术栈")
     args = parser.parse_args()
 
-    print(f"💻 生成 {datetime.now(BJ_TZ).strftime('%Y-%m-%d')} 编程学习内容（DeepSeek V4）...")
+    _today = datetime.now(BJ_TZ).strftime("%Y-%m-%d"); print(f"💻 生成 {_today} 编程学习内容（MiMo Pro）...")
 
     content = generate_programming_content(args.topic)
     if content:
+        # 强制修正日期为今天，防止AI返回错误日期
+        _today = datetime.now(BJ_TZ).strftime("%Y-%m-%d")
+        if content.get("date") != _today:
+            print(f"⚠️ AI返回日期 {content.get('date')}，修正为 {_today}")
+            content["date"] = _today
+        for c in content.get("contents", []):
+            if c.get("date") != _today:
+                c["date"] = _today
+            if c.get("id") and not c["id"].endswith(_today):
+                c["id"] = f"prog-{_today}"
         with open(args.output, "w", encoding="utf-8") as f:
             json.dump(content, f, ensure_ascii=False, indent=2)
         print(f"✅ 已写入: {args.output}")

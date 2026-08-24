@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>DK赛事 - 技术支持 | DragonKnightBeat</title>
+    <meta name="description" content="DK赛事 iOS App - 马拉松/HYROX/CrossFit赛事资讯，报名信息一键直达">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:linear-gradient(135deg,#0f0f1a,#1a1a2e,#2d1b4e); color:#e0e0ff; min-height:100vh; line-height:1.7; }
+        .container { max-width:800px; margin:0 auto; padding:40px 24px 80px; }
+        header { text-align:center; padding:60px 0 40px; position:relative; }
+        header::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:120px; height:3px; background:linear-gradient(90deg,#f97316,#ec4899,#a855f7); border-radius:3px; }
+        .app-icon { width:100px; height:100px; border-radius:22px; background:linear-gradient(135deg,#f97316,#ec4899,#a855f7); box-shadow:0 8px 32px rgba(249,115,22,0.4); display:inline-flex; align-items:center; justify-content:center; font-size:52px; margin-bottom:16px; }
+        h1 { font-size:36px; font-weight:800; background:linear-gradient(135deg,#fbd38d,#f97316); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .subtitle { font-size:16px; color:#8888bb; margin-top:8px; }
+        .subtitle span { color:#f97316; }
+        section { margin:40px 0; padding:32px; background:rgba(255,255,255,0.04); border-radius:20px; border:1px solid rgba(255,255,255,0.06); backdrop-filter:blur(8px); }
+        h2 { font-size:22px; font-weight:700; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+        h2 .icon { font-size:24px; }
+        .faq-item { margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.06); }
+        .faq-item:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+        .faq-q { font-weight:600; font-size:16px; color:#fde68a; margin-bottom:6px; }
+        .faq-q::before { content:'❓ '; }
+        .faq-a { color:#9999bb; font-size:15px; padding-left:24px; }
+        .faq-a code { background:rgba(255,255,255,0.08); padding:2px 8px; border-radius:4px; font-size:13px; color:#f0a6ff; }
+        .feature-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
+        .feature-tag { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px 16px; font-size:14px; transition:all .2s; display:flex; align-items:center; gap:8px; }
+        .feature-tag:hover { background:rgba(255,255,255,0.1); transform:translateY(-2px); border-color:rgba(249,115,22,0.4); }
+        .contact-links { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
+        .contact-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:12px; font-size:15px; font-weight:600; text-decoration:none; transition:all .3s; border:1px solid rgba(255,255,255,0.1); }
+        .contact-btn.email { background:linear-gradient(135deg,rgba(249,115,22,0.2),rgba(236,72,153,0.2)); color:#fdba74; }
+        .contact-btn.email:hover { background:linear-gradient(135deg,rgba(249,115,22,0.4),rgba(236,72,153,0.4)); transform:translateY(-2px); box-shadow:0 4px 20px rgba(249,115,22,0.3); }
+        .version-info { display:flex; gap:24px; flex-wrap:wrap; justify-content:center; padding:16px; background:rgba(255,255,255,0.03); border-radius:12px; margin-top:16px; }
+        .version-info-item { text-align:center; }
+        .version-info-item .label { font-size:12px; color:#6666aa; text-transform:uppercase; letter-spacing:1px; }
+        .version-info-item .value { font-size:16px; font-weight:600; color:#fdba74; }
+        footer { text-align:center; padding:40px 0 20px; color:#555588; font-size:13px; border-top:1px solid rgba(255,255,255,0.05); }
+        footer a { color:#8888bb; }
+        footer a:hover { color:#f97316; }
+        @media (max-width:600px){ .container{padding:20px 16px 60px;} h1{font-size:28px;} section{padding:24px 20px;} .feature-grid{grid-template-columns:1fr 1fr;} }
+    </style>
+</head>
+<body><div class="container">
+    <header>
+        <div class="app-icon">🏃</div>
+        <h1>DK赛事</h1>
+        <p class="subtitle">DKRaces · <span>v1.0</span></p>
+        <p style="margin-top:12px; color:#9999bb; font-size:15px;">
+            马拉松 · HYROX · CrossFit 赛事资讯 — 分类筛选 · 报名直达 · 收藏管理
+        </p>
+    </header>
+    <section>
+        <h2><span class="icon">✨</span> 功能一览</h2>
+        <div class="feature-grid">
+            <div class="feature-tag">🏃 马拉松赛事</div>
+            <div class="feature-tag">💪 HYROX 体能赛</div>
+            <div class="feature-tag">🏋️ CrossFit 赛事</div>
+            <div class="feature-tag">🔍 分类筛选</div>
+            <div class="feature-tag">📅 按月份分组</div>
+            <div class="feature-tag">🔗 报名官网直达</div>
+            <div class="feature-tag">🔖 赛事收藏</div>
+            <div class="feature-tag">🏷️ 报名状态标签</div>
+        </div>
+    </section>
+    <section>
+        <h2><span class="icon">💬</span> 常见问题</h2>
+        <div class="faq-item"><div class="faq-q">赛事数据来源？</div><div class="faq-a">赛事信息由 DragonKnightBeat 编辑团队收集整理。因赛事报名时间等可能临时调整，建议通过 App 内链接跳转官方报名页面核实最新信息。</div></div>
+        <div class="faq-item"><div class="faq-q">报名状态标签什么意思？</div><div class="faq-a">🟢 报名中 — 已开放报名；🟡 未开放 — 尚未开始报名；🔴 已截止 — 报名已结束。请以官方页面为准。</div></div>
+        <div class="faq-item"><div class="faq-q">如何查看赛事详情？</div><div class="faq-a">点击任意赛事卡片即可查看详情，点击"报名官网"按钮可一键跳转至官方报名页面。</div></div>
+        <div class="faq-item"><div class="faq-q">App 需要联网吗？</div><div class="faq-a">赛事数据从网络获取，首次加载和刷新时需要联网。已查看的赛事详情会被缓存。</div></div>
+        <div class="faq-item"><div class="faq-q">数据多久更新一次？</div><div class="faq-a">赛事数据会不定期更新。下拉即可刷新最新赛事信息。如有新赛事或信息变更，编辑团队会及时更新。</div></div>
+        <div class="faq-item"><div class="faq-q">建议添加新赛事？</div><div class="faq-a">欢迎通过下方邮箱联系我们，告知赛事名称、日期、报名链接等信息，我们会尽快添加。</div></div>
+    </section>
+    <section>
+        <h2><span class="icon">📮</span> 联系与版本</h2>
+        <div class="version-info">
+            <div class="version-info-item"><div class="label">当前版本</div><div class="value">v1.0</div></div>
+            <div class="version-info-item"><div class="label">平台</div><div class="value">iOS 17+</div></div>
+            <div class="version-info-item"><div class="label">大小</div><div class="value">约 6 MB</div></div>
+            <div class="version-info-item"><div class="label">语言</div><div class="value">中文</div></div>
+        </div>
+        <p style="margin:20px 0 12px; color:#9999bb;">如有问题、建议、反馈，请联系我们：</p>
+        <div class="contact-links">
+            <a href="mailto:support@dragonknightbeat.com" class="contact-btn email">✉️ support@dragonknightbeat.com</a>
+        </div>
+    </section>
+    <footer>
+        <p>🏃 DK赛事 · DKRaces</p>
+        <p style="margin-top:8px;">© 2026 Wang Long. All rights reserved.</p>
+        <p style="margin-top:12px;"><a href="https://dragonknightbeat.com">← DragonKnightBeat</a></p>
+    </footer>
+</div></body>
+</html>
