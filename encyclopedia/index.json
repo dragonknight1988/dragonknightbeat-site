@@ -1,0 +1,7772 @@
+[
+  {
+    "id": "eco-01",
+    "title": "供需关系",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "供需关系是经济学核心概念，描述商品价格和数量由供应和需求相互作用决定，是市场经济的基础。"
+  },
+  {
+    "id": "eco-02",
+    "title": "通货膨胀",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "通货膨胀指物价水平持续上升，导致货币购买力下降，是宏观经济的重要指标。"
+  },
+  {
+    "id": "eco-03",
+    "title": "GDP",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "GDP是国内生产总值，衡量一国在一定时期内生产的全部最终商品和服务的市场价值，反映经济规模和健康。"
+  },
+  {
+    "id": "eco-04",
+    "title": "股票市场",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "股票市场是交易公司股份的金融市场，为企业融资和投资者提供投资渠道，反映经济预期。"
+  },
+  {
+    "id": "eco-05",
+    "title": "央行",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "央行是国家管理货币和金融系统的机构，负责制定货币政策、发行货币和维护金融稳定。"
+  },
+  {
+    "id": "eco-06",
+    "title": "货币政策",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "货币政策是央行通过控制货币供应和利率来影响经济活动的政策工具，旨在促进增长和稳定物价。"
+  },
+  {
+    "id": "eco-07",
+    "title": "国际贸易",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "国际贸易指国家之间商品和服务的交换，基于比较优势理论，促进资源优化和经济增长。"
+  },
+  {
+    "id": "eco-08",
+    "title": "汇率",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "汇率是一国货币兑换另一国货币的比率，影响国际贸易、投资和资本流动。"
+  },
+  {
+    "id": "eco-09",
+    "title": "经济周期",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "经济周期是经济活动的周期性波动，包括扩张、顶峰、衰退和谷底，影响就业、产出和政策。"
+  },
+  {
+    "id": "eco-10",
+    "title": "垄断",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "垄断指一个卖方控制整个市场，缺乏竞争，可能导致价格高、效率低和市场失灵。"
+  },
+  {
+    "id": "eco-1",
+    "title": "机会成本",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "机会成本指为了得到某种东西而必须放弃的其他东西的最大价值，是经济学中决策分析的核心概念。"
+  },
+  {
+    "id": "eco-2",
+    "title": "边际效用",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "边际效用指消费者从额外一单位商品或服务中获得的满足感增加，通常随消费量增加而递减。"
+  },
+  {
+    "id": "eco-3",
+    "title": "凯恩斯主义",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "凯恩斯主义是基于约翰·梅纳德·凯恩斯思想的经济理论，强调政府通过财政和货币政策干预经济以稳定总需求。"
+  },
+  {
+    "id": "eco-4",
+    "title": "自由市场",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "自由市场是一种经济系统，其中价格由供需决定，政府干预最小化，强调私有产权和竞争。"
+  },
+  {
+    "id": "eco-5",
+    "title": "计划经济",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "计划经济是一种经济系统，其中生产、分配和价格由中央政府控制，旨在实现社会平等和经济稳定。"
+  },
+  {
+    "id": "eco-6",
+    "title": "混合经济",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "混合经济结合了自由市场和政府干预的元素，私有和公有部门共存，以平衡效率与社会公平。"
+  },
+  {
+    "id": "eco-7",
+    "title": "数字货币",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "数字货币是以电子形式存在的货币，包括加密货币如比特币和央行数字货币，旨在提高交易效率和金融包容。"
+  },
+  {
+    "id": "eco-8",
+    "title": "量化宽松",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "量化宽松是央行通过购买政府债券和其他资产来增加货币供应、降低长期利率以刺激经济的非传统货币政策。"
+  },
+  {
+    "id": "eco-9",
+    "title": "债务危机",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "债务危机指政府、企业或个人无法偿还债务，导致金融不稳定、经济衰退和全球风险传染。"
+  },
+  {
+    "id": "eco-10",
+    "title": "经济全球化",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "经济全球化指国际贸易、投资和金融的日益整合，促进资源全球分配、经济增长但也带来 inequality 和风险。"
+  },
+  {
+    "id": "eco-21",
+    "title": "影子银行监管",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "影子银行监管是指对传统银行体系外的金融中介和活动进行监督，以防范系统性风险，确保金融稳定。"
+  },
+  {
+    "id": "eco-22",
+    "title": "金融衍生品",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "金融衍生品是价值依赖于基础资产（如股票、债券）的金融合约，用于风险对冲或投机，需严格监管。"
+  },
+  {
+    "id": "eco-23",
+    "title": "量化交易",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "量化交易是使用数学模型和算法自动执行交易的投资策略，旨在从市场 inefficiencies 中获利，提高效率。"
+  },
+  {
+    "id": "eco-24",
+    "title": "普惠金融",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "普惠金融旨在为所有社会阶层提供可负担的金融服务，减少金融排斥，促进经济包容和贫困减少。"
+  },
+  {
+    "id": "eco-25",
+    "title": "绿色金融",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "绿色金融将资金导向环保和可持续项目，如可再生能源，以应对气候变化并满足ESG投资需求。"
+  },
+  {
+    "id": "eco-26",
+    "title": "碳交易",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "碳交易是一种市场机制，允许企业买卖碳排放许可证，以控制温室气体排放并激励减排技术创新。"
+  },
+  {
+    "id": "eco-27",
+    "title": "数字人民币",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "数字人民币是中国人民银行发行的法定数字货币，旨在补充现金，提高支付效率并增强金融监管能力。"
+  },
+  {
+    "id": "eco-28",
+    "title": "供应链金融",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "供应链金融为供应链上下游企业提供融资服务，通过核心企业信用优化资金流，支持中小企业发展。"
+  },
+  {
+    "id": "eco-29",
+    "title": "风险投资",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "风险投资向初创企业提供资金以换取股权，支持创新和高增长潜力企业，驱动经济变革。"
+  },
+  {
+    "id": "eco-30",
+    "title": "私募股权",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "私募股权通过非公开市场向成熟企业提供资金，涉及收购和重组，旨在长期提升企业价值。"
+  },
+  {
+    "id": "eco-31",
+    "title": "经济全球化挑战",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "经济全球化在促进增长的同时，带来不平等、环境压力和文化冲突等挑战。"
+  },
+  {
+    "id": "eco-32",
+    "title": "区域经济一体化",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "区域经济一体化指地理邻近国家通过协议降低贸易壁垒，促进经济合作和共同市场形成。"
+  },
+  {
+    "id": "eco-33",
+    "title": "产业升级",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "产业升级指经济结构从低附加值向高附加值产业转型，通常通过技术创新和制度改进实现。"
+  },
+  {
+    "id": "eco-34",
+    "title": "人口红利",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "人口红利指劳动年龄人口比例高、抚养比低的时期，为经济增长提供劳动力优势。"
+  },
+  {
+    "id": "eco-35",
+    "title": "中等收入陷阱",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "中等收入陷阱指国家达到中等收入水平后，增长停滞，难以进入高收入行列的现象。"
+  },
+  {
+    "id": "eco-36",
+    "title": "资源诅咒",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "资源诅咒指自然资源丰富的国家反而经济发展缓慢、治理不善的现象。"
+  },
+  {
+    "id": "eco-37",
+    "title": "制度经济学",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "制度经济学研究制度如何影响经济行为、交易成本和资源配置，强调法律、规范和习俗的作用。"
+  },
+  {
+    "id": "eco-38",
+    "title": "发展经济学",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "发展经济学关注发展中国家的经济增长、贫困减少和结构转型，探索促进发展的政策和理论。"
+  },
+  {
+    "id": "eco-39",
+    "title": "劳动经济学",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "劳动经济学研究劳动力市场运行、就业决定、工资形成和人力资本投资等问题。"
+  },
+  {
+    "id": "eco-40",
+    "title": "城市经济学",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "城市经济学研究城市空间结构、经济活动集聚和城市政策，解释城市形成和发展。"
+  },
+  {
+    "id": "eco-41",
+    "title": "微观经济学基础",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "微观经济学研究个体经济单位如家庭和企业的决策行为，以及市场如何配置资源。"
+  },
+  {
+    "id": "eco-42",
+    "title": "消费者理论",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "消费者理论研究个人如何在预算约束下最大化效用，涉及偏好、效用函数和需求曲线。"
+  },
+  {
+    "id": "eco-43",
+    "title": "生产者理论",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "生产者理论分析企业如何在成本约束下最大化利润，涉及生产函数、成本和供给决策。"
+  },
+  {
+    "id": "eco-44",
+    "title": "市场结构",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "市场结构描述市场中企业数量、产品差异和进入壁垒，影响竞争程度和定价行为。"
+  },
+  {
+    "id": "eco-45",
+    "title": "完全竞争",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "完全竞争市场有许多小企业，产品同质，信息完全，企业是价格接受者，达到资源最优配置。"
+  },
+  {
+    "id": "eco-46",
+    "title": "垄断竞争",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "垄断竞争市场有许多企业，产品有差异，企业有一定定价权，短期可能获利，长期零利润。"
+  },
+  {
+    "id": "eco-47",
+    "title": "寡头垄断",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "寡头垄断市场由少数大企业主导，产品可能同质或异质，企业相互依赖，常有勾结行为。"
+  },
+  {
+    "id": "eco-48",
+    "title": "完全垄断",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "完全垄断市场只有一个卖者，产品无替代品，企业是价格制定者，可能导致效率损失。"
+  },
+  {
+    "id": "eco-49",
+    "title": "市场失灵",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "市场失灵指市场无法有效配置资源的情况，原因包括外部性、公共品、信息不对称和垄断。"
+  },
+  {
+    "id": "eco-50",
+    "title": "外部性矫正",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "外部性矫正指政府或市场机制解决外部性问题的方法，如庇古税、补贴、产权界定和可交易许可证。"
+  },
+  {
+    "id": "eco-51",
+    "title": "宏观经济学基础",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "宏观经济学以整个国民经济活动为研究对象，分析国民收入、就业、物价总水平等总量指标的决定与变动。"
+  },
+  {
+    "id": "eco-52",
+    "title": "IS-LM模型",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "凯恩斯理论的核心模型，描述产品市场（IS曲线）与货币市场（LM曲线）同时均衡时的利率与国民收入组合。"
+  },
+  {
+    "id": "eco-53",
+    "title": "AD-AS模型",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "分析总需求（AD）与总供给（AS）如何共同决定一国总体价格水平和实际产出水平的宏观经济模型。"
+  },
+  {
+    "id": "eco-54",
+    "title": "经济增长理论",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "研究一国生产能力（潜在产出）长期增长的源泉、机制和结果的理论，核心是解释人均收入的持续提高。"
+  },
+  {
+    "id": "eco-55",
+    "title": "经济周期理论",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "解释经济活动围绕长期增长趋势所发生的周期性扩张与收缩（繁荣、衰退、萧条、复苏）波动的理论。"
+  },
+  {
+    "id": "eco-56",
+    "title": "失业理论",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "研究劳动力市场中失业的类型（摩擦性、结构性、周期性）、成因、影响及对策的理论。"
+  },
+  {
+    "id": "eco-57",
+    "title": "通货膨胀理论",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "研究一般物价水平持续、普遍上涨的现象、成因（需求拉动、成本推动、货币现象）及社会经济影响的理论。"
+  },
+  {
+    "id": "eco-58",
+    "title": "货币需求",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "指个人、企业和政府愿意以货币形式持有财富的总量，其动机包括交易、预防和投机动机。"
+  },
+  {
+    "id": "eco-59",
+    "title": "货币供给",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "指一国经济中流通的货币总量，通常由中央银行通过基础货币投放和商业银行的信用创造过程共同决定。"
+  },
+  {
+    "id": "eco-60",
+    "title": "利率决定",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "研究名义利率水平由何种力量决定的理论，主要观点包括可贷资金理论（储蓄与投资）和流动性偏好理论（货币供求）。"
+  },
+  {
+    "id": "eco-1",
+    "title": "发展经济学",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "研究发展中国家经济增长、贫困和不平等问题的经济学分支，旨在提出促进发展的政策。"
+  },
+  {
+    "id": "eco-2",
+    "title": "二元经济",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "描述一个经济中传统农业部门和现代工业部门共存的理论模型，解释劳动力转移过程。"
+  },
+  {
+    "id": "eco-3",
+    "title": "刘易斯拐点",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "指劳动力从过剩到短缺的转折点，标志工资开始快速上涨和经济增长模式变化。"
+  },
+  {
+    "id": "eco-4",
+    "title": "人口转型",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "描述人口从高出生率、高死亡率向低出生率、低死亡率转变的过程，影响经济增长。"
+  },
+  {
+    "id": "eco-5",
+    "title": "人力资本",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "指个人通过教育、培训和健康投资积累的知识和技能，是经济增长的关键因素。"
+  },
+  {
+    "id": "eco-6",
+    "title": "技术进步",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "指新技术和创新的引入，提高生产效率、促进经济增长和结构变革。"
+  },
+  {
+    "id": "eco-7",
+    "title": "制度与增长",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "研究经济制度如产权、法治和政府治理如何影响经济增长和发展绩效。"
+  },
+  {
+    "id": "eco-8",
+    "title": "贫困陷阱",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "指贫穷状态自我强化、难以摆脱的恶性循环，需要外部干预打破。"
+  },
+  {
+    "id": "eco-9",
+    "title": "不平等",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "指收入、财富或机会在社会中的不均匀分配，可能影响经济增长和社会稳定。"
+  },
+  {
+    "id": "eco-10",
+    "title": "可持续发展",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "指满足当前需求而不损害后代满足其需求能力的发展模式，强调经济、社会和环境平衡。"
+  },
+  {
+    "id": "eco-001",
+    "title": "国际金融",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "国际金融研究跨国金融活动，涉及货币兑换、资本流动、国际投资和风险管理，是全球经济一体化的核心学科。"
+  },
+  {
+    "id": "eco-002",
+    "title": "汇率决定",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "汇率决定理论解释一国货币价值如何由市场力量、经济因素或政府政策确定，影响国际贸易和资本流动。"
+  },
+  {
+    "id": "eco-003",
+    "title": "国际收支",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "国际收支是一国在一定时期内与其他国家经济交易的系统记录，分为经常账户和资本账户，反映经济健康状况。"
+  },
+  {
+    "id": "eco-004",
+    "title": "外汇储备",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "外汇储备是央行持有的以外币计价的资产，如外国货币、债券和黄金，用于稳定汇率、支付国际债务和应对危机。"
+  },
+  {
+    "id": "eco-005",
+    "title": "国际货币体系",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "国际货币体系是管理全球货币兑换、支付和流动性的规则和机构框架，包括汇率安排和国际金融机构的作用。"
+  },
+  {
+    "id": "eco-006",
+    "title": "金融危机传染",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "金融危机传染指金融冲击从一个国家迅速传播到其他国家，引发全球性危机，凸显金融体系的相互依存性。"
+  },
+  {
+    "id": "eco-007",
+    "title": "资本流动",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "资本流动指资金在国际间的移动，包括外国直接投资、证券投资和短期热钱，影响汇率、利率和经济增长。"
+  },
+  {
+    "id": "eco-008",
+    "title": "主权债务",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "主权债务是国家政府借入的资金，通过发行债券筹集，用于预算赤字和项目融资，管理不当可能导致违约风险。"
+  },
+  {
+    "id": "eco-009",
+    "title": "国际金融机构",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "国际金融机构是跨国组织如IMF和世界银行，旨在促进全球金融稳定、发展和合作，提供贷款、政策建议和技术援助。"
+  },
+  {
+    "id": "eco-010",
+    "title": "全球金融治理",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "全球金融治理涉及管理国际金融体系的规则、标准和机构框架，旨在确保金融稳定、公平和效率，应对跨国挑战。"
+  },
+  {
+    "id": "eco-81",
+    "title": "公共经济学",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "研究政府部门的经济活动，特别是公共支出、税收和监管对资源配置及社会福利的影响。"
+  },
+  {
+    "id": "eco-82",
+    "title": "公共品",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "具有非竞争性和非排他性的物品或服务，通常由政府提供，以解决市场供给不足的问题。"
+  },
+  {
+    "id": "eco-83",
+    "title": "外部性",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "经济活动对交易双方之外的第三方造成的未在价格中反映的成本或收益。"
+  },
+  {
+    "id": "eco-84",
+    "title": "税收原理",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "关于税收的征收依据、经济效应和设计准则的基本理论，旨在指导税收制度构建。"
+  },
+  {
+    "id": "eco-85",
+    "title": "税制设计",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "关于如何构建税种体系、确定税率结构和征管机制的实践性学科，旨在优化税收功能。"
+  },
+  {
+    "id": "eco-86",
+    "title": "财政联邦制",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "一种政府间财政关系的制度安排，明确划分各级政府的事权与财权，以实现公共服务的有效供给。"
+  },
+  {
+    "id": "eco-87",
+    "title": "政府支出",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "政府为提供公共服务、履行职能而进行的财政资金支出，是宏观调控和资源配置的重要工具。"
+  },
+  {
+    "id": "eco-88",
+    "title": "社会保障",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "国家通过立法建立的、旨在为公民提供基本生活保障和风险防范的社会安全体系。"
+  },
+  {
+    "id": "eco-89",
+    "title": "医疗经济学",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "应用经济学原理分析医疗市场的特殊性、资源配置和政策效率的交叉学科。"
+  },
+  {
+    "id": "eco-90",
+    "title": "教育经济学",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "运用经济学方法研究教育资源的配置、利用及对个人和社会回报的学科。"
+  },
+  {
+    "id": "eco-91",
+    "title": "新制度经济学",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "新制度经济学强调制度（如产权、法律、社会规范）在塑造经济行为和绩效中的核心作用，补充了传统经济学对技术或偏好的单一关注。"
+  },
+  {
+    "id": "eco-92",
+    "title": "交易成本",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "交易成本指在市场中完成一笔交易所花费的成本，包括搜寻、谈判、签约和监督执行等环节产生的费用，是解释经济组织存在的核心概念。"
+  },
+  {
+    "id": "eco-93",
+    "title": "产权理论",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "产权理论研究财产的所有权、使用权、收益权和转让权等一组权利的界定、分配和保护如何影响资源配置效率和经济行为。"
+  },
+  {
+    "id": "eco-94",
+    "title": "合同理论",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "合同理论研究在信息不对称和有限理性条件下，如何设计合同条款来规范交易各方的行为，以最小化交易成本和风险。"
+  },
+  {
+    "id": "eco-95",
+    "title": "委托代理",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "委托代理理论研究当一方（委托人）授权另一方（代理人）代表其行动时，因目标不一致和信息不对称而产生的激励与监督问题。"
+  },
+  {
+    "id": "eco-96",
+    "title": "信息经济学",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "信息经济学研究信息在经济活动中的价值、生产、传播和使用，特别是信息不对称如何影响市场均衡、契约设计和经济效率。"
+  },
+  {
+    "id": "eco-97",
+    "title": "博弈论入门",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "博弈论是研究理性决策者在策略互动情境下如何做出最优决策的数学理论，广泛应用于经济、政治、生物学等领域。"
+  },
+  {
+    "id": "eco-98",
+    "title": "纳什均衡",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "纳什均衡是一种策略组合，在该状态下，每个参与者都选择了对他人策略的最优反应，没有任何人有动力单独改变自己的策略。"
+  },
+  {
+    "id": "eco-99",
+    "title": "机制设计",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "机制设计是博弈论的逆向应用，旨在为特定社会目标设计一套博弈规则（机制），使得理性参与者在追求自身利益的同时能实现设计者的目标。"
+  },
+  {
+    "id": "eco-00",
+    "title": "拍卖理论",
+    "category": "economics",
+    "categoryName": "经济",
+    "summary": "拍卖理论运用博弈论和机制设计原理，研究不同拍卖规则（如英式、荷式、密封投标）下竞买人的策略行为及拍卖结果的效率与收入。"
+  },
+  {
+    "id": "tech-01",
+    "title": "人工智能",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "人工智能是计算机科学的分支，旨在创建能模拟人类智能的系统，应用于医疗、交通等领域。"
+  },
+  {
+    "id": "tech-02",
+    "title": "量子计算",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "量子计算利用量子力学原理处理信息，具有超越传统计算机的潜力，用于复杂问题求解。"
+  },
+  {
+    "id": "tech-03",
+    "title": "区块链",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "区块链是一种分布式账本技术，确保数据透明和不可篡改，应用于加密货币和供应链管理。"
+  },
+  {
+    "id": "tech-04",
+    "title": "5G",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "5G是第五代移动通信技术，提供超高速率、低延迟和大连接，推动物联网和智能城市发展。"
+  },
+  {
+    "id": "tech-05",
+    "title": "火箭技术",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "火箭技术是航天工程的核心，用于发射卫星和载人任务，推动太空探索和商业航天发展。"
+  },
+  {
+    "id": "tech-06",
+    "title": "半导体",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "半导体是电子设备的基础材料，用于制造集成电路，驱动计算机、手机等现代科技产品。"
+  },
+  {
+    "id": "tech-07",
+    "title": "互联网",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "互联网是全球计算机网络系统，实现信息共享和通信，深刻改变社会、经济和文化。"
+  },
+  {
+    "id": "tech-08",
+    "title": "3D打印",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "3D打印是一种增材制造技术，通过逐层堆积材料创建物体，应用于原型设计和定制生产。"
+  },
+  {
+    "id": "tech-09",
+    "title": "机器人",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "机器人是可编程的自动化机器，执行任务如制造、探索和服务，融合AI和传感器技术。"
+  },
+  {
+    "id": "tech-10",
+    "title": "虚拟现实",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "虚拟现实通过计算机生成模拟环境，提供沉浸式体验，应用于游戏、培训和医疗。"
+  },
+  {
+    "id": "tech-11",
+    "title": "自动驾驶",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "利用传感器、人工智能和控制系统实现车辆自主驾驶的技术，旨在提升交通效率和安全性。"
+  },
+  {
+    "id": "tech-12",
+    "title": "基因测序",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "测定DNA序列的技术，用于解码生物遗传信息，推动医学、农业和生命科学研究。"
+  },
+  {
+    "id": "tech-13",
+    "title": "太阳能",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "将太阳辐射能转化为电能或热能的技术，是可再生能源的重要组成部分。"
+  },
+  {
+    "id": "tech-14",
+    "title": "风力发电",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "利用风力驱动涡轮机发电的技术，是清洁可再生能源的重要来源。"
+  },
+  {
+    "id": "tech-15",
+    "title": "超级计算机",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "具备极强计算能力和数据处理速度的计算机系统，用于解决复杂科学与工程问题。"
+  },
+  {
+    "id": "tech-16",
+    "title": "卫星导航",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "利用卫星信号为地面用户提供定位、导航和授时服务的系统。"
+  },
+  {
+    "id": "tech-17",
+    "title": "激光技术",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "利用受激辐射产生高强度、高相干性光束的技术，应用遍及工业、医疗和通信等领域。"
+  },
+  {
+    "id": "tech-18",
+    "title": "核聚变",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "模拟太阳原理，将轻原子核结合成重核并释放巨大能量的技术，被视为未来终极能源。"
+  },
+  {
+    "id": "tech-19",
+    "title": "生物芯片",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "将生物分子固定于固体基质表面，用于高通量检测和分析的微型集成装置。"
+  },
+  {
+    "id": "tech-20",
+    "title": "物联网",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "通过传感器、网络和智能处理，实现万物互联和数据交换的技术体系。"
+  },
+  {
+    "id": "tech-21",
+    "title": "量子纠缠",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "量子力学中一种奇特的关联现象，指两个或多个粒子状态无论相隔多远都能瞬间相互影响。"
+  },
+  {
+    "id": "tech-22",
+    "title": "深度学习",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "机器学习的一个子领域，基于人工神经网络，通过多层次数据抽象和表征学习来解决复杂问题。"
+  },
+  {
+    "id": "tech-23",
+    "title": "mRNA技术",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "一种利用信使核糖核酸指导细胞生产特定蛋白质来治疗疾病或预防感染的技术。"
+  },
+  {
+    "id": "tech-24",
+    "title": "固态电池",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "一种使用固体电解质替代传统锂电池中易燃液态电解液的新型电池技术。"
+  },
+  {
+    "id": "tech-25",
+    "title": "核聚变发电",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "模拟太阳的核聚变反应，将轻原子核结合成重原子核并释放巨大能量的发电方式。"
+  },
+  {
+    "id": "tech-26",
+    "title": "太空电梯",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "一种设想中从地球赤道附近直达地球同步轨道的巨型交通系统，用于低成本进入太空。"
+  },
+  {
+    "id": "tech-27",
+    "title": "脑机接口",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "一种在大脑与外部设备之间建立直接通信通道的技术，无需依赖正常的外周神经和肌肉。"
+  },
+  {
+    "id": "tech-28",
+    "title": "全息投影",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "利用光的干涉和衍射原理，记录并再现物体三维立体影像的技术。"
+  },
+  {
+    "id": "tech-29",
+    "title": "量子通信",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "利用量子力学原理（特别是量子纠缠和量子不可克隆定理）进行信息传输的通信方式。"
+  },
+  {
+    "id": "tech-30",
+    "title": "碳捕获",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "从工业排放源或大气中分离并捕获二氧化碳，并将其封存或利用的技术。"
+  },
+  {
+    "id": "tech-31",
+    "title": "合成生物学",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "一门融合生物学、工程学和计算机科学的交叉学科，旨在设计和构建新的生物部件、装置和系统，或重新设计已有的自然生物系统。"
+  },
+  {
+    "id": "tech-32",
+    "title": "微纳机器人",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "尺寸在微米至纳米级别的智能机器，能够在微小尺度环境下执行精密操作，如药物递送、微装配和体内手术。"
+  },
+  {
+    "id": "tech-33",
+    "title": "光量子计算",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "利用光子（光的量子）作为信息载体进行计算的量子计算模式，以其高速度、低能耗和易于在常温下工作的特性备受关注。"
+  },
+  {
+    "id": "tech-34",
+    "title": "可控核裂变",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "在人工控制条件下，使重原子核（如铀-235、钚-239）分裂并释放巨大能量的技术，是核能发电的基础。"
+  },
+  {
+    "id": "tech-35",
+    "title": "边缘计算",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "将数据处理和分析任务从云端下放到靠近数据源头的网络边缘侧，以实现更快的响应速度、节省带宽并保护数据隐私。"
+  },
+  {
+    "id": "tech-36",
+    "title": "数字孪生",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "利用物理模型、传感器数据和运行历史，在虚拟空间中创建一个与物理实体完全对应的数字副本，实现对实体全生命周期的仿真、预测和优化。"
+  },
+  {
+    "id": "tech-37",
+    "title": "增强现实",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "一种将计算机生成的虚拟信息（文字、图像、三维模型等）实时叠加到真实世界环境中，从而增强用户对现实感知的技术。"
+  },
+  {
+    "id": "tech-38",
+    "title": "无线充电",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "通过电磁场、电磁感应、射频或激光等非物理接触方式，将电能从充电器传输到用电设备的技术。"
+  },
+  {
+    "id": "tech-39",
+    "title": "石墨烯电池",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "利用石墨烯这种单层碳原子材料的优异导电性和巨大比表面积，来提升电池充放电速率、容量和循环寿命的新型电池技术。"
+  },
+  {
+    "id": "tech-40",
+    "title": "人工光合作用",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "模拟自然植物的光合作用过程，利用阳光、水和二氧化碳生产燃料（如氢气）或有用化学品的人造技术系统。"
+  },
+  {
+    "id": "tech-41",
+    "title": "图灵机",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "由艾伦·图灵于1936年提出的抽象计算模型，奠定了现代计算机科学的理论基础。"
+  },
+  {
+    "id": "tech-42",
+    "title": "冯·诺依曼架构",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "现代计算机的标准结构，采用存储程序概念，将指令和数据存储在同一内存中。"
+  },
+  {
+    "id": "tech-43",
+    "title": "晶体管发明",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "1947年在贝尔实验室诞生，取代了真空管，成为现代电子设备的基石。"
+  },
+  {
+    "id": "tech-44",
+    "title": "集成电路",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "将多个晶体管等元件集成到单一硅片上，开启了微电子时代。"
+  },
+  {
+    "id": "tech-45",
+    "title": "摩尔定律",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "由戈登·摩尔提出的观察，指出集成电路上晶体管数量约每两年翻一番。"
+  },
+  {
+    "id": "tech-46",
+    "title": "操作系统",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "管理计算机硬件与软件资源的核心系统软件，为应用程序提供运行环境。"
+  },
+  {
+    "id": "tech-47",
+    "title": "编译器",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "将高级编程语言代码自动翻译成计算机可执行的机器语言的软件工具。"
+  },
+  {
+    "id": "tech-48",
+    "title": "数据库",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "长期存储、管理、检索大量有组织数据的系统。"
+  },
+  {
+    "id": "tech-49",
+    "title": "以太网",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "当前占主导地位的局域网（LAN）技术标准。"
+  },
+  {
+    "id": "tech-50",
+    "title": "TCP/IP协议",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "互联网的基础通信协议族，负责数据的打包、寻址、传输和路由。"
+  },
+  {
+    "id": "tech-51",
+    "title": "万维网",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "一个基于互联网的全球性信息系统，通过超文本链接将文档和资源连接起来，是人们访问网络信息的主要界面。"
+  },
+  {
+    "id": "tech-52",
+    "title": "搜索引擎",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "一种自动化软件系统，用于在万维网上搜寻、索引和排序信息，以帮助用户快速找到所需内容。"
+  },
+  {
+    "id": "tech-53",
+    "title": "电子商务",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "通过互联网进行商品、服务或信息的买卖交易活动，涵盖了从在线零售到电子支付的完整商业流程。"
+  },
+  {
+    "id": "tech-54",
+    "title": "社交媒体",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "基于互联网的应用程序，允许用户创建、分享内容或参与社交网络，构建虚拟社区和进行互动交流。"
+  },
+  {
+    "id": "tech-55",
+    "title": "云计算",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "通过互联网按需提供计算资源（如服务器、存储、数据库、软件等）的技术模式，通常按使用量付费。"
+  },
+  {
+    "id": "tech-56",
+    "title": "大数据",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "指规模巨大、类型多样、产生和处理速度极快的数据集合，传统数据处理软件难以有效处理。"
+  },
+  {
+    "id": "tech-57",
+    "title": "物联网协议",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "专门为物联网设备间通信设计的一套规则和标准，确保海量、异构的智能设备能够安全、高效地连接和交换数据。"
+  },
+  {
+    "id": "tech-58",
+    "title": "区块链共识",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "在区块链网络中，使所有分布式节点就账本状态达成一致的一套算法和机制，是区块链无需信任中介的核心。"
+  },
+  {
+    "id": "tech-59",
+    "title": "智能合约",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "部署在区块链上、能够自动执行合同条款的计算机程序，当预设条件被满足时，合约会自动触发相应操作。"
+  },
+  {
+    "id": "tech-60",
+    "title": "去中心化金融",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "一个建立在区块链上的开源、无需许可的金融体系，旨在通过智能合约替代传统金融中介，提供借贷、交易等服务。"
+  },
+  {
+    "id": "tech-001",
+    "title": "机器学习",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "机器学习是人工智能的分支，通过算法使计算机从数据中学习并做出预测或决策。"
+  },
+  {
+    "id": "tech-002",
+    "title": "神经网络",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "神经网络是模仿生物大脑的计算模型，由多层节点组成，用于处理复杂数据和学习非线性关系。"
+  },
+  {
+    "id": "tech-003",
+    "title": "卷积网络",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "卷积网络是专门处理网格数据如图像的神经网络，通过卷积层自动提取空间特征。"
+  },
+  {
+    "id": "tech-004",
+    "title": "循环网络",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "循环网络处理序列数据，通过循环连接记忆先前信息，适用于时间序列和自然语言处理。"
+  },
+  {
+    "id": "tech-005",
+    "title": "注意力机制",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "注意力机制让模型聚焦输入的相关部分，提升处理长序列的效率和准确性。"
+  },
+  {
+    "id": "tech-006",
+    "title": "Transformer",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "Transformer是基于注意力的架构，完全抛弃循环结构，实现高效并行处理序列数据。"
+  },
+  {
+    "id": "tech-007",
+    "title": "大语言模型",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "大语言模型是基于Transformer的巨型神经网络，经过海量文本训练，能生成和理解自然语言。"
+  },
+  {
+    "id": "tech-008",
+    "title": "强化学习",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "强化学习是机器学习子领域，通过试错和奖励机制让智能体学习最优行为策略。"
+  },
+  {
+    "id": "tech-009",
+    "title": "联邦学习",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "联邦学习是分布式机器学习方法，允许设备协同训练模型而不共享原始数据，保护隐私。"
+  },
+  {
+    "id": "tech-010",
+    "title": "知识蒸馏",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "知识蒸馏是模型压缩技术，将大模型的知识转移到小模型，以减少计算资源需求。"
+  },
+  {
+    "id": "tech-71",
+    "title": "CRISPR基因编辑",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "CRISPR基因编辑技术利用CRISPR-Cas9系统精确修改DNA序列，被誉为基因剪刀，在疾病治疗和作物改良中前景广阔。"
+  },
+  {
+    "id": "tech-72",
+    "title": "mRNA技术",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "mRNA技术利用信使RNA指导细胞产生特定蛋白质，在疫苗开发和癌症治疗中取得突破，如COVID-19疫苗。"
+  },
+  {
+    "id": "tech-73",
+    "title": "合成生物学",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "合成生物学结合工程学和生物学，设计构建新的生物部件、系统和机器，用于医药、能源和环境应用。"
+  },
+  {
+    "id": "tech-74",
+    "title": "生物信息学",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "生物信息学利用计算方法分析生物数据，如基因组序列，帮助理解生命过程和疾病机制。"
+  },
+  {
+    "id": "tech-75",
+    "title": "蛋白质预测",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "蛋白质预测涉及使用计算方法预测蛋白质的三维结构和功能，对药物设计和生物工程至关重要。"
+  },
+  {
+    "id": "tech-76",
+    "title": "AlphaFold",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "AlphaFold是DeepMind开发的AI系统，能高精度预测蛋白质结构， revolutionizing structural biology。"
+  },
+  {
+    "id": "tech-77",
+    "title": "脑机接口",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "脑机接口建立大脑与外部设备之间的直接通信通道，用于医疗康复、增强认知和未来人机交互。"
+  },
+  {
+    "id": "tech-78",
+    "title": "神经形态芯片",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "神经形态芯片模仿大脑神经网络结构，实现低功耗、高效率的并行计算，适用于AI和边缘计算。"
+  },
+  {
+    "id": "tech-79",
+    "title": "光子计算",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "光子计算利用光子（光粒子）进行数据处理，相比电子计算，速度更快、能耗更低，适用于高性能计算。"
+  },
+  {
+    "id": "tech-80",
+    "title": "量子纠错",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "量子纠错是量子计算中的关键技术，用于保护量子信息免受噪声影响，实现实用的量子计算机。"
+  },
+  {
+    "id": "tech-081",
+    "title": "固态电池",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "一种使用固体电极和固体电解质的电池，有望提供更高的能量密度和安全性，是下一代电池技术的有力候选者。"
+  },
+  {
+    "id": "tech-082",
+    "title": "钠离子电池",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "一种以钠离子作为电荷载体的可充电电池，资源丰富、成本低廉，是对锂离子电池的重要补充和替代方案。"
+  },
+  {
+    "id": "tech-083",
+    "title": "氢燃料电池",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "通过氢气和氧气的电化学反应直接产生电能的装置，排放物仅为水，被视为终极清洁能源技术之一。"
+  },
+  {
+    "id": "tech-084",
+    "title": "钙钛矿太阳能电池",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "采用具有钙钛矿晶体结构的材料作为吸光层的太阳能电池，以高效率、低成本和柔性化潜力成为光伏领域的新星。"
+  },
+  {
+    "id": "tech-085",
+    "title": "核聚变进展",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "人类正在努力实现的“人造太阳”技术，旨在通过轻原子核结合成重原子核释放巨大能量，提供近乎无限、清洁的终极能源。"
+  },
+  {
+    "id": "tech-086",
+    "title": "超导应用",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "利用超导材料在临界温度下电阻为零和完全抗磁性的特性，在电力、交通、医疗和科研等领域实现革命性应用的技术。"
+  },
+  {
+    "id": "tech-087",
+    "title": "无线输电",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "无需物理连接导线，通过电磁场将电能从电源端无线传输到用电设备的技术，旨在实现更自由、便捷的能源供给。"
+  },
+  {
+    "id": "tech-088",
+    "title": "智能电网",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "将先进的传感测量、通信、分析和控制技术与物理电网高度集成，实现电力流、信息流和业务流双向互动的现代化电网。"
+  },
+  {
+    "id": "tech-089",
+    "title": "储能技术",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "将电能转化为其他形式能量存储起来，在需要时再转化回电能的技术，是解决可再生能源间歇性、保障电网稳定运行的核心。"
+  },
+  {
+    "id": "tech-090",
+    "title": "碳捕获技术",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "从工业排放源或大气中捕获二氧化碳，并将其封存或利用的技术，是应对气候变化、实现碳中和的关键负排放技术。"
+  },
+  {
+    "id": "tech-01",
+    "title": "可回收火箭",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "通过垂直着陆等技术实现火箭的重复使用，旨在大幅降低太空发射成本，是商业航天发展的关键突破。"
+  },
+  {
+    "id": "tech-02",
+    "title": "太空旅游",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "面向大众的商业载人太空飞行体验，包括亚轨道和轨道飞行，是商业航天新兴的前沿市场。"
+  },
+  {
+    "id": "tech-03",
+    "title": "月球基地",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "在月球表面建立可供人类长期工作和生活的永久性或半永久性设施，是深空探索和地外资源利用的关键一步。"
+  },
+  {
+    "id": "tech-04",
+    "title": "火星探测",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "通过无人探测器和载人任务对火星进行科学考察，核心目标是寻找生命迹象、理解行星演化并为人类登陆做准备。"
+  },
+  {
+    "id": "tech-05",
+    "title": "小行星采矿",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "在太空中小行星上开采并提取有价值资源的前沿构想，旨在解决地球资源枯竭问题并支持深空探索的燃料补给。"
+  },
+  {
+    "id": "tech-06",
+    "title": "太空碎片清理",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "主动监测、捕获并清除在轨废弃航天器和碎片的技术，以防止凯斯勒效应，保障太空活动安全与可持续性。"
+  },
+  {
+    "id": "tech-07",
+    "title": "卫星互联网",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "通过大规模部署低地球轨道卫星星座，为全球尤其是偏远地区提供高速、低延迟的互联网接入服务。"
+  },
+  {
+    "id": "tech-08",
+    "title": "深空通信",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "支持行星际及更远距离（如月球、火星、外行星）探测器与地球之间数据传输的先进通信技术。"
+  },
+  {
+    "id": "tech-09",
+    "title": "离子推进",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "利用电场加速离子产生推力的电推进技术，具有极高的比冲（燃料效率），适用于长期太空任务。"
+  },
+  {
+    "id": "tech-10",
+    "title": "太阳帆",
+    "category": "technology",
+    "categoryName": "科技",
+    "summary": "利用太阳光压作为推进力的无燃料航天器，理论上能通过持续加速达到极高速度，是低成本星际探索的潜在方案。"
+  },
+  {
+    "id": "mil-001",
+    "title": "航空母舰",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "以舰载机为主要武器的大型水面战舰，是海权的核心象征，具备强大的远洋作战和力量投射能力。"
+  },
+  {
+    "id": "mil-002",
+    "title": "核武器",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "利用核反应（裂变或聚变）释放巨大能量的武器，具有毁灭性威力，是战略威慑的基石。"
+  },
+  {
+    "id": "mil-003",
+    "title": "隐形战斗机",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "通过特殊设计和技术大幅降低雷达、红外等信号特征，以实现隐蔽突防和攻击的战斗机。"
+  },
+  {
+    "id": "mil-004",
+    "title": "坦克",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "具有强大直射火力、越野机动性和坚固装甲防护的履带式装甲战斗车辆，是陆战的主战装备。"
+  },
+  {
+    "id": "mil-005",
+    "title": "潜艇",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "能够在水下航行和作战的舰艇，主要用于反舰、反潜、侦察和战略核威慑。"
+  },
+  {
+    "id": "mil-006",
+    "title": "导弹防御系统",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "用于探测、追踪和拦截来袭弹道导弹等威胁的综合性武器系统。"
+  },
+  {
+    "id": "mil-007",
+    "title": "无人机",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "无人驾驶的飞行器，广泛应用于侦察监视、精确打击和电子干扰等军事任务。"
+  },
+  {
+    "id": "mil-008",
+    "title": "洲际导弹",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "射程超过5500公里的弹道导弹，通常搭载核弹头，是战略核威慑的核心运载工具。"
+  },
+  {
+    "id": "mil-009",
+    "title": "军事卫星",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "专门用于军事目的的人造地球卫星，涵盖侦察、通信、导航、预警等多种功能。"
+  },
+  {
+    "id": "mil-010",
+    "title": "信息战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "在信息领域为获取和保持信息优势而采取的军事行动，旨在影响敌方认知与决策。"
+  },
+  {
+    "id": "mil-011",
+    "title": "电子战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "利用电磁能控制电磁频谱、攻击敌方或保护己方的军事行动。"
+  },
+  {
+    "id": "mil-012",
+    "title": "战略轰炸机",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "能够执行远程战略轰炸任务，携带大量弹药（包括核武器）打击敌方战略目标的轰炸机。"
+  },
+  {
+    "id": "mil-013",
+    "title": "网络战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "在虚拟网络空间中，为获取优势、破坏敌方网络或基础设施而进行的对抗行动。"
+  },
+  {
+    "id": "mil-014",
+    "title": "生物武器",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "利用细菌、病毒、毒素等生物战剂，使人员、动植物致病或死亡的武器。"
+  },
+  {
+    "id": "mil-015",
+    "title": "化学武器",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "利用化学物质的毒性造成人畜伤亡、环境破坏或装备毁坏的武器。"
+  },
+  {
+    "id": "mil-016",
+    "title": "防空系统",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "用于探测、识别、跟踪和摧毁敌方飞机、导弹等空中目标的综合性武器系统。"
+  },
+  {
+    "id": "mil-017",
+    "title": "两栖作战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "从海上向陆地发起的联合军事行动，旨在登陆并巩固滩头阵地，夺取陆地目标。"
+  },
+  {
+    "id": "mil-018",
+    "title": "后勤补给",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "为军队提供维持作战所需的人员、装备、物资、运输和医疗等保障的系统性工作。"
+  },
+  {
+    "id": "mil-019",
+    "title": "军事战略",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "筹划和指导军事力量建设和运用全局的方略，是军事领域的最高指导原则。"
+  },
+  {
+    "id": "mil-020",
+    "title": "后勤补给",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "为军队提供维持作战所需的人员、装备、物资、运输和医疗等保障的系统性工作。"
+  },
+  {
+    "id": "mil-21",
+    "title": "激光武器",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "利用高能激光束直接毁伤目标或使其失效的定向能武器，具有速度快、精度高、成本低的特点。"
+  },
+  {
+    "id": "mil-22",
+    "title": "电磁炮",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "利用电磁力（洛伦兹力）而非火药燃气来加速弹丸的超高速动能武器，能赋予弹丸极高的初速和射程。"
+  },
+  {
+    "id": "mil-23",
+    "title": "高超音速导弹",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "飞行速度超过5马赫、能在大气层内或临近空间进行复杂机动的导弹，是当前大国军事竞争的焦点。"
+  },
+  {
+    "id": "mil-24",
+    "title": "太空军事化",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "将外层空间作为作战域，发展部署天基武器系统、进行太空攻防作战的趋势。"
+  },
+  {
+    "id": "mil-25",
+    "title": "网络战争",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "在由计算机和通信网络构成的虚拟空间中进行的攻防对抗，旨在破坏、控制敌方信息系统或窃取情报。"
+  },
+  {
+    "id": "mil-26",
+    "title": "自主武器系统",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "在无人直接干预的情况下，能够自主搜索、识别、决策并攻击目标的武器系统，引发严重伦理与法律争议。"
+  },
+  {
+    "id": "mil-27",
+    "title": "电子对抗",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "为削弱、破坏敌方电子设备效能并保护己方电子设备正常工作而采取的综合措施，是现代战争的“软杀伤”核心。"
+  },
+  {
+    "id": "mil-28",
+    "title": "水下无人艇",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "可在水下自主或遥控航行，执行侦察、扫雷、反潜、水下监视等任务的无人平台，是水下战场的新兴力量。"
+  },
+  {
+    "id": "mil-29",
+    "title": "战场机器人",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "在陆地战场执行侦察、巡逻、排爆、运输、直接交战等任务的地面无人作战平台，是未来陆战的重要元素。"
+  },
+  {
+    "id": "mil-30",
+    "title": "军事AI",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "人工智能技术在国防与军事领域的应用，涵盖情报分析、决策支持、无人系统、网络攻防等全方位赋能。"
+  },
+  {
+    "id": "mil-31",
+    "title": "反卫星武器",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "反卫星武器是专门设计用于攻击或摧毁敌方卫星的武器系统，是太空军事化和战略竞争的核心工具。"
+  },
+  {
+    "id": "mil-32",
+    "title": "电磁脉冲弹",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "电磁脉冲弹能产生高强度电磁脉冲，瞬间破坏电子设备，在现代战争中可瘫痪敌方基础设施。"
+  },
+  {
+    "id": "mil-33",
+    "title": "精确制导",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "精确制导技术使武器能高精度命中目标，减少附带损伤，是现代战争实现高效打击的核心。"
+  },
+  {
+    "id": "mil-34",
+    "title": "联合指挥",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "联合指挥是协调多军种或国家间军事行动的指挥体系，以提升作战一体化和协同效率。"
+  },
+  {
+    "id": "mil-35",
+    "title": "情报战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "情报战是通过收集、分析和利用信息来获取战略优势的军事行动，涵盖多种技术和手段。"
+  },
+  {
+    "id": "mil-36",
+    "title": "心理战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "心理战旨在影响敌方或公众的心理状态，通过宣传和欺骗削弱敌方士气或争取舆论支持。"
+  },
+  {
+    "id": "mil-37",
+    "title": "后勤革命",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "后勤革命指军事后勤管理的现代化变革，通过技术优化物资供应，确保作战持续性和效率。"
+  },
+  {
+    "id": "mil-38",
+    "title": "军民融合",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "军民融合是军事与民用技术和产业的深度结合，以增强国防能力和经济效率，促进创新。"
+  },
+  {
+    "id": "mil-39",
+    "title": "核威慑理论",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "核威慑理论基于相互确保毁灭原则，通过核武器的报复威胁防止大规模战争，维持战略平衡。"
+  },
+  {
+    "id": "mil-40",
+    "title": "军事改革",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "军事改革是军队结构、战术和技术的系统性变革，以适应新威胁和作战环境，提升整体效能。"
+  },
+  {
+    "id": "mil-001",
+    "title": "孙子兵法",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "中国古代军事经典，由孙武所著，共十三篇，阐述战争策略和战术原则，对后世军事思想影响深远。"
+  },
+  {
+    "id": "mil-002",
+    "title": "阵法演变",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "阵法从古代简单排列发展为复杂战术体系，随战争形态变化而不断革新，反映军事智慧的进步。"
+  },
+  {
+    "id": "mil-003",
+    "title": "骑兵战术",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "骑兵利用马匹机动性进行突击、侦察和追击的战术，在历史上多次改变战争格局，是军事史上的重要组成部分。"
+  },
+  {
+    "id": "mil-004",
+    "title": "攻城器械",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "用于攻击城墙和堡垒的机械装置，如投石车、攻城塔，在古代攻城战中发挥关键作用，随技术发展而演变。"
+  },
+  {
+    "id": "mil-005",
+    "title": "火药武器",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "基于火药技术的武器，如枪、炮，彻底改变了战争方式，推动军事革命，从冷兵器时代过渡到热兵器时代。"
+  },
+  {
+    "id": "mil-006",
+    "title": "冷兵器时代",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "指火药武器普及前的时代，以刀、剑、矛等近战武器为主，强调士兵的体能和技巧，持续数千年。"
+  },
+  {
+    "id": "mil-007",
+    "title": "铠甲发展",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "铠甲从皮甲到金属板甲的演变，随材料和技术进步，为士兵提供防护并影响战术和战争形态。"
+  },
+  {
+    "id": "mil-008",
+    "title": "弓弩技术",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "弓和弩作为远程武器，在战争中发挥关键作用，技术进步提高了射程、精度和杀伤力，改变了战术。"
+  },
+  {
+    "id": "mil-009",
+    "title": "海战演变",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "海战从桨帆船到钢铁战舰的演变，随海军技术进步，影响国家兴衰和全球战略格局。"
+  },
+  {
+    "id": "mil-010",
+    "title": "军事要塞",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "防御工事和堡垒，用于控制战略地点，从古代城墙到现代永久工事，是防御体系的核心组成部分。"
+  },
+  {
+    "id": "mil-51",
+    "title": "一战堑壕战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "第一次世界大战中，西线战场陷入堑壕防御战，双方挖掘复杂堑壕系统，战线僵持数年，导致巨大伤亡。"
+  },
+  {
+    "id": "mil-52",
+    "title": "坦克诞生",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "坦克在第一次世界大战中由英国首次使用，旨在突破堑壕防御，改变了战场形态，推动了机械化战争。"
+  },
+  {
+    "id": "mil-53",
+    "title": "毒气战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "第一次世界大战中，双方大规模使用化学武器，如氯气和芥子气，造成巨大伤亡和恐惧，促进了防化装备发展。"
+  },
+  {
+    "id": "mil-54",
+    "title": "空战起源",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "空战起源于第一次世界大战，最初用于侦察，后发展为空中格斗，改变了战争维度，奠定了空军战术基础。"
+  },
+  {
+    "id": "mil-55",
+    "title": "潜艇战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "潜艇战在两次世界大战中至关重要，德国U型船对盟军运输线构成严重威胁，推动了反潜技术发展。"
+  },
+  {
+    "id": "mil-56",
+    "title": "航母战术",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "航空母舰战术在二战中崛起，以舰载机为核心，取代战列舰成为海上霸主，改变了海战模式。"
+  },
+  {
+    "id": "mil-57",
+    "title": "闪电战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "闪电战是二战中德国采用的战术，强调快速突击、集中装甲和空中支援，迅速击败敌人，影响了现代战争。"
+  },
+  {
+    "id": "mil-58",
+    "title": "诺曼底登陆",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "诺曼底登陆是1944年盟军在法国北部的大规模两栖登陆，开辟了欧洲第二战场，加速了二战结束。"
+  },
+  {
+    "id": "mil-59",
+    "title": "太平洋战争",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "太平洋战争是二战中同盟国与日本帝国在太平洋和东亚的战争，以岛屿争夺和航母战为特点，以日本投降告终。"
+  },
+  {
+    "id": "mil-60",
+    "title": "核武器诞生",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "核武器在二战末期由美国研发成功，并在广岛和长崎使用，开启了核时代，改变了国际关系和军事战略。"
+  },
+  {
+    "id": "mil-61",
+    "title": "冷战军备竞赛",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "冷战时期美苏之间的军备竞赛，推动了核武器和常规武器的快速发展，加剧了全球紧张局势。"
+  },
+  {
+    "id": "mil-62",
+    "title": "核威慑",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "核威慑理论基于相互确保毁灭，通过核武器的威胁防止直接军事冲突，是冷战时期国际安全的核心。"
+  },
+  {
+    "id": "mil-63",
+    "title": "弹道导弹",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "弹道导弹按抛物线轨道飞行，用于远程精确打击，通常携带核弹头，是战略威慑的关键工具。"
+  },
+  {
+    "id": "mil-64",
+    "title": "巡航导弹",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "巡航导弹低空飞行、地形跟踪，用于远程精确打击，难以拦截，是现代战争中的关键武器。"
+  },
+  {
+    "id": "mil-65",
+    "title": "隐形技术",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "隐形技术通过减少雷达、红外和声学特征，使军事平台难以探测，提升了作战生存能力和突袭效果。"
+  },
+  {
+    "id": "mil-66",
+    "title": "电子战发展",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "电子战涉及使用电磁频谱进行军事行动，包括干扰、欺骗和防护敌方通信与雷达，是现代战争的关键领域。"
+  },
+  {
+    "id": "mil-67",
+    "title": "卫星侦察",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "卫星侦察利用轨道卫星收集图像和信号情报，实现全球实时监控，是现代情报收集的核心手段。"
+  },
+  {
+    "id": "mil-68",
+    "title": "网络战起源",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "网络战起源于20世纪末，涉及使用数字攻击破坏敌方信息系统，是现代冲突的新兴战场。"
+  },
+  {
+    "id": "mil-69",
+    "title": "特种作战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "特种作战使用小规模、高度训练的部队执行特殊任务，如反恐、侦察和非常规战争，是现代军事行动的关键。"
+  },
+  {
+    "id": "mil-70",
+    "title": "反恐战争",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "反恐战争是2001年911事件后发起的全球军事行动，旨在打击恐怖主义网络，改变了国际安全格局。"
+  },
+  {
+    "id": "mil-71",
+    "title": "信息化战争",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "信息化战争是利用信息技术进行的战争，涵盖网络战、电子战等，旨在通过信息优势影响敌方决策和作战能力。"
+  },
+  {
+    "id": "mil-72",
+    "title": "精确打击",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "精确打击是使用高精度武器系统对特定目标进行精准打击，旨在减少附带损伤并快速瘫痪敌方关键节点。"
+  },
+  {
+    "id": "mil-73",
+    "title": "无人作战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "无人作战是利用无人机、无人车等无人系统执行侦察、打击和支援任务，以降低人员风险并延长作战时间。"
+  },
+  {
+    "id": "mil-74",
+    "title": "蜂群战术",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "蜂群战术是模仿自然界蜂群行为，通过大量低成本单元协同作战，以数量优势压制对手并提高生存率。"
+  },
+  {
+    "id": "mil-75",
+    "title": "认知域作战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "认知域作战是通过心理战、信息操控等非动能手段影响敌方认知和决策，是现代战争的无形战场。"
+  },
+  {
+    "id": "mil-76",
+    "title": "混合战争",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "混合战争是结合常规军事行动、网络攻击、代理战争和经济施压等多种手段，模糊战争界限以达成战略目标。"
+  },
+  {
+    "id": "mil-77",
+    "title": "灰色地带",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "灰色地带是指介于战争与和平之间的冲突状态，使用非军事或准军事手段如经济制裁、网络间谍达成战略目标。"
+  },
+  {
+    "id": "mil-78",
+    "title": "反介入拒止",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "反介入拒止是通过远程打击、区域封锁和网络战等手段，阻止敌方进入特定作战区域以保护己方利益。"
+  },
+  {
+    "id": "mil-79",
+    "title": "联合全域指挥",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "联合全域指挥是整合陆、海、空、天、网等多域作战力量，通过先进技术实现统一指挥和协同作战。"
+  },
+  {
+    "id": "mil-80",
+    "title": "马赛克战",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "马赛克战是将作战系统分解为模块化单元，灵活组合以适应不同战场环境，提高适应性和生存率。"
+  },
+  {
+    "id": "mil-81",
+    "title": "军事后勤学",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "军事后勤学是研究军队后勤保障系统的学科，确保作战部队的物资、装备和医疗服务的及时供应。"
+  },
+  {
+    "id": "mil-82",
+    "title": "军事医学",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "军事医学专注于军队人员的健康维护和伤病治疗，适应战场环境下的医疗需求。"
+  },
+  {
+    "id": "mil-83",
+    "title": "军事心理学",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "军事心理学研究军人在战斗和服役中的心理过程，旨在提升士气、减少压力和优化决策。"
+  },
+  {
+    "id": "mil-84",
+    "title": "军事通信",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "军事通信确保军队内部信息的安全、快速传递，是指挥控制的关键环节。"
+  },
+  {
+    "id": "mil-85",
+    "title": "军事工程",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "军事工程涉及军事设施的建造、维护和战场工程作业，支持作战和防御。"
+  },
+  {
+    "id": "mil-86",
+    "title": "军事气象",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "军事气象研究天气和气候对军事行动的影响，提供气象预报和保障服务。"
+  },
+  {
+    "id": "mil-87",
+    "title": "军事地理",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "军事地理分析地理环境对军事行动的影响，用于战略规划和战场管理。"
+  },
+  {
+    "id": "mil-88",
+    "title": "军事法律",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "军事法律规范军队行为、纪律和权利，涉及战争法和国际人道主义法。"
+  },
+  {
+    "id": "mil-89",
+    "title": "军事伦理",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "军事伦理探讨军事行动中的道德问题，指导军人行为和决策的伦理标准。"
+  },
+  {
+    "id": "mil-90",
+    "title": "军事改革",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "军事改革指对军队组织、技术和战略进行系统性变革，以适应新时代需求。"
+  },
+  {
+    "id": "mil-001",
+    "title": "防空体系",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "由雷达、指挥中心、拦截武器等组成的空中威胁探测与打击网络，是国家领空安全的核心屏障。"
+  },
+  {
+    "id": "mil-002",
+    "title": "反导系统",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "用于探测、跟踪并摧毁来袭弹道导弹的专门防御系统，是国家战略安全的终极盾牌。"
+  },
+  {
+    "id": "mil-003",
+    "title": "核潜艇",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "以核反应堆为动力，可长期潜航的战略威慑平台，是“三位一体”核力量中最隐蔽、生存能力最强的一环。"
+  },
+  {
+    "id": "mil-004",
+    "title": "战略轰炸机",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "能够携带核武器或大量常规武器，执行远程战略轰炸任务的重型军用飞机，是空中战略威慑力量的标志。"
+  },
+  {
+    "id": "mil-005",
+    "title": "两栖攻击舰",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "具备宽大直通甲板，可搭载直升机、气垫船、登陆艇及两栖装甲车，进行立体登陆作战的大型水面舰艇。"
+  },
+  {
+    "id": "mil-006",
+    "title": "驱逐舰发展",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "从鱼雷艇驱逐舰演变而来的多用途主力战舰，现代驱逐舰已成为防空、反潜、反舰、对陆攻击的海上多面手。"
+  },
+  {
+    "id": "mil-007",
+    "title": "护卫舰",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "主要担负反潜、护航任务的中型水面战舰，现代护卫舰功能日益多样化，成为各国海军数量最多的主力舰种。"
+  },
+  {
+    "id": "mil-008",
+    "title": "军用无人机",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "无需飞行员驾驶，可远程操控或自主执行侦察、打击等任务的航空器，正在深刻改变现代战争形态。"
+  },
+  {
+    "id": "mil-009",
+    "title": "武装直升机",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "以反坦克、对地火力支援为主要任务，兼备运输和侦察功能的军用直升机，是陆军航空兵的核心装备。"
+  },
+  {
+    "id": "mil-010",
+    "title": "军用卫星",
+    "category": "military",
+    "categoryName": "军事",
+    "summary": "用于军事目的，部署在太空轨道上的人造航天器，包括侦察、通信、导航、预警等类型，是现代战争的“天眼”和“支柱”。"
+  },
+  {
+    "id": "chem-01",
+    "title": "元素周期表",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "元素周期表是化学元素的系统排列，反映元素的原子结构和性质周期性变化。"
+  },
+  {
+    "id": "chem-02",
+    "title": "化学键",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "化学键是原子之间相互结合的作用力，决定分子的结构和性质。"
+  },
+  {
+    "id": "chem-03",
+    "title": "酸碱反应",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "酸碱反应涉及酸和碱的相互作用，通常生成水和盐，是化学中的基本反应类型。"
+  },
+  {
+    "id": "chem-04",
+    "title": "氧化还原",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "氧化还原反应涉及电子转移，是化学中重要的能量转换过程，应用于电池和腐蚀等领域。"
+  },
+  {
+    "id": "chem-05",
+    "title": "有机化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "有机化学研究碳基化合物的结构、性质和反应，是生命科学和工业的基础学科。"
+  },
+  {
+    "id": "chem-06",
+    "title": "催化剂",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "催化剂是加速化学反应而不被消耗的物质，通过降低活化能提高反应效率。"
+  },
+  {
+    "id": "chem-07",
+    "title": "电解",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "电解是利用电流驱动非自发化学反应的过程，将电能转化为化学能，用于金属提取和电化学工业。"
+  },
+  {
+    "id": "chem-08",
+    "title": "聚合物",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "聚合物是由重复单元组成的大分子，包括天然和合成材料，广泛应用于日常生活和高科技领域。"
+  },
+  {
+    "id": "chem-09",
+    "title": "纳米材料",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "纳米材料是尺寸在纳米尺度（1-100纳米）的材料，具有独特物理化学性质，推动科技革新。"
+  },
+  {
+    "id": "chem-10",
+    "title": "石墨烯",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "石墨烯是单层碳原子组成的二维材料，具有优异导电、导热和力学性能，被誉为材料科学突破。"
+  },
+  {
+    "id": "chem-001",
+    "title": "碳60",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "碳60是一种由60个碳原子组成的球形分子，又称富勒烯，在材料科学和纳米技术中有重要应用。"
+  },
+  {
+    "id": "chem-002",
+    "title": "蛋白质折叠",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "蛋白质折叠是蛋白质从线性氨基酸序列折叠成特定三维结构的过程，对生物功能至关重要。"
+  },
+  {
+    "id": "chem-003",
+    "title": "酶",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "酶是生物催化剂，加速生化反应，在新陈代谢中起关键作用。"
+  },
+  {
+    "id": "chem-004",
+    "title": "化学平衡",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "化学平衡是指在可逆反应中，正反应和逆反应速率相等时的状态，反应物和生成物浓度保持不变。"
+  },
+  {
+    "id": "chem-005",
+    "title": "电化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "电化学研究化学能与电能之间的相互转化，涉及电池、腐蚀和电解等过程。"
+  },
+  {
+    "id": "chem-006",
+    "title": "光化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "光化学研究光引发的化学反应，涉及光合作用、摄影和光催化等领域。"
+  },
+  {
+    "id": "chem-007",
+    "title": "超临界流体",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "超临界流体是物质在超过临界温度和压力时形成的特殊状态，兼具气体和液体性质。"
+  },
+  {
+    "id": "chem-008",
+    "title": "分子筛",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "分子筛是多孔材料，能根据分子大小和形状选择性吸附或分离物质。"
+  },
+  {
+    "id": "chem-009",
+    "title": "手性分子",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "手性分子是不能与其镜像重合的分子，具有旋光性，在药物和生物化学中至关重要。"
+  },
+  {
+    "id": "chem-010",
+    "title": "生物降解",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "生物降解是指有机物质被微生物分解为简单化合物的过程，对环境保护至关重要。"
+  },
+  {
+    "id": "chem-11",
+    "title": "共价键",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "共价键是原子间通过共享电子对形成的化学键，常见于非金属元素间，如氢气和水分子中的键，赋予分子稳定性和特定几何形状。"
+  },
+  {
+    "id": "chem-12",
+    "title": "离子键",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "离子键是正负离子间通过静电吸引力形成的化学键，常见于金属和非金属元素之间，如氯化钠，赋予化合物高熔点和导电性。"
+  },
+  {
+    "id": "chem-13",
+    "title": "金属键",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "金属键是金属原子间通过自由电子海模型形成的化学键，赋予金属高导电性、导热性和延展性，广泛应用于材料和工程。"
+  },
+  {
+    "id": "chem-14",
+    "title": "氢键",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "氢键是氢原子与电负性强的原子（如氧、氮）间的弱相互作用，影响水的性质和生物分子结构，如DNA双螺旋。"
+  },
+  {
+    "id": "chem-15",
+    "title": "范德华力",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "范德华力是分子间的弱吸引力，包括伦敦色散力、偶极-偶极力和诱导力，影响物质的熔沸点和溶解度。"
+  },
+  {
+    "id": "chem-16",
+    "title": "配位化合物",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "配位化合物是由中心金属原子和配体通过配位键形成的复合物，广泛用于催化、医药和生物化学，如血红蛋白。"
+  },
+  {
+    "id": "chem-17",
+    "title": "有机金属",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "有机金属化合物含有金属-碳键，在催化、材料和有机合成中应用广泛，如格氏试剂和工业催化剂。"
+  },
+  {
+    "id": "chem-18",
+    "title": "高分子合成",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "高分子合成是通过聚合反应制备高分子材料的过程，如塑料、纤维和橡胶，在包装、纺织和医疗领域应用广泛。"
+  },
+  {
+    "id": "chem-19",
+    "title": "药物化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "药物化学研究药物的设计、合成和作用机制，以开发新药治疗疾病，结合化学、生物学和医学。"
+  },
+  {
+    "id": "chem-20",
+    "title": "食品化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "食品化学研究食品的化学组成、反应和变化，以提高食品质量、安全和营养，应用于保鲜、加工和风味开发。"
+  },
+  {
+    "id": "chem-21",
+    "title": "环境化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究化学物质在环境中的来源、反应、迁移、效应及其控制的化学分支，致力于解决环境污染问题。"
+  },
+  {
+    "id": "chem-22",
+    "title": "分析化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究物质的组成、含量、结构和形态等信息的获取方法与理论的学科，是化学研究的“眼睛”。"
+  },
+  {
+    "id": "chem-23",
+    "title": "计算化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "利用计算机模拟和数学方法研究化学问题，预测分子性质、反应机理和材料性能的学科。"
+  },
+  {
+    "id": "chem-24",
+    "title": "绿色化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "旨在设计化学产品和过程以减少或消除有害物质使用与生成的化学理念和原则。"
+  },
+  {
+    "id": "chem-25",
+    "title": "生物化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究生命体内化学分子和化学反应的学科，是理解生命现象本质的化学基础。"
+  },
+  {
+    "id": "chem-26",
+    "title": "放射化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究放射性物质的性质、制备、分离、分析及其在化学和相关领域中应用的学科。"
+  },
+  {
+    "id": "chem-27",
+    "title": "表面化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究材料表面或界面上发生的化学现象（如吸附、催化、腐蚀）的学科。"
+  },
+  {
+    "id": "chem-28",
+    "title": "胶体化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究胶体分散体系（粒子大小1-1000纳米）的制备、性质与应用的学科。"
+  },
+  {
+    "id": "chem-29",
+    "title": "电化学腐蚀",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "金属在电解质环境中因发生电化学反应而逐渐损耗的现象，是金属破坏的主要形式。"
+  },
+  {
+    "id": "chem-30",
+    "title": "化学动力学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究化学反应速率、反应机理以及影响反应速率因素的学科。"
+  },
+  {
+    "id": "chem-01",
+    "title": "原子轨道",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "原子轨道是量子力学中描述原子内电子分布的波函数，代表电子出现概率高的空间区域，如s、p、d、f轨道，奠定原子结构和化学键基础。"
+  },
+  {
+    "id": "chem-02",
+    "title": "分子轨道理论",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "分子轨道理论通过原子轨道线性组合形成分子轨道，解释分子中电子分布、化学键和分子性质，如磁性和键级，是现代化学键理论的核心。"
+  },
+  {
+    "id": "chem-03",
+    "title": "晶体场理论",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "晶体场理论解释过渡金属配合物中d轨道在配体电场作用下的分裂，影响颜色、磁性和稳定性，是配位化学的基础模型。"
+  },
+  {
+    "id": "chem-04",
+    "title": "配位化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "配位化学研究金属离子与配体通过配位键形成配合物的合成、结构、性质和反应，涵盖催化、材料和生物应用。"
+  },
+  {
+    "id": "chem-05",
+    "title": "有机金属化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "有机金属化学研究含金属-碳键的化合物，在均相催化、材料合成和有机合成中发挥关键作用，推动工业和应用化学进步。"
+  },
+  {
+    "id": "chem-06",
+    "title": "生物无机化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "生物无机化学探索无机元素在生物系统中的功能，如金属酶和金属蛋白的作用，应用于医学、酶学和环境科学。"
+  },
+  {
+    "id": "chem-07",
+    "title": "固体化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "固体化学研究固体材料的合成、结构、性质和应用，涵盖晶体、陶瓷、聚合物等，对电子、能源和材料科学至关重要。"
+  },
+  {
+    "id": "chem-08",
+    "title": "表面化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "表面化学研究固体表面的化学反应、吸附和催化现象，对多相催化、腐蚀防护和涂层技术有重要应用。"
+  },
+  {
+    "id": "chem-09",
+    "title": "胶体化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "胶体化学研究胶体系统的制备、稳定性和性质，如溶胶、凝胶和乳液，广泛应用于工业、医药和日常生活。"
+  },
+  {
+    "id": "chem-10",
+    "title": "纳米化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "纳米化学研究纳米尺度材料的合成、性质和应用，因量子效应和表面效应而具有独特性质，推动纳米科技革命。"
+  },
+  {
+    "id": "chem-41",
+    "title": "热力学化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究化学反应中的能量变化、自发方向与平衡的学科。核心是热力学定律，用于预测反应可行性。"
+  },
+  {
+    "id": "chem-42",
+    "title": "化学动力学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究化学反应速率、反应机理及影响因素的学科。关注反应“快慢”与“如何发生”。"
+  },
+  {
+    "id": "chem-43",
+    "title": "电化学原理",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究电能与化学能相互转化规律的学科。基础是氧化还原反应与电极过程。"
+  },
+  {
+    "id": "chem-44",
+    "title": "光化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究物质因吸收光子（通常为紫外或可见光）而引发的化学反应和物理过程的学科。"
+  },
+  {
+    "id": "chem-45",
+    "title": "催化化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究催化剂如何改变化学反应速率而不被消耗的学科。催化剂通过提供新反应路径降低活化能。"
+  },
+  {
+    "id": "chem-46",
+    "title": "超分子化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究两个或多个分子通过分子间相互作用力组装形成的复杂有序体系的学科。超越共价键范畴。"
+  },
+  {
+    "id": "chem-47",
+    "title": "计算化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "利用数学方法和计算机程序模拟、预测化学性质和过程的学科。是理论与实验的桥梁。"
+  },
+  {
+    "id": "chem-48",
+    "title": "绿色化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "又称环境友好化学，旨在设计化学产品和过程，从源头上减少或消除有害物质的使用与产生。"
+  },
+  {
+    "id": "chem-49",
+    "title": "环境化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究化学物质在环境中的来源、反应、迁移、效应及归宿的学科。是化学与环境科学的交叉。"
+  },
+  {
+    "id": "chem-50",
+    "title": "食品化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究食品的化学组成、性质、功能及其在加工和储藏中变化的学科。是食品科学的理论基础。"
+  },
+  {
+    "id": "chem-51",
+    "title": "天然产物化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究自然界生物产生的化合物，包括结构鉴定、生物活性和应用，广泛用于药物和香料开发。"
+  },
+  {
+    "id": "chem-52",
+    "title": "药物化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "设计、合成和研究药物分子的化学学科，旨在开发安全有效的治疗药物。"
+  },
+  {
+    "id": "chem-53",
+    "title": "农药化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "开发和管理用于农业的化学物质，以保护作物免受害虫、杂草和疾病侵害。"
+  },
+  {
+    "id": "chem-54",
+    "title": "染料化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究染料和颜料的合成、性质及在纺织、印刷和艺术中的应用。"
+  },
+  {
+    "id": "chem-55",
+    "title": "香料化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究香料和香气化合物的化学，用于香水、食品和日化产品。"
+  },
+  {
+    "id": "chem-56",
+    "title": "化妆品化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究化妆品成分的化学，确保安全性、功效和配方优化。"
+  },
+  {
+    "id": "chem-57",
+    "title": "材料化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究材料的化学组成、结构、性质和应用，开发新型材料。"
+  },
+  {
+    "id": "chem-58",
+    "title": "能源化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究能源存储、转换和可持续能源中的化学过程。"
+  },
+  {
+    "id": "chem-59",
+    "title": "地球化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究地球的化学组成、元素分布和地质过程中的化学反应。"
+  },
+  {
+    "id": "chem-60",
+    "title": "宇宙化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "研究宇宙天体如恒星、行星、陨石的化学组成和演化。"
+  },
+  {
+    "id": "chem-61",
+    "title": "分析化学方法",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "分析化学方法是一系列用于测定物质组成、结构和含量的技术，涵盖分离、鉴定和定量分析，广泛应用于科研和工业。"
+  },
+  {
+    "id": "chem-62",
+    "title": "色谱法",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "色谱法是一种分离和分析混合物的技术，基于组分在固定相和流动相间的分配差异，适用于复杂样品。"
+  },
+  {
+    "id": "chem-63",
+    "title": "光谱法",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "光谱法通过分析物质与电磁辐射的相互作用来研究其组成和结构，包括紫外-可见、红外和核磁共振光谱。"
+  },
+  {
+    "id": "chem-64",
+    "title": "质谱法",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "质谱法通过测量离子的质荷比来鉴定和分析分子，具有高灵敏度和准确性，常与色谱联用。"
+  },
+  {
+    "id": "chem-65",
+    "title": "电分析",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "电分析利用电化学原理测量物质浓度和性质，包括电位法、伏安法和库仑法，应用于传感器和能源研究。"
+  },
+  {
+    "id": "chem-66",
+    "title": "热分析",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "热分析通过测量物质在温度变化下的性质来研究其组成和反应动力学，包括热重分析和差示扫描量热法。"
+  },
+  {
+    "id": "chem-67",
+    "title": "表面分析",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "表面分析用于研究物质表面的组成、结构和性质，如元素分布和化学态，应用于材料科学和催化研究。"
+  },
+  {
+    "id": "chem-68",
+    "title": "结构鉴定",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "结构鉴定确定分子的化学结构和空间排列，使用光谱和衍射技术，是化学和药物研发的核心。"
+  },
+  {
+    "id": "chem-69",
+    "title": "定量分析",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "定量分析测定物质中特定组分的含量，使用标准方法和仪器，如滴定、光谱和色谱法。"
+  },
+  {
+    "id": "chem-70",
+    "title": "痕量分析",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "痕量分析检测极低浓度的物质，通常在ppm或ppb级别，要求高灵敏度技术如ICP-MS。"
+  },
+  {
+    "id": "chem-01",
+    "title": "生物化学基础",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "生物化学是研究生物体内化学过程的学科，涉及生物大分子的结构、功能和代谢，是生命科学的基础。"
+  },
+  {
+    "id": "chem-02",
+    "title": "酶学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "酶学是研究酶的结构、功能和动力学的分支学科，酶作为生物催化剂加速化学反应。"
+  },
+  {
+    "id": "chem-03",
+    "title": "代谢途径",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "代谢途径是细胞内一系列化学反应，将营养物质转化为能量和细胞组分，维持生命活动。"
+  },
+  {
+    "id": "chem-04",
+    "title": "分子生物学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "分子生物学研究生物大分子的结构和功能，特别是DNA、RNA和蛋白质，揭示遗传信息流动。"
+  },
+  {
+    "id": "chem-05",
+    "title": "基因工程",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "基因工程是操纵生物基因的技术，用于修改遗传特性或生产有用产品，如转基因作物和基因疗法。"
+  },
+  {
+    "id": "chem-06",
+    "title": "蛋白质工程",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "蛋白质工程是设计和修改蛋白质结构以改善功能或创造新功能，应用于药物和工业酶开发。"
+  },
+  {
+    "id": "chem-07",
+    "title": "细胞化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "细胞化学研究细胞内的化学成分和反应，使用显微技术定位特定分子，以理解细胞功能。"
+  },
+  {
+    "id": "chem-08",
+    "title": "免疫化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "免疫化学研究免疫系统的化学基础，包括抗体、抗原和免疫反应，应用于诊断和治疗。"
+  },
+  {
+    "id": "chem-09",
+    "title": "神经化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "神经化学研究神经系统的化学物质，如神经递质和神经肽，涉及神经信号传导和疾病机制。"
+  },
+  {
+    "id": "chem-10",
+    "title": "毒理化学",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "毒理化学研究化学物质对生物体的毒性作用和机制，用于安全评估和风险管控。"
+  },
+  {
+    "id": "chem-81",
+    "title": "化学实验安全",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "化学实验安全是确保实验过程中人员、环境和设备免受危害的一系列预防措施和程序。"
+  },
+  {
+    "id": "chem-82",
+    "title": "蒸馏",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "蒸馏是一种利用液体混合物中各组分沸点不同进行分离和纯化的技术。"
+  },
+  {
+    "id": "chem-83",
+    "title": "萃取",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "萃取是利用物质在两种互不相溶溶剂中溶解度差异进行分离的方法。"
+  },
+  {
+    "id": "chem-84",
+    "title": "结晶",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "结晶是通过形成固体晶体从溶液中纯化化合物的技术。"
+  },
+  {
+    "id": "chem-85",
+    "title": "过滤",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "过滤是通过多孔介质分离固体和液体或气体的物理方法。"
+  },
+  {
+    "id": "chem-86",
+    "title": "滴定",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "滴定是通过逐步添加标准溶液来确定待测溶液浓度的分析方法。"
+  },
+  {
+    "id": "chem-87",
+    "title": "色谱分离",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "色谱分离是利用混合物中各组分在固定相和流动相间分配差异进行分离的技术。"
+  },
+  {
+    "id": "chem-88",
+    "title": "电泳",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "电泳是利用电场作用下带电粒子在介质中移动进行分离的技术。"
+  },
+  {
+    "id": "chem-89",
+    "title": "离心",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "离心是利用离心力分离悬浮液中不同密度组分的技术。"
+  },
+  {
+    "id": "chem-90",
+    "title": "干燥",
+    "category": "chemistry",
+    "categoryName": "化学",
+    "summary": "干燥是通过去除水分或其他溶剂从物质中获得固体的过程。"
+  },
+  {
+    "id": "bio-001",
+    "title": "恐龙",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "中生代时期曾称霸地球的一类爬行动物，是鸟类的祖先。"
+  },
+  {
+    "id": "bio-002",
+    "title": "DNA",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "脱氧核糖核酸，是储存和传递遗传信息的主要生物大分子。"
+  },
+  {
+    "id": "bio-003",
+    "title": "光合作用",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "绿色植物和某些细菌利用光能，将二氧化碳和水转化为有机物并释放氧气的过程。"
+  },
+  {
+    "id": "bio-004",
+    "title": "进化论",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "解释生物种群在世代之间性状变化和物种多样性的科学理论。"
+  },
+  {
+    "id": "bio-005",
+    "title": "细胞",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "生命体结构和功能的基本单位，可分为原核细胞和真核细胞两大类。"
+  },
+  {
+    "id": "bio-006",
+    "title": "基因编辑",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "一种能对生物体基因组特定目标基因进行精确修改的分子技术。"
+  },
+  {
+    "id": "bio-007",
+    "title": "病毒",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "一类非细胞形态的微生物，必须寄生在活细胞内才能进行生命活动。"
+  },
+  {
+    "id": "bio-008",
+    "title": "细菌",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "一类结构简单、分布广泛的原核微生物，在自然界物质循环中起关键作用。"
+  },
+  {
+    "id": "bio-009",
+    "title": "生态系统",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "在一定空间内，生物群落与其非生物环境通过能量流动和物质循环相互作用形成的整体。"
+  },
+  {
+    "id": "bio-010",
+    "title": "灭绝事件",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "地质历史时期，由于环境剧变导致大量物种在相对短期内消失的现象。"
+  },
+  {
+    "id": "bio-011",
+    "title": "珊瑚礁",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "由珊瑚虫及其共生藻类等生物建造的钙质结构，是生物多样性极高的海洋生态系统。"
+  },
+  {
+    "id": "bio-012",
+    "title": "候鸟迁徙",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "某些鸟类随季节变化在繁殖地和越冬地之间进行的长距离、周期性往返移动。"
+  },
+  {
+    "id": "bio-013",
+    "title": "深海生物",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "生活在海洋透光层以下，适应高压、低温、黑暗等极端环境的生物群落。"
+  },
+  {
+    "id": "bio-014",
+    "title": "蜜蜂",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "一种高度社会化的昆虫，以其采蜜、授粉行为和复杂的社会结构而闻名。"
+  },
+  {
+    "id": "bio-015",
+    "title": "恐龙灭绝",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "约6600万年前，非鸟恐龙及其他大量物种突然消失的白垩纪末期大灭绝事件。"
+  },
+  {
+    "id": "bio-016",
+    "title": "人类起源",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "研究人类这一物种（智人）在生物进化谱系中的起源和演化历程的学科领域。"
+  },
+  {
+    "id": "bio-017",
+    "title": "克隆技术",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "通过无性繁殖方式，从一个细胞或DNA复制出基因完全相同的个体的技术。"
+  },
+  {
+    "id": "bio-018",
+    "title": "微生物",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "需要借助显微镜才能观察到的微小生物的总称，包括细菌、真菌、病毒、原生生物等。"
+  },
+  {
+    "id": "bio-019",
+    "title": "植物分类学",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "研究植物类群间的亲缘关系，对其进行科学命名、描述和归类的学科。"
+  },
+  {
+    "id": "bio-020",
+    "title": "动物行为",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "研究动物对环境和其他生物所做出的、可观察的、动态的反应和活动的学科。"
+  },
+  {
+    "id": "bio-21",
+    "title": "恐龙蛋化石",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "恐龙蛋化石是古生物学家研究恐龙繁殖行为的重要遗迹，这些化石记录了恐龙的生殖策略和蛋的形态，帮助我们理解史前生物。"
+  },
+  {
+    "id": "bio-22",
+    "title": "鲸鱼进化",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "鲸鱼进化展示了从陆地哺乳动物到海洋巨兽的转变，适应水生生活的关键特征包括流线型身体和回声定位。"
+  },
+  {
+    "id": "bio-23",
+    "title": "蚂蚁社会",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蚂蚁社会是高度组织化的昆虫群体，通过分工合作和信息素通信维持社会结构，包括工蚁、兵蚁和蚁后。"
+  },
+  {
+    "id": "bio-24",
+    "title": "蝙蝠回声定位",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蝙蝠利用超声波回声定位在黑暗中导航和捕食，这是其适应夜行生活的关键感官能力。"
+  },
+  {
+    "id": "bio-25",
+    "title": "章鱼智能",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "章鱼表现出惊人的智能，包括解决问题、使用工具和伪装能力，其神经系统高度发达。"
+  },
+  {
+    "id": "bio-26",
+    "title": "植物激素",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "植物激素是调节植物生长、发育和应激反应的化学物质，如生长素、细胞分裂素和乙烯。"
+  },
+  {
+    "id": "bio-27",
+    "title": "鸟类飞行",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "鸟类适应飞行的特征包括轻质骨骼、羽毛和高效呼吸系统，使其成为出色的飞行者。"
+  },
+  {
+    "id": "bio-28",
+    "title": "鱼类洄游",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "鱼类洄游是鱼类周期性迁徙行为，常用于产卵、觅食或越冬，依赖环境线索导航。"
+  },
+  {
+    "id": "bio-29",
+    "title": "昆虫变态",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "昆虫变态是昆虫发育中的形态变化过程，分为完全变态和不完全变态，影响其生活史和适应。"
+  },
+  {
+    "id": "bio-30",
+    "title": "蘑菇网络",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蘑菇网络指真菌菌丝形成的地下网络，连接植物根系，促进资源交换和生态 communication。"
+  },
+  {
+    "id": "bio-31",
+    "title": "海豚语言",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "海豚使用声纳和声音进行复杂交流，形成独特沟通系统，有助于群体协作和生存。"
+  },
+  {
+    "id": "bio-32",
+    "title": "变色龙变色",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "变色龙通过皮肤色素细胞改变颜色，用于伪装、社交信号和体温调节，是进化适应的结果。"
+  },
+  {
+    "id": "bio-33",
+    "title": "树木年轮",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "树木年轮是树木横截面上的环状结构，每环代表一年生长，可用于重建历史气候和生态变化。"
+  },
+  {
+    "id": "bio-34",
+    "title": "种子传播",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "种子传播是植物繁殖的关键过程，通过风、水、动物等方式将种子散布到新地点，促进生态平衡。"
+  },
+  {
+    "id": "bio-35",
+    "title": "动物冬眠",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "动物冬眠是某些动物在寒冷季节降低新陈代谢、进入休眠状态以节省能量的适应性行为。"
+  },
+  {
+    "id": "bio-36",
+    "title": "生物发光",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "生物发光是生物体产生光的能力，用于吸引猎物、防御或沟通，广泛存在于海洋和陆地生物中。"
+  },
+  {
+    "id": "bio-37",
+    "title": "珊瑚白化",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "珊瑚白化是珊瑚因压力如海水升温失去共生藻类而变白的现象，严重威胁珊瑚礁生态系统和海洋生物多样性。"
+  },
+  {
+    "id": "bio-38",
+    "title": "蜂群崩溃",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蜂群崩溃综合症是蜜蜂种群突然减少的现象，原因包括农药、疾病和栖息地丧失，威胁农业和生态。"
+  },
+  {
+    "id": "bio-39",
+    "title": "考拉生态",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "考拉是澳大利亚特有的树栖有袋动物，以桉树叶为食，面临栖息地丧失、疾病和气候变化等生存威胁。"
+  },
+  {
+    "id": "bio-40",
+    "title": "北极熊生存",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "北极熊是北极地区的顶级捕食者，依赖海冰捕食海豹，气候变化导致海冰减少，威胁其生存。"
+  },
+  {
+    "id": "bio-01",
+    "title": "袋鼠育儿袋",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "袋鼠育儿袋是雌性袋鼠腹部的皮肤褶皱形成的囊状结构，用于保护和哺育幼崽，是袋鼠等有袋类动物的典型特征。"
+  },
+  {
+    "id": "bio-02",
+    "title": "鹦鹉学舌",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "鹦鹉学舌是指鹦鹉能够模仿人类语言和其他声音，这种行为与它们的社交互动和智力有关，常用于吸引注意力或群体交流。"
+  },
+  {
+    "id": "bio-03",
+    "title": "蜗牛壳螺旋",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蜗牛壳的螺旋结构是蜗牛的外骨骼，提供保护、减少能量消耗，并适应其生长过程，是软体动物的典型适应特征。"
+  },
+  {
+    "id": "bio-04",
+    "title": "萤火虫发光",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "萤火虫发光是生物发光现象，通过化学反应产生光，用于求偶、防御或伪装，是昆虫适应环境的独特策略。"
+  },
+  {
+    "id": "bio-05",
+    "title": "蜘蛛丝强度",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蜘蛛丝是自然界中最强的材料之一，具有高强度和弹性，由蛋白质组成，用于织网、捕食和繁殖，启发材料科学。"
+  },
+  {
+    "id": "bio-06",
+    "title": "大象记忆",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "大象以其长期记忆闻名，能记住水源位置、家族成员和危险事件，这种能力对生存和社交至关重要，反映了高智力。"
+  },
+  {
+    "id": "bio-07",
+    "title": "鲑鱼洄游",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "鲑鱼洄游是鲑鱼从海洋返回出生河流繁殖的长途迁徙行为，依赖嗅觉导航，途中面临诸多挑战，是生命周期的关键阶段。"
+  },
+  {
+    "id": "bio-08",
+    "title": "变色龙眼睛",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "变色龙的眼睛能独立旋转，提供360度视野，帮助捕食和躲避捕食者，是爬行动物视觉适应的杰出例子。"
+  },
+  {
+    "id": "bio-09",
+    "title": "啄木鸟头骨",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "啄木鸟头骨具有特殊减震结构，如海绵状骨和舌骨支撑，保护大脑免受啄木时的强烈冲击，是生物力学适应的典范。"
+  },
+  {
+    "id": "bio-10",
+    "title": "蚂蚁搬运",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蚂蚁通过集体协作搬运大型食物，展示了高效的社会行为和信息素沟通，是昆虫社会性的典型表现。"
+  },
+  {
+    "id": "bio-001",
+    "title": "含羞草反射",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "含羞草在触碰时叶片迅速闭合，是一种植物防御反应，由电信号和膨压变化引发。"
+  },
+  {
+    "id": "bio-002",
+    "title": "猪笼草捕食",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "猪笼草通过特化的陷阱捕食昆虫，以补充贫瘠土壤中的营养。"
+  },
+  {
+    "id": "bio-003",
+    "title": "寄生蜂策略",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "寄生蜂将卵产在宿主体内或体表，幼虫以宿主为食，是重要的生物控制因子。"
+  },
+  {
+    "id": "bio-004",
+    "title": "电鳗放电",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "电鳗通过电器官放电，用于捕食、防御和导航，能产生高达860伏的电压。"
+  },
+  {
+    "id": "bio-005",
+    "title": "孔雀开屏",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "雄性孔雀展开色彩鲜艳的尾羽进行求偶展示，以吸引雌性孔雀。"
+  },
+  {
+    "id": "bio-006",
+    "title": "壁虎断尾",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "壁虎在遇到危险时能主动断尾，断尾后可再生，以逃脱捕食者。"
+  },
+  {
+    "id": "bio-007",
+    "title": "海马育儿",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "雄性海马有育儿袋，负责怀孕和孵化幼仔，是动物界中罕见的角色反转。"
+  },
+  {
+    "id": "bio-008",
+    "title": "蜜蜂舞蹈",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蜜蜂通过摇摆舞等舞蹈沟通食物源的距离和方向，体现群体智能。"
+  },
+  {
+    "id": "bio-009",
+    "title": "乌贼变色",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "乌贼通过色素细胞快速改变体色，用于伪装、沟通和求偶。"
+  },
+  {
+    "id": "bio-010",
+    "title": "蝙蝠超声波",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蝙蝠使用超声波进行回声定位，以在黑暗中导航和捕食昆虫。"
+  },
+  {
+    "id": "bio-001",
+    "title": "DNA复制",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "DNA复制是细胞分裂前遗传物质复制的过程，确保子细胞获得相同的DNA信息，是遗传信息传递的基础。"
+  },
+  {
+    "id": "bio-002",
+    "title": "RNA干扰",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "RNA干扰是一种基因沉默机制，通过小RNA分子抑制特定基因的表达，在调控和防御中起关键作用。"
+  },
+  {
+    "id": "bio-003",
+    "title": "基因突变",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "基因突变是DNA序列的永久性改变，可导致遗传变异、疾病或进化，是自然选择的基础。"
+  },
+  {
+    "id": "bio-004",
+    "title": "染色体异常",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "染色体异常涉及染色体数目或结构的改变，可导致遗传综合征、不孕或癌症，是细胞分裂错误的结果。"
+  },
+  {
+    "id": "bio-005",
+    "title": "有丝分裂",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "有丝分裂是体细胞分裂过程，确保遗传物质均匀分配到子细胞，用于生长、修复和维持组织稳态。"
+  },
+  {
+    "id": "bio-006",
+    "title": "减数分裂",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "减数分裂是生殖细胞形成过程，通过两次分裂产生单倍体配子，增加遗传多样性，是性繁殖的基础。"
+  },
+  {
+    "id": "bio-007",
+    "title": "蛋白质合成",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蛋白质合成是基因表达过程，包括转录和翻译，将DNA信息转化为功能性蛋白质，是细胞功能的核心。"
+  },
+  {
+    "id": "bio-008",
+    "title": "细胞凋亡",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "细胞凋亡是程序性细胞死亡，由内在或外在信号触发，用于发育、免疫和维持组织稳态，异常可致疾病。"
+  },
+  {
+    "id": "bio-009",
+    "title": "干细胞分化",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "干细胞分化是干细胞转变为特定细胞类型的过程，受信号调控，用于发育、再生和治疗，潜力巨大。"
+  },
+  {
+    "id": "bio-010",
+    "title": "端粒酶",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "端粒酶是维持端粒长度的逆转录酶，在细胞分裂中保护染色体末端，与衰老、癌症和干细胞活性相关。"
+  },
+  {
+    "id": "bio-71",
+    "title": "光合作用机制",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "植物、藻类和某些细菌利用阳光、二氧化碳和水合成有机物并释放氧气的过程，是生态系统能量基础。"
+  },
+  {
+    "id": "bio-72",
+    "title": "呼吸作用",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "生物体分解有机物释放能量的过程，分为有氧呼吸和无氧呼吸，是生命活动的能量来源。"
+  },
+  {
+    "id": "bio-73",
+    "title": "发酵过程",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "微生物在无氧条件下分解有机物产生能量和代谢产物的过程，广泛应用于食品和工业。"
+  },
+  {
+    "id": "bio-74",
+    "title": "氮循环",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "氮在大气、生物体和土壤之间循环的过程，包括固氮、硝化、反硝化等步骤，是生态系统的营养基础。"
+  },
+  {
+    "id": "bio-75",
+    "title": "碳循环",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "碳在生物圈、大气、海洋和岩石圈之间循环的过程，涉及光合作用、呼吸作用和化石燃料燃烧。"
+  },
+  {
+    "id": "bio-76",
+    "title": "水循环",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "水在蒸发、凝结、降水等过程中在地球表面和大气之间循环，支持生命和调节气候。"
+  },
+  {
+    "id": "bio-77",
+    "title": "食物链",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "生态系统中生物通过食物关系形成的链状结构，从生产者到消费者，传递能量和物质。"
+  },
+  {
+    "id": "bio-78",
+    "title": "生态位",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "物种在生态系统中的功能和位置，包括其资源利用、栖息地和与其他物种的相互作用。"
+  },
+  {
+    "id": "bio-79",
+    "title": "种群动态",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "种群大小和结构随时间变化的研究，受出生率、死亡率、迁移和环境因素影响。"
+  },
+  {
+    "id": "bio-80",
+    "title": "群落演替",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "群落结构随时间变化的过程，从先锋群落到顶级群落，受干扰和环境变化驱动。"
+  },
+  {
+    "id": "bio-81",
+    "title": "孟德尔遗传",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "孟德尔遗传基于格雷戈尔·孟德尔的豌豆实验，描述了性状通过基因从亲代传递给后代的规律，包括分离定律和独立分配定律。"
+  },
+  {
+    "id": "bio-82",
+    "title": "自然选择",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "自然选择是达尔文提出的进化机制，通过适应性差异使更适应环境的个体生存和繁殖机会更大，导致种群适应性变化。"
+  },
+  {
+    "id": "bio-83",
+    "title": "性选择",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "性选择是自然选择的一种形式，通过交配偏好和同性竞争，驱动与繁殖成功相关的性状进化，如孔雀的尾羽。"
+  },
+  {
+    "id": "bio-84",
+    "title": "遗传漂变",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "遗传漂变是随机过程导致种群中基因频率的偶然变化，尤其在种群规模小时影响显著，与自然选择无关。"
+  },
+  {
+    "id": "bio-85",
+    "title": "基因流动",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "基因流动是基因通过个体迁移在种群间的传递，能增加遗传多样性，减少种群间差异。"
+  },
+  {
+    "id": "bio-86",
+    "title": "适应辐射",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "适应辐射是一个祖先物种快速演化出多个新物种，每个适应不同的生态环境，如达尔文雀的喙形多样。"
+  },
+  {
+    "id": "bio-87",
+    "title": "趋同进化",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "趋同进化是不相关的物种独立演化出相似特征或功能，以适应相似环境或生活方式，如蝙蝠和鸟的翅膀。"
+  },
+  {
+    "id": "bio-88",
+    "title": "协同进化",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "协同进化是两个或多个物种相互影响彼此进化的过程，如传粉昆虫与开花植物的互利关系。"
+  },
+  {
+    "id": "bio-89",
+    "title": "分子钟",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "分子钟是利用DNA或蛋白质序列变化速率来估计物种分化时间的方法，假设分子进化速率相对恒定。"
+  },
+  {
+    "id": "bio-90",
+    "title": "系统发育",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "系统发育是研究物种间进化关系和历史的学科，通过构建系统发育树来表示共同祖先和分支事件。"
+  },
+  {
+    "id": "bio-001",
+    "title": "病毒结构",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "病毒是由核酸和蛋白质组成的简单生命形式，缺乏独立代谢能力，必须依赖宿主细胞复制。"
+  },
+  {
+    "id": "bio-002",
+    "title": "噬菌体",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "噬菌体是专门感染细菌的病毒，在细菌控制和基因工程中有广泛应用，是地球上最丰富的生物实体。"
+  },
+  {
+    "id": "bio-003",
+    "title": "朊病毒",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "朊病毒是错误折叠的蛋白质，能引发神经退行性疾病，如疯牛病和克雅氏病，挑战了传统病毒定义。"
+  },
+  {
+    "id": "bio-004",
+    "title": "抗生素耐药",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "抗生素耐药是细菌通过基因突变或获得耐药基因对抗生素产生抵抗性的现象，严重威胁全球公共卫生。"
+  },
+  {
+    "id": "bio-005",
+    "title": "微生物组",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "微生物组指特定生境中所有微生物的集合及其基因总和，影响宿主健康、环境功能和生态系统稳定。"
+  },
+  {
+    "id": "bio-006",
+    "title": "肠道菌群",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "肠道菌群是人类肠道中的微生物群落，参与消化、免疫调节和代谢，对身心健康有深远影响。"
+  },
+  {
+    "id": "bio-007",
+    "title": "极端微生物",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "极端微生物能在高温、低温、高压、高酸或高盐等极端环境中生存，具有独特的适应机制。"
+  },
+  {
+    "id": "bio-008",
+    "title": "生物膜",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "生物膜是微生物附着在表面形成的结构化群落，由胞外聚合物包裹，增强生存和耐药性。"
+  },
+  {
+    "id": "bio-009",
+    "title": "共生关系",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "共生关系是两种生物之间的长期相互作用，包括互利共生、偏利共生和寄生，驱动进化和生态平衡。"
+  },
+  {
+    "id": "bio-010",
+    "title": "寄生虫策略",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "寄生虫发展出多种策略以感染、生存和传播，包括免疫逃避、宿主操纵和复杂生命周期。"
+  },
+  {
+    "id": "bio-91",
+    "title": "蜥蜴",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蜥蜴是爬行动物中多样化的类群，属于有鳞目，通常有四肢和鳞片，广泛分布于全球各种栖息地。"
+  },
+  {
+    "id": "bio-92",
+    "title": "鳄鱼",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "鳄鱼是大型水生爬行动物，属于鳄目，以其强壮的 jaws 和捕食性行为而闻名。"
+  },
+  {
+    "id": "bio-93",
+    "title": "蛇",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蛇是无四肢的爬行动物，属于有鳞目，以其灵活的身体和多种捕食策略而著称。"
+  },
+  {
+    "id": "bio-94",
+    "title": "青蛙",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "青蛙是两栖动物，属于无尾目，以其湿润皮肤和从蝌蚪到成体的变态发育而闻名。"
+  },
+  {
+    "id": "bio-95",
+    "title": "蝾螈",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蝾螈是两栖动物，有尾巴和四肢，类似蜥蜴但皮肤湿润，常见于潮湿环境。"
+  },
+  {
+    "id": "bio-96",
+    "title": "蝴蝶",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蝴蝶是昆虫，属于鳞翅目，以其美丽的翅膀和完全变态发育而闻名。"
+  },
+  {
+    "id": "bio-97",
+    "title": "蜻蜓",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蜻蜓是昆虫，属于蜻蜓目，有两对大翅膀和复眼，是敏捷的飞行捕食者。"
+  },
+  {
+    "id": "bio-98",
+    "title": "蟋蟀",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蟋蟀是昆虫，属于直翅目，以其鸣叫习性和夜间活动而著称。"
+  },
+  {
+    "id": "bio-99",
+    "title": "螳螂",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "螳螂是昆虫，属于螳螂目，以其独特的捕捉足和捕食性行为而闻名。"
+  },
+  {
+    "id": "bio-100",
+    "title": "甲虫",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "甲虫是昆虫，属于鞘翅目，以其硬壳前翅和多样性而著称，是地球上最成功的动物类群。"
+  },
+  {
+    "id": "bio-101",
+    "title": "苔藓",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "苔藓是非维管植物，生长在潮湿环境，通过孢子繁殖，是植物演化的早期代表。"
+  },
+  {
+    "id": "bio-102",
+    "title": "蕨类",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蕨类是维管植物，通过孢子繁殖，具有根、茎、叶，常见于热带和温带森林。"
+  },
+  {
+    "id": "bio-103",
+    "title": "裸子植物",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "裸子植物是种子植物，种子裸露不包在果实中，包括松、杉等，多为木本植物。"
+  },
+  {
+    "id": "bio-104",
+    "title": "被子植物",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "被子植物是开花植物，种子包在果实中，是当今最多样化的植物类群。"
+  },
+  {
+    "id": "bio-105",
+    "title": "藻类",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "藻类是一大类光合生物，包括单细胞和多细胞形式，主要生活在水中。"
+  },
+  {
+    "id": "bio-106",
+    "title": "地衣",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "地衣是真菌和藻类或蓝藻的共生体，能在极端环境生长。"
+  },
+  {
+    "id": "bio-107",
+    "title": "菌类",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "菌类是真菌界生物，包括蘑菇、酵母、霉菌等，以分解有机物为生。"
+  },
+  {
+    "id": "bio-108",
+    "title": "蓝藻",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "蓝藻是原核生物，能进行光合作用，原称蓝绿藻，是重要的氧气生产者。"
+  },
+  {
+    "id": "bio-109",
+    "title": "浮游生物",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "浮游生物是漂浮在水中的微小生物，包括浮游植物和浮游动物，是水生食物链基础。"
+  },
+  {
+    "id": "bio-110",
+    "title": "藻类",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "藻类多样性的另一个方面，包括大型海藻和微小单细胞藻类，广泛用于工业和环境。"
+  },
+  {
+    "id": "bio-111",
+    "title": "蛋白质折叠",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "多肽链在分子伴侣辅助下形成特定三维结构的过程，是蛋白质获得生物活性的基础。"
+  },
+  {
+    "id": "bio-112",
+    "title": "酶催化",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "生物体内由酶（生物催化剂）加速化学反应的过程，具有高效性和专一性。"
+  },
+  {
+    "id": "bio-113",
+    "title": "抗体",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "由B淋巴细胞分化成的浆细胞产生的Y形蛋白质，能特异性识别并结合抗原。"
+  },
+  {
+    "id": "bio-114",
+    "title": "免疫细胞",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "参与免疫应答，负责识别、清除病原体和异常细胞的细胞总称。"
+  },
+  {
+    "id": "bio-115",
+    "title": "淋巴系统",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "由淋巴管、淋巴组织和淋巴器官组成的网络，负责运输淋巴液和免疫防御。"
+  },
+  {
+    "id": "bio-116",
+    "title": "骨髓",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "存在于骨骼腔隙内的软组织，分为红骨髓和黄骨髓，是主要的造血器官。"
+  },
+  {
+    "id": "bio-117",
+    "title": "血小板",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "骨髓巨核细胞脱落的胞质碎片，无细胞核，在止血和伤口愈合中起关键作用。"
+  },
+  {
+    "id": "bio-118",
+    "title": "红细胞",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "血液中数量最多的血细胞，呈双凹圆盘状，主要功能是运输氧气和二氧化碳。"
+  },
+  {
+    "id": "bio-119",
+    "title": "白细胞",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "免疫系统的重要组成细胞，负责识别和清除病原体及异常细胞，俗称白血球。"
+  },
+  {
+    "id": "bio-120",
+    "title": "血红蛋白",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "红细胞内含铁的呼吸蛋白，负责在肺部结合氧气并向组织释放，是血液运输氧的关键。"
+  },
+  {
+    "id": "bio-121",
+    "title": "胰岛素",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "由胰腺分泌的蛋白质激素，是体内唯一能降低血糖的激素。"
+  },
+  {
+    "id": "bio-122",
+    "title": "肾上腺素",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "由肾上腺髓质分泌的激素，是应对紧急状况的“战斗或逃跑”反应的关键物质。"
+  },
+  {
+    "id": "bio-123",
+    "title": "甲状腺素",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "由甲状腺分泌的激素，主要功能是调节新陈代谢和生长发育。"
+  },
+  {
+    "id": "bio-124",
+    "title": "生长激素",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "由垂体前叶分泌的蛋白质激素，是促进生长发育的关键激素。"
+  },
+  {
+    "id": "bio-125",
+    "title": "雌激素",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "主要由卵巢分泌的类固醇激素，对女性生殖系统和第二性征发育至关重要。"
+  },
+  {
+    "id": "bio-126",
+    "title": "睾酮",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "主要由睾丸分泌的雄性激素，对男性生殖发育和第二性征起主导作用。"
+  },
+  {
+    "id": "bio-127",
+    "title": "褪黑素",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "由松果体分泌的激素，是调节人体昼夜节律和睡眠的关键信号分子。"
+  },
+  {
+    "id": "bio-128",
+    "title": "内啡肽",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "垂体分泌的内源性阿片肽，是身体天然的“镇痛剂”和“快乐素”。"
+  },
+  {
+    "id": "bio-129",
+    "title": "多巴胺",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "中枢神经系统重要的神经递质，与奖赏、动机、运动控制密切相关。"
+  },
+  {
+    "id": "bio-130",
+    "title": "血清素",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "又称5-羟色胺，是一种广泛分布于中枢和外周的神经递质，调节情绪、食欲和睡眠。"
+  },
+  {
+    "id": "bio-131",
+    "title": "神经元",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "神经元是神经系统的基本功能单元，负责接收、处理和传递信息。"
+  },
+  {
+    "id": "bio-132",
+    "title": "突触",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "突触是神经元之间或神经元与效应器之间的连接点，用于信号传递。"
+  },
+  {
+    "id": "bio-133",
+    "title": "树突",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "树突是神经元上的分支结构，主要负责接收来自其他神经元的信号。"
+  },
+  {
+    "id": "bio-134",
+    "title": "轴突",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "轴突是神经元的长纤维，负责将信号从细胞体传递到其他神经元或效应器。"
+  },
+  {
+    "id": "bio-135",
+    "title": "髓鞘",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "髓鞘是包裹在轴突周围的脂肪层，起到绝缘作用，加快神经信号传导速度。"
+  },
+  {
+    "id": "bio-136",
+    "title": "胶质细胞",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "胶质细胞是神经系统中的支持细胞，提供营养、绝缘和保护神经元。"
+  },
+  {
+    "id": "bio-137",
+    "title": "小脑",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "小脑是后脑的一部分，主要负责协调运动、平衡和姿势。"
+  },
+  {
+    "id": "bio-138",
+    "title": "大脑皮层",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "大脑皮层是大脑外层，负责高级认知功能，如思维、语言和感知。"
+  },
+  {
+    "id": "bio-139",
+    "title": "海马体",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "海马体是颞叶内的结构，对记忆形成和空间导航至关重要。"
+  },
+  {
+    "id": "bio-140",
+    "title": "杏仁核",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "杏仁核是颞叶深处的杏仁状结构，主要处理情绪，尤其是恐惧和威胁。"
+  },
+  {
+    "id": "bio-141",
+    "title": "视网膜",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "位于眼球后部的感光组织，将光信号转化为神经信号，是视觉形成的第一站。"
+  },
+  {
+    "id": "bio-142",
+    "title": "耳蜗",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "内耳中形似蜗牛壳的螺旋形结构，是听觉和部分平衡觉的核心感受器。"
+  },
+  {
+    "id": "bio-143",
+    "title": "嗅觉受体",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "位于鼻腔上部嗅上皮细胞上的特化蛋白质，能与气味分子结合并触发嗅觉信号。"
+  },
+  {
+    "id": "bio-144",
+    "title": "味蕾",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "主要位于舌头上皮内的洋葱状结构，内含味觉细胞，能感知基本味觉。"
+  },
+  {
+    "id": "bio-145",
+    "title": "皮肤感受器",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "分布于皮肤各层的多种神经末梢，负责感知触、压、温、痛等外部刺激。"
+  },
+  {
+    "id": "bio-146",
+    "title": "痛觉",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "一种由实际或潜在组织损伤引起的不愉快感觉和情绪体验，是重要的保护性警报系统。"
+  },
+  {
+    "id": "bio-147",
+    "title": "温度觉",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "通过皮肤中的温度感受器感知外界冷热变化的感觉，是维持体温恒定的重要输入。"
+  },
+  {
+    "id": "bio-148",
+    "title": "触觉",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "通过皮肤中的机械感受器感知物体接触、压力、振动等物理接触的感觉。"
+  },
+  {
+    "id": "bio-149",
+    "title": "本体感觉",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "感知身体各部分位置、运动和力量的感觉，无需视觉参与，也称为“第六感”。"
+  },
+  {
+    "id": "bio-150",
+    "title": "前庭系统",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "位于内耳的平衡器官，通过感知头部运动和空间位置来维持平衡、协调视觉和姿势。"
+  },
+  {
+    "id": "bio-151",
+    "title": "肌肉纤维",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "肌肉纤维是构成骨骼肌的基本单位，呈细长圆柱形，负责通过收缩产生力量和运动。"
+  },
+  {
+    "id": "bio-152",
+    "title": "肌腱",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "肌腱是由致密结缔组织构成的坚韧索状结构，负责将肌肉附着到骨骼上，传递收缩力。"
+  },
+  {
+    "id": "bio-153",
+    "title": "韧带",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "韧带是连接骨与骨的坚韧纤维结缔组织束，主要功能是稳定关节并限制其过度活动。"
+  },
+  {
+    "id": "bio-154",
+    "title": "关节",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "关节是骨与骨之间的连接结构，根据活动度分为不动关节、微动关节和可动关节，是运动的基础。"
+  },
+  {
+    "id": "bio-155",
+    "title": "骨骼系统",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "骨骼系统由全身206块骨头及连接它们的软骨、韧带和关节构成，提供支撑、保护、运动和造血等功能。"
+  },
+  {
+    "id": "bio-156",
+    "title": "脊柱",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "脊柱是人体的中轴骨骼，由33块椎骨叠加而成，起到支撑身体、保护脊髓和缓冲震动的作用。"
+  },
+  {
+    "id": "bio-157",
+    "title": "颅骨",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "颅骨是构成头部的骨性框架，分为脑颅和面颅，主要功能是保护大脑和支撑面部结构。"
+  },
+  {
+    "id": "bio-158",
+    "title": "肋骨",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "肋骨是弯曲的骨板，共12对，与胸椎和胸骨共同构成胸廓，保护心肺并参与呼吸运动。"
+  },
+  {
+    "id": "bio-159",
+    "title": "骨盆",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "骨盆是由髋骨、骶骨和尾骨构成的环状骨结构，连接脊柱与下肢，支撑体重并保护盆腔内脏。"
+  },
+  {
+    "id": "bio-160",
+    "title": "四肢骨",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "四肢骨包括上肢骨和下肢骨，负责执行精细操作和支撑行走、奔跑等运动。"
+  },
+  {
+    "id": "bio-161",
+    "title": "心脏结构",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "心脏是人体的泵血器官，由心肌组成，分为四个腔室：左心房、左心室、右心房和右心室。"
+  },
+  {
+    "id": "bio-162",
+    "title": "血管系统",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "血管系统由动脉、静脉和毛细血管组成，负责输送血液到全身各处，实现营养、氧气和废物的交换。"
+  },
+  {
+    "id": "bio-163",
+    "title": "动脉",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "动脉是从心脏输送富氧血液到全身的血管，壁厚有弹性，能承受较高血压。"
+  },
+  {
+    "id": "bio-164",
+    "title": "静脉",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "静脉是将缺氧血液从全身输送回心脏的血管，壁薄有瓣膜，帮助血液回流。"
+  },
+  {
+    "id": "bio-165",
+    "title": "毛细血管",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "毛细血管是最细小的血管，连接动脉和静脉，壁极薄，负责氧气、二氧化碳和营养物质的交换。"
+  },
+  {
+    "id": "bio-166",
+    "title": "血压",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "血压是血液在血管中流动时对血管壁施加的压力，通常指动脉血压，是评估心血管健康的重要指标。"
+  },
+  {
+    "id": "bio-167",
+    "title": "心率",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "心率是心脏每分钟跳动的次数，反映心脏的工作状态，受自主神经系统调节。"
+  },
+  {
+    "id": "bio-168",
+    "title": "血液循环",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "血液循环是血液在心脏和血管中循环流动的过程，分为体循环和肺循环，维持全身氧气和营养供应。"
+  },
+  {
+    "id": "bio-169",
+    "title": "肺泡",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "肺泡是肺部的小气囊，壁极薄，是气体交换的主要场所，氧气进入血液，二氧化碳排出。"
+  },
+  {
+    "id": "bio-170",
+    "title": "支气管",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "支气管是气管的分支，将空气输送到肺部的肺泡，内壁有纤毛和黏液帮助清洁空气。"
+  },
+  {
+    "id": "bio-171",
+    "title": "胃酸",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "胃酸是胃中分泌的强酸，主要成分是盐酸，帮助消化食物和杀死细菌。"
+  },
+  {
+    "id": "bio-172",
+    "title": "肠道蠕动",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "肠道蠕动是肠道肌肉的协调收缩，推动食物通过消化道。"
+  },
+  {
+    "id": "bio-173",
+    "title": "肝脏功能",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "肝脏是人体最大的内脏器官，负责代谢、解毒、储存等多种功能。"
+  },
+  {
+    "id": "bio-174",
+    "title": "胆汁",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "胆汁是肝脏产生的黄绿色液体，储存在胆囊中，帮助消化脂肪。"
+  },
+  {
+    "id": "bio-175",
+    "title": "胰腺",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "胰腺是消化和内分泌器官，分泌胰液和激素如胰岛素。"
+  },
+  {
+    "id": "bio-176",
+    "title": "肾脏",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "肾脏是排泄器官，过滤血液产生尿液，调节体液和电解质平衡。"
+  },
+  {
+    "id": "bio-177",
+    "title": "膀胱",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "膀胱是中空肌肉器官，储存尿液直到排出。"
+  },
+  {
+    "id": "bio-178",
+    "title": "尿液生成",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "尿液生成是肾脏中过滤、重吸收和分泌的过程，形成尿液。"
+  },
+  {
+    "id": "bio-179",
+    "title": "皮肤",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "皮肤是人体最大的器官，提供保护、感觉和体温调节功能。"
+  },
+  {
+    "id": "bio-180",
+    "title": "汗腺",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "汗腺是皮肤中的小腺体，分泌汗液帮助调节体温。"
+  },
+  {
+    "id": "bio-181",
+    "title": "恐龙",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "恐龙是中生代时期统治地球的爬行动物，以其多样性和巨大体型著称，最终在白垩纪末期灭绝。"
+  },
+  {
+    "id": "bio-182",
+    "title": "DNA",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "DNA是脱氧核糖核酸，携带遗传信息的分子，是生物体遗传和发育的基础。"
+  },
+  {
+    "id": "bio-183",
+    "title": "光合作用",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "光合作用是植物、藻类和某些细菌利用光能将二氧化碳和水转化为有机物和氧气的过程。"
+  },
+  {
+    "id": "bio-184",
+    "title": "进化论",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "进化论是解释生物多样性和物种变化的理论，核心是自然选择和遗传变异。"
+  },
+  {
+    "id": "bio-185",
+    "title": "细胞",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "细胞是生命的基本单位，所有生物都由细胞组成，负责执行生命活动。"
+  },
+  {
+    "id": "bio-186",
+    "title": "基因编辑",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "基因编辑是通过技术手段修改生物体DNA序列的方法，如CRISPR-Cas9。"
+  },
+  {
+    "id": "bio-187",
+    "title": "病毒",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "病毒是非细胞生物，必须寄生在宿主细胞内复制，可引起疾病。"
+  },
+  {
+    "id": "bio-188",
+    "title": "细菌",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "细菌是原核微生物，广泛存在于各种环境中，有些致病，有些有益。"
+  },
+  {
+    "id": "bio-189",
+    "title": "生态系统",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "生态系统是生物群落与其非生物环境相互作用的功能单位，包括能量流动和物质循环。"
+  },
+  {
+    "id": "bio-190",
+    "title": "灭绝事件",
+    "category": "biology",
+    "categoryName": "生物",
+    "summary": "灭绝事件是指地球历史上大量物种在短时间内消失的现象，如白垩纪-古近纪灭绝事件。"
+  },
+  {
+    "id": "phy-01",
+    "title": "相对论",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "爱因斯坦提出的物理学理论，分为狭义相对论和广义相对论，彻底改变了时空观和引力观念。"
+  },
+  {
+    "id": "phy-02",
+    "title": "量子力学",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "描述微观粒子（如原子、电子、光子）运动规律的基础物理理论，以波粒二象性和不确定性原理为核心。"
+  },
+  {
+    "id": "phy-03",
+    "title": "黑洞",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "广义相对论预言的天体，引力极强，连光也无法逃逸其事件视界，是时空极度弯曲的区域。"
+  },
+  {
+    "id": "phy-04",
+    "title": "引力波",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "广义相对论预言的时空涟漪，由加速运动的质量（如黑洞并合）产生，以光速传播。"
+  },
+  {
+    "id": "phy-05",
+    "title": "超导",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "某些材料在低温下电阻突然降为零，并表现出完全抗磁性的宏观量子现象。"
+  },
+  {
+    "id": "phy-06",
+    "title": "暗物质",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "一种不发射、不吸收也不反射电磁辐射，因此无法直接观测，但通过引力效应推断其存在的物质。"
+  },
+  {
+    "id": "phy-07",
+    "title": "反物质",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "与普通物质质量相同但电荷等量子数相反的物质，与普通物质相遇会湮灭并释放巨大能量。"
+  },
+  {
+    "id": "phy-08",
+    "title": "核裂变",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "一个重原子核（如铀-235、钚-239）分裂成两个或多个较轻原子核，并释放巨大能量和中子的核反应。"
+  },
+  {
+    "id": "phy-09",
+    "title": "核聚变",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "两个轻原子核（如氢的同位素氘和氚）结合成一个较重原子核，并释放巨大能量的核反应。"
+  },
+  {
+    "id": "phy-10",
+    "title": "光电效应",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "光照射到金属表面时，能够使电子逸出的现象，该现象无法用经典波动理论解释，成为量子论的开端。"
+  },
+  {
+    "id": "phy-11",
+    "title": "波粒二象性",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "波粒二象性是量子力学的基本原理，指微观粒子如光子和电子同时具有波动性和粒子性，颠覆了经典物理学观念。"
+  },
+  {
+    "id": "phy-12",
+    "title": "不确定性原理",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "海森堡不确定性原理指出，无法同时精确测量粒子的位置和动量，是量子力学的核心限制。"
+  },
+  {
+    "id": "phy-13",
+    "title": "热力学定律",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "热力学定律描述热、能量和功之间的关系，是物理学的基础定律，包括能量守恒和熵增原理。"
+  },
+  {
+    "id": "phy-14",
+    "title": "电磁感应",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "电磁感应是磁场变化产生电动势的现象，由法拉第发现，是电动机和发电机的基础。"
+  },
+  {
+    "id": "phy-15",
+    "title": "弦理论",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "弦理论试图统一量子力学和广义相对论，认为基本粒子是一维弦的振动，需额外维度支撑。"
+  },
+  {
+    "id": "phy-16",
+    "title": "希格斯玻色子",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "希格斯玻色子是标准模型中的粒子，通过希格斯场赋予其他粒子质量，于2012年发现。"
+  },
+  {
+    "id": "phy-17",
+    "title": "宇宙大爆炸",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "宇宙大爆炸理论描述宇宙从约138亿年前的极热极密状态膨胀至今，是现代宇宙学的基础。"
+  },
+  {
+    "id": "phy-18",
+    "title": "中子星",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "中子星是恒星演化末期的致密天体，主要由中子组成，密度极高，可发射脉冲辐射。"
+  },
+  {
+    "id": "phy-19",
+    "title": "暗能量",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "暗能量是一种假想的能量形式，被认为是宇宙加速膨胀的原因，占宇宙总能量的约68%。"
+  },
+  {
+    "id": "phy-20",
+    "title": "熵",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "熵是热力学中描述系统无序度的物理量，随时间增加，体现了热力学第二定律。"
+  },
+  {
+    "id": "phy-21",
+    "title": "量子隧穿",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "量子力学现象，粒子能穿越高于其能量的势垒。"
+  },
+  {
+    "id": "phy-22",
+    "title": "超流体",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "一种物质状态，流体具有零粘度和无限流动性。"
+  },
+  {
+    "id": "phy-23",
+    "title": "玻色-爱因斯坦凝聚",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "玻色子在低温下凝聚到同一量子态的现象。"
+  },
+  {
+    "id": "phy-24",
+    "title": "量子纠缠应用",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "量子纠缠在通信、计算和密码学中的实际用途。"
+  },
+  {
+    "id": "phy-25",
+    "title": "夸克禁闭",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "夸克无法被单独观测，总是以强子形式存在。"
+  },
+  {
+    "id": "phy-26",
+    "title": "弦理论争议",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "弦理论作为统一理论的候选，但面临实验验证的挑战。"
+  },
+  {
+    "id": "phy-27",
+    "title": "多重宇宙",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "假设存在多个宇宙的集合，每个宇宙可能有不同的物理定律。"
+  },
+  {
+    "id": "phy-28",
+    "title": "时间膨胀",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "狭义相对论中，时间流逝因速度或引力而变化。"
+  },
+  {
+    "id": "phy-29",
+    "title": "引力透镜",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "大质量天体使光线弯曲，产生透镜效应。"
+  },
+  {
+    "id": "phy-30",
+    "title": "宇宙微波背景",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "大爆炸的残留辐射，遍布整个宇宙。"
+  },
+  {
+    "id": "phy-31",
+    "title": "暗能量探测",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "暗能量是一种充盈宇宙空间、具有负压强并导致宇宙加速膨胀的神秘能量形式，其具体物理本质未知。"
+  },
+  {
+    "id": "phy-32",
+    "title": "量子退相干",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "量子退相干是量子系统与周围环境发生相互作用，导致其量子叠加态信息不可逆地流失到环境中，从而表现为经典行为的过程。"
+  },
+  {
+    "id": "phy-33",
+    "title": "拓扑绝缘体",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "拓扑绝缘体是一种内部绝缘但表面（或边缘）存在受拓扑保护的导电态的新型量子材料。"
+  },
+  {
+    "id": "phy-34",
+    "title": "超导量子比特",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "超导量子比特是利用超导约瑟夫森结构成的非线性谐振电路来实现和操控的量子比特，是当前量子计算的主流物理实现方案之一。"
+  },
+  {
+    "id": "phy-35",
+    "title": "粒子加速器",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "粒子加速器是利用电磁场将带电粒子（如质子、电子）加速到极高能量，并使其发生碰撞或轰击固定靶，以研究物质微观结构的大型科学装置。"
+  },
+  {
+    "id": "phy-36",
+    "title": "标准模型",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "标准模型是描述强力、弱力和电磁力这三种基本力以及组成所有物质的基本粒子的理论框架，是粒子物理学的基石。"
+  },
+  {
+    "id": "phy-37",
+    "title": "反氢原子",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "反氢原子是氢原子的反物质对应物，由一个反质子（原子核）和一个正电子（反电子）构成，是目前研究最广泛的反原子。"
+  },
+  {
+    "id": "phy-38",
+    "title": "引力红移",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "引力红移是指光从强引力场传播到弱引力场时，其频率降低、波长变长（即光谱向红端移动）的广义相对论效应。"
+  },
+  {
+    "id": "phy-39",
+    "title": "霍金辐射",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "霍金辐射是理论预言黑洞并非完全“黑”，而是会因量子效应在其事件视界附近缓慢发出热辐射的现象。"
+  },
+  {
+    "id": "phy-40",
+    "title": "量子场论",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "量子场论是将量子力学原理应用于场，结合狭义相对论，用以描述基本粒子及其相互作用的基础理论框架。"
+  },
+  {
+    "id": "phy-01",
+    "title": "光的波粒二象性",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "光既表现出波动性，又表现出粒子性，这是量子力学的基础概念。"
+  },
+  {
+    "id": "phy-02",
+    "title": "康普顿效应",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "X射线或伽马射线与电子散射时波长改变的现象，证明光的粒子性。"
+  },
+  {
+    "id": "phy-03",
+    "title": "德布罗意波",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "物质粒子也具有波动性，其波长与动量成反比，由德布罗意提出。"
+  },
+  {
+    "id": "phy-04",
+    "title": "薛定谔方程",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "量子力学的基本方程，描述波函数随时间演化的规律。"
+  },
+  {
+    "id": "phy-05",
+    "title": "海森堡不确定性原理",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "无法同时精确测量粒子的位置和动量，是量子力学的基本限制。"
+  },
+  {
+    "id": "phy-06",
+    "title": "量子叠加",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "量子系统可以同时处于多个状态的线性组合，直到被测量。"
+  },
+  {
+    "id": "phy-07",
+    "title": "量子纠缠",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "两个或多个粒子状态相互关联，无论距离多远，测量一个会立即影响另一个。"
+  },
+  {
+    "id": "phy-08",
+    "title": "量子退相干",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "量子系统与环境相互作用导致叠加态消失的过程，是量子到经典过渡的关键。"
+  },
+  {
+    "id": "phy-09",
+    "title": "贝尔不等式",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "用于检验量子力学与局部隐变量理论的实验判据，实验支持量子力学。"
+  },
+  {
+    "id": "phy-10",
+    "title": "量子计算原理",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "利用量子叠加和纠缠进行并行计算，有望解决经典计算机无法处理的问题。"
+  },
+  {
+    "id": "phy-01",
+    "title": "狭义相对论",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "爱因斯坦于1905年提出的理论，基于光速不变和相对性原理，彻底改变了牛顿时空观。"
+  },
+  {
+    "id": "phy-02",
+    "title": "广义相对论",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "爱因斯坦于1915年完成的引力理论，将引力解释为时空弯曲的几何效应。"
+  },
+  {
+    "id": "phy-03",
+    "title": "等效原理",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "广义相对论的基本原理，指出引力的物理效应与加速参考系中的惯性力在局部不可区分。"
+  },
+  {
+    "id": "phy-04",
+    "title": "时空弯曲",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "广义相对论的核心概念，指物质和能量的存在会改变其周围四维时空的几何结构。"
+  },
+  {
+    "id": "phy-05",
+    "title": "引力红移",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "光波从强引力场传播到弱引力场时，其频率降低、波长变长（向红端移动）的现象。"
+  },
+  {
+    "id": "phy-06",
+    "title": "引力时间膨胀",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "在强引力场中，时间的流逝速度比在弱引力场中更慢。"
+  },
+  {
+    "id": "phy-07",
+    "title": "黑洞热力学",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "将热力学定律应用于黑洞物理学，指出黑洞具有温度和熵。"
+  },
+  {
+    "id": "phy-08",
+    "title": "霍金辐射",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "由史蒂芬·霍金提出的理论，预言黑洞因量子效应而会发出热辐射并缓慢蒸发。"
+  },
+  {
+    "id": "phy-09",
+    "title": "宇宙膨胀",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "观测表明，宇宙空间本身正在随时间不断拉伸，导致星系相互远离。"
+  },
+  {
+    "id": "phy-10",
+    "title": "暗物质证据",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "通过引力效应推断出宇宙中存在大量不发光、不与电磁波相互作用的物质。"
+  },
+  {
+    "id": "phy-1",
+    "title": "核裂变原理",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "核裂变是重原子核分裂成较轻原子核并释放巨大能量的过程，是核能发电和核武器的基础，基于质能方程E=mc²。"
+  },
+  {
+    "id": "phy-2",
+    "title": "核聚变条件",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "核聚变是轻原子核结合成重核并释放能量的过程，需要极高温度和压力以克服库仑排斥力，是太阳和未来能源研究的焦点。"
+  },
+  {
+    "id": "phy-3",
+    "title": "放射性衰变",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "放射性衰变是不稳定原子核自发释放粒子或辐射以趋向稳定的过程，包括α、β、γ衰变，广泛应用于科学和医学。"
+  },
+  {
+    "id": "phy-4",
+    "title": "半衰期应用",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "半衰期是放射性物质衰变至一半所需时间，在核医学、考古测年、环境监测等领域有关键应用，确保安全和准确性。"
+  },
+  {
+    "id": "phy-5",
+    "title": "核反应堆",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "核反应堆是通过控制核裂变链式反应产生热能的装置，主要用于发电，涉及燃料、控制棒和冷却系统等核心组件。"
+  },
+  {
+    "id": "phy-6",
+    "title": "粒子加速器原理",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "粒子加速器利用电磁场加速带电粒子至高能状态，用于探索物质基本结构，如发现希格斯玻色子，是粒子物理研究的核心工具。"
+  },
+  {
+    "id": "phy-7",
+    "title": "反物质制造",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "反物质由反粒子组成，可通过高能粒子对撞制造，但产量极低、成本高昂，潜在应用于能源和医学，但仍处实验阶段。"
+  },
+  {
+    "id": "phy-8",
+    "title": "希格斯场",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "希格斯场是量子场理论中的标量场，通过与粒子相互作用赋予其质量，希格斯玻色子是其激发态，2012年在LHC被发现。"
+  },
+  {
+    "id": "phy-9",
+    "title": "超对称理论",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "超对称理论假设每种费米子都有一个玻色子超伙伴，旨在统一基本力、解释暗物质，但尚未被实验证实，是理论物理前沿。"
+  },
+  {
+    "id": "phy-10",
+    "title": "弦理论基础",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "弦理论认为基本粒子是一维振动的弦，试图统一所有自然力包括引力，需额外维度如10或11维，是量子引力理论的候选。"
+  },
+  {
+    "id": "phy-71",
+    "title": "超导现象",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "超导现象是指某些材料在低温下电阻完全消失，并表现出完全抗磁性的量子现象，应用于强磁体和量子计算。"
+  },
+  {
+    "id": "phy-72",
+    "title": "超流体",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "超流体是在极低温下表现出零粘度的量子流体，能够无阻碍流动并爬出容器，基于玻色-爱因斯坦凝聚。"
+  },
+  {
+    "id": "phy-73",
+    "title": "玻色-爱因斯坦凝聚",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "玻色-爱因斯坦凝聚是玻色子在低温下占据同一量子态的宏观量子现象，由爱因斯坦于1924年预测，1995年首次实现。"
+  },
+  {
+    "id": "phy-74",
+    "title": "量子霍尔效应",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "量子霍尔效应是在二维电子系统中，霍尔电导量子化的现象，分为整数和分数类型，揭示了拓扑物理。"
+  },
+  {
+    "id": "phy-75",
+    "title": "拓扑绝缘体",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "拓扑绝缘体是体绝缘但表面导电的材料，表面态受拓扑保护，对杂质不敏感，应用于自旋电子学和量子计算。"
+  },
+  {
+    "id": "phy-76",
+    "title": "石墨烯物理",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "石墨烯是由单层碳原子组成的二维材料，具有卓越的电学、力学和热学性质，是纳米技术的突破。"
+  },
+  {
+    "id": "phy-77",
+    "title": "纳米物理",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "纳米物理研究纳米尺度下的物理现象，其中量子效应显著，材料性质随尺寸变化，是科技前沿领域。"
+  },
+  {
+    "id": "phy-78",
+    "title": "等离子体",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "等离子体是电离气体，由自由电子和离子组成，是物质的第四态，广泛存在于宇宙和能源应用中。"
+  },
+  {
+    "id": "phy-79",
+    "title": "液晶",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "液晶是介于固态和液态之间的物质相，具有流动性和各向异性，广泛应用于显示技术和光学器件。"
+  },
+  {
+    "id": "phy-80",
+    "title": "非线性光学",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "非线性光学研究光强引起介质光学性质变化的现象，如倍频和自聚焦，应用于激光技术和光通信。"
+  },
+  {
+    "id": "phy-81",
+    "title": "混沌理论",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "混沌理论研究确定性系统中的不可预测行为，对初始条件极度敏感，常见于天气等复杂系统。"
+  },
+  {
+    "id": "phy-82",
+    "title": "分形",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "分形是具有自相似性的几何结构，在不同尺度上重复模式，常见于自然界如海岸线、雪花。"
+  },
+  {
+    "id": "phy-83",
+    "title": "自组织",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "自组织是指系统在没有外部指导的情况下自发形成有序结构的过程，常见于生物和社会系统。"
+  },
+  {
+    "id": "phy-84",
+    "title": "耗散结构",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "耗散结构是远离平衡态的系统通过能量耗散维持的有序结构，由普利高津提出。"
+  },
+  {
+    "id": "phy-85",
+    "title": "协同学",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "协同学研究系统中各部分如何协同作用产生宏观有序，由赫尔曼·哈肯创立。"
+  },
+  {
+    "id": "phy-86",
+    "title": "复杂系统",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "复杂系统由许多相互作用的组成部分构成，表现出涌现行为、自组织和非线性动力学。"
+  },
+  {
+    "id": "phy-87",
+    "title": "涌现",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "涌现是指系统整体表现出其组成部分所不具备的新属性或行为，是复杂系统的核心特征。"
+  },
+  {
+    "id": "phy-88",
+    "title": "临界现象",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "临界现象发生在系统相变点附近，表现出标度不变性和临界指数，如铁磁材料在居里点。"
+  },
+  {
+    "id": "phy-89",
+    "title": "相变",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "相变是物质从一种状态转变为另一种状态的过程，如固态到液态，涉及潜热和对称性变化。"
+  },
+  {
+    "id": "phy-90",
+    "title": "对称性破缺",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "对称性破缺是指系统在相变或过程中失去对称性，导致新状态的出现，如铁磁性。"
+  },
+  {
+    "id": "phy-001",
+    "title": "量子引力",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "量子引力是物理学中尝试统一量子力学和广义相对论的领域，旨在描述引力在微观尺度上的行为。"
+  },
+  {
+    "id": "phy-002",
+    "title": "圈量子引力",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "圈量子引力是量子引力理论之一，使用圈变量来描述引力场的量子化，预测时空是离散的。"
+  },
+  {
+    "id": "phy-003",
+    "title": "因果集理论",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "因果集理论是量子引力理论，基于离散的因果结构来构建时空，强调事件之间的因果关系。"
+  },
+  {
+    "id": "phy-004",
+    "title": "扭量理论",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "扭量理论由罗杰·彭罗斯提出，使用扭量空间来描述时空几何，旨在统一量子力学和广义相对论。"
+  },
+  {
+    "id": "phy-005",
+    "title": "额外维度",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "额外维度是指超出四维时空的额外空间维度，常见于弦理论等统一理论中，以解决物理问题。"
+  },
+  {
+    "id": "phy-006",
+    "title": "宇宙弦",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "宇宙弦是假设的一维拓扑缺陷，可能在早期宇宙的相变中形成，影响宇宙大尺度结构。"
+  },
+  {
+    "id": "phy-007",
+    "title": "磁单极子",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "磁单极子是假设的基本粒子，只有单一磁极，预言于某些大统一理论中，但尚未观测到。"
+  },
+  {
+    "id": "phy-008",
+    "title": "质子衰变",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "质子衰变是假设的过程，质子衰变为更轻的粒子，在标准模型中禁止，但大统一理论允许。"
+  },
+  {
+    "id": "phy-009",
+    "title": "中微子质量",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "中微子质量指中微子具有非零质量的事实，违反标准模型原始预测，暗示新物理。"
+  },
+  {
+    "id": "phy-010",
+    "title": "暗物质粒子",
+    "category": "physics",
+    "categoryName": "物理",
+    "summary": "暗物质粒子是假设的粒子，构成宇宙中大部分暗物质，通过引力效应推断存在。"
+  },
+  {
+    "id": "geo-01",
+    "title": "喜马拉雅山脉",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "世界上最年轻、最高大的山脉，位于亚洲，平均海拔超过6000米，包含全球14座8000米以上高峰。"
+  },
+  {
+    "id": "geo-02",
+    "title": "亚马逊河",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "世界上流量最大、流域最广的河流，位于南美洲，其流域覆盖了地球上最大的热带雨林。"
+  },
+  {
+    "id": "geo-03",
+    "title": "撒哈拉沙漠",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "世界上最大的热带沙漠，面积约940万平方公里，几乎与整个欧洲一样大，环境极端严酷。"
+  },
+  {
+    "id": "geo-04",
+    "title": "大堡礁",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "世界上最大最长的珊瑚礁群，位于澳大利亚东北沿海，是众多海洋生物的家园，也是重要的生态系统。"
+  },
+  {
+    "id": "geo-05",
+    "title": "马里亚纳海沟",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "地球上已知最深的海洋沟壑，最深处为挑战者深渊，位于太平洋西部，深度超过11000米。"
+  },
+  {
+    "id": "geo-06",
+    "title": "尼罗河",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "世界上最长的河流之一，全长约6650公里，流经非洲东北部，是古埃及文明的摇篮。"
+  },
+  {
+    "id": "geo-07",
+    "title": "北极",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "地球最北端区域，主要指北冰洋及其周边陆地，以海冰覆盖和极寒气候为特征，是气候变化的敏感指示器。"
+  },
+  {
+    "id": "geo-08",
+    "title": "南极洲",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "地球上纬度最高、最寒冷、最干燥、风速最大且平均海拔最高的大洲，几乎全部被冰雪覆盖。"
+  },
+  {
+    "id": "geo-09",
+    "title": "东非大裂谷",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "世界大陆上最大的断裂带，全长约6000公里，从红海延伸到莫桑比克，被称为“地球的伤疤”。"
+  },
+  {
+    "id": "geo-10",
+    "title": "地中海",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "世界上最大的陆间海，位于欧洲、非洲和亚洲三大洲之间，是古代文明交流的通道和现代重要航道。"
+  },
+  {
+    "id": "geo-11",
+    "title": "太平洋",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "太平洋是地球上最大的海洋，覆盖约三分之一的地表面积，以其广阔的水域和丰富的生态系统闻名。"
+  },
+  {
+    "id": "geo-12",
+    "title": "珠穆朗玛峰",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "珠穆朗玛峰是世界最高峰，位于喜马拉雅山脉，海拔8,848米，是登山者的终极挑战。"
+  },
+  {
+    "id": "geo-13",
+    "title": "死海",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "死海是地球表面最低的水体，位于以色列和约旦之间，以其高盐度和浮力闻名。"
+  },
+  {
+    "id": "geo-14",
+    "title": "维多利亚瀑布",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "维多利亚瀑布是世界最大的瀑布之一，位于非洲赞比亚和津巴布韦边界，以壮观的水幕著称。"
+  },
+  {
+    "id": "geo-15",
+    "title": "黄石公园",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "黄石公园是美国第一个国家公园，以其地热特征如老忠实间歇泉和丰富野生动物闻名。"
+  },
+  {
+    "id": "geo-16",
+    "title": "冰岛",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "冰岛是北大西洋的一个岛国，以火山、冰川和地热能源闻名，是地质活动的热点。"
+  },
+  {
+    "id": "geo-17",
+    "title": "巴拿马运河",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "巴拿马运河是连接大西洋和太平洋的人工水道，大大缩短了船只的航行距离。"
+  },
+  {
+    "id": "geo-18",
+    "title": "苏伊士运河",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "苏伊士运河是连接地中海和红海的人工水道，是世界上最繁忙的航道之一。"
+  },
+  {
+    "id": "geo-19",
+    "title": "黑森林",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "黑森林是德国西南部的一个山地森林区域，以其茂密的森林、传统村庄和钟表制造闻名。"
+  },
+  {
+    "id": "geo-20",
+    "title": "大峡谷",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "大峡谷是美国亚利桑那州的自然奇观，由科罗拉多河切割而成，展示数百万年的地质历史。"
+  },
+  {
+    "id": "geo-21",
+    "title": "富士山",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "日本最高峰和著名活火山，海拔3776米，是日本的象征与文化图腾，被列入世界文化遗产。"
+  },
+  {
+    "id": "geo-22",
+    "title": "多瑙河",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "欧洲第二长河，流经十个国家，是世界上流经国家最多的国际河流之一，具有重要的航运与经济价值。"
+  },
+  {
+    "id": "geo-23",
+    "title": "阿尔卑斯山",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "欧洲最高大、最重要的山脉，横跨多国，是欧洲的‘脊梁’，以壮丽的山地景观、冰川和丰富的户外运动闻名。"
+  },
+  {
+    "id": "geo-24",
+    "title": "贝加尔湖",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "世界最深、蓄水量最大的淡水湖，位于俄罗斯西伯利亚，拥有极其丰富的特有物种，被誉为‘西伯利亚的蓝眼睛’。"
+  },
+  {
+    "id": "geo-25",
+    "title": "好望角",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "非洲大陆西南端的著名海角，历史上因通往东方的航线而闻名，是大西洋与印度洋分界的标志性地点之一。"
+  },
+  {
+    "id": "geo-26",
+    "title": "直布罗陀海峡",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "沟通地中海与大西洋的唯一通道，战略地位极其重要，最窄处仅14公里，自古为兵家必争之地。"
+  },
+  {
+    "id": "geo-27",
+    "title": "白令海峡",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "连接北冰洋与太平洋、分隔亚洲与北美洲的狭窄海峡，冬季海面会封冻，是地质时期人类迁徙的重要通道。"
+  },
+  {
+    "id": "geo-28",
+    "title": "格陵兰岛",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "世界面积最大的岛屿，大部分被冰盖覆盖，位于北美洲东北部，政治上是丹麦王国的自治领土。"
+  },
+  {
+    "id": "geo-29",
+    "title": "新西兰",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "位于南太平洋的岛国，由南、北两大岛及诸多小岛组成，以壮丽的自然风光、独特生物和毛利文化闻名于世。"
+  },
+  {
+    "id": "geo-30",
+    "title": "马达加斯加",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "非洲东南部的岛国，世界第四大岛，因与非洲大陆长期隔离而演化出极其独特的动植物区系，被称为‘第八大洲’。"
+  },
+  {
+    "id": "geo-31",
+    "title": "地球自转",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "地球绕自转轴自西向东的旋转运动，周期约为24小时，是产生昼夜交替和时区差异的根本原因。"
+  },
+  {
+    "id": "geo-32",
+    "title": "地球公转",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "地球围绕太阳的椭圆轨道运动，周期为一年，是季节变化的根本原因。"
+  },
+  {
+    "id": "geo-33",
+    "title": "潮汐现象",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "海水在天体（主要为月球和太阳）引潮力作用下产生的周期性涨落现象，对海岸生态和人类活动影响深远。"
+  },
+  {
+    "id": "geo-34",
+    "title": "洋流系统",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "海洋中大规模、有规律的海水流动系统，主要受风带、地转偏向力、海水密度差异驱动，影响全球气候和生态。"
+  },
+  {
+    "id": "geo-35",
+    "title": "大气环流",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "全球范围内大气有规律的运动模式，由太阳辐射不均、地球自转等因素共同形成，是各地天气和气候的基础。"
+  },
+  {
+    "id": "geo-36",
+    "title": "季风气候",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "因海陆热力性质差异导致风向随季节显著反转的气候类型，主要分布在大陆东岸，雨热同期是其典型特征。"
+  },
+  {
+    "id": "geo-37",
+    "title": "沙漠化",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "干旱、半干旱及部分半湿润地区土地退化的过程，自然因素和人为活动（如过度放牧、滥伐）是主要诱因。"
+  },
+  {
+    "id": "geo-38",
+    "title": "冰川消退",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "全球变暖背景下，山地冰川和极地冰盖加速融化、面积和体积减小的现象，是气候变化最直观的指示器之一。"
+  },
+  {
+    "id": "geo-39",
+    "title": "海平面上升",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "由全球变暖导致海水热膨胀和冰川冰盖融化而引起的全球平均海平面高度持续上升的现象。"
+  },
+  {
+    "id": "geo-40",
+    "title": "地震带分布",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "全球地震震中集中分布的地带，主要与板块边界相吻合，如环太平洋地震带和地中海-喜马拉雅地震带。"
+  },
+  {
+    "id": "geo-01",
+    "title": "地球内部结构",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "地球内部分为地壳、地幔和地核三层，各层具有不同的物理和化学性质。"
+  },
+  {
+    "id": "geo-02",
+    "title": "板块构造理论",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "板块构造理论认为地球岩石圈由多个板块组成，板块在软流圈上移动，导致地质活动。"
+  },
+  {
+    "id": "geo-03",
+    "title": "地震成因",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "地震主要由地壳中应力的突然释放引起，常见于板块边界或断层带。"
+  },
+  {
+    "id": "geo-04",
+    "title": "火山类型",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "火山根据形状和喷发方式分为不同类型，如盾状火山、层状火山和复合火山。"
+  },
+  {
+    "id": "geo-05",
+    "title": "褶皱与断层",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "褶皱和断层是地壳变形的两种基本形式，由构造应力形成，影响地形和地质资源。"
+  },
+  {
+    "id": "geo-06",
+    "title": "风化作用",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "风化作用是岩石在地表或近地表因物理、化学或生物因素而分解的过程。"
+  },
+  {
+    "id": "geo-07",
+    "title": "侵蚀地貌",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "侵蚀地貌是由水流、风力、冰川等外力作用侵蚀地表形成的地形。"
+  },
+  {
+    "id": "geo-08",
+    "title": "沉积作用",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "沉积作用是风化和侵蚀产生的碎屑物质在低洼地区堆积的过程，形成沉积岩和沉积地貌。"
+  },
+  {
+    "id": "geo-09",
+    "title": "喀斯特地貌",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "喀斯特地貌是可溶性岩石（如石灰岩）被水溶蚀形成的独特地形，包括溶洞、石林等。"
+  },
+  {
+    "id": "geo-10",
+    "title": "丹霞地貌",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "丹霞地貌是红色砂岩在风化和侵蚀作用下形成的陡峭山峰和峡谷地貌。"
+  },
+  {
+    "id": "geo-61",
+    "title": "洋流系统",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "海洋中大规模、持续性的水流运动，由风力、密度差和潮汐力驱动，对全球气候和生态系统有深远影响。"
+  },
+  {
+    "id": "geo-62",
+    "title": "潮汐成因",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "海水周期性涨落现象，主要由月球和太阳的引力作用引起，受地形和地球自转影响。"
+  },
+  {
+    "id": "geo-63",
+    "title": "海底地形",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "海洋底部的起伏地貌，包括大陆架、大陆坡、海沟、洋中脊等，反映地质构造过程。"
+  },
+  {
+    "id": "geo-64",
+    "title": "海沟",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "海洋中最深的狭长洼地，由大洋板块俯冲到大陆板块之下形成，常伴地震和火山活动。"
+  },
+  {
+    "id": "geo-65",
+    "title": "海岭",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "海底的巨型山脉系统，由地幔物质上涌形成，是板块生长边界，以地震和火山活动为特征。"
+  },
+  {
+    "id": "geo-66",
+    "title": "大陆架",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "大陆向海洋的自然延伸，坡度平缓，水深较浅，富含生物和矿产资源，是重要渔场。"
+  },
+  {
+    "id": "geo-67",
+    "title": "深海平原",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "大洋盆地中平坦的沉积区域，位于大陆基和大洋中脊之间，覆盖厚层沉积物。"
+  },
+  {
+    "id": "geo-68",
+    "title": "珊瑚礁生态",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "由珊瑚虫骨骼堆积形成的海洋生态系统，生物多样性极高，对海岸保护和渔业至关重要。"
+  },
+  {
+    "id": "geo-69",
+    "title": "红树林",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "热带亚热带潮间带的木本植物群落，根系发达，能防风消浪、净化水质并维护生物多样性。"
+  },
+  {
+    "id": "geo-70",
+    "title": "湿地类型",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "水陆过渡地带，包括沼泽、泥炭地、河口等，具有蓄洪、净化和生物多样性维护功能。"
+  },
+  {
+    "id": "geo-1",
+    "title": "热带雨林",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "热带雨林是赤道附近的茂密森林，以高温、高降雨量和极其丰富的生物多样性著称，是地球上最重要的生态系统之一，被称为地球之肺。"
+  },
+  {
+    "id": "geo-2",
+    "title": "热带草原",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "热带草原是热带地区以高草为主、散布树木的稀树草原，有明显的干湿季节，是大型哺乳动物迁徙和生存的关键生态系统。"
+  },
+  {
+    "id": "geo-3",
+    "title": "温带森林",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "温带森林分布在四季分明的温带地区，包括落叶林和混交林，以橡树、枫树等为代表，是重要的木材资源和生物栖息地。"
+  },
+  {
+    "id": "geo-4",
+    "title": "针叶林",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "针叶林，又称泰加林，是以松树、云杉等针叶树为主的森林，适应寒冷气候，覆盖北半球高纬度地区，是重要的碳汇和木材来源。"
+  },
+  {
+    "id": "geo-5",
+    "title": "苔原",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "苔原是极地或高山顶部的生态系统，以苔藓、地衣为主，气候严寒，植被稀疏，是北极熊等动物的栖息地，对气候变化敏感。"
+  },
+  {
+    "id": "geo-6",
+    "title": "荒漠",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "荒漠是干旱地区，降雨稀少，植被稀疏，昼夜温差大，包括热荒漠和冷荒漠，对生命构成挑战但拥有独特适应生物。"
+  },
+  {
+    "id": "geo-7",
+    "title": "地中海气候",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "地中海气候以炎热干燥的夏季和温和湿润的冬季为特征，分布于地中海沿岸、加利福尼亚等地，支持农业和旅游业。"
+  },
+  {
+    "id": "geo-8",
+    "title": "温带海洋气候",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "温带海洋气候以温和、湿润、四季分明但温差小为特征，受海洋调节，常见于大陆西岸，如西欧和北美太平洋沿岸。"
+  },
+  {
+    "id": "geo-9",
+    "title": "高原气候",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "高原气候发生在高海拔地区，如青藏高原，以低温、低气压、紫外线强和昼夜温差大为特征，垂直分带明显。"
+  },
+  {
+    "id": "geo-10",
+    "title": "山地气候",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "山地气候随海拔和地形垂直变化，从山脚到山顶气候类型多样，迎风坡和背风坡降水差异大，常见于山区如喜马拉雅山脉。"
+  },
+  {
+    "id": "geo-81",
+    "title": "长江",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "长江是亚洲最长的河流，全长约6300公里，流经中国，是国家的水运和经济命脉。"
+  },
+  {
+    "id": "geo-82",
+    "title": "黄河",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "黄河是中国第二长河，全长约5464公里，被称为中华民族的母亲河，以高含沙量闻名。"
+  },
+  {
+    "id": "geo-83",
+    "title": "澜沧江",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "澜沧江是亚洲重要的国际河流，流经中国、缅甸、老挝、泰国、柬埔寨和越南，是湄公河的上游。"
+  },
+  {
+    "id": "geo-84",
+    "title": "雅鲁藏布江",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "雅鲁藏布江是中国西藏的主要河流，以世界最深的峡谷雅鲁藏布大峡谷闻名，流入印度后成为布拉马普特拉河。"
+  },
+  {
+    "id": "geo-85",
+    "title": "恒河",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "恒河是印度最重要的河流，全长约2525公里，被视为圣河，对印度教文化有深远影响。"
+  },
+  {
+    "id": "geo-86",
+    "title": "幼发拉底河",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "幼发拉底河是西亚主要河流，流经土耳其、叙利亚和伊拉克，是美索不达米亚文明的发源地之一。"
+  },
+  {
+    "id": "geo-87",
+    "title": "莱茵河",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "莱茵河是欧洲主要河流，流经多个国家，全长约1230公里，是重要的航运和工业水道。"
+  },
+  {
+    "id": "geo-88",
+    "title": "密西西比河",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "密西西比河是北美洲最长的河流，全长约3730公里，流经美国，是重要的航运和生态系统。"
+  },
+  {
+    "id": "geo-89",
+    "title": "刚果河",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "刚果河是非洲第二长河，全长约4700公里，以巨大的水力资源和热带雨林生态系统闻名。"
+  },
+  {
+    "id": "geo-90",
+    "title": "墨累河",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "墨累河是澳大利亚最长的河流，全长约2508公里，流经东南部，是重要的农业和水资源。"
+  },
+  {
+    "id": "geo-001",
+    "title": "人口分布",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "人口分布指人口在地理空间上的分布状况，受自然、经济、社会等因素影响，是人文地理学的重要研究主题。"
+  },
+  {
+    "id": "geo-002",
+    "title": "城市化",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "城市化是人口从农村向城市迁移、城市规模扩大的过程，伴随社会经济结构变化。"
+  },
+  {
+    "id": "geo-003",
+    "title": "乡村聚落",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "乡村聚落是农村地区居民点的形式，包括村庄、小城镇等，反映农业社会结构。"
+  },
+  {
+    "id": "geo-004",
+    "title": "交通网络",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "交通网络是连接不同地点的运输系统，包括道路、铁路、航空等，促进人员和货物流动。"
+  },
+  {
+    "id": "geo-005",
+    "title": "农业区位",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "农业区位指农业生产活动的地理分布，受自然条件和经济因素影响。"
+  },
+  {
+    "id": "geo-006",
+    "title": "工业布局",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "工业布局指工业生产活动的地理分布，考虑资源、市场、交通等因素。"
+  },
+  {
+    "id": "geo-007",
+    "title": "商业中心",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "商业中心是商业活动集中的地区，如购物中心、商业街，促进经济交流。"
+  },
+  {
+    "id": "geo-008",
+    "title": "文化扩散",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "文化扩散是文化特征从起源地向其他地区传播的过程，影响全球文化景观。"
+  },
+  {
+    "id": "geo-009",
+    "title": "语言分布",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "语言分布指不同语言在地理上的分布，反映人类迁移和历史事件。"
+  },
+  {
+    "id": "geo-010",
+    "title": "宗教地理",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "宗教地理研究宗教信仰的空间分布及其对地理环境的影响。"
+  },
+  {
+    "id": "geo-01",
+    "title": "板块碰撞",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "板块碰撞是地球岩石圈板块相互作用的核心过程，引发地震、火山和造山运动，塑造地表形态。"
+  },
+  {
+    "id": "geo-02",
+    "title": "火山带分布",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "全球火山主要沿板块边界分布，形成特定火山带，如环太平洋火山带，与地质活动紧密相关。"
+  },
+  {
+    "id": "geo-03",
+    "title": "地震带分布",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "地震多发生在板块边界形成的地震带，如环太平洋地震带，是地质灾害预防的关键区域。"
+  },
+  {
+    "id": "geo-04",
+    "title": "海啸成因",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "海啸主要由海底地震、火山爆发或海底滑坡引起，形成巨大海浪，对沿海地区构成威胁。"
+  },
+  {
+    "id": "geo-05",
+    "title": "冰川地貌",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "冰川侵蚀和沉积作用形成的地貌，如U形谷和冰碛，常见于高山和极地，记录气候历史。"
+  },
+  {
+    "id": "geo-06",
+    "title": "风蚀地貌",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "风力侵蚀作用形成的地貌，如风蚀柱和雅丹地貌，主要分布在干旱和半干旱地区。"
+  },
+  {
+    "id": "geo-07",
+    "title": "河流地貌",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "河流侵蚀和沉积作用塑造的地貌，如河谷、阶地和三角洲，是人类文明发展的关键区域。"
+  },
+  {
+    "id": "geo-08",
+    "title": "海岸地貌",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "海洋动力作用形成的地貌，包括侵蚀地貌如海蚀崖和沉积地貌如沙滩，受海平面变化影响。"
+  },
+  {
+    "id": "geo-09",
+    "title": "冻土地貌",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "冻融循环作用形成的地貌，如冻胀丘和石环，常见于永久冻土区，对气候变化敏感。"
+  },
+  {
+    "id": "geo-10",
+    "title": "黄土地貌",
+    "category": "geography",
+    "categoryName": "地理",
+    "summary": "风成黄土堆积和流水侵蚀形成的地貌，如黄土塬和沟壑，以中国黄土高原为典型。"
+  },
+  {
+    "id": "phil-001",
+    "title": "苏格拉底",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "古希腊哲学家，西方哲学的奠基人之一，以诘问法探究真理，强调“认识你自己”和“德性即知识”。"
+  },
+  {
+    "id": "phil-002",
+    "title": "柏拉图",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "古希腊哲学家，苏格拉底的学生，创立了理念论，认为理念是永恒真实的，感官世界只是其不完美的摹本。"
+  },
+  {
+    "id": "phil-003",
+    "title": "亚里士多德",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "古希腊哲学家，柏拉图的学生，百科全书式的学者，创立了形式逻辑，强调经验观察和实体论。"
+  },
+  {
+    "id": "phil-004",
+    "title": "康德",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "德国古典哲学创始人，通过‘三大批判’调和了经验论与唯理论，提出先验哲学和道德律令。"
+  },
+  {
+    "id": "phil-005",
+    "title": "黑格尔",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "德国古典哲学集大成者，创立了庞大的唯心辩证法体系，认为‘绝对精神’通过辩证运动实现自我发展。"
+  },
+  {
+    "id": "phil-006",
+    "title": "尼采",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "19世纪德国哲学家，以‘上帝已死’宣告传统价值崩溃，倡导‘超人’哲学和权力意志，是现代哲学的转折点。"
+  },
+  {
+    "id": "phil-007",
+    "title": "存在主义",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "20世纪哲学流派，强调个体存在、自由选择和责任，认为‘存在先于本质’，关注人的焦虑、孤独与真实性。"
+  },
+  {
+    "id": "phil-008",
+    "title": "唯物主义",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "哲学基本派别之一，认为物质是世界的本原，意识是物质的产物或反映，与唯心主义根本对立。"
+  },
+  {
+    "id": "phil-009",
+    "title": "唯心主义",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "哲学基本派别之一，认为精神、意识或理念是世界的本原，物质是其派生或表现。"
+  },
+  {
+    "id": "phil-010",
+    "title": "辩证法",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "一种关于普遍联系和发展的哲学方法，核心是矛盾律，认为事物在对立统一的运动中发展变化。"
+  },
+  {
+    "id": "phil-011",
+    "title": "逻辑学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "研究思维的形式、规律和方法的科学，旨在区分正确推理与错误推理，是哲学和科学的基础工具。"
+  },
+  {
+    "id": "phil-012",
+    "title": "伦理学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "亦称道德哲学，研究道德上的善与恶、正当与错误、责任与义务的哲学分支。"
+  },
+  {
+    "id": "phil-013",
+    "title": "美学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "研究美、艺术和审美经验的哲学分支，探讨美的本质、审美判断和艺术创造。"
+  },
+  {
+    "id": "phil-014",
+    "title": "认识论",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "研究知识的本质、来源、范围和可靠性的哲学分支，核心问题是‘我们能知道什么以及如何知道？’。"
+  },
+  {
+    "id": "phil-015",
+    "title": "形而上学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "研究存在本身、实在的根本性质以及世界终极原理的哲学分支，探讨超越物理经验的根本问题。"
+  },
+  {
+    "id": "phil-016",
+    "title": "功利主义",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "一种伦理学理论，主张行为的道德价值取决于其能否最大程度地增加‘最大多数人的最大幸福’。"
+  },
+  {
+    "id": "phil-017",
+    "title": "社会契约论",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "一种关于政治权力合法性的理论，认为政府权威源于人民通过契约转让部分自然权利，以换取社会秩序与保护。"
+  },
+  {
+    "id": "phil-018",
+    "title": "虚无主义",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "一种哲学立场，认为生命、宇宙或特定领域（如道德、知识、存在）没有内在的意义、目的或价值。"
+  },
+  {
+    "id": "phil-019",
+    "title": "实用主义",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "19世纪末源于美国的哲学运动，主张思想的意义和真理的标准在于其在实际经验中产生的具体效果和实用价值。"
+  },
+  {
+    "id": "phil-020",
+    "title": "现象学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "20世纪初由胡塞尔开创的哲学运动，主张‘回到事物本身’，通过悬置预设来直接描述意识经验的本质结构。"
+  },
+  {
+    "id": "phil-21",
+    "title": "斯宾诺莎",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "17世纪荷兰哲学家，唯理论代表，提出泛神论和实体论，强调理性与自然统一。"
+  },
+  {
+    "id": "phil-22",
+    "title": "莱布尼茨",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "德国哲学家和数学家，单子论创始人，微积分发明者之一，倡导乐观主义。"
+  },
+  {
+    "id": "phil-23",
+    "title": "休谟",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "苏格兰经验主义哲学家，怀疑论者，对因果关系和归纳法提出批判，影响深远。"
+  },
+  {
+    "id": "phil-24",
+    "title": "卢梭",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "法国启蒙思想家，社会契约论者，强调自然状态、公意和情感，影响现代政治哲学。"
+  },
+  {
+    "id": "phil-25",
+    "title": "黑格尔辩证法",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "德国哲学家黑格尔的方法论，通过正题、反题、合题的运动发展绝对精神，影响马克思主义。"
+  },
+  {
+    "id": "phil-26",
+    "title": "马克思哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "马克思创立，基于历史唯物主义和阶级斗争，批判资本主义，倡导共产主义社会。"
+  },
+  {
+    "id": "phil-27",
+    "title": "弗洛伊德",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "奥地利精神分析学家，提出潜意识理论，将精神分析引入哲学和心理学，影响现代思想。"
+  },
+  {
+    "id": "phil-28",
+    "title": "荣格",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "瑞士心理学家，分析心理学创始人，提出集体无意识和原型理论，影响神话和文化研究。"
+  },
+  {
+    "id": "phil-29",
+    "title": "拉康",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "法国精神分析学家，结构主义精神分析代表，提出镜像阶段和符号界，影响哲学和文学理论。"
+  },
+  {
+    "id": "phil-30",
+    "title": "阿伦特",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "德裔美籍政治理论家，提出极权主义分析和平庸的恶概念，强调公共领域和行动哲学。"
+  },
+  {
+    "id": "phil-31",
+    "title": "科学哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "科学哲学探讨科学的本质、方法和知识论基础，涉及科学理论、证据和科学进步的哲学问题。"
+  },
+  {
+    "id": "phil-32",
+    "title": "政治哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "政治哲学研究政治权力、正义、权利和政府形式的哲学基础，探讨理想社会和政治制度。"
+  },
+  {
+    "id": "phil-33",
+    "title": "心灵哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "心灵哲学研究心灵的本质、意识、心理状态及其与身体的关系，涉及心身问题和人工智能哲学。"
+  },
+  {
+    "id": "phil-34",
+    "title": "语言哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "语言哲学研究语言的意义、指称、真理和语言使用，探讨语言如何表征世界和沟通思想。"
+  },
+  {
+    "id": "phil-35",
+    "title": "宗教哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "宗教哲学探讨宗教信仰、神的存在、宗教经验和宗教语言的哲学问题，涉及理性与信仰的关系。"
+  },
+  {
+    "id": "phil-36",
+    "title": "生命伦理",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "生命伦理学研究医学、生物技术和生命科学中的伦理问题，涉及生命开始、结束和生命质量的道德考量。"
+  },
+  {
+    "id": "phil-37",
+    "title": "技术哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "技术哲学探讨技术的本质、影响和伦理，研究技术与人类、社会及自然的关系。"
+  },
+  {
+    "id": "phil-38",
+    "title": "美学理论",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "美学理论研究美、艺术和审美经验的哲学，探讨艺术的本质、价值和审美判断。"
+  },
+  {
+    "id": "phil-39",
+    "title": "正义论",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "正义论探讨社会正义、分配公平和道德权利的哲学理论，关注如何建立公正的社会制度。"
+  },
+  {
+    "id": "phil-40",
+    "title": "自由意志",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "自由意志问题探讨人类行为是否由自由选择决定，还是由因果律或命运所决定。"
+  },
+  {
+    "id": "phil-41",
+    "title": "先秦哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "中国哲学发展的源头与黄金时代，形成了以儒家、道家、法家等为代表的众多思想流派，开启了‘百家争鸣’的盛况。"
+  },
+  {
+    "id": "phil-42",
+    "title": "儒家思想",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "以孔子、孟子、荀子为代表，核心是‘仁’与‘礼’，强调道德修养、社会伦理与仁政，对中国社会影响至深。"
+  },
+  {
+    "id": "phil-43",
+    "title": "道家思想",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "以老子、庄子为代表，核心是‘道’与‘自然无为’，主张顺应天道、返璞归真，追求个体的精神自由。"
+  },
+  {
+    "id": "phil-44",
+    "title": "墨家思想",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "墨子创立，主张‘兼爱’、‘非攻’、‘尚贤’、‘节用’，代表下层平民利益，组织严密，具有强烈的实践与科学精神。"
+  },
+  {
+    "id": "phil-45",
+    "title": "法家思想",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "强调以法治国、强化君权，主张用严刑峻法和权术势来治理国家，是秦统一中国的理论基础。"
+  },
+  {
+    "id": "phil-46",
+    "title": "名家",
+    "category": "哲学",
+    "categoryName": "哲学",
+    "summary": "又称‘辩者’，专注于探讨‘名’（概念）与‘实’（事实）的关系，擅长逻辑辩论，提出了许多著名的悖论命题。"
+  },
+  {
+    "id": "phil-47",
+    "title": "阴阳家",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "以邹衍为代表，将阴阳说与五行说结合，用以解释自然变化、王朝更替和历史循环，影响后世宇宙观与政治哲学。"
+  },
+  {
+    "id": "phil-48",
+    "title": "纵横家",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "源于战国时‘合纵’‘连横’的外交策略，代表人物是鬼谷子、苏秦、张仪，注重审时度势、权变谋略与游说技巧。"
+  },
+  {
+    "id": "phil-49",
+    "title": "兵家哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "以孙武、孙膑等为代表，系统总结战争规律与战略战术，蕴含丰富的辩证法思想，是中国古代军事思想的智慧结晶。"
+  },
+  {
+    "id": "phil-50",
+    "title": "杂家",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "博采众家之长，兼收并蓄，试图综合各家思想，代表作是吕不韦主持编撰的《吕氏春秋》。"
+  },
+  {
+    "id": "phil-61",
+    "title": "宋明理学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "宋明理学是中国宋代至明代儒学发展的主流学派，融合佛道思想，形成以程朱理学和陆王心学为代表的哲学体系，强调天理、心性和道德修养。"
+  },
+  {
+    "id": "phil-62",
+    "title": "周敦颐",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "周敦颐是北宋理学家，著有《太极图说》，提出太极和诚的概念，被视为宋明理学的奠基人之一。"
+  },
+  {
+    "id": "phil-63",
+    "title": "张载",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "张载是北宋理学家，主张气本论，提出‘太虚即气’和‘民胞物与’思想，创立关学学派。"
+  },
+  {
+    "id": "phil-64",
+    "title": "二程",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "二程指程颢和程颐兄弟，北宋理学家，发展天理概念，为程朱理学奠基，强调格物致知。"
+  },
+  {
+    "id": "phil-65",
+    "title": "朱熹理学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "朱熹是南宋理学家，集宋代理学之大成，著《四书章句集注》，强调理在气先和格物致知。"
+  },
+  {
+    "id": "phil-66",
+    "title": "陆九渊",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "陆九渊是南宋心学开创者，主张心即理，强调发明本心，与朱熹理学对立，开陆王心学先河。"
+  },
+  {
+    "id": "phil-67",
+    "title": "王阳明心学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "王阳明是明代心学集大成者，提出致良知和知行合一，强调内心修养和实践，影响东亚思想。"
+  },
+  {
+    "id": "phil-68",
+    "title": "王艮",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "王艮是明代心学家，泰州学派创始人，主张百姓日用即道，推动心学平民化和普及。"
+  },
+  {
+    "id": "phil-69",
+    "title": "李贽",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "李贽是明代后期思想家，批判传统儒学，提出童心说，主张个性解放和真情实感。"
+  },
+  {
+    "id": "phil-70",
+    "title": "黄宗羲",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "黄宗羲是明末清初思想家，著《明夷待访录》，批判君主专制，提出民主启蒙思想。"
+  },
+  {
+    "id": "phil-71",
+    "title": "清代哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "清代哲学是中国哲学史上的重要阶段，以经学考据和实学思潮为主流，影响了近代思想转型。"
+  },
+  {
+    "id": "phil-72",
+    "title": "王夫之",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "王夫之是明末清初唯物主义哲学家，主张'气'为本体，反对程朱理学。"
+  },
+  {
+    "id": "phil-73",
+    "title": "颜元",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "颜元是清初实学派思想家，倡导'习行经济'，反对空谈。"
+  },
+  {
+    "id": "phil-74",
+    "title": "戴震",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "戴震是清代考据学家和哲学家，批判程朱理学，强调'理'在'事'中。"
+  },
+  {
+    "id": "phil-75",
+    "title": "章学诚",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "章学诚是清代史学家和哲学家，提出'六经皆史'，强调历史哲学。"
+  },
+  {
+    "id": "phil-76",
+    "title": "龚自珍",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "龚自珍是晚清思想家、文学家，批判社会弊端，呼吁改革。"
+  },
+  {
+    "id": "phil-77",
+    "title": "魏源",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "魏源是晚清思想家，主张'师夷长技以制夷'，推动向西方学习。"
+  },
+  {
+    "id": "phil-78",
+    "title": "康有为",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "康有为是清末维新派领袖，主张变法图强，著《大同书》设想理想社会。"
+  },
+  {
+    "id": "phil-79",
+    "title": "梁启超",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "梁启超是清末民初思想家、政治家，倡导'新民说'，推动思想启蒙。"
+  },
+  {
+    "id": "phil-80",
+    "title": "严复",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "严复是清末思想家、翻译家，译介西方进化论，推动思想变革。"
+  },
+  {
+    "id": "phil-81",
+    "title": "印度哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "印度哲学是源自古印度的哲学传统，涵盖多种学派，强调精神解脱、宇宙本质和伦理实践。"
+  },
+  {
+    "id": "phil-82",
+    "title": "吠陀",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "吠陀是古印度最古老的神圣文献，包括赞歌、仪式和哲学思想，是印度教和哲学的基础。"
+  },
+  {
+    "id": "phil-83",
+    "title": "奥义书",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "奥义书是吠陀的结尾部分，专注于哲学和神秘主义，探讨梵我合一和通过知识实现解脱。"
+  },
+  {
+    "id": "phil-84",
+    "title": "佛教哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "佛教哲学源自佛陀教导，关注痛苦、因果律和解脱，强调中道、缘起和无我。"
+  },
+  {
+    "id": "phil-85",
+    "title": "耆那教",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "耆那教是古印度哲学，强调非暴力、真理和苦行，追求灵魂解脱，是印度本土宗教。"
+  },
+  {
+    "id": "phil-86",
+    "title": "数论派",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "数论派是印度古典哲学六派之一，主张二元论，区分精神和物质，强调知识解脱。"
+  },
+  {
+    "id": "phil-87",
+    "title": "瑜伽派",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "瑜伽派是印度哲学学派，强调通过身体和心灵练习实现解脱，以《瑜伽经》为代表。"
+  },
+  {
+    "id": "phil-88",
+    "title": "正理派",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "正理派是印度哲学学派，专注于逻辑、认识论和辩论，寻求正确认识以实现解脱。"
+  },
+  {
+    "id": "phil-89",
+    "title": "胜论派",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "胜论派是印度哲学学派，提出原子论和范畴论，将现实分类为实体、质量等范畴。"
+  },
+  {
+    "id": "phil-90",
+    "title": "弥曼差",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "弥曼差是印度哲学学派，专注于吠陀仪式解释和执行，强调宗教责任和正确行为。"
+  },
+  {
+    "id": "phil-91",
+    "title": "日本哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "日本哲学是融合神道、佛教、儒家和西方思想的体系，强调和谐与集体主义，形成独特传统。"
+  },
+  {
+    "id": "phil-92",
+    "title": "神道",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "神道是日本的本土宗教哲学，强调自然崇拜和祖先崇拜，无严格教义，与日常生活紧密相连。"
+  },
+  {
+    "id": "phil-93",
+    "title": "武士道",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "武士道是日本武士的道德准则，强调忠诚、荣誉和自我牺牲，受儒家和禅宗影响。"
+  },
+  {
+    "id": "phil-94",
+    "title": "朱子学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "朱子学是中国朱熹理学在日本的传播，强调理气论和道德修养，成为江户时代官方哲学。"
+  },
+  {
+    "id": "phil-95",
+    "title": "国学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "国学是江户时代的学问运动，旨在恢复日本古典文化，反对儒学影响，强调神道和本土文学。"
+  },
+  {
+    "id": "phil-96",
+    "title": "兰学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "兰学是江户时代通过荷兰学习西方科学和知识的运动，成为日本现代化的桥梁。"
+  },
+  {
+    "id": "phil-97",
+    "title": "西田几多郎",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "西田几多郎是日本首位现代哲学家，京都学派创始人，提出'无的哲学'融合东西方思想。"
+  },
+  {
+    "id": "phil-98",
+    "title": "和辻哲郎",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "和辻哲郎是京都学派哲学家，强调人际关系和风土哲学，关注伦理与文化多样性。"
+  },
+  {
+    "id": "phil-99",
+    "title": "京都学派",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "京都学派是以京都大学为中心的哲学流派，融合东西方思想，探讨'无'和绝对存在。"
+  },
+  {
+    "id": "phil-100",
+    "title": "现代日本哲学",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "现代日本哲学是20世纪以来的发展，吸收西方思想，形成如京都学派等独特流派。"
+  },
+  {
+    "id": "phil-001",
+    "title": "人工智能伦理",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "人工智能伦理研究AI技术开发与应用中的道德问题，包括责任归属、公平性和隐私保护，旨在引导技术向善发展。"
+  },
+  {
+    "id": "phil-002",
+    "title": "自动驾驶伦理",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "自动驾驶伦理关注自动驾驶汽车在道德困境中的决策机制，如事故中的优先保护对象，涉及责任和技术安全标准。"
+  },
+  {
+    "id": "phil-003",
+    "title": "基因编辑伦理",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "基因编辑伦理探讨基因技术如CRISPR的使用界限，包括治疗与增强的道德差异，以及公平性和生态影响。"
+  },
+  {
+    "id": "phil-004",
+    "title": "数据隐私",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "数据隐私涉及个人数据的收集、存储和使用中的伦理与法律问题，保护个人信息自主权，平衡数据利用与隐私风险。"
+  },
+  {
+    "id": "phil-005",
+    "title": "算法公平",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "算法公平研究如何确保AI算法不歧视特定群体，促进社会正义，通过技术手段和多方合作减少偏见。"
+  },
+  {
+    "id": "phil-006",
+    "title": "数字鸿沟",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "数字鸿沟指不同群体在信息技术访问和使用上的差距，涉及社会公平和发展伦理，需政策干预缩小差异。"
+  },
+  {
+    "id": "phil-007",
+    "title": "技术奇点",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "技术奇点假设未来AI智能超越人类，引发关于人类控制、存在意义和伦理对齐的哲学思考。"
+  },
+  {
+    "id": "phil-008",
+    "title": "后人类主义",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "后人类主义批判人类中心主义，强调技术与人类融合，重新定义人类身份和伦理关系。"
+  },
+  {
+    "id": "phil-009",
+    "title": "超人类主义",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "超人类主义倡导使用科技增强人类能力，追求超越生物限制，改善人类状况，涉及增强伦理和社会影响。"
+  },
+  {
+    "id": "phil-010",
+    "title": "有效利他主义",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "有效利他主义是一种哲学思想，强调用证据和理性最大化善行影响，应用于慈善和全球问题解决中。"
+  },
+  {
+    "id": "phil-91",
+    "title": "人工智能伦理",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "人工智能伦理探讨AI系统在设计、部署和使用中的道德问题，涉及责任、公平和人类价值观。"
+  },
+  {
+    "id": "phil-92",
+    "title": "自动驾驶伦理",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "自动驾驶伦理研究车辆在面临道德困境时的决策机制，如电车难题在现实中的应用。"
+  },
+  {
+    "id": "phil-93",
+    "title": "基因编辑伦理",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "基因编辑伦理涉及如CRISPR等技术在人类基因修改中的道德争议，包括优生学和安全性。"
+  },
+  {
+    "id": "phil-94",
+    "title": "数据隐私",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "数据隐私关注个人数据在数字时代被收集、使用和保护中的权利和道德问题。"
+  },
+  {
+    "id": "phil-95",
+    "title": "算法公平",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "算法公平探讨算法决策系统中的偏见和歧视，追求无偏见和公正的自动化决策。"
+  },
+  {
+    "id": "phil-96",
+    "title": "数字鸿沟",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "数字鸿沟指不同社会群体在数字技术访问、使用和技能上的差距，导致不平等加剧。"
+  },
+  {
+    "id": "phil-97",
+    "title": "技术奇点",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "技术奇点假设AI智能超越人类，引发不可预测的文明变革。"
+  },
+  {
+    "id": "phil-98",
+    "title": "后人类主义",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "后人类主义哲学质疑人类例外论，探索技术与自然界限的模糊。"
+  },
+  {
+    "id": "phil-99",
+    "title": "超人类主义",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "超人类主义倡导使用科技如基因编辑、AI来增强人类能力，追求超越生物限制。"
+  },
+  {
+    "id": "phil-100",
+    "title": "有效利他主义",
+    "category": "philosophy",
+    "categoryName": "哲学",
+    "summary": "有效利他主义是一种基于证据和理性的哲学，旨在最大化利他行为的正面影响。"
+  },
+  {
+    "id": "med-001",
+    "title": "青霉素",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "首个发现并应用的抗生素，能有效杀灭多种细菌，开启了感染性疾病治疗的新时代。"
+  },
+  {
+    "id": "med-002",
+    "title": "疫苗",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "通过引入抗原刺激免疫系统产生特异性免疫反应，从而预防传染病的生物制剂。"
+  },
+  {
+    "id": "med-003",
+    "title": "基因疗法",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "通过将外源正常基因导入靶细胞，以纠正或补偿基因缺陷和异常引起的疾病的治疗方法。"
+  },
+  {
+    "id": "med-004",
+    "title": "器官移植",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "将健康的器官从捐献者移植到患有器官功能衰竭的患者体内，以挽救生命并改善生活质量。"
+  },
+  {
+    "id": "med-005",
+    "title": "微创手术",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "通过小切口和专用器械进行，以减少创伤、疼痛和恢复时间为目的的外科手术技术。"
+  },
+  {
+    "id": "med-006",
+    "title": "CT扫描",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "计算机断层扫描，利用X射线和计算机技术生成身体横断面图像的无创检查技术。"
+  },
+  {
+    "id": "med-007",
+    "title": "核磁共振",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "利用强磁场和射频脉冲使体内氢原子共振并成像，无需电离辐射即可获得高清软组织图像的技术。"
+  },
+  {
+    "id": "med-008",
+    "title": "心脏支架",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "通过介入手术置入狭窄或堵塞的冠状动脉内，以支撑血管壁、恢复血流的网状管状器械。"
+  },
+  {
+    "id": "med-009",
+    "title": "人工心脏",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "部分或完全替代衰竭心脏泵血功能的机械装置，作为心脏移植前的过渡或终末治疗方案。"
+  },
+  {
+    "id": "med-010",
+    "title": "干细胞",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "具有自我更新和多向分化潜能的未充分分化细胞，是再生医学的核心基础。"
+  },
+  {
+    "id": "med-011",
+    "title": "免疫疗法",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "通过激活或增强患者自身免疫系统来识别和攻击疾病（尤其是癌症）的治疗方法。"
+  },
+  {
+    "id": "med-012",
+    "title": "mRNA疫苗",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "将编码病原体抗原蛋白的mRNA递送至细胞内，利用细胞自身机制合成抗原以激发免疫反应的新型疫苗。"
+  },
+  {
+    "id": "med-013",
+    "title": "远程医疗",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "利用通信和信息技术，为远距离患者提供临床健康护理、诊断、咨询和医学教育的服务模式。"
+  },
+  {
+    "id": "med-014",
+    "title": "手术机器人",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "辅助外科医生进行更精准、稳定、微创手术的机械系统，通常由医生在控制台远程操作。"
+  },
+  {
+    "id": "med-015",
+    "title": "血液透析",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "利用半透膜原理，通过体外循环清除慢性肾衰竭患者血液中多余水分和代谢废物的肾脏替代疗法。"
+  },
+  {
+    "id": "med-016",
+    "title": "抗生素",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "由微生物产生或人工合成，能抑制或杀灭其他微生物（主要是细菌）的化学物质。"
+  },
+  {
+    "id": "med-017",
+    "title": "麻醉术",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "通过药物或其他方法使患者整体或局部暂时失去感觉，以消除手术疼痛、保障手术安全的技术。"
+  },
+  {
+    "id": "med-018",
+    "title": "X射线",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "一种波长极短的电磁辐射，能穿透人体并在胶片或探测器上成像，是医学影像学的开端。"
+  },
+  {
+    "id": "med-019",
+    "title": "基因诊断",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "通过分析DNA或RNA序列来检测与疾病相关的基因变异，用于疾病诊断、风险预测和指导治疗。"
+  },
+  {
+    "id": "med-020",
+    "title": "精准医疗",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "根据患者个体的基因、环境和生活方式差异，制定个性化疾病预防和治疗策略的新兴医疗模式。"
+  },
+  {
+    "id": "med-21",
+    "title": "免疫系统",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "免疫系统负责防御病原体、识别和消灭外来入侵者，维持身体健康。"
+  },
+  {
+    "id": "med-22",
+    "title": "内分泌系统",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "内分泌系统通过激素调节代谢、生长、发育和生殖等身体功能。"
+  },
+  {
+    "id": "med-23",
+    "title": "神经系统",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "神经系统控制身体活动、感知环境并协调反应，是核心指挥系统。"
+  },
+  {
+    "id": "med-24",
+    "title": "循环系统",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "循环系统运输血液、氧气和营养物质，移除废物，维持生命活动。"
+  },
+  {
+    "id": "med-25",
+    "title": "消化系统",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "消化系统处理食物、吸收营养和排泄废物，为身体提供能量。"
+  },
+  {
+    "id": "med-26",
+    "title": "呼吸系统",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "呼吸系统负责气体交换，吸入氧气并呼出二氧化碳，支持细胞代谢。"
+  },
+  {
+    "id": "med-27",
+    "title": "泌尿系统",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "泌尿系统过滤血液、产生尿液并排泄废物，调节体液和电解质平衡。"
+  },
+  {
+    "id": "med-28",
+    "title": "生殖系统",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "生殖系统负责繁殖后代，产生配子并支持胚胎发育。"
+  },
+  {
+    "id": "med-29",
+    "title": "运动系统",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "运动系统提供结构支持、运动能力和保护，由骨骼、肌肉和关节组成。"
+  },
+  {
+    "id": "med-30",
+    "title": "淋巴系统",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "淋巴系统辅助免疫系统、运输淋巴液并过滤废物，维持体液平衡。"
+  },
+  {
+    "id": "med-31",
+    "title": "癌症免疫治疗",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "通过激活或增强免疫系统来识别和攻击癌细胞的治疗方法，包括检查点抑制剂和细胞疗法。"
+  },
+  {
+    "id": "med-32",
+    "title": "基因编辑治疗",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "使用CRISPR-Cas9等基因编辑技术精确修改DNA，以治疗遗传性疾病和癌症。"
+  },
+  {
+    "id": "med-33",
+    "title": "干细胞移植",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "将健康干细胞移植到患者体内，以重建造血和免疫系统，常用于治疗血液癌症和遗传病。"
+  },
+  {
+    "id": "med-34",
+    "title": "人工器官",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "人造设备或生物工程器官，用于替代或支持功能衰竭的天然器官，如人工心脏和透析机。"
+  },
+  {
+    "id": "med-35",
+    "title": "纳米药物",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "利用纳米技术设计药物递送系统，以提高靶向性、减少副作用并增强疗效。"
+  },
+  {
+    "id": "med-36",
+    "title": "益生菌疗法",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "通过摄入有益微生物调节肠道菌群，以治疗或预防消化系统和全身性疾病。"
+  },
+  {
+    "id": "med-37",
+    "title": "光动力疗法",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "使用光敏剂和特定波长光产生活性氧，以选择性破坏异常细胞，应用于癌症和皮肤病。"
+  },
+  {
+    "id": "med-38",
+    "title": "质子治疗",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "一种精确放射治疗，使用质子束靶向肿瘤，利用布拉格峰减少对周围健康组织的损伤。"
+  },
+  {
+    "id": "med-39",
+    "title": "CAR-T疗法",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "一种免疫疗法，通过基因改造患者T细胞表达嵌合抗原受体，以靶向杀伤特定癌细胞。"
+  },
+  {
+    "id": "med-40",
+    "title": "液体活检",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "通过血液等体液样本检测循环肿瘤DNA或细胞，用于癌症无创诊断、监测和个性化治疗。"
+  },
+  {
+    "id": "med-001",
+    "title": "心血管疾病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "心血管疾病是一组影响心脏和血管的疾病，包括冠心病、高血压等，是全球主要死亡原因之一。"
+  },
+  {
+    "id": "med-002",
+    "title": "冠心病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "冠心病是由于冠状动脉狭窄或阻塞导致心肌缺血的疾病，常见症状为心绞痛，严重时可引发心肌梗死。"
+  },
+  {
+    "id": "med-003",
+    "title": "高血压",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "高血压是血压持续升高的慢性疾病，增加心脏病和中风风险，通常无症状，需定期监测。"
+  },
+  {
+    "id": "med-004",
+    "title": "心力衰竭",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "心力衰竭是心脏泵血功能减弱，导致身体器官供血不足的状况，症状包括呼吸困难、疲劳和水肿。"
+  },
+  {
+    "id": "med-005",
+    "title": "心律失常",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "心律失常是心脏电活动异常导致心跳不规则，可能过快、过慢或不规则，症状包括心悸和头晕。"
+  },
+  {
+    "id": "med-006",
+    "title": "心肌梗死",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "心肌梗死是冠状动脉突然阻塞导致心肌缺血坏死的急症，需紧急治疗以挽救生命。"
+  },
+  {
+    "id": "med-007",
+    "title": "动脉硬化",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "动脉硬化是动脉壁增厚、变硬的疾病，主要由斑块积聚引起，是心血管疾病如冠心病的基础病理。"
+  },
+  {
+    "id": "med-008",
+    "title": "静脉血栓",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "静脉血栓是静脉内血块形成，常见于腿部深静脉，可能脱落导致肺栓塞等危及生命的并发症。"
+  },
+  {
+    "id": "med-009",
+    "title": "心脏瓣膜病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "心脏瓣膜病是心脏瓣膜结构或功能异常，影响血液流动，可导致心力衰竭和其他并发症。"
+  },
+  {
+    "id": "med-010",
+    "title": "先天性心脏病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "先天性心脏病是出生时就存在的心脏结构异常，可能简单或复杂，需早期诊断和治疗以改善预后。"
+  },
+  {
+    "id": "med-51",
+    "title": "呼吸系统疾病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "影响呼吸道和肺部的疾病总称，包括感染、慢性气道疾病、肿瘤等多种类型，是全球主要的死亡和致残原因之一。"
+  },
+  {
+    "id": "med-52",
+    "title": "哮喘",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "一种以气道慢性炎症和气道高反应性为特征的异质性疾病，表现为反复发作的喘息、气促、胸闷和咳嗽。"
+  },
+  {
+    "id": "med-53",
+    "title": "慢性阻塞性肺疾病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "一种以持续气流受限为特征的慢性呼吸系统疾病，气流受限不完全可逆，且呈进行性发展，与肺部对有害气体或颗粒的异常炎症反应有关。"
+  },
+  {
+    "id": "med-54",
+    "title": "肺炎",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "由病原微生物（如细菌、病毒、真菌）引起的肺部炎症，导致肺泡充满炎性渗出物，影响气体交换。"
+  },
+  {
+    "id": "med-55",
+    "title": "肺结核",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "由结核分枝杆菌引起的慢性传染病，主要侵犯肺部，也可累及其他器官，以低热、盗汗、咳嗽、咯血为典型表现。"
+  },
+  {
+    "id": "med-56",
+    "title": "肺癌",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "起源于支气管黏膜或腺体的恶性肿瘤，是全球癌症死亡的首要原因，与吸烟等危险因素密切相关。"
+  },
+  {
+    "id": "med-57",
+    "title": "肺栓塞",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "内源性或外源性栓子堵塞肺动脉或其分支，导致肺循环障碍的临床和病理生理综合征，常由下肢深静脉血栓脱落引起。"
+  },
+  {
+    "id": "med-58",
+    "title": "胸腔积液",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "过多液体积聚在胸膜腔（肺和胸壁之间的潜在间隙）内，导致呼吸困难等症状，可由多种心、肺、全身性疾病引起。"
+  },
+  {
+    "id": "med-59",
+    "title": "呼吸衰竭",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "由于各种原因导致肺通气和/或换气功能严重障碍，以致在静息状态下不能维持足够的气体交换，出现低氧血症伴或不伴高碳酸血症的临床综合征。"
+  },
+  {
+    "id": "med-60",
+    "title": "睡眠呼吸暂停",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "在睡眠过程中反复发生呼吸暂停和低通气，导致间歇性低氧、高碳酸血症和睡眠结构紊乱的疾病，以阻塞型最为常见。"
+  },
+  {
+    "id": "med-61",
+    "title": "消化系统疾病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "消化系统疾病涵盖食道、胃、肠、肝、胰等器官的多种疾病，常见症状包括腹痛、消化不良、恶心等，影响日常生活和健康。"
+  },
+  {
+    "id": "med-62",
+    "title": "胃炎",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "胃炎是胃黏膜的炎症，常由幽门螺杆菌感染或药物如阿司匹林引起，症状包括上腹痛、恶心和消化不良。"
+  },
+  {
+    "id": "med-63",
+    "title": "胃溃疡",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "胃溃疡是胃内壁的开放性溃疡，主要由幽门螺杆菌或非甾体抗炎药引起，症状包括剧痛、出血，需及时治疗以防并发症。"
+  },
+  {
+    "id": "med-64",
+    "title": "肝炎",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "肝炎是肝脏的炎症，主要由病毒、酒精或自身免疫引起，可导致肝损伤，症状包括疲劳、黄疸，需根据类型治疗。"
+  },
+  {
+    "id": "med-65",
+    "title": "肝硬化",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "肝硬化是肝脏的慢性瘢痕化，由长期肝损伤如肝炎或酗酒引起，可导致肝功能衰竭，症状包括腹水、黄疸。"
+  },
+  {
+    "id": "med-66",
+    "title": "胰腺炎",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "胰腺炎是胰腺的炎症，常由胆结石或酒精引起，症状包括剧烈腹痛，急性发作需紧急处理以防器官衰竭。"
+  },
+  {
+    "id": "med-67",
+    "title": "胆结石",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "胆结石是胆囊或胆管中的固体沉积物，常无症状，但可引起胆绞痛、胆囊炎或胰腺炎，治疗包括药物或手术。"
+  },
+  {
+    "id": "med-68",
+    "title": "炎症性肠病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "炎症性肠病包括克罗恩病和溃疡性结肠炎，是慢性肠道炎症，症状有腹泻、腹痛，需长期药物管理和监测。"
+  },
+  {
+    "id": "med-69",
+    "title": "消化道出血",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "消化道出血指从口腔到肛门的任何部位出血，症状包括呕血或黑便，是紧急医疗状况，需快速诊断和止血。"
+  },
+  {
+    "id": "med-70",
+    "title": "消化道肿瘤",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "消化道肿瘤包括良性增生和恶性癌症，如胃癌、结肠癌，症状有体重减轻、腹痛，早期筛查和综合治疗是关键。"
+  },
+  {
+    "id": "med-81",
+    "title": "内分泌疾病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "内分泌疾病指内分泌腺或组织功能异常引起的疾病，影响激素分泌，导致代谢、生长、生殖等功能紊乱。"
+  },
+  {
+    "id": "med-82",
+    "title": "糖尿病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "糖尿病是慢性代谢疾病，以高血糖为特征，由胰岛素分泌不足或作用缺陷引起，需终身管理。"
+  },
+  {
+    "id": "med-83",
+    "title": "甲状腺疾病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "甲状腺疾病涉及甲状腺功能异常，如甲亢、甲减或甲状腺结节，影响新陈代谢和全身健康。"
+  },
+  {
+    "id": "med-84",
+    "title": "骨质疏松",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "骨质疏松是骨骼疾病，特征为骨密度降低和骨微结构破坏，增加骨折风险，常见于老年人。"
+  },
+  {
+    "id": "med-85",
+    "title": "肾上腺疾病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "肾上腺疾病涉及肾上腺功能异常，如库欣综合征或艾迪生病，影响激素分泌和应激反应。"
+  },
+  {
+    "id": "med-86",
+    "title": "垂体疾病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "垂体疾病涉及垂体功能异常，作为“主腺”调控其他内分泌腺，影响生长、代谢和生殖。"
+  },
+  {
+    "id": "med-87",
+    "title": "代谢综合征",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "代谢综合征是一组代谢异常集合，包括高血压、高血糖等，显著增加心血管疾病和糖尿病风险。"
+  },
+  {
+    "id": "med-88",
+    "title": "肥胖症",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "肥胖症是慢性疾病，体脂过多，BMI超过30，增加糖尿病、心脏病等多种健康风险。"
+  },
+  {
+    "id": "med-89",
+    "title": "痛风",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "痛风是关节炎类型，由尿酸结晶沉积引起，导致急性关节炎症，常与高尿酸血症相关。"
+  },
+  {
+    "id": "med-90",
+    "title": "高脂血症",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "高脂血症指血液中脂质水平异常升高，如高胆固醇或高甘油三酯，增加动脉硬化和心血管疾病风险。"
+  },
+  {
+    "id": "med-01",
+    "title": "传染病防控",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "传染病防控指预防和控制传染病传播的公共卫生措施，包括监测、隔离、治疗和教育，旨在减少疾病爆发和保护人群健康。"
+  },
+  {
+    "id": "med-02",
+    "title": "流感",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "流感是由流感病毒引起的急性呼吸道感染，症状包括发热、咳嗽和肌肉痛，通过飞沫传播，疫苗可有效预防。"
+  },
+  {
+    "id": "med-03",
+    "title": "新冠",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "新冠（COVID-19）由SARS-CoV-2病毒引起，症状从轻微呼吸道问题到重症肺炎不等，导致全球大流行，防控依赖口罩、社交距离和疫苗。"
+  },
+  {
+    "id": "med-04",
+    "title": "艾滋病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "艾滋病（AIDS）由人类免疫缺陷病毒（HIV）引起，破坏免疫系统，使患者易感染其他疾病，目前无治愈方法，但抗病毒治疗可控制病情。"
+  },
+  {
+    "id": "med-05",
+    "title": "结核病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "结核病由结核分枝杆菌引起，主要影响肺部，症状包括慢性咳嗽和体重减轻，通过空气传播，抗生素可治疗但耐药性问题严重。"
+  },
+  {
+    "id": "med-06",
+    "title": "疟疾",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "疟疾由疟原虫引起，通过受感染蚊子叮咬传播，症状包括周期性发热和寒战，预防依赖蚊帐和抗疟药物，是热带地区主要杀手。"
+  },
+  {
+    "id": "med-07",
+    "title": "乙肝",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "乙肝由乙型肝炎病毒（HBV）引起，可导致急性或慢性肝病，通过血液和体液传播，疫苗可有效预防，是全球肝癌主要诱因。"
+  },
+  {
+    "id": "med-08",
+    "title": "丙肝",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "丙肝由丙型肝炎病毒（HCV）引起，主要通过血液传播，可导致慢性肝病和肝癌，现有直接抗病毒药物可治愈大多数病例。"
+  },
+  {
+    "id": "med-09",
+    "title": "狂犬病",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "狂犬病由狂犬病毒引起，主要通过动物咬伤传播，一旦发病几乎100%致命，但暴露后及时疫苗接种可有效预防。"
+  },
+  {
+    "id": "med-10",
+    "title": "疫苗接种",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "疫苗接种通过引入疫苗刺激免疫系统产生抗体，从而预防特定传染病，是公共卫生最有效的干预措施之一，已消灭或控制多种疾病。"
+  },
+  {
+    "id": "med-001",
+    "title": "精准医疗",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "精准医疗是一种个性化医疗方法，通过分析遗传信息、环境和生活方式定制治疗策略，以提高疗效和减少副作用。"
+  },
+  {
+    "id": "med-002",
+    "title": "伴随诊断",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "伴随诊断是与特定药物配合使用的诊断测试，确保患者接受最合适的治疗，提高药物安全性和有效性。"
+  },
+  {
+    "id": "med-003",
+    "title": "药物基因组学",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "药物基因组学研究基因如何影响个体对药物的反应，旨在实现个性化用药，避免不良反应。"
+  },
+  {
+    "id": "med-004",
+    "title": "生物标志物",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "生物标志物是可测量的生物指标，用于指示疾病状态、治疗反应或健康风险，是精准医疗的基础。"
+  },
+  {
+    "id": "med-005",
+    "title": "液体活检技术",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "液体活检通过血液样本无创检测疾病标志物，如循环肿瘤DNA，用于癌症早期诊断和治疗监测。"
+  },
+  {
+    "id": "med-006",
+    "title": "循环肿瘤DNA",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "循环肿瘤DNA是血液中来自肿瘤的DNA片段，可用于癌症诊断、治疗监测和预后评估。"
+  },
+  {
+    "id": "med-007",
+    "title": "外泌体",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "外泌体是细胞分泌的小囊泡，携带蛋白质、RNA等分子，参与细胞通讯和疾病诊断。"
+  },
+  {
+    "id": "med-008",
+    "title": "类器官",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "类器官是实验室培育的三维细胞结构，模拟真实器官功能，用于疾病建模和药物测试。"
+  },
+  {
+    "id": "med-009",
+    "title": "器官芯片",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "器官芯片是微流控设备模拟人体器官功能，用于药物测试、毒理学研究和个性化医疗。"
+  },
+  {
+    "id": "med-010",
+    "title": "数字疗法",
+    "category": "medicine",
+    "categoryName": "医学",
+    "summary": "数字疗法是基于软件的治疗方法，通过应用程序或设备管理疾病，如糖尿病或心理健康。"
+  },
+  {
+    "id": "his-001",
+    "title": "秦始皇",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "秦始皇是中国第一个统一王朝的建立者，结束了战国纷争，开创了中央集权制度。"
+  },
+  {
+    "id": "his-002",
+    "title": "罗马帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "罗马帝国是古代西方最强大的帝国，以法律、工程和文化影响世界，后分裂为东西两部分。"
+  },
+  {
+    "id": "his-003",
+    "title": "文艺复兴",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "文艺复兴是14至17世纪欧洲的文化复兴运动，以人文主义为核心，推动艺术和科学进步。"
+  },
+  {
+    "id": "his-004",
+    "title": "工业革命",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "工业革命是18世纪始于英国的技术和经济变革，以机器生产取代手工劳动，推动现代化。"
+  },
+  {
+    "id": "his-005",
+    "title": "丝绸之路",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "丝绸之路是古代连接东西方的贸易和文化交流路线，以丝绸贸易得名，促进文明互鉴。"
+  },
+  {
+    "id": "his-006",
+    "title": "法国大革命",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "法国大革命是18世纪末的法国政治变革，推翻君主制，传播自由平等思想，影响世界。"
+  },
+  {
+    "id": "his-007",
+    "title": "二战",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "第二次世界大战是20世纪的全球冲突，涉及多国，导致大规模破坏和战后国际秩序重建。"
+  },
+  {
+    "id": "his-008",
+    "title": "冷战",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "冷战是二战后美苏之间的政治和军事对抗，虽无直接战争，但引发代理冲突和核竞赛。"
+  },
+  {
+    "id": "his-009",
+    "title": "郑和下西洋",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "郑和下西洋是明朝的航海活动，规模宏大，促进中外交流，但未能持续影响世界。"
+  },
+  {
+    "id": "his-010",
+    "title": "古埃及",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "古埃及是古代非洲文明，以金字塔、法老和象形文字闻名，持续约三千年。"
+  },
+  {
+    "id": "his-011",
+    "title": "蒙古帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "蒙古帝国是13世纪的欧亚大帝国，由成吉思汗建立，以征服和统治范围广阔著称。"
+  },
+  {
+    "id": "his-012",
+    "title": "美国独立",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "美国独立是18世纪北美殖民地脱离英国统治的革命，建立美国，传播民主理念。"
+  },
+  {
+    "id": "his-013",
+    "title": "明治维新",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "明治维新是19世纪日本的政治和社会改革，使日本迅速现代化，成为亚洲强国。"
+  },
+  {
+    "id": "his-014",
+    "title": "一战",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "第一次世界大战是20世纪初的全球冲突，因民族主义和联盟体系引发，改变世界格局。"
+  },
+  {
+    "id": "his-015",
+    "title": "大航海时代",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "大航海时代是15至17世纪的欧洲探险活动，发现新大陆，推动全球贸易和殖民。"
+  },
+  {
+    "id": "his-016",
+    "title": "印刷术",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "印刷术是中国古代发明，后经欧洲改良，推动知识传播和文艺复兴。"
+  },
+  {
+    "id": "his-017",
+    "title": "火药发明",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "火药是中国古代四大发明之一，用于军事和工程，改变战争方式并传播至全球。"
+  },
+  {
+    "id": "his-018",
+    "title": "黑死病",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "黑死病是14世纪的鼠疫大流行，导致欧洲人口锐减，引发社会变革和经济转型。"
+  },
+  {
+    "id": "his-019",
+    "title": "启蒙运动",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "启蒙运动是17至18世纪欧洲的思想解放运动，强调理性、科学和人权，推动现代民主。"
+  },
+  {
+    "id": "his-020",
+    "title": "辛亥革命",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "辛亥革命是1911年中国推翻清朝的革命，结束帝制，建立共和国，但未完全成功。"
+  },
+  {
+    "id": "his-21",
+    "title": "长城修建",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "长城是中国古代为防御北方游牧民族修建的军事工程，始建于春秋战国，经秦、明等朝代扩建，总长逾两万公里。"
+  },
+  {
+    "id": "his-22",
+    "title": "金字塔之谜",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "埃及金字塔是古法老的陵墓，建造技术至今成谜，尤其是大金字塔的精确度和规模令人惊叹。"
+  },
+  {
+    "id": "his-23",
+    "title": "维京人",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "维京人是北欧海盗和商人，活跃于8至11世纪，以航海和劫掠闻名，曾到达北美和欧洲各地。"
+  },
+  {
+    "id": "his-24",
+    "title": "十字军东征",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "十字军东征是11至13世纪欧洲基督教国家对中东穆斯林控制地区的军事远征，旨在收复圣地耶路撒冷。"
+  },
+  {
+    "id": "his-25",
+    "title": "黑死病蔓延",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "黑死病是14世纪的瘟疫，由鼠疫杆菌引起，导致欧洲人口锐减，深刻影响社会、经济和文化。"
+  },
+  {
+    "id": "his-26",
+    "title": "哥伦布发现新大陆",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1492年，哥伦布在西班牙王室资助下航行至美洲，开启了欧洲对新大陆的探索和殖民时代。"
+  },
+  {
+    "id": "his-27",
+    "title": "美国南北战争",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "美国南北战争（1861-1865）是北方联邦与南方邦联之间的内战，主要围绕奴隶制和州权问题，以北方胜利告终。"
+  },
+  {
+    "id": "his-28",
+    "title": "法国启蒙运动",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "法国启蒙运动是18世纪的思想文化运动，强调理性、自由和平等，由伏尔泰、卢梭等思想家推动，影响深远。"
+  },
+  {
+    "id": "his-29",
+    "title": "日本明治维新",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "明治维新是19世纪后期日本的政治、经济和社会改革，始于1868年，使日本从封建国家迅速现代化为工业化强国。"
+  },
+  {
+    "id": "his-30",
+    "title": "俄国十月革命",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1917年俄国十月革命推翻临时政府，建立苏维埃政权，是社会主义运动的转折点，深刻影响世界历史。"
+  },
+  {
+    "id": "his-31",
+    "title": "中国四大发明",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "中国古代的四项重大发明：造纸术、印刷术、火药和指南针，对世界文明进程有深远影响。"
+  },
+  {
+    "id": "his-32",
+    "title": "古希腊民主",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "古希腊雅典的民主制度，是现代民主政治的雏形，强调公民直接参与城邦决策。"
+  },
+  {
+    "id": "his-33",
+    "title": "拜占庭帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "东罗马帝国的延续，以君士坦丁堡为中心，存在超过千年，保存并传播了古希腊罗马文化。"
+  },
+  {
+    "id": "his-34",
+    "title": "奥斯曼帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "由奥斯曼一世建立的强大帝国，横跨欧亚非，持续六个多世纪，对伊斯兰世界有深远影响。"
+  },
+  {
+    "id": "his-35",
+    "title": "玛雅文明",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "中美洲的古代文明，以其精确的天文历法、金字塔建筑和象形文字闻名于世。"
+  },
+  {
+    "id": "his-36",
+    "title": "阿兹特克帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "中美洲的强大帝国，以阿兹特克人建立，首都特诺奇提特兰，后被西班牙征服。"
+  },
+  {
+    "id": "his-37",
+    "title": "波斯帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "古代波斯帝国，如阿契美尼德帝国，以其广阔疆域、行政效率和宽容政策著称。"
+  },
+  {
+    "id": "his-38",
+    "title": "孔雀王朝",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "古印度的重要王朝，由旃陀罗笈多建立，阿育王时期达到鼎盛，推广佛教。"
+  },
+  {
+    "id": "his-39",
+    "title": "汉谟拉比法典",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "古巴比伦国王汉谟拉比颁布的法典，是已知最早的成文法典之一，以‘以牙还牙’原则著称。"
+  },
+  {
+    "id": "his-40",
+    "title": "文艺复兴三杰",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "指文艺复兴时期的三位杰出艺术家：达芬奇、米开朗基罗和拉斐尔，他们的作品代表了文艺复兴的顶峰。"
+  },
+  {
+    "id": "his-41",
+    "title": "特洛伊战争",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "特洛伊战争是公元前12世纪古希腊与特洛伊城之间的战争，因海伦被拐引发，以希腊人使用木马计攻陷特洛伊告终，是荷马史诗《伊利亚特》的主题。"
+  },
+  {
+    "id": "his-42",
+    "title": "斯巴达三百勇士",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "斯巴达三百勇士指公元前480年温泉关战役中，斯巴达国王列奥尼达斯率领300名斯巴达勇士抵抗波斯大军，展现了极高的战斗精神和牺牲精神。"
+  },
+  {
+    "id": "his-43",
+    "title": "雅典民主",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "雅典民主是古雅典在公元前5世纪发展的直接民主制度，公民通过集会参与决策，被视为西方民主政治的起源。"
+  },
+  {
+    "id": "his-44",
+    "title": "亚历山大帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "亚历山大帝国由亚历山大大帝在公元前4世纪建立，领土从希腊横跨至印度，促进了希腊文化的传播，形成希腊化时代。"
+  },
+  {
+    "id": "his-45",
+    "title": "凯撒遇刺",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "凯撒遇刺指公元前44年罗马独裁官尤利乌斯·凯撒在元老院被刺杀的事件，标志着罗马共和国向帝国过渡的转折点。"
+  },
+  {
+    "id": "his-46",
+    "title": "罗马共和",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "罗马共和是罗马共和国时期的政治体制，从公元前509年到公元前27年，强调分权与制衡，由元老院和公民大会共同治理。"
+  },
+  {
+    "id": "his-47",
+    "title": "罗马法",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "罗马法是古罗马的法律体系，从《十二铜表法》到《查士丁尼法典》，奠定了西方法律的基础，强调公平和契约精神。"
+  },
+  {
+    "id": "his-48",
+    "title": "条条大路通罗马",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "条条大路通罗马是一句谚语，反映罗马帝国时期发达的道路系统，这些道路促进了贸易、军事和通信，象征了罗马的统治力。"
+  },
+  {
+    "id": "his-49",
+    "title": "庞贝古城",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "庞贝古城是古罗马城市，于公元79年被维苏威火山爆发掩埋，保存了罗马帝国时期的生活全貌，是重要的考古遗址。"
+  },
+  {
+    "id": "his-50",
+    "title": "罗马军团",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "罗马军团是古罗马帝国的军事单位，以纪律严明、战术灵活著称，是罗马扩张和维持统治的核心力量。"
+  },
+  {
+    "id": "his-01",
+    "title": "辛亥革命",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1911年爆发的推翻清朝统治的资产阶级民主革命，结束了中国两千多年的封建帝制，建立了中华民国。"
+  },
+  {
+    "id": "his-02",
+    "title": "五四运动",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1919年5月4日爆发的反帝反封建爱国运动，促进了马克思主义在中国的传播和新文化运动的发展。"
+  },
+  {
+    "id": "his-03",
+    "title": "北伐战争",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1926年至1928年，国共合作领导的国民革命军为推翻北洋军阀统治而进行的统一战争。"
+  },
+  {
+    "id": "his-04",
+    "title": "长征",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1934年至1936年，中国工农红军主力从长江南北各苏区向陕甘苏区的战略转移和行军。"
+  },
+  {
+    "id": "his-05",
+    "title": "抗日战争",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1937年至1945年，中国人民反抗日本帝国主义侵略的民族解放战争，是世界反法西斯战争的重要组成部分。"
+  },
+  {
+    "id": "his-06",
+    "title": "解放战争",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1945年至1949年，中国共产党领导人民解放军推翻国民党统治、解放全中国的战争。"
+  },
+  {
+    "id": "his-07",
+    "title": "新中国成立",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1949年10月1日，中华人民共和国成立，标志着中国新民主主义革命的胜利和社会主义建设的开始。"
+  },
+  {
+    "id": "his-08",
+    "title": "抗美援朝",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1950年至1953年，中国人民志愿军赴朝鲜参战，抗击美国为首的联合国军，保卫国家安全。"
+  },
+  {
+    "id": "his-09",
+    "title": "改革开放",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1978年以来，中国实行的对内改革、对外开放政策，推动了经济快速发展和社会进步。"
+  },
+  {
+    "id": "his-10",
+    "title": "香港回归",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1997年7月1日，中国恢复对香港行使主权，结束了英国长达156年的殖民统治。"
+  },
+  {
+    "id": "his-81",
+    "title": "古巴比伦",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "古巴比伦是古代美索不达米亚的文明中心，以汉谟拉比法典和空中花园著称，影响了法律和建筑。"
+  },
+  {
+    "id": "his-82",
+    "title": "亚述帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "亚述帝国是古代近东的军事强国，以铁器使用和帝国扩张闻名，首都尼尼微。"
+  },
+  {
+    "id": "his-83",
+    "title": "波斯帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "波斯帝国是古代最大的帝国之一，由居鲁士大帝建立，以宽容政策和道路系统著称。"
+  },
+  {
+    "id": "his-84",
+    "title": "古印度孔雀王朝",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "孔雀王朝是古印度第一个大一统帝国，由旃陀罗笈多建立，阿育王时期达到顶峰。"
+  },
+  {
+    "id": "his-85",
+    "title": "贵霜帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "贵霜帝国是中亚的强大帝国，由游牧民族建立，促进了丝绸之路的繁荣和文化交流。"
+  },
+  {
+    "id": "his-86",
+    "title": "阿拉伯帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "阿拉伯帝国是伊斯兰文明的核心，由先知穆罕默德创立，迅速扩张至中东、北非和西班牙。"
+  },
+  {
+    "id": "his-87",
+    "title": "蒙古西征",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "蒙古西征是13世纪蒙古帝国对中亚、西亚和东欧的大规模军事扩张，改变了欧亚格局。"
+  },
+  {
+    "id": "his-88",
+    "title": "奥斯曼崛起",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "奥斯曼帝国崛起于14世纪小亚细亚，逐渐征服拜占庭帝国，成为横跨欧亚非的大帝国。"
+  },
+  {
+    "id": "his-89",
+    "title": "莫卧儿帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "莫卧儿帝国是印度次大陆的伊斯兰帝国，由巴布尔建立，以阿格拉堡和泰姬陵闻名。"
+  },
+  {
+    "id": "his-90",
+    "title": "大英帝国",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "大英帝国是历史上最大的殖民帝国，由英国本土扩张至全球，影响了现代世界格局。"
+  },
+  {
+    "id": "his-91",
+    "title": "一战导火索",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "萨拉热窝事件是第一次世界大战的直接导火索，奥匈帝国王储遇刺引爆了欧洲列强间长期的矛盾与同盟体系。"
+  },
+  {
+    "id": "his-92",
+    "title": "凡尔赛条约",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "《凡尔赛条约》是结束第一次世界大战的和约，对德国施加了严厉的惩罚和领土限制，深刻影响了战后欧洲格局。"
+  },
+  {
+    "id": "his-93",
+    "title": "俄国十月革命",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1917年11月，布尔什维克党在列宁领导下发动武装起义，推翻临时政府，建立了世界上第一个社会主义国家。"
+  },
+  {
+    "id": "his-94",
+    "title": "大萧条",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "20世纪30年代全球性经济大衰退，从美国股市崩盘开始，导致大规模失业、贫困和全球贸易萎缩。"
+  },
+  {
+    "id": "his-95",
+    "title": "纳粹崛起",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "阿道夫·希特勒领导的德国纳粹党利用经济危机和民族主义情绪，于1933年上台执政，建立了极权独裁统治。"
+  },
+  {
+    "id": "his-96",
+    "title": "诺曼底登陆",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1944年6月6日，盟军在法国诺曼底海岸发动代号“D-Day”的大规模登陆作战，成功开辟欧洲第二战场。"
+  },
+  {
+    "id": "his-97",
+    "title": "冷战起源",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "二战后，美苏两国因意识形态、国家利益和安全战略的根本对立，形成长达数十年的全球性对峙与代理人战争状态。"
+  },
+  {
+    "id": "his-98",
+    "title": "柏林墙",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "东德政府于1961年修建的环绕西柏林的隔离墙，是冷战时期德国分裂和东西方对峙的最著名象征。"
+  },
+  {
+    "id": "his-99",
+    "title": "苏联解体",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1991年12月，苏维埃社会主义共和国联盟正式解体，分裂为多个独立国家，标志着冷战的结束和两级格局的终结。"
+  },
+  {
+    "id": "his-100",
+    "title": "欧盟成立",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "欧洲联盟由欧洲共同体发展而来，通过《马斯特里赫特条约》于1993年正式成立，旨在深化欧洲国家的政治与经济一体化。"
+  },
+  {
+    "id": "his-101",
+    "title": "二战太平洋战场",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "第二次世界大战期间，以美国为首的同盟国与日本帝国在亚太及太平洋地区展开的主要战场，以中途岛海战和原子弹轰炸为转折点，最终以日本无条件投降告终。"
+  },
+  {
+    "id": "his-102",
+    "title": "冷战代理人战争",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "冷战期间，美国与苏联避免直接军事冲突，通过支持和武装第三方国家或势力，在全球多个地区进行的间接战争，是美苏争霸的主要表现形式。"
+  },
+  {
+    "id": "his-103",
+    "title": "不结盟运动",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "冷战时期由新独立的国家发起，拒绝加入以美苏为首的军事同盟，奉行独立、自主和非集团化外交政策的大型国际政治运动。"
+  },
+  {
+    "id": "his-104",
+    "title": "万隆会议",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1955年在印度尼西亚万隆召开的亚非会议，是首次由亚非国家自主发起的大型国际会议，倡导团结反帝反殖，为不结盟运动奠定基础。"
+  },
+  {
+    "id": "his-105",
+    "title": "非洲独立运动",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "20世纪50至70年代，非洲殖民地人民通过武装斗争或和平谈判等方式，挣脱欧洲殖民统治，建立一系列独立民族国家的伟大历史进程。"
+  },
+  {
+    "id": "his-106",
+    "title": "拉美独立",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "19世纪初至20世纪，拉丁美洲人民反抗西班牙、葡萄牙等欧洲殖民统治，争取民族独立并建立一系列共和国的历史进程。"
+  },
+  {
+    "id": "his-107",
+    "title": "中东问题",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "指以巴勒斯坦问题为核心，涉及阿拉伯国家与以色列之间的冲突，以及中东地区因民族、宗教、资源、领土争端和大国干预而引发的一系列复杂问题。"
+  },
+  {
+    "id": "his-108",
+    "title": "巴以冲突",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "巴勒斯坦与以色列两个民族围绕领土、主权、耶路撒冷地位、难民回归权等核心问题产生的长期军事与政治对抗，是中东问题的症结所在。"
+  },
+  {
+    "id": "his-109",
+    "title": "印巴分治",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1947年英国结束对南亚次大陆的殖民统治时，根据宗教信仰将原英属印度分割为印度（印度教为主）和巴基斯坦（穆斯林为主）两个独立国家的过程。"
+  },
+  {
+    "id": "his-110",
+    "title": "朝鲜战争",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1950-1953年，朝鲜半岛南北双方爆发的大规模战争，美国领导的联合国军支持韩国，中国派出志愿军援朝，苏联提供支援，最终以停战协定告终。"
+  },
+  {
+    "id": "his-111",
+    "title": "越南战争",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "20世纪中后期美国介入的越南冲突，导致大量伤亡和政治动荡，是冷战重要组成部分。"
+  },
+  {
+    "id": "his-112",
+    "title": "古巴导弹危机",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1962年美苏因苏联在古巴部署导弹而对峙，核战争一触即发，最终通过外交化解。"
+  },
+  {
+    "id": "his-113",
+    "title": "太空竞赛",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "冷战时期美苏在太空探索领域的竞争，推动科技突破并塑造国家威望。"
+  },
+  {
+    "id": "his-114",
+    "title": "布拉格之春",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1968年捷克斯洛伐克政治改革运动，试图建立“人性化的社会主义”，但遭苏联军事镇压。"
+  },
+  {
+    "id": "his-115",
+    "title": "苏联入侵阿富汗",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1979年苏联军事干预阿富汗，引发长达十年战争，消耗苏联资源并加速其衰落。"
+  },
+  {
+    "id": "his-116",
+    "title": "东欧剧变",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1989年东欧社会主义国家政权相继和平或暴力更迭，标志冷战结束和苏联影响消退。"
+  },
+  {
+    "id": "his-117",
+    "title": "南斯拉夫解体",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1990年代南斯拉夫联邦分裂为多个独立国家，伴随血腥战争和种族冲突。"
+  },
+  {
+    "id": "his-118",
+    "title": "卢旺达大屠杀",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1994年卢旺达胡图族极端分子对图西族的系统性屠杀，约80万人死亡，国际社会反应迟缓。"
+  },
+  {
+    "id": "his-119",
+    "title": "波黑战争",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "1992-1995年波斯尼亚和黑塞哥维那的战争，涉及族群冲突和种族清洗，以国际干预结束。"
+  },
+  {
+    "id": "his-120",
+    "title": "反恐战争",
+    "category": "history",
+    "categoryName": "历史",
+    "summary": "2001年911事件后美国主导的全球反恐军事和政治行动，聚焦阿富汗和伊拉克。"
+  }
+]
