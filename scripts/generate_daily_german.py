@@ -121,7 +121,6 @@ def call_mimo(system_prompt, user_prompt, max_tokens=8192):
                 chunks.append(chunk)
         raw = b"".join(chunks).decode("utf-8")
         data = _json.loads(raw)
-        return data["choices"][0]["message"]["content"]
     except Exception as e:
         print(f"❌ API 调用失败: {e}")
         return None

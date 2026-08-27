@@ -209,23 +209,14 @@ def call_mimo(system_prompt, user_prompt, max_tokens=12000):
     }
 
     try:
-        import json as _json
-        # 使用流式请求，避免大响应超时
         resp = requests.post(
             f"{MIMO_BASE_URL}/chat/completions",
             headers=headers,
             json=payload,
-            timeout=(15, 180),  # 连接超时15s, 读取超时180s/chunk
-            stream=True
+            timeout=300
         )
         resp.raise_for_status()
-        # 流式读取完整响应
-        chunks = []
-        for chunk in resp.iter_content(chunk_size=None):
-            if chunk:
-                chunks.append(chunk)
-        raw = b''.join(chunks).decode('utf-8')
-        data = _json.loads(raw)
+        data = resp.json()
         content = data["choices"][0]["message"]["content"]
         print(f"📝 API 原始输出长度: {len(content)} 字符")
         usage = data.get("usage", {})
