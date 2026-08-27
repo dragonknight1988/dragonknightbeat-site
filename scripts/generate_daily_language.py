@@ -72,6 +72,8 @@ def call_mimo(sys_prompt, usr_prompt):
                 chunks.append(chunk)
         raw = b"".join(chunks).decode("utf-8")
         data = _json.loads(raw)
+        content = data["choices"][0]["message"]["content"]
+        return content
     except Exception as e:
         print("API error: " + str(e))
         return None
