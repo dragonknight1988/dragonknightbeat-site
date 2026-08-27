@@ -213,7 +213,7 @@ def call_mimo(system_prompt, user_prompt, max_tokens=12000):
             f"{MIMO_BASE_URL}/chat/completions",
             headers=headers,
             json=payload,
-            timeout=300
+            timeout=(30, 600)
         )
         resp.raise_for_status()
         data = resp.json()
