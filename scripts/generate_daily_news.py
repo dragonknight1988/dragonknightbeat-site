@@ -215,7 +215,7 @@ def call_mimo(system_prompt, user_prompt, max_tokens=12000):
             f"{MIMO_BASE_URL}/chat/completions",
             headers=headers,
             json=payload,
-            timeout=(15, 60),  # 连接超时15s, 读取超时60s/chunk
+            timeout=(15, 180),  # 连接超时15s, 读取超时180s/chunk
             stream=True
         )
         resp.raise_for_status()

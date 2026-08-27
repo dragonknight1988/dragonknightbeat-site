@@ -28,7 +28,7 @@ def call_mimo(system_prompt, user_prompt, max_tokens=6000):
         "max_tokens": max_tokens, "temperature": 0.7
     }
     try:
-                resp = requests.post(f"{MIMO_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=(15, 60), stream=True)
+                resp = requests.post(f"{MIMO_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=(15, 180), stream=True)
         resp.raise_for_status()
         import json as _json
         chunks = []
