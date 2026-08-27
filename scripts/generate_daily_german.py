@@ -112,9 +112,16 @@ def call_mimo(system_prompt, user_prompt, max_tokens=8192):
         "temperature": 0.8
     }
     try:
-        resp = requests.post(f"{MIMO_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=300)
+        resp = requests.post(f"{MIMO_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=(15, 60), stream=True)
         resp.raise_for_status()
-        return resp.json()["choices"][0]["message"]["content"]
+        import json as _json
+        chunks = []
+        for chunk in resp.iter_content(chunk_size=None):
+            if chunk:
+                chunks.append(chunk)
+        raw = b"".join(chunks).decode("utf-8")
+        data = _json.loads(raw)
+        return data["choices"][0]["message"]["content"]
     except Exception as e:
         print(f"❌ API 调用失败: {e}")
         return None

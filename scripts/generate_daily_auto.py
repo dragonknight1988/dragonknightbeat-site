@@ -67,10 +67,15 @@ def call_mimo(system_prompt, user_prompt, max_tokens=8000):
         "max_tokens": max_tokens, "temperature": 0.6
     }
     try:
-        resp = requests.post(f"{MIMO_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=300)
+                resp = requests.post(f"{MIMO_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=(15, 60), stream=True)
         resp.raise_for_status()
-        data = resp.json()
-        usage = data.get("usage", {})
+        import json as _json
+        chunks = []
+        for chunk in resp.iter_content(chunk_size=None):
+            if chunk:
+                chunks.append(chunk)
+        raw = b"".join(chunks).decode("utf-8")
+        data = _json.loads(raw)        usage = data.get("usage", {})
         if usage:
             print(f"📊 Token: 输入 {usage.get('prompt_tokens','?')} | 输出 {usage.get('completion_tokens','?')}")
         return data["choices"][0]["message"]["content"]
