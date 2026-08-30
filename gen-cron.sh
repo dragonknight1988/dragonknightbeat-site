@@ -20,7 +20,7 @@ for attempt in $(seq 1 $MAX_RETRY); do
   echo "[DEBUG] MIMO_API_KEY set: $([ -n "$MIMO_API_KEY" ] && echo YES || echo NO)" >> "$LOG"
   echo "[DEBUG] python3 path: $(which python3)" >> "$LOG"
 
-  timeout 360 python3 -u scripts/generate_${SCRIPT}.py --output "${WEBROOT}/${OUTPUT}.json" >> "$LOG" 2>&1
+  timeout 600 python3 -u scripts/generate_${SCRIPT}.py --output "${WEBROOT}/${OUTPUT}.json" >> "$LOG" 2>&1
   R=$?
   echo "[DEBUG] Exit code: $R at $(date)" >> "$LOG"
   if [ $R -eq 0 ]; then

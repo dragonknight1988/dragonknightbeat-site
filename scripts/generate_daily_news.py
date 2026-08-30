@@ -15,7 +15,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 BJ_TZ = timezone(timedelta(hours=8))
 
 MIMO_API_KEY = os.environ.get("MIMO_API_KEY", "tp-c6irsm5360gu18hd64hlmz47ltg54c5rbszghj45t5z96c31")
-MIMO_BASE_URL = "https://token-plan-cn.xiaomimimo.com/v1"
+MIMO_BASE_URL = os.environ.get("MIMO_BASE_URL", "https://token-plan-cn.xiaomimimo.com/v1")
 MIMO_MODEL = "xiaomi/mimo-v2.5-pro"
 
 HEADERS = {
@@ -213,7 +213,7 @@ def call_mimo(system_prompt, user_prompt, max_tokens=12000):
             f"{MIMO_BASE_URL}/chat/completions",
             headers=headers,
             json=payload,
-            timeout=(30, 600)
+            timeout=(30, 300)
         )
         resp.raise_for_status()
         data = resp.json()
