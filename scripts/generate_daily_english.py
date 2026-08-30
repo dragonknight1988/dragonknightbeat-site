@@ -12,7 +12,7 @@ from html.parser import HTMLParser
 BJ_TZ = timezone(timedelta(hours=8))
 
 MIMO_API_KEY = os.environ.get("MIMO_API_KEY", "tp-c6irsm5360gu18hd64hlmz47ltg54c5rbszghj45t5z96c31")
-MIMO_BASE_URL = "https://token-plan-cn.xiaomimimo.com/v1"
+MIMO_BASE_URL = os.environ.get("MIMO_BASE_URL", "https://token-plan-cn.xiaomimimo.com/v1")
 MIMO_MODEL = "xiaomi/mimo-v2.5"
 
 TOPIC_MAP = {
