@@ -9,6 +9,7 @@
 
 import json, os, sys, subprocess, argparse, time, re
 import requests
+import traceback
 from datetime import datetime, timezone, timedelta
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -213,7 +214,7 @@ def call_mimo(system_prompt, user_prompt, max_tokens=12000):
             f"{MIMO_BASE_URL}/chat/completions",
             headers=headers,
             json=payload,
-            timeout=(30, 300)
+            timeout=(30, 600)
         )
         resp.raise_for_status()
         data = resp.json()
@@ -223,8 +224,17 @@ def call_mimo(system_prompt, user_prompt, max_tokens=12000):
         if usage:
             print(f"📊 Token: 输入 {usage.get('prompt_tokens', '?')} | 输出 {usage.get('completion_tokens', '?')} | 总计 {usage.get('total_tokens', '?')}")
         return content
+    except requests.exceptions.Timeout as e:
+        print(f"❌ API 调用超时: {e}")
+        traceback.print_exc()
+        return None
+    except requests.exceptions.ConnectionError as e:
+        print(f"❌ API 连接失败: {e}")
+        traceback.print_exc()
+        return None
     except Exception as e:
-        print(f"❌ API 调用失败: {e}")
+        print(f"❌ API 调用失败: {type(e).__name__}: {e}")
+        traceback.print_exc()
         return None
 
 
