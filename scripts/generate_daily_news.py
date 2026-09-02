@@ -214,16 +214,45 @@ def call_mimo(system_prompt, user_prompt, max_tokens=12000):
             f"{MIMO_BASE_URL}/chat/completions",
             headers=headers,
             json=payload,
-            timeout=(30, 600)
+            timeout=(15, 180),
+            stream=True
         )
         resp.raise_for_status()
-        data = resp.json()
-        content = data["choices"][0]["message"]["content"]
+        # Read streaming response with overall timeout
+        import signal
+        collected = []
+        start_time = __import__('time').time()
+        for line in resp.iter_lines():
+            collected.append(line)
+            # Overall timeout of 180s for streaming
+            if __import__('time').time() - start_time > 180:
+                print(f"⚠️ 流式读取超过180秒，强制结束")
+                break
+        full_text = ''.join([l.decode('utf-8', errors='ignore') for l in collected if l])
+        # Parse SSE data
+        json_parts = []
+        for line in collected:
+            if not line:
+                continue
+            decoded = line.decode('utf-8', errors='ignore')
+            if decoded.startswith('data: ') and decoded.strip() != 'data: [DONE]':
+                try:
+                    chunk = json.loads(decoded[6:])
+                    delta = chunk.get('choices', [{}])[0].get('delta', {})
+                    if 'content' in delta:
+                        json_parts.append(delta['content'])
+                except:
+                    pass
+        content = ''.join(json_parts)
+        if not content:
+            # Fallback: try non-streaming parse
+            try:
+                data = json.loads(full_text)
+                content = data['choices'][0]['message']['content']
+            except:
+                pass
         print(f"📝 API 原始输出长度: {len(content)} 字符")
-        usage = data.get("usage", {})
-        if usage:
-            print(f"📊 Token: 输入 {usage.get('prompt_tokens', '?')} | 输出 {usage.get('completion_tokens', '?')} | 总计 {usage.get('total_tokens', '?')}")
-        return content
+        return content if content else None
     except requests.exceptions.Timeout as e:
         print(f"❌ API 调用超时: {e}")
         traceback.print_exc()
