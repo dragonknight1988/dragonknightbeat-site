@@ -1,0 +1,151 @@
+{
+  "date": "2026-09-03",
+  "content": {
+    "id": "daily-italian-2024-05-23",
+    "date": "2024-05-23",
+    "topic": "购物与时尚",
+    "quote": {
+      "quote": "Lo stile è un modo di dire chi sei senza dover parlare.",
+      "author": "Rachel Zoe",
+      "translation": "风格是一种不用说话就能表明你是谁的方式。",
+      "explanation": "这句话强调了个人风格作为一种非语言表达方式的重要性。它表明，我们的穿着打扮能够传递关于我们的身份、品味和个性的信息，是一种强大而无声的沟通工具。"
+    },
+    "vocabulary": [
+      {
+        "word": "negozio",
+        "article": "il",
+        "plural": "negozi",
+        "phonetic": "/neˈɡɔttsjo/",
+        "partOfSpeech": "sostantivo maschile",
+        "definition": "商店，店铺",
+        "example": "Vado al negozio di vestiti per comprare un nuovo paio di pantaloni.",
+        "exampleTranslation": "我去服装店买一条新裤子。"
+      },
+      {
+        "word": "moda",
+        "article": "la",
+        "plural": "mode",
+        "phonetic": "/ˈmɔda/",
+        "partOfSpeech": "sostantivo femminile",
+        "definition": "时尚，流行",
+        "example": "Questa stagione, la moda è molto colorata e allegra.",
+        "exampleTranslation": "这个季节，时尚非常多彩和欢快。"
+      },
+      {
+        "word": "vestito",
+        "article": "il",
+        "plural": "vestiti",
+        "phonetic": "/vesˈtito/",
+        "partOfSpeech": "sostantivo maschile",
+        "definition": "连衣裙；衣服（复数）",
+        "example": "Indosso un vestito elegante per la festa stasera.",
+        "exampleTranslation": "今晚聚会我穿一条优雅的连衣裙。"
+      },
+      {
+        "word": "gonna",
+        "article": "la",
+        "plural": "gonne",
+        "phonetic": "/ˈɡɔnna/",
+        "partOfSpeech": "sostantivo femminile",
+        "definition": "裙子",
+        "example": "Mi piace molto questa gonna blu, è perfetta per l'estate.",
+        "exampleTranslation": "我很喜欢这条蓝裙子，它很适合夏天。"
+      },
+      {
+        "word": "camicia",
+        "article": "la",
+        "plural": "camicie",
+        "phonetic": "/kaˈmittʃa/",
+        "partOfSpeech": "sostantivo femminile",
+        "definition": "衬衫",
+        "example": "Metti la camicia bianca per l'incontro di lavoro.",
+        "exampleTranslation": "为了工作会议，穿上白衬衫。"
+      },
+      {
+        "word": "scarpa",
+        "article": "la",
+        "plural": "scarpe",
+        "phonetic": "/ˈskarpa/",
+        "partOfSpeech": "sostantivo femminile",
+        "definition": "鞋子",
+        "example": "Queste scarpe nuove sono molto comode per camminare.",
+        "exampleTranslation": "这双新鞋走路很舒服。"
+      },
+      {
+        "word": "prezzo",
+        "article": "il",
+        "plural": "prezzi",
+        "phonetic": "/ˈprɛttso/",
+        "partOfSpeech": "sostantivo maschile",
+        "definition": "价格",
+        "example": "Qual è il prezzo di questa borsa di pelle?",
+        "exampleTranslation": "这个皮包的价格是多少？"
+      },
+      {
+        "word": "sconto",
+        "article": "lo",
+        "plural": "sconti",
+        "phonetic": "/ˈskonto/",
+        "partOfSpeech": "sostantivo maschile",
+        "definition": "折扣",
+        "example": "C'è uno sconto del 20% su tutti i capi estivi.",
+        "exampleTranslation": "所有夏季服装打八折。"
+      },
+      {
+        "word": "provare",
+        "article": "",
+        "plural": "",
+        "phonetic": "/proˈvare/",
+        "partOfSpeech": "verbo",
+        "definition": "试穿；尝试",
+        "example": "Voglio provare questa giacca, per favore.",
+        "exampleTranslation": "我想试穿这件夹克。"
+      },
+      {
+        "word": "comprare",
+        "article": "",
+        "plural": "",
+        "phonetic": "/komˈprare/",
+        "partOfSpeech": "verbo",
+        "definition": "购买",
+        "example": "Oggi vado a comprare un regalo per la mia amica.",
+        "exampleTranslation": "今天我去给我的朋友买个礼物。"
+      }
+    ],
+    "pattern": {
+      "pattern": "Posso ...?",
+      "example": "Posso provare questa gonna e quella camicia?",
+      "translation": "我可以试穿这条裙子和那件衬衫吗？",
+      "usage": "这是购物时询问店员或提出请求的常用礼貌句型。'Posso'（我能够/可以）后接动词原形。例如，'Posso pagare con carta?'（我能用卡支付吗？），'Posso avere un sacchetto?'（能给我一个袋子吗？）。"
+    },
+    "grammar": {
+      "title": "虚拟式现在时（Congiuntivo presente）简介",
+      "explanation": "虚拟式用于表达主观情感、愿望、怀疑、建议或不确定性。在主句使用特定动词（如 pensare（认为）, sperare（希望）, dubitare（怀疑）, credere（相信））时，从句常需使用虚拟式。其变位规则：去掉动词词尾，加 -i (第一、二、三人称单数及第三人称复数)， -iamo (第一人称复数)， -iate (第二人称复数)。以 -are 结尾的动词为例：pensare -> che io pensi, che tu pensi, che lui/lei pensi, che noi pensiamo, che voi pensiate, che essi/esse pensino。",
+      "examples": [
+        "Penso che questa modasia molto elegante.",
+        "希望那个商店还有卖这种裙子。",
+        "我的朋友不确定这双鞋的价格是否合理。"
+      ]
+    },
+    "pronunciation": {
+      "word": "moda",
+      "phonetic": "/ˈmɔda/",
+      "tips": "注意重音在第一个音节'mo-'上。元音'o'发闭口的/ɔ/音，类似中文“哦”但嘴型更圆更小。字母'd'发浊辅音/d/。意大利语发音清晰，每个字母都要读出来，不要吞音。",
+      "examples": [
+        "ponte /ˈponte/ (桥)",
+        "buono /ˈbwɔno/ (好的)",
+        "bello /ˈbɛllo/ (美丽的)"
+      ]
+    },
+    "reading": {
+      "title": "Una giornata di shopping con l'amica",
+      "titleTranslation": "和朋友一起购物的一天",
+      "content": "La scorsa sabato, la mia amica Giulia e io siamo andate a fare shopping in centro. Prima siamo entrate in un grande negozio di moda. Giulia ha provato una gonna blu molto carina, ma il prezzo era un po' alto. Poi abbiamo trovato un negozio con tanti sconti. Io ho comprato una camicia bianca a un ottimo prezzo. Giulia ha deciso di comprare la gonna blu, perché l'ha provata e le stava benissimo. Siamo state molto contente dei nostri acquisti. Dopo lo shopping, abbiamo bevuto un caffè in un bar. È stata una giornata divertente!",
+      "translation": "上周六，我和我的朋友朱莉娅去了市中心购物。我们先走进了一家大型时装店。朱莉娅试穿了一条非常可爱的蓝色裙子，但价格有点高。后来我们找到了一家有很多折扣的店。我以很好的价格买了一件白衬衫。朱莉娅决定买那条蓝裙子，因为她试过了，穿着非常合身。我们对这次购物都非常满意。购物之后，我们在一家酒吧喝了杯咖啡。这是有趣的一天！"
+    },
+    "culture": {
+      "title": "意大利的季节性大促（Saldi）",
+      "content": "在意大利，购物不仅仅是日常活动，更是一种社交和文化体验。意大利的折扣季通常分为夏季（Saldi Estivi）和冬季（Saldi Invernali）。夏季折扣通常在7月初开始，持续约两个月；冬季折扣则在1月初开始。在这些时期，几乎所有商店，从大型百货公司到独立设计师品牌店，都会提供显著的折扣。这是意大利人更新衣橱、寻找设计精品的好时机。购物时，意大利人注重品质、面料和剪裁，而不仅仅是品牌。一家好的“negozi di abbigliamento”（服装店）的店员通常会给出专业的搭配建议。"
+    }
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "date": "2026-09-03",
+  "content": {
+    "id": "daily-german-2023-10-05",
+    "date": "2023-10-05",
+    "topic": "购物与讨价还价",
+    "quote": {
+      "quote": "Wer billig kauft, kauft zweimal.",
+      "author": "德国谚语",
+      "translation": "谁买便宜货，谁就得买两次。",
+      "explanation": "这句谚语提醒人们不要只图便宜，质量更重要；如果买到劣质品，可能需要重新购买，反而花费更多。"
+    },
+    "vocabulary": [
+      {
+        "word": "der Preis",
+        "article": "der",
+        "plural": "Preise",
+        "phonetic": "/pʁaɪ̯s/",
+        "partOfSpeech": "名词",
+        "definition": "价格",
+        "example": "Der Preis ist zu hoch.",
+        "exampleTranslation": "价格太高。"
+      },
+      {
+        "word": "das Angebot",
+        "article": "das",
+        "plural": "Angebote",
+        "phonetic": "/ˈanɡəboːt/",
+        "partOfSpeech": "名词",
+        "definition": "报价，供应",
+        "example": "Das Angebot ist günstig.",
+        "exampleTranslation": "报价很划算。"
+      },
+      {
+        "word": "der Rabatt",
+        "article": "der",
+        "plural": "Rabatte",
+        "phonetic": "/ʁaˈbat/",
+        "partOfSpeech": "名词",
+        "definition": "折扣",
+        "example": "Ich bekomme einen Rabatt.",
+        "exampleTranslation": "我得到折扣。"
+      },
+      {
+        "word": "die Qualität",
+        "article": "die",
+        "plural": "Qualitäten",
+        "phonetic": "/kvaliˈtɛːt/",
+        "partOfSpeech": "名词",
+        "definition": "质量",
+        "example": "Die Qualität ist wichtig.",
+        "exampleTranslation": "质量很重要。"
+      },
+      {
+        "word": "verhandeln",
+        "article": "",
+        "plural": "",
+        "phonetic": "/fɛɐ̯ˈhandl̩n/",
+        "partOfSpeech": "动词",
+        "definition": "讨价还价",
+        "example": "Ich verhandle über den Preis.",
+        "exampleTranslation": "我讨价还价价格。"
+      },
+      {
+        "word": "kaufen",
+        "article": "",
+        "plural": "",
+        "phonetic": "/ˈkaʊ̯fn/",
+        "partOfSpeech": "动词",
+        "definition": "买",
+        "example": "Ich kaufe ein Geschenk.",
+        "exampleTranslation": "我买一个礼物。"
+      },
+      {
+        "word": "teuer",
+        "article": "",
+        "plural": "",
+        "phonetic": "/ˈtɔɪ̯ɐ/",
+        "partOfSpeech": "形容词",
+        "definition": "贵的",
+        "example": "Das ist zu teuer.",
+        "exampleTranslation": "这太贵了。"
+      },
+      {
+        "word": "billig",
+        "article": "",
+        "plural": "",
+        "phonetic": "/ˈbɪlɪç/",
+        "partOfSpeech": "形容词",
+        "definition": "便宜的",
+        "example": "Das ist sehr billig.",
+        "exampleTranslation": "这很便宜。"
+      },
+      {
+        "word": "der Markt",
+        "article": "der",
+        "plural": "Märkte",
+        "phonetic": "/maʁkt/",
+        "partOfSpeech": "名词",
+        "definition": "市场",
+        "example": "Ich gehe zum Markt.",
+        "exampleTranslation": "我去市场。"
+      },
+      {
+        "word": "der Verkäufer",
+        "article": "der",
+        "plural": "Verkäufer",
+        "phonetic": "/fɛɐ̯ˈkɔʏ̯fɐ/",
+        "partOfSpeech": "名词",
+        "definition": "卖家",
+        "example": "Der Verkäufer ist freundlich.",
+        "exampleTranslation": "卖家很友好。"
+      }
+    ],
+    "pattern": {
+      "pattern": "Könnten Sie mir einen Rabatt geben?",
+      "example": "Könnten Sie mir einen Rabatt geben, wenn ich mehrere Produkte kaufe?",
+      "translation": "您能给我一个折扣吗？",
+      "usage": "这是一个礼貌的讨价还价句型，用于在商店或市场请求折扣时。常与 'Preis' 和 'Rabatt' 等词汇搭配使用。"
+    },
+    "grammar": {
+      "title": "比较级和最高级",
+      "explanation": "在德语中，比较级用于比较两个事物，通常在形容词词尾加-er；最高级用于三个或以上事物，加-st（有时需加-est）。在购物场景中，用于比较价格或质量。",
+      "examples": [
+        "Dieses Produkt ist teurer als jenes.",
+        "Das ist das billigste Angebot.",
+        "Der Markt hat die besten Preise."
+      ]
+    },
+    "pronunciation": {
+      "word": "die Qualität",
+      "phonetic": "/kvaliˈtɛːt/",
+      "tips": "注意 'qu' 组合发 /kv/ 音，类似英语 'qu' 但更清晰；重音在第二个音节 'li' 上。",
+      "examples": [
+        "Qualität",
+        "Quantität",
+        "Qualifikation"
+      ]
+    },
+    "reading": {
+      "title": "Ein Tag auf dem Markt",
+      "titleTranslation": "市场的一天",
+      "content": "Heute gehe ich zum Markt. Ich möchte frisches Obst kaufen. Der Verkäufer zeigt mir verschiedene Äpfel. Der Preis für ein Kilo ist zwei Euro. Ich frage: 'Könnten Sie mir einen Rabatt geben, wenn ich mehr kaufe?' Der Verkäufer sagt: 'Ja, wenn Sie drei Kilo kaufen, kostet es nur fünf Euro.' Ich verhandle ein wenig und kaufe schließlich drei Kilo. Die Qualität ist sehr gut. Ich bin zufrieden mit dem Angebot und spare Geld.",
+      "translation": "今天我去市场。我想买新鲜水果。卖家给我展示各种苹果。一公斤的价格是两欧元。我问：‘如果我多买，您能给我折扣吗？’卖家说：‘是的，如果您买三公斤，只需五欧元。’我稍微讨价还价，最后买了三公斤。质量很好。我对这个报价很满意，并节省了钱。"
+    },
+    "culture": {
+      "title": "德国的购物文化",
+      "content": "在德国，讨价还价在露天市场（如跳蚤市场）比较常见，但在固定商店如超市或专卖店，通常不鼓励讨价还价。德国人重视产品质量、透明定价和客户服务。购物时，保持礼貌和直接沟通很重要。"
+    }
+  }
+}

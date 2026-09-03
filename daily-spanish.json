@@ -1,0 +1,155 @@
+{
+  "date": "2026-09-03",
+  "content": {
+    "id": "daily-spanish-2023-10-27",
+    "date": "2023-10-27",
+    "topic": "购物与讨价还价",
+    "quote": {
+      "quote": "No hay mal que por bien no venga.",
+      "author": "Proverbio español",
+      "translation": "没有坏事不会带来好处。",
+      "explanation": "这句西班牙谚语告诉我们，要看到困境中的积极面。在购物时，可能一次不愉快的经历能让你下次变得更精明。"
+    },
+    "vocabulary": [
+      {
+        "word": "precio",
+        "article": "el",
+        "plural": "precios",
+        "phonetic": "/ˈpɾeθjo/",
+        "partOfSpeech": "sustantivo masculino",
+        "definition": "价格，价钱",
+        "example": "El precio de esta camiseta es diez euros.",
+        "exampleTranslation": "这件T恤的价格是十欧元。"
+      },
+      {
+        "word": "descuento",
+        "article": "el",
+        "plural": "descuentos",
+        "phonetic": "/desˈkwento/",
+        "partOfSpeech": "sustantivo masculino",
+        "definition": "折扣，优惠",
+        "example": "Hoy hay un descuento del veinte por ciento en toda la tienda.",
+        "exampleTranslation": "今天全场打八折。"
+      },
+      {
+        "word": "artículo",
+        "article": "el",
+        "plural": "artículos",
+        "phonetic": "/aɾˈtikulo/",
+        "partOfSpeech": "sustantivo masculino",
+        "definition": "物品，商品",
+        "example": "Este artículo es de muy buena calidad.",
+        "exampleTranslation": "这件商品质量非常好。"
+      },
+      {
+        "word": "oferta",
+        "article": "la",
+        "plural": "ofertas",
+        "phonetic": "/oˈfeɾta/",
+        "partOfSpeech": "sustantivo femenino",
+        "definition": "促销，特价",
+        "example": "Busco las ofertas de la semana en el supermercado.",
+        "exampleTranslation": "我在找超市本周的特价商品。"
+      },
+      {
+        "word": "calidad",
+        "article": "la",
+        "plural": "calidades",
+        "phonetic": "/kaliˈðað/",
+        "partOfSpeech": "sustantivo femenino",
+        "definition": "质量，品质",
+        "example": "Prefiero pagar más por una mejor calidad.",
+        "exampleTranslation": "我宁愿多付点钱买质量更好的。"
+      },
+      {
+        "word": "bolsa",
+        "article": "la",
+        "plural": "bolsas",
+        "phonetic": "/ˈbolsa/",
+        "partOfSpeech": "sustantivo femenino",
+        "definition": "袋子",
+        "example": "¿Necesita una bolsa para sus compras?",
+        "exampleTranslation": "您需要一个购物袋吗？"
+      },
+      {
+        "word": "mercado",
+        "article": "el",
+        "plural": "mercados",
+        "phonetic": "/meɾˈkaðo/",
+        "partOfSpeech": "sustantivo masculino",
+        "definition": "市场",
+        "example": "En el mercado hay frutas frescas y baratas.",
+        "exampleTranslation": "市场上有新鲜又便宜的水果。"
+      },
+      {
+        "word": "vendedor",
+        "article": "el",
+        "plural": "vendedores",
+        "phonetic": "/bendeˈðoɾ/",
+        "partOfSpeech": "sustantivo masculino",
+        "definition": "卖方，售货员",
+        "example": "El vendedor es muy amable y nos ayuda.",
+        "exampleTranslation": "售货员很友好，帮助我们。"
+      },
+      {
+        "word": "regatear",
+        "article": "",
+        "plural": "",
+        "phonetic": "/reɣateˈaɾ/",
+        "partOfSpeech": "verbo",
+        "definition": "讨价还价",
+        "example": "En algunos países es normal regatear el precio.",
+        "exampleTranslation": "在一些国家，讨价还价是正常的。"
+      },
+      {
+        "word": "vale",
+        "article": "el",
+        "plural": "vales",
+        "phonetic": "/ˈbale/",
+        "partOfSpeech": "sustantivo masculino",
+        "definition": "优惠券，代金券",
+        "example": "Tengo un vale de cinco euros para usar en esta tienda.",
+        "exampleTranslation": "我有一张五欧元的优惠券可以在这店使用。"
+      }
+    ],
+    "pattern": {
+      "pattern": "¿Me puede hacer un descuento en...?",
+      "example": "¿Me puede hacer un descuento en este artículo si compro dos?",
+      "translation": "如果我买两件，您能给这件商品打个折吗？",
+      "usage": "这是一个礼貌且实用的讨价还价句型。你可以在`en`后面加上你想购买的商品（如`en la bolsa`, `en los zapatos`）。将`puede`换成`podría`会显得更加客气。"
+    },
+    "grammar": {
+      "title": "直接宾语代词（Complemento Directo）",
+      "explanation": "在西班牙语中，为了避免重复，我们可以用直接宾语代词（lo, la, los, las）来代替前面已经提到过的直接宾语（即动词直接作用的对象）。代词的性和数必须与被替代的名词一致。这个代词通常放在变位动词之前。",
+      "examples": [
+        "¿Ves ese artículo? Sí, lo veo. （你看到那件商品了吗？是的，我看到它了。）",
+        "Esta camiseta es bonita. La quiero comprar. （这件T恤很漂亮。我想买它。）",
+        "Tengo los vales. Los voy a usar ahora. （我有优惠券。我打算现在用它们。）",
+        "Necesito la bolsa. ¿Me la puede dar? （我需要那个袋子。能把它给我吗？）"
+      ]
+    },
+    "pronunciation": {
+      "word": "regatear",
+      "phonetic": "/reɣateˈaɾ/",
+      "tips": "单词中的大舌音/r/和/rr/是中国学习者的难点。`regatear`开头的`r`和词中的`g`（发/ɣ/音，类似汉语中‘喝’的声母但更轻）需要重点练习。关键是放松舌头，让气流推动舌尖颤动。多练习`rra`, `rre`, `rri`, `rro`, `rru`的发音。",
+      "examples": [
+        "regateo",
+        "regateas",
+        "regateamos",
+        "ferrocarril",
+        "perro",
+        "carretera"
+      ]
+    },
+    "reading": {
+      "title": "Una mañana en el mercado",
+      "titleTranslation": "在市场的一个早上",
+      "content": "María quiere comprar un regalo para su amiga. Va al mercado de la ciudad. Allí hay muchos vendedores y artículos interesantes. Ve una bolsa de cuero muy bonita. El precio es treinta euros, pero ella piensa que es un poco caro. Le pregunta al vendedor: '¿Me puede hacer un descuento?' El vendedor sonríe y le ofrece un precio de veinticinco euros. María acepta y paga con una tarjeta. El vendedor le da una bolsa de tela para llevar el regalo. María está contenta con su compra.",
+      "translation": "玛丽亚想给她朋友买个礼物。她去了城里的市场。那里有很多售货员和有趣的商品。她看到一个非常漂亮的皮包。价格是三十欧元，但她觉得有点贵。她问售货员：“能给我打个折吗？”售货员微笑着给了她二十五欧元的价格。玛丽亚接受并用卡支付了。售货员给了她一个布袋来装礼物。玛丽亚对她的购物很满意。"
+    },
+    "culture": {
+      "title": "西班牙的“跳蚤市场”文化",
+      "content": "在西班牙，逛“Rastro”或“Mercadillo”（跳蚤市场/露天市场）是一种非常流行的文化活动。例如，马德里著名的“El Rastro”每周日开放，是欧洲最大的露天市场之一。这里不仅能淘到古董、衣服、书籍和工艺品，更是体验当地生活、练习讨价还价和西班牙语的绝佳场所。讨价还价在这里不仅是一种购物方式，更是一种社交互动，通常在轻松友好的氛围中进行。"
+    }
+  }
+}

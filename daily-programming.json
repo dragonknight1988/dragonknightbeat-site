@@ -1,38 +1,38 @@
 {
-  "date": "2026-05-24",
+  "date": "2026-09-03",
   "contents": [
     {
-      "id": "prog-2026-05-24",
-      "date": "2026-05-24",
-      "title": "Node.js 文件系统（fs）模块：异步文件读写入门",
-      "summary": "学习使用 Node.js 内置的 fs 模块以异步方式读写文件，并理解回调与 Promise 两种风格的差异。",
-      "difficulty": "初级",
-      "concept": "Node.js 的 fs 模块（File System）是操作文件和目录的核心内置模块。在 Node.js 中，绝大多数 I/O 操作都是异步的，这得益于其事件循环机制。fs 模块提供了同步（Sync 后缀）和异步（无后缀或 Promise）两种 API，但在生产环境中强烈推荐使用异步版本，以避免阻塞事件循环，保持应用的高并发性能。\n\n异步文件读取最传统的风格是使用回调函数，例如 `fs.readFile(path, encoding, callback)`。回调函数接收错误对象（err）和文件内容（data）。这种风格容易产生“回调地狱”，因此现代 Node.js 推荐使用 `fs.promises` 对象，它提供了 Promise 版本的 API，配合 `async/await` 可以使代码更简洁、更易读。\n\n对于文件写入，`fs.writeFile` 同样有回调与 Promise 版本。需要注意的是，当文件不存在时，`writeFile` 会自动创建文件；如果文件已存在，则会覆盖内容。此外，fs 模块还提供了许多其他实用方法，如 `fs.readdir` 读取目录、`fs.stat` 获取文件状态等。\n\nDeno 作为 Node.js 的竞争者和革新者，也提供了类似的 `Deno.readTextFile` 和 `Deno.writeTextFile` 等 API，且原生支持 Promise 和 ESM 模块。学习 Node.js 的 fs 模块之后，切换到 Deno 会非常顺畅。",
+      "id": "prog-2026-09-03",
+      "date": "2026-09-03",
+      "title": "Rust 错误处理与 Result 类型",
+      "summary": "学习如何使用 Result 和 Option 进行优雅的错误处理，包括自定义错误类型和 ? 操作符的运用。",
+      "difficulty": "中级",
+      "concept": "Rust 的错误处理设计强调显式性和安全性，避免隐式异常，使用 Result 类型来表示可能失败的操作。Result<T, E> 有两个变体：Ok(T) 表示成功并包含值，Err(E) 表示失败并包含错误信息。Option<T> 则用于表示可选值，其中 Some(T) 表示存在值，None 表示没有值。这种设计迫使开发者在编译时处理错误，减少运行时崩溃。\n\n? 操作符是 Rust 错误处理的核心工具，它简化了错误传播。当在函数中使用 ? 操作符时，如果操作成功，它会解包 Ok 中的值；如果失败，它会提前返回 Err 并将错误传递给调用者。这大大减少了样板代码，提高了可读性。在实际工程中，? 操作符常用于链式操作，如文件 I/O、网络请求或数据库查询。\n\n自定义错误类型是处理复杂项目的关键，它允许你封装多种错误源。通过定义枚举来包含不同类型的错误，并实现 From trait 来自动转换错误类型，可以提高代码的模块化。例如，你可以将 io::Error 转换为自定义的 AppError，从而统一错误处理。在实际项目中，结合 thiserror 或 anyhow 等库可以进一步简化错误类型的定义和使用。\n\n错误处理的最佳实践包括：避免过度使用 unwrap() 和 expect()，因为它们在失败时会导致 panic；优先使用 Result 和 ? 操作符；在库代码中定义清晰的错误类型，在应用代码中使用 anyhow 简化错误处理。例如，在 Web 服务中，你可以将各种错误（如数据库错误、认证错误）映射到 HTTP 状态码，提供友好的错误响应。\n\n在实际工程中，错误处理应考虑可维护性和用户体验。通过合理使用模式匹配和错误转换，你可以创建健壮的代码。例如，在解析配置文件时，结合 Result 和 Option，你可以优雅地处理缺失字段或格式错误，并提供有意义的错误消息。这有助于调试和日志记录，提升系统的可靠性。",
       "codeExample": {
-        "language": "JavaScript (Node.js)",
-        "code": "// 使用 fs.promises 异步读取和写入文件\nconst fs = require('fs').promises; // Node.js 内置 promisified 版本\n\nasync function readAndWriteFile() {\n  try {\n    // 读取文件内容\n    const data = await fs.readFile('hello.txt', 'utf-8');\n    console.log('文件内容:', data);\n\n    // 追加一行内容\n    const newContent = data + '\\n这行是追加的内容。';\n    await fs.writeFile('hello.txt', newContent, 'utf-8');\n    console.log('文件写入成功！');\n\n    // 再次读取验证\n    const updatedData = await fs.readFile('hello.txt', 'utf-8');\n    console.log('更新后的文件内容:', updatedData);\n  } catch (err) {\n    console.error('操作出错:', err.message);\n  }\n}\n\nreadAndWriteFile();",
-        "explanation": "1. `const fs = require('fs').promises;` – 引入 fs 的 Promise 版本，这样所有方法都返回 Promise。\n2. `async function readAndWriteFile()` – 定义一个异步函数，内部使用 await 等待 Promise 完成。\n3. `await fs.readFile('hello.txt', 'utf-8')` – 读取文件，指定编码为 UTF-8，返回字符串。\n4. 读取成功后，用模板字符串追加内容。\n5. `await fs.writeFile(...)` – 将新内容写回文件，覆盖原文件。\n6. `catch` 捕获任何异步错误，例如文件不存在或权限问题。"
+        "language": "Rust",
+        "code": "use std::fs::File;\nuse std::io::{self, Read};\n\n// 定义自定义错误枚举，封装不同错误源\n#[derive(Debug)]\nenum AppError {\n    IoError(io::Error),   // I/O 错误\n    ParseError,           // 解析错误\n}\n\n// 实现 From trait，允许从 io::Error 自动转换为 AppError\nimpl From<io::Error> for AppError {\n    fn from(err: io::Error) -> Self {\n        AppError::IoError(err)\n    }\n}\n\n// 函数：从文件读取内容并解析为数字，使用 Result 返回\nfn read_number_from_file(path: &str) -> Result<i32, AppError> {\n    let mut file = File::open(path)?;  // 使用 ? 操作符传播错误\n    let mut content = String::new();\n    file.read_to_string(&mut content)?;  // 同样使用 ? 操作符\n    \n    // 尝试解析内容为整数，失败时返回 ParseError\n    content.trim().parse().map_err(|_| AppError::ParseError)\n}\n\nfn main() {\n    match read_number_from_file(\"data.txt\") {\n        Ok(number) => println!(\"成功读取数字: {}\", number),\n        Err(e) => eprintln!(\"错误发生: {:?}\", e),  // 使用 eprintln 输出错误\n    }\n}",
+        "explanation": "代码逐块解释：\n- 定义 AppError 枚举：包含 IoError 和 ParseError 两种变体，用于封装不同类型的错误。\n- 实现 From<io::Error>：这允许在使用 ? 操作符时自动将 io::Error 转换为 AppError，简化错误传播。\n- read_number_from_file 函数：返回 Result<i32, AppError>，表示可能失败的操作。使用 File::open 打开文件，? 操作符处理潜在的 I/O 错误；然后读取文件内容到字符串，同样使用 ? 操作符；最后尝试将内容解析为整数，如果失败则通过 map_err 返回 AppError::ParseError。\n- main 函数：使用 match 匹配 read_number_from_file 的结果。Ok 分支打印成功消息，Err 分支使用 eprintln 输出错误信息，确保错误被捕获和处理。"
       },
       "keyPoints": [
-        "fs 模块是 Node.js 内置模块，无需安装。",
-        "推荐使用异步 API（回调或 Promise）而非同步 API，避免阻塞事件循环。",
-        "fs.promises 提供 Promise 版本，可与 async/await 配合使用。",
-        "读写文件时需指定编码（如 'utf-8'），否则返回 Buffer。",
-        "错误处理至关重要，尤其是在文件操作中（文件不存在、权限问题等）。"
+        "Result<T, E> 类型表示可能失败的操作，Ok(T) 代表成功，Err(E) 代表失败，强制编译时错误处理。",
+        "Option<T> 类型用于表示可选值，Some(T) 和 None，常用于避免空指针异常。",
+        "? 操作符简化错误传播，当操作失败时，它会将错误返回给调用者，减少样板代码。",
+        "自定义错误类型通过枚举实现，可以封装多种错误源，并使用 From trait 实现自动转换。",
+        "错误处理最佳实践：避免 unwrap() 以减少 panic，优先使用 Result 和 ? 操作符，结合第三方库如 thiserror 提高开发效率。"
       ],
       "exercise": {
-        "description": "使用 Node.js 的 fs.promises 编写一个程序：读取当前目录下的 'data.json' 文件，解析 JSON，将其中的 'count' 字段加 1，然后写回文件。如果文件不存在，则创建一个包含初始 count 为 0 的 JSON 对象。",
-        "hint": "使用 try-catch 包裹，捕获文件不存在的错误（ENOENT），然后写入初始 JSON。",
+        "description": "编写一个函数，读取指定路径的文本文件，统计其中的单词数量，并返回 Result<usize, AppError>，其中 AppError 是自定义错误类型。要求处理文件读取错误和可能的解析错误（如文件为空或包含非文本内容）。",
+        "hint": "首先定义 AppError 枚举，包含 IoError 和 ParseError 变体。使用 std::fs::File 和 std::io::BufReader 来高效读取文件。通过 split_whitespace 方法计数单词，但需考虑文件为空的情况。记得实现 From<io::Error> 以使用 ? 操作符。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全以下使用回调风格读取文件的代码，在回调中处理错误和内容：",
-            "codeContext": "const fs = require('fs');\nfs.readFile('example.txt', 'utf-8', (____, ____) => {\n  if (____) {\n    console.error('读取失败:', err);\n    return;\n  }\n  console.log('文件内容:', data);\n});",
+            "question": "在 Rust 中，用于表示可能失败的操作的类型是______。",
+            "codeContext": null,
             "segments": [
               {
                 "type": "text",
-                "content": "const fs = require('fs');\nfs.readFile('example.txt', 'utf-8', (",
+                "content": "在 Rust 中，用于表示可能失败的操作的类型是",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,71 +42,47 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "err, data",
-                  "data, err",
-                  "error, result"
+                  "Option",
+                  "Result",
+                  "Error",
+                  "Handle"
                 ],
-                "correctAnswer": "err, data"
-              },
-              {
-                "type": "text",
-                "content": ") => {\n  if (",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "err",
-                  "data",
-                  "!data"
-                ],
-                "correctAnswer": "err"
-              },
-              {
-                "type": "text",
-                "content": ") {\n    console.error('读取失败:', err);\n    return;\n  }\n  console.log('文件内容:', data);\n});",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
+                "correctAnswer": "Result"
               }
             ],
             "options": null,
-            "correctAnswer": "err, data",
-            "explanation": "回调函数的第一个参数是错误对象（err），第二个参数是读取的数据（data）。按照 Node.js 错误优先回调的惯例，先检查 err 是否有值。"
+            "correctAnswer": "Result",
+            "explanation": "Result 类型在 Rust 中用于可能失败的操作，它有两个变体：Ok 用于成功，Err 用于失败，确保错误被显式处理。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "下面哪个方法返回一个 Promise 对象，适合使用 async/await 处理？",
-            "codeContext": null,
+            "question": "在以下代码中，? 操作符的主要作用是什么？",
+            "codeContext": "let content = fs::read_to_string(\"file.txt\")?;",
             "segments": null,
             "options": [
-              "fs.readFileSync()",
-              "fs.readFile() (回调版本)",
-              "fs.promises.readFile()",
-              "fs.read()"
+              "忽略错误并继续执行",
+              "将错误传播给调用函数",
+              "将错误转换为字符串",
+              "记录错误到日志文件"
             ],
-            "correctAnswer": "fs.promises.readFile()",
-            "explanation": "fs.promises.readFile() 返回的是 Promise，可用 async/await 或 .then()；fs.readFileSync() 是同步返回；回调版本不返回 Promise；fs.read() 是底层 API，不常用。"
+            "correctAnswer": "将错误传播给调用函数",
+            "explanation": "? 操作符用于简化错误传播，当操作失败时，它会将错误从当前函数返回给调用者，而不是处理或忽略它，提高代码简洁性和安全性。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "假设当前目录下存在 'test.txt'，内容为 'Hello World'。以下代码会输出什么？",
-            "codeContext": "const fs = require('fs').promises;\nasync function main() {\n  try {\n    const data = await fs.readFile('test.txt', 'utf-8');\n    console.log(data);\n    await fs.writeFile('test.txt', 'New Content', 'utf-8');\n    console.log('写完了');\n  } catch (e) {\n    console.log('错误');\n  }\n}\nmain();",
+            "question": "以下代码的输出是什么？",
+            "codeContext": "fn main() {\n    let value: Option<i32> = Some(10);\n    let result = value.map(|x| x * 2).unwrap_or(0);\n    println!(\"{}\", result);\n}",
             "segments": null,
             "options": [
-              "Hello World\\n写完了",
-              "Hello World",
-              "New Content\\n写完了",
-              "错误"
+              "10",
+              "20",
+              "0",
+              "程序 panic"
             ],
-            "correctAnswer": "Hello World\\n写完了",
-            "explanation": "代码先读取文件，得到原内容 'Hello World'，打印；然后写入新内容 'New Content'，打印 '写完了'。注意写入是在读取之后，所以不会打印新内容。"
+            "correctAnswer": "20",
+            "explanation": "map 方法将 Some(10) 中的值乘以 2 得到 Some(20)，然后 unwrap_or 在 Option 为 Some 时返回内部值，所以输出 20。"
           }
         ]
       }

@@ -1,0 +1,151 @@
+{
+  "date": "2026-09-03",
+  "content": {
+    "id": "daily-french-2023-10-05",
+    "date": "2023-10-05",
+    "topic": "购物与时尚",
+    "quote": {
+      "quote": "La mode se démode, le style jamais.",
+      "author": "Coco Chanel",
+      "translation": "时尚会过时，风格永存。",
+      "explanation": "这句名言出自法国著名时尚设计师可可·香奈儿。它告诉我们，追逐一时的潮流（la mode）会过时，但建立属于自己的独特风格（le style）才是永恒的。鼓励人们在购物和着装时，更注重找到适合自己的风格，而不是盲目跟从潮流。"
+    },
+    "vocabulary": [
+      {
+        "word": "le vêtement",
+        "article": "le",
+        "plural": "les vêtements",
+        "phonetic": "[vɛtmɑ̃]",
+        "partOfSpeech": "n.m.",
+        "definition": "衣服，服装",
+        "example": "Je cherche un nouveau vêtement pour la fête.",
+        "exampleTranslation": "我在为聚会找一件新衣服。"
+      },
+      {
+        "word": "la robe",
+        "article": "la",
+        "plural": "les robes",
+        "phonetic": "[rɔb]",
+        "partOfSpeech": "n.f.",
+        "definition": "连衣裙",
+        "example": "Cette robe bleue est très élégante.",
+        "exampleTranslation": "这条蓝色连衣裙非常优雅。"
+      },
+      {
+        "word": "le pantalon",
+        "article": "le",
+        "plural": "les pantalons",
+        "phonetic": "[pɑ̃talɔ̃]",
+        "partOfSpeech": "n.m.",
+        "definition": "裤子",
+        "example": "Le pantalon est trop long pour moi.",
+        "exampleTranslation": "这条裤子对我来说太长了。"
+      },
+      {
+        "word": "la chemise",
+        "article": "la",
+        "plural": "les chemises",
+        "phonetic": "[ʃəmiz]",
+        "partOfSpeech": "n.f.",
+        "definition": "衬衫",
+        "example": "Il porte une chemise blanche au bureau.",
+        "exampleTranslation": "他穿着一件白衬衫去上班。"
+      },
+      {
+        "word": "les chaussures",
+        "article": "les",
+        "plural": "les chaussures",
+        "phonetic": "[ʃosyʁ]",
+        "partOfSpeech": "n.f.pl.",
+        "definition": "鞋子（复数形式常用）",
+        "example": "Ces chaussures sont très confortables pour marcher.",
+        "exampleTranslation": "这些鞋子走路非常舒服。"
+      },
+      {
+        "word": "l'essai",
+        "article": "l'",
+        "plural": "les essais",
+        "phonetic": "[esɛ]",
+        "partOfSpeech": "n.m.",
+        "definition": "试穿，试用",
+        "example": "L'essai de la robe est gratuit.",
+        "exampleTranslation": "试穿连衣裙是免费的。"
+      },
+      {
+        "word": "la caisse",
+        "article": "la",
+        "plural": "les caisses",
+        "phonetic": "[kɛs]",
+        "partOfSpeech": "n.f.",
+        "definition": "收银台，出纳处",
+        "example": "Vous pouvez payer à la caisse près de la sortie.",
+        "exampleTranslation": "您可以在出口附近的收银台付款。"
+      },
+      {
+        "word": "le magasin",
+        "article": "le",
+        "plural": "les magasins",
+        "phonetic": "[maɡazɛ̃]",
+        "partOfSpeech": "n.m.",
+        "definition": "商店",
+        "example": "Il y a un grand magasin de vêtements dans le centre-ville.",
+        "exampleTranslation": "市中心有一家大型服装店。"
+      },
+      {
+        "word": "le prix",
+        "article": "le",
+        "plural": "les prix",
+        "phonetic": "[pʁi]",
+        "partOfSpeech": "n.m.",
+        "definition": "价格",
+        "example": "Le prix de cette jupe est raisonnable.",
+        "exampleTranslation": "这条裙子的价格很合理。"
+      },
+      {
+        "word": "la mode",
+        "article": "la",
+        "plural": "les modes",
+        "phonetic": "[mɔd]",
+        "partOfSpeech": "n.f.",
+        "definition": "时尚，时装",
+        "example": "Paris est la capitale de la mode.",
+        "exampleTranslation": "巴黎是时尚之都。"
+      }
+    ],
+    "pattern": {
+      "pattern": "Je voudrais + 名词.",
+      "example": "Je voudrais cette robe et ces chaussures.",
+      "translation": "我想要这条连衣裙和这双鞋子。",
+      "usage": "“Je voudrais...” 是 “Je veux...”（我想要）的礼貌用语，非常适合在商店购物时向店员表达你的意愿。后面直接加你想要的商品名称即可。"
+    },
+    "grammar": {
+      "title": "形容词的位置（La place de l’adjectif）",
+      "explanation": "法语形容词通常放在名词之后（如：une robe bleue）。但有一些常用的、音节较短的形容词，如 beau（漂亮的）、bon（好的）、grand（大的）、petit（小的）、nouveau（新的）、joli（漂亮的）、jeune（年轻的）等，通常放在名词之前。这有时是为了强调或符合语言习惯。",
+      "examples": [
+        "C'est un **beau** pantalon. (这是一条漂亮的裤子。)",
+        "J'ai acheté une **nouvelle** chemise. (我买了一件新衬衫。)",
+        "La **petite** boutique est très charmante. (那家小商店非常迷人。)"
+      ]
+    },
+    "pronunciation": {
+      "word": "pantalon",
+      "phonetic": "[pɑ̃talɔ̃]",
+      "tips": "重点注意鼻化元音 [ɑ̃]。发音时，口腔张开，舌后缩，舌尖不触碰牙齿，气流同时从口腔和鼻腔流出。单词中有两个 [ɑ̃] 音，都需要清晰发出。",
+      "examples": [
+        "chambre [ʃɑ̃bʁ]",
+        "enfant [ɑ̃fɑ̃]",
+        "dans [dɑ̃]"
+      ]
+    },
+    "reading": {
+      "title": "Une journée shopping",
+      "titleTranslation": "购物的一天",
+      "content": "Aujourd'hui, je vais au magasin avec ma sœur. Nous cherchons de nouveaux vêtements. J'essaie une robe rouge et un pantalon noir. Ma sœur préfère une jolie chemise blanche. Le prix des vêtements est un peu élevé, mais la qualité est bonne. Après l'essai, nous allons à la caisse pour payer. La vendeuse est très aimable. Nous sommes contentes de nos achats. C'est une bonne journée de shopping !",
+      "translation": "今天，我和我姐姐/妹妹去商店。我们在寻找新衣服。我试穿了一条红裙子和一条黑裤子。我姐姐/妹妹更喜欢一件漂亮的白衬衫。衣服的价格有点高，但质量很好。试穿后，我们去收银台付款。售货员非常友好。我们对买到的东西很满意。真是愉快的购物日！"
+    },
+    "culture": {
+      "title": "法国的大减价（Les Soldes）",
+      "content": "在法国，每年有两次由政府统一规定的全国性商品大减价（Les Soldes），通常在冬季（一月）和夏季（六月）。减价期间，商店会以“打折”（en solde）或“清仓”（déstockage）为名，提供非常大的折扣。这是法国人购物的黄金时期，商品在减价初期通常是七折，后期折扣可能低至三折甚至一折。法律规定，只有滞销的商品才能参加大减价，且必须明确标出原价和折扣价。"
+    }
+  }
+}
