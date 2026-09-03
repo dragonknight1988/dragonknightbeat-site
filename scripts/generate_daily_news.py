@@ -358,6 +358,14 @@ importance: hot=头条级 / important=值得关注 / normal=一般"""
             json_str = clean[json_start:json_end]
             try:
                 data = json.loads(json_str)
+                # 后处理：修复AI可能输出的中文字段名
+                field_map = {"标题": "title", "摘要": "summary", "详情": "detail",
+                             "影响": "impact", "重要性": "importance", "标签": "tags"}
+                for sec in data.get("sections", []):
+                    for art in sec.get("articles", []):
+                        for cn, en in field_map.items():
+                            if cn in art and en not in art:
+                                art[en] = art.pop(cn)
                 data["date"] = today
                 data["weekday"] = f"星期{weekday}"
 
