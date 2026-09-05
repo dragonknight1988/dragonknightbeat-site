@@ -1,81 +1,95 @@
 {
-  "date": "2026-09-04",
+  "date": "2026-09-06",
   "contents": [
     {
-      "id": "prog-2026-09-04",
-      "date": "2026-09-04",
-      "title": "使用Flow进行冷数据流的状态管理与背压处理",
-      "summary": "深入探讨Kotlin Flow的核心机制，掌握冷数据流中的状态管理、背压处理策略以及在复杂异步场景下的最佳实践。",
-      "difficulty": "高级",
-      "concept": "Kotlin协程中的Flow是一种冷数据流，与热数据流（如Channel）不同，Flow的代码块（collect前的部分）只有在被收集时才会执行。这一特性使其非常适合进行惰性计算和资源管理。高级应用的核心在于如何安全、高效地管理Flow内部的状态，并处理生产者与消费者速度不匹配导致的背压问题。\n\n**状态管理与操作符链**：一个高级Flow往往由一系列操作符（如`map`, `filter`, `transformLatest`等）构成。每个操作符都是一个中间操作，它们会创建新的Flow实例，并通过`collect`函数串联执行。理解操作符的‘懒惰’特性至关重要：它们仅在`collect`被调用时才逐个激活，从而形成一个协同工作的数据处理管道。对于需要维护状态的操作（如去重、窗口聚合），可以使用`scan`或`stateIn`将冷流转化为热流（StateFlow/SharedFlow），或在`transform`操作符内使用`var`变量，但后者在并发收集时需谨慎。\n\n**背压处理策略**：背压是数据流处理中的经典问题。当上游生产数据的速度快于下游消费的速度时，需要有效的策略来防止内存溢出或系统崩溃。Flow内置了多种背压策略，它们通过不同的终端操作符或中间操作符体现。`buffer()`操作符会在上下游之间插入一个缓冲区，异步解耦生产和消费，这是最常用的背压缓解手段，但需注意内存占用。`conflate()`策略更为激进，它只保留最新的值，适用于关注最终状态而非中间过程的场景。`collectLatest()`则会在新值到达时取消之前的收集操作，适用于快速变化的UI状态。选择哪种策略取决于业务逻辑对数据完整性、实时性和资源消耗的要求。\n\n**结构化并发与取消**：Flow的收集过程与协程的生命周期紧密绑定。当收集所在的协程被取消时，整个Flow管道（包括生产者和所有中间操作符）都会被安全地取消，防止资源泄露。这是通过`Flow`操作符内部对`coroutineScope`或`supervisorScope`的遵循实现的。在构建自定义Flow时，必须正确使用`ensureActive()`或`currentCoroutineContext().isActive`来检查协程状态，以实现协作式取消。\n\n**错误处理与完成回调**：Flow的错误处理同样具有声明式特性。在`catch`操作符中可以集中处理上游或中间操作符抛出的异常，且`catch`本身位于上游操作符之后，可以捕获其上游的所有错误。`onCompletion`操作符类似于`try-finally`中的`finally`块，无论成功、失败还是取消，它都会执行，适合进行资源清理工作。结合`launchIn`操作符，可以方便地在特定的协程作用域中启动Flow的收集，并获得一个`Job`句柄用于后续控制。\n\n**工程实践考量**：在实际架构中，Flow通常被用作Repository层或UseCase层的数据输出方式，与ViewModel中的`StateFlow`/`MutableStateFlow`结合，驱动UI状态更新。对于需要共享的流（如用户登录状态），应使用`shareIn`或`stateIn`将其转换为热流，并指定合适的`SharingStarted`策略（如`WhileSubscribed`）以优化资源使用。性能方面，应避免在Flow管道中执行重量级或阻塞操作，必要时使用`flowOn`操作符将其调度到特定的调度器（如`Dispatchers.IO`）。",
+      "id": "prog-2026-09-06",
+      "date": "2026-09-06",
+      "title": "高效代码整合：深入 Git Rebase 与交互式 Rebase",
+      "summary": "学习如何使用 git rebase 及交互式 rebase 来保持清晰、线性的项目历史，并整合来自不同分支的更改。",
+      "difficulty": "中级",
+      "concept": "在协作开发中，频繁的 `git merge` 会创建大量不必要的合并提交，使项目历史变得错综复杂，难以追溯和理解。`git rebase` 是解决此问题的强大工具，其核心思想是将一系列提交“重新应用”到另一个基准提交之上。\n\n想象一下，你正在从 `main` 分支的最新提交（C2）开始，在 `feature` 分支上开发了三个新提交（D, E, F）。与此同时，`main` 分支也更新了，有新的提交（C3, C4）。使用 `git merge feature` 会在 `main` 的最新点（C4）创建一个合并提交（M），历史出现分叉。而 `git rebase main` 则会将你的三个提交（D, E, F）“摘下来”，先将你的分支基准更新到 `main` 的最新点（C4），然后将你的提交重新按顺序“粘”上去，生成新的提交（D', E', F'）。结果是一条直线的历史，仿佛你的工作一直基于最新的主分支开发。\n\n**交互式 rebase (`git rebase -i`)** 是 rebase 的升华，它允许你在重新应用提交的过程中，对每一个提交进行编辑。你可以执行以下操作：\n*   **`pick`**： 保持该提交不变。\n*   **`reword`**： 修改该提交的说明信息。\n*   **`edit`**： 暂停 rebase，让你修改该提交的内容（如添加遗漏的文件）。\n*   **`squash`**： 将该提交合并到前一个提交中，且保留其日志信息用于合并说明。\n*   **`fixup`**： 与 `squash` 类似，但丢弃该提交的日志信息。\n*   **`drop`**： 完全删除该提交。\n\n**核心原则与风险**：**永远不要对已经推送到公共仓库、且可能被他人基于其工作的提交进行 rebase。** 因为 rebase 会改变提交的哈希值（SHA-1），相当于创造了新的历史。这会导致其他协作者的本地历史与远程仓库产生严重冲突。Rebase 最佳实践是用于整理你本地尚未推送的、属于你个人工作的提交，使其在合并到主干（或发起 Pull Request）前变得清晰、整洁。\n\n在 DevOps 流程中，一个干净、线性的提交历史具有极高价值：它使 `git bisect` 等工具用于定位 bug 更加高效；让代码审查（Code Review）更容易理解变更的上下文；并且使得在出现问题时，回滚一个特定的功能变更（通过 revert 一个提交）变得直接明了。",
       "codeExample": {
-        "language": "Kotlin",
-        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.flow.*\n\n// 模拟一个网络API，定期产生数据\nfun networkDataStream(): Flow<String> = flow {\n    println(\"数据源开始发射 (线程: ${Thread.currentThread().name})\")\n    repeat(5) { i ->\n        delay(100) // 模拟网络延迟\n        println(\"发射数据: $i\")\n        emit(\"Data-$i\") // 发射数据\n    }\n}.flowOn(Dispatchers.IO) // 确保生产发生在IO线程\n\n// 应用多种操作符的Flow管道\nfun processedFlow(): Flow<String> {\n    return networkDataStream()\n        .map { data ->\n            println(\"处理数据 (线程: ${Thread.currentThread().name}): $data\")\n            data.uppercase() // 模拟数据转换\n        }\n        .catch { e ->\n            println(\"捕获到上游错误: ${e.message}\")\n            emit(\"FALLBACK_DATA\") // 错误恢复\n        }\n        .onCompletion { cause ->\n            if (cause == null) println(\"Flow正常完成\")\n            else println(\"Flow因异常完成: $cause\")\n        }\n        .buffer(capacity = 2, onBufferOverflow = BufferOverflow.DROP_OLDEST) // 背压策略：缓冲区大小为2，满时丢弃最旧数据\n}\n\nfun main() = runBlocking {\n    println(\"主协程开始 (线程: ${Thread.currentThread().name})\")\n    \n    // 示例1：使用 collectLatest，新数据会取消旧数据的处理\n    println(\"\\n--- 示例1: collectLatest (快速变化场景) ---\")\n    val job1 = launch {\n        processedFlow()\n            .collectLatest { value ->\n                println(\"CollectLatest 收到: $value，开始处理 (可能被中断)...\")\n                delay(200) // 模拟耗时处理\n                println(\"CollectLatest 完成处理: $value\")\n            }\n    }\n    job1.join()\n    \n    // 示例2：使用通常的 collect，并应用 conflate 策略\n    println(\"\\n--- 示例2: collect + conflate (关注最新状态) ---\")\n    val job2 = launch {\n        processedFlow()\n            .conflate() // 如果生产者太快，消费者只处理最新的\n            .collect { value ->\n                println(\"Conflated Collect 收到: $value\")\n                delay(300) // 模拟更慢的消费者\n                println(\"Conflated Collect 处理完: $value\")\n            }\n    }\n    job2.join()\n    \n    println(\"\\n主协程结束\")\n}",
-        "explanation": "1. `networkDataStream()`：定义一个冷流，它在`flowOn(Dispatchers.IO)`指定的IO线程上执行数据生产（模拟网络请求）。`emit`用于发射数据。\n2. `processedFlow()`：构建一个管道。`.map`对数据做转换。`.catch`捕获上游（此处是map或发射）的异常并恢复。`.onCompletion`注册完成回调。`.buffer(2, DROP_OLDEST)`应用背压策略，在上下游间创建一个大小为2的缓冲区，当缓冲区满时丢弃最旧的数据，防止消费者阻塞生产者。\n3. `main`函数演示两种收集策略：\n   - `collectLatest`：当新数据到达时，如果前一个数据的处理协程（`delay(200)`）还在运行，它会被取消。这适用于UI状态更新等场景。\n   - `collect` 与 `conflate()`：`conflate()`是另一种背压策略，当消费者处理慢时，它会跳过中间值，只保留最新的值。这里消费者有`delay(300)`，会看到数据被‘跳过’。\n4. `flowOn`确保生产代码在IO线程运行，而收集默认发生在调用协程（这里是主线程）的线程，体现了协程的线程切换能力。"
+        "language": "bash",
+        "code": "# 1. 设置一个演示仓库\ngit init rebase-demo && cd rebase-demo\n\n# 在 main 分支上创建初始提交\necho \"Base content\" > file.txt && git add . && git commit -m \"C1: Initial commit\"\n\n# 2. 创建 feature 分支并进行三次提交\ngit checkout -b feature\necho \"Feature part 1\" >> file.txt && git commit -am \"F1: Add feature part 1\"\necho \"Feature part 2\" >> file.txt && git commit -am \"F2: Add feature part 2\"\necho \"Feature part 3\" >> file.txt && git commit -am \"F3: Add feature part 3\"\n\n# 3. 模拟 main 分支有新的提交\ngit checkout main\necho \"Main update 1\" > main-only.txt && git add . && git commit -m \"C2: Add main-only file\"\necho \"Main update 2\" >> main-only.txt && git commit -am \"C3: Update main-only file\"\n\n# 4. 回到 feature 分支，查看当前分叉历史\ngit checkout feature\ngit log --oneline --graph --all\n# 输出会显示两个分支从 C1 处分叉\n\n# 5. 使用交互式 rebase 整理提交\ngit rebase -i main\n# 这会打开一个编辑器，内容类似：\n# pick F1: Add feature part 1\n# pick F2: Add feature part 2\n# pick F3: Add feature part 3\n# 我们将第二行改为 `squash F2:...`，将第三行改为 `fixup F3:...`\n# 保存并退出编辑器。Git 会依次应用这些提交。\n\n# 6. 在 squash 合并提交信息时，编辑器会再次打开\n# 我们可以修改合并后的提交信息为 \"Combined feature parts 1-3\"\n# 保存退出\n\n# 7. 最终结果\ngit log --oneline --graph --all\n# 输出会显示你的三个提交被合并为一个，并且是基于 main 的最新提交（C3）之上，历史是一条直线。",
+        "explanation": "1.  **设置环境**：创建一个仓库，在 `main` 分支上做两个提交，然后创建 `feature` 分支并做三个提交。接着切回 `main` 再做两个提交，模拟两边都有进展的情况。\n2.  **查看历史**：`git log --graph` 清晰显示了两条分支线从 C1 处分叉。\n3.  **启动交互式 rebase**：`git rebase -i main` 会打开编辑器，列出 feature 分支上独有的、需要重新应用的所有提交（F1, F2, F3）。\n4.  **编辑提交历史**：我们将 F2 标记为 `squash`，将其合并到前一个提交（F1）中，并保留日志；将 F3 标记为 `fixup`，同样合并但丢弃其独立日志。\n5.  **处理合并信息**：Git 在执行 squash 操作时会再次让你编辑最终的合并提交信息。\n6.  **查看结果**：再次查看 `git log --graph`，历史变为一条直线。原来的三个提交被整合成了一个意义更明确的提交，且其基准已是 main 的最新点。"
       },
       "keyPoints": [
-        "Flow是冷数据流，仅在收集时执行，这有利于资源管理和惰性计算。",
-        "通过`buffer`, `conflate`, `collectLatest`等操作符灵活处理生产者与消费者之间的背压问题，根据业务需求选择合适策略。",
-        "`catch`和`onCompletion`操作符提供了声明式的错误处理和资源清理机制，确保流程健壮性。",
-        "`flowOn`操作符用于更改数据生产（上游）所在的调度器，实现线程切换，且不影响下游操作。",
-        "将Flow通过`stateIn`或`shareIn`转换为热流（StateFlow/SharedFlow），可以安全地在多个收集器之间共享状态，并优化生命周期管理。"
+        "Rebase 用于将一系列提交重新应用到新的基准点上，旨在创造线性、无分叉的提交历史。",
+        "交互式 rebase (`-i`) 允许你在重新应用过程中编辑、压缩、重排或删除提交，是清理本地工作分支的利器。",
+        "黄金法则：不要 rebase 已推送到公共仓库、且他人可能在其上工作的提交。",
+        "Rebase 与 Merge 各有适用场景：Rebase 用于整理个人提交，Merge 用于整合团队的工作。在 Pull Request 工作流中，通常先 rebase 自己的分支，再合并到主干。",
+        "线性历史有助于代码审查、问题定位（git bisect）和变更回滚，是现代 DevOps 实践（如持续集成）中提倡的版本控制风格。"
       ],
       "exercise": {
-        "description": "实现一个`retryWithBackoff`扩展函数，它为任何`Flow<T>`添加指数退避的重试功能。要求：当收集过程中发生`IOException`时，应等待一段时间后重试，等待时间指数递增（如1s, 2s, 4s...），最多重试3次。如果超过重试次数或发生非`IOException`，则直接将异常向上传播。",
-        "hint": "使用`retryWhen`操作符，它在满足条件时允许重新订阅上游流。结合`delay`函数实现退避。使用`attempt`计数器跟踪重试次数，并检查异常类型。",
+        "description": "你在 `dev` 分支上有三个提交：‘A: 实现核心功能’，‘B: 修复一个 typo’，‘C: 添加单元测试’。`main` 分支已有最新提交。在合并到 `main` 前，你需要清理提交历史：1) 将修复 typo 的提交 B 压缩到提交 A 中（使用 `squash`）。2) 将提交 C 的说明信息修改为更规范的格式（使用 `reword`）。请写出你会使用的交互式 rebase 命令，并描述在交互编辑器中你会如何修改。",
+        "hint": "首先，`git rebase -i main` 会打开编辑器，列出 A, B, C 三个提交。你需要将代表提交 B 的行的 `pick` 改为 `squash` (或 `s`)。在随后的编辑器中处理提交信息合并。最后，在列表中代表提交 C 的行前加上 `reword` (或 `r`)，在最终应用该提交时会再次让你编辑其信息。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "在Kotlin Flow中，用于在指定的调度器上执行上游代码块的操作符是____。",
-            "codeContext": "fun loadData(): Flow<Data> = flow {\n    // 这个代码块将在哪个调度器上执行？\n    val data = api.fetch()\n    emit(data)\n}.____(Dispatchers.IO)",
+            "question": "启动交互式 rebase 的命令是 `git rebase ______ main`。其中横线处应填写什么选项？",
+            "codeContext": "git rebase ______ main",
             "segments": [
               {
                 "type": "text",
-                "content": ".____(Dispatchers.IO)",
+                "content": "git rebase ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "-m",
+                  "-i",
+                  "-v",
+                  "-f"
+                ],
+                "correctAnswer": "-i"
+              },
+              {
+                "type": "text",
+                "content": " main",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
-            "options": [
-              "flowOn",
-              "launchIn",
-              "collectOn",
-              "subscribeOn"
-            ],
-            "correctAnswer": "flowOn",
-            "explanation": "`flowOn`操作符用于更改上游代码（即`flow`块内的代码）执行时所在的协程上下文（调度器）。它不影响下游操作符。`launchIn`是将流收集启动到指定作用域的终端操作符。`subscribeOn`是RxJava中的类似概念，Kotlin Flow中对应的是`flowOn`。"
+            "options": null,
+            "correctAnswer": "-i",
+            "explanation": "`-i` 或 `--interactive` 选项用于启动交互式 rebase，它会打开编辑器让你选择如何处理每一个将要被重新应用的提交。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "当你希望一个Flow快速生产数据，但消费者处理较慢，且你只关心消费者最终能获取到最新的状态，而不关心中间过程的数据丢失时，最合适的背压策略是？",
-            "codeContext": null,
+            "question": "在交互式 rebase 的编辑器中，将某个提交的操作从 `pick` 改为 `squash` 的主要目的是什么？",
+            "codeContext": "# pick 1234567 实现核心功能\n# squash 89abcde 修复一个 typo\n# pick fedcba9 添加单元测试",
             "segments": null,
             "options": [
-              "使用`.buffer()`操作符",
-              "使用`.conflate()`操作符",
-              "使用`.collectLatest`终端操作符",
-              "什么都不用，默认会阻塞生产者"
+              "删除这个提交",
+              "只修改这个提交的说明信息",
+              "将这个提交压缩到前一个提交中，并保留两者的日志信息",
+              "暂停 rebase 过程，让你修改提交内容"
             ],
-            "correctAnswer": "使用`.conflate()`操作符",
-            "explanation": "`.conflate()`操作符会创建一个只保留最新值的缓冲区。当消费者处理慢时，新到的值会覆盖缓冲区中还未被消费的旧值。这实现了“丢弃中间值，保留最新值”的背压策略，非常适合只关心最终状态的场景。`.collectLatest`也有类似效果，但它是终端操作符，且会取消前一个处理协程。`.buffer()`会保留所有值（可能内存溢出）或按策略丢弃，但无法保证最新值被处理。默认行为（无缓冲）会挂起生产者。"
+            "correctAnswer": "将这个提交压缩到前一个提交中，并保留两者的日志信息",
+            "explanation": "`squash` (或 `s`) 会将当前提交合并到前一个提交中。在合并提交信息时，Git 会打开另一个编辑器，让你有机会将两个提交的日志信息整合。`fixup` (或 `f`) 类似但丢弃当前提交的信息。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码的输出是什么？",
-            "codeContext": "fun main() = runBlocking {\n    val flow = flow {\n        println(\"Emit 1\")\n        emit(1)\n        delay(100)\n        println(\"Emit 2\")\n        emit(2)\n    }.onStart { println(\"Start!\") }\n\n    val job = launch {\n        flow.collect { value ->\n            println(\"Collected: $value\")\n            delay(200) // 处理耗时比发射间隔长\n        }\n    }\n    delay(50)\n    job.cancel()\n    println(\"Done\")\n}",
+            "question": "假设你有一个本地分支 `work`，其提交历史为：\n1. C: 最终功能\n2. B: 中间调整\n3. A: 初始实现\n`main` 分支有更新。你对 `work` 分支执行了 `git rebase -i main`，并在编辑器中将列表顺序调整为 A, C, B（即把 B 移到了最后），且全部保持 `pick` 操作。那么，rebase 完成后，`git log` 中 `work` 分支上这 3 个提交的顺序会是什么？",
+            "codeContext": "# 在 rebase -i 的编辑器中顺序为：\npick A: 初始实现\npick C: 最终功能\npick B: 中间调整",
             "segments": null,
             "options": [
-              "Start!\nEmit 1\nCollected: 1\nDone",
-              "Start!\nEmit 1\nCollected: 1\nEmit 2\nCollected: 2\nDone",
-              "Start!\nEmit 1\nDone",
-              "Start!\nDone"
+              "A, B, C (原始顺序)",
+              "C, B, A (反向顺序)",
+              "A, C, B (你调整后的顺序)",
+              "顺序随机"
             ],
-            "correctAnswer": "Start!\nEmit 1\nCollected: 1\nDone",
-            "explanation": "1. `launch`启动一个新协程开始收集流。2. `onStart`首先触发，打印`Start!`。3. 流开始发射第一个值`1`，打印`Emit 1`。4. 收集协程收到`1`，打印`Collected: 1`，然后开始`delay(200)`。5. 主协程`delay(50)`后，执行`job.cancel()`取消收集协程。6. 由于协程取消，`delay(200)`被中断，后续的`Emit 2`和`Collected: 2`都不会发生。7. 最后打印`Done`。注意：`onStart`在`collect`调用后、流真正开始前执行，它本身在收集者的协程上下文中。"
+            "correctAnswer": "A, C, B (你调整后的顺序)",
+            "explanation": "交互式 rebase 会严格按照你编辑器中列表的顺序重新应用提交。因此，即使原始提交历史是 C, B, A，在你指定顺序为 A, C, B 后，重新应用后的提交历史将变成 A -> C -> B。"
           }
         ]
       }
