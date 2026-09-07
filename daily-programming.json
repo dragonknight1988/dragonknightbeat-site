@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-06",
+  "date": "2026-09-07",
   "contents": [
     {
-      "id": "prog-2026-09-06",
-      "date": "2026-09-06",
-      "title": "高效代码整合：深入 Git Rebase 与交互式 Rebase",
-      "summary": "学习如何使用 git rebase 及交互式 rebase 来保持清晰、线性的项目历史，并整合来自不同分支的更改。",
+      "id": "prog-2026-09-07",
+      "date": "2026-09-07",
+      "title": "SwiftUI & Combine：打造可复用的数据管道",
+      "summary": "学习如何通过自定义Combine的Publisher和操作符（Operator），在SwiftUI应用中构建可复用、声明式且高效的数据处理流程。",
       "difficulty": "中级",
-      "concept": "在协作开发中，频繁的 `git merge` 会创建大量不必要的合并提交，使项目历史变得错综复杂，难以追溯和理解。`git rebase` 是解决此问题的强大工具，其核心思想是将一系列提交“重新应用”到另一个基准提交之上。\n\n想象一下，你正在从 `main` 分支的最新提交（C2）开始，在 `feature` 分支上开发了三个新提交（D, E, F）。与此同时，`main` 分支也更新了，有新的提交（C3, C4）。使用 `git merge feature` 会在 `main` 的最新点（C4）创建一个合并提交（M），历史出现分叉。而 `git rebase main` 则会将你的三个提交（D, E, F）“摘下来”，先将你的分支基准更新到 `main` 的最新点（C4），然后将你的提交重新按顺序“粘”上去，生成新的提交（D', E', F'）。结果是一条直线的历史，仿佛你的工作一直基于最新的主分支开发。\n\n**交互式 rebase (`git rebase -i`)** 是 rebase 的升华，它允许你在重新应用提交的过程中，对每一个提交进行编辑。你可以执行以下操作：\n*   **`pick`**： 保持该提交不变。\n*   **`reword`**： 修改该提交的说明信息。\n*   **`edit`**： 暂停 rebase，让你修改该提交的内容（如添加遗漏的文件）。\n*   **`squash`**： 将该提交合并到前一个提交中，且保留其日志信息用于合并说明。\n*   **`fixup`**： 与 `squash` 类似，但丢弃该提交的日志信息。\n*   **`drop`**： 完全删除该提交。\n\n**核心原则与风险**：**永远不要对已经推送到公共仓库、且可能被他人基于其工作的提交进行 rebase。** 因为 rebase 会改变提交的哈希值（SHA-1），相当于创造了新的历史。这会导致其他协作者的本地历史与远程仓库产生严重冲突。Rebase 最佳实践是用于整理你本地尚未推送的、属于你个人工作的提交，使其在合并到主干（或发起 Pull Request）前变得清晰、整洁。\n\n在 DevOps 流程中，一个干净、线性的提交历史具有极高价值：它使 `git bisect` 等工具用于定位 bug 更加高效；让代码审查（Code Review）更容易理解变更的上下文；并且使得在出现问题时，回滚一个特定的功能变更（通过 revert 一个提交）变得直接明了。",
+      "concept": "在构建复杂的SwiftUI应用时，我们经常需要处理来自网络、数据库或用户交互的异步事件流。Apple的Combine框架为我们提供了一套强大的、基于“发布者-订阅者”模式的工具。掌握基础的`publisher`, `sink`, `assign`等用法是第一步，而要真正发挥Combine的威力，提升代码的复用性和可测试性，我们需要深入理解并学会创建自定义组件。\n\n一个核心思想是“数据管道”。我们可以将一系列Combine的操作符（如`map`, `filter`, `debounce`）想象成连接在一起的管道，数据（值）在其中流动并被逐步加工。当内置操作符无法满足特定业务逻辑时（例如，一个同时进行网络请求和本地缓存读取的复杂操作），我们就可以创建自定义的`Publisher`或`Operator`来封装这部分逻辑，使其像一个“黑盒子”一样插入到任何数据管道中。\n\n创建自定义`Publisher`是实现一个全新数据源的方式。它需要遵循`Publisher`协议，实现`receive(subscriber:)`方法，在其中定义数据（和错误）如何发送给订阅者。这通常涉及管理订阅者的生命周期和内部状态。在实际工程中，一个常见的模式是为一个异步服务（如网络层）创建一个对应的`Publisher`，使其输出类型和错误类型保持一致。\n\n另一方面，创建自定义`Operator`更为常见。一个操作符本身也是一个`Publisher`，但它接收上游的`Publisher`作为输入。最常见的实现方式是定义一个遵循`Publisher`协议的结构体，并在`receive(subscriber:)`方法中订阅上游，然后在上游发出的事件（值、完成、错误）到达时，根据我们的逻辑进行转换、过滤或组合，再转发给下游的订阅者。这让我们能够将复杂的业务逻辑封装成一个可链式调用、声明式的单元。\n\n在实践中，设计良好的自定义操作符能极大地提升代码的可读性和可维护性。例如，你可以创建一个`retryWithExponentialBackoff`操作符，将网络请求失败的重试逻辑（包含指数退避）封装起来；或者创建一个`cached`操作符，将API请求的结果自动缓存到本地。这避免了在每个ViewModel中重复编写相似的异步逻辑，是构建可扩展SwiftUI架构的关键一步。",
       "codeExample": {
-        "language": "bash",
-        "code": "# 1. 设置一个演示仓库\ngit init rebase-demo && cd rebase-demo\n\n# 在 main 分支上创建初始提交\necho \"Base content\" > file.txt && git add . && git commit -m \"C1: Initial commit\"\n\n# 2. 创建 feature 分支并进行三次提交\ngit checkout -b feature\necho \"Feature part 1\" >> file.txt && git commit -am \"F1: Add feature part 1\"\necho \"Feature part 2\" >> file.txt && git commit -am \"F2: Add feature part 2\"\necho \"Feature part 3\" >> file.txt && git commit -am \"F3: Add feature part 3\"\n\n# 3. 模拟 main 分支有新的提交\ngit checkout main\necho \"Main update 1\" > main-only.txt && git add . && git commit -m \"C2: Add main-only file\"\necho \"Main update 2\" >> main-only.txt && git commit -am \"C3: Update main-only file\"\n\n# 4. 回到 feature 分支，查看当前分叉历史\ngit checkout feature\ngit log --oneline --graph --all\n# 输出会显示两个分支从 C1 处分叉\n\n# 5. 使用交互式 rebase 整理提交\ngit rebase -i main\n# 这会打开一个编辑器，内容类似：\n# pick F1: Add feature part 1\n# pick F2: Add feature part 2\n# pick F3: Add feature part 3\n# 我们将第二行改为 `squash F2:...`，将第三行改为 `fixup F3:...`\n# 保存并退出编辑器。Git 会依次应用这些提交。\n\n# 6. 在 squash 合并提交信息时，编辑器会再次打开\n# 我们可以修改合并后的提交信息为 \"Combined feature parts 1-3\"\n# 保存退出\n\n# 7. 最终结果\ngit log --oneline --graph --all\n# 输出会显示你的三个提交被合并为一个，并且是基于 main 的最新提交（C3）之上，历史是一条直线。",
-        "explanation": "1.  **设置环境**：创建一个仓库，在 `main` 分支上做两个提交，然后创建 `feature` 分支并做三个提交。接着切回 `main` 再做两个提交，模拟两边都有进展的情况。\n2.  **查看历史**：`git log --graph` 清晰显示了两条分支线从 C1 处分叉。\n3.  **启动交互式 rebase**：`git rebase -i main` 会打开编辑器，列出 feature 分支上独有的、需要重新应用的所有提交（F1, F2, F3）。\n4.  **编辑提交历史**：我们将 F2 标记为 `squash`，将其合并到前一个提交（F1）中，并保留日志；将 F3 标记为 `fixup`，同样合并但丢弃其独立日志。\n5.  **处理合并信息**：Git 在执行 squash 操作时会再次让你编辑最终的合并提交信息。\n6.  **查看结果**：再次查看 `git log --graph`，历史变为一条直线。原来的三个提交被整合成了一个意义更明确的提交，且其基准已是 main 的最新点。"
+        "language": "Swift",
+        "code": "import Combine\nimport Foundation\n\n// MARK: - 1. 自定义 Publisher：模拟一个带延迟和可能失败的网络服务\nstruct NetworkServicePublisher<Output: Decodable>: Publisher {\n    typealias Failure = Error\n    private let endpoint: String\n    private let delay: TimeInterval\n    \n    init(endpoint: String, delay: TimeInterval = 1.0) {\n        self.endpoint = endpoint\n        self.delay = delay\n    }\n    \n    // 核心方法：当有订阅者时开始发送数据\n    func receive<S: Subscriber>(subscriber: S) where S.Input == Output, S.Failure == Failure {\n        // 创建一个内部的Subject来管理事件发送\n        let subject = PassthroughSubject<Output, Failure>()\n        subject.subscribe(subscriber) // 将订阅者连接到Subject\n        \n        // 模拟异步网络操作\n        DispatchQueue.global().asyncAfter(deadline: .now() + delay) {\n            // 模拟成功或失败\n            if Bool.random() {\n                // 模拟成功解码\n                let jsonString = \"{\\\"message\\\": \\\"Hello from \\(endpoint)\\\"}\"\n                let data = jsonString.data(using: .utf8)!\n                do {\n                    let decoded = try JSONDecoder().decode(Output.self, from: data)\n                    subject.send(decoded) // 发送解码后的值\n                    subject.send(completion: .finished) // 完成\n                } catch {\n                    subject.send(completion: .failure(error)) // 发送解码错误\n                }\n            } else {\n                // 模拟网络错误\n                subject.send(completion: .failure(URLError(.badServerResponse)))\n            }\n        }\n    }\n}\n\n// 辅助结构体，用于测试Publisher\nstruct Message: Decodable {\n    let message: String\n}\n\n// MARK: - 2. 自定义 Operator：重试操作符（简化版）\nstruct RetryWithCount<P: Publisher>: Publisher {\n    typealias Output = P.Output\n    typealias Failure = P.Failure\n    \n    let upstream: P\n    let maxRetries: Int\n    \n    init(upstream: P, maxRetries: Int) {\n        self.upstream = upstream\n        self.maxRetries = maxRetries\n    }\n    \n    func receive<S: Subscriber>(subscriber: S) where S.Input == Output, S.Failure == Failure {\n        // 创建一个内部状态来跟踪重试次数\n        var currentRetry = 0\n        // 使用一个Subject来作为桥梁\n        let subject = PassthroughSubject<Output, Failure>()\n        subject.subscribe(subscriber)\n        \n        func subscribeToUpstream() {\n            // 订阅上游\n            let subscription = upstream.sink(\n                receiveCompletion: { completion in\n                    switch completion {\n                    case .finished:\n                        subject.send(completion: .finished) // 上游正常完成\n                    case .failure(let error):\n                        if currentRetry < maxRetries {\n                            currentRetry += 1\n                            print(\"Retry #\\(currentRetry) after error: \\(error.localizedDescription)\")\n                            // 简单延迟后重试（实际可加入退避逻辑）\n                            DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) {\n                                subscribeToUpstream() // 递归调用以重新订阅\n                            }\n                        } else {\n                            subject.send(completion: .failure(error)) // 达到最大重试次数\n                        }\n                    }\n                },\n                receiveValue: { value in\n                    subject.send(value) // 传递上游的值\n                }\n            )\n            // 注意：这里需要管理subscription的生命周期，简化示例未完全处理。\n            // 实际实现中，通常会在Operator内部持有subscription，并在取消时释放。\n        }\n        \n        // 开始第一次订阅\n        subscribeToUpstream()\n    }\n}\n\n// 为Publisher添加便捷的链式调用方法\nextension Publisher {\n    func retryWithCount(_ retries: Int) -> RetryWithCount<Self> {\n        return RetryWithCount(upstream: self, maxRetries: retries)\n    }\n}\n\n// MARK: - 3. 在SwiftUI中使用（示例）\nimport SwiftUI\n\nstruct CombineCustomDemoView: View {\n    @State private var status = \"Idle\"\n    @State private var cancellables = Set<AnyCancellable>()\n    \n    var body: some View {\n        VStack(spacing: 20) {\n            Text(\"Status: \\(status)\")\n                .font(.title)\n            \n            Button(\"Start Network Request (with retry)\") {\n                status = \"Loading...\"\n                // 创建自定义Publisher，并应用自定义操作符\n                NetworkServicePublisher<Message>(endpoint: \"api/data\", delay: 1.0)\n                    .retryWithCount(2) // 最多重试2次\n                    .receive(on: DispatchQueue.main) // 回到主线程\n                    .sink(\n                        receiveCompletion: { completion in\n                            if case .failure(let error) = completion {\n                                status = \"Failed after retries: \\(error.localizedDescription)\"\n                            }\n                        },\n                        receiveValue: { message in\n                            status = \"Success: \\(message.message)\"\n                        }\n                    )\n                    .store(in: &cancellables) // 存储订阅\n            }\n            .buttonStyle(.borderedProminent)\n        }\n        .padding()\n    }\n}\n\n// 在Preview中查看\n#Preview {\n    CombineCustomDemoView()\n}",
+        "explanation": "**1. `NetworkServicePublisher` (自定义Publisher):**\n- 它是一个泛型结构体，遵循`Publisher`协议，`Output`类型是泛型`Decodable`，`Failure`是`Error`。\n- `receive(subscriber:)`是核心。它创建了一个`PassthroughSubject`来充当数据发射器，并将原始订阅者连接到这个Subject。\n- 使用`DispatchQueue.global().asyncAfter`模拟网络延迟。之后随机决定发送成功或失败。\n- 成功时，尝试解码JSON数据，然后通过Subject发送`.send(decodedValue)`和`.send(completion: .finished)`。\n- 失败时，直接发送`.send(completion: .failure(error))`。\n\n**2. `RetryWithCount` (自定义Operator):**\n- 这个操作符包装了一个上游`Publisher (P)`。它的`Output`和`Failure`类型与上游相同。\n- `receive(subscriber:)`中，它定义了一个内部函数`subscribeToUpstream()`来执行订阅逻辑。\n- 当接收到上游的`receiveCompletion`为`.failure`时，它检查是否还能重试（`currentRetry < maxRetries`）。如果可以，则递增重试计数器，延迟后再次调用`subscribeToUpstream()`重新订阅上游。\n- 如果重试成功（上游发送值），值会通过`.send(value)`传递给下游。\n- `retryWithCount`扩展方法使得可以链式调用`publisher.retryWithCount(2)`，非常声明式。\n\n**3. `CombineCustomDemoView` (SwiftUI使用):**\n- 展示了如何将自定义的Publisher和Operator组合成一条完整的、声明式的数据管道。\n- `NetworkServicePublisher` -> `retryWithCount(2)` -> `receive(on: ...)` -> `sink`。\n- 整个流程清晰地表达了业务意图：“调用一个网络服务，如果失败则最多重试2次，最后在主线程上更新UI状态”。"
       },
       "keyPoints": [
-        "Rebase 用于将一系列提交重新应用到新的基准点上，旨在创造线性、无分叉的提交历史。",
-        "交互式 rebase (`-i`) 允许你在重新应用过程中编辑、压缩、重排或删除提交，是清理本地工作分支的利器。",
-        "黄金法则：不要 rebase 已推送到公共仓库、且他人可能在其上工作的提交。",
-        "Rebase 与 Merge 各有适用场景：Rebase 用于整理个人提交，Merge 用于整合团队的工作。在 Pull Request 工作流中，通常先 rebase 自己的分支，再合并到主干。",
-        "线性历史有助于代码审查、问题定位（git bisect）和变更回滚，是现代 DevOps 实践（如持续集成）中提倡的版本控制风格。"
+        "自定义`Publisher`是实现全新数据源（如封装异步服务）的标准方式，需要仔细管理订阅者的生命周期和事件发送。",
+        "自定义`Operator`通常也是一个`Publisher`，它通过订阅上游并转发（或转换）事件来工作，是封装可复用业务逻辑（如重试、缓存、组合）的利器。",
+        "使用`PassthroughSubject`或`CurrentValueSubject`作为自定义Publisher内部的事件发射器是一种简单有效的实现模式。",
+        "在SwiftUI视图的`sink`闭包中，务必使用`.store(in: &cancellables)`来管理订阅的生命周期，防止内存泄漏。在`deinit`中或视图销毁时，`cancellables`会自动取消所有订阅。",
+        "设计自定义操作符时，应确保它是“纯函数”的——对于相同的输入（上游Publisher的事件序列），它应该产生一致的输出（下游事件序列），这利于测试。同时要妥善处理上游的完成和错误事件。"
       ],
       "exercise": {
-        "description": "你在 `dev` 分支上有三个提交：‘A: 实现核心功能’，‘B: 修复一个 typo’，‘C: 添加单元测试’。`main` 分支已有最新提交。在合并到 `main` 前，你需要清理提交历史：1) 将修复 typo 的提交 B 压缩到提交 A 中（使用 `squash`）。2) 将提交 C 的说明信息修改为更规范的格式（使用 `reword`）。请写出你会使用的交互式 rebase 命令，并描述在交互编辑器中你会如何修改。",
-        "hint": "首先，`git rebase -i main` 会打开编辑器，列出 A, B, C 三个提交。你需要将代表提交 B 的行的 `pick` 改为 `squash` (或 `s`)。在随后的编辑器中处理提交信息合并。最后，在列表中代表提交 C 的行前加上 `reword` (或 `r`)，在最终应用该提交时会再次让你编辑其信息。",
+        "description": "创建一个自定义的Combine操作符 `debounceLatest<T>`。它与系统内置的`debounce`类似，但有一个关键区别：它只保留最后一个值（即“最新”的值），并且只在上游停止发送值一段时间后，才发送这个最新的值。如果上游持续发送值，它则一直等待。请实现这个操作符，并编写一个简单的SwiftUI示例来测试它（例如，一个文本框输入，经过`debounceLatest`处理后显示在Text中）。",
+        "hint": "1. 思考你需要存储什么状态（最后一个收到的值，一个计时器）。2. 当收到上游的值时，更新存储的值，并（重新）启动一个计时器。3. 计时器到期后，将存储的值发送给下游并清除它。4. 如果上游完成，需要处理：如果计时器还在等待，可以立即发送存储的值。5. 记得处理取消（取消时应停止计时器）。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "启动交互式 rebase 的命令是 `git rebase ______ main`。其中横线处应填写什么选项？",
-            "codeContext": "git rebase ______ main",
+            "question": "在实现一个自定义操作符（如`RetryWithCount`）时，为了将上游的值转发给下游，我们通常会在内部创建一个`______`，并将原始订阅者连接到它上。",
+            "codeContext": "// 内部逻辑示例\nlet internalSubject = ______<Output, Failure>()\ninternalSubject.subscribe(subscriber)\n// ... 然后通过 internalSubject.send(value) 转发",
             "segments": [
               {
                 "type": "text",
-                "content": "git rebase ",
+                "content": "let internalSubject = ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[填写Publisher类型]",
                 "options": [
-                  "-m",
-                  "-i",
-                  "-v",
-                  "-f"
+                  "PassthroughSubject",
+                  "CurrentValueSubject",
+                  "Future",
+                  "Just"
                 ],
-                "correctAnswer": "-i"
+                "correctAnswer": "PassthroughSubject"
               },
               {
                 "type": "text",
-                "content": " main",
+                "content": "<Output, Failure>()",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "-i",
-            "explanation": "`-i` 或 `--interactive` 选项用于启动交互式 rebase，它会打开编辑器让你选择如何处理每一个将要被重新应用的提交。"
+            "correctAnswer": "PassthroughSubject",
+            "explanation": "`PassthroughSubject`是一个非常适合的内部中继站。它不存储值（与`CurrentValueSubject`不同），正好用于转发来自上游或根据逻辑产生的事件。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "在交互式 rebase 的编辑器中，将某个提交的操作从 `pick` 改为 `squash` 的主要目的是什么？",
-            "codeContext": "# pick 1234567 实现核心功能\n# squash 89abcde 修复一个 typo\n# pick fedcba9 添加单元测试",
+            "question": "当你在SwiftUI视图中订阅一个Combine的Publisher时，为了管理订阅的生命周期，防止内存泄漏，最佳实践是什么？",
+            "codeContext": "let cancellable = somePublisher\n    .sink { completion in ... } receiveValue: { value in ... }",
             "segments": null,
             "options": [
-              "删除这个提交",
-              "只修改这个提交的说明信息",
-              "将这个提交压缩到前一个提交中，并保留两者的日志信息",
-              "暂停 rebase 过程，让你修改提交内容"
+              "将cancellable赋值给视图的一个局部let变量",
+              "将cancellable存储到视图的`@State private var cancellable: AnyCancellable?`属性中",
+              "将cancellable存储到视图的`@State private var cancellables = Set<AnyCancellable>()`集合中，并在闭包中调用`.store(in: &cancellables)`",
+              "不需要特别处理，SwiftUI会自动管理"
             ],
-            "correctAnswer": "将这个提交压缩到前一个提交中，并保留两者的日志信息",
-            "explanation": "`squash` (或 `s`) 会将当前提交合并到前一个提交中。在合并提交信息时，Git 会打开另一个编辑器，让你有机会将两个提交的日志信息整合。`fixup` (或 `f`) 类似但丢弃当前提交的信息。"
+            "correctAnswer": "将cancellable存储到视图的`@State private var cancellables = Set<AnyCancellable>()`集合中，并在闭包中调用`.store(in: &cancellables)`",
+            "explanation": "使用`Set<AnyCancellable>`并调用`.store(in:)`是SwiftUI中管理多个Combine订阅的标准模式。当视图销毁时，`@State`属性会被清理，`Set`中的所有`cancellable`会被释放，从而自动取消所有订阅，避免内存泄漏。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "假设你有一个本地分支 `work`，其提交历史为：\n1. C: 最终功能\n2. B: 中间调整\n3. A: 初始实现\n`main` 分支有更新。你对 `work` 分支执行了 `git rebase -i main`，并在编辑器中将列表顺序调整为 A, C, B（即把 B 移到了最后），且全部保持 `pick` 操作。那么，rebase 完成后，`git log` 中 `work` 分支上这 3 个提交的顺序会是什么？",
-            "codeContext": "# 在 rebase -i 的编辑器中顺序为：\npick A: 初始实现\npick C: 最终功能\npick B: 中间调整",
+            "question": "以下代码的输出是什么？（假设`NetworkServicePublisher`始终成功并发送消息）",
+            "codeContext": "let publisher = NetworkServicePublisher<Message>(endpoint: \"test\", delay: 0.1)\nlet cancellable = publisher\n    .handleEvents(receiveOutput: { _ in print(\"Original\") })\n    .retryWithCount(1)\n    .handleEvents(receiveOutput: { _ in print(\"AfterRetry\") })\n    .sink(receiveCompletion: { _ in print(\"Completion\") }, receiveValue: { _ in })",
             "segments": null,
             "options": [
-              "A, B, C (原始顺序)",
-              "C, B, A (反向顺序)",
-              "A, C, B (你调整后的顺序)",
-              "顺序随机"
+              "Original\nAfterRetry\nCompletion",
+              "Original\nCompletion\nAfterRetry",
+              "AfterRetry\nOriginal\nCompletion",
+              "只有一个'Completion'"
             ],
-            "correctAnswer": "A, C, B (你调整后的顺序)",
-            "explanation": "交互式 rebase 会严格按照你编辑器中列表的顺序重新应用提交。因此，即使原始提交历史是 C, B, A，在你指定顺序为 A, C, B 后，重新应用后的提交历史将变成 A -> C -> B。"
+            "correctAnswer": "Original\nAfterRetry\nCompletion",
+            "explanation": "数据流是线性的：`NetworkServicePublisher`发送一个值 -> `handleEvents`打印\"Original\" -> `retryWithCount`接收值并直接转发（因为没有失败）-> 第二个`handleEvents`打印\"AfterRetry\" -> `sink`接收值并执行闭包 -> 上游完成，`sink`的`receiveCompletion`触发，打印\"Completion\"。`retryWithCount`在成功路径上只是透传。"
           }
         ]
       }

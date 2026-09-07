@@ -63,15 +63,9 @@ def call_mimo(sys_prompt, usr_prompt):
     headers = {"Authorization": "Bearer " + MIMO_API_KEY, "Content-Type": "application/json"}
     payload = {"model": MIMO_MODEL, "messages": [{"role": "system", "content": sys_prompt}, {"role": "user", "content": usr_prompt}], "max_tokens": 8192, "temperature": 0.8}
     try:
-        resp = requests.post(f"{MIMO_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=(15, 180), stream=True)
+        resp = requests.post(f"{MIMO_BASE_URL}/chat/completions", headers=headers, json=payload, timeout=(15, 300))
         resp.raise_for_status()
-        import json as _json
-        chunks = []
-        for chunk in resp.iter_content(chunk_size=None):
-            if chunk:
-                chunks.append(chunk)
-        raw = b"".join(chunks).decode("utf-8")
-        data = _json.loads(raw)
+        data = resp.json()
         content = data["choices"][0]["message"]["content"]
         return content
     except Exception as e:
