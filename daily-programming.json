@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-07",
+  "date": "2026-09-08",
   "contents": [
     {
-      "id": "prog-2026-09-07",
-      "date": "2026-09-07",
-      "title": "SwiftUI & Combine：打造可复用的数据管道",
-      "summary": "学习如何通过自定义Combine的Publisher和操作符（Operator），在SwiftUI应用中构建可复用、声明式且高效的数据处理流程。",
-      "difficulty": "中级",
-      "concept": "在构建复杂的SwiftUI应用时，我们经常需要处理来自网络、数据库或用户交互的异步事件流。Apple的Combine框架为我们提供了一套强大的、基于“发布者-订阅者”模式的工具。掌握基础的`publisher`, `sink`, `assign`等用法是第一步，而要真正发挥Combine的威力，提升代码的复用性和可测试性，我们需要深入理解并学会创建自定义组件。\n\n一个核心思想是“数据管道”。我们可以将一系列Combine的操作符（如`map`, `filter`, `debounce`）想象成连接在一起的管道，数据（值）在其中流动并被逐步加工。当内置操作符无法满足特定业务逻辑时（例如，一个同时进行网络请求和本地缓存读取的复杂操作），我们就可以创建自定义的`Publisher`或`Operator`来封装这部分逻辑，使其像一个“黑盒子”一样插入到任何数据管道中。\n\n创建自定义`Publisher`是实现一个全新数据源的方式。它需要遵循`Publisher`协议，实现`receive(subscriber:)`方法，在其中定义数据（和错误）如何发送给订阅者。这通常涉及管理订阅者的生命周期和内部状态。在实际工程中，一个常见的模式是为一个异步服务（如网络层）创建一个对应的`Publisher`，使其输出类型和错误类型保持一致。\n\n另一方面，创建自定义`Operator`更为常见。一个操作符本身也是一个`Publisher`，但它接收上游的`Publisher`作为输入。最常见的实现方式是定义一个遵循`Publisher`协议的结构体，并在`receive(subscriber:)`方法中订阅上游，然后在上游发出的事件（值、完成、错误）到达时，根据我们的逻辑进行转换、过滤或组合，再转发给下游的订阅者。这让我们能够将复杂的业务逻辑封装成一个可链式调用、声明式的单元。\n\n在实践中，设计良好的自定义操作符能极大地提升代码的可读性和可维护性。例如，你可以创建一个`retryWithExponentialBackoff`操作符，将网络请求失败的重试逻辑（包含指数退避）封装起来；或者创建一个`cached`操作符，将API请求的结果自动缓存到本地。这避免了在每个ViewModel中重复编写相似的异步逻辑，是构建可扩展SwiftUI架构的关键一步。",
+      "id": "prog-2026-09-08",
+      "date": "2026-09-08",
+      "title": "Python性能分析与优化工具链深度解析",
+      "summary": "掌握使用cProfile, line_profiler和memory_profiler等工具定位性能瓶颈，并运用高级优化策略提升代码执行效率。",
+      "difficulty": "高级",
+      "concept": "在构建高性能Python应用时，仅凭直觉优化代码往往是低效的。性能分析（Profiling）是通过测量程序运行时的时间或内存消耗，来识别代码中的“热点”（Hotspots）——即消耗绝大部分资源的那小部分代码。这是一种数据驱动的优化方法，是高级工程师必备的技能。\n\nPython内置的cProfile模块是函数级分析的利器。它通过侵入式的方式，记录每个函数被调用的次数、总耗时以及每次调用的耗时。其输出清晰展示了程序的执行流和耗时分布，帮助我们快速锁定需要优化的函数。对于更细粒度的需求，line_profiler能够分析代码的每一行，对于理解循环内部或复杂函数内部的具体开销至关重要。\n\n内存分析同样关键。memory_profiler可以逐行追踪内存分配和回收。在处理大数据或长期运行的服务时，未释放的内存或意外的大型对象拷贝可能导致内存泄漏或GC压力过大，影响整体性能。结合objgraph工具，可以进一步可视化对象引用关系，定位泄漏的根源。\n\n定位到瓶颈后，优化策略需要分层。首先考虑算法与数据结构优化，例如用生成器替代列表以减少内存占用，用`collections.deque`替代`list`进行频繁的头部插入/删除。其次，在热点循环中，考虑使用`__slots__`减少实例内存开销，利用`functools.lru_cache`进行缓存，或用NumPy等向量化库替代纯Python循环。\n\n最后，当Python自身成为无法逾越的瓶颈时，需要考虑“逃逸”策略。使用Cython将关键代码编译为C扩展，或通过ctypes/cffi直接调用C/C++编写的高性能库，是突破性能天花板的有效手段。整个工具链的运用，构成了一个从发现、分析到解决性能问题的完整闭环。",
       "codeExample": {
-        "language": "Swift",
-        "code": "import Combine\nimport Foundation\n\n// MARK: - 1. 自定义 Publisher：模拟一个带延迟和可能失败的网络服务\nstruct NetworkServicePublisher<Output: Decodable>: Publisher {\n    typealias Failure = Error\n    private let endpoint: String\n    private let delay: TimeInterval\n    \n    init(endpoint: String, delay: TimeInterval = 1.0) {\n        self.endpoint = endpoint\n        self.delay = delay\n    }\n    \n    // 核心方法：当有订阅者时开始发送数据\n    func receive<S: Subscriber>(subscriber: S) where S.Input == Output, S.Failure == Failure {\n        // 创建一个内部的Subject来管理事件发送\n        let subject = PassthroughSubject<Output, Failure>()\n        subject.subscribe(subscriber) // 将订阅者连接到Subject\n        \n        // 模拟异步网络操作\n        DispatchQueue.global().asyncAfter(deadline: .now() + delay) {\n            // 模拟成功或失败\n            if Bool.random() {\n                // 模拟成功解码\n                let jsonString = \"{\\\"message\\\": \\\"Hello from \\(endpoint)\\\"}\"\n                let data = jsonString.data(using: .utf8)!\n                do {\n                    let decoded = try JSONDecoder().decode(Output.self, from: data)\n                    subject.send(decoded) // 发送解码后的值\n                    subject.send(completion: .finished) // 完成\n                } catch {\n                    subject.send(completion: .failure(error)) // 发送解码错误\n                }\n            } else {\n                // 模拟网络错误\n                subject.send(completion: .failure(URLError(.badServerResponse)))\n            }\n        }\n    }\n}\n\n// 辅助结构体，用于测试Publisher\nstruct Message: Decodable {\n    let message: String\n}\n\n// MARK: - 2. 自定义 Operator：重试操作符（简化版）\nstruct RetryWithCount<P: Publisher>: Publisher {\n    typealias Output = P.Output\n    typealias Failure = P.Failure\n    \n    let upstream: P\n    let maxRetries: Int\n    \n    init(upstream: P, maxRetries: Int) {\n        self.upstream = upstream\n        self.maxRetries = maxRetries\n    }\n    \n    func receive<S: Subscriber>(subscriber: S) where S.Input == Output, S.Failure == Failure {\n        // 创建一个内部状态来跟踪重试次数\n        var currentRetry = 0\n        // 使用一个Subject来作为桥梁\n        let subject = PassthroughSubject<Output, Failure>()\n        subject.subscribe(subscriber)\n        \n        func subscribeToUpstream() {\n            // 订阅上游\n            let subscription = upstream.sink(\n                receiveCompletion: { completion in\n                    switch completion {\n                    case .finished:\n                        subject.send(completion: .finished) // 上游正常完成\n                    case .failure(let error):\n                        if currentRetry < maxRetries {\n                            currentRetry += 1\n                            print(\"Retry #\\(currentRetry) after error: \\(error.localizedDescription)\")\n                            // 简单延迟后重试（实际可加入退避逻辑）\n                            DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) {\n                                subscribeToUpstream() // 递归调用以重新订阅\n                            }\n                        } else {\n                            subject.send(completion: .failure(error)) // 达到最大重试次数\n                        }\n                    }\n                },\n                receiveValue: { value in\n                    subject.send(value) // 传递上游的值\n                }\n            )\n            // 注意：这里需要管理subscription的生命周期，简化示例未完全处理。\n            // 实际实现中，通常会在Operator内部持有subscription，并在取消时释放。\n        }\n        \n        // 开始第一次订阅\n        subscribeToUpstream()\n    }\n}\n\n// 为Publisher添加便捷的链式调用方法\nextension Publisher {\n    func retryWithCount(_ retries: Int) -> RetryWithCount<Self> {\n        return RetryWithCount(upstream: self, maxRetries: retries)\n    }\n}\n\n// MARK: - 3. 在SwiftUI中使用（示例）\nimport SwiftUI\n\nstruct CombineCustomDemoView: View {\n    @State private var status = \"Idle\"\n    @State private var cancellables = Set<AnyCancellable>()\n    \n    var body: some View {\n        VStack(spacing: 20) {\n            Text(\"Status: \\(status)\")\n                .font(.title)\n            \n            Button(\"Start Network Request (with retry)\") {\n                status = \"Loading...\"\n                // 创建自定义Publisher，并应用自定义操作符\n                NetworkServicePublisher<Message>(endpoint: \"api/data\", delay: 1.0)\n                    .retryWithCount(2) // 最多重试2次\n                    .receive(on: DispatchQueue.main) // 回到主线程\n                    .sink(\n                        receiveCompletion: { completion in\n                            if case .failure(let error) = completion {\n                                status = \"Failed after retries: \\(error.localizedDescription)\"\n                            }\n                        },\n                        receiveValue: { message in\n                            status = \"Success: \\(message.message)\"\n                        }\n                    )\n                    .store(in: &cancellables) // 存储订阅\n            }\n            .buttonStyle(.borderedProminent)\n        }\n        .padding()\n    }\n}\n\n// 在Preview中查看\n#Preview {\n    CombineCustomDemoView()\n}",
-        "explanation": "**1. `NetworkServicePublisher` (自定义Publisher):**\n- 它是一个泛型结构体，遵循`Publisher`协议，`Output`类型是泛型`Decodable`，`Failure`是`Error`。\n- `receive(subscriber:)`是核心。它创建了一个`PassthroughSubject`来充当数据发射器，并将原始订阅者连接到这个Subject。\n- 使用`DispatchQueue.global().asyncAfter`模拟网络延迟。之后随机决定发送成功或失败。\n- 成功时，尝试解码JSON数据，然后通过Subject发送`.send(decodedValue)`和`.send(completion: .finished)`。\n- 失败时，直接发送`.send(completion: .failure(error))`。\n\n**2. `RetryWithCount` (自定义Operator):**\n- 这个操作符包装了一个上游`Publisher (P)`。它的`Output`和`Failure`类型与上游相同。\n- `receive(subscriber:)`中，它定义了一个内部函数`subscribeToUpstream()`来执行订阅逻辑。\n- 当接收到上游的`receiveCompletion`为`.failure`时，它检查是否还能重试（`currentRetry < maxRetries`）。如果可以，则递增重试计数器，延迟后再次调用`subscribeToUpstream()`重新订阅上游。\n- 如果重试成功（上游发送值），值会通过`.send(value)`传递给下游。\n- `retryWithCount`扩展方法使得可以链式调用`publisher.retryWithCount(2)`，非常声明式。\n\n**3. `CombineCustomDemoView` (SwiftUI使用):**\n- 展示了如何将自定义的Publisher和Operator组合成一条完整的、声明式的数据管道。\n- `NetworkServicePublisher` -> `retryWithCount(2)` -> `receive(on: ...)` -> `sink`。\n- 整个流程清晰地表达了业务意图：“调用一个网络服务，如果失败则最多重试2次，最后在主线程上更新UI状态”。"
+        "language": "Python",
+        "code": "import cProfile\nimport pstats\nimport io\nfrom memory_profiler import profile\nfrom line_profiler import LineProfiler\nimport random\n\n# 一个示例函数，模拟一个有性能问题的计算任务\ndef slow_function(n):\n    \"\"\"计算一个列表的平方和，存在不必要的内存分配和低效循环\"\"\"\n    total = 0\n    data = []\n    for i in range(n):\n        data.append(random.random())  # 每次循环都追加，效率较低\n    # 下面的循环计算平方和\n    for val in data:\n        total += val ** 2  # 这里的**运算在循环中可能不是最优\n    return total, data\n\n# 使用cProfile进行函数级分析\ndef profile_with_cprofile():\n    print(\"=== cProfile 函数级分析 ===\")\n    profiler = cProfile.Profile()\n    profiler.enable()\n    # 执行被分析的函数\n    result, _ = slow_function(50000)\n    profiler.disable()\n    # 将分析结果输出到字符串，便于格式化\n    stream = io.StringIO()\n    stats = pstats.Stats(profiler, stream=stream).sort_stats('cumulative')\n    stats.print_stats(10)  # 只显示前10条最耗时的函数\n    print(stream.getvalue())\n\n# 使用line_profiler进行行级分析\n# 需要通过装饰器或手动wrap来使用\nlp = LineProfiler()\nlp.add_function(slow_function)  # 将函数添加到分析器\n\ndef profile_with_line_profiler():\n    print(\"\\n=== line_profiler 行级分析 ===\")\n    # 使用分析器包装函数调用\n    lp_wrapper = lp(slow_function)\n    result, _ = lp_wrapper(50000)\n    # 打印行级分析结果\n    lp.print_stats()\n\n# 使用memory_profiler进行内存分析 (通常需要以特殊方式运行，如 `python -m memory_profiler your_script.py`)\n# 这里我们直接调用一个被 @profile 装饰的函数示例（注意：@profile 装饰器需要从 memory_profiler 导入）\n@profile\ndef memory_intensive_function():\n    \"\"\"演示内存密集型操作\"\"\"\n    big_list = [random.random() for _ in range(100000)]  # 分配大量内存\n    processed = [x * 2 for x in big_list]  # 又分配同等大小的内存\n    return sum(processed)\n\nif __name__ == '__main__':\n    # 注意：line_profiler 和 memory_profiler 的装饰器/工具在直接运行时可能需要特殊环境。\n    # 此处为演示逻辑。通常 cProfile 的分析最为通用，可直接运行。\n    profile_with_cprofile()\n    # 下面两行在标准Python解释器中直接运行可能报错，需要配置相应工具或作为脚本参数运行。\n    # profile_with_line_profiler()  # 通常通过 kernprof -l -v your_script.py 运行\n    # memory_intensive_function()  # 通常通过 python -m memory_profiler your_script.py 运行",
+        "explanation": "1. `slow_function` 是我们的分析目标，它包含了一些次优的写法（如循环内append）。\n2. `profile_with_cprofile` 展示了标准库cProfile的使用流程：创建分析器，enable/disable，收集统计信息并排序打印。`sort_stats('cumulative')` 按累计耗时排序，能快速看出总耗时最多的函数调用链。\n3. `profile_with_line_profiler` 演示了行级分析器的设置。`LineProfiler` 需要通过`add_function`注册目标函数，然后通过包装调用来分析。`lp.print_stats()` 会输出每一行代码的执行次数、耗时等，揭示热点中的具体行。\n4. `memory_intensive_function` 使用了`@profile`装饰器，这是`memory_profiler`的标志。当用专门的命令运行此脚本时，它会逐行显示内存增量（MiB），清晰展示哪一行导致了内存的大量分配。\n5. 最后，`if __name__ == '__main__':` 块按照通用性顺序调用分析函数。需要强调的是，`line_profiler`和`memory_profiler`通常需要通过特定的命令行工具（如`kernprof`或`python -m memory_profiler`）来运行，以注入分析钩子。"
       },
       "keyPoints": [
-        "自定义`Publisher`是实现全新数据源（如封装异步服务）的标准方式，需要仔细管理订阅者的生命周期和事件发送。",
-        "自定义`Operator`通常也是一个`Publisher`，它通过订阅上游并转发（或转换）事件来工作，是封装可复用业务逻辑（如重试、缓存、组合）的利器。",
-        "使用`PassthroughSubject`或`CurrentValueSubject`作为自定义Publisher内部的事件发射器是一种简单有效的实现模式。",
-        "在SwiftUI视图的`sink`闭包中，务必使用`.store(in: &cancellables)`来管理订阅的生命周期，防止内存泄漏。在`deinit`中或视图销毁时，`cancellables`会自动取消所有订阅。",
-        "设计自定义操作符时，应确保它是“纯函数”的——对于相同的输入（上游Publisher的事件序列），它应该产生一致的输出（下游事件序列），这利于测试。同时要妥善处理上游的完成和错误事件。"
+        "性能优化必须始于分析：使用工具（如cProfile）定位真正的瓶颈，避免凭直觉进行无效优化。",
+        "掌握函数级（cProfile）和行级（line_profiler）分析的互补使用，前者快速定位热点函数，后者深入函数内部找出行级瓶颈。",
+        "内存分析（memory_profiler）与CPU分析同等重要，用于发现内存泄漏和非预期的内存占用高峰。",
+        "优化策略应分层进行：算法/数据结构优化 > Python层面的代码优化（如使用__slots__, lru_cache, 生成器） > 调用C扩展/编译代码。",
+        "理解工具链的适用场景：cProfile适合通用场景；line_profiler适合分析复杂循环；memory_profiler适合诊断内存问题。组合使用效果更佳。"
       ],
       "exercise": {
-        "description": "创建一个自定义的Combine操作符 `debounceLatest<T>`。它与系统内置的`debounce`类似，但有一个关键区别：它只保留最后一个值（即“最新”的值），并且只在上游停止发送值一段时间后，才发送这个最新的值。如果上游持续发送值，它则一直等待。请实现这个操作符，并编写一个简单的SwiftUI示例来测试它（例如，一个文本框输入，经过`debounceLatest`处理后显示在Text中）。",
-        "hint": "1. 思考你需要存储什么状态（最后一个收到的值，一个计时器）。2. 当收到上游的值时，更新存储的值，并（重新）启动一个计时器。3. 计时器到期后，将存储的值发送给下游并清除它。4. 如果上游完成，需要处理：如果计时器还在等待，可以立即发送存储的值。5. 记得处理取消（取消时应停止计时器）。",
+        "description": "请优化下面这个函数 `process_data(data)`。它首先将一个列表中的所有字符串转换为大写，然后过滤出长度超过5的字符串，最后将这些字符串用“-”连接起来。初始版本存在性能和内存问题。请使用本节介绍的分析工具找出瓶颈，并重构代码以提高效率。最终版本应显著减少临时列表的使用，并尽可能采用更高效的操作。",
+        "hint": "1. 考虑是否可以用生成器表达式（generator expression）代替列表推导式（list comprehension），以避免生成中间列表。2. `''.join()` 的参数如果已经是迭代器，性能会如何？3. 分析字符串操作（`.upper()`, `len()`）在循环中的开销，但通常这是I/O密集型任务中的主要开销，应先确保算法逻辑最优。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "在实现一个自定义操作符（如`RetryWithCount`）时，为了将上游的值转发给下游，我们通常会在内部创建一个`______`，并将原始订阅者连接到它上。",
-            "codeContext": "// 内部逻辑示例\nlet internalSubject = ______<Output, Failure>()\ninternalSubject.subscribe(subscriber)\n// ... 然后通过 internalSubject.send(value) 转发",
+            "question": "为了获取一个函数的精确行级性能数据，我们应该使用______工具。它的典型运行命令是：`______ -l -v your_script.py`。",
+            "codeContext": null,
             "segments": [
               {
                 "type": "text",
-                "content": "let internalSubject = ",
+                "content": "为了获取一个函数的精确行级性能数据，我们应该使用",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,75 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[填写Publisher类型]",
+                "placeholder": "[工具名称]",
                 "options": [
-                  "PassthroughSubject",
-                  "CurrentValueSubject",
-                  "Future",
-                  "Just"
+                  "cProfile",
+                  "line_profiler",
+                  "memory_profiler",
+                  "timeit"
                 ],
-                "correctAnswer": "PassthroughSubject"
+                "correctAnswer": "line_profiler"
               },
               {
                 "type": "text",
-                "content": "<Output, Failure>()",
+                "content": "工具。它的典型运行命令是：",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[命令前缀]",
+                "options": [
+                  "python",
+                  "kernprof",
+                  "profile",
+                  "lp"
+                ],
+                "correctAnswer": "kernprof"
+              },
+              {
+                "type": "text",
+                "content": " -l -v your_script.py。",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "PassthroughSubject",
-            "explanation": "`PassthroughSubject`是一个非常适合的内部中继站。它不存储值（与`CurrentValueSubject`不同），正好用于转发来自上游或根据逻辑产生的事件。"
+            "correctAnswer": "line_profiler, kernprof",
+            "explanation": "`line_profiler` 是进行行级分析的核心工具。通常通过 `kernprof` 这个命令行工具来运行分析脚本，`-l` 表示对脚本进行行级分析，`-v` 表示在分析结束后直接打印分析结果。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "当你在SwiftUI视图中订阅一个Combine的Publisher时，为了管理订阅的生命周期，防止内存泄漏，最佳实践是什么？",
-            "codeContext": "let cancellable = somePublisher\n    .sink { completion in ... } receiveValue: { value in ... }",
+            "question": "当使用 `cProfile` 分析得到以下输出的一部分时，哪一列最能直接反映某个函数自身执行代码所花费的时间（不含调用其他函数的时间）？\n\nncalls  tottime  percall  cumtime  percall filename:lineno(function)\n   1    0.100    0.100    0.200    0.200 script.py:10(process_data)\n 500    0.050    0.000    0.050    0.000 {built-in method builtins.len}",
+            "codeContext": null,
             "segments": null,
             "options": [
-              "将cancellable赋值给视图的一个局部let变量",
-              "将cancellable存储到视图的`@State private var cancellable: AnyCancellable?`属性中",
-              "将cancellable存储到视图的`@State private var cancellables = Set<AnyCancellable>()`集合中，并在闭包中调用`.store(in: &cancellables)`",
-              "不需要特别处理，SwiftUI会自动管理"
+              "ncalls",
+              "tottime",
+              "percall",
+              "cumtime"
             ],
-            "correctAnswer": "将cancellable存储到视图的`@State private var cancellables = Set<AnyCancellable>()`集合中，并在闭包中调用`.store(in: &cancellables)`",
-            "explanation": "使用`Set<AnyCancellable>`并调用`.store(in:)`是SwiftUI中管理多个Combine订阅的标准模式。当视图销毁时，`@State`属性会被清理，`Set`中的所有`cancellable`会被释放，从而自动取消所有订阅，避免内存泄漏。"
+            "correctAnswer": "tottime",
+            "explanation": "`tottime` 表示该函数自身执行（不含其子函数调用）所消耗的总时间。`cumtime` 是累计时间，包含了所有子函数的执行时间。`ncalls` 是调用次数。`percall` 是 `tottime/ncalls` 或 `cumtime/ncalls`。因此，要判断函数自身的性能瓶颈，应关注 `tottime`。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码的输出是什么？（假设`NetworkServicePublisher`始终成功并发送消息）",
-            "codeContext": "let publisher = NetworkServicePublisher<Message>(endpoint: \"test\", delay: 0.1)\nlet cancellable = publisher\n    .handleEvents(receiveOutput: { _ in print(\"Original\") })\n    .retryWithCount(1)\n    .handleEvents(receiveOutput: { _ in print(\"AfterRetry\") })\n    .sink(receiveCompletion: { _ in print(\"Completion\") }, receiveValue: { _ in })",
+            "question": "下面两段代码在功能上等价，但性能上可能不同。在Python 3中，对于非常大的`n`，哪个版本更可能节省内存？为什么？",
+            "codeContext": "# 版本 A:\nresult_a = sum([i*i for i in range(n)])\n\n# 版本 B:\nresult_b = sum(i*i for i in range(n))",
             "segments": null,
             "options": [
-              "Original\nAfterRetry\nCompletion",
-              "Original\nCompletion\nAfterRetry",
-              "AfterRetry\nOriginal\nCompletion",
-              "只有一个'Completion'"
+              "版本A更节省内存，因为列表推导式在内存中一次性创建。",
+              "版本B更节省内存，因为生成器表达式是惰性求值的。",
+              "两者内存消耗完全相同。",
+              "取决于Python的具体实现和优化级别。"
             ],
-            "correctAnswer": "Original\nAfterRetry\nCompletion",
-            "explanation": "数据流是线性的：`NetworkServicePublisher`发送一个值 -> `handleEvents`打印\"Original\" -> `retryWithCount`接收值并直接转发（因为没有失败）-> 第二个`handleEvents`打印\"AfterRetry\" -> `sink`接收值并执行闭包 -> 上游完成，`sink`的`receiveCompletion`触发，打印\"Completion\"。`retryWithCount`在成功路径上只是透传。"
+            "correctAnswer": "版本B更节省内存，因为生成器表达式是惰性求值的。",
+            "explanation": "版本A使用列表推导式`[...]`，它会先在内存中生成一个包含所有`i*i`结果的完整列表，然后将其传递给`sum()`。版本B使用生成器表达式`(...)`，它不会一次性生成所有结果，而是每次`sum()`需要下一个值时，才计算并返回下一个`i*i`。因此，对于非常大的`n`，版本B（生成器表达式）不需要存储整个中间列表，内存消耗是O(1)级别的，远小于版本A的O(n)内存消耗。这是生成器在内存敏感场景下的经典优势。"
           }
         ]
       }
