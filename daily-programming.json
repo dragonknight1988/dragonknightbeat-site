@@ -1,45 +1,38 @@
 {
-  "date": "2026-09-09",
+  "date": "2026-09-10",
   "contents": [
     {
-      "id": "prog-2026-09-09",
-      "date": "2026-09-09",
-      "title": "JavaScript数组方法：map、filter和reduce入门",
-      "summary": "学习使用map、filter和reduce来高效操作数组数据",
-      "difficulty": "初级",
-      "concept": "数组是JavaScript中最常用的数据结构之一，而map、filter和reduce是处理数组的核心方法，它们能让你以声明式的方式编写更简洁、可读性更高的代码。在实际工程中，这些方法常用于数据转换、过滤和聚合，比如在前端开发中处理API返回的列表数据，或在后端服务中处理数据库查询结果。掌握这些方法能显著提升你的编码效率和代码质量。\n\nmap方法用于对数组中的每个元素应用一个函数，并返回一个新数组，其中每个元素是原数组元素转换后的结果。它不会修改原数组，这符合函数式编程的纯函数理念。例如，如果你有一个数字数组，想将每个元素乘以2，使用map可以轻松实现。在工作中，map常用于将原始数据映射为UI所需的格式，如将日期对象转换为字符串。\n\nfilter方法用于创建一个新数组，其中包含所有通过提供的测试函数的元素。测试函数对每个元素返回true或false，只有返回true的元素才会被包含在结果数组中。filter非常适合用于数据清洗，比如从用户列表中过滤出活跃用户，或从商品列表中筛选出有库存的商品。它同样不会改变原数组。\n\nreduce方法是最强大的数组方法之一，它通过一个reducer函数将数组元素累积为一个单一值，如数字、对象或甚至另一个数组。reducer函数接受两个参数：累加器和当前元素，返回更新后的累加器。reduce的常见用法包括计算数组总和、求平均值、或对数组进行分组。虽然对于初学者可能稍显复杂，但一旦掌握，它能解决许多复杂的数据处理问题。\n\n在实际应用中，这些方法可以链式调用，使代码更加流畅。例如，先filter出符合条件的数据，再map进行转换，最后reduce进行汇总。这种链式调用是现代JavaScript开发的常见模式，能让你写出更简洁、维护性更强的代码。需要注意的是，这些方法都返回新数组或值，不会修改原数组，这有助于避免副作用和潜在的bug。",
+      "id": "prog-2026-09-10",
+      "date": "2026-09-10",
+      "title": "Next.js App Router 中数据获取与渲染优化",
+      "summary": "学习如何在 Next.js App Router 中高效获取数据和优化组件渲染，提升应用性能。",
+      "difficulty": "中级",
+      "concept": "Next.js App Router 引入了 Server Components 和 Client Components 的范式，彻底改变了数据获取和渲染流程。Server Components 允许在服务器端执行，这意味着数据获取、计算密集型任务和敏感操作可以在服务器完成，从而减少客户端 JavaScript 包大小，提升首次加载性能和 SEO。在实际工程中，这避免了传统 React 中使用 useEffect 进行客户端数据获取的复杂性和性能开销。\n\n数据获取方面，Server Components 支持 async/await，你可以直接在组件函数中调用 fetch API 或数据库查询，无需额外的状态管理库。这简化了代码，并利用了 Next.js 的内置缓存机制。通过 fetch 选项如 next: { revalidate: 10 }，你可以控制数据重新验证间隔，实现增量静态再生，平衡数据新鲜度和服务器负载。\n\n渲染优化上，Next.js 使用 Suspense 组件处理加载状态，实现流式渲染。当 Server Components 正在获取数据时，Suspense 会显示回退 UI，然后逐步流式传输结果到客户端，减少用户感知的延迟。这在实际应用中能显著提升用户体验，尤其是对于数据密集型页面。\n\nClient Components 则用于处理交互逻辑，如事件监听、状态管理和浏览器 API 调用。通过 'use client' 指令标记，它们会在客户端 hydration，但可以与 Server Components 无缝集成。例如，你可以将 Server Components 作为 props 传递给 Client Components，实现混合渲染。\n\n缓存策略是优化关键。Next.js 提供了多种缓存级别：路由段缓存、数据缓存和全路由缓存。在实际项目中，你需要根据数据更新频率配置 revalidate 选项或使用 on-demand revalidation 通过 API 路由触发，确保用户获得最新数据同时最小化服务器请求。此外，错误边界和加载状态处理是生产环境必备，使用 error.tsx 和 loading.tsx 文件提供优雅的降级体验。",
       "codeExample": {
-        "language": "JavaScript",
-        "code": "// 示例数组：一组数字\nconst numbers = [1, 2, 3, 4, 5];\n\n// 使用map将每个元素乘以2，返回新数组\nconst doubled = numbers.map(num => num * 2);\nconsole.log('map结果:', doubled); // 输出: [2, 4, 6, 8, 10]\n\n// 使用filter过滤出偶数，返回新数组\nconst evens = numbers.filter(num => num % 2 === 0);\nconsole.log('filter结果:', evens); // 输出: [2, 4]\n\n// 使用reduce计算所有元素的总和，初始值为0\nconst sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);\nconsole.log('reduce结果:', sum); // 输出: 15\n\n// 链式调用示例：先过滤出偶数，再平方，最后求和\nconst evenSquareSum = numbers\n  .filter(num => num % 2 === 0) // 过滤偶数: [2, 4]\n  .map(num => num * num)        // 平方: [4, 16]\n  .reduce((acc, val) => acc + val, 0); // 求和: 20\nconsole.log('链式调用结果:', evenSquareSum); // 输出: 20",
-        "explanation": "1. 定义了一个数字数组numbers。\n2. 使用map方法，通过箭头函数`num => num * 2`将每个元素乘以2，结果存储在doubled中。\n3. 使用filter方法，通过条件`num % 2 === 0`筛选出偶数，结果存储在evens中。\n4. 使用reduce方法，累加器accumulator从初始值0开始，逐个加上当前元素currentValue，最终计算出总和sum。\n5. 链式调用：先filter出偶数数组[2, 4]，然后map计算每个元素的平方得到[4, 16]，最后reduce求和得到20。链式调用使代码更简洁，逻辑清晰。"
+        "language": "TypeScript",
+        "code": "// 文件: app/page.tsx (Server Component)\nimport { Suspense } from 'react';\nimport ClientComponent from './ClientComponent';\n\n// 异步数据获取函数\nasync function fetchUsers() {\n  // 模拟从 API 获取数据，使用 fetch 选项设置缓存策略\n  const res = await fetch('https://jsonplaceholder.typicode.com/users', {\n    next: { revalidate: 3600 } // 每小时重新验证一次\n  });\n  if (!res.ok) {\n    throw new Error('Failed to fetch users');\n  }\n  return res.json();\n}\n\n// 服务器组件，支持 async/await\nexport default async function UsersPage() {\n  const users = await fetchUsers();\n  return (\n    <div>\n      <h1>User List (Server Rendered)</h1>\n      {/* 使用 Suspense 包裹客户端组件，提供加载状态 */}\n      <Suspense fallback={<div>Loading user interactions...</div>}>\n        <ClientComponent initialUsers={users} />\n      </Suspense>\n    </div>\n  );\n}\n\n// 文件: app/ClientComponent.tsx (Client Component)\n'use client'; // 标记为客户端组件\n\nimport { useState } from 'react';\n\n// 客户端组件，处理交互\nexport default function ClientComponent({ initialUsers }: { initialUsers: any[] }) {\n  const [searchTerm, setSearchTerm] = useState('');\n  // 过滤用户列表\n  const filteredUsers = initialUsers.filter(user =>\n    user.name.toLowerCase().includes(searchTerm.toLowerCase())\n  );\n\n  return (\n    <div>\n      <input\n        type=\"text\"\n        placeholder=\"Search users...\"\n        value={searchTerm}\n        onChange={(e) => setSearchTerm(e.target.value)}\n      />\n      <ul>\n        {filteredUsers.map(user => (\n          <li key={user.id}>{user.name} - {user.email}</li>\n        ))}\n      </ul>\n    </div>\n  );\n}",
+        "explanation": "1. 在 page.tsx 中，这是一个 Server Component，使用 async 关键字允许直接调用 fetchUsers 函数获取数据，无需 useEffect。\n2. fetchUsers 函数使用 fetch API 并设置 next: { revalidate: 3600 } 选项，表示数据每小时重新验证一次，优化缓存。\n3. 组件渲染时，先显示服务器获取的数据，然后使用 Suspense 包裹 ClientComponent，fallback 属性提供加载状态 UI。\n4. ClientComponent 标记了 'use client'，确保它在客户端执行，处理搜索交互逻辑。\n5. 客户端组件通过 props 接收服务器数据，使用 useState 管理搜索状态，并实时过滤列表，展示了 Server 和 Client 组件的协同工作。"
       },
       "keyPoints": [
-        "map方法返回一个新数组，每个元素是原数组元素应用函数后的结果，用于数据转换。",
-        "filter方法返回一个新数组，包含所有通过测试函数的元素，用于数据过滤。",
-        "reduce方法通过reducer函数将数组元素累积为单一值，常用于求和、求平均等聚合操作。",
-        "这些方法都是纯函数，不会修改原数组，有助于避免副作用和保持数据不可变性。",
-        "可以链式调用这些方法，以组合多个操作，提高代码可读性和维护性。"
+        "Server Components 在服务器端执行，减少客户端 JavaScript 负载，提升 SEO 和首次加载性能。",
+        "使用 async/await 在 Server Components 中直接获取数据，简化代码并利用内置缓存。",
+        "Suspense 组件用于声明式处理加载状态，实现流式渲染以改善用户体验。",
+        "Client Components 通过 'use client' 指令标记，专注于交互逻辑，如状态管理和事件处理。",
+        "缓存策略通过 fetch 选项如 revalidate 或 on-demand revalidation 实现，平衡数据新鲜度和服务器效率。"
       ],
       "exercise": {
-        "description": "给定一个数组 `const data = [3, 8, 15, 2, 10, 6];`，使用map、filter和reduce来找到所有偶数的平方和。具体步骤：先过滤出偶数，然后计算每个偶数的平方，最后求和。",
-        "hint": "考虑使用filter方法筛选出偶数（使用`num % 2 === 0`条件），然后用map方法对筛选后的数组应用平方函数（`num => num * num`），最后用reduce方法将平方值累加起来（初始值设为0）。",
+        "description": "创建一个 Next.js 页面，使用 Server Components 获取博客文章列表（假设 API 为 https://jsonplaceholder.typicode.com/posts），并在 Client Components 中实现文章搜索和高亮显示功能。确保页面有加载状态和错误处理。",
+        "hint": "在 Server Component 中使用 async/await 获取数据，用 Suspense 处理加载。Client Component 中用 useState 管理搜索输入，用正则表达式或字符串方法高亮匹配文本。记得添加错误边界处理。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "完成以下代码，使用filter方法过滤出数组中的正数。",
-            "codeContext": "const numbers = [-1, 2, -3, 4];",
+            "question": "在 Next.js App Router 中，要将一个组件标记为客户端组件以处理交互，需要在文件顶部添加什么指令？",
+            "codeContext": "// 示例代码片段\nexport default function MyComponent() {\n  return <button onClick={() => alert('Clicked')}>Click me</button>;\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "const numbers = [-1, 2, -3, 4];",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "text",
-                "content": "const positives = numbers.",
+                "content": "在客户端组件文件中，顶部添加 ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -47,55 +40,49 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择方法]",
+                "placeholder": "[选择指令]",
                 "options": [
-                  "map",
-                  "filter",
-                  "reduce"
+                  "'use server'",
+                  "'use client'",
+                  "'strict mode'",
+                  "'dynamic'"
                 ],
-                "correctAnswer": "filter"
-              },
-              {
-                "type": "text",
-                "content": "(num => num > 0);",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
+                "correctAnswer": "'use client'"
               }
             ],
             "options": null,
-            "correctAnswer": "filter",
-            "explanation": "filter方法用于根据条件过滤数组元素，这里条件`num => num > 0`确保只保留正数。map用于转换，reduce用于累积，都不适合此场景。"
+            "correctAnswer": "'use client'",
+            "explanation": "在 Next.js App Router 中，Client Components 必须使用 'use client' 指令在文件顶部标记，以告诉 Next.js 该组件需要在客户端执行，支持交互逻辑如事件监听和状态管理。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "哪个数组方法最适合用于将数组元素累积为一个单一值（如求和）？",
+            "question": "下列哪种数据获取方式在 Next.js Server Components 中被认为是最佳实践？",
             "codeContext": null,
             "segments": null,
             "options": [
-              "map",
-              "filter",
-              "reduce",
-              "forEach"
+              "使用 useEffect 和 useState 在客户端获取数据",
+              "在 Server Component 中使用 async/await 直接调用 fetch API",
+              "使用第三方库如 SWR 或 React Query 进行客户端缓存",
+              "通过全局状态管理如 Redux 管理所有数据"
             ],
-            "correctAnswer": "reduce",
-            "explanation": "reduce方法专门设计用于通过reducer函数将数组元素累积为单个值，如求和、求平均等。map用于转换数组，filter用于过滤，forEach用于遍历但无返回值。"
+            "correctAnswer": "在 Server Component 中使用 async/await 直接调用 fetch API",
+            "explanation": "Next.js Server Components 支持 async/await，允许在组件函数中直接获取数据，这利用了服务器端执行和内置缓存，减少客户端负载并提升性能，是 App Router 中的最佳实践。客户端获取应仅用于交互频繁的动态数据。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "这段代码输出什么？",
-            "codeContext": "const arr = [1, 2, 3, 4, 5];\nconst result = arr\n  .filter(x => x % 2 !== 0) // 过滤出奇数\n  .map(x => x * 3)          // 每个奇数乘以3\n  .reduce((sum, val) => sum + val, 0); // 求和\nconsole.log(result);",
+            "question": "以下 Next.js 代码片段中，当用户访问页面时，浏览器控制台会输出什么？",
+            "codeContext": "// app/page.tsx\nimport { Suspense } from 'react';\n\nasync function getData() {\n  console.log('Fetching data on server...');\n  return { message: 'Hello from server' };\n}\n\nexport default async function Page() {\n  const data = await getData();\n  return (\n    <div>\n      <p>{data.message}</p>\n      <Suspense fallback={<div>Loading...</div>}>\n        <ClientComp />\n      </Suspense>\n    </div>\n  );\n}\n\n// app/ClientComp.tsx\n'use client';\nconsole.log('Client component rendered');\nexport default function ClientComp() {\n  return <div>Client UI</div>;\n}",
             "segments": null,
             "options": [
-              "9",
-              "18",
-              "27",
-              "45"
+              "输出 'Fetching data on server...' 和 'Client component rendered'",
+              "仅输出 'Fetching data on server...'",
+              "仅输出 'Client component rendered'",
+              "无输出，因为组件未挂载"
             ],
-            "correctAnswer": "27",
-            "explanation": "1. filter过滤出奇数: [1, 3, 5]。\n2. map将每个奇数乘以3: [3, 9, 15]。\n3. reduce计算总和: 3 + 9 + 15 = 27。"
+            "correctAnswer": "输出 'Fetching data on server...' 和 'Client component rendered'",
+            "explanation": "Server Component 中的 console.log 会在服务器端执行，因此当页面请求时，服务器输出 'Fetching data on server...'。ClientComp 使用了 'use client'，其顶层 console.log 会在客户端 hydration 时执行，输出 'Client component rendered'。注意，服务器端日志出现在 Node.js 控制台，客户端日志出现在浏览器控制台。"
           }
         ]
       }
