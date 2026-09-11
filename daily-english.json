@@ -1,177 +1,181 @@
 {
-  "date": "2026-09-10",
+  "date": "2026-09-11",
   "content": {
-    "id": "en-2026-09-10",
-    "date": "2026-09-10",
-    "topic": "商业与金融",
+    "id": "en-2026-09-11",
+    "date": "2026-09-11",
+    "topic": "职场与沟通",
     "newsHighlights": [
       {
-        "title": "China's CPI up 0.8% in August",
+        "title": "Key role of services trade highlighted",
         "source": "ChinaDaily",
-        "summary": "China's consumer price index rose 0.8 percent in August compared with the same period last year, signaling potential inflation.",
-        "translation": "中国8月份居民消费价格指数（CPI）同比上涨0.8%，预示着潜在的通货膨胀。",
-        "keyWords": [
-          "CPI",
-          "inflation"
-        ]
-      },
-      {
-        "title": "How services trade taps into 'China Opportunity 2.0'?",
-        "source": "ChinaDaily",
-        "summary": "The China International Fair for Trade in Services (CIFTIS) showcases China's shift from a manufacturing hub to a services and innovation center.",
-        "translation": "中国国际服务贸易交易会（CIFTIS）展示了中国从制造业中心向服务业和创新中心的转变。",
+        "summary": "Services trade plays a pivotal role in global economic growth and international cooperation.",
+        "translation": "服务贸易在全球经济增长和国际合作中扮演着关键角色。",
         "keyWords": [
           "services trade",
-          "CIFTIS"
+          "cooperation",
+          "economic growth"
         ]
       },
       {
-        "title": "South Korean businesses eye China tie-ups",
+        "title": "Hotel robots surprise visitors, streamline operations",
         "source": "ChinaDaily",
-        "summary": "South Korean companies are seeking deeper collaboration with Chinese partners to capitalize on market opportunities.",
-        "translation": "韩国企业正寻求与中国合作伙伴深化合作，以利用市场机遇。",
+        "summary": "Hotel robots are enhancing guest experiences and improving operational efficiency through automation.",
+        "translation": "酒店机器人通过自动化技术提升了宾客体验并优化了运营效率。",
         "keyWords": [
-          "collaboration",
-          "market opportunities"
+          "robot",
+          "streamline",
+          "operations"
         ]
       },
       {
-        "title": "Supersized El Niño brings global 'danger zone' warning",
-        "source": "CGTN",
-        "summary": "A strengthening El Niño event could disrupt global agriculture and supply chains, posing risks to the world economy.",
-        "translation": "一次增强的厄尔尼诺事件可能扰乱全球农业和供应链，对世界经济构成风险。",
+        "title": "Tiangong class inspires Hong Kong, Macao students",
+        "source": "ChinaDaily",
+        "summary": "The live science lecture from the Tiangong space station inspired students with its engaging content.",
+        "translation": "天宫空间站的直播科学讲座以引人入胜的内容激励了学生。",
         "keyWords": [
-          "El Niño",
-          "supply chains"
+          "inspire",
+          "engagement",
+          "communication"
+        ]
+      },
+      {
+        "title": "Digital tech helps drive travel industry growth",
+        "source": "ChinaDaily",
+        "summary": "Digital technologies are transforming communication and operations in the travel sector.",
+        "translation": "数字技术正在改变旅游业的沟通与运营模式。",
+        "keyWords": [
+          "digital tech",
+          "drive growth",
+          "transform"
         ]
       }
     ],
     "quote": {
-      "quote": "The study of economics does not seem to require any specialized gifts of an unusually high order. To be good in other sciences is to be some kind of specialist; but to be good in economics is to be nothing very particular.",
-      "author": "John Maynard Keynes",
-      "translation": "经济学研究似乎并不需要特别高的天赋。在其他科学领域优秀意味着成为某种专家；但在经济学上优秀，却并不意味着特别。",
-      "explanation": "这句名言强调了经济学与日常商业决策的普遍联系性，与商业金融主题相呼应。它暗示经济原理无处不在，理解它们对每个人都有价值。"
+      "quote": "The single biggest problem in communication is the illusion that it has taken place.",
+      "author": "George Bernard Shaw",
+      "translation": "沟通中最大的问题是误以为沟通已经发生了。",
+      "explanation": "强调在职场中，真正的沟通不仅仅是信息传递，更需要确保信息被准确理解和反馈，避免误解。"
     },
     "vocabulary": [
       {
-        "word": "CPI",
-        "phonetic": "/ˌsiː piː ˈaɪ/",
-        "partOfSpeech": "名词 (n.)",
-        "definition": "居民消费价格指数，衡量一组代表性消费商品及服务价格随时间变化的指标。",
-        "example": "China's CPI up 0.8% in August.",
-        "translation": "中国8月份CPI上涨0.8%。",
-        "newsContext": "来自新闻标题：China's CPI up 0.8% in August。"
+        "word": "streamline",
+        "phonetic": "/ˈstriːmlaɪn/",
+        "partOfSpeech": "动词",
+        "definition": "简化（过程）；使效率更高",
+        "example": "Hotel robots surprise visitors, streamline operations.",
+        "translation": "酒店机器人让访客感到惊喜，并简化了运营流程。",
+        "newsContext": "来自关于酒店机器人的新闻，指机器人通过自动化简化了酒店运营。"
       },
       {
-        "word": "inflation",
-        "phonetic": "/ɪnˈfleɪʃən/",
-        "partOfSpeech": "名词 (n.)",
-        "definition": "通货膨胀，指物价总水平持续上涨的现象。",
-        "example": "The rise in CPI signals potential inflation in the economy.",
-        "translation": "CPI上涨预示着经济中潜在的通货膨胀。",
-        "newsContext": "在分析CPI上涨新闻时引申出的经济概念。"
+        "word": "cooperation",
+        "phonetic": "/koʊˌɒpəˈreɪʃn/",
+        "partOfSpeech": "名词",
+        "definition": "合作；协作",
+        "example": "President Xi Jinping emphasized the importance of BRICS cooperation.",
+        "translation": "习近平主席强调了金砖国家合作的重要性。",
+        "newsContext": "来自关于金砖合作的新闻，指国际间协作。"
       },
       {
-        "word": "gross domestic product",
-        "phonetic": "/ˌɡroʊs dəˌmes.tɪk ˈprɑː.dʌkt/",
-        "partOfSpeech": "名词 (n.)",
-        "definition": "国内生产总值，衡量一个国家或地区在一定时期内生产的所有最终商品和服务的市场价值。",
-        "example": "Services trade contributes significantly to China's gross domestic product.",
-        "translation": "服务贸易对中国国内生产总值贡献显著。",
-        "newsContext": "与“中国机遇2.0”中提到的经济转型相关。"
+        "word": "inspire",
+        "phonetic": "/ɪnˈspaɪər/",
+        "partOfSpeech": "动词",
+        "definition": "激励；鼓舞",
+        "example": "The Tiangong class inspires students with its engaging content.",
+        "translation": "天宫课堂以其引人入胜的内容激励学生。",
+        "newsContext": "来自天宫课堂的新闻，指教育内容激发学生的兴趣。"
       },
       {
-        "word": "deflation",
-        "phonetic": "/dɪˈfleɪʃən/",
-        "partOfSpeech": "名词 (n.)",
-        "definition": "通货紧缩，指物价总水平持续下降的现象。",
-        "example": "The report suggests the economy is moving away from deflation risks.",
-        "translation": "报告表明经济正远离通货紧缩风险。",
-        "newsContext": "作为CPI数据讨论的潜在对立面概念。"
+        "word": "highlight",
+        "phonetic": "/ˈhaɪlaɪt/",
+        "partOfSpeech": "动词",
+        "definition": "强调；突出",
+        "example": "The report highlighted the key role of services trade.",
+        "translation": "报告强调了服务贸易的关键作用。",
+        "newsContext": "来自服务贸易的新闻，指突出重点。"
       },
       {
-        "word": "services trade",
-        "phonetic": "/ˈsɜːrvɪsɪz treɪd/",
-        "partOfSpeech": "名词 (n.)",
-        "definition": "服务贸易，指国与国之间互相提供服务的经济交易活动。",
-        "example": "How services trade taps into 'China Opportunity 2.0'?",
-        "translation": "服务贸易如何挖掘“中国机遇2.0”？",
-        "newsContext": "来自新闻标题：How services trade taps into 'China Opportunity 2.0'?。"
+        "word": "operations",
+        "phonetic": "/ˌɒpəˈreɪʃnz/",
+        "partOfSpeech": "名词",
+        "definition": "运营；操作",
+        "example": "Hotel robots streamline operations.",
+        "translation": "酒店机器人简化了运营流程。",
+        "newsContext": "来自酒店机器人的新闻，指日常业务运作。"
       },
       {
-        "word": "economic transformation",
-        "phonetic": "/ˌiːkəˈnɑːmɪk ˌtræns.fərˈmeɪ.ʃən/",
-        "partOfSpeech": "名词 (n.)",
-        "definition": "经济转型，指经济结构和发展方式的根本性转变。",
-        "example": "The fair highlights China's ongoing economic transformation.",
-        "translation": "该展会凸显了中国正在进行的经济转型。",
-        "newsContext": "概括了“从汗水到智慧，从销售到欢迎，从工厂到枢纽”这一转变的核心。"
+        "word": "engagement",
+        "phonetic": "/ɪnˈɡeɪdʒmənt/",
+        "partOfSpeech": "名词",
+        "definition": "参与；互动",
+        "example": "The teacher's engagement with students fosters better learning.",
+        "translation": "老师与学生的互动能促进更好的学习。",
+        "newsContext": "关联教师节新闻，指师生之间的互动沟通。"
       },
       {
-        "word": "collaboration",
-        "phonetic": "/kəˌlæbəˈreɪʃən/",
-        "partOfSpeech": "名词 (n.)",
-        "definition": "合作，协作。",
-        "example": "South Korean businesses are seeking deeper collaboration with Chinese partners.",
-        "translation": "韩国企业正寻求与中国合作伙伴的深化合作。",
-        "newsContext": "来自新闻标题：South Korean businesses eye China tie-ups。"
+        "word": "transform",
+        "phonetic": "/trænsˈfɔːrm/",
+        "partOfSpeech": "动词",
+        "definition": "改变；转化",
+        "example": "Digital tech helps drive travel industry growth by transforming communication.",
+        "translation": "数字技术通过改变沟通方式推动旅游业增长。",
+        "newsContext": "来自科技推动旅游业的新闻，指技术带来的变革。"
       },
       {
-        "word": "market opportunities",
-        "phonetic": "/ˈmɑːrkɪt ˌɑːpərˈtuːnɪtiz/",
-        "partOfSpeech": "名词短语",
-        "definition": "市场机遇，指商业上有利的发展时机或可能性。",
-        "example": "They aim to capitalize on market opportunities in Asia.",
-        "translation": "他们的目标是利用亚洲的市场机遇。",
-        "newsContext": "韩国企业寻求合作的目的。"
+        "word": "drive",
+        "phonetic": "/draɪv/",
+        "partOfSpeech": "动词",
+        "definition": "推动；驱动",
+        "example": "Digital tech helps drive travel industry growth.",
+        "translation": "数字技术帮助推动旅游业增长。",
+        "newsContext": "来自科技新闻，指促进发展。"
       },
       {
-        "word": "El Niño",
-        "phonetic": "/ˌel ˈniːn.joʊ/",
-        "partOfSpeech": "名词 (n.)",
-        "definition": "厄尔尼诺现象，一种发生在热带太平洋的异常气候现象，影响全球天气模式。",
-        "example": "A supersized El Niño could disrupt global agriculture.",
-        "translation": "一次超强的厄尔尼诺现象可能扰乱全球农业。",
-        "newsContext": "来自新闻标题：Supersized El Niño brings global 'danger zone' warning。"
+        "word": "donate",
+        "phonetic": "/ˈdoʊneɪt/",
+        "partOfSpeech": "动词",
+        "definition": "捐赠；捐献",
+        "example": "Former superstar hurdler Liu donates entire salary to charity.",
+        "translation": "前超级跨栏明星刘翔将全部工资捐给了慈善机构。",
+        "newsContext": "来自刘翔捐款的新闻，指捐赠行为。"
       },
       {
-        "word": "supply chains",
-        "phonetic": "/səˈplaɪ tʃeɪnz/",
-        "partOfSpeech": "名词 (n.)",
-        "definition": "供应链，指产品从原材料到最终消费者所经历的一系列过程和环节。",
-        "example": "The weather event could pose risks to global supply chains.",
-        "translation": "这一气象事件可能对全球供应链构成风险。",
-        "newsContext": "分析厄尔尼诺对全球经济的影响时提到。"
+        "word": "salary",
+        "phonetic": "/ˈsæləri/",
+        "partOfSpeech": "名词",
+        "definition": "薪水；工资",
+        "example": "Liu Xiang received 494,000 yuan as his final salary buyout.",
+        "translation": "刘翔收到了494,000元作为他的最后一次薪水买断。",
+        "newsContext": "来自刘翔新闻，指职业报酬。"
       }
     ],
     "pattern": {
-      "pattern": "From [A] to [B], from [C] to [D]",
-      "example": "From sweat to smarts, from selling to welcoming, from factory to hub...",
-      "translation": "从汗水到智慧，从销售到欢迎，从工厂到枢纽……",
-      "usage": "这是一个用于描述转变或演变的并列结构句型，强调变化的多方面和深度，在商业分析或趋势描述中非常实用。"
+      "pattern": "play a key role in...",
+      "example": "Services trade plays a key role in global economic growth.",
+      "translation": "服务贸易在全球经济增长中扮演关键角色。",
+      "usage": "用于强调某人或某事在特定领域或过程中的重要作用，常用于职场汇报或学术写作。"
     },
     "grammar": {
-      "title": "百分比表达与现在完成时",
-      "explanation": "新闻标题 'China's CPI up 0.8% in August' 使用了简洁的 'A + 动词 + 百分比' 结构表达变化。完整报道中可能会使用现在完成时来强调最近的变化或影响，例如 'The CPI has risen...'。",
+      "title": "被动语态在新闻中的运用",
+      "explanation": "新闻英语中常使用被动语态来客观陈述事实，突出事件本身而非执行者。",
       "examples": [
-        "China's CPI up 0.8% in August.",
-        "South Korean businesses have been eyeing China tie-ups."
+        "The report highlighted the key role of services trade.",
+        "Hotel robots surprise visitors, streamline operations."
       ]
     },
     "pronunciation": {
-      "word": "economy",
-      "phonetic": "/ɪˈkɑːnəmi/",
-      "tips": "注意第二个音节的重读 /kɑː/ 和鼻音 /n/ 的清晰度，以及结尾 /mi/ 的轻读。",
+      "word": "cooperation",
+      "phonetic": "/koʊˌɒpəˈreɪʃn/",
+      "tips": "注意重音在第三个音节 'ra' 上，'o' 发 /ɒ/ 音，整体流畅连读。",
       "examples": [
-        "The study of economics does not seem to require any specialized gifts.",
-        "A stable economy is crucial for business growth."
+        "Effective cooperation is essential in international business.",
+        "The team's cooperation led to the project's success."
       ]
     },
     "reading": {
-      "title": "China's Service Trade: A New Engine for Growth",
-      "content": "The ongoing China International Fair for Trade in Services (CIFTIS) highlights a pivotal shift in China's economic landscape. Moving beyond its reputation as the world's factory, the nation is actively promoting its 'China Opportunity 2.0.' This new phase is less about exporting physical goods and more about offering sophisticated services, from digital innovation to professional consulting. The focus has transformed from simply selling products to welcoming global businesses into a vibrant services ecosystem. This economic transformation is not just about changing industries; it's about repositioning China as a global services hub. Success in this arena could help balance trade relationships and drive sustainable growth in the coming decade, making services trade a key engine for the country's next chapter.",
-      "translation": "正在进行的中国国际服务贸易交易会（CIFTIS）凸显了中国经济格局的关键转变。中国正在积极推广其“中国机遇2.0”，超越了“世界工厂”的传统形象。这一新阶段不再仅仅侧重于出口实体产品，而是致力于提供先进的服务，从数字创新到专业咨询。重点已从单纯销售产品，转变为将全球企业引入一个充满活力的服务生态系统。这种经济转型不仅仅是改变产业，更是将中国重新定位为全球服务枢纽。在该领域的成功有助于在未来十年平衡贸易关系并推动可持续增长，使服务贸易成为国家新篇章的关键引擎。",
-      "sourceNote": "本文章基于 ChinaDaily 新闻 'How services trade taps into 'China Opportunity 2.0'?' 改写。"
+      "title": "How Technology is Transforming Workplace Communication",
+      "content": "In today's fast-paced world, digital technology is transforming workplace communication. From hotel robots streamlining operations to live science classes inspiring students, the impact is clear. Services trade highlights the key role of cooperation in global growth, where effective communication drives success. As tools evolve, employees must adapt to new ways of engaging with colleagues and clients. For instance, automated systems can handle routine inquiries, freeing humans for more complex tasks. This shift not only boosts efficiency but also enhances creative problem-solving. However, balancing technology with personal interaction remains crucial to maintain strong professional relationships.",
+      "translation": "在当今快节奏的世界，数字技术正在改变职场沟通。从简化运营的酒店机器人到激励学生的直播科学课，其影响显而易见。服务贸易突出了合作在全球增长中的关键作用，而有效的沟通驱动着成功。随着工具的发展，员工必须适应与同事和客户互动的新方式。例如，自动化系统可以处理日常咨询，让人类专注于更复杂的任务。这种转变不仅提高了效率，还增强了创造性解决问题的能力。然而，在技术与人际互动之间保持平衡，对于维持牢固的职业关系仍然至关重要。",
+      "sourceNote": "基于今日新闻素材《Hotel robots surprise visitors, streamline operations》《Key role of services trade highlighted》《Digital tech helps drive travel industry growth》改写。"
     }
   }
 }
