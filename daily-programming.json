@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-12",
+  "date": "2026-09-13",
   "contents": [
     {
-      "id": "prog-2026-09-12",
-      "date": "2026-09-12",
-      "title": "深入理解 Go Context 与并发控制",
-      "summary": "掌握 Go 中 Context 的使用，实现高效的并发管理和资源清理，优化系统性能。",
-      "difficulty": "高级",
-      "concept": "Go 的 Context 包是并发编程的核心，用于在 API 边界和 goroutine 之间传递取消信号、超时和请求范围值。它提供了标准化的方式来管理 goroutine 的生命周期，避免资源泄漏，这在微服务架构中尤为重要。Context 接口有四个方法：Deadline、Done、Err 和 Value，分别用于获取截止时间、监听取消信号、获取错误原因和存储键值对。\n\n在实际工程中，Context 常用于 HTTP 请求处理、数据库查询和远程调用场景。例如，在 Web 服务器中，每个请求会创建一个 Context，当客户端断开连接时，通过取消 Context 来停止所有相关 goroutine，如数据库查询或缓存操作。这确保了系统的响应性和资源高效利用。Context 的取消机制是通过通道（Done channel）实现的，当 Context 被取消时，该通道关闭，所有监听它的 goroutine 都能收到通知。\n\n创建 Context 时，应使用 context.Background() 作为根 Context，然后通过 WithCancel、WithDeadline 或 WithTimeout 派生子 Context。这些函数返回新 Context 和一个 cancel 函数，调用 cancel 会取消该 Context 及其所有子 Context。值得注意的是，取消信号是向下传播的，但不会向上传播，因此父 Context 的取消会影响子 Context，反之则不然。这种设计简化了并发控制，但需要开发者注意 Context 的传递和生命周期管理。\n\n性能优化方面，Context 应轻量级传递，避免在热路径中频繁创建。使用 WithValue 存储数据时，键应使用未导出类型以防止冲突，并只存储必要的请求范围值，如用户 ID 或追踪 ID。在微服务中，Context 常用于传递分布式追踪信息（如 OpenTelemetry 的 trace ID），帮助监控和调试跨服务调用。然而，过度使用 WithValue 会导致 Context 膨胀，影响性能，因此应谨慎使用。\n\n常见陷阱包括 goroutine 泄漏：如果 goroutine 未正确监听 Context 的取消信号，它可能无限期运行，消耗资源。为避免此问题，所有长时间运行的 goroutine 都应通过 select 语句检查 ctx.Done()，并在收到取消信号时清理资源并退出。此外，不要将 Context 存储在结构体中，而应作为函数参数显式传递，以保持代码的清晰性和可测试性。\n\n最佳实践包括：始终将 Context 作为函数的第一个参数传递；在服务启动时创建根 Context，并在请求处理中派生子 Context；使用 context.WithTimeout 设置合理的超时时间，防止资源被长时间占用；在测试中模拟 Context 行为，如使用 context.WithCancel 创建可控的测试 Context。通过遵循这些原则，可以构建健壮、高效的并发系统。",
+      "id": "prog-2026-09-13",
+      "date": "2026-09-13",
+      "title": "Rust 变量与可变性：所有权的基石",
+      "summary": "理解 Rust 中变量默认不可变的设计哲学，以及如何安全地使用 `mut` 关键字，这是掌握所有权系统的第一步。",
+      "difficulty": "初级",
+      "concept": "在 Rust 中，变量默认是不可变的（immutable）。当你声明一个变量 `let x = 5;` 后，`x` 的值就不能再被改变。尝试给 `x` 重新赋值会导致编译错误。这种设计是 Rust 安全性和并发性的基石，因为它从根本上消除了“意外修改”数据的可能性，让代码更易于推理和维护。如果你确实需要一个变量的值在生命周期内可以改变，你必须在声明时显式地使用 `mut` 关键字标记它为可变（mutable），例如 `let mut y = 5;`。这个关键字就像一个明确的信号，告诉代码的阅读者（包括编译器）：“注意，这个值接下来可能会发生变化”。这强制开发者在思考代码逻辑时就考虑数据的变化，是一种很好的编程习惯。\n\n理解可变性需要结合 Rust 的“所有权”系统来看。在 Rust 中，每一个值都有一个明确的“所有者”（变量）。当所有者离开作用域时，这个值就会被丢弃（自动清理）。这个规则非常简单，但它是 Rust 无需垃圾回收器（GC）就能安全高效管理内存的关键。\n\n值的所有权可以“移动”（move）到另一个变量。例如，当你将一个字符串 `let s1 = String::from(\"hello\");` 赋值给另一个变量 `let s2 = s1;` 时，字符串的所有权就从 `s1` 移动到了 `s2`。此时，`s1` 会立即失效，不能再被使用。这个行为叫做“移动语义”。它防止了多个变量同时尝试释放同一块堆内存（double free），这是许多内存安全问题的根源。\n\n对于像整数、布尔值这样存储在栈上的简单类型，它们会默认执行“复制”（copy）操作，而不是移动。但像 `String`、`Vec` 这样存储在堆上的复杂类型，默认都是移动。要显式地复制一个 `String`，可以使用 `clone()` 方法。\n\n从工程实践来看，这种设计带来了巨大的好处：在编写函数时，你不需要担心传入的参数是否会被函数内部意外修改（除非你明确用 `&mut` 引用传递）。在多线程环境下，Rust 的编译器可以在编译时就阻止“数据竞争”，因为不可变数据可以安全地在线程间共享，而可变数据必须通过同步原语（如 `Mutex`）来保护。虽然刚开始会感觉有点“束缚”，但一旦适应，你会写出更健壮、更少 bug 的代码。",
       "codeExample": {
-        "language": "Go",
-        "code": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"time\"\n)\n\n// worker 函数模拟一个并发任务，监听 Context 的取消信号\nfunc worker(ctx context.Context, id int) {\n\tfor {\n\t\tselect {\n\t\tcase <-ctx.Done():\n\t\t\tfmt.Printf(\"Worker %d: stopped, reason: %v\\n\", id, ctx.Err())\n\t\t\treturn\n\t\tdefault:\n\t\t\t// 模拟工作负载\n\t\t\tfmt.Printf(\"Worker %d: working\\n\", id)\n\t\t\ttime.Sleep(100 * time.Millisecond)\n\t\t}\n\t}\n}\n\nfunc main() {\n\t// 创建一个可取消的根 Context\n\tctx, cancel := context.WithCancel(context.Background())\n\tdefer cancel() // 确保在 main 结束时调用 cancel\n\n\t// 启动多个 worker goroutine，共享同一个 Context\n\tfor i := 0; i < 3; i++ {\n\t\tgo worker(ctx, i)\n\t}\n\n\t// 模拟主函数工作一段时间后取消 Context\n\ttime.Sleep(500 * time.Millisecond)\n\tfmt.Println(\"Main: canceling context\")\n\tcancel() // 取消 Context，所有 worker 将停止\n\n\t// 等待一段时间以观察 goroutine 停止\n\ttime.Sleep(200 * time.Millisecond)\n\tfmt.Println(\"Main: all workers should have stopped\")\n}",
-        "explanation": "- 代码导入了 context、fmt 和 time 包，用于 Context 管理和输出。\n- worker 函数接收 Context 和 ID，通过 select 监听 ctx.Done() 通道：如果 Context 取消，打印停止消息并返回；否则，模拟工作（打印消息并睡眠 100ms）。\n- main 函数中，使用 context.WithCancel 创建一个可取消的 Context，defer cancel 确保在函数退出时清理资源。\n- 循环启动三个 worker goroutine，它们都运行在同一个 Context 下，演示了并发控制。\n- 主 goroutine 睡眠 500ms 后调用 cancel()，取消 Context，这将导致所有 worker 收到取消信号并停止。\n- 最后睡眠 200ms 以确保 worker 有时间响应取消，并打印最终消息。这段代码可直接运行，展示了 Context 如何优雅地管理 goroutine 生命周期。"
+        "language": "Rust",
+        "code": "// 声明一个不可变变量\nlet x = 5;\nprintln!(\"x 的值是：{}\", x);\n\n// 尝试修改不可变变量会导致编译错误，取消下面一行的注释会看到错误\n// x = 6; // 错误：不能对不可变变量 `x` 进行两次可变借用\n\n// 声明一个可变变量\nlet mut y = 5;\nprintln!(\"y 的初始值是：{}\", y);\ny = 所有情节中，变量 y 被修改了，但所有者一直是同一个 y。\nprintln!(\"y 修改后的值是：{}\", y);\n\n// 所有权移动演示\nlet s1 = String::from(\"hello\");\nprintln!(\"s1 的内容是：{}\", s1);\n\n// 将 s1 的所有权移动给 s2\nlet s2 = s1;\nprintln!(\"s2 的内容是：{}\", s2);\n\n// 下面这行取消注释会导致编译错误，因为 s1 的所有权已经移走了\n// println!(\"再次访问 s1：{}\", s1); // 错误：value borrowed here after move\n\n// 使用 clone() 来复制堆上的数据，避免所有权转移\nlet s3 = String::from(\"world\");\nlet s4 = s3.clone(); // s3 和 s4 是两个独立的字符串，拥有各自的数据\nprintln!(\"s3: {}, s4: {}\", s3, s4); // 这里两个变量都仍然有效",
+        "explanation": "1. `let x = 5;` 声明了不可变变量 `x`。\n2. `let mut y = 5;` 声明了可变变量 `y`，并成功修改了它的值。\n3. `let s1 = String::from(\"hello\");` 在堆上分配了一块内存来存储字符串。\n4. `let s2 = s1;` 将 `s1` 的所有权转移给了 `s2`，`s1` 随即失效。`s2` 现在是那块堆内存的唯一所有者。\n5. `let s4 = s3.clone();` 显式地克隆了堆上的数据，创建了一个完全相同的副本。现在 `s3` 和 `s4` 都有效，但指向不同的内存地址。"
       },
       "keyPoints": [
-        "Context 是 Go 并发编程的基石，用于传递取消信号、超时和请求范围值，避免资源泄漏。",
-        "始终将 Context 作为函数的第一个参数传递，并命名为 ctx，以保持代码一致性。",
-        "使用 context.WithCancel、WithTimeout 或 WithDeadline 创建派生 Context，确保取消信号向下传播。",
-        "在 goroutine 中通过 select 语句监听 ctx.Done()，以便在 Context 取消时及时清理资源并退出。",
-        "优化 Context 使用：避免过度存储数据，使用 WithValue 只传递必要信息，并在微服务中用于分布式追踪。"
+        "Rust 变量默认是不可变的，这是其安全性设计的核心。",
+        "使用 `mut` 关键字可以显式声明变量为可变。",
+        "所有权系统确保每个值只有一个所有者，所有者离开作用域时值被自动丢弃。",
+        "将一个值赋给另一个变量时，所有权会发生“移动”（move），原变量失效。",
+        "对于实现了 `Copy` trait 的简单类型（如整数），赋值操作是复制，而非移动。复杂类型需要调用 `.clone()` 进行显式复制。"
       ],
       "exercise": {
-        "description": "编写一个函数 fetchMultipleResources，它接收一个 Context 和一个 URL 列表，并发地获取这些资源（模拟 HTTP 请求）。使用 Context 控制整体超时，如果超时则取消所有进行中的请求，并返回错误或部分结果。考虑使用 context.WithTimeout 和错误处理。",
-        "hint": "首先创建一个有超时的子 Context，然后为每个 URL 启动一个 goroutine 进行获取。在每个 goroutine 中，检查 Context 的取消状态，如果取消则返回错误。使用 sync.WaitGroup 或 channel 收集结果，并处理超时场景。",
+        "description": "编写一个 Rust 程序，其中包含两个 `String` 类型的变量 `a` 和 `b`。尝试将 `a` 的内容赋值给 `b` 后，分别打印 `a` 和 `b`。然后，通过克隆的方式再次实现相同的功能，使得打印 `a` 和 `b` 都能成功。",
+        "hint": "第一次尝试直接赋值时，编译器会报错。思考如何使用 `.clone()` 来避免所有权的转移。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "在 Go 中，创建一个带有超时的 Context 使用函数 ____。",
-            "codeContext": "ctx, cancel := context.____(context.Background(), 5*time.Second)",
+            "question": "Rust 中，默认情况下变量是 ______ 的。",
+            "codeContext": "let x = 10;",
             "segments": [
               {
                 "type": "text",
-                "content": "ctx, cancel := context.",
+                "content": "let x = 10; // ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,47 +42,47 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "WithCancel",
-                  "WithTimeout",
-                  "WithValue",
-                  "Background"
+                  "可变（mutable）",
+                  "不可变（immutable）",
+                  "私有（private）",
+                  "静态（static）"
                 ],
-                "correctAnswer": "WithTimeout"
+                "correctAnswer": "不可变（immutable）"
               }
             ],
             "options": null,
-            "correctAnswer": "WithTimeout",
-            "explanation": "context.WithTimeout 用于创建一个在指定持续时间后自动取消的 Context，返回新 Context 和 cancel 函数。它等价于 context.WithDeadline 在当前时间加上超时时间。"
+            "correctAnswer": "不可变（immutable）",
+            "explanation": "Rust 的变量默认是不可变的，这是其安全模型的一部分，需要使用 `mut` 关键字显式声明为可变。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "以下关于 Context 的描述，哪一项是错误的？",
-            "codeContext": null,
+            "question": "当执行 `let s2 = s1;` 且 `s1` 是一个 `String` 时，会发生什么？",
+            "codeContext": "let s1 = String::from(\"text\");\nlet s2 = s1;",
             "segments": null,
             "options": [
-              "Context 是 goroutine 安全的，可以被多个 goroutine 共享",
-              "取消 Context 会传播到所有子 Context",
-              "Context 应该存储在结构体中以供后续使用",
-              "使用 WithValue 时应使用未导出的键类型"
+              "`s1` 和 `s2` 指向相同的堆内存地址。",
+              "`s1` 的所有权移动到 `s2`，`s1` 失效。",
+              "`s1` 的内容被复制到了 `s2`，两者独立。",
+              "代码会产生编译错误，因为 `String` 不能赋值。"
             ],
-            "correctAnswer": "Context 应该存储在结构体中以供后续使用",
-            "explanation": "在 Go 中，Context 不应存储在结构体中，而应作为函数参数显式传递，以避免隐式依赖和难以追踪的生命周期问题。这是 Go 官方文档推荐的最佳实践。"
+            "correctAnswer": "`s1` 的所有权移动到 `s2`，`s1` 失效。",
+            "explanation": "`String` 是一个拥有堆上数据的类型。在赋值时，所有权（包括栈上的指针、长度、容量信息）会从 `s1` 移动到 `s2`，`s1` 随即变为无效状态，以防止二次释放。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码输出什么？",
-            "codeContext": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"time\"\n)\n\nfunc main() {\n\tctx, cancel := context.WithTimeout(context.Background(), 100*time.Millisecond)\n\tdefer cancel()\n\n\tselect {\n\tcase <-ctx.Done():\n\t\tfmt.Println(\"Context done:\", ctx.Err())\n\tcase <-time.After(200 * time.Millisecond):\n\t\tfmt.Println(\"Time after\")\n\t}\n}",
+            "question": "以下代码会输出什么？",
+            "codeContext": "fn main() {\n    let mut a = 3;\n    let b = a;\n    a = 5;\n    println!(\"a: {}, b: {}\", a, b);\n}",
             "segments": null,
             "options": [
-              "输出 Context done: context deadline exceeded",
-              "输出 Time after",
-              "没有输出，程序死锁",
-              "输出 Context done: context canceled"
+              "a: 3, b: 3",
+              "a: 5, b: 3",
+              "a: 5, b: 5",
+              "编译错误：不能修改变量 `a`"
             ],
-            "correctAnswer": "输出 Context done: context deadline exceeded",
-            "explanation": "Context 设置了 100ms 的超时，而 select 语句中有一个 200ms 的 time.After 通道。由于 Context 超时时间更短，ctx.Done() 通道会先关闭，触发第一个 case，打印 \"Context done: context deadline exceeded\"。"
+            "correctAnswer": "a: 5, b: 3",
+            "explanation": "`a` 被声明为可变变量 (`mut`)，而 `b` 是不可变的。整数 `3` 是实现了 `Copy` trait 的类型，所以 `let b = a;` 执行的是复制操作，`b` 获得了 `a` 当前值的副本（3）。随后，`a` 被修改为 5，但 `b` 的值不受影响。因此输出 `a: 5, b: 3`。"
           }
         ]
       }

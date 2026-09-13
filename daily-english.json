@@ -1,181 +1,170 @@
 {
-  "date": "2026-09-12",
+  "date": "2026-09-13",
   "content": {
-    "id": "en-2026-09-12",
-    "date": "2026-09-12",
-    "topic": "文化与旅行",
+    "id": "en-2026-09-13",
+    "date": "2026-09-13",
+    "topic": "健康与生活",
     "newsHighlights": [
       {
-        "title": "Xi: Build more 'China Services' brands",
+        "title": "President Xi Emphasizes Mutual Learning in Meeting with PM Modi",
         "source": "China Daily",
-        "summary": "President Xi Jinping called for advancing the high-quality development and international branding of China's service sector.",
-        "translation": "习近平主席呼吁推动中国服务业高质量发展，并建立国际品牌形象。",
+        "summary": "Chinese President Xi Jinping and Indian PM Narendra Modi met, highlighting that the two nations can learn from each other's strengths.",
+        "translation": "中国国家主席习近平与印度总理纳伦德拉·莫迪会晤，强调中印两国可以从彼此的优势中学习。",
         "keyWords": [
-          "China Services",
-          "high-quality development",
-          "brand"
+          "mutual learning",
+          "strengths",
+          "sidelines"
         ]
       },
       {
-        "title": "CIFTIS 2026: Which sector takes the lead over next 5 years?",
-        "source": "China Daily",
-        "summary": "The China International Fair for Trade in Services 2026 in Beijing spotlights future-leading sectors within the 15th Five-Year Plan period.",
-        "translation": "2026年中国国际服务贸易交易会在北京举行，重点探讨在‘十五五’规划期间将引领未来的行业。",
+        "title": "BRICS Cooperation: A Key Platform for Emerging Markets",
+        "source": "CGTN",
+        "summary": "President Xi hailed the BRICS cooperation mechanism as the world's most influential platform for cooperation among emerging markets.",
+        "translation": "习近平主席赞扬金砖国家合作机制是世界上最重要、最有影响力的新兴市场国家合作平台。",
         "keyWords": [
-          "CIFTIS",
-          "trade in services",
-          "sector"
+          "cooperation mechanism",
+          "influential",
+          "platform"
         ]
       },
       {
-        "title": "China shakes, stirs Asia's best bars list",
+        "title": "Global South's Growing Role in World Stability",
         "source": "China Daily",
-        "summary": "Chinese bartenders and cocktail bars are gaining increasing recognition and climbing the ranks of Asia's top lists.",
-        "translation": "中国调酒师和鸡尾酒吧正获得越来越多的认可，在亚洲顶级榜单上排名不断攀升。",
+        "summary": "The voice and role of the Global South, represented by BRICS, are expanding to foster international cooperation and economic stability.",
+        "translation": "以金砖国家为代表的全球南方的声音和作用正在扩大，以促进国际合作与经济稳定。",
         "keyWords": [
-          "bartenders",
-          "cocktail bars",
-          "rankings"
-        ]
-      },
-      {
-        "title": "The Pinglu Canal: Through the Mountains to the Sea",
-        "source": "China Daily",
-        "summary": "This report details the construction of the major Pinglu Canal infrastructure project connecting inland waterways to the sea.",
-        "translation": "该报道详细介绍了连接内河水道与大海的重大基础设施项目——平陆运河的建设。",
-        "keyWords": [
-          "Pinglu Canal",
-          "infrastructure",
-          "inland waterways"
+          "Global South",
+          "expanding",
+          "stability"
         ]
       }
     ],
     "quote": {
-      "quote": "Twenty years from now you will be more disappointed by the things you didn't do than by the ones you did do. So throw off the bowlines. Sail away from the safe harbor. Catch the trade winds in your sails. Explore. Dream. Discover.",
-      "author": "Mark Twain",
-      "translation": "二十年后，让你感到失望的不是你做过的事，而是你没做的事。所以，解开绳索，驶离安全的港湾，扬帆乘风。去探索，去梦想，去发现。",
-      "explanation": "这句名言鼓励人们勇于行动、探索世界，不要因犹豫而错过体验生活和文化的机会，与旅行和开拓精神的主题完美契合。"
+      "quote": "It is health that is real wealth and not pieces of gold and silver.",
+      "author": "Mahatma Gandhi",
+      "translation": "健康才是真正的财富，而不是金银财宝。",
+      "explanation": "这句名言与今日新闻中讨论的国家合作、经济发展形成对比，提醒个人和国家，真正的根基在于健康，这也是稳定与发展的基石。"
     },
     "vocabulary": [
+      {
+        "word": "sidelines",
+        "phonetic": "/ˈsaɪdlaɪnz/",
+        "partOfSpeech": "n.",
+        "definition": "边线；（某事的）次要方面，外围活动",
+        "example": "The leaders met on the sidelines of the summit to discuss health cooperation.",
+        "translation": "领导人在峰会间隙会晤，讨论健康合作。",
+        "newsContext": "出自新闻标题 'Xi meets Modi in New Delhi on the sidelines of the BRICS summit'。"
+      },
+      {
+        "word": "mechanism",
+        "phonetic": "/ˈmekənɪzəm/",
+        "partOfSpeech": "n.",
+        "definition": "机制；机械装置；（自然现象）过程",
+        "example": "A robust cooperation mechanism is essential for promoting public health.",
+        "translation": "一个强有力的合作机制对于促进公共卫生至关重要。",
+        "newsContext": "出自新闻标题 'BRICS cooperation mechanism'。"
+      },
+      {
+        "word": "influential",
+        "phonetic": "/ˌɪnfluˈenʃl/",
+        "partOfSpeech": "adj.",
+        "definition": "有影响的，有权势的",
+        "example": "Lifestyle choices have an influential effect on long-term health.",
+        "translation": "生活方式的选择对长期健康有重大影响。",
+        "newsContext": "出自新闻描述 'the world's most influential platform'。"
+      },
+      {
+        "word": "platform",
+        "phonetic": "/ˈplætfɔːm/",
+        "partOfSpeech": "n.",
+        "definition": "平台；讲台；站台",
+        "example": "Social media can be a positive platform for sharing health tips.",
+        "translation": "社交媒体可以成为分享健康贴士的正面平台。",
+        "newsContext": "出自新闻描述 'the most influential platform for cooperation'。"
+      },
+      {
+        "word": "expanding",
+        "phonetic": "/ɪkˈspændɪŋ/",
+        "partOfSpeech": "v. (现在分词/动名词)",
+        "definition": "扩大；扩展；发展",
+        "example": "Expanding our knowledge of nutrition is key to a healthy life.",
+        "translation": "扩展我们的营养知识是健康生活的关键。",
+        "newsContext": "出自新闻标题 'Expanding voice of Global South'。"
+      },
+      {
+        "word": "cooperation",
+        "phonetic": "/koʊˌɒpəˈreɪʃn/",
+        "partOfSpeech": "n.",
+        "definition": "合作，协作",
+        "example": "International cooperation is vital for addressing global health challenges.",
+        "translation": "国际合作对于应对全球健康挑战至关重要。",
+        "newsContext": "出自多条新闻，如 'fostering cooperation among emerging markets'。"
+      },
+      {
+        "word": "stability",
+        "phonetic": "/stəˈbɪləti/",
+        "partOfSpeech": "n.",
+        "definition": "稳定，稳固",
+        "example": "Financial stability allows families to invest in better healthcare.",
+        "translation": "财务稳定使家庭能够投资于更好的医疗保健。",
+        "newsContext": "出自新闻标题 'BRICS' role in economic stability'。"
+      },
+      {
+        "word": "emerging",
+        "phonetic": "/ɪˈmɜːrdʒɪŋ/",
+        "partOfSpeech": "adj.",
+        "definition": "新兴的，新成立的",
+        "example": "Emerging technologies offer new solutions for personalized medicine.",
+        "translation": "新兴技术为个性化医疗提供了新方案。",
+        "newsContext": "出自新闻描述 'emerging markets'。"
+      },
+      {
+        "word": "confidence",
+        "phonetic": "/ˈkɑːnfɪdəns/",
+        "partOfSpeech": "n.",
+        "definition": "信心；信任",
+        "example": "Gaining confidence in managing your health empowers you.",
+        "translation": "增强管理自身健康的信心能赋予你力量。",
+        "newsContext": "出自新闻标题 'US firms display new confidence in China'。"
+      },
       {
         "word": "brand",
         "phonetic": "/brænd/",
         "partOfSpeech": "n.",
         "definition": "品牌；商标",
-        "example": "President Xi has called for the building of more 'China Services' brands.",
-        "translation": "习近平主席呼吁打造更多‘中国服务’品牌。",
-        "newsContext": "来自新闻标题《Xi: Build more 'China Services' brands》，指中国服务业需要建立具有国际影响力的品牌。"
-      },
-      {
-        "word": "sector",
-        "phonetic": "/ˈsɛktər/",
-        "partOfSpeech": "n.",
-        "definition": "（经济的）部门，行业；领域",
-        "example": "CIFTIS 2026 explores which service sector may lead development over the next five years.",
-        "translation": "2026年服贸会探讨未来五年哪个服务行业可能引领发展。",
-        "newsContext": "来自新闻《CIFTIS 2026: Which sector takes the lead...》，特指服务贸易中的不同细分领域。"
-      },
-      {
-        "word": "infrastructure",
-        "phonetic": "/ˈɪnfrəstrʌktʃər/",
-        "partOfSpeech": "n.",
-        "definition": "基础设施（如交通、通讯、能源设施）",
-        "example": "The Pinglu Canal is a major infrastructure project for connecting inland regions to the sea.",
-        "translation": "平陆运河是一项连接内陆地区与海洋的重大基础设施工程。",
-        "newsContext": "来自新闻《The Pinglu Canal: Through the Mountains to the Sea》，描述运河作为基础设施项目。"
-      },
-      {
-        "word": "diverse",
-        "phonetic": "/daɪˈvɜːrs/",
-        "partOfSpeech": "adj.",
-        "definition": "多种多样的；多元化的",
-        "example": "China's rich and diverse cultural offerings attract millions of tourists each year.",
-        "translation": "中国丰富多元的文化体验每年吸引数百万游客。",
-        "newsContext": "与新闻主题'文化与旅行'紧密相关，体现在中国旅游产品和服务的多样性上。"
-      },
-      {
-        "word": "cultural",
-        "phonetic": "/ˈkʌltʃərəl/",
-        "partOfSpeech": "adj.",
-        "definition": "文化的；与文化有关的",
-        "example": "Cultural exchange programs are vital for fostering mutual understanding among nations.",
-        "translation": "文化交流项目对于促进国家间的相互理解至关重要。",
-        "newsContext": "在新闻《BRICS: Building Bridges》等涉及国际合作与交流的报道中隐含此概念。"
-      },
-      {
-        "word": "summit",
-        "phonetic": "/ˈsʌmɪt/",
-        "partOfSpeech": "n.",
-        "definition": "峰会；最高级会议",
-        "example": "President Xi will attend the BRICS summit in New Delhi to discuss global cooperation.",
-        "translation": "习近平主席将出席在新德里举行的金砖国家峰会，讨论全球合作。",
-        "newsContext": "来自新闻《Xi to attend BRICS summit in New Delhi》，指国家领导人参加的高层会议。"
-      },
-      {
-        "word": "practical",
-        "phonetic": "/ˈpræktɪkəl/",
-        "partOfSpeech": "adj.",
-        "definition": "实用的；实践的",
-        "example": "BRICS cooperation aims to deliver more practical benefits to the peoples.",
-        "translation": "金砖合作旨在为各国人民带来更多实实在在的利益。",
-        "newsContext": "来自新闻《BRICS: Building Bridges》，形容合作带来的实际好处。"
-      },
-      {
-        "word": "canal",
-        "phonetic": "/kəˈnæl/",
-        "partOfSpeech": "n.",
-        "definition": "运河；水道",
-        "example": "The construction of the Pinglu Canal will significantly boost regional logistics and tourism.",
-        "translation": "平陆运河的建设将显著促进区域物流和旅游业。",
-        "newsContext": "来自新闻《The Pinglu Canal: Through the Mountains to the Sea》，核心报道对象。"
-      },
-      {
-        "word": "bar",
-        "phonetic": "/bɑːr/",
-        "partOfSpeech": "n.",
-        "definition": "酒吧；吧台",
-        "example": "The list showcases the best cocktail bars across the Asian continent.",
-        "translation": "该榜单展示了整个亚洲大陆最棒的鸡尾酒吧。",
-        "newsContext": "来自新闻《China shakes, stirs Asia's best bars list》，指提供饮品和社交场所的酒吧。"
-      },
-      {
-        "word": "recognition",
-        "phonetic": "/ˌrɛkəɡˈnɪʃən/",
-        "partOfSpeech": "n.",
-        "definition": "认可；赏识",
-        "example": "Chinese bartenders are gaining increasing recognition on the international stage.",
-        "translation": "中国调酒师在国际舞台上正获得越来越多的认可。",
-        "newsContext": "来自新闻《China shakes, stirs Asia's best bars list》，描述中国调酒行业获得的赞誉和地位。"
+        "example": "A trusted healthcare brand can significantly impact patient well-being.",
+        "translation": "一个值得信赖的健康品牌能显著影响患者的福祉。",
+        "newsContext": "出自新闻标题 'Build more China Services brands'。"
       }
     ],
     "pattern": {
-      "pattern": "Subject + call(s) for + (sb/sth) + to do sth",
-      "example": "President Xi Jinping has called for the breaking of new ground in the high-quality development of China's service sector.",
-      "translation": "习近平主席呼吁在中国服务业高质量发展中开拓新局面。",
-      "usage": "这是一个正式的倡议或呼吁句型，常用于新闻、演讲和政策文件中，表示号召某人或某方采取行动。"
+      "pattern": "主语 + has become + 形容词 + 名词",
+      "example": "The BRICS cooperation mechanism has become the world's most influential platform.",
+      "translation": "金砖国家合作机制已成为世界上最具影响力的平台。",
+      "usage": "此句型用于描述某事物经过一段时间发展后达到了新的状态或地位。在健康领域，可用于描述习惯、观念或技术的演变，例如：'Mindfulness has become an essential tool for stress management.'"
     },
     "grammar": {
-      "title": "动名词短语作主语",
-      "explanation": "在正式英语和新闻英语中，常用动名词短语（v-ing phrase）作为句子的主语，以强调一个动作或过程。",
+      "title": "现在完成时 (Present Perfect Tense)",
+      "explanation": "现在完成时用于表示过去发生的动作对现在的影响或结果，或表示从过去持续到现在的状态。在新闻中，常用于总结成就、进展或影响。",
       "examples": [
-        "Breaking new ground in service sector development is a key national strategy.",
-        "Building more 'China Services' brands requires innovation and quality control."
+        "Xi summarizes BRICS development achievements over the past 20 years.",
+        "The BRICS cooperation mechanism has become the world's most influential platform."
       ]
     },
     "pronunciation": {
-      "word": "brand",
-      "phonetic": "/brænd/",
-      "tips": "注意中间的 /æ/ 音，发音时嘴巴张开，舌位较低，类似中文'安'但更短促有力。结尾的 /d/ 音要轻。",
+      "word": "BRICS",
+      "phonetic": "/brɪks/",
+      "tips": "这是一个首字母缩略词，读作一个单词，发音类似 'bricks'。注意 /r/ 音要清晰，末尾的 /s/ 是清辅音。",
       "examples": [
-        "Building a strong international brand takes years of effort.",
-        "This brand is synonymous with quality and luxury."
+        "The BRICS summit focuses on cooperation among emerging economies.",
+        "Membership in BRICS offers significant economic advantages."
       ]
     },
     "reading": {
-      "title": "New Horizons: China's Service Sector Takes Center Stage",
-      "content": "China is making significant strides in elevating its service sector to global prominence. At the recent CIFTIS 2026 fair in Beijing, discussions focused on which service industries will lead growth during the 15th Five-Year Plan period. This push for high-quality development aligns with President Xi Jinping's call to build more 'China Services' brands. Beyond traditional trade, China's cultural influence is also rising. The country's diverse culinary and mixology scene is now making waves, with Chinese bars and bartenders climbing Asia's best-of lists. This cultural vibrancy complements major infrastructure projects like the Pinglu Canal, designed to connect inland resources with the sea, boosting both logistics and tourism. Together, these developments in branding, infrastructure, and cultural exchange are crafting a new narrative for China on the world stage, inviting more global interaction and exploration.",
-      "translation": "中国正在大力提升其服务业的全球影响力。在北京举行的2026年服贸会上，讨论的焦点是'十五五'规划期间哪些服务行业将引领增长。这一推动高质量发展的举措，与习近平主席关于打造更多'中国服务'品牌的号召一脉相承。除了传统贸易，中国的文化影响力也在上升。中国多样化的餐饮和调酒界正掀起波澜，中国的酒吧和调酒师在亚洲最佳榜单上的排名不断攀升。这种文化活力与平陆运河等重大基础设施项目相辅相成。平陆运河旨在连接内陆资源与海洋，促进物流和旅游业。总的来说，这些在品牌建设、基础设施和文化交流方面的发展，正在全球舞台上塑造中国的新叙事，邀请更多的全球互动与探索。",
-      "sourceNote": "本文综合改编自今日有关CIFTIS、'中国服务'品牌建设、平陆运河以及中国酒吧业发展的多条新闻报道。"
+      "title": "Finding Stability in a Connected World: Lessons from International Cooperation",
+      "content": "In an increasingly interconnected world, nations face shared challenges, much like individuals navigating their personal health journeys. The recent BRICS summit highlighted how cooperation among emerging markets can foster economic stability, a principle that resonates deeply with personal well-being. Just as countries build platforms for mutual learning, individuals can build support systems for healthier lifestyles. The growing voice of the Global South reminds us that diverse perspectives are crucial for finding sustainable solutions. Similarly, incorporating varied wellness practices can lead to a more balanced life. Ultimately, whether between nations or within ourselves, standing on the right side of history means choosing collaboration over isolation and long-term stability over short-term gains. Building a healthier future, for our planet and our bodies, requires this same collective spirit.",
+      "translation": "在一个日益互联互通的世界里，国家面临着共同的挑战，这与个人规划自身健康之旅颇为相似。最近的金砖峰会强调了新兴市场国家之间的合作如何能够促进经济稳定，这一原则与个人福祉息息相关。正如国家之间建立相互学习的平台，个人也可以建立支持系统以养成更健康的生活方式。全球南方日益增长的声音提醒我们，多元的观点对于寻找可持续的解决方案至关重要。同样，融入不同的健康实践也能带来更平衡的生活。最终，无论是在国家之间还是我们自身，站在历史正确的一边意味着选择合作而非孤立，选择长期稳定而非短期利益。为我们共同的星球和我们自身的身体构建一个更健康的未来，正需要这种集体的精神。",
+      "sourceNote": "本文基于新闻素材中关于金砖国家合作、全球经济稳定以及新兴市场协作的报道进行改写，并融入健康生活的主题。"
     }
   }
 }
