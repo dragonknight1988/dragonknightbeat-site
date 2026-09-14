@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-13",
+  "date": "2026-09-14",
   "contents": [
     {
-      "id": "prog-2026-09-13",
-      "date": "2026-09-13",
-      "title": "Rust 变量与可变性：所有权的基石",
-      "summary": "理解 Rust 中变量默认不可变的设计哲学，以及如何安全地使用 `mut` 关键字，这是掌握所有权系统的第一步。",
-      "difficulty": "初级",
-      "concept": "在 Rust 中，变量默认是不可变的（immutable）。当你声明一个变量 `let x = 5;` 后，`x` 的值就不能再被改变。尝试给 `x` 重新赋值会导致编译错误。这种设计是 Rust 安全性和并发性的基石，因为它从根本上消除了“意外修改”数据的可能性，让代码更易于推理和维护。如果你确实需要一个变量的值在生命周期内可以改变，你必须在声明时显式地使用 `mut` 关键字标记它为可变（mutable），例如 `let mut y = 5;`。这个关键字就像一个明确的信号，告诉代码的阅读者（包括编译器）：“注意，这个值接下来可能会发生变化”。这强制开发者在思考代码逻辑时就考虑数据的变化，是一种很好的编程习惯。\n\n理解可变性需要结合 Rust 的“所有权”系统来看。在 Rust 中，每一个值都有一个明确的“所有者”（变量）。当所有者离开作用域时，这个值就会被丢弃（自动清理）。这个规则非常简单，但它是 Rust 无需垃圾回收器（GC）就能安全高效管理内存的关键。\n\n值的所有权可以“移动”（move）到另一个变量。例如，当你将一个字符串 `let s1 = String::from(\"hello\");` 赋值给另一个变量 `let s2 = s1;` 时，字符串的所有权就从 `s1` 移动到了 `s2`。此时，`s1` 会立即失效，不能再被使用。这个行为叫做“移动语义”。它防止了多个变量同时尝试释放同一块堆内存（double free），这是许多内存安全问题的根源。\n\n对于像整数、布尔值这样存储在栈上的简单类型，它们会默认执行“复制”（copy）操作，而不是移动。但像 `String`、`Vec` 这样存储在堆上的复杂类型，默认都是移动。要显式地复制一个 `String`，可以使用 `clone()` 方法。\n\n从工程实践来看，这种设计带来了巨大的好处：在编写函数时，你不需要担心传入的参数是否会被函数内部意外修改（除非你明确用 `&mut` 引用传递）。在多线程环境下，Rust 的编译器可以在编译时就阻止“数据竞争”，因为不可变数据可以安全地在线程间共享，而可变数据必须通过同步原语（如 `Mutex`）来保护。虽然刚开始会感觉有点“束缚”，但一旦适应，你会写出更健壮、更少 bug 的代码。",
+      "id": "prog-2026-09-14",
+      "date": "2026-09-14",
+      "title": "Kotlin Flow 基础与数据流操作",
+      "summary": "学习使用 Kotlin Flow 处理异步数据流，掌握创建、转换和收集操作。",
+      "difficulty": "中级",
+      "concept": "Kotlin Flow 是协程库里处理异步数据序列的强大工具。它本质上是一个冷流（Cold Stream），这意味着只有当有收集器（Collector）开始收集（collect）时，数据生产代码才会执行。这种设计与 RxJava 的 Observable 类似，但更加轻量级且深度整合了 Kotlin 协程。\n\nFlow 的核心优势在于其声明式的 API 和一系列强大的中间操作符（Intermediate Operators）。例如，`map`、`filter`、`transform` 可以对数据进行转换；`take`、`drop` 可以限制数据量；`debounce`、`conflate` 则可以处理背压问题。这些操作符链式调用，使得数据处理逻辑清晰且易于组合。\n\n上下文保存是 Flow 的一个重要特性。默认情况下，上游（数据生产方）的代码在下游收集器所在的协程上下文中执行。这意味着如果收集器在主线程，那么 Flow 的构建器 `flow { }` 中的代码也会在主线程运行。通过 `flowOn` 操作符，我们可以显式地指定上游代码运行在哪个调度器（Dispatcher）上，例如 `Dispatchers.IO`，从而实现线程切换，而不影响下游。\n\n生命周期管理与异常处理是实际使用中的关键。`collect` 是一个挂起函数，它会挂起当前协程直到 Flow 完成。我们通常在 `launch` 或 `lifecycleScope`（Android）中启动收集。Flow 提供了 `catch` 操作符来捕获上游发生的异常，以及 `onCompletion` 操作符来在 Flow 完成（无论成功还是异常）时执行清理操作。这些特性使得构建健壮的异步数据流成为可能。\n\n在实际工程中，Flow 非常适合处理一系列事件，如来自 UI 的用户操作、数据库的实时更新（通过 Room 的 Flow 支持）、或网络请求的阶段性结果。它天然支持取消：当收集器所在的协程被取消时，整个 Flow 管道也会被安全地取消，避免了资源泄漏。",
       "codeExample": {
-        "language": "Rust",
-        "code": "// 声明一个不可变变量\nlet x = 5;\nprintln!(\"x 的值是：{}\", x);\n\n// 尝试修改不可变变量会导致编译错误，取消下面一行的注释会看到错误\n// x = 6; // 错误：不能对不可变变量 `x` 进行两次可变借用\n\n// 声明一个可变变量\nlet mut y = 5;\nprintln!(\"y 的初始值是：{}\", y);\ny = 所有情节中，变量 y 被修改了，但所有者一直是同一个 y。\nprintln!(\"y 修改后的值是：{}\", y);\n\n// 所有权移动演示\nlet s1 = String::from(\"hello\");\nprintln!(\"s1 的内容是：{}\", s1);\n\n// 将 s1 的所有权移动给 s2\nlet s2 = s1;\nprintln!(\"s2 的内容是：{}\", s2);\n\n// 下面这行取消注释会导致编译错误，因为 s1 的所有权已经移走了\n// println!(\"再次访问 s1：{}\", s1); // 错误：value borrowed here after move\n\n// 使用 clone() 来复制堆上的数据，避免所有权转移\nlet s3 = String::from(\"world\");\nlet s4 = s3.clone(); // s3 和 s4 是两个独立的字符串，拥有各自的数据\nprintln!(\"s3: {}, s4: {}\", s3, s4); // 这里两个变量都仍然有效",
-        "explanation": "1. `let x = 5;` 声明了不可变变量 `x`。\n2. `let mut y = 5;` 声明了可变变量 `y`，并成功修改了它的值。\n3. `let s1 = String::from(\"hello\");` 在堆上分配了一块内存来存储字符串。\n4. `let s2 = s1;` 将 `s1` 的所有权转移给了 `s2`，`s1` 随即失效。`s2` 现在是那块堆内存的唯一所有者。\n5. `let s4 = s3.clone();` 显式地克隆了堆上的数据，创建了一个完全相同的副本。现在 `s3` 和 `s4` 都有效，但指向不同的内存地址。"
+        "language": "Kotlin",
+        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.flow.*\nimport kotlin.random.Random\n\n// 模拟一个从网络获取用户数据的挂起函数\nsuspend fun fetchUserProfileFromNetwork(userId: Int): String {\n    delay(1000) // 模拟网络延迟\n    if (Random.nextFloat() < 0.3f) { // 30%的模拟失败率\n        throw RuntimeException(\"Network error for user $userId\")\n    }\n    return \"User_$userId_Data: ${Random.nextInt()}\"\n}\n\n// 创建一个发射用户数据的 Flow\nfun getUserProfileFlow(userId: Int): Flow<String> = flow {\n    println(\"Flow started on thread: ${Thread.currentThread().name}\")\n    val rawData = fetchUserProfileFromNetwork(userId)\n    emit(rawData) // 发射原始数据\n    val processedData = rawData.uppercase() // 简单处理\n    emit(processedData) // 发射处理后的数据\n}.flowOn(Dispatchers.IO) // 指定上游（数据生产）在IO线程执行\n\nfun main() = runBlocking {\n    println(\"Collecting on thread: ${Thread.currentThread().name}\")\n    \n    getUserProfileFlow(42)\n        .catch { e -> // 捕获上游异常\n            println(\"Caught error: ${e.message}\")\n            emit(\"Default_Fallback_Data\") // 发射备用数据\n        }\n        .onCompletion { cause -> // 完成时（无论成功或失败）\n            println(\"Flow completed. Cause: ${cause?.message ?: \"Success\"}\")\n        }\n        .collect { data -> // 开始收集\n            println(\"Received on ${Thread.currentThread().name}: $data\")\n        }\n}",
+        "explanation": "1. `fetchUserProfileFromNetwork`: 一个模拟网络请求的挂起函数，有延迟和随机失败。\n2. `getUserProfileFlow`: 使用 `flow { }` 构建器创建一个 Flow。内部调用模拟函数获取数据，并使用 `emit()` 发射值。`.flowOn(Dispatchers.IO)` 确保数据生产（从 `fetchUserProfileFromNetwork` 到第一个 `emit`）在 IO 线程池执行。\n3. 在 `main` 中：使用 `runBlocking` 启动一个协程作用域。\n4. `getUserProfileFlow(42)` 返回一个 Flow 对象，但此时并不执行。\n5. `.catch { }` 操作符处理上游 `flow { }` 中可能抛出的任何异常，并可以发射一个备用值。\n6. `.onCompletion { }` 操作符在 Flow 正常结束或异常结束时被调用，用于日志或清理。\n7. `.collect { }` 终端操作符启动数据收集。它是一个挂起函数，在 `runBlocking` 的协程中执行。此时，`flow { }` 中的代码才开始执行。收集到的数据在 `collect` 所在的线程（这里是主线程）处理。\n8. `flowOn` 的效果：注意打印的线程信息，上游工作在 DefaultDispatcher-worker（IO），而下游 `collect` 在 main 线程。"
       },
       "keyPoints": [
-        "Rust 变量默认是不可变的，这是其安全性设计的核心。",
-        "使用 `mut` 关键字可以显式声明变量为可变。",
-        "所有权系统确保每个值只有一个所有者，所有者离开作用域时值被自动丢弃。",
-        "将一个值赋给另一个变量时，所有权会发生“移动”（move），原变量失效。",
-        "对于实现了 `Copy` trait 的简单类型（如整数），赋值操作是复制，而非移动。复杂类型需要调用 `.clone()` 进行显式复制。"
+        "Flow 是冷流，只有 `collect` 时才开始执行，适合按需请求数据。",
+        "使用 `map`、`filter` 等操作符进行声明式、链式的数据转换。",
+        "`flowOn` 操作符用于改变上游代码的协程上下文（调度器），是实现线程切换的关键。",
+        "使用 `catch` 操作符处理 Flow 内的异常，比在 `collect` 中 try-catch 更优雅。",
+        "Flow 与协程生命周期绑定，收集器协程取消时 Flow 管道自动取消，防止泄漏。"
       ],
       "exercise": {
-        "description": "编写一个 Rust 程序，其中包含两个 `String` 类型的变量 `a` 和 `b`。尝试将 `a` 的内容赋值给 `b` 后，分别打印 `a` 和 `b`。然后，通过克隆的方式再次实现相同的功能，使得打印 `a` 和 `b` 都能成功。",
-        "hint": "第一次尝试直接赋值时，编译器会报错。思考如何使用 `.clone()` 来避免所有权的转移。",
+        "description": "创建一个函数 `numbersWithRetry`，它返回一个 Flow，依次发射 1 到 5 的数字。但在发射数字 3 时，模拟一个瞬时错误（抛出 `IllegalStateException`）。要求：使用 `retryWhen` 或 `catch` 操作符实现重试逻辑——如果遇到该特定异常，则重试当前发射（即重新尝试发射数字 3），最多重试 2 次。如果重试失败，则跳过错误继续发射后续数字（4, 5）。",
+        "hint": "1. 使用 `flow { }` 构建器，在循环中发射数字，对数字 3 做特殊判断抛出异常。\n2. 使用 `retryWhen { cause, attempt -> ... }` 操作符。当异常是 `IllegalStateException` 且尝试次数小于 2 时，返回 `true` 进行重试。\n3. 或者，也可以考虑使用 `catch` 操作符捕获异常后，尝试使用 `emitAll` 发射一个重新执行的 Flow（但需要注意循环）。\n4. 确保使用 `onEach` 打印出每次发射的数字，以便观察效果。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "Rust 中，默认情况下变量是 ______ 的。",
-            "codeContext": "let x = 10;",
+            "question": "在创建 Flow 时，发射一个值到数据流中的函数是？",
+            "codeContext": "val myFlow = flow {\n    // 在这里发射一个值\n    _____(value)\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "let x = 10; // ",
+                "content": "在创建 Flow 时，发射一个值到数据流中的函数是",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,49 +40,49 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "可变（mutable）",
-                  "不可变（immutable）",
-                  "私有（private）",
-                  "静态（static）"
-                ],
-                "correctAnswer": "不可变（immutable）"
+                "placeholder": "[填写函数名]",
+                "options": null,
+                "correctAnswer": "emit"
+              },
+              {
+                "type": "text",
+                "content": "。",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "不可变（immutable）",
-            "explanation": "Rust 的变量默认是不可变的，这是其安全模型的一部分，需要使用 `mut` 关键字显式声明为可变。"
+            "correctAnswer": "emit",
+            "explanation": "在 `flow { }` 构建器内部，使用 `emit()` 函数将值发射到数据流中，供下游操作符和收集器处理。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "当执行 `let s2 = s1;` 且 `s1` 是一个 `String` 时，会发生什么？",
-            "codeContext": "let s1 = String::from(\"text\");\nlet s2 = s1;",
-            "segments": null,
+            "question": "以下关于 `flowOn` 操作符的说法，哪个是正确的？",
+            "codeContext": null,
             "options": [
-              "`s1` 和 `s2` 指向相同的堆内存地址。",
-              "`s1` 的所有权移动到 `s2`，`s1` 失效。",
-              "`s1` 的内容被复制到了 `s2`，两者独立。",
-              "代码会产生编译错误，因为 `String` 不能赋值。"
+              "A. 它影响整个 Flow 链的操作符执行线程。",
+              "B. 它只影响 `flowOn` 之前（上游）的操作符执行线程。",
+              "C. 它等价于在 `collect` 时指定调度器。",
+              "D. 它是一个终端操作符。"
             ],
-            "correctAnswer": "`s1` 的所有权移动到 `s2`，`s1` 失效。",
-            "explanation": "`String` 是一个拥有堆上数据的类型。在赋值时，所有权（包括栈上的指针、长度、容量信息）会从 `s1` 移动到 `s2`，`s1` 随即变为无效状态，以防止二次释放。"
+            "correctAnswer": "B",
+            "explanation": "`flowOn` 只改变其上游代码（即 `flowOn` 左边的代码）的协程上下文。下游代码（包括后续操作符和 `collect`）不受影响，它们的上下文由收集器所在的协程决定。它不是终端操作符，而是中间操作符。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码会输出什么？",
-            "codeContext": "fn main() {\n    let mut a = 3;\n    let b = a;\n    a = 5;\n    println!(\"a: {}, b: {}\", a, b);\n}",
-            "segments": null,
+            "question": "下面代码的输出会是什么？",
+            "codeContext": "fun main() = runBlocking {\n    val flow = (1..3).asFlow()\n        .map {\n            println(\"Map $it\")\n            it * it\n        }\n        .filter {\n            println(\"Filter $it\")\n            it % 2 != 0\n        }\n    \n    flow.collect { value ->\n        println(\"Collected $value\")\n    }\n}",
             "options": [
-              "a: 3, b: 3",
-              "a: 5, b: 3",
-              "a: 5, b: 5",
-              "编译错误：不能修改变量 `a`"
+              "A. Map 1, Filter 1, Collected 1, Map 2, Filter 4, Map 3, Filter 9, Collected 9",
+              "B. Map 1, Filter 1, Collected 1, Map 2, Filter 4, Collected 4, Map 3, Filter 9, Collected 9",
+              "C. Map 1, Filter 1, Collected 1, Map 2, Filter 4, Map 3, Filter 9, Collected 9",
+              "D. 1, 9"
             ],
-            "correctAnswer": "a: 5, b: 3",
-            "explanation": "`a` 被声明为可变变量 (`mut`)，而 `b` 是不可变的。整数 `3` 是实现了 `Copy` trait 的类型，所以 `let b = a;` 执行的是复制操作，`b` 获得了 `a` 当前值的副本（3）。随后，`a` 被修改为 5，但 `b` 的值不受影响。因此输出 `a: 5, b: 3`。"
+            "correctAnswer": "A",
+            "explanation": "Flow 是顺序执行的。对于第一个元素 1：`map` 打印 'Map 1'，输出 1；`filter` 打印 'Filter 1'，1%2 != 0 为真，通过；`collect` 打印 'Collected 1'。然后处理第二个元素 2：`map` 打印 'Map 2'，输出 4；`filter` 打印 'Filter 4'，4%2 != 0 为假，被过滤掉，不会到达 `collect`。最后处理第三个元素 3：`map` 打印 'Map 3'，输出 9；`filter` 打印 'Filter 9'，9%2 != 0 为真，通过；`collect` 打印 'Collected 9'。因此输出顺序为 A。"
           }
         ]
       }

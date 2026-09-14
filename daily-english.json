@@ -1,170 +1,181 @@
 {
-  "date": "2026-09-13",
+  "date": "2026-09-14",
   "content": {
-    "id": "en-2026-09-13",
-    "date": "2026-09-13",
-    "topic": "健康与生活",
+    "id": "en-2026-09-14",
+    "date": "2026-09-14",
+    "topic": "环境与可持续发展",
     "newsHighlights": [
       {
-        "title": "President Xi Emphasizes Mutual Learning in Meeting with PM Modi",
-        "source": "China Daily",
-        "summary": "Chinese President Xi Jinping and Indian PM Narendra Modi met, highlighting that the two nations can learn from each other's strengths.",
-        "translation": "中国国家主席习近平与印度总理纳伦德拉·莫迪会晤，强调中印两国可以从彼此的优势中学习。",
+        "title": "Xi calls on BRICS to unite Global South, deepen cooperation",
+        "source": "ChinaDaily",
+        "summary": "President Xi urges BRICS nations to unite the Global South to tackle global challenges and build a better world.",
+        "translation": "习近平主席呼吁金砖国家团结全球南方国家，应对全球挑战，共建更美好的世界。",
         "keyWords": [
-          "mutual learning",
-          "strengths",
-          "sidelines"
-        ]
-      },
-      {
-        "title": "BRICS Cooperation: A Key Platform for Emerging Markets",
-        "source": "CGTN",
-        "summary": "President Xi hailed the BRICS cooperation mechanism as the world's most influential platform for cooperation among emerging markets.",
-        "translation": "习近平主席赞扬金砖国家合作机制是世界上最重要、最有影响力的新兴市场国家合作平台。",
-        "keyWords": [
-          "cooperation mechanism",
-          "influential",
-          "platform"
-        ]
-      },
-      {
-        "title": "Global South's Growing Role in World Stability",
-        "source": "China Daily",
-        "summary": "The voice and role of the Global South, represented by BRICS, are expanding to foster international cooperation and economic stability.",
-        "translation": "以金砖国家为代表的全球南方的声音和作用正在扩大，以促进国际合作与经济稳定。",
-        "keyWords": [
+          "BRICS",
           "Global South",
-          "expanding",
-          "stability"
+          "cooperation"
+        ]
+      },
+      {
+        "title": "Alliance hails smart farming, rural growth",
+        "source": "ChinaDaily",
+        "summary": "Technology is improving rural life and sustainable agricultural practices, as showcased during a visit to Hangzhou.",
+        "translation": "在杭州的一次访问中展示，科技正在改善农村生活并推动可持续农业实践。",
+        "keyWords": [
+          "smart farming",
+          "sustainable",
+          "rural growth"
+        ]
+      },
+      {
+        "title": "Africa eyes initiative in disease control",
+        "source": "ChinaDaily",
+        "summary": "BRICS health cooperation could help Africa strengthen its public health systems for sustainable development.",
+        "translation": "金砖国家卫生合作可以帮助非洲加强其公共卫生系统，以实现可持续发展。",
+        "keyWords": [
+          "disease control",
+          "public health systems",
+          "sustainable development"
+        ]
+      },
+      {
+        "title": "Report: China's token consumption to reach 100 quadrillion in 2026",
+        "source": "CGTN",
+        "summary": "China's rapidly growing token consumption highlights significant energy use and the push for sustainable solutions.",
+        "translation": "中国快速增长的代币消耗凸显了巨大的能源使用量和对可持续解决方案的推动。",
+        "keyWords": [
+          "token consumption",
+          "energy use",
+          "sustainable solutions"
         ]
       }
     ],
     "quote": {
-      "quote": "It is health that is real wealth and not pieces of gold and silver.",
-      "author": "Mahatma Gandhi",
-      "translation": "健康才是真正的财富，而不是金银财宝。",
-      "explanation": "这句名言与今日新闻中讨论的国家合作、经济发展形成对比，提醒个人和国家，真正的根基在于健康，这也是稳定与发展的基石。"
+      "quote": "We do not inherit the earth from our ancestors; we borrow it from our children.",
+      "author": "Native American Proverb",
+      "translation": "我们不是从祖先那里继承地球，而是向子孙借来的。",
+      "explanation": "这句话强调了我们对地球负有责任，需要以可持续的方式管理资源，为后代留下一个健康的环境。这与新闻中关注可持续发展和全球合作的议题高度相关。"
     },
     "vocabulary": [
       {
-        "word": "sidelines",
-        "phonetic": "/ˈsaɪdlaɪnz/",
-        "partOfSpeech": "n.",
-        "definition": "边线；（某事的）次要方面，外围活动",
-        "example": "The leaders met on the sidelines of the summit to discuss health cooperation.",
-        "translation": "领导人在峰会间隙会晤，讨论健康合作。",
-        "newsContext": "出自新闻标题 'Xi meets Modi in New Delhi on the sidelines of the BRICS summit'。"
+        "word": "volatile",
+        "phonetic": "/ˈvɒlətaɪl/",
+        "partOfSpeech": "adjective",
+        "definition": "易变的；不稳定的；动荡的",
+        "example": "The international landscape is volatile and fraught with risks and challenges.",
+        "translation": "国际局势动荡不安，充满风险与挑战。",
+        "newsContext": "来自新闻摘要第一段，描述当前国际环境的特点。"
       },
       {
-        "word": "mechanism",
-        "phonetic": "/ˈmekənɪzəm/",
-        "partOfSpeech": "n.",
-        "definition": "机制；机械装置；（自然现象）过程",
-        "example": "A robust cooperation mechanism is essential for promoting public health.",
-        "translation": "一个强有力的合作机制对于促进公共卫生至关重要。",
-        "newsContext": "出自新闻标题 'BRICS cooperation mechanism'。"
+        "word": "smart farming",
+        "phonetic": "/smɑːt ˈfɑːrmɪŋ/",
+        "partOfSpeech": "noun phrase",
+        "definition": "智慧农业；精准农业",
+        "example": "The alliance hails smart farming and rural growth.",
+        "translation": "联盟赞扬智慧农业和乡村发展。",
+        "newsContext": "新闻标题2的关键词，指利用技术实现更可持续的农业生产。"
       },
       {
-        "word": "influential",
-        "phonetic": "/ˌɪnfluˈenʃl/",
-        "partOfSpeech": "adj.",
-        "definition": "有影响的，有权势的",
-        "example": "Lifestyle choices have an influential effect on long-term health.",
-        "translation": "生活方式的选择对长期健康有重大影响。",
-        "newsContext": "出自新闻描述 'the world's most influential platform'。"
+        "word": "surveillance",
+        "phonetic": "/sɜːˈveɪləns/",
+        "partOfSpeech": "noun",
+        "definition": "监控；监测",
+        "example": "BRICS health cooperation could help Africa close persistent gaps in disease surveillance.",
+        "translation": "金砖国家卫生合作可以帮助非洲弥合在疾病监测方面的持续差距。",
+        "newsContext": "来自新闻摘要第三段，指公共卫生系统中的疾病监测。"
       },
       {
-        "word": "platform",
-        "phonetic": "/ˈplætfɔːm/",
-        "partOfSpeech": "n.",
-        "definition": "平台；讲台；站台",
-        "example": "Social media can be a positive platform for sharing health tips.",
-        "translation": "社交媒体可以成为分享健康贴士的正面平台。",
-        "newsContext": "出自新闻描述 'the most influential platform for cooperation'。"
+        "word": "diagnostics",
+        "phonetic": "/ˌdaɪəɡˈnɒstɪks/",
+        "partOfSpeech": "noun",
+        "definition": "诊断学；诊断程序",
+        "example": "...gaps in disease surveillance, research, diagnostics and vaccine production...",
+        "translation": "...在疾病监测、研究、诊断和疫苗生产方面的差距...",
+        "newsContext": "来自新闻摘要第三段，指疾病诊断技术和方法。"
       },
       {
-        "word": "expanding",
-        "phonetic": "/ɪkˈspændɪŋ/",
-        "partOfSpeech": "v. (现在分词/动名词)",
-        "definition": "扩大；扩展；发展",
-        "example": "Expanding our knowledge of nutrition is key to a healthy life.",
-        "translation": "扩展我们的营养知识是健康生活的关键。",
-        "newsContext": "出自新闻标题 'Expanding voice of Global South'。"
+        "word": "quadrillion",
+        "phonetic": "/kwɒˈdrɪljən/",
+        "partOfSpeech": "noun",
+        "definition": "千的五次方；10的15次方（英、德）/ 10的24次方（美、法）",
+        "example": "China's token consumption is expected to reach 100 quadrillion in 2026.",
+        "translation": "预计2026年中国代币消耗将达到100千万亿。",
+        "newsContext": "来自新闻摘要第四段，用于描述巨大的数字，与能源消耗相关。"
       },
       {
-        "word": "cooperation",
-        "phonetic": "/koʊˌɒpəˈreɪʃn/",
-        "partOfSpeech": "n.",
-        "definition": "合作，协作",
-        "example": "International cooperation is vital for addressing global health challenges.",
-        "translation": "国际合作对于应对全球健康挑战至关重要。",
-        "newsContext": "出自多条新闻，如 'fostering cooperation among emerging markets'。"
+        "word": "hails",
+        "phonetic": "/heɪlz/",
+        "partOfSpeech": "verb",
+        "definition": "赞扬；称赞；欢迎",
+        "example": "The alliance hails smart farming and rural growth.",
+        "translation": "联盟赞扬智慧农业和乡村发展。",
+        "newsContext": "新闻标题2中的核心动词。"
       },
       {
-        "word": "stability",
-        "phonetic": "/stəˈbɪləti/",
-        "partOfSpeech": "n.",
-        "definition": "稳定，稳固",
-        "example": "Financial stability allows families to invest in better healthcare.",
-        "translation": "财务稳定使家庭能够投资于更好的医疗保健。",
-        "newsContext": "出自新闻标题 'BRICS' role in economic stability'。"
+        "word": "fractious",
+        "phonetic": "/ˈfrækʃəs/",
+        "partOfSpeech": "adjective",
+        "definition": "易怒的；难以控制的；（局势）混乱的",
+        "example": "In a fractious world, BRICS can act as a force for stability.",
+        "translation": "在一个混乱的世界里，金砖国家可以成为稳定的力量。",
+        "newsContext": "关联新闻中对国际局势的描述（如“volatile”），为同义/近义词汇拓展。"
       },
       {
-        "word": "emerging",
-        "phonetic": "/ɪˈmɜːrdʒɪŋ/",
-        "partOfSpeech": "adj.",
-        "definition": "新兴的，新成立的",
-        "example": "Emerging technologies offer new solutions for personalized medicine.",
-        "translation": "新兴技术为个性化医疗提供了新方案。",
-        "newsContext": "出自新闻描述 'emerging markets'。"
+        "word": "initiative",
+        "phonetic": "/ɪˈnɪʃətɪv/",
+        "partOfSpeech": "noun",
+        "definition": "倡议；主动性；新方案",
+        "example": "Africa eyes initiative in disease control.",
+        "translation": "非洲关注疾病控制领域的倡议。",
+        "newsContext": "新闻标题3的关键词，指主动提出的计划或方案。"
       },
       {
-        "word": "confidence",
-        "phonetic": "/ˈkɑːnfɪdəns/",
-        "partOfSpeech": "n.",
-        "definition": "信心；信任",
-        "example": "Gaining confidence in managing your health empowers you.",
-        "translation": "增强管理自身健康的信心能赋予你力量。",
-        "newsContext": "出自新闻标题 'US firms display new confidence in China'。"
+        "word": "pivot",
+        "phonetic": "/ˈpɪvət/",
+        "partOfSpeech": "noun / verb",
+        "definition": "枢纽；支点；关键事物 / 转向； pivot",
+        "example": "BRICS is pivotal in formulating AI rules.",
+        "translation": "金砖国家在制定人工智能规则方面至关重要。",
+        "newsContext": "来自新闻标题5（虽未直接放入摘要，但属于今日新闻素材），形容关键作用。"
       },
       {
-        "word": "brand",
-        "phonetic": "/brænd/",
-        "partOfSpeech": "n.",
-        "definition": "品牌；商标",
-        "example": "A trusted healthcare brand can significantly impact patient well-being.",
-        "translation": "一个值得信赖的健康品牌能显著影响患者的福祉。",
-        "newsContext": "出自新闻标题 'Build more China Services brands'。"
+        "word": "consumption",
+        "phonetic": "/kənˈsʌmpʃən/",
+        "partOfSpeech": "noun",
+        "definition": "消耗；消费；消费量",
+        "example": "China's token consumption to reach 100 quadrillion in 2026.",
+        "translation": "中国代币消耗预计在2026年达到100千万亿。",
+        "newsContext": "来自新闻标题15，核心话题词，关联能源与环境足迹。"
       }
     ],
     "pattern": {
-      "pattern": "主语 + has become + 形容词 + 名词",
-      "example": "The BRICS cooperation mechanism has become the world's most influential platform.",
-      "translation": "金砖国家合作机制已成为世界上最具影响力的平台。",
-      "usage": "此句型用于描述某事物经过一段时间发展后达到了新的状态或地位。在健康领域，可用于描述习惯、观念或技术的演变，例如：'Mindfulness has become an essential tool for stress management.'"
+      "pattern": "seize the historical opportunity (to do sth.)",
+      "example": "...BRICS countries must seize the historical opportunity to bring stability to the world.",
+      "translation": "...金砖国家必须抓住为世界带来稳定的历史机遇。",
+      "usage": "这是一个正式且有力的动词短语，常用于演讲或正式文件中，表示“抓住（做某事的）历史机遇”。"
     },
     "grammar": {
-      "title": "现在完成时 (Present Perfect Tense)",
-      "explanation": "现在完成时用于表示过去发生的动作对现在的影响或结果，或表示从过去持续到现在的状态。在新闻中，常用于总结成就、进展或影响。",
+      "title": "现在完成时（Present Perfect Tense）与最高级（Superlative Degree）",
+      "explanation": "新闻中常使用现在完成时来强调过去发生、对现在有影响或持续到现在的动作。同时，为了突出比较和程度，常使用最高级。例如，在新闻标题或摘要中，可能会说某项合作‘has made significant progress’（已经取得了重大进展）或某项指标‘is the fastest-growing’（是增长最快的）。",
       "examples": [
-        "Xi summarizes BRICS development achievements over the past 20 years.",
-        "The BRICS cooperation mechanism has become the world's most influential platform."
+        "The alliance **has hailed** the achievements in smart farming.",
+        "BRICS **has become** the most important platform for South-South cooperation."
       ]
     },
     "pronunciation": {
-      "word": "BRICS",
-      "phonetic": "/brɪks/",
-      "tips": "这是一个首字母缩略词，读作一个单词，发音类似 'bricks'。注意 /r/ 音要清晰，末尾的 /s/ 是清辅音。",
+      "word": "volatile",
+      "phonetic": "/ˈvɒlətaɪl/",
+      "tips": "注意重音在第一个音节。元音 /ɒ/ 类似中文“奥”的短促音，但嘴型更圆。第二个音节 /laɪ/ 是常见的双元音。",
       "examples": [
-        "The BRICS summit focuses on cooperation among emerging economies.",
-        "Membership in BRICS offers significant economic advantages."
+        "The stock market has been very volatile recently.",
+        "The volatile situation requires a careful response."
       ]
     },
     "reading": {
-      "title": "Finding Stability in a Connected World: Lessons from International Cooperation",
-      "content": "In an increasingly interconnected world, nations face shared challenges, much like individuals navigating their personal health journeys. The recent BRICS summit highlighted how cooperation among emerging markets can foster economic stability, a principle that resonates deeply with personal well-being. Just as countries build platforms for mutual learning, individuals can build support systems for healthier lifestyles. The growing voice of the Global South reminds us that diverse perspectives are crucial for finding sustainable solutions. Similarly, incorporating varied wellness practices can lead to a more balanced life. Ultimately, whether between nations or within ourselves, standing on the right side of history means choosing collaboration over isolation and long-term stability over short-term gains. Building a healthier future, for our planet and our bodies, requires this same collective spirit.",
-      "translation": "在一个日益互联互通的世界里，国家面临着共同的挑战，这与个人规划自身健康之旅颇为相似。最近的金砖峰会强调了新兴市场国家之间的合作如何能够促进经济稳定，这一原则与个人福祉息息相关。正如国家之间建立相互学习的平台，个人也可以建立支持系统以养成更健康的生活方式。全球南方日益增长的声音提醒我们，多元的观点对于寻找可持续的解决方案至关重要。同样，融入不同的健康实践也能带来更平衡的生活。最终，无论是在国家之间还是我们自身，站在历史正确的一边意味着选择合作而非孤立，选择长期稳定而非短期利益。为我们共同的星球和我们自身的身体构建一个更健康的未来，正需要这种集体的精神。",
-      "sourceNote": "本文基于新闻素材中关于金砖国家合作、全球经济稳定以及新兴市场协作的报道进行改写，并融入健康生活的主题。"
+      "title": "Technology and Global Cooperation: Twin Engines for Sustainable Development",
+      "content": "As the world faces complex challenges, sustainable development has become a global priority. Recent news highlights two key drivers: technological innovation and international cooperation. For instance, 'smart farming' is transforming agriculture. By using sensors and data analysis, it improves crop yields while reducing water and chemical use, making farming more sustainable. On the global stage, platforms like BRICS are fostering cooperation. Nations are uniting to address issues from public health to energy consumption. The goal is to share knowledge and resources, ensuring that development is balanced and inclusive. From local farms to global forums, the combination of smart technology and united action is building a more sustainable future for all.",
+      "translation": "随着世界面临复杂挑战，可持续发展已成为全球优先事项。近期新闻凸显了两大关键驱动力：技术创新与国际合作。例如，“智慧农业”正在改变农业。通过使用传感器和数据分析，它提高了作物产量，同时减少了水资源和化学品的使用，使农业更加可持续。在全球层面，金砖国家等平台正在促进合作。各国正团结起来应对从公共卫生到能源消耗的各项问题。其目标是共享知识和资源，确保发展平衡且具有包容性。从本地农场到全球论坛，智能技术与团结行动的结合正在为所有人建设一个更加可持续的未来。",
+      "sourceNote": "本文基于ChinaDaily关于智慧农业、BRICS合作以及CGTN关于能源消耗的新闻综合改写。"
     }
   }
 }
