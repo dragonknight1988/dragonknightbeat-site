@@ -1,182 +1,168 @@
 {
-  "date": "2026-09-17",
+  "date": "2026-09-18",
   "content": {
-    "id": "en-2026-09-17",
-    "date": "2026-09-17",
-    "topic": "商业与金融",
+    "id": "en-2026-09-18",
+    "date": "2026-09-18",
+    "topic": "职场与沟通",
     "newsHighlights": [
       {
-        "title": "China-ASEAN Trade Receives Protocol Push",
-        "source": "China Daily",
-        "summary": "A new protocol is set to boost trade and economic cooperation between China and ASEAN nations.",
-        "translation": "一项新协议将推动中国与东盟国家的贸易与经济合作。",
+        "title": "Dialogue should be grounded in reality",
+        "source": "ChinaDaily",
+        "summary": "Uruguay's defense official emphasizes that discussions at the Beijing Xiangshan Forum must focus on practical, real-world issues.",
+        "translation": "乌拉圭国防官员强调，北京香山论坛上的讨论必须聚焦于实际、现实的问题。",
         "keyWords": [
-          "protocol",
-          "trade",
-          "cooperation"
-        ]
-      },
-      {
-        "title": "High-Tech Sector Lifts Industrial Growth",
-        "source": "China Daily",
-        "summary": "The high-tech industry is a primary driver of overall industrial economic growth.",
-        "translation": "高科技产业是整体工业经济增长的主要驱动力。",
-        "keyWords": [
-          "high-tech",
-          "sector",
-          "industrial growth"
-        ]
-      },
-      {
-        "title": "Hong Kong Unveils 1st Five-Year Plan for Economic, Social Development",
-        "source": "CGTN",
-        "summary": "Hong Kong's first-ever five-year strategic roadmap aims to align with national development.",
-        "translation": "香港史上首份五年战略路线图旨在与国家发展对接。",
-        "keyWords": [
-          "five-year plan",
-          "economic development",
-          "roadmap"
-        ]
-      },
-      {
-        "title": "Trust, Dialogue Highlighted at Forum",
-        "source": "China Daily",
-        "summary": "Experts called for greater trust and dialogue to address international uncertainties.",
-        "translation": "专家呼吁加强信任与对话以应对国际不确定性。",
-        "keyWords": [
-          "trust",
           "dialogue",
-          "uncertainties"
+          "grounded in reality",
+          "forum"
+        ]
+      },
+      {
+        "title": "Xi stresses sustained efforts to strengthen advanced manufacturing",
+        "source": "CGTN",
+        "summary": "China's leader highlights the need for continuous work to bolster high-tech manufacturing sectors.",
+        "translation": "中国领导人强调需要持续努力，以增强高科技制造业。",
+        "keyWords": [
+          "advanced manufacturing",
+          "sustained efforts"
+        ]
+      },
+      {
+        "title": "As Trump pushes Canada, Carney embraces EU associate membership idea",
+        "source": "CGTN",
+        "summary": "Canadian leadership considers closer ties with the EU amid shifting North American trade dynamics.",
+        "translation": "在北美贸易格局变动之际，加拿大领导层考虑与欧盟建立更紧密的联系。",
+        "keyWords": [
+          "EU associate membership",
+          "trade dynamics"
         ]
       }
     ],
     "quote": {
-      "quote": "The long run is a misleading guide to current affairs. In the long run, we are all dead.",
-      "author": "John Maynard Keynes",
-      "translation": "“长期”是对当前事务的误导性指南。长期来看，我们都会死去。",
-      "explanation": "In the context of business and finance, this quote underscores the importance of focusing on immediate realities and actionable plans, aligning with the news' emphasis on real-time economic trends and specific development roadmaps."
+      "quote": "The art of communication is the art of hearing as well as being heard.",
+      "author": "Walter Lippmann",
+      "translation": "沟通的艺术在于倾听，也在于被倾听。",
+      "explanation": "这句名言完美地契合了“沟通”的主题。在职场中，有效的沟通不仅仅是清晰表达自己的观点，更重要的是能够积极倾听他人，理解对方的立场和需求，从而建立共识、促进协作。"
     },
     "vocabulary": [
       {
-        "word": "protocol",
-        "phonetic": "/ˈproʊtəkɔːl/",
+        "word": "ultramarathon",
+        "phonetic": "/ˌʌltrəˈmærəθən/",
         "partOfSpeech": "noun",
-        "definition": "协议，议定书；正式的外交或商业安排。",
-        "example": "The new trade protocol between China and ASEAN is expected to reduce tariffs.",
-        "translation": "中国与东盟之间新的贸易协议预计将降低关税。",
-        "newsContext": "来自新闻标题 'China-ASEAN trade receives protocol push'，指推动贸易的新协议。"
+        "definition": "超级马拉松（任何距离超过马拉松的公路赛跑）",
+        "example": "He became the first Chinese champion of the Tor des Géants ultramarathon.",
+        "translation": "他成为“巨人之旅”超级马拉松的首位中国冠军。",
+        "newsContext": "来自新闻标题“How a delivery rider became China's first champion of the Alps”，描述了一场艰苦的耐力赛事，可引申为职场中对毅力的考验。"
       },
       {
-        "word": "high-tech",
-        "phonetic": "/ˌhaɪ ˈtek/",
+        "word": "grounded",
+        "phonetic": "/ˈɡraʊndɪd/",
         "partOfSpeech": "adjective",
-        "definition": "高科技的，涉及先进技术的。",
-        "example": "The high-tech sector continues to attract significant investment.",
-        "translation": "高科技产业持续吸引大量投资。",
-        "newsContext": "来自新闻标题 'High-tech sector lifts industrial growth'，描述驱动增长的产业。"
+        "definition": "有坚实基础的；脚踏实地的",
+        "example": "Dialogue should be grounded in reality.",
+        "translation": "对话应基于现实。",
+        "newsContext": "直接来自标题“Dialogue should be grounded in reality”，强调沟通和讨论需要务实，不能脱离实际，是职场沟通的核心原则。"
       },
       {
-        "word": "sector",
-        "phonetic": "/ˈsektər/",
+        "word": "advanced",
+        "phonetic": "/ədˈvɑːnst/",
+        "partOfSpeech": "adjective",
+        "definition": "先进的；高级的",
+        "example": "Xi stresses sustained efforts to strengthen advanced manufacturing.",
+        "translation": "习近平强调要持续努力加强先进制造业。",
+        "newsContext": "来自CGTN新闻，指代“先进制造业”，体现了产业升级和职场对高技能人才的需求。"
+      },
+      {
+        "word": "manufacturing",
+        "phonetic": "/ˌmænjuˈfæktʃərɪŋ/",
         "partOfSpeech": "noun",
-        "definition": "部门，行业；经济或商业的特定领域。",
-        "example": "The manufacturing sector showed resilience despite challenges.",
-        "translation": "制造业在挑战中展现了韧性。",
-        "newsContext": "同上新闻，指经济中的特定行业（高科技部门）。"
+        "definition": "制造业",
+        "example": "China's leader highlights the need for continuous work to bolster high-tech manufacturing sectors.",
+        "translation": "中国领导人强调需要持续努力，以增强高科技制造业部门。",
+        "newsContext": "同上，是新闻主题中的核心产业词汇。"
       },
       {
-        "word": "leverage",
-        "phonetic": "/ˈlevərɪdʒ/",
-        "partOfSpeech": "verb",
-        "definition": "利用，发挥…的优势；使用杠杆（金融）。",
-        "example": "The region plans to leverage its unique resources for economic development.",
-        "translation": "该地区计划利用其独特资源促进经济发展。",
-        "newsContext": "源自新闻 'Heilongjiang leverages black soil culture'，此处意为利用资源。"
+        "word": "associate",
+        "phonetic": "/əˈsəʊʃiət/",
+        "partOfSpeech": "adjective",
+        "definition": "副的；准的；联合的",
+        "example": "Carney embraces EU associate membership idea.",
+        "translation": "卡尼认同欧盟准成员资格的想法。",
+        "newsContext": "来自关于加拿大与欧盟关系的新闻，指一种合作而非正式成员的身份，在职场中也有“副职、关联”之意。"
       },
       {
-        "word": "dialogue",
-        "phonetic": "/ˈdaɪəlɔːɡ/",
+        "word": "membership",
+        "phonetic": "/ˈmembəʃɪp/",
         "partOfSpeech": "noun",
-        "definition": "对话，交流；尤指为解决分歧而进行的正式讨论。",
-        "example": "Constructive dialogue is essential for international peace.",
-        "translation": "建设性对话对于国际和平至关重要。",
-        "newsContext": "来自新闻 'Trust, dialogue highlighted at forum'，强调其在国际关系中的作用。"
+        "definition": "成员资格；会员身份",
+        "example": "...embrace EU associate membership idea.",
+        "translation": "...认同欧盟准成员资格的想法。",
+        "newsContext": "同上，构成“associate membership”（准成员资格）这一国际关系术语，可类比职场中的团队或组织归属。"
       },
       {
-        "word": "uncertainties",
-        "phonetic": "/ʌnˈsɜːrtəntiz/",
-        "partOfSpeech": "noun (plural)",
-        "definition": "不确定性；不确定的状态或情况。",
-        "example": "Global economic uncertainties affect market stability.",
-        "translation": "全球经济的不确定性影响市场稳定。",
-        "newsContext": "同上新闻，指需要应对的国际环境特征。"
-      },
-      {
-        "word": "cooperation",
-        "phonetic": "/koʊˌɑːpəˈreɪʃn/",
+        "word": "breakthrough",
+        "phonetic": "/ˈbreɪkθruː/",
         "partOfSpeech": "noun",
-        "definition": "合作，协作。",
-        "example": "International cooperation is key to addressing climate change.",
-        "translation": "国际合作是应对气候变化的关键。",
-        "newsContext": "来自新闻 'Cooperation key to common prosperity'，是实现共同繁荣的途径。"
+        "definition": "突破；重大进展",
+        "example": "HK to target breakthroughs in core tech.",
+        "translation": "香港将目标定在核心科技领域实现突破。",
+        "newsContext": "来自新闻“HK to target breakthroughs in core tech”，指在关键技术上取得重大进展，是职场创新和发展的目标。"
       },
       {
-        "word": "growth",
-        "phonetic": "/ɡroʊθ/",
-        "partOfSpeech": "noun",
-        "definition": "增长，成长；经济或商业规模的扩张。",
-        "example": "Steady GDP growth indicates a healthy economy.",
-        "translation": "稳定的GDP增长表明经济健康发展。",
-        "newsContext": "来自新闻 'High-tech sector lifts industrial growth'，指工业经济的增长。"
+        "word": "incidental",
+        "phonetic": "/ˌɪnsɪˈdentl/",
+        "partOfSpeech": "adjective",
+        "definition": "附带的；偶然发生的",
+        "example": "Trump admin memo says incidental killing of endangered species lawful.",
+        "translation": "特朗普政府备忘录称附带导致濒危物种死亡是合法的。",
+        "newsContext": "来自CGTN新闻，指在主要行动中“附带”或“顺便”造成的后果，在职场语境下可理解为项目执行中非计划内的、偶然的副作用或影响。"
       },
       {
-        "word": "alignment",
-        "phonetic": "/əˈlaɪnmənt/",
+        "word": "halt",
+        "phonetic": "/hɔːlt/",
         "partOfSpeech": "noun",
-        "definition": "对接，对齐；使一致或协调的行为。",
-        "example": "The plan emphasizes alignment with national strategic goals.",
-        "translation": "该计划强调与国家战略目标对接。",
-        "newsContext": "来自新闻 'HK CE unveils first-ever five-year plan'，指香港发展计划与国家发展的对接。"
+        "definition": "停止；中断",
+        "example": "Chabahar Desalination Plant resumes operations after 45-Day halt.",
+        "translation": "恰巴哈尔海水淡化厂在停产45天后恢复运营。",
+        "newsContext": "来自CGTN新闻，指设施因故暂停运作后又恢复，类似于职场中项目暂停与重启的情况。"
       },
       {
-        "word": "roadmap",
-        "phonetic": "/ˈroʊdmæp/",
-        "partOfSpeech": "noun",
-        "definition": "路线图；实现目标的详细计划或战略。",
-        "example": "The government published a roadmap for digital transformation.",
-        "translation": "政府发布了一份数字化转型路线图。",
-        "newsContext": "同上新闻，将五年计划描述为战略路线图。"
+        "word": "core",
+        "phonetic": "/kɔː(r)/",
+        "partOfSpeech": "noun / adjective",
+        "definition": "核心；中心；最重要的部分",
+        "example": "HK to target breakthroughs in core tech.",
+        "translation": "香港将目标定在核心科技领域实现突破。",
+        "newsContext": "同上一条新闻，指最关键、最根本的技术，是职场竞争力的核心所在。"
       }
     ],
     "pattern": {
-      "pattern": "X receives Y push",
-      "example": "China-ASEAN trade receives protocol push.",
-      "translation": "中国-东盟贸易获得协议推动。",
-      "usage": "这是一个新闻标题中常见的简洁结构，用名词短语 'Y push' 表示 'Y provides a push/impetus for X'。适用于表达某事物（X）得到某个具体因素（Y）的推动或促进。"
+      "pattern": "It is vital to discuss [topic] on how to...",
+      "example": "It is vital to discuss down-to-earth topics on how to... (from the news summary)",
+      "translation": "讨论关于如何......的切实可行的议题至关重要。",
+      "usage": "此句型用于正式场合（如会议、论坛），强调讨论某个话题的重要性和必要性。常用于引出关键议程或呼吁关注特定问题，在职场沟通中显得专业且有说服力。"
     },
     "grammar": {
-      "title": "现在完成时的运用：强调结果与影响",
-      "explanation": "新闻中常用现在完成时 (has/have + past participle) 来描述过去发生但对现在有影响或结果的事件，常与 'has become', 'has unveiled', 'has highlighted' 等连用，突出新闻的‘新’和‘当前相关性’。",
+      "title": "动名词短语作主语或宾语",
+      "explanation": "在新闻标题和摘要中，常使用动名词短语（V-ing）来简洁地表达动作或概念。例如，“grounding dialogue in reality” 将“对话”这个动作“基于现实”这个理念动态地结合起来，比使用从句更精炼，是新闻英语和商务沟通中的常见表达方式。",
       "examples": [
-        "The high-tech sector **has become** a primary driver of overall industrial growth.",
-        "Hong Kong **has unveiled** its first-ever five-year plan.",
-        "Experts **have highlighted** the need for greater trust and dialogue."
+        "Dialogue should be grounded in reality. (动名词短语 'grounding dialogue in reality' 是名词 'dialogue' 的后置修饰语的核心概念)",
+        "Returning home, building dreams: Fujian's cultural tourism (标题使用两个动名词短语 'returning home', 'building dreams' 作为平行主题，简洁有力)"
       ]
     },
     "pronunciation": {
-      "word": "leverage",
-      "phonetic": "/ˈlevərɪdʒ/",
-      "tips": "注意重音在第一个音节 'lev'，发音类似 'lever'。第二个音节 'er' 发 /ər/，第三个音节 'age' 发 /ɪdʒ/。美式发音中，/dʒ/ 要清晰。",
+      "word": "grounded",
+      "phonetic": "/ˈɡraʊndɪd/",
+      "tips": "注意 /d/ 音在词尾的清浊变化。在 'grounded' 中，因为 'ed' 发音为 /d/，而前面的音素 'd' 是浊辅音，所以 'ed' 读作 /d/。同时，/aʊ/ 双元音要饱满，从 /a/ 滑向 /ʊ/。",
       "examples": [
-        "Companies often **leverage** technology to improve efficiency.",
-        "He used his experience to **leverage** a better deal."
+        "Our strategy needs to be **grounded** in market data. (我们的策略需要基于市场数据。)",
+        "She gave a very **grounded** and practical response. (她给出了一个非常务实和实际的回答。)"
       ]
     },
     "reading": {
-      "title": "Hong Kong Charts New Course with Five-Year Plan",
-      "content": "In a historic move, the Hong Kong Special Administrative Region has unveiled its first-ever five-year plan. This strategic roadmap is designed to align Hong Kong's development with the broader national agenda of China. The plan aims to bolster the city's economic and social progress over the coming years. Key focuses include enhancing its role as an international financial center and fostering innovation in high-tech sectors. This initiative is seen as a crucial step for ensuring long-term stability and prosperity. By clearly defining development goals, the plan provides a clear pathway for businesses and investors, helping to navigate through global economic uncertainties. It represents a significant commitment to structured growth and regional cooperation.",
-      "translation": "香港特别行政区公布了一份历史性的文件——其史上首份五年规划。这份战略路线图旨在将香港的发展与中国的总体国家议程相对接。该规划旨在未来几年加强香港的经济和社会进步。重点包括巩固其作为国际金融中心的地位，以及促进高科技领域的创新。这一举措被视为确保长期稳定与繁荣的关键一步。通过明确界定发展目标，该规划为企业和投资者提供了清晰的路径，帮助他们在全球经济不确定性中航行。它代表了对结构化增长和区域合作的重大承诺。",
-      "sourceNote": "基于新闻 'Hong Kong Unveils 1st Five-Year Plan for Economic, Social Development' 及相关背景改写。"
+      "title": "The Power of Grounded Dialogue in the Workplace",
+      "content": "At the 13th Beijing Xiangshan Forum, a key message emerged: effective dialogue must be grounded in reality. Nadia Almeida Sanguinet, a Uruguayan defense official, stressed the importance of discussing practical topics. This principle is not just for international forums; it is vital for success in any workplace. In professional settings, communication often fails when it floats into abstract theory or vague ideals. Truly productive conversations focus on tangible problems, clear data, and achievable goals. When colleagues 'ground' their discussions, they address the core challenges directly. This approach builds trust, as it shows respect for others' time and a commitment to real solutions. Whether negotiating a deal, resolving a team conflict, or planning a project, starting with what is realistic and factual creates a solid foundation. It moves the conversation from 'what if' to 'how to', fostering a culture of practicality and action. Mastering this art of communication is a career-defining skill.",
+      "translation": "在第13届北京香山论坛上，一条关键信息浮现：有效的对话必须基于现实。乌拉圭国防官员纳迪娅·阿尔梅达·桑吉内特强调了讨论实际话题的重要性。这一原则不仅适用于国际论坛，它对任何职场的成功都至关重要。在专业环境中，当沟通陷入抽象理论或模糊理想时，往往就会失败。真正富有成效的对话关注的是切实的问题、清晰的数据和可实现的目标。当同事们将他们的讨论“基于现实”时，他们就是在直接处理核心挑战。这种方法能建立信任，因为它表现出对他人时间的尊重以及对实际解决方案的承诺。无论是谈判一笔交易、解决团队冲突，还是规划一个项目，从现实和事实出发都能奠定坚实的基础。它将对话从“如果会怎样”转向“如何去做”，从而培养一种务实和行动的文化。掌握这种沟通艺术是一项定义职业生涯的技能。",
+      "sourceNote": "本文章基于ChinaDaily新闻《Dialogue should be grounded in reality》的核心观点进行改写和扩展，适用于职场沟通主题的学习。"
     }
   }
 }
