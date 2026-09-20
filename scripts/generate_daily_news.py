@@ -210,12 +210,19 @@ def call_mimo(system_prompt, user_prompt, max_tokens=12000):
     }
 
     try:
+        import sys
+        print(f"🔄 正在调用 MiMo API ({MIMO_MODEL})...", flush=True)
+        sys.stdout.flush()
+        t0 = __import__('time').time()
         resp = requests.post(
             f"{MIMO_BASE_URL}/chat/completions",
             headers=headers,
             json=payload,
             timeout=(15, 300)
         )
+        elapsed = __import__('time').time() - t0
+        print(f"📬 API 响应: HTTP {resp.status_code}, 耗时 {elapsed:.1f}s", flush=True)
+        sys.stdout.flush()
         resp.raise_for_status()
         data = resp.json()
         content = data['choices'][0]['message']['content']
