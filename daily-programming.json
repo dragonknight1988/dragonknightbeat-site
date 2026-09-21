@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-20",
+  "date": "2026-09-21",
   "contents": [
     {
-      "id": "prog-2026-09-20",
-      "date": "2026-09-20",
-      "title": "深入 React Server Components (RSC) 的数据获取与缓存优化",
-      "summary": "掌握在 Next.js App Router 中，如何利用 React Server Components 的特性，结合 `fetch` 扩展、缓存策略与 Server Actions，构建高性能、数据驱动的动态应用。",
-      "difficulty": "高级",
-      "concept": "React Server Components (RSC) 不仅仅是一种组件类型，更是 Next.js App Router 架构的核心数据获取与渲染范式。它将应用逻辑清晰地划分为服务端执行与客户端交互两部分，从而带来显著的性能提升。\n\n在 RSC 中，数据获取逻辑被移至服务端。你可以直接使用 `async/await` 语法和 `fetch` API 来获取数据，而无需 `useEffect` 或第三方状态管理库。这避免了客户端-服务端的数据往返，减小了客户端 JavaScript 包体积，并允许在渲染前等待数据，解决了数据瀑布问题。\n\n`fetch` 在 Next.js 中已被扩展，以支持声明式的数据缓存和重验证。你可以通过在 `fetch` 请求中指定 `{ next: { revalidate: seconds } }` 来设置基于时间的 ISR（增量静态再生），或通过 `{ next: { tags: ['collection'] } }` 来设置基于标签的按需重验证。这是在数据层面实现静态与动态平衡的关键。\n\n当应用需要交互性（如表单、按钮点击事件）时，必须使用 `'use client'` 指令标记客户端组件。客户端组件可以接收从服务端组件序列化传递过来的 `props`（包括通过 Server Action 获取的数据）。服务端组件可以作为客户端组件的父组件，但反之则不然。\n\nServer Actions 是 RSC 生态中处理数据突变的核心。它是一个标记为 `'use server'` 的异步函数，可以在服务端组件中直接作为事件处理器（如 `onClick`）或在 `<form>` 的 `action` 属性中调用。Server Actions 允许你在服务端安全地执行数据库操作、调用外部API等，然后自动重新验证相关的缓存数据并更新 UI，实现了所谓的“全栈”交互闭环。\n\n一个高性能的 Next.js 应用，往往始于服务端组件的静态数据预取与缓存，再通过 `<Suspense>` 边界实现流式传输，以提供即时可见的 UI 骨架；然后通过精巧的客户端组件处理用户交互，并利用 Server Actions 更新数据。理解这个架构范式，是掌握现代 Next.js 开发的关键。",
+      "id": "prog-2026-09-21",
+      "date": "2026-09-21",
+      "title": "Node.js HTTP服务器入门",
+      "summary": "学习如何使用Node.js内置http模块创建一个简单的HTTP服务器，处理基本Web请求。",
+      "difficulty": "初级",
+      "concept": "HTTP服务器是Web应用的核心组件，它监听客户端（如浏览器）的请求并返回响应。Node.js基于事件驱动和非阻塞I/O模型，非常适合构建高性能的HTTP服务器，因为它能在单个线程中高效处理并发请求，避免传统多线程服务器的开销。\n\n在Node.js中，http模块提供了创建服务器所需的API。通过引入这个模块，你可以使用createServer方法实例化一个服务器，该方法接受一个回调函数，这个函数在每次接收到请求时被调用。回调函数有两个参数：请求对象（req）和响应对象（res），分别用于读取请求数据和发送响应数据。\n\n对于初学者，理解HTTP请求-响应生命周期很重要：客户端发送请求到服务器，服务器解析请求路径和方法，生成响应头和体，然后发送回客户端。在Node.js中，这些步骤通过req.url和res.writeHead等方法实现。\n\n实际工程中，创建HTTP服务器是构建RESTful API或Web应用的基础。初学者应从简单示例开始，逐步添加路由、中间件等功能。注意处理错误和设置适当的响应头（如Content-Type），以确保服务器健壮性和兼容性。虽然Node.js是常用选择，但Deno也支持HTTP服务器，其API类似，但使用TypeScript和标准库，适合后续学习对比。",
       "codeExample": {
-        "language": "JavaScript (Next.js App Router)",
-        "code": "// 文件: app/products/page.js\n// 这是一个 React Server Component，无需 'use client' 指令\nimport { Suspense } from 'react';\nimport ProductList from './ProductList'; // 这是一个客户端组件\n\n// 服务端数据获取函数，可被多个组件复用\nasync function getProducts() {\n  // 使用扩展的 fetch，设置基于时间的缓存重验证（ISR）\n  const res = await fetch('https://api.example.com/products', {\n    next: { revalidate: 3600 } // 每小时重新验证一次\n  });\n  \n  if (!res.ok) {\n    // 这个错误会由最接近的 error.js 处理\n    throw new Error('Failed to fetch products');\n  }\n  \n  return res.json();\n}\n\n// 这个 Server Action 可以在客户端组件中调用，用于更新数据\nexport async function likeProduct(productId) {\n  'use server'; // 标记为 Server Action\n  \n  // 在这里执行安全的服务端操作（如数据库更新）\n  console.log(`Liking product ${productId} on the server...`);\n  // 假设调用了数据库 API\n  // await db.products.update({ id: productId }, { $inc: { likes: 1 } });\n  \n  // 重验证与特定标签关联的所有数据缓存\n  revalidateTag('products');\n}\n\nexport default async function ProductsPage() {\n  // 在服务端组件中直接 async 获取数据\n  const initialProducts = await getProducts();\n  \n  return (\n    <div>\n      <h1>Our Products</h1>\n      {/* 使用 Suspense 实现流式加载，提升用户体验 */}\n      <Suspense fallback={<div>Loading more products...</div>}>\n        {/* 将服务端获取的数据作为 props 传给客户端组件 */}\n        <ProductList initialProducts={initialProducts} />\n      </Suspense>\n    </div>\n  );\n}\n\n// 文件: app/products/ProductList.js\n'use client'; // 标记为客户端组件\n\nimport { useState } from 'react';\nimport { likeProduct } from './page'; // 导入 Server Action\n\n// 客户端组件接收服务端组件传递的数据作为初始状态\nexport default function ProductList({ initialProducts }) {\n  const [products, setProducts] = useState(initialProducts);\n  const [liking, setLiking] = useState(null);\n\n  const handleLike = async (productId) => {\n    setLiking(productId);\n    try {\n      // 调用 Server Action 来执行服务端操作\n      await likeProduct(productId);\n      // 乐观更新：直接在客户端更新UI，提供即时反馈\n      setProducts(prev => prev.map(p => \n        p.id === productId ? { ...p, likes: p.likes + 1 } : p\n      ));\n    } catch (error) {\n      console.error('Failed to like product:', error);\n      // 回滚乐观更新\n      setProducts(initialProducts);\n    } finally {\n      setLiking(null);\n    }\n  };\n\n  return (\n    <ul>\n      {products.map(product => (\n        <li key={product.id}>\n          {product.name} - Likes: {product.likes}\n          <button \n            onClick={() => handleLike(product.id)}\n            disabled={liking === product.id}\n          >\n            {liking === product.id ? 'Liking...' : 'Like'}\n          </button>\n        </li>\n      ))}\n    </ul>\n  );\n}",
-        "explanation": "1. `getProducts` 函数在服务端组件 `ProductsPage` 中被直接 `await` 调用，完成数据获取。`fetch` 调用使用了 `next.revalidate` 选项，设置了基于时间的缓存策略。\n2. `likeProduct` 函数被标记为 `'use server'`，使其成为一个 Server Action。它可以安全地执行数据库操作，并调用 `revalidateTag` 来清除相关缓存，触发下游组件的重新渲染。\n3. `ProductsPage` 服务端组件获取初始数据 `initialProducts`，并将其作为 `props` 传递给客户端组件 `ProductList`。`<Suspense>` 用于定义流式加载的边界。\n4. `ProductList` 客户端组件管理交互状态 (`liking`)，并实现了乐观更新模式。它通过 `handleLike` 调用 Server Action `likeProduct`，在服务端操作成功后，利用 `revalidateTag` 触发的重新渲染来同步 UI，同时在客户端提供即时反馈。"
+        "language": "javascript",
+        "code": "// 引入Node.js内置http模块\nconst http = require('http');\n\n// 创建HTTP服务器实例，回调函数处理每个请求\nconst server = http.createServer((req, res) => {\n  // 设置响应状态码和头部，Content-Type为纯文本\n  res.writeHead(200, {'Content-Type': 'text/plain'});\n  // 发送响应体，结束响应\n  res.end('Hello, World!\\n');\n});\n\n// 让服务器监听端口3000，启动后回调打印消息\nserver.listen(3000, () => {\n  console.log('服务器已启动，运行在 http://localhost:3000/');\n});",
+        "explanation": "代码逐行解释：第一行引入http模块，这是Node.js的核心模块，无需安装。第二行使用createServer创建服务器实例，回调函数接收req和res参数，用于处理请求和构建响应。在回调中，使用res.writeHead设置HTTP状态码200（成功）和头部信息，指定响应内容为纯文本。接着，res.end发送'Hello, World!'作为响应体并关闭连接。最后，server.listen让服务器监听3000端口，回调函数在服务器启动后执行，打印日志。运行此代码后，访问http://localhost:3000/即可看到响应。"
       },
       "keyPoints": [
-        "React Server Components (RSC) 的核心是将数据获取和大部分渲染逻辑移至服务端，减少客户端负担，优化首屏加载和SEO。",
-        "在Next.js中，`fetch` 被扩展，通过 `next.revalidate`（ISR）和 `next.tags`（按需重验证）选项，实现精细化的数据缓存控制，是性能优化的关键。",
-        "Server Actions (`'use server'`) 是处理数据突变的推荐方式，它们在服务端执行，与 `revalidateTag` 或 `revalidatePath` 结合，能自动更新UI，形成全栈闭环。",
-        "服务端组件与客户端组件的边界由 `'use client'` 指令明确划分。数据流方向是单向的：服务端 -> 客户端 (通过 props)，而交互事件流方向是客户端 -> 服务端 (通过 Server Actions)。",
-        "结合 `<Suspense>` 实现流式渲染，可以让用户更快看到部分内容（如骨架屏），结合乐观更新（在客户端立即反映预期结果）能极大提升交互感知性能。"
+        "理解HTTP协议的基本概念：请求、响应、状态码和头部。",
+        "掌握Node.js http模块的引入和使用，特别是createServer和listen方法。",
+        "学会创建和启动HTTP服务器，包括设置监听端口。",
+        "处理基本的请求和响应，使用req对象读取信息，res对象发送数据。",
+        "了解Node.js事件循环在HTTP服务器中的作用，实现非阻塞I/O以提高性能。"
       ],
       "exercise": {
-        "description": "基于上述 `likeProduct` Server Action 的原理，创建一个新的 Server Action `addComment`，用于在服务端为产品添加评论。并更新客户端组件 `ProductList`，使其包含一个简单的评论表单，调用这个新的 Server Action。",
-        "hint": "1. 在服务端组件文件中定义新的 `addComment` 函数，使用 `'use server'` 指令。该函数接收 `productId` 和 `content` 参数，执行模拟的数据库操作，并调用 `revalidateTag` 使评论数据缓存失效。\n2. 在 `ProductList` 客户端组件中，为每个产品添加一个表单，该表单的 `action` 属性绑定到 `addComment`。你需要使用隐藏的 `<input>` 来传递 `productId`。\n3. 为了更好的体验，你可以结合 `useFormStatus` 钩子来自定义提交按钮的加载状态。",
+        "description": "修改上面的服务器代码，使其能够根据请求的URL路径返回不同的响应。例如，当访问根路径'/'时返回'Home Page'，当访问'/about'时返回'About Page'，其他路径返回'404 Not Found'。",
+        "hint": "在createServer的回调函数中，使用req.url属性获取请求路径，然后用条件语句（如if-else）判断路径并设置不同的响应体。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "在 Next.js App Router 中，为了让 `fetch` 请求的数据每10分钟（600秒）自动重新验证一次（实现 ISR），应该在 `fetch` 调用中添加哪个选项？",
-            "codeContext": "const res = await fetch('https://api.example.com/data', {\n  /* 在这里填写选项 */\n});",
+            "question": "在Node.js中，创建HTTP服务器时，需要使用____模块来处理HTTP请求。",
+            "codeContext": null,
             "segments": [
               {
                 "type": "text",
-                "content": "const res = await fetch('https://api.example.com/data', {",
+                "content": "在Node.js中，创建HTTP服务器时，需要使用____模块来处理HTTP请求。",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,49 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[填写缓存选项]",
+                "placeholder": "[选择模块名]",
                 "options": [
-                  "cache: 'no-store'",
-                  "cache: 'force-cache'",
-                  "next: { revalidate: 600 }",
-                  "next: { tags: ['data'] }"
+                  "http",
+                  "fs",
+                  "path",
+                  "url"
                 ],
-                "correctAnswer": "next: { revalidate: 600 }"
-              },
-              {
-                "type": "text",
-                "content": "});",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
+                "correctAnswer": "http"
               }
             ],
             "options": null,
-            "correctAnswer": "next: { revalidate: 600 }",
-            "explanation": "`next.revalidate` 是 Next.js 扩展的 `fetch` 选项，用于设置基于时间的重新验证间隔（秒）。设置为 600 即表示每10分钟重新验证一次。`cache` 选项是标准的 Fetch API 选项，与 Next.js 的缓存层级不同。"
+            "correctAnswer": "http",
+            "explanation": "Node.js内置了http模块，专门用于创建HTTP服务器和处理网络请求，而fs用于文件系统，path用于路径操作，url用于URL解析。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "以下关于 React Server Components (RSC) 和 Server Actions 的说法，哪一项是**错误**的？",
+            "question": "以下哪个方法用于启动HTTP服务器并开始监听端口？",
             "codeContext": null,
             "segments": null,
             "options": [
-              "A. 服务端组件中可以直接使用 `async/await` 获取数据，无需 `useEffect`。",
-              "B. 客户端组件可以使用 `'use server'` 指令来定义函数，使其在服务端执行。",
-              "C. Server Actions 非常适合处理表单提交和按钮点击事件，以执行数据突变。",
-              "D. 使用 `revalidateTag` 可以清除与特定标签关联的缓存数据，触发相关组件的重新渲染。"
+              "server.listen()",
+              "server.start()",
+              "server.run()",
+              "server.open()"
             ],
-            "correctAnswer": "B. 客户端组件可以使用 `'use server'` 指令来定义函数，使其在服务端执行。",
-            "explanation": "`'use server'` 指令必须在一个模块的**顶层**使用，或者在一个被标记为 `'use server'` 的模块导出的函数体内使用。它不能直接在客户端组件（即标记了 `'use client'` 的组件文件）的内部使用。正确的做法是在单独的文件（如 `actions.js`）中定义 Server Action 并导出，然后在客户端组件中导入并调用。"
+            "correctAnswer": "server.listen()",
+            "explanation": "在Node.js的http模块中，server.listen()方法用于绑定服务器到指定端口并开始监听连接，是标准用法。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "下面这段 Next.js App Router 代码中的 `ServerComponent` 会渲染出什么内容？",
-            "codeContext": "// app/page.js (服务端组件)\nasync function getData() {\n  // 模拟一个失败的API请求\n  throw new Error('API Error');\n  return { message: 'Hello' };\n}\n\nexport default async function ServerComponent() {\n  try {\n    const data = await getData();\n    return <div>{data.message}</div>;\n  } catch (error) {\n    console.error(error);\n    return <div>An error occurred. Please try again.</div>;\n  }\n}",
+            "question": "如果运行以下代码，当用户访问 http://localhost:3000/page 时，浏览器会显示什么？",
+            "codeContext": "const http = require('http');\nconst server = http.createServer((req, res) => {\n  if (req.url === '/') {\n    res.end('Home');\n  } else {\n    res.end('Other');\n  }\n});\nserver.listen(3000);",
             "segments": null,
             "options": [
-              "A. 渲染一个包含文本 \"Hello\" 的 `<div>`。",
-              "B. 渲染一个包含文本 \"An error occurred. Please try again.\" 的 `<div>`。",
-              "C. 抛出一个未捕获的错误，导致页面显示 Next.js 默认的 500 错误界面。",
-              "D. 渲染一个空白页面。"
+              "Home",
+              "Other",
+              "空白页面",
+              "错误信息"
             ],
-            "correctAnswer": "B. 渲染一个包含文本 \"An error occurred. Please try again.\" 的 `<div>`。",
-            "explanation": "在 `getData` 函数中，`throw new Error` 会立即抛出异常，`return` 语句永远不会执行。`ServerComponent` 组件中的 `try...catch` 块会捕获到这个错误，执行 `catch` 分支，输出错误日志到服务器控制台，并渲染回退UI。这是服务端组件中处理错误的一种推荐模式，可以优雅地降级，而不是让整个页面崩溃。"
+            "correctAnswer": "Other",
+            "explanation": "代码中，当req.url等于'/'时返回'Home'，否则返回'Other'。访问'/page'路径时不等于'/'，所以会执行else分支，显示'Other'。"
           }
         ]
       }
