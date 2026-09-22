@@ -10,7 +10,7 @@ from datetime import datetime, timezone, timedelta
 BJ_TZ = timezone(timedelta(hours=8))
 MIMO_API_KEY = os.environ.get("MIMO_API_KEY", "tp-c6irsm5360gu18hd64hlmz47ltg54c5rbszghj45t5z96c31")
 MIMO_BASE_URL = os.environ.get("MIMO_BASE_URL", "https://token-plan-cn.xiaomimimo.com/v1")
-MIMO_MODEL = "xiaomi/mimo-v2.5-pro"
+MIMO_MODEL = "xiaomi/mimo-v2.6-pro"
 
 LANGS = {
     "german":   {"flag": "🇩🇪", "name": "德语",     "country": "德国",   "article": "der/die/das",          "topics": ["日常问候与自我介绍","在咖啡馆点餐","问路与交通","购物与讨价还价","在医院看病","酒店入住与退房","德国美食与烹饪","节日与传统","工作与面试","租房与搬家","天气与季节","爱好与运动","在邮局和银行","德国教育体系","环保与可持续发展","德国汽车文化","音乐与艺术","德国历史人物","科技与创新","德国大学生活","在超市购物","德国公共交通","德国职场文化","德国家庭生活","德国啤酒文化","圣诞市场","黑森林与旅游","德国哲学","足球与体育","德国文学"]},

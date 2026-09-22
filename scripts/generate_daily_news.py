@@ -17,7 +17,7 @@ BJ_TZ = timezone(timedelta(hours=8))
 
 MIMO_API_KEY = os.environ.get("MIMO_API_KEY", "tp-c6irsm5360gu18hd64hlmz47ltg54c5rbszghj45t5z96c31")
 MIMO_BASE_URL = os.environ.get("MIMO_BASE_URL", "https://token-plan-cn.xiaomimimo.com/v1")
-MIMO_MODEL = "xiaomi/mimo-v2.5-pro"
+MIMO_MODEL = "xiaomi/mimo-v2.6-pro"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"

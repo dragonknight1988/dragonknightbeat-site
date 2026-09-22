@@ -21,7 +21,7 @@ JSON_PATH = os.path.join(SITE_DIR, "daily-auto.json")
 
 MIMO_API_KEY = os.environ.get("MIMO_API_KEY", "tp-c6irsm5360gu18hd64hlmz47ltg54c5rbszghj45t5z96c31")
 MIMO_BASE_URL = os.environ.get("MIMO_BASE_URL", "https://token-plan-cn.xiaomimimo.com/v1")
-MIMO_MODEL = "xiaomi/mimo-v2.5-pro"  # 升级到旗舰模型
+MIMO_MODEL = "xiaomi/mimo-v2.6-pro"  # 升级到旗舰模型
 
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 HEADERS = {"User-Agent": UA, "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"}
