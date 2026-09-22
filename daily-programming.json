@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-21",
+  "date": "2026-09-22",
   "contents": [
     {
-      "id": "prog-2026-09-21",
-      "date": "2026-09-21",
-      "title": "Node.js HTTP服务器入门",
-      "summary": "学习如何使用Node.js内置http模块创建一个简单的HTTP服务器，处理基本Web请求。",
-      "difficulty": "初级",
-      "concept": "HTTP服务器是Web应用的核心组件，它监听客户端（如浏览器）的请求并返回响应。Node.js基于事件驱动和非阻塞I/O模型，非常适合构建高性能的HTTP服务器，因为它能在单个线程中高效处理并发请求，避免传统多线程服务器的开销。\n\n在Node.js中，http模块提供了创建服务器所需的API。通过引入这个模块，你可以使用createServer方法实例化一个服务器，该方法接受一个回调函数，这个函数在每次接收到请求时被调用。回调函数有两个参数：请求对象（req）和响应对象（res），分别用于读取请求数据和发送响应数据。\n\n对于初学者，理解HTTP请求-响应生命周期很重要：客户端发送请求到服务器，服务器解析请求路径和方法，生成响应头和体，然后发送回客户端。在Node.js中，这些步骤通过req.url和res.writeHead等方法实现。\n\n实际工程中，创建HTTP服务器是构建RESTful API或Web应用的基础。初学者应从简单示例开始，逐步添加路由、中间件等功能。注意处理错误和设置适当的响应头（如Content-Type），以确保服务器健壮性和兼容性。虽然Node.js是常用选择，但Deno也支持HTTP服务器，其API类似，但使用TypeScript和标准库，适合后续学习对比。",
+      "id": "prog-2026-09-22",
+      "date": "2026-09-22",
+      "title": "Go并发编程：深入理解select语句与多路复用",
+      "summary": "掌握Go语言中select语句的原理、使用场景及最佳实践，实现高效的多路channel操作。",
+      "difficulty": "中级",
+      "concept": "在Go并发编程中，channel是goroutine间通信的核心机制。当我们需要同时等待多个channel操作时，select语句就成为了不可或缺的工具。select允许一个goroutine在多个channel操作中做出选择，当任何一个操作就绪时，select就会执行相应的分支。这种机制类似于网络编程中的I/O多路复用，能够避免阻塞在单一的channel操作上。\n\nselect语句的基本结构包含多个case分支，每个case分支对应一个channel的发送或接收操作。如果多个case同时就绪，Go运行时会随机选择一个执行，这保证了公平性，防止饥饿问题。如果所有case都未就绪，select会阻塞直到某个case就绪。特别地，select中可以包含default分支，当没有case就绪时立即执行default，这使得select成为非阻塞的检查机制。\n\n在实际工程中，select常用于实现超时控制、取消操作、并行处理等多个场景。例如，在微服务架构中，我们经常需要设置请求超时，select结合time.After channel可以优雅地实现这一需求。同时，select也是实现优雅退出（graceful shutdown）的关键，通过监听context.Done() channel来响应取消信号。\n\nselect的执行流程值得深入理解：当select被评估时，所有case中的channel操作表达式都会被计算（但不会立即执行），然后Go运行时会检查所有case对应的channel状态。如果有多个case就绪，会通过伪随机算法选择一个执行。如果没有任何case就绪，且存在default分支，则执行default；否则当前goroutine会阻塞，直到某个case就绪。这种机制确保了select的高效性。\n\n需要注意的是，空的select{}语句会导致goroutine永久阻塞，这通常用在main函数中保持程序运行。此外，select不能与channel的方向限定组合使用，因为case中的操作方向由发送或接收表达式决定。在处理nil channel时，select会忽略对应case，这在动态管理channel时非常有用。",
       "codeExample": {
-        "language": "javascript",
-        "code": "// 引入Node.js内置http模块\nconst http = require('http');\n\n// 创建HTTP服务器实例，回调函数处理每个请求\nconst server = http.createServer((req, res) => {\n  // 设置响应状态码和头部，Content-Type为纯文本\n  res.writeHead(200, {'Content-Type': 'text/plain'});\n  // 发送响应体，结束响应\n  res.end('Hello, World!\\n');\n});\n\n// 让服务器监听端口3000，启动后回调打印消息\nserver.listen(3000, () => {\n  console.log('服务器已启动，运行在 http://localhost:3000/');\n});",
-        "explanation": "代码逐行解释：第一行引入http模块，这是Node.js的核心模块，无需安装。第二行使用createServer创建服务器实例，回调函数接收req和res参数，用于处理请求和构建响应。在回调中，使用res.writeHead设置HTTP状态码200（成功）和头部信息，指定响应内容为纯文本。接着，res.end发送'Hello, World!'作为响应体并关闭连接。最后，server.listen让服务器监听3000端口，回调函数在服务器启动后执行，打印日志。运行此代码后，访问http://localhost:3000/即可看到响应。"
+        "language": "Go",
+        "code": "package main\n\nimport (\n\t\"fmt\"\n\t\"time\"\n)\n\nfunc main() {\n\t// 创建两个channel\n\tch1 := make(chan string)\n\tch2 := make(chan string)\n\n\t// 启动两个goroutine模拟不同时间的操作\n\tgo func() {\n\t\ttime.Sleep(1 * time.Second)\n\t\tch1 <- \"来自ch1的消息\"\n\t}()\n\n\tgo func() {\n\t\ttime.Sleep(2 * time.Second)\n\t\tch2 <- \"来自ch2的消息\"\n\t}()\n\n\t// 使用select等待两个channel，设置3秒超时\n\tselect {\n\tcase msg := <-ch1:\n\t\tfmt.Printf(\"收到消息: %s\\n\", msg)\n\tcase msg := <-ch2:\n\t\tfmt.Printf(\"收到消息: %s\\n\", msg)\n\tcase <-time.After(3 * time.Second):\n\t\tfmt.Println(\"操作超时，等待了3秒\")\n\t}\n\n\t// 使用select实现非阻塞的channel操作\n\tnonBlockingCheck := func(ch chan string) {\n\t\tselect {\n\t\tcase msg, ok := <-ch:\n\t\t\tif ok {\n\t\t\t\tfmt.Printf(\"收到消息: %s\\n\", msg)\n\t\t\t} else {\n\t\t\t\tfmt.Println(\"channel已关闭\")\n\t\t\t}\n\t\tdefault:\n\t\t\tfmt.Println(\"channel中没有消息\")\n\t\t}\n\t}\n\n\t// 测试非阻塞检查\n\ttestCh := make(chan string, 1)\n\ttestCh <- \"测试消息\"\n\tnonBlockingCheck(testCh)\n\tnonBlockingCheck(testCh)\n\n\tclose(testCh)\n\tnonBlockingCheck(testCh)\n\n\t// 使用select监听多个channel并实现数据聚合\n\tresults := make(chan int, 3)\n\tfor i := 0; i < 3; i++ {\n\t\tgo func(id int) {\n\t\t\ttime.Sleep(time.Duration(id+1) * 500 * time.Millisecond)\n\t\t\tresults <- id * 10\n\t\t}(i)\n\t}\n\n\t// 收集所有结果\n\ttotal := 0\n\tfor i := 0; i < 3; i++ {\n\t\tselect {\n\t\tcase result := <-results:\n\t\t\tfmt.Printf(\"收到结果: %d\\n\", result)\n\t\t\ttotal += result\n\t\t\tfmt.Printf(\"当前总计: %d\\n\", total)\n\t\t}\n\t}\n\n\tfmt.Printf(\"最终总计: %d\\n\", total)\n}",
+        "explanation": "1. 创建两个channel ch1和ch2，并启动两个goroutine分别在1秒和2秒后发送消息\n2. 使用select语句等待ch1或ch2的消息，同时设置3秒超时。由于ch1先就绪，会执行第一个case\n3. 定义nonBlockingCheck函数，使用select的default分支实现非阻塞检查：当channel中有消息时立即读取，没有消息则执行default分支\n4. 测试非阻塞检查：先发送一条消息，第一次检查能读取到，第二次检查发现没有新消息，关闭channel后第三次检查能检测到channel已关闭\n5. 使用select收集多个goroutine的结果，展示select在数据聚合场景中的应用。每个结果按不同延迟到达，select会依次处理每个就绪的结果"
       },
       "keyPoints": [
-        "理解HTTP协议的基本概念：请求、响应、状态码和头部。",
-        "掌握Node.js http模块的引入和使用，特别是createServer和listen方法。",
-        "学会创建和启动HTTP服务器，包括设置监听端口。",
-        "处理基本的请求和响应，使用req对象读取信息，res对象发送数据。",
-        "了解Node.js事件循环在HTTP服务器中的作用，实现非阻塞I/O以提高性能。"
+        "select语句用于在多个channel操作中选择就绪的分支执行，实现I/O多路复用",
+        "当多个case同时就绪时，Go运行时会随机选择一个执行，确保公平性",
+        "default分支使select变为非阻塞操作，可用于检查channel状态而不阻塞",
+        "select常用于超时控制、优雅退出、并行处理和数据聚合等实际场景",
+        "空select{}会导致goroutine永久阻塞，select会忽略对nil channel的操作"
       ],
       "exercise": {
-        "description": "修改上面的服务器代码，使其能够根据请求的URL路径返回不同的响应。例如，当访问根路径'/'时返回'Home Page'，当访问'/about'时返回'About Page'，其他路径返回'404 Not Found'。",
-        "hint": "在createServer的回调函数中，使用req.url属性获取请求路径，然后用条件语句（如if-else）判断路径并设置不同的响应体。",
+        "description": "实现一个并行任务执行器，使用select同时处理多个任务的完成通知和超时控制。",
+        "hint": "可以创建多个channel分别接收各个任务的结果，然后使用select等待第一个完成的任务或超时。考虑如何处理部分任务完成的情况。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "在Node.js中，创建HTTP服务器时，需要使用____模块来处理HTTP请求。",
-            "codeContext": null,
+            "question": "完成以下代码，使用select实现超时控制：",
+            "codeContext": "func withTimeout(duration time.Duration) (string, error) {\n    ch := make(chan string, 1)\n    go func() {\n        time.Sleep(2 * time.Second) // 模拟耗时操作\n        ch <- \"操作完成\"\n    }()\n    \n    select {\n    case result := <-ch:\n        return result, nil\n    case [选择]:\n        return \"\", fmt.Errorf(\"操作超时\")\n    }\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "在Node.js中，创建HTTP服务器时，需要使用____模块来处理HTTP请求。",
+                "content": "case ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,49 +40,55 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择模块名]",
+                "placeholder": "[选择超时表达式]",
                 "options": [
-                  "http",
-                  "fs",
-                  "path",
-                  "url"
+                  "time.After(duration)",
+                  "time.NewTimer(duration).C",
+                  "context.WithTimeout(context.Background(), duration)"
                 ],
-                "correctAnswer": "http"
+                "correctAnswer": "time.After(duration)"
+              },
+              {
+                "type": "text",
+                "content": ":\n        return \"\", fmt.Errorf(\"操作超时\")",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "http",
-            "explanation": "Node.js内置了http模块，专门用于创建HTTP服务器和处理网络请求，而fs用于文件系统，path用于路径操作，url用于URL解析。"
+            "correctAnswer": "time.After(duration)",
+            "explanation": "time.After(duration)返回一个channel，在指定时间后会接收到当前时间，这是select中实现超时的标准模式。time.NewTimer(duration).C也能实现类似功能但需要手动管理timer的生命周期。context.WithTimeout更复杂，通常用于在函数调用链中传递超时信号。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "以下哪个方法用于启动HTTP服务器并开始监听端口？",
-            "codeContext": null,
+            "question": "在以下select语句中，如果ch1和ch2同时就绪，会发生什么？\n\nselect {\ncase msg := <-ch1:\n    fmt.Println(\"从ch1收到:\", msg)\ncase msg := <-ch2:\n    fmt.Println(\"从ch2收到:\", msg)\n}",
+            "codeContext": "",
             "segments": null,
             "options": [
-              "server.listen()",
-              "server.start()",
-              "server.run()",
-              "server.open()"
+              "总是执行第一个case",
+              "总是执行第二个case",
+              "随机选择一个case执行",
+              "编译错误"
             ],
-            "correctAnswer": "server.listen()",
-            "explanation": "在Node.js的http模块中，server.listen()方法用于绑定服务器到指定端口并开始监听连接，是标准用法。"
+            "correctAnswer": "随机选择一个case执行",
+            "explanation": "Go语言规范明确规定：如果多个case同时就绪，select会通过伪随机算法选择一个执行。这防止了在高并发场景中某个channel被饿死的情况，确保公平性。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "如果运行以下代码，当用户访问 http://localhost:3000/page 时，浏览器会显示什么？",
-            "codeContext": "const http = require('http');\nconst server = http.createServer((req, res) => {\n  if (req.url === '/') {\n    res.end('Home');\n  } else {\n    res.end('Other');\n  }\n});\nserver.listen(3000);",
+            "question": "以下代码的输出是什么？",
+            "codeContext": "func main() {\n    ch1 := make(chan int, 1)\n    ch2 := make(chan int, 1)\n    \n    ch1 <- 1\n    ch2 <- 2\n    \n    select {\n    case <-ch1:\n        fmt.Println(\"从ch1读取\")\n    case <-ch2:\n        fmt.Println(\"从ch2读取\")\n    default:\n        fmt.Println(\"默认分支\")\n    }\n}",
             "segments": null,
             "options": [
-              "Home",
-              "Other",
-              "空白页面",
-              "错误信息"
+              "从ch1读取",
+              "从ch2读取",
+              "默认分支",
+              "可能输出\"从ch1读取\"或\"从ch2读取\""
             ],
-            "correctAnswer": "Other",
-            "explanation": "代码中，当req.url等于'/'时返回'Home'，否则返回'Other'。访问'/page'路径时不等于'/'，所以会执行else分支，显示'Other'。"
+            "correctAnswer": "可能输出\"从ch1读取\"或\"从ch2读取\"",
+            "explanation": "由于ch1和ch2都有数据（缓冲区都满），两个case都就绪。根据Go规范，select会随机选择一个执行，所以输出可能是\"从ch1读取\"也可能是\"从ch2读取\"。default分支不会执行，因为已有case就绪。"
           }
         ]
       }
