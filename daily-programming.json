@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-22",
+  "date": "2026-09-23",
   "contents": [
     {
-      "id": "prog-2026-09-22",
-      "date": "2026-09-22",
-      "title": "Go并发编程：深入理解select语句与多路复用",
-      "summary": "掌握Go语言中select语句的原理、使用场景及最佳实践，实现高效的多路channel操作。",
+      "id": "prog-2026-09-23",
+      "date": "2026-09-23",
+      "title": "Rust 错误处理进阶：自定义错误类型、From 转换与 ? 运算符",
+      "summary": "学会用自定义 Error 枚举统一库级错误，用 From + ? 实现零噪音的错误传播，并保留错误链（source）。",
       "difficulty": "中级",
-      "concept": "在Go并发编程中，channel是goroutine间通信的核心机制。当我们需要同时等待多个channel操作时，select语句就成为了不可或缺的工具。select允许一个goroutine在多个channel操作中做出选择，当任何一个操作就绪时，select就会执行相应的分支。这种机制类似于网络编程中的I/O多路复用，能够避免阻塞在单一的channel操作上。\n\nselect语句的基本结构包含多个case分支，每个case分支对应一个channel的发送或接收操作。如果多个case同时就绪，Go运行时会随机选择一个执行，这保证了公平性，防止饥饿问题。如果所有case都未就绪，select会阻塞直到某个case就绪。特别地，select中可以包含default分支，当没有case就绪时立即执行default，这使得select成为非阻塞的检查机制。\n\n在实际工程中，select常用于实现超时控制、取消操作、并行处理等多个场景。例如，在微服务架构中，我们经常需要设置请求超时，select结合time.After channel可以优雅地实现这一需求。同时，select也是实现优雅退出（graceful shutdown）的关键，通过监听context.Done() channel来响应取消信号。\n\nselect的执行流程值得深入理解：当select被评估时，所有case中的channel操作表达式都会被计算（但不会立即执行），然后Go运行时会检查所有case对应的channel状态。如果有多个case就绪，会通过伪随机算法选择一个执行。如果没有任何case就绪，且存在default分支，则执行default；否则当前goroutine会阻塞，直到某个case就绪。这种机制确保了select的高效性。\n\n需要注意的是，空的select{}语句会导致goroutine永久阻塞，这通常用在main函数中保持程序运行。此外，select不能与channel的方向限定组合使用，因为case中的操作方向由发送或接收表达式决定。在处理nil channel时，select会忽略对应case，这在动态管理channel时非常有用。",
+      "concept": "Rust 没有异常机制，所有可恢复错误都通过 Result<T, E> 显式表达。初级阶段我们大量使用 String 或 Box<dyn Error> 作为错误类型，这在写脚本时够用，但一旦进入库/服务开发就会暴露三个问题：调用方无法用 match 精确区分错误种类（字符串匹配是反模式）、错误上下文在层层传递中丢失、跨模块错误类型难以统一。中级开发者的核心能力之一，就是为自己的 crate 设计一个「可穷举、可组合、可追溯」的错误类型。\n\n惯用做法是定义一个枚举，把每一种业务失败场景列为一个变体（Variant），把可能包裹的底层错误（如 ParseIntError、io::Error、serde_json::Error）作为变体的字段保存起来。这样调用方可以 match 出 DivByZero 走重试逻辑、match 出 NotFound 走默认值逻辑，而不需要解析错误文本。工程上常用 thiserror 这个派生宏来自动生成 Display/Error 实现，但理解它展开后的手写形态非常重要——所有宏魔法都是在替你写下面这几段样板代码。\n\n第二个关键点是 From 转换与 ? 运算符的配合。? 本质上是：成功则解包，失败则「早返回」，并且在返回前调用 From::from 把底层错误转换成当前函数签名声明的错误类型。也就是说，只要你为 AppError 实现了 From<ParseIntError>，函数体里就可以直接写 \"42\".parse::<i64>()?，编译器自动完成类型转换。这就是 Rust 错误处理「显式但不啰嗦」的秘诀：错误类型是显式的，转换是自动的。切记 ? 不会替你 From 到 String 或 Box<dyn Error> 以外的任意类型——缺少对应 From 实现会直接编译失败。\n\n第三点是错误链（Error Chain）。真实故障往往是「数据库连接失败 ← 底层是 io 错误 ← 底层是 Connection refused」。std::error::Error 的 source() 方法就是用来保存这条链的：包装型变体（如 AppError::Parse(e)）返回 Some(e)，语义型变体（如 DivByZero）返回 None。在日志里用 anyhow/eyre 的 {:#} 或 {:?} 打印时，这条链能一眼看出根因，极大缩短排障时间。另外两个容易踩的坑：错误类型几乎总是需要 #[derive(Debug)]，因为 Error trait 要求 Debug；如果你的错误变体持有 &str 借用，要考虑生命周期，服务端代码里通常直接持有 String 或 Box<str> 以避免把生命周期传染给整个签名。",
       "codeExample": {
-        "language": "Go",
-        "code": "package main\n\nimport (\n\t\"fmt\"\n\t\"time\"\n)\n\nfunc main() {\n\t// 创建两个channel\n\tch1 := make(chan string)\n\tch2 := make(chan string)\n\n\t// 启动两个goroutine模拟不同时间的操作\n\tgo func() {\n\t\ttime.Sleep(1 * time.Second)\n\t\tch1 <- \"来自ch1的消息\"\n\t}()\n\n\tgo func() {\n\t\ttime.Sleep(2 * time.Second)\n\t\tch2 <- \"来自ch2的消息\"\n\t}()\n\n\t// 使用select等待两个channel，设置3秒超时\n\tselect {\n\tcase msg := <-ch1:\n\t\tfmt.Printf(\"收到消息: %s\\n\", msg)\n\tcase msg := <-ch2:\n\t\tfmt.Printf(\"收到消息: %s\\n\", msg)\n\tcase <-time.After(3 * time.Second):\n\t\tfmt.Println(\"操作超时，等待了3秒\")\n\t}\n\n\t// 使用select实现非阻塞的channel操作\n\tnonBlockingCheck := func(ch chan string) {\n\t\tselect {\n\t\tcase msg, ok := <-ch:\n\t\t\tif ok {\n\t\t\t\tfmt.Printf(\"收到消息: %s\\n\", msg)\n\t\t\t} else {\n\t\t\t\tfmt.Println(\"channel已关闭\")\n\t\t\t}\n\t\tdefault:\n\t\t\tfmt.Println(\"channel中没有消息\")\n\t\t}\n\t}\n\n\t// 测试非阻塞检查\n\ttestCh := make(chan string, 1)\n\ttestCh <- \"测试消息\"\n\tnonBlockingCheck(testCh)\n\tnonBlockingCheck(testCh)\n\n\tclose(testCh)\n\tnonBlockingCheck(testCh)\n\n\t// 使用select监听多个channel并实现数据聚合\n\tresults := make(chan int, 3)\n\tfor i := 0; i < 3; i++ {\n\t\tgo func(id int) {\n\t\t\ttime.Sleep(time.Duration(id+1) * 500 * time.Millisecond)\n\t\t\tresults <- id * 10\n\t\t}(i)\n\t}\n\n\t// 收集所有结果\n\ttotal := 0\n\tfor i := 0; i < 3; i++ {\n\t\tselect {\n\t\tcase result := <-results:\n\t\t\tfmt.Printf(\"收到结果: %d\\n\", result)\n\t\t\ttotal += result\n\t\t\tfmt.Printf(\"当前总计: %d\\n\", total)\n\t\t}\n\t}\n\n\tfmt.Printf(\"最终总计: %d\\n\", total)\n}",
-        "explanation": "1. 创建两个channel ch1和ch2，并启动两个goroutine分别在1秒和2秒后发送消息\n2. 使用select语句等待ch1或ch2的消息，同时设置3秒超时。由于ch1先就绪，会执行第一个case\n3. 定义nonBlockingCheck函数，使用select的default分支实现非阻塞检查：当channel中有消息时立即读取，没有消息则执行default分支\n4. 测试非阻塞检查：先发送一条消息，第一次检查能读取到，第二次检查发现没有新消息，关闭channel后第三次检查能检测到channel已关闭\n5. 使用select收集多个goroutine的结果，展示select在数据聚合场景中的应用。每个结果按不同延迟到达，select会依次处理每个就绪的结果"
+        "language": "Rust",
+        "code": "use std::error::Error;\nuse std::fmt;\nuse std::num::ParseIntError;\n\n// 1) 用枚举穷举所有业务失败场景\n#[derive(Debug)]\nenum AppError {\n    Parse(ParseIntError),   // 包装型：持有底层错误\n    DivByZero,              // 语义型：无底层错误\n    NotFound(String),       // 语义型：携带上下文\n}\n\n// 2) 实现 Display：给「人」看的错误描述\nimpl fmt::Display for AppError {\n    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {\n        match self {\n            AppError::Parse(e) => write!(f, \"数字解析失败: {}\", e),\n            AppError::DivByZero => write!(f, \"除数不能为 0\"),\n            AppError::NotFound(key) => write!(f, \"配置项不存在: {}\", key),\n        }\n    }\n}\n\n// 3) 实现 Error：用 source() 保留错误链\nimpl Error for AppError {\n    fn source(&self) -> Option<&(dyn Error + 'static)> {\n        match self {\n            AppError::Parse(e) => Some(e), // 把根因挂上去\n            _ => None,\n        }\n    }\n}\n\n// 4) From 转换：让 ? 能把 ParseIntError 自动变成 AppError\nimpl From<ParseIntError> for AppError {\n    fn from(e: ParseIntError) -> Self {\n        AppError::Parse(e)\n    }\n}\n\n// 解析两个数并相除，全程只用 ? 传播错误\nfn parse_div(a: &str, b: &str) -> Result<i64, AppError> {\n    let a: i64 = a.trim().parse()?; // 失败 -> From -> 早返回\n    let b: i64 = b.trim().parse()?;\n    if b == 0 {\n        return Err(AppError::DivByZero); // 业务错误手动构造\n    }\n    Ok(a / b)\n}\n\n// ok_or_else 把 Option 转成 Result（惰性构造错误，避免无谓分配）\nfn find_config<'a>(map: &'a [(&str, &str)], key: &str) -> Result<&'a str, AppError> {\n    map.iter()\n        .find(|(k, _)| *k == key)\n        .map(|(_, v)| *v)\n        .ok_or_else(|| AppError::NotFound(key.to_string()))\n}\n\nfn run() -> Result<(), AppError> {\n    let v = parse_div(\"100\", \"4\")?;\n    println!(\"run(): 100 / 4 = {}\", v);\n    Ok(())\n}\n\nfn main() {\n    let cases = [(\"42\", \"6\"), (\"42\", \"0\"), (\"abc\", \"3\")];\n    for (a, b) in cases {\n        match parse_div(a, b) {\n            Ok(v) => println!(\"{} / {} = {}\", a, b, v),\n            Err(e) => println!(\"{} / {} -> [{}] 根因: {:?}\", a, b, e, e.source()),\n        }\n    }\n\n    let conf = [(\"host\", \"127.0.0.1\"), (\"port\", \"8080\")];\n    match find_config(&conf, \"timeout\") {\n        Ok(v) => println!(\"timeout = {}\", v),\n        Err(e) => println!(\"加载失败: {}\", e),\n    }\n\n    if let Err(e) = run() {\n        println!(\"run 失败: {}\", e);\n    }\n}\n",
+        "explanation": "【第 1 段 · 错误枚举】AppError 用三个变体覆盖三类失败：Parse 包装底层 ParseIntError（可恢复且需保留根因）、DivByZero 是纯业务校验、NotFound(String) 携带出错的 key 作为上下文。必须 #[derive(Debug)]，因为 std::error::Error: Debug。\n\n【第 2 段 · Display】只负责生成人类可读的一行描述，不要在这里做日志或副作用。注意不要把 Debug 格式（{:?}）抄进来当 Display 用，那会把内部结构泄露给最终用户。\n\n【第 3 段 · Error + source】source() 是错误链的核心。包装型变体返回 Some(e)，这样日志框架能逐层展开「表层原因 → 根因」；语义型变体返回 None 表示链到此为止。\n\n【第 4 段 · From】这是 ? 能自动转换的全部秘密：只要存在 From<ParseIntError> for AppError，parse()? 就无需 map_err 手工包裹。注意不能为 foreign 类型同时实现 From<ParseIntError>（foreign）→ String（foreign），孤儿规则会拒绝；自定义 AppError 是本地类型所以合法。\n\n【parse_div】两处 .parse()? 自动转换为 AppError；b == 0 是业务规则，手动 return Err(AppError::DivByZero)。返回 Ok(a / b)。\n\n【find_config】把 Option 转 Result 的惯用法：ok_or_else 接收闭包，只有在确实失败时才分配 String，比 ok_or(AppError::NotFound(key.into())) 更高效。\n\n【main】用 match 分别展示成功、业务错误、解析错误三种路径，e.source() 打印根因，可以看到 Parse 变体能追到 ParseIntError，而 DivByZero 的 source 是 None。"
       },
       "keyPoints": [
-        "select语句用于在多个channel操作中选择就绪的分支执行，实现I/O多路复用",
-        "当多个case同时就绪时，Go运行时会随机选择一个执行，确保公平性",
-        "default分支使select变为非阻塞操作，可用于检查channel状态而不阻塞",
-        "select常用于超时控制、优雅退出、并行处理和数据聚合等实际场景",
-        "空select{}会导致goroutine永久阻塞，select会忽略对nil channel的操作"
+        "库代码用自定义枚举错误类型（或 thiserror 派生），禁止用 String 当错误类型——调用方无法 match",
+        "? 运算符在早返回前调用 From::from 做错误转换，缺少对应 From 实现会编译失败",
+        "ok_or_else(|| ...) 把 Option 转 Result，闭包惰性构造错误，避免成功路径上的无谓分配",
+        "实现 Error::source() 保留错误链，排障时能直接看到根因而不是一串被吞掉的上下文",
+        "Display 给用户看、Debug 给开发者看；变体字段优先持有 String 而非 &str，避免生命周期扩散"
       ],
       "exercise": {
-        "description": "实现一个并行任务执行器，使用select同时处理多个任务的完成通知和超时控制。",
-        "hint": "可以创建多个channel分别接收各个任务的结果，然后使用select等待第一个完成的任务或超时。考虑如何处理部分任务完成的情况。",
+        "description": "为一个「用户注册服务」设计错误类型 SignupError，包含四种场景：EmailInvalid（邮箱格式非法，包装底层自定义校验错误）、PasswordTooWeak（纯业务规则）、DuplicateEmail(String)（携带重复的邮箱）、DbUnavailable（数据库不可用）。要求：实现 Display、Error（含 source）、From 转换，并编写 fn register(email: &str, password: &str) -> Result<u64, SignupError>，其中邮箱合法性用一个返回 Result<&str, std::str::Utf8Error>（或自定义 CheckError）的辅助函数 + ? 完成传播，密码长度小于 8 时返回 PasswordTooWeak，email 包含 \"admin@\" 时返回 DuplicateEmail。最后在 main 中用 match 打印三种失败与一种成功的输出，并打印错误链。",
+        "hint": "先定义 #[derive(Debug)] enum SignupError { ... }，为每个包装型变体写 source() 返回 Some(e)。register 的签名错误类型固定为 SignupError，所以内部辅助函数返回的错误需要你手写 impl From<XxxError> for SignupError，之后校验函数调用直接加 ? 即可。用 format! 或 to_string() 把 &str 转成 String 存入 DuplicateEmail。注意 main 里打印 e.source() 时用 {:?} 才能看清类型。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "完成以下代码，使用select实现超时控制：",
-            "codeContext": "func withTimeout(duration time.Duration) (string, error) {\n    ch := make(chan string, 1)\n    go func() {\n        time.Sleep(2 * time.Second) // 模拟耗时操作\n        ch <- \"操作完成\"\n    }()\n    \n    select {\n    case result := <-ch:\n        return result, nil\n    case [选择]:\n        return \"\", fmt.Errorf(\"操作超时\")\n    }\n}",
+            "question": "补全代码，使 ? 运算符能自动把 ParseIntError 转成 AppError，并让 ok_or_else 产生正确的错误。",
+            "codeContext": "impl ______ for AppError {\n    fn from(e: ParseIntError) -> Self { AppError::Parse(e) }\n}\n\nlet val = map.iter()\n    .find(|(k, _)| *k == key)\n    .map(|(_, v)| *v)\n    .______ (|| AppError::NotFound(key.to_string()));",
             "segments": [
               {
                 "type": "text",
-                "content": "case ",
+                "content": "impl ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,55 +40,73 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择超时表达式]",
+                "placeholder": "[选择]",
                 "options": [
-                  "time.After(duration)",
-                  "time.NewTimer(duration).C",
-                  "context.WithTimeout(context.Background(), duration)"
+                  "From<ParseIntError>",
+                  "Into<ParseIntError>",
+                  "TryFrom<ParseIntError>"
                 ],
-                "correctAnswer": "time.After(duration)"
+                "correctAnswer": "From<ParseIntError>"
               },
               {
                 "type": "text",
-                "content": ":\n        return \"\", fmt.Errorf(\"操作超时\")",
+                "content": " for AppError {\n    fn from(e: ParseIntError) -> Self { AppError::Parse(e) }\n}\n\nlet val = map.iter()\n    .find(|(k, _)| *k == key)\n    .map(|(_, v)| *v)\n    .",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "ok_or_else",
+                  "ok_or",
+                  "unwrap_or"
+                ],
+                "correctAnswer": "ok_or_else"
+              },
+              {
+                "type": "text",
+                "content": "(|| AppError::NotFound(key.to_string()));",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "time.After(duration)",
-            "explanation": "time.After(duration)返回一个channel，在指定时间后会接收到当前时间，这是select中实现超时的标准模式。time.NewTimer(duration).C也能实现类似功能但需要手动管理timer的生命周期。context.WithTimeout更复杂，通常用于在函数调用链中传递超时信号。"
+            "correctAnswer": "From<ParseIntError> / ok_or_else",
+            "explanation": "? 通过 From::from 做转换，因此必须实现 From<ParseIntError> for AppError（Into 会在有 From 时自动派生，但 ? 依赖的是 From，显式写 From 是惯例）。ok_or_else 接受返回错误的闭包，只有在 Option 为 None 时才执行；ok_or 则每次都会求值参数，成功路径上白白分配一个 String，性能更差。unwrap_or 返回的是默认值而不是 Result，语义也不对。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "在以下select语句中，如果ch1和ch2同时就绪，会发生什么？\n\nselect {\ncase msg := <-ch1:\n    fmt.Println(\"从ch1收到:\", msg)\ncase msg := <-ch2:\n    fmt.Println(\"从ch2收到:\", msg)\n}",
-            "codeContext": "",
+            "question": "关于 Rust 中 ? 运算符的行为，下列说法正确的是？",
+            "codeContext": "fn run() -> Result<i64, AppError> {\n    let n: i64 = \"abc\".parse()?;\n    Ok(n)\n}",
             "segments": null,
             "options": [
-              "总是执行第一个case",
-              "总是执行第二个case",
-              "随机选择一个case执行",
-              "编译错误"
+              "失败时直接 panic，等价于 unwrap()",
+              "失败时用 From::from 把错误转换为函数签名中的错误类型后提前返回 Err",
+              "失败时返回 None，所以函数返回类型必须是 Option<T>",
+              "失败时自动调用 Box::new 把错误装箱"
             ],
-            "correctAnswer": "随机选择一个case执行",
-            "explanation": "Go语言规范明确规定：如果多个case同时就绪，select会通过伪随机算法选择一个执行。这防止了在高并发场景中某个channel被饿死的情况，确保公平性。"
+            "correctAnswer": "失败时用 From::from 把错误转换为函数签名中的错误类型后提前返回 Err",
+            "explanation": "? 是 try 语法糖：Ok(v) => v，Err(e) => return Err(From::from(e))。它不 panic（panic 对应 unwrap），也不要求返回 Option——当然 ? 同样可用于 Option，此时是把 None 提前返回。类型转换完全依赖 From 实现，与 Box 无关。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码的输出是什么？",
-            "codeContext": "func main() {\n    ch1 := make(chan int, 1)\n    ch2 := make(chan int, 1)\n    \n    ch1 <- 1\n    ch2 <- 2\n    \n    select {\n    case <-ch1:\n        fmt.Println(\"从ch1读取\")\n    case <-ch2:\n        fmt.Println(\"从ch2读取\")\n    default:\n        fmt.Println(\"默认分支\")\n    }\n}",
+            "question": "这段代码的输出是什么？",
+            "codeContext": "fn main() {\n    let r: Result<i32, String> = \"12\".parse::<i32>()\n        .map_err(|e| e.to_string())\n        .and_then(|n| Ok(n * 2));\n    println!(\"{:?}\", r.map(|n| n + 1));\n}",
             "segments": null,
             "options": [
-              "从ch1读取",
-              "从ch2读取",
-              "默认分支",
-              "可能输出\"从ch1读取\"或\"从ch2读取\""
+              "Ok(25)",
+              "Ok(24)",
+              "Ok(12)",
+              "Err(\"invalid digit found in string\")"
             ],
-            "correctAnswer": "可能输出\"从ch1读取\"或\"从ch2读取\"",
-            "explanation": "由于ch1和ch2都有数据（缓冲区都满），两个case都就绪。根据Go规范，select会随机选择一个执行，所以输出可能是\"从ch1读取\"也可能是\"从ch2读取\"。default分支不会执行，因为已有case就绪。"
+            "correctAnswer": "Ok(25)",
+            "explanation": "\"12\".parse::<i32>() 得到 Ok(12)；map_err 只处理 Err 分支，此处不生效；and_then 把 12 乘 2 得 Ok(24)；最后 r.map(|n| n + 1) 对 Ok 值再加 1，得到 Ok(25)。注意 map_err 只在失败时执行，and_then 的闭包必须返回 Result，而 map 的闭包返回裸值——这三者是最常被混淆的组合子。"
           }
         ]
       }

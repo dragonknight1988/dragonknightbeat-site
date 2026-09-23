@@ -1,192 +1,192 @@
 {
-  "date": "2026-09-22",
+  "date": "2026-09-23",
   "content": {
-    "id": "en-2026-09-22",
-    "date": "2026-09-22",
-    "topic": "教育与成长",
+    "id": "en-2026-09-23",
+    "date": "2026-09-23",
+    "topic": "人工智能与科技",
     "newsHighlights": [
       {
-        "title": "AI for good needs US-China cooperation",
+        "title": "Three areas with huge potential for Sino-US AI collaboration",
         "source": "China Daily",
-        "summary": "A Turing Award winner states President Xi's US visit is a perfect chance to launch global AI cooperation between China and the US.",
-        "translation": "图灵奖得主表示，习近平主席的美国之行是启动中美全球AI合作的绝佳时机。",
+        "summary": "Experts identify three promising areas where China and the US can work together on artificial intelligence despite their differences.",
+        "translation": "专家指出，尽管存在分歧，中美在人工智能领域仍有三大潜力巨大的合作方向。",
         "keyWords": [
-          "cooperation",
-          "AI",
-          "opportunity"
+          "collaboration",
+          "potential",
+          "artificial intelligence"
         ]
       },
       {
-        "title": "China's new calling cards: AI, robots and new drugs",
-        "source": "China Daily",
-        "summary": "China's new 'new three' industries—AI, robotics, and innovative drugs—are reshaping its global image through exporting technology.",
-        "translation": "中国新的“三样”——人工智能、机器人和创新药物——正通过出口技术重塑其全球形象。",
+        "title": "UN chief calls for AI curbs, end to wars in his final assembly address",
+        "source": "CGTN",
+        "summary": "The UN secretary-general urged global rules to curb artificial intelligence risks in his final speech to the General Assembly.",
+        "translation": "联合国秘书长在最后一次大会演讲中呼吁出台全球规则，以遏制人工智能风险。",
         "keyWords": [
-          "innovation",
-          "reshaping",
-          "patents"
+          "curb",
+          "regulation",
+          "global governance"
         ]
       },
       {
-        "title": "Xi to pay state visit to US from Sept 23 to 25",
-        "source": "China Daily",
-        "summary": "President Xi Jinping will pay a state visit to the United States next week at the invitation of President Trump.",
-        "translation": "习近平主席应特朗普总统邀请将于下周对美国进行国事访问。",
+        "title": "Responsible AI: China's policy and practice",
+        "source": "CGTN",
+        "summary": "China has built a policy framework for responsible AI that balances rapid innovation with safety and ethics.",
+        "translation": "中国已建立起负责任的人工智能政策框架，在快速创新与安全伦理之间寻求平衡。",
         "keyWords": [
-          "state visit",
-          "invitation",
-          "diplomatic"
+          "responsible AI",
+          "framework",
+          "ethics"
         ]
       },
       {
-        "title": "China to further prioritize AI-driven manufacturing",
-        "source": "China Daily",
-        "summary": "China is set to further prioritize the development of AI-driven manufacturing to enhance its industrial capabilities.",
-        "translation": "中国将进一步优先发展人工智能驱动的制造业，以提升其产业能力。",
+        "title": "Tax data reveals rapid growth in China's high-tech industries",
+        "source": "CGTN",
+        "summary": "Latest tax figures reveal that China's high-tech industries are growing rapidly, powered by heavy investment in research.",
+        "translation": "最新税务数据显示，在研发投入的推动下，中国高新技术产业正快速增长。",
         "keyWords": [
-          "prioritize",
-          "manufacturing",
-          "enhance"
+          "reveal",
+          "high-tech",
+          "growth"
         ]
       },
       {
-        "title": "Paving a win-win path for China and the West",
-        "source": "China Daily",
-        "summary": "This article discusses how fostering cooperation can create mutual benefits and a positive future for global development.",
-        "translation": "本文探讨了如何通过促进合作，为全球发展创造互惠互利和积极的未来。",
+        "title": "Pacific temperatures hit record El Nino levels, scientist says",
+        "source": "CGTN",
+        "summary": "A scientist says Pacific Ocean temperatures have reached record El Nino levels, making climate technology more urgent than ever.",
+        "translation": "一位科学家表示，太平洋水温已达到厄尔尼诺现象的历史峰值，气候技术比以往任何时候都更紧迫。",
         "keyWords": [
-          "win-win",
-          "cooperation",
-          "mutual"
+          "record",
+          "climate",
+          "data"
         ]
       }
     ],
     "quote": {
-      "quote": "Education is not preparation for life; education is life itself.",
-      "author": "John Dewey",
-      "translation": "教育不是为生活做准备，教育就是生活本身。",
-      "explanation": "这句名言提醒我们，学习（如理解今日新闻中的科技与合作）并非遥远未来的准备，而是塑造我们当下认知、参与世界并实现个人成长的持续过程。"
+      "quote": "AI is the new electricity.",
+      "author": "Andrew Ng",
+      "translation": "人工智能就是新时代的电力。",
+      "explanation": "吴恩达把AI比作电力：就像一百年前电力渗透到各行各业一样，人工智能正在成为一种基础性、通用性的技术，重塑所有产业。理解这一点，就能明白为何各国都在争夺AI发展与治理的话语权。"
     },
     "vocabulary": [
       {
-        "word": "cooperation",
-        "phonetic": "/koʊˌɑːpəˈreɪʃn/",
-        "partOfSpeech": "noun",
+        "word": "collaboration",
+        "phonetic": "/kəˌlæbəˈreɪʃn/",
+        "partOfSpeech": "名词",
         "definition": "合作，协作",
-        "example": "AI for good needs US-China cooperation.",
-        "translation": "人工智能向善需要中美合作。",
-        "newsContext": "出现在新闻标题“AI for good needs US-China cooperation”中，指两国在人工智能领域共同合作。"
+        "example": "Three areas with huge potential for Sino-US AI collaboration were discussed by experts.",
+        "translation": "专家讨论了中美人工智能合作潜力巨大的三个领域。",
+        "newsContext": "来自标题《Three areas with huge potential for Sino-US AI collaboration》"
+      },
+      {
+        "word": "curb",
+        "phonetic": "/kɜːb/",
+        "partOfSpeech": "动词/名词",
+        "definition": "抑制，遏制；控制措施",
+        "example": "The UN chief called for AI curbs to prevent the technology from running out of control.",
+        "translation": "联合国秘书长呼吁对人工智能加以遏制，防止该技术失控。",
+        "newsContext": "来自标题《UN chief calls for AI curbs, end to wars in his final assembly address》"
+      },
+      {
+        "word": "governance",
+        "phonetic": "/ˈɡʌvənəns/",
+        "partOfSpeech": "名词",
+        "definition": "治理，管理（体系）",
+        "example": "Global AI governance should be built through dialogue rather than confrontation.",
+        "translation": "全球人工智能治理应通过对话而非对抗来建立。",
+        "newsContext": "关联《Responsible AI: China's policy and practice》中关于AI治理与政策实践的讨论"
+      },
+      {
+        "word": "potential",
+        "phonetic": "/pəˈtenʃl/",
+        "partOfSpeech": "名词/形容词",
+        "definition": "潜力，潜能；潜在的",
+        "example": "There is huge potential for the two countries to cooperate on smart healthcare and clean energy.",
+        "translation": "两国在智慧医疗和清洁能源领域拥有巨大的合作潜力。",
+        "newsContext": "来自标题《Three areas with huge potential for Sino-US AI collaboration》"
       },
       {
         "word": "innovation",
         "phonetic": "/ˌɪnəˈveɪʃn/",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "名词",
         "definition": "创新，革新",
-        "example": "China's new calling cards include innovative drugs.",
-        "translation": "中国的新名片包括创新药物。",
-        "newsContext": "出自新闻“China's new calling cards: AI, robots and new drugs”，描述中国在科技领域的新突破。"
+        "example": "Rapid innovation in artificial intelligence is reshaping the global economy.",
+        "translation": "人工智能领域的快速创新正在重塑全球经济。",
+        "newsContext": "关联《Responsible AI: China's policy and practice》中创新与安全并重的表述"
       },
       {
-        "word": "prioritize",
-        "phonetic": "/praɪˈɔːrətaɪz/",
-        "partOfSpeech": "verb",
-        "definition": "优先考虑，优先处理",
-        "example": "China to further prioritize AI-driven manufacturing.",
-        "translation": "中国将进一步优先发展人工智能驱动的制造业。",
-        "newsContext": "来自新闻“China to further prioritize AI-driven manufacturing”，指将AI制造放在发展序列的前列。"
+        "word": "reveal",
+        "phonetic": "/rɪˈviːl/",
+        "partOfSpeech": "动词",
+        "definition": "揭示，显示",
+        "example": "Tax data reveals rapid growth in China's high-tech industries.",
+        "translation": "税务数据显示中国高新技术产业增长迅速。",
+        "newsContext": "来自标题《Tax data reveals rapid growth in China's high-tech industries》"
       },
       {
-        "word": "manufacturing",
-        "phonetic": "/ˌmænjuˈfæktʃərɪŋ/",
-        "partOfSpeech": "noun",
-        "definition": "制造业，工业生产",
-        "example": "AI-driven manufacturing is a key focus for China.",
-        "translation": "人工智能驱动的制造业是中国的关键焦点。",
-        "newsContext": "同上，指利用人工智能技术进行工业生产的产业。"
+        "word": "sustainable",
+        "phonetic": "/səˈsteɪnəbl/",
+        "partOfSpeech": "形容词",
+        "definition": "可持续的",
+        "example": "Technology should serve sustainable development instead of short-term profits.",
+        "translation": "技术应当服务于可持续发展，而非短期利润。",
+        "newsContext": "关联《APEC firms riding drive of modernization》中关于可持续现代化的讨论"
       },
       {
-        "word": "diplomatic",
-        "phonetic": "/ˌdɪpləˈmætɪk/",
-        "partOfSpeech": "adjective",
-        "definition": "外交的，外交上的",
-        "example": "The state visit is a key diplomatic event.",
-        "translation": "这次国事访问是一次重要的外交活动。",
-        "newsContext": "与新闻“Xi to pay state visit to US”相关，形容此次访问的性质。"
+        "word": "mitigate",
+        "phonetic": "/ˈmɪtɪɡeɪt/",
+        "partOfSpeech": "动词",
+        "definition": "减轻，缓解（危害、风险）",
+        "example": "Responsible rules can help mitigate the risks posed by powerful AI systems.",
+        "translation": "负责任的规则有助于降低强大人工智能系统带来的风险。",
+        "newsContext": "关联《UN chief calls for AI curbs》中关于降低AI风险的呼吁"
       },
       {
-        "word": "patent",
-        "phonetic": "/ˈpætnt/",
-        "partOfSpeech": "noun",
-        "definition": "专利，专利权",
-        "example": "China is reshaping its image via exporting patents and algorithms.",
-        "translation": "中国正通过出口专利和算法重塑其形象。",
-        "newsContext": "出自新闻“China's new calling cards...”，指通过技术出口获得的核心知识产权。"
+        "word": "framework",
+        "phonetic": "/ˈfreɪmwɜːk/",
+        "partOfSpeech": "名词",
+        "definition": "框架，体制，准则",
+        "example": "China has developed a clear policy framework for responsible AI development.",
+        "translation": "中国已为负责任的人工智能发展建立了清晰的政策框架。",
+        "newsContext": "关联《Responsible AI: China's policy and practice》中的政策框架内容"
       },
       {
-        "word": "reshape",
-        "phonetic": "/ˌriːˈʃeɪp/",
-        "partOfSpeech": "verb",
-        "definition": "重塑，重新塑造",
-        "example": "These industries are reshaping China's global image.",
-        "translation": "这些产业正在重塑中国的全球形象。",
-        "newsContext": "同样出自“China's new calling cards...”，描述新技术如何改变国家认知。"
-      },
-      {
-        "word": "win-win",
-        "phonetic": "/ˌwɪn ˈwɪn/",
-        "partOfSpeech": "adjective",
-        "definition": "双赢的，互利的",
-        "example": "Paving a win-win path is essential for China and the West.",
-        "translation": "为中西方铺就一条双赢之路至关重要。",
-        "newsContext": "来自新闻标题“Paving a win-win path for China and the West”，指双方都能获益的解决方案。"
-      },
-      {
-        "word": "enhance",
-        "phonetic": "/ɪnˈhæns/",
-        "partOfSpeech": "verb",
-        "definition": "增强，提高",
-        "example": "AI aims to enhance manufacturing efficiency.",
-        "translation": "人工智能旨在提升制造业效率。",
-        "newsContext": "与“AI-driven manufacturing”新闻相关，指利用技术提高产业水平。"
-      },
-      {
-        "word": "initiative",
-        "phonetic": "/ɪˈnɪʃətɪv/",
-        "partOfSpeech": "noun",
-        "definition": "倡议，主动性",
-        "example": "China's five initiatives address issues for the Global South.",
-        "translation": "中国的五项倡议解决了全球南方的关键问题。",
-        "newsContext": "出自新闻“China's five initiatives address crucial issue for Global South”，指主动提出的重要计划或方案。"
+        "word": "breakthrough",
+        "phonetic": "/ˈbreɪkθruː/",
+        "partOfSpeech": "名词",
+        "definition": "突破，重大进展",
+        "example": "Breakthroughs in chips and algorithms have fueled the growth of high-tech industries.",
+        "translation": "芯片与算法领域的突破推动了高新技术产业的增长。",
+        "newsContext": "关联《Tax data reveals rapid growth in China's high-tech industries》中的技术进步背景"
       }
     ],
     "pattern": {
-      "pattern": "主语 + serves as a perfect opportunity for + (动名词/名词短语)",
-      "example": "The upcoming US visit by President Xi Jinping serves as a perfect opportunity for launching global AI cooperation.",
-      "translation": "习近平主席即将进行的美国之行，为启动全球人工智能合作提供了绝佳机会。",
-      "usage": "用于表达某个事件或时机是做某事的完美契机，是一个非常地道且正式的表达。在新闻、演讲或正式写作中常见。"
+      "pattern": "A and B can go beyond ... to do sth.（A和B可以超越……去做某事）",
+      "example": "China and the US can go beyond their differences to build shared rules for artificial intelligence.",
+      "translation": "中美两国可以超越分歧，为人工智能制定共同的规则。",
+      "usage": "go beyond 表示“超越、不止于”，后接名词或动名词；to do 为目的状语。常用于外交与科技评论文章中，表达“跨越障碍达成合作”的语义。也可写作 go beyond differences in ... （超越在……方面的分歧）。"
     },
     "grammar": {
-      "title": "动名词作宾语 (Gerund as Object)",
-      "explanation": "当动词后面接另一个动词来表示动作时，如果第二个动词作为介词宾语或某些动词的宾语，需要使用其动名词形式（-ing形式）。例如，在短语'need cooperation'中，cooperation是名词；但表达'需要做某事'时，如'need cooperation'（需要合作）与'need doing'（需要被做）结构不同。更典型的例子是新闻标题'AI for good needs US-China cooperation'，虽然这里cooperation是名词，但我们可以扩展到类似结构如'The project needs optimizing'（这个项目需要被优化）。",
+      "title": "英语新闻标题中的被动语态（Passive Voice in News Headlines）",
+      "explanation": "英语新闻标题常省略助动词 be，用“过去分词 + (by...)”直接表示被动，突出动作的承受者与新闻事实。阅读时需补全 be 动词还原为完整句。正式报道正文中，当动作发出者不重要或不便提及时，也常用完整被动语态（be + 过去分词）。",
       "examples": [
-        "AI for good needs US-China cooperation. (cooperation是名词宾语)",
-        "This technology requires further developing. (developing是动名词宾语)"
+        "Be model patriots, youth urged (= Youth are urged to be model patriots).",
+        "AI curbs called for in the final assembly address (= AI curbs are called for in the final assembly address)."
       ]
     },
     "pronunciation": {
-      "word": "cooperation",
-      "phonetic": "/koʊˌɑːpəˈreɪʃn/",
-      "tips": "注意重音在第三个音节'ra'上 (/ˈreɪ/)。'oo' 发 /oʊ/ 音，类似 'go' 中的元音。整个单词可以分为四个音节：co-op-er-a-tion。",
+      "word": "collaboration",
+      "phonetic": "/kəˌlæbəˈreɪʃn/",
+      "tips": "重音落在第四个音节 -ra- 上：kə-læ-bə-REI-shn。开头的 co- 弱读为 /kə/，中间的 /l/ 和 /b/ 要清晰，词尾 -tion 读 /ʃn/ 而不是 /tʃən/。类似的重音模式还有 innovation /ˌɪnəˈveɪʃn/、governance 的重音在第一音节 /ˈɡʌvənəns/。",
       "examples": [
-        "International cooperation is vital for climate change.",
-        "Their cooperation led to a breakthrough in AI research."
+        "Sino-US collaboration on artificial intelligence has huge potential.",
+        "Close collaboration between scientists helps mitigate technological risks."
       ]
     },
     "reading": {
-      "title": "Tech Cooperation and the Path to Growth",
-      "content": "The world is witnessing rapid advancements in artificial intelligence, robotics, and innovative medicine. China, in particular, is making significant strides with its 'new three' industries, exporting not just products, but also patents and algorithms. This evolution is reshaping its global image. As Turing Award winner Joseph Sifakis noted, an upcoming state visit by President Xi to the US serves as a perfect opportunity to launch global AI cooperation for the greater good. True progress, however, depends on more than just technological breakthroughs. It requires a mindset focused on win-win outcomes and mutual learning. For students and young professionals, this global shift highlights the importance of STEM education, cross-cultural understanding, and adaptability. The future belongs to those who can not only master new technologies but also cooperate across borders to solve shared challenges, from climate change to public health. This is the real essence of growth in the 21st century.",
-      "translation": "世界正见证着人工智能、机器人和创新医学的飞速进步。特别是中国，其“新三大”产业取得了显著进展，出口的不仅是产品，还有专利和算法。这一演变正在重塑其全球形象。正如图灵奖得主约瑟夫·西菲斯所指出的，习近平主席即将对美国进行的国事访问，为启动造福人类的全球人工智能合作提供了绝佳机会。然而，真正的进步不仅依赖于技术突破。它还需要一种关注双赢结果和相互学习的思维方式。对于学生和年轻专业人士来说，这种全球转变凸显了STEM教育、跨文化理解以及适应能力的重要性。未来属于那些不仅能掌握新技术，还能跨境合作解决共同挑战（从气候变化到公共卫生）的人。这才是21世纪成长的真正精髓。",
-      "sourceNote": "本文章基于China Daily关于中美AI合作、中国'新三大'产业及国事访问等新闻素材综合改写。"
+      "title": "AI Needs Both Innovation and Rules",
+      "content": "Artificial intelligence is moving faster than the rules meant to guide it. At the United Nations, the secretary-general used his final assembly address to call for curbs on unchecked AI, arguing that the technology must be governed before it governs us. His warning came as tax data revealed rapid growth in China's high-tech industries, where breakthroughs in chips and algorithms are driving new businesses forward.\n\nYet growth alone is not enough. Experts say there is huge potential for China and the United States to go beyond their differences and collaborate in at least three areas: public health, climate technology and safety standards. China has already built a policy framework for responsible AI that balances innovation with ethics, while both sides share an interest in mitigating risks such as misinformation.\n\nWith Pacific temperatures hitting record El Nino levels, smart climate models are needed more than ever. Shared technology, shared rules and shared responsibility may be the only way forward.",
+      "translation": "人工智能的发展速度超过了本应约束它的规则。在联合国，秘书长在最后一次大会演讲中呼吁对不受约束的AI加以遏制，主张这项技术必须在“它治理我们”之前先被治理。他的警告发出之际，税务数据显示中国高新技术产业正快速增长，芯片与算法的突破不断催生新业务。\n\n然而，仅有增长还不够。专家表示，中美两国超越分歧、至少在公共卫生、气候技术和安全标准三个领域开展合作，潜力巨大。中国已建立起负责任的AI政策框架，在创新与伦理之间寻求平衡，而双方在降低虚假信息等风险方面有着共同利益。\n\n太平洋水温已达厄尔尼诺现象的历史峰值，智能气候模型比以往任何时候都更加需要。共享的技术、共享的规则与共享的责任，或许是唯一的出路。",
+      "sourceNote": "本文基于 CGTN《UN chief calls for AI curbs, end to wars in his final assembly address》《Responsible AI: China's policy and practice》《Tax data reveals rapid growth in China's high-tech industries》《Pacific temperatures hit record El Nino levels, scientist says》及 China Daily《Three areas with huge potential for Sino-US AI collaboration》《China and US can go beyond differences》改写，仅供英语学习使用。"
     }
   }
 }
