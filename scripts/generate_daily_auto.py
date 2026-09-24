@@ -382,9 +382,17 @@ def generate():
             data = repair_articles(data)
             return data
         except Exception as e:
-            print(f"❌ JSON解析失败: {e}")
-            print(clean[:500])
-            return None
+            print(f"⚠️ JSON解析失败，尝试自动修复: {e}")
+            try:
+                from json_repair import repair_json
+                data = json.loads(repair_json(clean[js:je]))
+                data = repair_articles(data)
+                print("🔧 JSON修复成功")
+                return data
+            except Exception as e2:
+                print(f"❌ JSON修复也失败: {e2}")
+                print(clean[:500])
+                return None
     return None
 
 

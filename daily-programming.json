@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-23",
+  "date": "2026-09-24",
   "contents": [
     {
-      "id": "prog-2026-09-23",
-      "date": "2026-09-23",
-      "title": "Rust 错误处理进阶：自定义错误类型、From 转换与 ? 运算符",
-      "summary": "学会用自定义 Error 枚举统一库级错误，用 From + ? 实现零噪音的错误传播，并保留错误链（source）。",
-      "difficulty": "中级",
-      "concept": "Rust 没有异常机制，所有可恢复错误都通过 Result<T, E> 显式表达。初级阶段我们大量使用 String 或 Box<dyn Error> 作为错误类型，这在写脚本时够用，但一旦进入库/服务开发就会暴露三个问题：调用方无法用 match 精确区分错误种类（字符串匹配是反模式）、错误上下文在层层传递中丢失、跨模块错误类型难以统一。中级开发者的核心能力之一，就是为自己的 crate 设计一个「可穷举、可组合、可追溯」的错误类型。\n\n惯用做法是定义一个枚举，把每一种业务失败场景列为一个变体（Variant），把可能包裹的底层错误（如 ParseIntError、io::Error、serde_json::Error）作为变体的字段保存起来。这样调用方可以 match 出 DivByZero 走重试逻辑、match 出 NotFound 走默认值逻辑，而不需要解析错误文本。工程上常用 thiserror 这个派生宏来自动生成 Display/Error 实现，但理解它展开后的手写形态非常重要——所有宏魔法都是在替你写下面这几段样板代码。\n\n第二个关键点是 From 转换与 ? 运算符的配合。? 本质上是：成功则解包，失败则「早返回」，并且在返回前调用 From::from 把底层错误转换成当前函数签名声明的错误类型。也就是说，只要你为 AppError 实现了 From<ParseIntError>，函数体里就可以直接写 \"42\".parse::<i64>()?，编译器自动完成类型转换。这就是 Rust 错误处理「显式但不啰嗦」的秘诀：错误类型是显式的，转换是自动的。切记 ? 不会替你 From 到 String 或 Box<dyn Error> 以外的任意类型——缺少对应 From 实现会直接编译失败。\n\n第三点是错误链（Error Chain）。真实故障往往是「数据库连接失败 ← 底层是 io 错误 ← 底层是 Connection refused」。std::error::Error 的 source() 方法就是用来保存这条链的：包装型变体（如 AppError::Parse(e)）返回 Some(e)，语义型变体（如 DivByZero）返回 None。在日志里用 anyhow/eyre 的 {:#} 或 {:?} 打印时，这条链能一眼看出根因，极大缩短排障时间。另外两个容易踩的坑：错误类型几乎总是需要 #[derive(Debug)]，因为 Error trait 要求 Debug；如果你的错误变体持有 &str 借用，要考虑生命周期，服务端代码里通常直接持有 String 或 Box<str> 以避免把生命周期传染给整个签名。",
+      "id": "prog-2026-09-24",
+      "date": "2026-09-24",
+      "title": "Kotlin Flow 背压控制与操作符融合：buffer / conflate / collectLatest 的工程化调优",
+      "summary": "掌握冷流上下游速度不匹配时的背压策略，理解 buffer 融合与协程上下文融合的底层机制，并能针对实时数据流做吞吐与延迟的取舍优化。",
+      "difficulty": "高级",
+      "concept": "在生产环境中，Flow 出现性能问题几乎都不是因为「协程慢」，而是因为上下游速率不匹配导致的背压（Backpressure）问题。典型场景是：WebSocket / 传感器 / 总线在上游每 20ms 推送一次数据，而下游要写数据库、更新 UI 或做网络请求，单次耗时 200ms。默认情况下 Flow 是「无缓冲、逐个挂起」的语义——emit 会一直 suspend 到下游处理完，于是上游被强行拖慢，队列延迟不断累积，最终表现为 UI 卡顿、内存中积压大量过期对象、甚至 OOM。\n\nKotlin 协程为这类问题提供了一组明确的权衡旋钮。`buffer(capacity, onBufferOverflow)` 在上下游之间插入一个 Channel，实现真正的并行（上下游运行在不同协程中），它的核心参数是溢出策略：SUSPEND（默认，回到背压语义）、DROP_OLDEST（丢最旧，适合「状态值」）、DROP_LATEST（丢最新，适合「任务队列」）。`conflate()` 本质上就是 `buffer(CONFLATED)`，即容量为 1、DROP_OLDEST 的融合缓冲——它保证「永远只处理最新值」。而 `collectLatest { }` 更进一步：当新元素到达时，它会取消正在执行的旧元素处理块，非常适合可中断的昂贵操作（如搜索联想、地图渲染）。注意三者的语义差异：conflate 是「丢元素但不打断处理」，collectLatest 是「丢元素并打断处理」。\n\n性能层面的关键概念是「操作符融合（Operator Fusion）」与「上下文融合（Context Fusion）」。连续的中间算子 `map/filter/transform` 并不会为每个算子创建协程或 Channel，它们只是把 lambda 层层包裹，一次遍历完成，这与 Java Stream 的流水线优化同源。但一旦出现 `buffer()` 或 `flowOn()`，就会插入一个 Channel 边界，把整条流切成若干「段（section）」，每段运行在自己的协程里。重要的是：多个相邻的 `flowOn` 与多余的 `buffer` 会被自动融合——例如 `flow.flowOn(Dispatchers.IO).buffer(0)` 中的那个零容量 buffer 会被消掉，`flowOn(dispatcher)` 本身隐式带一个默认 buffer。理解这一点能解释很多「我加了 buffer 反而没变快」的现象。\n\n工程经验上，我推荐一个固定的排查流程：先用 `onEach { println(...) }` + `System.currentTimeMillis()` 测出上游生产间隔与下游处理耗时；若下游耗时远大于上游间隔，先判断业务语义——状态类（价格、坐标、进度）用 `conflate()` 或 `collectLatest`，事件类（点击、订单、日志）绝不能丢，必须用带容量的 `buffer(n, SUSPEND)` 并在业务侧落库兜底；CPU 密集的中间算子用 `flowOn(Dispatchers.Default)`，IO 密集的用 `flowOn(Dispatchers.IO)`。切忌把 `collect` 里的重活直接丢到 `GlobalScope.launch`，那会破坏结构化并发，导致取消失效与资源泄漏。\n\n最后一个常被忽略的点：`stateIn` / `shareIn` 会把冷流转成热流（SharedFlow/StateFlow），共享上游、天然具有 conflate 语义（StateFlow 只保留最新值）。当多个订阅者订阅同一数据源时，应该尽早 share，避免每个订阅者各自建立一条 WebSocket 连接。热流 + conflate + 结构化取消，是现代 Kotlin Android / KMP 实时数据层的标准范式。",
       "codeExample": {
-        "language": "Rust",
-        "code": "use std::error::Error;\nuse std::fmt;\nuse std::num::ParseIntError;\n\n// 1) 用枚举穷举所有业务失败场景\n#[derive(Debug)]\nenum AppError {\n    Parse(ParseIntError),   // 包装型：持有底层错误\n    DivByZero,              // 语义型：无底层错误\n    NotFound(String),       // 语义型：携带上下文\n}\n\n// 2) 实现 Display：给「人」看的错误描述\nimpl fmt::Display for AppError {\n    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {\n        match self {\n            AppError::Parse(e) => write!(f, \"数字解析失败: {}\", e),\n            AppError::DivByZero => write!(f, \"除数不能为 0\"),\n            AppError::NotFound(key) => write!(f, \"配置项不存在: {}\", key),\n        }\n    }\n}\n\n// 3) 实现 Error：用 source() 保留错误链\nimpl Error for AppError {\n    fn source(&self) -> Option<&(dyn Error + 'static)> {\n        match self {\n            AppError::Parse(e) => Some(e), // 把根因挂上去\n            _ => None,\n        }\n    }\n}\n\n// 4) From 转换：让 ? 能把 ParseIntError 自动变成 AppError\nimpl From<ParseIntError> for AppError {\n    fn from(e: ParseIntError) -> Self {\n        AppError::Parse(e)\n    }\n}\n\n// 解析两个数并相除，全程只用 ? 传播错误\nfn parse_div(a: &str, b: &str) -> Result<i64, AppError> {\n    let a: i64 = a.trim().parse()?; // 失败 -> From -> 早返回\n    let b: i64 = b.trim().parse()?;\n    if b == 0 {\n        return Err(AppError::DivByZero); // 业务错误手动构造\n    }\n    Ok(a / b)\n}\n\n// ok_or_else 把 Option 转成 Result（惰性构造错误，避免无谓分配）\nfn find_config<'a>(map: &'a [(&str, &str)], key: &str) -> Result<&'a str, AppError> {\n    map.iter()\n        .find(|(k, _)| *k == key)\n        .map(|(_, v)| *v)\n        .ok_or_else(|| AppError::NotFound(key.to_string()))\n}\n\nfn run() -> Result<(), AppError> {\n    let v = parse_div(\"100\", \"4\")?;\n    println!(\"run(): 100 / 4 = {}\", v);\n    Ok(())\n}\n\nfn main() {\n    let cases = [(\"42\", \"6\"), (\"42\", \"0\"), (\"abc\", \"3\")];\n    for (a, b) in cases {\n        match parse_div(a, b) {\n            Ok(v) => println!(\"{} / {} = {}\", a, b, v),\n            Err(e) => println!(\"{} / {} -> [{}] 根因: {:?}\", a, b, e, e.source()),\n        }\n    }\n\n    let conf = [(\"host\", \"127.0.0.1\"), (\"port\", \"8080\")];\n    match find_config(&conf, \"timeout\") {\n        Ok(v) => println!(\"timeout = {}\", v),\n        Err(e) => println!(\"加载失败: {}\", e),\n    }\n\n    if let Err(e) = run() {\n        println!(\"run 失败: {}\", e);\n    }\n}\n",
-        "explanation": "【第 1 段 · 错误枚举】AppError 用三个变体覆盖三类失败：Parse 包装底层 ParseIntError（可恢复且需保留根因）、DivByZero 是纯业务校验、NotFound(String) 携带出错的 key 作为上下文。必须 #[derive(Debug)]，因为 std::error::Error: Debug。\n\n【第 2 段 · Display】只负责生成人类可读的一行描述，不要在这里做日志或副作用。注意不要把 Debug 格式（{:?}）抄进来当 Display 用，那会把内部结构泄露给最终用户。\n\n【第 3 段 · Error + source】source() 是错误链的核心。包装型变体返回 Some(e)，这样日志框架能逐层展开「表层原因 → 根因」；语义型变体返回 None 表示链到此为止。\n\n【第 4 段 · From】这是 ? 能自动转换的全部秘密：只要存在 From<ParseIntError> for AppError，parse()? 就无需 map_err 手工包裹。注意不能为 foreign 类型同时实现 From<ParseIntError>（foreign）→ String（foreign），孤儿规则会拒绝；自定义 AppError 是本地类型所以合法。\n\n【parse_div】两处 .parse()? 自动转换为 AppError；b == 0 是业务规则，手动 return Err(AppError::DivByZero)。返回 Ok(a / b)。\n\n【find_config】把 Option 转 Result 的惯用法：ok_or_else 接收闭包，只有在确实失败时才分配 String，比 ok_or(AppError::NotFound(key.into())) 更高效。\n\n【main】用 match 分别展示成功、业务错误、解析错误三种路径，e.source() 打印根因，可以看到 Parse 变体能追到 ParseIntError，而 DivByZero 的 source 是 None。"
+        "language": "Kotlin",
+        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.channels.BufferOverflow\nimport kotlinx.coroutines.flow.*\n\n// 模拟一个\"快生产者\"：每 50ms 发射一个自增读数（如传感器/行情推送）\nfun sensor(): Flow<Int> = flow {\n    var v = 0\n    while (true) {\n        emit(v++)\n        delay(50)\n    }\n}\n\nfun main() = runBlocking {\n    val start = System.currentTimeMillis()\n\n    val job = launch {\n        sensor()\n            // 上游算子：与生产者同协程执行，零额外开销（算子融合）\n            .map { it * it }\n            // 插入 Channel 边界：容量 2，满了丢最旧，永不挂起上游\n            .buffer(capacity = 2, onBufferOverflow = BufferOverflow.DROP_OLDEST)\n            // 下游是\"慢消费者\"：每个元素要花 200ms（如写库/渲染）\n            .collect { v ->\n                delay(200)\n                println(\"[+${System.currentTimeMillis() - start}ms] collected=$v\")\n            }\n    }\n\n    delay(1100)\n    job.cancel()              // 结构化并发：取消即停止整条流水线（上游 while(true) 也随之退出）\n    job.join()\n    println(\"pipeline cancelled, total=${System.currentTimeMillis() - start}ms\")\n}\n",
+        "explanation": "1) `sensor()` 是冷流，`while(true)` + `emit` 形成无限数据源；由于整个流建立在结构化并发之上，外层 `job.cancel()` 会让 `emit` 抛出 CancellationException，无限循环自动终止，无需任何标志位。\n2) `.map { it * it }` 没有创建任何新协程或缓冲区，它只是把变换函数叠加到上游的 collect 逻辑上——这就是操作符融合，遍历一次完成。\n3) `.buffer(capacity = 2, onBufferOverflow = BufferOverflow.DROP_OLDEST)` 是性能分水岭：它把上下游拆到两个协程并行运行，并用容量为 2 的 Channel 解耦速率。DROP_OLDEST 表示消费者来不及处理时直接覆盖最旧数据，上游永远不被挂起，延迟不会累积。\n4) `.collect { delay(200) }` 模拟慢消费者。相比无 buffer 的版本（每 200ms 才产出一个元素、数据严重滞后），该版本能稳定输出\"最新\"的读数，且内存占用恒定。\n5) `job.cancel()` + `job.join()` 演示了精确取消：Channel 会关闭、协程会退出，无泄漏。"
       },
       "keyPoints": [
-        "库代码用自定义枚举错误类型（或 thiserror 派生），禁止用 String 当错误类型——调用方无法 match",
-        "? 运算符在早返回前调用 From::from 做错误转换，缺少对应 From 实现会编译失败",
-        "ok_or_else(|| ...) 把 Option 转 Result，闭包惰性构造错误，避免成功路径上的无谓分配",
-        "实现 Error::source() 保留错误链，排障时能直接看到根因而不是一串被吞掉的上下文",
-        "Display 给用户看、Debug 给开发者看；变体字段优先持有 String 而非 &str，避免生命周期扩散"
+        "默认 Flow 无缓冲：emit 挂起到下游处理完，上下游串行执行，慢消费会直接拖慢生产并累积延迟",
+        "buffer(n, SUSPEND/DROP_OLDEST/DROP_LATEST) 插入 Channel 边界并让上下游并行，溢出策略必须与业务语义匹配（事件流不能丢，状态流应丢旧）",
+        "conflate() = buffer(CONFLATED)：只保留最新值但不打断正在处理的元素；collectLatest{} 则会取消旧元素的处理块，二者不可互换",
+        "中间算子 map/filter/transform 走算子融合，不产生协程与分配；buffer/flowOn 才是流的『分段』边界，相邻 flowOn 与多余 buffer 会被上下文融合自动消除",
+        "多订阅者场景应尽早用 stateIn/shareIn 把冷流转热流，共享上游连接并天然 conflate；同时保证整条流水线处于结构化并发中以便精确取消"
       ],
       "exercise": {
-        "description": "为一个「用户注册服务」设计错误类型 SignupError，包含四种场景：EmailInvalid（邮箱格式非法，包装底层自定义校验错误）、PasswordTooWeak（纯业务规则）、DuplicateEmail(String)（携带重复的邮箱）、DbUnavailable（数据库不可用）。要求：实现 Display、Error（含 source）、From 转换，并编写 fn register(email: &str, password: &str) -> Result<u64, SignupError>，其中邮箱合法性用一个返回 Result<&str, std::str::Utf8Error>（或自定义 CheckError）的辅助函数 + ? 完成传播，密码长度小于 8 时返回 PasswordTooWeak，email 包含 \"admin@\" 时返回 DuplicateEmail。最后在 main 中用 match 打印三种失败与一种成功的输出，并打印错误链。",
-        "hint": "先定义 #[derive(Debug)] enum SignupError { ... }，为每个包装型变体写 source() 返回 Some(e)。register 的签名错误类型固定为 SignupError，所以内部辅助函数返回的错误需要你手写 impl From<XxxError> for SignupError，之后校验函数调用直接加 ? 即可。用 format! 或 to_string() 把 &str 转成 String 存入 DuplicateEmail。注意 main 里打印 e.source() 时用 {:?} 才能看清类型。",
+        "description": "实现一个\"实时行情快照\"流：上游每 30ms 推送一次价格（无限流），下游是一个耗时 150ms 的 UI 渲染函数 render(price)。要求：(1) UI 永远只渲染\"最新价\"，允许丢弃中间价；(2) 渲染开始后若新价到达，必须中断本次渲染立即渲染新价；(3) 上游不能因下游慢而被挂起；(4) 运行 1 秒后能干净地取消整条流水线。请用 buffer/conflate/collectLatest 组合实现，并对比只用 collect 的版本观察延迟差异。",
+        "hint": "关键是区分『丢元素』与『打断处理』：你的需求 (2) 明确要求中断正在进行的渲染，所以终端必须是 collectLatest { render(it) }（其内部会为每个元素启动子协程并取消上一个）。需求 (3) 要求上游不被挂起，可在上游侧加 .flowOn(Dispatchers.Default) 使其与消费端并行，或加 conflate() 建立 DROP_OLDEST 缓冲。渲染是 CPU/IO 混合操作时，注意 collectLatest 的取消点应落在可挂起函数（如 delay/withContext）上，否则无法真正中断。用 val job = launch { ... }; delay(1000); job.cancelAndJoin() 验证需求 (4)。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，使 ? 运算符能自动把 ParseIntError 转成 AppError，并让 ok_or_else 产生正确的错误。",
-            "codeContext": "impl ______ for AppError {\n    fn from(e: ParseIntError) -> Self { AppError::Parse(e) }\n}\n\nlet val = map.iter()\n    .find(|(k, _)| *k == key)\n    .map(|(_, v)| *v)\n    .______ (|| AppError::NotFound(key.to_string()));",
+            "question": "补全代码：要求 UI 只展示最新价格，且新价格到达时立即中断正在进行的旧渲染。",
+            "codeContext": "priceFlow()\n    .flowOn(Dispatchers.Default)\n    .",
             "segments": [
               {
                 "type": "text",
-                "content": "impl ",
+                "content": "priceFlow()\n    .flowOn(Dispatchers.Default)\n    .",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,73 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[选择终端操作符]",
                 "options": [
-                  "From<ParseIntError>",
-                  "Into<ParseIntError>",
-                  "TryFrom<ParseIntError>"
+                  "collectLatest",
+                  "collect",
+                  "toList",
+                  "conflate().collect"
                 ],
-                "correctAnswer": "From<ParseIntError>"
+                "correctAnswer": "collectLatest"
               },
               {
                 "type": "text",
-                "content": " for AppError {\n    fn from(e: ParseIntError) -> Self { AppError::Parse(e) }\n}\n\nlet val = map.iter()\n    .find(|(k, _)| *k == key)\n    .map(|(_, v)| *v)\n    .",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "ok_or_else",
-                  "ok_or",
-                  "unwrap_or"
-                ],
-                "correctAnswer": "ok_or_else"
-              },
-              {
-                "type": "text",
-                "content": "(|| AppError::NotFound(key.to_string()));",
+                "content": " { price -> render(price) }",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "From<ParseIntError> / ok_or_else",
-            "explanation": "? 通过 From::from 做转换，因此必须实现 From<ParseIntError> for AppError（Into 会在有 From 时自动派生，但 ? 依赖的是 From，显式写 From 是惯例）。ok_or_else 接受返回错误的闭包，只有在 Option 为 None 时才执行；ok_or 则每次都会求值参数，成功路径上白白分配一个 String，性能更差。unwrap_or 返回的是默认值而不是 Result，语义也不对。"
+            "correctAnswer": "collectLatest",
+            "explanation": "只有 collectLatest 会在新元素到达时取消旧元素的处理块，满足『中断正在进行的渲染』。collect 是顺序执行、绝不打断；toList 要等流结束；conflate().collect 只会丢元素但不会中断已经开始的 render，仍可能渲染到过期价。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Rust 中 ? 运算符的行为，下列说法正确的是？",
-            "codeContext": "fn run() -> Result<i64, AppError> {\n    let n: i64 = \"abc\".parse()?;\n    Ok(n)\n}",
+            "question": "关于 Kotlin Flow 的上下文融合（Context Fusion），下列说法正确的是？",
+            "codeContext": "flow { ... }\n    .map { a }\n    .flowOn(Dispatchers.IO)\n    .filter { b }\n    .buffer(0)\n    .flowOn(Dispatchers.Default)\n    .collect { c }",
             "segments": null,
             "options": [
-              "失败时直接 panic，等价于 unwrap()",
-              "失败时用 From::from 把错误转换为函数签名中的错误类型后提前返回 Err",
-              "失败时返回 None，所以函数返回类型必须是 Option<T>",
-              "失败时自动调用 Box::new 把错误装箱"
+              "每个 flowOn 都会创建一个独立协程和一个默认容量的 Channel，且 buffer(0) 会显式退化为严格背压、无法被融合",
+              "map 与 filter 各自创建一个协程，因此这条流共包含 4 个协程段",
+              "buffer(0) 会被自动融合掉（无意义的缓冲边界），整条流被 flowOn 切成 3 段，map/filter 分别归属各自上游段的协程执行",
+              "flowOn 只影响 collect 所在协程的调度器，对上游 emit 的执行上下文没有任何影响"
             ],
-            "correctAnswer": "失败时用 From::from 把错误转换为函数签名中的错误类型后提前返回 Err",
-            "explanation": "? 是 try 语法糖：Ok(v) => v，Err(e) => return Err(From::from(e))。它不 panic（panic 对应 unwrap），也不要求返回 Option——当然 ? 同样可用于 Option，此时是把 None 提前返回。类型转换完全依赖 From 实现，与 Box 无关。"
+            "correctAnswer": "buffer(0) 会被自动融合掉（无意义的缓冲边界），整条流被 flowOn 切成 3 段，map/filter 分别归属各自上游段的协程执行",
+            "explanation": "kotlinx.coroutines 的 ChannelFlow 实现会融合相邻的缓冲边界：零容量 buffer 不提供并行价值，会被合并。每个 flowOn 确实引入一个 Channel 边界并把上游算子『拉』到自己的上下文执行，所以 map 跟着第一个 flowOn 跑在 IO，filter 跟着第二个 flowOn 跑在 Default，最后 collect 跑在 runBlocking 的上下文——共 3 个协程段，而非算子个数决定。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "这段代码的输出是什么？",
-            "codeContext": "fn main() {\n    let r: Result<i32, String> = \"12\".parse::<i32>()\n        .map_err(|e| e.to_string())\n        .and_then(|n| Ok(n * 2));\n    println!(\"{:?}\", r.map(|n| n + 1));\n}",
+            "question": "以下代码运行后，控制台的输出顺序是什么？",
+            "codeContext": "fun main() = runBlocking {\n    flowOf(1, 2, 3)\n        .onEach { delay(10) }\n        .collectLatest {\n            println(\"start $it\")\n            delay(50)\n            println(\"end $it\")\n        }\n}",
             "segments": null,
             "options": [
-              "Ok(25)",
-              "Ok(24)",
-              "Ok(12)",
-              "Err(\"invalid digit found in string\")"
+              "start 1 / end 1 / start 2 / end 2 / start 3 / end 3",
+              "start 1 / start 2 / start 3 / end 3",
+              "start 1 / start 2 / end 2 / start 3 / end 3",
+              "start 1 / start 2 / start 3 / end 1 / end 2 / end 3"
             ],
-            "correctAnswer": "Ok(25)",
-            "explanation": "\"12\".parse::<i32>() 得到 Ok(12)；map_err 只处理 Err 分支，此处不生效；and_then 把 12 乘 2 得 Ok(24)；最后 r.map(|n| n + 1) 对 Ok 值再加 1，得到 Ok(25)。注意 map_err 只在失败时执行，and_then 的闭包必须返回 Result，而 map 的闭包返回裸值——这三者是最常被混淆的组合子。"
+            "correctAnswer": "start 1 / start 2 / start 3 / end 3",
+            "explanation": "上游每 10ms 发射一个元素，而每个处理块要 50ms，属于典型的快生产慢消费。collectLatest 为每个元素启动子协程并在新元素到达时取消上一个：t=0 打印 start 1 后挂起在 delay(50)；t=10 元素 2 到达，取消 1 的子协程（delay 是取消点，end 1 永不打印），打印 start 2；t=20 元素 3 到达，取消 2，打印 start 3；此后没有新元素，50ms 后打印 end 3。"
           }
         ]
       }
