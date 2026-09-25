@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-24",
+  "date": "2026-09-25",
   "contents": [
     {
-      "id": "prog-2026-09-24",
-      "date": "2026-09-24",
-      "title": "Kotlin Flow 背压控制与操作符融合：buffer / conflate / collectLatest 的工程化调优",
-      "summary": "掌握冷流上下游速度不匹配时的背压策略，理解 buffer 融合与协程上下文融合的底层机制，并能针对实时数据流做吞吐与延迟的取舍优化。",
-      "difficulty": "高级",
-      "concept": "在生产环境中，Flow 出现性能问题几乎都不是因为「协程慢」，而是因为上下游速率不匹配导致的背压（Backpressure）问题。典型场景是：WebSocket / 传感器 / 总线在上游每 20ms 推送一次数据，而下游要写数据库、更新 UI 或做网络请求，单次耗时 200ms。默认情况下 Flow 是「无缓冲、逐个挂起」的语义——emit 会一直 suspend 到下游处理完，于是上游被强行拖慢，队列延迟不断累积，最终表现为 UI 卡顿、内存中积压大量过期对象、甚至 OOM。\n\nKotlin 协程为这类问题提供了一组明确的权衡旋钮。`buffer(capacity, onBufferOverflow)` 在上下游之间插入一个 Channel，实现真正的并行（上下游运行在不同协程中），它的核心参数是溢出策略：SUSPEND（默认，回到背压语义）、DROP_OLDEST（丢最旧，适合「状态值」）、DROP_LATEST（丢最新，适合「任务队列」）。`conflate()` 本质上就是 `buffer(CONFLATED)`，即容量为 1、DROP_OLDEST 的融合缓冲——它保证「永远只处理最新值」。而 `collectLatest { }` 更进一步：当新元素到达时，它会取消正在执行的旧元素处理块，非常适合可中断的昂贵操作（如搜索联想、地图渲染）。注意三者的语义差异：conflate 是「丢元素但不打断处理」，collectLatest 是「丢元素并打断处理」。\n\n性能层面的关键概念是「操作符融合（Operator Fusion）」与「上下文融合（Context Fusion）」。连续的中间算子 `map/filter/transform` 并不会为每个算子创建协程或 Channel，它们只是把 lambda 层层包裹，一次遍历完成，这与 Java Stream 的流水线优化同源。但一旦出现 `buffer()` 或 `flowOn()`，就会插入一个 Channel 边界，把整条流切成若干「段（section）」，每段运行在自己的协程里。重要的是：多个相邻的 `flowOn` 与多余的 `buffer` 会被自动融合——例如 `flow.flowOn(Dispatchers.IO).buffer(0)` 中的那个零容量 buffer 会被消掉，`flowOn(dispatcher)` 本身隐式带一个默认 buffer。理解这一点能解释很多「我加了 buffer 反而没变快」的现象。\n\n工程经验上，我推荐一个固定的排查流程：先用 `onEach { println(...) }` + `System.currentTimeMillis()` 测出上游生产间隔与下游处理耗时；若下游耗时远大于上游间隔，先判断业务语义——状态类（价格、坐标、进度）用 `conflate()` 或 `collectLatest`，事件类（点击、订单、日志）绝不能丢，必须用带容量的 `buffer(n, SUSPEND)` 并在业务侧落库兜底；CPU 密集的中间算子用 `flowOn(Dispatchers.Default)`，IO 密集的用 `flowOn(Dispatchers.IO)`。切忌把 `collect` 里的重活直接丢到 `GlobalScope.launch`，那会破坏结构化并发，导致取消失效与资源泄漏。\n\n最后一个常被忽略的点：`stateIn` / `shareIn` 会把冷流转成热流（SharedFlow/StateFlow），共享上游、天然具有 conflate 语义（StateFlow 只保留最新值）。当多个订阅者订阅同一数据源时，应该尽早 share，避免每个订阅者各自建立一条 WebSocket 连接。热流 + conflate + 结构化取消，是现代 Kotlin Android / KMP 实时数据层的标准范式。",
+      "id": "prog-2026-09-25",
+      "date": "2026-09-25",
+      "title": "Flutter 状态管理入门：StatelessWidget 与 StatefulWidget",
+      "summary": "掌握 Flutter 中两种最基础的 Widget 类型，理解 setState 刷新机制，写出你的第一个会「变」的界面。",
+      "difficulty": "初级",
+      "concept": "在 Flutter 里，一切界面都是 Widget（组件）。Widget 描述的是「当前这一刻界面应该长什么样」，而不是界面本身。Flutter 通过不断重建（rebuild）Widget 树、并对比差异来刷新界面，这和传统 Android/iOS 直接操作控件属性的思路完全不同。理解「Widget 是不可变的描述」这一条，是学好 Flutter 的第一道门槛。\n\nWidget 按「是否需要保存可变状态」分为两类。StatelessWidget（无状态组件）一旦创建，其内部字段就不再改变，适合纯展示型 UI，比如一个标题、一个图标、一段固定文案。StatefulWidget（有状态组件）则把自己的「状态」抽离到一个单独的 State 对象中保存，Widget 本身依然不可变，但 State 对象是常驻内存的，可以在生命周期内被修改。常见的 StatefulWidget 有输入框、开关、计数器、轮播图、下拉刷新列表等。\n\n状态变化后如何让界面跟着变？答案是 setState()。当你调用 setState 并在其回调中修改 State 的字段，Flutter 会把当前 Widget 标记为 dirty（脏），然后在下一帧重新调用 build() 方法生成新的 Widget 子树，并与旧子树做 diff，只更新真正变化的部分。工程上有一个非常重要的经验：凡是界面要显示的数据，都必须放在 State 中，并且只能通过 setState 修改，否则界面不会更新。\n\n另一个初学者容易忽略的点是 const 构造函数。凡是不依赖运行时数据的 Widget，都建议加 const，例如 const Text('标题')、const SizedBox(height: 16)。这样这些 Widget 在整个 App 生命周期中只会被创建一次，既能减少内存分配，又能加快重建速度。实际项目中，Flutter 官方 lint（flutter_lints）甚至会提示你为可 const 的构造函数加上 const。\n\n最后谈谈 State 的生命周期。createState() 创建 State 后，会依次调用 initState()（初始化，只调用一次）、didChangeDependencies()、build()。当 Widget 被移除时会调用 dispose()，这里必须释放你申请的资源，比如关闭 Stream、销毁 TextEditingController、移除监听器，否则会造成内存泄漏。初学阶段至少要记住：initState 做初始化、dispose 做清理、build 只做界面描述不要写副作用逻辑。",
       "codeExample": {
-        "language": "Kotlin",
-        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.channels.BufferOverflow\nimport kotlinx.coroutines.flow.*\n\n// 模拟一个\"快生产者\"：每 50ms 发射一个自增读数（如传感器/行情推送）\nfun sensor(): Flow<Int> = flow {\n    var v = 0\n    while (true) {\n        emit(v++)\n        delay(50)\n    }\n}\n\nfun main() = runBlocking {\n    val start = System.currentTimeMillis()\n\n    val job = launch {\n        sensor()\n            // 上游算子：与生产者同协程执行，零额外开销（算子融合）\n            .map { it * it }\n            // 插入 Channel 边界：容量 2，满了丢最旧，永不挂起上游\n            .buffer(capacity = 2, onBufferOverflow = BufferOverflow.DROP_OLDEST)\n            // 下游是\"慢消费者\"：每个元素要花 200ms（如写库/渲染）\n            .collect { v ->\n                delay(200)\n                println(\"[+${System.currentTimeMillis() - start}ms] collected=$v\")\n            }\n    }\n\n    delay(1100)\n    job.cancel()              // 结构化并发：取消即停止整条流水线（上游 while(true) 也随之退出）\n    job.join()\n    println(\"pipeline cancelled, total=${System.currentTimeMillis() - start}ms\")\n}\n",
-        "explanation": "1) `sensor()` 是冷流，`while(true)` + `emit` 形成无限数据源；由于整个流建立在结构化并发之上，外层 `job.cancel()` 会让 `emit` 抛出 CancellationException，无限循环自动终止，无需任何标志位。\n2) `.map { it * it }` 没有创建任何新协程或缓冲区，它只是把变换函数叠加到上游的 collect 逻辑上——这就是操作符融合，遍历一次完成。\n3) `.buffer(capacity = 2, onBufferOverflow = BufferOverflow.DROP_OLDEST)` 是性能分水岭：它把上下游拆到两个协程并行运行，并用容量为 2 的 Channel 解耦速率。DROP_OLDEST 表示消费者来不及处理时直接覆盖最旧数据，上游永远不被挂起，延迟不会累积。\n4) `.collect { delay(200) }` 模拟慢消费者。相比无 buffer 的版本（每 200ms 才产出一个元素、数据严重滞后），该版本能稳定输出\"最新\"的读数，且内存占用恒定。\n5) `job.cancel()` + `job.join()` 演示了精确取消：Channel 会关闭、协程会退出，无泄漏。"
+        "language": "dart",
+        "code": "import 'package:flutter/material.dart';\n\n/// 程序入口：启动应用并挂载根组件\nvoid main() => runApp(const MyApp());\n\n/// 根组件：整个 App 的主题与首页，界面结构固定，因此用 StatelessWidget\n/// 内部字段不会变化，所有子 Widget 都可以用 const 修饰\n\nclass MyApp extends StatelessWidget {\n  const MyApp({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: 'StatefulWidget 入门',\n      theme: ThemeData(primarySwatch: Colors.blue),\n      home: const CounterPage(),\n    );\n  }\n}\n\n/// 计数页面：需要保存可变的计数值，因此用 StatefulWidget\n/// 注意：Widget 本身依然不可变，真正的状态保存在 State 中\nclass CounterPage extends StatefulWidget {\n  const CounterPage({super.key});\n\n  @override\n  State<CounterPage> createState() => _CounterPageState();\n}\n\n/// 与 CounterPage 配套的 State 类，_ 开头表示私有，只能在本文件使用\nclass _CounterPageState extends State<CounterPage> {\n  /// 界面要显示的状态：计数值\n  int _count = 0;\n\n  /// 初始化：只会调用一次，适合做数据加载、监听注册\n  @override\n  void initState() {\n    super.initState();\n    debugPrint('initState 被调用，页面初始化完成');\n  }\n\n  /// 修改状态的唯一正确方式：包在 setState 中\n  void _increment() {\n    setState(() {\n      _count++; // 在回调里修改状态，Flutter 会触发 build 重建\n    });\n  }\n\n  /// 资源释放：页面销毁时调用，避免内存泄漏\n  @override\n  void dispose() {\n    debugPrint('dispose 被调用，页面即将销毁');\n    super.dispose();\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      appBar: AppBar(title: const Text('计数器 Demo')),\n      body: Center(\n        child: Column(\n          mainAxisAlignment: MainAxisAlignment.center,\n          children: [\n            Text('当前计数：$_count', style: const TextStyle(fontSize: 28)),\n            const SizedBox(height: 16),\n            // 根据状态派生出的展示内容，同样会随 setState 刷新\n            Text(_count % 2 == 0 ? '偶数' : '奇数'),\n            const SizedBox(height: 24),\n            // 重置按钮：演示清零操作\n            ElevatedButton(\n              onPressed: () => setState(() => _count = 0),\n              child: const Text('清零'),\n            ),\n          ],\n        ),\n      ),\n      floatingActionButton: FloatingActionButton(\n        onPressed: _increment, // 点击时触发状态更新\n        tooltip: '增加',\n        child: const Icon(Icons.add),\n      ),\n    );\n  }\n}\n",
+        "explanation": "1) main() 中 runApp(const MyApp()) 把根 Widget 挂载到屏幕上；MyApp 只负责主题和首页，界面结构固定，所以是 StatelessWidget。2) CounterPage 继承 StatefulWidget，它只有一个 createState() 方法，返回配套的 _CounterPageState；把 Widget 与 State 拆开，是为了在 Widget 重建时 State 仍然存活，从而保住数据。3) _CounterPageState 里定义了真正的状态 _count，以及初始化用的 initState() 和清理用的 dispose()，这两个生命周期方法是处理资源的标准位置。4) _increment() 中把 _count++ 包在 setState 回调里，这是让界面刷新的关键：setState 会标记该节点为 dirty，下一帧自动重新调用 build()。5) build() 用 Scaffold 搭页面骨架，Column 纵向排列文字与按钮，FloatingActionButton 作为右下角的加号按钮；所有静态子 Widget 都加了 const 以优化性能。6) 点击加号 → _increment → setState → build 重新执行 → Text 中的 '$_count' 显示新值，这就是 Flutter 单向数据流 + 声明式 UI 的最小闭环。"
       },
       "keyPoints": [
-        "默认 Flow 无缓冲：emit 挂起到下游处理完，上下游串行执行，慢消费会直接拖慢生产并累积延迟",
-        "buffer(n, SUSPEND/DROP_OLDEST/DROP_LATEST) 插入 Channel 边界并让上下游并行，溢出策略必须与业务语义匹配（事件流不能丢，状态流应丢旧）",
-        "conflate() = buffer(CONFLATED)：只保留最新值但不打断正在处理的元素；collectLatest{} 则会取消旧元素的处理块，二者不可互换",
-        "中间算子 map/filter/transform 走算子融合，不产生协程与分配；buffer/flowOn 才是流的『分段』边界，相邻 flowOn 与多余 buffer 会被上下文融合自动消除",
-        "多订阅者场景应尽早用 stateIn/shareIn 把冷流转热流，共享上游连接并天然 conflate；同时保证整条流水线处于结构化并发中以便精确取消"
+        "Widget 是不可变的界面描述，界面变化靠重建 Widget 树并 diff 实现，而不是修改控件属性。",
+        "StatelessWidget 适合无内部可变数据的展示型 UI；StatefulWidget 把可变状态抽离到 State 对象中保存。",
+        "修改状态必须调用 setState(() { ... })，否则界面不会刷新；不要在 build() 中修改状态，否则会死循环。",
+        "State 的生命周期要记牢：initState 做初始化、didChangeDependencies 处理依赖、build 描述界面、dispose 释放资源。",
+        "静态 Widget 尽量加 const，例如 const Text('标题')、const SizedBox(height: 16)，可减少对象创建并提升重建速度。"
       ],
       "exercise": {
-        "description": "实现一个\"实时行情快照\"流：上游每 30ms 推送一次价格（无限流），下游是一个耗时 150ms 的 UI 渲染函数 render(price)。要求：(1) UI 永远只渲染\"最新价\"，允许丢弃中间价；(2) 渲染开始后若新价到达，必须中断本次渲染立即渲染新价；(3) 上游不能因下游慢而被挂起；(4) 运行 1 秒后能干净地取消整条流水线。请用 buffer/conflate/collectLatest 组合实现，并对比只用 collect 的版本观察延迟差异。",
-        "hint": "关键是区分『丢元素』与『打断处理』：你的需求 (2) 明确要求中断正在进行的渲染，所以终端必须是 collectLatest { render(it) }（其内部会为每个元素启动子协程并取消上一个）。需求 (3) 要求上游不被挂起，可在上游侧加 .flowOn(Dispatchers.Default) 使其与消费端并行，或加 conflate() 建立 DROP_OLDEST 缓冲。渲染是 CPU/IO 混合操作时，注意 collectLatest 的取消点应落在可挂起函数（如 delay/withContext）上，否则无法真正中断。用 val job = launch { ... }; delay(1000); job.cancelAndJoin() 验证需求 (4)。",
+        "description": "实现一个「爱心收藏」按钮：页面中间显示一个心形图标和当前收藏次数，点击图标在 favorite / favorite_border（实心/空心）之间切换，同时收藏次数 +1；再添加一个「长按重置」手势，长按图标 1 秒后把次数清零、图标恢复空心。要求使用 StatefulWidget + setState 完成。",
+        "hint": "在 State 中维护两个字段：bool _isFavorite 和 int _count。点击用 GestureDetector 的 onTap 切换布尔值并累加次数；长按用 onLongPress 重置。图标可以用 Icon(_isFavorite ? Icons.favorite : Icons.favorite_border)，颜色用 _isFavorite ? Colors.red : Colors.grey。别忘了把所有修改都放进 setState 的回调里。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码：要求 UI 只展示最新价格，且新价格到达时立即中断正在进行的旧渲染。",
-            "codeContext": "priceFlow()\n    .flowOn(Dispatchers.Default)\n    .",
+            "question": "补全代码，使点击按钮后计数能正确刷新界面。",
+            "codeContext": "class _CounterPageState extends State<CounterPage> {\n  int _count = 0;\n\n  void _increment() {\n    ____①____ {\n      ____②____;\n    }\n  }\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "priceFlow()\n    .flowOn(Dispatchers.Default)\n    .",
+                "content": "void _increment() {\n  ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,73 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择终端操作符]",
+                "placeholder": "[①]",
                 "options": [
-                  "collectLatest",
-                  "collect",
-                  "toList",
-                  "conflate().collect"
+                  "setState(()",
+                  "updateState(()",
+                  "rebuild(()"
                 ],
-                "correctAnswer": "collectLatest"
+                "correctAnswer": "setState(()"
               },
               {
                 "type": "text",
-                "content": " { price -> render(price) }",
+                "content": "\n    ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[②]",
+                "options": [
+                  "_count++",
+                  "this._count = _count + 1;",
+                  "count++"
+                ],
+                "correctAnswer": "_count++"
+              },
+              {
+                "type": "text",
+                "content": "\n  });\n}",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "collectLatest",
-            "explanation": "只有 collectLatest 会在新元素到达时取消旧元素的处理块，满足『中断正在进行的渲染』。collect 是顺序执行、绝不打断；toList 要等流结束；conflate().collect 只会丢元素但不会中断已经开始的 render，仍可能渲染到过期价。"
+            "correctAnswer": "setState(() ... _count++",
+            "explanation": "Flutter 中更新 State 必须调用 setState 并在回调里修改字段（这里 _count++）。updateState、rebuild 都不是 Flutter 提供的 API；而缺少 setState 直接 _count++ 虽然能改变变量，但不会触发 build，界面看不到变化。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Kotlin Flow 的上下文融合（Context Fusion），下列说法正确的是？",
-            "codeContext": "flow { ... }\n    .map { a }\n    .flowOn(Dispatchers.IO)\n    .filter { b }\n    .buffer(0)\n    .flowOn(Dispatchers.Default)\n    .collect { c }",
+            "question": "为什么计数器页面必须使用 StatefulWidget 而不是 StatelessWidget？",
+            "codeContext": "class CounterPage extends StatefulWidget {\n  const CounterPage({super.key});\n  @override\n  State<CounterPage> createState() => _CounterPageState();\n}\n\n// _CounterPageState 中有：int _count = 0;",
             "segments": null,
             "options": [
-              "每个 flowOn 都会创建一个独立协程和一个默认容量的 Channel，且 buffer(0) 会显式退化为严格背压、无法被融合",
-              "map 与 filter 各自创建一个协程，因此这条流共包含 4 个协程段",
-              "buffer(0) 会被自动融合掉（无意义的缓冲边界），整条流被 flowOn 切成 3 段，map/filter 分别归属各自上游段的协程执行",
-              "flowOn 只影响 collect 所在协程的调度器，对上游 emit 的执行上下文没有任何影响"
+              "因为 StatefulWidget 的渲染速度比 StatelessWidget 快",
+              "因为界面需要展示一个会随用户交互变化的数据，状态必须保存在独立的 State 对象中",
+              "因为 StatelessWidget 不能包含 Text 和 Button 组件",
+              "因为 StatelessWidget 不支持 setState 方法，所以任何页面都必须用 StatefulWidget"
             ],
-            "correctAnswer": "buffer(0) 会被自动融合掉（无意义的缓冲边界），整条流被 flowOn 切成 3 段，map/filter 分别归属各自上游段的协程执行",
-            "explanation": "kotlinx.coroutines 的 ChannelFlow 实现会融合相邻的缓冲边界：零容量 buffer 不提供并行价值，会被合并。每个 flowOn 确实引入一个 Channel 边界并把上游算子『拉』到自己的上下文执行，所以 map 跟着第一个 flowOn 跑在 IO，filter 跟着第二个 flowOn 跑在 Default，最后 collect 跑在 runBlocking 的上下文——共 3 个协程段，而非算子个数决定。"
+            "correctAnswer": "因为界面需要展示一个会随用户交互变化的数据，状态必须保存在独立的 State 对象中",
+            "explanation": "StatelessWidget 适用于结构固定、无可变数据的界面。计数器的 _count 会随点击变化，需要一个在 Widget 重建过程中依然存活的 State 对象来保存，所以选 StatefulWidget。性能上两者没有绝对优劣，能用 StatelessWidget 时反而更简单高效；StatelessWidget 也并非不能包含任意组件，它只是没有自己的 State。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码运行后，控制台的输出顺序是什么？",
-            "codeContext": "fun main() = runBlocking {\n    flowOf(1, 2, 3)\n        .onEach { delay(10) }\n        .collectLatest {\n            println(\"start $it\")\n            delay(50)\n            println(\"end $it\")\n        }\n}",
+            "question": "下面的代码在点击按钮后，界面上的计数会发生什么？",
+            "codeContext": "class _CounterPageState extends State<CounterPage> {\n  int _count = 0;\n\n  void _increment() {\n    _count++; // 没有 setState\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      body: Center(child: Text('当前计数：$_count')),\n      floatingActionButton: FloatingActionButton(\n        onPressed: _increment,\n        child: const Icon(Icons.add),\n      ),\n    );\n  }\n}",
             "segments": null,
             "options": [
-              "start 1 / end 1 / start 2 / end 2 / start 3 / end 3",
-              "start 1 / start 2 / start 3 / end 3",
-              "start 1 / start 2 / end 2 / start 3 / end 3",
-              "start 1 / start 2 / start 3 / end 1 / end 2 / end 3"
+              "数字立刻更新，界面和普通写法完全一样",
+              "变量 _count 确实增加了，但界面一直显示 0，直到因其他原因触发重建",
+              "点击时抛出异常并导致 App 崩溃",
+              "Flutter 会自动检测到字段变化并刷新界面"
             ],
-            "correctAnswer": "start 1 / start 2 / start 3 / end 3",
-            "explanation": "上游每 10ms 发射一个元素，而每个处理块要 50ms，属于典型的快生产慢消费。collectLatest 为每个元素启动子协程并在新元素到达时取消上一个：t=0 打印 start 1 后挂起在 delay(50)；t=10 元素 2 到达，取消 1 的子协程（delay 是取消点，end 1 永不打印），打印 start 2；t=20 元素 3 到达，取消 2，打印 start 3；此后没有新元素，50ms 后打印 end 3。"
+            "correctAnswer": "变量 _count 确实增加了，但界面一直显示 0，直到因其他原因触发重建",
+            "explanation": "Flutter 是声明式 UI，只有调用 setState 才会把节点标记为 dirty 并在下一帧重新执行 build()。直接 _count++ 只是改变了内存中的变量值，没有任何通知机制，所以 Text 仍显示旧值。直到某个外部原因（如屏幕旋转、父组件重建）再次触发 build，数字才会跳变，这也是初学者最常见的「界面不刷新」Bug。"
           }
         ]
       }

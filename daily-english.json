@@ -1,192 +1,181 @@
 {
-  "date": "2026-09-24",
+  "date": "2026-09-25",
   "content": {
-    "id": "en-2026-09-24",
-    "date": "2026-09-24",
-    "topic": "商业与金融",
+    "id": "en-2026-09-25",
+    "date": "2026-09-25",
+    "topic": "职场与沟通",
     "newsHighlights": [
       {
-        "title": "Railway travel demand spikes as nearly 100 million tickets are sold",
-        "source": "China Daily",
-        "summary": "Railway travel demand has surged ahead of the holiday season, with nearly 100 million tickets sold, signaling robust consumer spending on services.",
-        "translation": "铁路出行需求激增，已售出近一亿张车票，显示出服务消费的强劲势头。",
+        "title": "Xi says ready to work with Trump to steer China-US ties on steady course",
+        "source": "ChinaDaily",
+        "summary": "Chinese President Xi Jinping said he is ready to work with US President Donald Trump to steer the giant ship of China-US relationship on a steady course toward the future.",
+        "translation": "中国国家主席习近平表示，愿同美国总统特朗普一道，引领中美关系这艘巨轮沿着稳定航道驶向未来。",
         "keyWords": [
-          "demand",
-          "spike",
-          "consumer spending"
+          "steer",
+          "steady course",
+          "bilateral ties"
         ]
       },
       {
-        "title": "Global hopes for economic stability hinge on Xi's visit",
-        "source": "China Daily",
-        "summary": "Global hopes for stability hinge on the upcoming visit, as markets and businesses seek clearer signals on trade and investment.",
-        "translation": "全球对稳定的期盼取决于此次访问，因为市场和企业都在寻求有关贸易与投资的更明确信号。",
+        "title": "Xi attends welcome ceremony held by Trump",
+        "source": "ChinaDaily",
+        "summary": "President Xi attended a welcome ceremony hosted by President Trump at the White House on Thursday morning during his state visit to the United States.",
+        "translation": "周四上午，习近平主席在对美国进行国事访问期间，出席了特朗普总统在白宫举行的欢迎仪式。",
         "keyWords": [
-          "stability",
-          "hinge on",
-          "trade"
+          "welcome ceremony",
+          "state visit",
+          "host"
         ]
       },
       {
-        "title": "Build guardrails for China-US competition",
-        "source": "China Daily",
-        "summary": "Analysts urge both sides to build guardrails for China-US competition so that economic rivalry does not spill over into damaging trade conflict.",
-        "translation": "分析人士呼吁双方为中美竞争设置护栏，使经济博弈不至于演变为破坏性的贸易冲突。",
-        "keyWords": [
-          "guardrails",
-          "competition",
-          "rivalry"
-        ]
-      },
-      {
-        "title": "US-China climate cooperation matters a lot for green investment",
-        "source": "China Daily",
-        "summary": "Climate change knows no borders, and experts say US-China cooperation on emissions is crucial for green industries and long-term growth.",
-        "translation": "气候变化无国界，专家表示，中美在减排方面的合作对绿色产业和长期增长至关重要。",
-        "keyWords": [
-          "cooperation",
-          "emissions",
-          "growth"
-        ]
-      },
-      {
-        "title": "Xi's visit 'plants seeds' for next generation of US-China ties",
+        "title": "World leaders call for stronger AI safeguards at UN General Assembly",
         "source": "CGTN",
-        "summary": "The visit is seen as planting seeds for the next generation of US-China ties, boosting business prospects across sectors.",
-        "translation": "此访被视为为下一代中美关系播下种子，有望提振各行业的商业前景。",
+        "summary": "World leaders urged stronger safeguards for artificial intelligence at the UN General Assembly, calling for global dialogue and shared rules on emerging technologies.",
+        "translation": "各国领导人在联合国大会上呼吁为人工智能建立更强有力的保障机制，主张就新兴技术展开全球对话并制定共同规则。",
         "keyWords": [
-          "prospects",
-          "ties",
-          "sectors"
+          "safeguard",
+          "dialogue",
+          "emerging technology"
+        ]
+      },
+      {
+        "title": "FAST celebrates a decade of achievements",
+        "source": "ChinaDaily",
+        "summary": "China's Five-hundred-meter Aperture Spherical radio Telescope, or FAST, has gained global recognition after a decade of work, and astronomers anticipate more breakthroughs ahead.",
+        "translation": "中国500米口径球面射电望远镜（FAST）经过十年耕耘赢得国际认可，天文学家预期未来将取得更多突破。",
+        "keyWords": [
+          "achievement",
+          "recognition",
+          "anticipate"
         ]
       }
     ],
     "quote": {
-      "quote": "The best time to plant a tree was twenty years ago. The second best time is now.",
-      "author": "Chinese Proverb",
-      "translation": "种一棵树最好的时间是二十年前，其次是现在。",
-      "explanation": "投资、贸易关系和人才培养都是长期工程。正如新闻所说，此次访问为下一代中美关系「播下种子」——商业合作的回报需要耐心，但行动永远不嫌晚。"
+      "quote": "The most important thing in communication is hearing what isn't said.",
+      "author": "Peter Drucker",
+      "translation": "沟通中最重要的是听出那些没有被说出口的话。",
+      "explanation": "管理学大师德鲁克提醒我们：真正的沟通不只是表达，更是倾听。在职场与外交场合，读懂言外之意、理解对方的真实关切，往往比滔滔不绝更有力量。"
     },
     "vocabulary": [
       {
-        "word": "spike",
-        "phonetic": "/spaɪk/",
-        "partOfSpeech": "verb / noun",
-        "definition": "（价格、数量等）急剧上升；峰值",
-        "example": "Railway travel demand spikes as nearly 100 million tickets are sold before the holiday.",
-        "translation": "假期前售出近一亿张车票，铁路出行需求急剧上升。",
-        "newsContext": "出自新闻标题「Railway travel demand spikes, nearly 100m tickets sold」。"
+        "word": "steer",
+        "phonetic": "/stɪə(r)/",
+        "partOfSpeech": "verb",
+        "definition": "驾驶，引导；掌控方向",
+        "example": "President Xi said he is ready to work with President Trump to steer the relationship on a steady course.",
+        "translation": "习主席表示愿与特朗普总统一道，引领两国关系沿着稳定航道前行。",
+        "newsContext": "出自 ChinaDaily 报道标题：\"Xi says ready to work with Trump to steer China-US ties on steady course\"。"
       },
       {
-        "word": "demand",
-        "phonetic": "/dɪˈmɑːnd/",
-        "partOfSpeech": "noun",
-        "definition": "需求；（市场的）购买欲望与支付能力",
-        "example": "Strong consumer demand for travel has boosted the service sector this quarter.",
-        "translation": "强劲的旅游消费需求在本季度提振了服务业。",
-        "newsContext": "出自新闻「Railway travel demand spikes」中的 demand 一词。"
-      },
-      {
-        "word": "stability",
-        "phonetic": "/stəˈbɪləti/",
-        "partOfSpeech": "noun",
-        "definition": "稳定性；（经济、市场的）平稳",
-        "example": "Investors value economic stability because it lowers the risk of doing business.",
-        "translation": "投资者看重经济稳定，因为它能降低经商风险。",
-        "newsContext": "出自新闻标题「Global hopes for stability hinge on visit」。"
-      },
-      {
-        "word": "hinge on",
-        "phonetic": "/hɪndʒ ɒn/",
-        "partOfSpeech": "phrasal verb",
-        "definition": "取决于；以……为转移",
-        "example": "Global hopes for stability hinge on the outcome of the high-level visit.",
-        "translation": "全球对稳定的期盼取决于此次高层访问的结果。",
-        "newsContext": "出自新闻标题「Global hopes for stability hinge on visit」。"
-      },
-      {
-        "word": "guardrail",
-        "phonetic": "/ˈɡɑːdreɪl/",
-        "partOfSpeech": "noun",
-        "definition": "护栏；（喻）防止失控的保障机制",
-        "example": "Both economies need guardrails to keep competition from turning into a trade war.",
-        "translation": "两大经济体需要护栏机制，以免竞争演变为贸易战。",
-        "newsContext": "出自新闻标题「Build guardrails for China-US competition」。"
-      },
-      {
-        "word": "competition",
-        "phonetic": "/ˌkɒmpəˈtɪʃən/",
-        "partOfSpeech": "noun",
-        "definition": "竞争；（商业）市场竞争",
-        "example": "Fair competition pushes companies to innovate and cut costs.",
-        "translation": "公平竞争促使企业创新并降低成本。",
-        "newsContext": "出自新闻「Build guardrails for China-US competition」中的核心词 competition。"
-      },
-      {
-        "word": "cooperation",
-        "phonetic": "/kəʊˌɒpəˈreɪʃən/",
-        "partOfSpeech": "noun",
-        "definition": "合作；协作",
-        "example": "US-China climate cooperation matters a lot for green businesses worldwide.",
-        "translation": "中美气候合作对全球绿色企业至关重要。",
-        "newsContext": "出自新闻标题「US-China climate cooperation matters a lot」。"
-      },
-      {
-        "word": "emission",
-        "phonetic": "/ɪˈmɪʃən/",
-        "partOfSpeech": "noun",
-        "definition": "排放（物）；（碳）排放量",
-        "example": "Tighter emission rules are creating a fast-growing market for clean technology.",
-        "translation": "更严格的排放法规正在催生快速增长的清洁技术市场。",
-        "newsContext": "出自新闻「Emissions from one country affect the entire planet」中的 emissions。"
-      },
-      {
-        "word": "prospect",
-        "phonetic": "/ˈprɒspekt/",
-        "partOfSpeech": "noun",
-        "definition": "前景；（常用复数）预期、可能性",
-        "example": "The visit is expected to boost trade prospects for exporters in both countries.",
-        "translation": "此次访问有望提振两国出口商的贸易前景。",
-        "newsContext": "出自新闻标题「Xi's visit to boost prospects of ties」。"
-      },
-      {
-        "word": "constructive",
-        "phonetic": "/kənˈstrʌktɪv/",
+        "word": "steady",
+        "phonetic": "/ˈstedi/",
         "partOfSpeech": "adjective",
-        "definition": "建设性的；有助益的",
-        "example": "Constructive dialogue gives businesses the confidence to sign long-term deals.",
-        "translation": "建设性对话让企业有信心签署长期合约。",
-        "newsContext": "出自新闻标题「Why 'constructive strategic stability' matters for China-US relations」。"
+        "definition": "稳定的，平稳的；持续不变的",
+        "example": "Both sides expressed the will to keep the giant ship of China-US relations on a steady course toward the future.",
+        "translation": "双方表达了让中美关系巨轮沿着稳定航道驶向未来的意愿。",
+        "newsContext": "出自新闻短语 \"on a steady course toward the future\"（沿着稳定航道驶向未来）。"
+      },
+      {
+        "word": "ceremony",
+        "phonetic": "/ˈserəməni/",
+        "partOfSpeech": "noun",
+        "definition": "仪式，典礼",
+        "example": "President Xi attended a welcome ceremony held by President Trump at the White House.",
+        "translation": "习主席出席了特朗普总统在白宫举行的欢迎仪式。",
+        "newsContext": "出自 ChinaDaily 报道标题：\"Xi attends welcome ceremony held by Trump\"。"
+      },
+      {
+        "word": "achievement",
+        "phonetic": "/əˈtʃiːvmənt/",
+        "partOfSpeech": "noun",
+        "definition": "成就，成绩；达到，实现",
+        "example": "The achievements made by FAST over the past decade have gained global recognition.",
+        "translation": "FAST 过去十年取得的成就赢得了国际认可。",
+        "newsContext": "出自 ChinaDaily 报道：\"FAST celebrates a decade of achievements\"。"
+      },
+      {
+        "word": "safeguard",
+        "phonetic": "/ˈsæfɡɑːd/",
+        "partOfSpeech": "noun / verb",
+        "definition": "保障措施，防护；保护，维护",
+        "example": "World leaders called for stronger safeguards for artificial intelligence at the UN General Assembly.",
+        "translation": "各国领导人在联合国大会上呼吁为人工智能建立更强有力的保障机制。",
+        "newsContext": "出自 CGTN 报道标题：\"World leaders call for stronger AI safeguards at UN General Assembly\"。"
+      },
+      {
+        "word": "anticipate",
+        "phonetic": "/ænˈtɪsɪpeɪt/",
+        "partOfSpeech": "verb",
+        "definition": "预期，预料；期待",
+        "example": "Senior Chinese astronomers anticipate more breakthroughs in the years ahead.",
+        "translation": "中国资深天文学家预期未来几年将取得更多突破。",
+        "newsContext": "出自 ChinaDaily 报道 FAST 十周年成就：\"...who anticipate more breakthroughs\"。"
+      },
+      {
+        "word": "recognition",
+        "phonetic": "/ˌrekəɡˈnɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "认可，赞誉；识别",
+        "example": "FAST's work has gained global recognition after ten years of observation.",
+        "translation": "经过十年观测，FAST 的成果获得了全球认可。",
+        "newsContext": "出自 ChinaDaily 报道：\"...have gained global recognition\"。"
+      },
+      {
+        "word": "bilateral",
+        "phonetic": "/ˌbaɪˈlætərəl/",
+        "partOfSpeech": "adjective",
+        "definition": "双边的，双方之间的",
+        "example": "The state visit is expected to strengthen bilateral communication between the two countries.",
+        "translation": "此次国事访问有望加强两国之间的双边沟通。",
+        "newsContext": "关联新闻中中美两国元首会晤与双边关系（China-US ties）的报道主题。"
+      },
+      {
+        "word": "consensus",
+        "phonetic": "/kənˈsensəs/",
+        "partOfSpeech": "noun",
+        "definition": "共识，一致意见",
+        "example": "Delegates worked through the night to build a consensus on the new AI safeguards.",
+        "translation": "代表们彻夜努力，就新的人工智能保障措施达成共识。",
+        "newsContext": "关联 CGTN 关于联合国大会各国领导人寻求共同 AI 规则的报道。"
+      },
+      {
+        "word": "greet",
+        "phonetic": "/ɡriːt/",
+        "partOfSpeech": "verb",
+        "definition": "迎接，问候；（以某种方式）回应",
+        "example": "President Xi landed in the US for a state visit and was greeted by President Trump at the airport.",
+        "translation": "习主席抵达美国进行国事访问，在机场受到特朗普总统迎接。",
+        "newsContext": "出自 ChinaDaily 报道标题：\"Xi lands in US for state visit, greeted by Trump at airport\"。"
       }
     ],
     "pattern": {
-      "pattern": "no ... can go it alone（没有任何……能独自应对）",
-      "example": "Emissions from one country affect the entire planet, and no nation can go it alone.",
-      "translation": "一个国家的排放会影响整个地球，没有任何国家能独自应对。",
-      "usage": "用于说明某问题跨越边界、必须合作解决。go it alone 意为「单干、独自应对」。可替换 no nation 为 no company / no economy / no investor 等，例如：No company can go it alone in the global supply chain."
+      "pattern": "be ready to do A to do B（准备好做A以实现B）",
+      "example": "I am ready to work with President Trump to steer the giant ship of China-US relationship on a steady course toward the future.",
+      "translation": "我愿同特朗普总统一道，引领中美关系这艘巨轮沿着稳定航道驶向未来。",
+      "usage": "用于表达意愿与共同目标，语气正式而真诚。职场中可用于会议开场、合作洽谈或书面沟通：\"We are ready to work with your team to launch the project on schedule.\"（我们愿与贵团队合作，确保项目如期启动。）"
     },
     "grammar": {
-      "title": "主谓一致：单数主语 vs. 复数主语（Subject-Verb Agreement）",
-      "explanation": "谓语动词的单复数必须与主语一致。当主语是复数名词时，谓语用原形；当主语是单数或不可数名词（如 stability, demand, cooperation）时，一般现在时第三人称用 -s/-es 形式。新闻标题「Global hopes for stability hinge on visit」中，主语 hopes 是复数，所以用 hinge；若改为单数 hope，就要用 hinges。修饰语（如 for stability）不影响谓语单复数。",
+      "title": "过去分词作状语（Past Participle as Adverbial）",
+      "explanation": "当句子的主语同时是某个被动动作的承受者时，可用「过去分词 + 其他成分」作状语，表示被动、完成或伴随状态，相当于一个省略的被动语态从句。新闻标题因篇幅有限经常使用这一结构，显得简洁有力。",
       "examples": [
-        "Global hopes for stability hinge on the outcome of the visit.（hopes 复数 → hinge）",
-        "US-China climate cooperation matters a lot.（cooperation 单数 → matters）"
+        "Xi lands in US for state visit, greeted by Trump at airport.（= ... and he was greeted by Trump at the airport.）",
+        "The achievements made by China's FAST have gained global recognition.（= The achievements that were made by China's FAST ...）"
       ]
     },
     "pronunciation": {
-      "word": "stability",
-      "phonetic": "/stəˈbɪləti/",
-      "tips": "重音在第二个音节 -bil- 上，首音节中的 a 弱读为 /ə/，不要读成 /stæ-/。整词四个音节：stə-BIL-i-ty，末尾的 -ty 要读得轻快。同类词还有 ability、economy。",
+      "word": "steer",
+      "phonetic": "/stɪə(r)/",
+      "tips": "开头是清晰的 /s/ + /t/，注意 /t/ 不要发成中文的“特”；核心是双元音 /ɪə/，从 /ɪ/ 平滑滑向 /ə/，英音中词尾 r 不卷舌，只做轻微的 /ə/ 延伸。常见错误是把 steer 读成 /stiːl/ 或 /steə/。",
       "examples": [
-        "Global hopes for stability hinge on the visit.",
-        "Political stability attracts foreign investment."
+        "We must steer the project in the right direction.",
+        "Good leaders steer the team through difficult times."
       ]
     },
     "reading": {
-      "title": "Holiday Rush Signals Stronger Consumer Demand",
-      "content": "As the holiday season approaches, China's railways have sold nearly 100 million tickets, and travel demand has spiked far beyond last year's level. Economists say the surge reflects stronger consumer demand for services, from transport to hotels and catering. Service spending now accounts for a growing share of household budgets, and rail operators are adding trains to keep up.\n\nAt the same time, global hopes for economic stability hinge on the high-level visit between Chinese and US leaders. Analysts argue that both sides should build guardrails for their competition so that business rivalry does not damage trade. Constructive dialogue, they say, could boost prospects for exporters, investors and green industries. Climate cooperation also matters a lot for business: tighter emission rules are opening a large market for clean technology.\n\nIn short, no economy can go it alone in today's interconnected market. Whether it is a train ticket or a trade deal, growth depends on trust, openness and steady demand.",
-      "translation": "随着假期临近，中国铁路已售出近一亿张车票，出行需求远超去年同期水平。经济学家表示，这一激增反映出服务消费需求走强，涵盖交通、酒店与餐饮等领域。服务性支出在家庭预算中的占比不断提高，铁路运营方正加开列车以满足需求。\n\n与此同时，全球对经济稳定的期盼取决于中美高层会晤。分析人士认为，双方应为彼此竞争设置护栏，使商业博弈不至于损害贸易。他们表示，建设性对话有望改善出口商、投资者和绿色产业的前景。气候合作对企业同样意义重大：更严格的排放法规正在打开庞大的清洁技术市场。\n\n简言之，在当今互联互通的市场中，没有哪个经济体能独自应对挑战。无论是一张车票还是一份贸易协议，增长都依赖于信任、开放和稳定的需求。",
-      "sourceNote": "改写自 China Daily《Railway travel demand spikes, nearly 100m tickets sold》《Global hopes for stability hinge on visit》《Build guardrails for China-US competition》《US-China climate cooperation matters a lot》及 CGTN 相关报道，为英语学习目的进行了语言简化与整合。"
+      "title": "What a State Visit Teaches Us About Workplace Communication",
+      "content": "When Chinese President Xi Jinping arrived in the United States on Thursday for a state visit, he was greeted at the airport by US President Donald Trump. At the White House welcome ceremony, President Xi said he is ready to work with President Trump to steer the giant ship of China-US relationship on a steady course toward the future. His words carry a useful lesson for anyone working in a modern office. Good results rarely come from one side alone. In the workplace, as in diplomacy, people need to listen carefully, speak clearly and build consensus step by step. A short, sincere remark at the right moment can open a door that a long report cannot. Whether you are leading a team or joining your first meeting, remember that communication is not about winning an argument. It is about steering everyone toward a shared goal.",
+      "translation": "周四，中国国家主席习近平抵达美国进行国事访问，在机场受到美国总统特朗普的迎接。在白宫欢迎仪式上，习主席表示愿与特朗普总统一道，引领中美关系这艘巨轮沿着稳定航道驶向未来。他的话对任何在现代职场工作的人都有启发：好的结果很少来自单方面的努力。在职场中，正如在外交中一样，人们需要认真倾听、清晰表达，并一步步建立共识。一句简短而真诚的话，在恰当的时机，往往能打开一扇长篇报告也打不开的门。无论你是团队领导还是第一次参加会议的新人，请记住：沟通不是为了赢得争论，而是为了引领所有人朝着共同目标前进。",
+      "sourceNote": "本文基于 ChinaDaily 报道《Xi says ready to work with Trump to steer China-US ties on steady course》《Xi attends welcome ceremony held by Trump》《Xi lands in US for state visit, greeted by Trump at airport》改写，供英语学习使用。"
     }
   }
 }
