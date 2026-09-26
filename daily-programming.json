@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-25",
+  "date": "2026-09-26",
   "contents": [
     {
-      "id": "prog-2026-09-25",
-      "date": "2026-09-25",
-      "title": "Flutter 状态管理入门：StatelessWidget 与 StatefulWidget",
-      "summary": "掌握 Flutter 中两种最基础的 Widget 类型，理解 setState 刷新机制，写出你的第一个会「变」的界面。",
-      "difficulty": "初级",
-      "concept": "在 Flutter 里，一切界面都是 Widget（组件）。Widget 描述的是「当前这一刻界面应该长什么样」，而不是界面本身。Flutter 通过不断重建（rebuild）Widget 树、并对比差异来刷新界面，这和传统 Android/iOS 直接操作控件属性的思路完全不同。理解「Widget 是不可变的描述」这一条，是学好 Flutter 的第一道门槛。\n\nWidget 按「是否需要保存可变状态」分为两类。StatelessWidget（无状态组件）一旦创建，其内部字段就不再改变，适合纯展示型 UI，比如一个标题、一个图标、一段固定文案。StatefulWidget（有状态组件）则把自己的「状态」抽离到一个单独的 State 对象中保存，Widget 本身依然不可变，但 State 对象是常驻内存的，可以在生命周期内被修改。常见的 StatefulWidget 有输入框、开关、计数器、轮播图、下拉刷新列表等。\n\n状态变化后如何让界面跟着变？答案是 setState()。当你调用 setState 并在其回调中修改 State 的字段，Flutter 会把当前 Widget 标记为 dirty（脏），然后在下一帧重新调用 build() 方法生成新的 Widget 子树，并与旧子树做 diff，只更新真正变化的部分。工程上有一个非常重要的经验：凡是界面要显示的数据，都必须放在 State 中，并且只能通过 setState 修改，否则界面不会更新。\n\n另一个初学者容易忽略的点是 const 构造函数。凡是不依赖运行时数据的 Widget，都建议加 const，例如 const Text('标题')、const SizedBox(height: 16)。这样这些 Widget 在整个 App 生命周期中只会被创建一次，既能减少内存分配，又能加快重建速度。实际项目中，Flutter 官方 lint（flutter_lints）甚至会提示你为可 const 的构造函数加上 const。\n\n最后谈谈 State 的生命周期。createState() 创建 State 后，会依次调用 initState()（初始化，只调用一次）、didChangeDependencies()、build()。当 Widget 被移除时会调用 dispose()，这里必须释放你申请的资源，比如关闭 Stream、销毁 TextEditingController、移除监听器，否则会造成内存泄漏。初学阶段至少要记住：initState 做初始化、dispose 做清理、build 只做界面描述不要写副作用逻辑。",
+      "id": "prog-2026-09-26",
+      "date": "2026-09-26",
+      "title": "Git Rebase 与 Squash：构建线性提交历史，赋能 CI/CD 自动化",
+      "summary": "掌握用 rebase + squash 重写提交历史的正确姿势，并把它封装成可直接接入 CI/CD 的发布脚本。",
+      "difficulty": "中级",
+      "concept": "在多人协作的项目里，提交历史的质量直接影响两件事：一是 Code Review 的效率，二是 CI/CD 流水线能否精准地做增量构建、回滚和版本追溯。`merge` 会产生大量 \"Merge branch 'xxx' of ...\" 的合并节点，让 `git log --oneline` 变成一张网；而 `git rebase` 能把你的分支提交\"摘下来\"，重新放到目标分支的最新提交之上，从而得到一条线性的、可读性极强的历史。\n\nRebase 的本质是\"重放（replay）\"：Git 会逐个取出你分支上的每个 commit，计算它相对基点的 diff，然后在新的基点上重新 apply。正因为是\"重新生成 commit\"，每个 commit 的 SHA 都会改变——这是理解一切 rebase 事故的钥匙。已经推送到远程、且被他人基于其上开发的分支，绝对不能 rebase（黄金法则：只 rebase 你自己的、尚未共享的历史）。\n\n`--force-with-lease` 是 rebase 后推送的救命稻草。裸 `git push --force` 会无条件覆盖远程，如果同事在你 rebase 期间推了新提交，就会被静默丢弃；而 `--force-with-lease` 会先检查远程分支是否仍是你本地记录的那个 ref，若别人推过新东西就拒绝推送，相当于一个\"乐观锁\"。在任何 CI/CD 或自动化发布脚本里，永远用它替代 `--force`。\n\n当一个功能分支积累了十几个\"fix typo\"\"wip\"\"又改了一版\"这类提交时，`git rebase -i`（交互式 rebase）配合 `squash`/`fixup` 可以把它们合并成一个语义清晰的提交。更工程化的做法是用 `git reset --soft <base>`：先 rebase 到目标分支顶端，再软重置，所有改动进入暂存区，最后一次性 commit 成符合 Conventional Commits 规范的提交（如 `feat(user-center): 新增用户中心模块`）。\n\n这直接对接 DevOps 生态：Semantic Release、release-please、standard-version 这类工具都靠解析提交信息的 `feat:`/`fix:`/`feat!:` 前缀来推断版本号变更（minor/patch/major），并自动生成 CHANGELOG。历史越干净，自动化越可靠。另外，语义化的 tag（v1.4.0）配合 `git describe`、`git log old_tag..new_tag` 可以精确产出每次发布的变更清单，这是可观测性和回滚的基础。",
       "codeExample": {
-        "language": "dart",
-        "code": "import 'package:flutter/material.dart';\n\n/// 程序入口：启动应用并挂载根组件\nvoid main() => runApp(const MyApp());\n\n/// 根组件：整个 App 的主题与首页，界面结构固定，因此用 StatelessWidget\n/// 内部字段不会变化，所有子 Widget 都可以用 const 修饰\n\nclass MyApp extends StatelessWidget {\n  const MyApp({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: 'StatefulWidget 入门',\n      theme: ThemeData(primarySwatch: Colors.blue),\n      home: const CounterPage(),\n    );\n  }\n}\n\n/// 计数页面：需要保存可变的计数值，因此用 StatefulWidget\n/// 注意：Widget 本身依然不可变，真正的状态保存在 State 中\nclass CounterPage extends StatefulWidget {\n  const CounterPage({super.key});\n\n  @override\n  State<CounterPage> createState() => _CounterPageState();\n}\n\n/// 与 CounterPage 配套的 State 类，_ 开头表示私有，只能在本文件使用\nclass _CounterPageState extends State<CounterPage> {\n  /// 界面要显示的状态：计数值\n  int _count = 0;\n\n  /// 初始化：只会调用一次，适合做数据加载、监听注册\n  @override\n  void initState() {\n    super.initState();\n    debugPrint('initState 被调用，页面初始化完成');\n  }\n\n  /// 修改状态的唯一正确方式：包在 setState 中\n  void _increment() {\n    setState(() {\n      _count++; // 在回调里修改状态，Flutter 会触发 build 重建\n    });\n  }\n\n  /// 资源释放：页面销毁时调用，避免内存泄漏\n  @override\n  void dispose() {\n    debugPrint('dispose 被调用，页面即将销毁');\n    super.dispose();\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      appBar: AppBar(title: const Text('计数器 Demo')),\n      body: Center(\n        child: Column(\n          mainAxisAlignment: MainAxisAlignment.center,\n          children: [\n            Text('当前计数：$_count', style: const TextStyle(fontSize: 28)),\n            const SizedBox(height: 16),\n            // 根据状态派生出的展示内容，同样会随 setState 刷新\n            Text(_count % 2 == 0 ? '偶数' : '奇数'),\n            const SizedBox(height: 24),\n            // 重置按钮：演示清零操作\n            ElevatedButton(\n              onPressed: () => setState(() => _count = 0),\n              child: const Text('清零'),\n            ),\n          ],\n        ),\n      ),\n      floatingActionButton: FloatingActionButton(\n        onPressed: _increment, // 点击时触发状态更新\n        tooltip: '增加',\n        child: const Icon(Icons.add),\n      ),\n    );\n  }\n}\n",
-        "explanation": "1) main() 中 runApp(const MyApp()) 把根 Widget 挂载到屏幕上；MyApp 只负责主题和首页，界面结构固定，所以是 StatelessWidget。2) CounterPage 继承 StatefulWidget，它只有一个 createState() 方法，返回配套的 _CounterPageState；把 Widget 与 State 拆开，是为了在 Widget 重建时 State 仍然存活，从而保住数据。3) _CounterPageState 里定义了真正的状态 _count，以及初始化用的 initState() 和清理用的 dispose()，这两个生命周期方法是处理资源的标准位置。4) _increment() 中把 _count++ 包在 setState 回调里，这是让界面刷新的关键：setState 会标记该节点为 dirty，下一帧自动重新调用 build()。5) build() 用 Scaffold 搭页面骨架，Column 纵向排列文字与按钮，FloatingActionButton 作为右下角的加号按钮；所有静态子 Widget 都加了 const 以优化性能。6) 点击加号 → _increment → setState → build 重新执行 → Text 中的 '$_count' 显示新值，这就是 Flutter 单向数据流 + 声明式 UI 的最小闭环。"
+        "language": "bash",
+        "code": "#!/usr/bin/env bash\n# ============================================================\n# rebase-release.sh —— 线性化提交历史并打语义化 Tag 的发布脚本\n# 可直接作为 CI 流水线的 release job 脚本使用\n# ============================================================\nset -euo pipefail\n\n# ---------- 配置区（CI 中可从环境变量注入） ----------\nFEATURE_BRANCH=\"feature/user-center\"\nBASE_BRANCH=\"main\"\nREMOTE=\"origin\"\nRELEASE_TAG=\"v1.4.0\"\nCOMMIT_MSG=\"feat(user-center): 新增用户中心与统一鉴权\"\n\necho \"==> 1. 同步远程并确保工作区干净\"\ngit fetch \"$REMOTE\" --prune\nif ! git diff --quiet || ! git diff --cached --quiet; then\n  echo \"❌ 工作区存在未提交改动，请先 commit 或 stash\" >&2\n  exit 1\nfi\n\necho \"==> 2. 切到特性分支，并变基到最新的 ${BASE_BRANCH}\"\ngit switch \"$FEATURE_BRANCH\"\n# --autostash：自动 stash 脏改动，rebase 成功后再弹回\ngit rebase --autostash \"$REMOTE/$BASE_BRANCH\"\n\necho \"==> 3. 压平提交：保留所有改动，但合并为一个原子提交\"\ngit reset --soft \"$REMOTE/$BASE_BRANCH\"\ngit commit -m \"$COMMIT_MSG\"\n\necho \"==> 4. 强制推送（带保护）到远程特性分支\"\n# --force-with-lease：仅当远程仍是我们记录的 ref 时才覆盖，防丢同事提交\ngit push --force-with-lease \"$REMOTE\" \"$FEATURE_BRANCH\"\n\necho \"==> 5. 打附注 Tag 并推送，供 CI 生成发布产物与 CHANGELOG\"\ngit tag -a \"$RELEASE_TAG\" -m \"Release ${RELEASE_TAG}\"\ngit push \"$REMOTE\" \"$RELEASE_TAG\"\n\necho \"==> 6. 输出本次发布的变更清单（上一个 tag 到本次 tag）\"\ngit log --pretty=format:\"%h %ad %an %s\" --date=short \\\n  \"${RELEASE_TAG}~1..${RELEASE_TAG}\"\n\necho \"\\n✅ 发布完成：${RELEASE_TAG}\"",
+        "explanation": "第 1 块（配置区）：把分支名、远程名、Tag、提交信息抽成变量，方便在 GitLab CI / GitHub Actions 中用环境变量覆盖，做到脚本零改动复用。\n\n第 2 块（fetch + 工作区检查）：`git fetch --prune` 同步远程引用并清理已删除的远端分支；`git diff --quiet` 与 `git diff --cached --quiet` 分别检查工作区和暂存区是否干净——rebase 遇到脏工作区会中途失败，提前退出比事后修复安全得多。\n\n第 3 块（rebase）：`git rebase --autostash $REMOTE/$BASE_BRANCH` 把特性分支的提交重放到最新的 main 上。用 `origin/main` 而非本地 `main`，保证基点是真正最新的远程状态。\n\n第 4 块（squash）：`git reset --soft` 把 HEAD 移到 `origin/main`，但所有改动保留在暂存区（不丢失任何代码），随后用一条符合 Conventional Commits 规范的信息一次性提交，得到单个原子提交。\n\n第 5 块（安全推送）：`--force-with-lease` 是关键。因为 rebase 改写了 SHA，必须强推；但它会校验远程 ref 是否与本地记录一致，若同事推过新提交就中止，避免覆盖他人工作。\n\n第 6 块（Tag 与变更清单）：附注 tag（`-a`）可携带元信息，比轻量 tag 更适合发布。`git log v1.4.0~1..v1.4.0` 精确输出本次发布包含的提交，可直接作为 release notes 喂给飞书/Slack 通知或 CHANGELOG 生成器。"
       },
       "keyPoints": [
-        "Widget 是不可变的界面描述，界面变化靠重建 Widget 树并 diff 实现，而不是修改控件属性。",
-        "StatelessWidget 适合无内部可变数据的展示型 UI；StatefulWidget 把可变状态抽离到 State 对象中保存。",
-        "修改状态必须调用 setState(() { ... })，否则界面不会刷新；不要在 build() 中修改状态，否则会死循环。",
-        "State 的生命周期要记牢：initState 做初始化、didChangeDependencies 处理依赖、build 描述界面、dispose 释放资源。",
-        "静态 Widget 尽量加 const，例如 const Text('标题')、const SizedBox(height: 16)，可减少对象创建并提升重建速度。"
+        "rebase 会重写 commit 的 SHA，因此只应 rebase 尚未共享（未被他人基于其开发）的本地分支",
+        "推送到远程时永远使用 `git push --force-with-lease`，它相当于乐观锁，可防止覆盖同事的提交",
+        "`git reset --soft <base>` 是比交互式 rebase 更适合脚本化的 squash 方案：零改动丢失、原子化提交",
+        "Conventional Commits（feat/fix/feat!）是 Semantic Release、release-please 自动生成版本号与 CHANGELOG 的契约",
+        "附注 tag + `git log old_tag..new_tag` 是可复现发布、变更审计与快速回滚的基础设施"
       ],
       "exercise": {
-        "description": "实现一个「爱心收藏」按钮：页面中间显示一个心形图标和当前收藏次数，点击图标在 favorite / favorite_border（实心/空心）之间切换，同时收藏次数 +1；再添加一个「长按重置」手势，长按图标 1 秒后把次数清零、图标恢复空心。要求使用 StatefulWidget + setState 完成。",
-        "hint": "在 State 中维护两个字段：bool _isFavorite 和 int _count。点击用 GestureDetector 的 onTap 切换布尔值并累加次数；长按用 onLongPress 重置。图标可以用 Icon(_isFavorite ? Icons.favorite : Icons.favorite_border)，颜色用 _isFavorite ? Colors.red : Colors.grey。别忘了把所有修改都放进 setState 的回调里。",
+        "description": "为一个名为 `feature/payment` 的分支写一个 `squash-and-release.sh` 脚本：要求（1）把它 rebase 到最新的 `origin/develop`；（2）把所有历史提交压缩成一个 `feat(payment): 接入第三方支付网关` 提交；（3）用 `--force-with-lease` 推送；（4）打 tag `v2.0.0` 并输出该 tag 相对上一个 tag 的变更清单。额外加一个安全检查：若 rebase 过程中出现冲突，脚本必须打印提示并以非 0 退出码退出。",
+        "hint": "rebase 冲突会让 `git rebase` 返回非 0 退出码，配合 `set -e` 会自动终止脚本；若想给出更友好的提示，可以用 `if ! git rebase ...; then echo \"...\"; exit 1; fi` 包裹。上一个 tag 可用 `git describe --tags --abbrev=0 HEAD~1` 或 `git tag --sort=-v:refname | sed -n 2p` 获取。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，使点击按钮后计数能正确刷新界面。",
-            "codeContext": "class _CounterPageState extends State<CounterPage> {\n  int _count = 0;\n\n  void _increment() {\n    ____①____ {\n      ____②____;\n    }\n  }\n}",
+            "question": "补全命令：在 rebase 改写历史后，用带保护的强推方式推送特性分支。",
+            "codeContext": "git rebase --autostash origin/main\ngit commit --amend -m \"feat(user-center): 新增用户中心\"\ngit push ________ origin feature/user-center",
             "segments": [
               {
                 "type": "text",
-                "content": "void _increment() {\n  ",
+                "content": "git push ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,73 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[①]",
+                "placeholder": "[选择]",
                 "options": [
-                  "setState(()",
-                  "updateState(()",
-                  "rebuild(()"
+                  "--force",
+                  "--force-with-lease",
+                  "--set-upstream",
+                  "--tags"
                 ],
-                "correctAnswer": "setState(()"
+                "correctAnswer": "--force-with-lease"
               },
               {
                 "type": "text",
-                "content": "\n    ",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[②]",
-                "options": [
-                  "_count++",
-                  "this._count = _count + 1;",
-                  "count++"
-                ],
-                "correctAnswer": "_count++"
-              },
-              {
-                "type": "text",
-                "content": "\n  });\n}",
+                "content": " origin feature/user-center",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "setState(() ... _count++",
-            "explanation": "Flutter 中更新 State 必须调用 setState 并在回调里修改字段（这里 _count++）。updateState、rebuild 都不是 Flutter 提供的 API；而缺少 setState 直接 _count++ 虽然能改变变量，但不会触发 build，界面看不到变化。"
+            "correctAnswer": "--force-with-lease",
+            "explanation": "rebase 与 amend 都改写了 commit 的 SHA，普通 push 会被拒绝，必须强推。但 `--force` 无条件覆盖远程，若期间同事推了提交会被静默丢弃；`--force-with-lease` 会先校验远程 ref 是否仍与本地记录一致，不一致则拒绝推送，是 CI/CD 脚本中的标准做法。`--set-upstream` 只用于建立上游追踪关系，`--tags` 只推 tag。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "为什么计数器页面必须使用 StatefulWidget 而不是 StatelessWidget？",
-            "codeContext": "class CounterPage extends StatefulWidget {\n  const CounterPage({super.key});\n  @override\n  State<CounterPage> createState() => _CounterPageState();\n}\n\n// _CounterPageState 中有：int _count = 0;",
+            "question": "关于 `git rebase` 与 CI/CD 自动化版本发布，下列说法正确的是？",
+            "codeContext": "git log --oneline\n# a1b2c3d feat: 新增支付回调\n# e4f5g6h fix: 修复金额精度\n# i7j8k9l feat!: 重构订单模型\n# m0n1o2p wip",
             "segments": null,
             "options": [
-              "因为 StatefulWidget 的渲染速度比 StatelessWidget 快",
-              "因为界面需要展示一个会随用户交互变化的数据，状态必须保存在独立的 State 对象中",
-              "因为 StatelessWidget 不能包含 Text 和 Button 组件",
-              "因为 StatelessWidget 不支持 setState 方法，所以任何页面都必须用 StatefulWidget"
+              "rebase 只改变提交顺序，每个 commit 的 SHA 保持不变",
+              "包含 `feat!:` 的提交会让 Semantic Release 推断为 major 版本变更",
+              "rebase 之后应该使用 `git push --force` 覆盖远程，以保证最快同步",
+              "merge 产生的合并节点更利于 Semantic Release 生成干净的 CHANGELOG"
             ],
-            "correctAnswer": "因为界面需要展示一个会随用户交互变化的数据，状态必须保存在独立的 State 对象中",
-            "explanation": "StatelessWidget 适用于结构固定、无可变数据的界面。计数器的 _count 会随点击变化，需要一个在 Widget 重建过程中依然存活的 State 对象来保存，所以选 StatefulWidget。性能上两者没有绝对优劣，能用 StatelessWidget 时反而更简单高效；StatelessWidget 也并非不能包含任意组件，它只是没有自己的 State。"
+            "correctAnswer": "包含 `feat!:` 的提交会让 Semantic Release 推断为 major 版本变更",
+            "explanation": "A 错：rebase 是重放提交，会为每个提交生成新的 SHA。C 错：应使用 `--force-with-lease` 防止覆盖他人提交。D 错：merge 节点会产生噪音，线性历史（rebase/squash）更利于 CHANGELOG 生成。B 正确：在 Conventional Commits 中，`!`（或 BREAKING CHANGE footer）标记破坏性变更，触发 major 版本升级。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "下面的代码在点击按钮后，界面上的计数会发生什么？",
-            "codeContext": "class _CounterPageState extends State<CounterPage> {\n  int _count = 0;\n\n  void _increment() {\n    _count++; // 没有 setState\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      body: Center(child: Text('当前计数：$_count')),\n      floatingActionButton: FloatingActionButton(\n        onPressed: _increment,\n        child: const Icon(Icons.add),\n      ),\n    );\n  }\n}",
+            "question": "下面这段用于推断版本号变更类型的脚本，运行后输出什么？",
+            "codeContext": "#!/usr/bin/env bash\ncommits=(\"feat: 新增登录\" \"fix: 修复空指针\" \"docs: 更新 README\" \"feat!: 重构 API\")\n\nlevel=\"patch\"\nfor c in \"${commits[@]}\"; do\n  case \"$c\" in\n    *!*)      level=\"major\" ;;\n    feat:*)   [ \"$level\" = \"patch\" ] && level=\"minor\" ;;\n  esac\ndone\necho \"next-bump: $level\"",
             "segments": null,
             "options": [
-              "数字立刻更新，界面和普通写法完全一样",
-              "变量 _count 确实增加了，但界面一直显示 0，直到因其他原因触发重建",
-              "点击时抛出异常并导致 App 崩溃",
-              "Flutter 会自动检测到字段变化并刷新界面"
+              "next-bump: patch",
+              "next-bump: minor",
+              "next-bump: major",
+              "脚本因 case 语法错误而无法运行"
             ],
-            "correctAnswer": "变量 _count 确实增加了，但界面一直显示 0，直到因其他原因触发重建",
-            "explanation": "Flutter 是声明式 UI，只有调用 setState 才会把节点标记为 dirty 并在下一帧重新执行 build()。直接 _count++ 只是改变了内存中的变量值，没有任何通知机制，所以 Text 仍显示旧值。直到某个外部原因（如屏幕旋转、父组件重建）再次触发 build，数字才会跳变，这也是初学者最常见的「界面不刷新」Bug。"
+            "correctAnswer": "next-bump: major",
+            "explanation": "初始 level=patch。第 1 条 `feat: 新增登录` 不含 `!`，命中 `feat:*`，level 变为 minor；第 2、3 条不匹配任何分支；第 4 条 `feat!: 重构 API` 含 `!`，命中 `*!*`，level 变为 major，且 major 为最高级不会再被降级。最终输出 `next-bump: major`。注意 case 的分支顺序很关键——必须先判断破坏性变更，否则 `feat!:` 也会被 `feat:*` 捕获。"
           }
         ]
       }

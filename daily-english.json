@@ -1,181 +1,192 @@
 {
-  "date": "2026-09-25",
+  "date": "2026-09-26",
   "content": {
-    "id": "en-2026-09-25",
-    "date": "2026-09-25",
-    "topic": "职场与沟通",
+    "id": "en-2026-09-26",
+    "date": "2026-09-26",
+    "topic": "文化与旅行",
     "newsHighlights": [
       {
-        "title": "Xi says ready to work with Trump to steer China-US ties on steady course",
+        "title": "Xi attends state dinner held by Trump",
         "source": "ChinaDaily",
-        "summary": "Chinese President Xi Jinping said he is ready to work with US President Donald Trump to steer the giant ship of China-US relationship on a steady course toward the future.",
-        "translation": "中国国家主席习近平表示，愿同美国总统特朗普一道，引领中美关系这艘巨轮沿着稳定航道驶向未来。",
+        "summary": "President Xi Jinping delivered a speech rich in substance at the state dinner hosted by US President Donald Trump.",
+        "translation": "习近平主席在特朗普总统举行的国宴上发表了内容充实的讲话。",
         "keyWords": [
-          "steer",
-          "steady course",
-          "bilateral ties"
+          "state dinner",
+          "substance",
+          "diplomacy"
         ]
       },
       {
-        "title": "Xi attends welcome ceremony held by Trump",
+        "title": "Chinese, US first ladies visit National Museum of Asian Art",
         "source": "ChinaDaily",
-        "summary": "President Xi attended a welcome ceremony hosted by President Trump at the White House on Thursday morning during his state visit to the United States.",
-        "translation": "周四上午，习近平主席在对美国进行国事访问期间，出席了特朗普总统在白宫举行的欢迎仪式。",
+        "summary": "Peng Liyuan and the US first lady toured the National Museum of Asian Art and admired works that carry centuries of Asian culture.",
+        "translation": "彭丽媛与美国第一夫人参观了美国国家亚洲艺术博物馆，欣赏承载数百年亚洲文化的艺术作品。",
         "keyWords": [
-          "welcome ceremony",
-          "state visit",
-          "host"
+          "museum",
+          "first lady",
+          "cultural exchange"
         ]
       },
       {
-        "title": "World leaders call for stronger AI safeguards at UN General Assembly",
+        "title": "Xi, Peng Liyuan visit US National Archives with Trump and his wife",
         "source": "CGTN",
-        "summary": "World leaders urged stronger safeguards for artificial intelligence at the UN General Assembly, calling for global dialogue and shared rules on emerging technologies.",
-        "translation": "各国领导人在联合国大会上呼吁为人工智能建立更强有力的保障机制，主张就新兴技术展开全球对话并制定共同规则。",
+        "summary": "The two presidential couples visited the US National Archives, a landmark that guards the documents of a nation's memory.",
+        "translation": "两国元首夫妇共同参观美国国家档案馆，这座建筑保存着一个国家记忆的文献。",
         "keyWords": [
-          "safeguard",
-          "dialogue",
-          "emerging technology"
+          "archive",
+          "landmark",
+          "memory"
         ]
       },
       {
-        "title": "FAST celebrates a decade of achievements",
+        "title": "Documentary filmmaker shares stories of kindness",
         "source": "ChinaDaily",
-        "summary": "China's Five-hundred-meter Aperture Spherical radio Telescope, or FAST, has gained global recognition after a decade of work, and astronomers anticipate more breakthroughs ahead.",
-        "translation": "中国500米口径球面射电望远镜（FAST）经过十年耕耘赢得国际认可，天文学家预期未来将取得更多突破。",
+        "summary": "A documentary filmmaker recounts how a 7-year-old Chinese boy gave his birthday egg to an injured American airman after the Doolittle Raid.",
+        "translation": "一位纪录片导演讲述二战期间一名7岁中国男孩把自己的生日鸡蛋送给受伤美国飞行员的感人故事。",
         "keyWords": [
-          "achievement",
-          "recognition",
-          "anticipate"
+          "documentary",
+          "kindness",
+          "storytelling"
+        ]
+      },
+      {
+        "title": "US teacher thrilled as his story reaches the White House",
+        "source": "ChinaDaily",
+        "summary": "An American teacher was thrilled to learn that his story of friendship across the Pacific had reached the White House.",
+        "translation": "一位美国教师得知自己关于跨太平洋友谊的故事传到白宫后激动不已。",
+        "keyWords": [
+          "thrilled",
+          "friendship",
+          "Pacific"
         ]
       }
     ],
     "quote": {
-      "quote": "The most important thing in communication is hearing what isn't said.",
-      "author": "Peter Drucker",
-      "translation": "沟通中最重要的是听出那些没有被说出口的话。",
-      "explanation": "管理学大师德鲁克提醒我们：真正的沟通不只是表达，更是倾听。在职场与外交场合，读懂言外之意、理解对方的真实关切，往往比滔滔不绝更有力量。"
+      "quote": "The world is a book, and those who do not travel read only one page.",
+      "author": "Saint Augustine",
+      "translation": "世界是一本书，不旅行的人只读了其中一页。",
+      "explanation": "旅行让人接触不同的文化与生活方式，拓宽视野；正如本次中美元首夫妇的博物馆、档案馆之行，文化之旅本身就是增进理解、沟通心灵的桥梁。"
     },
     "vocabulary": [
       {
-        "word": "steer",
-        "phonetic": "/stɪə(r)/",
-        "partOfSpeech": "verb",
-        "definition": "驾驶，引导；掌控方向",
-        "example": "President Xi said he is ready to work with President Trump to steer the relationship on a steady course.",
-        "translation": "习主席表示愿与特朗普总统一道，引领两国关系沿着稳定航道前行。",
-        "newsContext": "出自 ChinaDaily 报道标题：\"Xi says ready to work with Trump to steer China-US ties on steady course\"。"
+        "word": "substance",
+        "phonetic": "/ˈsʌbstəns/",
+        "partOfSpeech": "n.",
+        "definition": "实质内容，要旨",
+        "example": "The president's speech at the state dinner was rich in substance.",
+        "translation": "总统在国宴上的讲话内容充实、富有实质意义。",
+        "newsContext": "China Daily 评论文章中写道：\"President Xi Jinping's speech at the state dinner ... was rich in substance.\""
       },
       {
-        "word": "steady",
-        "phonetic": "/ˈstedi/",
-        "partOfSpeech": "adjective",
-        "definition": "稳定的，平稳的；持续不变的",
-        "example": "Both sides expressed the will to keep the giant ship of China-US relations on a steady course toward the future.",
-        "translation": "双方表达了让中美关系巨轮沿着稳定航道驶向未来的意愿。",
-        "newsContext": "出自新闻短语 \"on a steady course toward the future\"（沿着稳定航道驶向未来）。"
+        "word": "banquet",
+        "phonetic": "/ˈbæŋkwɪt/",
+        "partOfSpeech": "n.",
+        "definition": "宴会，盛宴",
+        "example": "Xi Jinping arrived at the White House for the welcome banquet.",
+        "translation": "习近平抵达白宫出席欢迎宴会。",
+        "newsContext": "CGTN 报道标题：\"Watch: Xi Jinping arrives at White House for welcome banquet.\""
       },
       {
         "word": "ceremony",
         "phonetic": "/ˈserəməni/",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "n.",
         "definition": "仪式，典礼",
-        "example": "President Xi attended a welcome ceremony held by President Trump at the White House.",
-        "translation": "习主席出席了特朗普总统在白宫举行的欢迎仪式。",
-        "newsContext": "出自 ChinaDaily 报道标题：\"Xi attends welcome ceremony held by Trump\"。"
+        "example": "Trump held a welcoming ceremony for the visiting president on the White House lawn.",
+        "translation": "特朗普在白宫草坪为来访总统举行了欢迎仪式。",
+        "newsContext": "China Daily 报道：\"Xi attends welcoming ceremony held by Trump.\""
       },
       {
-        "word": "achievement",
-        "phonetic": "/əˈtʃiːvmənt/",
-        "partOfSpeech": "noun",
-        "definition": "成就，成绩；达到，实现",
-        "example": "The achievements made by FAST over the past decade have gained global recognition.",
-        "translation": "FAST 过去十年取得的成就赢得了国际认可。",
-        "newsContext": "出自 ChinaDaily 报道：\"FAST celebrates a decade of achievements\"。"
+        "word": "exchange",
+        "phonetic": "/ɪksˈtʃeɪndʒ/",
+        "partOfSpeech": "n.",
+        "definition": "交流，互换",
+        "example": "The two leaders held small-group exchanges in a warm atmosphere.",
+        "translation": "两国元首在轻松的氛围中进行了小范围交流。",
+        "newsContext": "China Daily 报道：\"Xi holds small-group exchanges with Trump.\""
       },
       {
-        "word": "safeguard",
-        "phonetic": "/ˈsæfɡɑːd/",
-        "partOfSpeech": "noun / verb",
-        "definition": "保障措施，防护；保护，维护",
-        "example": "World leaders called for stronger safeguards for artificial intelligence at the UN General Assembly.",
-        "translation": "各国领导人在联合国大会上呼吁为人工智能建立更强有力的保障机制。",
-        "newsContext": "出自 CGTN 报道标题：\"World leaders call for stronger AI safeguards at UN General Assembly\"。"
+        "word": "documentary",
+        "phonetic": "/ˌdɒkjuˈmentri/",
+        "partOfSpeech": "n. / adj.",
+        "definition": "纪录片；纪实的",
+        "example": "A documentary filmmaker shared stories of kindness from World War II.",
+        "translation": "一位纪录片导演分享了二战时期关于善良与友谊的故事。",
+        "newsContext": "China Daily 报道标题：\"Documentary filmmaker shares stories of kindness.\""
       },
       {
-        "word": "anticipate",
-        "phonetic": "/ænˈtɪsɪpeɪt/",
-        "partOfSpeech": "verb",
-        "definition": "预期，预料；期待",
-        "example": "Senior Chinese astronomers anticipate more breakthroughs in the years ahead.",
-        "translation": "中国资深天文学家预期未来几年将取得更多突破。",
-        "newsContext": "出自 ChinaDaily 报道 FAST 十周年成就：\"...who anticipate more breakthroughs\"。"
+        "word": "kindness",
+        "phonetic": "/ˈkaɪndnəs/",
+        "partOfSpeech": "n.",
+        "definition": "善良，善意，好心的行为",
+        "example": "The boy's small act of kindness became a story remembered for a lifetime.",
+        "translation": "男孩这个小小的善举成为被铭记一生的故事。",
+        "newsContext": "China Daily 报道中，中国男孩把生日鸡蛋送给受伤的美国飞行员，体现了超越国界的 kindness。"
       },
       {
-        "word": "recognition",
-        "phonetic": "/ˌrekəɡˈnɪʃn/",
-        "partOfSpeech": "noun",
-        "definition": "认可，赞誉；识别",
-        "example": "FAST's work has gained global recognition after ten years of observation.",
-        "translation": "经过十年观测，FAST 的成果获得了全球认可。",
-        "newsContext": "出自 ChinaDaily 报道：\"...have gained global recognition\"。"
+        "word": "injured",
+        "phonetic": "/ˈɪndʒəd/",
+        "partOfSpeech": "adj.",
+        "definition": "受伤的，受损的",
+        "example": "During World War II, a 7-year-old Chinese boy gave his birthday egg to an injured American airman.",
+        "translation": "二战期间，一名7岁的中国男孩把自己的生日鸡蛋送给了受伤的美国飞行员。",
+        "newsContext": "China Daily 报道原文使用 \"an injured American airman after the Doolittle Raid\"。"
       },
       {
-        "word": "bilateral",
-        "phonetic": "/ˌbaɪˈlætərəl/",
-        "partOfSpeech": "adjective",
-        "definition": "双边的，双方之间的",
-        "example": "The state visit is expected to strengthen bilateral communication between the two countries.",
-        "translation": "此次国事访问有望加强两国之间的双边沟通。",
-        "newsContext": "关联新闻中中美两国元首会晤与双边关系（China-US ties）的报道主题。"
+        "word": "penny",
+        "phonetic": "/ˈpeni/",
+        "partOfSpeech": "n.",
+        "definition": "（美）一分硬币；少量钱财",
+        "example": "In return, the airman gave the boy a penny, a coin he kept into old age.",
+        "translation": "作为回报，飞行员送给男孩一枚硬币，这枚硬币他一直珍藏到老。",
+        "newsContext": "China Daily 报道：\"the airman gave him a penny — a coin the boy kept into old age.\""
       },
       {
-        "word": "consensus",
-        "phonetic": "/kənˈsensəs/",
-        "partOfSpeech": "noun",
-        "definition": "共识，一致意见",
-        "example": "Delegates worked through the night to build a consensus on the new AI safeguards.",
-        "translation": "代表们彻夜努力，就新的人工智能保障措施达成共识。",
-        "newsContext": "关联 CGTN 关于联合国大会各国领导人寻求共同 AI 规则的报道。"
+        "word": "archive",
+        "phonetic": "/ˈɑːkaɪv/",
+        "partOfSpeech": "n. / v.",
+        "definition": "档案馆，档案；归档保存",
+        "example": "The two couples visited the US National Archives together during the state visit.",
+        "translation": "国事访问期间，两国元首夫妇共同参观了美国国家档案馆。",
+        "newsContext": "CGTN 报道：\"Xi, Peng Liyuan visit US National Archives with Trump and his wife.\""
       },
       {
-        "word": "greet",
-        "phonetic": "/ɡriːt/",
-        "partOfSpeech": "verb",
-        "definition": "迎接，问候；（以某种方式）回应",
-        "example": "President Xi landed in the US for a state visit and was greeted by President Trump at the airport.",
-        "translation": "习主席抵达美国进行国事访问，在机场受到特朗普总统迎接。",
-        "newsContext": "出自 ChinaDaily 报道标题：\"Xi lands in US for state visit, greeted by Trump at airport\"。"
+        "word": "thrilled",
+        "phonetic": "/θrɪld/",
+        "partOfSpeech": "adj.",
+        "definition": "非常兴奋的，激动的",
+        "example": "The US teacher was thrilled as his story reached the White House.",
+        "translation": "当自己的故事传到白宫时，这位美国教师激动不已。",
+        "newsContext": "China Daily 报道标题：\"US teacher thrilled as his story reaches the White House.\""
       }
     ],
     "pattern": {
-      "pattern": "be ready to do A to do B（准备好做A以实现B）",
-      "example": "I am ready to work with President Trump to steer the giant ship of China-US relationship on a steady course toward the future.",
-      "translation": "我愿同特朗普总统一道，引领中美关系这艘巨轮沿着稳定航道驶向未来。",
-      "usage": "用于表达意愿与共同目标，语气正式而真诚。职场中可用于会议开场、合作洽谈或书面沟通：\"We are ready to work with your team to launch the project on schedule.\"（我们愿与贵团队合作，确保项目如期启动。）"
+      "pattern": "It is worth noting that + 从句（值得注意的是……）",
+      "example": "It is worth noting that cultural exchanges have opened a window for people of the two countries to understand each other.",
+      "translation": "值得注意的是，文化交流为两国人民相互了解打开了一扇窗。",
+      "usage": "用于引出需要读者特别关注的观点或事实，常见于新闻评论与议论文。也可替换为 It is worth mentioning that… / It should be noted that…"
     },
     "grammar": {
-      "title": "过去分词作状语（Past Participle as Adverbial）",
-      "explanation": "当句子的主语同时是某个被动动作的承受者时，可用「过去分词 + 其他成分」作状语，表示被动、完成或伴随状态，相当于一个省略的被动语态从句。新闻标题因篇幅有限经常使用这一结构，显得简洁有力。",
+      "title": "as 引导时间状语从句（当……时 / 随着……）",
+      "explanation": "as 引导时间状语从句时，表示主句动作与从句动作同时发生，或某一动作伴随另一动作的进展而变化，常译为\"当……时候\"\"随着……\"。新闻标题中常省略主语和 be 动词（如 thrilled 前省略了 he was）。",
       "examples": [
-        "Xi lands in US for state visit, greeted by Trump at airport.（= ... and he was greeted by Trump at the airport.）",
-        "The achievements made by China's FAST have gained global recognition.（= The achievements that were made by China's FAST ...）"
+        "US teacher thrilled as his story reaches the White House.",
+        "As the two leaders sat down for a tea chat at the White House, the world was watching closely."
       ]
     },
     "pronunciation": {
-      "word": "steer",
-      "phonetic": "/stɪə(r)/",
-      "tips": "开头是清晰的 /s/ + /t/，注意 /t/ 不要发成中文的“特”；核心是双元音 /ɪə/，从 /ɪ/ 平滑滑向 /ə/，英音中词尾 r 不卷舌，只做轻微的 /ə/ 延伸。常见错误是把 steer 读成 /stiːl/ 或 /steə/。",
+      "word": "documentary",
+      "phonetic": "/ˌdɒkjuˈmentri/",
+      "tips": "重音在第三个音节 -men-，注意 -ary 弱读为 /ri/ 而不是 /əri/，中间的 /kjʊ/ 要连读顺畅，可分成 doc-u-MEN-try 四个音段慢速练习。",
       "examples": [
-        "We must steer the project in the right direction.",
-        "Good leaders steer the team through difficult times."
+        "A documentary filmmaker shares stories of kindness.",
+        "She watched a documentary about cultural exchanges across the Pacific."
       ]
     },
     "reading": {
-      "title": "What a State Visit Teaches Us About Workplace Communication",
-      "content": "When Chinese President Xi Jinping arrived in the United States on Thursday for a state visit, he was greeted at the airport by US President Donald Trump. At the White House welcome ceremony, President Xi said he is ready to work with President Trump to steer the giant ship of China-US relationship on a steady course toward the future. His words carry a useful lesson for anyone working in a modern office. Good results rarely come from one side alone. In the workplace, as in diplomacy, people need to listen carefully, speak clearly and build consensus step by step. A short, sincere remark at the right moment can open a door that a long report cannot. Whether you are leading a team or joining your first meeting, remember that communication is not about winning an argument. It is about steering everyone toward a shared goal.",
-      "translation": "周四，中国国家主席习近平抵达美国进行国事访问，在机场受到美国总统特朗普的迎接。在白宫欢迎仪式上，习主席表示愿与特朗普总统一道，引领中美关系这艘巨轮沿着稳定航道驶向未来。他的话对任何在现代职场工作的人都有启发：好的结果很少来自单方面的努力。在职场中，正如在外交中一样，人们需要认真倾听、清晰表达，并一步步建立共识。一句简短而真诚的话，在恰当的时机，往往能打开一扇长篇报告也打不开的门。无论你是团队领导还是第一次参加会议的新人，请记住：沟通不是为了赢得争论，而是为了引领所有人朝着共同目标前进。",
-      "sourceNote": "本文基于 ChinaDaily 报道《Xi says ready to work with Trump to steer China-US ties on steady course》《Xi attends welcome ceremony held by Trump》《Xi lands in US for state visit, greeted by Trump at airport》改写，供英语学习使用。"
+      "title": "When Culture Travels: Bridges Built by Art, Archives and Kindness",
+      "content": "When Chinese President Xi Jinping and his wife Peng Liyuan arrived in the United States for a state visit, culture traveled with them. On Thursday, Peng and the US first lady visited the National Museum of Asian Art, where they admired works carrying centuries of Asian history. Later, the two presidential couples walked through the US National Archives, a landmark that guards a nation's memory.\n\nEarlier in the week, a documentary filmmaker shared stories of kindness from World War II. One tells of a 7-year-old Chinese boy who gave his birthday egg to an injured American airman after the Doolittle Raid. In return, the airman gave him a penny, a coin the boy kept into old age.\n\nCulture and travel do more than entertain. It is worth noting that museum visits, warm ceremonies and simple acts of kindness build bridges that no wall can block, reminding us that goodwill is a language everyone understands.",
+      "translation": "当习近平主席与夫人彭丽媛抵达美国进行国事访问时，文化也随之同行。周四，彭丽媛与美国第一夫人参观了美国国家亚洲艺术博物馆，欣赏承载数百年亚洲历史的艺术作品；随后，两国元首夫妇共同参观了美国国家档案馆——这座保存国家记忆的建筑。\n\n本周早些时候，一位纪录片导演分享了二战时期的善意故事：杜立特突袭行动后，一名7岁的中国男孩把自己的生日鸡蛋送给受伤的美国飞行员，作为回报，飞行员送给他一枚硬币，这枚硬币他珍藏了一生。\n\n文化与旅行的意义远不止娱乐。值得注意的是，博物馆之行、温暖的仪式与朴素的善意，构筑起任何高墙都无法阻断的桥梁，提醒我们：善意是一种人人都懂的语言。",
+      "sourceNote": "基于 ChinaDaily 与 CGTN 2026年9月26日关于习近平主席访美、两国元首夫妇参观美国国家亚洲艺术博物馆与国家档案馆、纪录片导演讲述二战感人故事等真实报道改写。"
     }
   }
 }
