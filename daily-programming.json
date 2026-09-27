@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-26",
+  "date": "2026-09-27",
   "contents": [
     {
-      "id": "prog-2026-09-26",
-      "date": "2026-09-26",
-      "title": "Git Rebase 与 Squash：构建线性提交历史，赋能 CI/CD 自动化",
-      "summary": "掌握用 rebase + squash 重写提交历史的正确姿势，并把它封装成可直接接入 CI/CD 的发布脚本。",
+      "id": "prog-2026-09-27",
+      "date": "2026-09-27",
+      "title": "Swift 并发实战：async/await、TaskGroup 与 SwiftUI 的协作",
+      "summary": "用结构化并发把多个网络请求并行化，并正确接入 SwiftUI 的 .task 生命周期，替代 GCD 回调地狱。",
       "difficulty": "中级",
-      "concept": "在多人协作的项目里，提交历史的质量直接影响两件事：一是 Code Review 的效率，二是 CI/CD 流水线能否精准地做增量构建、回滚和版本追溯。`merge` 会产生大量 \"Merge branch 'xxx' of ...\" 的合并节点，让 `git log --oneline` 变成一张网；而 `git rebase` 能把你的分支提交\"摘下来\"，重新放到目标分支的最新提交之上，从而得到一条线性的、可读性极强的历史。\n\nRebase 的本质是\"重放（replay）\"：Git 会逐个取出你分支上的每个 commit，计算它相对基点的 diff，然后在新的基点上重新 apply。正因为是\"重新生成 commit\"，每个 commit 的 SHA 都会改变——这是理解一切 rebase 事故的钥匙。已经推送到远程、且被他人基于其上开发的分支，绝对不能 rebase（黄金法则：只 rebase 你自己的、尚未共享的历史）。\n\n`--force-with-lease` 是 rebase 后推送的救命稻草。裸 `git push --force` 会无条件覆盖远程，如果同事在你 rebase 期间推了新提交，就会被静默丢弃；而 `--force-with-lease` 会先检查远程分支是否仍是你本地记录的那个 ref，若别人推过新东西就拒绝推送，相当于一个\"乐观锁\"。在任何 CI/CD 或自动化发布脚本里，永远用它替代 `--force`。\n\n当一个功能分支积累了十几个\"fix typo\"\"wip\"\"又改了一版\"这类提交时，`git rebase -i`（交互式 rebase）配合 `squash`/`fixup` 可以把它们合并成一个语义清晰的提交。更工程化的做法是用 `git reset --soft <base>`：先 rebase 到目标分支顶端，再软重置，所有改动进入暂存区，最后一次性 commit 成符合 Conventional Commits 规范的提交（如 `feat(user-center): 新增用户中心模块`）。\n\n这直接对接 DevOps 生态：Semantic Release、release-please、standard-version 这类工具都靠解析提交信息的 `feat:`/`fix:`/`feat!:` 前缀来推断版本号变更（minor/patch/major），并自动生成 CHANGELOG。历史越干净，自动化越可靠。另外，语义化的 tag（v1.4.0）配合 `git describe`、`git log old_tag..new_tag` 可以精确产出每次发布的变更清单，这是可观测性和回滚的基础。",
+      "concept": "Swift 5.5 引入的并发模型（Swift Concurrency）用 async/await 把“挂起-恢复”变成看起来像同步的线性代码，从根本上解决了闭包回调嵌套（callback hell）和状态在多个回调之间难以追踪的问题。理解它的关键是：async 函数在挂起点会释放线程去执行其他任务，恢复时可能在任意线程上继续执行；因此“调用顺序”仍然保证，但“执行线程”不保证。这也是为什么更新 UI 必须回到 MainActor。一个 async 函数只有在遇到 await 时才可能让出控制权，所以在两个 await 之间的代码是“原子式”执行的，不需要额外加锁——这是它比 GCD 更安全的核心原因。\n\n结构化并发（Structured Concurrency）是这套模型的骨架。普通 Task {} 是非结构化的，谁创建谁负责取消，容易泄漏；而 async let 和 withTaskGroup / withThrowingTaskGroup 创建的子任务由父作用域统一管理，父函数返回或抛错时子任务会自动取消，错误也会自动向上传播。实际工程中，当你需要“同一份逻辑并发执行 N 次”或“N 个请求同时发出并汇总”时，TaskGroup 是首选；当你只是并发 2~4 个固定任务时，async let 更简洁可读。\n\nwithThrowingTaskGroup(of:) 的类型参数必须是子任务的返回值类型。很多人踩的坑是：group.addTask { ... } 里的闭包默认不是 @Sendable 捕获安全的，闭包内必须用 await 调用异步函数，写成 addTask { fetchUser(id: id) } 会得到一个 Task<User, Error> 而不是 User，编译器直接报错。另外 TaskGroup 里任务完成顺序是不确定的，所以要按原顺序返回结果时，必须用 (索引, 结果) 的元组回传，最后再排序或字典映射，绝不能直接 append。\n\nSwiftUI 与并发的结合点是 .task(priority:) 修饰符。它在 View 出现时自动创建一个 Task，在 View 消失时自动取消，还会在重新出现时重启，比在 onAppear 里手写 Task { } 安全得多——后者无法随 View 生命周期取消，极易造成“旧请求回来覆盖新数据”的脏状态。配合 @State 的 isLoading / error 状态机，就能写出清晰可测的加载界面。注意：.task 里的代码运行在 MainActor 上，若要执行 CPU 密集计算，应该放到 Task.detached 或后台 actor，算完再回主线程更新 UI。\n\n最后是协作式取消（Cooperative Cancellation）。Swift Concurrency 不会强制杀死任务，而是把 isCancelled 标记为 true，由你的代码在循环或长耗时操作前主动检查 Task.checkCancellation() 或 Task.isCancelled。配合 URLSession 这类原生支持取消的 API，能让用户快速划走页面时立刻释放网络资源，这是中级开发者必须养成的工程习惯。",
       "codeExample": {
-        "language": "bash",
-        "code": "#!/usr/bin/env bash\n# ============================================================\n# rebase-release.sh —— 线性化提交历史并打语义化 Tag 的发布脚本\n# 可直接作为 CI 流水线的 release job 脚本使用\n# ============================================================\nset -euo pipefail\n\n# ---------- 配置区（CI 中可从环境变量注入） ----------\nFEATURE_BRANCH=\"feature/user-center\"\nBASE_BRANCH=\"main\"\nREMOTE=\"origin\"\nRELEASE_TAG=\"v1.4.0\"\nCOMMIT_MSG=\"feat(user-center): 新增用户中心与统一鉴权\"\n\necho \"==> 1. 同步远程并确保工作区干净\"\ngit fetch \"$REMOTE\" --prune\nif ! git diff --quiet || ! git diff --cached --quiet; then\n  echo \"❌ 工作区存在未提交改动，请先 commit 或 stash\" >&2\n  exit 1\nfi\n\necho \"==> 2. 切到特性分支，并变基到最新的 ${BASE_BRANCH}\"\ngit switch \"$FEATURE_BRANCH\"\n# --autostash：自动 stash 脏改动，rebase 成功后再弹回\ngit rebase --autostash \"$REMOTE/$BASE_BRANCH\"\n\necho \"==> 3. 压平提交：保留所有改动，但合并为一个原子提交\"\ngit reset --soft \"$REMOTE/$BASE_BRANCH\"\ngit commit -m \"$COMMIT_MSG\"\n\necho \"==> 4. 强制推送（带保护）到远程特性分支\"\n# --force-with-lease：仅当远程仍是我们记录的 ref 时才覆盖，防丢同事提交\ngit push --force-with-lease \"$REMOTE\" \"$FEATURE_BRANCH\"\n\necho \"==> 5. 打附注 Tag 并推送，供 CI 生成发布产物与 CHANGELOG\"\ngit tag -a \"$RELEASE_TAG\" -m \"Release ${RELEASE_TAG}\"\ngit push \"$REMOTE\" \"$RELEASE_TAG\"\n\necho \"==> 6. 输出本次发布的变更清单（上一个 tag 到本次 tag）\"\ngit log --pretty=format:\"%h %ad %an %s\" --date=short \\\n  \"${RELEASE_TAG}~1..${RELEASE_TAG}\"\n\necho \"\\n✅ 发布完成：${RELEASE_TAG}\"",
-        "explanation": "第 1 块（配置区）：把分支名、远程名、Tag、提交信息抽成变量，方便在 GitLab CI / GitHub Actions 中用环境变量覆盖，做到脚本零改动复用。\n\n第 2 块（fetch + 工作区检查）：`git fetch --prune` 同步远程引用并清理已删除的远端分支；`git diff --quiet` 与 `git diff --cached --quiet` 分别检查工作区和暂存区是否干净——rebase 遇到脏工作区会中途失败，提前退出比事后修复安全得多。\n\n第 3 块（rebase）：`git rebase --autostash $REMOTE/$BASE_BRANCH` 把特性分支的提交重放到最新的 main 上。用 `origin/main` 而非本地 `main`，保证基点是真正最新的远程状态。\n\n第 4 块（squash）：`git reset --soft` 把 HEAD 移到 `origin/main`，但所有改动保留在暂存区（不丢失任何代码），随后用一条符合 Conventional Commits 规范的信息一次性提交，得到单个原子提交。\n\n第 5 块（安全推送）：`--force-with-lease` 是关键。因为 rebase 改写了 SHA，必须强推；但它会校验远程 ref 是否与本地记录一致，若同事推过新提交就中止，避免覆盖他人工作。\n\n第 6 块（Tag 与变更清单）：附注 tag（`-a`）可携带元信息，比轻量 tag 更适合发布。`git log v1.4.0~1..v1.4.0` 精确输出本次发布包含的提交，可直接作为 release notes 喂给飞书/Slack 通知或 CHANGELOG 生成器。"
+        "language": "Swift",
+        "code": "import SwiftUI\n\n// MARK: - 1. 数据模型\nstruct User: Codable, Identifiable, Hashable {\n    let id: Int\n    let name: String\n    let email: String\n}\n\n// MARK: - 2. 错误类型\nenum NetworkError: LocalizedError {\n    case invalidURL\n    case decodingFailed\n\n    var errorDescription: String? {\n        switch self {\n        case .invalidURL:      return \"URL 不合法\"\n        case .decodingFailed:  return \"数据解析失败\"\n        }\n    }\n}\n\n// MARK: - 3. 单个请求：async/await\nfunc fetchUser(id: Int) async throws -> User {\n    guard let url = URL(string: \"https://jsonplaceholder.typicode.com/users/\\(id)\") else {\n        throw NetworkError.invalidURL\n    }\n    // URLSession.data(from:) 是原生异步 API，会随 Task 取消而取消\n    let (data, response) = try await URLSession.shared.data(from: url)\n    guard let http = response as? HTTPURLResponse, (200...299).contains(http.statusCode) else {\n        throw NetworkError.invalidURL\n    }\n    do {\n        return try JSONDecoder().decode(User.self, from: data)\n    } catch {\n        throw NetworkError.decodingFailed\n    }\n}\n\n// MARK: - 4. 并发请求：withThrowingTaskGroup\n// 子任务返回 (原始id, 结果)，这样才能还原顺序\nfunc fetchUsers(ids: [Int]) async throws -> [User] {\n    try await withThrowingTaskGroup(of: (Int, User).self) { group in\n        for id in ids {\n            // 闭包内必须 await，返回值类型才是 (Int, User)\n            group.addTask {\n                try Task.checkCancellation()   // 协作式取消检查\n                let user = try await fetchUser(id: id)\n                return (id, user)\n            }\n        }\n\n        var buffer: [Int: User] = [:]\n        for try await (id, user) in group {\n            buffer[id] = user                  // 谁先完成谁先写入，顺序不确定\n        }\n        return ids.compactMap { buffer[$0] }   // 按传入顺序还原\n    }\n}\n\n// MARK: - 5. ViewModel（主线程安全）\n@MainActor\nfinal class UsersViewModel: ObservableObject {\n    @Published var users: [User] = []\n    @Published var isLoading = false\n    @Published var errorMessage: String?\n\n    func load(ids: [Int]) async {\n        isLoading = true\n        errorMessage = nil\n        do {\n            // await 的结果回来时已在 MainActor，可直接改 @Published\n            users = try await fetchUsers(ids: ids)\n        } catch is CancellationError {\n            // 页面已消失，静默处理\n        } catch {\n            errorMessage = error.localizedDescription\n        }\n        isLoading = false\n    }\n}\n\n// MARK: - 6. SwiftUI 视图\nstruct UsersView: View {\n    @StateObject private var viewModel = UsersViewModel()\n\n    var body: some View {\n        NavigationStack {\n            Group {\n                if viewModel.isLoading {\n                    ProgressView(\"加载中…\")\n                } else if let msg = viewModel.errorMessage {\n                    Text(msg).foregroundStyle(.red)\n                } else {\n                    List(viewModel.users) { user in\n                        VStack(alignment: .leading, spacing: 4) {\n                            Text(user.name).font(.headline)\n                            Text(user.email).font(.subheadline).foregroundStyle(.secondary)\n                        }\n                    }\n                }\n            }\n            .navigationTitle(\"用户列表\")\n        }\n        // .task 随视图出现启动、消失自动取消，无需手动管理 Task\n        .task {\n            await viewModel.load(ids: [1, 2, 3, 4, 5])\n        }\n    }\n}\n\n#Preview {\n    UsersView()\n}\n",
+        "explanation": "1) User 是可解码、可识别的模型，NetworkError 用 LocalizedError 提供可展示的错误文案，这是把错误直接呈现在 UI 上的标准做法。\n2) fetchUser 中 URLSession.shared.data(from:) 是 async API，用 try await 调用；先校验 URL 与 HTTP 状态码再解码，失败统一抛自定义错误，避免把底层错误泄漏给界面。\n3) fetchUsers 用 withThrowingTaskGroup(of: (Int, User).self) 并发发起请求。group.addTask 每调用一次就创建一个子任务，全部 addTask 之后再 for try await 收集结果，此时多个请求才真正并行。\n4) 子任务返回 (id, user) 元组，是因为 TaskGroup 的完成顺序不确定；先存进字典 buffer，最后 ids.compactMap 还原成与入参一致的顺序。\n5) try Task.checkCancellation() 体现了协作式取消：任务被取消时会抛 CancellationError，避免继续浪费网络流量。\n6) UsersViewModel 标注 @MainActor，所有 @Published 更新都保证在主线程，无需 DispatchQueue.main.async。load 里区分 CancellationError，页面消失导致的取消不应弹错误提示。\n7) View 使用 .task { await ... }，SwiftUI 会在视图出现时启动并在消失时取消该任务，比 onAppear + Task {} 更安全。body 中用 isLoading / errorMessage / 列表三态渲染，是一个典型的状态机式 UI。"
       },
       "keyPoints": [
-        "rebase 会重写 commit 的 SHA，因此只应 rebase 尚未共享（未被他人基于其开发）的本地分支",
-        "推送到远程时永远使用 `git push --force-with-lease`，它相当于乐观锁，可防止覆盖同事的提交",
-        "`git reset --soft <base>` 是比交互式 rebase 更适合脚本化的 squash 方案：零改动丢失、原子化提交",
-        "Conventional Commits（feat/fix/feat!）是 Semantic Release、release-please 自动生成版本号与 CHANGELOG 的契约",
-        "附注 tag + `git log old_tag..new_tag` 是可复现发布、变更审计与快速回滚的基础设施"
+        "async/await 让挂起函数像同步代码一样书写，但 await 之后可能换线程，更新 UI 必须回到 MainActor（用 @MainActor 标注类型或方法）。",
+        "结构化并发（async let / withThrowingTaskGroup）自动传播错误并随父作用域取消；非结构化的 Task {} 需要自己持有和取消，慎用。",
+        "withThrowingTaskGroup 的 addTask 闭包内必须 await，且子任务完成顺序不确定，需用 (索引, 结果) 元组 + 字典/排序还原顺序。",
+        "SwiftUI 中优先使用 .task(priority:) 而非 onAppear + Task {}，前者随视图生命周期自动取消与重启，可避免旧请求覆盖新数据。",
+        "Swift Concurrency 是协作式取消：长耗时逻辑应主动调用 Task.checkCancellation() 或判断 Task.isCancelled，并用 do/catch 单独处理 CancellationError。"
       ],
       "exercise": {
-        "description": "为一个名为 `feature/payment` 的分支写一个 `squash-and-release.sh` 脚本：要求（1）把它 rebase 到最新的 `origin/develop`；（2）把所有历史提交压缩成一个 `feat(payment): 接入第三方支付网关` 提交；（3）用 `--force-with-lease` 推送；（4）打 tag `v2.0.0` 并输出该 tag 相对上一个 tag 的变更清单。额外加一个安全检查：若 rebase 过程中出现冲突，脚本必须打印提示并以非 0 退出码退出。",
-        "hint": "rebase 冲突会让 `git rebase` 返回非 0 退出码，配合 `set -e` 会自动终止脚本；若想给出更友好的提示，可以用 `if ! git rebase ...; then echo \"...\"; exit 1; fi` 包裹。上一个 tag 可用 `git describe --tags --abbrev=0 HEAD~1` 或 `git tag --sort=-v:refname | sed -n 2p` 获取。",
+        "description": "实现一个 ImageDownloader：写一个 downloadImages(urls: [URL]) async throws -> [URL: UIImage] 函数，要求用 withThrowingTaskGroup 并发下载所有图片；任意一张失败时整体抛错且剩余任务被取消。再写一个 SwiftUI 视图，用 .task 调用它，展示三态（加载中 / 错误 / 网格），并保证用户滑走页面时下载任务被自动取消。",
+        "hint": "子任务类型可以用 (URL, UIImage) 元组；闭包内用 URLSession.shared.data(from:) 并校验返回值是否能转成 UIImage，失败抛自定义错误。记住 group.addTask 里必须 await，收集结果时 for try await 遍历即可，一旦抛错 TaskGroup 会自动取消其余子任务。视图侧只需要 .task { images = try? await downloadImages(...) }。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全命令：在 rebase 改写历史后，用带保护的强推方式推送特性分支。",
-            "codeContext": "git rebase --autostash origin/main\ngit commit --amend -m \"feat(user-center): 新增用户中心\"\ngit push ________ origin feature/user-center",
+            "question": "补全空白，使代码能正确地在 TaskGroup 中创建一个并发子任务并取得返回值。",
+            "codeContext": "try await withThrowingTaskGroup(of: User.self) { group in\n    for id in ids {\n        group.________ { try await fetchUser(id: id) }\n    }\n    var users: [User] = []\n    for try await user in group { users.append(user) }\n    return users\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "git push ",
+                "content": "try await withThrowingTaskGroup(of: User.self) { group in\n    for id in ids {\n        group.",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[ 选择方法 ]",
                 "options": [
-                  "--force",
-                  "--force-with-lease",
-                  "--set-upstream",
-                  "--tags"
+                  "addTask { try await fetchUser(id: id) }",
+                  "addTask { fetchUser(id: id) }",
+                  "addTaskUnlessCancelled { fetchUser(id: id) }",
+                  "await fetchUser(id: id)"
                 ],
-                "correctAnswer": "--force-with-lease"
+                "correctAnswer": "addTask { try await fetchUser(id: id) }"
               },
               {
                 "type": "text",
-                "content": " origin feature/user-center",
+                "content": " { try await fetchUser(id: id) }\n    }\n    var users: [User] = []\n    for try await user in group { users.append(user) }\n    return users\n}",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "--force-with-lease",
-            "explanation": "rebase 与 amend 都改写了 commit 的 SHA，普通 push 会被拒绝，必须强推。但 `--force` 无条件覆盖远程，若期间同事推了提交会被静默丢弃；`--force-with-lease` 会先校验远程 ref 是否仍与本地记录一致，不一致则拒绝推送，是 CI/CD 脚本中的标准做法。`--set-upstream` 只用于建立上游追踪关系，`--tags` 只推 tag。"
+            "correctAnswer": "addTask { try await fetchUser(id: id) }",
+            "explanation": "group.addTask 的闭包是异步闭包，内部调用 async 函数必须写 await，这样闭包返回值才是 User，匹配 of: User.self。若漏写 await，闭包返回的是一个未执行的 Task<User, Error>，类型不匹配导致编译错误。addTaskUnlessCancelled 也合法，但语义是“已取消就跳过”，题干要求的是标准创建方式；而直接 await 会退化为串行执行，失去并发意义。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 `git rebase` 与 CI/CD 自动化版本发布，下列说法正确的是？",
-            "codeContext": "git log --oneline\n# a1b2c3d feat: 新增支付回调\n# e4f5g6h fix: 修复金额精度\n# i7j8k9l feat!: 重构订单模型\n# m0n1o2p wip",
+            "question": "在 SwiftUI 中使用 .task { await load() } 加载数据，当用户快速退出该页面时，下列说法正确的是？",
+            "codeContext": ".task {\n    await viewModel.load()\n}",
             "segments": null,
             "options": [
-              "rebase 只改变提交顺序，每个 commit 的 SHA 保持不变",
-              "包含 `feat!:` 的提交会让 Semantic Release 推断为 major 版本变更",
-              "rebase 之后应该使用 `git push --force` 覆盖远程，以保证最快同步",
-              "merge 产生的合并节点更利于 Semantic Release 生成干净的 CHANGELOG"
+              "SwiftUI 会自动取消 .task 创建的任务，但取消是协作式的，load() 内部仍需检查 isCancelled 或使用原生支持取消的 API",
+              "SwiftUI 会强制终止 load() 的执行，任何代码都会立即停止",
+              "任务会继续在后台运行直到完成，属于 .task 的已知缺陷",
+              ".task 与 onAppear 中手写的 Task {} 行为完全一致，都无法取消"
             ],
-            "correctAnswer": "包含 `feat!:` 的提交会让 Semantic Release 推断为 major 版本变更",
-            "explanation": "A 错：rebase 是重放提交，会为每个提交生成新的 SHA。C 错：应使用 `--force-with-lease` 防止覆盖他人提交。D 错：merge 节点会产生噪音，线性历史（rebase/squash）更利于 CHANGELOG 生成。B 正确：在 Conventional Commits 中，`!`（或 BREAKING CHANGE footer）标记破坏性变更，触发 major 版本升级。"
+            "correctAnswer": "SwiftUI 会自动取消 .task 创建的任务，但取消是协作式的，load() 内部仍需检查 isCancelled 或使用原生支持取消的 API",
+            "explanation": ".task 绑定视图生命周期：视图消失时 SwiftUI 会调用 Task.cancel()。但 Swift Concurrency 采用协作式取消，任务不会被强行杀死，只会把 isCancelled 置为 true；像 URLSession、Task.sleep 这类原生 API 会响应取消并抛出 CancellationError，而自写的 CPU 密集循环需要自己调用 Task.checkCancellation() 才能及时退出。这正是 .task 优于 onAppear + Task {} 的原因。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "下面这段用于推断版本号变更类型的脚本，运行后输出什么？",
-            "codeContext": "#!/usr/bin/env bash\ncommits=(\"feat: 新增登录\" \"fix: 修复空指针\" \"docs: 更新 README\" \"feat!: 重构 API\")\n\nlevel=\"patch\"\nfor c in \"${commits[@]}\"; do\n  case \"$c\" in\n    *!*)      level=\"major\" ;;\n    feat:*)   [ \"$level\" = \"patch\" ] && level=\"minor\" ;;\n  esac\ndone\necho \"next-bump: $level\"",
+            "question": "以下代码最终的控制台输出最接近下面哪一种？",
+            "codeContext": "func delayed(_ text: String) async {\n    try? await Task.sleep(nanoseconds: 1_000_000_000)\n    print(text)\n}\n\nTask {\n    async let a = delayed(\"A\")\n    async let b = delayed(\"B\")\n    await a\n    await b\n    print(\"Done\")\n}",
             "segments": null,
             "options": [
-              "next-bump: patch",
-              "next-bump: minor",
-              "next-bump: major",
-              "脚本因 case 语法错误而无法运行"
+              "A\nB\nDone（严格按顺序）",
+              "A 与 B 的先后顺序不确定，Done 最后打印",
+              "Done\nA\nB",
+              "只会打印 Done，A 和 B 不会执行"
             ],
-            "correctAnswer": "next-bump: major",
-            "explanation": "初始 level=patch。第 1 条 `feat: 新增登录` 不含 `!`，命中 `feat:*`，level 变为 minor；第 2、3 条不匹配任何分支；第 4 条 `feat!: 重构 API` 含 `!`，命中 `*!*`，level 变为 major，且 major 为最高级不会再被降级。最终输出 `next-bump: major`。注意 case 的分支顺序很关键——必须先判断破坏性变更，否则 `feat!:` 也会被 `feat:*` 捕获。"
+            "correctAnswer": "A 与 B 的先后顺序不确定，Done 最后打印",
+            "explanation": "async let 会立即启动两个并发子任务，两者几乎同时 sleep 1 秒后恢复执行，因此 print(\"A\") 与 print(\"B\") 的先后顺序取决于调度，无法保证。await a 和 await b 只保证两者都完成后才执行 print(\"Done\")，所以 Done 一定最后出现。这也是并发编程必须用“结果元组/索引”而非执行顺序来还原数据的原因。"
           }
         ]
       }
