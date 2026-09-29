@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-28",
+  "date": "2026-09-29",
   "contents": [
     {
-      "id": "prog-2026-09-28",
-      "date": "2026-09-28",
-      "title": "描述符协议与元类：手写声明式模型框架的核心机制",
-      "summary": "用描述符协议与元类实现一个轻量的声明式 Model 框架（字段校验 + 序列化），并掌握属性查找优先级与性能取舍。",
-      "difficulty": "高级",
-      "concept": "描述符（Descriptor）是 Python 属性访问模型的底层基石：任何在类上定义了 __get__/__set__/__delete__ 中至少一个的对象都是描述符。当你写 obj.x 时，CPython 会先在 type(obj).__mro__ 中查找 x，若找到「数据描述符」（同时实现了 __get__ 和 __set__/__delete__），则优先调用它；否则才读取 obj.__dict__；若 __dict__ 中没有，再回落到类上的「非数据描述符」或普通类属性。理解这条优先级链是写出 property、cached_property、ORM 字段、类型校验器的关键，也解释了为什么 self.__dict__ 能覆盖 @property 却无法覆盖 data descriptor。\n\n现代 Python（3.6+）新增了 __set_name__(owner, name) 协议：当描述符实例作为类体属性被创建后，解释器会自动回调它，把「字段在类中的名字」注入描述符自身。这让字段类无需依赖元类就能拿到属性名，是实现声明式字段校验最干净的方式。工程上绝大多数场景只需 __set_name__ + 描述符，只有需要「收集所有字段并生成元信息」（如建表 SQL、schema 导出、序列化顺序）时才需要元类。\n\n元类是「类的类」。class Model(metaclass=ModelMeta) 中，ModelMeta.__new__ 会在类创建时收到类名、基类、命名空间，我们可以在那里遍历命名空间收集 Field 描述符，挂到 cls.__fields__ 上，并在派生类中继承/合并父类字段。注意元类冲突：一个类只能有一个元类，若同时继承 Model 和 ABC（或某些 ORM 的 Base），必须让 ModelMeta 继承 type(ABC) 并协商 __prepare__/__init_subclass__；更现代的替代方案是 __init_subclass__，它只做子类钩子、不做类创建，冲突更少，但无法改写类命名空间。\n\n工程实践中如何取舍：如果只需要「带默认值的记录类型」，用 dataclasses 或 attrs；如果需要严格校验、别名、序列化、嵌套结构，用 pydantic v2（底层 Rust 校验，性能远好于纯 Python 描述符）；只有在需要深度定制协议（如自研 DSL、插件注册、惰性字段、跨进程 schema）时才手写描述符 + 元类。务必为自研框架补全 __repr__、类型注解（__annotations__ / get_type_hints）、文档，否则团队协作成本会急剧上升。\n\n性能与内存要点有三。其一，描述符的 __get__ 是每次属性访问都会调用的函数调用，热路径上应把逻辑压缩到最小，甚至用 non-data descriptor 把计算结果写回实例 __dict__ 做惰性缓存（cached_property 的原理）。其二，实例属性存在 __dict__ 中，每个实例都是一个哈希表，字段很多且量大时应为类加 __slots__，可节省约 40%~60% 内存并略微加速属性访问。其三，绝不要在类体中放可变默认值（dict/list）作为共享状态，应通过描述符的 default 工厂（default_factory）实现每实例独立初始化。最后牢记：字段校验只在 __set__ 中做，__init__ 里直接赋值给带校验的描述符即可复用同一套规则，避免「构造绕过校验」的经典漏洞。",
+      "id": "prog-2026-09-29",
+      "date": "2026-09-29",
+      "title": "数组三剑客：map、filter、reduce",
+      "summary": "掌握 JavaScript 数组最常用的三个高阶方法，用一行代码替代冗长的 for 循环，写出更简洁、更易读的业务逻辑。",
+      "difficulty": "初级",
+      "concept": "在实际开发中，我们有超过 80% 的数组操作可以归纳为三种场景：把每个元素转换成另一种形态（map）、从数组中挑选出符合条件的元素（filter）、把整个数组「汇总」成一个值（reduce）。JavaScript 为这三种场景提供了专门的方法，它们都属于「高阶方法」——即接收一个函数作为参数，并对数组的每个元素调用这个函数。\n\n这三个方法的最大价值在于「声明式编程」。传统的 for 循环是命令式的：你需要关心索引变量、循环终止条件、中间变量的维护，代码里充满了「怎么做」的细节。而 map/filter/reduce 是声明式的：你只需要描述「我要什么」，遍历过程交给引擎处理。这不仅让代码变短，更重要的是让意图变得清晰——看到 filter 就知道是在筛选，看到 map 就知道是在转换，读代码的人不需要逐行追踪循环变量。\n\n从行为特征上看，它们有几个共同的重要属性：第一，都不会修改原数组，而是返回一个新数组（reduce 返回任意类型的值），这符合「不可变数据」的良好实践，能避免很多难以排查的状态污染 bug；第二，都会自动跳过数组中的空位（sparse array），并且不会对被删除或未初始化的元素调用回调；第三，它们的回调函数签名基本一致，通常为 (当前元素, 索引, 原数组)，你可以按需取用前几个参数。\n\nmap 的本质是「一对一映射」：输入一个长度为 n 的数组，输出一个长度同样为 n 的新数组。新手最容易犯的错误是在 map 的回调里忘记 return，结果得到一个全为 undefined 的数组。filter 是「多对少」：输出数组的长度小于等于原数组长度，回调必须返回一个布尔值（真值保留，假值丢弃）。reduce 是「多对一」，也是功能最强大的一个——它接收一个累加器（accumulator）和初始值，可以实现求和、求最大值、分组、计数、扁平化甚至模拟 map 和 filter。\n\n在工程经验上有一条重要的「性能与可读性权衡」建议：多个方法链式调用（如 filter().map().reduce()）虽然会产生中间数组，但在业务代码中这点开销完全可以忽略，可读性带来的收益远大于微小的性能损耗。只有在处理十万级以上的数据、或处于性能热点（如动画帧循环）时，才需要考虑合并成一次 for 循环或 reduce。另外，永远给 reduce 提供初始值（第二个参数），否则当数组为空时会直接抛出 TypeError，这是线上事故的常见来源。",
       "codeExample": {
-        "language": "Python",
-        "code": "from __future__ import annotations\nfrom typing import Any, Callable\n\n\nclass Field:\n    \"\"\"数据描述符：负责单个字段的存取、默认值与校验。\"\"\"\n\n    def __init__(self, *, default: Any = None,\n                 validator: Callable[[Any], bool] | None = None) -> None:\n        self.default = default\n        self.validator = validator\n        self.name: str | None = None          # 由 __set_name__ 自动注入\n\n    def __set_name__(self, owner: type, name: str) -> None:\n        # 类创建完成后由解释器自动调用，拿到字段名\n        self.name = name\n\n    def __get__(self, obj: Any, objtype: type | None = None) -> Any:\n        if obj is None:                       # 类访问：返回描述符本身\n            return self\n        return obj.__dict__.get(self.name, self.default)\n\n    def __set__(self, obj: Any, value: Any) -> None:\n        if self.validator and not self.validator(value):\n            raise ValueError(f\"{self.name} 非法取值: {value!r}\")\n        obj.__dict__[self.name] = value       # 存进实例字典\n\n\nclass ModelMeta(type):\n    \"\"\"元类：收集命名空间中的 Field，生成 __fields__ 元信息。\"\"\"\n\n    def __new__(mcls, name: str, bases: tuple, ns: dict) -> type:\n        fields = {k: v for k, v in ns.items() if isinstance(v, Field)}\n        # 继承父类字段（子类可覆盖）\n        for base in bases:\n            fields.update(getattr(base, \"__fields__\", {}))\n        cls = super().__new__(mcls, name, bases, ns)\n        cls.__fields__ = fields\n        return cls\n\n    def __repr__(cls) -> str:\n        cols = \", \".join(f\"{n}: {type(f).__name__}\" for n, f in cls.__fields__.items())\n        return f\"<{cls.__name__} ({cols})>\"\n\n\nclass Model(metaclass=ModelMeta):\n    __fields__: dict[str, Field] = {}\n\n    def __init__(self, **kwargs: Any) -> None:\n        for name in self.__fields__:\n            if name in kwargs:\n                setattr(self, name, kwargs[name])   # 走描述符 __set__，自动校验\n        unknown = set(kwargs) - set(self.__fields__)\n        if unknown:\n            raise TypeError(f\"未知字段: {sorted(unknown)}\")\n\n    def to_dict(self) -> dict[str, Any]:\n        return {n: getattr(self, n) for n in self.__fields__}\n\n    def validate(self) -> list[str]:\n        errors = []\n        for n, f in self.__fields__.items():\n            v = getattr(self, n)\n            if f.validator and not f.validator(v):\n                errors.append(f\"{n}={v!r}\")\n        return errors\n\n    def __repr__(self) -> str:\n        return f\"{type(self).__name__}({self.to_dict()})\"\n\n\n# ---- 使用：声明式定义业务模型 ----\nclass User(Model):\n    name = Field(validator=lambda v: isinstance(v, str) and len(v) > 0)\n    age = Field(default=0, validator=lambda v: isinstance(v, int) and 0 <= v <= 150)\n    email = Field(default=\"\")\n\n\nif __name__ == \"__main__\":\n    print(ModelMeta.__repr__(User))      # <User (name: Field, age: Field, email: Field)>\n\n    u = User(name=\"Alice\", age=30)\n    print(u)                              # User({'name': 'Alice', 'age': 30, 'email': ''})\n    print(u.to_dict())\n\n    try:\n        User(name=\"\", age=200)            # 校验失败，抛出 ValueError\n    except ValueError as e:\n        print(\"校验拦截:\", e)\n\n    try:\n        User(name=\"Bob\", nickname=\"b\")    # 未知字段，抛出 TypeError\n    except TypeError as e:\n        print(\"字段拦截:\", e)",
-        "explanation": "1) Field.__set_name__ 在类创建后被 CPython 自动调用，把字段名 self.name 注入描述符，避免用户手写字段名。\n2) Field.__get__ 中的 if obj is None 分支处理「类访问」，此时应返回描述符本身而非实例数据。\n3) Field.__set__ 是所有赋值的统一入口：先执行 validator，通过后写入 obj.__dict__。因此 __init__ 里的赋值天然被校验，无法绕过。\n4) ModelMeta.__new__ 在类创建时遍历命名空间收集 Field 实例，并沿 MRO 合并父类字段，最终挂到 cls.__fields__，供序列化/校验/元信息输出使用。\n5) Model.__init__ 只对已声明字段赋值，未知关键字抛 TypeError，避免拼写错误静默生效；to_dict/validate 都基于 __fields__ 反射实现。\n6) 运行结果展示了正常构建、校验拦截与未知字段拦截三条路径，可直接复制运行验证。"
+        "language": "javascript",
+        "code": "// ============ 模拟一组真实业务数据：电商订单 ============\nconst orders = [\n  { id: 1, product: \"机械键盘\", price: 200, quantity: 2, status: \"paid\" },\n  { id: 2, product: \"无线鼠标\", price: 80, quantity: 5, status: \"pending\" },\n  { id: 3, product: \"4K 显示器\", price: 1500, quantity: 1, status: \"paid\" },\n  { id: 4, product: \"降噪耳机\", price: 300, quantity: 3, status: \"cancelled\" },\n  { id: 5, product: \"USB 扩展坞\", price: 150, quantity: 4, status: \"paid\" },\n];\n\n// ============ 1. filter：从数组中筛选出符合条件的元素 ============\n// 回调返回 true 的元素会被保留，false 的会被丢弃\nconst paidOrders = orders.filter((order) => order.status === \"paid\");\nconsole.log(\"已支付的订单:\", paidOrders);\n// 输出：3 条 status === \"paid\" 的订单对象\n\n// ============ 2. map：把每个元素转换成另一种形态 ============\n// 输入 3 个元素，输出仍然是 3 个元素，但形态变了\nconst summaries = paidOrders.map(\n  (order) => `${order.product} × ${order.quantity} = ${\n    order.price * order.quantity\n  } 元`\n);\nconsole.log(\"订单摘要:\", summaries);\n// 输出: ['机械键盘 × 2 = 400 元', '4K 显示器 × 1 = 1500 元', 'USB 扩展坞 × 4 = 600 元']\n\n// ============ 3. reduce：把整个数组汇总成一个值 ============\n// sum 是累加器，0 是初始值（强烈建议总是提供初始值！）\nconst totalAmount = paidOrders.reduce(\n  (sum, order) => sum + order.price * order.quantity,\n  0\n);\nconsole.log(\"已支付订单总金额:\", totalAmount); // 输出: 2500\n\n// ============ 4. 链式调用：一行完成「筛选 + 计算」 ============\nconst finalTotal = orders\n  .filter((order) => order.status === \"paid\")\n  .reduce((sum, order) => sum + order.price * order.quantity, 0);\nconsole.log(\"链式调用结果:\", finalTotal); // 输出: 2500\n\n// ============ 5. 常见陷阱演示：map 回调忘记 return ============\nconst badResult = orders.map((order) => {\n  order.price * order.quantity; // ❌ 少了 return，结果全是 undefined\n});\nconsole.log(\"忘记 return 的后果:\", badResult);\n\n// 箭头函数简写（去掉花括号自动 return）是推荐写法 ✅\nconst goodResult = orders.map((order) => order.price * order.quantity);\nconsole.log(\"正确写法的结果:\", goodResult); // 输出: [400, 400, 1500, 900, 600]\n\n// ============ 6. reduce 的进阶用法：按状态分组 ============\nconst grouped = orders.reduce((acc, order) => {\n  // 如果该状态还没有桶，就创建一个空数组\n  if (!acc[order.status]) acc[order.status] = [];\n  acc[order.status].push(order);\n  return acc; // 每次都要把累加器还回去\n}, {});\nconsole.log(\"按状态分组:\", Object.keys(grouped)); // ['paid', 'pending', 'cancelled']",
+        "explanation": "【第 1 段：数据准备】定义了一个模拟电商订单的数组，每个订单包含商品名、单价、数量和状态，贴近真实业务场景。\n\n【第 2 段：filter 筛选】orders.filter((order) => order.status === \"paid\") 会对每个订单调用回调，返回 true 的被保留。结果是一个新数组，原数组 orders 完全没被修改。\n\n【第 3 段：map 转换】把已支付订单映射成「商品 × 数量 = 小计」的字符串。注意这里用了模板字符串，并且回调用的是箭头函数简写形式（没有花括号，自动 return），这是最不容易出错的写法。\n\n【第 4 段：reduce 汇总】reduce 接收两个参数：回调函数和初始值 0。回调中的 sum 是「累加器」，从初始值 0 开始，每次把 order.price * order.quantity 加上去，最后返回一个数字 2500。\n\n【第 5 段：链式调用】filter 和 reduce 可以像流水线一样串起来，语义清晰：先筛出已支付的，再求总和。这比写一个 for 循环 + if 判断要直观得多。\n\n【第 6 段：常见陷阱】演示了 map 回调忘记 return 会返回 undefined 数组的问题，并给出正确的简写写法。这是新手最常见的 bug 之一。\n\n【第 7 段：reduce 进阶】展示了 reduce 的分组用法：累加器是一个对象 acc，遍历过程中往对应的 status 分桶里 push 订单。这种写法在做数据报表、字典转换时非常常用。"
       },
       "keyPoints": [
-        "数据描述符（实现 __get__ + __set__/__delete__）优先级高于实例 __dict__，非数据描述符低于实例 __dict__，这是惰性缓存与 @property 行为差异的根因",
-        "__set_name__(owner, name) 是声明式字段拿到属性名的官方协议，比在元类里手工重命名更简洁可靠",
-        "元类用于收集/改写类创建过程，注意与 ABC、ORM Base 的元类冲突，可改用 __init_subclass__ 降低复杂度",
-        "校验逻辑统一放在描述符 __set__ 中，__init__ 通过 setattr 复用，杜绝构造路径绕过校验的漏洞",
-        "热路径属性访问会触发 __get__ 函数调用，应使用 non-data descriptor 写回实例字典做缓存；大规模实例用 __slots__ 显著降低内存"
+        "map 用于「一对一转换」，返回等长的新数组；filter 用于「筛选」，返回可能更短的新数组；reduce 用于「汇总」，返回任意类型的单个值。",
+        "三个方法都不会修改原数组，而是返回新结果，符合不可变数据的良好实践。",
+        "map 的回调一定要有返回值（用箭头函数简写 () => value 可自动返回），忘记 return 会得到 undefined 数组。",
+        "reduce 务必提供初始值（第二个参数），否则空数组会抛出 TypeError，且累加逻辑也更难理解。",
+        "多个方法可以链式调用提升可读性；只有在处理大数据量或性能热点时才需要合并为单次 for 循环。"
       ],
       "exercise": {
-        "description": "实现一个 CachedProperty 描述符类，使其可以用 @CachedProperty 装饰方法，首次访问时计算并缓存到实例字典，后续访问直接命中缓存（打印 'computing' 仅一次）。再扩展出 RangeField(value_min, value_max) 字段描述符，集成到上面的 Model 框架中，实现闭区间校验，并给 Model 增加 classmethod export_schema()，返回 {字段名: (默认值, 校验器描述)} 的元信息字典。",
-        "hint": "关键在于让 CachedProperty 成为「非数据描述符」——只实现 __get__、不实现 __set__，这样实例字典中的缓存值会优先于描述符被读取。RangeField 继承 Field，在 __set__ 中先调用 super().__set__ 之前或之后追加区间检查；export_schema 可直接遍历 cls.__fields__，注意用 cls 而非 self。",
+        "description": "请完成一个「学生成绩统计」功能：给定一个学生数组（包含姓名 name、分数 score、是否及格 passed），请用 filter 筛选出及格的学生，用 map 提取出他们的姓名，再用 reduce 计算所有学生的平均分（保留两位小数）。最后把这三个结果打印出来。",
+        "hint": "可以分三步写：① students.filter(s => s.passed) 拿到及格学生；② 在 ① 的结果上 .map(s => s.name) 拿到姓名数组；③ 用 students.reduce((sum, s) => sum + s.score, 0) / students.length 计算平均分，注意 reduce 要给初始值 0。保留两位小数可以用 Number(x.toFixed(2)) 或 toFixed(2)。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补齐 Field 描述符，使解释器在类创建后自动注入属性名：",
-            "codeContext": "class Field:\n    def __init__(self, default=None):\n        self.default = default\n        self.name = None\n\n    def ______(self, owner, name):\n        self.name = name\n\n    def __get__(self, obj, objtype=None):\n        if obj is None:\n            return self\n        return obj.__dict__.get(self.name, self.default)",
+            "question": "补全代码，使它能正确计算数组中所有偶数的平方和。",
+            "codeContext": "const nums = [1, 2, 3, 4, 5, 6];\nconst result = nums\n  .filter((n) => n % 2 === 0)\n  .map((n) => n * n)\n  .reduce((sum, n) => sum + n, 0);\nconsole.log(result);",
             "segments": [
               {
                 "type": "text",
-                "content": "在类体中，解释器会在类创建完成后自动调用描述符的 ",
+                "content": "reduce 的第二个参数（初始值）在这段代码中必须是 ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,75 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择协议方法]",
+                "placeholder": "[选择]",
                 "options": [
-                  "__set_name__",
-                  "__init_subclass__",
-                  "__class_getitem__",
-                  "__init__"
+                  "0",
+                  "1",
+                  "null",
+                  "undefined"
                 ],
-                "correctAnswer": "__set_name__"
+                "correctAnswer": "0"
               },
               {
                 "type": "text",
-                "content": " 方法，并把字段名传入，从而无需元类即可完成自注册。",
+                "content": "，因为求和运算需要从 ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "0",
+                  "1",
+                  "数组的第一个元素",
+                  "NaN"
+                ],
+                "correctAnswer": "0"
+              },
+              {
+                "type": "text",
+                "content": " 开始累加。如果省略初始值，当数组为空时会抛出 TypeError。",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "__set_name__",
-            "explanation": "PEP 487 引入 __set_name__(owner, name)：当类命名空间中的描述符实例被绑定到属性名后，type.__new__ 会自动回调它。__init_subclass__ 是子类钩子，__class_getitem__ 用于泛型订阅，__init__ 只在实例化时调用，均不符合题意。"
+            "correctAnswer": "0",
+            "explanation": "reduce(回调, 初始值) 中的初始值会作为第一次调用回调时的累加器值。做求和运算时初始值应为 0；做求积时应为 1；做数组拼接时应为 []。题目代码先筛出偶数 [2, 4, 6]，再平方得 [4, 16, 36]，最后从 0 开始累加得到 56。永远提供初始值是避免空数组报错的最佳实践。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Python 属性查找优先级，下列说法正确的是？",
-            "codeContext": "class Desc:            # 同时定义了 __get__ 和 __set__\n    def __get__(self, obj, objtype=None): return 'desc'\n    def __set__(self, obj, v): pass\n\nclass A:\n    x = Desc()\n\na = A()\na.__dict__['x'] = 'instance'\nprint(a.x)",
+            "question": "关于 map、filter、reduce，下列说法中错误的是哪一项？",
+            "codeContext": null,
             "segments": null,
             "options": [
-              "输出 instance，因为实例字典永远优先",
-              "输出 desc，数据描述符优先于实例 __dict__",
-              "抛出 AttributeError，因为 x 不能被覆盖",
-              "输出 None，因为 __set__ 忽略了传入值"
+              "map 会返回一个与原数组等长的新数组，原数组不会被修改",
+              "filter 的回调函数返回 falsy 值时，对应的元素会被丢弃",
+              "reduce 一定需要提供初始值，否则一定抛出 TypeError",
+              "reduce 可以用来实现分组、计数、求最大值等多种汇总操作"
             ],
-            "correctAnswer": "输出 desc，数据描述符优先于实例 __dict__",
-            "explanation": "type.__getattribute__ 的顺序为：数据描述符 > 实例 __dict__ > 非数据描述符/类属性。Desc 实现了 __get__ 与 __set__，属于数据描述符，因此即使实例字典中已有 x，仍优先调用 Desc.__get__。若去掉 __set__，则会输出 instance，这也正是 cached_property 的实现原理。"
+            "correctAnswer": "reduce 一定需要提供初始值，否则一定抛出 TypeError",
+            "explanation": "选项 C 的表述过于绝对。reduce 的初始值是可选的：如果不提供，JavaScript 会用数组的第一个元素作为初始累加器，并从第二个元素开始遍历。只有当数组为空且未提供初始值时才会抛出 TypeError。虽然「不提供初始值」在数组可能为空的场景下有风险、实践中不推荐，但说「一定会抛出 TypeError」是错误的。其余三项均为正确描述。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码的输出是什么？",
-            "codeContext": "class Cached:\n    def __init__(self, func):\n        self.func = func\n    def __get__(self, obj, objtype=None):\n        if obj is None:\n            return self\n        value = self.func(obj)\n        obj.__dict__[self.func.__name__] = value\n        return value\n\nclass Circle:\n    def __init__(self, r):\n        self.r = r\n\n    @Cached\n    def area(self):\n        print('computing')\n        return 3.14 * self.r ** 2\n\nc = Circle(2)\nprint(c.area, c.area)",
+            "question": "请问以下代码的输出结果是什么？",
+            "codeContext": "const arr = [1, 2, 3, 4];\nconst result = arr\n  .map((n) => n * 2)\n  .filter((n) => n > 4);\nconsole.log(result);\nconsole.log(arr);",
             "segments": null,
             "options": [
-              "computing\\n12.56 12.56",
-              "computing\\ncomputing\\n12.56 12.56",
-              "12.56 12.56",
-              "computing\\n<bound method area> computing"
+              "输出 [6, 8]，然后输出 [1, 2, 3, 4]",
+              "输出 [6, 8]，然后输出 [2, 4, 6, 8]",
+              "输出 [8]，然后输出 [1, 2, 3, 4]",
+              "输出 [2, 4, 6, 8]，然后输出 [2, 4, 6, 8]"
             ],
-            "correctAnswer": "computing\\n12.56 12.56",
-            "explanation": "Cached 只实现 __get__、未实现 __set__，是非数据描述符。首次访问 c.area 触发 __get__，打印 computing 并把结果写入 c.__dict__['area']；第二次访问时，实例字典中的值优先于非数据描述符，因此 __get__ 不再被调用，直接得到 12.56，computing 只打印一次。这正是 functools.cached_property 的核心机制。"
+            "correctAnswer": "输出 [6, 8]，然后输出 [1, 2, 3, 4]",
+            "explanation": "第一步 map 把每个元素乘以 2，得到中间数组 [2, 4, 6, 8]；第二步 filter 保留大于 4 的元素，得到 [6, 8]。关键在于：map 和 filter 都是纯函数式的，它们返回新数组而不修改原数组 arr，所以第二个 console.log(arr) 输出的仍然是原始的 [1, 2, 3, 4]。这也是为什么答案是 A 而不是 B。"
           }
         ]
       }
