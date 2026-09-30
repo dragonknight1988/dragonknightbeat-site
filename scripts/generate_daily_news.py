@@ -13,6 +13,15 @@ import traceback
 from datetime import datetime, timezone, timedelta
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+# 关键词净化器（行业透视展示安全过滤，规则详见 scripts/tag_sanitizer.py）
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    from tag_sanitizer import sanitize_news_data
+except ImportError as _e:  # 模块缺失时降级为不过滤，不阻断新闻生成
+    print(f"⚠️ tag_sanitizer 加载失败: {_e}")
+    def sanitize_news_data(data, verbose=True):
+        return data, []
+
 BJ_TZ = timezone(timedelta(hours=8))
 
 MIMO_API_KEY = os.environ.get("MIMO_API_KEY", "tp-c6irsm5360gu18hd64hlmz47ltg54c5rbszghj45t5z96c31")
@@ -279,7 +288,7 @@ def build_news_content():
   "date": "{today}",
   "weekday": "星期{weekday}",
   "overview": "基于今日素材的一句话总评（20-40字，有洞察力）",
-  "trendingTopics": ["从素材中提炼的5-8个热搜关键词"],
+  "trendingTopics": ["从素材中提炼的5-8个热搜主题词(规则同tags:严禁人名/国名/敏感词/纪念日/编号)"],
   "sections": [
     {{
       "id": "domestic",
@@ -293,7 +302,7 @@ def build_news_content():
           "detail": "基于素材的详细解读（2-4句话），只包含素材中已有的信息。信息不足时简短即可，不要编造",
           "impact": "影响分析（1-2句话），基于新闻本身的合理推断，不编造数据",
           "importance": "hot/important/normal",
-          "tags": ["关键词1", "关键词2"]
+          "tags": ["行业/领域/主题词1", "行业/领域/主题词2"]
         }}
       ]
     }}
@@ -306,6 +315,17 @@ def build_news_content():
 3. finance — 📈 财经动态（股市、楼市、消费、企业）
 4. tech — 💡 科技前沿（AI、芯片、新能源、互联网）
 5. other — 📰 其他要闻（体育、文娱、社会、健康）
+
+tags 与 trendingTopics 规范（极其重要！tags 会进入「行业透视」模块做行业分析、并显示为行业热度榜，必须是行业/领域/主题词）：
+- ✅ 合格示例：新能源汽车、半导体、文旅消费、跨境电商、公共卫生、航空安全、中东局势、两岸关系、假日经济、禁毒工作、演艺界、电竞
+- ❌ 严禁以下六类（系统配有硬性过滤器，违规词会被直接拦截丢弃）：
+  1. 人名 — 无论在世或已故、明星/官员/运动员/企业家一律禁止；讣闻类新闻用逝者所属行业词（如"演艺界"），绝不放逝者姓名
+  2. 国家名/地名 — 美国/伊朗/日本等不得单独作标签，改用主题词（如"中东局势""国际能源""中美经贸"）
+  3. 节日/纪念日/周年 — 烈士纪念日/国庆77周年等禁止，改用主题词（如"假日经济""爱国主义教育"）
+  4. 编号/警号/纯数字/月份 — 一律禁止
+  5. 犯罪与敏感词 — 制毒/贩毒/杀人/坠机/爆炸/逝世/身亡/落马/判刑等禁止，改用行业词（如"禁毒工作""航空安全""安全生产"）
+  6. 事件性短语与身份称谓 — "警方破案""退休教授""招待会"等禁止，改用领域词（如"公共安全""社会治理"）
+- 每条新闻 tags 2-3 个，优先行业/产业/领域/主题名词
 
 id格式: news-001 到 news-25，全局唯一
 importance: hot=头条级 / important=值得关注 / normal=一般"""
@@ -343,6 +363,9 @@ importance: hot=头条级 / important=值得关注 / normal=一般"""
                                 art[en] = art.pop(cn)
                 data["date"] = today
                 data["weekday"] = f"星期{weekday}"
+
+                # 关键词净化：拦截人名/国名/纪念日/编号/敏感词（行业透视展示安全，双保险）
+                data, _dropped = sanitize_news_data(data)
 
                 sections = data.get("sections", [])
                 total = sum(len(s.get("articles", [])) for s in sections)
