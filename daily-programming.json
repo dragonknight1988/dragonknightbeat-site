@@ -1,38 +1,38 @@
 {
-  "date": "2026-09-29",
+  "date": "2026-09-30",
   "contents": [
     {
-      "id": "prog-2026-09-29",
-      "date": "2026-09-29",
-      "title": "数组三剑客：map、filter、reduce",
-      "summary": "掌握 JavaScript 数组最常用的三个高阶方法，用一行代码替代冗长的 for 循环，写出更简洁、更易读的业务逻辑。",
-      "difficulty": "初级",
-      "concept": "在实际开发中，我们有超过 80% 的数组操作可以归纳为三种场景：把每个元素转换成另一种形态（map）、从数组中挑选出符合条件的元素（filter）、把整个数组「汇总」成一个值（reduce）。JavaScript 为这三种场景提供了专门的方法，它们都属于「高阶方法」——即接收一个函数作为参数，并对数组的每个元素调用这个函数。\n\n这三个方法的最大价值在于「声明式编程」。传统的 for 循环是命令式的：你需要关心索引变量、循环终止条件、中间变量的维护，代码里充满了「怎么做」的细节。而 map/filter/reduce 是声明式的：你只需要描述「我要什么」，遍历过程交给引擎处理。这不仅让代码变短，更重要的是让意图变得清晰——看到 filter 就知道是在筛选，看到 map 就知道是在转换，读代码的人不需要逐行追踪循环变量。\n\n从行为特征上看，它们有几个共同的重要属性：第一，都不会修改原数组，而是返回一个新数组（reduce 返回任意类型的值），这符合「不可变数据」的良好实践，能避免很多难以排查的状态污染 bug；第二，都会自动跳过数组中的空位（sparse array），并且不会对被删除或未初始化的元素调用回调；第三，它们的回调函数签名基本一致，通常为 (当前元素, 索引, 原数组)，你可以按需取用前几个参数。\n\nmap 的本质是「一对一映射」：输入一个长度为 n 的数组，输出一个长度同样为 n 的新数组。新手最容易犯的错误是在 map 的回调里忘记 return，结果得到一个全为 undefined 的数组。filter 是「多对少」：输出数组的长度小于等于原数组长度，回调必须返回一个布尔值（真值保留，假值丢弃）。reduce 是「多对一」，也是功能最强大的一个——它接收一个累加器（accumulator）和初始值，可以实现求和、求最大值、分组、计数、扁平化甚至模拟 map 和 filter。\n\n在工程经验上有一条重要的「性能与可读性权衡」建议：多个方法链式调用（如 filter().map().reduce()）虽然会产生中间数组，但在业务代码中这点开销完全可以忽略，可读性带来的收益远大于微小的性能损耗。只有在处理十万级以上的数据、或处于性能热点（如动画帧循环）时，才需要考虑合并成一次 for 循环或 reduce。另外，永远给 reduce 提供初始值（第二个参数），否则当数组为空时会直接抛出 TypeError，这是线上事故的常见来源。",
+      "id": "prog-2026-09-30",
+      "date": "2026-09-30",
+      "title": "Next.js Server Actions + useOptimistic：打造无闪烁的表单交互",
+      "summary": "用 Server Actions 处理表单提交，并结合 useOptimistic 与 useFormStatus 实现乐观更新与即时反馈。",
+      "difficulty": "中级",
+      "concept": "在 App Router 时代，Next.js 推荐用 Server Actions（本质上是标注了 'use server' 的异步函数）来替代手写 API Route + fetch 的表单提交链路。你只需在 Server Component 或 Client Component 中直接调用它，Next.js 会自动序列化参数、发起 POST 请求、执行服务端逻辑，并把结果传回客户端。这样做的最大收益是：类型在同一个仓库内端到端共享，不需要维护接口文档，也不会出现前后端字段不一致导致的运行时错误。\n\n但 Server Actions 有一个天然短板：它终究是一次网络往返，用户点击后会有 100~500ms 的\"空白期\"。如果只是简单地 disabled 按钮并转圈，交互会显得迟钝。这就是 useOptimistic 的用武之地——它允许你先在本地\"假装修好了\"，等真实结果回来后由 React 自动对账。其签名是 useOptimistic(state, updateFn)，返回 [optimisticState, addOptimistic]。注意 updateFn 必须是纯函数，且乐观值只在对应的 Transition 进行中生效，Action 完成后会自动回到真实的 props/state。\n\nuseOptimistic 的关键工程细节是\"回滚\"。如果 Server Action 抛错（比如数据库写入失败、权限校验不通过），React 会自动丢弃乐观值、恢复到最新的真实数据，同时把错误抛给最近的 Error Boundary。这意味着你不需要手写 try/catch 回滚逻辑——但你必须提供 error.tsx，否则用户会看到整个路由崩溃。这是很多人上线后踩的第一个坑。\n\n另一个常被忽略的搭档是 useFormStatus。它是给\"表单子组件\"用的 hook，能读到外层 <form action={...}> 提交的 pending 状态，非常适合做 SubmitButton 的禁用与文案切换。注意它必须放在 form 的子组件里，在 form 同级调用会永远返回 false，这是常见的\"为什么我的 loading 不生效\"的根源。若要在同一组件里既读 pending 又发乐观更新，就配合 useTransition 的 isPending 区分不同操作的加载态。\n\n性能与一致性方面有两条经验：一是乐观列表项的 key 不要用 index，而要用 'temp-' 前缀的临时 id，等真实数据回来后 React 才能正确复用 DOM；二是写入类 Action 里记得调用 revalidatePath('/xxx') 或 revalidateTag，否则 Server Component 的数据缓存不会刷新，页面上仍是旧数据。最后，把校验（如 zod）放在 Server Action 的第一行，客户端校验只是体验优化，服务端校验才是安全边界。",
       "codeExample": {
-        "language": "javascript",
-        "code": "// ============ 模拟一组真实业务数据：电商订单 ============\nconst orders = [\n  { id: 1, product: \"机械键盘\", price: 200, quantity: 2, status: \"paid\" },\n  { id: 2, product: \"无线鼠标\", price: 80, quantity: 5, status: \"pending\" },\n  { id: 3, product: \"4K 显示器\", price: 1500, quantity: 1, status: \"paid\" },\n  { id: 4, product: \"降噪耳机\", price: 300, quantity: 3, status: \"cancelled\" },\n  { id: 5, product: \"USB 扩展坞\", price: 150, quantity: 4, status: \"paid\" },\n];\n\n// ============ 1. filter：从数组中筛选出符合条件的元素 ============\n// 回调返回 true 的元素会被保留，false 的会被丢弃\nconst paidOrders = orders.filter((order) => order.status === \"paid\");\nconsole.log(\"已支付的订单:\", paidOrders);\n// 输出：3 条 status === \"paid\" 的订单对象\n\n// ============ 2. map：把每个元素转换成另一种形态 ============\n// 输入 3 个元素，输出仍然是 3 个元素，但形态变了\nconst summaries = paidOrders.map(\n  (order) => `${order.product} × ${order.quantity} = ${\n    order.price * order.quantity\n  } 元`\n);\nconsole.log(\"订单摘要:\", summaries);\n// 输出: ['机械键盘 × 2 = 400 元', '4K 显示器 × 1 = 1500 元', 'USB 扩展坞 × 4 = 600 元']\n\n// ============ 3. reduce：把整个数组汇总成一个值 ============\n// sum 是累加器，0 是初始值（强烈建议总是提供初始值！）\nconst totalAmount = paidOrders.reduce(\n  (sum, order) => sum + order.price * order.quantity,\n  0\n);\nconsole.log(\"已支付订单总金额:\", totalAmount); // 输出: 2500\n\n// ============ 4. 链式调用：一行完成「筛选 + 计算」 ============\nconst finalTotal = orders\n  .filter((order) => order.status === \"paid\")\n  .reduce((sum, order) => sum + order.price * order.quantity, 0);\nconsole.log(\"链式调用结果:\", finalTotal); // 输出: 2500\n\n// ============ 5. 常见陷阱演示：map 回调忘记 return ============\nconst badResult = orders.map((order) => {\n  order.price * order.quantity; // ❌ 少了 return，结果全是 undefined\n});\nconsole.log(\"忘记 return 的后果:\", badResult);\n\n// 箭头函数简写（去掉花括号自动 return）是推荐写法 ✅\nconst goodResult = orders.map((order) => order.price * order.quantity);\nconsole.log(\"正确写法的结果:\", goodResult); // 输出: [400, 400, 1500, 900, 600]\n\n// ============ 6. reduce 的进阶用法：按状态分组 ============\nconst grouped = orders.reduce((acc, order) => {\n  // 如果该状态还没有桶，就创建一个空数组\n  if (!acc[order.status]) acc[order.status] = [];\n  acc[order.status].push(order);\n  return acc; // 每次都要把累加器还回去\n}, {});\nconsole.log(\"按状态分组:\", Object.keys(grouped)); // ['paid', 'pending', 'cancelled']",
-        "explanation": "【第 1 段：数据准备】定义了一个模拟电商订单的数组，每个订单包含商品名、单价、数量和状态，贴近真实业务场景。\n\n【第 2 段：filter 筛选】orders.filter((order) => order.status === \"paid\") 会对每个订单调用回调，返回 true 的被保留。结果是一个新数组，原数组 orders 完全没被修改。\n\n【第 3 段：map 转换】把已支付订单映射成「商品 × 数量 = 小计」的字符串。注意这里用了模板字符串，并且回调用的是箭头函数简写形式（没有花括号，自动 return），这是最不容易出错的写法。\n\n【第 4 段：reduce 汇总】reduce 接收两个参数：回调函数和初始值 0。回调中的 sum 是「累加器」，从初始值 0 开始，每次把 order.price * order.quantity 加上去，最后返回一个数字 2500。\n\n【第 5 段：链式调用】filter 和 reduce 可以像流水线一样串起来，语义清晰：先筛出已支付的，再求总和。这比写一个 for 循环 + if 判断要直观得多。\n\n【第 6 段：常见陷阱】演示了 map 回调忘记 return 会返回 undefined 数组的问题，并给出正确的简写写法。这是新手最常见的 bug 之一。\n\n【第 7 段：reduce 进阶】展示了 reduce 的分组用法：累加器是一个对象 acc，遍历过程中往对应的 status 分桶里 push 订单。这种写法在做数据报表、字典转换时非常常用。"
+        "language": "tsx",
+        "code": "// ===== app/actions/todo.ts （服务端） =====\n'use server'\n\nimport { revalidatePath } from 'next/cache'\n\nexport type Todo = { id: string; title: string; done: boolean }\n\n// 模拟数据库（真实项目换成 Prisma / Drizzle 等）\nconst db: Todo[] = [\n  { id: '1', title: '学习 Server Actions', done: false },\n]\n\nconst delay = (ms: number) => new Promise((r) => setTimeout(r, ms))\n\nexport async function getTodos(): Promise<Todo[]> {\n  return [...db]\n}\n\nexport async function addTodo(title: string): Promise<Todo> {\n  await delay(600) // 模拟网络/数据库延迟\n  const trimmed = title.trim()\n  if (!trimmed) throw new Error('标题不能为空')   // 服务端校验是安全边界\n\n  const todo: Todo = { id: crypto.randomUUID(), title: trimmed, done: false }\n  db.push(todo)\n  revalidatePath('/')  // 让 Server Component 重新取数\n  return todo\n}\n\nexport async function toggleTodo(id: string): Promise<void> {\n  await delay(400)\n  const target = db.find((t) => t.id === id)\n  if (target) target.done = !target.done\n  revalidatePath('/')\n}\n\n\n// ===== app/todo-list.tsx （客户端） =====\n'use client'\n\nimport { useOptimistic, useTransition, useRef } from 'react'\nimport { useFormStatus } from 'react-dom'\nimport { addTodo, toggleTodo, type Todo } from './actions/todo'\n\n// SubmitButton 必须是 <form> 的子组件，useFormStatus 才能读到 pending\nfunction SubmitButton() {\n  const { pending } = useFormStatus()\n  return (\n    <button type=\"submit\" disabled={pending}>\n      {pending ? '添加中…' : '添加'}\n    </button>\n  )\n}\n\nexport default function TodoList({ todos }: { todos: Todo[] }) {\n  // 1) 乐观状态：真实数据是 todos，本地先\"假装\"已添加\n  const [optimisticTodos, addOptimisticTodo] = useOptimistic(\n    todos,\n    (state: Todo[], newTitle: string): Todo[] => [\n      ...state,\n      { id: `temp-${Date.now()}`, title: newTitle, done: false }, // 临时 id 做 key\n    ]\n  )\n\n  const [isPending, startTransition] = useTransition()\n  const formRef = useRef<HTMLFormElement>(null)\n\n  // 2) 表单 action：先乐观更新，再调用 Server Action\n  function handleAdd(formData: FormData) {\n    const title = String(formData.get('title') ?? '')\n    startTransition(async () => {\n      addOptimisticTodo(title)\n      await addTodo(title)          // 失败时 React 自动回滚乐观值\n      formRef.current?.reset()      // 成功后清空输入框\n    })\n  }\n\n  return (\n    <section style={{ maxWidth: 420 }}>\n      <form ref={formRef} action={handleAdd} style={{ display: 'flex', gap: 8 }}>\n        <input name=\"title\" placeholder=\"新任务…\" required />\n        <SubmitButton />\n      </form>\n\n      <ul style={{ opacity: isPending ? 0.6 : 1, transition: 'opacity .15s' }}>\n        {optimisticTodos.map((t) => (\n          <li key={t.id}>\n            <label>\n              <input\n                type=\"checkbox\"\n                checked={t.done}\n                onChange={() => startTransition(() => toggleTodo(t.id))}\n              />\n              {t.title}\n              {t.id.startsWith('temp-') ? ' （同步中）' : ''}\n            </label>\n          </li>\n        ))}\n      </ul>\n    </section>\n  )\n}\n\n\n// ===== app/page.tsx （服务端组件，负责首次取数） =====\nimport { getTodos } from './actions/todo'\nimport TodoList from './todo-list'\n\nexport default async function Page() {\n  const todos = await getTodos()\n  return (\n    <main>\n      <h1>今日任务</h1>\n      <TodoList todos={todos} />\n    </main>\n  )\n}\n\n\n// ===== app/error.tsx （必须有！捕获 Action 抛出的错误） =====\n'use client'\n\nexport default function Error({ error, reset }: { error: Error; reset: () => void }) {\n  return (\n    <div>\n      <p>出错了：{error.message}</p>\n      <button onClick={reset}>重试</button>\n    </div>\n  )\n}",
+        "explanation": "【actions/todo.ts】'use server' 让该模块的所有导出函数成为 Server Action，永远在服务端执行，客户端拿到的只是一个可调用的引用。addTodo 先做服务端校验，写库后调用 revalidatePath('/') 使首页的 Server Component 缓存失效，从而拿到最新列表。\n\n【useOptimistic(todos, updateFn)】第一个参数是真实数据（来自 props），第二个是\"给定当前状态和用户意图，算出乐观状态\"的纯函数。返回的 optimisticTodos 在 Transition 进行期间是乐观值，结束后自动变回真实 todos，无需手动清理。\n\n【id: `temp-${Date.now()}`】乐观项用临时 id 作 key，并在 UI 上标注\"同步中\"。真实数据回来后列表会整体替换，React 依靠 key 复用 DOM。如果用 index 作 key，会造成勾选状态错位。\n\n【handleAdd】用 startTransition 包住\"乐观更新 + Server Action\"，这样两者属于同一个 Transition：Action 未完成前乐观值一直存在，失败则整体回滚。formRef.current?.reset() 在成功后清空输入框。\n\n【SubmitButton + useFormStatus】把提交按钮抽成子组件，才能读到外层 form 的 pending 状态，实现禁用和文案切换，避免重复提交。\n\n【app/error.tsx】Server Action 抛错会被最近的 Error Boundary 捕获，同时乐观状态回滚。没有 error.tsx 就会整页 500，这是生产环境必踩的坑。"
       },
       "keyPoints": [
-        "map 用于「一对一转换」，返回等长的新数组；filter 用于「筛选」，返回可能更短的新数组；reduce 用于「汇总」，返回任意类型的单个值。",
-        "三个方法都不会修改原数组，而是返回新结果，符合不可变数据的良好实践。",
-        "map 的回调一定要有返回值（用箭头函数简写 () => value 可自动返回），忘记 return 会得到 undefined 数组。",
-        "reduce 务必提供初始值（第二个参数），否则空数组会抛出 TypeError，且累加逻辑也更难理解。",
-        "多个方法可以链式调用提升可读性；只有在处理大数据量或性能热点时才需要合并为单次 for 循环。"
+        "useOptimistic(state, updateFn) 返回 [乐观值, 触发函数]，updateFn 必须是纯函数，Transition 结束后自动回到真实数据",
+        "Action 抛错时 React 会自动回滚乐观值，但必须提供 app/error.tsx 作为 Error Boundary，否则整页崩溃",
+        "useFormStatus 只能在 <form action> 的子组件中调用，放在同级或表单外永远返回 pending=false",
+        "乐观列表项用 'temp-' 前缀的临时 id 作 key，绝不用 index，避免勾选状态错位",
+        "Server Action 写库后要调用 revalidatePath / revalidateTag，否则 Server Component 缓存不会刷新；服务端校验（如 zod）才是安全边界"
       ],
       "exercise": {
-        "description": "请完成一个「学生成绩统计」功能：给定一个学生数组（包含姓名 name、分数 score、是否及格 passed），请用 filter 筛选出及格的学生，用 map 提取出他们的姓名，再用 reduce 计算所有学生的平均分（保留两位小数）。最后把这三个结果打印出来。",
-        "hint": "可以分三步写：① students.filter(s => s.passed) 拿到及格学生；② 在 ① 的结果上 .map(s => s.name) 拿到姓名数组；③ 用 students.reduce((sum, s) => sum + s.score, 0) / students.length 计算平均分，注意 reduce 要给初始值 0。保留两位小数可以用 Number(x.toFixed(2)) 或 toFixed(2)。",
+        "description": "实现一个\"点赞\"按钮组件 LikeButton({ postId, initialCount })：点击后立刻让数字 +1 并显示加载态，调用 Server Action likePost(postId)（模拟 500ms 延迟，且当 count > 20 时抛出 Error('点赞太频繁')）。要求：失败时数字自动回滚、错误被 Error Boundary 捕获、连续快速点击不会重复提交。",
+        "hint": "用 useOptimistic 保存 count 的乐观值，用 useTransition 的 startTransition 包住\"乐观更新 + likePost\"调用；按钮的 disabled 用 useFormStatus 或 isPending 控制；记得创建 app/error.tsx 来测试失败回滚路径。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，使它能正确计算数组中所有偶数的平方和。",
-            "codeContext": "const nums = [1, 2, 3, 4, 5, 6];\nconst result = nums\n  .filter((n) => n % 2 === 0)\n  .map((n) => n * n)\n  .reduce((sum, n) => sum + n, 0);\nconsole.log(result);",
+            "question": "补全 useOptimistic 的正确调用方式，使 count 能在点赞后立即 +1。",
+            "codeContext": "const [optimisticCount, addOptimistic] = useOptimistic(\n  count,\n  __________\n)",
             "segments": [
               {
                 "type": "text",
-                "content": "reduce 的第二个参数（初始值）在这段代码中必须是 ",
+                "content": "const [optimisticCount, addOptimistic] = useOptimistic(\n  count,\n  ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,73 +42,54 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "0",
-                  "1",
-                  "null",
-                  "undefined"
+                  "(state, delta: number) => state + delta",
+                  "(prevState: number) => prevState + 1",
+                  "(state: number) => { count++ }",
+                  "(state, delta) => { console.log(delta) }"
                 ],
-                "correctAnswer": "0"
+                "correctAnswer": "(state, delta: number) => state + delta"
               },
               {
                 "type": "text",
-                "content": "，因为求和运算需要从 ",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "0",
-                  "1",
-                  "数组的第一个元素",
-                  "NaN"
-                ],
-                "correctAnswer": "0"
-              },
-              {
-                "type": "text",
-                "content": " 开始累加。如果省略初始值，当数组为空时会抛出 TypeError。",
+                "content": "\n)",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "0",
-            "explanation": "reduce(回调, 初始值) 中的初始值会作为第一次调用回调时的累加器值。做求和运算时初始值应为 0；做求积时应为 1；做数组拼接时应为 []。题目代码先筛出偶数 [2, 4, 6]，再平方得 [4, 16, 36]，最后从 0 开始累加得到 56。永远提供初始值是避免空数组报错的最佳实践。"
+            "correctAnswer": "(state, delta: number) => state + delta",
+            "explanation": "useOptimistic 的 updater 签名是 (currentState, payload) => nextState，必须接收本次调用传入的 payload 并返回新状态，且必须是纯函数。选项 B 少了 payload，无法表示\"点了几下\"；选项 C 直接修改外部变量违反纯函数约定；选项 D 返回 undefined 会让乐观值变成 undefined。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 map、filter、reduce，下列说法中错误的是哪一项？",
-            "codeContext": null,
+            "question": "关于 useFormStatus，下面哪一项说法是正确的？",
+            "codeContext": "function LikeButton() {\n  const { pending } = useFormStatus()\n  return <button type=\"submit\" disabled={pending}>点赞</button>\n}\n\nfunction Page() {\n  return (\n    <form action={submit}>\n      <LikeButton />\n    </form>\n  )\n}",
             "segments": null,
             "options": [
-              "map 会返回一个与原数组等长的新数组，原数组不会被修改",
-              "filter 的回调函数返回 falsy 值时，对应的元素会被丢弃",
-              "reduce 一定需要提供初始值，否则一定抛出 TypeError",
-              "reduce 可以用来实现分组、计数、求最大值等多种汇总操作"
+              "它需要传入 action 函数作为参数才能工作",
+              "它只能在 form 内部的子组件中调用，读取的是最近父级 <form action> 的提交状态",
+              "它在任意组件中调用都能读到全局的请求 loading 状态",
+              "它会自动帮表单做字段校验"
             ],
-            "correctAnswer": "reduce 一定需要提供初始值，否则一定抛出 TypeError",
-            "explanation": "选项 C 的表述过于绝对。reduce 的初始值是可选的：如果不提供，JavaScript 会用数组的第一个元素作为初始累加器，并从第二个元素开始遍历。只有当数组为空且未提供初始值时才会抛出 TypeError。虽然「不提供初始值」在数组可能为空的场景下有风险、实践中不推荐，但说「一定会抛出 TypeError」是错误的。其余三项均为正确描述。"
+            "correctAnswer": "它只能在 form 内部的子组件中调用，读取的是最近父级 <form action> 的提交状态",
+            "explanation": "useFormStatus 是零参数 hook，靠 React Context 向上查找最近的 <form action>，所以必须位于 form 的子组件中；放在 form 同级或页面其他位置时永远拿到 pending=false。它也不做任何校验，只是暴露 pending、data、method、action 等提交元信息。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "请问以下代码的输出结果是什么？",
-            "codeContext": "const arr = [1, 2, 3, 4];\nconst result = arr\n  .map((n) => n * 2)\n  .filter((n) => n > 4);\nconsole.log(result);\nconsole.log(arr);",
+            "question": "点击\"点赞\"按钮后，Server Action 在 500ms 后抛出 Error('点赞太频繁')，且项目已有 app/error.tsx。请问最终 UI 的状态是？",
+            "codeContext": "'use client'\nimport { useOptimistic, useTransition } from 'react'\nimport { likePost } from './actions'\n\nexport default function LikeButton({ initialCount }: { initialCount: number }) {\n  const [count, add] = useOptimistic(initialCount, (s: number, d: number) => s + d)\n  const [, startTransition] = useTransition()\n  return (\n    <button onClick={() => {\n      startTransition(async () => {\n        add(1)            // 立即 +1\n        await likePost(1) // 500ms 后 throw\n      })\n    }}>{count}</button>\n  )\n}",
             "segments": null,
             "options": [
-              "输出 [6, 8]，然后输出 [1, 2, 3, 4]",
-              "输出 [6, 8]，然后输出 [2, 4, 6, 8]",
-              "输出 [8]，然后输出 [1, 2, 3, 4]",
-              "输出 [2, 4, 6, 8]，然后输出 [2, 4, 6, 8]"
+              "数字保持乐观的 +1 结果，因为状态已经被更新了",
+              "数字自动回滚到 initialCount，同时错误被 app/error.tsx 捕获显示",
+              "数字变成 NaN，页面需要刷新才能恢复",
+              "组件卸载并白屏，必须重启开发服务器"
             ],
-            "correctAnswer": "输出 [6, 8]，然后输出 [1, 2, 3, 4]",
-            "explanation": "第一步 map 把每个元素乘以 2，得到中间数组 [2, 4, 6, 8]；第二步 filter 保留大于 4 的元素，得到 [6, 8]。关键在于：map 和 filter 都是纯函数式的，它们返回新数组而不修改原数组 arr，所以第二个 console.log(arr) 输出的仍然是原始的 [1, 2, 3, 4]。这也是为什么答案是 A 而不是 B。"
+            "correctAnswer": "数字自动回滚到 initialCount，同时错误被 app/error.tsx 捕获显示",
+            "explanation": "useOptimistic 的乐观值只在 Transition 进行中存在：Action 成功则丢弃乐观值、采用真实数据；Action 失败则自动回滚到最新的 props 值（这里是 initialCount），并把错误向上抛给最近的 Error Boundary。因此\"自动回滚 + error.tsx 展示\"是正确答案，这也是必须写 error.tsx 的原因。"
           }
         ]
       }

@@ -1,197 +1,189 @@
 {
-  "date": "2026-09-29",
+  "date": "2026-09-30",
   "content": {
-    "id": "en-2026-09-29",
-    "date": "2026-09-29",
-    "topic": "教育与成长",
+    "id": "en-2026-09-30",
+    "date": "2026-09-30",
+    "topic": "人工智能与科技",
     "newsHighlights": [
       {
-        "title": "Buckwheat noodles carry living Long March memories",
+        "title": "China's AI user base surges, generative AI industry expands",
         "source": "ChinaDaily",
-        "summary": "A veteran in Wuqi county treated visiting college students from Beijing to local lamb chopped buckwheat noodles while sharing living memories of the Long March.",
-        "translation": "在陕西吴起县，一位老兵请来此实践的北京大学生品尝当地羊肉剁荞面，并向他们讲述了仍然鲜活的长征记忆。",
+        "summary": "The number of generative artificial intelligence users in China has exceeded 700 million as of June, up from 602 million at the end of last year.",
+        "translation": "截至今年6月，中国生成式人工智能用户数已超过7亿，较去年年底的6.02亿大幅增长。",
         "keyWords": [
-          "veteran",
-          "Long March",
-          "experiential learning",
-          "heritage"
+          "generative AI",
+          "user base",
+          "surge",
+          "exceed",
+          "expansion"
         ]
       },
       {
-        "title": "Nation mourns death of singer, mentor Liu Huan",
+        "title": "Innovation drives agri-growth",
         "source": "ChinaDaily",
-        "summary": "China mourns singer and mentor Liu Huan, remembered not only for his music but for guiding a generation of young performers.",
-        "translation": "全国悼念歌手、导师刘欢，人们铭记的不仅是他的音乐，还有他对一代青年歌手的引领与培养。",
+        "summary": "Scientific innovation and digital technology are driving agricultural growth, raising productivity and creating new opportunities for rural communities.",
+        "translation": "科技创新与数字技术正推动农业增长，提高生产力，并为农村社区创造新机遇。",
         "keyWords": [
-          "mentor",
-          "mourn",
-          "guidance",
-          "legacy"
-        ]
-      },
-      {
-        "title": "China's northernmost high-speed rail starts service",
-        "source": "ChinaDaily",
-        "summary": "China's northernmost high-speed railway, running through a region of discontinuous permafrost in Heilongjiang, officially entered service on Monday.",
-        "translation": "穿越黑龙江多年冻土区的中国最北高铁于周日正式开通运营。",
-        "keyWords": [
-          "high-speed rail",
-          "permafrost",
-          "breakthrough",
-          "infrastructure"
-        ]
-      },
-      {
-        "title": "Hi Five China: Huaihua's bamboo breakthrough",
-        "source": "ChinaDaily",
-        "summary": "In Huaihua, a mountain city in Central China, bamboo is turned into keyboards, mice and even truck bed panels through technological innovation.",
-        "translation": "在湖南怀化这座山城，通过技术创新，竹子被制成键盘、鼠标，甚至卡车车厢板。",
-        "keyWords": [
-          "bamboo",
           "innovation",
-          "breakthrough",
-          "manufacturing"
+          "productivity",
+          "digital technology",
+          "agriculture",
+          "rural"
         ]
       },
       {
-        "title": "Chinese tech firms target walking-assist wearables",
+        "title": "Smartphone 'detox' a refresh for peace of mind",
         "source": "ChinaDaily",
-        "summary": "Chinese technology companies are developing walking-assist wearables designed to help the elderly and people with limited mobility.",
-        "translation": "中国科技企业正研发助行可穿戴设备，帮助老年人和行动不便者重新行走。",
+        "summary": "More young people are trying a smartphone 'detox' by turning off notifications and setting screen-free hours to protect their mental health.",
+        "translation": "越来越多的年轻人尝试智能手机“戒断”，通过关闭通知、设定无屏幕时段来守护心理健康。",
         "keyWords": [
-          "wearable",
-          "assistive technology",
-          "mobility",
-          "R&D"
+          "detox",
+          "notifications",
+          "screen-free",
+          "mental health",
+          "mindful"
+        ]
+      },
+      {
+        "title": "Xi Jinping urges Sichuan University to serve national strategies",
+        "source": "CGTN",
+        "summary": "President Xi Jinping urged Sichuan University to better serve national strategies and strengthen scientific research and talent cultivation.",
+        "translation": "习近平主席勉励四川大学更好服务国家战略，加强科学研究与人才培养。",
+        "keyWords": [
+          "national strategies",
+          "scientific research",
+          "talent",
+          "serve",
+          "cultivation"
         ]
       }
     ],
     "quote": {
-      "quote": "Tell me and I forget. Teach me and I remember. Involve me and I learn.",
-      "author": "Benjamin Franklin",
-      "translation": "告诉我，我会忘记；教导我，我会记住；让我参与，我才能真正学会。",
-      "explanation": "这句名言强调学习的最高层次是亲身体验与参与。正如新闻中的大学生走进吴起县、听老兵讲述长征故事，实地参与远比死记课本更能让知识内化为成长的力量。"
+      "quote": "The advance of technology is based on making it fit in so that you don't really even notice it, so it's part of everyday life.",
+      "author": "Bill Gates",
+      "translation": "科技的进步在于让它融入生活，让你几乎察觉不到它的存在，从而成为日常生活的一部分。",
+      "explanation": "技术的最高境界不是炫目，而是无形。当人工智能像水电一样自然地服务我们的学习、农业和医疗时，它才真正创造了价值；这也是今天我们讨论AI普及与“手机戒断”时的重要启示。"
     },
     "vocabulary": [
       {
-        "word": "veteran",
-        "phonetic": "/ˈvetərən/",
-        "partOfSpeech": "noun",
-        "definition": "老兵；经验丰富的人",
-        "example": "A veteran treated a group of visiting college students to local buckwheat noodles and stories of the Long March.",
-        "translation": "一位老兵请来访的大学生品尝当地荞麦面，并讲述长征的故事。",
-        "newsContext": "出自新闻 \"Buckwheat noodles carry living Long March memories\"，指讲述长征经历的老兵。"
+        "word": "surge",
+        "phonetic": "/sɜːrdʒ/",
+        "partOfSpeech": "verb / noun",
+        "definition": "激增；猛增；汹涌",
+        "example": "China's AI user base has surged over the past year.",
+        "translation": "过去一年，中国的AI用户数激增。",
+        "newsContext": "新闻标题：China's AI user base surges, generative AI industry expands."
       },
       {
-        "word": "mentor",
-        "phonetic": "/ˈmentɔː(r)/",
-        "partOfSpeech": "noun / verb",
-        "definition": "导师，指导者；指导、辅导",
-        "example": "The nation mourns the death of singer and mentor Liu Huan, who guided many young performers.",
-        "translation": "全国悼念歌手兼导师刘欢，他曾指导过许多青年歌手。",
-        "newsContext": "出自新闻 \"Nation mourns death of singer, mentor Liu Huan\"，标题中称刘欢为 mentor。"
-      },
-      {
-        "word": "mourn",
-        "phonetic": "/mɔːn/",
+        "word": "exceed",
+        "phonetic": "/ɪkˈsiːd/",
         "partOfSpeech": "verb",
-        "definition": "哀悼，悼念；对……感到痛惜",
-        "example": "Fans across the country mourn the loss of a teacher who shaped a generation of musicians.",
-        "translation": "全国歌迷哀悼这位塑造了一代音乐人的老师的离世。",
-        "newsContext": "出自新闻 \"Nation mourns death of singer, mentor Liu Huan\"，表示举国哀悼。"
+        "definition": "超过；超出（数量、程度或限制）",
+        "example": "The number of generative AI users in China has exceeded 700 million.",
+        "translation": "中国生成式人工智能用户数已超过7亿。",
+        "newsContext": "出自摘要：\"The number of generative artificial intelligence users in China has exceeded 700 million as of June.\""
       },
       {
-        "word": "breakthrough",
-        "phonetic": "/ˈbreɪkθruː/",
+        "word": "generative",
+        "phonetic": "/ˈdʒenərətɪv/",
+        "partOfSpeech": "adjective",
+        "definition": "生成式的；有生产力的",
+        "example": "The generative AI industry is expanding rapidly in China.",
+        "translation": "中国的生成式人工智能产业正在快速扩张。",
+        "newsContext": "出自新闻标题与摘要：\"generative AI industry expands\"。"
+      },
+      {
+        "word": "expansion",
+        "phonetic": "/ɪkˈspænʃn/",
         "partOfSpeech": "noun",
-        "definition": "突破，重大进展",
-        "example": "Huaihua's bamboo breakthrough shows how technology can turn a common plant into high-value products.",
-        "translation": "怀化的竹材突破表明，技术能把一种普通植物变成高附加值产品。",
-        "newsContext": "出自新闻 \"Hi Five China: Huaihua's bamboo breakthrough\"，指竹材加工技术的突破。"
-      },
-      {
-        "word": "permafrost",
-        "phonetic": "/ˈpɜːməfrɒst/",
-        "partOfSpeech": "noun",
-        "definition": "多年冻土，永久冻土",
-        "example": "The new railway runs through a region of discontinuous permafrost in Northeast China.",
-        "translation": "这条新铁路穿越中国东北的多年冻土区。",
-        "newsContext": "出自新闻 \"China's northernmost high-speed rail starts service\"，说明高铁建设面临的地质挑战。"
-      },
-      {
-        "word": "wearable",
-        "phonetic": "/ˈweərəbl/",
-        "partOfSpeech": "noun / adjective",
-        "definition": "可穿戴设备；可穿戴的",
-        "example": "Chinese tech firms are developing walking-assist wearables for the elderly and people with limited mobility.",
-        "translation": "中国科技企业正在为老年人和行动不便者研发助行可穿戴设备。",
-        "newsContext": "出自新闻 \"Chinese tech firms target walking-assist wearables\"，指助行可穿戴设备。"
-      },
-      {
-        "word": "commemorate",
-        "phonetic": "/kəˈmeməreɪt/",
-        "partOfSpeech": "verb",
-        "definition": "纪念，缅怀",
-        "example": "The trip to Wuqi county was organized to commemorate the Long March and inspire the students.",
-        "translation": "这次吴起之行旨在纪念长征，并激励青年学生。",
-        "newsContext": "关联新闻 \"Buckwheat noodles carry living Long March memories\"，学生此行的核心意义是纪念与学习。"
-      },
-      {
-        "word": "heritage",
-        "phonetic": "/ˈherɪtɪdʒ/",
-        "partOfSpeech": "noun",
-        "definition": "遗产（尤指文化、历史遗产）；传统",
-        "example": "Living memories of the Long March are part of the country's cultural heritage.",
-        "translation": "鲜活的长征记忆是国家文化遗产的一部分。",
-        "newsContext": "关联新闻 \"Buckwheat noodles carry living Long March memories\"，历史记忆属于需要传承的 heritage。"
+        "definition": "扩张；扩展；扩大",
+        "example": "The rapid expansion of AI applications benefits many industries.",
+        "translation": "人工智能应用的快速扩展惠及众多行业。",
+        "newsContext": "出自新闻标题：\"generative AI industry expands\"（expand 的名词形式）。"
       },
       {
         "word": "innovation",
         "phonetic": "/ˌɪnəˈveɪʃn/",
         "partOfSpeech": "noun",
-        "definition": "创新；革新（成果）",
-        "example": "Years of innovation have made it possible to produce keyboards and truck bed panels from bamboo.",
-        "translation": "多年的创新使竹子制成键盘和卡车车厢板成为可能。",
-        "newsContext": "出自新闻 \"Hi Five China: Huaihua's bamboo breakthrough\" 与 \"Advanced manufacturing pushed\"，强调创新驱动。"
+        "definition": "创新；革新",
+        "example": "Innovation drives agricultural growth and raises productivity.",
+        "translation": "创新驱动农业增长并提高生产力。",
+        "newsContext": "出自新闻标题：\"Innovation drives agri-growth\"。"
       },
       {
-        "word": "hands-on",
-        "phonetic": "/ˌhændz ˈɒn/",
-        "partOfSpeech": "adjective",
-        "definition": "亲身实践的，动手的",
-        "example": "For the students, listening to a veteran was a hands-on history lesson far better than any textbook.",
-        "translation": "对学生们来说，听老兵讲述是一堂亲身实践的历史课，胜过任何教科书。",
-        "newsContext": "关联新闻 \"Buckwheat noodles carry living Long March memories\"，强调实践式、体验式学习。"
+        "word": "productivity",
+        "phonetic": "/ˌprɒdʌkˈtɪvəti/",
+        "partOfSpeech": "noun",
+        "definition": "生产力；生产效率",
+        "example": "Digital tools help farmers improve productivity in the fields.",
+        "translation": "数字工具帮助农民提高田间生产效率。",
+        "newsContext": "关联新闻：\"Innovation drives agri-growth\"，科技创新提升农业生产率。"
+      },
+      {
+        "word": "breakthrough",
+        "phonetic": "/ˈbreɪkθruː/",
+        "partOfSpeech": "noun / adjective",
+        "definition": "突破；突破性的进展",
+        "example": "Chinese universities are encouraged to make breakthroughs that serve national strategies.",
+        "translation": "中国高校被鼓励取得服务国家战略的突破性成果。",
+        "newsContext": "关联新闻：\"Xi Jinping urges Sichuan University to serve national strategies\"，强调科研突破与人才培养。"
+      },
+      {
+        "word": "application",
+        "phonetic": "/ˌæplɪˈkeɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "应用；运用；申请",
+        "example": "AI applications now cover farming, healthcare and education.",
+        "translation": "人工智能应用现已覆盖农业、医疗和教育领域。",
+        "newsContext": "关联新闻：AI用户突破7亿，生成式AI应用不断拓展至各行业。"
+      },
+      {
+        "word": "detox",
+        "phonetic": "/ˈdiːtɒks/",
+        "partOfSpeech": "noun / verb",
+        "definition": "（对电子产品的）戒断、排毒；进行戒断",
+        "example": "Many young people are trying a smartphone detox for peace of mind.",
+        "translation": "许多年轻人正尝试戒断手机，以求内心安宁。",
+        "newsContext": "出自新闻标题：\"Smartphone 'detox' a refresh for peace of mind\"。"
+      },
+      {
+        "word": "resilience",
+        "phonetic": "/rɪˈzɪliəns/",
+        "partOfSpeech": "noun",
+        "definition": "韧性；恢复力；抗逆力",
+        "example": "Balancing development and security strengthens the country's technological resilience.",
+        "translation": "统筹发展与安全能增强国家的科技韧性。",
+        "newsContext": "关联新闻：\"Xi calls for balancing nation's development, security\"，强调发展与安全并重。"
       }
     ],
     "pattern": {
-      "pattern": "I came for ..., but I stayed for ... （我为……而来，却为……而留下）",
-      "example": "Came for the noodles. Stayed for the history.",
-      "translation": "为荞麦面而来，为这段历史而留下。",
-      "usage": "该句型来自新闻原文，使用了省略主语的祈使式/口语化表达。完整形式为 \"We came for the noodles, but we stayed for the history.\"，用来表达：最初被表层事物吸引，最终被更深层的价值打动。适用于游记、观后感、人物描写等场景，如：I came for the course, but I stayed for the people."
+      "pattern": "as of + 时间点, ... has/have + past participle ... , (up/representing) ... from ...",
+      "example": "As of June, the number of generative AI users in China has exceeded 700 million, up from 602 million at the end of last year.",
+      "translation": "截至6月，中国生成式人工智能用户数已超过7亿，高于去年年底的6.02亿。",
+      "usage": "用于描述数据统计的时间节点与变化幅度。“as of + 时间”表示“截至……时”，主句常用现在完成时强调“到现在为止”的结果；后接 up from / a rise from / compared with 引出对比数据，是英文经济与科技新闻中最常见的数据表达框架。"
     },
     "grammar": {
-      "title": "现在分词作后置定语与伴随状语",
-      "explanation": "现在分词（doing）放在名词后作后置定语，相当于 who/which/that 引导的定语从句；放在句中作状语，表示伴随、补充说明或方式，逻辑主语必须与句子主语一致。新闻标题和正文中大量使用这一结构，使句子简洁生动。",
+      "title": "现在完成时（Present Perfect）在新闻英语中的运用",
+      "explanation": "现在完成时（have/has + 过去分词）表示过去发生、但对现在仍有影响或持续到现在的动作或状态。科技与经济新闻常用它来报道“最新统计数据”“阶段性成果”，常与 already, yet, so far, as of + 时间, over the past year 等时间状语连用。注意：当句中有明确的过去时间点（如 last year, in 2025）时，改用一般过去时。",
       "examples": [
-        "China's northernmost high-speed railway, running through a region of discontinuous permafrost in Northeast China's Heilongjiang province, officially entered service on Monday.",
-        "A group of visiting college students from Beijing were treated to local lamb chopped buckwheat noodles by a veteran sharing his memories of the Long March."
+        "The number of generative artificial intelligence users in China has exceeded 700 million as of June.",
+        "This represents a significant rise from 602 million users at the end of last year."
       ]
     },
     "pronunciation": {
-      "word": "breakthrough",
-      "phonetic": "/ˈbreɪkθruː/",
-      "tips": "重音在第一个音节 /ˈbreɪk/。关键难点在 /kθr/ 三个辅音相连：先发 /k/，舌尖轻触上齿发清辅音 /θ/（不可读成 /s/ 或 /f/），再快速滑向 /r/。元音 /eɪ/ 为双元音，口型由开到合。可先慢读 \"break - through\"，再连读成 \"breakthrough\"。",
+      "word": "artificial",
+      "phonetic": "/ˌɑːrtɪˈfɪʃl/",
+      "tips": "重音在第三个音节 -fi- 上，读作 ar-ti-FI-cial；第一个音节轻读为 /ɑːr/，第三个音节 /ˈfɪʃ/ 要读得饱满有力，词尾 -cial 发 /ʃl/，不是“西亚”。整词节奏为“弱—弱—强—弱”。注意与 artificial intelligence 连读时，/l/ 与后面的元音自然衔接：/ˌɑːrtɪˈfɪʃl ɪnˈtelɪdʒəns/。",
       "examples": [
-        "Huaihua's bamboo breakthrough has drawn attention from manufacturers around the world.",
-        "Engineers achieved a major breakthrough in building railways on permafrost."
+        "China's artificial intelligence user base has exceeded 700 million.",
+        "Generative artificial intelligence is changing the way we work and learn."
       ]
     },
     "reading": {
-      "title": "More Than a Bowl of Noodles: Learning History Where It Happened",
-      "content": "Last week, a group of college students from Beijing travelled to Wuqi county in Shaanxi province. They came for the local lamb chopped buckwheat noodles, but they stayed for the history. Over the meal, a veteran told them stories of the Long March, turning a simple lunch into a hands-on lesson.\n\nFor the students, the trip was more moving than any textbook. Standing where the Red Army once arrived, they felt what words on a page could not convey. \"We came for the noodles, and we stayed for the history,\" one student said.\n\nEducators say such visits are a powerful form of experiential learning. When history is told by those who carry its living memories, young people are more likely to remember it and pass it on. As the nation mourns the loss of teachers and mentors like singer Liu Huan, the value of good guidance has never felt more real.",
-      "translation": "上周，一群北京的大学生来到陕西省吴起县。他们为当地的羊肉剁荞面而来，却为这段历史而留下。吃饭时，一位老兵给他们讲述了长征的故事，把一顿简单的午饭变成了一堂生动的实践课。\n\n对学生们来说，这趟旅程比任何教科书都更打动人心。站在红军当年到达的地方，他们感受到了书本上的文字无法传达的东西。一名学生说：“我们为荞麦面而来，为这段历史而留下。”\n\n教育工作者认为，这样的走访是体验式学习的有力形式。当历史由承载着鲜活记忆的人讲述时，年轻人更可能记住它，并把它传承下去。当举国哀悼刘欢这样一位老师与导师的离去，良好指引的价值显得尤为真切。",
-      "sourceNote": "基于 ChinaDaily 报道《Buckwheat noodles carry living Long March memories》（吴起县老兵为北京大学生讲述长征历史）改写，并结合《Nation mourns death of singer, mentor Liu Huan》一文中的“导师”主题，围绕“教育与成长”进行整合创作。"
+      "title": "China's Generative AI Boom: More Users, Wider Use",
+      "content": "China's generative artificial intelligence user base has exceeded 700 million as of June, according to a recent report, a significant rise from 602 million at the end of last year. The rapid expansion reflects both strong policy support and growing public enthusiasm for smart tools. AI applications are no longer limited to chatbots: they now help farmers monitor crops, doctors analyze medical images and teachers design lessons. In the countryside, innovation and digital technology have raised productivity and opened new markets for rural communities. At the same time, many young people are trying a smartphone \"detox\" — turning off notifications and setting screen-free hours — to protect their mental health. Experts say the key is to use technology mindfully. When people master tools instead of being controlled by them, AI becomes a real partner in daily life. Sustained investment in research, talent and safety rules will help the industry grow in a healthy and secure way.",
+      "translation": "据最新报告，截至今年6月，中国生成式人工智能用户数已超过7亿，较去年年底的6.02亿大幅增长。这一快速扩张既反映了强有力的政策支持，也体现了公众对智能工具日益高涨的热情。人工智能应用已不再局限于聊天机器人：如今它帮助农民监测作物、帮助医生分析医学影像、帮助教师设计课程。在乡村，创新与数字技术提高了生产力，为农村社区开辟了新市场。与此同时，许多年轻人正尝试智能手机“戒断”——关闭通知、设定无屏幕时段——以保护心理健康。专家表示，关键在于有节制地使用技术。当人们驾驭工具而不是被工具控制时，人工智能才真正成为日常生活的伙伴。持续投入科研、人才培养与安全法规，将助力该行业健康、安全地发展。",
+      "sourceNote": "基于 ChinaDaily《China's AI user base surges, generative AI industry expands》《Innovation drives agri-growth》《Smartphone 'detox' a refresh for peace of mind》及 CGTN 相关报道改写，用于英语学习，非原文转载。"
     }
   }
 }
