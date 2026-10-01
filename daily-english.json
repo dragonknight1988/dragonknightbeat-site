@@ -1,189 +1,192 @@
 {
-  "date": "2026-09-30",
+  "date": "2026-10-01",
   "content": {
-    "id": "en-2026-09-30",
-    "date": "2026-09-30",
-    "topic": "人工智能与科技",
+    "id": "en-2026-10-01",
+    "date": "2026-10-01",
+    "topic": "商业与金融",
     "newsHighlights": [
       {
-        "title": "China's AI user base surges, generative AI industry expands",
-        "source": "ChinaDaily",
-        "summary": "The number of generative artificial intelligence users in China has exceeded 700 million as of June, up from 602 million at the end of last year.",
-        "translation": "截至今年6月，中国生成式人工智能用户数已超过7亿，较去年年底的6.02亿大幅增长。",
+        "title": "Imports poised to hit record high",
+        "source": "China Daily",
+        "summary": "China's imports are on track to reach a record high this year, driven by strong domestic demand and expanding global trade ties.",
+        "translation": "受强劲内需与不断拓展的全球贸易关系推动，中国今年进口额有望创下历史新高。",
         "keyWords": [
-          "generative AI",
-          "user base",
-          "surge",
-          "exceed",
-          "expansion"
+          "import",
+          "record high",
+          "domestic demand"
         ]
       },
       {
-        "title": "Innovation drives agri-growth",
-        "source": "ChinaDaily",
-        "summary": "Scientific innovation and digital technology are driving agricultural growth, raising productivity and creating new opportunities for rural communities.",
-        "translation": "科技创新与数字技术正推动农业增长，提高生产力，并为农村社区创造新机遇。",
+        "title": "Chinese county plucks strings of global violin market",
+        "source": "China Daily",
+        "summary": "A small Chinese county has captured a dominant share of the global violin market by combining craftsmanship with modern industrial scale.",
+        "translation": "一个中国小县城将传统工艺与现代产业规模相结合，在全球小提琴市场占据了主导份额。",
         "keyWords": [
-          "innovation",
-          "productivity",
-          "digital technology",
-          "agriculture",
-          "rural"
+          "violin market",
+          "craftsmanship",
+          "export"
         ]
       },
       {
-        "title": "Smartphone 'detox' a refresh for peace of mind",
-        "source": "ChinaDaily",
-        "summary": "More young people are trying a smartphone 'detox' by turning off notifications and setting screen-free hours to protect their mental health.",
-        "translation": "越来越多的年轻人尝试智能手机“戒断”，通过关闭通知、设定无屏幕时段来守护心理健康。",
+        "title": "Six major contributors call for EU budget cut",
+        "source": "China Daily",
+        "summary": "Six of the largest net contributors to the EU have urged Brussels to trim the bloc's next long-term budget, citing fiscal discipline.",
+        "translation": "欧盟六个最大净出资国呼吁布鲁塞尔削减下一个长期预算，理由是需要维持财政纪律。",
         "keyWords": [
-          "detox",
-          "notifications",
-          "screen-free",
-          "mental health",
-          "mindful"
+          "EU budget",
+          "fiscal discipline",
+          "contributor"
         ]
       },
       {
-        "title": "Xi Jinping urges Sichuan University to serve national strategies",
+        "title": "US-Canada trade war escalates as both sides remain open to a new deal",
         "source": "CGTN",
-        "summary": "President Xi Jinping urged Sichuan University to better serve national strategies and strengthen scientific research and talent cultivation.",
-        "translation": "习近平主席勉励四川大学更好服务国家战略，加强科学研究与人才培养。",
+        "summary": "Trade tensions between the United States and Canada have intensified, though both governments say they are still willing to negotiate a new agreement.",
+        "translation": "美加贸易摩擦升级，但两国政府均表示仍愿意就新协议展开谈判。",
         "keyWords": [
-          "national strategies",
-          "scientific research",
-          "talent",
-          "serve",
-          "cultivation"
+          "trade war",
+          "tariff",
+          "negotiation"
+        ]
+      },
+      {
+        "title": "AI focus shifts to application and regulation",
+        "source": "China Daily",
+        "summary": "Global attention on artificial intelligence is moving from model competition toward real-world applications and regulatory frameworks.",
+        "translation": "全球对人工智能的关注正从模型竞赛转向实际应用与监管框架。",
+        "keyWords": [
+          "artificial intelligence",
+          "regulation",
+          "application"
         ]
       }
     ],
     "quote": {
-      "quote": "The advance of technology is based on making it fit in so that you don't really even notice it, so it's part of everyday life.",
-      "author": "Bill Gates",
-      "translation": "科技的进步在于让它融入生活，让你几乎察觉不到它的存在，从而成为日常生活的一部分。",
-      "explanation": "技术的最高境界不是炫目，而是无形。当人工智能像水电一样自然地服务我们的学习、农业和医疗时，它才真正创造了价值；这也是今天我们讨论AI普及与“手机戒断”时的重要启示。"
+      "quote": "The best investment you can make is in yourself.",
+      "author": "Warren Buffett",
+      "translation": "你能做的最好投资，就是投资你自己。",
+      "explanation": "在商业与金融领域，真正的长期回报来自于持续学习与自我提升，而非追逐短期行情。"
     },
     "vocabulary": [
       {
-        "word": "surge",
-        "phonetic": "/sɜːrdʒ/",
-        "partOfSpeech": "verb / noun",
-        "definition": "激增；猛增；汹涌",
-        "example": "China's AI user base has surged over the past year.",
-        "translation": "过去一年，中国的AI用户数激增。",
-        "newsContext": "新闻标题：China's AI user base surges, generative AI industry expands."
+        "word": "import",
+        "phonetic": "/ˈɪmpɔːrt/",
+        "partOfSpeech": "n. / v.",
+        "definition": "进口；进口商品",
+        "example": "China's imports are poised to hit a record high this year.",
+        "translation": "中国今年的进口额有望创下历史新高。",
+        "newsContext": "出自新闻标题 Imports poised to hit record high"
       },
       {
-        "word": "exceed",
-        "phonetic": "/ɪkˈsiːd/",
-        "partOfSpeech": "verb",
-        "definition": "超过；超出（数量、程度或限制）",
-        "example": "The number of generative AI users in China has exceeded 700 million.",
-        "translation": "中国生成式人工智能用户数已超过7亿。",
-        "newsContext": "出自摘要：\"The number of generative artificial intelligence users in China has exceeded 700 million as of June.\""
+        "word": "record",
+        "phonetic": "/ˈrekərd/",
+        "partOfSpeech": "n. / adj.",
+        "definition": "记录；创纪录的",
+        "example": "Trade volume is expected to reach a record level in the fourth quarter.",
+        "translation": "贸易额预计将在第四季度达到创纪录的水平。",
+        "newsContext": "出自 Imports poised to hit record high 中的 record high"
       },
       {
-        "word": "generative",
-        "phonetic": "/ˈdʒenərətɪv/",
-        "partOfSpeech": "adjective",
-        "definition": "生成式的；有生产力的",
-        "example": "The generative AI industry is expanding rapidly in China.",
-        "translation": "中国的生成式人工智能产业正在快速扩张。",
-        "newsContext": "出自新闻标题与摘要：\"generative AI industry expands\"。"
+        "word": "escalate",
+        "phonetic": "/ˈeskəleɪt/",
+        "partOfSpeech": "v.",
+        "definition": "（使）升级，加剧",
+        "example": "The US-Canada trade war escalated as new tariffs took effect.",
+        "translation": "随着新关税生效，美加贸易战进一步升级。",
+        "newsContext": "出自 US-Canada trade war escalates 标题"
       },
       {
-        "word": "expansion",
-        "phonetic": "/ɪkˈspænʃn/",
-        "partOfSpeech": "noun",
-        "definition": "扩张；扩展；扩大",
-        "example": "The rapid expansion of AI applications benefits many industries.",
-        "translation": "人工智能应用的快速扩展惠及众多行业。",
-        "newsContext": "出自新闻标题：\"generative AI industry expands\"（expand 的名词形式）。"
+        "word": "tariff",
+        "phonetic": "/ˈtærɪf/",
+        "partOfSpeech": "n.",
+        "definition": "关税",
+        "example": "Higher tariffs could raise costs for exporters on both sides of the border.",
+        "translation": "更高的关税可能会增加边境两侧出口商的成本。",
+        "newsContext": "关联 US-Canada trade war escalates 报道中的贸易壁垒议题"
       },
       {
-        "word": "innovation",
-        "phonetic": "/ˌɪnəˈveɪʃn/",
-        "partOfSpeech": "noun",
-        "definition": "创新；革新",
-        "example": "Innovation drives agricultural growth and raises productivity.",
-        "translation": "创新驱动农业增长并提高生产力。",
-        "newsContext": "出自新闻标题：\"Innovation drives agri-growth\"。"
+        "word": "negotiation",
+        "phonetic": "/nɪˌɡoʊʃiˈeɪʃn/",
+        "partOfSpeech": "n.",
+        "definition": "谈判，协商",
+        "example": "Both governments remain open to a new negotiation despite the escalation.",
+        "translation": "尽管冲突升级，两国政府仍对新一轮谈判持开放态度。",
+        "newsContext": "出自 both sides remain open to a new deal"
       },
       {
-        "word": "productivity",
-        "phonetic": "/ˌprɒdʌkˈtɪvəti/",
-        "partOfSpeech": "noun",
-        "definition": "生产力；生产效率",
-        "example": "Digital tools help farmers improve productivity in the fields.",
-        "translation": "数字工具帮助农民提高田间生产效率。",
-        "newsContext": "关联新闻：\"Innovation drives agri-growth\"，科技创新提升农业生产率。"
+        "word": "budget",
+        "phonetic": "/ˈbʌdʒɪt/",
+        "partOfSpeech": "n.",
+        "definition": "预算",
+        "example": "Six major contributors called for a cut in the EU's next budget.",
+        "translation": "六个主要出资国要求削减欧盟的下一期预算。",
+        "newsContext": "出自 Six major contributors call for EU budget cut"
       },
       {
-        "word": "breakthrough",
-        "phonetic": "/ˈbreɪkθruː/",
-        "partOfSpeech": "noun / adjective",
-        "definition": "突破；突破性的进展",
-        "example": "Chinese universities are encouraged to make breakthroughs that serve national strategies.",
-        "translation": "中国高校被鼓励取得服务国家战略的突破性成果。",
-        "newsContext": "关联新闻：\"Xi Jinping urges Sichuan University to serve national strategies\"，强调科研突破与人才培养。"
+        "word": "fiscal",
+        "phonetic": "/ˈfɪskl/",
+        "partOfSpeech": "adj.",
+        "definition": "财政的，国库的",
+        "example": "The six countries argued that fiscal discipline must be preserved.",
+        "translation": "这六个国家主张必须保持财政纪律。",
+        "newsContext": "关联 EU budget cut 报道中的财政政策讨论"
       },
       {
-        "word": "application",
-        "phonetic": "/ˌæplɪˈkeɪʃn/",
-        "partOfSpeech": "noun",
-        "definition": "应用；运用；申请",
-        "example": "AI applications now cover farming, healthcare and education.",
-        "translation": "人工智能应用现已覆盖农业、医疗和教育领域。",
-        "newsContext": "关联新闻：AI用户突破7亿，生成式AI应用不断拓展至各行业。"
+        "word": "export",
+        "phonetic": "/ˈekspɔːrt/",
+        "partOfSpeech": "n. / v.",
+        "definition": "出口；出口商品",
+        "example": "Violin exports from the county now reach dozens of countries worldwide.",
+        "translation": "该县的小提琴出口现已覆盖全球数十个国家。",
+        "newsContext": "出自 Chinese county plucks strings of global violin market"
       },
       {
-        "word": "detox",
-        "phonetic": "/ˈdiːtɒks/",
-        "partOfSpeech": "noun / verb",
-        "definition": "（对电子产品的）戒断、排毒；进行戒断",
-        "example": "Many young people are trying a smartphone detox for peace of mind.",
-        "translation": "许多年轻人正尝试戒断手机，以求内心安宁。",
-        "newsContext": "出自新闻标题：\"Smartphone 'detox' a refresh for peace of mind\"。"
+        "word": "market share",
+        "phonetic": "/ˈmɑːrkɪt ʃer/",
+        "partOfSpeech": "n.",
+        "definition": "市场份额",
+        "example": "The county has taken a large market share of the global violin industry.",
+        "translation": "该县在全球小提琴产业中占据了很大的市场份额。",
+        "newsContext": "出自 Chinese county plucks strings of global violin market"
       },
       {
-        "word": "resilience",
-        "phonetic": "/rɪˈzɪliəns/",
-        "partOfSpeech": "noun",
-        "definition": "韧性；恢复力；抗逆力",
-        "example": "Balancing development and security strengthens the country's technological resilience.",
-        "translation": "统筹发展与安全能增强国家的科技韧性。",
-        "newsContext": "关联新闻：\"Xi calls for balancing nation's development, security\"，强调发展与安全并重。"
+        "word": "regulation",
+        "phonetic": "/ˌreɡjuˈleɪʃn/",
+        "partOfSpeech": "n.",
+        "definition": "监管，法规",
+        "example": "AI regulation is becoming a priority for businesses and governments alike.",
+        "translation": "人工智能监管正成为企业和政府共同的优先事项。",
+        "newsContext": "出自 AI focus shifts to application and regulation"
       }
     ],
     "pattern": {
-      "pattern": "as of + 时间点, ... has/have + past participle ... , (up/representing) ... from ...",
-      "example": "As of June, the number of generative AI users in China has exceeded 700 million, up from 602 million at the end of last year.",
-      "translation": "截至6月，中国生成式人工智能用户数已超过7亿，高于去年年底的6.02亿。",
-      "usage": "用于描述数据统计的时间节点与变化幅度。“as of + 时间”表示“截至……时”，主句常用现在完成时强调“到现在为止”的结果；后接 up from / a rise from / compared with 引出对比数据，是英文经济与科技新闻中最常见的数据表达框架。"
+      "pattern": "be poised to do sth.（有望做某事；准备就绪去做某事）",
+      "example": "China's imports are poised to hit a record high this year.",
+      "translation": "中国的进口额有望在今年创下历史新高。",
+      "usage": "用于描述某事即将发生或已经做好准备，常见于财经报道预测趋势。也可写作 be poised for sth.，如 The market is poised for recovery."
     },
     "grammar": {
-      "title": "现在完成时（Present Perfect）在新闻英语中的运用",
-      "explanation": "现在完成时（have/has + 过去分词）表示过去发生、但对现在仍有影响或持续到现在的动作或状态。科技与经济新闻常用它来报道“最新统计数据”“阶段性成果”，常与 already, yet, so far, as of + 时间, over the past year 等时间状语连用。注意：当句中有明确的过去时间点（如 last year, in 2025）时，改用一般过去时。",
+      "title": "现在进行时表将来（Present Continuous for Future Arrangements）",
+      "explanation": "当事件已经安排好、即将发生时，常用现在进行时表达将来意义，常与表示未来的具体时间状语连用。这在财经新闻中非常常见，用来报道已确定的计划、会议或趋势。",
       "examples": [
-        "The number of generative artificial intelligence users in China has exceeded 700 million as of June.",
-        "This represents a significant rise from 602 million users at the end of last year."
+        "Trade tensions between the US and Canada are intensifying as both sides prepare for a new round of talks.",
+        "The autumn grain harvest is underway and the full-year crop is on track for another bumper harvest."
       ]
     },
     "pronunciation": {
-      "word": "artificial",
-      "phonetic": "/ˌɑːrtɪˈfɪʃl/",
-      "tips": "重音在第三个音节 -fi- 上，读作 ar-ti-FI-cial；第一个音节轻读为 /ɑːr/，第三个音节 /ˈfɪʃ/ 要读得饱满有力，词尾 -cial 发 /ʃl/，不是“西亚”。整词节奏为“弱—弱—强—弱”。注意与 artificial intelligence 连读时，/l/ 与后面的元音自然衔接：/ˌɑːrtɪˈfɪʃl ɪnˈtelɪdʒəns/。",
+      "word": "negotiation",
+      "phonetic": "/nɪˌɡoʊʃiˈeɪʃn/",
+      "tips": "重音在第四个音节 -a-tion 上，注意中间的 /ɡoʊʃ/ 发音类似“够什”。常见错误是把重音放在第二个音节。可拆分为 ni-GO-shee-AY-shun 慢读练习。",
       "examples": [
-        "China's artificial intelligence user base has exceeded 700 million.",
-        "Generative artificial intelligence is changing the way we work and learn."
+        "The negotiation between the two countries lasted for several weeks.",
+        "Both sides said the negotiation was constructive."
       ]
     },
     "reading": {
-      "title": "China's Generative AI Boom: More Users, Wider Use",
-      "content": "China's generative artificial intelligence user base has exceeded 700 million as of June, according to a recent report, a significant rise from 602 million at the end of last year. The rapid expansion reflects both strong policy support and growing public enthusiasm for smart tools. AI applications are no longer limited to chatbots: they now help farmers monitor crops, doctors analyze medical images and teachers design lessons. In the countryside, innovation and digital technology have raised productivity and opened new markets for rural communities. At the same time, many young people are trying a smartphone \"detox\" — turning off notifications and setting screen-free hours — to protect their mental health. Experts say the key is to use technology mindfully. When people master tools instead of being controlled by them, AI becomes a real partner in daily life. Sustained investment in research, talent and safety rules will help the industry grow in a healthy and secure way.",
-      "translation": "据最新报告，截至今年6月，中国生成式人工智能用户数已超过7亿，较去年年底的6.02亿大幅增长。这一快速扩张既反映了强有力的政策支持，也体现了公众对智能工具日益高涨的热情。人工智能应用已不再局限于聊天机器人：如今它帮助农民监测作物、帮助医生分析医学影像、帮助教师设计课程。在乡村，创新与数字技术提高了生产力，为农村社区开辟了新市场。与此同时，许多年轻人正尝试智能手机“戒断”——关闭通知、设定无屏幕时段——以保护心理健康。专家表示，关键在于有节制地使用技术。当人们驾驭工具而不是被工具控制时，人工智能才真正成为日常生活的伙伴。持续投入科研、人才培养与安全法规，将助力该行业健康、安全地发展。",
-      "sourceNote": "基于 ChinaDaily《China's AI user base surges, generative AI industry expands》《Innovation drives agri-growth》《Smartphone 'detox' a refresh for peace of mind》及 CGTN 相关报道改写，用于英语学习，非原文转载。"
+      "title": "Global Trade at a Crossroads: Records, Rivalries and Regulations",
+      "content": "As the fourth quarter begins, global trade finds itself at an unusual crossroads. On one hand, China's imports are poised to hit a record high this year, powered by resilient domestic demand. Its exports tell an equally striking story: one small county now supplies a major share of the world's violins, proof that specialized manufacturing can conquer global niche markets. On the other hand, tensions are rising elsewhere. The trade war between the United States and Canada has escalated, even as both governments remain open to a new deal. In Europe, six major contributors are pressing for a tighter EU budget, demanding fiscal discipline from Brussels. Meanwhile, attention around artificial intelligence is shifting from flashy model launches toward practical applications and thoughtful regulation. Together, these signals suggest that the winners of tomorrow's economy will be those who balance ambition with discipline, and innovation with rules.",
+      "translation": "随着第四季度开启，全球贸易正处在一个不寻常的十字路口。一方面，受强劲内需推动，中国今年的进口额有望创下历史新高。出口方面同样令人瞩目：一个中国小县城如今供应着全球小提琴市场的一大份额，证明专业化制造能够征服全球细分市场。另一方面，其他地区紧张局势正在升级。美加贸易战愈演愈烈，尽管两国政府仍对新协议持开放态度。在欧洲，六个主要出资国正敦促收紧欧盟预算，要求布鲁塞尔保持财政纪律。与此同时，围绕人工智能的关注正从炫目的模型发布转向实际应用与审慎监管。这些信号共同表明：明日经济的赢家，将是那些在雄心与纪律、创新与规则之间取得平衡的人。",
+      "sourceNote": "本文基于 China Daily 与 CGTN 2026年10月1日相关新闻改写，包括 Imports poised to hit record high、Chinese county plucks strings of global violin market、Six major contributors call for EU budget cut、US-Canada trade war escalates 及 AI focus shifts to application and regulation。"
     }
   }
 }

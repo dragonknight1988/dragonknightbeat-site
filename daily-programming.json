@@ -1,38 +1,39 @@
 {
-  "date": "2026-09-30",
+  "date": "2026-10-01",
   "contents": [
     {
-      "id": "prog-2026-09-30",
-      "date": "2026-09-30",
-      "title": "Next.js Server Actions + useOptimistic：打造无闪烁的表单交互",
-      "summary": "用 Server Actions 处理表单提交，并结合 useOptimistic 与 useFormStatus 实现乐观更新与即时反馈。",
+      "id": "prog-2026-10-01",
+      "date": "2026-10-01",
+      "title": "Node.js 流（Streams）与背压（Backpressure）工程实战",
+      "summary": "用 stream/promises 的 pipeline 搭建一条可取消、能正确处理背压的数据流水线，避免大数据处理时的内存爆炸与数据丢失。",
       "difficulty": "中级",
-      "concept": "在 App Router 时代，Next.js 推荐用 Server Actions（本质上是标注了 'use server' 的异步函数）来替代手写 API Route + fetch 的表单提交链路。你只需在 Server Component 或 Client Component 中直接调用它，Next.js 会自动序列化参数、发起 POST 请求、执行服务端逻辑，并把结果传回客户端。这样做的最大收益是：类型在同一个仓库内端到端共享，不需要维护接口文档，也不会出现前后端字段不一致导致的运行时错误。\n\n但 Server Actions 有一个天然短板：它终究是一次网络往返，用户点击后会有 100~500ms 的\"空白期\"。如果只是简单地 disabled 按钮并转圈，交互会显得迟钝。这就是 useOptimistic 的用武之地——它允许你先在本地\"假装修好了\"，等真实结果回来后由 React 自动对账。其签名是 useOptimistic(state, updateFn)，返回 [optimisticState, addOptimistic]。注意 updateFn 必须是纯函数，且乐观值只在对应的 Transition 进行中生效，Action 完成后会自动回到真实的 props/state。\n\nuseOptimistic 的关键工程细节是\"回滚\"。如果 Server Action 抛错（比如数据库写入失败、权限校验不通过），React 会自动丢弃乐观值、恢复到最新的真实数据，同时把错误抛给最近的 Error Boundary。这意味着你不需要手写 try/catch 回滚逻辑——但你必须提供 error.tsx，否则用户会看到整个路由崩溃。这是很多人上线后踩的第一个坑。\n\n另一个常被忽略的搭档是 useFormStatus。它是给\"表单子组件\"用的 hook，能读到外层 <form action={...}> 提交的 pending 状态，非常适合做 SubmitButton 的禁用与文案切换。注意它必须放在 form 的子组件里，在 form 同级调用会永远返回 false，这是常见的\"为什么我的 loading 不生效\"的根源。若要在同一组件里既读 pending 又发乐观更新，就配合 useTransition 的 isPending 区分不同操作的加载态。\n\n性能与一致性方面有两条经验：一是乐观列表项的 key 不要用 index，而要用 'temp-' 前缀的临时 id，等真实数据回来后 React 才能正确复用 DOM；二是写入类 Action 里记得调用 revalidatePath('/xxx') 或 revalidateTag，否则 Server Component 的数据缓存不会刷新，页面上仍是旧数据。最后，把校验（如 zod）放在 Server Action 的第一行，客户端校验只是体验优化，服务端校验才是安全边界。",
+      "concept": "在 Node.js 里，Stream 是处理「数据量未知或远超内存」的首选抽象。它把一次性的 read-all / write-all，拆成一小块一小块（chunk）的增量处理，让 1GB 的日志文件也能在几十 MB 的堆内存里跑完。Stream 分四类：Readable（可读，如 fs.createReadStream、HTTP 请求体）、Writable（可写，如 fs.createWriteStream、HTTP 响应）、Duplex（双工，如 net.Socket）、Transform（转换，如 zlib.createGzip、自定义解析器）。中间件式的管道（pipeline）把它们串起来，是 Node 高性能 I/O 的核心模型。\n\n背压（Backpressure）是流编程中最容易踩坑、也最体现工程功力的概念。当生产者（Readable）产出数据的速度快于消费者（Writable）处理数据的速度时，多余的数据会堆积在消费者内部缓冲区里。Node 通过两个信号协调这件事：Writable.write(chunk) 返回 false，表示「缓冲区已超过 highWaterMark，请暂停写入」；等缓冲区清空后会触发 'drain' 事件，表示「可以继续写了」。Readable 侧同理：内部缓冲达到 highWaterMark 后 push() 会返回 false，readable 会暂停向底层资源拉取数据。\n\nhighWaterMark 是这个机制的阈值，单位在二进制模式下是字节、在 objectMode 下是「对象个数」。默认 16KB（objectMode 为 16）。调小它可以降低内存峰值但会增加调度开销；调大能提升吞吐但会占更多内存。常见反模式是忽略 write() 的返回值一路狂写，结果在消费慢的场景（如写远程 S3、慢磁盘、限流的第三方 API）下内存飙升甚至 OOM；更隐蔽的反模式是自定义 Writable 里既不返回值也不调用 callback，导致数据静默丢失或流程卡死。\n\n工程上请优先使用 node:stream/promises 的 pipeline()，而不是老式的 .pipe()。pipe() 不会自动传播错误、不会自动销毁出错的流，一个上游异常可能让整个进程挂掉或泄漏文件描述符；pipeline() 会把错误向前传播、销毁所有流、并返回 Promise，天然支持 async/await 与 AbortSignal 取消。配合 async generator（async function*）作为数据源、以及 for await...of 消费流，可以写出非常清晰的异步数据流水线。\n\n最后一类实战经验：objectMode 让流承载任意 JS 对象而非 Buffer，非常适合 ETL、消息队列消费、CSV/JSONL 解析这类「按记录处理」的场景；但注意 objectMode 的 highWaterMark 计数单位变成了「条数」。另外，流一旦 destroy 或 error，未 flush 的缓冲数据会丢失，所以关键落盘路径务必用 pipeline + try/catch，并在 catch 中做重试或写入死信队列。",
       "codeExample": {
-        "language": "tsx",
-        "code": "// ===== app/actions/todo.ts （服务端） =====\n'use server'\n\nimport { revalidatePath } from 'next/cache'\n\nexport type Todo = { id: string; title: string; done: boolean }\n\n// 模拟数据库（真实项目换成 Prisma / Drizzle 等）\nconst db: Todo[] = [\n  { id: '1', title: '学习 Server Actions', done: false },\n]\n\nconst delay = (ms: number) => new Promise((r) => setTimeout(r, ms))\n\nexport async function getTodos(): Promise<Todo[]> {\n  return [...db]\n}\n\nexport async function addTodo(title: string): Promise<Todo> {\n  await delay(600) // 模拟网络/数据库延迟\n  const trimmed = title.trim()\n  if (!trimmed) throw new Error('标题不能为空')   // 服务端校验是安全边界\n\n  const todo: Todo = { id: crypto.randomUUID(), title: trimmed, done: false }\n  db.push(todo)\n  revalidatePath('/')  // 让 Server Component 重新取数\n  return todo\n}\n\nexport async function toggleTodo(id: string): Promise<void> {\n  await delay(400)\n  const target = db.find((t) => t.id === id)\n  if (target) target.done = !target.done\n  revalidatePath('/')\n}\n\n\n// ===== app/todo-list.tsx （客户端） =====\n'use client'\n\nimport { useOptimistic, useTransition, useRef } from 'react'\nimport { useFormStatus } from 'react-dom'\nimport { addTodo, toggleTodo, type Todo } from './actions/todo'\n\n// SubmitButton 必须是 <form> 的子组件，useFormStatus 才能读到 pending\nfunction SubmitButton() {\n  const { pending } = useFormStatus()\n  return (\n    <button type=\"submit\" disabled={pending}>\n      {pending ? '添加中…' : '添加'}\n    </button>\n  )\n}\n\nexport default function TodoList({ todos }: { todos: Todo[] }) {\n  // 1) 乐观状态：真实数据是 todos，本地先\"假装\"已添加\n  const [optimisticTodos, addOptimisticTodo] = useOptimistic(\n    todos,\n    (state: Todo[], newTitle: string): Todo[] => [\n      ...state,\n      { id: `temp-${Date.now()}`, title: newTitle, done: false }, // 临时 id 做 key\n    ]\n  )\n\n  const [isPending, startTransition] = useTransition()\n  const formRef = useRef<HTMLFormElement>(null)\n\n  // 2) 表单 action：先乐观更新，再调用 Server Action\n  function handleAdd(formData: FormData) {\n    const title = String(formData.get('title') ?? '')\n    startTransition(async () => {\n      addOptimisticTodo(title)\n      await addTodo(title)          // 失败时 React 自动回滚乐观值\n      formRef.current?.reset()      // 成功后清空输入框\n    })\n  }\n\n  return (\n    <section style={{ maxWidth: 420 }}>\n      <form ref={formRef} action={handleAdd} style={{ display: 'flex', gap: 8 }}>\n        <input name=\"title\" placeholder=\"新任务…\" required />\n        <SubmitButton />\n      </form>\n\n      <ul style={{ opacity: isPending ? 0.6 : 1, transition: 'opacity .15s' }}>\n        {optimisticTodos.map((t) => (\n          <li key={t.id}>\n            <label>\n              <input\n                type=\"checkbox\"\n                checked={t.done}\n                onChange={() => startTransition(() => toggleTodo(t.id))}\n              />\n              {t.title}\n              {t.id.startsWith('temp-') ? ' （同步中）' : ''}\n            </label>\n          </li>\n        ))}\n      </ul>\n    </section>\n  )\n}\n\n\n// ===== app/page.tsx （服务端组件，负责首次取数） =====\nimport { getTodos } from './actions/todo'\nimport TodoList from './todo-list'\n\nexport default async function Page() {\n  const todos = await getTodos()\n  return (\n    <main>\n      <h1>今日任务</h1>\n      <TodoList todos={todos} />\n    </main>\n  )\n}\n\n\n// ===== app/error.tsx （必须有！捕获 Action 抛出的错误） =====\n'use client'\n\nexport default function Error({ error, reset }: { error: Error; reset: () => void }) {\n  return (\n    <div>\n      <p>出错了：{error.message}</p>\n      <button onClick={reset}>重试</button>\n    </div>\n  )\n}",
-        "explanation": "【actions/todo.ts】'use server' 让该模块的所有导出函数成为 Server Action，永远在服务端执行，客户端拿到的只是一个可调用的引用。addTodo 先做服务端校验，写库后调用 revalidatePath('/') 使首页的 Server Component 缓存失效，从而拿到最新列表。\n\n【useOptimistic(todos, updateFn)】第一个参数是真实数据（来自 props），第二个是\"给定当前状态和用户意图，算出乐观状态\"的纯函数。返回的 optimisticTodos 在 Transition 进行期间是乐观值，结束后自动变回真实 todos，无需手动清理。\n\n【id: `temp-${Date.now()}`】乐观项用临时 id 作 key，并在 UI 上标注\"同步中\"。真实数据回来后列表会整体替换，React 依靠 key 复用 DOM。如果用 index 作 key，会造成勾选状态错位。\n\n【handleAdd】用 startTransition 包住\"乐观更新 + Server Action\"，这样两者属于同一个 Transition：Action 未完成前乐观值一直存在，失败则整体回滚。formRef.current?.reset() 在成功后清空输入框。\n\n【SubmitButton + useFormStatus】把提交按钮抽成子组件，才能读到外层 form 的 pending 状态，实现禁用和文案切换，避免重复提交。\n\n【app/error.tsx】Server Action 抛错会被最近的 Error Boundary 捕获，同时乐观状态回滚。没有 error.tsx 就会整页 500，这是生产环境必踩的坑。"
+        "language": "javascript",
+        "code": "// stream-lab.mjs —— 可直接运行：node stream-lab.mjs\n// 演示：异步生成器数据源 -> objectMode 转换 -> 慢消费者，并正确处理背压与取消\nimport { Readable, Transform, Writable } from 'node:stream';\nimport { pipeline } from 'node:stream/promises';\nimport { setTimeout as sleep } from 'node:timers/promises';\n\n// ① 数据源：异步生成器可被 Readable.from 直接消费\nasync function* dataSource(total) {\n  for (let i = 0; i < total; i++) {\n    await sleep(15); // 模拟慢速 I/O（比如查库）\n    yield { id: i, payload: `record-${i}`.padEnd(40, '*') };\n  }\n}\n\n// ② 转换流：objectMode 读入对象，输出 Buffer 字符串行\nconst toJsonLine = new Transform({\n  objectMode: true, // 读取端按「对象」计数\n  transform(record, _enc, cb) {\n    this.push(JSON.stringify(record) + '\\n');\n    cb(); // 必须调用，否则流水线卡住\n  },\n});\n\n// ③ 慢消费者：highWaterMark 很小，很快触发背压\nconst slowSink = new Writable({\n  highWaterMark: 2,\n  write(chunk, _enc, cb) {\n    setTimeout(() => {\n      console.log('写出:', chunk.toString().trim().slice(0, 30));\n      cb();\n    }, 25);\n  },\n});\n\n// ④ 用 pipeline 串联：错误自动传播 + 自动销毁 + 支持 AbortSignal\nconst ac = new AbortController();\nsetTimeout(() => ac.abort(), 5000); // 5 秒后取消，模拟超时场景\n\ntry {\n  await pipeline(\n    Readable.from(dataSource(20)),\n    toJsonLine,\n    slowSink,\n    { signal: ac.signal }\n  );\n  console.log('流水线完成 ✅');\n} catch (err) {\n  console.error('流水线中断:', err.name, '-', err.message);\n}\n\n// ⑤ 手动演示背压信号：write() 的返回值\nconst probe = new Writable({\n  highWaterMark: 5,\n  write(_chunk, _enc, cb) { setTimeout(cb, 10); },\n});\nconsole.log('第一次 write 返回:', probe.write('1234')); // 缓冲 4 < 5\nconsole.log('第二次 write 返回:', probe.write('5678')); // 缓冲 8 >= 5\nprobe.on('drain', () => console.log('drain：缓冲已清空，可以继续写'));",
+        "explanation": "① dataSource 是一个 async generator，每次 yield 一条记录并 sleep 15ms，模拟慢速上游；Readable.from() 把它包装成 Readable 流。② toJsonLine 用 objectMode 读取对象，把每条记录序列化成 JSON 行后 push 出去；transform 里必须调用 cb()，否则这条流会永久阻塞。③ slowSink 的 highWaterMark 设为 2（objectMode/Buffer 混合场景下这里按字节计数，2 字节意味着几乎立刻背压），每次 _write 耗时 25ms，是明显的慢消费者。④ pipeline() 把三段串起来，并接受 { signal } 选项：超过 5 秒会 abort，所有流被自动销毁并抛出 AbortError，我们在 catch 里优雅处理。⑤ 最后单独演示背压信号：第一次 write('1234') 缓冲 4 字节小于 highWaterMark 5，返回 true；第二次缓冲累积到 8 字节，超过阈值，返回 false，并在消费者消费完后触发 'drain' 事件。"
       },
       "keyPoints": [
-        "useOptimistic(state, updateFn) 返回 [乐观值, 触发函数]，updateFn 必须是纯函数，Transition 结束后自动回到真实数据",
-        "Action 抛错时 React 会自动回滚乐观值，但必须提供 app/error.tsx 作为 Error Boundary，否则整页崩溃",
-        "useFormStatus 只能在 <form action> 的子组件中调用，放在同级或表单外永远返回 pending=false",
-        "乐观列表项用 'temp-' 前缀的临时 id 作 key，绝不用 index，避免勾选状态错位",
-        "Server Action 写库后要调用 revalidatePath / revalidateTag，否则 Server Component 缓存不会刷新；服务端校验（如 zod）才是安全边界"
+        "write() 返回 false 表示缓冲区超过 highWaterMark，必须暂停写入并等待 'drain' 事件，忽略它会导致内存飙升",
+        "highWaterMark 在二进制模式按字节计数、在 objectMode 按对象个数计数，默认分别是 16KB 与 16",
+        "优先使用 node:stream/promises 的 pipeline()，它会自动传播错误、销毁所有流并返回 Promise，远优于 .pipe()",
+        "自定义 Transform/Writable 必须调用 callback（cb）或使用 async callback，否则流水线会静默卡死",
+        "async function* 生成器配合 Readable.from() 是最简洁的数据源写法，天然支持背压与 for await...of 消费",
+        "pipeline 支持 AbortSignal，可实现超时/取消；错误发生时缓冲区未 flush 的数据会丢失，关键路径要设计重试或死信队列"
       ],
       "exercise": {
-        "description": "实现一个\"点赞\"按钮组件 LikeButton({ postId, initialCount })：点击后立刻让数字 +1 并显示加载态，调用 Server Action likePost(postId)（模拟 500ms 延迟，且当 count > 20 时抛出 Error('点赞太频繁')）。要求：失败时数字自动回滚、错误被 Error Boundary 捕获、连续快速点击不会重复提交。",
-        "hint": "用 useOptimistic 保存 count 的乐观值，用 useTransition 的 startTransition 包住\"乐观更新 + likePost\"调用；按钮的 disabled 用 useFormStatus 或 isPending 控制；记得创建 app/error.tsx 来测试失败回滚路径。",
+        "description": "实现一个「日志清洗流水线」log-compactor.mjs：用 Readable.from + async generator 生成 1000 条模拟日志对象（字段：level、time、msg），经过一个 objectMode 的 Transform 只保留 level === 'error' 的记录并改写为 CSV 行（time,level,msg），最后写入一个自定义 Writable（每次写入延迟 1ms、highWaterMark 设为 8）并统计最终写入条数。要求：(1) 使用 node:stream/promises 的 pipeline()；(2) 加入 AbortSignal.timeout(3000) 支持超时取消；(3) 在 catch 中区分 AbortError 与其他错误；(4) 打印写入的总条数。",
+        "hint": "用 async function* 生成日志对象，yield 时不要每条都 await 太久，保证能在 3 秒内跑完；Transform 里用 this.push() 输出 CSV 行并调用 cb()；在 Writable 的 _write 里用 setTimeout(cb, 1) 模拟慢盘，用一个计数器统计条数；pipeline 的最后一个参数传 { signal: AbortSignal.timeout(3000) }，注意 pipeline(...streams, options) 的 options 要放在数组或参数列表末尾。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全 useOptimistic 的正确调用方式，使 count 能在点赞后立即 +1。",
-            "codeContext": "const [optimisticCount, addOptimistic] = useOptimistic(\n  count,\n  __________\n)",
+            "question": "补全自定义 Writable 的配置项，使其缓冲区阈值为 8。",
+            "codeContext": "const sink = new Writable({\n  ______: 8,\n  write(chunk, enc, cb) {\n    setTimeout(cb, 1);\n  },\n});",
             "segments": [
               {
                 "type": "text",
-                "content": "const [optimisticCount, addOptimistic] = useOptimistic(\n  count,\n  ",
+                "content": "const sink = new Writable({\n  ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +41,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[选择配置项]",
                 "options": [
-                  "(state, delta: number) => state + delta",
-                  "(prevState: number) => prevState + 1",
-                  "(state: number) => { count++ }",
-                  "(state, delta) => { console.log(delta) }"
+                  "highWaterMark",
+                  "objectMode",
+                  "waterMarkLimit",
+                  "bufferSize"
                 ],
-                "correctAnswer": "(state, delta: number) => state + delta"
+                "correctAnswer": "highWaterMark"
               },
               {
                 "type": "text",
-                "content": "\n)",
+                "content": ": 8,\n  write(chunk, enc, cb) {\n    setTimeout(cb, 1);\n  },\n});",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "(state, delta: number) => state + delta",
-            "explanation": "useOptimistic 的 updater 签名是 (currentState, payload) => nextState，必须接收本次调用传入的 payload 并返回新状态，且必须是纯函数。选项 B 少了 payload，无法表示\"点了几下\"；选项 C 直接修改外部变量违反纯函数约定；选项 D 返回 undefined 会让乐观值变成 undefined。"
+            "correctAnswer": "highWaterMark",
+            "explanation": "highWaterMark 是流内部缓冲区的阈值（二进制模式按字节、objectMode 按对象个数计数）。缓冲达到该值后 write() 会返回 false 并在清空时触发 'drain'。objectMode 是另一项配置（用于承载对象），不存在 waterMarkLimit / bufferSize 这类选项。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 useFormStatus，下面哪一项说法是正确的？",
-            "codeContext": "function LikeButton() {\n  const { pending } = useFormStatus()\n  return <button type=\"submit\" disabled={pending}>点赞</button>\n}\n\nfunction Page() {\n  return (\n    <form action={submit}>\n      <LikeButton />\n    </form>\n  )\n}",
+            "question": "当自定义 Writable 的 write(chunk) 返回 false 时，正确的处理方式是？",
+            "codeContext": "const ok = sink.write(data);\nif (!ok) {\n  // 这里应该怎么做？\n}",
             "segments": null,
             "options": [
-              "它需要传入 action 函数作为参数才能工作",
-              "它只能在 form 内部的子组件中调用，读取的是最近父级 <form action> 的提交状态",
-              "它在任意组件中调用都能读到全局的请求 loading 状态",
-              "它会自动帮表单做字段校验"
+              "立即停止程序并抛出错误",
+              "暂停上游写入，等待 sink 的 'drain' 事件后再继续写",
+              "忽略返回值继续写，Node 会自动丢弃多余数据",
+              "调用 sink.end() 关闭流以释放缓冲"
             ],
-            "correctAnswer": "它只能在 form 内部的子组件中调用，读取的是最近父级 <form action> 的提交状态",
-            "explanation": "useFormStatus 是零参数 hook，靠 React Context 向上查找最近的 <form action>，所以必须位于 form 的子组件中；放在 form 同级或页面其他位置时永远拿到 pending=false。它也不做任何校验，只是暴露 pending、data、method、action 等提交元信息。"
+            "correctAnswer": "暂停上游写入，等待 sink 的 'drain' 事件后再继续写",
+            "explanation": "write() 返回 false 只是一个「建议」，表示内部缓冲已超过 highWaterMark。正确做法是暂停生产（pause()/停止 pull/await drain），等到 'drain' 事件说明缓冲已清空再继续。忽略它不会丢数据，但会让缓冲无限增长导致 OOM；调用 end() 会结束写入，数据不再完整。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "点击\"点赞\"按钮后，Server Action 在 500ms 后抛出 Error('点赞太频繁')，且项目已有 app/error.tsx。请问最终 UI 的状态是？",
-            "codeContext": "'use client'\nimport { useOptimistic, useTransition } from 'react'\nimport { likePost } from './actions'\n\nexport default function LikeButton({ initialCount }: { initialCount: number }) {\n  const [count, add] = useOptimistic(initialCount, (s: number, d: number) => s + d)\n  const [, startTransition] = useTransition()\n  return (\n    <button onClick={() => {\n      startTransition(async () => {\n        add(1)            // 立即 +1\n        await likePost(1) // 500ms 后 throw\n      })\n    }}>{count}</button>\n  )\n}",
+            "question": "以下代码的输出顺序是什么？",
+            "codeContext": "const { Writable } = require('node:stream');\nconst w = new Writable({\n  highWaterMark: 5,\n  write(_chunk, _enc, cb) { setTimeout(cb, 10); },\n});\nconsole.log(w.write('1234'));\nconsole.log(w.write('5678'));\nw.on('drain', () => console.log('drain'));",
             "segments": null,
             "options": [
-              "数字保持乐观的 +1 结果，因为状态已经被更新了",
-              "数字自动回滚到 initialCount，同时错误被 app/error.tsx 捕获显示",
-              "数字变成 NaN，页面需要刷新才能恢复",
-              "组件卸载并白屏，必须重启开发服务器"
+              "true / false / drain",
+              "false / true / drain",
+              "true / true / drain",
+              "false / false / 不会输出 drain"
             ],
-            "correctAnswer": "数字自动回滚到 initialCount，同时错误被 app/error.tsx 捕获显示",
-            "explanation": "useOptimistic 的乐观值只在 Transition 进行中存在：Action 成功则丢弃乐观值、采用真实数据；Action 失败则自动回滚到最新的 props 值（这里是 initialCount），并把错误向上抛给最近的 Error Boundary。因此\"自动回滚 + error.tsx 展示\"是正确答案，这也是必须写 error.tsx 的原因。"
+            "correctAnswer": "true / false / drain",
+            "explanation": "highWaterMark 为 5：第一次 write('1234') 后内部缓冲 4 字节 < 5，返回 true；第二次 write('5678') 后缓冲累计 8 字节 ≥ 5，返回 false。随后消费者的 _write 逐步完成（每次 10ms），缓冲清空时触发 'drain' 事件，因此输出顺序是 true、false、drain。"
           }
         ]
       }
