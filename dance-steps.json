@@ -1,0 +1,93 @@
+{
+  "version": 2,
+  "dances": [
+    {
+      "id": "shanshenbu",
+      "title": "闪身步",
+      "subtitle": "全网跟跳 · 演唱会级律动",
+      "hotTrend": "🔥 热搜话题 · 专家提醒护膝",
+      "bpm": 120,
+      "difficulty": 2,
+      "durationSec": 45,
+      "coverEmoji": "🕺",
+      "videoURL": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+      "summary": "四个八拍的轻快律动：侧闪、滑步、转身、收势。重心压低、膝盖微弯，全程核心收紧。眼睛会了脚也要会——先 0.5x 分解，再原速跟跳。",
+      "proOnly": false,
+      "segments": [
+        {
+          "id": "seg1",
+          "name": "第一八拍 · 侧闪律动",
+          "startSec": 0,
+          "endSec": 11,
+          "summary": "双脚与肩同宽，重心压低。1-2 拍左脚向左侧闪，3-4 拍回中，5-8 拍反方向重复。",
+          "tips": "膝盖始终微弯不要锁死；发力在大腿，不在膝盖。",
+          "counts": ["1 左脚侧闪", "2 重心跟随", "3 回中", "4 点地", "5 右脚侧闪", "6 重心跟随", "7 回中", "8 点地"],
+          "poseTargets": [
+            {"metric": "kneeBend", "minDeg": 150, "maxDeg": 175},
+            {"metric": "torsoUpright", "minDeg": 155, "maxDeg": 180}
+          ]
+        },
+        {
+          "id": "seg2",
+          "name": "第二八拍 · 滑步换向",
+          "startSec": 11,
+          "endSec": 22,
+          "summary": "侧滑步向前推进，配合肩部前后摆动。1-4 拍向左滑步，5-8 拍向右滑步。",
+          "tips": "脚掌贴地滑动，不要跳；肩膀放松跟着节奏甩。",
+          "counts": ["1 左滑", "2 并脚", "3 左滑", "4 肩摆", "5 右滑", "6 并脚", "7 右滑", "8 肩摆"],
+          "poseTargets": [
+            {"metric": "kneeBend", "minDeg": 150, "maxDeg": 175},
+            {"metric": "armSpread", "minDeg": 15, "maxDeg": 65}
+          ]
+        },
+        {
+          "id": "seg3",
+          "name": "第三八拍 · 转身换向",
+          "startSec": 22,
+          "endSec": 34,
+          "summary": "以脚跟为轴的小幅转身，配合手臂上摆。1-4 拍左转 45 度，5-8 拍回正。",
+          "tips": "转体靠腰腹带动，转速快但幅度小——'闪'就闪在这。",
+          "counts": ["1 脚跟为轴", "2 左转", "3 手臂上摆", "4 定格", "5 回正", "6 点地", "7 手臂下落", "8 还原"],
+          "poseTargets": [
+            {"metric": "armSpread", "minDeg": 40, "maxDeg": 110},
+            {"metric": "torsoUpright", "minDeg": 150, "maxDeg": 180}
+          ]
+        },
+        {
+          "id": "seg4",
+          "name": "第四八拍 · 收势定格",
+          "startSec": 34,
+          "endSec": 45,
+          "summary": "回到起始律动，最后两拍定格收势。可自定义 ending pose。",
+          "tips": "最后定格要稳，膝盖缓冲卸力，别硬停。",
+          "counts": ["1 侧闪", "2 回中", "3 侧闪", "4 回中", "5 滑步", "6 并脚", "7-8 定格收势"],
+          "poseTargets": [
+            {"metric": "kneeBend", "minDeg": 150, "maxDeg": 178},
+            {"metric": "torsoUpright", "minDeg": 155, "maxDeg": 180}
+          ]
+        }
+      ],
+      "safety": [
+        "热身 3 分钟再开跳（膝关节环绕 + 高抬腿 + 踝泵）",
+        "膝盖旧伤/半月板问题请先咨询医生",
+        "穿有缓冲的运动鞋，别在瓷砖/硬地光脚跳",
+        "单次连续跟跳不超过 15 分钟，膝痛立即停"
+      ]
+    },
+    {
+      "id": "kemusan",
+      "title": "科目三 · 预告",
+      "subtitle": "经典魔性舞步 · 内容制作中",
+      "hotTrend": "👑 Pro 专属 · 舞步库持续更新",
+      "bpm": 130,
+      "difficulty": 3,
+      "durationSec": 60,
+      "coverEmoji": "🦵",
+      "videoURL": null,
+      "summary": "摇摆步 + 花式踢腿的组合律动。教学内容制作中，敬请期待——舞步库跟着热搜走。",
+      "proOnly": true,
+      "segments": [],
+      "safety": ["热身后再跳", "量力而行"]
+    }
+  ]
+}
