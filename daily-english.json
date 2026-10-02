@@ -1,192 +1,198 @@
 {
-  "date": "2026-10-01",
+  "date": "2026-10-02",
   "content": {
-    "id": "en-2026-10-01",
-    "date": "2026-10-01",
-    "topic": "商业与金融",
+    "id": "en-2026-10-02",
+    "date": "2026-10-02",
+    "topic": "职场与沟通",
     "newsHighlights": [
       {
-        "title": "Imports poised to hit record high",
-        "source": "China Daily",
-        "summary": "China's imports are on track to reach a record high this year, driven by strong domestic demand and expanding global trade ties.",
-        "translation": "受强劲内需与不断拓展的全球贸易关系推动，中国今年进口额有望创下历史新高。",
+        "title": "Coercion not the right approach to settling differences",
+        "source": "ChinaDaily",
+        "summary": "The European Union's trade policy toward China keeps raising the stakes and setting deadlines, but coercion is not the right approach to settling differences.",
+        "translation": "欧盟对华贸易政策不断抬高赌注、设定最后期限，但胁迫并不是解决分歧的正确方式。",
         "keyWords": [
-          "import",
-          "record high",
-          "domestic demand"
-        ]
-      },
-      {
-        "title": "Chinese county plucks strings of global violin market",
-        "source": "China Daily",
-        "summary": "A small Chinese county has captured a dominant share of the global violin market by combining craftsmanship with modern industrial scale.",
-        "translation": "一个中国小县城将传统工艺与现代产业规模相结合，在全球小提琴市场占据了主导份额。",
-        "keyWords": [
-          "violin market",
-          "craftsmanship",
-          "export"
-        ]
-      },
-      {
-        "title": "Six major contributors call for EU budget cut",
-        "source": "China Daily",
-        "summary": "Six of the largest net contributors to the EU have urged Brussels to trim the bloc's next long-term budget, citing fiscal discipline.",
-        "translation": "欧盟六个最大净出资国呼吁布鲁塞尔削减下一个长期预算，理由是需要维持财政纪律。",
-        "keyWords": [
-          "EU budget",
-          "fiscal discipline",
-          "contributor"
-        ]
-      },
-      {
-        "title": "US-Canada trade war escalates as both sides remain open to a new deal",
-        "source": "CGTN",
-        "summary": "Trade tensions between the United States and Canada have intensified, though both governments say they are still willing to negotiate a new agreement.",
-        "translation": "美加贸易摩擦升级，但两国政府均表示仍愿意就新协议展开谈判。",
-        "keyWords": [
-          "trade war",
-          "tariff",
+          "coercion",
+          "settle differences",
+          "raise the stakes",
+          "deadline",
           "negotiation"
         ]
       },
       {
-        "title": "AI focus shifts to application and regulation",
-        "source": "China Daily",
-        "summary": "Global attention on artificial intelligence is moving from model competition toward real-world applications and regulatory frameworks.",
-        "translation": "全球对人工智能的关注正从模型竞赛转向实际应用与监管框架。",
+        "title": "Targeting a continental shift",
+        "source": "ChinaDaily",
+        "summary": "A 19-year-old race walker marked a milestone more than five decades in the making by winning the men's half-marathon race walk in Nagoya.",
+        "translation": "一位19岁的竞走运动员在名古屋赢得男子半程马拉松竞走冠军，实现了一个酝酿五十余年的里程碑。",
         "keyWords": [
-          "artificial intelligence",
-          "regulation",
-          "application"
+          "milestone",
+          "shift",
+          "achievement",
+          "perseverance"
+        ]
+      },
+      {
+        "title": "What keeps China's high-speed trains so steady?",
+        "source": "ChinaDaily",
+        "summary": "Behind the legendary steadiness of China's high-speed trains lies a system of precise engineering and constant communication among maintenance crews.",
+        "translation": "中国高铁之所以如此平稳，背后是精密的工程体系与检修团队之间不间断的沟通协作。",
+        "keyWords": [
+          "steady",
+          "precision",
+          "teamwork",
+          "coordination"
+        ]
+      },
+      {
+        "title": "Iraqi PM confirms complete withdrawal of US-led coalition forces",
+        "source": "CGTN",
+        "summary": "The Iraqi prime minister confirmed the complete withdrawal of US-led coalition forces after months of diplomatic negotiation.",
+        "translation": "经过数月外交协商，伊拉克总理确认美国主导的联军部队已完全撤离。",
+        "keyWords": [
+          "withdrawal",
+          "confirm",
+          "diplomatic",
+          "negotiation"
+        ]
+      },
+      {
+        "title": "Pinglu Canal sees tourism boom during China's National Day holiday",
+        "source": "CGTN",
+        "summary": "The Pinglu Canal is seeing a tourism boom during the National Day holiday, reigniting interest in the region's heritage and modern charm.",
+        "translation": "国庆假期期间平陆运河旅游火爆，重新点燃了人们对当地历史底蕴与现代魅力的兴趣。",
+        "keyWords": [
+          "boom",
+          "reignite",
+          "heritage",
+          "charm"
         ]
       }
     ],
     "quote": {
-      "quote": "The best investment you can make is in yourself.",
-      "author": "Warren Buffett",
-      "translation": "你能做的最好投资，就是投资你自己。",
-      "explanation": "在商业与金融领域，真正的长期回报来自于持续学习与自我提升，而非追逐短期行情。"
+      "quote": "The art of communication is the language of leadership.",
+      "author": "James Humes",
+      "translation": "沟通的艺术，就是领导力的语言。",
+      "explanation": "真正有影响力的人，靠的不是权力压制，而是清晰、真诚、有策略的表达。无论在职场谈判还是日常协作中，会沟通的人才能赢得信任、推动共识。"
     },
     "vocabulary": [
       {
-        "word": "import",
-        "phonetic": "/ˈɪmpɔːrt/",
+        "word": "coercion",
+        "phonetic": "/koʊˈɜːrʒn/",
+        "partOfSpeech": "n.",
+        "definition": "胁迫，强迫；威逼",
+        "example": "Coercion is not the right approach to settling differences between partners.",
+        "translation": "胁迫不是解决伙伴之间分歧的正确方式。",
+        "newsContext": "出自新闻标题 'Coercion not the right approach to settling differences'，批评以施压代替对话的沟通方式。"
+      },
+      {
+        "word": "approach",
+        "phonetic": "/əˈproʊtʃ/",
         "partOfSpeech": "n. / v.",
-        "definition": "进口；进口商品",
-        "example": "China's imports are poised to hit a record high this year.",
-        "translation": "中国今年的进口额有望创下历史新高。",
-        "newsContext": "出自新闻标题 Imports poised to hit record high"
+        "definition": "方法，途径；接近，着手处理",
+        "example": "Dialogue is a better approach than pressure when opinions differ.",
+        "translation": "当意见不一致时，对话是比施压更好的方法。",
+        "newsContext": "新闻标题中的核心词：'Coercion not the right approach to settling differences'。"
       },
       {
-        "word": "record",
-        "phonetic": "/ˈrekərd/",
-        "partOfSpeech": "n. / adj.",
-        "definition": "记录；创纪录的",
-        "example": "Trade volume is expected to reach a record level in the fourth quarter.",
-        "translation": "贸易额预计将在第四季度达到创纪录的水平。",
-        "newsContext": "出自 Imports poised to hit record high 中的 record high"
+        "word": "stake",
+        "phonetic": "/steɪk/",
+        "partOfSpeech": "n.",
+        "definition": "赌注；利害关系（常用复数 stakes）",
+        "example": "In every negotiation, both sides should know what is at stake.",
+        "translation": "在任何谈判中，双方都应清楚其中的利害关系。",
+        "newsContext": "出自新闻摘要：'raise the stakes, set a deadline and hope that Beijing is the one to blink first'。"
       },
       {
-        "word": "escalate",
-        "phonetic": "/ˈeskəleɪt/",
+        "word": "deadline",
+        "phonetic": "/ˈdedlaɪn/",
+        "partOfSpeech": "n.",
+        "definition": "最后期限，截止日期",
+        "example": "Setting an unrealistic deadline can damage trust in a team.",
+        "translation": "设定不切实际的截止日期会损害团队中的信任。",
+        "newsContext": "新闻摘要提到欧盟谈判策略之一是 'set a deadline'，即设定最后期限施压。"
+      },
+      {
+        "word": "blink",
+        "phonetic": "/blɪŋk/",
+        "partOfSpeech": "v. / n.",
+        "definition": "眨眼；（在对峙中）退缩、让步",
+        "example": "In a tough talk, the one who blinks first usually loses ground.",
+        "translation": "在艰难的对话中，先退缩的一方往往会失去主动。",
+        "newsContext": "出自新闻摘要 'hope that Beijing is the one to blink first'，blink 在此指在博弈中先让步。"
+      },
+      {
+        "word": "milestone",
+        "phonetic": "/ˈmaɪlstoʊn/",
+        "partOfSpeech": "n.",
+        "definition": "里程碑；重大事件，转折点",
+        "example": "Finishing the project on time was a real milestone for the whole team.",
+        "translation": "按时完成这个项目对整个团队来说是一个真正的里程碑。",
+        "newsContext": "出自新闻 'Targeting a continental shift'：'marked a milestone more than five decades in the making'。"
+      },
+      {
+        "word": "withdrawal",
+        "phonetic": "/wɪðˈdrɔːəl/",
+        "partOfSpeech": "n.",
+        "definition": "撤回，撤退；退出",
+        "example": "The withdrawal of the proposal surprised everyone at the meeting.",
+        "translation": "该提案的撤回让与会的所有人都感到意外。",
+        "newsContext": "出自 CGTN 新闻：'Iraqi PM confirms complete withdrawal of US-led coalition forces'。"
+      },
+      {
+        "word": "reignite",
+        "phonetic": "/ˌriːɪɡˈnaɪt/",
         "partOfSpeech": "v.",
-        "definition": "（使）升级，加剧",
-        "example": "The US-Canada trade war escalated as new tariffs took effect.",
-        "translation": "随着新关税生效，美加贸易战进一步升级。",
-        "newsContext": "出自 US-Canada trade war escalates 标题"
+        "definition": "重新点燃；使再度兴起",
+        "example": "A sincere apology can reignite cooperation after a conflict.",
+        "translation": "真诚的道歉能在冲突之后重新点燃合作。",
+        "newsContext": "出自新闻 'Heritage, modern chic reignite capital's charm' 及平陆运河旅游报道。"
       },
       {
-        "word": "tariff",
-        "phonetic": "/ˈtærɪf/",
-        "partOfSpeech": "n.",
-        "definition": "关税",
-        "example": "Higher tariffs could raise costs for exporters on both sides of the border.",
-        "translation": "更高的关税可能会增加边境两侧出口商的成本。",
-        "newsContext": "关联 US-Canada trade war escalates 报道中的贸易壁垒议题"
+        "word": "steady",
+        "phonetic": "/ˈstedi/",
+        "partOfSpeech": "adj. / v.",
+        "definition": "平稳的，稳定的；使镇定",
+        "example": "A steady tone of voice helps calm a heated discussion.",
+        "translation": "平稳的语调有助于平息激烈的讨论。",
+        "newsContext": "出自新闻标题 'What keeps China's high-speed trains so steady?'，形容高铁运行平稳。"
       },
       {
-        "word": "negotiation",
-        "phonetic": "/nɪˌɡoʊʃiˈeɪʃn/",
-        "partOfSpeech": "n.",
-        "definition": "谈判，协商",
-        "example": "Both governments remain open to a new negotiation despite the escalation.",
-        "translation": "尽管冲突升级，两国政府仍对新一轮谈判持开放态度。",
-        "newsContext": "出自 both sides remain open to a new deal"
-      },
-      {
-        "word": "budget",
-        "phonetic": "/ˈbʌdʒɪt/",
-        "partOfSpeech": "n.",
-        "definition": "预算",
-        "example": "Six major contributors called for a cut in the EU's next budget.",
-        "translation": "六个主要出资国要求削减欧盟的下一期预算。",
-        "newsContext": "出自 Six major contributors call for EU budget cut"
-      },
-      {
-        "word": "fiscal",
-        "phonetic": "/ˈfɪskl/",
-        "partOfSpeech": "adj.",
-        "definition": "财政的，国库的",
-        "example": "The six countries argued that fiscal discipline must be preserved.",
-        "translation": "这六个国家主张必须保持财政纪律。",
-        "newsContext": "关联 EU budget cut 报道中的财政政策讨论"
-      },
-      {
-        "word": "export",
-        "phonetic": "/ˈekspɔːrt/",
-        "partOfSpeech": "n. / v.",
-        "definition": "出口；出口商品",
-        "example": "Violin exports from the county now reach dozens of countries worldwide.",
-        "translation": "该县的小提琴出口现已覆盖全球数十个国家。",
-        "newsContext": "出自 Chinese county plucks strings of global violin market"
-      },
-      {
-        "word": "market share",
-        "phonetic": "/ˈmɑːrkɪt ʃer/",
-        "partOfSpeech": "n.",
-        "definition": "市场份额",
-        "example": "The county has taken a large market share of the global violin industry.",
-        "translation": "该县在全球小提琴产业中占据了很大的市场份额。",
-        "newsContext": "出自 Chinese county plucks strings of global violin market"
-      },
-      {
-        "word": "regulation",
-        "phonetic": "/ˌreɡjuˈleɪʃn/",
-        "partOfSpeech": "n.",
-        "definition": "监管，法规",
-        "example": "AI regulation is becoming a priority for businesses and governments alike.",
-        "translation": "人工智能监管正成为企业和政府共同的优先事项。",
-        "newsContext": "出自 AI focus shifts to application and regulation"
+        "word": "confirm",
+        "phonetic": "/kənˈfɜːrm/",
+        "partOfSpeech": "v.",
+        "definition": "确认，证实；使确定",
+        "example": "Please confirm the meeting time by email before Friday.",
+        "translation": "请在周五之前通过邮件确认会议时间。",
+        "newsContext": "出自新闻 'Iraqi PM confirms complete withdrawal of US-led coalition forces'，confirm 用于正式表态与信息确认。"
       }
     ],
     "pattern": {
-      "pattern": "be poised to do sth.（有望做某事；准备就绪去做某事）",
-      "example": "China's imports are poised to hit a record high this year.",
-      "translation": "中国的进口额有望在今年创下历史新高。",
-      "usage": "用于描述某事即将发生或已经做好准备，常见于财经报道预测趋势。也可写作 be poised for sth.，如 The market is poised for recovery."
+      "pattern": "… is not the right approach to (doing) sth.",
+      "example": "Coercion is not the right approach to settling differences.",
+      "translation": "胁迫不是解决分歧的正确方式。",
+      "usage": "用来委婉而坚定地否定某种做法，并暗示存在更好的替代方案。approach 后接 to + 名词/动名词（注意 to 是介词）。职场中可用于会议、邮件、谈判：'Rushing the decision is not the right approach to building consensus.'（仓促决策不是达成共识的正确方法。）"
     },
     "grammar": {
-      "title": "现在进行时表将来（Present Continuous for Future Arrangements）",
-      "explanation": "当事件已经安排好、即将发生时，常用现在进行时表达将来意义，常与表示未来的具体时间状语连用。这在财经新闻中非常常见，用来报道已确定的计划、会议或趋势。",
+      "title": "现在进行时表示正在变化的趋势（Present Continuous for developing trends）",
+      "explanation": "新闻英语常用「be + increasingly/growing 等副词 + 形容词」或现在进行时来描述正在发生、逐渐加剧的趋势，比一般现在时更有动态感。常见结构：主语 + is/are becoming / acquiring / growing + increasingly + 形容词。职场沟通中可用于汇报变化、预警风险。",
       "examples": [
-        "Trade tensions between the US and Canada are intensifying as both sides prepare for a new round of talks.",
-        "The autumn grain harvest is underway and the full-year crop is on track for another bumper harvest."
+        "The European Union's trade policy toward China is acquiring an increasingly familiar look.",
+        "The Pinglu Canal is seeing a tourism boom during the National Day holiday."
       ]
     },
     "pronunciation": {
-      "word": "negotiation",
-      "phonetic": "/nɪˌɡoʊʃiˈeɪʃn/",
-      "tips": "重音在第四个音节 -a-tion 上，注意中间的 /ɡoʊʃ/ 发音类似“够什”。常见错误是把重音放在第二个音节。可拆分为 ni-GO-shee-AY-shun 慢读练习。",
+      "word": "coercion",
+      "phonetic": "/koʊˈɜːrʒn/",
+      "tips": "重音在第二个音节 -er- 上：/koʊ-ˈɜːr-ʒn/。注意 -sion 在元音后常读 /ʒn/（如 decision /dɪˈsɪʒn/、television），不要读成 /ʃən/。第一个音节是双元音 /oʊ/，口型由半合到合。可拆解练习：co - ER - zhun，最后的 /ʒn/ 是浊音，舌尖不接触上颚。",
       "examples": [
-        "The negotiation between the two countries lasted for several weeks.",
-        "Both sides said the negotiation was constructive."
+        "Coercion is not the right approach to settling differences.",
+        "They rejected coercion in favor of open dialogue."
       ]
     },
     "reading": {
-      "title": "Global Trade at a Crossroads: Records, Rivalries and Regulations",
-      "content": "As the fourth quarter begins, global trade finds itself at an unusual crossroads. On one hand, China's imports are poised to hit a record high this year, powered by resilient domestic demand. Its exports tell an equally striking story: one small county now supplies a major share of the world's violins, proof that specialized manufacturing can conquer global niche markets. On the other hand, tensions are rising elsewhere. The trade war between the United States and Canada has escalated, even as both governments remain open to a new deal. In Europe, six major contributors are pressing for a tighter EU budget, demanding fiscal discipline from Brussels. Meanwhile, attention around artificial intelligence is shifting from flashy model launches toward practical applications and thoughtful regulation. Together, these signals suggest that the winners of tomorrow's economy will be those who balance ambition with discipline, and innovation with rules.",
-      "translation": "随着第四季度开启，全球贸易正处在一个不寻常的十字路口。一方面，受强劲内需推动，中国今年的进口额有望创下历史新高。出口方面同样令人瞩目：一个中国小县城如今供应着全球小提琴市场的一大份额，证明专业化制造能够征服全球细分市场。另一方面，其他地区紧张局势正在升级。美加贸易战愈演愈烈，尽管两国政府仍对新协议持开放态度。在欧洲，六个主要出资国正敦促收紧欧盟预算，要求布鲁塞尔保持财政纪律。与此同时，围绕人工智能的关注正从炫目的模型发布转向实际应用与审慎监管。这些信号共同表明：明日经济的赢家，将是那些在雄心与纪律、创新与规则之间取得平衡的人。",
-      "sourceNote": "本文基于 China Daily 与 CGTN 2026年10月1日相关新闻改写，包括 Imports poised to hit record high、Chinese county plucks strings of global violin market、Six major contributors call for EU budget cut、US-Canada trade war escalates 及 AI focus shifts to application and regulation。"
+      "title": "Talking, Not Pressuring: What Trade Disputes Teach Us About Workplace Communication",
+      "content": "A recent ChinaDaily commentary points out that the European Union's trade policy toward China is acquiring an increasingly familiar look: raise the stakes, set a deadline and hope the other side blinks first. The article argues that coercion is not the right approach to settling differences.\n\nThe same lesson applies in the office. When two departments disagree over a project, the loudest voice rarely wins lasting support. Instead, experienced leaders explain their concerns clearly, confirm what is at stake, and invite the other side to respond. They replace pressure with dialogue, and deadlines with shared plans.\n\nGood communication also means admitting limits. Saying \"I don't have all the answers yet\" builds more trust than pretending to know everything. And when a conflict does end, a sincere follow-up can reignite cooperation.\n\nWhether between nations or colleagues, respect and patience remain the steadiest foundation for any relationship.",
+      "translation": "最近一篇《中国日报》评论指出，欧盟对华贸易政策呈现出越来越熟悉的套路：抬高筹码、设定最后期限，然后赌对方先退缩。文章认为，胁迫不是解决分歧的正确方式。\n\n同样的道理也适用于办公室。当两个部门在某个项目上意见不合时，嗓门最大的人 rarely 能赢得长久的支持。相反，有经验的领导者会清楚地说明自己的顾虑，确认双方的利害关系，并邀请对方回应。他们用对话代替施压，用共同计划代替最后期限。\n\n良好的沟通也意味着承认局限。说一句“我还没有全部答案”，比假装无所不知更能建立信任。而当冲突真正结束时，一次真诚的后续跟进能够重新点燃合作。\n\n无论在国家之间还是同事之间，尊重与耐心始终是一切关系最稳固的基石。",
+      "sourceNote": "本文基于 ChinaDaily 评论文章《Coercion not the right approach to settling differences》及 CGTN 关于伊拉克撤军的报道改写，用于英语学习目的。"
     }
   }
 }

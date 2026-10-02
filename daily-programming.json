@@ -1,39 +1,38 @@
 {
-  "date": "2026-10-01",
+  "date": "2026-10-02",
   "contents": [
     {
-      "id": "prog-2026-10-01",
-      "date": "2026-10-01",
-      "title": "Node.js 流（Streams）与背压（Backpressure）工程实战",
-      "summary": "用 stream/promises 的 pipeline 搭建一条可取消、能正确处理背压的数据流水线，避免大数据处理时的内存爆炸与数据丢失。",
-      "difficulty": "中级",
-      "concept": "在 Node.js 里，Stream 是处理「数据量未知或远超内存」的首选抽象。它把一次性的 read-all / write-all，拆成一小块一小块（chunk）的增量处理，让 1GB 的日志文件也能在几十 MB 的堆内存里跑完。Stream 分四类：Readable（可读，如 fs.createReadStream、HTTP 请求体）、Writable（可写，如 fs.createWriteStream、HTTP 响应）、Duplex（双工，如 net.Socket）、Transform（转换，如 zlib.createGzip、自定义解析器）。中间件式的管道（pipeline）把它们串起来，是 Node 高性能 I/O 的核心模型。\n\n背压（Backpressure）是流编程中最容易踩坑、也最体现工程功力的概念。当生产者（Readable）产出数据的速度快于消费者（Writable）处理数据的速度时，多余的数据会堆积在消费者内部缓冲区里。Node 通过两个信号协调这件事：Writable.write(chunk) 返回 false，表示「缓冲区已超过 highWaterMark，请暂停写入」；等缓冲区清空后会触发 'drain' 事件，表示「可以继续写了」。Readable 侧同理：内部缓冲达到 highWaterMark 后 push() 会返回 false，readable 会暂停向底层资源拉取数据。\n\nhighWaterMark 是这个机制的阈值，单位在二进制模式下是字节、在 objectMode 下是「对象个数」。默认 16KB（objectMode 为 16）。调小它可以降低内存峰值但会增加调度开销；调大能提升吞吐但会占更多内存。常见反模式是忽略 write() 的返回值一路狂写，结果在消费慢的场景（如写远程 S3、慢磁盘、限流的第三方 API）下内存飙升甚至 OOM；更隐蔽的反模式是自定义 Writable 里既不返回值也不调用 callback，导致数据静默丢失或流程卡死。\n\n工程上请优先使用 node:stream/promises 的 pipeline()，而不是老式的 .pipe()。pipe() 不会自动传播错误、不会自动销毁出错的流，一个上游异常可能让整个进程挂掉或泄漏文件描述符；pipeline() 会把错误向前传播、销毁所有流、并返回 Promise，天然支持 async/await 与 AbortSignal 取消。配合 async generator（async function*）作为数据源、以及 for await...of 消费流，可以写出非常清晰的异步数据流水线。\n\n最后一类实战经验：objectMode 让流承载任意 JS 对象而非 Buffer，非常适合 ETL、消息队列消费、CSV/JSONL 解析这类「按记录处理」的场景；但注意 objectMode 的 highWaterMark 计数单位变成了「条数」。另外，流一旦 destroy 或 error，未 flush 的缓冲数据会丢失，所以关键落盘路径务必用 pipeline + try/catch，并在 catch 中做重试或写入死信队列。",
+      "id": "prog-2026-10-02",
+      "date": "2026-10-02",
+      "title": "sync.Pool 与逃逸分析：高吞吐服务中的对象复用实践",
+      "summary": "深入理解 Go 内存分配、逃逸分析与 sync.Pool 的实现机制，构建低 GC 压力的高性能对象池方案。",
+      "difficulty": "高级",
+      "concept": "在高吞吐的 Go 服务（如网关、编解码层、日志管道）中，GC 压力往往比 CPU 计算更早成为瓶颈。每次 `make([]byte, 4096)` 或 `new(bytes.Buffer)` 都会在堆上分配对象，产生指针扫描与标记成本。量化手段是 `go build -gcflags=\"-m\"` 观察逃逸分析结果，以及 `go test -bench=. -benchmem` 中的 `allocs/op` 与 `B/op`。高级工程师的优化顺序应当是：先测量 → 定位分配热点 → 尝试栈分配/复用 → 最后才考虑 unsafe 或 arena 类技巧。\n\n逃逸分析（Escape Analysis）是编译器在编译期判断变量生命周期是否超出当前栈帧的静态分析。若变量可能被指针逃出函数（赋值给全局变量、闭包捕获、发送到 channel、写入接口/切片底层等），编译器会把它移到堆上。常见陷阱包括：`return &x` 导致 x 逃逸、`fmt.Println(x)` 把 x 装箱进 `interface{}` 导致逃逸、循环内反复构造 `[]interface{}` 造成大量小对象。高级调优中，一个典型的技巧是把热点函数中的 `...interface{}` 换成 `[]byte` 直写或显式类型参数，从而让数据留在栈上。\n\n`sync.Pool` 是 Go 标准库提供的**无锁、分片式、可被 GC 回收**的对象缓存。每个 P（逻辑处理器）拥有本地 poolLocal（private + shared 双端队列），Get 时先取 private，再取本地 shared，最后去偷别的 P 的 shared；这避免了全局锁竞争。1.13 之后引入 victim cache：GC 时当前池降级为 victim 池，下一轮 GC 才真正清空，显著降低了「刚 Put 就被 GC 清掉」的概率。注意它不是连接池：**不保证对象存活、不保证数量上限、不保证 FIFO**，只适合缓存「生命周期短、创建成本高、可安全重置」的对象。\n\n工程上使用 sync.Pool 必须遵守三条纪律：第一，`Get` 之后必须立刻 `Reset`（`bytes.Buffer.Reset`、`b = b[:0]`），否则上一次使用的数据会泄漏到下一次调用，产生严重 bug 或内存膨胀；第二，池中对象的大小要受控，否则某个 P 持有超大 buffer 会长期占用内存，实践中常做「超过阈值就丢弃不再 Put 回」；第三，Put 的对象必须是**干净状态**，且不要再持有外部引用（否则阻止回收）。另外，`sync.Pool` 的 `New` 字段在 P 上会并发调用，不要在里面做有副作用的操作。\n\n在微服务场景中，一个典型的组合是：用 `sync.Pool` 复用 `bytes.Buffer`/`[]byte` 做序列化，用 `sync.Pool` 复用 `[]*T` 切片头做批处理，再配合 `sync.WaitGroup` 或 `errgroup.SetLimit` 做有界并发。要警惕「过早优化」：如果服务 QPS 不高，pool 带来的复杂度和内存滞留反而不划算。正确姿势是先用 pprof 的 `alloc_space`/`alloc_objects` 火焰图确认分配热点，再决定是否引入池化。",
       "codeExample": {
-        "language": "javascript",
-        "code": "// stream-lab.mjs —— 可直接运行：node stream-lab.mjs\n// 演示：异步生成器数据源 -> objectMode 转换 -> 慢消费者，并正确处理背压与取消\nimport { Readable, Transform, Writable } from 'node:stream';\nimport { pipeline } from 'node:stream/promises';\nimport { setTimeout as sleep } from 'node:timers/promises';\n\n// ① 数据源：异步生成器可被 Readable.from 直接消费\nasync function* dataSource(total) {\n  for (let i = 0; i < total; i++) {\n    await sleep(15); // 模拟慢速 I/O（比如查库）\n    yield { id: i, payload: `record-${i}`.padEnd(40, '*') };\n  }\n}\n\n// ② 转换流：objectMode 读入对象，输出 Buffer 字符串行\nconst toJsonLine = new Transform({\n  objectMode: true, // 读取端按「对象」计数\n  transform(record, _enc, cb) {\n    this.push(JSON.stringify(record) + '\\n');\n    cb(); // 必须调用，否则流水线卡住\n  },\n});\n\n// ③ 慢消费者：highWaterMark 很小，很快触发背压\nconst slowSink = new Writable({\n  highWaterMark: 2,\n  write(chunk, _enc, cb) {\n    setTimeout(() => {\n      console.log('写出:', chunk.toString().trim().slice(0, 30));\n      cb();\n    }, 25);\n  },\n});\n\n// ④ 用 pipeline 串联：错误自动传播 + 自动销毁 + 支持 AbortSignal\nconst ac = new AbortController();\nsetTimeout(() => ac.abort(), 5000); // 5 秒后取消，模拟超时场景\n\ntry {\n  await pipeline(\n    Readable.from(dataSource(20)),\n    toJsonLine,\n    slowSink,\n    { signal: ac.signal }\n  );\n  console.log('流水线完成 ✅');\n} catch (err) {\n  console.error('流水线中断:', err.name, '-', err.message);\n}\n\n// ⑤ 手动演示背压信号：write() 的返回值\nconst probe = new Writable({\n  highWaterMark: 5,\n  write(_chunk, _enc, cb) { setTimeout(cb, 10); },\n});\nconsole.log('第一次 write 返回:', probe.write('1234')); // 缓冲 4 < 5\nconsole.log('第二次 write 返回:', probe.write('5678')); // 缓冲 8 >= 5\nprobe.on('drain', () => console.log('drain：缓冲已清空，可以继续写'));",
-        "explanation": "① dataSource 是一个 async generator，每次 yield 一条记录并 sleep 15ms，模拟慢速上游；Readable.from() 把它包装成 Readable 流。② toJsonLine 用 objectMode 读取对象，把每条记录序列化成 JSON 行后 push 出去；transform 里必须调用 cb()，否则这条流会永久阻塞。③ slowSink 的 highWaterMark 设为 2（objectMode/Buffer 混合场景下这里按字节计数，2 字节意味着几乎立刻背压），每次 _write 耗时 25ms，是明显的慢消费者。④ pipeline() 把三段串起来，并接受 { signal } 选项：超过 5 秒会 abort，所有流被自动销毁并抛出 AbortError，我们在 catch 里优雅处理。⑤ 最后单独演示背压信号：第一次 write('1234') 缓冲 4 字节小于 highWaterMark 5，返回 true；第二次缓冲累积到 8 字节，超过阈值，返回 false，并在消费者消费完后触发 'drain' 事件。"
+        "language": "go",
+        "code": "package main\n\nimport (\n\t\"bytes\"\n\t\"encoding/json\"\n\t\"fmt\"\n\t\"runtime\"\n\t\"sync\"\n)\n\n// ---------- 1. 基于 sync.Pool 的安全 Buffer 池 ----------\n\nconst maxBufSize = 64 * 1024 // 超过 64KB 的 buffer 不回池，避免内存滞留\n\nvar bufPool = sync.Pool{\n\tNew: func() any {\n\t\treturn new(bytes.Buffer) // 返回空指针对象，零值即可用\n\t},\n}\n\n// getBuf 取出 buffer 并保证是干净状态\nfunc getBuf() *bytes.Buffer {\n\tb := bufPool.Get().(*bytes.Buffer)\n\tb.Reset() // 关键：清掉上次遗留的数据，防止数据泄漏\n\treturn b\n}\n\n// putBuf 归还 buffer；只在 buf 仍然“可控”时才回收\nfunc putBuf(b *bytes.Buffer) {\n\tif b.Cap() > maxBufSize {\n\t\treturn // 超大对象直接丢弃，交给 GC，避免池子膨胀\n\t}\n\tbufPool.Put(b)\n}\n\n// ---------- 2. 业务示例：JSON 序列化 + 手写日志行 ----------\n\ntype Event struct {\n\tUserID uint64            `json:\"user_id\"`\n\tAction string            `json:\"action\"`\n\tAttrs  map[string]string `json:\"attrs\"`\n}\n\nfunc renderEvent(e Event) (string, error) {\n\tbuf := getBuf()\n\tdefer putBuf(buf) // 无论成功失败都归还\n\n\t// 复用 buffer 做 JSON 编码，避免 encoder 内部反复 make []byte\n\tenc := json.NewEncoder(buf)\n\tif err := enc.Encode(e); err != nil {\n\t\treturn \"\", err\n\t}\n\t// buf.Bytes() 末尾带 '\\n'，这里手动追加前缀\n\tout := make([]byte, 0, buf.Len()+8)\n\tout = append(out, \"EVENT \"...)\n\tout = append(out, buf.Bytes()...)\n\treturn string(out), nil // string(out) 会复制，安全：返回值不指向 buf\n}\n\n// ---------- 3. 对比：带池 vs 不带池（可用 -benchmem 观察差异） ----------\n\nfunc noPoolRender(e Event) (string, error) {\n\tvar b bytes.Buffer // 每次调用都新分配（且大概率逃逸到堆）\n\tif err := json.NewEncoder(&b).Encode(e); err != nil {\n\t\treturn \"\", err\n\t}\n\treturn \"EVENT \" + b.String(), nil\n}\n\nfunc main() {\n\te := Event{UserID: 42, Action: \"login\", Attrs: map[string]string{\"ip\": \"10.0.0.1\"}}\n\n\tfor i := 0; i < 3; i++ {\n\t\ts, err := renderEvent(e)\n\t\tif err != nil {\n\t\t\tpanic(err)\n\t\t}\n\t\tfmt.Print(s)\n\t}\n\n\t// 演示：GC 会清空 sync.Pool，Put 进去的对象不一定还能 Get 到\n\tvar demo = sync.Pool{New: func() any { return \"fresh\" }}\n\tdemo.Put(\"cached\")\n\tfmt.Println(\"before GC:\", demo.Get())\n\tdemo.Put(\"cached\")\n\truntime.GC() // 触发 GC，池中缓存可能被清空\n\tfmt.Println(\"after  GC:\", demo.Get()) // 输出 fresh（New 创建）\n\n\t// 观察逃逸分析：go build -gcflags=\"-m\" main.go\n\tfmt.Println(\"noPool result:\", must(noPoolRender(e)))\n}\n\nfunc must(s string, err error) string {\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\treturn s\n}\n\n/*\n编译与性能观测命令：\n  go build -gcflags=\"-m -m\" main.go   # 查看逃逸分析详细原因\n  go test -bench=. -benchmem -cpuprofile=cpu.out -memprofile=mem.out\n  go tool pprof -alloc_objects mem.out\n*/\n",
+        "explanation": "第 1 段定义了 maxBufSize 阈值与 bufPool：`New` 返回 `*bytes.Buffer`，这是池中对象的构造器，只在池为空时被调用。\n\ngetBuf/putBuf 是池化的唯一入口。`b.Reset()` 极其关键——bytes.Buffer 的 Reset 只重置长度为 0 而保留底层容量，实现真正的零分配复用；若忘记 Reset，上一个请求的数据会被下一个请求读到（数据泄漏 / 串号 bug）。putBuf 中的 `b.Cap() > maxBufSize` 判断防止超大对象长期滞留在池里：sync.Pool 没有容量上限，全靠这个业务阈值做内存保护。\n\nrenderEvent 展示典型用法：`getBuf` → `defer putBuf(buf)` 保证异常路径也能归还。注意最后 `string(out)` 会复制一份数据，返回值与 buf 解耦；如果直接返回 `buf.String()` 的引用再 Put 回池子，就会发生 use-after-recycle 类型的严重 bug。\n\nnoPoolRender 是对照组：局部 `var b bytes.Buffer` 加上 `&b` 传入接口方法，会触发逃逸到堆，每次调用都分配。用 `-benchmem` 可以看到 allocs/op 从 3~4 次降到 1 次左右。\n\nmain 中的 demo 池演示了 sync.Pool 的非确定性：`runtime.GC()` 会触发 victim cache 轮转，Put 进去的对象可能被清空，因此 Get 得到 `New` 返回的 \"fresh\"。这说明 sync.Pool 只能用于「取不到也没关系，新建一个就行」的场景，绝不能当连接池或计数器使用。"
       },
       "keyPoints": [
-        "write() 返回 false 表示缓冲区超过 highWaterMark，必须暂停写入并等待 'drain' 事件，忽略它会导致内存飙升",
-        "highWaterMark 在二进制模式按字节计数、在 objectMode 按对象个数计数，默认分别是 16KB 与 16",
-        "优先使用 node:stream/promises 的 pipeline()，它会自动传播错误、销毁所有流并返回 Promise，远优于 .pipe()",
-        "自定义 Transform/Writable 必须调用 callback（cb）或使用 async callback，否则流水线会静默卡死",
-        "async function* 生成器配合 Readable.from() 是最简洁的数据源写法，天然支持背压与 for await...of 消费",
-        "pipeline 支持 AbortSignal，可实现超时/取消；错误发生时缓冲区未 flush 的数据会丢失，关键路径要设计重试或死信队列"
+        "sync.Pool 是分片无锁缓存（private/shared per P），只适合缓存「创建成本高、可安全重置、丢失无害」的对象",
+        "Get 后必须 Reset、Put 前必须清空引用，否则会造成跨请求数据泄漏或内存滞留",
+        "GC 会通过 victim cache 清空池，Put 进去的对象不保证被 Get 到，池不是连接池",
+        "用 `go build -gcflags=\"-m\"` 观察逃逸分析，用 `-benchmem` 的 allocs/op 量化优化效果",
+        "设置对象大小上限（如 64KB），超限不回池；避免接口装箱、闭包捕获等常见逃逸陷阱"
       ],
       "exercise": {
-        "description": "实现一个「日志清洗流水线」log-compactor.mjs：用 Readable.from + async generator 生成 1000 条模拟日志对象（字段：level、time、msg），经过一个 objectMode 的 Transform 只保留 level === 'error' 的记录并改写为 CSV 行（time,level,msg），最后写入一个自定义 Writable（每次写入延迟 1ms、highWaterMark 设为 8）并统计最终写入条数。要求：(1) 使用 node:stream/promises 的 pipeline()；(2) 加入 AbortSignal.timeout(3000) 支持超时取消；(3) 在 catch 中区分 AbortError 与其他错误；(4) 打印写入的总条数。",
-        "hint": "用 async function* 生成日志对象，yield 时不要每条都 await 太久，保证能在 3 秒内跑完；Transform 里用 this.push() 输出 CSV 行并调用 cb()；在 Writable 的 _write 里用 setTimeout(cb, 1) 模拟慢盘，用一个计数器统计条数；pipeline 的最后一个参数传 { signal: AbortSignal.timeout(3000) }，注意 pipeline(...streams, options) 的 options 要放在数组或参数列表末尾。",
+        "description": "实现一个高性能的 `WriteKV` 函数：把 `map[string]string` 序列化成 `key1=value1&key2=value2` 形式写入 `io.Writer`，要求热路径（key+value 的拼接缓冲）使用 sync.Pool 复用 `[]byte`，且满足：1) 单个 buffer 超过 8KB 不回池；2) 并发调用安全；3) 输出中不残留上一次调用的数据。用 `-benchmem` 验证 allocs/op 明显低于不使用池的版本。",
+        "hint": "池中存 `*[]byte` 或 `*bytes.Buffer` 都可以，但注意 `[]byte` 是引用类型，池里要放指针才能通过类型断言拿到可变容量。取用时用 `b = b[:0]` 复位长度、保留容量；写入 io.Writer 完成后判断 `cap(b) > 8*1024` 决定是否归还。map 遍历顺序随机，测试断言时需用 strings.Split + 排序或使用 httptest 风格的断言。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全自定义 Writable 的配置项，使其缓冲区阈值为 8。",
-            "codeContext": "const sink = new Writable({\n  ______: 8,\n  write(chunk, enc, cb) {\n    setTimeout(cb, 1);\n  },\n});",
+            "question": "补全下面的对象池实现，使 Get 返回干净的 buffer、Put 时丢弃超大对象。",
+            "codeContext": "var pool = sync.Pool{New: func() any { b := make([]byte, 0, 1024); return &b }}\n\nfunc get() []byte {\n    p := pool.Get().(*[]byte)\n    return __BLANK1__\n}\n\nfunc put(b []byte) {\n    if __BLANK2__ {\n        return\n    }\n    pool.Put(&b)\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "const sink = new Writable({\n  ",
+                "content": "func get() []byte {\n    p := pool.Get().(*[]byte)\n    return ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -41,56 +40,75 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择配置项]",
+                "placeholder": "[选择]",
                 "options": [
-                  "highWaterMark",
-                  "objectMode",
-                  "waterMarkLimit",
-                  "bufferSize"
+                  "*p",
+                  "(*p)[:0]",
+                  "(*p)[0:1024]",
+                  "p"
                 ],
-                "correctAnswer": "highWaterMark"
+                "correctAnswer": "(*p)[:0]"
               },
               {
                 "type": "text",
-                "content": ": 8,\n  write(chunk, enc, cb) {\n    setTimeout(cb, 1);\n  },\n});",
+                "content": "\n}\n\nfunc put(b []byte) {\n    if ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "len(b) > 8*1024",
+                  "cap(b) > 8*1024",
+                  "cap(b) == 0",
+                  "len(b) == 0"
+                ],
+                "correctAnswer": "cap(b) > 8*1024"
+              },
+              {
+                "type": "text",
+                "content": " {\n        return\n    }\n    pool.Put(&b)\n}",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "highWaterMark",
-            "explanation": "highWaterMark 是流内部缓冲区的阈值（二进制模式按字节、objectMode 按对象个数计数）。缓冲达到该值后 write() 会返回 false 并在清空时触发 'drain'。objectMode 是另一项配置（用于承载对象），不存在 waterMarkLimit / bufferSize 这类选项。"
+            "correctAnswer": "(*p)[:0]",
+            "explanation": "第一空必须是 `(*p)[:0]`：长度归零但保留底层容量，才能复用分配；`*p` 会把上一次残留数据带给调用者（数据泄漏），`p` 则返回 `*[]byte` 与函数签名不符。第二空判断内存上限应看 `cap(b)` 而不是 `len(b)`：我们复用的是容量，真正决定内存占用的是底层底层数组的容量；`len(b)` 在归还时通常为 0 或很小，无法起到保护作用。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "当自定义 Writable 的 write(chunk) 返回 false 时，正确的处理方式是？",
-            "codeContext": "const ok = sink.write(data);\nif (!ok) {\n  // 这里应该怎么做？\n}",
+            "question": "关于 sync.Pool 的行为，下列说法中错误的是？",
+            "codeContext": "var p = sync.Pool{New: func() any { return new(bytes.Buffer) }}\n\nfunc handle() {\n    b := p.Get().(*bytes.Buffer)\n    defer p.Put(b)\n    // ... 使用 b ...\n}",
             "segments": null,
             "options": [
-              "立即停止程序并抛出错误",
-              "暂停上游写入，等待 sink 的 'drain' 事件后再继续写",
-              "忽略返回值继续写，Node 会自动丢弃多余数据",
-              "调用 sink.end() 关闭流以释放缓冲"
+              "GC 时池中未被引用的对象可能被回收，Get 得到的是 New 创建的新对象",
+              "池中对象数量没有硬上限，需要业务侧控制单个对象的大小",
+              "它保证 FIFO 顺序取出对象，可用于实现公平的任务队列",
+              "Get 之后必须重置对象状态，否则会读到上一次调用遗留的数据"
             ],
-            "correctAnswer": "暂停上游写入，等待 sink 的 'drain' 事件后再继续写",
-            "explanation": "write() 返回 false 只是一个「建议」，表示内部缓冲已超过 highWaterMark。正确做法是暂停生产（pause()/停止 pull/await drain），等到 'drain' 事件说明缓冲已清空再继续。忽略它不会丢数据，但会让缓冲无限增长导致 OOM；调用 end() 会结束写入，数据不再完整。"
+            "correctAnswer": "它保证 FIFO 顺序取出对象，可用于实现公平的任务队列",
+            "explanation": "sync.Pool 不保证顺序也不保证存活：Get 优先从当前 P 的 private 取，其次本地 shared，最后偷其他 P 的 shared，本质是 LIFO/随机的性能优化结构，不提供公平性。其余三项都是正确的使用守则——GC 会经 victim cache 清空池、无容量上限需自控大小、Get 后必须 Reset。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码的输出顺序是什么？",
-            "codeContext": "const { Writable } = require('node:stream');\nconst w = new Writable({\n  highWaterMark: 5,\n  write(_chunk, _enc, cb) { setTimeout(cb, 10); },\n});\nconsole.log(w.write('1234'));\nconsole.log(w.write('5678'));\nw.on('drain', () => console.log('drain'));",
+            "question": "以下程序的输出是什么？",
+            "codeContext": "package main\n\nimport (\n    \"fmt\"\n    \"runtime\"\n    \"sync\"\n)\n\nfunc main() {\n    p := sync.Pool{New: func() any { return \"fresh\" }}\n\n    p.Put(\"cached\")\n    fmt.Println(p.Get())\n\n    p.Put(\"cached\")\n    runtime.GC()\n    fmt.Println(p.Get())\n\n    fmt.Println(p.Get())\n}",
             "segments": null,
             "options": [
-              "true / false / drain",
-              "false / true / drain",
-              "true / true / drain",
-              "false / false / 不会输出 drain"
+              "cached\\ncached\\ncached",
+              "cached\\nfresh\\nfresh",
+              "fresh\\nfresh\\nfresh",
+              "cached\\nfresh\\ncached"
             ],
-            "correctAnswer": "true / false / drain",
-            "explanation": "highWaterMark 为 5：第一次 write('1234') 后内部缓冲 4 字节 < 5，返回 true；第二次 write('5678') 后缓冲累计 8 字节 ≥ 5，返回 false。随后消费者的 _write 逐步完成（每次 10ms），缓冲清空时触发 'drain' 事件，因此输出顺序是 true、false、drain。"
+            "correctAnswer": "cached\\nfresh\\nfresh",
+            "explanation": "第一次 Get 能取到刚 Put 的 \"cached\"。第二次 Put 后调用 `runtime.GC()`，会触发 sync.Pool 的清理（poolCleanup → victim cache 轮转），本次池中的 \"cached\" 被清除，于是 Get 调用 New 得到 \"fresh\"。第三次 Get 时池为空（前一次 Get 取走后未归还），同样走 New 返回 \"fresh\"。这印证了核心结论：sync.Pool 是「尽力而为」的缓存，不能用来保存必须存活的状态。"
           }
         ]
       }
