@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-03",
+  "date": "2026-10-04",
   "contents": [
     {
-      "id": "prog-2026-10-03",
-      "date": "2026-10-03",
-      "title": "Rust 变量与可变性：let、mut 与变量遮蔽（Shadowing）",
-      "summary": "掌握 Rust 中 let 绑定、mut 可变性、const 常量与变量遮蔽的语义差异，写出语义清晰、不易误改的代码。",
-      "difficulty": "初级",
-      "concept": "在 Rust 中，用 let 声明的变量默认是「不可变绑定」（immutable binding）。这和大多数语言（Java、Python、JavaScript、Go）里「声明即可改」的直觉完全不同。Rust 这么设计是有工程考量的：绝大多数变量在声明后其实并不需要被修改，把「可变」变成需要显式声明的例外，编译器就能在局部范围内做更激进的优化，同时读者一眼就能看出哪些数据会被改写——这在代码审查（Code Review）时非常有价值。想要修改，就必须写成 let mut x = ...，这就是所谓的「可变性是显式的」（mutability is explicit）。\n\n要注意区分「变量不可变」和「数据不可变」。let s = String::from(\"hello\"); 之后 s.push_str(\" world\") 会编译失败，因为 s 是不可变绑定；但如果你拿到了 &mut String 的引用（比如通过函数参数），底层数据仍然是可以被改的。初级阶段先记住规则：绑定不可变 = 不能重新赋值、不能通过这个绑定调用会修改自身的方法。\n\n与 let 不同，const（常量）的规则更严格：必须标注类型，只能用常量表达式赋值（不能调用函数、不能有运行时才能确定的值），命名约定是全大写下划线（如 MAX_RETRY），并且在整个程序生命周期内都有效。工程中常用 const 保存配置默认值、魔法数字、超时时间等。Rust 社区风格指南建议：值在编译期就确定、语义是「永不改变的全局事实」时用 const；只是「本函数内不打算改」时用 let。\n\n最后是 Rust 独有的「变量遮蔽」（shadowing）：在同一个或内层作用域里再次用 let 绑定同名变量，会创建一个全新的绑定，旧绑定被遮蔽但不会被修改。这带来两个重要能力：一是可以改变类型（比如从 &str 变成 i32），这一点 mut 做不到；二是可以表达「同一份语义在不同阶段的形态」，例如 let input = raw.trim(); let input: i32 = input.parse()。这在解析用户输入、做数据清洗时非常常见，能让变量名保持有意义，而不必生造 input_str、input_num、input_parsed 这类冗长的名字。\n\n工程经验分享：初学者最容易踩的坑是把 shadowing 当成「赋值」。shadowing 之后旧值仍然占用内存直到作用域结束（如果它没有被移动或释放），而且在闭包、借用检查里两个同名变量是完全不同的对象，调试时容易被绕晕。经验法则是：一个变量生命周期内只做一次形态转换时用 shadowing；需要在同一形态下反复累加、循环更新时用 mut。",
+      "id": "prog-2026-10-04",
+      "date": "2026-10-04",
+      "title": "Kotlin Flow 进阶：冷流与热流（shareIn / stateIn）",
+      "summary": "掌握 Kotlin Flow 的冷热流本质，学会用 shareIn / stateIn 把一次性数据流共享给多个订阅者，避免重复请求与状态割裂。",
+      "difficulty": "中级",
+      "concept": "Kotlin 的 Flow 是「冷流（Cold Stream）」：它只是一个「描述如何产生数据」的配方，只有当调用 collect 时才会真正执行。这意味着如果你把同一个 Flow 对象交给两个订阅者，上游会执行两次——在真实工程里，这通常等价于发起两次网络请求、打开两次数据库游标、注册两次回调。这是 Flow 最容易被忽视、也最容易引发性能与一致性 bug 的地方。区分「定义 Flow」与「收集 Flow」，是理解协程 Flow 的第一道门槛。\n\n要让多个订阅者共享同一次上游执行，就需要把它转换成「热流（Hot Stream）」。Kotlin 提供了两个标准入口：shareIn 返回 SharedFlow（只读的广播流，没有「当前值」概念），stateIn 返回 StateFlow（永远持有一个当前值，且默认 distinctUntilChanged）。它们的签名都接收三个关键参数：作用域 scope（决定谁来驱动上游）、启动策略 SharingStarted、以及 replay/初始值。\n\nSharingStarted 是调优的重点，工程上常用的有三种：Eagerly 立即启动、永不停止，适合全局单例配置流；Lazily 第一个订阅者出现时启动、之后永不停止，适合缓存型数据；WhileSubscribed(stopTimeout) 在最后一个订阅者消失后延迟 stopTimeout 毫秒再取消上游，最适合 UI 屏幕——用户旋转屏幕、Fragment 重建时短暂无订阅者，缓冲 5 秒可以避免「重新请求一遍」的闪屏与浪费。Android 上通常搭配 viewModelScope 与 WhileSubscribed(5000)。\n\n实际项目中最典型的用法是 Repository 层：把「先读缓存、再发网络、最后写缓存」的 Flow 用 shareIn(scope, WhileSubscribed(), replay = 1) 包一层，这样无论有多少个页面/组件订阅，网络请求只会发一次，且新订阅者立刻能拿到最近一次结果。配合 combine 可以把多个数据流合并成一个 UI 状态流，配合 map + distinctUntilChanged 可以把连续的原始数据压缩成少量的状态变更。\n\n最后提醒两个高频坑：第一，stateIn 返回的 StateFlow 有 value，可以在非挂起代码里同步读取，这在 ViewModel 中非常方便，但也容易被滥用成「可变全局变量」，请始终只暴露只读的 StateFlow/MutableStateFlow 私有化；第二，热流的异常会向所有订阅者广播并结束流，生产代码务必在上游使用 catch { emit(默认值) } 或包装成 Result/密封类状态，避免一次网络错误把整条状态流干掉。",
       "codeExample": {
-        "language": "rust",
-        "code": "// Rust 变量与可变性示例\n// 运行：rustc variables.rs && ./variables\n// 或：cargo new variables && 把 main 函数放进去\n\n// 常量：全大写下划线命名，必须显式标注类型，可在模块任意位置定义\nconst MAX_SCORE: u32 = 100;\n\nfn main() {\n    // 1. 默认不可变绑定：声明后不能再赋值\n    let score = 86; // 编译器推断为 i32\n    println!(\"初始分数：{score}\");\n    // score = 90; // ❌ 编译错误：cannot assign twice to immutable variable\n\n    // 2. 需要被修改时，用 mut 显式声明可变性\n    let mut bonus = 5;\n    bonus += 3;\n    println!(\"加分后的 bonus：{bonus}\"); // 8\n\n    // 3. 变量遮蔽（shadowing）：用 let 重新绑定同名变量，可以改变类型\n    let total = score + bonus; // i32\n    let total = format!(\"总分：{total} / {MAX_SCORE}\"); // 现在 total 是 String\n    println!(\"{total}\");\n\n    // 4. 遮蔽常用于「同一份语义的形态转换」，避免发明冗长的变量名\n    let input = \"  42  \";\n    let input = input.trim(); // &str：去掉首尾空白\n    let input: i32 = input.parse().expect(\"解析失败\"); // i32\n    println!(\"解析结果：{input}\");\n\n    // 5. 遮蔽与作用域：内层作用域的同名绑定在块结束时消失\n    {\n        let total = 1_000; // 仅在本块可见，字面量中的下划线是视觉分隔符\n        println!(\"块内 total：{total}\");\n    }\n    println!(\"块外 total：{total}\"); // 仍然是 String 版本的 total\n\n    // 6. 类型标注与数值字面量\n    let age: u8 = 30;\n    let pi = 3.14; // 默认 f64\n    let big = 1_000_000u64; // 字面量后缀指定类型\n    println!(\"age={age}, pi={pi}, big={big}\");\n}\n",
-        "explanation": "【常量定义】const MAX_SCORE: u32 = 100; 声明了一个编译期常量，命名全大写，必须写类型注解。它不会像变量那样被「绑定」到栈上，而是在使用处被内联。\n\n【第 1 块】let score = 86; 是不可变绑定，类型由编译器从字面量推断为 i32。被注释掉的 score = 90 如果放开会得到 E0384 编译错误，这是 Rust 所有权系统给你的第一道防线。\n\n【第 2 块】let mut bonus = 5; 显式声明可变，之后 bonus += 3; 才合法。注意 mut 关键字写在绑定处而不是类型上，它描述的是「这个绑定可变」。\n\n【第 3 块】第一次 let total 是 i32；第二次 let total = format!(...) 创建了一个新的 String 绑定并遮蔽了前者。这里能换类型，正是 shadowing 区别于 mut 的关键。\n\n【第 4 块】模拟真实的数据清洗流水线：原始字符串 → trim 后的 &str → parse 后的 i32。每次 let 都重新绑定 input，读代码时语义始终是「用户输入的那个值」，只是形态在演进。\n\n【第 5 块】花括号 {} 是一个新的作用域。块内的 let total = 1_000 只在块内有效，块结束时自动销毁；块外的 println! 访问到的是 String 版本的 total，验证了遮蔽绑定的独立性。\n\n【第 6 块】展示常见的类型标注写法：u8、f64 默认推断、以及 1_000_000u64 这种带后缀和下划线分隔符的字面量，提升大数字的可读性。"
+        "language": "kotlin",
+        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.flow.*\n\n// 模拟传感器：这是一个「冷流」，只有被 collect 时才会真正开始工作\nclass TemperatureSensor(private val name: String) {\n    fun readings(): Flow<Double> = flow {\n        println(\"[$name] 开始采集（说明上游被真正执行了）\")\n        var temp = 20.0\n        while (true) {\n            emit(temp)                 // 产出一个读数\n            delay(200)                 // 每 200ms 产生一次\n            temp += (Math.random() - 0.5) * 2\n        }\n    }\n}\n\nfun main() = runBlocking {\n    val sensor = TemperatureSensor(\"室外\")\n\n    // ---------- 1. 冷流：两个收集者 = 两次独立采集 ----------\n    println(\"== 冷流演示 ==\")\n    val cold: Flow<Double> = sensor.readings().take(2)\n    cold.collect { println(\"收集者A: %.2f\".format(it)) }\n    cold.collect { println(\"收集者B: %.2f\".format(it)) }   // 上游再次执行！\n\n    // ---------- 2. shareIn：转成热流，多订阅者共享一次上游 ----------\n    val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())\n\n    val shared: SharedFlow<String> = sensor.readings()\n        .map { \"温度 %.2f ℃\".format(it) }\n        .shareIn(\n            scope,\n            started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 1000),\n            replay = 1                    // 新订阅者立刻拿到最近 1 个值\n        )\n\n    val job1 = launch { shared.take(3).collect { println(\"订阅者1 <- $it\") } }\n    val job2 = launch { shared.take(3).collect { println(\"订阅者2 <- $it\") } }\n    joinAll(job1, job2)\n\n    // ---------- 3. stateIn：压缩成「当前值」，适合 UI 状态 ----------\n    val uiState: StateFlow<String> = sensor.readings()\n        .map { if (it > 20.5) \"⚠ 高温报警\" else \"✅ 正常\" }\n        .distinctUntilChanged()          // 状态没变就不重复通知\n        .stateIn(scope, SharingStarted.WhileSubscribed(1000), \"初始化中...\")\n\n    delay(500)\n    println(\"UI 当前状态: ${uiState.value}\")   // StateFlow 可同步读取 value\n\n    // ---------- 4. combine：并行合并多个流 ----------\n    val humidity = flow {\n        emit(40); delay(150); emit(55); delay(150); emit(62)\n    }\n    combine(sensor.readings().take(3), humidity) { t, h ->\n        \"温度=%.1f℃, 湿度=%d%%\".format(t, h)\n    }.collect { println(\"环境面板: $it\") }\n\n    scope.cancel()   // 记得取消作用域，否则热流会一直跑\n}\n",
+        "explanation": "【第 1 段】TemperatureSensor.readings() 返回 flow { ... }，这是典型的「冷流定义」：flow 块里的代码在 collect 之前一行都不会执行。打印语句可以直观看到「两个收集者 → 两次采集」。\n\n【第 2 段】cold.collect 被调用两次，每次都会重新走一遍 flow 块，因此上游的「开始采集」会打印两次。这对应真实场景中的「同一个 Flow 被两个页面订阅导致请求发两次」。\n\n【第 3 段】shareIn 把冷流转成 SharedFlow：上游只在 WhileSubscribed 的规则下执行一次，结果被广播给所有订阅者。replay = 1 表示新订阅者会立刻收到最近一个值，避免「刚进来一片空白」。注意 shareIn 需要一个外部 CoroutineScope 来托管共享任务，通常用 viewModelScope 或自建的 SupervisorJob 作用域。\n\n【第 4 段】stateIn 返回 StateFlow<String>，它永远持有当前值，可通过 .value 在非挂起代码中读取，非常适合 ViewModel 暴露 UI 状态。distinctUntilChanged() 保证只有状态真正变化时才通知下游。\n\n【第 5 段】combine 会等待两个流各自产出一个值后再组合，任何一个流有新值都会触发新的组合输出，常用于把「用户信息 + 设置项」合并成一个展示模型。\n\n【最后】scope.cancel() 释放共享协程；在 Android 中由于使用 viewModelScope，ViewModel 销毁时会自动取消。"
       },
       "keyPoints": [
-        "let 绑定默认不可变，可变性必须用 mut 显式声明——这是 Rust 的核心设计哲学之一。",
-        "const 常量必须标注类型、只能用常量表达式，命名用 SCREAMING_SNAKE_CASE，适合全局配置与魔法数字。",
-        "变量遮蔽（shadowing）用 let 重新绑定同名变量，可以改变类型；mut 则只能在原类型上修改值。",
-        "遮蔽创建的是全新绑定，旧绑定被遮蔽但仍存在到作用域结束；块结束时所有绑定自动销毁。",
-        "工程经验：形态转换用 shadowing，循环累加/状态更新用 mut；调试时注意同名变量其实是不同对象。"
+        "冷流是「配方」，collect 时才执行；多个收集者 = 多次执行上游（重复网络请求的常见根因）",
+        "shareIn → SharedFlow（广播、无当前值）；stateIn → StateFlow（永远有当前值、默认去重）",
+        "SharingStarted.WhileSubscribed(5000) 是 UI 层最佳实践，避免配置变更/页面重建时重新请求",
+        "replay 决定新订阅者能拿到多少个历史值，配合 WhileSubscribed 可显著改善「刚进入页面的空白」",
+        "热流异常会广播给所有订阅者并终止流，务必在上游用 catch / Result / 密封类兜底"
       ],
       "exercise": {
-        "description": "写一个命令行温度换算小工具 temperature.rs：先用 let 保存原始输入字符串 \"  72.5F \", 然后依次用变量遮蔽把它清洗为可解析的形式、解析为 f64 摄氏/华氏温度值，最后计算并打印转换结果。要求：1) 使用 const 定义绝对零度常量 ABSOLUTE_ZERO_C: f64 = -273.15; 2) 使用 let mut 定义一个「换算次数」计数器，每打印一次结果就加一，最后打印总次数；3) 至少使用一次变量遮蔽改变类型。参考输出：原始输入: \"  72.5F \", 摄氏温度: 22.50 C, 换算次数: 1。",
-        "hint": "分四步走：(1) let raw = \"  72.5F \"; 用 raw.trim() 遮蔽得到干净字符串；(2) 用 strip_suffix('F') 或 replace(\"F\", \"\") 去掉单位，再用 .parse::<f64>().expect(...) 遮蔽成 f64；(3) 摄氏 = (华氏 - 32.0) * 5.0 / 9.0，并用 if c < ABSOLUTE_ZERO_C 做一次合法性检查；(4) 计数器用 let mut count = 0; 然后 count += 1。注意：整数与浮点不能直接混算，字面量要写成 32.0 这种形式；字符串方法返回的是新值，不会修改原字符串（需要 mut 才能原地修改）。",
+        "description": "实现一个「先缓存后网络」的用户信息仓库 UserRepository：提供 fun user(): Flow<UserUiState>，它先从内存缓存 emit 一次（若有），再调用 suspend fun fetchUser(): User 从「网络」加载并写回缓存，最后 emit 最新数据；整个流程要能被多个页面安全共享（网络只请求一次），并把加载中/成功/失败包装成密封类 UserUiState。要求在 main 中模拟两个订阅者同时订阅，验证网络请求只打印一次。",
+        "hint": "用 flow { emit(Loading); ... } 定义冷流，在最外层用 .shareIn(scope, SharingStarted.WhileSubscribed(1000), replay = 1) 包一层；网络异常用 try/catch 包裹并 emit(UserUiState.Error) 而不是让异常向上抛；两个订阅者请同时 launch 订阅同一个 SharedFlow，观察 fetchUser 的打印次数。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码：声明一个可以被修改的计数器，并让它自增 1。",
-            "codeContext": "fn main() {\n    // 这里需要一个可变的计数器\n}",
+            "question": "补全代码：把冷流转成一个带 1 个重放缓冲的热流，且在最后一个订阅者消失 5 秒后才停止上游。",
+            "codeContext": "val shared: SharedFlow<UiState> = repo.userFlow()\n    .____(scope, SharingStarted.____(5000), replay = 1)",
             "segments": [
               {
                 "type": "text",
-                "content": "let ",
+                "content": "val shared: SharedFlow<UiState> = repo.userFlow()\n    .",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,18 +40,18 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择关键字]",
+                "placeholder": "[选择转换函数]",
                 "options": [
-                  "mut",
-                  "var",
-                  "ref",
-                  "static"
+                  "shareIn",
+                  "stateIn",
+                  "produceIn",
+                  "broadcastIn"
                 ],
-                "correctAnswer": "mut"
+                "correctAnswer": "shareIn"
               },
               {
                 "type": "text",
-                "content": " count = 0;\ncount ",
+                "content": "(scope, SharingStarted.",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -59,55 +59,55 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择自增写法]",
+                "placeholder": "[选择启动策略]",
                 "options": [
-                  "+= 1;",
-                  "++;",
-                  "= count + 1;"
+                  "Eagerly",
+                  "Lazily",
+                  "WhileSubscribed"
                 ],
-                "correctAnswer": "+= 1;"
+                "correctAnswer": "WhileSubscribed"
               },
               {
                 "type": "text",
-                "content": "\nprintln!(\"count = {count}\");",
+                "content": "(5000), replay = 1)",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "mut",
-            "explanation": "Rust 中没有 var 关键字（那是 JavaScript 的遗产），可变性必须用 let mut 声明；ref 是用于模式匹配中显式取引用的关键字，static 用于静态变量，都不符合题意。自增写法上，Rust 早期曾支持 ++ 运算符，但在 1.0 稳定版之前被移除（因为它在语句中作为前缀/后缀的返回值容易引发误解），官方推荐使用 count += 1; 或 count = count + 1;。"
+            "correctAnswer": "shareIn / WhileSubscribed",
+            "explanation": "需要多个订阅者共享且带 replay，必须用 shareIn（stateIn 返回的是 StateFlow，必须提供初始值且只有一个当前值）。「最后一个订阅者消失后再延迟停止」正是 SharingStarted.WhileSubscribed(stopTimeoutMillis) 的语义，5000ms 常用于覆盖 Android 配置变更（旋转屏幕）。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于变量遮蔽（shadowing）与 mut 的区别，下列说法正确的是？",
-            "codeContext": "let x = \"10\";\nlet x = x.parse::<i32>().unwrap();\n\nlet mut y = \"10\";\ny = \"20\";",
+            "question": "关于 Kotlin Flow 的冷流（Cold Flow），下列说法正确的是？",
+            "codeContext": "fun numbers() = flow {\n    println(\"start\")\n    emit(1); emit(2)\n}\n\nval f = numbers()",
             "segments": null,
             "options": [
-              "shadowing 可以改变变量的类型，而 mut 只能在原类型上修改值",
-              "shadowing 会真正删除原变量并释放其内存，mut 不会",
-              "shadowing 和 mut 完全等价，只是写法不同",
-              "shadowing 只能用于函数参数，mut 只能用于局部变量"
+              "调用 numbers() 时就会打印 start 并产出数据",
+              "只有被 collect 时才执行 flow 块，且每个收集者各执行一次",
+              "多个收集者会自动共享同一次上游执行",
+              "flow 块可以在没有协程作用域的情况下并行 emit"
             ],
-            "correctAnswer": "shadowing 可以改变变量的类型，而 mut 只能在原类型上修改值",
-            "explanation": "shadowing 通过 let 创建了一个全新的绑定，因此类型可以完全不同（如 &str → i32）；而 mut 是在同一个绑定上修改值，类型始终不变，如果想 y = 20（i32）会得到类型不匹配的编译错误。注意 shadowing 并不会立刻销毁旧值，旧绑定只是被遮蔽，仍存活到其所在作用域结束；两者语义和适用场景都不一样，绝非等价写法。"
+            "correctAnswer": "只有被 collect 时才执行 flow 块，且每个收集者各执行一次",
+            "explanation": "flow { } 创建的只是「构建器描述」，不产生任何副作用；必须在协程中 collect 才会执行，且每次 collect 都是一次全新的上游执行。若要共享，需显式用 shareIn/stateIn 转成热流。flow 块也不允许在其他线程/协程中 emit（Flow invariant 违规），需要 emit 的并发场景请用 channelFlow。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "下面这段代码会输出什么？",
-            "codeContext": "fn main() {\n    let x = 5;\n    let x = x + 1;\n    {\n        let x = x * 2;\n        println!(\"块内 x = {x}\");\n    }\n    let x = x * 10;\n    println!(\"块外 x = {x}\");\n}",
+            "question": "以下代码的输出顺序是什么？",
+            "codeContext": "fun numbers() = flow {\n    println(\"上游开始\")\n    listOf(1, 2, 3).forEach { emit(it) }\n}\n\nfun main() = runBlocking {\n    val f = numbers()\n    f.collect { println(\"A:$it\") }\n    f.collect { println(\"B:$it\") }\n}",
             "segments": null,
             "options": [
-              "块内 x = 12\n块外 x = 60",
-              "块内 x = 12\n块外 x = 12",
-              "块内 x = 10\n块外 x = 60",
-              "编译错误：不能重复定义变量 x"
+              "上游开始 → A:1 A:2 A:3 → 上游开始 → B:1 B:2 B:3",
+              "上游开始 → A:1 A:2 A:3 → B:1 B:2 B:3",
+              "上游开始 → B:1 B:2 B:3 → A:1 A:2 A:3",
+              "上游开始 → A:1 B:1 A:2 B:2 A:3 B:3"
             ],
-            "correctAnswer": "块内 x = 12\n块外 x = 60",
-            "explanation": "逐行追踪：x = 5 → 遮蔽为 x = 6 → 进入内层作用域，x = 6 * 2 = 12 并打印「块内 x = 12」→ 块结束，内层的 x=12 被销毁，外层的 x=6 恢复可见 → 再次遮蔽 x = 6 * 10 = 60 → 打印「块外 x = 60」。Rust 允许同名变量重复定义（这是 shadowing 特性，不是错误），关键在于每次 let 都创建新绑定，且内层作用域的绑定会遮蔽外层同名绑定。"
+            "correctAnswer": "上游开始 → A:1 A:2 A:3 → 上游开始 → B:1 B:2 B:3",
+            "explanation": "f 是冷流，两次 collect 是两次完全独立的上游执行，所以「上游开始」会打印两次。若把 f 改成 numbers().shareIn(scope, SharingStarted.Eagerly, replay = 3)，则上游只执行一次，A 和 B 都从共享缓存中拿到 1、2、3。"
           }
         ]
       }
