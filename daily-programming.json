@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-04",
+  "date": "2026-10-05",
   "contents": [
     {
-      "id": "prog-2026-10-04",
-      "date": "2026-10-04",
-      "title": "Kotlin Flow 进阶：冷流与热流（shareIn / stateIn）",
-      "summary": "掌握 Kotlin Flow 的冷热流本质，学会用 shareIn / stateIn 把一次性数据流共享给多个订阅者，避免重复请求与状态割裂。",
+      "id": "prog-2026-10-05",
+      "date": "2026-10-05",
+      "title": "Flutter 中的 Isolate 与 compute：把耗时计算移出 UI 线程",
+      "summary": "学习用 compute / Isolate.run 把大 JSON 解析、图片处理等耗时任务放到独立线程执行，彻底消除页面卡顿。",
       "difficulty": "中级",
-      "concept": "Kotlin 的 Flow 是「冷流（Cold Stream）」：它只是一个「描述如何产生数据」的配方，只有当调用 collect 时才会真正执行。这意味着如果你把同一个 Flow 对象交给两个订阅者，上游会执行两次——在真实工程里，这通常等价于发起两次网络请求、打开两次数据库游标、注册两次回调。这是 Flow 最容易被忽视、也最容易引发性能与一致性 bug 的地方。区分「定义 Flow」与「收集 Flow」，是理解协程 Flow 的第一道门槛。\n\n要让多个订阅者共享同一次上游执行，就需要把它转换成「热流（Hot Stream）」。Kotlin 提供了两个标准入口：shareIn 返回 SharedFlow（只读的广播流，没有「当前值」概念），stateIn 返回 StateFlow（永远持有一个当前值，且默认 distinctUntilChanged）。它们的签名都接收三个关键参数：作用域 scope（决定谁来驱动上游）、启动策略 SharingStarted、以及 replay/初始值。\n\nSharingStarted 是调优的重点，工程上常用的有三种：Eagerly 立即启动、永不停止，适合全局单例配置流；Lazily 第一个订阅者出现时启动、之后永不停止，适合缓存型数据；WhileSubscribed(stopTimeout) 在最后一个订阅者消失后延迟 stopTimeout 毫秒再取消上游，最适合 UI 屏幕——用户旋转屏幕、Fragment 重建时短暂无订阅者，缓冲 5 秒可以避免「重新请求一遍」的闪屏与浪费。Android 上通常搭配 viewModelScope 与 WhileSubscribed(5000)。\n\n实际项目中最典型的用法是 Repository 层：把「先读缓存、再发网络、最后写缓存」的 Flow 用 shareIn(scope, WhileSubscribed(), replay = 1) 包一层，这样无论有多少个页面/组件订阅，网络请求只会发一次，且新订阅者立刻能拿到最近一次结果。配合 combine 可以把多个数据流合并成一个 UI 状态流，配合 map + distinctUntilChanged 可以把连续的原始数据压缩成少量的状态变更。\n\n最后提醒两个高频坑：第一，stateIn 返回的 StateFlow 有 value，可以在非挂起代码里同步读取，这在 ViewModel 中非常方便，但也容易被滥用成「可变全局变量」，请始终只暴露只读的 StateFlow/MutableStateFlow 私有化；第二，热流的异常会向所有订阅者广播并结束流，生产代码务必在上游使用 catch { emit(默认值) } 或包装成 Result/密封类状态，避免一次网络错误把整条状态流干掉。",
+      "concept": "Flutter 的 UI、手势响应、动画和你写的 Dart 代码都跑在同一个「主 Isolate」上，靠事件循环（Event Loop）串行调度。这意味着任何一个同步任务（例如一次性解析 20 万条 JSON、对图片做像素级运算、复杂字符串正则）只要超过一帧的预算（120Hz 下约 8ms，60Hz 约 16ms），事件循环就被阻塞，动画掉帧、点击无响应、甚至触发 \"UI thread is janky\" 的性能告警。很多初学者用 Future.delayed 或 async/await 去「优化」这种代码，其实没有任何效果——async 只能让你在等待 IO 时不阻塞，一旦任务本身是 CPU 密集型同步计算，它照样霸占整个主 Isolate。\n\nDart 的解法是 Isolate（隔离线程）。每个 Isolate 拥有自己独立的内存堆和事件循环，Isolate 之间不共享内存，只能通过消息（SendPort / ReceivePort）传递数据，消息在传递时会被**深拷贝**。这条设计换来了「无锁并发」：你永远不需要担心数据竞争和死锁，代价是通信有拷贝开销、不能共享大对象。理解这一点非常重要，它决定了你只能把「输入→计算→输出」这种纯函数型任务丢给 Isolate，而不能把 Widget、BuildContext、Controller 之类的引用丢过去。\n\n对于 90% 的场景，你不需要手动写 SendPort/ReceivePort，用 Flutter 提供的 `compute(callback, message)` 一行就够了。它在底层帮你 Isolate.spawn 一个工作 isolate、把参数发过去、等结果回来后再把 isolate 关掉。注意两个硬性约束：callback 必须是**顶层函数或 static 方法**（闭包无法跨 isolate 序列化），message 和返回值必须是可拷贝的数据结构（基本类型、List、Map、自定义的纯数据类都可以，但闭包、ReceivePort、BuildContext 不行）。\n\n从 Dart 3 起推荐用 `Isolate.run(() {...})`，它允许写闭包形式的任务、支持 `Isolate.exit` 零拷贝返回大结果，语义更清晰。但两者本质相同，都是「一次性任务」模型。如果你的场景是**持续**的双向通信（比如实时音视频解码、长时间数据流），才需要自己用 `Isolate.spawn` + `SendPort`/`ReceivePort` 或 `Isolate.spawnRemote`（Dart 3.9+ 的 BackgroundIsolateBinaryMessenger）做长驻 worker。\n\n工程经验：Isolate 有启动成本（毫秒级 + 约 200KB 栈空间），不要为 <5ms 的小计算创建 isolate，否则得不偿失。经验值是「单次计算 > 16ms，或在滚动/动画期间会被触发」才值得移出主 isolate。另外注意平台差异：iOS/Android/desktop 是真多核并行，而 Flutter Web 上 isolate 由 Worker 实现、数据只能是可结构化克隆的类型（自定义类会被拒绝），纯 Dart VM 的 Uint8List 处理在 Web 上也可能退化。最后，如果你做的是数据库查询、文件读写、网络请求这类 IO，用 `async/await` 就够了，别浪费 isolate。",
       "codeExample": {
-        "language": "kotlin",
-        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.flow.*\n\n// 模拟传感器：这是一个「冷流」，只有被 collect 时才会真正开始工作\nclass TemperatureSensor(private val name: String) {\n    fun readings(): Flow<Double> = flow {\n        println(\"[$name] 开始采集（说明上游被真正执行了）\")\n        var temp = 20.0\n        while (true) {\n            emit(temp)                 // 产出一个读数\n            delay(200)                 // 每 200ms 产生一次\n            temp += (Math.random() - 0.5) * 2\n        }\n    }\n}\n\nfun main() = runBlocking {\n    val sensor = TemperatureSensor(\"室外\")\n\n    // ---------- 1. 冷流：两个收集者 = 两次独立采集 ----------\n    println(\"== 冷流演示 ==\")\n    val cold: Flow<Double> = sensor.readings().take(2)\n    cold.collect { println(\"收集者A: %.2f\".format(it)) }\n    cold.collect { println(\"收集者B: %.2f\".format(it)) }   // 上游再次执行！\n\n    // ---------- 2. shareIn：转成热流，多订阅者共享一次上游 ----------\n    val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())\n\n    val shared: SharedFlow<String> = sensor.readings()\n        .map { \"温度 %.2f ℃\".format(it) }\n        .shareIn(\n            scope,\n            started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 1000),\n            replay = 1                    // 新订阅者立刻拿到最近 1 个值\n        )\n\n    val job1 = launch { shared.take(3).collect { println(\"订阅者1 <- $it\") } }\n    val job2 = launch { shared.take(3).collect { println(\"订阅者2 <- $it\") } }\n    joinAll(job1, job2)\n\n    // ---------- 3. stateIn：压缩成「当前值」，适合 UI 状态 ----------\n    val uiState: StateFlow<String> = sensor.readings()\n        .map { if (it > 20.5) \"⚠ 高温报警\" else \"✅ 正常\" }\n        .distinctUntilChanged()          // 状态没变就不重复通知\n        .stateIn(scope, SharingStarted.WhileSubscribed(1000), \"初始化中...\")\n\n    delay(500)\n    println(\"UI 当前状态: ${uiState.value}\")   // StateFlow 可同步读取 value\n\n    // ---------- 4. combine：并行合并多个流 ----------\n    val humidity = flow {\n        emit(40); delay(150); emit(55); delay(150); emit(62)\n    }\n    combine(sensor.readings().take(3), humidity) { t, h ->\n        \"温度=%.1f℃, 湿度=%d%%\".format(t, h)\n    }.collect { println(\"环境面板: $it\") }\n\n    scope.cancel()   // 记得取消作用域，否则热流会一直跑\n}\n",
-        "explanation": "【第 1 段】TemperatureSensor.readings() 返回 flow { ... }，这是典型的「冷流定义」：flow 块里的代码在 collect 之前一行都不会执行。打印语句可以直观看到「两个收集者 → 两次采集」。\n\n【第 2 段】cold.collect 被调用两次，每次都会重新走一遍 flow 块，因此上游的「开始采集」会打印两次。这对应真实场景中的「同一个 Flow 被两个页面订阅导致请求发两次」。\n\n【第 3 段】shareIn 把冷流转成 SharedFlow：上游只在 WhileSubscribed 的规则下执行一次，结果被广播给所有订阅者。replay = 1 表示新订阅者会立刻收到最近一个值，避免「刚进来一片空白」。注意 shareIn 需要一个外部 CoroutineScope 来托管共享任务，通常用 viewModelScope 或自建的 SupervisorJob 作用域。\n\n【第 4 段】stateIn 返回 StateFlow<String>，它永远持有当前值，可通过 .value 在非挂起代码中读取，非常适合 ViewModel 暴露 UI 状态。distinctUntilChanged() 保证只有状态真正变化时才通知下游。\n\n【第 5 段】combine 会等待两个流各自产出一个值后再组合，任何一个流有新值都会触发新的组合输出，常用于把「用户信息 + 设置项」合并成一个展示模型。\n\n【最后】scope.cancel() 释放共享协程；在 Android 中由于使用 viewModelScope，ViewModel 销毁时会自动取消。"
+        "language": "dart",
+        "code": "import 'dart:convert';\n\nimport 'package:flutter/foundation.dart';\nimport 'package:flutter/material.dart';\n\nvoid main() => runApp(const MyApp());\n\nclass MyApp extends StatelessWidget {\n  const MyApp({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: 'Isolate Demo',\n      theme: ThemeData(colorSchemeSeed: Colors.indigo, useMaterial3: true),\n      home: const JsonParsePage(),\n    );\n  }\n}\n\nclass JsonParsePage extends StatefulWidget {\n  const JsonParsePage({super.key});\n\n  @override\n  State<JsonParsePage> createState() => _JsonParsePageState();\n}\n\nclass _JsonParsePageState extends State<JsonParsePage> {\n  int _userCount = 0;\n  bool _loading = false;\n  int _elapsedMs = 0;\n\n  /// 必须是顶层函数或 static 方法，才能作为 compute 的入口点\n  /// （闭包无法被序列化后发送到子 Isolate）\n  static List<String> parseUsers(String rawJson) {\n    final List<dynamic> list = jsonDecode(rawJson) as List<dynamic>;\n    return list.map((e) => '${e['name']}<${e['email']}>').toList();\n  }\n\n  /// 构造一份「重负载」JSON 字符串，模拟真实业务里的大报文\n  String _buildPayload() {\n    final users = List.generate(\n      200000,\n      (i) => {'name': 'user_$i', 'email': 'user_$i@example.com'},\n    );\n    return jsonEncode(users);\n  }\n\n  Future<void> _runParse({bool useIsolate = true}) async {\n    setState(() => _loading = true);\n    final payload = _buildPayload();\n    final sw = Stopwatch()..start();\n\n    List<String> result;\n    if (useIsolate) {\n      // 耗时计算放到子 Isolate，主线程继续渲染动画\n      result = await compute(parseUsers, payload);\n    } else {\n      // 对照组：直接在主 Isolate 解析，会明显掉帧\n      result = parseUsers(payload);\n    }\n\n    sw.stop();\n    if (!mounted) return;\n    setState(() {\n      _userCount = result.length;\n      _elapsedMs = sw.elapsedMilliseconds;\n      _loading = false;\n    });\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      appBar: AppBar(title: const Text('compute 异步解析 JSON')),\n      body: Center(\n        child: _loading\n            ? const CircularProgressIndicator()\n            : Column(\n                mainAxisAlignment: MainAxisAlignment.center,\n                children: [\n                  Text('已解析用户数: $_userCount',\n                      style: Theme.of(context).textTheme.headlineSmall),\n                  Text('耗时: $_elapsedMs ms'),\n                  const SizedBox(height: 24),\n                  FilledButton(\n                    onPressed: () => _runParse(useIsolate: true),\n                    child: const Text('用 compute 解析（流畅）'),\n                  ),\n                  const SizedBox(height: 8),\n                  OutlinedButton(\n                    onPressed: () => _runParse(useIsolate: false),\n                    child: const Text('在主 Isolate 解析（卡顿）'),\n                  ),\n                  const SizedBox(height: 24),\n                  // 解析过程中留意下方动画是否还在转动\n                  const CircularProgressIndicator.adaptive(),\n                  const Text('解析时观察圆圈是否仍在转动'),\n                ],\n              ),\n      ),\n    );\n  }\n}\n",
+        "explanation": "1) `parseUsers` 是 static 方法，签名 `R Function(M)`，直接把 `String`（JSON 报文）映射为 `List<String>`，是典型的纯函数，适合作为 compute 的入口点。\n2) `_buildPayload()` 生成 20 万条记录并 jsonEncode，模拟真实的「大报文解析」场景；把 200000 调成 20 可以让你在低端机上稳定复现卡顿。\n3) `_runParse(useIsolate: true)` 里 `await compute(parseUsers, payload)` 会新建一个 Isolate、深拷贝 payload、在子 Isolate 里执行解析，主 Isolate 此时空闲，可以继续跑动画和响应手势。\n4) 对照分支 `parseUsers(payload)` 直接在主 Isolate 执行，此时事件循环被占满，`CircularProgressIndicator` 会明显卡住——对比两者能直观感受 Isolate 的价值。\n5) `if (!mounted) return;` 是异步回调后更新 State 的必备防御，避免 Widget 已销毁时调用 setState。\n6) 若用 Dart 3，可以简化为 `final result = await Isolate.run(() => parseUsers(payload));`，它支持闭包且返回值拷贝更高效，但约束（闭包捕获的变量仍须可拷贝）不变。"
       },
       "keyPoints": [
-        "冷流是「配方」，collect 时才执行；多个收集者 = 多次执行上游（重复网络请求的常见根因）",
-        "shareIn → SharedFlow（广播、无当前值）；stateIn → StateFlow（永远有当前值、默认去重）",
-        "SharingStarted.WhileSubscribed(5000) 是 UI 层最佳实践，避免配置变更/页面重建时重新请求",
-        "replay 决定新订阅者能拿到多少个历史值，配合 WhileSubscribed 可显著改善「刚进入页面的空白」",
-        "热流异常会广播给所有订阅者并终止流，务必在上游用 catch / Result / 密封类兜底"
+        "Dart 是单线程事件循环：async/await 不能加速 CPU 密集型同步计算，只有 Isolate 能真正并行",
+        "compute 的入口函数必须是顶层函数或 static 方法，闭包无法跨 Isolate 序列化",
+        "Isolate 之间传递消息是深拷贝：子 Isolate 对对象的修改不会反映到主 Isolate，且大对象拷贝有成本",
+        "Isolate 有启动开销（毫秒级 + 栈内存），只对 >16ms 的任务使用，IO 类任务用 async 即可",
+        "Dart 3 推荐 Isolate.run（支持闭包与 Isolate.exit 零拷贝）；长驻双向通信才用 Isolate.spawn + SendPort/ReceivePort"
       ],
       "exercise": {
-        "description": "实现一个「先缓存后网络」的用户信息仓库 UserRepository：提供 fun user(): Flow<UserUiState>，它先从内存缓存 emit 一次（若有），再调用 suspend fun fetchUser(): User 从「网络」加载并写回缓存，最后 emit 最新数据；整个流程要能被多个页面安全共享（网络只请求一次），并把加载中/成功/失败包装成密封类 UserUiState。要求在 main 中模拟两个订阅者同时订阅，验证网络请求只打印一次。",
-        "hint": "用 flow { emit(Loading); ... } 定义冷流，在最外层用 .shareIn(scope, SharingStarted.WhileSubscribed(1000), replay = 1) 包一层；网络异常用 try/catch 包裹并 emit(UserUiState.Error) 而不是让异常向上抛；两个订阅者请同时 launch 订阅同一个 SharedFlow，观察 fetchUser 的打印次数。",
+        "description": "实现一个「大数据本地搜索」功能：内存里有 50 万条联系人（含姓名、手机号、邮箱），用户在搜索框输入关键词后，需要在 200ms 内返回匹配结果，且输入过程中 UI 不允许有任何卡顿。要求：1) 用 compute 或 Isolate.run 执行过滤逻辑；2) 用 debounce（建议 300ms）避免每次按键都触发计算；3) 处理「旧请求后返回」导致的结果覆盖问题（提示：用自增 requestId 或取消机制）。完成后对比：把过滤逻辑放回主 Isolate，观察输入框的响应延迟差异。",
+        "hint": "把过滤函数写成顶层函数 `List<Contact> filter(List<Contact> all, String keyword)`；搜索触发时先用 Timer 做 debounce；发起计算前记录 `final id = ++_requestId;`，await 返回后判断 `if (id != _requestId) return;` 直接丢弃过期结果；数据量很大时，考虑只把「匹配需要的字段」传进 isolate，或在 isolate 里直接用 Isolate.exit 返回结果以减少拷贝。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码：把冷流转成一个带 1 个重放缓冲的热流，且在最后一个订阅者消失 5 秒后才停止上游。",
-            "codeContext": "val shared: SharedFlow<UiState> = repo.userFlow()\n    .____(scope, SharingStarted.____(5000), replay = 1)",
+            "question": "补全下面的代码，让 compute 能正确调用解析函数。",
+            "codeContext": "static List<String> parseUsers(String raw) => ...;\n\nFuture<void> run(String payload) async {\n  final result = await ______;\n  print(result.length);\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "val shared: SharedFlow<UiState> = repo.userFlow()\n    .",
+                "content": "final result = await ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,74 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择转换函数]",
+                "placeholder": "[选择]",
                 "options": [
-                  "shareIn",
-                  "stateIn",
-                  "produceIn",
-                  "broadcastIn"
+                  "compute(parseUsers, payload)",
+                  "compute(parseUsers(), payload)",
+                  "compute((p) => parseUsers(p), payload)",
+                  "compute(_parser.parseUsers, payload)"
                 ],
-                "correctAnswer": "shareIn"
+                "correctAnswer": "compute(parseUsers, payload)"
               },
               {
                 "type": "text",
-                "content": "(scope, SharingStarted.",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择启动策略]",
-                "options": [
-                  "Eagerly",
-                  "Lazily",
-                  "WhileSubscribed"
-                ],
-                "correctAnswer": "WhileSubscribed"
-              },
-              {
-                "type": "text",
-                "content": "(5000), replay = 1)",
+                "content": ";",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "shareIn / WhileSubscribed",
-            "explanation": "需要多个订阅者共享且带 replay，必须用 shareIn（stateIn 返回的是 StateFlow，必须提供初始值且只有一个当前值）。「最后一个订阅者消失后再延迟停止」正是 SharingStarted.WhileSubscribed(stopTimeoutMillis) 的语义，5000ms 常用于覆盖 Android 配置变更（旋转屏幕）。"
+            "correctAnswer": "compute(parseUsers, payload)",
+            "explanation": "compute 的第一个参数是**函数引用**而不是调用结果，所以排除 `parseUsers()`；闭包 `(p) => parseUsers(p)` 无法被序列化发送到子 Isolate，运行时会抛错；实例方法 `_parser.parseUsers` 会隐式捕获 this，同样不可发送。只有 `compute(parseUsers, payload)` 这种顶层/静态函数引用是合法的。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Kotlin Flow 的冷流（Cold Flow），下列说法正确的是？",
-            "codeContext": "fun numbers() = flow {\n    println(\"start\")\n    emit(1); emit(2)\n}\n\nval f = numbers()",
+            "question": "关于 compute 的 message 参数与返回值，下列说法正确的是？",
+            "codeContext": "final out = await compute(handle, input);",
             "segments": null,
             "options": [
-              "调用 numbers() 时就会打印 start 并产出数据",
-              "只有被 collect 时才执行 flow 块，且每个收集者各执行一次",
-              "多个收集者会自动共享同一次上游执行",
-              "flow 块可以在没有协程作用域的情况下并行 emit"
+              "可以传任意 Dart 对象，包括闭包、BuildContext 和 Stream",
+              "只能传 String 或 Uint8List，其他类型一律不行",
+              "只能传可跨 Isolate 深拷贝的数据（基本类型、List、Map、纯数据类等），闭包和原生资源句柄不可传",
+              "可以传任何对象，但传大对象时会共享内存引用以提升性能"
             ],
-            "correctAnswer": "只有被 collect 时才执行 flow 块，且每个收集者各执行一次",
-            "explanation": "flow { } 创建的只是「构建器描述」，不产生任何副作用；必须在协程中 collect 才会执行，且每次 collect 都是一次全新的上游执行。若要共享，需显式用 shareIn/stateIn 转成热流。flow 块也不允许在其他线程/协程中 emit（Flow invariant 违规），需要 emit 的并发场景请用 channelFlow。"
+            "correctAnswer": "只能传可跨 Isolate 深拷贝的数据（基本类型、List、Map、纯数据类等），闭包和原生资源句柄不可传",
+            "explanation": "Isolate 之间不共享内存，消息会被深拷贝，因此必须是可序列化的数据。闭包、BuildContext、Stream/ReceivePort、Database 连接等持有外部资源或不可复制引用的对象都不能传递；同时拷贝大对象是有成本的，这也是要避免把超大报文反复跨 Isolate 传递的原因。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码的输出顺序是什么？",
-            "codeContext": "fun numbers() = flow {\n    println(\"上游开始\")\n    listOf(1, 2, 3).forEach { emit(it) }\n}\n\nfun main() = runBlocking {\n    val f = numbers()\n    f.collect { println(\"A:$it\") }\n    f.collect { println(\"B:$it\") }\n}",
+            "question": "下面的代码会输出什么？",
+            "codeContext": "class Box {\n  int value = 0;\n}\n\nint bump(Box b) {\n  b.value += 42;\n  return b.value;\n}\n\nFuture<void> main() async {\n  final box = Box();\n  final result = await compute(bump, box);\n  print('${box.value} $result');\n}",
             "segments": null,
             "options": [
-              "上游开始 → A:1 A:2 A:3 → 上游开始 → B:1 B:2 B:3",
-              "上游开始 → A:1 A:2 A:3 → B:1 B:2 B:3",
-              "上游开始 → B:1 B:2 B:3 → A:1 A:2 A:3",
-              "上游开始 → A:1 B:1 A:2 B:2 A:3 B:3"
+              "0 42",
+              "42 42",
+              "0 0",
+              "运行时报错，Box 无法传递"
             ],
-            "correctAnswer": "上游开始 → A:1 A:2 A:3 → 上游开始 → B:1 B:2 B:3",
-            "explanation": "f 是冷流，两次 collect 是两次完全独立的上游执行，所以「上游开始」会打印两次。若把 f 改成 numbers().shareIn(scope, SharingStarted.Eagerly, replay = 3)，则上游只执行一次，A 和 B 都从共享缓存中拿到 1、2、3。"
+            "correctAnswer": "0 42",
+            "explanation": "Box 是纯数据类（没有闭包、没有原生资源句柄），可以被跨 Isolate 传递，但传递过程是**深拷贝**。子 Isolate 修改的是拷贝出来的那份 Box，`result` 为 42；而主 Isolate 里的 `box.value` 仍是初始值 0。这正是 Isolate 消息传递「无锁但需拷贝」的核心语义，也解释了为什么不能指望用 Isolate 去共享可变状态。"
           }
         ]
       }
