@@ -1,38 +1,39 @@
 {
-  "date": "2026-10-05",
+  "date": "2026-10-06",
   "contents": [
     {
-      "id": "prog-2026-10-05",
-      "date": "2026-10-05",
-      "title": "Flutter 中的 Isolate 与 compute：把耗时计算移出 UI 线程",
-      "summary": "学习用 compute / Isolate.run 把大 JSON 解析、图片处理等耗时任务放到独立线程执行，彻底消除页面卡顿。",
-      "difficulty": "中级",
-      "concept": "Flutter 的 UI、手势响应、动画和你写的 Dart 代码都跑在同一个「主 Isolate」上，靠事件循环（Event Loop）串行调度。这意味着任何一个同步任务（例如一次性解析 20 万条 JSON、对图片做像素级运算、复杂字符串正则）只要超过一帧的预算（120Hz 下约 8ms，60Hz 约 16ms），事件循环就被阻塞，动画掉帧、点击无响应、甚至触发 \"UI thread is janky\" 的性能告警。很多初学者用 Future.delayed 或 async/await 去「优化」这种代码，其实没有任何效果——async 只能让你在等待 IO 时不阻塞，一旦任务本身是 CPU 密集型同步计算，它照样霸占整个主 Isolate。\n\nDart 的解法是 Isolate（隔离线程）。每个 Isolate 拥有自己独立的内存堆和事件循环，Isolate 之间不共享内存，只能通过消息（SendPort / ReceivePort）传递数据，消息在传递时会被**深拷贝**。这条设计换来了「无锁并发」：你永远不需要担心数据竞争和死锁，代价是通信有拷贝开销、不能共享大对象。理解这一点非常重要，它决定了你只能把「输入→计算→输出」这种纯函数型任务丢给 Isolate，而不能把 Widget、BuildContext、Controller 之类的引用丢过去。\n\n对于 90% 的场景，你不需要手动写 SendPort/ReceivePort，用 Flutter 提供的 `compute(callback, message)` 一行就够了。它在底层帮你 Isolate.spawn 一个工作 isolate、把参数发过去、等结果回来后再把 isolate 关掉。注意两个硬性约束：callback 必须是**顶层函数或 static 方法**（闭包无法跨 isolate 序列化），message 和返回值必须是可拷贝的数据结构（基本类型、List、Map、自定义的纯数据类都可以，但闭包、ReceivePort、BuildContext 不行）。\n\n从 Dart 3 起推荐用 `Isolate.run(() {...})`，它允许写闭包形式的任务、支持 `Isolate.exit` 零拷贝返回大结果，语义更清晰。但两者本质相同，都是「一次性任务」模型。如果你的场景是**持续**的双向通信（比如实时音视频解码、长时间数据流），才需要自己用 `Isolate.spawn` + `SendPort`/`ReceivePort` 或 `Isolate.spawnRemote`（Dart 3.9+ 的 BackgroundIsolateBinaryMessenger）做长驻 worker。\n\n工程经验：Isolate 有启动成本（毫秒级 + 约 200KB 栈空间），不要为 <5ms 的小计算创建 isolate，否则得不偿失。经验值是「单次计算 > 16ms，或在滚动/动画期间会被触发」才值得移出主 isolate。另外注意平台差异：iOS/Android/desktop 是真多核并行，而 Flutter Web 上 isolate 由 Worker 实现、数据只能是可结构化克隆的类型（自定义类会被拒绝），纯 Dart VM 的 Uint8List 处理在 Web 上也可能退化。最后，如果你做的是数据库查询、文件读写、网络请求这类 IO，用 `async/await` 就够了，别浪费 isolate。",
+      "id": "prog-2026-10-06",
+      "date": "2026-10-06",
+      "title": "Git Sparse Checkout + Partial Clone：Monorepo CI 流水线提速实战",
+      "summary": "利用 git 的部分克隆（blob:none）、稀疏检出（sparse-checkout cone mode）与 worktree 机制，把大型 Monorepo 的 CI 检出从分钟级压缩到秒级，并按变更模块精准触发构建。",
+      "difficulty": "高级",
+      "concept": "**Monorepo 的 CI 瓶颈到底在哪？** 在几百人规模的 Monorepo 中，一次 `git clone` 可能需要拉取 2GB+ 的对象数据，其中 90% 的文件与本次 PR 完全无关。CI 每一个 job（lint / unit-test / integration / e2e）都要重复一遍 clone，冷缓存下光是 checkout 就要 3–5 分钟。真正的时间成本由三部分构成：网络传输（对象数据量）、磁盘 IO（checkout 写出文件数量）、以及 index 构建。想要系统性提速，必须同时对这三项动刀，而不是简单地「加机器」或「开缓存」。\n\n**Partial Clone（--filter=blob:none）改变了什么？** Git 2.19 引入的 partial clone 允许客户端只拉取部分对象。`--filter=blob:none` 表示提交历史（commit + tree）全部拉取，但 blob（文件内容）延迟到真正需要时才按需回源拉取（promisor remote 机制）。这意味着 `git log`、`git diff --name-only`、`git blame`（只看文件名）等操作几乎不产生额外流量；只有 checkout 某个文件时才会触发一次 lazy fetch。工程经验上：如果 CI 只需要「找出哪些模块变了」，`blob:none` 是性价比最高的选择；`--filter=tree:0` 更极端但会让大多数历史操作变慢，通常只用于镜像备份场景。\n\n**Sparse Checkout（cone mode）减少写盘与索引开销。** `git sparse-checkout init --cone` 之后，Git 只会 checkout 你 `set` 过的目录子树，同时在 index 中对其他文件打上 skip-worktree 标记。cone 模式（Git 2.25+）相比传统 glob 模式的优势是：语义是「按目录前缀」，不会因为新增文件漏检出，且能配合 `git sparse-checkout add` 增量追加。再开启 `git config core.sparseCheckoutCone true` 与 `git sparse-checkout set --skip-checks`，在超大仓库（10w+ 文件）上还能启用 sparse index（`git sparse-checkout set` 会自动写 `extensions.sparseIndex`），把 index 体积从几十 MB 降到几百 KB，`git status` 提速 5–10 倍。\n\n**按变更模块触发构建（Change-based Build）。** 把 CI 的第一步改成：`git diff --name-only $BASE_SHA $HEAD_SHA`，再用 `path-to-module` 映射表把变更文件翻译成受影响的服务集合，最后把该集合喂给 `sparse-checkout set`。这样 lint/build/test 三个 job 只需检出 1–2 个服务目录。配合 `dorny/paths-filter` 或自研的依赖图（Bazel / Nx / Turborepo 的 affected 计算），可以实现「只构建被影响的服务」，在 200 微服务的仓库里，CI 平均时长通常能下降 60–80%。关键工程细节：比较基准必须用 `git merge-base origin/main HEAD` 而不是 `origin/main`，否则会把别人合并进 main 的改动也算进来。\n\n**并行场景下的 git worktree。** 同一份仓库数据（objects/refs）可以在磁上挂多个工作区：`git worktree add ../wt-test test-branch`。CI 中可以让多个并行 job 共享同一个 partial clone 的对象库，各自 worktree 检出不同目录，避免重复下载。注意：worktree 共享 `.git/objects`，但每个 worktree 有独立的 index，所以 sparse-checkout 设置是 per-worktree 的（Git 2.38+ 支持 `git sparse-checkout set` 在 worktree 内独立生效）。\n\n**踩坑与边界。** 1）promisor remote 意味着运行时依赖远端可用，若 CI 网络隔离或远端限流，lazy fetch 会失败，务必在 CI 中保留一个完整的本地对象缓存（`git clone --mirror` 到 NFS/缓存服务，再用 `file://` 作为 promisor 源）；2）submodule 与 Git LFS 不受 `--filter` 保护，LFS 需显式 `GIT_LFS_SKIP_SMUDGE=1`；3）`--depth=1` 浅克隆与 partial clone 叠加时要小心，深度不足会导致 `merge-base` 计算错误，建议 `--shallow-since` 或 fetch 指定的两个 SHA；4）稀疏检出后 `git status` 不会报错，但 IDE 的全量索引可能仍会扫描全部目录，需要同步调整 IDE 配置。",
       "codeExample": {
-        "language": "dart",
-        "code": "import 'dart:convert';\n\nimport 'package:flutter/foundation.dart';\nimport 'package:flutter/material.dart';\n\nvoid main() => runApp(const MyApp());\n\nclass MyApp extends StatelessWidget {\n  const MyApp({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: 'Isolate Demo',\n      theme: ThemeData(colorSchemeSeed: Colors.indigo, useMaterial3: true),\n      home: const JsonParsePage(),\n    );\n  }\n}\n\nclass JsonParsePage extends StatefulWidget {\n  const JsonParsePage({super.key});\n\n  @override\n  State<JsonParsePage> createState() => _JsonParsePageState();\n}\n\nclass _JsonParsePageState extends State<JsonParsePage> {\n  int _userCount = 0;\n  bool _loading = false;\n  int _elapsedMs = 0;\n\n  /// 必须是顶层函数或 static 方法，才能作为 compute 的入口点\n  /// （闭包无法被序列化后发送到子 Isolate）\n  static List<String> parseUsers(String rawJson) {\n    final List<dynamic> list = jsonDecode(rawJson) as List<dynamic>;\n    return list.map((e) => '${e['name']}<${e['email']}>').toList();\n  }\n\n  /// 构造一份「重负载」JSON 字符串，模拟真实业务里的大报文\n  String _buildPayload() {\n    final users = List.generate(\n      200000,\n      (i) => {'name': 'user_$i', 'email': 'user_$i@example.com'},\n    );\n    return jsonEncode(users);\n  }\n\n  Future<void> _runParse({bool useIsolate = true}) async {\n    setState(() => _loading = true);\n    final payload = _buildPayload();\n    final sw = Stopwatch()..start();\n\n    List<String> result;\n    if (useIsolate) {\n      // 耗时计算放到子 Isolate，主线程继续渲染动画\n      result = await compute(parseUsers, payload);\n    } else {\n      // 对照组：直接在主 Isolate 解析，会明显掉帧\n      result = parseUsers(payload);\n    }\n\n    sw.stop();\n    if (!mounted) return;\n    setState(() {\n      _userCount = result.length;\n      _elapsedMs = sw.elapsedMilliseconds;\n      _loading = false;\n    });\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      appBar: AppBar(title: const Text('compute 异步解析 JSON')),\n      body: Center(\n        child: _loading\n            ? const CircularProgressIndicator()\n            : Column(\n                mainAxisAlignment: MainAxisAlignment.center,\n                children: [\n                  Text('已解析用户数: $_userCount',\n                      style: Theme.of(context).textTheme.headlineSmall),\n                  Text('耗时: $_elapsedMs ms'),\n                  const SizedBox(height: 24),\n                  FilledButton(\n                    onPressed: () => _runParse(useIsolate: true),\n                    child: const Text('用 compute 解析（流畅）'),\n                  ),\n                  const SizedBox(height: 8),\n                  OutlinedButton(\n                    onPressed: () => _runParse(useIsolate: false),\n                    child: const Text('在主 Isolate 解析（卡顿）'),\n                  ),\n                  const SizedBox(height: 24),\n                  // 解析过程中留意下方动画是否还在转动\n                  const CircularProgressIndicator.adaptive(),\n                  const Text('解析时观察圆圈是否仍在转动'),\n                ],\n              ),\n      ),\n    );\n  }\n}\n",
-        "explanation": "1) `parseUsers` 是 static 方法，签名 `R Function(M)`，直接把 `String`（JSON 报文）映射为 `List<String>`，是典型的纯函数，适合作为 compute 的入口点。\n2) `_buildPayload()` 生成 20 万条记录并 jsonEncode，模拟真实的「大报文解析」场景；把 200000 调成 20 可以让你在低端机上稳定复现卡顿。\n3) `_runParse(useIsolate: true)` 里 `await compute(parseUsers, payload)` 会新建一个 Isolate、深拷贝 payload、在子 Isolate 里执行解析，主 Isolate 此时空闲，可以继续跑动画和响应手势。\n4) 对照分支 `parseUsers(payload)` 直接在主 Isolate 执行，此时事件循环被占满，`CircularProgressIndicator` 会明显卡住——对比两者能直观感受 Isolate 的价值。\n5) `if (!mounted) return;` 是异步回调后更新 State 的必备防御，避免 Widget 已销毁时调用 setState。\n6) 若用 Dart 3，可以简化为 `final result = await Isolate.run(() => parseUsers(payload));`，它支持闭包且返回值拷贝更高效，但约束（闭包捕获的变量仍须可拷贝）不变。"
+        "language": "Bash",
+        "code": "#!/usr/bin/env bash\n# ci-sparse-checkout.sh\n# 目标：在 Monorepo CI 中按需检出，只 checkout 受影响的模块目录。\n# 依赖：git >= 2.30\nset -euo pipefail\n\nREPO_URL=\"${REPO_URL:-https://github.com/your-org/monorepo.git}\"\nBASE_SHA=\"${BASE_SHA:-origin/main}\"\nHEAD_SHA=\"${HEAD_SHA:-HEAD}\"\nWORK_DIR=\"${WORK_DIR:-$PWD/repo}\"\n\n# ---------- 1. 部分克隆：只拉 commit + tree，blob 延迟拉取 ----------\ngit clone \\\n  --filter=blob:none \\\n  --no-checkout \\\n  --no-single-branch \\\n  \"$REPO_URL\" \"$WORK_DIR\"\n\ncd \"$WORK_DIR\"\n\n# ---------- 2. 确保拿到比较基准需要的历史（避免 shallow 丢 merge-base） ----------\ngit fetch --no-tags --filter=blob:none origin \\\n  \"+refs/heads/main:refs/remotes/origin/main\" \\\n  \"+${HEAD_SHA}:refs/heads/ci-head\" 2>/dev/null || true\n\nMERGE_BASE=$(git merge-base \"$BASE_SHA\" \"$HEAD_SHA\")\necho \"merge-base = $MERGE_BASE\"\n\n# ---------- 3. 计算变更文件 -> 受影响模块（顶层服务目录） ----------\nmapfile -t CHANGED_FILES < <(git diff --name-only \"$MERGE_BASE\" \"$HEAD_SHA\")\necho \"changed files: ${#CHANGED_FILES[@]}\"\n\n# 取变更文件的第一层目录作为受影响模块；根文件变更则全量构建\nMODULES=()\nROOT_TOUCHED=0\nfor f in \"${CHANGED_FILES[@]}\"; do\n  if [[ \"$f\" != */* ]]; then ROOT_TOUCHED=1; break; fi\n  MODULES+=(\"${f%%/*}\")\ndone\n\nif [[ $ROOT_TOUCHED -eq 1 || ${#CHANGED_FILES[@]} -eq 0 ]]; then\n  MODULES=(\"services\" \"libs\")   # 公共改动 -> 保守全量\nfi\n\n# 去重\nmapfile -t MODULES < <(printf '%s\\n' \"${MODULES[@]}\" | sort -u)\necho \"affected modules: ${MODULES[*]}\"\n\n# ---------- 4. 稀疏检出（cone mode）：只写出这些目录 ----------\ngit sparse-checkout init --cone\ngit sparse-checkout set --skip-checks \"${MODULES[@]}\"\n\n# sparse index：把 index 从几十 MB 压到 KB 级，status 大幅提速\ngit sparse-checkout set --cone \"${MODULES[@]}\" 2>/dev/null || true\n\ngit checkout -q \"$HEAD_SHA\"\n\n# ---------- 5. 验证：此时磁盘上只存在受影响模块的文件 ----------\necho \"--- checkout 结果（顶层）---\"\nls -1\necho \"--- 文件总数 ---\"\ngit ls-files | wc -l\n\n# ---------- 6. 输出给下游 job 用的矩阵（GitHub Actions 风格） ----------\nprintf '{\"module\":%s}\\n' \"$(printf '%s\\n' \"${MODULES[@]}\" | jq -R . | jq -sc .)\" > affected.json\ncat affected.json",
+        "explanation": "**第 1 部分（clone）**：`--filter=blob:none` 告诉远端只发送 commit 与 tree 对象，文件内容记为 promisor 缺失，等 checkout 时再按需拉取；`--no-checkout` 避免先写出全量文件；`--no-single-branch` 保证能拿到 main 用于 merge-base 计算。实测在 2GB 仓库上，这一步能把网络流量降到 30–80MB。\n\n**第 2 部分（fetch）**：显式 fetch main 与 HEAD 的引用，避免浅历史导致 `git merge-base` 计算失败；`--filter=blob:none` 再次声明过滤策略，防止 fetch 回退成全量。\n\n**第 3 部分（变更计算）**：`git diff --name-only $MERGE_BASE $HEAD_SHA` 只需要 tree 对象，不会触发 blob 下载。`mapfile` 读入数组，用 `${f%%/*}` 取第一层目录作为模块名；根文件（如根 package.json、Makefile）变更视为影响所有模块，走保守策略。\n\n**第 4 部分（sparse-checkout）**：`init --cone` 启用按目录前缀的 cone 模式；`set --skip-checks` 允许设置仓库中尚不存在的目录，配合并行 job 更灵活。`set` 只会写出这些子树，其他文件在 index 中标记 skip-worktree。\n\n**第 5 部分（验证）**：`git ls-files | wc -l` 输出受索引跟踪的文件数，cone 模式下会显著小于全仓库，可用于在 CI 日志中监控检出效率。\n\n**第 6 部分（产物）**：把受影响模块写成 JSON 矩阵，供 GitHub Actions `strategy.matrix` 或 GitLab `parallel:matrix` 做并行分片，实现「只跑受影响的服务」。"
       },
       "keyPoints": [
-        "Dart 是单线程事件循环：async/await 不能加速 CPU 密集型同步计算，只有 Isolate 能真正并行",
-        "compute 的入口函数必须是顶层函数或 static 方法，闭包无法跨 Isolate 序列化",
-        "Isolate 之间传递消息是深拷贝：子 Isolate 对对象的修改不会反映到主 Isolate，且大对象拷贝有成本",
-        "Isolate 有启动开销（毫秒级 + 栈内存），只对 >16ms 的任务使用，IO 类任务用 async 即可",
-        "Dart 3 推荐 Isolate.run（支持闭包与 Isolate.exit 零拷贝）；长驻双向通信才用 Isolate.spawn + SendPort/ReceivePort"
+        "`--filter=blob:none` 是 partial clone 的黄金默认值：保留完整历史操作能力，同时把 blob 下载推迟到真正需要时（promisor remote + lazy fetch）。",
+        "`git sparse-checkout init --cone` + `set <dirs>` 以目录前缀为单位裁剪工作区，配合 sparse index 可让 `git status` 提速 5–10 倍。",
+        "变更检测必须用 `git merge-base BASE HEAD` 作为 diff 基准，直接 diff 远端分支会引入无关改动，导致过度构建。",
+        "根文件（CI 配置、根依赖清单、构建脚本）变更时应退回全量构建，这是 Change-based Build 的安全阀。",
+        "worktree 可让多个并行 job 共享同一份 objects 库，避免重复 clone；注意每个 worktree 的 sparse 设置与 index 相互独立。",
+        "promisor remote 使运行时依赖远端可用，生产 CI 应配合本地 mirror / 缓存代理，并对 LFS、submodule 单独处理（`GIT_LFS_SKIP_SMUDGE=1`）。"
       ],
       "exercise": {
-        "description": "实现一个「大数据本地搜索」功能：内存里有 50 万条联系人（含姓名、手机号、邮箱），用户在搜索框输入关键词后，需要在 200ms 内返回匹配结果，且输入过程中 UI 不允许有任何卡顿。要求：1) 用 compute 或 Isolate.run 执行过滤逻辑；2) 用 debounce（建议 300ms）避免每次按键都触发计算；3) 处理「旧请求后返回」导致的结果覆盖问题（提示：用自增 requestId 或取消机制）。完成后对比：把过滤逻辑放回主 Isolate，观察输入框的响应延迟差异。",
-        "hint": "把过滤函数写成顶层函数 `List<Contact> filter(List<Contact> all, String keyword)`；搜索触发时先用 Timer 做 debounce；发起计算前记录 `final id = ++_requestId;`，await 返回后判断 `if (id != _requestId) return;` 直接丢弃过期结果；数据量很大时，考虑只把「匹配需要的字段」传进 isolate，或在 isolate 里直接用 Isolate.exit 返回结果以减少拷贝。",
+        "description": "为一个包含 services/{api,web,worker}、libs/{common,ui} 与根目录 Makefile 的 Monorepo 编写 CI 检出脚本：1) 计算 PR 的 merge-base 并列出变更文件；2) 映射出受影响的模块集合；3) 用 cone 模式 sparse-checkout 只检出这些模块；4) 输出 GitHub Actions 可用的 JSON 矩阵。额外挑战：当且仅当根目录 Makefile 或 .github/ 目录变更时，输出全量模块矩阵。",
+        "hint": "先用 git diff --name-only 拿到变更文件列表，用 `${f%%/*}` 提取顶层目录；用 case 或 [[ $f == Makefile || $f == .github/* ]] 判断是否触发全量；最后用 jq 生成 {\"include\":[...]} 结构。测试时可用两个本地 commit 模拟 PR 的 base/head。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全下面的代码，让 compute 能正确调用解析函数。",
-            "codeContext": "static List<String> parseUsers(String raw) => ...;\n\nFuture<void> run(String payload) async {\n  final result = await ______;\n  print(result.length);\n}",
+            "question": "补全部分克隆命令：只拉取 commit 与 tree 对象，把 blob 延迟到 checkout 时再拉取。",
+            "codeContext": "git clone --filter=_____ --no-checkout --no-single-branch \"$REPO_URL\" repo",
             "segments": [
               {
                 "type": "text",
-                "content": "final result = await ",
+                "content": "git clone --filter=",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +41,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[选择过滤器]",
                 "options": [
-                  "compute(parseUsers, payload)",
-                  "compute(parseUsers(), payload)",
-                  "compute((p) => parseUsers(p), payload)",
-                  "compute(_parser.parseUsers, payload)"
+                  "blob:none",
+                  "tree:0",
+                  "blob:limit=1m",
+                  "tree:1"
                 ],
-                "correctAnswer": "compute(parseUsers, payload)"
+                "correctAnswer": "blob:none"
               },
               {
                 "type": "text",
-                "content": ";",
+                "content": " --no-checkout --no-single-branch \"$REPO_URL\" repo",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "compute(parseUsers, payload)",
-            "explanation": "compute 的第一个参数是**函数引用**而不是调用结果，所以排除 `parseUsers()`；闭包 `(p) => parseUsers(p)` 无法被序列化发送到子 Isolate，运行时会抛错；实例方法 `_parser.parseUsers` 会隐式捕获 this，同样不可发送。只有 `compute(parseUsers, payload)` 这种顶层/静态函数引用是合法的。"
+            "correctAnswer": "blob:none",
+            "explanation": "`blob:none` 表示「除 blob 外全部传输」，即完整保留 commit 与 tree，因此 `git log`、`git diff --name-only`、`git merge-base` 都无需回源，而文件内容按需 lazy fetch，是 CI 场景的最佳平衡点。`tree:0` 连 tree 都不拉，会让 diff/log 频繁回源反而更慢；`blob:limit=1m` 只过滤大文件，适合二进制多的仓库但收益有限。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 compute 的 message 参数与返回值，下列说法正确的是？",
-            "codeContext": "final out = await compute(handle, input);",
+            "question": "在 CI 中使用 sparse-checkout 时，下面哪种做法最可能导致「漏构建」？",
+            "codeContext": "git sparse-checkout init --cone\ngit sparse-checkout set services/api\ngit diff --name-only origin/main HEAD",
             "segments": null,
             "options": [
-              "可以传任意 Dart 对象，包括闭包、BuildContext 和 Stream",
-              "只能传 String 或 Uint8List，其他类型一律不行",
-              "只能传可跨 Isolate 深拷贝的数据（基本类型、List、Map、纯数据类等），闭包和原生资源句柄不可传",
-              "可以传任何对象，但传大对象时会共享内存引用以提升性能"
+              "直接用 origin/main 作为 diff 基准，而不是 git merge-base origin/main HEAD",
+              "开启 core.sparseCheckoutCone 并按目录前缀 set 模块",
+              "当根目录的 Makefile 变更时仍只检出变更模块",
+              "fetch 时显式拉取 main 与 PR head 两个 SHA 以保证 merge-base 可计算"
             ],
-            "correctAnswer": "只能传可跨 Isolate 深拷贝的数据（基本类型、List、Map、纯数据类等），闭包和原生资源句柄不可传",
-            "explanation": "Isolate 之间不共享内存，消息会被深拷贝，因此必须是可序列化的数据。闭包、BuildContext、Stream/ReceivePort、Database 连接等持有外部资源或不可复制引用的对象都不能传递；同时拷贝大对象是有成本的，这也是要避免把超大报文反复跨 Isolate 传递的原因。"
+            "correctAnswer": "直接用 origin/main 作为 diff 基准，而不是 git merge-base origin/main HEAD",
+            "explanation": "origin/main 已经包含他人合并的提交，与 PR head 直接 diff 会把无关改动算进「变更集」，导致过度构建；更危险的是在 rebase 后出现负向 diff，可能让本应构建的模块被跳过。正确做法是 `git merge-base origin/main HEAD` 取共同祖先。其余三个选项都是正确实践。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "下面的代码会输出什么？",
-            "codeContext": "class Box {\n  int value = 0;\n}\n\nint bump(Box b) {\n  b.value += 42;\n  return b.value;\n}\n\nFuture<void> main() async {\n  final box = Box();\n  final result = await compute(bump, box);\n  print('${box.value} $result');\n}",
+            "question": "在空仓库中依次执行以下命令，最终 `ls` 的输出是什么？",
+            "codeContext": "mkdir demo && cd demo && git init -q\ngit -c user.email=a@b -c user.name=a commit --allow-empty -m init -q\nmkdir -p apps/web services/api libs/core\ntouch apps/web/index.html services/api/main.go libs/core/util.go\ngit add -A && git -c user.email=a@b -c user.name=a commit -m add -q\ngit sparse-checkout init --cone\ngit sparse-checkout set services/api\nls",
             "segments": null,
             "options": [
-              "0 42",
-              "42 42",
-              "0 0",
-              "运行时报错，Box 无法传递"
+              "apps libs services",
+              "services",
+              "services/api",
+              "apps services libs 的空目录各一个"
             ],
-            "correctAnswer": "0 42",
-            "explanation": "Box 是纯数据类（没有闭包、没有原生资源句柄），可以被跨 Isolate 传递，但传递过程是**深拷贝**。子 Isolate 修改的是拷贝出来的那份 Box，`result` 为 42；而主 Isolate 里的 `box.value` 仍是初始值 0。这正是 Isolate 消息传递「无锁但需拷贝」的核心语义，也解释了为什么不能指望用 Isolate 去共享可变状态。"
+            "correctAnswer": "services",
+            "explanation": "cone 模式下 `git sparse-checkout set services/api` 会保留 services/api 子树，并把其祖先目录 services 作为路径容器显示出来，因此顶层 `ls` 只输出 `services`。注意 `ls` 不显示隐藏文件，且 `services/api` 是目录内的内容而非顶层条目；apps 与 libs 由于被 skip-worktree 过滤，工作区中根本不存在。"
           }
         ]
       }
