@@ -1,39 +1,38 @@
 {
-  "date": "2026-10-06",
+  "date": "2026-10-07",
   "contents": [
     {
-      "id": "prog-2026-10-06",
-      "date": "2026-10-06",
-      "title": "Git Sparse Checkout + Partial Clone：Monorepo CI 流水线提速实战",
-      "summary": "利用 git 的部分克隆（blob:none）、稀疏检出（sparse-checkout cone mode）与 worktree 机制，把大型 Monorepo 的 CI 检出从分钟级压缩到秒级，并按变更模块精准触发构建。",
-      "difficulty": "高级",
-      "concept": "**Monorepo 的 CI 瓶颈到底在哪？** 在几百人规模的 Monorepo 中，一次 `git clone` 可能需要拉取 2GB+ 的对象数据，其中 90% 的文件与本次 PR 完全无关。CI 每一个 job（lint / unit-test / integration / e2e）都要重复一遍 clone，冷缓存下光是 checkout 就要 3–5 分钟。真正的时间成本由三部分构成：网络传输（对象数据量）、磁盘 IO（checkout 写出文件数量）、以及 index 构建。想要系统性提速，必须同时对这三项动刀，而不是简单地「加机器」或「开缓存」。\n\n**Partial Clone（--filter=blob:none）改变了什么？** Git 2.19 引入的 partial clone 允许客户端只拉取部分对象。`--filter=blob:none` 表示提交历史（commit + tree）全部拉取，但 blob（文件内容）延迟到真正需要时才按需回源拉取（promisor remote 机制）。这意味着 `git log`、`git diff --name-only`、`git blame`（只看文件名）等操作几乎不产生额外流量；只有 checkout 某个文件时才会触发一次 lazy fetch。工程经验上：如果 CI 只需要「找出哪些模块变了」，`blob:none` 是性价比最高的选择；`--filter=tree:0` 更极端但会让大多数历史操作变慢，通常只用于镜像备份场景。\n\n**Sparse Checkout（cone mode）减少写盘与索引开销。** `git sparse-checkout init --cone` 之后，Git 只会 checkout 你 `set` 过的目录子树，同时在 index 中对其他文件打上 skip-worktree 标记。cone 模式（Git 2.25+）相比传统 glob 模式的优势是：语义是「按目录前缀」，不会因为新增文件漏检出，且能配合 `git sparse-checkout add` 增量追加。再开启 `git config core.sparseCheckoutCone true` 与 `git sparse-checkout set --skip-checks`，在超大仓库（10w+ 文件）上还能启用 sparse index（`git sparse-checkout set` 会自动写 `extensions.sparseIndex`），把 index 体积从几十 MB 降到几百 KB，`git status` 提速 5–10 倍。\n\n**按变更模块触发构建（Change-based Build）。** 把 CI 的第一步改成：`git diff --name-only $BASE_SHA $HEAD_SHA`，再用 `path-to-module` 映射表把变更文件翻译成受影响的服务集合，最后把该集合喂给 `sparse-checkout set`。这样 lint/build/test 三个 job 只需检出 1–2 个服务目录。配合 `dorny/paths-filter` 或自研的依赖图（Bazel / Nx / Turborepo 的 affected 计算），可以实现「只构建被影响的服务」，在 200 微服务的仓库里，CI 平均时长通常能下降 60–80%。关键工程细节：比较基准必须用 `git merge-base origin/main HEAD` 而不是 `origin/main`，否则会把别人合并进 main 的改动也算进来。\n\n**并行场景下的 git worktree。** 同一份仓库数据（objects/refs）可以在磁上挂多个工作区：`git worktree add ../wt-test test-branch`。CI 中可以让多个并行 job 共享同一个 partial clone 的对象库，各自 worktree 检出不同目录，避免重复下载。注意：worktree 共享 `.git/objects`，但每个 worktree 有独立的 index，所以 sparse-checkout 设置是 per-worktree 的（Git 2.38+ 支持 `git sparse-checkout set` 在 worktree 内独立生效）。\n\n**踩坑与边界。** 1）promisor remote 意味着运行时依赖远端可用，若 CI 网络隔离或远端限流，lazy fetch 会失败，务必在 CI 中保留一个完整的本地对象缓存（`git clone --mirror` 到 NFS/缓存服务，再用 `file://` 作为 promisor 源）；2）submodule 与 Git LFS 不受 `--filter` 保护，LFS 需显式 `GIT_LFS_SKIP_SMUDGE=1`；3）`--depth=1` 浅克隆与 partial clone 叠加时要小心，深度不足会导致 `merge-base` 计算错误，建议 `--shallow-since` 或 fetch 指定的两个 SHA；4）稀疏检出后 `git status` 不会报错，但 IDE 的全量索引可能仍会扫描全部目录，需要同步调整 IDE 配置。",
+      "id": "prog-2026-10-07",
+      "date": "2026-10-07",
+      "title": "SwiftUI 状态管理入门：@State 与 @Binding",
+      "summary": "掌握 SwiftUI 中“数据驱动 UI”的核心机制：用 @State 拥有数据，用 @Binding 在父子视图间共享同一份数据。",
+      "difficulty": "初级",
+      "concept": "SwiftUI 与 UIKit 最大的区别在于：视图是「状态的函数」。你不需要手动调用 setNeedsLayout 或 reload，只要数据变了，界面就会自动重新渲染。因此，理解数据放在哪里、如何传递，是 SwiftUI 的第一课。\n\n@State（属性包装器）用于让一个视图「拥有」某份数据。SwiftUI 的 View 是结构体（值类型），每次 body 被调用时都可能被重新创建，所以普通变量无法保存状态；@State 会把数据的存储托管到 SwiftUI 内部的一块持久内存中，视图重建时依然保留。经验之谈：@State 几乎总是配合 private 使用——它属于视图的内部实现细节，外界不应该直接改它。\n\n当父视图需要把这份数据交给子视图一起读写时，就用 @Binding。@Binding 不存储数据，它只是父视图数据的一条「引用通道」，子视图通过它读到的永远是父视图的最新值，写入也会直接反映到父视图。创建绑定的方式是在变量名前加 $，例如 StepControlView(step: $step)。注意：子视图的属性写成 @Binding var step: Int，而传参时传的是 $step，两者配合缺一不可。\n\n常见的初学者陷阱有三个：一是忘记写 $，把 step 而不是 $step 传给子视图，编译器会提示类型不匹配；二是在子视图里误用 @State，导致子视图创建了一份自己的数据副本，父视图看不到变化；三是想让一个纯展示的子视图读取父视图数据却不写，这时用 let 常量传值即可，不必上 @Binding。\n\n在实际工程中，@State 通常只用于「这个视图私有的、简单的界面状态」，比如开关是否展开、输入框文本、滚动位置等。一旦数据需要跨多个视图共享，就应该考虑 @ObservedObject / @StateObject（ObservableObject）或 Swift 5.9 之后的 @Observable，把数据抽成独立的 Model 类来管理。今天的重点是打好底层直觉：谁拥有数据，谁就能触发刷新。",
       "codeExample": {
-        "language": "Bash",
-        "code": "#!/usr/bin/env bash\n# ci-sparse-checkout.sh\n# 目标：在 Monorepo CI 中按需检出，只 checkout 受影响的模块目录。\n# 依赖：git >= 2.30\nset -euo pipefail\n\nREPO_URL=\"${REPO_URL:-https://github.com/your-org/monorepo.git}\"\nBASE_SHA=\"${BASE_SHA:-origin/main}\"\nHEAD_SHA=\"${HEAD_SHA:-HEAD}\"\nWORK_DIR=\"${WORK_DIR:-$PWD/repo}\"\n\n# ---------- 1. 部分克隆：只拉 commit + tree，blob 延迟拉取 ----------\ngit clone \\\n  --filter=blob:none \\\n  --no-checkout \\\n  --no-single-branch \\\n  \"$REPO_URL\" \"$WORK_DIR\"\n\ncd \"$WORK_DIR\"\n\n# ---------- 2. 确保拿到比较基准需要的历史（避免 shallow 丢 merge-base） ----------\ngit fetch --no-tags --filter=blob:none origin \\\n  \"+refs/heads/main:refs/remotes/origin/main\" \\\n  \"+${HEAD_SHA}:refs/heads/ci-head\" 2>/dev/null || true\n\nMERGE_BASE=$(git merge-base \"$BASE_SHA\" \"$HEAD_SHA\")\necho \"merge-base = $MERGE_BASE\"\n\n# ---------- 3. 计算变更文件 -> 受影响模块（顶层服务目录） ----------\nmapfile -t CHANGED_FILES < <(git diff --name-only \"$MERGE_BASE\" \"$HEAD_SHA\")\necho \"changed files: ${#CHANGED_FILES[@]}\"\n\n# 取变更文件的第一层目录作为受影响模块；根文件变更则全量构建\nMODULES=()\nROOT_TOUCHED=0\nfor f in \"${CHANGED_FILES[@]}\"; do\n  if [[ \"$f\" != */* ]]; then ROOT_TOUCHED=1; break; fi\n  MODULES+=(\"${f%%/*}\")\ndone\n\nif [[ $ROOT_TOUCHED -eq 1 || ${#CHANGED_FILES[@]} -eq 0 ]]; then\n  MODULES=(\"services\" \"libs\")   # 公共改动 -> 保守全量\nfi\n\n# 去重\nmapfile -t MODULES < <(printf '%s\\n' \"${MODULES[@]}\" | sort -u)\necho \"affected modules: ${MODULES[*]}\"\n\n# ---------- 4. 稀疏检出（cone mode）：只写出这些目录 ----------\ngit sparse-checkout init --cone\ngit sparse-checkout set --skip-checks \"${MODULES[@]}\"\n\n# sparse index：把 index 从几十 MB 压到 KB 级，status 大幅提速\ngit sparse-checkout set --cone \"${MODULES[@]}\" 2>/dev/null || true\n\ngit checkout -q \"$HEAD_SHA\"\n\n# ---------- 5. 验证：此时磁盘上只存在受影响模块的文件 ----------\necho \"--- checkout 结果（顶层）---\"\nls -1\necho \"--- 文件总数 ---\"\ngit ls-files | wc -l\n\n# ---------- 6. 输出给下游 job 用的矩阵（GitHub Actions 风格） ----------\nprintf '{\"module\":%s}\\n' \"$(printf '%s\\n' \"${MODULES[@]}\" | jq -R . | jq -sc .)\" > affected.json\ncat affected.json",
-        "explanation": "**第 1 部分（clone）**：`--filter=blob:none` 告诉远端只发送 commit 与 tree 对象，文件内容记为 promisor 缺失，等 checkout 时再按需拉取；`--no-checkout` 避免先写出全量文件；`--no-single-branch` 保证能拿到 main 用于 merge-base 计算。实测在 2GB 仓库上，这一步能把网络流量降到 30–80MB。\n\n**第 2 部分（fetch）**：显式 fetch main 与 HEAD 的引用，避免浅历史导致 `git merge-base` 计算失败；`--filter=blob:none` 再次声明过滤策略，防止 fetch 回退成全量。\n\n**第 3 部分（变更计算）**：`git diff --name-only $MERGE_BASE $HEAD_SHA` 只需要 tree 对象，不会触发 blob 下载。`mapfile` 读入数组，用 `${f%%/*}` 取第一层目录作为模块名；根文件（如根 package.json、Makefile）变更视为影响所有模块，走保守策略。\n\n**第 4 部分（sparse-checkout）**：`init --cone` 启用按目录前缀的 cone 模式；`set --skip-checks` 允许设置仓库中尚不存在的目录，配合并行 job 更灵活。`set` 只会写出这些子树，其他文件在 index 中标记 skip-worktree。\n\n**第 5 部分（验证）**：`git ls-files | wc -l` 输出受索引跟踪的文件数，cone 模式下会显著小于全仓库，可用于在 CI 日志中监控检出效率。\n\n**第 6 部分（产物）**：把受影响模块写成 JSON 矩阵，供 GitHub Actions `strategy.matrix` 或 GitLab `parallel:matrix` 做并行分片，实现「只跑受影响的服务」。"
+        "language": "Swift",
+        "code": "import SwiftUI\n\n// 子视图：不拥有数据，只是「借用」父视图的 step\nstruct StepControlView: View {\n    // @Binding 表示绑定到父视图的某个 @State\n    @Binding var step: Int\n\n    var body: some View {\n        HStack(spacing: 16) {\n            Button(\"➖\") {\n                if step > 1 { step -= 1 }\n            }\n            .buttonStyle(.bordered)\n\n            Text(\"步长：\\(step)\")\n                .font(.headline)\n                .frame(width: 110)\n\n            Button(\"➕\") {\n                if step < 5 { step += 1 }\n            }\n            .buttonStyle(.bordered)\n        }\n    }\n}\n\n// 父视图：数据的真正拥有者（Source of Truth）\nstruct WaterCounterView: View {\n    // @State 让视图持有这份数据，数据变化时 UI 自动刷新\n    @State private var cups: Int = 0\n    @State private var step: Int = 1\n\n    var body: some View {\n        VStack(spacing: 24) {\n            Text(\"今天喝了 \\(cups) 杯水 💧\")\n                .font(.largeTitle)\n\n            // 用 $ 把绑定传给子视图\n            StepControlView(step: $step)\n\n            Button(\"喝一杯\") {\n                cups += step        // 修改 @State，界面立即更新\n            }\n            .buttonStyle(.borderedProminent)\n\n            Button(\"重置\") {\n                cups = 0\n            }\n            .tint(.red)\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    WaterCounterView()\n}\n",
+        "explanation": "1) StepControlView 中的 @Binding var step: Int 声明了一个绑定属性，它本身不存储 Int，只是指向父视图那份数据的通道。\n2) 子视图里 step -= 1 / step += 1 看起来像改自己的变量，实际写入的是父视图的 cups 对应绑定，父视图 UI 随之刷新。\n3) WaterCounterView 用 @State private var cups / step 声明了两个私有状态，这是这个界面的 Source of Truth。\n4) StepControlView(step: $step) 中的 $ 是关键：它从 @State 变量取出 Binding<Int> 交给子视图。\n5) Text(\"今天喝了 \\(cups) 杯水\") 依赖 cups，因此每次点击按钮后界面自动重新渲染，无需任何手动刷新代码。\n6) #Preview 宏提供了 Xcode 画布预览，方便边写边看效果。"
       },
       "keyPoints": [
-        "`--filter=blob:none` 是 partial clone 的黄金默认值：保留完整历史操作能力，同时把 blob 下载推迟到真正需要时（promisor remote + lazy fetch）。",
-        "`git sparse-checkout init --cone` + `set <dirs>` 以目录前缀为单位裁剪工作区，配合 sparse index 可让 `git status` 提速 5–10 倍。",
-        "变更检测必须用 `git merge-base BASE HEAD` 作为 diff 基准，直接 diff 远端分支会引入无关改动，导致过度构建。",
-        "根文件（CI 配置、根依赖清单、构建脚本）变更时应退回全量构建，这是 Change-based Build 的安全阀。",
-        "worktree 可让多个并行 job 共享同一份 objects 库，避免重复 clone；注意每个 worktree 的 sparse 设置与 index 相互独立。",
-        "promisor remote 使运行时依赖远端可用，生产 CI 应配合本地 mirror / 缓存代理，并对 LFS、submodule 单独处理（`GIT_LFS_SKIP_SMUDGE=1`）。"
+        "@State 让视图「拥有」数据，数据存储在 SwiftUI 托管的持久内存中，视图重建也不会丢失",
+        "@Binding 只是父视图数据的引用通道，子视图读写它等于直接读写父视图的状态",
+        "创建绑定的语法是 $变量名，例如 StepControlView(step: $step)",
+        "@State 应声明为 private，它是视图的内部实现细节；子视图要读写就必须用 @Binding",
+        "只读展示场景传普通常量即可，不需要 @Binding；跨多个视图共享的复杂数据应升级到 @Observable/@StateObject"
       ],
       "exercise": {
-        "description": "为一个包含 services/{api,web,worker}、libs/{common,ui} 与根目录 Makefile 的 Monorepo 编写 CI 检出脚本：1) 计算 PR 的 merge-base 并列出变更文件；2) 映射出受影响的模块集合；3) 用 cone 模式 sparse-checkout 只检出这些模块；4) 输出 GitHub Actions 可用的 JSON 矩阵。额外挑战：当且仅当根目录 Makefile 或 .github/ 目录变更时，输出全量模块矩阵。",
-        "hint": "先用 git diff --name-only 拿到变更文件列表，用 `${f%%/*}` 提取顶层目录；用 case 或 [[ $f == Makefile || $f == .github/* ]] 判断是否触发全量；最后用 jq 生成 {\"include\":[...]} 结构。测试时可用两个本地 commit 模拟 PR 的 base/head。",
+        "description": "做一个「摄氏度 ↔ 华氏度」温度换算器：父视图 TemperatureConverterView 用 @State 持有摄氏温度 celsius（Double，默认 25）。子视图 TemperatureSliderView 用 @Binding var celsius: Double，包含一个 Slider（范围 -20...60）和一个显示当前摄氏度的 Text。父视图下方再用 Text 实时显示换算结果：华氏度 = celsius * 9 / 5 + 32，保留一位小数。要求拖动 Slider 时两行文字都同步更新。",
+        "hint": "先在父视图声明 @State private var celsius: Double = 25，再把 $celsius 传给子视图；子视图里 Slider(value: $celsius, in: -20...60) 直接绑定即可。格式化输出可用 String(format: \"%.1f\", fahrenheit)。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全部分克隆命令：只拉取 commit 与 tree 对象，把 blob 延迟到 checkout 时再拉取。",
-            "codeContext": "git clone --filter=_____ --no-checkout --no-single-branch \"$REPO_URL\" repo",
+            "question": "补全代码：把父视图的 @State 变量以绑定形式传给子视图，并在子视图中声明对应的绑定属性。",
+            "codeContext": "// 父视图\nclass ParentView: View {\n    @State private var step: Int = 1\n    var body: some View {\n        StepControlView(step: ______ )\n    }\n}\n\n// 子视图\nstruct StepControlView: View {\n    ______ var step: Int\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "git clone --filter=",
+                "content": "子视图中应当声明为 ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -41,56 +40,75 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择过滤器]",
+                "placeholder": "[选择]",
                 "options": [
-                  "blob:none",
-                  "tree:0",
-                  "blob:limit=1m",
-                  "tree:1"
+                  "@Binding",
+                  "@State",
+                  "@ObservedObject",
+                  "@Environment"
                 ],
-                "correctAnswer": "blob:none"
+                "correctAnswer": "@Binding"
               },
               {
                 "type": "text",
-                "content": " --no-checkout --no-single-branch \"$REPO_URL\" repo",
+                "content": " var step: Int，而父视图传参时应写作 StepControlView(step: ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "$step",
+                  "step",
+                  "@step",
+                  "Binding(step)"
+                ],
+                "correctAnswer": "$step"
+              },
+              {
+                "type": "text",
+                "content": " )。",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "blob:none",
-            "explanation": "`blob:none` 表示「除 blob 外全部传输」，即完整保留 commit 与 tree，因此 `git log`、`git diff --name-only`、`git merge-base` 都无需回源，而文件内容按需 lazy fetch，是 CI 场景的最佳平衡点。`tree:0` 连 tree 都不拉，会让 diff/log 频繁回源反而更慢；`blob:limit=1m` 只过滤大文件，适合二进制多的仓库但收益有限。"
+            "correctAnswer": "@Binding ... $step",
+            "explanation": "父视图拥有数据用 @State，子视图借用数据用 @Binding；从 @State 取出绑定值需要加 $ 前缀，这是 SwiftUI 的固定语法。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "在 CI 中使用 sparse-checkout 时，下面哪种做法最可能导致「漏构建」？",
-            "codeContext": "git sparse-checkout init --cone\ngit sparse-checkout set services/api\ngit diff --name-only origin/main HEAD",
+            "question": "关于 @State 与 @Binding，下列说法正确的是？",
+            "codeContext": "struct ChildView: View {\n    @Binding var title: String\n    var body: some View {\n        Button(\"点我\") { title = \"已修改\" }\n    }\n}",
             "segments": null,
             "options": [
-              "直接用 origin/main 作为 diff 基准，而不是 git merge-base origin/main HEAD",
-              "开启 core.sparseCheckoutCone 并按目录前缀 set 模块",
-              "当根目录的 Makefile 变更时仍只检出变更模块",
-              "fetch 时显式拉取 main 与 PR head 两个 SHA 以保证 merge-base 可计算"
+              "@Binding 会把数据复制一份给子视图，子视图修改不影响父视图",
+              "@Binding 是父视图数据的引用通道，子视图的修改会直接反映到父视图",
+              "@State 只能用于 Int，字符串必须用 @Binding",
+              "使用 @Binding 时传参可以直接写变量名，例如 ChildView(title: title)"
             ],
-            "correctAnswer": "直接用 origin/main 作为 diff 基准，而不是 git merge-base origin/main HEAD",
-            "explanation": "origin/main 已经包含他人合并的提交，与 PR head 直接 diff 会把无关改动算进「变更集」，导致过度构建；更危险的是在 rebase 后出现负向 diff，可能让本应构建的模块被跳过。正确做法是 `git merge-base origin/main HEAD` 取共同祖先。其余三个选项都是正确实践。"
+            "correctAnswer": "@Binding 是父视图数据的引用通道，子视图的修改会直接反映到父视图",
+            "explanation": "@Binding 不存储数据，它指向父视图的 Source of Truth，因此子视图写入会立刻体现在父视图上。A 描述的是值类型传参的语义，C 明显错误，D 忘记了 $ 前缀会编译报错。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "在空仓库中依次执行以下命令，最终 `ls` 的输出是什么？",
-            "codeContext": "mkdir demo && cd demo && git init -q\ngit -c user.email=a@b -c user.name=a commit --allow-empty -m init -q\nmkdir -p apps/web services/api libs/core\ntouch apps/web/index.html services/api/main.go libs/core/util.go\ngit add -A && git -c user.email=a@b -c user.name=a commit -m add -q\ngit sparse-checkout init --cone\ngit sparse-checkout set services/api\nls",
+            "question": "下面的代码中，点击 ChildView 的按钮两次后，按钮标题显示什么？父视图的 Text 会变化吗？",
+            "codeContext": "struct ChildView: View {\n    @State private var value = 10   // 注意：这里是 @State\n    var body: some View {\n        Button(\"值：\\(value)\") { value += 1 }\n    }\n}\n\nstruct ParentView: View {\n    @State private var total = 0\n    var body: some View {\n        VStack {\n            Text(\"总数：\\(total)\")\n            ChildView()\n        }\n    }\n}",
             "segments": null,
             "options": [
-              "apps libs services",
-              "services",
-              "services/api",
-              "apps services libs 的空目录各一个"
+              "值：12，父视图 Text 变为「总数：2」",
+              "值：12，父视图 Text 仍为「总数：0」",
+              "值：10，按钮不会变化",
+              "编译错误，@State 不能用在子视图"
             ],
-            "correctAnswer": "services",
-            "explanation": "cone 模式下 `git sparse-checkout set services/api` 会保留 services/api 子树，并把其祖先目录 services 作为路径容器显示出来，因此顶层 `ls` 只输出 `services`。注意 `ls` 不显示隐藏文件，且 `services/api` 是目录内的内容而非顶层条目；apps 与 libs 由于被 skip-worktree 过滤，工作区中根本不存在。"
+            "correctAnswer": "值：12，父视图 Text 仍为「总数：0」",
+            "explanation": "ChildView 用 @State 拥有了自己独立的一份数据，点击只会改自己的 value，与父视图的 total 完全无关。若想联动，必须把 total 通过 $total 传给子视图并声明 @Binding。这正是初学者最容易踩的坑：在子视图误用 @State 导致数据各自为政。"
           }
         ]
       }
