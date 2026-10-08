@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-07",
+  "date": "2026-10-08",
   "contents": [
     {
-      "id": "prog-2026-10-07",
-      "date": "2026-10-07",
-      "title": "SwiftUI 状态管理入门：@State 与 @Binding",
-      "summary": "掌握 SwiftUI 中“数据驱动 UI”的核心机制：用 @State 拥有数据，用 @Binding 在父子视图间共享同一份数据。",
-      "difficulty": "初级",
-      "concept": "SwiftUI 与 UIKit 最大的区别在于：视图是「状态的函数」。你不需要手动调用 setNeedsLayout 或 reload，只要数据变了，界面就会自动重新渲染。因此，理解数据放在哪里、如何传递，是 SwiftUI 的第一课。\n\n@State（属性包装器）用于让一个视图「拥有」某份数据。SwiftUI 的 View 是结构体（值类型），每次 body 被调用时都可能被重新创建，所以普通变量无法保存状态；@State 会把数据的存储托管到 SwiftUI 内部的一块持久内存中，视图重建时依然保留。经验之谈：@State 几乎总是配合 private 使用——它属于视图的内部实现细节，外界不应该直接改它。\n\n当父视图需要把这份数据交给子视图一起读写时，就用 @Binding。@Binding 不存储数据，它只是父视图数据的一条「引用通道」，子视图通过它读到的永远是父视图的最新值，写入也会直接反映到父视图。创建绑定的方式是在变量名前加 $，例如 StepControlView(step: $step)。注意：子视图的属性写成 @Binding var step: Int，而传参时传的是 $step，两者配合缺一不可。\n\n常见的初学者陷阱有三个：一是忘记写 $，把 step 而不是 $step 传给子视图，编译器会提示类型不匹配；二是在子视图里误用 @State，导致子视图创建了一份自己的数据副本，父视图看不到变化；三是想让一个纯展示的子视图读取父视图数据却不写，这时用 let 常量传值即可，不必上 @Binding。\n\n在实际工程中，@State 通常只用于「这个视图私有的、简单的界面状态」，比如开关是否展开、输入框文本、滚动位置等。一旦数据需要跨多个视图共享，就应该考虑 @ObservedObject / @StateObject（ObservableObject）或 Swift 5.9 之后的 @Observable，把数据抽成独立的 Model 类来管理。今天的重点是打好底层直觉：谁拥有数据，谁就能触发刷新。",
+      "id": "prog-2026-10-08",
+      "date": "2026-10-08",
+      "title": "Python 上下文管理器：资源安全管理与 contextlib 实战",
+      "summary": "掌握 with 语句背后的协议，用类、生成器和 contextlib 三种方式实现可复用的资源管理工具，彻底告别泄漏与忘记释放的 bug。",
+      "difficulty": "中级",
+      "concept": "上下文管理器（Context Manager）是 Python 中管理\"有始有终\"资源的核心机制：文件句柄、数据库连接、线程锁、事务、计时器、临时目录、网络请求上下文……任何需要\"进入时准备、退出时清理\"的场景都适用。它的本质是一个实现了 __enter__ 和 __exit__ 两个特殊方法的对象，with 语句只是语法糖：先调用 __enter__ 并把返回值绑定给 as 变量，再执行代码块，无论代码块是正常结束还是抛出异常，最后一定会调用 __exit__(exc_type, exc_val, exc_tb)。这保证了\"清理代码一定执行\"，比手写 try/finally 更不容易出错，也让调用方完全不需要关心资源释放的细节。\n\n实现方式通常有三种。第一种是类实现，优点是可以保存状态、提供额外方法、精确控制 __exit__ 的异常处理逻辑，适合封装成框架级组件（比如一个 Transaction 类，可以显式调用 commit() 或 rollback()）。第二种是用 @contextlib.contextmanager 装饰器把一个生成器函数变成上下文管理器：yield 之前是 __enter__，yield 之后（含 finally）是 __exit__，yield 出去的值就是 as 绑定的对象。这种方式代码量最少，适合一次性的、逻辑简单的场景。第三种是直接使用 contextlib 提供的工具：contextlib.suppress 忽略指定异常、contextlib.closing 兜底调用 .close()、contextlib.ExitStack 动态管理数量不定的多个资源。\n\n工程上最重要的一个细节是 __exit__ 的返回值：返回假值（默认）表示异常继续向上传播，返回真值表示\"吞掉\"这个异常。新手常犯的错误是无意中写成 return True，导致调用方永远收不到异常，bug 被静默隐藏，排查起来极其痛苦。原则是：除非你在实现类似 contextlib.suppress 的\"有意吞异常\"工具，否则永远不要返回 True。同样，在 @contextmanager 的生成器里，如果捕获了异常但没有重新 raise，异常也会被吞掉——这是一个高频陷阱。\n\n另一个容易被忽略的问题是异常上下文（exception context）。如果在 except 块里又抛出新异常，Python 会把原异常挂在 __context__ 上，日志里会出现一长串 During handling of the above exception...。在资源清理逻辑里要尽量避免抛出新异常；确实需要时，用 raise NewError(...) from original_error 明确表达因果关系。\n\n最后是 ExitStack 的价值。当你需要根据配置打开 N 个插件式资源（比如多个数据库、多个监控客户端），并且要求异常时按逆序全部释放，ExitStack 是唯一正确的选择：它维护一个上下文管理器栈，退出时逆序执行，即使中途 enter_context 抛异常，已进入的资源也会被正确释放。Python 3.9 之后还提供了 asynccontextmanager / AsyncExitStack 处理协程版本，思路完全一致。",
       "codeExample": {
-        "language": "Swift",
-        "code": "import SwiftUI\n\n// 子视图：不拥有数据，只是「借用」父视图的 step\nstruct StepControlView: View {\n    // @Binding 表示绑定到父视图的某个 @State\n    @Binding var step: Int\n\n    var body: some View {\n        HStack(spacing: 16) {\n            Button(\"➖\") {\n                if step > 1 { step -= 1 }\n            }\n            .buttonStyle(.bordered)\n\n            Text(\"步长：\\(step)\")\n                .font(.headline)\n                .frame(width: 110)\n\n            Button(\"➕\") {\n                if step < 5 { step += 1 }\n            }\n            .buttonStyle(.bordered)\n        }\n    }\n}\n\n// 父视图：数据的真正拥有者（Source of Truth）\nstruct WaterCounterView: View {\n    // @State 让视图持有这份数据，数据变化时 UI 自动刷新\n    @State private var cups: Int = 0\n    @State private var step: Int = 1\n\n    var body: some View {\n        VStack(spacing: 24) {\n            Text(\"今天喝了 \\(cups) 杯水 💧\")\n                .font(.largeTitle)\n\n            // 用 $ 把绑定传给子视图\n            StepControlView(step: $step)\n\n            Button(\"喝一杯\") {\n                cups += step        // 修改 @State，界面立即更新\n            }\n            .buttonStyle(.borderedProminent)\n\n            Button(\"重置\") {\n                cups = 0\n            }\n            .tint(.red)\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    WaterCounterView()\n}\n",
-        "explanation": "1) StepControlView 中的 @Binding var step: Int 声明了一个绑定属性，它本身不存储 Int，只是指向父视图那份数据的通道。\n2) 子视图里 step -= 1 / step += 1 看起来像改自己的变量，实际写入的是父视图的 cups 对应绑定，父视图 UI 随之刷新。\n3) WaterCounterView 用 @State private var cups / step 声明了两个私有状态，这是这个界面的 Source of Truth。\n4) StepControlView(step: $step) 中的 $ 是关键：它从 @State 变量取出 Binding<Int> 交给子视图。\n5) Text(\"今天喝了 \\(cups) 杯水\") 依赖 cups，因此每次点击按钮后界面自动重新渲染，无需任何手动刷新代码。\n6) #Preview 宏提供了 Xcode 画布预览，方便边写边看效果。"
+        "language": "Python",
+        "code": "\"\"\"\n上下文管理器综合示例\n演示三种实现方式：类实现、@contextmanager 生成器实现、contextlib 工具集\n运行环境：Python 3.8+\n\"\"\"\nimport contextlib\nimport time\nfrom dataclasses import dataclass\nfrom typing import Optional\n\n\n# ---------- 方式一：类实现（需要保存状态、精确控制异常时使用） ----------\n@dataclass\nclass Timer:\n    label: str\n    elapsed: Optional[float] = None\n\n    def __enter__(self):\n        self._start = time.perf_counter()\n        print(f'[{self.label}] 开始计时...')\n        return self  # 这个返回值会绑定给 as 后面的变量\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        self.elapsed = time.perf_counter() - self._start\n        print(f'[{self.label}] 耗时 {self.elapsed:.6f}s')\n        # 返回 False(默认) -> 异常继续向上传播；返回 True -> 吞掉异常\n        # 实践中除非刻意封装 suppress 类工具，否则永远返回 False\n        return False\n\n\n# ---------- 方式二：@contextmanager 生成器实现（最简洁） ----------\n@contextlib.contextmanager\ndef managed_resource(name: str):\n    \"\"\"模拟数据库连接：进入时建立，退出时关闭，异常时回滚\"\"\"\n    resource = {'name': name, 'status': 'open'}\n    try:\n        print(f'获取资源 {name}')\n        yield resource            # yield 的值会绑定给 as 变量\n    except Exception as exc:\n        resource['status'] = 'rolled back'\n        print(f'资源 {name} 出现异常，已回滚：{exc}')\n        raise                     # 必须重新抛出，否则异常被静默吞掉\n    finally:\n        resource['status'] = 'closed'\n        print(f'释放资源 {name}')\n\n\n# ---------- 方式三：ExitStack 动态管理数量不定的多个资源 ----------\ndef open_many(names):\n    with contextlib.ExitStack() as stack:\n        resources = [stack.enter_context(managed_resource(n)) for n in names]\n        print('所有资源已就绪：', [r['name'] for r in resources])\n        # 即使上面某一行抛异常，已进入的资源也会按逆序自动释放\n\n\nif __name__ == '__main__':\n    # 1) 类实现：计时器\n    with Timer('求和耗时') as t:\n        total = sum(i * i for i in range(200_000))\n    print('结果:', total, '| 计时对象仍可用:', t.elapsed)\n    print('-' * 40)\n\n    # 2) 生成器实现：正常流程\n    with managed_resource('db_conn') as res:\n        res['query'] = 'SELECT 1'\n        print('执行查询 ->', res['query'])\n    print('-' * 40)\n\n    # 3) 生成器实现：异常流程，观察回滚与释放的顺序\n    try:\n        with managed_resource('bad_conn') as res:\n            raise ValueError('SQL 语法错误')\n    except ValueError as e:\n        print('异常已正常传播并捕获:', e)\n    print('-' * 40)\n\n    # 4) ExitStack：一次管理三个资源\n    open_many(['conn_a', 'conn_b', 'conn_c'])\n",
+        "explanation": "【类实现 Timer】__enter__ 记录起始时间并返回 self，所以 with Timer(...) as t 中的 t 就是这个 Timer 实例；__exit__ 计算耗时并显式返回 False，保证代码块中的异常不会被吞掉。dataclass 让它自带 __repr__ 和默认字段。\n\n【@contextmanager managed_resource】yield 之前的代码相当于 __enter__，yield 的值（resource 字典）绑定给 as 变量；yield 之后的 except/finally 相当于 __exit__。注意两个关键点：except 里必须 raise 重新抛出异常，否则上下文管理器会吃掉它；finally 中的清理代码在任何情况下都会执行。\n\n【ExitStack open_many】enter_context 可以在运行时动态注册资源，退出 with 块时按进入的逆序自动调用各自的 __exit__。这是处理\"N 个插件式资源\"的标准做法，比手动嵌套 with 或手写 try/finally 安全得多。\n\n【__main__ 演示】四个场景分别展示了计时、正常获取释放、异常回滚、批量资源管理，运行后可以清晰看到资源释放代码一定被执行。"
       },
       "keyPoints": [
-        "@State 让视图「拥有」数据，数据存储在 SwiftUI 托管的持久内存中，视图重建也不会丢失",
-        "@Binding 只是父视图数据的引用通道，子视图读写它等于直接读写父视图的状态",
-        "创建绑定的语法是 $变量名，例如 StepControlView(step: $step)",
-        "@State 应声明为 private，它是视图的内部实现细节；子视图要读写就必须用 @Binding",
-        "只读展示场景传普通常量即可，不需要 @Binding；跨多个视图共享的复杂数据应升级到 @Observable/@StateObject"
+        "with 语句 = __enter__ + 代码块 + 必执行的 __exit__，等价于 try/finally，但更简洁、更难写错",
+        "__exit__ 返回 True 会吞掉异常——除非刻意实现 suppress 工具，否则永远返回 False",
+        "@contextmanager 生成器里 yield 后若捕获异常必须 raise，否则异常被静默吞掉，这是最高频陷阱",
+        "ExitStack 是动态管理多个资源的标准方案，保证异常时按逆序完整释放",
+        "资源类应尽量做成上下文管理器，把\"释放\"逻辑内聚到组件内部，调用方不必关心清理细节"
       ],
       "exercise": {
-        "description": "做一个「摄氏度 ↔ 华氏度」温度换算器：父视图 TemperatureConverterView 用 @State 持有摄氏温度 celsius（Double，默认 25）。子视图 TemperatureSliderView 用 @Binding var celsius: Double，包含一个 Slider（范围 -20...60）和一个显示当前摄氏度的 Text。父视图下方再用 Text 实时显示换算结果：华氏度 = celsius * 9 / 5 + 32，保留一位小数。要求拖动 Slider 时两行文字都同步更新。",
-        "hint": "先在父视图声明 @State private var celsius: Double = 25，再把 $celsius 传给子视图；子视图里 Slider(value: $celsius, in: -20...60) 直接绑定即可。格式化输出可用 String(format: \"%.1f\", fahrenheit)。",
+        "description": "实现一个 atomic_write(path, text) 上下文管理器（用 @contextmanager 写）：进入时把内容写到 path + '.tmp' 临时文件，正常退出时用 os.replace 原子地改名到目标路径，出现异常时删除临时文件并保证原文件不被破坏。要求：既能 with atomic_write('a.txt', 'hello') 使用，也要考虑异常分支下的清理顺序。提示：可以把 yield 放在临时文件写完之后、os.replace 之前。",
+        "hint": "结构大致是：1) 打开临时文件写入内容并 close（或用 with open）；2) try: yield tmp_path；3) except: os.remove(tmp_path) 并 raise；4) else: os.replace(tmp_path, path)。注意 os.replace 是原子操作，目标文件要么是旧内容要么是新内容，绝不会出现半截内容。想清楚 yield 应该放在哪一步——它把\"用户自定义逻辑\"插入到了写入与提交之间。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码：把父视图的 @State 变量以绑定形式传给子视图，并在子视图中声明对应的绑定属性。",
-            "codeContext": "// 父视图\nclass ParentView: View {\n    @State private var step: Int = 1\n    var body: some View {\n        StepControlView(step: ______ )\n    }\n}\n\n// 子视图\nstruct StepControlView: View {\n    ______ var step: Int\n}",
+            "question": "补全代码：实现一个\"捕获并忽略指定异常类型\"的上下文管理器函数。",
+            "codeContext": "import contextlib\n\n@contextlib.contextmanager\ndef suppress_and_log(exc_type):\n    try:\n        yield\n    except ??? as e:\n        print(f'捕获并忽略: {e}')",
             "segments": [
               {
                 "type": "text",
-                "content": "子视图中应当声明为 ",
+                "content": "import contextlib\n\n@contextlib.contextmanager\ndef suppress_and_log(exc_type):\n    try:\n        yield\n    except ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,75 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[选择异常类型]",
                 "options": [
-                  "@Binding",
-                  "@State",
-                  "@ObservedObject",
-                  "@Environment"
+                  "exc_type",
+                  "Exception",
+                  "BaseException",
+                  "ValueError"
                 ],
-                "correctAnswer": "@Binding"
+                "correctAnswer": "exc_type"
               },
               {
                 "type": "text",
-                "content": " var step: Int，而父视图传参时应写作 StepControlView(step: ",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "$step",
-                  "step",
-                  "@step",
-                  "Binding(step)"
-                ],
-                "correctAnswer": "$step"
-              },
-              {
-                "type": "text",
-                "content": " )。",
+                "content": " as e:\n        print(f'捕获并忽略: {e}')",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "@Binding ... $step",
-            "explanation": "父视图拥有数据用 @State，子视图借用数据用 @Binding；从 @State 取出绑定值需要加 $ 前缀，这是 SwiftUI 的固定语法。"
+            "correctAnswer": "exc_type",
+            "explanation": "except 子句接受任意求值结果为异常类（或异常类元组）的表达式，所以这里应捕获参数变量 exc_type，而不是写死某个异常类。这样调用方 suppress_and_log(ValueError) 就能只忽略 ValueError，其他异常正常传播。注意此处故意不再 raise，从而实现\"忽略\"语义——这正是少数合法吞异常的场景。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 @State 与 @Binding，下列说法正确的是？",
-            "codeContext": "struct ChildView: View {\n    @Binding var title: String\n    var body: some View {\n        Button(\"点我\") { title = \"已修改\" }\n    }\n}",
+            "question": "关于类实现的上下文管理器 __exit__ 方法，下列说法正确的是？",
+            "codeContext": "class Conn:\n    def __enter__(self):\n        print('open')\n        return self\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        print('close')\n        return True",
             "segments": null,
             "options": [
-              "@Binding 会把数据复制一份给子视图，子视图修改不影响父视图",
-              "@Binding 是父视图数据的引用通道，子视图的修改会直接反映到父视图",
-              "@State 只能用于 Int，字符串必须用 @Binding",
-              "使用 @Binding 时传参可以直接写变量名，例如 ChildView(title: title)"
+              "代码块抛出异常时 __exit__ 不会被调用",
+              "return True 会让代码块中的异常继续向上传播给调用者",
+              "return True 会吞掉代码块中的异常，调用方将感知不到错误",
+              "__exit__ 只能返回 None，否则会抛出 TypeError"
             ],
-            "correctAnswer": "@Binding 是父视图数据的引用通道，子视图的修改会直接反映到父视图",
-            "explanation": "@Binding 不存储数据，它指向父视图的 Source of Truth，因此子视图写入会立刻体现在父视图上。A 描述的是值类型传参的语义，C 明显错误，D 忘记了 $ 前缀会编译报错。"
+            "correctAnswer": "return True 会吞掉代码块中的异常，调用方将感知不到错误",
+            "explanation": "无论代码块是否抛异常，__exit__ 一定会被调用；三个参数分别为异常类型、异常实例和 traceback（无异常时全为 None）。返回值为真值时 Python 认为\"异常已被处理\"，不再向外传播——这正是 contextlib.suppress 的实现原理。示例代码里 return True 会让所有异常被静默吞掉，在业务代码中属于危险写法。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "下面的代码中，点击 ChildView 的按钮两次后，按钮标题显示什么？父视图的 Text 会变化吗？",
-            "codeContext": "struct ChildView: View {\n    @State private var value = 10   // 注意：这里是 @State\n    var body: some View {\n        Button(\"值：\\(value)\") { value += 1 }\n    }\n}\n\nstruct ParentView: View {\n    @State private var total = 0\n    var body: some View {\n        VStack {\n            Text(\"总数：\\(total)\")\n            ChildView()\n        }\n    }\n}",
+            "question": "运行下面的代码，控制台输出顺序是什么？",
+            "codeContext": "import contextlib\n\n@contextlib.contextmanager\ndef tag(name):\n    print(f'<{name}>')\n    try:\n        yield\n    finally:\n        print(f'</{name}>')\n\ndef main():\n    with tag('a'):\n        with tag('b'):\n            print('body')\n            raise ValueError('boom')\n\ntry:\n    main()\nexcept ValueError:\n    print('caught')",
             "segments": null,
             "options": [
-              "值：12，父视图 Text 变为「总数：2」",
-              "值：12，父视图 Text 仍为「总数：0」",
-              "值：10，按钮不会变化",
-              "编译错误，@State 不能用在子视图"
+              "<a>\\n<b>\\nbody\\n</b>\\n</a>\\ncatched",
+              "<a>\\n<b>\\nbody\\n</a>\\n</b>\\ncatched",
+              "<a>\\n<b>\\nbody\\ncatched",
+              "<a>\\n<b>\\nbody\\n</b>\\ncatched"
             ],
-            "correctAnswer": "值：12，父视图 Text 仍为「总数：0」",
-            "explanation": "ChildView 用 @State 拥有了自己独立的一份数据，点击只会改自己的 value，与父视图的 total 完全无关。若想联动，必须把 total 通过 $total 传给子视图并声明 @Binding。这正是初学者最容易踩的坑：在子视图误用 @State 导致数据各自为政。"
+            "correctAnswer": "<a>\\n<b>\\nbody\\n</b>\\n</a>\\ncatched",
+            "explanation": "with 语句是栈式嵌套的：内层的 tag('b') 先进入，所以先打印 <a> 再打印 <b>；异常发生时，内层 __exit__ 先执行打印 </b>，然后异常继续向上传播到外层打印 </a>，最后才被最外层的 except ValueError 捕获打印 caught。由于两个 tag 的 finally 中都没有重新抛出异常（异常本来就在传播中），异常不会被吞掉。"
           }
         ]
       }

@@ -1,186 +1,185 @@
 {
-  "date": "2026-10-07",
+  "date": "2026-10-08",
   "content": {
-    "id": "en-2026-10-07",
-    "date": "2026-10-07",
-    "topic": "人工智能与科技",
+    "id": "en-2026-10-08",
+    "date": "2026-10-08",
+    "topic": "商业与金融",
     "newsHighlights": [
       {
-        "title": "Francis Halzen wins 2026 Nobel Prize in Physics",
-        "source": "ChinaDaily / CGTN",
-        "summary": "Belgian scientist Francis Halzen has been awarded the 2026 Nobel Prize in Physics for decisive contributions to the IceCube Neutrino Observatory and the discovery of high-energy neutrinos.",
-        "translation": "比利时科学家弗朗西斯·哈尔岑因对冰立方中微子天文台的决定性贡献以及高能中微子的发现，荣获2026年诺贝尔物理学奖。",
+        "title": "Insured robots becoming irreversible wave",
+        "source": "ChinaDaily",
+        "summary": "Chinese insurers are launching dedicated policies for robots as automated machines spread across factories, hospitals and hotels, a trend analysts describe as irreversible.",
+        "translation": "随着自动化机器进入工厂、医院和酒店，中国保险公司正在推出专门的机器人保险产品，分析人士称这一趋势不可逆转。",
         "keyWords": [
-          "Nobel Prize",
-          "neutrino",
-          "observatory",
-          "discovery",
-          "high-energy"
+          "insurance",
+          "robotics",
+          "premium",
+          "liability"
         ]
       },
       {
-        "title": "Coffee majors rewriting playbook in China",
+        "title": "Chinese AI models see intl adoption surge",
         "source": "ChinaDaily",
-        "summary": "For years, success in China's coffee market was measured by two numbers: how many stores a company could open and how cheaply it could sell a cup of joe — a formula now being rewritten.",
-        "translation": "多年来，中国咖啡市场的成功一直用两个数字衡量：能开多少家店、一杯咖啡能卖多便宜——如今这一套打法正被改写。",
+        "summary": "International adoption of Chinese artificial intelligence models has surged over the past year, driven by competitive pricing, faster iteration and open-source releases.",
+        "translation": "过去一年，中国人工智能模型的国际采用量激增，主要得益于有竞争力的定价、更快的迭代速度和开源发布。",
         "keyWords": [
-          "market",
-          "formula",
-          "transform",
-          "strategy"
+          "adoption",
+          "surge",
+          "open-source",
+          "iteration"
         ]
       },
       {
-        "title": "Logistics base boosts Sino-Central Asian connectivity",
-        "source": "ChinaDaily",
-        "summary": "A major logistics base is strengthening connectivity between China and Central Asia, powered by smart tracking and digital supply-chain technology.",
-        "translation": "一座大型物流基地借助智能追踪与数字化供应链技术，正在增强中国与中亚之间的互联互通。",
+        "title": "Immersive experiences reshape inbound travel over National Day holiday",
+        "source": "CGTN",
+        "summary": "Foreign visitors to China are seeking immersive cultural and tech experiences during the National Day holiday, reshaping the country's inbound tourism market.",
+        "translation": "国庆假期期间，来华外国游客热衷沉浸式文化与科技体验，正在重塑中国的入境旅游市场。",
         "keyWords": [
-          "logistics",
-          "connectivity",
-          "digital",
-          "supply chain"
+          "immersive",
+          "inbound",
+          "tourism",
+          "experience economy"
         ]
       },
       {
-        "title": "Ceramic paradise in Jingdezhen",
+        "title": "Holiday travel highlights China's transport strength",
         "source": "ChinaDaily",
-        "summary": "International artists gather in Jingdezhen's Sanbao Ceramic Art Village, where ancient craft meets modern digital design and 3D printing technology.",
-        "translation": "国际艺术家汇聚景德镇三宝国际陶瓷艺术村，古老工艺与现代数字设计、3D打印技术在此交融。",
+        "summary": "Record passenger flows during the National Day holiday have highlighted the capacity and efficiency of China's transport infrastructure.",
+        "translation": "国庆假期创纪录的客流凸显了中国交通基础设施的运力与效率。",
         "keyWords": [
-          "ceramic",
-          "digital design",
-          "craft",
-          "innovation"
+          "infrastructure",
+          "passenger flow",
+          "capacity",
+          "efficiency"
         ]
       }
     ],
     "quote": {
-      "quote": "Somewhere, something incredible is waiting to be known.",
-      "author": "Carl Sagan",
-      "translation": "在某个地方，某种不可思议的事物正等待着被我们认识。",
-      "explanation": "这句名言出自美国天文学家卡尔·萨根，鼓励人们保持对未知的好奇与探索精神——正如冰立方中微子天文台从南极冰层深处捕捉到幽灵般的中微子，把'不可知'变成'已知'。"
+      "quote": "Price is what you pay; value is what you get.",
+      "author": "Warren Buffett",
+      "translation": "价格是你付出的，价值是你得到的。",
+      "explanation": "巴菲特提醒投资者关注资产的内在价值而非短期价格。正如中国 AI 模型凭借高性价比赢得国际市场，真正的竞争力来自持续创造的价值，而非一时的低价。"
     },
     "vocabulary": [
       {
-        "word": "neutrino",
-        "phonetic": "/njuːˈtriːnəʊ/",
-        "partOfSpeech": "n. 名词",
-        "definition": "中微子（一种几乎无质量、极少与其他物质相互作用的基本粒子）",
-        "example": "The IceCube Neutrino Observatory detected high-energy neutrino events deep beneath the Antarctic ice.",
-        "translation": "冰立方中微子天文台在南极冰层深处探测到了高能中微子事件。",
-        "newsContext": "出自诺奖新闻：'the discovery of high-energy neutrinos'（高能中微子的发现）。"
+        "word": "premium",
+        "phonetic": "/ˈpriːmiəm/",
+        "partOfSpeech": "noun",
+        "definition": "保险费；溢价",
+        "example": "Companies are willing to pay a higher premium to protect expensive automated equipment.",
+        "translation": "企业愿意支付更高的保险费来保护昂贵的自动化设备。",
+        "newsContext": "出自今日《Insured robots becoming irreversible wave》：企业为机器人投保需按风险水平缴纳保费。"
       },
       {
-        "word": "observatory",
-        "phonetic": "/əbˈzɜːrvətɔːri/",
-        "partOfSpeech": "n. 名词",
-        "definition": "天文台；观测站",
-        "example": "The observatory uses thousands of sensors to watch for faint flashes of light in the ice.",
-        "translation": "这座天文台使用数千个传感器，观测冰层中微弱的闪光。",
-        "newsContext": "出自诺奖新闻：'decisive contributions to the IceCube Neutrino Observatory'。"
+        "word": "coverage",
+        "phonetic": "/ˈkʌvərɪdʒ/",
+        "partOfSpeech": "noun",
+        "definition": "保险范围；承保",
+        "example": "The new policy offers coverage for mechanical failure and third-party damage.",
+        "translation": "新保单为机械故障和第三方损失提供承保。",
+        "newsContext": "出自机器人保险报道：保险公司为不同应用场景设计差异化的承保范围。"
       },
       {
-        "word": "decisive",
-        "phonetic": "/dɪˈsaɪsɪv/",
-        "partOfSpeech": "adj. 形容词",
-        "definition": "决定性的；关键的",
-        "example": "Halzen made decisive contributions to the design and construction of the observatory.",
-        "translation": "哈尔岑对该天文台的设计与建造做出了决定性的贡献。",
-        "newsContext": "出自诺奖新闻：'for decisive contributions to the IceCube Neutrino Observatory'。"
+        "word": "liability",
+        "phonetic": "/ˌlaɪəˈbɪləti/",
+        "partOfSpeech": "noun",
+        "definition": "（法律）责任；负债",
+        "example": "When a robot causes an accident, questions of liability become complicated.",
+        "translation": "当机器人引发事故时，责任认定问题变得复杂。",
+        "newsContext": "出自机器人保险报道：公共场景中的事故责任划分是该险种的核心。"
       },
       {
-        "word": "contribution",
-        "phonetic": "/ˌkɒntrɪˈbjuːʃn/",
-        "partOfSpeech": "n. 名词",
-        "definition": "贡献；促成作用",
-        "example": "Scientific breakthroughs often rest on the contributions of many researchers over decades.",
-        "translation": "科学突破往往建立在数十年间众多研究者的贡献之上。",
-        "newsContext": "出自诺奖新闻：'decisive contributions to...'（对……的决定性贡献）。"
+        "word": "adoption",
+        "phonetic": "/əˈdɒpʃn/",
+        "partOfSpeech": "noun",
+        "definition": "采用，采纳，普及",
+        "example": "The adoption of Chinese AI tools has accelerated in Southeast Asia and Europe.",
+        "translation": "中国 AI 工具在东南亚和欧洲的普及速度加快。",
+        "newsContext": "出自标题《Chinese AI models see intl adoption surge》。"
       },
       {
-        "word": "discovery",
-        "phonetic": "/dɪˈskʌvəri/",
-        "partOfSpeech": "n. 名词",
-        "definition": "发现；被发现的事物",
-        "example": "The discovery of high-energy neutrinos opened a new window onto the universe.",
-        "translation": "高能中微子的发现为观测宇宙打开了一扇新的窗口。",
-        "newsContext": "出自诺奖新闻：'the discovery of high-energy neutrinos'。"
+        "word": "surge",
+        "phonetic": "/sɜːdʒ/",
+        "partOfSpeech": "noun / verb",
+        "definition": "激增，猛增；汹涌",
+        "example": "International demand for Chinese AI models surged during the past year.",
+        "translation": "过去一年，国际市场对中国 AI 模型的需求激增。",
+        "newsContext": "出自标题《Chinese AI models see intl adoption surge》。"
       },
       {
-        "word": "transform",
-        "phonetic": "/trænsˈfɔːm/",
-        "partOfSpeech": "v. 动词",
-        "definition": "使改变；使转化",
-        "example": "That formula helped transform China's coffee market within a single decade.",
-        "translation": "那一套打法在短短十年间改变了中国的咖啡市场。",
-        "newsContext": "出自咖啡新闻：'That formula helped transform...'（这一公式帮助改变了……）。"
+        "word": "irreversible",
+        "phonetic": "/ˌɪrɪˈvɜːsəbl/",
+        "partOfSpeech": "adjective",
+        "definition": "不可逆转的，无法挽回的",
+        "example": "Analysts believe the shift toward robot insurance is irreversible.",
+        "translation": "分析人士认为，向机器人保险的转变不可逆转。",
+        "newsContext": "出自标题《Insured robots becoming irreversible wave》。"
       },
       {
-        "word": "formula",
-        "phonetic": "/ˈfɔːmjələ/",
-        "partOfSpeech": "n. 名词",
-        "definition": "公式；（成功的）固定方法、套路",
-        "example": "Opening more stores and selling cheaper coffee was once the winning formula in China.",
-        "translation": "多开店、卖便宜咖啡曾是中国市场的制胜法则。",
-        "newsContext": "出自咖啡新闻：'That formula helped transform China's coffee market'。"
+        "word": "deployment",
+        "phonetic": "/dɪˈplɔɪmənt/",
+        "partOfSpeech": "noun",
+        "definition": "部署，配置，投入使用",
+        "example": "Rapid robot deployment in service industries is creating new demand for insurance.",
+        "translation": "服务型行业快速部署机器人，催生了新的保险需求。",
+        "newsContext": "出自机器人保险报道：各行业机器人的投入使用推动了配套金融服务。"
       },
       {
-        "word": "logistics",
-        "phonetic": "/ləˈdʒɪstɪks/",
-        "partOfSpeech": "n. 名词",
-        "definition": "物流；后勤组织",
-        "example": "The new logistics base shortens delivery times between China and Central Asia.",
-        "translation": "这座新的物流基地缩短了中国与中亚之间的运输时间。",
-        "newsContext": "出自物流新闻：'Logistics base boosts Sino-Central Asian connectivity'。"
+        "word": "revenue",
+        "phonetic": "/ˈrevənjuː/",
+        "partOfSpeech": "noun",
+        "definition": "收入，收益，营业收入",
+        "example": "Robot-related policies are becoming a fresh source of revenue for insurers.",
+        "translation": "机器人相关保单正成为保险公司新的收入来源。",
+        "newsContext": "出自机器人保险与 AI 产业报道：新技术为保险和软件企业带来新增收入。"
       },
       {
-        "word": "connectivity",
-        "phonetic": "/ˌkənekˈtɪvəti/",
-        "partOfSpeech": "n. 名词",
-        "definition": "连通性；互联互通",
-        "example": "Digital technology is boosting connectivity across the entire region.",
-        "translation": "数字技术正在提升整个区域的互联互通水平。",
-        "newsContext": "出自物流新闻标题：'boosts Sino-Central Asian connectivity'。"
+        "word": "immersive",
+        "phonetic": "/ɪˈmɜːsɪv/",
+        "partOfSpeech": "adjective",
+        "definition": "沉浸式的，身临其境的",
+        "example": "Immersive experiences are reshaping inbound travel during the National Day holiday.",
+        "translation": "沉浸式体验正在重塑国庆假期的入境旅游。",
+        "newsContext": "出自 CGTN《Immersive experiences reshape inbound travel over National Day holiday》。"
       },
       {
-        "word": "ceramic",
-        "phonetic": "/səˈræmɪk/",
-        "partOfSpeech": "n./adj. 名词/形容词",
-        "definition": "陶瓷；陶瓷的",
-        "example": "Jingdezhen has been a ceramic paradise for over a thousand years.",
-        "translation": "一千多年来，景德镇一直是陶瓷的天堂。",
-        "newsContext": "出自陶瓷新闻标题：'Ceramic paradise in Jingdezhen'。"
+        "word": "infrastructure",
+        "phonetic": "/ˈɪnfrəstrʌktʃə(r)/",
+        "partOfSpeech": "noun",
+        "definition": "基础设施",
+        "example": "Holiday travel has highlighted the strength of China's transport infrastructure.",
+        "translation": "假期出行凸显了中国交通基础设施的实力。",
+        "newsContext": "出自《Holiday travel highlights China's transport strength》：高铁与航空网络承载创纪录客流。"
       }
     ],
     "pattern": {
-      "pattern": "be awarded + 奖项 + for + 名词/动名词（因……被授予……）",
-      "example": "Francis Halzen has been awarded the Nobel Prize in Physics 2026 for decisive contributions to the IceCube Neutrino Observatory.",
-      "translation": "弗朗西斯·哈尔岑因对冰立方中微子天文台的决定性贡献，被授予2026年诺贝尔物理学奖。",
-      "usage": "该句型用于表达'因某成就/贡献而获得某奖项或荣誉'。for 后接名词短语或动名词，说明获奖原因。也可替换为 be awarded sth. for doing sth.，例如：She was awarded a medal for saving the children."
+      "pattern": "主语 + see + 名词（短语）+ surge / rise / grow（标题式表达：……见证……激增）",
+      "example": "Chinese AI models see international adoption surge.",
+      "translation": "中国 AI 模型见证国际采用量激增。",
+      "usage": "新闻标题中常用动词 see / witness 表示“见证、经历”，后接名词化结构，省略冠词和助动词。正文中可写成：Chinese AI models have seen international adoption surge over the past year. 表达“某事物经历了某种变化”时，比 experience 更简洁、更具新闻感。"
     },
     "grammar": {
-      "title": "现在完成时的被动语态（Present Perfect Passive）",
-      "explanation": "结构为 have/has + been + 过去分词，表示'到目前为止已经被……'，强调过去发生的动作对现在造成的结果或影响，常用于新闻报道中描述刚刚发生的重大事件。第三人称单数用 has been + done。",
+      "title": "现在进行时（be + doing）表示正在发生的趋势",
+      "explanation": "新闻英语常用现在进行时描述正在发展、尚未结束的社会或经济趋势，突出动态变化与即时性。常与 becoming、reshaping、growing、increasingly 等词搭配，语气上强调“正在形成、值得关注”。",
       "examples": [
-        "Belgian scientist Francis Halzen has been awarded the Nobel Prize in Physics 2026 for decisive contributions to the IceCube Neutrino Observatory.",
-        "High-energy neutrinos have been discovered and studied by scientists using detectors buried deep in the Antarctic ice."
+        "Insured robots are becoming an irreversible wave in China's insurance market.",
+        "Immersive experiences are reshaping inbound travel over the National Day holiday."
       ]
     },
     "pronunciation": {
-      "word": "observatory",
-      "phonetic": "/əbˈzɜːrvətɔːri/",
-      "tips": "重音在第二个音节 zɜːr 上，首音节弱读为 /əb/，不是 /ɒb/。注意 /z/ 是浊辅音而非 /s/，结尾的 /tɔːri/ 要清晰但不要拖长。可拆成 ob-ZUR-vuh-tor-ee 慢速练习，再连读。",
+      "word": "irreversible",
+      "phonetic": "/ˌɪrɪˈvɜːsəbl/",
+      "tips": "共 4 个音节，主重音在第三个音节 -ver- /ˈvɜː/。开头的 /ɪrɪ/ 两个元音都要弱读为短促的 /ɪ/，不要读成“艾”；/v/ 是上齿轻咬下唇的浊辅音；/ɜː/ 是长元音，舌尖不卷起（英音）；词尾 /əbl/ 轻而短。整词读作：ih-rih-VER-suh-bl。",
       "examples": [
-        "The IceCube Neutrino Observatory lies beneath the South Pole.",
-        "Scientists at the observatory have been watching the sky for more than a decade."
+        "Analysts say the trend toward robot insurance is irreversible.",
+        "Some environmental damage may prove irreversible."
       ]
     },
     "reading": {
-      "title": "Listening to the Universe: The Science Behind the 2026 Nobel Prize in Physics",
-      "content": "Belgian scientist Francis Halzen has been awarded the 2026 Nobel Prize in Physics for decisive contributions to the IceCube Neutrino Observatory. Located deep beneath the Antarctic ice, IceCube is not a traditional telescope. Instead, it uses thousands of digital sensors to detect faint flashes of light produced when neutrinos — tiny, ghost-like particles — collide with ice.\n\nNeutrinos rarely interact with matter, so detecting them demands both enormous scale and advanced technology. Machine learning and AI algorithms now help scientists separate real signals from background noise, turning mountains of raw data into scientific discovery.\n\nThe observatory's success shows how artificial intelligence has become an essential partner of modern science. From mapping the stars to rewriting the playbook of global business, technology continues to transform every field it touches. As Carl Sagan once wrote, somewhere, something incredible is waiting to be known.",
-      "translation": "比利时科学家弗朗西斯·哈尔岑因对冰立方中微子天文台的决定性贡献，荣获2026年诺贝尔物理学奖。冰立方位于南极冰层之下，并非传统望远镜。它使用数千个数字传感器，探测中微子——这种幽灵般的微小粒子——与冰碰撞时产生的微弱闪光。\n\n中微子极少与物质发生相互作用，因此探测它们既需要庞大的规模，也需要先进技术。如今，机器学习与人工智能算法帮助科学家把真实信号从背景噪声中分离出来，将海量原始数据转化为科学发现。\n\n这座天文台的成功表明，人工智能已成为现代科学不可或缺的伙伴。从描绘星辰到改写全球商业的打法，科技持续改变着它所触及的每一个领域。正如卡尔·萨根所写：在某个地方，某种不可思议的事物正等待着被我们认识。",
-      "sourceNote": "基于 ChinaDaily / CGTN 2026年10月7日报道《Francis Halzen wins 2026 Nobel Prize in Physics》改写，并结合当日咖啡市场与科技相关素材进行主题延伸。"
+      "title": "Robots, Insurance and AI: How China's Tech Economy Is Converting Innovation into Value",
+      "content": "As robots move from factory floors into hospitals, hotels and households, a new trend is taking shape in China's insurance market: policies designed specifically for machines. Industry analysts say insuring robots is no longer a niche experiment but an irreversible wave, as companies seek protection against accidents, malfunctions and liability claims. Premiums vary by scenario, and coverage now extends to third-party damage. At the same time, Chinese artificial intelligence models are winning wider acceptance overseas. Reports show that international adoption of Chinese AI tools has surged over the past year, driven by competitive pricing and faster iteration. Together, these developments show how quickly China's technology sector is converting innovation into commercial value. Demand for insurance, cloud services and integration support is creating fresh revenue for both insurers and software firms. For investors and workers, the message is clear: understanding automation and AI is no longer optional, because the future of business will be written by those who adapt first.",
+      "translation": "随着机器人从工厂车间走进医院、酒店和家庭，中国保险市场正出现一个新趋势：专为机器设计的保险产品。业内人士表示，为机器人投保已不再是小众尝试，而是一股不可逆转的浪潮——企业希望借此防范事故、故障与责任索赔。保费因场景而异，承保范围如今已延伸至第三方损失。与此同时，中国人工智能模型在海外获得越来越广泛的接受。报告显示，过去一年中国 AI 工具的国际采用量激增，动力来自有竞争力的定价与更快的迭代速度。这些进展共同表明，中国科技行业正迅速把创新转化为商业价值。保险、云服务与集成支持的需求，为保险公司和软件企业带来了新的收入。对投资者和从业者而言，信息很明确：理解自动化与人工智能不再是可选项，因为商业的未来将由率先适应的人书写。",
+      "sourceNote": "基于 ChinaDaily《Insured robots becoming irreversible wave》《Chinese AI models see intl adoption surge》及 CGTN《Immersive experiences reshape inbound travel over National Day holiday》等 2026-10-08 真实新闻改写，语言难度按中级学习者调整。"
     }
   }
 }
