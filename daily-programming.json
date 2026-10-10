@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-09",
+  "date": "2026-10-10",
   "contents": [
     {
-      "id": "prog-2026-10-09",
-      "date": "2026-10-09",
-      "title": "TypeScript 判别联合与类型收窄：把业务状态建模成「编译期可验证」的模型",
-      "summary": "用 Discriminated Union + Type Guard + 穷尽检查，把接口请求、表单状态这类「多态数据」建模成不会漏分支、不会空值崩溃的健壮代码。",
-      "difficulty": "中级",
-      "concept": "在真实业务里，最常出现的 bug 并不是「算法写错了」，而是「状态没考虑到」：loading 时就去读 data、error 时还去解构 response、新增了一个 status 却忘了在 UI 里渲染。这些问题的本质是：我们用一个大而全的可选字段接口（data?: T; error?: Error; loading?: boolean）去描述互斥的状态，结果类型系统无法阻止你写出「loading 为 true 同时 error 也有值」这种荒谬组合。\n\n判别联合（Discriminated Union，也叫 Tagged Union）的思路是把互斥状态拆成若干个「对象字面量类型」，再用一个共享的字面量字段（通常叫 kind / type / status / state）作为「判别式（discriminant）」。这样 TypeScript 就能通过一个简单的 `x.status === 'success'` 比较，把联合类型收窄（narrowing）到唯一那个成员，从而让 `x.data` 在这个分支里一定是存在的。这一步是零运行时成本的——联合类型在编译后会被完全擦除，最终产物依然是普通对象。\n\n但 `x.status === 'success'` 这种内联比较只在当前作用域有效。当你需要把「判断逻辑」抽成可复用函数时，就必须使用自定义类型守卫（Type Guard）：返回类型写成 `value is T` 的形式。注意 `is` 右侧的类型必须是入参类型的子类型，否则编译器会直接报错——这是 TypeScript 在保护你不要写出骗人的守卫。工程实践中，类型守卫最常见的三类是：判别式守卫（`s is Extract<Union, {...}>`）、非空守卫（`value is T`）、以及「鸭子类型」守卫（用 `typeof x === 'object' && 'key' in x` 保护来自第三方 SDK / localStorage / postMessage 的 `unknown` 数据）。\n\n中级开发者最容易忽略的第三个工具是「穷尽检查（exhaustiveness check）」。做法极其简单：定义一个 `assertNever(x: never): never` 函数，然后在 `switch` 的 `default` 分支里调用它。它的精妙之处在于：`never` 类型表示「永远不会有值」，如果联合类型新增了一个成员（比如加了 `status: 'paused'`）而你忘了写分支，`state` 在 default 处的类型就不再是 `never`，编译立刻报错。这把「需求变更后忘记改代码」这种最容易上线事故的场景，从运行时兜底提前到了编译期拦截，价值极高。\n\n最后给一条实战经验：判别联合不只是替代布尔标志位，它还能用来描述「不可能出错的组合」。比如写一个 `parseJSON` 时返回 `Result<T, ParseError>`（`{ ok: true; value: T } | { ok: false; error: ParseError }`），而不是返回 `T | null` 或者抛异常。前者强制调用方处理失败分支（`if (!r.ok) return r.error`），后者全靠自觉。在多人协作、尤其是函数被多处调用时，「让类型系统替你记 TODO」远比写文档有效。",
+      "id": "prog-2026-10-10",
+      "date": "2026-10-10",
+      "title": "Next.js App Router 流式渲染（Streaming SSR）与 Suspense 边界架构设计",
+      "summary": "掌握用 Suspense 边界拆分服务端组件、并发发起数据请求、实现渐进式 HTML 输出与选择性水合，把 TTFB 与 LCP 打到最优。",
+      "difficulty": "高级",
+      "concept": "在传统的 SSR 模式下，服务器必须等所有数据都取回、整棵组件树渲染完成后，才能把第一个字节吐给浏览器——这就是所谓的 \"TTFB 被最慢的那个接口拖死\"。Next.js App Router 基于 React Server Components 的 Streaming SSR 则完全不同：React 会在数据未就绪时先输出一段完整 HTML 外壳（shell）和 Suspense 的 fallback，随后通过同一个 HTTP 响应流（采用分块传输 + 内联 script 标签的可执行 chunk）把真实内容增量推送过来，浏览器边收边渲染。用户几乎立刻看到可交互的骨架，而不需要等待最长的那个请求。\n\n把这套机制用好的关键，在于 Suspense 边界的粒度设计。边界不是越多越好：太粗（整页一个边界）等于退化成全量等待；太细（每个卡片一个边界）会导致海量 fallback、HTML 体积膨胀与布局抖动（CLS）。工程上比较稳妥的做法是按 \"数据依赖 + 视觉区块\" 划分：首屏关键内容（商品列表、主视觉）一个边界；非关键慢接口（推荐、评论、实时榜单）各自独立边界；而完全静态的导航、页脚不包边界，直接随 shell 输出。经验法则是：任何 P95 耗时超过 200ms 的数据源，都应该被隔离到自己的 Suspense 边界里。\n\n第二个容易被忽略的优化点是\"请求的发起时机\"。很多团队把 await 写在组件树的深处，父组件 await 完才渲染子组件，子组件再 await——形成串行瀑布（waterfall）。正确姿势是：在页面顶层（Server Component）就把 fetch 返回的 Promise 提前创建出来，把 Promise 作为 props 传给子组件，配合 React 19 的 use() 在子组件中消费，让多个请求真正并发。Next.js 还会对同一渲染内的 fetch 做自动去重，所以放心并发发起。\n\n第三，流式渲染与水合（hydration）是两件事。流式渲染优化的是服务端吐 HTML 的速度；水合优化的是客户端 JS 的执行时机。React 18+ 的 Selective Hydration 允许页面按 Suspense 边界独立水合，并且会优先水合用户正在交互的那个边界（借助 root 的事件监听代理），因此即使推荐面板的 JS 还没下载完，商品列表的按钮依然可以点击。这意味着你应该把交互性（'use client'）尽量下推到叶子节点，保持 Server Component 的面积最大化，把客户端 JS 体积压到最低。\n\n最后说几个实战踩坑点：其一，fallback 骨架必须与真实内容尺寸一致，否则流式替换时会出现严重布局偏移，直接拉低 CLS 分数；其二，使用 force-dynamic 时要意识到这是每请求渲染，务必配合数据缓存（fetch 的 next.revalidate）或 full route cache，否则 QPS 一上来数据库就报警；其三，流式响应对监控不友好——HTTP 状态码 200 已经发出去了，之后某个 Suspense 内部才报错。生产上要给每个异步 Server Component 加错误边界（error.tsx / <ErrorBoundary>），并对流内错误做兜底降级。",
       "codeExample": {
-        "language": "typescript",
-        "code": "// ============================================================\n// 用「判别联合 + 类型收窄 + 穷尽检查」建模一次 API 请求的完整生命周期\n// 可直接用 npx tsx 运行\n// ============================================================\n\n// 1. 判别联合：用 status 的字符串字面量类型作为「判别式」\ntype RequestState<T> =\n  | { status: 'idle' }\n  | { status: 'loading'; startedAt: number }\n  | { status: 'success'; data: T; duration: number }\n  | { status: 'error'; error: Error; retryCount: number };\n\n// 2. 穷尽检查的基石：assertNever\n// 参数类型是 never，意味着「永远不该被调用」\nfunction assertNever(x: never): never {\n  throw new Error(`未处理的分支: ${JSON.stringify(x)}`);\n}\n\n// 3. 自定义类型守卫：is 关键字让调用方也能收窄\n// 注意：is 右侧必须是入参类型的子类型\nfunction isSuccess<T>(\n  state: RequestState<T>,\n): state is Extract<RequestState<T>, { status: 'success' }> {\n  return state.status === 'success';\n}\n\n// 4. 通用的非空守卫（处理来自外部的 unknown / null 数据）\nfunction isDefined<T>(value: T | null | undefined): value is T {\n  return value !== null && value !== undefined;\n}\n\n// 5. 核心：switch + default 调用 assertNever 实现编译期穷尽检查\nfunction describe<T>(state: RequestState<T>): string {\n  switch (state.status) {\n    case 'idle':\n      return '尚未发起请求';\n    case 'loading':\n      // 收窄后 startedAt 可直接访问，无需可选链\n      return `加载中…（${Date.now() - state.startedAt}ms）`;\n    case 'success':\n      return `成功，耗时 ${state.duration}ms`;\n    case 'error':\n      return `失败（第 ${state.retryCount + 1} 次尝试），原因：${state.error.message}`;\n    default:\n      // 如果未来新增了 status 分支却没写 case，这里会编译报错\n      return assertNever(state);\n  }\n}\n\n// 6. 实战：用「结果类型」取代「抛异常 + 可能为 null」\ntype Result<T, E> =\n  | { ok: true; value: T }\n  | { ok: false; error: E };\n\ninterface User {\n  id: number;\n  name: string;\n}\n\nfunction fetchUser(id: number): Result<User, Error> {\n  if (!Number.isInteger(id) || id <= 0) {\n    return { ok: false, error: new Error(`非法的用户 ID: ${id}`) };\n  }\n  return { ok: true, value: { id, name: `用户#${id}` } };\n}\n\n// ---- 演示 ----\nconst states: RequestState<User>[] = [\n  { status: 'idle' },\n  { status: 'loading', startedAt: Date.now() - 120 },\n  { status: 'success', data: { id: 7, name: 'Mika' }, duration: 86 },\n  { status: 'error', error: new Error('Network timeout'), retryCount: 1 },\n];\n\nfor (const s of states) {\n  console.log(describe(s));\n  // 类型守卫在「if 之外」同样生效，是零成本的运行时收窄\n  if (isSuccess(s)) {\n    console.log('  → 只有进入这个分支，s.data 才是可用的：', s.data.name);\n  }\n}\n\n// Result 风格：调用方被强制处理失败分支\nfor (const id of [7, -1]) {\n  const r = fetchUser(id);\n  if (!r.ok) {\n    console.log(`读取失败：${r.error.message}`);\n    continue;\n  }\n  console.log(`读取成功：${r.value.name}`);\n}\n\n// isDefined 的典型用法：过滤数组中的空值并保留类型\nconst maybeNames: (string | null | undefined)[] = ['Ada', null, 'Lin', undefined, 'Kay'];\nconst names: string[] = maybeNames.filter(isDefined);\nconsole.log(names); // ['Ada', 'Lin', 'Kay']\n",
-        "explanation": "第 1 段：`RequestState<T>` 是一个泛型判别联合，四个成员用 `status` 的字面量类型（'idle' | 'loading' | 'success' | 'error'）区分开，每个成员只携带该状态真正需要的字段——这就从类型层面杜绝了「loading 时读 data」这种错误。\n\n第 2 段：`assertNever(x: never)` 是穷尽检查的「哨兵」。`never` 不接受任何值，所以一旦 switch 漏了分支，`state` 在 default 处的类型就不是 `never`，`assertNever(state)` 会编译失败。\n\n第 3 段：`isSuccess` 返回 `state is Extract<RequestState<T>, { status: 'success' }>`。`Extract` 是内置工具类型，从联合中抽出匹配 `{ status: 'success' }` 的成员。这样函数返回 `true` 时，TypeScript 会把外层变量收窄成 `success` 分支，`data` 立即可用。\n\n第 4 段：`isDefined` 是最常用的通用守卫，配合 `Array.prototype.filter` 使用时，TypeScript 会自动把 `Array<T | null>` 提升为 `Array<T>`（要求 TS 5.5+ 的类型谓词推断，或显式标注如本例）。\n\n第 5 段：`describe` 中的 switch 是核心实践。每个 `case` 里访问的字段都是「编译器保证存在」的，不需要 `?.` 或 `!`。default 分支的 `assertNever(state)` 把「忘写分支」从线上事故变成编译错误。\n\n第 6 段：`Result<T, E>` 展示了判别联合在错误处理上的价值——`if (!r.ok)` 之后 TS 会把 `r` 收窄到失败分支，可以直接读 `r.error`；反之 `r.value` 必然存在。比 `try/catch` 更显式，比返回 `null` 更安全。"
+        "language": "tsx",
+        "code": "// ============================================================\n// app/products/page.tsx  —— 流式渲染 + Suspense 边界设计\n// 技术栈：Next.js 15 App Router / React Server Components\n// ============================================================\nimport { Suspense } from 'react'\nimport { ProductGrid } from '@/components/product-grid'\nimport { RecommendPanel } from '@/components/recommend-panel'\nimport { ProductCardSkeleton, PanelSkeleton } from '@/components/skeletons'\n\n// 强制动态渲染：每次请求都走流式 SSR\nexport const dynamic = 'force-dynamic'\n\n// ---------- 数据层：提前创建 Promise，避免串行瀑布 ----------\nasync function getProducts(): Promise<Product[]> {\n  const res = await fetch('https://api.example.com/products', {\n    // 数据缓存 60 秒：命中缓存时渲染极快，未命中则回源\n    next: { revalidate: 60 },\n  })\n  if (!res.ok) throw new Error('products fetch failed')\n  return res.json()\n}\n\nasync function getRecommendations(): Promise<Item[]> {\n  // 个性化推荐接口很慢（~1.5s），且必须 no-store\n  const res = await fetch('https://api.example.com/recommend', {\n    cache: 'no-store',\n  })\n  return res.json()\n}\n\nexport default function ProductsPage() {\n  // ✅ 关键：在渲染顶层就把两个请求并发抛出去\n  //    它们是 Promise，此刻并没有 await，所以不会互相等待\n  const productsPromise = getProducts()\n  const recommendPromise = getRecommendations()\n\n  return (\n    <main className='mx-auto max-w-6xl p-6'>\n      {/* 1️⃣ 静态壳子：随 HTML shell 立刻输出，不包 Suspense */}\n      <header className='mb-6'>\n        <h1 className='text-2xl font-bold'>商品列表</h1>\n        <p className='text-gray-500'>本周热卖 · 每 60 秒更新</p>\n      </header>\n\n      {/* 2️⃣ 关键内容：自己的 Suspense 边界，先吐骨架，数据到了再替换 */}\n      <section className='mb-10'>\n        <Suspense fallback={<ProductCardSkeleton count={9} />}>\n          {/* Server Component 内部 await，阻塞只影响这个边界 */}\n          <ProductGrid productsPromise={productsPromise} />\n        </Suspense>\n      </section>\n\n      {/* 3️⃣ 慢接口：完全隔离，绝不拖累商品列表的展示时间 */}\n      <aside>\n        <h2 className='mb-3 text-lg font-semibold'>为你推荐</h2>\n        <Suspense fallback={<PanelSkeleton />}>\n          <RecommendPanel recommendPromise={recommendPromise} />\n        </Suspense>\n      </aside>\n    </main>\n  )\n}\n\n// ============================================================\n// components/product-grid.tsx —— 异步 Server Component\n// ============================================================\nimport { use } from 'react' // React 19：在渲染中消费 Promise\nimport { AddToCartButton } from './add-to-cart-button' // 交互下沉到叶子 client 组件\n\ntype Props = { productsPromise: Promise<Product[]> }\n\nexport function ProductGrid({ productsPromise }: Props) {\n  // use() 会挂起当前 Suspense 边界，Promise 完成后 React 自动续流\n  const products = use(productsPromise)\n\n  return (\n    <div className='grid grid-cols-3 gap-4'>\n      {products.map((p) => (\n        <article key={p.id} className='rounded-xl border p-4'>\n          <img src={p.image} alt={p.title} className='aspect-square w-full rounded-lg object-cover' />\n          <h3 className='mt-2 font-medium'>{p.title}</h3>\n          <p className='text-red-600'>¥{p.price}</p>\n          {/* 只有这一小块是客户端组件，JS 体积最小化 */}\n          <AddToCartButton productId={p.id} />\n        </article>\n      ))}\n    </div>\n  )\n}\n\n// ============================================================\n// components/recommend-panel.tsx\n// ============================================================\nexport function RecommendPanel({ recommendPromise }: { recommendPromise: Promise<Item[]> }) {\n  const items = use(recommendPromise)\n  return (\n    <ul className='grid grid-cols-4 gap-3'>\n      {items.map((i) => (\n        <li key={i.id} className='rounded-lg bg-gray-50 p-3 text-sm'>{i.name}</li>\n      ))}\n    </ul>\n  )\n}\n\n// ============================================================\n// components/add-to-cart-button.tsx —— 交互叶子节点（Client）\n// ============================================================\n'use client'\n\nimport { useState, useTransition } from 'react'\n\nexport function AddToCartButton({ productId }: { productId: string }) {\n  const [count, setCount] = useState(0)\n  // useTransition 让加购后的重渲染低优先级进行，不阻塞输入\n  const [isPending, startTransition] = useTransition()\n\n  function handleAdd() {\n    startTransition(async () => {\n      await fetch('/api/cart', {\n        method: 'POST',\n        body: JSON.stringify({ productId }),\n      })\n      setCount((c) => c + 1)\n    })\n  }\n\n  return (\n    <button\n      onClick={handleAdd}\n      disabled={isPending}\n      className='mt-2 rounded-lg bg-black px-3 py-1.5 text-white disabled:opacity-50'\n    >\n      {isPending ? '加入中…' : count > 0 ? `已加购 ${count}` : '加入购物车'}\n    </button>\n  )\n}",
+        "explanation": "【1. 顶层并发发请求】ProductsPage 中 `const productsPromise = getProducts()` 只是创建 Promise 并未 await，两个请求同时发出。这是消灭接口串行瀑布的核心手法，配合 React 19 的 use() 在子组件中消费。\n\n【2. Suspense 边界拆分】商品列表（关键路径）和推荐面板（慢接口，约 1.5s）各自拥有独立边界。HTML shell 会立刻输出 header + 两个骨架屏，浏览器秒开；商品数据 200ms 到达时只替换第一个边界，推荐数据 1.5s 后再替换第二个边界。\n\n【3. use() 而非 await】ProductGrid 是同步 Server Component，用 use(productsPromise) 挂起当前边界。好处是它不需要是 async 函数，可以更自然地与其他 hooks 组合，同时保持流式语义。\n\n【4. 交互下沉】整个商品卡片里只有 AddToCartButton 是 'use client'，其余全部留在服务端执行。这样客户端 JS 体积与水合成本被压到最低，配合 Selective Hydration，用户可以优先与已水合区块交互。\n\n【5. 缓存策略】列表接口用 next.revalidate=60 走数据缓存，热点下 QPS 全部命中缓存；个性化推荐用 cache:'no-store' 保证实时性。force-dynamic 负责让页面走流式 SSR，两者配合实现『快 + 准』。\n\n【6. useTransition】加购动作放进 transition，异步请求期间按钮禁用但不阻塞主线程，交互动画保持 60fps。"
       },
       "keyPoints": [
-        "判别联合必须有一个所有成员共享、但字面量值互不相同的「判别式」字段（如 status: 'idle' | 'loading' | 'success' | 'error'），这是收窄生效的前提",
-        "类型守卫的签名是 `(param: T): param is S`，其中 S 必须是 T 的子类型；写成普通 `boolean` 就无法在调用方收窄",
-        "`assertNever(x: never)` + switch 的 default 分支 = 编译期穷尽检查，是防御「需求新增分支但代码未同步」最有效的手段",
-        "类型收窄依赖「控制流分析」：在 if/switch 的同一作用域内有效；提前 return 或把判断抽成函数后，需要类型守卫才能保持收窄",
-        "类型信息在编译后被完全擦除，判别联合零运行时开销；但对来自 localStorage / 网络 / postMessage 的数据，仍需用运行时校验（如 isDefined、zod）兜底"
+        "Streaming SSR 的本质：先吐 HTML shell + Suspense fallback，再通过分块流增量推送真实内容，TTFB 与 LCP 解耦",
+        "Suspense 边界按『数据依赖 + 视觉区块』划分粒度：P95 超过 200ms 的数据源必须独立成界，静态区块不要包边界",
+        "在组件树顶层创建 Promise 并作为 props 下传，配合 use() 消费，把串行瀑布改成并发请求",
+        "把 'use client' 尽量下推到叶子节点，最大化 Server Component 面积，配合 Selective Hydration 优先水合被交互的边界",
+        "fallback 骨架尺寸必须与真实内容一致，否则流式替换会引发布局偏移（CLS）；流内错误需用 error.tsx 兜底"
       ],
       "exercise": {
-        "description": "实现一个「表单提交状态机」：定义 `FormState` 判别联合，包含 `idle`、`validating`（携带 fieldName 与已校验字段数）、`submitting`（携带 startedAt）、`success`（携带 serverId）、`failed`（携带 fieldErrors: Record<string,string> 与 formError: string）五个状态。然后实现 `getFormMessage(state: FormState): string`，用 switch + assertNever 做穷尽检查，并实现类型守卫 `hasFieldErrors(s): s is Extract<FormState, { status: 'failed' }>`，最后模拟一条完整流程（idle → validating → submitting → success）和一条失败流程（submitting → failed）打印结果。",
-        "hint": "先把每个状态需要的字段想清楚，做到「该状态不可能缺字段」。switch 中每个 case 直接访问字段即可，不要用可选链。default 分支写 `return assertNever(state)`，此时如果你故意把某个 case 删掉，编译器会立刻告诉你哪里漏了——这正是练习的重点。",
+        "description": "实现一个「商品详情页」的流式渲染版本：页面包含商品主信息（接口 300ms）、库存状态（接口 800ms，需要实时 no-store）、评论区（接口 1200ms）三个区块。要求：三个区块并发请求、各自拥有独立 Suspense 边界、骨架屏与最终内容尺寸一致、评论区有一个能发表评论的客户端输入框。用 Lighthouse 验证 LCP < 2.0s、CLS < 0.05。",
+        "hint": "在页面 Server Component 里先创建三个 Promise 再传给子组件；把评论输入框单独抽成 'use client' 组件；用 useEffect + performance.measure 或 Web Vitals 面板记录各区块的实际渲染时间，确认慢接口没有拖累快接口。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全类型守卫的返回类型，使得调用方能从 `State` 联合中收窄出 success 分支并安全访问 `data`。",
-            "codeContext": "type State =\n  | { status: 'loading' }\n  | { status: 'success'; data: string };\n\nfunction isSuccess(s: State): ______ {\n  return s.status === 'success';\n}\n\nconst s: State = { status: 'success', data: 'hi' };\nif (isSuccess(s)) {\n  console.log(s.data.toUpperCase()); // 希望这里不报错\n}",
+            "question": "补全代码：让商品列表接口走 60 秒数据缓存，而推荐接口完全不缓存。",
+            "codeContext": "// 列表：可缓存\nconst products = await fetch(URL_A, {\n  next: { ______: 60 },\n})\n\n// 推荐：完全实时\nconst rec = await fetch(URL_B, {\n  cache: '______',\n})",
             "segments": [
               {
                 "type": "text",
-                "content": "function isSuccess(s: State): ",
+                "content": "const products = await fetch(URL_A, {\n  next: { ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,75 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择返回类型]",
+                "placeholder": "[选择]",
                 "options": [
-                  "s is Extract<State, { status: 'success' }>",
-                  "boolean",
-                  "State",
-                  "void"
+                  "revalidate",
+                  "cache",
+                  "timeout",
+                  "ttl"
                 ],
-                "correctAnswer": "s is Extract<State, { status: 'success' }>"
+                "correctAnswer": "revalidate"
               },
               {
                 "type": "text",
-                "content": " {\n  return s.status === 'success';\n}",
+                "content": ": 60 },\n})\n\nconst rec = await fetch(URL_B, {\n  cache: '",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "force-cache",
+                  "no-store",
+                  "reload",
+                  "default"
+                ],
+                "correctAnswer": "no-store"
+              },
+              {
+                "type": "text",
+                "content": "',\n})",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "s is Extract<State, { status: 'success' }>",
-            "explanation": "只有 `value is T` 形式的类型谓词才能让调用方收窄。`boolean` 虽然运行时行为完全一样，但 TS 无法据此收窄，`s.data` 会报「Property 'data' does not exist on type State」；`State` 与 `void` 更是无法收窄出 success 成员。实践中常用 `Extract<Union, {...}>` 写出精确的收窄目标。"
+            "correctAnswer": "revalidate, no-store",
+            "explanation": "Next.js 的 fetch 扩展中，next.revalidate（单位秒）控制数据缓存的重新验证时间，相当于 ISR 的数据层版本；cache:'no-store' 则完全跳过数据缓存，每次都回源，适合个性化/实时数据。注意 next.revalidate 与 cache:'force-cache' 互斥，不要同时写。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 `assertNever` 穷尽检查，下列说法正确的是？",
-            "codeContext": "function assertNever(x: never): never {\n  throw new Error(`未处理的分支: ${JSON.stringify(x)}`);\n}\n\nswitch (state.status) {\n  case 'idle': return 'a';\n  case 'loading': return 'b';\n  default: return assertNever(state);\n}",
+            "question": "关于 React 的 Selective Hydration（选择性水合），下列说法正确的是？",
+            "codeContext": "<Suspense fallback={<A/>}><SlowIsland/></Suspense>\n<Suspense fallback={<B/>}><FastIsland/></Suspense>",
             "segments": null,
             "options": [
-              "它的核心价值是：当联合类型新增成员而 switch 未处理时，编译期直接报错，把遗漏提前暴露",
-              "它只能用于 TypeScript enum，对字符串字面量联合类型无效",
-              "default 分支加上 assertNever 后，即使未来新增状态成员也不会有任何提示",
-              "assertNever 会自动把未处理的分支值转换为 undefined 并正常返回"
+              "React 按文档顺序从上到下依次水合所有组件，必须等第一个水合完才能开始第二个",
+              "每个 Suspense 边界可以独立水合，且用户优先交互的边界会被优先水合",
+              "只有使用了 Suspense 的页面才会水合，纯 Server Component 页面完全不加载 JS",
+              "Selective Hydration 需要手动调用 hydrateRoot 并传入优先级参数才能生效"
             ],
-            "correctAnswer": "它的核心价值是：当联合类型新增成员而 switch 未处理时，编译期直接报错，把遗漏提前暴露",
-            "explanation": "`never` 不接受任何值。当所有 case 已穷尽时，default 中 `state` 的类型被收窄为 `never`，可以安全传入；一旦联合新增成员（如 `{ status: 'paused' }`）而缺了对应 case，`state` 在 default 处就不是 `never`，`assertNever(state)` 立即编译报错。它同样适用于字符串字面量联合与 enum。"
+            "correctAnswer": "每个 Suspense 边界可以独立水合，且用户优先交互的边界会被优先水合",
+            "explanation": "React 18 引入 Selective Hydration 后，hydration 以 Suspense 边界为单位进行，root 通过事件代理感知用户交互，优先水合正在交互的区块。这正是把交互组件按区块隔离的重要收益：即使慢区块的 JS 未就绪，快区块也能立即响应点击。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "运行以下 TypeScript 代码，控制台的三行输出分别是什么？",
-            "codeContext": "type Event =\n  | { type: 'click'; x: number }\n  | { type: 'scroll'; dy: number };\n\nfunction handle(e: Event): string {\n  switch (e.type) {\n    case 'click':\n      return `click@${e.x}`;\n    case 'scroll':\n      return `scroll${e.dy}`;\n    default:\n      return 'unknown';\n  }\n}\n\nconsole.log(handle({ type: 'click', x: 10 }));\nconsole.log(handle({ type: 'scroll', dy: 5 }));\n\nconst raw: any = { type: 'dblclick', x: 1 };\nconsole.log(handle(raw));",
+            "question": "以下页面在浏览器中的实际渲染顺序是什么？（假设商品数据 200ms 返回，推荐数据 1500ms 返回）",
+            "codeContext": "export default function Page() {\n  return (\n    <main>\n      <h1>标题</h1>\n      <Suspense fallback={<div>商品加载中…</div>}>\n        <ProductGrid />\n      </Suspense>\n      <Suspense fallback={<div>推荐加载中…</div>}>\n        <RecommendPanel />\n      </Suspense>\n    </main>\n  )\n}",
             "segments": null,
             "options": [
-              "click@10\nscroll5\nunknown",
-              "click@10\nscroll5\nthrow new Error",
-              "click@10\nscroll5\ndblclick",
-              "unknown\nunknown\nunknown"
+              "标题 → 商品加载中… + 推荐加载中… → 商品列表 + 推荐加载中… → 商品列表 + 推荐列表",
+              "标题 → 商品列表 + 推荐列表（两者同时出现）",
+              "标题 → 商品加载中… → 商品列表 → 推荐加载中… → 推荐列表（完全串行）",
+              "页面白屏，直到 1500ms 后一次性输出全部内容"
             ],
-            "correctAnswer": "click@10\nscroll5\nunknown",
-            "explanation": "前两行是正常的判别式匹配，输出 `click@10` 与 `scroll5`（模板字符串中 `scroll${5}` 拼接为 `scroll5`）。第三行把一个 `{ type: 'dblclick' }` 用 `any` 强行传入：TypeScript 的类型在运行时被完全擦除，运行时并不会抛错，而是两个 case 都不匹配，落到 default 返回 `unknown`。这正是「类型只做编译期保障」的典型例子——对来自网络、localStorage 等外部的数据，必须额外做运行时校验，不能只依赖类型标注。"
+            "correctAnswer": "标题 → 商品加载中… + 推荐加载中… → 商品列表 + 推荐加载中… → 商品列表 + 推荐列表",
+            "explanation": "Streaming SSR 会立即输出 shell（标题）和两个 Suspense 的 fallback。两个请求并发发出，200ms 时商品数据到达，React 通过流内 script 替换第一个边界的内容，此时推荐仍显示 fallback；1500ms 时推荐数据到达再替换第二个边界。整个过程无需整页刷新，也不存在串行等待。"
           }
         ]
       }
