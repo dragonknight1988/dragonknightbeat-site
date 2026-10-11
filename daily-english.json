@@ -1,192 +1,192 @@
 {
-  "date": "2026-10-10",
+  "date": "2026-10-11",
   "content": {
-    "id": "en-2026-10-10",
-    "date": "2026-10-10",
-    "topic": "文化与旅行",
+    "id": "en-2026-10-11",
+    "date": "2026-10-11",
+    "topic": "健康与生活",
     "newsHighlights": [
       {
-        "title": "Travel, consumption spending vibrant during holiday",
+        "title": "China names largest overseas Asian Para Games squad",
         "source": "ChinaDaily",
-        "summary": "Holiday travel and consumption spending stayed vibrant across China, as millions of people visited scenic spots, museums and hometowns.",
-        "translation": "节日期间，中国各地旅游与消费支出保持旺盛，数以百万计的游客走进景区、博物馆与家乡。",
+        "summary": "China has named a 500-member delegation, including 312 athletes, for the fifth Asian Para Games in Aichi-Nagoya, Japan.",
+        "translation": "中国组建了500人代表团（含312名运动员），将参加在日本爱知·名古屋举行的第五届亚洲残疾人运动会，为境外参赛规模最大的一次。",
         "keyWords": [
+          "delegation",
+          "athletes",
+          "Para Games"
+        ]
+      },
+      {
+        "title": "Holidays reveal huge appetite for overseas trips",
+        "source": "ChinaDaily",
+        "summary": "The holidays revealed a huge appetite for overseas trips as travel and consumption spending stayed vibrant during the break.",
+        "translation": "假期数据显示出境游需求旺盛，旅游与消费支出在假期期间表现活跃。",
+        "keyWords": [
+          "appetite",
           "vibrant",
-          "consumption",
-          "holiday travel"
-        ]
-      },
-      {
-        "title": "10 things in China that blow foreign visitors' minds",
-        "source": "ChinaDaily",
-        "summary": "From high-speed rail to late-night street food, foreign visitors share the details of Chinese life that surprise and delight them most.",
-        "translation": "从高铁到深夜街头小吃，外国游客分享了中国生活中最让他们惊喜的细节。",
-        "keyWords": [
-          "foreign visitors",
-          "culture shock",
-          "hospitality"
-        ]
-      },
-      {
-        "title": "Flame lit in Turin for Changchun 2027 Winter Universiade",
-        "source": "ChinaDaily",
-        "summary": "The flame for the Changchun 2027 Winter Universiade was lit in Turin, Italy, kicking off the countdown to the global student sports festival.",
-        "translation": "2027年长春冬季大运会火种在意大利都灵点燃，全球学生体育盛会进入倒计时。",
-        "keyWords": [
-          "flame",
-          "torch",
-          "Winter Universiade"
+          "consumption"
         ]
       },
       {
         "title": "Gen Z finds a sweet future in hometown's green transition",
         "source": "ChinaDaily",
-        "summary": "In Jiangxi's Tianhe town, young people turned a former coal-mining area into a beekeeping and eco-tourism destination.",
-        "translation": "在江西天河镇，年轻人把昔日的煤矿小镇转型为养蜂与生态旅游目的地。",
+        "summary": "Young Chinese are finding a sweet future in their hometown's green transition, blending healthy living with sustainable work.",
+        "translation": "中国年轻人在家乡的绿色转型中找到美好未来，把健康生活与可持续工作结合起来。",
         "keyWords": [
-          "green transition",
-          "eco-tourism",
-          "Gen Z"
+          "transition",
+          "sustainable",
+          "well-being"
         ]
       },
       {
-        "title": "Autumn grain harvest in full swing across China",
-        "source": "ChinaDaily",
-        "summary": "The autumn grain harvest is in full swing nationwide, offering rural landscapes that draw city travelers seeking countryside experiences.",
-        "translation": "全国各地秋粮收获正全面展开，乡村田园风光吸引着寻求乡野体验的城市游客。",
+        "title": "7.2-magnitude earthquake strikes Panama",
+        "source": "ChinaDaily / CGTN",
+        "summary": "A 7.2-magnitude earthquake struck Panama, reminding people of the importance of emergency preparedness and physical readiness.",
+        "translation": "巴拿马发生7.2级地震，提醒人们应急准备与身体应变能力的重要性。",
         "keyWords": [
-          "harvest",
-          "rural landscape",
-          "countryside"
+          "magnitude",
+          "earthquake",
+          "preparedness"
+        ]
+      },
+      {
+        "title": "Xi on carrying forward Long March spirit",
+        "source": "ChinaDaily",
+        "summary": "This year marks the 90th anniversary of the victory of the Long March, whose arduous journey laid the foundation for later victory.",
+        "translation": "今年是长征胜利90周年，那段艰苦卓绝的征程为后来的胜利奠定了基础。",
+        "keyWords": [
+          "arduous",
+          "anniversary",
+          "foundation"
         ]
       }
     ],
     "quote": {
-      "quote": "The world is a book, and those who do not travel read only one page.",
-      "author": "Saint Augustine",
-      "translation": "世界是一本书，不旅行的人只读了其中一页。",
-      "explanation": "旅行让我们接触不同的文化、风景与生活方式，拓宽视野。正如今日新闻所展示的，无论是外国游客眼中的中国，还是中国游客的假日出行，每一次旅途都是翻阅世界这本大书的新一页。"
+      "quote": "The first wealth is health.",
+      "author": "Ralph Waldo Emerson",
+      "translation": "健康是人生第一财富。",
+      "explanation": "Emerson 认为，物质财富固然重要，但健康才是一切的基础。正如今天新闻中的残奥运动员与徒步草原的邮递员所示，强健的体魄与坚韧的意志，是追求任何梦想的前提。"
     },
     "vocabulary": [
       {
+        "word": "delegation",
+        "phonetic": "/ˌdelɪˈɡeɪʃn/",
+        "partOfSpeech": "n.",
+        "definition": "代表团；委派",
+        "example": "China named a 500-member delegation for the fifth Asian Para Games.",
+        "translation": "中国为第五届亚洲残疾人运动会组建了500人的代表团。",
+        "newsContext": "出自新闻标题 China names largest overseas Asian Para Games squad"
+      },
+      {
+        "word": "athlete",
+        "phonetic": "/ˈæθliːt/",
+        "partOfSpeech": "n.",
+        "definition": "运动员，体育健将",
+        "example": "The delegation includes 312 athletes who train hard every day.",
+        "translation": "代表团中有312名运动员，他们每天都刻苦训练。",
+        "newsContext": "出自 China names largest overseas Asian Para Games squad 正文"
+      },
+      {
+        "word": "arduous",
+        "phonetic": "/ˈɑːdjuəs/",
+        "partOfSpeech": "adj.",
+        "definition": "艰巨的；艰苦卓绝的",
+        "example": "The arduous journey of the Long March laid the foundation for victory.",
+        "translation": "艰苦卓绝的长征为胜利奠定了基础。",
+        "newsContext": "出自 Xi on carrying forward Long March spirit"
+      },
+      {
+        "word": "appetite",
+        "phonetic": "/ˈæpɪtaɪt/",
+        "partOfSpeech": "n.",
+        "definition": "胃口；强烈欲望、需求",
+        "example": "The holidays revealed a huge appetite for overseas trips.",
+        "translation": "假期显示出人们对出境游的强烈需求。",
+        "newsContext": "出自 Holidays reveal huge appetite for overseas trips"
+      },
+      {
         "word": "vibrant",
         "phonetic": "/ˈvaɪbrənt/",
-        "partOfSpeech": "adjective",
-        "definition": "生机勃勃的；充满活力的",
-        "example": "Travel and consumption spending remained vibrant during the holiday.",
-        "translation": "节日期间，旅游与消费支出保持旺盛。",
-        "newsContext": "出自新闻标题 Travel, consumption spending vibrant during holiday，形容假日经济充满活力。"
+        "partOfSpeech": "adj.",
+        "definition": "充满活力的；生机勃勃的",
+        "example": "Travel and consumption spending stayed vibrant during the holiday.",
+        "translation": "假期期间旅游和消费支出保持活跃。",
+        "newsContext": "出自 Travel, consumption spending vibrant during holiday"
       },
       {
-        "word": "consumption",
-        "phonetic": "/kənˈsʌmpʃn/",
-        "partOfSpeech": "noun",
-        "definition": "消费；消耗",
-        "example": "Holiday consumption reached new highs in restaurants, hotels and shopping malls.",
-        "translation": "假日消费在餐饮、酒店和商场创下新高。",
-        "newsContext": "出自 Travel, consumption spending vibrant during holiday，指居民节日期间的消费支出。"
-      },
-      {
-        "word": "destination",
-        "phonetic": "/ˌdestɪˈneɪʃn/",
-        "partOfSpeech": "noun",
-        "definition": "目的地；终点",
-        "example": "The mountain town has become a popular destination for young travelers.",
-        "translation": "这座山区小镇已成为年轻游客喜爱的目的地。",
-        "newsContext": "出自 Gen Z finds a sweet future in hometown's green transition，天河镇转型为生态旅游目的地（eco-tourism destination）。"
-      },
-      {
-        "word": "hospitality",
-        "phonetic": "/ˌhɒspɪˈtæləti/",
-        "partOfSpeech": "noun",
-        "definition": "好客；热情款待",
-        "example": "Foreign visitors often praise the warmth and hospitality of Chinese hosts.",
-        "translation": "外国游客常常称赞中国东道主的热情与好客。",
-        "newsContext": "出自 10 things in China that blow foreign visitors' minds，中国人的待客之道令外国游客印象深刻。"
-      },
-      {
-        "word": "spectacular",
-        "phonetic": "/spekˈtækjələ(r)/",
-        "partOfSpeech": "adjective",
-        "definition": "壮观的；令人惊叹的",
-        "example": "The terraced fields offered spectacular views during the autumn harvest.",
-        "translation": "秋收时节，梯田呈现出壮观的景色。",
-        "newsContext": "出自 Autumn grain harvest in full swing across China，秋收田园风光美不胜收。"
-      },
-      {
-        "word": "heritage",
-        "phonetic": "/ˈherɪtɪdʒ/",
-        "partOfSpeech": "noun",
-        "definition": "遗产（尤指文化遗产、传统）",
-        "example": "Visitors can explore both natural scenery and cultural heritage in the same trip.",
-        "translation": "游客可以在同一次旅行中既欣赏自然风光，又探访文化遗产。",
-        "newsContext": "出自 10 things in China that blow foreign visitors' minds，中国的文化遗产是令外国游客惊叹的重点之一。"
-      },
-      {
-        "word": "torch",
-        "phonetic": "/tɔːtʃ/",
-        "partOfSpeech": "noun",
-        "definition": "火炬；火把",
-        "example": "The torch relay will carry the flame from Turin to Changchun.",
-        "translation": "火炬接力将把火种从都灵传递到长春。",
-        "newsContext": "出自 Flame lit in Turin for Changchun 2027 Winter Universiade，大运会火炬与火种相关。"
+        "word": "magnitude",
+        "phonetic": "/ˈmæɡnɪtjuːd/",
+        "partOfSpeech": "n.",
+        "definition": "震级；巨大，规模",
+        "example": "A 7.2-magnitude earthquake struck Panama on Sunday.",
+        "translation": "周日，一场7.2级地震袭击了巴拿马。",
+        "newsContext": "出自 7.2-magnitude earthquake strikes Panama"
       },
       {
         "word": "transition",
         "phonetic": "/trænˈzɪʃn/",
-        "partOfSpeech": "noun",
-        "definition": "转变；转型；过渡",
-        "example": "The town's green transition brought new jobs in tourism and beekeeping.",
-        "translation": "小镇的绿色转型带来了旅游与养蜂领域的新岗位。",
-        "newsContext": "出自 Gen Z finds a sweet future in hometown's green transition，指煤矿小镇向绿色经济的转型。"
+        "partOfSpeech": "n.",
+        "definition": "转变，过渡，转型",
+        "example": "Gen Z finds a sweet future in their hometown's green transition.",
+        "translation": "Z世代在家乡的绿色转型中找到了美好未来。",
+        "newsContext": "出自 Gen Z finds a sweet future in hometown's green transition"
       },
       {
-        "word": "harvest",
-        "phonetic": "/ˈhɑːvɪst/",
-        "partOfSpeech": "noun / verb",
-        "definition": "收获；收割；收成",
-        "example": "Farmers are busy harvesting autumn grain across the country.",
-        "translation": "全国各地的农民正忙于收割秋粮。",
-        "newsContext": "出自 Autumn grain harvest in full swing across China，描述秋粮收获全面展开。"
+        "word": "escalate",
+        "phonetic": "/ˈeskəleɪt/",
+        "partOfSpeech": "v.",
+        "definition": "（使）升级，加剧，逐步扩大",
+        "example": "Stress can escalate quickly if we do not rest and exercise regularly.",
+        "translation": "如果我们不规律休息和锻炼，压力会迅速加剧。",
+        "newsContext": "关联新闻 Yemen conflict escalates as Saudi Arabia faces security dilemma"
       },
       {
-        "word": "iconic",
-        "phonetic": "/aɪˈkɒnɪk/",
-        "partOfSpeech": "adjective",
-        "definition": "标志性的；具有代表性的",
-        "example": "High-speed rail has become an iconic part of travel in China.",
-        "translation": "高铁已成为中国旅行的标志性元素。",
-        "newsContext": "出自 10 things in China that blow foreign visitors' minds，高铁等标志性事物令外国游客赞叹。"
+        "word": "consumption",
+        "phonetic": "/kənˈsʌmpʃn/",
+        "partOfSpeech": "n.",
+        "definition": "消费；消耗",
+        "example": "Consumption spending grew during the eight-day holiday.",
+        "translation": "八天长假期间消费支出有所增长。",
+        "newsContext": "出自 Travel, consumption spending vibrant during holiday"
+      },
+      {
+        "word": "foundation",
+        "phonetic": "/faʊnˈdeɪʃn/",
+        "partOfSpeech": "n.",
+        "definition": "基础；地基；基金会",
+        "example": "Regular sleep and exercise lay the foundation for a healthy life.",
+        "translation": "规律的睡眠和锻炼为健康生活奠定基础。",
+        "newsContext": "出自 Xi on carrying forward Long March spirit：helped lay the foundation for the eventual victory"
       }
     ],
     "pattern": {
-      "pattern": "so + 形容词/副词 + that + 从句（如此……以至于……）",
-      "example": "The holiday travel rush was so intense that many scenic spots reported record visitor numbers.",
-      "translation": "假日出行热潮如此汹涌，以至于许多景区的游客接待量创下纪录。",
-      "usage": "用 so...that... 表示程度之深导致某种结果。注意 so 后接形容词或副词，that 后接完整的结果状语从句。写作中可用于描述旅行体验：The view was so breathtaking that we forgot to take photos."
+      "pattern": "sb./sth. has done little to ease ... （……对缓解……收效甚微）",
+      "example": "A US ban on nearly $1 billion worth of Canadian imports has done little to ease a trade dispute between the two countries.",
+      "translation": "美国对近10亿美元加拿大商品的禁令对缓解两国贸易争端收效甚微。",
+      "usage": "该句型用现在完成时表示“已经做了某事，但到现在为止效果甚微”，常用于客观评价某项措施的成效。可替换宾语：has done little to ease stress / pain / tension。"
     },
     "grammar": {
-      "title": "限制性定语从句（that / which / who）",
-      "explanation": "当先行词指物时，用 that 或 which 引导定语从句并作主语或宾语；指人时用 who。从句对先行词起限定作用，去掉后句意不完整。在标题英语中常省略宾语位置的关系代词或直接用 that 引导，简洁有力。",
+      "title": "现在完成时（Present Perfect）在新闻中的运用",
+      "explanation": "现在完成时结构为 have/has + 过去分词，强调过去发生的动作对现在造成的影响或结果，或动作从过去持续到现在。新闻英语常用它来报道刚刚发生、且与当前状况密切相关的事情，常与 already, just, yet, so far, recently 等时间状语连用。",
       "examples": [
-        "10 things in China that blow foreign visitors' minds.",
-        "A super El Nino event that formed in September is expected to become the strongest on record."
+        "China has named a 500-member delegation, including 312 athletes, for the fifth Asian Para Games.",
+        "A US ban on nearly $1 billion worth of Canadian imports has done little to ease a trade dispute between the two countries."
       ]
     },
     "pronunciation": {
-      "word": "hospitality",
-      "phonetic": "/ˌhɒspɪˈtæləti/",
-      "tips": "注意重音在第三个音节 /tæ/，前面的 hos- 读作 /ˌhɒspɪ/，轻而快；-tality 读作 /ˈtæləti/，第二个 t 在美音中可浊化为闪音。切勿读成 hos-pi-TAL-i-ty 时把重音放错位置。",
+      "word": "athlete",
+      "phonetic": "/ˈæθliːt/",
+      "tips": "注意：第一个音节是 /ˈæθ/，/θ/ 要咬舌送气；重音在第一音节，第二个音节为轻快的 /liːt/。很多学习者会多读一个元音，读成 a-tha-lete，正确读法只有两个音节 ATH-leet。",
       "examples": [
-        "Chinese hospitality leaves a deep impression on foreign visitors.",
-        "The local people's hospitality made our trip unforgettable."
+        "The delegation includes 312 athletes from across the country.",
+        "Every athlete needs enough rest to stay healthy and strong."
       ]
     },
     "reading": {
-      "title": "When Culture Meets the Road: China's Holiday Travel Boom",
-      "content": "During the recent holiday, travel and consumption spending stayed vibrant across China. Millions of people hit the road: some returned to their hometowns, others explored museums, ancient towns and mountain villages. Foreign visitors shared the things about China that blow their minds — high-speed trains, safe streets, late-night food markets and the hospitality of local people. Meanwhile, a small town at the foot of the Jinggang Mountains shows how travel and culture can grow together. Once dependent on coal mining, Tianhe town has completed a green transition, turning beekeeping and eco-tourism into a sweet future for Gen Z workers. Elsewhere, the autumn grain harvest is in full swing, painting the countryside in spectacular colors that attract photographers and families alike. As the flame for the Changchun 2027 Winter Universiade was lit in Turin, the world is once again looking toward China. Travel, after all, is where culture becomes experience.",
-      "translation": "在刚刚过去的假期里，中国各地的旅游与消费支出保持旺盛。数百万人踏上旅途：有人回到家乡，有人走进博物馆、古镇与山村。外国游客分享了令他们惊叹的中国元素——高铁、安全的街道、深夜美食集市以及当地人的热情好客。与此同时，井冈山脚下的一座小镇展示了旅游与文化如何共同成长。天河镇曾依赖采煤，如今已完成绿色转型，把养蜂与生态旅游变成了属于Z世代的美好未来。在其他地方，秋粮收获正全面展开，把乡村染成壮美的色彩，吸引着摄影爱好者与家庭游客。随着2027年长春冬季大运会火种在都灵点燃，世界的目光再次投向中国。毕竟，旅行正是文化转化为体验的方式。",
-      "sourceNote": "本文基于 ChinaDaily 2026-10-10 报道《Travel, consumption spending vibrant during holiday》《10 things in China that blow foreign visitors' minds》《Gen Z finds a sweet future in hometown's green transition》《Autumn grain harvest in full swing across China》及《Flame lit in Turin for Changchun 2027 Winter Universiade》改写。"
+      "title": "What Today's News Teach Us About a Healthy Life",
+      "content": "This week's news offers plenty of inspiration for a healthier lifestyle. China has named a 500-member delegation, including 312 athletes, for the fifth Asian Para Games in Aichi-Nagoya. These athletes remind us that regular training and a positive attitude matter far more than physical perfection.\n\nAt the same time, the holidays revealed a huge appetite for overseas trips, and travel and consumption spending stayed vibrant during the break. Walking through a new city, hiking across grasslands, or simply breathing fresh air is one of the easiest ways to improve both mood and fitness.\n\nMeanwhile, Gen Z is finding a sweet future in its hometown's green transition, proving that a clean environment supports a healthy body and mind.\n\nYou do not need to run a marathon. Start small: take a walk after dinner, sleep well, and eat less sugar. As the Long March story shows, health is built step by step.",
+      "translation": "本周的新闻为更健康的生活方式带来了不少启发。中国组建了包括312名运动员在内的500人代表团，出征在爱知·名古屋举行的第五届亚洲残疾人运动会。这些运动员告诉我们：规律训练和积极心态远比身体的完美更重要。\n\n与此同时，假期显示出人们对出境游的强烈需求，假日期间旅游与消费支出保持活跃。漫步一座陌生的城市、穿越草原徒步，或只是呼吸新鲜空气，都是改善情绪与体能最简单的方式。\n\n此外，Z世代在家乡的绿色转型中找到了美好未来，证明了干净的环境有益于身心健康。\n\n你不必去跑马拉松。从小事做起：晚饭后散散步、睡好觉、少吃糖。正如长征的故事所揭示的那样，健康是一步步积累起来的。",
+      "sourceNote": "根据 ChinaDaily 2026年10月11日多条真实新闻（Asian Para Games squad、Holidays reveal huge appetite for overseas trips、Gen Z finds a sweet future in hometown's green transition、Xi on carrying forward Long March spirit）改写，用于英语学习。"
     }
   }
 }

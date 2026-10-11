@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-10",
+  "date": "2026-10-11",
   "contents": [
     {
-      "id": "prog-2026-10-10",
-      "date": "2026-10-10",
-      "title": "Next.js App Router 流式渲染（Streaming SSR）与 Suspense 边界架构设计",
-      "summary": "掌握用 Suspense 边界拆分服务端组件、并发发起数据请求、实现渐进式 HTML 输出与选择性水合，把 TTFB 与 LCP 打到最优。",
-      "difficulty": "高级",
-      "concept": "在传统的 SSR 模式下，服务器必须等所有数据都取回、整棵组件树渲染完成后，才能把第一个字节吐给浏览器——这就是所谓的 \"TTFB 被最慢的那个接口拖死\"。Next.js App Router 基于 React Server Components 的 Streaming SSR 则完全不同：React 会在数据未就绪时先输出一段完整 HTML 外壳（shell）和 Suspense 的 fallback，随后通过同一个 HTTP 响应流（采用分块传输 + 内联 script 标签的可执行 chunk）把真实内容增量推送过来，浏览器边收边渲染。用户几乎立刻看到可交互的骨架，而不需要等待最长的那个请求。\n\n把这套机制用好的关键，在于 Suspense 边界的粒度设计。边界不是越多越好：太粗（整页一个边界）等于退化成全量等待；太细（每个卡片一个边界）会导致海量 fallback、HTML 体积膨胀与布局抖动（CLS）。工程上比较稳妥的做法是按 \"数据依赖 + 视觉区块\" 划分：首屏关键内容（商品列表、主视觉）一个边界；非关键慢接口（推荐、评论、实时榜单）各自独立边界；而完全静态的导航、页脚不包边界，直接随 shell 输出。经验法则是：任何 P95 耗时超过 200ms 的数据源，都应该被隔离到自己的 Suspense 边界里。\n\n第二个容易被忽略的优化点是\"请求的发起时机\"。很多团队把 await 写在组件树的深处，父组件 await 完才渲染子组件，子组件再 await——形成串行瀑布（waterfall）。正确姿势是：在页面顶层（Server Component）就把 fetch 返回的 Promise 提前创建出来，把 Promise 作为 props 传给子组件，配合 React 19 的 use() 在子组件中消费，让多个请求真正并发。Next.js 还会对同一渲染内的 fetch 做自动去重，所以放心并发发起。\n\n第三，流式渲染与水合（hydration）是两件事。流式渲染优化的是服务端吐 HTML 的速度；水合优化的是客户端 JS 的执行时机。React 18+ 的 Selective Hydration 允许页面按 Suspense 边界独立水合，并且会优先水合用户正在交互的那个边界（借助 root 的事件监听代理），因此即使推荐面板的 JS 还没下载完，商品列表的按钮依然可以点击。这意味着你应该把交互性（'use client'）尽量下推到叶子节点，保持 Server Component 的面积最大化，把客户端 JS 体积压到最低。\n\n最后说几个实战踩坑点：其一，fallback 骨架必须与真实内容尺寸一致，否则流式替换时会出现严重布局偏移，直接拉低 CLS 分数；其二，使用 force-dynamic 时要意识到这是每请求渲染，务必配合数据缓存（fetch 的 next.revalidate）或 full route cache，否则 QPS 一上来数据库就报警；其三，流式响应对监控不友好——HTTP 状态码 200 已经发出去了，之后某个 Suspense 内部才报错。生产上要给每个异步 Server Component 加错误边界（error.tsx / <ErrorBoundary>），并对流内错误做兜底降级。",
+      "id": "prog-2026-10-11",
+      "date": "2026-10-11",
+      "title": "Node.js 异步编程：从回调到 async/await",
+      "summary": "理解 Node.js 事件循环与异步的本质，掌握 Promise 与 async/await 的写法，并学会用 Promise.all 做并发优化。",
+      "difficulty": "初级",
+      "concept": "Node.js 的一大特色是「单线程 + 非阻塞 I/O」。JS 主线程一次只做一件事，但读文件、发 HTTP 请求、查数据库这类操作并不是在主线程里「傻等」，而是交给底层的 libuv 线程池或操作系统去完成，完成后把回调放进事件循环（Event Loop）的队列里，等主线程空闲时再执行。正因如此，Node 用很少的资源就能同时扛住大量 I/O 请求。理解这一点，是理解 Node 中一切异步写法的前提。\n\n早期 Node 主流的写法是「回调函数」（callback）：把「做完之后该干什么」作为一个函数传进去。代码能跑，但一旦流程变复杂——比如先查用户、再查订单、再查商品——就会层层嵌套，形成著名的「回调地狱」（Callback Hell）。嵌套深了之后代码难以阅读、难以复用、错误处理也容易遗漏，一个 try/catch 根本捕获不到异步回调里抛出的错误。\n\nPromise 的出现解决了这个问题。Promise 代表一个「未来才会有结果」的值，它有 pending / fulfilled / rejected 三种状态，一旦确定就不会再变（这就是「不可变性」的工程价值）。Promise 支持 .then() 链式调用，把嵌套结构拍平成线性结构；更重要的是，它提供了一套统一的错误传播机制——链上任何一环出错，都会跳到最近的 .catch()。\n\nasync/await 是建立在 Promise 之上的语法糖，让异步代码写起来像同步代码一样直观：函数前加 async，需要等待的地方加 await。注意三个关键点：await 只能写在 async 函数（或 ES Module 顶层）里；await 后面永远跟一个 Promise（普通值会被自动包装）；async 函数本身一定返回 Promise。写惯了同步代码的人上手几乎零成本，这也是目前 Node 项目的标准写法。\n\n工程实践中还有两条宝贵经验。第一是「串行 vs 并发」：如果两个请求之间没有依赖，就不要连续 await，而应该先同时发起、再用 Promise.all 一起等，耗时从「两者之和」变成「两者最大值」，这在调用多个第三方接口时能省下大量时间。第二是「错误处理要完整」：异步代码请统一用 try/catch 包住 await，或在入口处用 .catch() 兜底，任何一个未被捕获的 Promise 拒绝（unhandled rejection）都可能让整个进程崩溃——生产环境里这属于严重事故。",
       "codeExample": {
-        "language": "tsx",
-        "code": "// ============================================================\n// app/products/page.tsx  —— 流式渲染 + Suspense 边界设计\n// 技术栈：Next.js 15 App Router / React Server Components\n// ============================================================\nimport { Suspense } from 'react'\nimport { ProductGrid } from '@/components/product-grid'\nimport { RecommendPanel } from '@/components/recommend-panel'\nimport { ProductCardSkeleton, PanelSkeleton } from '@/components/skeletons'\n\n// 强制动态渲染：每次请求都走流式 SSR\nexport const dynamic = 'force-dynamic'\n\n// ---------- 数据层：提前创建 Promise，避免串行瀑布 ----------\nasync function getProducts(): Promise<Product[]> {\n  const res = await fetch('https://api.example.com/products', {\n    // 数据缓存 60 秒：命中缓存时渲染极快，未命中则回源\n    next: { revalidate: 60 },\n  })\n  if (!res.ok) throw new Error('products fetch failed')\n  return res.json()\n}\n\nasync function getRecommendations(): Promise<Item[]> {\n  // 个性化推荐接口很慢（~1.5s），且必须 no-store\n  const res = await fetch('https://api.example.com/recommend', {\n    cache: 'no-store',\n  })\n  return res.json()\n}\n\nexport default function ProductsPage() {\n  // ✅ 关键：在渲染顶层就把两个请求并发抛出去\n  //    它们是 Promise，此刻并没有 await，所以不会互相等待\n  const productsPromise = getProducts()\n  const recommendPromise = getRecommendations()\n\n  return (\n    <main className='mx-auto max-w-6xl p-6'>\n      {/* 1️⃣ 静态壳子：随 HTML shell 立刻输出，不包 Suspense */}\n      <header className='mb-6'>\n        <h1 className='text-2xl font-bold'>商品列表</h1>\n        <p className='text-gray-500'>本周热卖 · 每 60 秒更新</p>\n      </header>\n\n      {/* 2️⃣ 关键内容：自己的 Suspense 边界，先吐骨架，数据到了再替换 */}\n      <section className='mb-10'>\n        <Suspense fallback={<ProductCardSkeleton count={9} />}>\n          {/* Server Component 内部 await，阻塞只影响这个边界 */}\n          <ProductGrid productsPromise={productsPromise} />\n        </Suspense>\n      </section>\n\n      {/* 3️⃣ 慢接口：完全隔离，绝不拖累商品列表的展示时间 */}\n      <aside>\n        <h2 className='mb-3 text-lg font-semibold'>为你推荐</h2>\n        <Suspense fallback={<PanelSkeleton />}>\n          <RecommendPanel recommendPromise={recommendPromise} />\n        </Suspense>\n      </aside>\n    </main>\n  )\n}\n\n// ============================================================\n// components/product-grid.tsx —— 异步 Server Component\n// ============================================================\nimport { use } from 'react' // React 19：在渲染中消费 Promise\nimport { AddToCartButton } from './add-to-cart-button' // 交互下沉到叶子 client 组件\n\ntype Props = { productsPromise: Promise<Product[]> }\n\nexport function ProductGrid({ productsPromise }: Props) {\n  // use() 会挂起当前 Suspense 边界，Promise 完成后 React 自动续流\n  const products = use(productsPromise)\n\n  return (\n    <div className='grid grid-cols-3 gap-4'>\n      {products.map((p) => (\n        <article key={p.id} className='rounded-xl border p-4'>\n          <img src={p.image} alt={p.title} className='aspect-square w-full rounded-lg object-cover' />\n          <h3 className='mt-2 font-medium'>{p.title}</h3>\n          <p className='text-red-600'>¥{p.price}</p>\n          {/* 只有这一小块是客户端组件，JS 体积最小化 */}\n          <AddToCartButton productId={p.id} />\n        </article>\n      ))}\n    </div>\n  )\n}\n\n// ============================================================\n// components/recommend-panel.tsx\n// ============================================================\nexport function RecommendPanel({ recommendPromise }: { recommendPromise: Promise<Item[]> }) {\n  const items = use(recommendPromise)\n  return (\n    <ul className='grid grid-cols-4 gap-3'>\n      {items.map((i) => (\n        <li key={i.id} className='rounded-lg bg-gray-50 p-3 text-sm'>{i.name}</li>\n      ))}\n    </ul>\n  )\n}\n\n// ============================================================\n// components/add-to-cart-button.tsx —— 交互叶子节点（Client）\n// ============================================================\n'use client'\n\nimport { useState, useTransition } from 'react'\n\nexport function AddToCartButton({ productId }: { productId: string }) {\n  const [count, setCount] = useState(0)\n  // useTransition 让加购后的重渲染低优先级进行，不阻塞输入\n  const [isPending, startTransition] = useTransition()\n\n  function handleAdd() {\n    startTransition(async () => {\n      await fetch('/api/cart', {\n        method: 'POST',\n        body: JSON.stringify({ productId }),\n      })\n      setCount((c) => c + 1)\n    })\n  }\n\n  return (\n    <button\n      onClick={handleAdd}\n      disabled={isPending}\n      className='mt-2 rounded-lg bg-black px-3 py-1.5 text-white disabled:opacity-50'\n    >\n      {isPending ? '加入中…' : count > 0 ? `已加购 ${count}` : '加入购物车'}\n    </button>\n  )\n}",
-        "explanation": "【1. 顶层并发发请求】ProductsPage 中 `const productsPromise = getProducts()` 只是创建 Promise 并未 await，两个请求同时发出。这是消灭接口串行瀑布的核心手法，配合 React 19 的 use() 在子组件中消费。\n\n【2. Suspense 边界拆分】商品列表（关键路径）和推荐面板（慢接口，约 1.5s）各自拥有独立边界。HTML shell 会立刻输出 header + 两个骨架屏，浏览器秒开；商品数据 200ms 到达时只替换第一个边界，推荐数据 1.5s 后再替换第二个边界。\n\n【3. use() 而非 await】ProductGrid 是同步 Server Component，用 use(productsPromise) 挂起当前边界。好处是它不需要是 async 函数，可以更自然地与其他 hooks 组合，同时保持流式语义。\n\n【4. 交互下沉】整个商品卡片里只有 AddToCartButton 是 'use client'，其余全部留在服务端执行。这样客户端 JS 体积与水合成本被压到最低，配合 Selective Hydration，用户可以优先与已水合区块交互。\n\n【5. 缓存策略】列表接口用 next.revalidate=60 走数据缓存，热点下 QPS 全部命中缓存；个性化推荐用 cache:'no-store' 保证实时性。force-dynamic 负责让页面走流式 SSR，两者配合实现『快 + 准』。\n\n【6. useTransition】加购动作放进 transition，异步请求期间按钮禁用但不阻塞主线程，交互动画保持 60fps。"
+        "language": "javascript",
+        "code": "// async-demo.js —— Node.js 异步编程：从 Promise 到 async/await\n// 运行方式：node async-demo.js\n\nconst fs = require('node:fs/promises');\nconst path = require('node:path');\n\n// ---------- 1. 用 Promise 模拟一个耗时的异步任务（比如查数据库） ----------\nfunction delay(ms, value) {\n  return new Promise((resolve) => {\n    setTimeout(() => resolve(value), ms);\n  });\n}\n\n// ---------- 2. 用 async/await 顺序书写异步逻辑 ----------\nasync function serialDemo() {\n  console.log('① 开始执行');\n\n  const a = await delay(300, 10); // 等 300ms 后拿到 10\n  console.log('② 拿到第一个值：', a);\n\n  const b = await delay(200, 32); // 再等 200ms 后拿到 32\n  console.log('③ 拿到第二个值：', b);\n\n  console.log('④ 串行结果 =', a + b, '（总耗时约 500ms）');\n}\n\n// ---------- 3. 并发执行：Promise.all 同时等待多个任务 ----------\nasync function parallelDemo() {\n  const start = Date.now();\n  // 三个任务同时发起，总耗时约等于最慢的那个（300ms）\n  const [x, y, z] = await Promise.all([\n    delay(300, 'x'),\n    delay(100, 'y'),\n    delay(200, 'z'),\n  ]);\n  console.log('⑤ 并发结果：', x + y + z,\n    '，耗时约', Date.now() - start, 'ms');\n}\n\n// ---------- 4. 真实的异步文件读写 ----------\nasync function fileDemo() {\n  const file = path.join(__dirname, 'demo-output.txt');\n\n  await fs.writeFile(file, 'hello async/await\\n'); // 异步写\n  const content = await fs.readFile(file, 'utf8');  // 异步读\n  console.log('⑥ 文件内容：', content.trim());\n\n  await fs.unlink(file); // 清理临时文件\n}\n\n// ---------- 5. 统一的错误处理入口 ----------\nasync function main() {\n  await serialDemo();\n  await parallelDemo();\n  await fileDemo();\n\n  // 演示错误处理：await 会把 Promise 的失败「抛」成同步异常\n  try {\n    await Promise.reject(new Error('模拟接口超时'));\n  } catch (err) {\n    console.log('⑦ 捕获到异步错误：', err.message);\n  }\n}\n\n// 兜底：任何未被 try/catch 捕获的错误都会走到这里，避免进程静默崩溃\nmain().catch((err) => {\n  console.error('程序出错：', err);\n  process.exitCode = 1;\n});\n",
+        "explanation": "【第 1 部分】delay(ms, value) 返回一个 Promise：setTimeout 到时后调用 resolve(value)，Promise 由「等待中」变为「已完成」，值就是 value。这是模拟网络请求/数据库查询最常用的技巧。\n\n【第 2 部分】serialDemo 中两次 await 是「串行」的：必须等第一个 300ms 结束才会开始第二个 200ms，总耗时约 500ms。写法上和同步代码几乎一样，非常易读。\n\n【第 3 部分】parallelDemo 把三个 delay(...) 同时丢进 Promise.all(...)。三个计时器是并发启动的，Promise.all 等到全部完成才返回一个数组，因此总耗时约等于最慢的 300ms。这是性能优化的常见手段。\n\n【第 4 部分】require('node:fs/promises') 提供的是 Promise 版文件 API，可以直接 await；__dirname 是当前文件所在目录，属于 CommonJS 的全局变量。用完记得 unlink 删除临时文件。\n\n【第 5 部分】try/catch 可以捕获 await 抛出的异常，无论是 Promise.reject 还是 API 内部出错。而 main().catch(...) 是最后一道防线，能防止未处理的 Promise 拒绝导致进程崩溃。"
       },
       "keyPoints": [
-        "Streaming SSR 的本质：先吐 HTML shell + Suspense fallback，再通过分块流增量推送真实内容，TTFB 与 LCP 解耦",
-        "Suspense 边界按『数据依赖 + 视觉区块』划分粒度：P95 超过 200ms 的数据源必须独立成界，静态区块不要包边界",
-        "在组件树顶层创建 Promise 并作为 props 下传，配合 use() 消费，把串行瀑布改成并发请求",
-        "把 'use client' 尽量下推到叶子节点，最大化 Server Component 面积，配合 Selective Hydration 优先水合被交互的边界",
-        "fallback 骨架尺寸必须与真实内容一致，否则流式替换会引发布局偏移（CLS）；流内错误需用 error.tsx 兜底"
+        "Node.js 单线程 + 事件循环：主线程不等待 I/O，回调由事件循环在空闲时调度执行",
+        "回调地狱的本质是嵌套过深，Promise 用链式调用把嵌套拍平，async/await 让异步代码长得像同步代码",
+        "await 只能出现在 async 函数内（或 ES Module 顶层）；async 函数永远返回 Promise",
+        "多个相互独立的异步任务用 Promise.all 并发执行，耗时从「求和」降为「取最大值」",
+        "所有 await 都要用 try/catch 包裹，并在入口处用 .catch() 兜底，避免 unhandledRejection 让进程崩溃"
       ],
       "exercise": {
-        "description": "实现一个「商品详情页」的流式渲染版本：页面包含商品主信息（接口 300ms）、库存状态（接口 800ms，需要实时 no-store）、评论区（接口 1200ms）三个区块。要求：三个区块并发请求、各自拥有独立 Suspense 边界、骨架屏与最终内容尺寸一致、评论区有一个能发表评论的客户端输入框。用 Lighthouse 验证 LCP < 2.0s、CLS < 0.05。",
-        "hint": "在页面 Server Component 里先创建三个 Promise 再传给子组件；把评论输入框单独抽成 'use client' 组件；用 useEffect + performance.measure 或 Web Vitals 面板记录各区块的实际渲染时间，确认慢接口没有拖累快接口。",
+        "description": "写一个 Node.js 小程序：用 delay(ms, name) 模拟两个耗时 400ms 的接口调用 getUser() 和 getOrders()。要求：(1) 分别用「串行 await」和「Promise.all 并发」两种方式调用它们，打印两种方式的总耗时；(2) 用 try/catch 捕获一个故意抛出的错误并打印友好提示；(3) 思考为什么并发版本更快。",
+        "hint": "先写 function delay(ms, name) { return new Promise(r => setTimeout(() => r(name), ms)); }。串行时连续 await 两次，耗时约 800ms；并发时先 const p1 = delay(400,'user'); const p2 = delay(400,'orders'); 再 await Promise.all([p1,p2])，耗时约 400ms。用 Date.now() 前后相减记录耗时。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码：让商品列表接口走 60 秒数据缓存，而推荐接口完全不缓存。",
-            "codeContext": "// 列表：可缓存\nconst products = await fetch(URL_A, {\n  next: { ______: 60 },\n})\n\n// 推荐：完全实时\nconst rec = await fetch(URL_B, {\n  cache: '______',\n})",
+            "question": "补全代码：让两个 300ms 的任务并发执行，使总耗时约 300ms 而不是 600ms。",
+            "codeContext": "async function run() {\n  const t1 = delay(300, 'A');\n  const t2 = delay(300, 'B');\n  const [a, b] = await ________([t1, t2]);\n  return a + b;\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "const products = await fetch(URL_A, {\n  next: { ",
+                "content": "const [a, b] = await ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,75 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[选择函数]",
                 "options": [
-                  "revalidate",
-                  "cache",
-                  "timeout",
-                  "ttl"
+                  "Promise.all",
+                  "Promise.race",
+                  "Promise.any",
+                  "Array.map"
                 ],
-                "correctAnswer": "revalidate"
+                "correctAnswer": "Promise.all"
               },
               {
                 "type": "text",
-                "content": ": 60 },\n})\n\nconst rec = await fetch(URL_B, {\n  cache: '",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "force-cache",
-                  "no-store",
-                  "reload",
-                  "default"
-                ],
-                "correctAnswer": "no-store"
-              },
-              {
-                "type": "text",
-                "content": "',\n})",
+                "content": "([t1, t2]);",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "revalidate, no-store",
-            "explanation": "Next.js 的 fetch 扩展中，next.revalidate（单位秒）控制数据缓存的重新验证时间，相当于 ISR 的数据层版本；cache:'no-store' 则完全跳过数据缓存，每次都回源，适合个性化/实时数据。注意 next.revalidate 与 cache:'force-cache' 互斥，不要同时写。"
+            "correctAnswer": "Promise.all",
+            "explanation": "Promise.all 接收一个 Promise 数组，等全部成功后返回结果数组，耗时等于最慢的那个（约 300ms）。注意 t1、t2 必须在调用 Promise.all 之前就创建好，这样两个计时器才会真正并发启动。Promise.race 只等第一个完成，Promise.any 也只返回第一个成功的结果，都不符合「等两个都拿到」的需求。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 React 的 Selective Hydration（选择性水合），下列说法正确的是？",
-            "codeContext": "<Suspense fallback={<A/>}><SlowIsland/></Suspense>\n<Suspense fallback={<B/>}><FastIsland/></Suspense>",
+            "question": "关于 async 函数的返回值，下面哪个说法是正确的？",
+            "codeContext": "async function f() {\n  return 42;\n}\nconst result = f();\nconsole.log(typeof result, result);",
             "segments": null,
             "options": [
-              "React 按文档顺序从上到下依次水合所有组件，必须等第一个水合完才能开始第二个",
-              "每个 Suspense 边界可以独立水合，且用户优先交互的边界会被优先水合",
-              "只有使用了 Suspense 的页面才会水合，纯 Server Component 页面完全不加载 JS",
-              "Selective Hydration 需要手动调用 hydrateRoot 并传入优先级参数才能生效"
+              "返回普通值 42，typeof result 是 'number'",
+              "返回一个 Promise，resolve 的值是 42，需要 await 或 .then() 才能拿到 42",
+              "返回 undefined，因为没有显式 return Promise",
+              "抛出语法错误：async 函数必须返回 Promise"
             ],
-            "correctAnswer": "每个 Suspense 边界可以独立水合，且用户优先交互的边界会被优先水合",
-            "explanation": "React 18 引入 Selective Hydration 后，hydration 以 Suspense 边界为单位进行，root 通过事件代理感知用户交互，优先水合正在交互的区块。这正是把交互组件按区块隔离的重要收益：即使慢区块的 JS 未就绪，快区块也能立即响应点击。"
+            "correctAnswer": "返回一个 Promise，resolve 的值是 42，需要 await 或 .then() 才能拿到 42",
+            "explanation": "async 函数的规则是「无论函数体返回什么，最终都会被自动包装成 Promise」。return 42 等价于 return Promise.resolve(42)。所以 f() 拿到的是 Promise 对象（typeof 是 'object'），要拿到 42 必须写 await f() 或 f().then(v => ...)。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下页面在浏览器中的实际渲染顺序是什么？（假设商品数据 200ms 返回，推荐数据 1500ms 返回）",
-            "codeContext": "export default function Page() {\n  return (\n    <main>\n      <h1>标题</h1>\n      <Suspense fallback={<div>商品加载中…</div>}>\n        <ProductGrid />\n      </Suspense>\n      <Suspense fallback={<div>推荐加载中…</div>}>\n        <RecommendPanel />\n      </Suspense>\n    </main>\n  )\n}",
+            "question": "下面这段代码的输出顺序是什么？",
+            "codeContext": "console.log('A');\n\nsetTimeout(() => console.log('B'), 0);\n\nPromise.resolve().then(() => console.log('C'));\n\nconsole.log('D');",
             "segments": null,
             "options": [
-              "标题 → 商品加载中… + 推荐加载中… → 商品列表 + 推荐加载中… → 商品列表 + 推荐列表",
-              "标题 → 商品列表 + 推荐列表（两者同时出现）",
-              "标题 → 商品加载中… → 商品列表 → 推荐加载中… → 推荐列表（完全串行）",
-              "页面白屏，直到 1500ms 后一次性输出全部内容"
+              "A B C D",
+              "A D C B",
+              "A D B C",
+              "A C D B"
             ],
-            "correctAnswer": "标题 → 商品加载中… + 推荐加载中… → 商品列表 + 推荐加载中… → 商品列表 + 推荐列表",
-            "explanation": "Streaming SSR 会立即输出 shell（标题）和两个 Suspense 的 fallback。两个请求并发发出，200ms 时商品数据到达，React 通过流内 script 替换第一个边界的内容，此时推荐仍显示 fallback；1500ms 时推荐数据到达再替换第二个边界。整个过程无需整页刷新，也不存在串行等待。"
+            "correctAnswer": "A D C B",
+            "explanation": "同步代码最先执行，所以先输出 A、D。然后进入微任务队列（microtask）：Promise.then 的回调属于微任务，会在当前同步代码结束后立即执行，输出 C。setTimeout 的回调属于宏任务（macrotask），要等到下一轮事件循环才执行，最后输出 B。顺序口诀：同步 → 微任务 → 宏任务。"
           }
         ]
       }
