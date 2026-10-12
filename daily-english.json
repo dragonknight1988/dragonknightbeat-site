@@ -1,192 +1,186 @@
 {
-  "date": "2026-10-11",
+  "date": "2026-10-12",
   "content": {
-    "id": "en-2026-10-11",
-    "date": "2026-10-11",
-    "topic": "健康与生活",
+    "id": "en-2026-10-12",
+    "date": "2026-10-12",
+    "topic": "环境与可持续发展",
     "newsHighlights": [
       {
-        "title": "China names largest overseas Asian Para Games squad",
-        "source": "ChinaDaily",
-        "summary": "China has named a 500-member delegation, including 312 athletes, for the fifth Asian Para Games in Aichi-Nagoya, Japan.",
-        "translation": "中国组建了500人代表团（含312名运动员），将参加在日本爱知·名古屋举行的第五届亚洲残疾人运动会，为境外参赛规模最大的一次。",
+        "title": "Hurricane Simon strengthens to category 4 as it nears western Mexico",
+        "source": "CGTN",
+        "summary": "Hurricane Simon has intensified into a Category 4 storm as it approaches the western coast of Mexico, prompting evacuations and warnings of life-threatening storm surge.",
+        "translation": "飓风“西蒙”在逼近墨西哥西部沿海时已增强为四级飓风，当地启动人员疏散，并发布可能危及生命的风暴潮预警。",
         "keyWords": [
-          "delegation",
-          "athletes",
-          "Para Games"
+          "hurricane",
+          "category 4",
+          "storm surge",
+          "evacuation",
+          "climate"
         ]
       },
       {
-        "title": "Holidays reveal huge appetite for overseas trips",
+        "title": "Road map set for ramping up green, new quality productive forces",
         "source": "ChinaDaily",
-        "summary": "The holidays revealed a huge appetite for overseas trips as travel and consumption spending stayed vibrant during the break.",
-        "translation": "假期数据显示出境游需求旺盛，旅游与消费支出在假期期间表现活跃。",
+        "summary": "China has laid out a top-level road map dedicated to accelerating the development of new quality productive forces, which analysts say could sustain long-term, greener economic expansion.",
+        "translation": "中国发布了加速发展新质生产力的顶层路线图，分析人士认为这有助于支撑更绿色、更可持续的长期经济增长。",
         "keyWords": [
-          "appetite",
-          "vibrant",
-          "consumption"
+          "road map",
+          "productive forces",
+          "sustainable growth",
+          "green development"
         ]
       },
       {
-        "title": "Gen Z finds a sweet future in hometown's green transition",
-        "source": "ChinaDaily",
-        "summary": "Young Chinese are finding a sweet future in their hometown's green transition, blending healthy living with sustainable work.",
-        "translation": "中国年轻人在家乡的绿色转型中找到美好未来，把健康生活与可持续工作结合起来。",
+        "title": "Trump says Russia and Ukraine reached 'energy ceasefire'",
+        "source": "CGTN",
+        "summary": "The United States announced that Russia and Ukraine have agreed on an 'energy ceasefire' aimed at halting strikes on power plants, refineries and other energy infrastructure.",
+        "translation": "美方宣布俄罗斯与乌克兰已达成“能源停火”，旨在停止对电厂、炼油厂及其他能源基础设施的袭击。",
         "keyWords": [
-          "transition",
-          "sustainable",
-          "well-being"
+          "energy ceasefire",
+          "infrastructure",
+          "diesel",
+          "power plant"
         ]
       },
       {
-        "title": "7.2-magnitude earthquake strikes Panama",
-        "source": "ChinaDaily / CGTN",
-        "summary": "A 7.2-magnitude earthquake struck Panama, reminding people of the importance of emergency preparedness and physical readiness.",
-        "translation": "巴拿马发生7.2级地震，提醒人们应急准备与身体应变能力的重要性。",
-        "keyWords": [
-          "magnitude",
-          "earthquake",
-          "preparedness"
-        ]
-      },
-      {
-        "title": "Xi on carrying forward Long March spirit",
+        "title": "Submersible prepares to dive in western Pacific Ocean",
         "source": "ChinaDaily",
-        "summary": "This year marks the 90th anniversary of the victory of the Long March, whose arduous journey laid the foundation for later victory.",
-        "translation": "今年是长征胜利90周年，那段艰苦卓绝的征程为后来的胜利奠定了基础。",
+        "summary": "A Chinese deep-sea submersible is preparing for a new dive in the western Pacific Ocean to collect samples and data on deep-sea biodiversity and ocean health.",
+        "translation": "一台中国深海潜水器正准备在西太平洋下潜，以采集深海生物多样性与海洋健康状况的样本和数据。",
         "keyWords": [
-          "arduous",
-          "anniversary",
-          "foundation"
+          "submersible",
+          "deep-sea",
+          "biodiversity",
+          "ocean"
         ]
       }
     ],
     "quote": {
-      "quote": "The first wealth is health.",
-      "author": "Ralph Waldo Emerson",
-      "translation": "健康是人生第一财富。",
-      "explanation": "Emerson 认为，物质财富固然重要，但健康才是一切的基础。正如今天新闻中的残奥运动员与徒步草原的邮递员所示，强健的体魄与坚韧的意志，是追求任何梦想的前提。"
+      "quote": "We do not inherit the earth from our ancestors; we borrow it from our children.",
+      "author": "Native American proverb (often attributed to Chief Seattle)",
+      "translation": "我们并非从祖先那里继承了地球，而是从子孙那里借来了它。",
+      "explanation": "这句话提醒我们，环境资源并非私有财产，当代人只是暂时的使用者。它呼吁可持续发展：我们今天的能源政策、碳排放和海洋保护举措，都会直接决定后代能否拥有健康的地球。"
     },
     "vocabulary": [
       {
-        "word": "delegation",
-        "phonetic": "/ˌdelɪˈɡeɪʃn/",
-        "partOfSpeech": "n.",
-        "definition": "代表团；委派",
-        "example": "China named a 500-member delegation for the fifth Asian Para Games.",
-        "translation": "中国为第五届亚洲残疾人运动会组建了500人的代表团。",
-        "newsContext": "出自新闻标题 China names largest overseas Asian Para Games squad"
+        "word": "intensify",
+        "phonetic": "/ɪnˈtensɪfaɪ/",
+        "partOfSpeech": "动词",
+        "definition": "加强；增强；（风暴等）加剧",
+        "example": "Hurricane Simon continued to intensify as it moved over warm ocean waters.",
+        "translation": "飓风“西蒙”在温暖的洋面上移动时持续增强。",
+        "newsContext": "出自 CGTN 报道：Hurricane Simon strengthens to category 4 as it nears western Mexico，指风暴强度升级。"
       },
       {
-        "word": "athlete",
-        "phonetic": "/ˈæθliːt/",
-        "partOfSpeech": "n.",
-        "definition": "运动员，体育健将",
-        "example": "The delegation includes 312 athletes who train hard every day.",
-        "translation": "代表团中有312名运动员，他们每天都刻苦训练。",
-        "newsContext": "出自 China names largest overseas Asian Para Games squad 正文"
+        "word": "category",
+        "phonetic": "/ˈkætəɡəri/",
+        "partOfSpeech": "名词",
+        "definition": "类别；等级（飓风按强度分级）",
+        "example": "The storm was upgraded to a category 4 hurricane with winds exceeding 200 kilometers per hour.",
+        "translation": "该风暴被升级为四级飓风，风速超过每小时200公里。",
+        "newsContext": "出自 CGTN 报道：Hurricane Simon strengthens to category 4，指萨菲尔-辛普森飓风等级。"
       },
       {
-        "word": "arduous",
-        "phonetic": "/ˈɑːdjuəs/",
-        "partOfSpeech": "adj.",
-        "definition": "艰巨的；艰苦卓绝的",
-        "example": "The arduous journey of the Long March laid the foundation for victory.",
-        "translation": "艰苦卓绝的长征为胜利奠定了基础。",
-        "newsContext": "出自 Xi on carrying forward Long March spirit"
+        "word": "storm surge",
+        "phonetic": "/stɔːm sɜːrdʒ/",
+        "partOfSpeech": "名词",
+        "definition": "风暴潮（台风或飓风引起的海水异常升高）",
+        "example": "Authorities warned residents of a life-threatening storm surge along the coast.",
+        "translation": "当局警告沿海居民警惕危及生命的风暴潮。",
+        "newsContext": "出自飓风“西蒙”逼近墨西哥沿海的灾情预警报道。"
       },
       {
-        "word": "appetite",
-        "phonetic": "/ˈæpɪtaɪt/",
-        "partOfSpeech": "n.",
-        "definition": "胃口；强烈欲望、需求",
-        "example": "The holidays revealed a huge appetite for overseas trips.",
-        "translation": "假期显示出人们对出境游的强烈需求。",
-        "newsContext": "出自 Holidays reveal huge appetite for overseas trips"
+        "word": "sustainable",
+        "phonetic": "/səˈsteɪnəbl/",
+        "partOfSpeech": "形容词",
+        "definition": "可持续的；能长期维持的",
+        "example": "Officials said the new road map could better sustain long-term economic expansion in a sustainable way.",
+        "translation": "官员表示，新路线图能以更可持续的方式支撑长期经济增长。",
+        "newsContext": "出自 ChinaDaily：Road map set for ramping up development，谈新质生产力与长期可持续增长。"
       },
       {
-        "word": "vibrant",
-        "phonetic": "/ˈvaɪbrənt/",
-        "partOfSpeech": "adj.",
-        "definition": "充满活力的；生机勃勃的",
-        "example": "Travel and consumption spending stayed vibrant during the holiday.",
-        "translation": "假期期间旅游和消费支出保持活跃。",
-        "newsContext": "出自 Travel, consumption spending vibrant during holiday"
+        "word": "accelerate",
+        "phonetic": "/əkˈseləreɪt/",
+        "partOfSpeech": "动词",
+        "definition": "加速；促进",
+        "example": "The plan is dedicated to accelerating the development of new quality productive forces.",
+        "translation": "该规划致力于加速发展新质生产力。",
+        "newsContext": "出自 ChinaDaily：Road map set for ramping up development 的核心表述。"
       },
       {
-        "word": "magnitude",
-        "phonetic": "/ˈmæɡnɪtjuːd/",
-        "partOfSpeech": "n.",
-        "definition": "震级；巨大，规模",
-        "example": "A 7.2-magnitude earthquake struck Panama on Sunday.",
-        "translation": "周日，一场7.2级地震袭击了巴拿马。",
-        "newsContext": "出自 7.2-magnitude earthquake strikes Panama"
+        "word": "infrastructure",
+        "phonetic": "/ˈɪnfrəstrʌktʃər/",
+        "partOfSpeech": "名词",
+        "definition": "基础设施；基础建设",
+        "example": "The energy ceasefire aims to protect power plants, refineries and other energy infrastructure.",
+        "translation": "该能源停火旨在保护电厂、炼油厂及其他能源基础设施。",
+        "newsContext": "出自 CGTN：Trump says Russia and Ukraine reached 'energy ceasefire'。"
       },
       {
-        "word": "transition",
-        "phonetic": "/trænˈzɪʃn/",
-        "partOfSpeech": "n.",
-        "definition": "转变，过渡，转型",
-        "example": "Gen Z finds a sweet future in their hometown's green transition.",
-        "translation": "Z世代在家乡的绿色转型中找到了美好未来。",
-        "newsContext": "出自 Gen Z finds a sweet future in hometown's green transition"
+        "word": "emission",
+        "phonetic": "/ɪˈmɪʃn/",
+        "partOfSpeech": "名词",
+        "definition": "排放；散发（尤指气体、污染物）",
+        "example": "Strikes on refineries can cause massive emissions of toxic gases and greenhouse gases.",
+        "translation": "对炼油厂的袭击可能导致有毒气体和温室气体的大量排放。",
+        "newsContext": "关联能源设施被袭新闻：燃油燃烧与设施损毁带来的碳与污染物排放问题。"
       },
       {
-        "word": "escalate",
-        "phonetic": "/ˈeskəleɪt/",
-        "partOfSpeech": "v.",
-        "definition": "（使）升级，加剧，逐步扩大",
-        "example": "Stress can escalate quickly if we do not rest and exercise regularly.",
-        "translation": "如果我们不规律休息和锻炼，压力会迅速加剧。",
-        "newsContext": "关联新闻 Yemen conflict escalates as Saudi Arabia faces security dilemma"
+        "word": "biodiversity",
+        "phonetic": "/ˌbaɪoʊdaɪˈvɜːrsəti/",
+        "partOfSpeech": "名词",
+        "definition": "生物多样性",
+        "example": "The submersible will collect samples to study deep-sea biodiversity in the western Pacific.",
+        "translation": "该潜水器将采集样本，研究西太平洋的深海生物多样性。",
+        "newsContext": "出自 ChinaDaily：Submersible prepares to dive in western Pacific Ocean。"
       },
       {
-        "word": "consumption",
-        "phonetic": "/kənˈsʌmpʃn/",
-        "partOfSpeech": "n.",
-        "definition": "消费；消耗",
-        "example": "Consumption spending grew during the eight-day holiday.",
-        "translation": "八天长假期间消费支出有所增长。",
-        "newsContext": "出自 Travel, consumption spending vibrant during holiday"
+        "word": "resilient",
+        "phonetic": "/rɪˈzɪliənt/",
+        "partOfSpeech": "形容词",
+        "definition": "有韧性的；能迅速恢复的",
+        "example": "Coastal cities need more resilient infrastructure to survive stronger hurricanes.",
+        "translation": "沿海城市需要更有韧性的基础设施，以抵御更强的飓风。",
+        "newsContext": "关联飓风“西蒙”报道：气候灾害频发背景下提升城市与社区气候韧性。"
       },
       {
-        "word": "foundation",
-        "phonetic": "/faʊnˈdeɪʃn/",
-        "partOfSpeech": "n.",
-        "definition": "基础；地基；基金会",
-        "example": "Regular sleep and exercise lay the foundation for a healthy life.",
-        "translation": "规律的睡眠和锻炼为健康生活奠定基础。",
-        "newsContext": "出自 Xi on carrying forward Long March spirit：helped lay the foundation for the eventual victory"
+        "word": "mitigation",
+        "phonetic": "/ˌmɪtɪˈɡeɪʃn/",
+        "partOfSpeech": "名词",
+        "definition": "减轻；缓解（尤指减少灾害或气候变化影响）",
+        "example": "Climate mitigation and adaptation should go hand in hand as extreme weather grows more common.",
+        "translation": "随着极端天气日益频繁，气候减缓与适应应齐头并进。",
+        "newsContext": "关联飓风强度上升的报道，指向温室气体减排与灾害风险降低。"
       }
     ],
     "pattern": {
-      "pattern": "sb./sth. has done little to ease ... （……对缓解……收效甚微）",
-      "example": "A US ban on nearly $1 billion worth of Canadian imports has done little to ease a trade dispute between the two countries.",
-      "translation": "美国对近10亿美元加拿大商品的禁令对缓解两国贸易争端收效甚微。",
-      "usage": "该句型用现在完成时表示“已经做了某事，但到现在为止效果甚微”，常用于客观评价某项措施的成效。可替换宾语：has done little to ease stress / pain / tension。"
+      "pattern": "be dedicated to + doing sth.（致力于做某事）",
+      "example": "China has laid out a top-level road map dedicated to accelerating the development of new quality productive forces.",
+      "translation": "中国制定了一份顶层路线图，致力于加速发展新质生产力。",
+      "usage": "dedicated to 后接动名词，表示“专注于/致力于……的”，可用于描述政策、机构、技术的目标。注意此处 to 是介词，不可接动词原形。类似表达还有 be committed to doing、be devoted to doing。"
     },
     "grammar": {
-      "title": "现在完成时（Present Perfect）在新闻中的运用",
-      "explanation": "现在完成时结构为 have/has + 过去分词，强调过去发生的动作对现在造成的影响或结果，或动作从过去持续到现在。新闻英语常用它来报道刚刚发生、且与当前状况密切相关的事情，常与 already, just, yet, so far, recently 等时间状语连用。",
+      "title": "新闻标题中的一般现在时（Headline Present Tense）",
+      "explanation": "英语新闻标题常使用一般现在时表示刚刚发生或正在发生的事件，以增强时效感和冲击力，即使正文使用过去时。阅读新闻时不要误以为事件尚未发生。此外，标题常省略冠词和系动词。",
       "examples": [
-        "China has named a 500-member delegation, including 312 athletes, for the fifth Asian Para Games.",
-        "A US ban on nearly $1 billion worth of Canadian imports has done little to ease a trade dispute between the two countries."
+        "Hurricane Simon strengthens to category 4 as it nears western Mexico.",
+        "Trump says Russia and Ukraine reached 'energy ceasefire'."
       ]
     },
     "pronunciation": {
-      "word": "athlete",
-      "phonetic": "/ˈæθliːt/",
-      "tips": "注意：第一个音节是 /ˈæθ/，/θ/ 要咬舌送气；重音在第一音节，第二个音节为轻快的 /liːt/。很多学习者会多读一个元音，读成 a-tha-lete，正确读法只有两个音节 ATH-leet。",
+      "word": "sustainable",
+      "phonetic": "/səˈsteɪnəbl/",
+      "tips": "重音落在第二个音节 /steɪ/ 上，首音节弱读为 /sə/（中央元音 schwa）。词尾 -able 读作 /əbl/，不要读成“ei-bou”。整体节奏是：轻—重—轻—轻。可先慢读 sə-STEI-nə-bəl，再加速连读。",
       "examples": [
-        "The delegation includes 312 athletes from across the country.",
-        "Every athlete needs enough rest to stay healthy and strong."
+        "Sustainable development means meeting today's needs without harming future generations.",
+        "The country is seeking sustainable and greener ways to power its economy."
       ]
     },
     "reading": {
-      "title": "What Today's News Teach Us About a Healthy Life",
-      "content": "This week's news offers plenty of inspiration for a healthier lifestyle. China has named a 500-member delegation, including 312 athletes, for the fifth Asian Para Games in Aichi-Nagoya. These athletes remind us that regular training and a positive attitude matter far more than physical perfection.\n\nAt the same time, the holidays revealed a huge appetite for overseas trips, and travel and consumption spending stayed vibrant during the break. Walking through a new city, hiking across grasslands, or simply breathing fresh air is one of the easiest ways to improve both mood and fitness.\n\nMeanwhile, Gen Z is finding a sweet future in its hometown's green transition, proving that a clean environment supports a healthy body and mind.\n\nYou do not need to run a marathon. Start small: take a walk after dinner, sleep well, and eat less sugar. As the Long March story shows, health is built step by step.",
-      "translation": "本周的新闻为更健康的生活方式带来了不少启发。中国组建了包括312名运动员在内的500人代表团，出征在爱知·名古屋举行的第五届亚洲残疾人运动会。这些运动员告诉我们：规律训练和积极心态远比身体的完美更重要。\n\n与此同时，假期显示出人们对出境游的强烈需求，假日期间旅游与消费支出保持活跃。漫步一座陌生的城市、穿越草原徒步，或只是呼吸新鲜空气，都是改善情绪与体能最简单的方式。\n\n此外，Z世代在家乡的绿色转型中找到了美好未来，证明了干净的环境有益于身心健康。\n\n你不必去跑马拉松。从小事做起：晚饭后散散步、睡好觉、少吃糖。正如长征的故事所揭示的那样，健康是一步步积累起来的。",
-      "sourceNote": "根据 ChinaDaily 2026年10月11日多条真实新闻（Asian Para Games squad、Holidays reveal huge appetite for overseas trips、Gen Z finds a sweet future in hometown's green transition、Xi on carrying forward Long March spirit）改写，用于英语学习。"
+      "title": "Stronger Storms, Greener Roads: Why Sustainability Matters Now",
+      "content": "As Hurricane Simon strengthened into a Category 4 storm and approached the coast of western Mexico, thousands of residents were urged to evacuate. Scientists say warmer ocean waters give hurricanes more energy, making storms stronger and rainfall heavier than in the past. This is one reason climate mitigation has become urgent worldwide.\n\nAt the same time, governments are looking for cleaner ways to grow. China has laid out a top-level road map dedicated to accelerating the development of new quality productive forces, which analysts believe could support greener, more sustainable economic expansion. In another development, an announced \"energy ceasefire\" between Russia and Ukraine aims to protect power plants and refineries, since damaged energy infrastructure causes both pollution and fuel shortages.\n\nDeep beneath the sea, a Chinese submersible is preparing to dive in the western Pacific to study ocean biodiversity. Protecting the ocean, cutting emissions and building resilient cities are all parts of the same goal: handing a healthy planet to the next generation.",
+      "translation": "随着飓风“西蒙”增强为四级飓风并逼近墨西哥西部沿海，数千名居民被紧急疏散。科学家表示，海水温度升高为飓风提供了更多能量，使风暴比过去更强、降雨更猛烈。这也是全球气候减缓工作日益紧迫的原因之一。\n\n与此同时，各国政府正在寻求更清洁的发展方式。中国制定了顶层路线图，致力于加速发展新质生产力，分析人士认为这将支撑更绿色、更可持续的经济增长。另一项进展是，俄乌宣布的“能源停火”旨在保护电厂和炼油厂，因为受损的能源基础设施既会造成污染，也会导致燃料短缺。\n\n在深海之中，一台中国潜水器正准备下潜西太平洋，研究海洋生物多样性。保护海洋、减少排放、建设韧性城市，都是同一个目标的组成部分：把一个健康的星球交给下一代。",
+      "sourceNote": "本文改写自 CGTN《Hurricane Simon strengthens to category 4 as it nears western Mexico》、CGTN《Trump says Russia and Ukraine reached 'energy ceasefire'》、ChinaDaily《Road map set for ramping up development》及 ChinaDaily《Submersible prepares to dive in western Pacific Ocean》等今日新闻素材。"
     }
   }
 }
