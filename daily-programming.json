@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-12",
+  "date": "2026-10-13",
   "contents": [
     {
-      "id": "prog-2026-10-12",
-      "date": "2026-10-12",
-      "title": "Go 并发实战：context 包的取消传播与超时控制",
-      "summary": "掌握 context 包在并发任务中的取消、超时与链路传播机制，写出可优雅退出的服务端代码。",
+      "id": "prog-2026-10-13",
+      "date": "2026-10-13",
+      "title": "Rust 迭代器适配器与惰性求值：构建高效数据处理管线",
+      "summary": "掌握 Iterator 适配器的惰性求值机制，用零开销的链式调用替代命令式循环，写出既高效又可读的数据处理代码。",
       "difficulty": "中级",
-      "concept": "在 Go 的并发编程中，最常见也最难处理的问题不是\"如何让代码跑得更快\"，而是\"如何让代码在该停的时候干净利落地停下来\"。比如 HTTP 请求超时后，后端的数据库查询、下游 RPC 调用是否还在继续占用连接和 goroutine？context 包就是 Go 官方给出的标准答案：它作为请求作用域的信号载体，把\"取消\"和\"截止时间\"沿着调用链一路传递下去。\n\ncontext.Context 的核心只有四个方法：Deadline() 返回截止时间（如果有）；Done() 返回一个会在取消或超时时被关闭的 channel；Err() 返回取消原因（context.Canceled 或 context.DeadlineExceeded）；Value() 用于携带请求级的键值对（如 traceID）。所有阻塞型 API（数据库、网络、RPC）都应当把 ctx 作为第一个参数接收，这是 Go 生态的事实标准，golang.org/x 的库以及所有主流 ORM、RPC 框架都遵循这一约定。\n\n创建 context 的入口是 context.Background()（顶级节点）和 context.TODO()（不确定该用什么时的占位符）。在此之上有三个派生函数：WithCancel 返回子 context 和一个 cancel 函数，用于手动取消；WithTimeout / WithDeadline 在指定时间后自动取消；WithValue 挂载键值对。关键工程原则有两条：第一，cancel 函数必须被调用（通常用 defer cancel()），否则父 context 中的子 context 不会被回收，会持续泄漏内存和 goroutine，go vet 也会给出警告；第二，cancel 应当由创建它的那一层调用，而不是把 cancel 传递给别人调用，这样才能保证责任边界清晰。\n\n一个常见的坑是\"泄漏的 goroutine\"。当你在一个函数里启动 goroutine 做耗时任务时，如果调用方提前返回（比如上游超时），而 goroutine 没有监听 ctx.Done()，它就会一直卡在那里。正确姿势是在 select 中同时监听 ctx.Done() 与业务 channel，一旦 ctx 结束就立即退出。另一个坑是 ctx.Value 的滥用：它只应携带请求级元数据（traceID、认证信息），绝不要把可选参数、数据库连接等业务参数塞进去，那会让函数签名失去显式性，也让测试变得困难。\n\n在实际工程中，context 的典型链路是：HTTP Handler 从 req.Context() 拿到 ctx → 传给 service 层 → service 层用 WithTimeout 包一层给下游调用 → 下游返回错误后用 errors.Is(err, context.DeadlineExceeded) 判断是否超时，并决定重试策略。注意要用 fmt.Errorf(\"...: %w\", err) 包装错误以保留链路信息，否则 errors.Is 会失效。理解了这套机制，你就能写出既高性能又能快速释放资源的服务端代码。",
+      "concept": "Rust 的 Iterator 是一个 trait，只要求实现 `next() -> Option<Self::Item>` 方法。所有诸如 `map`、`filter`、`take`、`zip`、`chain`、`scan` 之类的适配器方法，都只是返回一个新的结构体（如 `Map<I, F>`、`Filter<I, P>`），它们把原迭代器和闭包存起来，本身并不会消耗任何数据——这就是惰性（lazy）：在遇到 `collect`、`sum`、`fold`、`for`、`any` 这类消费者（consumer）之前，一个元素都不会被处理。理解这一点是中级 Rust 工程师的分水岭，因为它直接决定了你能否写出高效、无多余分配的代码。\n\n惰性带来的最大工程收益是「短路」与「融合」。当你写 `iter().filter(..).map(..).take(3).sum()` 时，编译器会把这些适配器内联（monomorphization + inline），最终生成的机器码接近手写 while 循环，没有堆分配，也没有中间 Vec。而且 `take(3)` 一旦取满就停止拉取，前面的 `filter` 闭包只会被执行必要次数。相比之下，很多人习惯 `.collect::<Vec<_>>()` 再二次处理，那会多一次堆分配和一次完整遍历，在热点路径上能造成可观的性能差异。生产代码中的经验法则：能一条链写完的管道，就不要产生中间集合；只有当你要多次复用结果或需要随机访问时才 `collect`。\n\n第二个关键点是「适配器是组合子（combinator），不是魔法」。当你发现标准库不够用时，可以基于 `std::iter::from_fn`、`scan`、`flat_map` 或手写一个实现 `Iterator` 的结构体来造自己的惰性适配器，例如滑动窗口、去重、按条件分批（batching）等。这类自定义适配器一旦写好，就能和标准适配器自由组合，这是 Rust 迭代器体系最强大的可扩展性设计，也是 `itertools` 这类 crate 的核心思路。\n\n第三，处理「可能失败」的迭代时，要用 `filter_map` + `Option` 或者 `map(..).collect::<Result<Vec<_>, _>>()` 把错误传播到链尾，而不是在循环里 `panic!` 或静默吞错。`try_fold`、`try_for_each` 更进一步，允许在聚合过程中提前中止并携带错误值，非常适合做校验、预算控制、限流这类「越界即停止」的场景。\n\n最后给出工程经验：1) 闭包里不要做隐藏的昂贵副作用，惰性求值会让调用次数难以预测，调试时可临时加计数器验证；2) `iter()`（借用）、`iter_mut()`（可变借用）、`into_iter()`（消费所有权）三者语义不同，选错会触发借用错误或多余的 clone；3) 热点代码用 `cargo asm` 或 `#[inline]` 检查链是否被真正融合；4) 不要在 `map` 里做 IO 或加锁，把这类副作用放到显式的 `for_each` 中，让「纯变换」和「副作用」分离。",
       "codeExample": {
-        "language": "Go",
-        "code": "package main\n\nimport (\n\t\"context\"\n\t\"errors\"\n\t\"fmt\"\n\t\"sync\"\n\t\"time\"\n)\n\n// worker 模拟一个分步执行的耗时任务，随时监听 ctx 的取消信号\nfunc worker(ctx context.Context, id int, wg *sync.WaitGroup) {\n\tdefer wg.Done() // 任务结束（无论正常与否）都要通知 WaitGroup\n\tfor i := 0; i < 5; i++ {\n\t\tselect {\n\t\tcase <-ctx.Done(): // 收到取消/超时信号，立即退出\n\t\t\tfmt.Printf(\"worker %d 被取消: %v\\n\", id, ctx.Err())\n\t\t\treturn\n\t\tcase <-time.After(200 * time.Millisecond): // 模拟每一步的耗时\n\t\t\tfmt.Printf(\"worker %d 完成第 %d 步\\n\", id, i+1)\n\t\t}\n\t}\n}\n\n// fetchWithTimeout 演示给下游调用加超时的\"教科书写法\"\nfunc fetchWithTimeout(ctx context.Context, url string) (string, error) {\n\t// 1. 派生一个 300ms 超时的子 context\n\tctx, cancel := context.WithTimeout(ctx, 300*time.Millisecond)\n\tdefer cancel() // 关键：无论走哪个分支，都必须释放资源\n\n\ttype result struct {\n\t\tdata string\n\t\terr  error\n\t}\n\tch := make(chan result, 1) // 带缓冲，避免 goroutine 泄漏\n\n\t// 2. 后台发起一个\"慢请求\"\n\tgo func() {\n\t\ttime.Sleep(1 * time.Second) // 模拟耗时 1s 的网络调用\n\t\tch <- result{data: \"response from \" + url}\n\t}()\n\n\t// 3. select 同时监听结果与超时\n\tselect {\n\tcase <-ctx.Done():\n\t\t// 用 %w 包装错误，保留错误链，方便上层 errors.Is 判断\n\t\treturn \"\", fmt.Errorf(\"请求 %s 失败: %w\", url, ctx.Err())\n\tcase r := <-ch:\n\t\treturn r.data, r.err\n\t}\n}\n\nfunc main() {\n\t// ===== 场景一：WithCancel 手动取消多个 worker =====\n\tvar wg sync.WaitGroup\n\tctx, cancel := context.WithCancel(context.Background())\n\tfor i := 1; i <= 3; i++ {\n\t\twg.Add(1)\n\t\tgo worker(ctx, i, &wg)\n\t}\n\ttime.Sleep(500 * time.Millisecond)\n\tfmt.Println(\"--- 主流程发出取消信号 ---\")\n\tcancel() // 通知所有子任务停止\n\twg.Wait()\n\n\t// ===== 场景二：WithTimeout 控制下游调用 =====\n\tresp, err := fetchWithTimeout(context.Background(), \"https://api.example.com\")\n\tif err != nil {\n\t\t// 精确判断错误类型：超时 还是 被取消\n\t\tif errors.Is(err, context.DeadlineExceeded) {\n\t\t\tfmt.Println(\"[监控告警] 下游接口超时，触发降级逻辑\")\n\t\t}\n\t\tfmt.Println(\"fetch 错误:\", err)\n\t\treturn\n\t}\n\tfmt.Println(\"fetch 成功:\", resp)\n}\n",
-        "explanation": "【worker 函数】接收 ctx 作为第一个参数（生态约定）。for 循环里用 select 同时监听 ctx.Done() 和 time.After 模拟的耗时步骤：一旦 ctx 被 cancel 或超时，ctx.Done() 这个 channel 会被关闭并立即返回，worker 打印 ctx.Err() 后 return，实现优雅退出。\n\n【fetchWithTimeout 第一步】用 context.WithTimeout 从父 ctx 派生一个 300ms 超时的子 ctx；紧接着 defer cancel()，这是 Go 官方强烈建议的写法，即使函数正常返回也能及时释放父 context 对子 context 的引用，防止内存泄漏。\n\n【fetchWithTimeout 第二步】定义带缓冲（容量 1）的结果 channel，后台 goroutine 模拟 1 秒的慢请求。带缓冲是防泄漏的关键：即便主流程因超时提前返回、没人接收结果，goroutine 把结果写入 ch 后也能正常退出，不会永久阻塞。\n\n【fetchWithTimeout 第三步】select 监听 ctx.Done() 与 ch。命中 ctx.Done() 时用 fmt.Errorf 的 %w 包装错误，把 context.DeadlineExceeded 保留在错误链中，上层才能用 errors.Is 精确识别。\n\n【main 场景一】用 WithCancel + sync.WaitGroup 管理一组 worker：主流程 500ms 后调用 cancel()，所有 worker 同时收到信号退出，wg.Wait() 确保资源全部回收后程序才结束。\n\n【main 场景二】调用带超时的 fetch，演示 errors.Is(err, context.DeadlineExceeded) 的业务判断——这正是做熔断、降级、重试策略的入口。"
+        "language": "rust",
+        "code": "use std::collections::HashMap;\n\n#[derive(Debug, Clone)]\nstruct Order {\n    id: u32,\n    amount: f64,\n    status: &'static str,\n}\n\nfn main() {\n    let orders = vec![\n        Order { id: 101, amount: 250.0, status: \"paid\" },\n        Order { id: 102, amount: 80.0, status: \"pending\" },\n        Order { id: 103, amount: 420.5, status: \"paid\" },\n        Order { id: 104, amount: 15.0, status: \"paid\" },\n        Order { id: 105, amount: 999.0, status: \"cancelled\" },\n    ];\n\n    // ---- 1. 惰性求值演示：filter 只被调用必要次数 ----\n    let mut filter_calls = 0usize;\n    let total: f64 = orders\n        .iter()\n        .filter(|o| {\n            filter_calls += 1;          // 统计闭包真实调用次数\n            o.status == \"paid\"\n        })\n        .take(2)                        // 只要前两条已支付订单，之后立即停止拉取\n        .map(|o| o.amount)\n        .sum();\n    println!(\"前两条已支付订单总额: {:.2}, filter 实际执行 {filter_calls} 次\", total);\n\n    // ---- 2. 过滤 + 收集到 HashMap（一次遍历完成） ----\n    let big_orders: HashMap<u32, f64> = orders\n        .iter()\n        .filter(|o| o.amount > 100.0)\n        .map(|o| (o.id, o.amount))\n        .collect();\n    println!(\"大额订单: {big_orders:?}\");\n\n    // ---- 3. try_fold：带错误、可提前中止的聚合 ----\n    let checked = orders.iter().try_fold(0.0f64, |acc, o| {\n        let next = acc + o.amount;\n        if next > 1000.0 {\n            Err(format!(\"订单 #{} 使累计金额超出预算 1000\", o.id))\n        } else {\n            Ok(next)\n        }\n    });\n    match checked {\n        Ok(sum) => println!(\"累计金额: {:.2}\", sum),\n        Err(e)  => println!(\"聚合中止: {e}\"),\n    }\n\n    // ---- 4. 自定义惰性适配器：滑动窗口 ----\n    let deltas: Vec<f64> = windows(&orders, 2)\n        .map(|pair| pair[1].amount - pair[0].amount)\n        .collect();\n    println!(\"相邻订单金额差: {deltas:?}\");\n}\n\n/// 手写惰性适配器：每次产出 n 个元素的滑动窗口\nfn windows<'a>(slice: &'a [Order], n: usize) -> impl Iterator<Item = &'a [Order]> {\n    let mut start = 0;\n    std::iter::from_fn(move || {\n        if start + n <= slice.len() {\n            let window = &slice[start..start + n];\n            start += 1;\n            Some(window)\n        } else {\n            None\n        }\n    })\n}\n",
+        "explanation": "第 1 段用计数器 `filter_calls` 证明惰性：链式调用本身不执行，直到 `sum()` 消费数据；`take(2)` 在取到 2 条 paid 订单后就不再拉取，所以 filter 只跑了 3 次（101 命中、102 跳过、103 命中），而不是 5 次。第 2 段展示标准组合：`filter -> map -> collect` 一次遍历直接产出 HashMap，没有任何中间 Vec。第 3 段 `try_fold` 的闭包返回 `Result`，一旦累计金额超过 1000 就返回 `Err` 并立即中止迭代，`try_fold` 会把该错误原样传出——这是做校验/预算类逻辑的标准写法。第 4 段 `windows` 是自定义惰性适配器：`std::iter::from_fn` 接收一个返回 `Option` 的闭包，通过 `move` 捕获 `start` 游标，每次返回一个切片窗口；它返回的迭代器与标准适配器完全同构，因此可以继续 `.map(...).collect()`。注意 `<'a>` 显式生命周期是必需的，用来表达「产出的切片借自入参 slice」。"
       },
       "keyPoints": [
-        "context.Context 必须作为函数的第一个参数显式传递，且永远不要存入 struct 中长期持有",
-        "创建 WithCancel / WithTimeout / WithDeadline 后，务必用 defer cancel() 释放资源，否则会内存与 goroutine 泄漏",
-        "所有阻塞操作都应同时监听 ctx.Done()，通过 select 实现可取消的并发任务",
-        "ctx.Value 只用于携带请求级元数据（traceID、认证信息），不要滥用为可选参数容器",
-        "错误要用 fmt.Errorf(\"%w\", err) 包装以保留错误链，配合 errors.Is / errors.As 做超时与取消的精确判断"
+        "适配器（map/filter/take 等）是惰性的，只有消费者（collect/sum/fold/for）才会驱动执行",
+        "惰性 + 单态化 + 内联，使迭代器链性能等价于手写循环，且无中间集合与堆分配",
+        "take / any / find / try_fold 等支持短路，能避免不必要的计算，是性能优化的常用抓手",
+        "用 filter_map + Option、map + collect::<Result<Vec<_>, _>> 做优雅的错误处理",
+        "用 std::iter::from_fn / scan 或手写 Iterator 实现自定义惰性适配器，可与标准库自由组合"
       ],
       "exercise": {
-        "description": "实现一个函数 func ParallelFetch(ctx context.Context, urls []string, timeout time.Duration) (map[string]string, error)：并发请求多个 URL（用 time.Sleep 模拟，每个 400~800ms 随机），为整体设置 timeout 超时；要求 1) 任何一个请求失败或超时都要能被正确识别；2) 不允许有任何 goroutine 泄漏；3) 超时后立即返回 context.DeadlineExceeded 包装的错误。用 go test -race 跑一遍验证无数据竞争。",
-        "hint": "为整个任务派生 ctx, cancel := context.WithTimeout(ctx, timeout) 并 defer cancel()；用 sync.WaitGroup 等待所有子任务；结果 channel 使用带缓冲的容量 len(urls)，这样即使超时后没人读取，子 goroutine 写入后也能退出；每个子 goroutine 内部用 select 监听 ctx.Done() 与模拟请求完成的 channel。",
+        "description": "实现一个成绩统计管线：给定 `Vec<&str>` 形式的原始分数（例如 [\"90\", \"abc\", \"75\", \"120\", \"60\", \"-5\"]），用一条迭代器链完成：1) 解析为 i32，解析失败的忽略；2) 过滤掉不在 0..=100 范围内的分数；3) 只取前 3 个有效分数；4) 计算平均值（保留 2 位小数），若无有效分数则返回 None。要求不使用任何 for/while 循环，也不产生中间 Vec。",
+        "hint": "把 `parse::<i32>().ok()` 交给 `filter_map` 一步完成「解析 + 去错」，再链 `filter(|&s| (0..=100).contains(&s))` 与 `take(3)`。求平均值可用 `fold((0i32, 0usize), |(sum, cnt), s| (sum + s, cnt + 1))` 一次遍历拿到总和与个数，最后判断个数是否为 0 来决定返回 Some 还是 None。注意 `take(3)` 要放在 `filter` 之后，否则会先截断原始数据导致有效样本不足。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全函数签名与关键行：让函数能接收并向下传递 context，并在结束时释放派生 context 的资源。",
-            "codeContext": "func fetchData(____ ctx context.Context, url string) (string, error) {\n    ctx, cancel := context.WithTimeout(ctx, 2*time.Second)\n    ____ cancel()\n    // ... 业务逻辑\n}",
+            "question": "补全代码，使其计算所有偶数的平方和（结果为 20）。",
+            "codeContext": "fn main() {\n    let nums = vec![1, 2, 3, 4];\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "func fetchData(",
+                "content": "let result: i32 = nums.iter()\n    .filter(|&&n| n % 2 == 0)",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,75 +40,55 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[参数位置写法]",
+                "placeholder": "[选择]",
                 "options": [
-                  "ctx context.Context",
-                  "context.Context ctx",
-                  "c *context.Context",
-                  "ctx *context.Context"
+                  ".map(|&n| n * n)",
+                  ".filter(|&n| n * n)",
+                  ".inspect(|n| n * n)"
                 ],
-                "correctAnswer": "ctx context.Context"
+                "correctAnswer": ".map(|&n| n * n)"
               },
               {
                 "type": "text",
-                "content": ", url string) (string, error) {\n    ctx, cancel := context.WithTimeout(ctx, 2*time.Second)\n    ",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[释放资源]",
-                "options": [
-                  "defer",
-                  "go",
-                  "return",
-                  "panic"
-                ],
-                "correctAnswer": "defer"
-              },
-              {
-                "type": "text",
-                "content": " cancel()\n    // ... 业务逻辑\n}",
+                "content": "\n    .sum();\nassert_eq!(result, 20);",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "ctx context.Context",
-            "explanation": "Go 生态约定 context 作为第一个参数、命名为 ctx、类型是接口值 context.Context（不是指针 *context.Context）。cancel 必须用 defer 保证在任何返回路径上都被调用，否则父 context 中登记的子 context 不会被回收，导致内存泄漏。"
+            "correctAnswer": ".map(|&n| n * n)",
+            "explanation": "`map` 用来把每个元素做一对一变换，这里把偶数变成它的平方，随后 `sum` 求和得到 2² + 4² = 20。`filter` 的返回值必须是 bool，不能做变换；`inspect` 只做副作用观察、不改变元素，因此都不符合需求。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Go 中 context 的使用，下列说法错误的是？",
-            "codeContext": "type Server struct {\n    ctx context.Context\n}\n\nfunc (s *Server) Handle(w http.ResponseWriter, r *http.Request) {\n    go s.doTask(s.ctx)\n}",
+            "question": "关于 Rust 迭代器适配器，下面哪一项描述是正确的？",
+            "codeContext": "let v = vec![1, 2, 3, 4, 5];\nlet it = v.iter().map(|x| { println!(\"map: {x}\"); x * 2 });\nprintln!(\"适配器已构建\");\nlet first = it.take(1).sum::<i32>();",
             "segments": null,
             "options": [
-              "把 context 存进 struct 长期持有是反模式，会让请求的取消信号失效",
-              "Handle 中应该使用 r.Context() 派生出的 ctx，而不是全局的 s.ctx",
-              "context.WithCancel 创建后必须调用 cancel，用 defer cancel() 是标准写法",
-              "context.Value 是存放数据库连接、可选配置参数等业务数据的推荐方式"
+              "调用 map 时就会立刻打印 5 行 \"map: ...\"",
+              "迭代器适配器是惰性的，构建时不执行，只有被消费时才逐个拉取元素",
+              "collect 是唯一能触发迭代器执行的消费方法",
+              "惰性求值会让迭代器产生大量堆分配，性能不如手写循环"
             ],
-            "correctAnswer": "context.Value 是存放数据库连接、可选配置参数等业务数据的推荐方式",
-            "explanation": "ctx.Value 只适合携带请求级元数据（如 traceID、认证 token）。业务参数应显式写在函数签名中，依赖注入等场景用构造函数或专门的配置结构体，否则函数会变成\"隐式依赖\"，可读性和可测试性都会变差。A、B、C 描述的都是官方推荐的最佳实践。"
+            "correctAnswer": "迭代器适配器是惰性的，构建时不执行，只有被消费时才逐个拉取元素",
+            "explanation": "`map` 返回的是 `Map` 结构体，只是把闭包存起来，不会执行任何逻辑；直到 `sum` 这类消费者驱动 `next()` 时才逐个求值。由于 `take(1)`，实际只会打印 \"map: 1\" 一次，属于典型的短路。`collect` 只是消费者之一，`for`、`sum`、`fold`、`any` 等同样会驱动执行。且由于单态化与内联，迭代器链通常零堆分配、性能等价于手写循环。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "下面这段代码运行后会输出什么？",
-            "codeContext": "package main\n\nimport (\n    \"context\"\n    \"fmt\"\n    \"time\"\n)\n\nfunc main() {\n    ctx, cancel := context.WithTimeout(context.Background(), 100*time.Millisecond)\n    defer cancel()\n\n    ch := make(chan string, 1)\n    go func() {\n        time.Sleep(200 * time.Millisecond)\n        ch <- \"done\"\n    }()\n\n    select {\n    case v := <-ch:\n        fmt.Println(\"got:\", v)\n    case <-ctx.Done():\n        fmt.Println(\"timeout:\", ctx.Err())\n    }\n}",
+            "question": "这段代码的输出是什么？",
+            "codeContext": "fn main() {\n    let v = vec![10, 20, 30, 40];\n    let mut calls = 0;\n    let s: i32 = v\n        .iter()\n        .filter(|&&x| {\n            calls += 1;\n            x > 10\n        })\n        .take(2)\n        .sum();\n    println!(\"{s} {}\");\n}",
             "segments": null,
             "options": [
-              "got: done",
-              "timeout: context deadline exceeded",
-              "panic: send on closed channel",
-              "程序死锁，无输出"
+              "50 3",
+              "90 4",
+              "50 4",
+              "100 5"
             ],
-            "correctAnswer": "timeout: context deadline exceeded",
-            "explanation": "ctx 的超时是 100ms，而 goroutine 要 200ms 才把结果写入 ch，所以 select 会先命中 ctx.Done() 分支。ctx.Err() 在超时场景下返回 context.DeadlineExceeded，其 Error() 字符串为 \"context deadline exceeded\"。ch 带容量 1 的缓冲，goroutine 在 200ms 后写入也不会阻塞，因此没有 goroutine 泄漏和死锁。"
+            "correctAnswer": "50 3",
+            "explanation": "`filter` 只在元素被拉取时才执行：第 1 个元素 10 不大于 10（calls=1）被丢弃；第 2 个 20 通过（calls=2）；第 3 个 30 通过（calls=3）。此时 `take(2)` 已经拿到两个元素，便停止继续拉取，第 4 个元素 40 根本不会进入 filter。因此 s = 20 + 30 = 50，calls = 3。这正是惰性求值 + 短路的效果。"
           }
         ]
       }
