@@ -1,197 +1,181 @@
 {
-  "date": "2026-10-13",
+  "date": "2026-10-14",
   "content": {
-    "id": "en-2026-10-13",
-    "date": "2026-10-13",
-    "topic": "教育与成长",
+    "id": "en-2026-10-14",
+    "date": "2026-10-14",
+    "topic": "人工智能与科技",
     "newsHighlights": [
       {
-        "title": "The Long March inspires generations to keep going further",
+        "title": "Shanghai wins inaugural city of innovation award",
         "source": "ChinaDaily",
-        "summary": "Decades after the Red Army's epic march, the spirit of perseverance continues to inspire young Chinese to push their limits and pursue lifelong growth.",
-        "translation": "在红军史诗般的长征过去数十年后，坚持不懈的长征精神继续激励着中国年轻人挑战极限、追求终身成长。",
+        "summary": "Shanghai has been declared one of the winners of the first WIPO City of Innovation award in recognition of its ability to leverage intellectual property rights to drive innovation, protect ideas and scale solutions.",
+        "translation": "上海被宣布为首届WIPO创新城市奖的获奖城市之一，以表彰其运用知识产权推动创新、保护创意并推广解决方案的能力。",
         "keyWords": [
-          "Long March",
-          "perseverance",
-          "inspire",
-          "generation"
+          "innovation",
+          "intellectual property",
+          "scale solutions"
         ]
       },
       {
-        "title": "Red Army descendants carry forward Long March spirit",
-        "source": "ChinaDaily",
-        "summary": "Descendants of Red Army soldiers are passing down stories of sacrifice and resilience, teaching younger generations the value of courage and duty.",
-        "translation": "红军战士的后代正在传承牺牲与坚韧的故事，向年轻一代传授勇气与责任的价值。",
+        "title": "World's largest industrial fair opens in Shanghai",
+        "source": "CGTN",
+        "summary": "The world's largest industrial fair has opened in Shanghai, showcasing cutting-edge robotics, artificial intelligence and smart manufacturing technologies from around the globe.",
+        "translation": "全球规模最大的工业博览会在上海开幕，展示了来自世界各地的尖端机器人、人工智能和智能制造技术。",
         "keyWords": [
-          "descendant",
-          "carry forward",
-          "resilience",
-          "heritage"
-        ]
-      },
-      {
-        "title": "AI accessibility empowering ordinary people",
-        "source": "ChinaDaily",
-        "summary": "As artificial intelligence becomes more accessible, ordinary workers and students are using it to learn new skills and improve productivity.",
-        "translation": "随着人工智能日益普及，普通劳动者和学生正在利用它学习新技能、提升效率。",
-        "keyWords": [
-          "accessibility",
-          "empower",
+          "industrial fair",
           "artificial intelligence",
-          "productivity"
+          "smart manufacturing"
         ]
       },
       {
-        "title": "Net FDI inflows in first half hit four-year high",
+        "title": "Xi urges strong steps to build Healthy China",
         "source": "ChinaDaily",
-        "summary": "Net foreign direct investment inflows into China reached the highest first-half level in four years, reflecting growing foreign investor confidence.",
-        "translation": "中国上半年净外商直接投资流入达到四年来的最高水平，反映出外国投资者信心不断增强。",
+        "summary": "President Xi Jinping has called for continuous efforts to improve people's health and secure decisive progress in the development of the Healthy China Initiative over the 15th Five-Year Plan period.",
+        "translation": "习近平主席呼吁持续努力改善人民健康，并在“十五五”规划期间推动健康中国建设取得决定性进展。",
         "keyWords": [
-          "FDI",
-          "inflow",
-          "resilient",
-          "confidence"
+          "Healthy China Initiative",
+          "Five-Year Plan",
+          "decisive progress"
         ]
       },
       {
-        "title": "China-EU vehicle trade deal benefits both",
-        "source": "ChinaDaily",
-        "summary": "The consensus reached by China and the EU on hybrid and electric vehicle trade safeguards the interests of both sides and prevents frictions from escalating.",
-        "translation": "中欧就混合动力与电动汽车贸易达成的共识，维护了双方利益，并防止贸易摩擦升级。",
+        "title": "Xi puts forward four proposals on China-Africa mining cooperation",
+        "source": "CGTN",
+        "summary": "President Xi Jinping put forward four proposals on China-Africa mining cooperation, calling for technology transfer, green development and deeper industrial collaboration.",
+        "translation": "习近平主席就中非矿业合作提出四点倡议，呼吁加强技术转让、绿色发展和更深层次的产业合作。",
         "keyWords": [
-          "consensus",
-          "safeguard",
-          "escalate",
-          "bilateral"
+          "cooperation",
+          "technology transfer",
+          "green development"
         ]
       }
     ],
     "quote": {
-      "quote": "The Long March is a manifesto. It has proclaimed to the world that the Red Army is an army of heroes.",
-      "author": "Mao Zedong",
-      "translation": "长征是宣言书。它向全世界宣告，红军是英雄的军队。",
-      "explanation": "长征被视为信念与毅力的象征。这句话提醒我们：真正的成长往往来自艰难跋涉的过程，而非终点；只要坚持前行，困难的经历就会成为向世界证明自己的宣言书。"
+      "quote": "The science of today is the technology of tomorrow.",
+      "author": "Edward Teller",
+      "translation": "今天的科学，就是明天的技术。",
+      "explanation": "这句话提醒我们，基础研究与创新成果终将转化为改变生活的实际技术。正如上海凭借知识产权驱动创新、从实验室走向产业化的历程所展示的那样。"
     },
     "vocabulary": [
       {
-        "word": "resilient",
-        "phonetic": "/rɪˈzɪliənt/",
-        "partOfSpeech": "adjective",
-        "definition": "有韧性的；能迅速恢复的；适应力强的",
-        "example": "The Chinese economy is shifting toward more resilient growth, creating confidence among young job seekers.",
-        "translation": "中国经济正转向更具韧性的发展，给年轻求职者带来信心。",
-        "newsContext": "出自新闻《Net FDI inflows in first half hit four-year high》：“as the Chinese economy shifts toward more resilient growth”。"
+        "word": "innovation",
+        "phonetic": "/ˌɪnəˈveɪʃn/",
+        "partOfSpeech": "名词",
+        "definition": "创新；革新",
+        "example": "Shanghai has become a national leader in technological innovation.",
+        "translation": "上海已成为全国科技创新的领军者。",
+        "newsContext": "出自新闻标题 “Shanghai wins inaugural city of innovation award”，指上海运用知识产权推动创新。"
       },
       {
-        "word": "inspire",
-        "phonetic": "/ɪnˈspaɪər/",
-        "partOfSpeech": "verb",
-        "definition": "激励，鼓舞；启发",
-        "example": "The Long March inspires generations of students to keep going further in their studies.",
-        "translation": "长征激励着一代代学生在学业上不断走得更远。",
-        "newsContext": "出自新闻标题《The Long March inspires generations to keep going further》。"
+        "word": "intellectual property",
+        "phonetic": "/ˌɪntəˈlektʃuəl ˈprɒpəti/",
+        "partOfSpeech": "名词短语",
+        "definition": "知识产权（缩写为 IP / IPR）",
+        "example": "The city uses intellectual property rights to protect ideas and reward inventors.",
+        "translation": "这座城市利用知识产权保护创意并激励发明者。",
+        "newsContext": "出自 “…in recognition of its ability to leverage intellectual property rights to drive innovation”。"
       },
       {
-        "word": "descendant",
-        "phonetic": "/dɪˈsendənt/",
-        "partOfSpeech": "noun",
-        "definition": "后代，后裔，子孙",
-        "example": "Red Army descendants carry forward the spirit of courage and self-discipline.",
-        "translation": "红军后代传承着勇气与自律的精神。",
-        "newsContext": "出自新闻《Red Army descendants carry forward Long March spirit》。"
+        "word": "leverage",
+        "phonetic": "/ˈliːvərɪdʒ/",
+        "partOfSpeech": "动词",
+        "definition": "利用；发挥……的优势",
+        "example": "Shanghai leverages its research institutions to turn ideas into products.",
+        "translation": "上海利用其科研机构把创意转化为产品。",
+        "newsContext": "出自 “its ability to leverage intellectual property rights to drive innovation”。"
       },
       {
-        "word": "carry forward",
-        "phonetic": "/ˈkæri ˈfɔːwərd/",
-        "partOfSpeech": "phrasal verb",
-        "definition": "发扬；推进；传承",
-        "example": "Every generation should carry forward the values it has inherited from its predecessors.",
-        "translation": "每一代人都应发扬从先辈那里继承的价值观。",
-        "newsContext": "出自新闻《Red Army descendants carry forward Long March spirit》。"
+        "word": "inaugural",
+        "phonetic": "/ɪˈnɔːɡjərəl/",
+        "partOfSpeech": "形容词",
+        "definition": "首次的；开幕的；就职的",
+        "example": "The inaugural WIPO City of Innovation award attracted dozens of applicants.",
+        "translation": "首届WIPO创新城市奖吸引了数十个申请城市。",
+        "newsContext": "出自标题 “Shanghai wins inaugural city of innovation award”，意为“首届的”。"
       },
       {
-        "word": "empower",
-        "phonetic": "/ɪmˈpaʊər/",
-        "partOfSpeech": "verb",
-        "definition": "赋能；使能够；授权",
-        "example": "AI accessibility is empowering ordinary people to learn new skills on their own.",
-        "translation": "人工智能的普及正在赋能普通人自主学习新技能。",
-        "newsContext": "出自新闻《AI accessibility empowering ordinary people》。"
+        "word": "scale",
+        "phonetic": "/skeɪl/",
+        "partOfSpeech": "动词",
+        "definition": "扩大规模；推广",
+        "example": "Once a pilot project succeeds, the city works to scale the solution nationwide.",
+        "translation": "试点项目一旦成功，这座城市就努力把解决方案推广到全国。",
+        "newsContext": "出自 “protect ideas and scale solutions”，指把成功的方案规模化推广。"
       },
       {
-        "word": "accessibility",
-        "phonetic": "/əkˌsesəˈbɪləti/",
-        "partOfSpeech": "noun",
-        "definition": "可及性；易获得性；可访问性",
-        "example": "Greater accessibility to online courses has changed how students learn.",
-        "translation": "在线课程更易获得，改变了学生的学习方式。",
-        "newsContext": "出自新闻《AI accessibility empowering ordinary people》。"
+        "word": "initiative",
+        "phonetic": "/ɪˈnɪʃətɪv/",
+        "partOfSpeech": "名词",
+        "definition": "倡议；新方案；主动性",
+        "example": "The Healthy China Initiative aims to improve public health across the country.",
+        "translation": "“健康中国”倡议旨在提升全国公共健康水平。",
+        "newsContext": "出自 “the development of the Healthy China Initiative over the 15th Five-Year Plan”。"
       },
       {
-        "word": "confidence",
-        "phonetic": "/ˈkɒnfɪdəns/",
-        "partOfSpeech": "noun",
-        "definition": "信心；自信；信任",
-        "example": "Repeated practice builds the confidence learners need to face bigger challenges.",
-        "translation": "反复练习能建立起学习者应对更大挑战所需的信心。",
-        "newsContext": "出自新闻《Net FDI inflows in first half hit four-year high》：“reflecting growing foreign investor confidence”。"
+        "word": "priority",
+        "phonetic": "/praɪˈɒrəti/",
+        "partOfSpeech": "名词",
+        "definition": "优先事项；优先权",
+        "example": "Ensuring people's health must be given strategic priority.",
+        "translation": "必须把保障人民健康放在战略优先位置。",
+        "newsContext": "出自 “Xi on building a healthy China”：ensuring people's health must be given strategic priority。"
       },
       {
-        "word": "consensus",
-        "phonetic": "/kənˈsensəs/",
-        "partOfSpeech": "noun",
-        "definition": "共识；一致意见",
-        "example": "The class reached a consensus that daily reading matters more than last-minute cramming.",
-        "translation": "全班达成共识：每日阅读比临时抱佛脚更重要。",
-        "newsContext": "出自新闻《China-EU vehicle trade deal benefits both》：“The consensus reached by China and the European Union...”。"
+        "word": "secure",
+        "phonetic": "/sɪˈkjʊə(r)/",
+        "partOfSpeech": "动词",
+        "definition": "取得，确保（尤指通过努力获得）",
+        "example": "China aims to secure decisive progress in health development by 2030.",
+        "translation": "中国力争到2030年在健康事业上取得决定性进展。",
+        "newsContext": "出自 “secure decisive progress in the development of the Healthy China Initiative”。"
       },
       {
-        "word": "safeguard",
-        "phonetic": "/ˈseɪfɡɑːrd/",
-        "partOfSpeech": "verb / noun",
-        "definition": "保护，捍卫；保障措施",
-        "example": "Good habits safeguard your progress when motivation runs low.",
-        "translation": "当动力不足时，良好的习惯能守护你的进步。",
-        "newsContext": "出自新闻《China-EU vehicle trade deal benefits both》：“effectively safeguards the interests of Chinese companies”。"
+        "word": "showcase",
+        "phonetic": "/ˈʃəʊkeɪs/",
+        "partOfSpeech": "动词",
+        "definition": "展示；使展现",
+        "example": "The industrial fair showcases the latest artificial intelligence and robotics.",
+        "translation": "这场工业博览会展示了最先进的人工智能与机器人技术。",
+        "newsContext": "关联新闻 “World's largest industrial fair opens in Shanghai”，博览会是技术展示的平台。"
       },
       {
-        "word": "momentum",
-        "phonetic": "/məˈmentəm/",
-        "partOfSpeech": "noun",
-        "definition": "势头；动力；动量",
-        "example": "Once you build momentum in reading every day, learning becomes much easier.",
-        "translation": "一旦养成每日阅读的势头，学习就会变得容易得多。",
-        "newsContext": "关联新闻《Net FDI inflows in first half hit four-year high》与《Rebuilt port opens to boost connectivity》，报道中强调中国经济与互联互通的持续增长势头。"
+        "word": "indicator",
+        "phonetic": "/ˈɪndɪkeɪtə(r)/",
+        "partOfSpeech": "名词",
+        "definition": "指标；标志",
+        "example": "Health is the most important indicator of people's happiness.",
+        "translation": "健康是人民幸福最重要的指标。",
+        "newsContext": "出自引语 “Health is the most important indicator of people's happiness.”"
       }
     ],
     "pattern": {
-      "pattern": "prevent / stop + 宾语 + from + doing（阻止……发生/防止……升级）",
-      "example": "The deal effectively safeguards the interests of Chinese companies and prevents bilateral trade frictions from escalating.",
-      "translation": "该协议有效维护了中国企业的利益，并防止双边贸易摩擦升级。",
-      "usage": "用于表达“阻止某人/某事做某事”。注意 from 后接动词 -ing 形式。近义结构有 keep/stop/protect...from doing。例如：Reading every day prevents your skills from getting rusty.（每天阅读能防止技能生疏。）"
+      "pattern": "In recognition of + 名词/动名词, ... has been + 过去分词 ...（鉴于/为表彰……，……被授予/被认定为……）",
+      "example": "In recognition of its ability to leverage intellectual property rights to drive innovation, Shanghai has been declared one of the winners of the first WIPO City of Innovation award.",
+      "translation": "鉴于其运用知识产权推动创新的能力，上海被宣布为首届WIPO创新城市奖的获奖城市之一。",
+      "usage": "常用于正式新闻与颁奖、表彰语境。In recognition of 后接原因，主句多用被动语态（has been declared / has been awarded）。可替换为 Thanks to / Owing to，但正式程度略低。"
     },
     "grammar": {
-      "title": "现在分词作结果/伴随状语（Present Participle as Adverbial）",
-      "explanation": "当主句描述一个动作或状态，其结果、伴随情况或补充说明用另一个动词表达时，常用“动词-ing”形式放在句首、句中或句末，逻辑主语与主句主语一致。这种结构在英文新闻中极为常见，可使句子更紧凑。",
+      "title": "现在完成时的被动语态（Present Perfect Passive）",
+      "explanation": "结构为 have/has + been + 过去分词，表示“到目前为止已经被……”，强调动作的结果对现在仍有影响，是新闻英语中报道“刚刚发生并已公布结果”事件的高频时态。第三人称单数主语用 has been，复数主语用 have been。",
       "examples": [
-        "Net foreign direct investment inflows reached the highest first-half level in four years, reflecting growing foreign investor confidence.",
-        "The Long March inspires generations of young people, encouraging them to keep going further."
+        "Shanghai has been declared one of the winners of the first WIPO City of Innovation award.",
+        "The world's largest industrial fair has opened in Shanghai, showcasing cutting-edge technologies."
       ]
     },
     "pronunciation": {
-      "word": "resilient",
-      "phonetic": "/rɪˈzɪliənt/",
-      "tips": "重音在第二个音节 -sil- 上，读作 ri-ZIL-ee-ənt。/ɪ/ 为短元音，舌尖靠近下齿；/liənt/ 处 /l/ 要清晰，结尾 /ənt/ 弱读，不要读成“利恩特”。可先慢读 rɪ-zɪl-i-ənt，再连读。",
+      "word": "innovation",
+      "phonetic": "/ˌɪnəˈveɪʃn/",
+      "tips": "重音在第三个音节 -va- 上，读作 /ˌɪnəˈveɪʃn/。前面的 in- 弱读为 /ɪn/ 或 /ən/，不要读成 /ɪnˈnəʊ/。词尾 -tion 统一读 /ʃn/，注意 /ʃ/ 是清辅音，声带不振动。整词节奏为“短-短-长-短”。",
       "examples": [
-        "The resilient economy continues to attract foreign investment.",
-        "Resilient learners treat failure as part of the process."
+        "Shanghai is a city of innovation and opportunity.",
+        "Technological innovation drives economic growth."
       ]
     },
     "reading": {
-      "title": "The Long March Spirit: Learning to Keep Going Further",
-      "content": "More than 90 years ago, the Red Army completed the Long March, one of the most difficult journeys in modern history. Today, its spirit still speaks loudly to students and young professionals.\n\nRed Army descendants are passing down stories of courage and self-discipline, reminding us that growth rarely comes easily. In much the same way, the Chinese economy has shown resilient strength, with net FDI inflows hitting a four-year high and a rebuilt port opening to boost connectivity. Steady progress, not sudden success, is what builds real momentum.\n\nTechnology is opening new doors as well. Greater AI accessibility is empowering ordinary people to learn new skills and improve productivity, no matter where they live. Meanwhile, the China-EU vehicle trade consensus shows that dialogue can safeguard shared interests and prevent conflicts from escalating.\n\nThe lesson is simple: keep walking, keep learning. Every difficult step forward becomes a manifesto of who you are becoming.",
-      "translation": "90多年前，红军完成了长征——现代史上最艰难的旅程之一。今天，长征精神依然向学生和年轻职场人发出响亮的呼唤。\n\n红军后代传承着勇气与自律的故事，提醒我们成长从来都不轻松。同样，中国经济展现出韧性：上半年净外商直接投资流入达到四年高位，重建的口岸开通以促进互联互通。真正积累起势头的是稳步前进，而非一朝成名。\n\n技术也在开启新的大门。人工智能日益普及，赋能普通人学习新技能、提高效率，无论身在何处。与此同时，中欧电动汽车贸易共识表明，对话能够维护共同利益，防止冲突升级。\n\n道理很简单：继续走，继续学。你向前迈出的每一步艰难路程，都会成为你成长的宣言书。",
-      "sourceNote": "本文基于 2026-10-13 ChinaDaily 真实新闻《The Long March inspires generations to keep going further》《Red Army descendants carry forward Long March spirit》《Net FDI inflows in first half hit four-year high》《AI accessibility empowering ordinary people》《China-EU vehicle trade deal benefits both》改写，供英语学习使用。"
+      "title": "Shanghai: Where Ideas Become Industries",
+      "content": "Shanghai has been named one of the winners of the first WIPO City of Innovation award. The honor recognizes the city's ability to use intellectual property rights to drive innovation, protect original ideas and scale solutions from the lab to the market. Home to leading universities and research institutes, Shanghai has built a complete ecosystem in which patents, startups and manufacturers work side by side. At the same time, the world's largest industrial fair has opened in the city, showcasing cutting-edge robotics, artificial intelligence and smart manufacturing technologies. Together, these two events show how scientific research becomes real-world technology. Officials say the city will continue to invest in research and development and give strategic priority to emerging industries. For young learners, the message is clear: innovation is not only about having a good idea, but also about protecting it, developing it and sharing it with the world.",
+      "translation": "上海被评为首届WIPO创新城市奖的获奖城市之一。这一荣誉认可了这座城市运用知识产权推动创新、保护原创创意并把解决方案从实验室推向市场的能力。作为众多顶尖高校和科研院所的所在地，上海构建了一个专利、初创企业与制造企业协同合作的完整生态。与此同时，全球规模最大的工业博览会在该市开幕，展示了尖端机器人、人工智能和智能制造技术。这两场活动共同展示了科学研究如何转化为现实技术。有关官员表示，上海将继续加大研发投入，并把战略性新兴产业放在优先位置。对年轻学习者而言，其中的道理很清晰：创新不只是拥有一个好点子，更在于保护它、发展它，并与世界分享它。",
+      "sourceNote": "基于 ChinaDaily《Shanghai wins inaugural city of innovation award》与 CGTN《World's largest industrial fair opens in Shanghai》两篇真实新闻改写，为学习目的进行了语言简化与整合。"
     }
   }
 }

@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-13",
+  "date": "2026-10-14",
   "contents": [
     {
-      "id": "prog-2026-10-13",
-      "date": "2026-10-13",
-      "title": "Rust 迭代器适配器与惰性求值：构建高效数据处理管线",
-      "summary": "掌握 Iterator 适配器的惰性求值机制，用零开销的链式调用替代命令式循环，写出既高效又可读的数据处理代码。",
-      "difficulty": "中级",
-      "concept": "Rust 的 Iterator 是一个 trait，只要求实现 `next() -> Option<Self::Item>` 方法。所有诸如 `map`、`filter`、`take`、`zip`、`chain`、`scan` 之类的适配器方法，都只是返回一个新的结构体（如 `Map<I, F>`、`Filter<I, P>`），它们把原迭代器和闭包存起来，本身并不会消耗任何数据——这就是惰性（lazy）：在遇到 `collect`、`sum`、`fold`、`for`、`any` 这类消费者（consumer）之前，一个元素都不会被处理。理解这一点是中级 Rust 工程师的分水岭，因为它直接决定了你能否写出高效、无多余分配的代码。\n\n惰性带来的最大工程收益是「短路」与「融合」。当你写 `iter().filter(..).map(..).take(3).sum()` 时，编译器会把这些适配器内联（monomorphization + inline），最终生成的机器码接近手写 while 循环，没有堆分配，也没有中间 Vec。而且 `take(3)` 一旦取满就停止拉取，前面的 `filter` 闭包只会被执行必要次数。相比之下，很多人习惯 `.collect::<Vec<_>>()` 再二次处理，那会多一次堆分配和一次完整遍历，在热点路径上能造成可观的性能差异。生产代码中的经验法则：能一条链写完的管道，就不要产生中间集合；只有当你要多次复用结果或需要随机访问时才 `collect`。\n\n第二个关键点是「适配器是组合子（combinator），不是魔法」。当你发现标准库不够用时，可以基于 `std::iter::from_fn`、`scan`、`flat_map` 或手写一个实现 `Iterator` 的结构体来造自己的惰性适配器，例如滑动窗口、去重、按条件分批（batching）等。这类自定义适配器一旦写好，就能和标准适配器自由组合，这是 Rust 迭代器体系最强大的可扩展性设计，也是 `itertools` 这类 crate 的核心思路。\n\n第三，处理「可能失败」的迭代时，要用 `filter_map` + `Option` 或者 `map(..).collect::<Result<Vec<_>, _>>()` 把错误传播到链尾，而不是在循环里 `panic!` 或静默吞错。`try_fold`、`try_for_each` 更进一步，允许在聚合过程中提前中止并携带错误值，非常适合做校验、预算控制、限流这类「越界即停止」的场景。\n\n最后给出工程经验：1) 闭包里不要做隐藏的昂贵副作用，惰性求值会让调用次数难以预测，调试时可临时加计数器验证；2) `iter()`（借用）、`iter_mut()`（可变借用）、`into_iter()`（消费所有权）三者语义不同，选错会触发借用错误或多余的 clone；3) 热点代码用 `cargo asm` 或 `#[inline]` 检查链是否被真正融合；4) 不要在 `map` 里做 IO 或加锁，把这类副作用放到显式的 `for_each` 中，让「纯变换」和「副作用」分离。",
+      "id": "prog-2026-10-14",
+      "date": "2026-10-14",
+      "title": "Kotlin Flow 背压与热流：buffer / conflate / collectLatest 的性能调优与架构设计",
+      "summary": "深入理解 Kotlin Flow 的冷热流模型与背压（Backpressure）策略，掌握 buffer、conflate、collectLatest 的取舍，并用 StateFlow/SharedFlow 构建高性能事件流架构。",
+      "difficulty": "高级",
+      "concept": "在真实工程里，数据的\"生产速度\"与\"消费速度\"几乎永远不一致：行情推送、传感器采样、日志流、WebSocket 消息都是典型场景。如果消费者的处理能力跟不上生产者，未处理的数据就会在内存中不断堆积，最终 OOM。这就是背压（Backpressure）问题。Kotlin Flow 与 RxJava 的最大设计差异在于：Flow 是\"冷\"的、基于协程挂起（suspend）的，它不需要像 RxJava 那样提供几十种背压操作符，因为 Flow 的 emit 本身就是 suspend 函数——生产者会天然被消费者的慢速阻塞。这被称为\"串行化默认策略\"，安全但不高效。\n\n理解 Flow 的调度模型是调优的前提。当你把生产者写在 flow{} 里、消费者在 collect{} 中做耗时操作时，两段代码运行在同一个协程、同一个协程上下文里，因此是完全串行的：生产一条 → 等消费完 → 再生产下一条。要让二者并行，需要两个要素：一是 .flowOn(context) 把上游切到另一个调度器（这会在上游与下游之间插入一个 Channel）；二是 .buffer(capacity) 显式声明缓冲区大小。需要注意的工程陷阱：buffer 的容量是\"按元素个数\"而非字节数，如果元素本身很大（比如位图、大 JSON），小容量也可能占用大量内存。\n\n当缓冲区满时，Flow 提供三种典型策略，选错会直接导致结果不正确。1) suspend（默认）：emit 挂起等待，不丢数据、不产生异常，适合必须完整处理的场景（如写数据库、计费事件）。2) conflate()：等价于 buffer(CONFLATED)，缓冲区只保留最新元素，旧值被丢弃，适合\"只关心最新状态\"的 UI 状态、坐标位置。3) collectLatest { }：新值到来时取消（cancel）旧值正在执行的处理逻辑，与 conflate 的区别在于它连\"正在处理中的\"任务也会中断，因此块内必须是可取消的（使用 ensureActive() 或调用挂起函数）。此外 buffer(Channel.DROP_OLDEST) 与 buffer(Channel.DROP_NEWEST) 可以显式指定丢弃方向。\n\n冷流（Cold Flow）与热流（Hot Flow）的边界是架构设计的核心。flow{} 构建的冷流是\"懒\"的，每次 collect 都重新执行一遍发射逻辑，10 个订阅者就会跑 10 次网络请求；而 StateFlow / SharedFlow 是热流，发射与收集完全解耦，多个订阅者共享同一份数据流。StateFlow 是\"必须有当前值、天然 conflate\"的语义，非常适合作为 ViewModel 暴露 UI State 的唯一通道；MutableSharedFlow 则支持 replay（新订阅者可收到最近 N 条）、extraBufferCapacity 与 tryEmit（非挂起发射），适合一次性事件（Toast、导航、埋点）。\n\n性能层面有几个经过验证的经验值：UI 列表刷新类的 SharedFlow 建议 replay=0、extraBufferCapacity=64，避免事件堆积；搜索框输入建议 debounce(200~300) + flatMapLatest（新请求取消旧请求）；高频日志/埋点建议 conflate 或 buffer(Channel.CONFLATED) 后批量上报；协程作用域上优先使用 SupervisorJob，避免一个子流异常拖垮整个数据管道。最后，永远不要在 collectLatest 的块里做不可取消的阻塞 IO（如直接调用 Java 的 Socket#read），否则\"取消\"会退化为假象，造成协程泄漏。",
       "codeExample": {
-        "language": "rust",
-        "code": "use std::collections::HashMap;\n\n#[derive(Debug, Clone)]\nstruct Order {\n    id: u32,\n    amount: f64,\n    status: &'static str,\n}\n\nfn main() {\n    let orders = vec![\n        Order { id: 101, amount: 250.0, status: \"paid\" },\n        Order { id: 102, amount: 80.0, status: \"pending\" },\n        Order { id: 103, amount: 420.5, status: \"paid\" },\n        Order { id: 104, amount: 15.0, status: \"paid\" },\n        Order { id: 105, amount: 999.0, status: \"cancelled\" },\n    ];\n\n    // ---- 1. 惰性求值演示：filter 只被调用必要次数 ----\n    let mut filter_calls = 0usize;\n    let total: f64 = orders\n        .iter()\n        .filter(|o| {\n            filter_calls += 1;          // 统计闭包真实调用次数\n            o.status == \"paid\"\n        })\n        .take(2)                        // 只要前两条已支付订单，之后立即停止拉取\n        .map(|o| o.amount)\n        .sum();\n    println!(\"前两条已支付订单总额: {:.2}, filter 实际执行 {filter_calls} 次\", total);\n\n    // ---- 2. 过滤 + 收集到 HashMap（一次遍历完成） ----\n    let big_orders: HashMap<u32, f64> = orders\n        .iter()\n        .filter(|o| o.amount > 100.0)\n        .map(|o| (o.id, o.amount))\n        .collect();\n    println!(\"大额订单: {big_orders:?}\");\n\n    // ---- 3. try_fold：带错误、可提前中止的聚合 ----\n    let checked = orders.iter().try_fold(0.0f64, |acc, o| {\n        let next = acc + o.amount;\n        if next > 1000.0 {\n            Err(format!(\"订单 #{} 使累计金额超出预算 1000\", o.id))\n        } else {\n            Ok(next)\n        }\n    });\n    match checked {\n        Ok(sum) => println!(\"累计金额: {:.2}\", sum),\n        Err(e)  => println!(\"聚合中止: {e}\"),\n    }\n\n    // ---- 4. 自定义惰性适配器：滑动窗口 ----\n    let deltas: Vec<f64> = windows(&orders, 2)\n        .map(|pair| pair[1].amount - pair[0].amount)\n        .collect();\n    println!(\"相邻订单金额差: {deltas:?}\");\n}\n\n/// 手写惰性适配器：每次产出 n 个元素的滑动窗口\nfn windows<'a>(slice: &'a [Order], n: usize) -> impl Iterator<Item = &'a [Order]> {\n    let mut start = 0;\n    std::iter::from_fn(move || {\n        if start + n <= slice.len() {\n            let window = &slice[start..start + n];\n            start += 1;\n            Some(window)\n        } else {\n            None\n        }\n    })\n}\n",
-        "explanation": "第 1 段用计数器 `filter_calls` 证明惰性：链式调用本身不执行，直到 `sum()` 消费数据；`take(2)` 在取到 2 条 paid 订单后就不再拉取，所以 filter 只跑了 3 次（101 命中、102 跳过、103 命中），而不是 5 次。第 2 段展示标准组合：`filter -> map -> collect` 一次遍历直接产出 HashMap，没有任何中间 Vec。第 3 段 `try_fold` 的闭包返回 `Result`，一旦累计金额超过 1000 就返回 `Err` 并立即中止迭代，`try_fold` 会把该错误原样传出——这是做校验/预算类逻辑的标准写法。第 4 段 `windows` 是自定义惰性适配器：`std::iter::from_fn` 接收一个返回 `Option` 的闭包，通过 `move` 捕获 `start` 游标，每次返回一个切片窗口；它返回的迭代器与标准适配器完全同构，因此可以继续 `.map(...).collect()`。注意 `<'a>` 显式生命周期是必需的，用来表达「产出的切片借自入参 slice」。"
+        "language": "Kotlin",
+        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.flow.*\nimport kotlin.system.measureTimeMillis\n\n// 模拟\"生产快、消费慢\"的数据源（如行情推送、传感器）\nfun priceStream(): Flow<Long> = flow {\n    var price = 100L\n    repeat(10) { i ->\n        delay(50)                       // 生产端：每 50ms 发射一条\n        price += i\n        println(\"  [produce] #$i price=$price  (${Thread.currentThread().name})\")\n        emit(price)\n    }\n}.flowOn(Dispatchers.Default)            // 上游切到 Default，与下游并行执行\n\nsuspend fun consumeSlowly(price: Long) {\n    delay(150)                           // 消费端：每条需 150ms\n    println(\"  [consume] $price\")\n}\n\nfun main() = runBlocking {\n\n    println(\"=== 1. 默认：串行，生产被消费完全拖慢 ===\")\n    val t1 = measureTimeMillis {\n        priceStream().collect { consumeSlowly(it) }\n    }\n    println(\"耗时: ${t1}ms (约 2000ms)\\n\")\n\n    println(\"=== 2. buffer(3)：异步化 + 缓冲，不丢数据 ===\")\n    val t2 = measureTimeMillis {\n        priceStream().buffer(3).collect { consumeSlowly(it) }\n    }\n    println(\"耗时: ${t2}ms (显著缩短，全部数据都被处理)\\n\")\n\n    println(\"=== 3. conflate()：只保留最新值，中间值被丢弃 ===\")\n    val t3 = measureTimeMillis {\n        priceStream().conflate().collect { consumeSlowly(it) }\n    }\n    println(\"耗时: ${t3}ms (最快，但只看到少数几个值)\\n\")\n\n    println(\"=== 4. collectLatest()：新值一到就取消旧处理 ===\")\n    val t4 = measureTimeMillis {\n        priceStream().collectLatest { price ->\n            delay(150)\n            println(\"  [consume] $price\")   // 多数处理会被取消，只有最后一次真正完成\n        }\n    }\n    println(\"耗时: ${t4}ms\\n\")\n\n    println(\"=== 5. 热流：StateFlow / SharedFlow ===\")\n    val state = MutableStateFlow(100L)                      // 天然 conflate，永远持有\"当前值\"\n    val events = MutableSharedFlow<String>(replay = 1, extraBufferCapacity = 8)\n\n    val job = launch {\n        state.collect { println(\"  [state] latest = $it\") }\n    }\n    events.tryEmit(\"boot\")                                  // replay=1：订阅前发射也能收到\n\n    repeat(5) { i ->\n        state.value = 100L + i                              // 非挂起更新，立即生效\n        events.tryEmit(\"tick-$i\")\n        delay(30)\n    }\n    job.cancel()\n\n    // 新订阅者可通过 replay 拿到最近一条事件\n    println(\"  [events] replay 得到: ${events.first()}\")\n}\n",
+        "explanation": "【第 1 段：数据源】priceStream() 用 flow{} 构建冷流，emit 是 suspend 函数；.flowOn(Dispatchers.Default) 会把上游切到 Default 调度器，并在上下游之间自动插入一个缓冲通道，使生产和消费可并行。\n\n【第 2 段：消费函数】consumeSlowly 模拟耗时 150ms 的下游处理（如数据库写入、图片解码），生产间隔 50ms、消费 150ms，天然形成背压。\n\n【第 3 段：对照实验】四种写法形成清晰对比——默认串行约 2000ms 且不丢数据；buffer(3) 通过异步化通道压缩到约 800ms 且不丢数据；conflate() 只保留最新值，消费者永远追不上也不会堆积；collectLatest() 则更激进，新值到来直接取消正在执行的旧处理，只保证\"最后一次完整执行\"。\n\n【第 4 段：热流】MutableStateFlow 用作 UI 状态容器（天然 conflate、总有当前值）；MutableSharedFlow 配置 replay=1 与 extraBufferCapacity=8，用 tryEmit 做非挂起发射，适合高频事件。注意 launch 中的 collect 需要手动 cancel，实际项目中应交给 viewModelScope / lifecycleScope 管理。\n\n【第 5 段：取舍原则】完整性要求高 → buffer；只要最新状态 → conflate；处理本身可取消 → collectLatest；一次性事件 → SharedFlow；持久 UI 状态 → StateFlow。"
       },
       "keyPoints": [
-        "适配器（map/filter/take 等）是惰性的，只有消费者（collect/sum/fold/for）才会驱动执行",
-        "惰性 + 单态化 + 内联，使迭代器链性能等价于手写循环，且无中间集合与堆分配",
-        "take / any / find / try_fold 等支持短路，能避免不必要的计算，是性能优化的常用抓手",
-        "用 filter_map + Option、map + collect::<Result<Vec<_>, _>> 做优雅的错误处理",
-        "用 std::iter::from_fn / scan 或手写 Iterator 实现自定义惰性适配器，可与标准库自由组合"
+        "Flow 默认是串行的：emit 是 suspend，生产者会被慢消费者自然阻塞，这是安全的默认背压策略",
+        ".flowOn() 改变上游执行上下文并插入通道，.buffer() 控制缓冲区容量，二者配合才能实现真正的生产/消费并行",
+        "背压三选一：buffer 不丢数据、conflate 丢中间值只留最新、collectLatest 连进行中的处理都会取消",
+        "StateFlow 天然 conflate 且必有当前值，适合 UI State；SharedFlow 支持 replay/extraBufferCapacity，适合一次性事件",
+        "collectLatest 的块内必须可取消（使用挂起函数或 ensureActive()），否则会造成协程泄漏与取消失效"
       ],
       "exercise": {
-        "description": "实现一个成绩统计管线：给定 `Vec<&str>` 形式的原始分数（例如 [\"90\", \"abc\", \"75\", \"120\", \"60\", \"-5\"]），用一条迭代器链完成：1) 解析为 i32，解析失败的忽略；2) 过滤掉不在 0..=100 范围内的分数；3) 只取前 3 个有效分数；4) 计算平均值（保留 2 位小数），若无有效分数则返回 None。要求不使用任何 for/while 循环，也不产生中间 Vec。",
-        "hint": "把 `parse::<i32>().ok()` 交给 `filter_map` 一步完成「解析 + 去错」，再链 `filter(|&s| (0..=100).contains(&s))` 与 `take(3)`。求平均值可用 `fold((0i32, 0usize), |(sum, cnt), s| (sum + s, cnt + 1))` 一次遍历拿到总和与个数，最后判断个数是否为 0 来决定返回 Some 还是 None。注意 `take(3)` 要放在 `filter` 之后，否则会先截断原始数据导致有效样本不足。",
+        "description": "实现一个\"边输入边搜索\"功能：用户在搜索框持续输入字符，产生一个 Flow<String> queryFlow。要求：(1) 停止输入 250ms 后才发起请求；(2) 新查询到来时必须取消上一次未完成的搜索；(3) 搜索结果到达快于 UI 渲染时只渲染最新结果；(4) 最终用 StateFlow 暴露 UI 状态（Loading / Success / Error），并保证多个订阅者共享同一次搜索结果而非重复请求。",
+        "hint": "用 debounce(250) + distinctUntilChanged() + flatMapLatest { search(it) } 组成查询管道；UI 渲染侧加 .conflate() 或 .collectLatest；搜索逻辑写在 class SearchViewModel(private val scope: CoroutineScope) 中，用 MutableStateFlow<UiState> 作为唯一状态源，注意 flatMapLatest 内部必须调用可取消的网络 API。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，使其计算所有偶数的平方和（结果为 20）。",
-            "codeContext": "fn main() {\n    let nums = vec![1, 2, 3, 4];\n}",
+            "question": "补全搜索管道，使其满足\"防抖 + 新请求取消旧请求 + 只渲染最新结果\"的要求。",
+            "codeContext": "fun searchPipeline(queryFlow: Flow<String>, search: (String) -> Flow<List<Item>>): Flow<List<Item>> =\n    queryFlow\n        .______        // ① 停止输入 250ms 才放行\n        .distinctUntilChanged()\n        .______        // ② 新查询取消上一次搜索\n        { query -> search(query) }\n        .______        // ③ 只渲染最新结果，跳过中间值",
             "segments": [
               {
                 "type": "text",
-                "content": "let result: i32 = nums.iter()\n    .filter(|&&n| n % 2 == 0)",
+                "content": "    queryFlow\n        .",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,55 +40,84 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[①]",
                 "options": [
-                  ".map(|&n| n * n)",
-                  ".filter(|&n| n * n)",
-                  ".inspect(|n| n * n)"
+                  "debounce(250)",
+                  "delay(250)",
+                  "sample(250)"
                 ],
-                "correctAnswer": ".map(|&n| n * n)"
+                "correctAnswer": "debounce(250)"
               },
               {
                 "type": "text",
-                "content": "\n    .sum();\nassert_eq!(result, 20);",
+                "content": "\n        .distinctUntilChanged()\n        .",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[②]",
+                "options": [
+                  "flatMapLatest",
+                  "map",
+                  "flatMapMerge"
+                ],
+                "correctAnswer": "flatMapLatest"
+              },
+              {
+                "type": "text",
+                "content": "\n        { query -> search(query) }\n        .",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[③]",
+                "options": [
+                  "conflate()",
+                  "buffer(Int.MAX_VALUE)",
+                  "flowOn(Dispatchers.IO)"
+                ],
+                "correctAnswer": "conflate()"
               }
             ],
             "options": null,
-            "correctAnswer": ".map(|&n| n * n)",
-            "explanation": "`map` 用来把每个元素做一对一变换，这里把偶数变成它的平方，随后 `sum` 求和得到 2² + 4² = 20。`filter` 的返回值必须是 bool，不能做变换；`inspect` 只做副作用观察、不改变元素，因此都不符合需求。"
+            "correctAnswer": "debounce(250) / flatMapLatest / conflate()",
+            "explanation": "debounce(250) 表示\"元素发射后 250ms 内没有新元素才放行\"，是标准的输入防抖；delay 是挂起当前协程、sample 是按固定周期采样，都不符合\"停止输入后触发\"的语义。flatMapLatest 会在新查询到来时取消上一次 search() 内部未完成的协程，map/flatMapMerge 都不具备取消语义。conflate() 让下游处理不过来时丢弃中间结果，只渲染最新一次搜索结果。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Rust 迭代器适配器，下面哪一项描述是正确的？",
-            "codeContext": "let v = vec![1, 2, 3, 4, 5];\nlet it = v.iter().map(|x| { println!(\"map: {x}\"); x * 2 });\nprintln!(\"适配器已构建\");\nlet first = it.take(1).sum::<i32>();",
+            "question": "关于 Kotlin Flow 的背压策略，下列说法错误的是？",
+            "codeContext": "flow { repeat(1000) { emit(it) } }\n    .buffer(16)\n    .collect { slowProcess(it) }",
             "segments": null,
             "options": [
-              "调用 map 时就会立刻打印 5 行 \"map: ...\"",
-              "迭代器适配器是惰性的，构建时不执行，只有被消费时才逐个拉取元素",
-              "collect 是唯一能触发迭代器执行的消费方法",
-              "惰性求值会让迭代器产生大量堆分配，性能不如手写循环"
+              "不加 buffer 时，emit 会被慢消费者阻塞，不会产生 OOM",
+              "buffer(16) 使用默认的 SUSPEND 策略，缓冲满时上游挂起，不丢数据",
+              "conflate() 等价于 buffer(Channel.CONFLATED)，始终保留最新的一个元素",
+              "buffer(Channel.DROP_OLDEST) 在缓冲满时丢弃新到来的元素"
             ],
-            "correctAnswer": "迭代器适配器是惰性的，构建时不执行，只有被消费时才逐个拉取元素",
-            "explanation": "`map` 返回的是 `Map` 结构体，只是把闭包存起来，不会执行任何逻辑；直到 `sum` 这类消费者驱动 `next()` 时才逐个求值。由于 `take(1)`，实际只会打印 \"map: 1\" 一次，属于典型的短路。`collect` 只是消费者之一，`for`、`sum`、`fold`、`any` 等同样会驱动执行。且由于单态化与内联，迭代器链通常零堆分配、性能等价于手写循环。"
+            "correctAnswer": "buffer(Channel.DROP_OLDEST) 在缓冲满时丢弃新到来的元素",
+            "explanation": "DROP_OLDEST 的语义是\"丢弃最旧的元素、保留新元素\"，与 StateFlow 的 conflate 行为一致；\"丢弃新到来的元素\"对应的是 Channel.DROP_NEWEST。其余三项均正确：默认流天然串行不会积压；buffer 使用 SUSPEND 策略保证完整性；conflate 即 CONFLATED 通道只保留最新值。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "这段代码的输出是什么？",
-            "codeContext": "fn main() {\n    let v = vec![10, 20, 30, 40];\n    let mut calls = 0;\n    let s: i32 = v\n        .iter()\n        .filter(|&&x| {\n            calls += 1;\n            x > 10\n        })\n        .take(2)\n        .sum();\n    println!(\"{s} {}\");\n}",
+            "question": "以下代码运行后，控制台输出的顺序是？",
+            "codeContext": "val state = MutableStateFlow(0)\n\nfun main() = runBlocking {\n    val job = launch {\n        state.collect { println(\"A:$it\") }\n    }\n    delay(50)\n    state.value = 1\n    state.value = 2\n    state.value = 3\n    delay(50)\n    job.cancel()\n    state.value = 4\n}",
             "segments": null,
             "options": [
-              "50 3",
-              "90 4",
-              "50 4",
-              "100 5"
+              "A:0 → A:1 → A:2 → A:3",
+              "A:0 → A:3",
+              "A:0 → A:2 → A:3",
+              "A:3"
             ],
-            "correctAnswer": "50 3",
-            "explanation": "`filter` 只在元素被拉取时才执行：第 1 个元素 10 不大于 10（calls=1）被丢弃；第 2 个 20 通过（calls=2）；第 3 个 30 通过（calls=3）。此时 `take(2)` 已经拿到两个元素，便停止继续拉取，第 4 个元素 40 根本不会进入 filter。因此 s = 20 + 30 = 50，calls = 3。这正是惰性求值 + 短路的效果。"
+            "correctAnswer": "A:0 → A:3",
+            "explanation": "runBlocking 的调度器是单线程的：launch 的 collect 会先执行并打印当前值 A:0，随后挂起等待新值。主线程 delay(50) 恢复后连续执行 state.value = 1/2/3，这三次赋值之间没有任何挂起点，收集器不可能被调度，而 StateFlow 会做 conflation，仅保留最新值 3。收集器恢复后只看到 A:3。之后 job.cancel()，value=4 不会再有输出。这正是 StateFlow 天然 conflate、且必须\"总是有当前值\"的典型表现。"
           }
         ]
       }
