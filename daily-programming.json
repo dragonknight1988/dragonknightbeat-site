@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-14",
+  "date": "2026-10-15",
   "contents": [
     {
-      "id": "prog-2026-10-14",
-      "date": "2026-10-14",
-      "title": "Kotlin Flow 背压与热流：buffer / conflate / collectLatest 的性能调优与架构设计",
-      "summary": "深入理解 Kotlin Flow 的冷热流模型与背压（Backpressure）策略，掌握 buffer、conflate、collectLatest 的取舍，并用 StateFlow/SharedFlow 构建高性能事件流架构。",
-      "difficulty": "高级",
-      "concept": "在真实工程里，数据的\"生产速度\"与\"消费速度\"几乎永远不一致：行情推送、传感器采样、日志流、WebSocket 消息都是典型场景。如果消费者的处理能力跟不上生产者，未处理的数据就会在内存中不断堆积，最终 OOM。这就是背压（Backpressure）问题。Kotlin Flow 与 RxJava 的最大设计差异在于：Flow 是\"冷\"的、基于协程挂起（suspend）的，它不需要像 RxJava 那样提供几十种背压操作符，因为 Flow 的 emit 本身就是 suspend 函数——生产者会天然被消费者的慢速阻塞。这被称为\"串行化默认策略\"，安全但不高效。\n\n理解 Flow 的调度模型是调优的前提。当你把生产者写在 flow{} 里、消费者在 collect{} 中做耗时操作时，两段代码运行在同一个协程、同一个协程上下文里，因此是完全串行的：生产一条 → 等消费完 → 再生产下一条。要让二者并行，需要两个要素：一是 .flowOn(context) 把上游切到另一个调度器（这会在上游与下游之间插入一个 Channel）；二是 .buffer(capacity) 显式声明缓冲区大小。需要注意的工程陷阱：buffer 的容量是\"按元素个数\"而非字节数，如果元素本身很大（比如位图、大 JSON），小容量也可能占用大量内存。\n\n当缓冲区满时，Flow 提供三种典型策略，选错会直接导致结果不正确。1) suspend（默认）：emit 挂起等待，不丢数据、不产生异常，适合必须完整处理的场景（如写数据库、计费事件）。2) conflate()：等价于 buffer(CONFLATED)，缓冲区只保留最新元素，旧值被丢弃，适合\"只关心最新状态\"的 UI 状态、坐标位置。3) collectLatest { }：新值到来时取消（cancel）旧值正在执行的处理逻辑，与 conflate 的区别在于它连\"正在处理中的\"任务也会中断，因此块内必须是可取消的（使用 ensureActive() 或调用挂起函数）。此外 buffer(Channel.DROP_OLDEST) 与 buffer(Channel.DROP_NEWEST) 可以显式指定丢弃方向。\n\n冷流（Cold Flow）与热流（Hot Flow）的边界是架构设计的核心。flow{} 构建的冷流是\"懒\"的，每次 collect 都重新执行一遍发射逻辑，10 个订阅者就会跑 10 次网络请求；而 StateFlow / SharedFlow 是热流，发射与收集完全解耦，多个订阅者共享同一份数据流。StateFlow 是\"必须有当前值、天然 conflate\"的语义，非常适合作为 ViewModel 暴露 UI State 的唯一通道；MutableSharedFlow 则支持 replay（新订阅者可收到最近 N 条）、extraBufferCapacity 与 tryEmit（非挂起发射），适合一次性事件（Toast、导航、埋点）。\n\n性能层面有几个经过验证的经验值：UI 列表刷新类的 SharedFlow 建议 replay=0、extraBufferCapacity=64，避免事件堆积；搜索框输入建议 debounce(200~300) + flatMapLatest（新请求取消旧请求）；高频日志/埋点建议 conflate 或 buffer(Channel.CONFLATED) 后批量上报；协程作用域上优先使用 SupervisorJob，避免一个子流异常拖垮整个数据管道。最后，永远不要在 collectLatest 的块里做不可取消的阻塞 IO（如直接调用 Java 的 Socket#read），否则\"取消\"会退化为假象，造成协程泄漏。",
+      "id": "prog-2026-10-15",
+      "date": "2026-10-15",
+      "title": "Dart 变量、数据类型与空安全（Null Safety）入门",
+      "summary": "掌握 Dart 的变量声明方式（var / final / const）、常用数据类型，以及 Dart 2.12 之后最核心的空安全语法。",
+      "difficulty": "初级",
+      "concept": "Dart 是一门「类型安全」且「可选类型标注」的语言。你既可以像强类型语言一样写 `int age = 18;`，也可以让编译器帮你推断类型：`var age = 18;` 实际上等价于 `int age = 18;`。在 Flutter 项目中，官方推荐的风格是「局部变量用 var / final 让类型推断生效，成员变量和公开 API 显式声明类型」，这样既能减少样板代码，又能保证接口清晰。初学者最常见的误区是把 var 理解成 JavaScript 的动态类型 —— 其实 var 一旦赋值，类型就被「锁定」了，再赋一个其他类型的值会直接编译报错。\n\n变量的可变性控制是 Dart 代码质量的第一道防线。`final` 表示「运行时只能赋值一次」，它的初始化值可以在运行时确定，例如 `final DateTime now = DateTime.now();`；`const` 表示「编译期常量」，它的值必须在写代码时就能确定，例如 `const double pi = 3.14159;`。工程经验上有一条简单实用的原则：默认用 `final`，只有当你明确需要「编译期常量、可作为默认参数、可作为 const 构造函数参数」时才用 `const`。Flutter 的性能优化中频繁出现的 `const Widget(...)`，本质就是利用 const 在编译期复用同一份对象，从而减少 rebuild。\n\nDart 内置的常用类型包括：数值（int / double）、字符串（String）、布尔（bool）、集合（List / Set / Map）以及函数类型。Dart 2.12 之后引入了「数字统一为 num」的写法，`1` 是 int，`1.0` 是 double，二者不能隐式互转，需要 `.toDouble()` 或 `.toInt()` 显式转换 —— 这一点和 Java、C# 不同，初学时很容易踩坑。字符串插值是 Dart 的一大特色，`'$变量'` 和 `'${表达式}'` 让字符串拼接变得非常自然，取代了大量笨拙的 `+` 号拼接。\n\n空安全（Null Safety）是 Dart 这门语言最重要的现代化特性，也是 Flutter 开发中每天都要打交道的语法。它的核心思想是：**默认情况下所有类型都不可为 null，除非你显式地用 `?` 标记为可空**。这把「运行时 NullPointerException」变成了「编译期错误」，实际工程中能消灭掉一大类崩溃。可空类型在使用前必须被「提升（promote）」为非空，常用手段有三种：`??` 提供默认值、`!` 断言非空、`if (x != null)` 判断后自动提升。\n\n最后需要理解 `late` 关键字。它用于「我保证稍后一定初始化，但不想写成可空类型」的场景，典型例子是 Flutter 中的 `late final AnimationController _controller;`，因为它必须在 `initState` 里用 `this`（vsync）来创建，无法在构造函数初始化列表中完成。使用 `late` 有一点要警惕：如果在初始化之前访问它，会在运行时抛出 `LateInitializationError`，所以它本质上是把编译期检查「推迟」到了运行时，务必谨慎使用。",
       "codeExample": {
-        "language": "Kotlin",
-        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.flow.*\nimport kotlin.system.measureTimeMillis\n\n// 模拟\"生产快、消费慢\"的数据源（如行情推送、传感器）\nfun priceStream(): Flow<Long> = flow {\n    var price = 100L\n    repeat(10) { i ->\n        delay(50)                       // 生产端：每 50ms 发射一条\n        price += i\n        println(\"  [produce] #$i price=$price  (${Thread.currentThread().name})\")\n        emit(price)\n    }\n}.flowOn(Dispatchers.Default)            // 上游切到 Default，与下游并行执行\n\nsuspend fun consumeSlowly(price: Long) {\n    delay(150)                           // 消费端：每条需 150ms\n    println(\"  [consume] $price\")\n}\n\nfun main() = runBlocking {\n\n    println(\"=== 1. 默认：串行，生产被消费完全拖慢 ===\")\n    val t1 = measureTimeMillis {\n        priceStream().collect { consumeSlowly(it) }\n    }\n    println(\"耗时: ${t1}ms (约 2000ms)\\n\")\n\n    println(\"=== 2. buffer(3)：异步化 + 缓冲，不丢数据 ===\")\n    val t2 = measureTimeMillis {\n        priceStream().buffer(3).collect { consumeSlowly(it) }\n    }\n    println(\"耗时: ${t2}ms (显著缩短，全部数据都被处理)\\n\")\n\n    println(\"=== 3. conflate()：只保留最新值，中间值被丢弃 ===\")\n    val t3 = measureTimeMillis {\n        priceStream().conflate().collect { consumeSlowly(it) }\n    }\n    println(\"耗时: ${t3}ms (最快，但只看到少数几个值)\\n\")\n\n    println(\"=== 4. collectLatest()：新值一到就取消旧处理 ===\")\n    val t4 = measureTimeMillis {\n        priceStream().collectLatest { price ->\n            delay(150)\n            println(\"  [consume] $price\")   // 多数处理会被取消，只有最后一次真正完成\n        }\n    }\n    println(\"耗时: ${t4}ms\\n\")\n\n    println(\"=== 5. 热流：StateFlow / SharedFlow ===\")\n    val state = MutableStateFlow(100L)                      // 天然 conflate，永远持有\"当前值\"\n    val events = MutableSharedFlow<String>(replay = 1, extraBufferCapacity = 8)\n\n    val job = launch {\n        state.collect { println(\"  [state] latest = $it\") }\n    }\n    events.tryEmit(\"boot\")                                  // replay=1：订阅前发射也能收到\n\n    repeat(5) { i ->\n        state.value = 100L + i                              // 非挂起更新，立即生效\n        events.tryEmit(\"tick-$i\")\n        delay(30)\n    }\n    job.cancel()\n\n    // 新订阅者可通过 replay 拿到最近一条事件\n    println(\"  [events] replay 得到: ${events.first()}\")\n}\n",
-        "explanation": "【第 1 段：数据源】priceStream() 用 flow{} 构建冷流，emit 是 suspend 函数；.flowOn(Dispatchers.Default) 会把上游切到 Default 调度器，并在上下游之间自动插入一个缓冲通道，使生产和消费可并行。\n\n【第 2 段：消费函数】consumeSlowly 模拟耗时 150ms 的下游处理（如数据库写入、图片解码），生产间隔 50ms、消费 150ms，天然形成背压。\n\n【第 3 段：对照实验】四种写法形成清晰对比——默认串行约 2000ms 且不丢数据；buffer(3) 通过异步化通道压缩到约 800ms 且不丢数据；conflate() 只保留最新值，消费者永远追不上也不会堆积；collectLatest() 则更激进，新值到来直接取消正在执行的旧处理，只保证\"最后一次完整执行\"。\n\n【第 4 段：热流】MutableStateFlow 用作 UI 状态容器（天然 conflate、总有当前值）；MutableSharedFlow 配置 replay=1 与 extraBufferCapacity=8，用 tryEmit 做非挂起发射，适合高频事件。注意 launch 中的 collect 需要手动 cancel，实际项目中应交给 viewModelScope / lifecycleScope 管理。\n\n【第 5 段：取舍原则】完整性要求高 → buffer；只要最新状态 → conflate；处理本身可取消 → collectLatest；一次性事件 → SharedFlow；持久 UI 状态 → StateFlow。"
+        "language": "dart",
+        "code": "// Dart 变量、数据类型与空安全 入门示例\n// 运行方式：把本文件保存为 main.dart，然后执行 `dart run main.dart`\n\nvoid main() {\n  // ---------- 1. 显式声明与类型推断 ----------\n  int age = 18; // 显式声明为 int\n  var name = '小明'; // 编译器推断为 String，之后不能再赋值成其他类型\n  String greeting = '你好'; // 显式声明为 String（公开 API 推荐这种写法）\n\n  // ---------- 2. final 与 const ----------\n  final DateTime now = DateTime.now(); // 运行时确定，只能赋值一次\n  const double pi = 3.14159; // 编译期常量，值必须在编译期可确定\n\n  print('$greeting, $name！今年 $age 岁。');\n  print('当前时间：$now，圆周率：$pi');\n\n  // ---------- 3. 常用数据类型 ----------\n  double score = 92.5;\n  bool isPass = score >= 60;\n  List<String> fruits = ['苹果', '香蕉', '橘子'];\n  Map<String, int> stock = {'苹果': 12, '香蕉': 30, '橘子': 5};\n\n  print('分数：$score，是否通过：$isPass');\n  print('水果列表：$fruits');\n  print('库存：$stock');\n\n  // 数值类型转换：int 与 double 不能隐式互转\n  int intScore = score.toInt(); // 92\n  double doubleAge = age.toDouble(); // 18.0\n  print('int 分数：$intScore，double 年龄：$doubleAge');\n\n  // ---------- 4. 空安全（Null Safety） ----------\n  String? nickname; // 可空类型，允许为 null\n  print('昵称：${nickname ?? \"（未填写）\"}'); // ?? 在为 null 时提供默认值\n\n  nickname = 'Dart 学徒';\n  // 赋值后 Dart 的「流程分析」自动把它提升为非空 String，可以直接 .length\n  print('昵称长度：${nickname.length}');\n\n  // ---------- 5. 断言非空（!）与延迟初始化（late） ----------\n  String? address;\n  address = '北京';\n  // ! 用于断言「我确定它不为 null」，若真为 null 会在运行时抛错\n  print('地址长度：${address!.length}');\n\n  late String profile; // 延迟初始化：稍后一定赋值，且不想声明成可空类型\n  profile = 'Flutter 初学者';\n  print('简介：$profile');\n\n  // ---------- 6. 判空后自动提升 ----------\n  String? email = getEmail();\n  if (email != null) {\n    // 进入 if 分支后，email 被自动提升为非空 String，无需再写 !\n    print('邮箱（大写）：${email.toUpperCase()}');\n  } else {\n    print('未绑定邮箱');\n  }\n}\n\n// 模拟一个可能返回 null 的函数\nString? getEmail() {\n  final bool hasEmail = DateTime.now().second % 2 == 0;\n  return hasEmail ? 'flutter@example.com' : null;\n}",
+        "explanation": "【第 1 块：变量声明】`int age` 是显式类型；`var name` 由编译器推断为 String，注意 var 不是动态类型，赋值后类型被锁定。\n\n【第 2 块：final 与 const】`final DateTime now = DateTime.now();` 的值在运行时才能获得，所以只能用 final；`const double pi = 3.14159;` 是字面量常量，可以用 const。如果把 `DateTime.now()` 写成 const，编译器会直接报错。\n\n【第 3 块：数据类型】演示 int / double / bool / List / Map 的基本用法，并强调 Dart 中 int 与 double 不能隐式互转，必须调用 toInt() / toDouble()，这是新手高频报错点。\n\n【第 4 块：可空类型与 ??】`String? nickname;` 声明为可空类型。`${nickname ?? \"（未填写）\"}` 表示若为 null 则取右侧默认值，避免了层层 if 判空。赋值之后，Dart 的流程分析把 nickname 提升为非空，可直接访问 `.length`。\n\n【第 5 块：! 与 late】`address!` 表示强制解包，适用于「逻辑上已经确定非空但编译器无法推断」的情况，滥用会带来运行时崩溃风险。`late` 让变量可以延迟初始化，常见于 Flutter 的控制器对象，但访问前必须保证已赋值。\n\n【第 6 块：判空提升】`if (email != null)` 之后 email 自动提升为非空，这是最安全、最推荐的判空写法，优于到处写 `!`。"
       },
       "keyPoints": [
-        "Flow 默认是串行的：emit 是 suspend，生产者会被慢消费者自然阻塞，这是安全的默认背压策略",
-        ".flowOn() 改变上游执行上下文并插入通道，.buffer() 控制缓冲区容量，二者配合才能实现真正的生产/消费并行",
-        "背压三选一：buffer 不丢数据、conflate 丢中间值只留最新、collectLatest 连进行中的处理都会取消",
-        "StateFlow 天然 conflate 且必有当前值，适合 UI State；SharedFlow 支持 replay/extraBufferCapacity，适合一次性事件",
-        "collectLatest 的块内必须可取消（使用挂起函数或 ensureActive()），否则会造成协程泄漏与取消失效"
+        "var 是类型推断而非动态类型，赋值后类型被锁定；成员变量与公开 API 应显式标注类型",
+        "final 表示运行时只能赋值一次，const 表示编译期常量；Flutter 中 const 构造可复用对象提升性能",
+        "int 与 double 不能隐式互转，必须调用 toInt() / toDouble()，num 是它们的共同父类型",
+        "空安全默认所有类型不可为 null，可空需用 ? 显式标记，使用前用 ?? 、! 或 if 判空来提升为非空",
+        "late 允许延迟初始化但会把检查推迟到运行时，未初始化就访问会抛 LateInitializationError"
       ],
       "exercise": {
-        "description": "实现一个\"边输入边搜索\"功能：用户在搜索框持续输入字符，产生一个 Flow<String> queryFlow。要求：(1) 停止输入 250ms 后才发起请求；(2) 新查询到来时必须取消上一次未完成的搜索；(3) 搜索结果到达快于 UI 渲染时只渲染最新结果；(4) 最终用 StateFlow 暴露 UI 状态（Loading / Success / Error），并保证多个订阅者共享同一次搜索结果而非重复请求。",
-        "hint": "用 debounce(250) + distinctUntilChanged() + flatMapLatest { search(it) } 组成查询管道；UI 渲染侧加 .conflate() 或 .collectLatest；搜索逻辑写在 class SearchViewModel(private val scope: CoroutineScope) 中，用 MutableStateFlow<UiState> 作为唯一状态源，注意 flatMapLatest 内部必须调用可取消的网络 API。",
+        "description": "编写一个 Dart 程序：定义函数 `String formatUser(String? name, int? age)`，要求当 name 为 null 时显示“匿名用户”，当 age 为 null 时显示“年龄未知”，否则按 `名字(年龄岁)` 格式输出。再在 main 中用至少 3 组不同的参数调用它（包含全为 null 的情况），并打印结果。",
+        "hint": "使用可空类型 `String?` / `int?` 接收参数，用 `??` 操作符提供默认值最简洁；也可以用 `if (name != null)` 判空。注意字符串插值中嵌入表达式要使用 `${...}` 语法。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全搜索管道，使其满足\"防抖 + 新请求取消旧请求 + 只渲染最新结果\"的要求。",
-            "codeContext": "fun searchPipeline(queryFlow: Flow<String>, search: (String) -> Flow<List<Item>>): Flow<List<Item>> =\n    queryFlow\n        .______        // ① 停止输入 250ms 才放行\n        .distinctUntilChanged()\n        .______        // ② 新查询取消上一次搜索\n        { query -> search(query) }\n        .______        // ③ 只渲染最新结果，跳过中间值",
+            "question": "补全代码，让变量 nickname 可以被赋值为 null。",
+            "codeContext": "String __ nickname;\nnickname = null;\nprint(nickname ?? '匿名');",
             "segments": [
               {
                 "type": "text",
-                "content": "    queryFlow\n        .",
+                "content": "String ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,84 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[①]",
+                "placeholder": "[选择]",
                 "options": [
-                  "debounce(250)",
-                  "delay(250)",
-                  "sample(250)"
+                  "?",
+                  "!",
+                  "late",
+                  "final"
                 ],
-                "correctAnswer": "debounce(250)"
+                "correctAnswer": "?"
               },
               {
                 "type": "text",
-                "content": "\n        .distinctUntilChanged()\n        .",
+                "content": " nickname = null;\nprint(nickname ?? '匿名');",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[②]",
-                "options": [
-                  "flatMapLatest",
-                  "map",
-                  "flatMapMerge"
-                ],
-                "correctAnswer": "flatMapLatest"
-              },
-              {
-                "type": "text",
-                "content": "\n        { query -> search(query) }\n        .",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[③]",
-                "options": [
-                  "conflate()",
-                  "buffer(Int.MAX_VALUE)",
-                  "flowOn(Dispatchers.IO)"
-                ],
-                "correctAnswer": "conflate()"
               }
             ],
             "options": null,
-            "correctAnswer": "debounce(250) / flatMapLatest / conflate()",
-            "explanation": "debounce(250) 表示\"元素发射后 250ms 内没有新元素才放行\"，是标准的输入防抖；delay 是挂起当前协程、sample 是按固定周期采样，都不符合\"停止输入后触发\"的语义。flatMapLatest 会在新查询到来时取消上一次 search() 内部未完成的协程，map/flatMapMerge 都不具备取消语义。conflate() 让下游处理不过来时丢弃中间结果，只渲染最新一次搜索结果。"
+            "correctAnswer": "?",
+            "explanation": "在 Dart 空安全中，类型名后加 `?` 表示该类型可空（Nullable）。`String? nickname;` 允许赋值为 null；而写成 `String nickname;` 时，未初始化就赋 null 会直接编译报错。`!` 是非空断言，`late` 是延迟初始化，`final` 控制不可变，都不能让变量变为可空类型。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Kotlin Flow 的背压策略，下列说法错误的是？",
-            "codeContext": "flow { repeat(1000) { emit(it) } }\n    .buffer(16)\n    .collect { slowProcess(it) }",
+            "question": "关于 Dart 中的 final 和 const，下列说法正确的是？",
+            "codeContext": "final DateTime now = DateTime.now();\nconst double pi = 3.14159;",
             "segments": null,
             "options": [
-              "不加 buffer 时，emit 会被慢消费者阻塞，不会产生 OOM",
-              "buffer(16) 使用默认的 SUSPEND 策略，缓冲满时上游挂起，不丢数据",
-              "conflate() 等价于 buffer(Channel.CONFLATED)，始终保留最新的一个元素",
-              "buffer(Channel.DROP_OLDEST) 在缓冲满时丢弃新到来的元素"
+              "final 变量可以在运行时初始化，而 const 变量的值必须在编译期确定",
+              "final 和 const 完全等价，可以互相替换",
+              "const 变量可以在运行时被重新赋值",
+              "final 变量允许被多次赋值，只是值类型固定"
             ],
-            "correctAnswer": "buffer(Channel.DROP_OLDEST) 在缓冲满时丢弃新到来的元素",
-            "explanation": "DROP_OLDEST 的语义是\"丢弃最旧的元素、保留新元素\"，与 StateFlow 的 conflate 行为一致；\"丢弃新到来的元素\"对应的是 Channel.DROP_NEWEST。其余三项均正确：默认流天然串行不会积压；buffer 使用 SUSPEND 策略保证完整性；conflate 即 CONFLATED 通道只保留最新值。"
+            "correctAnswer": "final 变量可以在运行时初始化，而 const 变量的值必须在编译期确定",
+            "explanation": "final 强调「只能赋值一次」，其初始值可在运行时求值（如 DateTime.now()）；const 强调「编译期常量」，值必须是编译期常量表达式，且天然不可变。把 DateTime.now() 声明为 const 会编译报错，因为它不是编译期常量。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码运行后，控制台输出的顺序是？",
-            "codeContext": "val state = MutableStateFlow(0)\n\nfun main() = runBlocking {\n    val job = launch {\n        state.collect { println(\"A:$it\") }\n    }\n    delay(50)\n    state.value = 1\n    state.value = 2\n    state.value = 3\n    delay(50)\n    job.cancel()\n    state.value = 4\n}",
+            "question": "以下代码的输出结果是什么？",
+            "codeContext": "void main() {\n  String? name;\n  print(name ?? '匿名');\n  name = 'Dart';\n  print(name.length);\n}",
             "segments": null,
             "options": [
-              "A:0 → A:1 → A:2 → A:3",
-              "A:0 → A:3",
-              "A:0 → A:2 → A:3",
-              "A:3"
+              "匿名\n4",
+              "匿名\n5",
+              "null\n4",
+              "匿名\n0"
             ],
-            "correctAnswer": "A:0 → A:3",
-            "explanation": "runBlocking 的调度器是单线程的：launch 的 collect 会先执行并打印当前值 A:0，随后挂起等待新值。主线程 delay(50) 恢复后连续执行 state.value = 1/2/3，这三次赋值之间没有任何挂起点，收集器不可能被调度，而 StateFlow 会做 conflation，仅保留最新值 3。收集器恢复后只看到 A:3。之后 job.cancel()，value=4 不会再有输出。这正是 StateFlow 天然 conflate、且必须\"总是有当前值\"的典型表现。"
+            "correctAnswer": "匿名\n4",
+            "explanation": "第一行 name 为 null，`??` 取右侧默认值输出「匿名」。随后 name 被赋值为 'Dart'，Dart 的流程分析将其自动提升为非空 String，可直接调用 .length 得到 4。注意此处不需要写 name!.length。"
           }
         ]
       }
