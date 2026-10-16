@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-15",
+  "date": "2026-10-16",
   "contents": [
     {
-      "id": "prog-2026-10-15",
-      "date": "2026-10-15",
-      "title": "Dart 变量、数据类型与空安全（Null Safety）入门",
-      "summary": "掌握 Dart 的变量声明方式（var / final / const）、常用数据类型，以及 Dart 2.12 之后最核心的空安全语法。",
-      "difficulty": "初级",
-      "concept": "Dart 是一门「类型安全」且「可选类型标注」的语言。你既可以像强类型语言一样写 `int age = 18;`，也可以让编译器帮你推断类型：`var age = 18;` 实际上等价于 `int age = 18;`。在 Flutter 项目中，官方推荐的风格是「局部变量用 var / final 让类型推断生效，成员变量和公开 API 显式声明类型」，这样既能减少样板代码，又能保证接口清晰。初学者最常见的误区是把 var 理解成 JavaScript 的动态类型 —— 其实 var 一旦赋值，类型就被「锁定」了，再赋一个其他类型的值会直接编译报错。\n\n变量的可变性控制是 Dart 代码质量的第一道防线。`final` 表示「运行时只能赋值一次」，它的初始化值可以在运行时确定，例如 `final DateTime now = DateTime.now();`；`const` 表示「编译期常量」，它的值必须在写代码时就能确定，例如 `const double pi = 3.14159;`。工程经验上有一条简单实用的原则：默认用 `final`，只有当你明确需要「编译期常量、可作为默认参数、可作为 const 构造函数参数」时才用 `const`。Flutter 的性能优化中频繁出现的 `const Widget(...)`，本质就是利用 const 在编译期复用同一份对象，从而减少 rebuild。\n\nDart 内置的常用类型包括：数值（int / double）、字符串（String）、布尔（bool）、集合（List / Set / Map）以及函数类型。Dart 2.12 之后引入了「数字统一为 num」的写法，`1` 是 int，`1.0` 是 double，二者不能隐式互转，需要 `.toDouble()` 或 `.toInt()` 显式转换 —— 这一点和 Java、C# 不同，初学时很容易踩坑。字符串插值是 Dart 的一大特色，`'$变量'` 和 `'${表达式}'` 让字符串拼接变得非常自然，取代了大量笨拙的 `+` 号拼接。\n\n空安全（Null Safety）是 Dart 这门语言最重要的现代化特性，也是 Flutter 开发中每天都要打交道的语法。它的核心思想是：**默认情况下所有类型都不可为 null，除非你显式地用 `?` 标记为可空**。这把「运行时 NullPointerException」变成了「编译期错误」，实际工程中能消灭掉一大类崩溃。可空类型在使用前必须被「提升（promote）」为非空，常用手段有三种：`??` 提供默认值、`!` 断言非空、`if (x != null)` 判断后自动提升。\n\n最后需要理解 `late` 关键字。它用于「我保证稍后一定初始化，但不想写成可空类型」的场景，典型例子是 Flutter 中的 `late final AnimationController _controller;`，因为它必须在 `initState` 里用 `this`（vsync）来创建，无法在构造函数初始化列表中完成。使用 `late` 有一点要警惕：如果在初始化之前访问它，会在运行时抛出 `LateInitializationError`，所以它本质上是把编译期检查「推迟」到了运行时，务必谨慎使用。",
+      "id": "prog-2026-10-16",
+      "date": "2026-10-16",
+      "title": "Git Hooks 与 DevOps 质量门禁：用 pre-commit 钩子守护提交历史",
+      "summary": "学习如何编写并团队化管理 Git pre-commit 钩子，把代码规范、敏感信息与大文件检查前移到本地提交环节。",
+      "difficulty": "中级",
+      "concept": "Git Hooks 是 Git 在特定生命周期事件（pre-commit、commit-msg、pre-push、pre-receive 等）触发时自动执行的脚本，是把 DevOps 质量门禁「左移」到开发者本地的最轻量手段。钩子分为两大类：客户端钩子（pre-commit、commit-msg、pre-push 等，跑在开发者机器上）和服务端钩子（pre-receive、update、post-receive，跑在裸仓库服务器上）。今天我们重点聚焦客户端的 pre-commit，它决定了「什么东西有资格被提交」。\n\npre-commit 的典型职责包括：格式化检查（Prettier/Black）、静态分析（ESLint/Pylint）、单元测试、敏感信息扫描（禁止提交 .env、私钥、AWS AccessKey）、大文件拦截（避免把 200MB 的模型权重推上仓库）。核心机制是利用 `git diff --cached` 只取「已暂存」的文件，并通过 `--diff-filter=ACM` 排除删除的文件，这样无论仓库多大，检查耗时都只与本次改动成正比——这是钩子保持「秒级完成」的关键，因为开发者每天要跑几十次。\n\n工程上有一个必须理解的坑：钩子脚本存放在 `.git/hooks` 目录，而 `.git` 目录本身不受版本控制，因此团队成员 clone 下来后默认没有任何钩子。解决方案有两种：一是在仓库里维护 `.githooks/` 目录，再用 `git config core.hooksPath .githooks` 重定向钩子查找路径（推荐，纯 Git 原生能力）；二是使用 `pre-commit` 框架（pre-commit.com）配合 `.pre-commit-config.yaml` 声明式管理。前者零依赖、可控性强，后者生态丰富、跨语言支持好。\n\n另一条铁律：客户端钩子永远不是安全边界。`git commit --no-verify` 可以一键绕过所有客户端检查，本地 `git config` 也能随时改掉 hooksPath。因此在真正的 DevOps 流水线里，pre-commit 只是「提升开发者体验、减少 CI 白跑」的加速器，最终的质量门禁必须落在服务端：GitLab 的 server-side hook、GitHub 的 Branch Protection + Required Status Checks、Gerrit 的 change hook。正确的架构是「本地钩子快速失败 + CI 强制校验」双保险。\n\n最后给出几条实战经验：钩子一定要快（超过 3 秒开发者就会去加 --no-verify）；只检查暂存区文件而不是全仓库；失败时给出可执行的修复命令（如 `npx eslint --fix`）而不是只抛错误码；钩子脚本本身要纳入版本控制并在 README 里写清一行启用命令；对紧急修复保留逃生舱（如 `SKIP_HOOKS=1 git commit`）。",
       "codeExample": {
-        "language": "dart",
-        "code": "// Dart 变量、数据类型与空安全 入门示例\n// 运行方式：把本文件保存为 main.dart，然后执行 `dart run main.dart`\n\nvoid main() {\n  // ---------- 1. 显式声明与类型推断 ----------\n  int age = 18; // 显式声明为 int\n  var name = '小明'; // 编译器推断为 String，之后不能再赋值成其他类型\n  String greeting = '你好'; // 显式声明为 String（公开 API 推荐这种写法）\n\n  // ---------- 2. final 与 const ----------\n  final DateTime now = DateTime.now(); // 运行时确定，只能赋值一次\n  const double pi = 3.14159; // 编译期常量，值必须在编译期可确定\n\n  print('$greeting, $name！今年 $age 岁。');\n  print('当前时间：$now，圆周率：$pi');\n\n  // ---------- 3. 常用数据类型 ----------\n  double score = 92.5;\n  bool isPass = score >= 60;\n  List<String> fruits = ['苹果', '香蕉', '橘子'];\n  Map<String, int> stock = {'苹果': 12, '香蕉': 30, '橘子': 5};\n\n  print('分数：$score，是否通过：$isPass');\n  print('水果列表：$fruits');\n  print('库存：$stock');\n\n  // 数值类型转换：int 与 double 不能隐式互转\n  int intScore = score.toInt(); // 92\n  double doubleAge = age.toDouble(); // 18.0\n  print('int 分数：$intScore，double 年龄：$doubleAge');\n\n  // ---------- 4. 空安全（Null Safety） ----------\n  String? nickname; // 可空类型，允许为 null\n  print('昵称：${nickname ?? \"（未填写）\"}'); // ?? 在为 null 时提供默认值\n\n  nickname = 'Dart 学徒';\n  // 赋值后 Dart 的「流程分析」自动把它提升为非空 String，可以直接 .length\n  print('昵称长度：${nickname.length}');\n\n  // ---------- 5. 断言非空（!）与延迟初始化（late） ----------\n  String? address;\n  address = '北京';\n  // ! 用于断言「我确定它不为 null」，若真为 null 会在运行时抛错\n  print('地址长度：${address!.length}');\n\n  late String profile; // 延迟初始化：稍后一定赋值，且不想声明成可空类型\n  profile = 'Flutter 初学者';\n  print('简介：$profile');\n\n  // ---------- 6. 判空后自动提升 ----------\n  String? email = getEmail();\n  if (email != null) {\n    // 进入 if 分支后，email 被自动提升为非空 String，无需再写 !\n    print('邮箱（大写）：${email.toUpperCase()}');\n  } else {\n    print('未绑定邮箱');\n  }\n}\n\n// 模拟一个可能返回 null 的函数\nString? getEmail() {\n  final bool hasEmail = DateTime.now().second % 2 == 0;\n  return hasEmail ? 'flutter@example.com' : null;\n}",
-        "explanation": "【第 1 块：变量声明】`int age` 是显式类型；`var name` 由编译器推断为 String，注意 var 不是动态类型，赋值后类型被锁定。\n\n【第 2 块：final 与 const】`final DateTime now = DateTime.now();` 的值在运行时才能获得，所以只能用 final；`const double pi = 3.14159;` 是字面量常量，可以用 const。如果把 `DateTime.now()` 写成 const，编译器会直接报错。\n\n【第 3 块：数据类型】演示 int / double / bool / List / Map 的基本用法，并强调 Dart 中 int 与 double 不能隐式互转，必须调用 toInt() / toDouble()，这是新手高频报错点。\n\n【第 4 块：可空类型与 ??】`String? nickname;` 声明为可空类型。`${nickname ?? \"（未填写）\"}` 表示若为 null 则取右侧默认值，避免了层层 if 判空。赋值之后，Dart 的流程分析把 nickname 提升为非空，可直接访问 `.length`。\n\n【第 5 块：! 与 late】`address!` 表示强制解包，适用于「逻辑上已经确定非空但编译器无法推断」的情况，滥用会带来运行时崩溃风险。`late` 让变量可以延迟初始化，常见于 Flutter 的控制器对象，但访问前必须保证已赋值。\n\n【第 6 块：判空提升】`if (email != null)` 之后 email 自动提升为非空，这是最安全、最推荐的判空写法，优于到处写 `!`。"
+        "language": "Bash",
+        "code": "#!/usr/bin/env bash\n# 文件位置: .githooks/pre-commit\n# 团队启用方式（在仓库根目录执行一次）:\n#   git config core.hooksPath .githooks\n# 逃生舱:\n#   SKIP_HOOKS=1 git commit -m \"hotfix\"\n\nset -u\n\nif [ \"${SKIP_HOOKS:-0}\" = \"1\" ]; then\n  echo \"⚠️  检测到 SKIP_HOOKS=1，跳过本地质量门禁\"\n  exit 0\nfi\n\necho \"==> [pre-commit] 运行本地质量门禁...\"\n\n# 1. 只取本次暂存区中「新增/修改/重命名」的 JS/TS 文件\nSTAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\\.(js|ts|tsx)$' || true)\n\nif [ -z \"$STAGED_FILES\" ]; then\n  echo \"没有 JS/TS 文件变更，跳过检查\"\n  exit 0\nfi\n\n# 2. 拦截敏感文件（.env / 私钥 / 证书）\nif echo \"$STAGED_FILES\" | grep -qE '(\\.env$|id_rsa|\\.pem$|\\.key$)'; then\n  echo \"❌ 检测到疑似敏感文件被暂存：\"\n  echo \"$STAGED_FILES\" | grep -E '(\\.env$|id_rsa|\\.pem$|\\.key$)\"\n  echo \"请执行 git restore --staged <file> 后重试\"\n  exit 1\nfi\n\n# 3. 拦截大文件（> 5MB），防止仓库体积膨胀\nwhile IFS= read -r f; do\n  [ -f \"$f\" ] || continue\n  size=$(wc -c < \"$f\")\n  if [ \"$size\" -gt 5242880 ]; then\n    echo \"❌ $f 大小为 $((size / 1024 / 1024))MB，超过 5MB 限制，请改用 Git LFS\"\n    exit 1\n  fi\ndone <<< \"$STAGED_FILES\"\n\n# 4. ESLint 检查（仅检查变更文件）\necho \"==> ESLint: $STAGED_FILES\"\nif ! npx --no-install eslint --fix $STAGED_FILES; then\n  echo \"❌ ESLint 未通过，提交已被阻止。请修复后重新 git add\"\n  exit 1\nfi\n\n# 5. 禁止把调试用 console.log 提交到共享分支\nif grep -n \"console\\.log\" $STAGED_FILES; then\n  echo \"❌ 检测到 console.log 调试代码，请清理后再提交\"\n  exit 1\nfi\n\necho \"✅ [pre-commit] 检查通过，允许提交\"\nexit 0",
+        "explanation": "第 1-12 行：脚本头部用 `set -u` 开启未定义变量报错；提供 SKIP_HOOKS 逃生舱，保证紧急修复不受阻。\n\n第 16 行是全脚本的核心：`git diff --cached` 只比较「暂存区 vs HEAD」，`--diff-filter=ACM` 仅保留 Added/Copied/Modified，避免去 lint 已删除的文件；`grep` 无匹配时返回非 0，用 `|| true` 兜底防止管道错误。这行保证检查范围与本次提交完全一致。\n\n第 20-22 行：没有目标文件时直接 `exit 0`，让非前端改动的提交零成本通过。\n\n第 25-31 行：敏感文件拦截。匹配到 .env、id_rsa、.pem、.key 立即 `exit 1`，并提示 `git restore --staged` 这条可直接复制执行的修复命令。\n\n第 34-41 行：大文件检查。逐个读取暂存文件大小，超过 5MB（5242880 字节）就失败并推荐 Git LFS，从源头控制仓库体积。\n\n第 44-48 行：`npx --no-install` 表示不联网安装、只用项目本地依赖，避免钩子卡住或版本漂移；`--fix` 顺手帮开发者格式化。\n\n第 51-55 行：grep 命中即失败，阻止调试语句入库。最后 `exit 0` 明确返回成功，避免脚本最后一条命令的退出码被误用。"
       },
       "keyPoints": [
-        "var 是类型推断而非动态类型，赋值后类型被锁定；成员变量与公开 API 应显式标注类型",
-        "final 表示运行时只能赋值一次，const 表示编译期常量；Flutter 中 const 构造可复用对象提升性能",
-        "int 与 double 不能隐式互转，必须调用 toInt() / toDouble()，num 是它们的共同父类型",
-        "空安全默认所有类型不可为 null，可空需用 ? 显式标记，使用前用 ?? 、! 或 if 判空来提升为非空",
-        "late 允许延迟初始化但会把检查推迟到运行时，未初始化就访问会抛 LateInitializationError"
+        "Git 钩子分为客户端（pre-commit / commit-msg / pre-push）与服务端（pre-receive / update），前者提升体验，后者才是真正的安全边界",
+        "用 `git diff --cached --diff-filter=ACM` 只检查本次暂存的文件，保证钩子耗时与仓库规模无关",
+        "钩子存放在 .git/hooks 不受版本控制，团队化方案是 `git config core.hooksPath .githooks` 或使用 pre-commit 框架",
+        "`git commit --no-verify` 可绕过所有客户端钩子，因此必须搭配 CI 的 Required Status Checks 做二次校验",
+        "钩子必须快速失败、给出可执行的修复命令，并保留 SKIP_HOOKS 之类的逃生舱"
       ],
       "exercise": {
-        "description": "编写一个 Dart 程序：定义函数 `String formatUser(String? name, int? age)`，要求当 name 为 null 时显示“匿名用户”，当 age 为 null 时显示“年龄未知”，否则按 `名字(年龄岁)` 格式输出。再在 main 中用至少 3 组不同的参数调用它（包含全为 null 的情况），并打印结果。",
-        "hint": "使用可空类型 `String?` / `int?` 接收参数，用 `??` 操作符提供默认值最简洁；也可以用 `if (name != null)` 判空。注意字符串插值中嵌入表达式要使用 `${...}` 语法。",
+        "description": "在你的仓库中新建 `.githooks/commit-msg` 钩子，强制提交信息符合 Conventional Commits 规范：必须以 feat/fix/docs/refactor/test/chore 之一开头，紧跟英文冒号和空格，主题长度不得超过 72 个字符。若不符合则拒绝提交并打印正确格式示例。写完后用 `git config core.hooksPath .githooks` 启用，尝试提交一条违规信息验证效果。",
+        "hint": "commit-msg 钩子的第一个参数 `$1` 就是提交信息文件的路径，用 `head -1 \"$1\"` 读取标题行。用 `grep -qE '^(feat|fix|docs|refactor|test|chore): .+'` 做格式匹配，再用 `wc -c` 或 `${#line}` 取长度判断是否超过 72。注意 git commit -m 传入的内容末尾会带换行，取长度时要 trim。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，让变量 nickname 可以被赋值为 null。",
-            "codeContext": "String __ nickname;\nnickname = null;\nprint(nickname ?? '匿名');",
+            "question": "补全 pre-commit 钩子，使其只对暂存区中已修改的 Python 文件运行 flake8，检查失败时阻止提交。",
+            "codeContext": "#!/usr/bin/env bash\nSTAGED=$(git diff --cached --name-only --diff-filter=ACM | grep '\\.py$' || true)",
             "segments": [
               {
                 "type": "text",
-                "content": "String ",
+                "content": "#!/usr/bin/env bash\nSTAGED=$(git diff ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,54 +42,73 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "?",
-                  "!",
-                  "late",
-                  "final"
+                  "--cached",
+                  "--staged-files",
+                  "--working-tree",
+                  "--all"
                 ],
-                "correctAnswer": "?"
+                "correctAnswer": "--cached"
               },
               {
                 "type": "text",
-                "content": " nickname = null;\nprint(nickname ?? '匿名');",
+                "content": " --name-only --diff-filter=ACM | grep '\\.py$' || true)\nif [ -n \"$STAGED\" ]; then\n  flake8 $STAGED\n  if [ $? -ne 0 ]; then\n    ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "exit 0",
+                  "exit 1",
+                  "return 0",
+                  "break"
+                ],
+                "correctAnswer": "exit 1"
+              },
+              {
+                "type": "text",
+                "content": "\n  fi\nfi",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "?",
-            "explanation": "在 Dart 空安全中，类型名后加 `?` 表示该类型可空（Nullable）。`String? nickname;` 允许赋值为 null；而写成 `String nickname;` 时，未初始化就赋 null 会直接编译报错。`!` 是非空断言，`late` 是延迟初始化，`final` 控制不可变，都不能让变量变为可空类型。"
+            "correctAnswer": "--cached, exit 1",
+            "explanation": "pre-commit 必须检查「暂存区」而非工作区，否则会因为未 add 的脏文件而误杀提交，所以用 `git diff --cached`。钩子是非 0 退出码即失败的约定：`exit 1` 表示本次提交被拒绝，`exit 0` 则放行。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Dart 中的 final 和 const，下列说法正确的是？",
-            "codeContext": "final DateTime now = DateTime.now();\nconst double pi = 3.14159;",
+            "question": "关于客户端 Git 钩子，下列说法正确的是？",
+            "codeContext": null,
             "segments": null,
             "options": [
-              "final 变量可以在运行时初始化，而 const 变量的值必须在编译期确定",
-              "final 和 const 完全等价，可以互相替换",
-              "const 变量可以在运行时被重新赋值",
-              "final 变量允许被多次赋值，只是值类型固定"
+              "钩子脚本随仓库一起 clone 到每位成员的 .git/hooks 中，无需额外配置",
+              "钩子脚本存放在 .git/hooks，不受版本控制，默认可被 git commit --no-verify 绕过",
+              "pre-commit 钩子运行失败后，可以用 git commit --amend 强制绕过检查",
+              "客户端钩子是 DevOps 流水线中唯一的质量门禁，无需再配置 CI"
             ],
-            "correctAnswer": "final 变量可以在运行时初始化，而 const 变量的值必须在编译期确定",
-            "explanation": "final 强调「只能赋值一次」，其初始值可在运行时求值（如 DateTime.now()）；const 强调「编译期常量」，值必须是编译期常量表达式，且天然不可变。把 DateTime.now() 声明为 const 会编译报错，因为它不是编译期常量。"
+            "correctAnswer": "钩子脚本存放在 .git/hooks，不受版本控制，默认可被 git commit --no-verify 绕过",
+            "explanation": ".git 目录不会被提交到仓库，因此 .git/hooks 下的脚本不会随 clone 分发，需要 core.hooksPath 或 pre-commit 框架来团队化。同时客户端钩子只是体验优化，任何开发者都能用 --no-verify 绕过，必须依赖服务端 hook 或 CI 的 Required Checks 才能形成强制约束。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码的输出结果是什么？",
-            "codeContext": "void main() {\n  String? name;\n  print(name ?? '匿名');\n  name = 'Dart';\n  print(name.length);\n}",
+            "question": "当前暂存区中有两个文件 a.json 和 b.json。执行下方脚本，控制台会输出什么？",
+            "codeContext": "#!/usr/bin/env bash\nfiles=$(git diff --cached --name-only --diff-filter=ACM | grep '\\.json$' || true)\nif [ -z \"$files\" ]; then\n  echo \"skip\"\n  exit 0\nfi\necho \"lint: $files\"\nexit 0",
             "segments": null,
             "options": [
-              "匿名\n4",
-              "匿名\n5",
-              "null\n4",
-              "匿名\n0"
+              "skip",
+              "lint: a.json b.json",
+              "lint: a.json\\nb.json",
+              "脚本报错并以非 0 状态退出"
             ],
-            "correctAnswer": "匿名\n4",
-            "explanation": "第一行 name 为 null，`??` 取右侧默认值输出「匿名」。随后 name 被赋值为 'Dart'，Dart 的流程分析将其自动提升为非空 String，可直接调用 .length 得到 4。注意此处不需要写 name!.length。"
+            "correctAnswer": "lint: a.json b.json",
+            "explanation": "`grep '\\.json$'` 命中两个文件，`$files` 的内容是两行文本；但命令替换加双引号后赋值会把尾部换行吃掉，中间的换行在 echo 时被当作 IFS 分隔符折叠成空格，因此输出为 `lint: a.json b.json`。由于 files 非空，不会走 skip 分支；脚本最终 `exit 0` 正常结束。"
           }
         ]
       }

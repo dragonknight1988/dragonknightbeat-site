@@ -1,192 +1,185 @@
 {
-  "date": "2026-10-15",
+  "date": "2026-10-16",
   "content": {
-    "id": "en-2026-10-15",
-    "date": "2026-10-15",
-    "topic": "商业与金融",
+    "id": "en-2026-10-16",
+    "date": "2026-10-16",
+    "topic": "职场与沟通",
     "newsHighlights": [
       {
-        "title": "Xi: Ensure Stable Supply Chains",
+        "title": "New products and technologies take spotlight at Canton Fair",
         "source": "China Daily",
-        "summary": "President Xi Jinping pledged that China will work with countries worldwide to uphold the multilateral trading system and keep global supply chains stable and unimpeded.",
-        "translation": "习近平主席承诺，中国将与世界各国一道维护多边贸易体制，确保全球供应链稳定畅通。",
+        "summary": "The 140th edition of the China Import and Export Fair kicked off in Guangzhou, focusing on new, green and smart products.",
+        "translation": "第140届中国进出口商品交易会（广交会）在广州开幕，重点展示新型、绿色、智能产品。",
         "keyWords": [
-          "supply chain",
-          "multilateral trading system",
-          "unimpeded"
+          "Canton Fair",
+          "exhibition",
+          "innovation",
+          "green products"
         ]
       },
       {
-        "title": "NEV Share of New Car Sales Hits New High in September",
-        "source": "China Daily",
-        "summary": "New energy vehicles accounted for a record 61.6 percent of China's monthly new car sales in September, according to the China Association of Automobile Manufacturers.",
-        "translation": "据中国汽车工业协会数据，9月份新能源汽车占中国月度新车销量的61.6%，创下历史新高。",
-        "keyWords": [
-          "NEV",
-          "market share",
-          "record high"
-        ]
-      },
-      {
-        "title": "China's CPI Up 0.9% in September",
-        "source": "China Daily",
-        "summary": "China's consumer price index rose 0.9 percent year-on-year in September, signaling a mild recovery in consumer demand and price stability.",
-        "translation": "9月份中国居民消费价格指数同比上涨0.9%，显示出消费需求温和回暖和物价稳定。",
-        "keyWords": [
-          "CPI",
-          "year-on-year",
-          "consumer price index"
-        ]
-      },
-      {
-        "title": "Premier Li Calls for Cooperation in Global Industrial and Supply Chains",
+        "title": "Premier Li calls for open world economy as Canton Fair marks 70 years",
         "source": "CGTN",
-        "summary": "Premier Li Qiang urged deeper international cooperation to build resilient global industrial and supply chains amid rising geopolitical uncertainty.",
-        "translation": "李强总理呼吁在地缘政治不确定性上升的背景下深化国际合作，构建具有韧性的全球产业链供应链。",
+        "summary": "Premier Li called for an open world economy as the Canton Fair celebrated its 70th anniversary.",
+        "translation": "在广交会迎来70周年之际，李总理呼吁建设开放型世界经济。",
         "keyWords": [
-          "industrial chain",
-          "resilience",
+          "open economy",
+          "anniversary",
+          "trade",
           "cooperation"
         ]
       },
       {
-        "title": "Xi Sends Congratulatory Letter to 140th Canton Fair",
-        "source": "CGTN",
-        "summary": "President Xi Jinping sent a congratulatory letter to the 140th Canton Fair, underscoring China's continued opening-up and commitment to shared global prosperity.",
-        "translation": "习近平主席向第140届广交会致贺信，强调中国将持续扩大开放，致力于与世界共享繁荣。",
+        "title": "Xi: Ensure stable supply chains",
+        "source": "China Daily",
+        "summary": "President Xi stressed the need to ensure stable and resilient global supply chains.",
+        "translation": "习近平主席强调要确保全球供应链稳定且富有韧性。",
         "keyWords": [
-          "Canton Fair",
-          "opening-up",
-          "trade"
+          "supply chain",
+          "stability",
+          "resilience",
+          "global trade"
+        ]
+      },
+      {
+        "title": "Hot US inflation, rising AI costs spark global chip stock rout",
+        "source": "CGTN",
+        "summary": "Hot US inflation and rising AI costs triggered a global sell-off in chip stocks.",
+        "translation": "美国通胀高企与人工智能成本上升引发全球芯片股暴跌。",
+        "keyWords": [
+          "inflation",
+          "chip stocks",
+          "market",
+          "investment"
         ]
       }
     ],
     "quote": {
-      "quote": "In the middle of difficulty lies opportunity.",
-      "author": "Albert Einstein",
-      "translation": "困难之中蕴藏着机遇。",
-      "explanation": "这句名言提醒我们，在全球供应链波动与经济转型的挑战中，往往孕育着创新与合作的新机会。正如中国新能源汽车产业的崛起，正是在能源转型的挑战中抓住了机遇。"
+      "quote": "The single biggest problem in communication is the illusion that it has taken place.",
+      "author": "George Bernard Shaw",
+      "translation": "沟通中最大的问题是，人们误以为沟通已经发生了。",
+      "explanation": "职场中，很多误解源于\"以为已经说清楚了\"。真正的沟通需要确认对方是否接收并理解了信息，而非单向地传达。"
     },
     "vocabulary": [
       {
+        "word": "innovation",
+        "phonetic": "/ˌɪnəˈveɪʃən/",
+        "partOfSpeech": "noun",
+        "definition": "创新；革新",
+        "example": "New products and technologies took center stage at the Canton Fair, highlighting China's drive for innovation.",
+        "translation": "新产品与新技术在广交会上大放异彩，彰显了中国对创新的追求。",
+        "newsContext": "来自新闻标题 \"New products and technologies take spotlight at Canton Fair\"。"
+      },
+      {
+        "word": "exhibition",
+        "phonetic": "/ˌeksɪˈbɪʃən/",
+        "partOfSpeech": "noun",
+        "definition": "展览会；展示",
+        "example": "The 140th edition of the exhibition attracted buyers and delegates from around the world.",
+        "translation": "第140届展会吸引了来自世界各地的采购商和代表。",
+        "newsContext": "来自关于 Canton Fair（广交会，即中国进出口商品交易会）的报道。"
+      },
+      {
+        "word": "negotiate",
+        "phonetic": "/nɪˈɡəʊʃieɪt/",
+        "partOfSpeech": "verb",
+        "definition": "谈判；协商",
+        "example": "At the fair, buyers and sellers negotiate prices, delivery dates and contract terms face to face.",
+        "translation": "在展会上，买卖双方面对面协商价格、交货日期与合同条款。",
+        "newsContext": "与广交会贸易洽谈场景相关，是职场商务沟通核心词汇。"
+      },
+      {
         "word": "supply chain",
-        "phonetic": "/səˈplaɪn tʃeɪn/",
-        "partOfSpeech": "名词",
-        "definition": "供应链（从原材料到最终产品交付的全过程网络）",
-        "example": "China is committed to ensuring the stable and unimpeded operation of global supply chains.",
-        "translation": "中国致力于确保全球供应链稳定畅通运行。",
-        "newsContext": "来自新闻《Xi: Ensure stable supply chains》的核心关键词。"
-      },
-      {
-        "word": "multilateral",
-        "phonetic": "/ˌmʌltiˈlætərəl/",
-        "partOfSpeech": "形容词",
-        "definition": "多边的；多方参与的",
-        "example": "China will continue to uphold the multilateral trading system alongside other countries.",
-        "translation": "中国将继续与其他国家共同维护多边贸易体制。",
-        "newsContext": "出自习近平主席关于维护多边贸易体制的讲话。"
-      },
-      {
-        "word": "account for",
-        "phonetic": "/əˈkaʊnt fɔːr/",
-        "partOfSpeech": "动词短语",
-        "definition": "占据（比例）；解释说明",
-        "example": "New energy vehicles accounted for a record 61.6 percent of China's monthly new car sales in September.",
-        "translation": "9月份新能源汽车占中国月度新车销量的比例创纪录地达到61.6%。",
-        "newsContext": "出自《NEV share of new car sales hits new high in Sept》中描述新能源汽车销量占比。"
-      },
-      {
-        "word": "consumer price index (CPI)",
-        "phonetic": "/kənˈsjuːmər praɪs ˈɪndeks/",
-        "partOfSpeech": "名词",
-        "definition": "居民消费价格指数（衡量通货膨胀的重要指标）",
-        "example": "China's consumer price index rose 0.9 percent year-on-year in September.",
-        "translation": "9月份中国居民消费价格指数同比上涨0.9%。",
-        "newsContext": "来自《China's CPI up 0.9% in September》中的关键经济指标。"
-      },
-      {
-        "word": "year-on-year",
-        "phonetic": "/ˌjɪər ɒn ˈjɪər/",
-        "partOfSpeech": "形容词/副词",
-        "definition": "同比的（与去年同期相比）",
-        "example": "The CPI increased 0.9 percent year-on-year, indicating mild inflationary pressure.",
-        "translation": "消费者价格指数同比上涨0.9%，显示出温和的通胀压力。",
-        "newsContext": "出自CPI新闻中用于描述经济数据同比变化的标准表达。"
+        "phonetic": "/səˈplaɪ tʃeɪn/",
+        "partOfSpeech": "noun",
+        "definition": "供应链",
+        "example": "Xi called on all parties to ensure stable and smooth supply chains.",
+        "translation": "习近平呼吁各方确保供应链稳定畅通。",
+        "newsContext": "来自新闻 \"Xi: Ensure stable supply chains\"。"
       },
       {
         "word": "resilient",
         "phonetic": "/rɪˈzɪliənt/",
-        "partOfSpeech": "形容词",
+        "partOfSpeech": "adjective",
         "definition": "有韧性的；能迅速恢复的",
-        "example": "Premier Li called on nations to build resilient global industrial and supply chains.",
-        "translation": "李强总理呼吁各国构建有韧性的全球产业链供应链。",
-        "newsContext": "出自《Premier Li calls on cooperation in global industrial and supply chains》。"
+        "example": "Companies must build resilient supply chains to survive sudden market shocks.",
+        "translation": "企业必须打造有韧性的供应链，以应对突如其来的市场冲击。",
+        "newsContext": "与 \"Ensure stable supply chains\" 新闻中强调的供应链韧性相关。"
       },
       {
-        "word": "opening-up",
-        "phonetic": "/ˈəʊpənɪŋ ʌp/",
-        "partOfSpeech": "名词",
-        "definition": "对外开放",
-        "example": "The Canton Fair demonstrates China's unwavering commitment to opening-up and international trade.",
-        "translation": "广交会彰显了中国坚定不移推进对外开放和国际贸易的决心。",
-        "newsContext": "出自《Xi sends congratulatory letter to 140th Canton Fair》。"
+        "word": "sustainable",
+        "phonetic": "/səˈsteɪnəbl/",
+        "partOfSpeech": "adjective",
+        "definition": "可持续的",
+        "example": "Green and sustainable products were the highlight of this year's Canton Fair.",
+        "translation": "绿色可持续产品是本届广交会的一大亮点。",
+        "newsContext": "来自新闻中 \"Focusing on new, green, and smart products\" 的描述。"
       },
       {
-        "word": "unimpeded",
-        "phonetic": "/ˌʌnɪmˈpiːdɪd/",
-        "partOfSpeech": "形容词",
-        "definition": "畅通无阻的；不受阻碍的",
-        "example": "Xi stressed the importance of keeping global trade flows stable and unimpeded.",
-        "translation": "习近平强调保持全球贸易流稳定畅通的重要性。",
-        "newsContext": "出自《Xi: Ensure stable supply chains》原文表述。"
+        "word": "inflation",
+        "phonetic": "/ɪnˈfleɪʃən/",
+        "partOfSpeech": "noun",
+        "definition": "通货膨胀",
+        "example": "Hot US inflation and rising AI costs sparked a global chip stock rout.",
+        "translation": "美国通胀高企与人工智能成本上升引发了全球芯片股暴跌。",
+        "newsContext": "来自新闻 \"Hot US inflation, rising AI costs spark global chip stock rout\"。"
       },
       {
-        "word": "mandate",
-        "phonetic": "/ˈmændeɪt/",
-        "partOfSpeech": "名词/动词",
-        "definition": "授权；委托；强制执行",
-        "example": "The new regulation mandates stricter disclosure requirements for listed companies.",
-        "translation": "新规定要求上市公司履行更严格的信息披露义务。",
-        "newsContext": "关联今日商业金融政策类新闻中常见的政策执行术语。"
+        "word": "collaboration",
+        "phonetic": "/kəˌlæbəˈreɪʃən/",
+        "partOfSpeech": "noun",
+        "definition": "合作；协作",
+        "example": "Premier Li said international collaboration is essential for an open world economy.",
+        "translation": "李总理表示，国际合作对建设开放型世界经济至关重要。",
+        "newsContext": "来自新闻 \"Premier Li calls for open world economy as Canton Fair marks 70 years\"。"
       },
       {
-        "word": "momentum",
-        "phonetic": "/məˈmentəm/",
-        "partOfSpeech": "名词",
-        "definition": "势头；动力",
-        "example": "The NEV sector maintained strong growth momentum through the first three quarters of the year.",
-        "translation": "新能源汽车行业在今年前三季度保持了强劲的增长势头。",
-        "newsContext": "出自NEV销量新闻中描述行业增长态势的语境。"
+        "word": "delegate",
+        "phonetic": "/ˈdelɪɡət/",
+        "partOfSpeech": "noun",
+        "definition": "代表；会议代表",
+        "example": "Delegates from more than 200 countries and regions attended the trade fair in Guangzhou.",
+        "translation": "来自200多个国家和地区的代表参加了广州的这场贸易盛会。",
+        "newsContext": "与广交会中外客商、代表参会的场景相关。"
+      },
+      {
+        "word": "milestone",
+        "phonetic": "/ˈmaɪlstəʊn/",
+        "partOfSpeech": "noun",
+        "definition": "里程碑；重大事件",
+        "example": "The 70th anniversary of the Canton Fair marks an important milestone in China's trade history.",
+        "translation": "广交会70周年是中国贸易史上的一个重要里程碑。",
+        "newsContext": "来自新闻 \"as Canton Fair marks 70 years\"。"
       }
     ],
     "pattern": {
-      "pattern": "account for + 百分比 + of + 总量（占据……的百分之……）",
-      "example": "New energy vehicles accounted for a record 61.6 percent of China's monthly new car sales in September.",
-      "translation": "新能源汽车在9月份占中国月度新车销量的61.6%，创下纪录。",
-      "usage": "该句型常用于新闻和报告中描述某一部分在总量中所占的比例。注意：account for 后接百分比时，谓语动词通常用过去式或现在时，视时间语境而定。类似表达还有：make up / constitute / represent + 百分比 + of。"
+      "pattern": "call for + 名词/动名词（呼吁……）",
+      "example": "Premier Li calls for an open world economy as the Canton Fair marks 70 years.",
+      "translation": "在广交会迎来70周年之际，李总理呼吁建设开放型世界经济。",
+      "usage": "用于正式场合表达诉求、提议或呼吁。常见搭配：call for action（呼吁采取行动）、call for reform（呼吁改革）。名词形式为 a call for...，如 a call for closer cooperation（加强合作的呼吁）。"
     },
     "grammar": {
-      "title": "过去分词作后置定语与状语（Past Participle as Modifier）",
-      "explanation": "在新闻英语中，过去分词（如 highlighted, shown, reported）常放在名词后作后置定语，或放在句首作状语，表示被动或完成的含义。这种结构能使句子更简洁紧凑，是新闻写作的典型特征。例如：'data showed' 省略为 'data shown'；'which was highlighted' 简化为 'highlighted'。",
+      "title": "as 引导时间/原因状语从句",
+      "explanation": "as 可引导时间状语从句，表示\"当……时/随着……\"，强调两个动作同时发生或一种伴随变化；也可表示原因，意为\"由于\"。在新闻英语中常用于简洁地交代背景。判断依据：时间含义时可替换为 when/while；原因含义时可替换为 because/since。",
       "examples": [
-        "Mining cooperation with Africa highlighted at talks was seen as a new growth point for bilateral trade.",
-        "The figures, released by the China Association of Automobile Manufacturers, showed a record NEV market share."
+        "Premier Li calls for an open world economy as the Canton Fair marks 70 years.",
+        "Chip stocks fell sharply as US inflation stayed hot and AI costs continued to rise."
       ]
     },
     "pronunciation": {
-      "word": "resilient",
-      "phonetic": "/rɪˈzɪliənt/",
-      "tips": "注意重音在第二个音节 /ˈzɪl/，首音节 /rɪ/ 要弱读。/liənt/ 中的 /iə/ 是双元音，要连贯滑动。整体语调：ri-ZIL-yənt。常见错误是把重音放在第一个音节。",
+      "word": "collaboration",
+      "phonetic": "/kəˌlæbəˈreɪʃən/",
+      "tips": "五个音节，重音在倒数第三个音节 la 上（/ˌlæbəˈreɪʃən/ 中主重音为 /ˈreɪ/ 前的 /ˈlæ/？注意：主重音在 -ra- 上：/kəˌlæbəˈreɪʃən/）。实际发音要点：首音节弱读为 /kə/，不要读成 /kəʊ/；/læb/ 中的 a 为梅花音 /æ/，口型扁平；-tion 统一读 /ʃən/。整词节奏为\"弱-弱-强-弱\"式，练习时先读准 colla-BOR-a-tion 的重音落点。",
       "examples": [
-        "Global supply chains must be resilient enough to withstand future shocks.",
-        "The Chinese economy has proved remarkably resilient amid global uncertainties."
+        "International collaboration is essential for an open world economy.",
+        "The project requires close collaboration between engineers and sales teams."
       ]
     },
     "reading": {
-      "title": "China Champions Stable Supply Chains as NEV Market Hits Record High",
-      "content": "China is stepping up efforts to keep global supply chains stable and open. On Wednesday, President Xi Jinping reaffirmed China's commitment to working with countries around the world to uphold the multilateral trading system and ensure the unimpeded flow of trade. Premier Li Qiang echoed this message, urging deeper international cooperation to build resilient global industrial and supply chains.\n\nAt home, the economy showed fresh signs of vitality. New energy vehicles accounted for a record 61.6 percent of China's monthly new car sales in September, data from the China Association of Automobile Manufacturers showed. Meanwhile, the consumer price index rose 0.9 percent year-on-year, reflecting mild but steady consumer demand.\n\nThe 140th Canton Fair, which received a congratulatory letter from President Xi, also highlighted China's continued opening-up. Together, these developments signal that China remains a driving force for global trade and green growth.",
-      "translation": "中国正在加大力度维护全球供应链的稳定与开放。周三，习近平主席重申中国致力于与世界各国共同维护多边贸易体制，确保贸易畅通无阻。李强总理呼应了这一表态，呼吁深化国际合作，构建有韧性的全球产业链供应链。\n\n在国内，经济展现出新的活力。中国汽车工业协会数据显示，9月份新能源汽车占中国月度新车销量的61.6%，创历史新高。与此同时，居民消费价格指数同比上涨0.9%，反映出温和而稳定的消费需求。\n\n收到习近平主席贺信的第140届广交会也彰显了中国持续扩大开放的决心。这些进展共同表明，中国仍是全球贸易和绿色发展的重要推动力量。",
-      "sourceNote": "本文基于2026年10月15日中国日报（China Daily）与CGTN关于全球供应链合作、新能源汽车销量、CPI数据及第140届广交会的真实新闻改写，改写后约165词。"
+      "title": "Canton Fair Turns 70: A Global Stage for Business and Communication",
+      "content": "The 140th China Import and Export Fair, better known as the Canton Fair, opened in Guangzhou on Thursday. This year's event marks the fair's 70th anniversary and focuses on new, green and smart products. Premier Li called for an open world economy, saying international collaboration is essential for shared growth. Buyers and delegates from over 200 countries and regions attended the exhibition to negotiate contracts and build long-term partnerships. Meanwhile, business leaders stressed the need to ensure stable and resilient supply chains. Beyond the fair, global markets remained nervous: hot US inflation and rising AI costs sparked a sharp sell-off in chip stocks. For professionals, the news offers a useful lesson — clear communication, careful negotiation and reliable supply chains are the foundations of successful business.",
+      "translation": "第140届中国进出口商品交易会（广交会）于周四在广州开幕。本届展会迎来广交会70周年，聚焦新型、绿色与智能产品。李总理呼吁建设开放型世界经济，表示国际合作对共同增长至关重要。来自200多个国家和地区的采购商与代表参加了展会，洽谈合同并建立长期伙伴关系。与此同时，商界领袖强调确保供应链稳定与韧性的重要性。在展会之外，全球市场依然紧张：美国通胀高企与人工智能成本上升引发芯片股大幅抛售。对职场人士而言，这些新闻带来一个有益的启示——清晰的沟通、审慎的谈判和可靠的供应链，是商业成功的基石。",
+      "sourceNote": "基于 China Daily《New products and technologies take spotlight at Canton Fair》《Xi: Ensure stable supply chains》及 CGTN《Premier Li calls for open world economy as Canton Fair marks 70 years》《Hot US inflation, rising AI costs spark global chip stock rout》改写。"
     }
   }
 }
