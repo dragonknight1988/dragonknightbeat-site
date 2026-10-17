@@ -1,0 +1,204 @@
+{
+ "date": "2026-10-17",
+ "briefing": {
+  "date": "2026-10-17",
+  "quote": "When agents start writing tools for other agents, the compounding of intelligence truly begins to roll.",
+  "sections": [
+   {
+    "id": "openclaw",
+    "title": "OpenClaw Latest Updates",
+    "icon": "🦞",
+    "articles": [
+     {
+      "id": "brief-oc-001",
+      "title": "OpenClaw v0.9 Launches with ClawGraph Multi-Agent Orchestration Engine",
+      "summary": "OpenClaw rolls out the ClawGraph orchestration engine, enabling visual design of multi-agent workflows and failure-retry policies.",
+      "detail": "OpenClaw released v0.9 this week, headlined by the ClawGraph orchestration engine. Developers can define agent collaboration topologies via declarative YAML or a visual canvas, with support for conditional branching, parallel fan-out, human-in-the-loop checkpoints, and failure-retry strategies. Official benchmarks show task completion on long-horizon workflows (averaging 12 tool-call steps) rising from 61% to 79%, while per-task costs fell roughly 22%. The release also adds a runtime sandbox that executes individual tools inside restricted containers.",
+      "impact": "Multi-agent orchestration is shifting from 'prompt tricks' to 'engineering infrastructure.' Smaller teams can now build enterprise-grade automation at lower cost, potentially squeezing low-code workflow vendors.",
+      "source": "OpenClaw Official Blog / GitHub Releases"
+     },
+     {
+      "id": "brief-oc-002",
+      "title": "OpenClaw Launches ClawHub Tool Marketplace with 240 MCP-Compatible Tools at Debut",
+      "summary": "The official tool marketplace ClawHub goes live, offering 240 MCP-compatible tools for distribution and paid subscriptions.",
+      "detail": "OpenClaw's official tool marketplace ClawHub has officially opened, with an initial lineup of 240 tools spanning office collaboration, code hosting, CRM, finance, and data querying — all conforming to the MCP (Model Context Protocol) specification. Creators can charge per-call or monthly subscription, with the platform taking a 15% cut. The company also unveiled a 'Trusted Tool' certification program featuring permission-declaration audits and sandbox behavior replay. Total tool invocations surpassed 18 million in the first week after launch.",
+      "impact": "The tool ecosystem is becoming the real moat for agent platforms. For developers, it opens a new distribution and monetization channel; for enterprise users, it reduces redundant in-house tool adaptation work.",
+      "source": "ClawHub Official Site / TechCrunch"
+     },
+     {
+      "id": "brief-oc-003",
+      "title": "OpenClaw Partners with Three Cloud Providers; Hosted Agent Runtime Service Due Within the Year",
+      "summary": "OpenClaw teams up with major cloud vendors to launch a hosted runtime emphasizing private-network isolation and compliance auditing.",
+      "detail": "OpenClaw announced strategic partnerships with three major cloud providers to launch a hosted Agent runtime service within the year. The hosted offering provides VPC private-network isolation, managed secrets, invocation audit logs, and regional data residency, targeting highly regulated sectors such as finance and healthcare. The company also published an enterprise pricing framework billed by 'agent running hours + tool call volume,' backed by SLA guarantees.",
+      "impact": "The shift to managed hosting signals OpenClaw's move from open-source tooling toward an enterprise platform, with compliance capabilities set to be its key counterweight against proprietary agent product lines from big tech.",
+      "source": "OpenClaw Official Announcement / InfoQ"
+     }
+    ]
+   },
+   {
+    "id": "skills",
+    "title": "Top Skill Recommendations",
+    "icon": "🎯",
+    "articles": [
+     {
+      "id": "brief-sk-001",
+      "title": "MCP Tool Protocol Development Emerges as the Quarter's Most In-Demand Engineering Skill",
+      "summary": "Hiring data shows demand for MCP-compatible tool development up 210% quarter-on-quarter, with a significant salary premium.",
+      "detail": "Data from multiple hiring platforms shows that demand for engineers with MCP (Model Context Protocol) tool development experience has grown 210% quarter-on-quarter. Openings are concentrated in two categories: 'Agent Platform Engineer' and 'Tooling Ecosystem Engineer,' typically requiring skills in protocol wrapping, permission declaration, OAuth, and sandbox isolation. Employers place greater weight on whether candidates can quickly wrap existing internal APIs into Agent-callable tools, offering a 25%–40% salary premium over comparable backend roles.",
+      "impact": "The ability to 'let AI safely invoke systems' is displacing plain large-model API integration as the key differentiator for AI engineers.",
+      "source": "LinkedIn Talent Insights / Lagou Research Institute"
+     },
+     {
+      "id": "brief-sk-002",
+      "title": "Agent Evaluation Engineering Moves from Niche to Standard Practice",
+      "summary": "Enterprise-grade Agent projects are widely adding eval engineer roles to handle regression testing and production quality monitoring.",
+      "detail": "As Agent applications enter production environments, the 'Eval Engineer' role is becoming standard in mid-sized and large teams. Responsibilities include building task-level benchmark suites, designing multi-turn dialogue regression tests, monitoring online failure rates and tool-call anomalies, and establishing prompt version rollback mechanisms. The mainstream approach is integrating evaluation pipelines into CI/CD, requiring any prompt or tool change to pass offline evaluation gates. Downloads of open-source evaluation frameworks (such as trajectory-replay-based solutions) continue to climb.",
+      "impact": "Without evaluation, there is no reliability. Evaluation capability is determining who can move from demos to paying production customers, and is a key lever for AI application teams to cut costs and boost efficiency.",
+      "source": "AI Engineering Summit Agenda / InfoQ"
+     },
+     {
+      "id": "brief-sk-003",
+      "title": "Demand Heats Up for Edge Deployment and Small-Model Fine-Tuning Skills",
+      "summary": "Privacy compliance and cost pressures are driving demand for on-device small-model fine-tuning and quantized deployment skills.",
+      "detail": "Tightening data compliance alongside inference cost pressures is pushing more teams to move sensitive tasks to edge devices or privately hosted small models (in the 3B–8B range). Correspondingly, LoRA fine-tuning, quantization (INT4/AWQ), distillation, and on-device inference acceleration (NPU adaptation) have become hot skills. On the hiring side, demand is rising for 'Model Compression Engineer' and 'On-Device AI Engineer' roles, requiring the ability to maintain task-level performance within limited memory and power budgets.",
+      "impact": "'Large models in the cloud, small models on the edge' is becoming the dominant hybrid architecture, and on-device tuning capability directly determines a product's privacy selling points and margin potential.",
+      "source": "Machine Intelligence (JIQIZHIXIN) / Semiconductor Industry Watch"
+     }
+    ]
+   },
+   {
+    "id": "ios",
+    "title": "iOS App Updates",
+    "icon": "🍎",
+    "articles": [
+     {
+      "id": "brief-ios-001",
+      "title": "Apple Expands App Intents, Letting Third-Party Apps Plug Deeper Into On-Device Agents",
+      "summary": "App Intents gets upgraded with parameterized actions and cross-app chaining, significantly boosting Siri's action invocation success rate.",
+      "detail": "Apple has further opened up the App Intents framework, allowing developers to declare actions with complex parameters, intent groups, and multi-app chained flows. On-device agents can now complete long-chain tasks across apps, such as 'check a flight — reschedule the calendar — send a message.' Official data shows that apps adopting the new declaration spec saw their actions successfully invoked by the system roughly 35% more often. Apple also provides a local debugging simulator that can replay entire intent chains on a real device.",
+      "impact": "iOS's 'intent layer' is becoming a new distribution channel. Early adopters stand to gain system-level discovery advantages, while apps that don't adapt risk being skipped by agents entirely.",
+      "source": "Apple Developer Documentation / 9to5Mac"
+     },
+     {
+      "id": "brief-ios-002",
+      "title": "On-Device AI Subscription Model Gains Traction as AI Journaling and Health Apps Climb the Charts",
+      "summary": "AI apps that run locally and keep data on-device are converting to paid subscriptions at higher rates than cloud-based rivals.",
+      "detail": "Several AI apps centered on the 'data never leaves your device' promise have surged to the top of the App Store Health and Lifestyle charts this week, spanning AI journaling, sleep coaching, mood tracking, and personal training. Their common traits: on-device model inference, subscription pricing of $6–12 per month, and prominent privacy whitepapers. Developers report that on-device solutions convert to paid subscriptions roughly 18% more often than cloud equivalents, while also incurring lower support costs due to the absence of network and latency complaints.",
+      "impact": "Privacy is shifting from a compliance cost to a selling point. For indie developers, on-device AI offers a practical path to differentiate against big-tech cloud services.",
+      "source": "Appfigures / Sensor Tower"
+     },
+     {
+      "id": "brief-ios-003",
+      "title": "EU Digital Compliance Rules Keep Reshaping iOS Sideloading and Payment Options",
+      "summary": "Updated regulatory guidance expands developers' choices around commissions and third-party payment redirection.",
+      "detail": "Regulatory guidance in the EU continues to evolve, widening the options available to iOS in the region for third-party app stores, external payment links, and commission structures. Several major developers have begun evaluating region-specific listing strategies: some utility apps are experimenting with self-operated payments in the EU to protect margins, while keeping App Store in-app purchases in other markets. Regulatory uncertainty remains high, so most teams are building payment and listing configurations that can be switched remotely.",
+      "impact": "Distribution and payments are no longer one-size-fits-all. Developers need to design business models with regional modularity, as revenue structure and compliance costs will directly shape pricing strategy.",
+      "source": "The Verge / European Commission announcements"
+     }
+    ]
+   },
+   {
+    "id": "startups",
+    "title": "Tech Startups",
+    "icon": "🚀",
+    "articles": [
+     {
+      "id": "brief-st-001",
+      "title": "Enterprise Agent Observability Platform VectorLoop Raises Series A",
+      "summary": "VectorLoop has raised $42 million in Series A funding, focusing on end-to-end agent tracing and cost attribution.",
+      "detail": "Startup VectorLoop announced the close of a $42 million Series A round. Its product offers full-chain agent trajectory tracing, tool-call failure attribution, per-task cost breakdowns, and prompt version comparison. Customers are mainly financial and SaaS companies, with the value proposition framed as \"turning AI spend from a black box into manageable unit economics.\" The team says ARR grew fivefold over the past six months, and the number of monitored agent tasks has doubled month on month.",
+      "impact": "As agent spending reaches CFOs, observability and cost governance are becoming must-haves. This infrastructure layer could give rise to new platform-scale companies.",
+      "source": "TechCrunch / Company Press Release"
+     },
+     {
+      "id": "brief-st-002",
+      "title": "Edge Inference Chip Startup NuviaCore Unveils Second-Gen NPU Dev Kit",
+      "summary": "NuviaCore's second-generation NPU development kit opens for pre-orders, targeting low-power, long-context inference.",
+      "detail": "Edge AI chip startup NuviaCore released its second-generation NPU development kit, claiming longer local inference context within a 5W power budget, along with quantization toolchains and one-click compilation for mainstream open-source models. Target customers include AI glasses, wearable, and industrial edge device makers. The company also announced design-in partnerships with two consumer electronics brands, with first mass production expected in the first half of next year.",
+      "impact": "Once the edge compute bottleneck eases, the \"AI hardware\" category will enter a second wave of innovation, while driving demand for model compression and hardware adaptation talent.",
+      "source": "Semiconductor Industry Review / Company Website"
+     },
+     {
+      "id": "brief-st-003",
+      "title": "Compliance Startup AuditLens Automates Cross-Border Data Reviews with AI",
+      "summary": "AuditLens uses multimodal models to interpret regulatory text, cutting compliance review cycles from weeks to days.",
+      "detail": "AuditLens specializes in cross-border data compliance automation: the system parses regulations across jurisdictions and internal policy documents, automatically compares data flow maps, and outputs gap lists with remediation recommendations. The team says it can compress compliance review cycles from 3–4 weeks to 3–5 days. This quarter it added several cross-border e-commerce and fintech clients. The industry generally believes \"compliance-as-a-service\" has strong counter-cyclical characteristics during periods of tightening regulation.",
+      "impact": "Rising regulatory complexity is creating demand for certainty. Compliance automation is one of the few enterprise AI tracks with both willingness to pay and a clear ROI.",
+      "source": "36Kr / Company Press Release"
+     }
+    ]
+   }
+  ]
+ },
+ "hotProjects": {
+  "date": "October 17, 2026",
+  "quote": "You don't chase a trend — when infrastructure matures, the winning product is the one already sitting on the unavoidable path.",
+  "summary": "Agent infrastructure is opening a full-stack startup window across orchestration, tooling, evaluation and observability, while on-device AI and compliance automation heat up in parallel.",
+  "projects": [
+   {
+    "id": "hot-001",
+    "rank": 1,
+    "name": "ClawGraph Multi-Agent Orchestration Engine",
+    "heat": "🔥🔥🔥🔥🔥",
+    "heatLevel": 5,
+    "oneLiner": "Turns multi-agent collaboration from prompt engineering into orchestrable, rollback-capable production infrastructure.",
+    "whyHot": "The single-agent ceiling is in view, and real enterprise demand centers on long-chain, cross-system tasks. ClawGraph offers visual topology, failure retries and human-in-the-loop checkpoints, boosting completion rates by 18 percentage points and cutting costs by 22%. It hits the engineering pain point precisely, leading developer community discussion volume this week.",
+    "highlights": [
+     "Dual interface: YAML and visual canvas, low barrier to entry",
+     "Built-in sandbox and retry strategies make reliability measurable",
+     "Compatible with the MCP tool ecosystem, reusing existing assets",
+     "Enterprise pricing based on run-hours plus call volume — clear business model"
+    ],
+    "riskTip": "The orchestration layer is crowded, and major cloud platforms could ship comparable features at any time. Watch its ecosystem lock-in strength and open-source license restrictions."
+   },
+   {
+    "id": "hot-002",
+    "rank": 2,
+    "name": "ClawHub Agent Tool Marketplace",
+    "heat": "🔥🔥🔥🔥🔥",
+    "heatLevel": 5,
+    "oneLiner": "A distribution and monetization platform for MCP-compatible tools — the embryonic 'app store' of the Agent era.",
+    "whyHot": "An agent's capability ceiling is defined by its tools, yet tools are fragmented and costly to adapt. ClawHub launched with 240 tools and logged 18 million calls in its first week, proving strong demand on both sides. Its 'trusted tool' certification and creator revenue-sharing create the potential for two-sided network effects.",
+    "highlights": [
+     "MCP-standardized for strong cross-platform reuse",
+     "Per-call or monthly subscription revenue sharing — clear monetization path",
+     "Permission-declaration audits plus sandbox behavior replay for security and trust",
+     "Public call-volume data makes popularity quantifiable and trackable"
+    ],
+    "riskTip": "Platform take-rates and tool quality governance are long-term challenges. If top tools migrate to their own channels, platform value could erode."
+   },
+   {
+    "id": "hot-003",
+    "rank": 3,
+    "name": "On-Device AI Apps (Privacy-First Subscriptions)",
+    "heat": "🔥🔥🔥🔥",
+    "heatLevel": 4,
+    "oneLiner": "AI diary, health and coaching apps where data never leaves the device — outperforming cloud equivalents on subscription conversion.",
+    "whyHot": "Tightening regulations, user privacy anxiety and cloud inference costs are driving on-device solutions. Rankings data shows paid conversion roughly 18% higher, with lower support costs. Indie developers can compete head-on with big tech through differentiation, making this one of the few directions where a commercial loop can be validated quickly.",
+    "highlights": [
+     "Local inference, with a privacy whitepaper as a selling point",
+     "$6–12/month subscriptions with a healthy margin structure",
+     "High-frequency, emotionally driven use cases: health, diaries, coaching",
+     "Benefiting from steadily improving on-device NPU and small-model capabilities"
+    ],
+    "riskTip": "On-device compute and memory constraints still limit model performance. Use cases are heavily commoditized — the moat depends on brand and content operations, not technology."
+   },
+   {
+    "id": "hot-004",
+    "rank": 4,
+    "name": "Agent Observability & Cost Governance Platform",
+    "heat": "🔥🔥🔥🔥",
+    "heatLevel": 4,
+    "oneLiner": "Turns AI spend from a black box into manageable unit economics with tracking and attribution tools.",
+    "whyHot": "Once agents go live at scale, failure rates, latency and cost become CFO-level issues. Companies like VectorLoop have grown ARR fivefold in six months, showing willingness to pay is proven. This layer is model-agnostic, resilient to tech-stack switches, and has platform potential.",
+    "highlights": [
+     "Full-chain trace tracking and failure attribution",
+     "Per-task cost breakdown and prompt version comparison",
+     "Cross-model, cross-cloud with low customer migration cost",
+     "Strong willingness to pay in high-value sectors like finance and SaaS"
+    ],
+    "riskTip": "Features are easily bundled for free by model vendors or cloud platforms. Differentiation must be built through deep industry templates and compliance reporting."
+   }
+  ]
+ }
+}

@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-16",
+  "date": "2026-10-17",
   "contents": [
     {
-      "id": "prog-2026-10-16",
-      "date": "2026-10-16",
-      "title": "Git Hooks 与 DevOps 质量门禁：用 pre-commit 钩子守护提交历史",
-      "summary": "学习如何编写并团队化管理 Git pre-commit 钩子，把代码规范、敏感信息与大文件检查前移到本地提交环节。",
+      "id": "prog-2026-10-17",
+      "date": "2026-10-17",
+      "title": "Swift Concurrency 在 SwiftUI 中的实战：async/await、Task 取消与 @MainActor",
+      "summary": "用 async/await + Task + @MainActor 搭建一套可取消、可测试、不会引发 UI 线程警告的网络请求层。",
       "difficulty": "中级",
-      "concept": "Git Hooks 是 Git 在特定生命周期事件（pre-commit、commit-msg、pre-push、pre-receive 等）触发时自动执行的脚本，是把 DevOps 质量门禁「左移」到开发者本地的最轻量手段。钩子分为两大类：客户端钩子（pre-commit、commit-msg、pre-push 等，跑在开发者机器上）和服务端钩子（pre-receive、update、post-receive，跑在裸仓库服务器上）。今天我们重点聚焦客户端的 pre-commit，它决定了「什么东西有资格被提交」。\n\npre-commit 的典型职责包括：格式化检查（Prettier/Black）、静态分析（ESLint/Pylint）、单元测试、敏感信息扫描（禁止提交 .env、私钥、AWS AccessKey）、大文件拦截（避免把 200MB 的模型权重推上仓库）。核心机制是利用 `git diff --cached` 只取「已暂存」的文件，并通过 `--diff-filter=ACM` 排除删除的文件，这样无论仓库多大，检查耗时都只与本次改动成正比——这是钩子保持「秒级完成」的关键，因为开发者每天要跑几十次。\n\n工程上有一个必须理解的坑：钩子脚本存放在 `.git/hooks` 目录，而 `.git` 目录本身不受版本控制，因此团队成员 clone 下来后默认没有任何钩子。解决方案有两种：一是在仓库里维护 `.githooks/` 目录，再用 `git config core.hooksPath .githooks` 重定向钩子查找路径（推荐，纯 Git 原生能力）；二是使用 `pre-commit` 框架（pre-commit.com）配合 `.pre-commit-config.yaml` 声明式管理。前者零依赖、可控性强，后者生态丰富、跨语言支持好。\n\n另一条铁律：客户端钩子永远不是安全边界。`git commit --no-verify` 可以一键绕过所有客户端检查，本地 `git config` 也能随时改掉 hooksPath。因此在真正的 DevOps 流水线里，pre-commit 只是「提升开发者体验、减少 CI 白跑」的加速器，最终的质量门禁必须落在服务端：GitLab 的 server-side hook、GitHub 的 Branch Protection + Required Status Checks、Gerrit 的 change hook。正确的架构是「本地钩子快速失败 + CI 强制校验」双保险。\n\n最后给出几条实战经验：钩子一定要快（超过 3 秒开发者就会去加 --no-verify）；只检查暂存区文件而不是全仓库；失败时给出可执行的修复命令（如 `npx eslint --fix`）而不是只抛错误码；钩子脚本本身要纳入版本控制并在 README 里写清一行启用命令；对紧急修复保留逃生舱（如 `SKIP_HOOKS=1 git commit`）。",
+      "concept": "在 SwiftUI 项目里，「网络请求」几乎是最容易写错的一块。很多人习惯用 URLSession 的闭包回调，然后在 completion 里直接 self.users = ...，结果触发 “Modifying state during view update” 警告或者偶发的 UI 卡顿。Swift Concurrency 用 async/await 把异步代码写成看起来像同步的顺序结构，天然解决了回调地狱，但真正让它在 SwiftUI 中稳定工作的，是三个容易被忽视的点：执行器隔离（isolation）、结构化并发（structured concurrency）和任务取消（cancellation）。\n\n首先是执行器隔离。SwiftUI 的 @State、@Observable 属性以及整个 View body 都运行在主线程（即 MainActor）上。任何从后台返回后更新 UI 状态的代码，都必须回到 MainActor。传统做法是 DispatchQueue.main.async { }，容易漏写；Swift 5.5+ 之后我们用 @MainActor 标注 ViewModel 类，编译器就会强制要求它的所有方法和属性在主执行器上访问，漏写会被编译器报错而不是在运行时炸掉。这是「让编译器替你守门」的典型范例，也是 Swift 6 严格并发检查下的默认姿势。\n\n其次是网络层应该用 actor 而不是普通 class。actor 通过串行化访问保护可变状态（例如缓存、重试计数、URLSession 配置），并且它的方法是异步的，天然契合 async/await。把 API 客户端做成 actor + 单例，既避免了重复创建 URLSession 的开销（Apple 明确建议复用 URLSession），又能安全地在多个 ViewModel 之间共享缓存。\n\n第三是任务取消，这是工程实践中最容易出 bug 的地方。想象一个搜索框：用户输入「Sw」→「Swi」→「Swif」→「Swift」，会发出 4 个请求。如果不取消前面的请求，慢的那个最后返回就会覆盖最新结果，UI 显示错误数据。正确做法是保存 Task 引用，在发起新请求前调用旧 task.cancel()；同时在 await 点检查 Task.isCancelled，或者让 URLSession 的 data(from:) 在取消时抛出 CancellationError。SwiftUI 的 .task { } 修饰符更进一步：视图消失时会自动取消其中启动的 Task，这就是它优于 .onAppear 的原因。\n\n最后提一个实战建议：用 enum 描述 UI 状态（idle / loading / loaded / failed），比用三个 Bool（isLoading、hasError、users）要健壮得多。枚举能让非法状态无法被表达，配合 switch 还能获得穷尽性检查，重构时漏改会直接编译失败。这套 State enum + @Observable ViewModel + actor Service 的三层结构，可以直接搬到任何生产项目里。",
       "codeExample": {
-        "language": "Bash",
-        "code": "#!/usr/bin/env bash\n# 文件位置: .githooks/pre-commit\n# 团队启用方式（在仓库根目录执行一次）:\n#   git config core.hooksPath .githooks\n# 逃生舱:\n#   SKIP_HOOKS=1 git commit -m \"hotfix\"\n\nset -u\n\nif [ \"${SKIP_HOOKS:-0}\" = \"1\" ]; then\n  echo \"⚠️  检测到 SKIP_HOOKS=1，跳过本地质量门禁\"\n  exit 0\nfi\n\necho \"==> [pre-commit] 运行本地质量门禁...\"\n\n# 1. 只取本次暂存区中「新增/修改/重命名」的 JS/TS 文件\nSTAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\\.(js|ts|tsx)$' || true)\n\nif [ -z \"$STAGED_FILES\" ]; then\n  echo \"没有 JS/TS 文件变更，跳过检查\"\n  exit 0\nfi\n\n# 2. 拦截敏感文件（.env / 私钥 / 证书）\nif echo \"$STAGED_FILES\" | grep -qE '(\\.env$|id_rsa|\\.pem$|\\.key$)'; then\n  echo \"❌ 检测到疑似敏感文件被暂存：\"\n  echo \"$STAGED_FILES\" | grep -E '(\\.env$|id_rsa|\\.pem$|\\.key$)\"\n  echo \"请执行 git restore --staged <file> 后重试\"\n  exit 1\nfi\n\n# 3. 拦截大文件（> 5MB），防止仓库体积膨胀\nwhile IFS= read -r f; do\n  [ -f \"$f\" ] || continue\n  size=$(wc -c < \"$f\")\n  if [ \"$size\" -gt 5242880 ]; then\n    echo \"❌ $f 大小为 $((size / 1024 / 1024))MB，超过 5MB 限制，请改用 Git LFS\"\n    exit 1\n  fi\ndone <<< \"$STAGED_FILES\"\n\n# 4. ESLint 检查（仅检查变更文件）\necho \"==> ESLint: $STAGED_FILES\"\nif ! npx --no-install eslint --fix $STAGED_FILES; then\n  echo \"❌ ESLint 未通过，提交已被阻止。请修复后重新 git add\"\n  exit 1\nfi\n\n# 5. 禁止把调试用 console.log 提交到共享分支\nif grep -n \"console\\.log\" $STAGED_FILES; then\n  echo \"❌ 检测到 console.log 调试代码，请清理后再提交\"\n  exit 1\nfi\n\necho \"✅ [pre-commit] 检查通过，允许提交\"\nexit 0",
-        "explanation": "第 1-12 行：脚本头部用 `set -u` 开启未定义变量报错；提供 SKIP_HOOKS 逃生舱，保证紧急修复不受阻。\n\n第 16 行是全脚本的核心：`git diff --cached` 只比较「暂存区 vs HEAD」，`--diff-filter=ACM` 仅保留 Added/Copied/Modified，避免去 lint 已删除的文件；`grep` 无匹配时返回非 0，用 `|| true` 兜底防止管道错误。这行保证检查范围与本次提交完全一致。\n\n第 20-22 行：没有目标文件时直接 `exit 0`，让非前端改动的提交零成本通过。\n\n第 25-31 行：敏感文件拦截。匹配到 .env、id_rsa、.pem、.key 立即 `exit 1`，并提示 `git restore --staged` 这条可直接复制执行的修复命令。\n\n第 34-41 行：大文件检查。逐个读取暂存文件大小，超过 5MB（5242880 字节）就失败并推荐 Git LFS，从源头控制仓库体积。\n\n第 44-48 行：`npx --no-install` 表示不联网安装、只用项目本地依赖，避免钩子卡住或版本漂移；`--fix` 顺手帮开发者格式化。\n\n第 51-55 行：grep 命中即失败，阻止调试语句入库。最后 `exit 0` 明确返回成功，避免脚本最后一条命令的退出码被误用。"
+        "language": "Swift",
+        "code": "import SwiftUI\nimport Observation\n\n// MARK: - 数据模型\nstruct User: Codable, Identifiable, Sendable {\n    let id: Int\n    let name: String\n    let email: String\n}\n\n// MARK: - 统一错误类型\nenum NetworkError: Error, LocalizedError, Sendable {\n    case badURL\n    case invalidResponse\n    case decodingFailed\n\n    var errorDescription: String? {\n        switch self {\n        case .badURL:           return \"URL 无效\"\n        case .invalidResponse:  return \"服务器响应异常\"\n        case .decodingFailed:   return \"数据解析失败\"\n        }\n    }\n}\n\n// MARK: - 网络层（actor 保证状态安全，可被多处共享）\nactor UserAPI {\n    static let shared = UserAPI()\n    private let session: URLSession\n\n    private init() {\n        let config = URLSessionConfiguration.ephemeral\n        config.timeoutIntervalForRequest = 10\n        self.session = URLSession(configuration: config)  // 复用同一个 session\n    }\n\n    func fetchUsers() async throws -> [User] {\n        guard let url = URL(string: \"https://jsonplaceholder.typicode.com/users\") else {\n            throw NetworkError.badURL\n        }\n        // data(from:) 在 Task 被取消时会抛出 CancellationError\n        let (data, response) = try await session.data(from: url)\n        guard let http = response as? HTTPURLResponse,\n              (200...299).contains(http.statusCode) else {\n            throw NetworkError.invalidResponse\n        }\n        do {\n            return try JSONDecoder().decode([User].self, from: data)\n        } catch {\n            throw NetworkError.decodingFailed\n        }\n    }\n}\n\n// MARK: - ViewModel（@MainActor 保证 UI 状态只在主线程更新）\n@MainActor\n@Observable\nfinal class UserListViewModel {\n    enum State {\n        case idle\n        case loading\n        case loaded([User])\n        case failed(String)\n    }\n\n    private(set) var state: State = .idle\n    private var fetchTask: Task<Void, Never>?\n\n    func load() {\n        fetchTask?.cancel()                     // ① 取消上一次未完成的请求，避免竞态\n        fetchTask = Task {\n            state = .loading\n            do {\n                let users = try await UserAPI.shared.fetchUsers()\n                guard !Task.isCancelled else { return }   // ② 取消后不再写状态\n                state = .loaded(users)\n            } catch is CancellationError {\n                // 用户主动取消，静默忽略，不打扰 UI\n            } catch {\n                state = .failed(error.localizedDescription)\n            }\n        }\n    }\n\n    func retry() {\n        state = .idle\n        load()\n    }\n}\n\n// MARK: - View\nstruct UserListView: View {\n    @State private var viewModel = UserListViewModel()\n\n    var body: some View {\n        NavigationStack {\n            Group {\n                switch viewModel.state {\n                case .idle:\n                    ContentUnavailableView(\n                        \"准备就绪\",\n                        systemImage: \"person.crop.circle.badge.questionmark\"\n                    )\n                case .loading:\n                    ProgressView(\"加载中…\")\n                case .loaded(let users):\n                    List(users) { user in\n                        VStack(alignment: .leading, spacing: 4) {\n                            Text(user.name)\n                                .font(.headline)\n                            Text(user.email)\n                                .font(.subheadline)\n                                .foregroundStyle(.secondary)\n                        }\n                    }\n                    .refreshable { viewModel.load() }   // 下拉刷新\n                case .failed(let message):\n                    ContentUnavailableView(\n                        \"加载失败\",\n                        systemImage: \"exclamationmark.triangle\",\n                        description: Text(message)\n                    )\n                    Button(\"重试\") { viewModel.retry() }\n                }\n            }\n            .navigationTitle(\"用户列表\")\n            .toolbar {\n                Button(\"刷新\") { viewModel.load() }\n            }\n        }\n        .task { viewModel.load() }   // ③ 视图出现触发、消失自动取消\n    }\n}\n\n#Preview {\n    UserListView()\n}\n",
+        "explanation": "【1】User 同时遵守 Codable / Identifiable / Sendable，最后一个是并发安全声明，跨 actor 传递时编译器才不会报错。\n\n【2】NetworkError 用枚举封装所有失败场景，并实现 LocalizedError 的 errorDescription，这样 catch 到的 error.localizedDescription 就是可直接展示给用户的中文文案，而不是 \"The operation couldn't be completed\"。\n\n【3】UserAPI 是 actor：init 为 private 配合 static let shared 形成单例，复用同一个 URLSession（Apple 明确建议不要频繁创建 URLSession）。配置 timeoutIntervalForRequest = 10，避免弱网下无限等待。\n\n【4】fetchUsers() 中先校验 URL，再用 try await session.data(from:) 拿到数据，然后校验 HTTP 状态码是否在 200~299，最后才解码。三段校验分别抛出三种不同错误，方便上层做差异化处理。\n\n【5】ViewModel 标注 @MainActor（UI 状态只在主线程读写）+ @Observable（Swift 5.9 起替代 ObservableObject 的新宏，按属性粒度追踪，性能更好）。State 用 enum 表达四种互斥状态，非法组合无法被构造。\n\n【6】load() 的核心是「先取消旧任务再开新任务」：fetchTask?.cancel() 让前一次请求的 await 点抛出 CancellationError，随后新的 Task 接管状态写入，从而杜绝「旧响应覆盖新结果」的竞态。\n\n【7】catch is CancellationError 分支是专门的静默通道：用户切页或连续点击刷新时，取消属于正常行为，不应该弹出错误提示。\n\n【8】View 中 .task { viewModel.load() } 是关键：它在视图出现时执行，并在视图消失时自动取消其中启动的 Task，等价于手动在 onAppear/onDisappear 里管理 Task，但更安全、更简洁。配合 .refreshable 实现下拉刷新。\n\n【9】switch viewModel.state 配合 Group 与 ContentUnavailableView，让每种状态都有清晰的 UI 表现；switch 穷尽性检查保证未来新增状态时编译器会强制你补全 UI 分支。"
       },
       "keyPoints": [
-        "Git 钩子分为客户端（pre-commit / commit-msg / pre-push）与服务端（pre-receive / update），前者提升体验，后者才是真正的安全边界",
-        "用 `git diff --cached --diff-filter=ACM` 只检查本次暂存的文件，保证钩子耗时与仓库规模无关",
-        "钩子存放在 .git/hooks 不受版本控制，团队化方案是 `git config core.hooksPath .githooks` 或使用 pre-commit 框架",
-        "`git commit --no-verify` 可绕过所有客户端钩子，因此必须搭配 CI 的 Required Status Checks 做二次校验",
-        "钩子必须快速失败、给出可执行的修复命令，并保留 SKIP_HOOKS 之类的逃生舱"
+        "用 @MainActor 标注 ViewModel，让编译器强制 UI 状态只在主线程读写，替代容易漏写的 DispatchQueue.main.async",
+        "网络层用 actor + 单例实现，复用同一个 URLSession，并天然获得可变状态的串行化保护",
+        "发起新请求前调用旧 Task.cancel()，并在 await 后检查 Task.isCancelled，杜绝竞态导致的「旧数据覆盖新数据」",
+        "SwiftUI 的 .task { } 修饰符在视图消失时自动取消异步任务，优于 .onAppear 中手动创建 Task",
+        "用 enum 表达 UI 状态（idle/loading/loaded/failed）比多个 Bool 更安全，switch 穷尽性检查能在重构时兜底"
       ],
       "exercise": {
-        "description": "在你的仓库中新建 `.githooks/commit-msg` 钩子，强制提交信息符合 Conventional Commits 规范：必须以 feat/fix/docs/refactor/test/chore 之一开头，紧跟英文冒号和空格，主题长度不得超过 72 个字符。若不符合则拒绝提交并打印正确格式示例。写完后用 `git config core.hooksPath .githooks` 启用，尝试提交一条违规信息验证效果。",
-        "hint": "commit-msg 钩子的第一个参数 `$1` 就是提交信息文件的路径，用 `head -1 \"$1\"` 读取标题行。用 `grep -qE '^(feat|fix|docs|refactor|test|chore): .+'` 做格式匹配，再用 `wc -c` 或 `${#line}` 取长度判断是否超过 72。注意 git commit -m 传入的内容末尾会带换行，取长度时要 trim。",
+        "description": "实现一个「每日一句」App：有一个搜索框输入关键词、一个列表展示格言。要求：(1) 输入变化后 300ms 防抖再发起请求；(2) 新请求发出时自动取消上一次未完成的请求，避免结果乱序；(3) 用 enum 表达 idle / loading / loaded([Quote]) / failed(String) 四种状态；(4) 视图消失时所有任务自动取消；(5) 用 actor 封装网络层并缓存最近一次查询结果。",
+        "hint": "防抖可以这样实现：每次 text 变化时先 cancel 旧 task，再 Task.sleep(nanoseconds: 300_000_000) 之后发起请求 —— 由于 sleep 期间任务被取消会抛出 CancellationError，天然实现了防抖。缓存可以放在 actor 内的一个 [String: [Quote]] 字典里，命中直接返回，未命中才走网络并写回缓存。注意 @Observable 的属性更新必须回到 @MainActor，所以网络结果要 await 回主执行器后再赋值。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全 pre-commit 钩子，使其只对暂存区中已修改的 Python 文件运行 flake8，检查失败时阻止提交。",
-            "codeContext": "#!/usr/bin/env bash\nSTAGED=$(git diff --cached --name-only --diff-filter=ACM | grep '\\.py$' || true)",
+            "question": "为了让异步任务在 SwiftUI 视图消失时被自动取消，我们应该使用哪个视图修饰符？",
+            "codeContext": "struct QuoteView: View {\n    @State private var vm = QuoteViewModel()\n    var body: some View {\n        List(vm.quotes) { Text($0.text) }\n        ____________ {\n            await vm.search(keyword: \"Swift\")\n        }\n    }\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "#!/usr/bin/env bash\nSTAGED=$(git diff ",
+                "content": "        .",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,73 +42,54 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "--cached",
-                  "--staged-files",
-                  "--working-tree",
-                  "--all"
+                  "onAppear",
+                  "task",
+                  "task(id:)",
+                  "backgroundTask"
                 ],
-                "correctAnswer": "--cached"
+                "correctAnswer": "task"
               },
               {
                 "type": "text",
-                "content": " --name-only --diff-filter=ACM | grep '\\.py$' || true)\nif [ -n \"$STAGED\" ]; then\n  flake8 $STAGED\n  if [ $? -ne 0 ]; then\n    ",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "exit 0",
-                  "exit 1",
-                  "return 0",
-                  "break"
-                ],
-                "correctAnswer": "exit 1"
-              },
-              {
-                "type": "text",
-                "content": "\n  fi\nfi",
+                "content": " {\n            await vm.search(keyword: \"Swift\")\n        }",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "--cached, exit 1",
-            "explanation": "pre-commit 必须检查「暂存区」而非工作区，否则会因为未 add 的脏文件而误杀提交，所以用 `git diff --cached`。钩子是非 0 退出码即失败的约定：`exit 1` 表示本次提交被拒绝，`exit 0` 则放行。"
+            "correctAnswer": "task",
+            "explanation": ".task { } 是 Swift 5.5 引入的异步友好修饰符：它在视图出现时运行闭包（闭包是 async 的），并在视图消失时自动取消其中创建的 Task。而 .onAppear 中即便写了 Task { }，也必须手动在 .onDisappear 里 cancel，容易遗漏。需要注意 .task(id:) 是以某个值为「重启键」，值变化时会取消旧任务并重新执行，非常适合做防抖搜索。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于客户端 Git 钩子，下列说法正确的是？",
-            "codeContext": null,
+            "question": "关于 Swift Concurrency 中的 @MainActor 与 actor，下列说法正确的是？",
+            "codeContext": "@MainActor\n@Observable\nfinal class QuoteViewModel {\n    private(set) var quotes: [Quote] = []\n    private let api = QuoteAPI()   // actor\n\n    func search(_ kw: String) async {\n        quotes = try await api.fetch(kw)   // ①\n    }\n}",
             "segments": null,
             "options": [
-              "钩子脚本随仓库一起 clone 到每位成员的 .git/hooks 中，无需额外配置",
-              "钩子脚本存放在 .git/hooks，不受版本控制，默认可被 git commit --no-verify 绕过",
-              "pre-commit 钩子运行失败后，可以用 git commit --amend 强制绕过检查",
-              "客户端钩子是 DevOps 流水线中唯一的质量门禁，无需再配置 CI"
+              "① 处 try await 返回后，quotes 的赋值自动回到后台线程执行，所以不会阻塞 UI",
+              "① 处 try await 返回后，代码会自动回到 MainActor 上执行 quotes 的赋值，这是 @MainActor 的隔离保证",
+              "actor 的方法必须在主线程调用，否则会崩溃",
+              "只需要给 quotes 加 @Published 就能替代 @MainActor，不需要关心执行器"
             ],
-            "correctAnswer": "钩子脚本存放在 .git/hooks，不受版本控制，默认可被 git commit --no-verify 绕过",
-            "explanation": ".git 目录不会被提交到仓库，因此 .git/hooks 下的脚本不会随 clone 分发，需要 core.hooksPath 或 pre-commit 框架来团队化。同时客户端钩子只是体验优化，任何开发者都能用 --no-verify 绕过，必须依赖服务端 hook 或 CI 的 Required Checks 才能形成强制约束。"
+            "correctAnswer": "① 处 try await 返回后，代码会自动回到 MainActor 上执行 quotes 的赋值，这是 @MainActor 的隔离保证",
+            "explanation": "Swift Concurrency 的隔离是静态的：函数体始终运行在其声明的执行器上，await 挂起点只会「让出」执行器，恢复后自动回到原执行器。所以 search() 声明在 @MainActor 类中，try await 之后的 quotes = ... 一定在主线程执行，不需要手动 DispatchQueue.main.async。actor 方法可以在任意执行器调用（用 await 跨越隔离边界），并不要求主线程。@Published 只是 Combine 的变更通知，与执行器隔离无关。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "当前暂存区中有两个文件 a.json 和 b.json。执行下方脚本，控制台会输出什么？",
-            "codeContext": "#!/usr/bin/env bash\nfiles=$(git diff --cached --name-only --diff-filter=ACM | grep '\\.json$' || true)\nif [ -z \"$files\" ]; then\n  echo \"skip\"\n  exit 0\nfi\necho \"lint: $files\"\nexit 0",
+            "question": "以下代码在控制台的输出顺序是什么？",
+            "codeContext": "@MainActor\nfunc demo() async {\n    print(\"A\")\n    Task {\n        print(\"B\")\n    }\n    try? await Task.sleep(nanoseconds: 1_000_000_000)\n    print(\"C\")\n}",
             "segments": null,
             "options": [
-              "skip",
-              "lint: a.json b.json",
-              "lint: a.json\\nb.json",
-              "脚本报错并以非 0 状态退出"
+              "A B C",
+              "A C B",
+              "B A C",
+              "编译错误：不能在 @MainActor 中嵌套 Task"
             ],
-            "correctAnswer": "lint: a.json b.json",
-            "explanation": "`grep '\\.json$'` 命中两个文件，`$files` 的内容是两行文本；但命令替换加双引号后赋值会把尾部换行吃掉，中间的换行在 echo 时被当作 IFS 分隔符折叠成空格，因此输出为 `lint: a.json b.json`。由于 files 非空，不会走 skip 分支；脚本最终 `exit 0` 正常结束。"
+            "correctAnswer": "A B C",
+            "explanation": "demo() 运行在 MainActor 上，先打印 A；随后创建的 Task { } 会继承外围的 actor 上下文（即 MainActor），但它被排入主执行器队列，不会立即执行；接着 try? await Task.sleep 使当前任务挂起并让出 MainActor，此时主执行器取出队列中的任务打印 B；1 秒后 demo() 恢复并打印 C。因此顺序是 A B C。注意：如果 sleep 的时长为 0 或去掉 sleep，输出也可能仍是 A B C，但顺序依赖于执行器调度，实际工程中不要依赖这种时序。"
           }
         ]
       }

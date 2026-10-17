@@ -1,0 +1,310 @@
+{
+ "date": "2026-10-17",
+ "weekday": "Saturday",
+ "overview": "From Ulanqab to the CIIE and Canton Fair, opening-up advances alongside ecological goals; chip earnings shine; banking oversight tightens.",
+ "trendingTopics": [
+  "China International Import Expo",
+  "Canton Fair",
+  "food security",
+  "green computing power",
+  "artificial intelligence",
+  "cross-Strait relations",
+  "semiconductor memory",
+  "financial regulation"
+ ],
+ "sections": [
+  {
+   "id": "domestic",
+   "title": "Domestic Politics",
+   "icon": "🇨🇳",
+   "articles": [
+    {
+     "id": "news-001",
+     "title": "Xi Inspects Ulanqab, Calls for Balanced Development and Conservation",
+     "summary": "During an inspection tour in Ulanqab, Inner Mongolia, Chinese President Xi Jinping stressed the need to coordinate high-quality development with high-level environmental protection, and visited the Huangqihai Nature Reserve to review local ecological conditions.",
+     "detail": "Xi Jinping called for coordinating high-quality development with high-level environmental protection during his inspection of Ulanqab in Inner Mongolia. He also visited the Huangqihai Nature Reserve, where the return of fish and birds amid lush greenery drew attention for the area's ecological recovery.",
+     "impact": "The visit offers guidance for local governments seeking to balance economic growth with ecological protection, boosting environmental governance and green industry development.",
+     "importance": "hot",
+     "tags": [
+      "Ecological Civilization",
+      "Regional Development",
+      "Green Growth"
+     ]
+    },
+    {
+     "id": "news-002",
+     "title": "9th CIIE Sets Records Across Multiple Metrics",
+     "summary": "Preparations for the 9th China International Import Expo (CIIE) are largely complete, with several indicators for product debuts, first-time exhibitions and premieres hitting record highs.",
+     "detail": "The \"CIIE countdown\" is about to begin, with preparations for the 9th China International Import Expo largely finalized. Multiple metrics across product debuts, first-time exhibitions and premieres have reached new records, as the expo grows in both scale and quality.",
+     "impact": "The continued expansion and quality upgrade of the CIIE underscores China's push to open its markets wider and share growth opportunities.",
+     "importance": "hot",
+     "tags": [
+      "CIIE",
+      "Opening-Up",
+      "Consumer Market"
+     ]
+    },
+    {
+     "id": "news-003",
+     "title": "Canton Fair Marks 70 Years and 140 Editions with New Momentum",
+     "summary": "After 70 years and 140 editions, the Canton Fair is taking on new changes, with a string of \"firsts\" reflecting fresh vitality at the long-established trade fair.",
+     "detail": "Reports noted that the Canton Fair, now in its 70th year and 140th edition, is sending a strong signal of openness, with a series of \"firsts\" highlighting the fair's new look. Analysts also broke down China's trade strength along four dimensions: speed, innovation, quality and performance.",
+     "impact": "As a barometer of China's foreign trade, the Canton Fair's changes reflect steady improvements in trade structure and openness.",
+     "importance": "important",
+     "tags": [
+      "Export Trade",
+      "Trade Fairs",
+      "Opening-Up"
+     ]
+    },
+    {
+     "id": "news-004",
+     "title": "Three Decades of Seed Research Safeguard China's Grain Reserves",
+     "summary": "A single seed line has protected the nation's grain supply over 30 years, as technological innovation paints a picture of robust food security and inspires confidence in China's agricultural foundations.",
+     "detail": "The report chronicles how researchers devoted 30 years to safeguarding high-quality seed strains, with technological innovation delivering a bountiful landscape for national food security. It also asks where China's confidence in feeding its people comes from, emphasizing the supporting role of the seed industry and science and technology.",
+     "impact": "Independent innovation in the seed industry is fundamental to food security and will continue to drive advances in agricultural technology.",
+     "importance": "important",
+     "tags": [
+      "Seed Industry",
+      "Food Security",
+      "AgriTech"
+     ]
+    },
+    {
+     "id": "news-005",
+     "title": "How the Yangtze River Forged Bronze Glory",
+     "summary": "\"Cultural China Tour\" focuses on the bronze civilization of the Yangtze River basin, exploring the historical roots of its bronze achievements.",
+     "detail": "The report examines the bronze civilization achievements of the Yangtze River basin, interpreting the region's glorious history of bronze casting and its cultural significance from an archaeological perspective.",
+     "impact": "The coverage showcases archaeological findings from the Yangtze basin, supporting the protection, inheritance and public education of cultural heritage.",
+     "importance": "normal",
+     "tags": [
+      "Archaeology",
+      "Cultural Heritage",
+      "Museums"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "international",
+   "title": "International News",
+   "icon": "🌍",
+   "articles": [
+    {
+     "id": "news-006",
+     "title": "Exclusive Analysis: Mapping the Network of Hardline 'Taiwan Independence' Figures",
+     "summary": "Yuyuan Tantian releases an exclusive breakdown tracing the relationships and connections among 14 hardcore 'Taiwan independence' separatists.",
+     "detail": "The report offers an exclusive analysis of the relationship network among 14 hardcore 'Taiwan independence' figures, revealing their interconnections and exposing the true face of separatist forces.",
+     "impact": "Further exposes the collusion of 'Taiwan independence' separatist forces, sending a warning that separatist activities find no public support.",
+     "importance": "hot",
+     "tags": [
+      "Cross-Strait Relations",
+      "National Security"
+     ]
+    },
+    {
+     "id": "news-007",
+     "title": "Brazilian Blogger Puts China's Cutting-Edge Tech to the Test",
+     "summary": "As part of the 'Overseas Bloggers Experience China' initiative, a Brazilian blogger conducts hands-on testing of Chinese tech products.",
+     "detail": "Under the 'Overseas Bloggers Experience China' program, a blogger from Brazil experienced China's cutting-edge technology firsthand, documenting genuine impressions through an overseas perspective.",
+     "impact": "Hands-on overseas experiences help raise international awareness of Chinese technology products.",
+     "importance": "normal",
+     "tags": [
+      "International Communication",
+      "China Tech"
+     ]
+    },
+    {
+     "id": "news-008",
+     "title": "South Korean Screenwriting Strength Sparks Industry Debate",
+     "summary": "A tongue-in-cheek article assesses the South Korean film and TV industry, arguing that screenwriting is its most competitive element.",
+     "detail": "The article discusses South Korean film and television works, contending that their screenwriting capabilities deserve the most attention and learning, sparking debate across the industry and among audiences.",
+     "impact": "Reflects the domestic industry's ongoing attention to content creation and script quality.",
+     "importance": "normal",
+     "tags": [
+      "Film & TV Creation",
+      "Content Industry"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "finance",
+   "title": "Financial News",
+   "icon": "📈",
+   "articles": [
+    {
+     "id": "news-009",
+     "title": "Deposit Rates Raised Across the Board",
+     "summary": "Deposit rates have been broadly raised, drawing attention from markets and savers alike.",
+     "detail": "The market has taken note of widespread increases in deposit rates involving adjustments across deposit products, attracting close attention from savers and investors.",
+     "impact": "Higher deposit rates could boost the appeal of savings, affecting banks' liability side and household asset allocation.",
+     "importance": "important",
+     "tags": [
+      "Banking",
+      "Deposit Rates"
+     ]
+    },
+    {
+     "id": "news-010",
+     "title": "Major Banks Crack Down on Loan Funds Illegally Flowing into Stock Market",
+     "summary": "Several banks are stepping up checks on loan funds being funneled illegally into the stock market, tightening oversight of credit fund usage.",
+     "detail": "Major banks have launched crackdowns on loans improperly entering the stock market, strengthening monitoring of credit fund flows and usage to prevent money from shifting away from the real economy.",
+     "impact": "The move helps guard against financial risks and supports orderly, healthy development of capital and credit markets.",
+     "importance": "important",
+     "tags": [
+      "Financial Regulation",
+      "Credit Management",
+      "Banking"
+     ]
+    },
+    {
+     "id": "news-011",
+     "title": "\"China's First Color TV Stock\" Confirmed for Delisting",
+     "summary": "The listed company known as \"China's first color TV stock\" has been confirmed for delisting, drawing attention from capital markets.",
+     "detail": "The company long dubbed \"China's first color TV stock\" will be delisted, becoming a closely watched delisting case in the capital markets.",
+     "impact": "The case reflects the ongoing role of market selection mechanisms in capital markets and serves as a warning to related appliance firms.",
+     "importance": "important",
+     "tags": [
+      "Home Appliance Sector",
+      "Capital Markets"
+     ]
+    },
+    {
+     "id": "news-012",
+     "title": "Zunijie Auto Pledges Full Cooperation with Joint Investigation Team",
+     "summary": "Zunijie Auto says it will actively respond, fully comply with and cooperate entirely with the joint investigation team.",
+     "detail": "Zunijie Auto issued a statement pledging to actively respond, fully comply and devote full cooperation to the joint investigation team's work.",
+     "impact": "How the case unfolds will affect market performance and brand image of the models involved, with high industry attention.",
+     "importance": "important",
+     "tags": [
+      "Auto Industry",
+      "Product Quality Regulation"
+     ]
+    },
+    {
+     "id": "news-013",
+     "title": "Gold Ranks Among Top Trendy Consumer Items",
+     "summary": "A roundup of currently popular fashion items places gold second in popularity.",
+     "detail": "Focusing on current consumer preferences among women, the article ranks popular fashion items, with gold coming in second — a sign of strong consumer demand.",
+     "impact": "Reflects gold's sustained popularity in the consumer market; gold jewelry consumption trends are worth watching.",
+     "importance": "normal",
+     "tags": [
+      "Gold Consumption",
+      "Consumer Trends"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tech",
+   "title": "Technology Frontier",
+   "icon": "💡",
+   "articles": [
+    {
+     "id": "news-014",
+     "title": "Wuzhen: How AI Took Root in a Water Town",
+     "summary": "The report focuses on the development of artificial intelligence in the canal town of Wuzhen, tracing how AI has taken root and grown there.",
+     "detail": "Titled 'A Chronicle of AI Growth,' the article showcases how artificial intelligence technologies have been deployed and evolved in the water town of Wuzhen, where technology blends with the town's traditional canalscape.",
+     "impact": "Reflects the accelerating integration of AI with local industries and everyday life scenarios.",
+     "importance": "hot",
+     "tags": [
+      "Artificial Intelligence",
+      "Digital Economy"
+     ]
+    },
+    {
+     "id": "news-015",
+     "title": "Inside Ulanqab's Green Computing Power Exhibition Hall",
+     "summary": "A visit to Ulanqab's green computing power industry exhibition hall offers a look at the local layout and development of the sector.",
+     "detail": "The exhibition hall presents an overview of Ulanqab's green computing power industry, highlighting the city's industrial planning and achievements in this field.",
+     "impact": "The growth of the green computing sector can inject new momentum into local high-quality development, in line with green and low-carbon goals.",
+     "importance": "important",
+     "tags": [
+      "Computing Power Industry",
+      "Digital Economy",
+      "Green Energy"
+     ]
+    },
+    {
+     "id": "news-016",
+     "title": "CXMT Projected to Post Over 130 Billion Yuan Net Profit in First Three Quarters",
+     "summary": "CXMT (ChangXin Memory Technologies) expects net profit to exceed 130 billion yuan in the first three quarters, drawing market attention to its performance.",
+     "detail": "CXMT projects first-three-quarter net profit above 130 billion yuan; its earnings forecast shows profitability holding at a high level.",
+     "impact": "Signals strength in the memory chip industry and offers a ripple effect and benchmark for China's domestic semiconductor supply chain.",
+     "importance": "hot",
+     "tags": [
+      "Semiconductors",
+      "Memory Chips"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "other",
+   "title": "Other Top Stories",
+   "icon": "📰",
+   "articles": [
+    {
+     "id": "news-017",
+     "title": "流感来袭48小时的用药选择",
+     "summary": "作者记录流感来袭48小时内的应对过程，分享个人选择用药的经验。",
+     "detail": "文章以亲身经历讲述流感来袭48小时内的应对与用药选择，提醒读者科学看待流感治疗。",
+     "impact": "流感高发季提醒公众科学就医、合理用药，关注呼吸道疾病防护。",
+     "importance": "important",
+     "tags": [
+      "公共卫生",
+      "流感防控"
+     ]
+    },
+    {
+     "id": "news-018",
+     "title": "高价干细胞输注真能抗衰吗",
+     "summary": "文章追问花费几十万元的干细胞输注是否真能起到抗衰作用。",
+     "detail": "报道关注高价干细胞输注抗衰这一现象，对其实际功效提出疑问，引发对抗衰消费的讨论。",
+     "impact": "提醒消费者理性看待抗衰消费，关注相关技术应用的规范与监管。",
+     "importance": "normal",
+     "tags": [
+      "生物科技",
+      "健康消费"
+     ]
+    },
+    {
+     "id": "news-019",
+     "title": "南方蚊虫出现北移趋势",
+     "summary": "文章关注中国南方的蚊虫正集体“北漂”，出现向北扩散的现象。",
+     "detail": "文章指出，中国南方的蚊虫正在“集体北漂”，分布范围呈现向北移动的趋势，引发公众关注。",
+     "impact": "蚊虫北移提示病媒生物防控需相应向北延伸，公众应注意防蚊防病。",
+     "importance": "normal",
+     "tags": [
+      "公共卫生",
+      "病媒生物防治"
+     ]
+    },
+    {
+     "id": "news-020",
+     "title": "特训学校的300个日夜",
+     "summary": "文章以“特训学校的300个日夜”为题，关注此类机构中的经历与现状。",
+     "detail": "文章讲述在特训学校的300个日夜，关注这类机构的日常与相关经历，引发对青少年教育方式的思考。",
+     "impact": "引发社会对青少年矫正教育方式与相关机构规范管理的关注。",
+     "importance": "normal",
+     "tags": [
+      "青少年教育"
+     ]
+    },
+    {
+     "id": "news-021",
+     "title": "“搭子社交”背后的灰色交易",
+     "summary": "文章揭露“搭子社交”这一社交新现象背后存在的灰色交易问题。",
+     "detail": "文章关注“搭子社交”流行背后的灰色交易现象，提示社交新业态中潜藏的风险与乱象。",
+     "impact": "提示社交新业态需加强规范与治理，引导用户警惕相关风险。",
+     "importance": "normal",
+     "tags": [
+      "社交平台",
+      "网络治理"
+     ]
+    }
+   ]
+  }
+ ]
+}
