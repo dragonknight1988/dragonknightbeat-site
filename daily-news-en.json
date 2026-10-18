@@ -1,16 +1,16 @@
 {
- "date": "2026-10-17",
- "weekday": "Saturday",
- "overview": "From Ulanqab to the CIIE and Canton Fair, opening-up advances alongside ecological goals; chip earnings shine; banking oversight tightens.",
+ "date": "2026-10-18",
+ "weekday": "Sunday",
+ "overview": "Experience-based consumption emerges as a new growth driver, while public safety and health issues draw attention, and undercurrents swell in global energy and AI discourse.",
  "trendingTopics": [
-  "China International Import Expo",
-  "Canton Fair",
-  "food security",
-  "green computing power",
-  "artificial intelligence",
-  "cross-Strait relations",
-  "semiconductor memory",
-  "financial regulation"
+  "Experience Economy",
+  "Geological Disaster Prevention",
+  "Public Health",
+  "Middle East Situation",
+  "Smart Agriculture",
+  "Auto Quality Regulation",
+  "Cultural Exports",
+  "Consumption Upgrade"
  ],
  "sections": [
   {
@@ -20,222 +20,228 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "Xi Inspects Ulanqab, Calls for Balanced Development and Conservation",
-     "summary": "During an inspection tour in Ulanqab, Inner Mongolia, Chinese President Xi Jinping stressed the need to coordinate high-quality development with high-level environmental protection, and visited the Huangqihai Nature Reserve to review local ecological conditions.",
-     "detail": "Xi Jinping called for coordinating high-quality development with high-level environmental protection during his inspection of Ulanqab in Inner Mongolia. He also visited the Huangqihai Nature Reserve, where the return of fish and birds amid lush greenery drew attention for the area's ecological recovery.",
-     "impact": "The visit offers guidance for local governments seeking to balance economic growth with ecological protection, boosting environmental governance and green industry development.",
+     "title": "Xi Jinping Inspects Ulanqab, Inner Mongolia",
+     "summary": "Xi Jinping visited Ulanqab in Inner Mongolia for an inspection tour, with related coverage presented through a golden-framed photo gallery documenting the itinerary.",
+     "detail": "According to media reports, Xi Jinping conducted an inspection in Ulanqab, Inner Mongolia, with news coverage showcasing scenes from the visit in text and images. No further itinerary details were provided; specific inspection content remains subject to official announcements.",
+     "impact": "Local inspections by national leaders typically signal regional development priorities and the advancement of key work programs, warranting continued attention to follow-up deployments.",
      "importance": "hot",
      "tags": [
-      "Ecological Civilization",
+      "Inspection Tour",
       "Regional Development",
-      "Green Growth"
+      "Grassroots Work"
      ]
     },
     {
      "id": "news-002",
-     "title": "9th CIIE Sets Records Across Multiple Metrics",
-     "summary": "Preparations for the 9th China International Import Expo (CIIE) are largely complete, with several indicators for product debuts, first-time exhibitions and premieres hitting record highs.",
-     "detail": "The \"CIIE countdown\" is about to begin, with preparations for the 9th China International Import Expo largely finalized. Multiple metrics across product debuts, first-time exhibitions and premieres have reached new records, as the expo grows in both scale and quality.",
-     "impact": "The continued expansion and quality upgrade of the CIIE underscores China's push to open its markets wider and share growth opportunities.",
-     "importance": "hot",
+     "title": "People's Sharp Commentary: Lessons from the Resolution of the Diaper Controversy",
+     "summary": "People's Sharp Commentary discusses the resolution of the diaper controversy, highlighting the lessons drawn from safeguarding public sense of security.",
+     "detail": "The commentary piece examines the handling and resolution of the diaper-related controversy, emphasizing the importance of maintaining public confidence in safety. It views the incident as a case study for ensuring consumer product safety and responding to public concerns.",
+     "impact": "Provides a reference point for safety regulation and public opinion response in maternal and infant consumer goods, helping bolster public trust in product safety.",
+     "importance": "important",
      "tags": [
-      "CIIE",
-      "Opening-Up",
-      "Consumer Market"
+      "Consumer Product Safety",
+      "Public Opinion Oversight"
      ]
     },
     {
      "id": "news-003",
-     "title": "Canton Fair Marks 70 Years and 140 Editions with New Momentum",
-     "summary": "After 70 years and 140 editions, the Canton Fair is taking on new changes, with a string of \"firsts\" reflecting fresh vitality at the long-established trade fair.",
-     "detail": "Reports noted that the Canton Fair, now in its 70th year and 140th edition, is sending a strong signal of openness, with a series of \"firsts\" highlighting the fair's new look. Analysts also broke down China's trade strength along four dimensions: speed, innovation, quality and performance.",
-     "impact": "As a barometer of China's foreign trade, the Canton Fair's changes reflect steady improvements in trade structure and openness.",
+     "title": "Combining Human and Technical Defenses to Weave a Tighter Geohazard Protection Network",
+     "summary": "A tighter geohazard safety protection network is being built through a combination of manpower and technology, along with data-driven early warning systems.",
+     "detail": "The report proposes integrating human-based prevention with technological defenses, leveraging data to enhance early warning capabilities and strengthen the geohazard protection network. The measures focus on building safety lines of defense for disaster prevention and mitigation.",
+     "impact": "Strengthening geohazard early warning and response capacity helps reduce disaster risks and safeguard lives and property.",
      "importance": "important",
      "tags": [
-      "Export Trade",
-      "Trade Fairs",
-      "Opening-Up"
+      "Geohazard Prevention",
+      "Work Safety",
+      "Disaster Reduction"
      ]
     },
     {
      "id": "news-004",
-     "title": "Three Decades of Seed Research Safeguard China's Grain Reserves",
-     "summary": "A single seed line has protected the nation's grain supply over 30 years, as technological innovation paints a picture of robust food security and inspires confidence in China's agricultural foundations.",
-     "detail": "The report chronicles how researchers devoted 30 years to safeguarding high-quality seed strains, with technological innovation delivering a bountiful landscape for national food security. It also asks where China's confidence in feeding its people comes from, emphasizing the supporting role of the seed industry and science and technology.",
-     "impact": "Independent innovation in the seed industry is fundamental to food security and will continue to drive advances in agricultural technology.",
-     "importance": "important",
+     "title": "\"The Children Who Went to School in the City Have Come Back\"",
+     "summary": "A report examines the phenomenon of \"children who went to school in the city have come back,\" presenting an educational landscape of students returning to rural areas.",
+     "detail": "Under the headline \"The Children Who Went to School in the City Have Come Back,\" the report focuses on students who had transferred to urban schools now returning to their home areas. No further background details were provided; specifics refer to the original report.",
+     "impact": "Reflects new changes in the urban-rural distribution of educational resources and population mobility, offering insights for rural education planning.",
+     "importance": "normal",
      "tags": [
-      "Seed Industry",
-      "Food Security",
-      "AgriTech"
+      "Education",
+      "Urban-Rural Integration",
+      "Population Mobility"
      ]
     },
     {
      "id": "news-005",
-     "title": "How the Yangtze River Forged Bronze Glory",
-     "summary": "\"Cultural China Tour\" focuses on the bronze civilization of the Yangtze River basin, exploring the historical roots of its bronze achievements.",
-     "detail": "The report examines the bronze civilization achievements of the Yangtze River basin, interpreting the region's glorious history of bronze casting and its cultural significance from an archaeological perspective.",
-     "impact": "The coverage showcases archaeological findings from the Yangtze basin, supporting the protection, inheritance and public education of cultural heritage.",
+     "title": "A Craft Left by the Red Army, Kept Alive in One Village for Over 90 Years",
+     "summary": "A Long March retrospective tells the story of a craft passed down by the Red Army that one village has preserved for more than 90 years.",
+     "detail": "The \"Long March Footprints: Yangtze Notes\" feature highlights a village's continuation of a craft dating back to the Red Army era, practiced locally for over 90 years. The report presents the integration of revolutionary heritage with rural industry.",
+     "impact": "Offers a model for combining red cultural heritage with distinctive rural industries, helping drive local cultural and economic development.",
      "importance": "normal",
      "tags": [
-      "Archaeology",
-      "Cultural Heritage",
-      "Museums"
+      "Rural Industry",
+      "Red Culture",
+      "Cultural Heritage"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "International News",
+   "title": "International Politics",
    "icon": "🌍",
    "articles": [
     {
      "id": "news-006",
-     "title": "Exclusive Analysis: Mapping the Network of Hardline 'Taiwan Independence' Figures",
-     "summary": "Yuyuan Tantian releases an exclusive breakdown tracing the relationships and connections among 14 hardcore 'Taiwan independence' separatists.",
-     "detail": "The report offers an exclusive analysis of the relationship network among 14 hardcore 'Taiwan independence' figures, revealing their interconnections and exposing the true face of separatist forces.",
-     "impact": "Further exposes the collusion of 'Taiwan independence' separatist forces, sending a warning that separatist activities find no public support.",
+     "title": "Tanker Carrying Over 2 Million Barrels of Oil Strikes Mine in Strait of Hormuz",
+     "summary": "Iran's Revolutionary Guard says a tanker carrying more than 2 million barrels of crude struck a mine and exploded in the Strait of Hormuz.",
+     "detail": "According to sources from Iran's Revolutionary Guard, a tanker carrying over 2 million barrels of crude struck a mine and exploded in the Strait of Hormuz, with related footage from the scene released online. Further details of the incident are still being confirmed.",
+     "impact": "The Strait of Hormuz is a critical global energy shipping route, and the incident could disrupt international energy transport security and oil price expectations.",
      "importance": "hot",
      "tags": [
-      "Cross-Strait Relations",
-      "National Security"
+      "Middle East",
+      "International Energy",
+      "Maritime Transport Safety"
      ]
     },
     {
      "id": "news-007",
-     "title": "Brazilian Blogger Puts China's Cutting-Edge Tech to the Test",
-     "summary": "As part of the 'Overseas Bloggers Experience China' initiative, a Brazilian blogger conducts hands-on testing of Chinese tech products.",
-     "detail": "Under the 'Overseas Bloggers Experience China' program, a blogger from Brazil experienced China's cutting-edge technology firsthand, documenting genuine impressions through an overseas perspective.",
-     "impact": "Hands-on overseas experiences help raise international awareness of Chinese technology products.",
-     "importance": "normal",
+     "title": "APEC CEO Summit Enters One-Month Countdown",
+     "summary": "The APEC CEO Summit has entered a one-month countdown, drawing attention to ongoing preparatory work.",
+     "detail": "Reports say the APEC CEO Summit has reached the one-month mark in its countdown. No further agenda details were provided; specific arrangements are subject to official announcements.",
+     "impact": "An approaching summit typically signals rising momentum on regional trade and economic cooperation, making related business-sector engagement worth watching.",
+     "importance": "important",
      "tags": [
-      "International Communication",
-      "China Tech"
+      "Multilateral Cooperation",
+      "International Trade",
+      "Regional Economy"
      ]
     },
     {
      "id": "news-008",
-     "title": "South Korean Screenwriting Strength Sparks Industry Debate",
-     "summary": "A tongue-in-cheek article assesses the South Korean film and TV industry, arguing that screenwriting is its most competitive element.",
-     "detail": "The article discusses South Korean film and television works, contending that their screenwriting capabilities deserve the most attention and learning, sparking debate across the industry and among audiences.",
-     "impact": "Reflects the domestic industry's ongoing attention to content creation and script quality.",
+     "title": "Scam Call Impersonating Officials Made to Hong Kong's Security Chief",
+     "summary": "A scam call impersonating officials was placed to Hong Kong's Secretary for Security, who gave a pointed response.",
+     "detail": "Reports say scammers posing as officials called Hong Kong Secretary for Security Chris Tang, who replied, \"Come find me in person.\" The report detailed the circumstances of the fraudulent call.",
+     "impact": "The incident underscores the prevalence of impersonation scams and serves as a reminder for the public to stay vigilant against fraud.",
      "importance": "normal",
      "tags": [
-      "Film & TV Creation",
-      "Content Industry"
+      "Anti-Fraud Efforts"
+     ]
+    },
+    {
+     "id": "news-009",
+     "title": "Reporter's Notebook: The Meeting and Blending of Traditional Cultures in Malaysia",
+     "summary": "A reporter's notebook records observations and experiences of traditional cultures meeting and blending in Malaysia.",
+     "detail": "Titled \"The Meeting and Blending of Traditional Cultures in Malaysia,\" the reporter's notebook documents scenes and reflections from cultural exchange. No further details were provided; please refer to the original report.",
+     "impact": "Helps advance mutual learning among civilizations and promotes the overseas spread and exchange of Chinese culture.",
+     "importance": "normal",
+     "tags": [
+      "Cultural Exchange",
+      "Overseas Outreach",
+      "Traditional Culture"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Financial News",
+   "title": "Finance Watch",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-009",
-     "title": "Deposit Rates Raised Across the Board",
-     "summary": "Deposit rates have been broadly raised, drawing attention from markets and savers alike.",
-     "detail": "The market has taken note of widespread increases in deposit rates involving adjustments across deposit products, attracting close attention from savers and investors.",
-     "impact": "Higher deposit rates could boost the appeal of savings, affecting banks' liability side and household asset allocation.",
-     "importance": "important",
-     "tags": [
-      "Banking",
-      "Deposit Rates"
-     ]
-    },
-    {
      "id": "news-010",
-     "title": "Major Banks Crack Down on Loan Funds Illegally Flowing into Stock Market",
-     "summary": "Several banks are stepping up checks on loan funds being funneled illegally into the stock market, tightening oversight of credit fund usage.",
-     "detail": "Major banks have launched crackdowns on loans improperly entering the stock market, strengthening monitoring of credit fund flows and usage to prevent money from shifting away from the real economy.",
-     "impact": "The move helps guard against financial risks and supports orderly, healthy development of capital and credit markets.",
-     "importance": "important",
+     "title": "RMB 19.67 Trillion New Frontier: Experience Reshapes Consumption",
+     "summary": "Reports indicate that 'experience' is reshaping consumption, with the related market reaching a new frontier worth RMB 19.67 trillion.",
+     "detail": "Using the RMB 19.67 trillion figure as an entry point, the report explains how 'experience' is reshaping the consumption landscape, with experience-driven consumption emerging as a new growth frontier. The content focuses on shifting trends in consumption structure and spending habits.",
+     "impact": "The rise of experience consumption could drive growth across tourism, live performances, immersive businesses and other sectors, reshaping commercial layouts.",
+     "importance": "hot",
      "tags": [
-      "Financial Regulation",
-      "Credit Management",
-      "Banking"
+      "Experience Consumption",
+      "Consumption Upgrade",
+      "Services Sector"
      ]
     },
     {
      "id": "news-011",
-     "title": "\"China's First Color TV Stock\" Confirmed for Delisting",
-     "summary": "The listed company known as \"China's first color TV stock\" has been confirmed for delisting, drawing attention from capital markets.",
-     "detail": "The company long dubbed \"China's first color TV stock\" will be delisted, becoming a closely watched delisting case in the capital markets.",
-     "impact": "The case reflects the ongoing role of market selection mechanisms in capital markets and serves as a warning to related appliance firms.",
+     "title": "Foreign Buyers Head Straight to Factory Floors After Canton Fair",
+     "summary": "After attending the Canton Fair, foreign buyers grouped together to visit factory workshops on-site, showing strong interest in striking deals.",
+     "detail": "The report describes the trend of foreign buyers heading directly to factory floors for on-site visits after the Canton Fair, reflecting overseas purchasers' attention to Chinese manufacturing and their enthusiasm for cooperation.",
+     "impact": "Reflects a shift upstream in the foreign trade order conversion chain, helping improve the efficiency of China-foreign industrial and supply chain linkages.",
      "importance": "important",
      "tags": [
-      "Home Appliance Sector",
-      "Capital Markets"
+      "Foreign Trade",
+      "Supply Chain",
+      "Exhibition Economy"
      ]
     },
     {
      "id": "news-012",
-     "title": "Zunijie Auto Pledges Full Cooperation with Joint Investigation Team",
-     "summary": "Zunijie Auto says it will actively respond, fully comply with and cooperate entirely with the joint investigation team.",
-     "detail": "Zunijie Auto issued a statement pledging to actively respond, fully comply and devote full cooperation to the joint investigation team's work.",
-     "impact": "How the case unfolds will affect market performance and brand image of the models involved, with high industry attention.",
+     "title": "Stelato Auto: Fully Complying with and Cooperating with Joint Investigation Team",
+     "summary": "Stelato Auto has pledged to respond actively and fully comply with and cooperate with the joint investigation team.",
+     "detail": "Stelato Auto issued a statement saying it will respond actively and fully comply with and cooperate with the joint investigation team. The source did not specify the subject of the investigation; further details will be based on official information.",
+     "impact": "Demonstrates the company's cooperative stance toward regulatory investigations; how the matter unfolds could affect the brand's credibility and industry standards.",
      "importance": "important",
      "tags": [
-      "Auto Industry",
-      "Product Quality Regulation"
+      "Auto Quality Regulation",
+      "Consumer Rights",
+      "Corporate Management"
      ]
     },
     {
      "id": "news-013",
-     "title": "Gold Ranks Among Top Trendy Consumer Items",
-     "summary": "A roundup of currently popular fashion items places gold second in popularity.",
-     "detail": "Focusing on current consumer preferences among women, the article ranks popular fashion items, with gold coming in second — a sign of strong consumer demand.",
-     "impact": "Reflects gold's sustained popularity in the consumer market; gold jewelry consumption trends are worth watching.",
+     "title": "Women's Fashion Picks: Gold Ranks Second in Popularity",
+     "summary": "A report reviews fashion item trends, with gold ranking second among the hottest fashion picks for 'midlife women'.",
+     "detail": "The report says gold ranks second in fashion item preferences among the relevant group, focusing on the trend of gold being favored as a fashion consumer product.",
+     "impact": "The jewelry-oriented and fashion-driven consumption of gold could continue to boost related retail and design industries.",
      "importance": "normal",
      "tags": [
       "Gold Consumption",
-      "Consumer Trends"
+      "Fashion Consumption",
+      "Retail"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Technology Frontier",
+   "title": "Tech Frontiers",
    "icon": "💡",
    "articles": [
     {
      "id": "news-014",
-     "title": "Wuzhen: How AI Took Root in a Water Town",
-     "summary": "The report focuses on the development of artificial intelligence in the canal town of Wuzhen, tracing how AI has taken root and grown there.",
-     "detail": "Titled 'A Chronicle of AI Growth,' the article showcases how artificial intelligence technologies have been deployed and evolved in the water town of Wuzhen, where technology blends with the town's traditional canalscape.",
-     "impact": "Reflects the accelerating integration of AI with local industries and everyday life scenarios.",
-     "importance": "hot",
+     "title": "Foreign Experts Dispute So-Called 'China AI Threat' Narrative",
+     "summary": "Foreign experts reject the so-called 'China AI threat' narrative, calling it a story fabricated by the West out of fear of falling behind.",
+     "detail": "On the 'News Salon' program, foreign experts responded to the so-called 'China AI threat' narrative, arguing it is a story fabricated by the West out of anxiety over losing its technological lead. Their remarks offered positive assessments of China's AI development.",
+     "impact": "Helps counter biased perceptions of China's AI development in international discourse and promotes greater technological cooperation and exchange.",
+     "importance": "important",
      "tags": [
       "Artificial Intelligence",
-      "Digital Economy"
+      "International Discourse",
+      "Tech Cooperation"
      ]
     },
     {
      "id": "news-015",
-     "title": "Inside Ulanqab's Green Computing Power Exhibition Hall",
-     "summary": "A visit to Ulanqab's green computing power industry exhibition hall offers a look at the local layout and development of the sector.",
-     "detail": "The exhibition hall presents an overview of Ulanqab's green computing power industry, highlighting the city's industrial planning and achievements in this field.",
-     "impact": "The growth of the green computing sector can inject new momentum into local high-quality development, in line with green and low-carbon goals.",
+     "title": "China's Smart Grain Silos Yield Significant Results",
+     "summary": "Reports say China's smart grain silo construction has achieved notable results, raising the level of智能化 in grain storage.",
+     "detail": "Reports highlight significant progress in China's smart grain silo construction, reflecting advances in intelligent storage across the grain sector. The source material did not provide further specific data; refer to the original report for details.",
+     "impact": "Smart storage helps improve the efficiency of grain reserve management and strengthen the foundations of food security.",
      "importance": "important",
      "tags": [
-      "Computing Power Industry",
-      "Digital Economy",
-      "Green Energy"
+      "Smart Agriculture",
+      "Food Security",
+      "Warehousing & Logistics"
      ]
     },
     {
      "id": "news-016",
-     "title": "CXMT Projected to Post Over 130 Billion Yuan Net Profit in First Three Quarters",
-     "summary": "CXMT (ChangXin Memory Technologies) expects net profit to exceed 130 billion yuan in the first three quarters, drawing market attention to its performance.",
-     "detail": "CXMT projects first-three-quarter net profit above 130 billion yuan; its earnings forecast shows profitability holding at a high level.",
-     "impact": "Signals strength in the memory chip industry and offers a ripple effect and benchmark for China's domestic semiconductor supply chain.",
-     "importance": "hot",
+     "title": "Three Gorges in Numbers: Infographics Reveal the Value of a National Engineering Marvel",
+     "summary": "'Three Gorges in Numbers' uses a set of infographics to showcase the value and comprehensive strengths of this landmark national project.",
+     "detail": "The report, themed 'Three Gorges in Numbers,' presents the value of the national engineering marvel through a series of infographics, highlighting the comprehensive strength and significance embodied by the Three Gorges Project. Refer to the original image collection for specific data.",
+     "impact": "Showcases the technical and overall benefits of a major national project, deepening public understanding of China's flagship infrastructure.",
+     "importance": "normal",
      "tags": [
-      "Semiconductors",
-      "Memory Chips"
+      "Clean Energy",
+      "National Engineering Marvel",
+      "Water Conservancy & Hydropower"
      ]
     }
    ]
@@ -247,61 +253,67 @@
    "articles": [
     {
      "id": "news-017",
-     "title": "流感来袭48小时的用药选择",
-     "summary": "作者记录流感来袭48小时内的应对过程，分享个人选择用药的经验。",
-     "detail": "文章以亲身经历讲述流感来袭48小时内的应对与用药选择，提醒读者科学看待流感治疗。",
-     "impact": "流感高发季提醒公众科学就医、合理用药，关注呼吸道疾病防护。",
+     "title": "The First 48 Hours of Flu: How to Pick the Right Medicine",
+     "summary": "A report on choosing the right medication within the first 48 hours of flu symptoms, highlighting the importance of timing.",
+     "detail": "The report focuses on the critical 48-hour window after flu onset, sharing experiences on selecting appropriate medication and stressing the importance of timely, symptom-matched treatment. Always follow medical advice when taking any medication.",
+     "impact": "Offers a reference for public self-care during flu season and helps promote a more scientific approach to managing illness.",
      "importance": "important",
      "tags": [
-      "公共卫生",
-      "流感防控"
+      "Public Health",
+      "Flu Prevention and Treatment",
+      "Health Education"
      ]
     },
     {
      "id": "news-018",
-     "title": "高价干细胞输注真能抗衰吗",
-     "summary": "文章追问花费几十万元的干细胞输注是否真能起到抗衰作用。",
-     "detail": "报道关注高价干细胞输注抗衰这一现象，对其实际功效提出疑问，引发对抗衰消费的讨论。",
-     "impact": "提醒消费者理性看待抗衰消费，关注相关技术应用的规范与监管。",
+     "title": "Can Hundred-Thousand-Yuan Stem Cell Infusions Really Fight Aging?",
+     "summary": "A report questions whether stem cell infusions costing hundreds of thousands of yuan truly deliver anti-aging effects, amid concerns over high-priced longevity treatments.",
+     "detail": "The report examines stem cell infusion programs on the market priced at hundreds of thousands of yuan, exploring whether they genuinely offer anti-aging benefits. The topic touches on the science and regulation of high-priced health consumption.",
+     "impact": "Helps the public view costly anti-aging services more rationally and pushes the sector toward stronger regulation.",
      "importance": "normal",
      "tags": [
-      "生物科技",
-      "健康消费"
+      "Medical Aesthetics and Health",
+      "Health Spending",
+      "Consumer Warning"
      ]
     },
     {
      "id": "news-019",
-     "title": "南方蚊虫出现北移趋势",
-     "summary": "文章关注中国南方的蚊虫正集体“北漂”，出现向北扩散的现象。",
-     "detail": "文章指出，中国南方的蚊虫正在“集体北漂”，分布范围呈现向北移动的趋势，引发公众关注。",
-     "impact": "蚊虫北移提示病媒生物防控需相应向北延伸，公众应注意防蚊防病。",
+     "title": "Venomous Mosquitoes from Southern China Are Migrating North En Masse",
+     "summary": "A report on the trend of venomous mosquitoes from southern China migrating north, signaling shifts in the distribution of disease vectors.",
+     "detail": "The report says venomous mosquitoes from southern China are moving north in large numbers, describing an expansion of mosquito distribution toward northern regions. The source provides no further specific data; refer to the original report.",
+     "impact": "Shifting vector distribution may pose new public health challenges, calling for enhanced surveillance and control measures.",
      "importance": "normal",
      "tags": [
-      "公共卫生",
-      "病媒生物防治"
+      "Public Health",
+      "Disease Vectors",
+      "Health Protection"
      ]
     },
     {
      "id": "news-020",
-     "title": "特训学校的300个日夜",
-     "summary": "文章以“特训学校的300个日夜”为题，关注此类机构中的经历与现状。",
-     "detail": "文章讲述在特训学校的300个日夜，关注这类机构的日常与相关经历，引发对青少年教育方式的思考。",
-     "impact": "引发社会对青少年矫正教育方式与相关机构规范管理的关注。",
+     "title": "Eason Chan to Stage 26 Concerts — Phones Banned",
+     "summary": "Eason Chan is set to launch a 26-concert run, with an explicit ban on bringing mobile phones into the venue.",
+     "detail": "Reports say Eason Chan will stage 26 concerts and that audience rules explicitly prohibit bringing phones into the venue. The arrangement has drawn widespread attention.",
+     "impact": "Could drive new experimentation in concert rules and immersive experiences across the live entertainment industry.",
      "importance": "normal",
      "tags": [
-      "青少年教育"
+      "Entertainment",
+      "Live Performance Market",
+      "Cultural Consumption"
      ]
     },
     {
      "id": "news-021",
-     "title": "“搭子社交”背后的灰色交易",
-     "summary": "文章揭露“搭子社交”这一社交新现象背后存在的灰色交易问题。",
-     "detail": "文章关注“搭子社交”流行背后的灰色交易现象，提示社交新业态中潜藏的风险与乱象。",
-     "impact": "提示社交新业态需加强规范与治理，引导用户警惕相关风险。",
+     "title": "Cinemas Keep Rolling Out New Ways to Watch",
+     "summary": "A report on cinemas continuously introducing new operating formats, bringing fresh changes to the moviegoing experience.",
+     "detail": "The report says cinemas keep rolling out new approaches, showcasing innovations in format and experience across the theater business. The source provides no further details; refer to the original report.",
+     "impact": "Innovation in cinema formats can help draw audiences back and boost a recovery in the film consumption market.",
      "importance": "normal",
      "tags": [
-      "社交平台",
-      "网络治理"
+      "Film Market",
+      "Cultural Consumption",
+      "Experience Economy"
      ]
     }
    ]

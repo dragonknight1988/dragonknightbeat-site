@@ -1,181 +1,192 @@
 {
-  "date": "2026-10-17",
+  "date": "2026-10-18",
   "content": {
-    "id": "en-2026-10-17",
-    "date": "2026-10-17",
-    "topic": "文化与旅行",
+    "id": "en-2026-10-18",
+    "date": "2026-10-18",
+    "topic": "健康与生活",
     "newsHighlights": [
       {
-        "title": "Old department stores sell nostalgic journey to past",
-        "source": "ChinaDaily",
-        "summary": "Old department stores across China are being renovated into cultural landmarks that offer visitors a nostalgic journey back to the past.",
-        "translation": "中国各地的老百货商场被改造为文化地标，为游客提供一场重返过去的怀旧之旅。",
+        "title": "Nation strengthening global outreach of TCM",
+        "source": "China Daily",
+        "summary": "China is stepping up efforts to share traditional Chinese medicine with the world, promoting holistic health and disease prevention.",
+        "translation": "中国正加大力度向世界推广中医药，倡导整体健康与疾病预防理念。",
         "keyWords": [
-          "nostalgic",
-          "department store",
-          "cultural landmark"
+          "TCM",
+          "holistic",
+          "prevention"
         ]
       },
       {
-        "title": "Why is the world learning Chinese?",
-        "source": "ChinaDaily",
-        "summary": "A growing number of people around the world are learning Chinese to better understand China's culture, history and modern development.",
-        "translation": "全球越来越多的人正在学习中文，以便更好地了解中国的文化、历史与当代发展。",
+        "title": "Xi: Prioritize ecological conservation",
+        "source": "China Daily",
+        "summary": "President Xi Jinping urged that ecological conservation be prioritized so that people can enjoy cleaner air, water and a healthier life.",
+        "translation": "习近平主席强调要优先推进生态保护，让人民群众享有更清洁的空气、更干净的水源和更健康的生活。",
         "keyWords": [
-          "language learning",
-          "cultural exchange",
-          "global"
+          "ecological",
+          "conservation",
+          "well-being"
         ]
       },
       {
-        "title": "New China-DPRK border bridge opens to traffic",
-        "source": "ChinaDaily",
-        "summary": "A newly built bridge on the China-DPRK border has opened to traffic, strengthening cross-border travel and trade ties.",
-        "translation": "中朝边境一座新建大桥正式通车，进一步加强跨境旅行与贸易往来。",
+        "title": "Xi advances conservation with people at heart",
+        "source": "China Daily",
+        "summary": "Fish have returned to the once-dried Huangqihai Lake in Inner Mongolia, showing how ecological restoration improves both nature and public health.",
+        "translation": "曾经干涸的内蒙古黄旗海重现鱼群，表明生态修复既能改善自然环境，也能增进公众健康。",
         "keyWords": [
-          "border",
-          "bridge",
-          "cross-border"
+          "restoration",
+          "biodiversity",
+          "respiratory"
         ]
       },
       {
-        "title": "Xi congratulates Hunan University on its centenary",
-        "source": "ChinaDaily",
-        "summary": "President Xi Jinping sent a congratulatory letter to Hunan University as the university celebrates the centenary of its official founding.",
-        "translation": "在湖南大学迎来建校百年之际，习近平主席致信祝贺。",
+        "title": "Yin Yuzhen plants a tree in FAO headquarters",
+        "source": "China Daily",
+        "summary": "Desert afforestation model Yin Yuzhen planted a tree at the FAO headquarters, symbolizing China's commitment to green and sustainable living.",
+        "translation": "治沙造林模范殷玉珍在联合国粮农组织总部种下一棵树，象征着中国对绿色可持续生活的承诺。",
         "keyWords": [
-          "centenary",
-          "university",
-          "heritage"
+          "afforestation",
+          "sustainable",
+          "initiative"
+        ]
+      },
+      {
+        "title": "Red spirit spurs green growth",
+        "source": "China Daily",
+        "summary": "Marking the 90th anniversary of the Long March, young people are retracing the historic route on foot while promoting green, healthy lifestyles.",
+        "translation": "值此长征胜利90周年之际，年轻人徒步重走长征路，同时倡导绿色健康的生活方式。",
+        "keyWords": [
+          "Long March",
+          "green growth",
+          "lifestyle"
         ]
       }
     ],
     "quote": {
-      "quote": "The world is a book and those who do not travel read only one page.",
-      "author": "Saint Augustine",
-      "translation": "世界是一本书，不旅行的人只读了其中一页。",
-      "explanation": "这句话把世界比作一本书，强调旅行是认识多元文化、开阔视野的方式。今天的老百货怀旧热、跨境大桥通车与全球中文热，都说明走出去、去体验，才能真正读懂另一种文化。"
+      "quote": "Let food be thy medicine and medicine be thy food.",
+      "author": "Hippocrates",
+      "translation": "让食物成为你的药物，让药物成为你的食物。",
+      "explanation": "这句出自“西方医学之父”希波克拉底的名言强调饮食对健康的根本作用，与今日新闻中中医药所倡导的“药食同源”“治未病”理念高度契合：真正的健康来自日常饮食与生活方式，而非等到生病后才治疗。"
     },
     "vocabulary": [
       {
-        "word": "nostalgic",
-        "phonetic": "/nɒˈstældʒɪk/",
-        "partOfSpeech": "adjective",
-        "definition": "怀旧的，令人怀念过去的",
-        "example": "Old department stores offer customers a nostalgic journey to the past.",
-        "translation": "老百货商场为顾客提供一场怀旧的时光之旅。",
-        "newsContext": "来自标题《Old department stores sell nostalgic journey to past》，形容老商场带来的怀旧体验。"
+        "word": "herbal",
+        "phonetic": "/ˈhɜːbl/",
+        "partOfSpeech": "形容词",
+        "definition": "草本的；草药的",
+        "example": "Herbal remedies are becoming popular among people seeking a natural way to stay healthy.",
+        "translation": "草药疗法正受到追求自然健康方式的人们欢迎。",
+        "newsContext": "出自 China Daily 报道《Nation strengthening global outreach of TCM》，文中介绍中草药（herbal medicine）等传统疗法走向世界。"
       },
       {
-        "word": "nostalgia",
-        "phonetic": "/nɒˈstældʒə/",
-        "partOfSpeech": "noun",
-        "definition": "怀旧之情，对往昔的眷恋",
-        "example": "The renovated stores tap into a deep sense of nostalgia among young shoppers.",
-        "translation": "改造后的商场唤起了年轻顾客内心深处的怀旧情结。",
-        "newsContext": "来自老百货商场新闻，指消费者对童年与旧时光的情感记忆。"
+        "word": "acupuncture",
+        "phonetic": "/ˈækjupʌŋktʃə(r)/",
+        "partOfSpeech": "名词",
+        "definition": "针灸（疗法）",
+        "example": "Acupuncture is now practised in more than 190 countries and regions around the world.",
+        "translation": "针灸如今已在世界190多个国家和地区得到应用。",
+        "newsContext": "出自《Nation strengthening global outreach of TCM》，报道指出针灸等中医疗法正加速走向海外。"
       },
       {
-        "word": "centenary",
-        "phonetic": "/senˈtiːnəri/",
-        "partOfSpeech": "noun",
-        "definition": "百年纪念，一百周年",
-        "example": "Hunan University celebrated the centenary of its official founding this year.",
-        "translation": "湖南大学今年迎来了建校百年纪念。",
-        "newsContext": "来自《Xi congratulates Hunan University on its centenary》，指学校建校一百周年。"
+        "word": "well-being",
+        "phonetic": "/ˌwelˈbiːɪŋ/",
+        "partOfSpeech": "名词",
+        "definition": "健康；幸福；身心安泰",
+        "example": "A clean environment is closely linked to the well-being of the whole community.",
+        "translation": "洁净的环境与整个社区居民的身心健康密切相关。",
+        "newsContext": "出自《Xi: Prioritize ecological conservation》，生态保护被视为提升人民生活福祉（well-being）的重要基础。"
       },
       {
-        "word": "commemorate",
-        "phonetic": "/kəˈmeməreɪt/",
-        "partOfSpeech": "verb",
-        "definition": "纪念，庆祝（以缅怀过去）",
-        "example": "The university held a series of events to commemorate its 100th anniversary.",
-        "translation": "该校举办了一系列活动以纪念建校一百周年。",
-        "newsContext": "关联湖南大学百年校庆新闻中的纪念活动。"
+        "word": "restoration",
+        "phonetic": "/ˌrestəˈreɪʃn/",
+        "partOfSpeech": "名词",
+        "definition": "修复；恢复",
+        "example": "Ecological restoration has brought fish back to the once-dried Huangqihai Lake.",
+        "translation": "生态修复让曾经干涸的黄旗海重新出现了鱼群。",
+        "newsContext": "出自《Xi advances conservation with people at heart》，报道描述黄旗海生态修复的成效。"
       },
       {
-        "word": "heritage",
-        "phonetic": "/ˈherɪtɪdʒ/",
-        "partOfSpeech": "noun",
-        "definition": "遗产；传统（尤指文化遗产）",
-        "example": "These century-old buildings are part of the city's cultural heritage.",
-        "translation": "这些百年建筑是这座城市文化遗产的一部分。",
-        "newsContext": "来自老百货商场与百年名校新闻，指代历史建筑与文化传统。"
+        "word": "sustainable",
+        "phonetic": "/səˈsteɪnəbl/",
+        "partOfSpeech": "形容词",
+        "definition": "可持续的",
+        "example": "The region is pursuing sustainable growth that benefits both nature and people.",
+        "translation": "该地区正在追求既有利于自然又惠及民众的可持续发展。",
+        "newsContext": "出自《Red spirit spurs green growth》与《Yin Yuzhen plants a tree in FAO headquarters》，两篇报道均强调绿色可持续发展。"
       },
       {
-        "word": "renovate",
-        "phonetic": "/ˈrenəveɪt/",
-        "partOfSpeech": "verb",
-        "definition": "翻新，修复，整修",
-        "example": "The old department store was renovated into a cultural and shopping landmark.",
-        "translation": "这家老百货商场被翻新改造为文化与购物地标。",
-        "newsContext": "来自老百货商场改造新闻，指对旧建筑的整修升级。"
+        "word": "biodiversity",
+        "phonetic": "/ˌbaɪəʊdaɪˈvɜːsəti/",
+        "partOfSpeech": "名词",
+        "definition": "生物多样性",
+        "example": "Restoring wetlands helps protect local biodiversity and improve air quality.",
+        "translation": "修复湿地有助于保护当地生物多样性并改善空气质量。",
+        "newsContext": "出自《Xi advances conservation with people at heart》，湖泊与湿地修复带来物种回归，生物多样性明显提升。"
       },
       {
-        "word": "landmark",
-        "phonetic": "/ˈlændmɑːk/",
-        "partOfSpeech": "noun",
-        "definition": "地标；里程碑",
-        "example": "The reopened store has quickly become a landmark for cultural travel in the city.",
-        "translation": "重新开业的商场迅速成为这座城市的文化旅行地标。",
-        "newsContext": "来自老百货商场与中朝边境大桥新闻，均指具有标志意义的地点或事件。"
+        "word": "respiratory",
+        "phonetic": "/rəˈspɪrətri/",
+        "partOfSpeech": "形容词",
+        "definition": "呼吸的；与呼吸系统有关的",
+        "example": "Poor air quality can lead to respiratory problems, especially among children and the elderly.",
+        "translation": "空气质量差可能引发呼吸系统疾病，儿童和老人尤其容易受影响。",
+        "newsContext": "关联《Xi: Prioritize ecological conservation》报道：空气质量改善直接减少居民呼吸系统（respiratory）疾病。"
       },
       {
-        "word": "border",
-        "phonetic": "/ˈbɔːdə(r)/",
-        "partOfSpeech": "noun",
-        "definition": "边界，边境",
-        "example": "A new bridge on the China-DPRK border has opened to traffic.",
-        "translation": "中朝边境的一座新桥已正式通车。",
-        "newsContext": "来自《New China-DPRK border bridge opens to traffic》，指两国交界地带。"
+        "word": "prevention",
+        "phonetic": "/prɪˈvenʃn/",
+        "partOfSpeech": "名词",
+        "definition": "预防；防止",
+        "example": "Traditional Chinese medicine places great emphasis on prevention rather than cure.",
+        "translation": "中医药非常强调预防而非治疗。",
+        "newsContext": "出自《Nation strengthening global outreach of TCM》，报道突出中医“治未病”的预防理念。"
       },
       {
-        "word": "vibrant",
-        "phonetic": "/ˈvaɪbrənt/",
-        "partOfSpeech": "adjective",
-        "definition": "充满活力的，生机勃勃的",
-        "example": "Learning Chinese has become a vibrant global trend among young people.",
-        "translation": "学习中文已成为年轻人中一股充满活力的全球潮流。",
-        "newsContext": "来自《Why is the world learning Chinese?》，描述全球中文热的蓬勃态势。"
+        "word": "holistic",
+        "phonetic": "/həʊˈlɪstɪk/",
+        "partOfSpeech": "形容词",
+        "definition": "整体的；全面的",
+        "example": "TCM takes a holistic view of the human body, treating the person rather than just the disease.",
+        "translation": "中医以整体观念看待人体，医治的是人而不仅仅是病。",
+        "newsContext": "出自《Nation strengthening global outreach of TCM》，报道用 holistic 描述中医的整体诊疗理念。"
       },
       {
         "word": "initiative",
         "phonetic": "/ɪˈnɪʃətɪv/",
-        "partOfSpeech": "noun",
-        "definition": "倡议；主动性，首创精神",
-        "example": "The cultural tourism initiative aims to attract more visitors from home and abroad.",
-        "translation": "这项文化旅游倡议旨在吸引更多国内外游客。",
-        "newsContext": "关联今日多条新闻中关于文化交流与跨境合作的倡议行动。"
+        "partOfSpeech": "名词",
+        "definition": "倡议；新方案；主动性",
+        "example": "The greening initiative has transformed large areas of desert into green woodland.",
+        "translation": "这项绿化倡议已把大片沙漠变成了绿色林地。",
+        "newsContext": "出自《Yin Yuzhen plants a tree in FAO headquarters》，报道提及中国防治荒漠化的一系列绿化倡议（initiative）。"
       }
     ],
     "pattern": {
-      "pattern": "A is more than just B; it is C（A不仅仅是B，更是C）",
-      "example": "Old department stores are more than just places to shop; they offer a nostalgic journey to the past.",
-      "translation": "老百货商场不仅仅是购物的地方，更是一场重返过去的怀旧之旅。",
-      "usage": "用于在写作或口语中深化主题、提升立意。结构为“主语 + is more than just + 名词; it is + 名词/名词短语”。注意 just 后接名词或动名词，分号后的分句用于补充更高层次的意义。"
+      "pattern": "A is not merely X; it is Y.（A 不仅仅是 X，更是 Y）",
+      "example": "Universities are not merely institutions that hand out degrees; they are epicenters of knowledge.",
+      "translation": "大学不仅仅是颁发学位的机构，更是知识的中心。",
+      "usage": "用于在肯定常见认知的基础上，强调事物更深层的价值或意义。写作与口语中可用于升华主题，如：Health is not merely the absence of disease; it is a state of complete physical and mental well-being.（健康不仅仅是没有疾病，更是身心俱佳的状态。）注意前后两句时态一致，分号后用代词 they/it 指代主语。"
     },
     "grammar": {
-      "title": "不定式作后置定语（Infinitive as post-modifier）",
-      "explanation": "在英语新闻中，动词不定式常放在名词之后作定语，表示“用于……的”“将要……的”或“……的（目的/内容）”。被修饰的名词多为 need, plan, guidelines, decision, effort, bridge, way 等。结构为：名词 + to do (sth)。有时中间会插入副词，如 to unswervingly follow。",
+      "title": "现在完成时（Present Perfect）：过去动作对现在的影响",
+      "explanation": "现在完成时由 have/has + 过去分词构成，表示过去发生的动作对现在仍有影响或结果，常与 already、yet、so far、recently 等时间状语连用，且不与具体过去时间（如 last year）连用。今日新闻中多用该时态呈现生态治理与中医药推广的“阶段性成果”。",
       "examples": [
-        "The central government has published guidelines to regulate the pricing policies of elderly nursing homes.",
-        "Xi has emphasized the need to unswervingly follow the path of prioritizing ecological conservation and pursuing green development."
+        "Fish have returned to the Huangqihai Lake in Ulaanqab, Inner Mongolia autonomous region, which once dried up.",
+        "Traditional Chinese medicine has gained recognition in more than 190 countries and regions."
       ]
     },
     "pronunciation": {
-      "word": "nostalgic",
-      "phonetic": "/nɒˈstældʒɪk/",
-      "tips": "重音在第二个音节 -stal- 上，读作 no-STAL-jick。中间的 -stal- 中 /l/ 要清晰，/dʒ/ 类似汉语拼音的“之”但更浊更短，词尾 -ic 读 /ɪk/，不要读成 /aɪk/。整词节奏为“弱—强—弱”。",
+      "word": "acupuncture",
+      "phonetic": "/ˈækjupʌŋktʃə(r)/",
+      "tips": "共四个音节：ac-u-punc-ture，重音在第一个音节 /ˈæk/。难点在 /kju/ 与 /ŋktʃ/：先发 /k/ 再快速滑向 /juː/（类似“Q”），随后 /pʌŋ/ 中 /ŋ/ 为鼻音，最后 /ktʃ/ 中 /k/ 要轻轻爆破并立刻接 /tʃ/（类似“吃”的声母）。整体节奏为“轻—轻—重—轻”，不要读成 a-cu-PUNC-ture。",
       "examples": [
-        "The old department stores offer a nostalgic journey to the past.",
-        "Many visitors feel nostalgic when they see the retro storefronts."
+        "Acupuncture is now practised in more than 190 countries and regions.",
+        "She tried acupuncture to relieve the pain in her back."
       ]
     },
     "reading": {
-      "title": "Old Stores, New Journeys: China's Cultural Travel Boom",
-      "content": "In cities across China, old department stores are being given a new life. Rather than tearing down these buildings, developers are renovating them into cultural landmarks. They sell more than goods; they offer visitors a nostalgic journey to the past. Guests walk through retro halls, taste childhood snacks and take photos against old storefronts.\n\nThe trend shows how cultural travel is changing. Tourists today look for experiences and memories rather than souvenirs. At the same time, more people around the world are learning Chinese, hoping to understand the country's history, films and traditions. Language, like travel, opens a door to another culture.\n\nWhether it is a century-old university commemorating its centenary or a new border bridge welcoming its first vehicles, China's story continues to attract curious visitors from home and abroad. Old memories, it seems, are becoming new destinations.",
-      "translation": "在中国各地，老百货商场正迎来新生。开发商没有拆除这些老建筑，而是把它们翻新成文化地标。它们出售的不只是商品，更带给游客一场重返过去的怀旧之旅。人们走过复古的商场大厅，品尝儿时的零食，在旧式店面橱窗前拍照留念。\n\n这一趋势显示出文化旅游的变迁。今天的游客寻找的是体验与回忆，而不只是纪念品。与此同时，全球越来越多的人开始学习中文，希望了解中国的历史、电影与传统。语言如同旅行，是通往另一种文化的大门。\n\n无论是百年名校纪念其建校百年，还是边境新桥迎来首批车辆，中国的故事始终吸引着国内外好奇的游客。旧日的记忆，正成为新的旅行目的地。",
-      "sourceNote": "本文基于 2026-10-17 ChinaDaily 报道《Old department stores sell nostalgic journey to past》《Why is the world learning Chinese?》《Xi congratulates Hunan University on its centenary》《New China-DPRK border bridge opens to traffic》改写整理，用于英语学习。"
+      "title": "Healthy Living: Where Ancient Wisdom Meets a Greener World",
+      "content": "As China strengthens the global outreach of traditional Chinese medicine, or TCM, more people around the world are discovering a holistic approach to health that values prevention rather than cure. Herbal remedies, acupuncture and qigong are now practised in over 190 countries and regions.\n\nAt the same time, ecological conservation is being prioritized. In Inner Mongolia, fish have returned to the once-dried Huangqihai Lake, and residents are enjoying cleaner air and water. Experts say a healthy environment is the foundation of public health, because fewer pollutants mean fewer respiratory problems.\n\nWalking the historic Long March route has also become a popular way for young Chinese to stay fit while learning about history. Whether through ancient remedies or green living, the message is the same: good health is not merely the absence of disease — it depends on balance, both within the body and around it.",
+      "translation": "随着中国加快中医药走向世界，全球越来越多的人开始了解一种注重“治未病”而非治疗的整体健康理念。草药、针灸和气功如今已在190多个国家和地区得到应用。\n\n与此同时，生态保护被置于优先位置。在内蒙古，曾经干涸的黄旗海重现鱼群，居民享受到更清洁的空气和水源。专家指出，健康的环境是公共健康的根基，因为污染物越少，呼吸系统疾病就越少。\n\n徒步重走长征路也成为中国年轻人在了解历史的同时强身健体的热门方式。无论是古老的养生疗法还是绿色生活，道理都一样：健康不仅仅是没有疾病，它取决于平衡——既在于身体内部，也在于我们周围的世界。",
+      "sourceNote": "本文基于 China Daily 当日真实报道《Nation strengthening global outreach of TCM》《Xi: Prioritize ecological conservation》《Xi advances conservation with people at heart》及《Red spirit spurs green growth》改写与整合，用于英语学习目的。"
     }
   }
 }
