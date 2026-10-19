@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-17",
+  "date": "2026-10-19",
   "contents": [
     {
-      "id": "prog-2026-10-17",
-      "date": "2026-10-17",
-      "title": "Swift Concurrency 在 SwiftUI 中的实战：async/await、Task 取消与 @MainActor",
-      "summary": "用 async/await + Task + @MainActor 搭建一套可取消、可测试、不会引发 UI 线程警告的网络请求层。",
-      "difficulty": "中级",
-      "concept": "在 SwiftUI 项目里，「网络请求」几乎是最容易写错的一块。很多人习惯用 URLSession 的闭包回调，然后在 completion 里直接 self.users = ...，结果触发 “Modifying state during view update” 警告或者偶发的 UI 卡顿。Swift Concurrency 用 async/await 把异步代码写成看起来像同步的顺序结构，天然解决了回调地狱，但真正让它在 SwiftUI 中稳定工作的，是三个容易被忽视的点：执行器隔离（isolation）、结构化并发（structured concurrency）和任务取消（cancellation）。\n\n首先是执行器隔离。SwiftUI 的 @State、@Observable 属性以及整个 View body 都运行在主线程（即 MainActor）上。任何从后台返回后更新 UI 状态的代码，都必须回到 MainActor。传统做法是 DispatchQueue.main.async { }，容易漏写；Swift 5.5+ 之后我们用 @MainActor 标注 ViewModel 类，编译器就会强制要求它的所有方法和属性在主执行器上访问，漏写会被编译器报错而不是在运行时炸掉。这是「让编译器替你守门」的典型范例，也是 Swift 6 严格并发检查下的默认姿势。\n\n其次是网络层应该用 actor 而不是普通 class。actor 通过串行化访问保护可变状态（例如缓存、重试计数、URLSession 配置），并且它的方法是异步的，天然契合 async/await。把 API 客户端做成 actor + 单例，既避免了重复创建 URLSession 的开销（Apple 明确建议复用 URLSession），又能安全地在多个 ViewModel 之间共享缓存。\n\n第三是任务取消，这是工程实践中最容易出 bug 的地方。想象一个搜索框：用户输入「Sw」→「Swi」→「Swif」→「Swift」，会发出 4 个请求。如果不取消前面的请求，慢的那个最后返回就会覆盖最新结果，UI 显示错误数据。正确做法是保存 Task 引用，在发起新请求前调用旧 task.cancel()；同时在 await 点检查 Task.isCancelled，或者让 URLSession 的 data(from:) 在取消时抛出 CancellationError。SwiftUI 的 .task { } 修饰符更进一步：视图消失时会自动取消其中启动的 Task，这就是它优于 .onAppear 的原因。\n\n最后提一个实战建议：用 enum 描述 UI 状态（idle / loading / loaded / failed），比用三个 Bool（isLoading、hasError、users）要健壮得多。枚举能让非法状态无法被表达，配合 switch 还能获得穷尽性检查，重构时漏改会直接编译失败。这套 State enum + @Observable ViewModel + actor Service 的三层结构，可以直接搬到任何生产项目里。",
+      "id": "prog-2026-10-19",
+      "date": "2026-10-19",
+      "title": "JavaScript 数组三剑客：map、filter、reduce",
+      "summary": "掌握数组的三大高阶方法，用声明式代码替代 for 循环，轻松完成数据映射、筛选与汇总。",
+      "difficulty": "初级",
+      "concept": "在真实的前端开发中，我们 80% 的工作都在跟「数组 + 对象」打交道：接口返回一条列表，我们要筛选出有效的、转换成页面要的格式、再算出一个总数。如果全部用 for 循环来做，代码里会充斥着 index、push、临时变量，既难读又容易写出越界、忘加 i++ 这类低级 bug。于是 JavaScript 提供了 map、filter、reduce 这三个高阶方法，让我们用「声明式」的方式描述「我想要什么」，而不是「我该怎么做」。\n\nmap 的含义是「一一映射」：给定一个长度为 n 的数组，它一定返回一个长度同样是 n 的新数组，原数组的每个元素都会经过你的回调函数转换一次。典型场景是把后端返回的原始数据「翻译」成视图模型，例如把 { price, quantity } 转成 { subtotal }。需要注意的是，map 的回调必须显式 return（或者用箭头函数的隐式返回），否则你会得到一个满是 undefined 的数组——这是新手最常见的坑。\n\nfilter 的含义是「筛选」：回调返回 true 的元素被保留，返回 false 的被丢弃，最终返回一个新数组，长度 ≤ 原数组。它的回调必须返回「布尔值」，不要在里面做副作用（比如 push 到外部数组），否则等于把两种职责混在一起，测试和维护都会变难。实战中我们常用它过滤掉 status !== 'paid'、isDeleted、quantity === 0 这类脏数据。\n\nreduce 的含义是「归纳/累积」：它把整个数组「折叠」成一个值——可以是数字（求和）、字符串（拼接）、对象（分组）、甚至另一个数组（去重）。它的回调有两个关键参数：acc（累加器，上一次的返回值）和当前元素；第二个参数是初始值。工程经验：永远显式给出初始值（尤其是 0、[]、{}），否则空数组会直接抛 TypeError，且首元素会被当作初始值导致逻辑错乱。\n\n最后是「不可变性」原则：这三个方法都返回新数组，绝不修改原数组。在 React / Vue 这类框架里，状态更新依赖引用变化来触发渲染，直接 push 原数组会导致页面不刷新。所以请养成习惯：需要结果就用 map/filter/reduce，只是想遍历做副作用才用 forEach；链式调用控制在 3~4 步以内，过长时用中间变量起个好名字，可读性远比「一行流」重要。",
       "codeExample": {
-        "language": "Swift",
-        "code": "import SwiftUI\nimport Observation\n\n// MARK: - 数据模型\nstruct User: Codable, Identifiable, Sendable {\n    let id: Int\n    let name: String\n    let email: String\n}\n\n// MARK: - 统一错误类型\nenum NetworkError: Error, LocalizedError, Sendable {\n    case badURL\n    case invalidResponse\n    case decodingFailed\n\n    var errorDescription: String? {\n        switch self {\n        case .badURL:           return \"URL 无效\"\n        case .invalidResponse:  return \"服务器响应异常\"\n        case .decodingFailed:   return \"数据解析失败\"\n        }\n    }\n}\n\n// MARK: - 网络层（actor 保证状态安全，可被多处共享）\nactor UserAPI {\n    static let shared = UserAPI()\n    private let session: URLSession\n\n    private init() {\n        let config = URLSessionConfiguration.ephemeral\n        config.timeoutIntervalForRequest = 10\n        self.session = URLSession(configuration: config)  // 复用同一个 session\n    }\n\n    func fetchUsers() async throws -> [User] {\n        guard let url = URL(string: \"https://jsonplaceholder.typicode.com/users\") else {\n            throw NetworkError.badURL\n        }\n        // data(from:) 在 Task 被取消时会抛出 CancellationError\n        let (data, response) = try await session.data(from: url)\n        guard let http = response as? HTTPURLResponse,\n              (200...299).contains(http.statusCode) else {\n            throw NetworkError.invalidResponse\n        }\n        do {\n            return try JSONDecoder().decode([User].self, from: data)\n        } catch {\n            throw NetworkError.decodingFailed\n        }\n    }\n}\n\n// MARK: - ViewModel（@MainActor 保证 UI 状态只在主线程更新）\n@MainActor\n@Observable\nfinal class UserListViewModel {\n    enum State {\n        case idle\n        case loading\n        case loaded([User])\n        case failed(String)\n    }\n\n    private(set) var state: State = .idle\n    private var fetchTask: Task<Void, Never>?\n\n    func load() {\n        fetchTask?.cancel()                     // ① 取消上一次未完成的请求，避免竞态\n        fetchTask = Task {\n            state = .loading\n            do {\n                let users = try await UserAPI.shared.fetchUsers()\n                guard !Task.isCancelled else { return }   // ② 取消后不再写状态\n                state = .loaded(users)\n            } catch is CancellationError {\n                // 用户主动取消，静默忽略，不打扰 UI\n            } catch {\n                state = .failed(error.localizedDescription)\n            }\n        }\n    }\n\n    func retry() {\n        state = .idle\n        load()\n    }\n}\n\n// MARK: - View\nstruct UserListView: View {\n    @State private var viewModel = UserListViewModel()\n\n    var body: some View {\n        NavigationStack {\n            Group {\n                switch viewModel.state {\n                case .idle:\n                    ContentUnavailableView(\n                        \"准备就绪\",\n                        systemImage: \"person.crop.circle.badge.questionmark\"\n                    )\n                case .loading:\n                    ProgressView(\"加载中…\")\n                case .loaded(let users):\n                    List(users) { user in\n                        VStack(alignment: .leading, spacing: 4) {\n                            Text(user.name)\n                                .font(.headline)\n                            Text(user.email)\n                                .font(.subheadline)\n                                .foregroundStyle(.secondary)\n                        }\n                    }\n                    .refreshable { viewModel.load() }   // 下拉刷新\n                case .failed(let message):\n                    ContentUnavailableView(\n                        \"加载失败\",\n                        systemImage: \"exclamationmark.triangle\",\n                        description: Text(message)\n                    )\n                    Button(\"重试\") { viewModel.retry() }\n                }\n            }\n            .navigationTitle(\"用户列表\")\n            .toolbar {\n                Button(\"刷新\") { viewModel.load() }\n            }\n        }\n        .task { viewModel.load() }   // ③ 视图出现触发、消失自动取消\n    }\n}\n\n#Preview {\n    UserListView()\n}\n",
-        "explanation": "【1】User 同时遵守 Codable / Identifiable / Sendable，最后一个是并发安全声明，跨 actor 传递时编译器才不会报错。\n\n【2】NetworkError 用枚举封装所有失败场景，并实现 LocalizedError 的 errorDescription，这样 catch 到的 error.localizedDescription 就是可直接展示给用户的中文文案，而不是 \"The operation couldn't be completed\"。\n\n【3】UserAPI 是 actor：init 为 private 配合 static let shared 形成单例，复用同一个 URLSession（Apple 明确建议不要频繁创建 URLSession）。配置 timeoutIntervalForRequest = 10，避免弱网下无限等待。\n\n【4】fetchUsers() 中先校验 URL，再用 try await session.data(from:) 拿到数据，然后校验 HTTP 状态码是否在 200~299，最后才解码。三段校验分别抛出三种不同错误，方便上层做差异化处理。\n\n【5】ViewModel 标注 @MainActor（UI 状态只在主线程读写）+ @Observable（Swift 5.9 起替代 ObservableObject 的新宏，按属性粒度追踪，性能更好）。State 用 enum 表达四种互斥状态，非法组合无法被构造。\n\n【6】load() 的核心是「先取消旧任务再开新任务」：fetchTask?.cancel() 让前一次请求的 await 点抛出 CancellationError，随后新的 Task 接管状态写入，从而杜绝「旧响应覆盖新结果」的竞态。\n\n【7】catch is CancellationError 分支是专门的静默通道：用户切页或连续点击刷新时，取消属于正常行为，不应该弹出错误提示。\n\n【8】View 中 .task { viewModel.load() } 是关键：它在视图出现时执行，并在视图消失时自动取消其中启动的 Task，等价于手动在 onAppear/onDisappear 里管理 Task，但更安全、更简洁。配合 .refreshable 实现下拉刷新。\n\n【9】switch viewModel.state 配合 Group 与 ContentUnavailableView，让每种状态都有清晰的 UI 表现；switch 穷尽性检查保证未来新增状态时编译器会强制你补全 UI 分支。"
+        "language": "javascript",
+        "code": "// ===== 场景：后端返回订单列表，前端要做展示与统计 =====\n\nconst orders = [\n  { id: 101, product: '机械键盘', price: 499,  quantity: 1, status: 'paid' },\n  { id: 102, product: '显示器',   price: 1299, quantity: 2, status: 'pending' },\n  { id: 103, product: '鼠标',     price: 199,  quantity: 3, status: 'paid' },\n  { id: 104, product: '耳机',     price: 359,  quantity: 1, status: 'cancelled' },\n];\n\n// 1) filter：只保留已支付的订单（返回新数组，原数组不变）\nconst paidOrders = orders.filter((order) => order.status === 'paid');\n\n// 2) map：把每条订单映射成视图需要的「小计」结构\nconst subtotals = paidOrders.map((order) => ({\n  id: order.id,\n  name: order.product,\n  subtotal: order.price * order.quantity, // 箭头函数用 () 隐式返回对象\n}));\n\n// 3) reduce：把所有小计累加成总金额（注意 0 这个初始值！）\nconst totalAmount = subtotals.reduce(\n  (sum, item) => sum + item.subtotal,\n  0\n);\n\nconsole.log('已支付订单明细：', subtotals);\n// [{ id: 101, name: '机械键盘', subtotal: 499 }, { id: 103, name: '鼠标', subtotal: 597 }]\nconsole.log('总金额：', totalAmount); // 1096\n\n// 4) 链式调用：一行完成「筛选 + 计算 + 汇总」\nconst total = orders\n  .filter((o) => o.status === 'paid')\n  .reduce((sum, o) => sum + o.price * o.quantity, 0);\nconsole.log('链式写法总金额：', total); // 1096\n\n// 5) reduce 进阶：按 status 分组（列表页「分组统计」超常用）\nconst grouped = orders.reduce((acc, order) => {\n  const key = order.status;\n  if (!acc[key]) acc[key] = [];   // 第一次遇到该分组，初始化为空数组\n  acc[key].push(order);\n  return acc;                     // 必须把累加器还回去\n}, {});\nconsole.log('按状态分组：', grouped);\n\n// 6) 反例示范：map 忘记 return，会得到一堆 undefined\nconst wrong = orders.map((o) => {\n  o.price * o.quantity; // 没有 return！\n});\nconsole.log('错误写法结果：', wrong); // [undefined, undefined, undefined, undefined]",
+        "explanation": "第 1 段定义了模拟接口返回的订单数组，字段包含单价、数量和状态。\n\n`orders.filter((order) => order.status === 'paid')` 只保留 status 为 'paid' 的元素，返回新数组 paidOrders，长度为 2，原数组 orders 完全不变。\n\n`paidOrders.map(...)` 对每条订单做转换，回调用 `({ ... })` 隐式返回一个新对象，包含 id、name、subtotal 三个字段，得到视图模型 subtotals。\n\n`subtotals.reduce((sum, item) => sum + item.subtotal, 0)` 把数组折叠成一个数字：sum 从初始值 0 开始，每次加上当前元素的 subtotal，最终得到 1096（499 + 597）。\n\n第 4 段展示链式调用：filter 直接连 reduce，中间不需要临时变量，语义清晰且结果一致。\n\n第 5 段是 reduce 的经典用法「分组」：累加器初始值为 `{}`，遇到新的 status 就初始化一个空数组，然后 push 进去，最后必须 `return acc`。这类写法在做「按日期/分类/状态汇总」时非常好用。\n\n第 6 段是反例：map 的回调如果没有 return，每个位置都会变成 undefined，这是新手最容易踩的坑，务必注意。"
       },
       "keyPoints": [
-        "用 @MainActor 标注 ViewModel，让编译器强制 UI 状态只在主线程读写，替代容易漏写的 DispatchQueue.main.async",
-        "网络层用 actor + 单例实现，复用同一个 URLSession，并天然获得可变状态的串行化保护",
-        "发起新请求前调用旧 Task.cancel()，并在 await 后检查 Task.isCancelled，杜绝竞态导致的「旧数据覆盖新数据」",
-        "SwiftUI 的 .task { } 修饰符在视图消失时自动取消异步任务，优于 .onAppear 中手动创建 Task",
-        "用 enum 表达 UI 状态（idle/loading/loaded/failed）比多个 Bool 更安全，switch 穷尽性检查能在重构时兜底"
+        "map / filter / reduce 都返回新数组或新值，绝不修改原数组 —— 这对 React、Vue 的响应式更新至关重要",
+        "map 的回调必须 return，否则会得到 [undefined, undefined, ...]；箭头函数返回对象要写成 ({ ... })",
+        "filter 的回调必须返回布尔值，不要在其中做 push 等副作用操作",
+        "reduce 一定要显式传入初始值（0 / [] / {}），否则空数组会抛 TypeError，且首元素会被当成初始值",
+        "forEach 只做遍历不返回结果；需要产出数据时优先使用 map / filter / reduce，链式调用控制在 3~4 步以内"
       ],
       "exercise": {
-        "description": "实现一个「每日一句」App：有一个搜索框输入关键词、一个列表展示格言。要求：(1) 输入变化后 300ms 防抖再发起请求；(2) 新请求发出时自动取消上一次未完成的请求，避免结果乱序；(3) 用 enum 表达 idle / loading / loaded([Quote]) / failed(String) 四种状态；(4) 视图消失时所有任务自动取消；(5) 用 actor 封装网络层并缓存最近一次查询结果。",
-        "hint": "防抖可以这样实现：每次 text 变化时先 cancel 旧 task，再 Task.sleep(nanoseconds: 300_000_000) 之后发起请求 —— 由于 sleep 期间任务被取消会抛出 CancellationError，天然实现了防抖。缓存可以放在 actor 内的一个 [String: [Quote]] 字典里，命中直接返回，未命中才走网络并写回缓存。注意 @Observable 的属性更新必须回到 @MainActor，所以网络结果要 await 回主执行器后再赋值。",
+        "description": "写一个成绩统计小程序：给定一个学生成绩数组 scores = [78, 92, 45, 60, 100, 58]，请用 filter 筛选出及格（>= 60）的成绩，再用 reduce 计算它们的平均分，最后用 map 把每条及格成绩转换成 { score, level } 的形式（>= 90 为 'A'，其余为 'B'）。要求不使用 for 循环。",
+        "hint": "先 `scores.filter((s) => s >= 60)` 拿到及格数组 passed；平均分 = `passed.reduce((sum, s) => sum + s, 0) / passed.length`；等级映射用 `passed.map((s) => ({ score: s, level: s >= 90 ? 'A' : 'B' }))`。注意箭头函数返回对象时要加圆括号。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "为了让异步任务在 SwiftUI 视图消失时被自动取消，我们应该使用哪个视图修饰符？",
-            "codeContext": "struct QuoteView: View {\n    @State private var vm = QuoteViewModel()\n    var body: some View {\n        List(vm.quotes) { Text($0.text) }\n        ____________ {\n            await vm.search(keyword: \"Swift\")\n        }\n    }\n}",
+            "question": "补全代码：筛选出及格成绩后，用正确的方法计算它们的平均分。",
+            "codeContext": "const scores = [78, 92, 45, 60, 100, 58];\nconst passed = scores.filter((s) => s >= 60);\n// passed = [78, 92, 60, 100]",
             "segments": [
               {
                 "type": "text",
-                "content": "        .",
+                "content": "const average = passed.",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[选择方法名]",
                 "options": [
-                  "onAppear",
-                  "task",
-                  "task(id:)",
-                  "backgroundTask"
+                  "reduce",
+                  "map",
+                  "filter",
+                  "forEach"
                 ],
-                "correctAnswer": "task"
+                "correctAnswer": "reduce"
               },
               {
                 "type": "text",
-                "content": " {\n            await vm.search(keyword: \"Swift\")\n        }",
+                "content": "((sum, s) => sum + s, 0) / passed.length;",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "task",
-            "explanation": ".task { } 是 Swift 5.5 引入的异步友好修饰符：它在视图出现时运行闭包（闭包是 async 的），并在视图消失时自动取消其中创建的 Task。而 .onAppear 中即便写了 Task { }，也必须手动在 .onDisappear 里 cancel，容易遗漏。需要注意 .task(id:) 是以某个值为「重启键」，值变化时会取消旧任务并重新执行，非常适合做防抖搜索。"
+            "correctAnswer": "reduce",
+            "explanation": "要把整个数组「折叠」成一个数字（总和），必须使用 reduce，并传入初始值 0。map 只会一一转换、filter 只会筛选、forEach 没有返回值，都无法直接得到累加结果。计算结果为 (78+92+60+100)/4 = 82.5。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Swift Concurrency 中的 @MainActor 与 actor，下列说法正确的是？",
-            "codeContext": "@MainActor\n@Observable\nfinal class QuoteViewModel {\n    private(set) var quotes: [Quote] = []\n    private let api = QuoteAPI()   // actor\n\n    func search(_ kw: String) async {\n        quotes = try await api.fetch(kw)   // ①\n    }\n}",
+            "question": "关于数组的 map 方法，下面哪一项描述是正确的？",
+            "codeContext": "const nums = [1, 2, 3];\nconst result = nums.map((n) => n * 2);",
             "segments": null,
             "options": [
-              "① 处 try await 返回后，quotes 的赋值自动回到后台线程执行，所以不会阻塞 UI",
-              "① 处 try await 返回后，代码会自动回到 MainActor 上执行 quotes 的赋值，这是 @MainActor 的隔离保证",
-              "actor 的方法必须在主线程调用，否则会崩溃",
-              "只需要给 quotes 加 @Published 就能替代 @MainActor，不需要关心执行器"
+              "map 会直接修改原数组 nums 并返回它",
+              "map 的回调必须返回值，否则会得到一个 undefined 组成的数组",
+              "map 只能用于元素是数字的数组",
+              "map 没有返回值，需要配合变量赋值才能使用"
             ],
-            "correctAnswer": "① 处 try await 返回后，代码会自动回到 MainActor 上执行 quotes 的赋值，这是 @MainActor 的隔离保证",
-            "explanation": "Swift Concurrency 的隔离是静态的：函数体始终运行在其声明的执行器上，await 挂起点只会「让出」执行器，恢复后自动回到原执行器。所以 search() 声明在 @MainActor 类中，try await 之后的 quotes = ... 一定在主线程执行，不需要手动 DispatchQueue.main.async。actor 方法可以在任意执行器调用（用 await 跨越隔离边界），并不要求主线程。@Published 只是 Combine 的变更通知，与执行器隔离无关。"
+            "correctAnswer": "map 的回调必须返回值，否则会得到一个 undefined 组成的数组",
+            "explanation": "map 不修改原数组，而是返回一个长度相同的新数组，因此 A、D 错误；map 适用于任意类型的数组（对象、字符串等），C 错误。若回调忘记 return，对应位置会是 undefined，这是最常见的错误之一。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码在控制台的输出顺序是什么？",
-            "codeContext": "@MainActor\nfunc demo() async {\n    print(\"A\")\n    Task {\n        print(\"B\")\n    }\n    try? await Task.sleep(nanoseconds: 1_000_000_000)\n    print(\"C\")\n}",
+            "question": "请问下面这段代码的输出结果是什么？",
+            "codeContext": "const words = ['js', 'ts', 'node'];\nconst out = words.map((w) => {\n  w.toUpperCase();\n});\nconsole.log(out);",
             "segments": null,
             "options": [
-              "A B C",
-              "A C B",
-              "B A C",
-              "编译错误：不能在 @MainActor 中嵌套 Task"
+              "[ 'JS', 'TS', 'NODE' ]",
+              "[ undefined, undefined, undefined ]",
+              "undefined",
+              "抛出 TypeError 异常"
             ],
-            "correctAnswer": "A B C",
-            "explanation": "demo() 运行在 MainActor 上，先打印 A；随后创建的 Task { } 会继承外围的 actor 上下文（即 MainActor），但它被排入主执行器队列，不会立即执行；接着 try? await Task.sleep 使当前任务挂起并让出 MainActor，此时主执行器取出队列中的任务打印 B；1 秒后 demo() 恢复并打印 C。因此顺序是 A B C。注意：如果 sleep 的时长为 0 或去掉 sleep，输出也可能仍是 A B C，但顺序依赖于执行器调度，实际工程中不要依赖这种时序。"
+            "correctAnswer": "[ undefined, undefined, undefined ]",
+            "explanation": "回调函数使用了大括号 `{ }`，就变成了「语句块」，必须显式 return 才会返回值。这里没有 return，所以每个元素都被映射成 undefined，map 依然返回长度为 3 的新数组。正确写法是 `words.map((w) => w.toUpperCase())` 或在函数体内 `return w.toUpperCase()`。"
           }
         ]
       }
