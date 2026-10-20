@@ -1,16 +1,16 @@
 {
- "date": "2026-10-19",
- "weekday": "Monday",
- "overview": "Computing power and manufacturing upgrades take center stage in policy, with a stream of cutting-edge breakthroughs unveiled, while consumer rights and public health also draw attention.",
+ "date": "2026-10-20",
+ "weekday": "Tuesday",
+ "overview": "Long March-themed publicity converges with Q1–Q3 economic data, while consumption-boosting measures and financial opening send confidence signals; public health and livelihood topics continue to gain traction.",
  "trendingTopics": [
-  "Computing power industry",
-  "Manufacturing upgrades",
-  "Artificial intelligence",
-  "Canton Fair trade",
-  "Meteorological disaster prevention",
+  "Long March spirit",
+  "Consumption-boosting policies",
+  "Macroeconomy",
+  "Aerospace crop breeding",
   "Public health",
-  "Cultural performances",
-  "Consumer rights protection"
+  "Financial opening",
+  "European social situation",
+  "Youth education"
  ],
  "sections": [
   {
@@ -20,184 +20,193 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "What's Behind Xi's Inner Mongolia Tour of Computing Power Industry",
-     "summary": "Political Micro-Observation interprets the Inner Mongolia visit, highlighting the development signals and strategic implications of the General Secretary's inspection of the computing power industry.",
-     "detail": "The program Political Micro-Observation analyzed the Inner Mongolia visit, focusing on the itinerary of the General Secretary's on-site inspection of the computing power industry and examining the underlying considerations for the digital economy and regional layout.",
-     "impact": "The importance of computing power as new infrastructure is further underscored, and related industries are expected to receive continued policy and resource support.",
+     "title": "The General Secretary's Deep Bond with the People: The People Are the Source of Strength Behind the Victory of the Long March",
+     "summary": "The column 'The General Secretary's Deep Bond with the People' notes that the broad masses are the source of strength behind the victory of the Long March, demonstrating a profound commitment to the people.",
+     "detail": "The column article uses the Long March as a starting point to illustrate the fundamental role of the people in the course of history. It stresses that the masses are the source of strength for great undertakings. The related discourse has resonated widely in public opinion regarding the mass line.",
+     "impact": "Further strengthens unity between the Party and the people, providing ideological guidance for mass work on the new journey.",
      "importance": "hot",
      "tags": [
-      "Computing Power Industry",
-      "Digital Economy",
-      "Regional Development"
+      "Mass Line",
+      "Ideology and Theory"
      ]
     },
     {
      "id": "news-002",
-     "title": "Canton Fair Showcases the Upgrading of Chinese Manufacturing",
-     "summary": "The Canton Fair serves as a window into China's manufacturing transformation and upgrading, with product innovation as a key highlight.",
-     "detail": "The report takes a close look at the Canton Fair, presenting the upgraded profile and robust capabilities of Chinese manufacturing on display at the event, serving as a case study for foreign trade and industrial transformation.",
-     "impact": "The upgraded image of Chinese manufacturing continues to be projected overseas, helping to strengthen trade competitiveness and overseas buyers' confidence.",
-     "importance": "important",
+     "title": "Economic Performance Trends Upward, Newer and Stronger: Q3 Data Sends Positive Signals",
+     "summary": "Economic performance in the first three quarters showed an upward, innovation-driven and quality-improving trend, with multiple indicators sending positive signals and drawing wide attention.",
+     "detail": "Reports analyze the economic performance of the first three quarters from multiple dimensions. The trend has been characterized as moving upward, becoming more innovative and improving in quality. Positive signals from the data have boosted market confidence.",
+     "impact": "Sets the tone for the full-year economic trajectory and helps stabilize market expectations and investment confidence.",
+     "importance": "hot",
      "tags": [
-      "Canton Fair",
-      "Foreign Trade",
-      "Manufacturing"
-     ]
-    },
-    {
-     "id": "news-003",
-     "title": "Why China's 'Strongest Prefecture-Level City' Is Betting Big on Manufacturing",
-     "summary": "Weekly Economy Watch focuses on the 'strongest prefectecture-level city,' analyzing its commitment to deep roots in manufacturing.",
-     "detail": "Weekly Economy Watch examines the development path of the city dubbed China's 'strongest prefecture-level city,' explaining why it continues to double down on manufacturing rather than shifting to other sectors.",
-     "impact": "Provides a reference model for other cities seeking to uphold the real economy and stabilize their manufacturing base.",
-     "importance": "important",
-     "tags": [
-      "Manufacturing",
-      "Industrial Upgrading",
-      "Urban Economy"
-     ]
-    },
-    {
-     "id": "news-004",
-     "title": "River-Sea Connectivity: Guangxi's Opening-Up Enters New Phase",
-     "summary": "Vibrant China Survey Tour visits Guangxi, focusing on upgraded opening-up channels and regional economic vitality driven by river-sea connectivity.",
-     "detail": "The Vibrant China Survey Tour report centers on the development of Guangxi's opening-up corridors, highlighting how river-sea connectivity is reshaping the region's external opening-up landscape.",
-     "impact": "Improved connectivity along the New International Land-Sea Trade Corridor will further unlock the opening-up potential of border and coastal regions.",
-     "importance": "important",
-     "tags": [
-      "Opening-Up",
-      "Regional Economy",
-      "New Land-Sea Trade Corridor"
+      "Macroeconomy",
+      "Economic Performance",
+      "Stabilizing Growth"
      ]
     },
     {
      "id": "news-005",
-     "title": "Guarding Ecological Foundations and Accounting for Green Development",
-     "summary": "A China Commentary stresses protecting the ecological foundation of clear waters and green mountains, with a long-term perspective on green development.",
-     "detail": "The commentary calls for safeguarding the ecological base of clear waters and green mountains, and for taking a broader, long-term view when weighing the overall costs and benefits of green development.",
-     "impact": "Encourages local governments to place greater weight on ecological constraints in development, balancing short-term gains with long-term sustainability.",
+     "title": "Parents Can Also Receive Payments Once Their Children Start Working",
+     "summary": "Reports say that parents may receive corresponding benefits after their children enter the workforce, a livelihood topic that has sparked widespread public discussion.",
+     "detail": "The topic focuses on the linkage between household income and social security. The coverage touches on the connection between employment and elderly care benefits. Specific policy details remain subject to official announcements.",
+     "impact": "Reflects innovative approaches to livelihood security and helps ease the burden of elderly care on families.",
+     "importance": "important",
+     "tags": [
+      "Employment Policy",
+      "Elderly Care Benefits",
+      "Livelihood"
+     ]
+    },
+    {
+     "id": "news-003",
+     "title": "'Half a Quilt': Assemble 'National Prosperity and Social Stability' With Us",
+     "summary": "An interactive campaign built around the story of 'Half a Quilt' has launched, inviting the public to piece together a message of national prosperity and social stability.",
+     "detail": "The campaign uses a classic revolutionary story as an emotional bond, conveying patriotic sentiments through an interactive format. The initiative aligns with the current atmosphere of revolutionary-themed publicity.",
+     "impact": "Spreads revolutionary culture through new media formats, enhancing public engagement and sense of identity.",
      "importance": "normal",
      "tags": [
-      "Ecological Civilization",
-      "Green Development",
-      "Ecological Governance"
+      "Red Culture",
+      "New Media Communication"
+     ]
+    },
+    {
+     "id": "news-004",
+     "title": "Above the Insurmountable Chasm: Revisiting a Little-Known Rearguard Battle",
+     "summary": "The 'Red Star Over China' feature revisits a little-known rearguard battle fought above an insurmountable chasm, honoring the heroic deeds of revolutionary forebears.",
+     "detail": "The feature recreates historical scenes from an on-site perspective, focusing on a little-known battle episode. It complements the broader publicity around the Long March theme.",
+     "impact": "Enriches the narrative of revolutionary history and provides vivid material for patriotic education.",
+     "importance": "normal",
+     "tags": [
+      "Red Culture",
+      "Revolutionary History"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "World & Politics",
+   "title": "International Affairs",
    "icon": "🌍",
    "articles": [
     {
      "id": "news-006",
-     "title": "Over 500 Police, Gendarmes and Firefighters Injured in France",
-     "summary": "Clashes in France left more than 500 police officers, gendarmes and firefighters injured.",
-     "detail": "Reports indicate that law enforcement and rescue personnel have suffered heavy casualties in clashes or riots across France, with the number of injured exceeding 500.",
-     "impact": "The incident underscores growing pressure on social governance and public order across Europe, with security issues set to remain in the international spotlight.",
-     "importance": "important",
+     "title": "Mass Protests Sweep France as Over 1,000 Arrested",
+     "summary": "Large-scale protests have erupted across multiple regions in France, with more than 1,000 people arrested; related statements have called for swift border closures and the restoration of order.",
+     "detail": "Protests have spread across several French regions on a significant scale. Law enforcement agencies have arrested over 1,000 people. Related remarks have linked the situation to border control issues, drawing international attention.",
+     "impact": "Social unrest in Europe could affect regional stability and policy direction, while attention to border issues rises.",
+     "importance": "hot",
      "tags": [
-      "Public Security",
-      "European Affairs"
+      "European Social Unrest",
+      "Border Policy"
      ]
     },
     {
      "id": "news-007",
-     "title": "Trans-Pacific Search for Lost Kin Revives 'Doolittle Bond'",
-     "summary": "Xinhua Spotlights reports on a trans-Pacific quest to find the kin of old friends, continuing the long-circulated 'Doolittle bond' between China and the United States.",
-     "detail": "Xinhua Spotlights tells a civilian story of searching across oceans for old acquaintances and carrying forward a historical friendship, allowing memories of goodwill built by an older generation to live on among new generations.",
-     "impact": "People-to-people exchanges preserve warmth and room for dialogue in bilateral relations at the cultural level.",
+     "title": "British Scholar: The Long March Was a Sower of China's Great Development Achievements",
+     "summary": "In the \"Global Insights\" column, a British scholar described the Long March as a sower of China's great development achievements, unpacking its far-reaching significance.",
+     "detail": "The column invited overseas scholars to interpret the historical value of the Long March. The view holds that the Long March laid both spiritual and practical foundations for subsequent development. The interpretation reflects the international community's interest in China's path.",
+     "impact": "Helps enhance the international reach and persuasiveness of China's narrative.",
      "importance": "normal",
      "tags": [
-      "People-to-People Ties",
-      "International Friendship",
-      "Cultural Exchange"
+      "International Communication",
+      "Academic Exchange",
+      "China's Path"
      ]
     },
     {
      "id": "news-008",
-     "title": "'Skipping Meals' Trend Catches On in Japan",
-     "summary": "A trend of 'skipping meals' is gaining popularity in Japan, sparking debate about modern lifestyles and eating habits.",
-     "detail": "Reports highlight a lifestyle phenomenon known as 'skipping meals' spreading in Japan, reflecting shifts in local people's daily routines and attitudes toward food.",
-     "impact": "The trend could reshape dining and spending habits while fueling further discussion around healthy eating.",
+     "title": "Australian Sinologist: I Want to Walk the Long March Route a Third Time",
+     "summary": "In the \"The Long March in Foreign Eyes\" series, an Australian sinologist said he hopes to retrace the Long March route for a third time, expressing a deep emotional bond.",
+     "detail": "The series spotlights the personal experiences and reflections of overseas figures. The interviewee has traveled the Long March route multiple times and has long studied Chinese history. His remarks reflect the international appeal of the Long March story.",
+     "impact": "People-to-people and cultural exchanges help foster a favorable atmosphere for China's relations with other countries.",
      "importance": "normal",
      "tags": [
-      "Lifestyle",
-      "Food Culture",
-      "Consumer Trends"
+      "International Communication",
+      "Cultural Exchange",
+      "Red Culture"
+     ]
+    },
+    {
+     "id": "news-009",
+     "title": "Chinese Student Expelled and Repatriated for Draping Rising Sun Flag",
+     "summary": "A Chinese student who sparked controversy by draping themselves in the Rising Sun flag has been repatriated and expelled; commentary noted the act hurt national sentiment.",
+     "detail": "The incident was swiftly dealt with after sparking public debate. The person involved has been repatriated and expelled. Media commentary emphasized the importance of historical awareness and national sentiment.",
+     "impact": "A warning shot for students studying abroad, underscoring the need for historical education and national identity.",
+     "importance": "important",
+     "tags": [
+      "Study Abroad Education",
+      "Online Public Opinion"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance News",
+   "title": "Finance Roundup",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-009",
-     "title": "Glasses Priced at 1,980 Yuan Retail Go Wholesale for Just 30",
-     "summary": "Reports reveal a massive price gap in eyeglass lenses, with products carrying a suggested retail price of 1,980 yuan wholesale for only 30 yuan.",
-     "detail": "The report examines the pricing chain in the eyeglass lens industry, highlighting the stark disparity between suggested retail prices and wholesale costs, raising concerns about pricing transparency.",
-     "impact": "Could drive greater pricing transparency in specialized consumer sectors such as eyewear, as consumers grow more aware of price comparison and rights protection.",
-     "importance": "important",
-     "tags": [
-      "Consumer Market",
-      "Eyewear Industry",
-      "Price Regulation"
-     ]
-    },
-    {
      "id": "news-010",
-     "title": "Gold Ranks Second Among Top Fashion Picks for Middle-Aged Women",
-     "summary": "A report shows that gold jewelry ranks second among the fashion items favored by middle-aged women.",
-     "detail": "The report looks at shifting consumption preferences among middle-aged women, with gold jewelry placing second on the fashion items list, reflecting the growing popularity of gold consumption.",
-     "impact": "Gold consumption is increasingly trending younger and more fashion-forward, offering related brands and designers greater market opportunities.",
-     "importance": "normal",
+     "title": "\"Plus, Minus, Multiply, Divide\": A Four-Pronged Push to Boost Consumption",
+     "summary": "The \"Vibrant China Tour\" spotlights a policy framework of \"addition, subtraction, multiplication and division\" to spur consumption, deploying multiple measures to unlock market vitality and consumer potential.",
+     "detail": "The tour's coverage lays out the policy thinking behind consumption stimulus. The \"plus, minus, multiply, divide\" metaphor captures measures moving in different directions. The reports present local experiments in reviving consumer markets.",
+     "impact": "A coordinated package of consumption-boosting policies is expected to lift domestic demand, benefiting the retail and services sectors.",
+     "importance": "hot",
      "tags": [
-      "Gold Consumption",
-      "Fashion Spending",
-      "Consumer Trends"
+      "Consumption stimulus",
+      "Domestic demand",
+      "Policy measures"
      ]
     },
     {
      "id": "news-011",
-     "title": "The Fuel You Pump May Fall Short of the Meter",
-     "summary": "Reports warn consumers may receive less fuel than they pay for, raising concerns about measurement accuracy.",
-     "detail": "The report points out that consumers may face shortfalls when refueling, drawing attention to fuel metering practices and consumer rights issues.",
-     "impact": "Could help strengthen fuel metering oversight and raise consumer awareness of self-protection.",
-     "importance": "normal",
+     "title": "\"Super Buyer + Super Seller\" Reveals China's Economic Strength",
+     "summary": "Commentary argues that China plays both \"super buyer\" and \"super seller\" roles, a dual position that underscores the deep fundamentals of its economy.",
+     "detail": "The article views China's economy through the lens of two-way trade flows. Its ultra-large market and powerful supply capacity form a unique advantage. Related analysis points to economic resilience and the ability to withstand pressure.",
+     "impact": "Bolsters external confidence in China's economic fundamentals, favoring foreign trade and cross-border supply chains.",
+     "importance": "important",
      "tags": [
-      "Energy Consumption",
-      "Consumer Rights",
-      "Measurement Regulation"
+      "Foreign trade",
+      "Economic resilience",
+      "Dual circulation"
      ]
     },
     {
      "id": "news-012",
-     "title": "Heritage Brands Go Viral: New Twists on Preserved Fruit and Beer",
-     "summary": "Time-honored brands Hongluo Food and Shuanghengsheng Beer in Huairou are innovating to become new consumer favorites.",
-     "detail": "The \"Heritage Brands, New Hits\" series visits Hongluo Food in Huairou to explore innovative takes on century-old preserved fruit, while also spotlighting how Shuanghengsheng Beer blends old Beijing traditions with new expression.",
-     "impact": "Heritage brands are recapturing young consumers' attention through product and storytelling innovation, offering a path for revitalizing traditional brands.",
-     "importance": "normal",
+     "title": "Financial Street Forum to Host Insurance Conference for First Time",
+     "summary": "The annual Financial Street Forum will hold its first-ever insurance conference, focusing on the development of the insurance sector, which is closely tied to household wealth management.",
+     "detail": "This marks the first time the Financial Street Forum has added an insurance-themed conference. Its agenda is closely connected to ordinary people's wallets. The forum is seen as a key window into financial policy trends.",
+     "impact": "Attention on the insurance sector is rising, which may drive innovation in related products and services.",
+     "importance": "important",
      "tags": [
-      "Heritage Brands",
-      "Food & Beverage",
-      "Brand Renewal"
+      "Insurance sector",
+      "Financial forum",
+      "Financial reform"
      ]
     },
     {
      "id": "news-013",
-     "title": "Why Restaurants Rated 4.8 Are More Likely to Disappoint",
-     "summary": "Analysis shows that viral restaurants boasting ratings as high as 4.8 are actually more likely to leave consumers disappointed.",
-     "detail": "The report examines the gap between high ratings and actual dining experiences at viral restaurants, urging consumers to view platform scores with a critical eye.",
-     "impact": "Could drive further improvements in review platform rating systems and dining reputation mechanisms.",
+     "title": "Reading Economic Vitality Through Logistics \"Heat\"",
+     "summary": "The \"Brilliant New Landscape\" column uses logistics activity as a lens to gauge the vitality and momentum of China's economy.",
+     "detail": "Logistics data is often treated as a leading indicator of economic performance. The reporting reads overall economic temperature through logistics activity levels. The perspective echoes signals of improvement in the first three quarters.",
+     "impact": "A rebound in logistics typically signals simultaneous gains on both the production and consumption sides.",
      "importance": "normal",
      "tags": [
-      "Dining Consumption",
-      "Influencer Economy",
-      "Consumer Reviews"
+      "Logistics industry",
+      "Economic performance",
+      "Supply chain"
+     ]
+    },
+    {
+     "id": "news-014",
+     "title": "Company Hands 2,000 Employees a Solid Gold Bracelet Each",
+     "summary": "A company gave each of its 2,000 employees a pure gold bracelet, drawing attention as a workplace perk and reflecting the heat in gold consumption.",
+     "detail": "Reports say the company distributed gold jewelry as an employee benefit. The scale of the giveaway sparked lively discussion online. The incident also reflects, indirectly, how popular gold remains in consumption and gift-giving.",
+     "impact": "Highlights a trend toward more diverse corporate benefits while confirming market appetite for gold consumption.",
+     "importance": "normal",
+     "tags": [
+      "Corporate benefits",
+      "Gold consumption",
+      "Workplace culture"
      ]
     }
    ]
@@ -208,42 +217,42 @@
    "icon": "💡",
    "articles": [
     {
-     "id": "news-014",
-     "title": "China Unveils Record Number of Breakthrough Tech Achievements This Week",
-     "summary": "Multiple world-first and industry-first high-tech results were released across China this week, drawing widespread attention.",
-     "detail": "A roundup of the hard tech achievements unveiled in China this week, including several world-first and industry-first projects that showcase the vitality of innovation.",
-     "impact": "The wave of tech breakthroughs is expected to accelerate upgrading and domestic substitution across related supply chains.",
+     "id": "news-015",
+     "title": "我国首次太空培育两代水稻取得新突破",
+     "summary": "我国首次在太空培育出两代水稻并取得新突破，为航天育种与空间生命科学研究积累经验。",
+     "detail": "此次实验实现水稻在轨培育的代际延续。相关突破属于航天育种领域的重要进展。成果为空间科学研究提供宝贵数据。",
+     "impact": "有望拓展空间农业研究边界，助力未来长期载人航天保障。",
      "importance": "hot",
      "tags": [
-      "Technology Innovation",
-      "Advanced Manufacturing",
-      "Domestic Substitution"
-     ]
-    },
-    {
-     "id": "news-015",
-     "title": "AI Poster Decodes Mega Engineering Projects Along the Yangtze River",
-     "summary": "The 'Why China' AI poster series uses artificial intelligence to depict China's landmark mega projects along the Yangtze River.",
-     "detail": "The 'Why China' series released an AI-created poster that leverages artificial intelligence to decode major national engineering projects along the Yangtze River, showcasing the country's engineering achievements through innovative expression.",
-     "impact": "The AI-plus-cultural-communication format opens a new channel for projecting national image and industrial strength overseas.",
-     "importance": "important",
-     "tags": [
-      "Artificial Intelligence",
-      "Mega Projects",
-      "Cultural Communication"
+      "航天育种",
+      "种业创新",
+      "航天科技"
      ]
     },
     {
      "id": "news-016",
-     "title": "Humanities Graduates Bet Big on AI and Win",
-     "summary": "An entrepreneur dubbed 'the top humanities student' has gained attention after betting on the AI sector.",
-     "detail": "The report tells the story of an entrepreneur with a humanities background who entered the AI field and achieved results, highlighting cross-disciplinary opportunities amid the AI startup boom.",
-     "impact": "The AI startup wave continues to attract talent from diverse backgrounds, keeping the ecosystem increasingly varied.",
+     "title": "真能飞！特斯拉Roadster有点意思",
+     "summary": "特斯拉Roadster新动态引发关注，其“能飞”的表现让外界直呼有点意思。",
+     "detail": "报道称该车型展现出令人意外的特性。相关话题在汽车爱好者中广泛讨论。具体性能信息以官方发布为准。",
+     "impact": "或推动新能源汽车在性能与形态上的创新想象。",
      "importance": "normal",
      "tags": [
-      "Artificial Intelligence",
-      "Venture Investment",
-      "Tech Entrepreneurship"
+      "新能源汽车",
+      "智能出行",
+      "汽车科技"
+     ]
+    },
+    {
+     "id": "news-017",
+     "title": "AIGC文物叙事微故事集《山河记得》将播出",
+     "summary": "采用AIGC“文物叙事”手法的微故事集《山河记得》即将播出，以新技术讲述文物背后的故事。",
+     "detail": "作品以人工智能生成内容技术呈现文物叙事。形式新颖，注重历史文化的当代表达。播出有望引发数字文博话题讨论。",
+     "impact": "为文化科技融合提供新范式，带动数字文博内容创新。",
+     "importance": "normal",
+     "tags": [
+      "AIGC",
+      "数字文博",
+      "文化科技"
      ]
     }
    ]
@@ -254,68 +263,67 @@
    "icon": "📰",
    "articles": [
     {
-     "id": "news-017",
-     "title": "Typhoon Cempaka Intensifies into Super Typhoon",
-     "summary": "Typhoon Cempaka has strengthened into a super typhoon and may continue to intensify in the coming days.",
-     "detail": "Meteorological monitoring shows that Typhoon Cempaka has intensified into a super typhoon, with the possibility of further strengthening ahead.",
-     "impact": "Coastal areas should closely monitor weather warnings and prepare for wind and flood risks as well as travel disruptions.",
-     "importance": "hot",
-     "tags": [
-      "Meteorological Disasters",
-      "Disaster Prevention",
-      "Typhoon Warning"
-     ]
-    },
-    {
      "id": "news-018",
-     "title": "Toxic Mosquitoes from Southern China Are Migrating North",
-     "summary": "Toxic mosquito populations in southern China are spreading northward in large numbers, raising public health concerns.",
-     "detail": "Reports highlight a northward shift in mosquito populations once concentrated in southern China, pointing to new challenges tied to climate change and public health protection.",
-     "impact": "Demand for mosquito-borne disease prevention and surveillance is rising in northern regions, requiring public health systems to plan ahead.",
+     "title": "Flu Strikes: How I Picked the \"Right\" Drug in 48 Hours",
+     "summary": "In the critical 48-hour window after flu onset, the author shares how to choose medications scientifically, stressing the importance of timing.",
+     "detail": "The article recounts a personal battle with the flu, focusing on drug choices in the early stages of illness. This kind of public health education helps people seek treatment and use medicine more rationally.",
+     "impact": "Raises public awareness of self-protection and rational medication use during flu season.",
      "importance": "important",
      "tags": [
+      "Flu Prevention and Treatment",
       "Public Health",
-      "Climate Change",
-      "Mosquito-Borne Disease Prevention"
+      "Rational Medication Use"
      ]
     },
     {
      "id": "news-019",
-     "title": "Which Flu Medication Should You Take Within 48 Hours",
-     "summary": "How to choose the right medication within the first 48 hours of flu symptoms has become a key self-care topic for the public.",
-     "detail": "The report discusses medication choices during the critical 48-hour window of a flu outbreak, sharing the author's approach and experience in selecting treatments.",
-     "impact": "Helps raise public awareness of self-protection and responsible medication use during flu season, easing pressure on the healthcare system.",
-     "importance": "important",
+     "title": "Can Stem Cell Infusions Worth Hundreds of Thousands Really Fight Aging?",
+     "summary": "With anti-aging stem cell infusions costing upward of hundreds of thousands of yuan, reports question their actual effectiveness and scientific basis.",
+     "detail": "Stem cell anti-aging has become a popular health consumption concept in recent years. The coverage casts doubt on the steep prices versus real benefits. The topic also touches on regulatory and bioethical issues.",
+     "impact": "Helps curb exaggerated marketing and guides consumers to view anti-aging spending more rationally.",
+     "importance": "normal",
      "tags": [
-      "Public Health",
-      "Medication Safety",
-      "Flu Prevention"
+      "Biomedicine",
+      "Health Consumption",
+      "Anti-Aging"
      ]
     },
     {
      "id": "news-020",
-     "title": "Dance Drama 'Kizil' Goes from Obscurity to Sold-Out Shows in Hong Kong",
-     "summary": "The dance drama 'Kizil' has gone from near obscurity to selling out venues in Hong Kong, exploring how traditional culture can break into the mainstream.",
-     "detail": "The report traces the journey of the dance drama 'Kizil' — from audiences unfamiliar with the name Kizil to packed houses in Hong Kong — examining what the production got right.",
-     "impact": "Offers a replicable model for the commercialization and cross-regional reach of stage works rooted in traditional culture.",
-     "importance": "normal",
+     "title": "300 Days Inside a Boot Camp-Style School",
+     "summary": "An in-depth report on 300 days at a boot camp-style corrective school, focusing on the experiences and controversies surrounding youth rehabilitation education.",
+     "detail": "The report chronicles daily life inside such a school on a timeline basis, touching on approaches to adolescent education and parental choices. The issue has drawn long-standing public attention.",
+     "impact": "Sparks discussion and reflection on youth education methods and industry regulation.",
+     "importance": "important",
      "tags": [
-      "Cultural Performances",
-      "Traditional Culture",
-      "Stage Arts"
+      "Youth Education",
+      "Family Education"
      ]
     },
     {
      "id": "news-021",
-     "title": "Classic Korean Drama 'Dae Jang Geum' Makes a Comeback After 23 Years",
-     "summary": "The classic Korean drama 'Dae Jang Geum' has experienced a resurgence 23 years later, sparking a new wave of nostalgia and discussion.",
-     "detail": "Reports focus on the revival of the classic series 'Dae Jang Geum' after 23 years, reflecting the enduring appeal of classic film and TV IPs.",
-     "impact": "The redevelopment of classic entertainment IPs and nostalgia-driven consumption may attract greater market attention.",
+     "title": "China's Toxic Southern Mosquitoes Are Migrating North",
+     "summary": "Observations suggest toxic mosquito species from southern China are moving northward, raising public health concerns over shifting activity ranges.",
+     "detail": "The report points to a northward spread of southern mosquito species, likely linked to changing climate and environmental conditions. Mosquito-borne issues place new demands on residents' health protection.",
+     "impact": "Signals the need for northern regions to step up vector control and prepare for related disease prevention.",
      "importance": "normal",
      "tags": [
-      "Film & Television",
-      "Classic IPs",
-      "Entertainment Consumption"
+      "Vector Control",
+      "Public Health",
+      "Ecological Change"
+     ]
+    },
+    {
+     "id": "news-022",
+     "title": "Missing 33-Year-Old Female Hiker Found in Southern Taihang Mountains",
+     "summary": "A woman who went missing while hiking in the Southern Taihang Mountains has been found, drawing attention to outdoor hiking safety.",
+     "detail": "The missing hiker was located after a search operation. The incident attracted attention from the outdoor community and the public, putting safety preparation for hiking trips back in the spotlight.",
+     "impact": "Reminds outdoor enthusiasts to prioritize route planning and safety precautions.",
+     "importance": "normal",
+     "tags": [
+      "Outdoor Safety",
+      "Emergency Rescue",
+      "Travel Safety"
      ]
     }
    ]
