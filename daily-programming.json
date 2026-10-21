@@ -1,39 +1,38 @@
 {
-  "date": "2026-10-20",
+  "date": "2026-10-21",
   "contents": [
     {
-      "id": "prog-2026-10-20",
-      "date": "2026-10-20",
-      "title": "Next.js Server Actions：在 App Router 中优雅地处理表单提交与乐观更新",
-      "summary": "掌握用 Server Actions 替代传统 API 路由，并配合 useTransition / useOptimistic 实现流畅的表单交互体验。",
+      "id": "prog-2026-10-21",
+      "date": "2026-10-21",
+      "title": "Node.js Streams 与背压（Backpressure）：用恒定内存处理海量数据",
+      "summary": "掌握 Readable / Transform / Writable 三件套、pipeline 与背压机制，让服务在处理百万级日志或大文件时内存保持平稳。",
       "difficulty": "中级",
-      "concept": "在 Pages Router 时代，提交一个表单通常需要三件套：写一个 /api/xxx 的接口、用 fetch 或 axios 发请求、在客户端维护 loading / error / success 三种状态。这不仅代码量大，还容易出现状态不同步、请求重复提交、路由刷新后状态丢失等问题。Next.js 14 之后推出的 Server Actions（服务端动作）让我们可以直接在 Server Component 或 Client Component 中调用一个「在服务端执行的异步函数」，由框架自动处理序列化、网络传输和结果返回，本质上是一种端到端类型安全的 RPC 调用。\n\nServer Actions 的核心是 \"use server\" 指令。当你在一个文件顶部或某个函数顶部写上 'use server'，Next.js 编译器就会把该函数编译成一个「服务端函数 + 客户端代理」的组合：客户端只保留一个发送 POST 请求的占位函数，真实逻辑永远只在服务端执行。这意味着数据库密码、内部 SDK 调用、鉴权逻辑都可以安全地写在同一个函数里，而不必再手动抽一层 API 路由。同时，函数签名从客户端到服务端是类型完整的，参数与返回值的 TS 类型无需手写接口文档。\n\n在实际工程中，Server Actions 几乎总是和 revalidatePath / revalidateTag 配合使用。Server Action 修改数据后，通过 revalidatePath('/todos') 让 Next.js 重新渲染受影响的路由，从而把最新的服务端数据推送到客户端。这形成了一个非常干净的数据流闭环：表单 → Server Action → 数据库 → revalidate → UI 自动更新。相比手动 refetch，这种方式天然规避了「缓存陈旧」的问题，也和 App Router 的缓存体系（Router Cache / Full Route Cache / Data Cache）协同工作。\n\n但是，默认的 Server Action 提交是「阻塞式」的：在 action 返回之前，React 会停留在 pending 状态，用户点击按钮后界面没有任何即时反馈，如果网络慢就会感觉「卡住了」。解决这个问题的关键是 useTransition。用 startTransition 包住 action 调用（或用 formAction + useFormStatus），你就能拿到 isPending 状态来禁用按钮、显示 loading 动画。更重要的是，transition 里的更新会被标记为「非紧急」，React 可以优先响应用户的其他交互（比如继续打字）。\n\n再进一步，要做到「点了就变」的极致体验，需要 useOptimistic。它允许你在服务端真正返回之前，先用一个乐观值渲染 UI，失败时自动回滚到真实值。注意 useOptimistic 的更新是「短暂的、会被真实数据覆盖的」，它不能替代真正的状态管理，只是对 Server Action 的补充。典型场景：Todo 的勾选、点赞按钮、购物车数量加减——这些操作失败率低、用户期望即时反馈，非常适合乐观更新。\n\n最后给几条工程经验：第一，Server Action 内部永远不要信任客户端传入的 userId / role，鉴权必须在 action 里重新做一遍；第二，用 zod 之类的库做参数校验，返回结构化的错误对象而不是抛异常；第三，Server Action 中抛出的错误在生产环境会被 Next.js 隐藏（防止泄漏敏感信息），所以业务错误请通过返回值传递，只有不可恢复的系统错误才 throw；第四，把 action 写成独立文件（如 app/todos/actions.ts）并统一用 bind 注入上下文，比把巨型函数内联在页面里更容易测试和维护。",
+      "concept": "在 Node.js 里，流（Stream）是处理 IO 的核心抽象：它把「一次性读入整个数据集」变成「按需分块读取」。一个典型的流式管道由三部分组成——Readable（数据源，如文件、HTTP 请求体、数据库游标）、Transform（加工，如 JSON 解析、压缩、过滤）和 Writable（数据汇，如响应体、文件写入、消息队列）。只要消费速度跟不上生产速度，中间的缓冲区就会不断膨胀，最终 OOM。这就是流最重要的工程概念：背压（Backpressure）。\n\n背压的本质是一个简单的信号协议：当流内部缓冲区里的数据量达到 highWaterMark（字节模式按字节数，objectMode 按对象个数），write()/push() 会返回 false，提示上游「我暂时吃不下了」。收到 false 后，生产者应当停止 push，直到收到 'drain' 事件再继续。请注意：返回 false 并不意味着数据丢失或写入失败，缓冲区依然会把这一批数据收下，只是请你别再往里塞了。忽略这个信号是 Node.js 服务内存泄漏最常见的根因之一——很多同事会用一个 for 循环狂写 write()，本地跑几十条没问题，上生产一跑到百万条就 OOM。\n\n在实际工程中，我们几乎不手动写 push/while 循环，而是优先使用 stream/promises 的 pipeline()。它有三个关键价值：自动串联各阶段并传递背压信号；任一阶段出错时自动销毁其余流，避免文件描述符泄漏；返回 Promise，可以直接 await，符合 async/await 的心智模型。与之配合的是 async iterator——Readable 实现了 Symbol.asyncIterator，所以你可以直接 for await (const chunk of stream) 来消费它，这在需要「边读边判断、提前 break」的场景里比 pipe 更直观。\n\nDeno 在这块有个重要差异：它原生以 Web 标准的 ReadableStream / WritableStream / TransformStream 为准，背压信号体现在 writer.write() 返回的 Promise 何时 resolve，而不是返回 boolean。Deno 同时通过兼容层支持 node:stream，所以在 Deno 里迁移 Node.js 代码时，建议逐步把自定义流改写为 Web Streams，这样一份代码两端可跑。\n\n性能经验：highWaterMark 不是越大越好。它决定了「内存换吞吐」的平衡点，默认 16KB（字节）或 16（objectMode）。大文件拷贝可以调到 64KB~1MB 提升吞吐；但如果你的下游是慢速数据库或第三方 API，调大 highWaterMark 只会把数据堆积在内存里，此时应保持较小值（如 8~16），并让下游并发度可控。另一个常见坑是 Transform 里执行同步重计算（如大 JSON 解析、正则回溯），会阻塞事件循环，让整个进程的 IO 都停摆——这种负载应交给 Worker Threads。",
       "codeExample": {
-        "language": "tsx",
-        "code": "// app/todos/actions.ts —— Server Action（只能在服务端执行）\n'use server'\n\nimport { revalidatePath } from 'next/cache'\nimport { z } from 'zod'\nimport { db } from '@/lib/db'\nimport { getCurrentUser } from '@/lib/auth'\n\n// 1. 用 zod 定义并校验入参，避免非法数据进入数据库\nconst TodoSchema = z.object({\n  title: z.string().min(1, '标题不能为空').max(100),\n})\n\nexport type ActionResult =\n  | { ok: true; id: string }\n  | { ok: false; error: string }\n\nexport async function createTodo(\n  _prev: ActionResult | null,\n  formData: FormData,\n): Promise<ActionResult> {\n  // 2. 鉴权永远在服务端再做一次，绝不信任客户端传来的 userId\n  const user = await getCurrentUser()\n  if (!user) return { ok: false, error: '请先登录' }\n\n  const parsed = TodoSchema.safeParse({\n    title: formData.get('title'),\n  })\n  if (!parsed.success) {\n    // 3. 业务错误通过返回值传递，而不是 throw\n    return { ok: false, error: parsed.error.errors[0].message }\n  }\n\n  const todo = await db.todo.create({\n    data: { title: parsed.data.title, userId: user.id },\n  })\n\n  // 4. 让受影响的路由重新渲染，缓存自动失效\n  revalidatePath('/todos')\n  return { ok: true, id: todo.id }\n}\n\n// ------------------------------\n// app/todos/page.tsx —— 服务端页面，直接查库，无需 useEffect\nimport { db } from '@/lib/db'\nimport { TodoForm } from './todo-form'\n\nexport default async function TodosPage() {\n  const todos = await db.todo.findMany({ orderBy: { createdAt: 'desc' } })\n\n  return (\n    <main className=\"mx-auto max-w-xl p-6 space-y-6\">\n      <h1 className=\"text-2xl font-bold\">我的待办</h1>\n      <TodoForm />\n      <ul className=\"space-y-2\">\n        {todos.map((t) => (\n          <li key={t.id} className=\"rounded border p-3\">{t.title}</li>\n        ))}\n      </ul>\n    </main>\n  )\n}\n\n// ------------------------------\n// app/todos/todo-form.tsx —— 客户端表单：useActionState + useFormStatus\n'use client'\n\nimport { useActionState, useFormStatus } from 'react'\nimport { createTodo, type ActionResult } from './actions'\n\n// 子组件里用 useFormStatus 读取父级 <form> 的提交状态\nfunction SubmitButton() {\n  const { pending } = useFormStatus()\n  return (\n    <button\n      type=\"submit\"\n      disabled={pending}\n      className=\"rounded bg-blue-600 px-4 py-2 text-white disabled:opacity-50\"\n    >\n      {pending ? '提交中…' : '添加待办'}\n    </button>\n  )\n}\n\nexport function TodoForm() {\n  // useActionState 把 Server Action 包装成 [state, formAction]，可拿到上一次结果\n  const [state, formAction] = useActionState<ActionResult | null, FormData>(\n    createTodo,\n    null,\n  )\n\n  return (\n    <form action={formAction} className=\"flex gap-2\">\n      <input\n        name=\"title\"\n        placeholder=\"想做点什么？\"\n        className=\"flex-1 rounded border px-3 py-2\"\n        required\n      />\n      <SubmitButton />\n      {state && !state.ok && (\n        <p className=\"text-sm text-red-600\">{state.error}</p>\n      )}\n    </form>\n  )\n}\n\n// ------------------------------\n// 乐观更新示例：勾选 Todo 时先变 UI，再等服务端结果\n'use client'\n\nimport { useOptimistic, useTransition } from 'react'\nimport { toggleTodo } from './actions'\n\nexport function TodoItem({ id, title, done }: {\n  id: string; title: string; done: boolean\n}) {\n  // useOptimistic 的值只在「pending 期间」覆盖真实值，结束后自动恢复\n  const [optimisticDone, setOptimisticDone] = useOptimistic(done)\n  const [isPending, startTransition] = useTransition()\n\n  return (\n    <label className=\"flex items-center gap-2 opacity-100\">\n      <input\n        type=\"checkbox\"\n        checked={optimisticDone}\n        disabled={isPending}\n        onChange={() =>\n          startTransition(async () => {\n            setOptimisticDone(!optimisticDone) // 1) 立即渲染乐观状态\n            await toggleTodo(id)               // 2) 真正提交到服务端\n            // 3) action 完成后，乐观值自动被真实值替换；失败则自动回滚\n          })\n        }\n      />\n      <span className={optimisticDone ? 'line-through text-gray-400' : ''}>\n        {title}\n      </span>\n    </label>\n  )\n}\n",
-        "explanation": "【actions.ts】文件顶部的 'use server' 让 Next.js 把 createTodo 编译为服务端函数，客户端只拿到一个代理函数。函数签名是 (prevState, formData) => newState 的 useActionState 约定，方便回传错误信息。内部依次做了：鉴权 → zod 校验 → 写库 → revalidatePath('/todos') 让页面缓存失效 → 返回结构化结果。\n\n【page.tsx】是 async 服务端组件，直接 await 查数据库，完全不需要 useEffect + fetch，也就没有 loading / 竞态 / 水合不一致的问题。\n\n【todo-form.tsx】是客户端组件。useActionState 返回 [state, formAction]：state 是上次 action 的返回值（用于展示错误），formAction 传给 <form action={...}> 即可触发提交。SubmitButton 里用 useFormStatus() 读取父表单的 pending，实现「提交中禁用按钮」，注意 useFormStatus 必须放在 <form> 的子组件里才生效。\n\n【TodoItem】演示乐观更新：useOptimistic(done) 返回 [optimisticDone, setOptimisticDone]，在 startTransition 中先 setOptimisticDone 立即更新 UI，再 await toggleTodo(id) 等服务端确认。React 会在 transition 结束后自动把乐观值丢弃、回到真实数据；若 action 失败，UI 也会自动回滚，无需手写 try/catch 逻辑。"
+        "language": "javascript",
+        "code": "// stream-backpressure.js\n// 运行：node stream-backpressure.js  (需要 Node.js 18+)\nimport { Transform, Writable, pipeline } from \"node:stream/promises\";\nimport { setTimeout as sleep } from \"node:timers/promises\";\n\n// 1) 生产者：用 async generator 生成 2 万条日志\n//    逐条 yield，内存中永远只存在一条记录\nasync function* logSource(total) {\n  for (let i = 0; i < total; i++) {\n    yield {\n      id: i,\n      level: i % 7 === 0 ? \"error\" : \"info\",\n      cost: (i * 13) % 500,\n    };\n    // 刻意不加延迟：模拟「生产远快于消费」的压力场景\n  }\n}\n\n// 2) 转换流：只保留 error 且 cost > 100 的记录\nconst filter = new Transform({\n  objectMode: true,\n  transform(chunk, _enc, cb) {\n    if (chunk.level === \"error\" && chunk.cost > 100) {\n      cb(null, chunk); // 产出一条\n    } else {\n      cb(); // 不产出即丢弃\n    }\n  },\n});\n\n// 3) 消费者：慢速写入（模拟写数据库），highWaterMark 刻意设小\nlet written = 0;\nconst slowSink = new Writable({\n  objectMode: true,\n  highWaterMark: 8, // 缓冲区只允许 8 个对象，几乎立刻触发背压\n  write(chunk, _enc, cb) {\n    written++;\n    sleep(20).then(() => cb()); // 每条 20ms 的慢速落盘\n  },\n});\n\n// 4) pipeline 自动传递背压信号，且出错时自动清理所有流\nconst start = Date.now();\nawait pipeline(logSource(20000), filter, slowSink);\n\nconsole.log(`完成：写入 ${written} 条，耗时 ${Date.now() - start}ms`);\nconsole.log(`RSS 稳定在 ${(process.memoryUsage().rss / 1024 / 1024).toFixed(1)} MB`);\n",
+        "explanation": "第 1 段（logSource）：async generator 直接就是一个合法的 Readable 数据源。for 循环里 yield 单条对象，配合 pipeline 的背压，只有下游真的 ready 时才会生成下一条，所以 2 万条数据不会全部驻留内存。\n\n第 2 段（filter）：Transform 的 _transform(chunk, enc, cb) 中，cb(null, x) 表示「产出 x」，cb() 表示「这一条不产出」，cb(err) 表示出错。这里实现的是过滤语义。\n\n第 3 段（slowSink）：Writable 的 highWaterMark: 8 表示缓冲区攒到 8 个对象就让 write() 返回 false。write() 内部用 sleep(20) 模拟慢 IO，只有 cb() 被调用后才处理下一条——这就是消费速度的上限来源。\n\n第 4 段（pipeline）：await pipeline(src, transform, sink) 会自动把上游的 push/read 与下游的写入能力挂钩。由于 slowSink 每条 20ms，整个流程的耗时主要由消费者决定；生产者绝不会跑到 2 万条之前把数据全部堆在内存里。最后打印的 RSS 用来验证内存平稳。\n\n对比练习：把 slowSink 的 highWaterMark 改成 20000，你会看到 RSS 明显上升；把 sleep 去掉，则能看到吞吐大幅提升——这正是调参的两个维度。"
       },
       "keyPoints": [
-        "'use server' 是 Server Action 的开关：编译后函数体只在服务端运行，客户端只保留一个发 POST 的代理占位函数，天然具备类型安全。",
-        "Server Action 修改数据后必须调用 revalidatePath 或 revalidateTag，否则路由缓存不会失效，页面看不到最新数据。",
-        "useActionState + <form action> 是标准表单模式：能拿到上一次提交的结果（用于展示错误），且表单在无 JS 时仍可降级提交。",
-        "useFormStatus 必须写在 <form> 内部的子组件中，用来读取 pending 状态做按钮禁用 / loading 展示，不能写在同一个组件里。",
-        "useOptimistic 只在 transition 的 pending 期间覆盖真实值，结束后自动还原或回滚，绝不能当作全局状态管理来用。",
-        "安全底线：Server Action 内部必须重新鉴权和校验（zod），业务错误用返回值传递，只有系统级错误才 throw（生产环境 throw 的消息会被 Next.js 隐藏）。"
+        "背压信号协议：write()/push() 返回 false 表示缓冲区已达 highWaterMark，上游应暂停，等 'drain' 事件后再继续；返回 false 不代表数据丢失。",
+        "优先使用 stream/promises 的 pipeline()：自动传播背压、出错自动销毁所有流（防止 fd 泄漏）、返回可 await 的 Promise。",
+        "Readable 实现了 Symbol.asyncIterator，可用 for await (const chunk of stream) 消费，需要提前 break 时比 pipe 更自然。",
+        "highWaterMark 是内存与吞吐的旋钮：大文件拷贝可调大（64KB~1MB），慢速下游应调小（8~16）并限制并发。",
+        "Deno 以 Web Streams（ReadableStream/WritableStream/TransformStream）为准，背压体现在 writer.write() 返回的 Promise；跨运行时项目建议写 Web Streams，node:stream 仅作兼容。"
       ],
       "exercise": {
-        "description": "实现一个「点赞文章」功能：在 app/posts/[id]/ 目录下创建 like.ts（Server Action）和 LikeButton.tsx（客户端组件）。要求：1) like.ts 中用 'use server' 定义 likePost(postId: string)，从 session 中取当前用户，调用数据库增加点赞数，然后 revalidatePath(`/posts/${postId}`)；2) LikeButton.tsx 使用 useOptimistic + useTransition，用户点击后按钮数量立刻 +1、按钮变红，同时禁用防止重复点击；3) action 抛出或返回错误时 UI 能自动回滚到真实数量并给出提示。",
-        "hint": "先在 like.ts 里把鉴权和 postId 的 zod 校验写好，返回 { ok, count } 这样的结构化结果；LikeButton 里用 useOptimistic(count, (prev, delta) => prev + delta) 来做数字的乐观加减，在 startTransition 里先 setOptimisticCount(1) 再 await likePost(postId)。注意把按钮做成独立子组件后，如果用 useFormStatus，需要放在 <form> 内部。",
+        "description": "实现一个日志清洗管道 logCleaner.js：读取 access.log（每行一条 JSON 日志），过滤出 status >= 500 的记录，把时间戳格式化为 YYYY-MM-DD HH:mm:ss，最后逐行写入 error.log。要求：使用 pipeline + Transform，全程不在内存中累积超过 highWaterMark 的数据；写完后统计总条数与耗时。可选加分项：用 fs.createReadStream/createWriteStream 作为源和汇，并给 Transform 加一个并发上限为 3 的异步处理（例如模拟解析 UA）。",
+        "hint": "用 readline 或按行的 Transform 先把 Buffer 切成行，再 JSON.parse；解析失败的行应静默丢弃或计入 badLines 而不是让整个管道崩溃。手动写 write() 时记得处理返回值：if (!w.write(x)) await once(w, 'drain')。异步 Transform 里不要用 cb 同步回调两次，务必保证一次 chunk 只调用一次 cb。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全 Server Action 的关键声明与缓存刷新调用：让这个函数在服务端执行，并在写入数据库后使 /todos 页面的缓存失效。",
-            "codeContext": "export async function createTodo(formData: FormData) {\n  const todo = await db.todo.create({ data: { title: formData.get('title') } })\n  __________('/todos')\n  return todo\n}",
+            "question": "补全手动处理背压的代码：当 write() 返回 false 时，应该等待哪个事件？",
+            "codeContext": "import { once } from 'node:events';\n\nfor (const chunk of source) {\n  const ok = writable.write(chunk);\n  if (!ok) {\n    await once(writable, '______');\n  }\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "// 文件顶部需要添加的指令：\n",
+                "content": "for (const chunk of source) {\n  const ok = writable.write(chunk);\n  if (!ok) {\n    await once(writable, '",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -41,75 +40,57 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择指令]",
+                "placeholder": "[填入事件名]",
                 "options": [
-                  "'use client'",
-                  "'use server'",
-                  "'use strict'",
-                  "'use cache'"
+                  "end",
+                  "drain",
+                  "finish",
+                  "data"
                 ],
-                "correctAnswer": "'use server'"
+                "correctAnswer": "drain"
               },
               {
                 "type": "text",
-                "content": "\n// 让 /todos 路由缓存失效的调用：\nrevalidate",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "Path",
-                  "Tag",
-                  "Router",
-                  "Page"
-                ],
-                "correctAnswer": "Path"
-              },
-              {
-                "type": "text",
-                "content": "('/todos')",
+                "content": "');\n  }\n}",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "'use server' / Path",
-            "explanation": "Server Action 必须由 'use server' 标记（写在文件顶部表示该文件所有导出都是 action，写在函数顶部表示单个函数）。写库后用 revalidatePath('/todos') 精确让该路由的缓存失效；如果同一份数据被多个页面复用，更推荐 revalidateTag('todos') 用标签统一失效。注意 revalidateTag 不能写在 Server Component 的渲染阶段，只能在 action 或 route handler 中调用。"
+            "correctAnswer": "drain",
+            "explanation": "'drain' 表示内部缓冲区已经被排空到 highWaterMark 以下，可以继续写入。'finish' 是所有数据写完且 end() 后触发的结束事件，'end' 属于 Readable，'data' 是 Readable 产出数据的事件，都不能用于背压恢复。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 useFormStatus，下列说法正确的是？",
-            "codeContext": "function SubmitButton() {\n  const { pending } = useFormStatus()\n  return <button type=\"submit\" disabled={pending}>提交</button>\n}\n\nexport function MyForm({ action }) {\n  return (\n    <form action={action}>\n      <input name=\"title\" />\n      <SubmitButton />\n    </form>\n  )\n}",
+            "question": "关于 Node.js 流的 highWaterMark，下列说法正确的是？",
+            "codeContext": "const w = new Writable({\n  objectMode: true,\n  highWaterMark: 8,\n  write(chunk, enc, cb) { /* 慢速处理 */ },\n});",
             "segments": null,
             "options": [
-              "useFormStatus 可以在 MyForm 自身的函数体中直接调用，效果与放在 SubmitButton 中完全相同",
-              "useFormStatus 读取的是最近父级 <form> 的提交状态，因此必须放在 <form> 的子组件里",
-              "useFormStatus 会自动阻止表单的默认提交行为，因此不再需要 action 属性",
-              "useFormStatus 返回的 pending 在 Server Component 中也可以直接使用"
+              "它是缓冲区的硬上限，达到后 write() 会直接丢弃数据",
+              "达到它时 write() 返回 false，但本次数据仍会入缓冲区，只作为背压信号",
+              "它决定了流能处理的最大字节数，超过会抛出 RangeError",
+              "它只对 Readable 有效，Writable 忽略该参数"
             ],
-            "correctAnswer": "useFormStatus 读取的是最近父级 <form> 的提交状态，因此必须放在 <form> 的子组件里",
-            "explanation": "useFormStatus 的设计是「让深层子组件感知表单状态」，它读取最近父级 <form> 的状态。若在 MyForm 自身调用，由于 React 渲染 MyForm 时它还没提交过，pending 永远为 false——这就是为什么按钮必须拆成独立子组件。它只在客户端组件中可用，且不会替代 action 属性，只是消费提交状态。"
+            "correctAnswer": "达到它时 write() 返回 false，但本次数据仍会入缓冲区，只作为背压信号",
+            "explanation": "highWaterMark 是软阈值（字节模式按字节，objectMode 按对象个数）。达到阈值时 write()/push() 返回 false 提示上游暂停，数据本身不会被丢弃、也不会抛错，Writable 同样支持该参数。把它当硬上限会导致误以为写入失败的错误处理逻辑。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "点击按钮一次后，界面上显示的数字依次会是什么（假设服务端请求耗时较长）？",
-            "codeContext": "'use client'\nimport { useOptimistic, useTransition, useState } from 'react'\n\nexport default function Counter() {\n  const [real, setReal] = useState(0)\n  const [optimistic, setOptimistic] = useOptimistic(real)\n  const [, startTransition] = useTransition()\n\n  function handleClick() {\n    startTransition(async () => {\n      setOptimistic(optimistic + 1)   // 乐观 +1\n      const next = await slowServerIncrement() // 服务端真实 +1，较慢\n      setReal(next)\n    })\n  }\n\n  return <button onClick={handleClick}>{optimistic}</button>\n}",
+            "question": "这段代码的控制台输出是什么？",
+            "codeContext": "import { Readable, Transform } from 'node:stream';\n\nconst src = Readable.from([1, 2, 3]);\nconst double = new Transform({\n  transform(c, _e, cb) { cb(null, c * 2); },\n});\nconst keepBig = new Transform({\n  transform(c, _e, cb) { if (c > 2) cb(null, c); else cb(); },\n});\n\nsrc.pipe(double).pipe(keepBig);\n\nconst out = [];\nfor await (const c of keepBig) out.push(c);\nconsole.log(out.join(','));",
             "segments": null,
             "options": [
-              "点击后立即显示 1，请求结束后仍显示 1",
-              "点击后仍显示 0，请求结束后显示 1",
-              "点击后立即显示 1，请求结束后短暂显示 0，然后变为 1",
-              "点击后立即显示 2，请求结束后显示 1"
+              "4,6",
+              "2,4,6",
+              "1,2,3",
+              "6,4",
+              "输出为空"
             ],
-            "correctAnswer": "点击后立即显示 1，请求结束后仍显示 1",
-            "explanation": "useOptimistic 会在 transition 进入 pending 时立即用乐观值渲染，所以点击瞬间显示 1。当 async action 完成（setReal(1)）后，React 丢弃乐观值、展示真实值 1，因此数量不会跳回 0。这正是 useOptimistic 与直接 useState 的区别：它只在 pending 期间生效，结束后自动交还给真实数据，避免了状态不同步的闪烁。若 action 抛错，React 会自动回滚到 0。"
+            "correctAnswer": "4,6",
+            "explanation": "double 把 1,2,3 变成 2,4,6；keepBig 只放行大于 2 的元素，即丢弃 2，保留 4 和 6。for await 直接迭代最后一个流 keepBig，所以拿到的是变换后的结果，顺序保持为 4,6。注意 src.pipe() 返回的是 keepBig 所在链的末端，但这里显式迭代 keepBig 同样正确。"
           }
         ]
       }

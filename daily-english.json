@@ -1,195 +1,182 @@
 {
-  "date": "2026-10-20",
+  "date": "2026-10-21",
   "content": {
-    "id": "en-2026-10-20",
-    "date": "2026-10-20",
-    "topic": "教育与成长",
+    "id": "en-2026-10-21",
+    "date": "2026-10-21",
+    "topic": "人工智能与科技",
     "newsHighlights": [
       {
-        "title": "Young docents keep Long March story alive in Sichuan",
+        "title": "'China Haul': Empty suitcases in, packed suitcases out",
         "source": "ChinaDaily",
-        "summary": "A group of young student docents in Sichuan are retelling the history of the Long March to visitors, keeping the spirit of that epic journey alive for a new generation.",
-        "translation": "四川一群年轻的青少年讲解员正在向参观者讲述长征历史，让长征精神在新一代中延续。",
+        "summary": "A British woman who had difficulty walking after a stroke discarded her wheelchair and walked with the help of a Chinese-made exoskeleton robot at the China Import and Export Fair.",
+        "translation": "一位中风后行动不便的英国女性在中国进出口交易会上借助中国制造的外骨骼机器人，扔掉轮椅重新行走。",
         "keyWords": [
-          "docent",
-          "Long March",
-          "heritage",
-          "young generation"
+          "exoskeleton robot",
+          "mobility",
+          "wearable technology"
         ]
       },
       {
-        "title": "Xi on enduring spirit of Long March",
+        "title": "US crackdown on tech counterproductive",
         "source": "ChinaDaily",
-        "summary": "President Xi Jinping has repeatedly emphasized the enduring spirit of the Long March, calling on the younger generation to carry forward its courage and perseverance.",
-        "translation": "习近平主席多次强调历久弥新的长征精神，号召年轻一代传承其勇气与毅力。",
+        "summary": "Analysts argue that the US crackdown on technology is counterproductive, as restricting chip exports and打压 rivals only disrupts global supply chains and slows innovation.",
+        "translation": "分析人士指出，美国对科技领域的打压适得其反，限制芯片出口、压制对手只会扰乱全球供应链并拖慢创新步伐。",
         "keyWords": [
-          "enduring spirit",
-          "perseverance",
-          "carry forward"
+          "crackdown",
+          "counterproductive",
+          "supply chain",
+          "innovation"
         ]
       },
       {
-        "title": "Biodiversity protection calls for real actions: Editorial",
+        "title": "Cultural heritage protection to be bolstered",
         "source": "ChinaDaily",
-        "summary": "Four years after the Kunming-Montreal Global Biodiversity Framework was adopted, an editorial urges governments to turn written promises into real actions to halt biodiversity loss.",
-        "translation": "在《昆明—蒙特利尔全球生物多样性框架》通过四年后，一篇社论呼吁各国政府把书面承诺化为切实行动，以遏制生物多样性丧失。",
+        "summary": "China will step up cultural heritage protection over the next five years through systematic protection, legal safeguards and digital technologies that bring heritage closer to people's daily lives.",
+        "translation": "未来五年，中国将通过系统性保护、法律保障以及数字技术，让文化遗产更贴近人们的日常生活。",
         "keyWords": [
-          "biodiversity",
-          "framework",
-          "halt",
-          "commitment"
+          "cultural heritage",
+          "systematic protection",
+          "digital technology"
         ]
       },
       {
-        "title": "What stands out in China's sustainable development?",
+        "title": "APEC economies urged to deepen cooperation",
         "source": "ChinaDaily",
-        "summary": "China's pursuit of a green path to development is drawing global attention, as sustainable practices grow across industry, energy and daily life.",
-        "translation": "中国走绿色发展之路正吸引全球目光，可持续实践在工业、能源与日常生活中不断扩展。",
+        "summary": "As a key growth engine, APEC economies are urged to uphold multilateralism, deepen open cooperation and unlock new growth momentum driven by science and technology.",
+        "translation": "作为关键增长引擎，亚太经合组织各经济体被呼吁维护多边主义、深化开放合作，并释放由科技创新驱动的新增长动能。",
         "keyWords": [
-          "sustainable",
-          "green path",
-          "development"
-        ]
-      },
-      {
-        "title": "In Nanjing, Autumn Arrives With the Scent of Osmanthus",
-        "source": "ChinaDaily",
-        "summary": "For many locals in Nanjing, a date with the famous King Osmanthus tree in Zhongshan Mountain National Park is a cherished autumn ritual passed down through generations.",
-        "translation": "对许多南京市民而言，到钟山国家公园探访著名的“桂花王”是一代代传承下来的珍贵秋日仪式。",
-        "keyWords": [
-          "osmanthus",
-          "ritual",
-          "cherish",
-          "generations"
+          "multilateralism",
+          "growth momentum",
+          "cooperation"
         ]
       }
     ],
     "quote": {
-      "quote": "Education is not the filling of a pail, but the lighting of a fire.",
-      "author": "W. B. Yeats",
-      "translation": "教育不是把桶装满，而是把火点燃。",
-      "explanation": "真正的教育不是机械地灌输知识，而是激发学生内心的好奇、热情与思考力。正如四川的年轻讲解员，他们在讲述长征故事的过程中被点燃，也反过来照亮了他人。"
+      "quote": "Any sufficiently advanced technology is indistinguishable from magic.",
+      "author": "Arthur C. Clarke",
+      "translation": "任何足够先进的科技，都与魔法无异。",
+      "explanation": "这句话提醒我们：真正领先的科技会让复杂的技术以近乎神奇的方式改变生活，正如新闻中的外骨骼机器人让瘫痪患者重新行走一样。"
     },
     "vocabulary": [
       {
-        "word": "docent",
-        "phonetic": "/ˈdoʊsnt/",
-        "partOfSpeech": "noun",
-        "definition": "讲解员；（博物馆、展览馆的）导览员",
-        "example": "Young docents in Sichuan spend weeks preparing before they guide visitors through the exhibition.",
-        "translation": "四川的年轻讲解员在为参观者导览之前，要花数周时间做准备。",
-        "newsContext": "出自标题 “Young docents keep Long March story alive in Sichuan”，指博物馆里为观众讲解长征历史的年轻志愿讲解员。"
+        "word": "exoskeleton",
+        "phonetic": "/ˌeksəʊˈskelɪtn/",
+        "partOfSpeech": "名词",
+        "definition": "外骨骼；（用于辅助运动的）体外支撑装置",
+        "example": "The Chinese-made exoskeleton robot helped the patient walk without a wheelchair.",
+        "translation": "中国制造的外骨骼机器人帮助这位患者在不借助轮椅的情况下行走。",
+        "newsContext": "出现在新闻 'China Haul': Empty suitcases in, packed suitcases out 中，指中国进出口交易会上展示的外骨骼机器人。"
       },
       {
-        "word": "vigilant",
-        "phonetic": "/ˈvɪdʒɪlənt/",
-        "partOfSpeech": "adjective",
-        "definition": "警惕的，警觉的",
-        "example": "Chinese travelers in France were urged to stay vigilant after large-scale demonstrations broke out.",
-        "translation": "法国爆发大规模示威后，中国游客被提醒保持警惕。",
-        "newsContext": "出自新闻 “Chinese travelers in France urged to stay vigilant”，中国驻法使领馆提醒公民保持安全警觉。"
+        "word": "mobility",
+        "phonetic": "/məʊˈbɪləti/",
+        "partOfSpeech": "名词",
+        "definition": "移动能力；行动能力；流动性",
+        "example": "A British woman suffering from hindered mobility after a stroke regained the ability to walk.",
+        "translation": "一位中风后行动能力受损的英国女性重新获得了行走的能力。",
+        "newsContext": "新闻中用于描述中风后行动不便（hindered mobility）的英国女性。"
       },
       {
-        "word": "biodiversity",
-        "phonetic": "/ˌbaɪoʊdaɪˈvɜːrsəti/",
-        "partOfSpeech": "noun",
-        "definition": "生物多样性",
-        "example": "The editorial said biodiversity protection calls for real actions rather than empty promises.",
-        "translation": "该社论指出，生物多样性保护需要实际行动，而不是空洞的承诺。",
-        "newsContext": "出自社论 “Biodiversity protection calls for real actions”，围绕全球生物多样性框架的落实展开。"
+        "word": "bolster",
+        "phonetic": "/ˈbəʊlstə(r)/",
+        "partOfSpeech": "动词",
+        "definition": "增强；加强；支持",
+        "example": "China will bolster cultural heritage protection over the next five years.",
+        "translation": "中国将在未来五年加强文化遗产保护。",
+        "newsContext": "来自新闻 Cultural heritage protection to be bolstered 的标题。"
       },
       {
-        "word": "sustainable",
-        "phonetic": "/səˈsteɪnəbl/",
-        "partOfSpeech": "adjective",
-        "definition": "可持续的；能保持的",
-        "example": "China's green path to development has become a model of sustainable growth.",
-        "translation": "中国的绿色发展道路已成为可持续增长的范例。",
-        "newsContext": "出自新闻 “What stands out in China's sustainable development?”，讨论中国的可持续发展实践。"
+        "word": "counterproductive",
+        "phonetic": "/ˌkaʊntəprəˈdʌktɪv/",
+        "partOfSpeech": "形容词",
+        "definition": "适得其反的；产生反效果的",
+        "example": "The US crackdown on technology is counterproductive and hurts global innovation.",
+        "translation": "美国对科技的打压适得其反，损害了全球创新。",
+        "newsContext": "出自新闻 US crackdown on tech counterproductive 的标题。"
       },
       {
-        "word": "heritage",
-        "phonetic": "/ˈherɪtɪdʒ/",
-        "partOfSpeech": "noun",
-        "definition": "遗产；传统；文化遗产",
-        "example": "The young docents treat the story of the Long March as a precious heritage to be passed on.",
-        "translation": "年轻讲解员把长征故事视为需要传承的宝贵遗产。",
-        "newsContext": "出自 “Young docents keep Long March story alive in Sichuan”，指革命历史这一精神文化遗产。"
+        "word": "momentum",
+        "phonetic": "/məˈmentəm/",
+        "partOfSpeech": "名词",
+        "definition": "势头；动力；动量",
+        "example": "APEC economies should unlock new growth momentum through technological cooperation.",
+        "translation": "亚太经合组织各经济体应通过科技合作释放新的增长动能。",
+        "newsContext": "新闻 APEC economies urged to deepen cooperation 中提到 unlock new growth momentum。"
       },
       {
-        "word": "commemorate",
-        "phonetic": "/kəˈmeməreɪt/",
-        "partOfSpeech": "verb",
-        "definition": "纪念；庆祝",
-        "example": "Museums across Sichuan hold special programs to commemorate the spirit of the Long March.",
-        "translation": "四川各地博物馆举办特别活动，以纪念长征精神。",
-        "newsContext": "出自 “Xi on enduring spirit of Long March”，相关新闻围绕纪念与弘扬长征精神展开。"
+        "word": "systematic",
+        "phonetic": "/ˌsɪstəˈmætɪk/",
+        "partOfSpeech": "形容词",
+        "definition": "系统的；有条理的；有计划的",
+        "example": "Officials called for systematic protection of cultural heritage supported by digital tools.",
+        "translation": "官员呼吁借助数字工具对文化遗产进行系统性保护。",
+        "newsContext": "文化遗产保护新闻中强调 systematic protection 与 legal safeguards。"
       },
       {
-        "word": "resilience",
-        "phonetic": "/rɪˈzɪliəns/",
-        "partOfSpeech": "noun",
-        "definition": "韧性；恢复力；坚韧不拔",
-        "example": "The resilience shown by the Red Army during the Long March still inspires young people today.",
-        "translation": "红军长征途中展现出的坚韧精神至今仍激励着年轻人。",
-        "newsContext": "出自 “Xi on enduring spirit of Long March”，长征精神的核心品质之一就是坚韧不拔。"
+        "word": "innovation",
+        "phonetic": "/ˌɪnəˈveɪʃn/",
+        "partOfSpeech": "名词",
+        "definition": "创新；革新",
+        "example": "Restricting chip exports only slows innovation in the global technology sector.",
+        "translation": "限制芯片出口只会拖慢全球科技领域的创新。",
+        "newsContext": "科技打压新闻中指出贸易限制会阻碍创新（innovation）与发展。"
       },
       {
-        "word": "framework",
-        "phonetic": "/ˈfreɪmwɜːrk/",
-        "partOfSpeech": "noun",
-        "definition": "框架；体制；准则",
-        "example": "The Kunming-Montreal Global Biodiversity Framework was adopted four years ago.",
-        "translation": "《昆明—蒙特利尔全球生物多样性框架》于四年前通过。",
-        "newsContext": "出自社论 “Biodiversity protection calls for real actions”，指全球生物多样性保护的纲领性框架。"
+        "word": "discard",
+        "phonetic": "/dɪsˈkɑːd/",
+        "partOfSpeech": "动词",
+        "definition": "丢弃；抛弃；放弃",
+        "example": "The woman was able to discard her wheelchair and walk on her own.",
+        "translation": "这位女士得以扔掉轮椅，独立行走。",
+        "newsContext": "外骨骼机器人新闻中描述患者 discard her wheelchair 的细节。"
       },
       {
-        "word": "highlight",
-        "phonetic": "/ˈhaɪlaɪt/",
-        "partOfSpeech": "verb",
-        "definition": "强调；突出；使显著",
-        "example": "The report highlights the importance of passing historical memory to the younger generation.",
-        "translation": "该报道强调了把历史记忆传递给年轻一代的重要性。",
-        "newsContext": "出自 “Xi highlights green path to development”，highlight 在新闻标题中常表示“强调、指出”。"
+        "word": "multilateralism",
+        "phonetic": "/ˌmʌltiˈlætərəlɪzəm/",
+        "partOfSpeech": "名词",
+        "definition": "多边主义",
+        "example": "APEC economies were urged to uphold multilateralism in the technology sector.",
+        "translation": "亚太经合组织各经济体被呼吁在科技领域维护多边主义。",
+        "newsContext": "出自新闻 APEC economies urged to deepen cooperation 中的表述。"
       },
       {
-        "word": "osmanthus",
-        "phonetic": "/ɒzˈmænθəs/",
-        "partOfSpeech": "noun",
-        "definition": "桂花",
-        "example": "For many Nanjing locals, a date with the King Osmanthus is a cherished autumn ritual.",
-        "translation": "对许多南京市民来说，探访“桂花王”是一项珍贵的秋日仪式。",
-        "newsContext": "出自 “In Nanjing, Autumn Arrives With the Scent of Osmanthus”，描写南京秋季桂花飘香的文化景象。"
+        "word": "safeguard",
+        "phonetic": "/ˈseɪfgɑːd/",
+        "partOfSpeech": "名词/动词",
+        "definition": "保障措施；保护；捍卫",
+        "example": "New legal safeguards will protect cultural heritage from being damaged.",
+        "translation": "新的法律保障措施将保护文化遗产免遭破坏。",
+        "newsContext": "文化遗产新闻中提到 legal safeguards（法律保障）。"
       }
     ],
     "pattern": {
-      "pattern": "keep + 宾语 + 宾语补足语（形容词 / 名词 / 现在分词）：表示“使……保持某种状态”",
-      "example": "Young docents keep the Long March story alive in Sichuan.",
-      "translation": "年轻的讲解员们让长征故事在四川保持鲜活。",
-      "usage": "keep 后接宾语，再接补语说明宾语的状态。例如：keep the classroom clean（保持教室干净）、keep students interested in history（让学生保持对历史的兴趣）、keep the story alive（让故事流传不衰）。在写作中用此句型可使表达简洁有力。"
+      "pattern": "sb. was able to do sth. with the help of sth.（某人在某物的帮助下得以做成某事）",
+      "example": "A British woman was able to discard her wheelchair and walk with the help of a Chinese-made exoskeleton robot.",
+      "translation": "一位英国女性在中国制造的外骨骼机器人的帮助下，得以扔掉轮椅重新行走。",
+      "usage": "用于描述借助某种技术、工具或他人帮助而完成原本困难的事情。也可替换为 be able to do sth. thanks to sth.。"
     },
     "grammar": {
-      "title": "过去分词作后置定语（Past Participle as Post-positive Modifier）",
-      "explanation": "当一个动作已经完成或表示被动含义时，常用“过去分词 + 其他成分”放在名词后面作定语，相当于一个省略了关系代词和 be 动词的定语从句。例如：the framework adopted at the meeting = the framework which was adopted at the meeting。这种结构在新闻英语中非常常见，能让句子更紧凑。",
+      "title": "新闻标题中的被动语态与不定式被动结构（to be + 过去分词）",
+      "explanation": "英文新闻标题常省略助动词，使用被动语态突出动作承受者；'to be + 过去分词' 表示\"将被……\"的动作，强调计划、安排或将要发生的被动行为。例如 \"Cultural heritage protection to be bolstered\" 实际是 \"Cultural heritage protection is to be bolstered\"。",
       "examples": [
-        "Four years after the Kunming-Montreal Global Biodiversity Framework adopted at the 15th meeting of the Conference of the Parties, calls for real actions are growing louder.",
-        "The spirit carried forward by the young docents in Sichuan continues to inspire visitors from all over the country."
+        "Cultural heritage protection to be bolstered over the next five years.",
+        "APEC economies urged to deepen cooperation and unlock new growth momentum."
       ]
     },
     "pronunciation": {
-      "word": "resilience",
-      "phonetic": "/rɪˈzɪliəns/",
-      "tips": "重音在第二个音节 zɪl 上，注意 /z/ 不是 /s/；li 读作 /li/，尾音是轻快的 /əns/，整体节奏为 ri-ZIL-yəns，切勿读成“瑞-赛-伦斯”。",
+      "word": "exoskeleton",
+      "phonetic": "/ˌeksəʊˈskelɪtn/",
+      "tips": "重音在第三个音节 skel 上；exo- 读作 /ˈeksəʊ/，中间的元音要轻快，-skeleton 读作 /ˈskelɪtn/，注意 'l' 与 't' 之间元音弱化为 /ɪ/，结尾音节含成音节 /tn/。整体节奏是：轻-轻-重-轻。",
       "examples": [
-        "The resilience of the Red Army during the Long March remains a powerful lesson for young people.",
-        "Good education builds both knowledge and resilience in children."
+        "The exoskeleton robot helped the patient walk again.",
+        "Chinese-made exoskeleton devices drew huge crowds at the trade fair."
       ]
     },
     "reading": {
-      "title": "Keeping the Story Alive: Young Docents in Sichuan",
-      "content": "In a museum in Sichuan, a group of young docents are giving visitors a vivid account of the Long March. Most of them are students in their teens. Before standing in front of the audience, they spend weeks reading historical materials, memorizing dates and rehearsing their presentations. Their teachers say the experience helps them grow not only as confident speakers but also as thoughtful young people. When visitors ask difficult questions, the young guides learn to think on their feet and to answer with patience. One fifteen-year-old docent said that telling the story again and again makes her feel much closer to history than any textbook could. Through their work, the enduring spirit of the Long March — resilience, solidarity and hope — is passed down to a new generation. Education, after all, is not only about books. It is also about keeping a story alive and letting it shape the future.",
-      "translation": "在四川的一家博物馆里，一群年轻的讲解员正在为参观者生动地讲述长征故事。他们大多是十几岁的学生。在站到观众面前之前，他们要花数周时间阅读史料、记忆年代并排练讲解。老师们说，这段经历不仅让他们成长为自信的讲述者，也让他们成为有思想的年轻人。当参观者提出难题时，年轻的讲解员学会随机应变，耐心作答。一位十五岁的讲解员说，一遍遍讲述这段故事，让她比读任何课本都更贴近历史。通过他们的工作，历久弥新的长征精神——坚韧、团结与希望——传递给了新一代。毕竟，教育不只是书本知识，它也是让故事保持鲜活，并让故事塑造未来。",
-      "sourceNote": "基于 ChinaDaily 报道「Young docents keep Long March story alive in Sichuan」及「Xi on enduring spirit of Long March」改写，用于英语教学目的。"
+      "title": "When Technology Gives People Back Their Steps",
+      "content": "At the China Import and Export Fair, a British woman arrived in a wheelchair and left on her own two feet. Suffering from hindered mobility after a stroke, she tried a Chinese-made exoskeleton robot and was able to discard her wheelchair within minutes. Her story, shared widely as part of the \"China Haul\" trend, shows how wearable technology is moving from laboratories into everyday life.\n\nObservers say such breakthroughs reflect years of systematic investment in innovation. However, the US crackdown on technology, including restrictions on chip exports, is seen as counterproductive, as it slows global innovation and disrupts supply chains.\n\nExperts urge economies to uphold multilateralism and unlock new growth momentum through open cooperation. Whether it is a robot restoring mobility or digital tools safeguarding cultural heritage, advanced technology works best when it serves people rather than political interests.",
+      "translation": "在中国进出口交易会上，一位乘坐轮椅而来的英国女性靠自己的双腿离开了现场。中风后行动不便的她试用了中国制造的外骨骼机器人，几分钟内便得以扔掉轮椅。她的故事作为\"中国购物潮\"的一部分被广泛传播，展示了可穿戴技术正如何从实验室走进日常生活。\n\n观察人士称，这类突破反映了多年来对创新的系统性投入。然而，美国对科技的打压（包括限制芯片出口）被认为适得其反，因为它拖慢了全球创新、扰乱了供应链。\n\n专家呼吁各经济体维护多边主义，通过开放合作释放新的增长动能。无论是恢复行动能力的机器人，还是保护文化遗产的数字工具，先进的科技只有服务于人而非政治利益时，才能发挥最大价值。",
+      "sourceNote": "基于 ChinaDaily 今日新闻 'China Haul': Empty suitcases in, packed suitcases out、US crackdown on tech counterproductive、Cultural heritage protection to be bolstered 与 APEC economies urged to deepen cooperation 改写。"
     }
   }
 }
