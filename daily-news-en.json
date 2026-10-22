@@ -1,16 +1,16 @@
 {
- "date": "2026-10-21",
- "weekday": "Wednesday",
- "overview": "Long March-themed publicity and third-quarter economic data dominate the news cycle on the same day; with APEC approaching, Asia-Pacific security issues are heating up, while consumer livelihood and health topics continue to diversify.",
+ "date": "2026-10-22",
+ "weekday": "Thursday",
+ "overview": "Long March-themed publicity ramps up in full force, autumn economic data signals confidence, while a PHP vulnerability and the flu season raise simultaneous alarms on cybersecurity and public health.",
  "trendingTopics": [
-  "Long March Spirit",
+  "Long March spirit",
   "Macroeconomy",
-  "Energy Storage Industry",
-  "Asia-Pacific Cooperation",
-  "Regional Security",
-  "Gold Consumption",
-  "Public Health",
-  "New Energy Vehicles"
+  "Cybersecurity",
+  "Public health",
+  "Cultural and tourism spending",
+  "Industrial economy",
+  "International communication",
+  "Elderly care industry"
  ],
  "sections": [
   {
@@ -20,65 +20,67 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "Carrying Forward the Great Long March Spirit, Forging Ahead on Today's Long March",
-     "summary": "A cluster of Long March-themed coverage has been rolled out, including the political documentary \"The Long March: Always on the Road\" and fresh voices from the snowy mountains and grasslands along the route.",
-     "detail": "The material includes \"Carrying Forward the Great Long March Spirit, Forging Ahead on Today's Long March,\" \"Political Documentary | The Long March: Always on the Road,\" \"Listening to the Long March Voices in the Snowy Mountains and Grasslands,\" and \"Banners on the March | Go There for Me, the Victory Beyond the Snow Mountains,\" among other reports. Through documentaries, on-site visits and other angles, they look back on the fiery journey of the Long March and carry forward its spirit.",
-     "impact": "The coordinated rollout of themed coverage helps build social consensus and promote red revolutionary culture.",
+     "title": "Major Short Video 'The Answer of the Long March' Released",
+     "summary": "A major short video titled 'The Answer of the Long March' has been released, looking back on the Long March through imagery and presenting how its spirit carries forward into the present day as a historical answer.",
+     "detail": "The short video centers on the Long March as a landmark historical event. Alongside it, multiple platforms launched a series of related programs, including visits to key Long March landmarks and retracing the route, recreating historical scenes such as the breakout at the treacherous banks of the Dadu River. Related coverage also unpacked the contemporary meaning of the Long March spirit through six sets of figures.",
+     "impact": "Concentrated dissemination helps reinforce public consensus on the Long March spirit and advances the promotion of revolutionary culture and mainstream themes.",
      "importance": "hot",
      "tags": [
-      "Red Culture",
-      "Themed Publicity"
+      "Long March Spirit",
+      "Revolutionary Culture",
+      "Mainstream Theme Promotion"
      ]
     },
     {
      "id": "news-002",
-     "title": "China Releases Economic Scorecard for First Three Quarters",
-     "summary": "China's economic scorecard for the first three quarters has been released, with coverage interpreting the strong momentum and resilience of the economy through three keywords.",
-     "detail": "Data shows China's economic scorecard for January-September has been released, with reports using three keywords to gauge the economy's strong momentum and resilience. Related coverage such as \"Pushing Forward Under Pressure, Toward Newer and Better Growth\" has also examined the overall economic performance over the same period.",
-     "impact": "The release of the scorecard offers a window into the full-year economic trend and helps stabilize market expectations.",
+     "title": "Six Words to Understand China's Autumn Economic Report",
+     "summary": "China's autumn economic report sums up the current state of the economy in six words: stable, abundant, innovative, sound, fast and optimized.",
+     "detail": "The report uses these six words as a thread to interpret the autumn economic outlook. Industrial economy reports released in the same period stressed the need to continuously improve the quality and efficiency of industrial operations. Multiple data sets point to highlights and resilience in economic performance.",
+     "impact": "Helps stabilize market expectations and offers a window onto fourth-quarter economic policy direction and business confidence.",
      "importance": "hot",
      "tags": [
       "Macroeconomy",
-      "Economic Performance",
-      "High-Quality Development"
+      "Economic Conditions",
+      "Statistical Data"
      ]
     },
     {
      "id": "news-003",
-     "title": "Ninghua, Fujian: A Red Granary Writes Its New-Era Chapter",
-     "summary": "Ninghua in Fujian, known as a red granary, continues to write its development story in the new era, showcasing a fresh look for the old revolutionary base area.",
-     "detail": "Baidu News coverage focuses on Ninghua, Fujian, using its legacy as a red granary to tell how the locality is writing its development chapter in the new era. Details in the material are limited, with specific measures not further disclosed.",
-     "impact": "The case of development in an old revolutionary base area offers a local model for rural revitalization and the use of red heritage resources.",
-     "importance": "normal",
+     "title": "3.71 Billion Passenger Trips Show the Vitality of a China on the Move",
+     "summary": "Data shows cross-regional passenger flows reached 3.71 billion trips, making travel 'toward the warmth' a key window into the economic vitality of a China on the move.",
+     "detail": "The scale of 3.71 billion passenger trips directly reflects the heat of population movement and social interaction. The picture of 'China on the move' mirrors the vitality of economic activity and household consumption.",
+     "impact": "Large-scale passenger flows will continue to underpin momentum in transport, tourism, consumption and related sectors.",
+     "importance": "important",
      "tags": [
-      "Rural Revitalization",
-      "Red Culture",
-      "Regional Development"
+      "Transportation",
+      "Population Mobility",
+      "Domestic Consumption"
      ]
     },
     {
      "id": "news-004",
-     "title": "Investigation Report Released on Bus Red-Light Crash",
-     "summary": "An investigation report into a bus crash that ran a red light, killing 6 and injuring 16, has been released, with 7 people referred to the discipline and supervision authorities.",
-     "detail": "Baidu News reports that an investigation report into a bus running a red light and causing 6 deaths and 16 injuries has been released, with 7 people involved referred to the discipline and supervision authorities for handling. The material did not disclose the exact location of the accident or details of liability determination.",
-     "impact": "The publication of investigation and accountability results serves as a warning for public transport safety management.",
+     "title": "Continuously Improve the Quality and Efficiency of Industrial Operations",
+     "summary": "The report focuses on the industrial economy, stressing the need to continuously raise the quality and efficiency of industrial operations and drive high-quality industrial development.",
+     "detail": "The article examines the quality and efficiency of industrial economic performance, pointing toward the direction of upgrading and efficiency gains in the industrial sector. The content was released in coordination with China's autumn economic report, together forming a combined reading of the economic outlook.",
+     "impact": "Improving industrial quality and efficiency provides a foundational boost to manufacturing transformation and upgrading as well as overall economic growth.",
      "importance": "important",
      "tags": [
-      "Traffic Safety",
-      "Workplace Safety"
+      "Industrial Economy",
+      "Manufacturing",
+      "High-Quality Development"
      ]
     },
     {
      "id": "news-005",
-     "title": "National Cancer Center Releases Top Five Cancer Types by Incidence",
-     "summary": "The National Cancer Center has released the top five cancer types by incidence, offering a reference for public health protection.",
-     "detail": "Baidu News reports that the National Cancer Center has released the top five cancer types by incidence. The material does not list specific rankings of the cancer types.",
-     "impact": "The release of authoritative data helps raise public awareness of cancer prevention and guide early screening and treatment.",
-     "importance": "important",
+     "title": "The Poetic Yangtze River Regains Vibrant Vitality",
+     "summary": "The special series 'Why China: A Song of the Yangtze in the New Era' showcases the vibrant vitality the poetic Yangtze River has regained in the new era.",
+     "detail": "The coverage focuses on the Yangtze River, presenting the ecological and cultural landscape of its basin. Poetic expression is combined with real-world scenes to highlight the Yangtze's value in the new era.",
+     "impact": "Helps raise public attention to Yangtze River cultural heritage and ecological conservation.",
+     "importance": "normal",
      "tags": [
-      "Public Health",
-      "Cancer Prevention and Control",
-      "Healthy China"
+      "Ecological Civilization",
+      "Yangtze River Economic Belt",
+      "Cultural Heritage"
      ]
     }
    ]
@@ -90,183 +92,157 @@
    "articles": [
     {
      "id": "news-006",
-     "title": "APEC Joint Push for Prosperity: Asia-Pacific Miracle to Continue in Shenzhen",
-     "summary": "Coverage highlights APEC's joint efforts to promote prosperity, set to continue the Asia-Pacific miracle in Shenzhen, with a look at regional cooperation prospects.",
-     "detail": "Baidu News, under the headline \"APEC Joint Push for Prosperity: Asia-Pacific Miracle to Continue in Shenzhen,\" focuses on regional cooperation within the Asia-Pacific Economic Cooperation framework and the cooperative vision Shenzhen is poised to carry forward as the host city.",
-     "impact": "Advancing the APEC agenda helps deepen regional economic cooperation and openness in the Asia-Pacific.",
-     "importance": "hot",
+     "title": "Scholars: Amending the \"Three Non-Nuclear Principles\" Violates the Peace Constitution",
+     "summary": "Constitutional scholars have warned that amending the \"Three Non-Nuclear Principles\" runs counter to the spirit of the peace constitution, sparking debate over the policy's future direction.",
+     "detail": "The report focuses on legal and constitutional questions surrounding the proposed amendment to the \"Three Non-Nuclear Principles.\" Scholars point to tensions between the pacifist constitution and the government's policy orientation.",
+     "impact": "The issue concerns nuclear policy and regional security trends, making it worth continued attention.",
+     "importance": "important",
      "tags": [
-      "Asia-Pacific Cooperation",
-      "Regional Economy"
+      "Nuclear Safety",
+      "Peace Constitution",
+      "East Asian Security"
      ]
     },
     {
      "id": "news-007",
-     "title": "Japanese Experts: Acquiring Nuclear Submarines Would Severely Disrupt Regional Security",
-     "summary": "Japanese experts say acquiring nuclear submarines would deal a severe blow to regional security.",
-     "detail": "Baidu News, citing Japanese experts, reports that Japan's acquisition of nuclear submarines would severely disrupt regional security. No further details on the specific policy background were disclosed.",
-     "impact": "The move has raised regional security concerns and may affect how neighboring countries assess their security environments.",
+     "title": "Global Times Editorial: Amid Chaos in France, Some Call for a Hard Line on China",
+     "summary": "A Global Times commentary noted that while France faces domestic turmoil, some voices still advocate a tougher stance on China, drawing public attention.",
+     "detail": "The commentary uses France's current situation as a backdrop to question the logic behind calls for a harder line against China. It focuses on China-EU relations and related debates on the international opinion stage.",
+     "impact": "The commentary offers a window into the climate of China-EU relations and the direction of international public opinion.",
      "importance": "important",
      "tags": [
-      "Regional Security",
-      "Defense Developments",
-      "Asia-Pacific Situation"
+      "China-EU Relations",
+      "International Opinion",
+      "European Situation"
      ]
     },
     {
      "id": "news-008",
-     "title": "Philippine Media: China Would Respond in Kind if Its Ambassador Is Expelled",
-     "summary": "Philippine media report that China would certainly respond in kind if its ambassador were expelled.",
-     "detail": "Baidu News, citing Philippine media, reports that China would respond in kind if its ambassador were expelled. No further details on diplomatic exchanges were provided.",
-     "impact": "Developments in bilateral ties merit continued attention and could shape the regional diplomatic climate.",
+     "title": "Man Who Threatened to Assassinate Trump at Rally Arrested",
+     "summary": "A man who threatened to assassinate Donald Trump at a campaign rally, claiming to have scouted rooftops around the venue, has been arrested.",
+     "detail": "Reports say the man threatened the assassination, claiming he knew the speech venue and had scouted surrounding rooftops. The suspect has been taken into custody.",
+     "impact": "The incident highlights public safety risks and social tensions at large-scale political events.",
      "importance": "important",
      "tags": [
-      "Bilateral Relations",
-      "Asia-Pacific Situation"
+      "Overseas Security"
      ]
     },
     {
      "id": "news-009",
-     "title": "Former New Zealand PM: China's Development Is Vital to the Asia-Pacific",
-     "summary": "A former prime minister of New Zealand says China's development is vital to the Asia-Pacific region.",
-     "detail": "Baidu News reports that a former New Zealand prime minister stated that China's development is vital to the Asia-Pacific region. The specific occasion and further remarks were not disclosed.",
-     "impact": "Comments by international figures reflect growing attention on China's role in regional development.",
+     "title": "Caribbean Nations' Social Media Delegation Visits Xinjiang",
+     "summary": "A social media delegation from Caribbean countries visited Xinjiang, with members saying they saw the real Xinjiang with their own eyes.",
+     "detail": "The delegation gained a firsthand understanding of Xinjiang's realities through on-site visits. The trip is part of international communication and people-to-people exchanges abroad.",
+     "impact": "The visit helps foster a more objective understanding of Xinjiang's development and expands external communication channels.",
      "importance": "normal",
      "tags": [
-      "International Opinion",
-      "Asia-Pacific Cooperation",
-      "Regional Economy"
-     ]
-    },
-    {
-     "id": "news-010",
-     "title": "Musk Donates $8 Billion to Trump's Account",
-     "summary": "Musk donated $8 billion to Trump's account, prompting Trump to express thanks, calling the generosity stunning.",
-     "detail": "Baidu News reports that Musk donated $8 billion to Trump's account, and Trump responded with thanks, calling the generosity stunning. No further information, including how the funds would be used, was disclosed.",
-     "impact": "The massive transfer between two titans has drawn attention to business-political ties and related political agendas.",
-     "importance": "normal",
-     "tags": [
-      "Business-Political Relations",
-      "Overseas Society",
-      "High-Profile Figures"
+      "External Communication",
+      "International Communication",
+      "Frontier Development"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance & Economy",
+   "title": "Finance",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-011",
-     "title": "China's Economic Resilience and Vitality Behind the 107 Trillion Yuan Figure",
-     "summary": "Coverage focuses on data surrounding the 107 trillion yuan milestone, interpreting the resilience and vitality of China's economy as it presses forward amid pressures and moves toward innovation and optimization.",
-     "detail": "The material, titled 'Pressing Forward Amid Pressure, Moving Toward Innovation and Optimization: China's Economic Resilibility and Vitality Behind 107 Trillion Yuan,' examines the economy's operating trends based on key aggregate data.",
-     "impact": "Aggregate figures send a positive signal, helping boost confidence among market participants.",
-     "importance": "hot",
+     "id": "news-010",
+     "title": "The Middle-Class Wardrobe Is Basically One Giant Anta",
+     "summary": "Examining the concept of the \"middle-class wardrobe,\" the report finds Anta's deep penetration among middle-class consumers.",
+     "detail": "The article discusses the relationship between middle-class consumption and apparel brands. The headline uses \"one giant Anta\" to describe the brand's outsized presence in middle-class closets.",
+     "impact": "Reflects the rising influence of domestic brands in the middle-class consumer market and shifts in consumption patterns.",
+     "importance": "important",
      "tags": [
-      "Macroeconomics",
-      "Economic Performance",
-      "High-Quality Development"
+      "Apparel Industry",
+      "Domestic Brand Consumption",
+      "Consumer Brands"
+     ]
+    },
+    {
+     "id": "news-011",
+     "title": "Rising Interest in Chinese-Style Experiences as Foreign Visitors Embrace \"Chinese Living\"",
+     "summary": "Demand for traditional Chinese-style experiences continues to grow, with more foreign visitors embracing \"Chinese living,\" emerging as a new bright spot in the cultural tourism market.",
+     "detail": "The report highlights foreign visitors' growing interest in Chinese traditional cultural experiences. Chinese-style experiences have become a key draw for inbound tourism and cultural exchange.",
+     "impact": "Expected to further boost cultural tourism spending and inbound tourist arrivals.",
+     "importance": "important",
+     "tags": [
+      "Cultural Tourism Spending",
+      "Inbound Tourism",
+      "Guochao Economy"
      ]
     },
     {
      "id": "news-012",
-     "title": "Shanghai Residents Line Up to Buy Gold Again",
-     "summary": "A gold-buying frenzy has returned to Shanghai, with residents queuing to purchase gold, drawing attention to the heated gold consumption market.",
-     "detail": "Baidu News reports that Shanghai residents are once again lining up to buy gold. The material does not disclose specific gold jewelry prices or sales figures.",
-     "impact": "Rising enthusiasm for gold buying reflects shifts in household asset allocation and consumer preferences.",
-     "importance": "important",
+     "title": "China's \"Matchmaking Hierarchy\" Sparks Debate",
+     "summary": "A discussion about China's \"matchmaking hierarchy\" has drawn attention, touching on preferences and judgment criteria in the marriage market.",
+     "detail": "The topic centers on the ranking of preferences and hierarchies of judgment in matchmaking scenarios. Related debates extend to attitudes toward marriage and social standards of evaluation.",
+     "impact": "Reflects diverging views in the contemporary marriage market and shifting social attitudes.",
+     "importance": "normal",
      "tags": [
-      "Gold Consumption",
-      "Consumer Spending",
-      "Precious Metals Market"
+      "Marriage Market",
+      "Consumer Phenomena",
+      "Social Attitudes"
      ]
     },
     {
      "id": "news-013",
-     "title": "The Middle-Class Wardrobe Is Basically One Giant Anta",
-     "summary": "Using the middle-class wardrobe as an entry point, the report examines the presence of domestic sportswear brand Anta in the consumer market.",
-     "detail": "NetEase News published an article titled 'The Middle-Class Wardrobe Is One Giant Anta,' using wardrobe consumption trends to discuss the penetration of domestic brands among middle-class consumers. The material provides no additional specific data.",
-     "impact": "Reflects the rising status of domestic brands in the middle-class consumer market.",
+     "title": "Dong Mingzhu: \"Calling Me Grandma Makes Me Very Unhappy\"",
+     "summary": "Gree Electric Chairwoman Dong Mingzhu said being called \"grandma\" makes her very unhappy, sparking online discussion.",
+     "detail": "The topic revolves around how entrepreneurs are addressed and how their public image is perceived. Discussion extends to the public image of corporate leaders and intergenerational communication.",
+     "impact": "Reflects public attention to and debate over the image of high-profile business executives.",
      "importance": "normal",
      "tags": [
-      "Consumer Trends",
-      "Sporting Goods",
-      "Domestic Brands"
-     ]
-    },
-    {
-     "id": "news-014",
-     "title": "Student Phone Prices Nearing 5,000 Yuan",
-     "summary": "Prices for student-oriented phones keep climbing and are now nearing 5,000 yuan, sparking parental concern over the cost of education-related consumption.",
-     "detail": "Baidu News reports that student phone prices are nearing 5,000 yuan. The material does not disclose specific brands or an analysis of the reasons behind the price increases.",
-     "impact": "Rising education-related spending is affecting household budgets and fueling broader social debate.",
-     "importance": "normal",
-     "tags": [
-      "Consumer Market",
-      "Education Spending",
-      "Digital Devices"
+      "Home Appliance Industry",
+      "Corporate Management",
+      "Entrepreneur Image"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Tech Frontier",
+   "title": "Tech Frontlines",
    "icon": "💡",
    "articles": [
     {
-     "id": "news-015",
-     "title": "Yichang: From Hydropower Capital to Energy Storage Capital",
-     "summary": "Yichang's industrial transition draws attention as the city shifts from a hydropower hub to an energy storage hub, building out its new-type energy storage industry.",
-     "detail": "Under the headline \"Yichang's Turn: From Hydropower Capital to Energy Storage Capital,\" coverage examines how the city is extending its existing energy base into the energy storage sector. A related report, \"Climbing New Heights: A New Voyage Across Rivers and Seas,\" offers additional observations on the transition.",
-     "impact": "A model case of local energy industry transformation that could spur the clustering of regional new-type energy storage supply chains.",
-     "importance": "important",
+     "id": "news-014",
+     "title": "Critical PHP Flaw Prompts Emergency Shutdowns in Multiple Countries",
+     "summary": "A critical security vulnerability has been disclosed in PHP, prompting emergency shutdowns of affected systems in several countries and drawing attention across the cybersecurity community.",
+     "detail": "The flaw has a wide blast radius, leading multiple countries to take emergency measures including system shutdowns. The incident underscores the security risks of open-source infrastructure software and the importance of rapid incident response.",
+     "impact": "Expected to drive broader audits of open-source component security risks and stronger supply-chain governance across industries.",
+     "importance": "hot",
      "tags": [
-      "Energy Storage Industry",
-      "New Energy",
-      "Regional Economy"
+      "Cybersecurity",
+      "Open-Source Software",
+      "Incident Response"
+     ]
+    },
+    {
+     "id": "news-015",
+     "title": "Wuzhen Summit Audience Booking Platform Goes Live",
+     "summary": "The official audience booking platform for the Wuzhen Summit has launched, providing a digital service portal for conference attendance and visit activities.",
+     "detail": "The platform is designed to handle audience reservations and event coordination during the summit. The initiative forms part of the broader digital economy and exhibition services ecosystem.",
+     "impact": "Raises the level of digital service delivery and improves the attendee experience at large-scale conferences and events.",
+     "importance": "normal",
+     "tags": [
+      "Internet Conference",
+      "Digital Economy",
+      "Exhibition Services"
      ]
     },
     {
      "id": "news-016",
-     "title": "Tesla Roadster Looks Interesting",
-     "summary": "NetEase News takes a look at the Tesla Roadster, praising its performance as if it can really fly and calling it a standout.",
-     "detail": "NetEase News published \"It Really Can Fly! The Tesla Roadster Is Pretty Interesting,\" focusing on the Tesla Roadster's performance. No specific performance figures or launch details were disclosed.",
-     "impact": "News in the new-energy sports car segment draws attention amid intensifying competition over EV performance.",
+     "title": "Joint Online Rumor-Refutation Platform Continues Operations",
+     "summary": "The joint online rumor-refutation platform continues to publish authoritative information, fulfilling roles in online information governance and rumor debunking.",
+     "detail": "The platform operates through a collaborative mechanism to verify information and counter rumors. Such mechanisms are a key component of online information ecosystem governance.",
+     "impact": "Helps clean up the online information environment and strengthens the public's ability to assess information credibility.",
      "importance": "normal",
      "tags": [
-      "New Energy Vehicles",
-      "Smart Connected Vehicles",
-      "Auto Industry"
-     ]
-    },
-    {
-     "id": "news-017",
-     "title": "AI-Original Song \"Ask the Heavens\" Released",
-     "summary": "The AI-original song \"Ask the Heavens\" has been released, carrying the theme that Chinese people can fly, with AI-generated creation drawing attention.",
-     "detail": "Baidu News reports that \"Ask the Heavens\" has been released as an AI-original song, echoing the theme that Chinese people can fly. No details on the creative team or technical approach were disclosed.",
-     "impact": "More cases of AI in cultural creation are emerging, opening new approaches to content production.",
-     "importance": "normal",
-     "tags": [
-      "Artificial Intelligence",
-      "Digital Content",
-      "Cultural Technology"
-     ]
-    },
-    {
-     "id": "news-018",
-     "title": "Can Stem Cell Infusions Costing Hundreds of Thousands Really Reverse Aging?",
-     "summary": "Reports question high-priced stem cell infusion anti-aging programs costing hundreds of thousands of yuan, with their actual efficacy and compliance still in doubt.",
-     "detail": "NetEase News published \"Stem Cell Infusions Costing Hundreds of Thousands — Can They Really Reverse Aging?\" raising questions about high-priced stem cell anti-aging programs. The source material did not provide specific institution names or research conclusions.",
-     "impact": "Helps remind consumers to view expensive anti-aging programs with a rational eye and to prioritize compliant medical care.",
-     "importance": "normal",
-     "tags": [
-      "Health Industry",
-      "Biotechnology",
-      "Consumer Advisory"
+      "Internet Governance",
+      "Information Governance",
+      "Rumor Refutation"
      ]
     }
    ]
@@ -277,67 +253,68 @@
    "icon": "📰",
    "articles": [
     {
-     "id": "news-019",
-     "title": "Southern China's Aggressive Mosquitoes Are Flocking North",
-     "summary": "Reports highlight the northward spread of mosquito species from southern China, dubbed a mass 'northward drift' of aggressive mosquitoes, drawing attention.",
-     "detail": "NetEase News ran the story 'Southern China's Aggressive Mosqueitoes Are Flocking North,' focusing on mosquito species shifting northward. The material did not disclose specific distribution data or cause analysis.",
-     "impact": "Changes in mosquito distribution warrant attention, urging the public to step up summer mosquito control and health protection.",
+     "id": "news-017",
+     "title": "Venomous Mosquitoes From South China Are Migrating North in Droves",
+     "summary": "Reports highlight a mass northward migration of venomous mosquito species from southern China, sparking discussion over related health risks.",
+     "detail": "Using the metaphor of \"beipiao\" — a term for migrants moving to northern cities — reports describe venomous mosquitoes spreading northward. The trend is linked to climate and environmental factors, drawing attention from a public health perspective.",
+     "impact": "Northern regions are urged to strengthen vector control and raise awareness of preventive health measures.",
      "importance": "important",
      "tags": [
       "Public Health",
-      "Vector Biology",
-      "Health Protection"
+      "Vectors",
+      "Climate Change"
+     ]
+    },
+    {
+     "id": "news-018",
+     "title": "48 Hours Into the Flu, I Picked the \"Right\" Drug",
+     "summary": "The author shares experience choosing flu medication within 48 hours of symptom onset, discussing how to respond effectively during the critical window.",
+     "detail": "Drawing on a personal account, the article examines medication decisions in the early stages of influenza. Its core focus is on rational drug use and the pace of response during the first days of illness.",
+     "impact": "Helps improve public understanding of early flu management and rational medication use.",
+     "importance": "important",
+     "tags": [
+      "Respiratory Disease",
+      "Rational Drug Use",
+      "Public Health"
+     ]
+    },
+    {
+     "id": "news-019",
+     "title": "Can a Stem Cell Infusion Costing Hundreds of Thousands Actually Fight Aging?",
+     "summary": "Reports question whether stem cell infusion treatments costing hundreds of thousands of yuan truly deliver anti-aging benefits, focusing on the science behind such consumer medical services.",
+     "detail": "The article discusses the efficacy and justification of high-priced stem cell anti-aging programs, touching on the technological boundaries of regenerative medicine and the regulation of the consumer healthcare market.",
+     "impact": "Consumers are cautioned to view pricey anti-aging treatments critically and to weigh industry oversight and scientific evidence.",
+     "importance": "important",
+     "tags": [
+      "Regenerative Medicine",
+      "Consumer Healthcare",
+      "Medical Aesthetics & Health"
      ]
     },
     {
      "id": "news-020",
-     "title": "48 Hours Into the Flu: A Medication Choice Resonates",
-     "summary": "A personal account of medication choices 48 hours into the flu has drawn attention, prompting discussion on how to choose treatment.",
-     "detail": "NetEase News published '48 Hours Into the Flu, I Chose the Right Medication,' documenting early-stage drug selection during a bout of influenza. The material did not disclose specific drug names or medical advice.",
-     "impact": "A personal account of seeking care and medication has sparked public discussion on self-care during flu season.",
+     "title": "Young People Are Eyeing New Careers in Nursing Homes",
+     "summary": "Reports spotlight young people turning to new types of jobs in nursing homes, reflecting a shift in hiring trends across the elder care industry.",
+     "detail": "The article focuses on emerging career opportunities within nursing homes. The entry of young workers into elder care offers a new lens on employment trends and the evolving care industry.",
+     "impact": "Highlights changing talent structures in the elder care sector, offering insights for employment and training programs.",
      "importance": "normal",
      "tags": [
-      "Public Health",
-      "Flu Prevention",
-      "Health Education"
+      "Elder Care Industry",
+      "Silver Economy",
+      "Career Development"
      ]
     },
     {
      "id": "news-021",
-     "title": "China's Dating Hierarchy: Who Is Least Popular?",
-     "summary": "The report maps out the 'hierarchy of disdain' in the matchmaking market, discussing which groups are least favored in the marriage market.",
-     "detail": "NetEase News ran 'China's Dating Hierarchy: Who Is Least Popular,' discussing preference rankings in the marriage market. The material did not disclose specific survey samples or conclusion details.",
-     "impact": "Reflects shifts in contemporary attitudes toward marriage and social mentality, sparking public debate.",
+     "title": "300 Days and Nights at a Boot-Camp Style School",
+     "summary": "Structured around \"300 days and nights,\" the report recounts experiences at a special training school, prompting reflection on this model of education.",
+     "detail": "The article traces life and changes at a special training school over time. The topic extends into debates over youth education methods and choices within family education.",
+     "impact": "Sparks societal discussion on youth education approaches and the regulation of such institutions.",
      "importance": "normal",
      "tags": [
-      "Social Issues",
-      "Marriage Attitudes",
-      "Livelihood Watch"
-     ]
-    },
-    {
-     "id": "news-022",
-     "title": "300 Days and Nights in a Boot Camp School",
-     "summary": "A report on 300 days and nights in a so-called boot camp school, focusing on the experiences of youths held in such institutions.",
-     "detail": "NetEase News published '300 Days and Nights in a Boot Camp School,' documenting experiences in such institutions. The material did not provide specifics on the facilities or further details.",
-     "impact": "Draws societal attention to youth disciplinary methods and the rights of minors.",
-     "importance": "normal",
-     "tags": [
-      "Minor Protection",
-      "Education Issues"
-     ]
-    },
-    {
-     "id": "news-023",
-     "title": "Taking Notes While Binge-Watching Becomes a New Trend",
-     "summary": "Taking notes while watching a TV drama for the first time has emerged as a new viewing phenomenon, reflecting changes in how audiences watch shows.",
-     "detail": "Baidu News ran 'Taking Notes While Watching a TV Drama for the First Time,' documenting the new trend among viewers. A related topic about South Korean drama writers was also discussed in the material.",
-     "impact": "Changing viewing habits reflect rising content consumption standards and could influence creative directions in series production.",
-     "importance": "normal",
-     "tags": [
-      "Entertainment Industry",
-      "Cultural Consumption",
-      "Content Industry"
+      "Youth Education",
+      "Education & Training",
+      "Family Education"
      ]
     }
    ]

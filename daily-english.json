@@ -1,182 +1,192 @@
 {
-  "date": "2026-10-21",
+  "date": "2026-10-22",
   "content": {
-    "id": "en-2026-10-21",
-    "date": "2026-10-21",
-    "topic": "人工智能与科技",
+    "id": "en-2026-10-22",
+    "date": "2026-10-22",
+    "topic": "商业与金融",
     "newsHighlights": [
       {
-        "title": "'China Haul': Empty suitcases in, packed suitcases out",
-        "source": "ChinaDaily",
-        "summary": "A British woman who had difficulty walking after a stroke discarded her wheelchair and walked with the help of a Chinese-made exoskeleton robot at the China Import and Export Fair.",
-        "translation": "一位中风后行动不便的英国女性在中国进出口交易会上借助中国制造的外骨骼机器人，扔掉轮椅重新行走。",
+        "title": "Measures set to stabilize finance market",
+        "source": "China Daily",
+        "summary": "Chinese authorities unveiled a package of measures designed to stabilize the financial market and anchor market confidence.",
+        "translation": "中国有关部门推出一揽子措施，旨在稳定金融市场、巩固市场信心。",
         "keyWords": [
-          "exoskeleton robot",
-          "mobility",
-          "wearable technology"
+          "stabilize",
+          "measure",
+          "market confidence"
+        ]
+      },
+      {
+        "title": "New data group to boost digital economy, AI",
+        "source": "China Daily",
+        "summary": "A new national data group has been established to accelerate the digital economy and the development of artificial intelligence.",
+        "translation": "一家新的国家级数据集团正式成立，以加速数字经济发展和人工智能研发。",
+        "keyWords": [
+          "digital economy",
+          "artificial intelligence",
+          "boost"
+        ]
+      },
+      {
+        "title": "'China Haul': Empty suitcases in, packed suitcases out",
+        "source": "China Daily",
+        "summary": "Foreign tourists are arriving in China with empty suitcases and leaving with them packed, fueling a consumption boom dubbed the 'China Haul'.",
+        "translation": "外国游客拖着空行李箱来到中国，满载而归，掀起了一场被称为“中国扫货”的消费热潮。",
+        "keyWords": [
+          "consumption",
+          "tourism",
+          "haul"
         ]
       },
       {
         "title": "US crackdown on tech counterproductive",
-        "source": "ChinaDaily",
-        "summary": "Analysts argue that the US crackdown on technology is counterproductive, as restricting chip exports and打压 rivals only disrupts global supply chains and slows innovation.",
-        "translation": "分析人士指出，美国对科技领域的打压适得其反，限制芯片出口、压制对手只会扰乱全球供应链并拖慢创新步伐。",
+        "source": "China Daily",
+        "summary": "Commentators argue that the US crackdown on technology trade is counterproductive and will ultimately hurt its own businesses.",
+        "translation": "评论认为，美国在科技领域的打压措施适得其反，最终将损害本国企业利益。",
         "keyWords": [
           "crackdown",
           "counterproductive",
-          "supply chain",
-          "innovation"
+          "trade"
         ]
       },
       {
-        "title": "Cultural heritage protection to be bolstered",
-        "source": "ChinaDaily",
-        "summary": "China will step up cultural heritage protection over the next five years through systematic protection, legal safeguards and digital technologies that bring heritage closer to people's daily lives.",
-        "translation": "未来五年，中国将通过系统性保护、法律保障以及数字技术，让文化遗产更贴近人们的日常生活。",
+        "title": "Why China's upcoming 5th plenum of 20th CPC Central Committee matters",
+        "source": "CGTN",
+        "summary": "The upcoming plenum is set to map out the country's next five-year plan, drawing global attention to its reform and development agenda.",
+        "translation": "即将召开的全会将擘画中国下一个五年规划，其改革与发展议程受到全球关注。",
         "keyWords": [
-          "cultural heritage",
-          "systematic protection",
-          "digital technology"
-        ]
-      },
-      {
-        "title": "APEC economies urged to deepen cooperation",
-        "source": "ChinaDaily",
-        "summary": "As a key growth engine, APEC economies are urged to uphold multilateralism, deepen open cooperation and unlock new growth momentum driven by science and technology.",
-        "translation": "作为关键增长引擎，亚太经合组织各经济体被呼吁维护多边主义、深化开放合作，并释放由科技创新驱动的新增长动能。",
-        "keyWords": [
-          "multilateralism",
-          "growth momentum",
-          "cooperation"
+          "plenum",
+          "five-year plan",
+          "agenda"
         ]
       }
     ],
     "quote": {
-      "quote": "Any sufficiently advanced technology is indistinguishable from magic.",
-      "author": "Arthur C. Clarke",
-      "translation": "任何足够先进的科技，都与魔法无异。",
-      "explanation": "这句话提醒我们：真正领先的科技会让复杂的技术以近乎神奇的方式改变生活，正如新闻中的外骨骼机器人让瘫痪患者重新行走一样。"
+      "quote": "The best way to predict the future is to create it.",
+      "author": "Peter Drucker",
+      "translation": "预测未来最好的方式，就是去创造未来。",
+      "explanation": "这句管理学名言强调主动作为的价值。面对金融市场波动和科技竞争，无论是政策制定者还是企业，都需要通过积极的行动和创新来塑造前景，而非被动等待。它与今日新闻中中国推出稳市场措施、布局数字经济的做法高度契合。"
     },
     "vocabulary": [
       {
-        "word": "exoskeleton",
-        "phonetic": "/ˌeksəʊˈskelɪtn/",
-        "partOfSpeech": "名词",
-        "definition": "外骨骼；（用于辅助运动的）体外支撑装置",
-        "example": "The Chinese-made exoskeleton robot helped the patient walk without a wheelchair.",
-        "translation": "中国制造的外骨骼机器人帮助这位患者在不借助轮椅的情况下行走。",
-        "newsContext": "出现在新闻 'China Haul': Empty suitcases in, packed suitcases out 中，指中国进出口交易会上展示的外骨骼机器人。"
-      },
-      {
-        "word": "mobility",
-        "phonetic": "/məʊˈbɪləti/",
-        "partOfSpeech": "名词",
-        "definition": "移动能力；行动能力；流动性",
-        "example": "A British woman suffering from hindered mobility after a stroke regained the ability to walk.",
-        "translation": "一位中风后行动能力受损的英国女性重新获得了行走的能力。",
-        "newsContext": "新闻中用于描述中风后行动不便（hindered mobility）的英国女性。"
-      },
-      {
-        "word": "bolster",
-        "phonetic": "/ˈbəʊlstə(r)/",
+        "word": "stabilize",
+        "phonetic": "/ˈsteɪbəlaɪz/",
         "partOfSpeech": "动词",
-        "definition": "增强；加强；支持",
-        "example": "China will bolster cultural heritage protection over the next five years.",
-        "translation": "中国将在未来五年加强文化遗产保护。",
-        "newsContext": "来自新闻 Cultural heritage protection to be bolstered 的标题。"
+        "definition": "使稳定，使稳固",
+        "example": "The new measures are designed to stabilize the financial market.",
+        "translation": "新措施旨在稳定金融市场。",
+        "newsContext": "出自新闻标题 Measures set to stabilize finance market"
+      },
+      {
+        "word": "measure",
+        "phonetic": "/ˈmeʒə(r)/",
+        "partOfSpeech": "名词",
+        "definition": "措施，办法（常用复数）",
+        "example": "The government rolled out a package of measures to support growth.",
+        "translation": "政府推出了一揽子支持增长的措施。",
+        "newsContext": "出自新闻 Measures set to stabilize finance market，指稳市措施"
+      },
+      {
+        "word": "boost",
+        "phonetic": "/buːst/",
+        "partOfSpeech": "动词/名词",
+        "definition": "促进，推动；提升",
+        "example": "The new data group is expected to boost the digital economy and AI.",
+        "translation": "新的数据集团有望推动数字经济和人工智能发展。",
+        "newsContext": "出自新闻 New data group to boost digital economy, AI"
+      },
+      {
+        "word": "crackdown",
+        "phonetic": "/ˈkrækdaʊn/",
+        "partOfSpeech": "名词",
+        "definition": "打击，镇压，（严厉的）管制措施",
+        "example": "The US crackdown on tech trade has raised concerns among exporters.",
+        "translation": "美国对科技贸易的打压引发了出口企业的担忧。",
+        "newsContext": "出自新闻 US crackdown on tech counterproductive"
       },
       {
         "word": "counterproductive",
         "phonetic": "/ˌkaʊntəprəˈdʌktɪv/",
         "partOfSpeech": "形容词",
-        "definition": "适得其反的；产生反效果的",
-        "example": "The US crackdown on technology is counterproductive and hurts global innovation.",
-        "translation": "美国对科技的打压适得其反，损害了全球创新。",
-        "newsContext": "出自新闻 US crackdown on tech counterproductive 的标题。"
+        "definition": "适得其反的，产生相反效果的",
+        "example": "Analysts say the restrictions are counterproductive and will hurt US firms.",
+        "translation": "分析人士称这些限制措施适得其反，将损害美国企业。",
+        "newsContext": "出自新闻 US crackdown on tech counterproductive"
       },
       {
-        "word": "momentum",
-        "phonetic": "/məˈmentəm/",
-        "partOfSpeech": "名词",
-        "definition": "势头；动力；动量",
-        "example": "APEC economies should unlock new growth momentum through technological cooperation.",
-        "translation": "亚太经合组织各经济体应通过科技合作释放新的增长动能。",
-        "newsContext": "新闻 APEC economies urged to deepen cooperation 中提到 unlock new growth momentum。"
-      },
-      {
-        "word": "systematic",
-        "phonetic": "/ˌsɪstəˈmætɪk/",
-        "partOfSpeech": "形容词",
-        "definition": "系统的；有条理的；有计划的",
-        "example": "Officials called for systematic protection of cultural heritage supported by digital tools.",
-        "translation": "官员呼吁借助数字工具对文化遗产进行系统性保护。",
-        "newsContext": "文化遗产保护新闻中强调 systematic protection 与 legal safeguards。"
-      },
-      {
-        "word": "innovation",
-        "phonetic": "/ˌɪnəˈveɪʃn/",
-        "partOfSpeech": "名词",
-        "definition": "创新；革新",
-        "example": "Restricting chip exports only slows innovation in the global technology sector.",
-        "translation": "限制芯片出口只会拖慢全球科技领域的创新。",
-        "newsContext": "科技打压新闻中指出贸易限制会阻碍创新（innovation）与发展。"
-      },
-      {
-        "word": "discard",
-        "phonetic": "/dɪsˈkɑːd/",
-        "partOfSpeech": "动词",
-        "definition": "丢弃；抛弃；放弃",
-        "example": "The woman was able to discard her wheelchair and walk on her own.",
-        "translation": "这位女士得以扔掉轮椅，独立行走。",
-        "newsContext": "外骨骼机器人新闻中描述患者 discard her wheelchair 的细节。"
-      },
-      {
-        "word": "multilateralism",
-        "phonetic": "/ˌmʌltiˈlætərəlɪzəm/",
-        "partOfSpeech": "名词",
-        "definition": "多边主义",
-        "example": "APEC economies were urged to uphold multilateralism in the technology sector.",
-        "translation": "亚太经合组织各经济体被呼吁在科技领域维护多边主义。",
-        "newsContext": "出自新闻 APEC economies urged to deepen cooperation 中的表述。"
-      },
-      {
-        "word": "safeguard",
-        "phonetic": "/ˈseɪfgɑːd/",
+        "word": "haul",
+        "phonetic": "/hɔːl/",
         "partOfSpeech": "名词/动词",
-        "definition": "保障措施；保护；捍卫",
-        "example": "New legal safeguards will protect cultural heritage from being damaged.",
-        "translation": "新的法律保障措施将保护文化遗产免遭破坏。",
-        "newsContext": "文化遗产新闻中提到 legal safeguards（法律保障）。"
+        "definition": "一次获得（或偷得）的物品总量；拖，拉",
+        "example": "Tourists post their 'China haul' online after packing their suitcases.",
+        "translation": "游客们在装满行李箱后，在网上晒出自己的“中国扫货战利品”。",
+        "newsContext": "出自新闻 'China Haul': Empty suitcases in, packed suitcases out"
+      },
+      {
+        "word": "consumption",
+        "phonetic": "/kənˈsʌmpʃn/",
+        "partOfSpeech": "名词",
+        "definition": "消费，消耗",
+        "example": "Rising inbound tourism is driving a new wave of consumption.",
+        "translation": "入境游的升温正推动新一轮消费增长。",
+        "newsContext": "关联新闻 'China Haul'，反映境外游客在华消费热潮"
+      },
+      {
+        "word": "initiative",
+        "phonetic": "/ɪˈnɪʃətɪv/",
+        "partOfSpeech": "名词",
+        "definition": "倡议；主动性，首创精神",
+        "example": "The data initiative aims to integrate public data resources nationwide.",
+        "translation": "该数据倡议旨在整合全国公共数据资源。",
+        "newsContext": "关联新闻 New data group to boost digital economy, AI，指国家级数据布局"
+      },
+      {
+        "word": "agenda",
+        "phonetic": "/əˈdʒendə/",
+        "partOfSpeech": "名词",
+        "definition": "议事日程；（政策）议程",
+        "example": "The plenum will set the country's economic agenda for the next five years.",
+        "translation": "全会将确定未来五年国家的经济议程。",
+        "newsContext": "出自新闻 Why China's upcoming 5th plenum matters，指五年规划议程"
+      },
+      {
+        "word": "confidence",
+        "phonetic": "/ˈkɒnfɪdəns/",
+        "partOfSpeech": "名词",
+        "definition": "信心，信任",
+        "example": "The measures are expected to shore up market confidence.",
+        "translation": "这些措施有望提振市场信心。",
+        "newsContext": "出自新闻 Measures set to stabilize finance market，稳定市场预期与信心"
       }
     ],
     "pattern": {
-      "pattern": "sb. was able to do sth. with the help of sth.（某人在某物的帮助下得以做成某事）",
-      "example": "A British woman was able to discard her wheelchair and walk with the help of a Chinese-made exoskeleton robot.",
-      "translation": "一位英国女性在中国制造的外骨骼机器人的帮助下，得以扔掉轮椅重新行走。",
-      "usage": "用于描述借助某种技术、工具或他人帮助而完成原本困难的事情。也可替换为 be able to do sth. thanks to sth.。"
+      "pattern": "be set to do sth —— 表示“预计/定于/即将做某事”，常用于新闻标题和正式报道",
+      "example": "Measures are set to stabilize the financial market as the upcoming plenum maps out a new five-year plan.",
+      "translation": "随着即将召开的全会擘画新的五年规划，一系列措施预计将稳定金融市场。",
+      "usage": "结构：主语 + be set to + 动词原形。新闻标题中常省略 be 动词（如 Measures set to stabilize...）。可替换 will / is expected to，语气更正式，暗示已有安排或有较强预期。"
     },
     "grammar": {
-      "title": "新闻标题中的被动语态与不定式被动结构（to be + 过去分词）",
-      "explanation": "英文新闻标题常省略助动词，使用被动语态突出动作承受者；'to be + 过去分词' 表示\"将被……\"的动作，强调计划、安排或将要发生的被动行为。例如 \"Cultural heritage protection to be bolstered\" 实际是 \"Cultural heritage protection is to be bolstered\"。",
+      "title": "新闻标题中的省略现象（Headlinese）",
+      "explanation": "英文新闻标题为了简洁醒目，常省略冠词、系动词 be、助动词等。阅读时需自行补全成分，还原为完整句子。常见规律：① 省略 be 动词；② 用逗号代替 and；③ 用现在时表示已发生的事。",
       "examples": [
-        "Cultural heritage protection to be bolstered over the next five years.",
-        "APEC economies urged to deepen cooperation and unlock new growth momentum."
+        "Measures set to stabilize finance market → Measures are set to stabilize the financial market.",
+        "'China Haul': Empty suitcases in, packed suitcases out → Tourists come in with empty suitcases and go out with packed suitcases."
       ]
     },
     "pronunciation": {
-      "word": "exoskeleton",
-      "phonetic": "/ˌeksəʊˈskelɪtn/",
-      "tips": "重音在第三个音节 skel 上；exo- 读作 /ˈeksəʊ/，中间的元音要轻快，-skeleton 读作 /ˈskelɪtn/，注意 'l' 与 't' 之间元音弱化为 /ɪ/，结尾音节含成音节 /tn/。整体节奏是：轻-轻-重-轻。",
+      "word": "counterproductive",
+      "phonetic": "/ˌkaʊntəprəˈdʌktɪv/",
+      "tips": "五个音节，重音在倒数第三个音节 -duc- 上。注意前缀 counter- 中的 /aʊ/ 要读饱满，中间的 /tə/ 弱读为轻快的央元音 /ə/，不要读成“康特-”。整体节奏是“轻-轻-重-轻-轻”。",
       "examples": [
-        "The exoskeleton robot helped the patient walk again.",
-        "Chinese-made exoskeleton devices drew huge crowds at the trade fair."
+        "Trade restrictions can be counterproductive in the long run.",
+        "Analysts warned that the crackdown is counterproductive."
       ]
     },
     "reading": {
-      "title": "When Technology Gives People Back Their Steps",
-      "content": "At the China Import and Export Fair, a British woman arrived in a wheelchair and left on her own two feet. Suffering from hindered mobility after a stroke, she tried a Chinese-made exoskeleton robot and was able to discard her wheelchair within minutes. Her story, shared widely as part of the \"China Haul\" trend, shows how wearable technology is moving from laboratories into everyday life.\n\nObservers say such breakthroughs reflect years of systematic investment in innovation. However, the US crackdown on technology, including restrictions on chip exports, is seen as counterproductive, as it slows global innovation and disrupts supply chains.\n\nExperts urge economies to uphold multilateralism and unlock new growth momentum through open cooperation. Whether it is a robot restoring mobility or digital tools safeguarding cultural heritage, advanced technology works best when it serves people rather than political interests.",
-      "translation": "在中国进出口交易会上，一位乘坐轮椅而来的英国女性靠自己的双腿离开了现场。中风后行动不便的她试用了中国制造的外骨骼机器人，几分钟内便得以扔掉轮椅。她的故事作为\"中国购物潮\"的一部分被广泛传播，展示了可穿戴技术正如何从实验室走进日常生活。\n\n观察人士称，这类突破反映了多年来对创新的系统性投入。然而，美国对科技的打压（包括限制芯片出口）被认为适得其反，因为它拖慢了全球创新、扰乱了供应链。\n\n专家呼吁各经济体维护多边主义，通过开放合作释放新的增长动能。无论是恢复行动能力的机器人，还是保护文化遗产的数字工具，先进的科技只有服务于人而非政治利益时，才能发挥最大价值。",
-      "sourceNote": "基于 ChinaDaily 今日新闻 'China Haul': Empty suitcases in, packed suitcases out、US crackdown on tech counterproductive、Cultural heritage protection to be bolstered 与 APEC economies urged to deepen cooperation 改写。"
+      "title": "China Rolls Out Measures to Steady Markets and Power the Digital Economy",
+      "content": "Chinese authorities have announced a package of measures aimed at stabilizing the financial market and supporting steady economic growth. Officials say the steps will strengthen market confidence and guide more capital toward the real economy. At the same time, a new national data group has been set up to accelerate the digital economy and artificial intelligence. The group is expected to integrate public data resources and lower costs for businesses. Meanwhile, the 'China Haul' trend continues to gain steam, as foreign visitors arrive with empty suitcases and leave with them packed with local goods. Analysts say consumption and innovation will be the two engines of the country's next stage of growth. With the upcoming plenum set to map out a new five-year plan, global investors are watching closely for signals on reform, opening-up and the future of the financial market.",
+      "translation": "中国有关部门宣布了一揽子措施，旨在稳定金融市场、支持经济平稳增长。官方表示，这些举措将增强市场信心，引导更多资金流向实体经济。与此同时，一家新的国家级数据集团正式成立，以加速数字经济和人工智能发展。该集团预计将整合公共数据资源，降低企业成本。此外，“中国扫货”热潮持续升温，外国游客带着空行李箱来华，满载本地商品而归。分析人士认为，消费和创新将成为中国下一阶段增长的两大引擎。随着即将召开的全会将擘画新的五年规划，全球投资者正密切关注有关改革、开放和金融市场未来的信号。",
+      "sourceNote": "本文根据 China Daily《Measures set to stabilize finance market》《New data group to boost digital economy, AI》《'China Haul': Empty suitcases in, packed suitcases out》及 CGTN《Why China's upcoming 5th plenum matters》等今日新闻改写，仅供英语学习使用。"
     }
   }
 }
