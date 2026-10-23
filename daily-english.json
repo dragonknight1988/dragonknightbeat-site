@@ -1,192 +1,181 @@
 {
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "content": {
-    "id": "en-2026-10-22",
-    "date": "2026-10-22",
-    "topic": "商业与金融",
+    "id": "en-2026-10-23",
+    "date": "2026-10-23",
+    "topic": "职场与沟通",
     "newsHighlights": [
       {
-        "title": "Measures set to stabilize finance market",
-        "source": "China Daily",
-        "summary": "Chinese authorities unveiled a package of measures designed to stabilize the financial market and anchor market confidence.",
-        "translation": "中国有关部门推出一揽子措施，旨在稳定金融市场、巩固市场信心。",
+        "title": "APEC ministers eye greater cooperation",
+        "source": "ChinaDaily",
+        "summary": "APEC ministers met to seek closer economic cooperation and stronger regional partnerships, showing that dialogue remains the key tool for solving shared problems.",
+        "translation": "亚太经合组织部长级会议寻求更深入的经济合作与更紧密的区域伙伴关系，这表明对话仍是解决共同问题的关键工具。",
         "keyWords": [
-          "stabilize",
-          "measure",
-          "market confidence"
+          "cooperation",
+          "minister",
+          "partnership"
         ]
       },
       {
-        "title": "New data group to boost digital economy, AI",
-        "source": "China Daily",
-        "summary": "A new national data group has been established to accelerate the digital economy and the development of artificial intelligence.",
-        "translation": "一家新的国家级数据集团正式成立，以加速数字经济发展和人工智能研发。",
+        "title": "China-Europe freight train service marks milestone",
+        "source": "ChinaDaily",
+        "summary": "A China-Europe freight train bound for Moscow departed Shenyang on Thursday, pushing the service's cumulative trips past 140,000 and carrying goods across the continent.",
+        "translation": "一列开往莫斯科的中欧班列周四从沈阳发出，使该服务累计开行突破14万列，货物跨越欧亚大陆。",
         "keyWords": [
-          "digital economy",
-          "artificial intelligence",
-          "boost"
+          "milestone",
+          "cumulative",
+          "freight"
         ]
       },
       {
-        "title": "'China Haul': Empty suitcases in, packed suitcases out",
-        "source": "China Daily",
-        "summary": "Foreign tourists are arriving in China with empty suitcases and leaving with them packed, fueling a consumption boom dubbed the 'China Haul'.",
-        "translation": "外国游客拖着空行李箱来到中国，满载而归，掀起了一场被称为“中国扫货”的消费热潮。",
+        "title": "Shenzhen, a high-tech city serving people",
+        "source": "ChinaDaily",
+        "summary": "Shenzhen is often called a cyberpunk city, but unlike the 'high tech, low life' of science fiction, its technology is designed to serve ordinary people.",
+        "translation": "深圳常被称为“赛博朋克”城市，但与科幻作品中的“高科技、低生活”不同，它的技术是为普通人服务的。",
         "keyWords": [
-          "consumption",
-          "tourism",
-          "haul"
+          "innovation",
+          "technology",
+          "serve"
         ]
       },
       {
-        "title": "US crackdown on tech counterproductive",
-        "source": "China Daily",
-        "summary": "Commentators argue that the US crackdown on technology trade is counterproductive and will ultimately hurt its own businesses.",
-        "translation": "评论认为，美国在科技领域的打压措施适得其反，最终将损害本国企业利益。",
-        "keyWords": [
-          "crackdown",
-          "counterproductive",
-          "trade"
-        ]
-      },
-      {
-        "title": "Why China's upcoming 5th plenum of 20th CPC Central Committee matters",
+        "title": "China to steadily expand intelligent connected vehicle applications",
         "source": "CGTN",
-        "summary": "The upcoming plenum is set to map out the country's next five-year plan, drawing global attention to its reform and development agenda.",
-        "translation": "即将召开的全会将擘画中国下一个五年规划，其改革与发展议程受到全球关注。",
+        "summary": "China announced plans to steadily expand the use of intelligent connected vehicles, an initiative that will require close coordination between companies and regulators.",
+        "translation": "中国宣布将稳步推进智能网联汽车应用，这项倡议需要企业与监管机构之间的密切协作。",
         "keyWords": [
-          "plenum",
-          "five-year plan",
-          "agenda"
+          "expand",
+          "initiative",
+          "coordination"
         ]
       }
     ],
     "quote": {
-      "quote": "The best way to predict the future is to create it.",
-      "author": "Peter Drucker",
-      "translation": "预测未来最好的方式，就是去创造未来。",
-      "explanation": "这句管理学名言强调主动作为的价值。面对金融市场波动和科技竞争，无论是政策制定者还是企业，都需要通过积极的行动和创新来塑造前景，而非被动等待。它与今日新闻中中国推出稳市场措施、布局数字经济的做法高度契合。"
+      "quote": "The art of communication is the language of leadership.",
+      "author": "James Humes",
+      "translation": "沟通的艺术，就是领导力的语言。",
+      "explanation": "真正的领导力不是发号施令，而是把复杂的想法说清楚、让团队愿意一起行动。APEC 部长们推动合作、中欧班列牵动无数合同与邮件，背后靠的都是清晰而真诚的沟通。"
     },
     "vocabulary": [
       {
-        "word": "stabilize",
-        "phonetic": "/ˈsteɪbəlaɪz/",
-        "partOfSpeech": "动词",
-        "definition": "使稳定，使稳固",
-        "example": "The new measures are designed to stabilize the financial market.",
-        "translation": "新措施旨在稳定金融市场。",
-        "newsContext": "出自新闻标题 Measures set to stabilize finance market"
+        "word": "cooperation",
+        "phonetic": "/kəʊˌɒpəˈreɪʃn/",
+        "partOfSpeech": "n.",
+        "definition": "合作；协作",
+        "example": "APEC ministers eye greater cooperation to keep regional trade growing.",
+        "translation": "亚太经合组织部长们寻求更深入的合作，以保持区域贸易增长。",
+        "newsContext": "出自新闻标题 \"APEC ministers eye greater cooperation\"。"
       },
       {
-        "word": "measure",
-        "phonetic": "/ˈmeʒə(r)/",
-        "partOfSpeech": "名词",
-        "definition": "措施，办法（常用复数）",
-        "example": "The government rolled out a package of measures to support growth.",
-        "translation": "政府推出了一揽子支持增长的措施。",
-        "newsContext": "出自新闻 Measures set to stabilize finance market，指稳市措施"
+        "word": "milestone",
+        "phonetic": "/ˈmaɪlstəʊn/",
+        "partOfSpeech": "n.",
+        "definition": "里程碑；重大事件",
+        "example": "The China-Europe freight train service marks a new milestone with 140,000 cumulative trips.",
+        "translation": "中欧班列累计开行14万列，标志着一个新的里程碑。",
+        "newsContext": "出自新闻 \"China-Europe freight train service marks milestone\"。"
       },
       {
-        "word": "boost",
-        "phonetic": "/buːst/",
-        "partOfSpeech": "动词/名词",
-        "definition": "促进，推动；提升",
-        "example": "The new data group is expected to boost the digital economy and AI.",
-        "translation": "新的数据集团有望推动数字经济和人工智能发展。",
-        "newsContext": "出自新闻 New data group to boost digital economy, AI"
+        "word": "cumulative",
+        "phonetic": "/ˈkjuːmjələtɪv/",
+        "partOfSpeech": "adj.",
+        "definition": "累计的；累积的",
+        "example": "The service's cumulative trips have topped 140,000 since it was launched.",
+        "translation": "自开行以来，该服务的累计班次已超过14万列。",
+        "newsContext": "出自新闻中 \"bringing the service's cumulative trips to top 140,000\"。"
       },
       {
-        "word": "crackdown",
-        "phonetic": "/ˈkrækdaʊn/",
-        "partOfSpeech": "名词",
-        "definition": "打击，镇压，（严厉的）管制措施",
-        "example": "The US crackdown on tech trade has raised concerns among exporters.",
-        "translation": "美国对科技贸易的打压引发了出口企业的担忧。",
-        "newsContext": "出自新闻 US crackdown on tech counterproductive"
+        "word": "innovation",
+        "phonetic": "/ˌɪnəˈveɪʃn/",
+        "partOfSpeech": "n.",
+        "definition": "创新；革新",
+        "example": "Shenzhen, one of China's innovation hubs, is known for turning ideas into products.",
+        "translation": "深圳作为中国的创新中心之一，以把想法变成产品而闻名。",
+        "newsContext": "出自新闻 \"Shenzhen, a high-tech city serving people\" 中 \"one of China's innovation hubs\"。"
       },
       {
-        "word": "counterproductive",
-        "phonetic": "/ˌkaʊntəprəˈdʌktɪv/",
-        "partOfSpeech": "形容词",
-        "definition": "适得其反的，产生相反效果的",
-        "example": "Analysts say the restrictions are counterproductive and will hurt US firms.",
-        "translation": "分析人士称这些限制措施适得其反，将损害美国企业。",
-        "newsContext": "出自新闻 US crackdown on tech counterproductive"
-      },
-      {
-        "word": "haul",
-        "phonetic": "/hɔːl/",
-        "partOfSpeech": "名词/动词",
-        "definition": "一次获得（或偷得）的物品总量；拖，拉",
-        "example": "Tourists post their 'China haul' online after packing their suitcases.",
-        "translation": "游客们在装满行李箱后，在网上晒出自己的“中国扫货战利品”。",
-        "newsContext": "出自新闻 'China Haul': Empty suitcases in, packed suitcases out"
-      },
-      {
-        "word": "consumption",
-        "phonetic": "/kənˈsʌmpʃn/",
-        "partOfSpeech": "名词",
-        "definition": "消费，消耗",
-        "example": "Rising inbound tourism is driving a new wave of consumption.",
-        "translation": "入境游的升温正推动新一轮消费增长。",
-        "newsContext": "关联新闻 'China Haul'，反映境外游客在华消费热潮"
+        "word": "expand",
+        "phonetic": "/ɪkˈspænd/",
+        "partOfSpeech": "v.",
+        "definition": "扩大；扩展",
+        "example": "China will steadily expand intelligent connected vehicle applications.",
+        "translation": "中国将稳步推进智能网联汽车应用的扩展。",
+        "newsContext": "出自新闻 \"China to steadily expand intelligent connected vehicle applications\"。"
       },
       {
         "word": "initiative",
         "phonetic": "/ɪˈnɪʃətɪv/",
-        "partOfSpeech": "名词",
-        "definition": "倡议；主动性，首创精神",
-        "example": "The data initiative aims to integrate public data resources nationwide.",
-        "translation": "该数据倡议旨在整合全国公共数据资源。",
-        "newsContext": "关联新闻 New data group to boost digital economy, AI，指国家级数据布局"
+        "partOfSpeech": "n.",
+        "definition": "倡议；主动性；新方案",
+        "example": "The new initiative needs support from every department to succeed.",
+        "translation": "这项新倡议需要每个部门的支持才能成功。",
+        "newsContext": "关联新闻 \"China to steadily expand intelligent connected vehicle applications\" 中的政策倡议。"
       },
       {
-        "word": "agenda",
-        "phonetic": "/əˈdʒendə/",
-        "partOfSpeech": "名词",
-        "definition": "议事日程；（政策）议程",
-        "example": "The plenum will set the country's economic agenda for the next five years.",
-        "translation": "全会将确定未来五年国家的经济议程。",
-        "newsContext": "出自新闻 Why China's upcoming 5th plenum matters，指五年规划议程"
+        "word": "delegate",
+        "phonetic": "/ˈdelɪɡət/ (n.)；/ˈdelɪɡeɪt/ (v.)",
+        "partOfSpeech": "n. / v.",
+        "definition": "代表；委派（任务）",
+        "example": "Delegates at the APEC meeting shared views on how to boost regional growth.",
+        "translation": "与会代表就如何促进区域增长交换了看法。",
+        "newsContext": "出自新闻 \"APEC ministers eye greater cooperation\" 中的部长级会议场景。"
       },
       {
-        "word": "confidence",
-        "phonetic": "/ˈkɒnfɪdəns/",
-        "partOfSpeech": "名词",
-        "definition": "信心，信任",
-        "example": "The measures are expected to shore up market confidence.",
-        "translation": "这些措施有望提振市场信心。",
-        "newsContext": "出自新闻 Measures set to stabilize finance market，稳定市场预期与信心"
+        "word": "negotiate",
+        "phonetic": "/nɪˈɡəʊʃieɪt/",
+        "partOfSpeech": "v.",
+        "definition": "谈判；协商",
+        "example": "Companies along the China-Europe route negotiate contracts in different time zones every day.",
+        "translation": "中欧班列沿线的企业每天都在不同时区进行合同谈判。",
+        "newsContext": "关联新闻 \"China-Europe freight train service marks milestone\" 中跨国贸易往来的沟通场景。"
+      },
+      {
+        "word": "consensus",
+        "phonetic": "/kənˈsensəs/",
+        "partOfSpeech": "n.",
+        "definition": "共识；一致意见",
+        "example": "The ministers reached a consensus on closer economic cooperation.",
+        "translation": "部长们就深化经济合作达成了共识。",
+        "newsContext": "出自新闻 \"APEC ministers eye greater cooperation\" 的会议成果描述。"
+      },
+      {
+        "word": "collaboration",
+        "phonetic": "/kəˌlæbəˈreɪʃn/",
+        "partOfSpeech": "n.",
+        "definition": "合作；协作（尤指共同创作或研发）",
+        "example": "A Shanghai studio brings Chinese icons to the world through international collaboration.",
+        "translation": "上海一家工作室通过国际合作把中国文化符号带向世界。",
+        "newsContext": "出自新闻 \"Shanghai studio brings Chinese icons to the world\"。"
       }
     ],
     "pattern": {
-      "pattern": "be set to do sth —— 表示“预计/定于/即将做某事”，常用于新闻标题和正式报道",
-      "example": "Measures are set to stabilize the financial market as the upcoming plenum maps out a new five-year plan.",
-      "translation": "随着即将召开的全会擘画新的五年规划，一系列措施预计将稳定金融市场。",
-      "usage": "结构：主语 + be set to + 动词原形。新闻标题中常省略 be 动词（如 Measures set to stabilize...）。可替换 will / is expected to，语气更正式，暗示已有安排或有较强预期。"
+      "pattern": "eye + (greater/more) + 名词：表示“着眼于、寻求（更大的……）”，常用于新闻标题与职场目标表述",
+      "example": "APEC ministers eye greater cooperation.",
+      "translation": "亚太经合组织部长们寻求更深入的合作。",
+      "usage": "eye 在此作动词，意为“关注、谋求”。职场中可用于描述团队目标，例如 \"Our team eyes greater efficiency this quarter.\"（我们团队本季度着眼于更高效率。）也可替换名词：eye closer ties（谋求更紧密的联系）、eye new markets（瞄准新市场）。"
     },
     "grammar": {
-      "title": "新闻标题中的省略现象（Headlinese）",
-      "explanation": "英文新闻标题为了简洁醒目，常省略冠词、系动词 be、助动词等。阅读时需自行补全成分，还原为完整句子。常见规律：① 省略 be 动词；② 用逗号代替 and；③ 用现在时表示已发生的事。",
+      "title": "现在分词作结果状语（Present Participle as a Result Adverbial）",
+      "explanation": "英语新闻中常用 \"doing...\" 现在分词短语放在句尾，补充说明前句动作带来的自然结果，相当于 \"and this brings/leads to...\"。使用时分词的逻辑主语必须与主句主语一致。",
       "examples": [
-        "Measures set to stabilize finance market → Measures are set to stabilize the financial market.",
-        "'China Haul': Empty suitcases in, packed suitcases out → Tourists come in with empty suitcases and go out with packed suitcases."
+        "A China-Europe freight train bound for Moscow departed Puhe station in Shenyang, bringing the service's cumulative trips to top 140,000.",
+        "Macron called for a halt to demonstrations in the coming days, urging citizens to stay calm."
       ]
     },
     "pronunciation": {
-      "word": "counterproductive",
-      "phonetic": "/ˌkaʊntəprəˈdʌktɪv/",
-      "tips": "五个音节，重音在倒数第三个音节 -duc- 上。注意前缀 counter- 中的 /aʊ/ 要读饱满，中间的 /tə/ 弱读为轻快的央元音 /ə/，不要读成“康特-”。整体节奏是“轻-轻-重-轻-轻”。",
+      "word": "cooperation",
+      "phonetic": "/kəʊˌɒpəˈreɪʃn/",
+      "tips": "注意重音在第三个音节 -ra- 上：co-o-PE-ra-tion。前两个音节要轻读、连读得快，/əʊ/ 与 /ɒ/ 之间自然过渡；结尾 -tion 发 /ʃn/，不要读成“提翁”。可拆解练习：koh-OP-uh-RAY-shun，再加速连读。",
       "examples": [
-        "Trade restrictions can be counterproductive in the long run.",
-        "Analysts warned that the crackdown is counterproductive."
+        "APEC ministers eye greater cooperation.",
+        "Good results come from close cooperation between teams."
       ]
     },
     "reading": {
-      "title": "China Rolls Out Measures to Steady Markets and Power the Digital Economy",
-      "content": "Chinese authorities have announced a package of measures aimed at stabilizing the financial market and supporting steady economic growth. Officials say the steps will strengthen market confidence and guide more capital toward the real economy. At the same time, a new national data group has been set up to accelerate the digital economy and artificial intelligence. The group is expected to integrate public data resources and lower costs for businesses. Meanwhile, the 'China Haul' trend continues to gain steam, as foreign visitors arrive with empty suitcases and leave with them packed with local goods. Analysts say consumption and innovation will be the two engines of the country's next stage of growth. With the upcoming plenum set to map out a new five-year plan, global investors are watching closely for signals on reform, opening-up and the future of the financial market.",
-      "translation": "中国有关部门宣布了一揽子措施，旨在稳定金融市场、支持经济平稳增长。官方表示，这些举措将增强市场信心，引导更多资金流向实体经济。与此同时，一家新的国家级数据集团正式成立，以加速数字经济和人工智能发展。该集团预计将整合公共数据资源，降低企业成本。此外，“中国扫货”热潮持续升温，外国游客带着空行李箱来华，满载本地商品而归。分析人士认为，消费和创新将成为中国下一阶段增长的两大引擎。随着即将召开的全会将擘画新的五年规划，全球投资者正密切关注有关改革、开放和金融市场未来的信号。",
-      "sourceNote": "本文根据 China Daily《Measures set to stabilize finance market》《New data group to boost digital economy, AI》《'China Haul': Empty suitcases in, packed suitcases out》及 CGTN《Why China's upcoming 5th plenum matters》等今日新闻改写，仅供英语学习使用。"
+      "title": "Talk First, Build Together: Lessons in Workplace Communication",
+      "content": "When APEC ministers met this week to eye greater cooperation, they were doing what every successful team does: talking first, acting together. Their meeting is a useful lesson for anyone working in a modern office, because progress rarely comes from one person alone.\n\nThe same message appears in trade news. On Thursday, a China-Europe freight train left Shenyang for Moscow, pushing the service's cumulative trips past 140,000. Behind that number are thousands of emails, contracts and phone calls between partners in different cities and time zones.\n\nGood workplace communication is not about using big words. It is about being clear, listening carefully and following up. Leaders who state goals plainly, invite questions and confirm decisions in writing help their teams move faster and make fewer mistakes.\n\nIn a connected world, cooperation is a practical skill. Whether you are a minister at a summit or a new employee in a meeting room, the rule is the same: speak clearly, listen patiently, and build trust one conversation at a time.",
+      "translation": "本周亚太经合组织部长们开会寻求更深入的合作，他们所做的正是每个成功团队的做法：先沟通，再共同行动。这场会议对任何在现代职场工作的人都有启发，因为进步很少来自单打独斗。\n\n同样的道理也体现在经贸新闻中。周四，一列中欧班列从沈阳开往莫斯科，使累计班次突破14万列。这个数字背后，是身处不同城市、不同时区的伙伴之间成千上万封邮件、合同与电话。\n\n好的职场沟通不在于使用华丽的辞藻，而在于表达清晰、认真倾听并及时跟进。能够清楚说明目标、欢迎提问、并以书面形式确认决定的领导者，能帮助团队更快推进、减少失误。\n\n在一个紧密相连的世界里，合作是一项实用技能。无论你是峰会上的部长，还是会议室里的新人，规则都一样：说清楚、耐心听，用一次一次的对话积累信任。",
+      "sourceNote": "本文基于 2026-10-23 ChinaDaily《APEC ministers eye greater cooperation》与《China-Europe freight train service marks milestone》两则真实新闻改写，用于英语学习目的。"
     }
   }
 }

@@ -1,16 +1,16 @@
 {
- "date": "2026-10-22",
- "weekday": "Thursday",
- "overview": "Long March-themed publicity ramps up in full force, autumn economic data signals confidence, while a PHP vulnerability and the flu season raise simultaneous alarms on cybersecurity and public health.",
+ "date": "2026-10-23",
+ "weekday": "Friday",
+ "overview": "The 90th anniversary of the Long March victory sparks nationwide commemoration, multiple earthquakes draw public concern, and the Middle East situation and cybersecurity risks heat up in parallel.",
  "trendingTopics": [
   "Long March spirit",
-  "Macroeconomy",
-  "Cybersecurity",
-  "Public health",
-  "Cultural and tourism spending",
-  "Industrial economy",
-  "International communication",
-  "Elderly care industry"
+  "earthquake emergency response",
+  "Middle East situation",
+  "robotics industry",
+  "cybersecurity",
+  "table tennis",
+  "domestic-brand consumption",
+  "respiratory diseases"
  ],
  "sections": [
   {
@@ -20,229 +20,240 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "Major Short Video 'The Answer of the Long March' Released",
-     "summary": "A major short video titled 'The Answer of the Long March' has been released, looking back on the Long March through imagery and presenting how its spirit carries forward into the present day as a historical answer.",
-     "detail": "The short video centers on the Long March as a landmark historical event. Alongside it, multiple platforms launched a series of related programs, including visits to key Long March landmarks and retracing the route, recreating historical scenes such as the breakout at the treacherous banks of the Dadu River. Related coverage also unpacked the contemporary meaning of the Long March spirit through six sets of figures.",
-     "impact": "Concentrated dissemination helps reinforce public consensus on the Long March spirit and advances the promotion of revolutionary culture and mainstream themes.",
+     "title": "Commemoration Marking 90th Anniversary of Long March Victory Held, Key Speech Delivered",
+     "summary": "A grand commemorative meeting marking the 90th anniversary of the victory of the Chinese Workers' and Peasants' Red Army's Long March was held, with Xi Jinping in attendance delivering a key speech honoring the historic triumph.",
+     "detail": "The event celebrated the 90th anniversary of the Long March victory, with Xi Jinping attending and delivering an important address. Coverage centered on paying tribute to the great victory, as regions nationwide simultaneously rolled out programs retracing Long March landmarks and applying the Long March spirit to Chinese-style modernization.",
+     "impact": "The Long March spirit has become a key symbol for building consensus, set to provide spiritual impetus for advancing national rejuvenation across all sectors.",
      "importance": "hot",
      "tags": [
       "Long March Spirit",
-      "Revolutionary Culture",
-      "Mainstream Theme Promotion"
+      "Ideological Development"
      ]
     },
     {
      "id": "news-002",
-     "title": "Six Words to Understand China's Autumn Economic Report",
-     "summary": "China's autumn economic report sums up the current state of the economy in six words: stable, abundant, innovative, sound, fast and optimized.",
-     "detail": "The report uses these six words as a thread to interpret the autumn economic outlook. Industrial economy reports released in the same period stressed the need to continuously improve the quality and efficiency of industrial operations. Multiple data sets point to highlights and resilience in economic performance.",
-     "impact": "Helps stabilize market expectations and offers a window onto fourth-quarter economic policy direction and business confidence.",
-     "importance": "hot",
+     "title": "'15th Five-Year Plan' for Industrial Foundation Capabilities Released",
+     "summary": "The plan for upgrading industrial foundation capabilities under the 15th Five-Year Plan period has been officially released, focusing on strengthening the foundations of a modern industrial system.",
+     "detail": "The plan lays out initiatives for enhancing industrial foundation capabilities during the 15th Five-Year Plan period and is seen as a key document for pushing manufacturing and industrial chains to a higher level.",
+     "impact": "Provides policy guidance for improving the resilience and security of industrial and supply chains, benefiting manufacturing and high-tech industries.",
+     "importance": "important",
      "tags": [
-      "Macroeconomy",
-      "Economic Conditions",
-      "Statistical Data"
+      "Industrial Policy",
+      "Manufacturing",
+      "Supply Chains"
      ]
     },
     {
      "id": "news-003",
-     "title": "3.71 Billion Passenger Trips Show the Vitality of a China on the Move",
-     "summary": "Data shows cross-regional passenger flows reached 3.71 billion trips, making travel 'toward the warmth' a key window into the economic vitality of a China on the move.",
-     "detail": "The scale of 3.71 billion passenger trips directly reflects the heat of population movement and social interaction. The picture of 'China on the move' mirrors the vitality of economic activity and household consumption.",
-     "impact": "Large-scale passenger flows will continue to underpin momentum in transport, tourism, consumption and related sectors.",
-     "importance": "important",
+     "title": "Magnitude 7.0 Earthquake Strikes Nagqu, Tibet; Residents Evacuate Outdoors",
+     "summary": "A magnitude 7.0 earthquake hit Nagqu in Tibet, prompting residents to flee outdoors for safety, with related footage circulating online.",
+     "detail": "Immediately after the quake, residents rushed outdoors to take cover. No further details on casualties or rescue operations were provided in the available materials.",
+     "impact": "The strong quake poses risks to livelihoods and infrastructure on the plateau, drawing attention to disaster prevention and emergency response capabilities.",
+     "importance": "hot",
      "tags": [
-      "Transportation",
-      "Population Mobility",
-      "Domestic Consumption"
+      "Earthquake Response",
+      "Disaster Prevention"
      ]
     },
     {
      "id": "news-004",
-     "title": "Continuously Improve the Quality and Efficiency of Industrial Operations",
-     "summary": "The report focuses on the industrial economy, stressing the need to continuously raise the quality and efficiency of industrial operations and drive high-quality industrial development.",
-     "detail": "The article examines the quality and efficiency of industrial economic performance, pointing toward the direction of upgrading and efficiency gains in the industrial sector. The content was released in coordination with China's autumn economic report, together forming a combined reading of the economic outlook.",
-     "impact": "Improving industrial quality and efficiency provides a foundational boost to manufacturing transformation and upgrading as well as overall economic growth.",
-     "importance": "important",
+     "title": "Magnitude 4.3 Earthquake Hits Yushu, Qinghai",
+     "summary": "A magnitude 4.3 earthquake struck Yushu in Qinghai province, drawing attention to conditions in the affected area; no additional damage information was provided.",
+     "detail": "The magnitude 4.3 earthquake in Yushu, Qinghai was reported by multiple media outlets. No information on casualties or losses was available.",
+     "impact": "Recent seismic activity on the plateau has drawn attention and is expected to further drive disaster prevention and mitigation efforts.",
+     "importance": "normal",
      "tags": [
-      "Industrial Economy",
-      "Manufacturing",
-      "High-Quality Development"
+      "Earthquake Response",
+      "Disaster Prevention"
      ]
     },
     {
      "id": "news-005",
-     "title": "The Poetic Yangtze River Regains Vibrant Vitality",
-     "summary": "The special series 'Why China: A Song of the Yangtze in the New Era' showcases the vibrant vitality the poetic Yangtze River has regained in the new era.",
-     "detail": "The coverage focuses on the Yangtze River, presenting the ecological and cultural landscape of its basin. Poetic expression is combined with real-world scenes to highlight the Yangtze's value in the new era.",
-     "impact": "Helps raise public attention to Yangtze River cultural heritage and ecological conservation.",
+     "title": "Autumn Grain Harvest Underway Nationwide as Local Specialty Industries Boost Farmer Incomes",
+     "summary": "Autumn grain harvesting is entering its peak season nationwide, while local specialty industries help raise farmer incomes as rural revitalization continues to advance.",
+     "detail": "Coverage tracked progress in the autumn grain harvest and highlighted how regions are expanding farmers' income channels through locally distinctive industries.",
+     "impact": "The combination of a strong autumn harvest and specialty industries supports food security and steady growth in farmer incomes.",
+     "importance": "important",
+     "tags": [
+      "Food Security",
+      "Rural Revitalization",
+      "Specialty Agriculture"
+     ]
+    },
+    {
+     "id": "news-006",
+     "title": "High-Speed Rail Reaches Revolutionary Old Areas, Opening New Chapter in Revitalization",
+     "summary": "High-speed rail service has reached China's revolutionary base areas, with improved transport injecting new momentum into regional revitalization and carrying forward the Long March spirit on the road to national rejuvenation.",
+     "detail": "Taking the launch of high-speed rail in old revolutionary areas as its starting point, the report explores how improved transport infrastructure drives revitalization and carries on the Long March spirit.",
+     "impact": "High-speed rail access will significantly improve the geographic advantages of these areas, boosting cultural tourism, logistics and industrial relocation capacity.",
      "importance": "normal",
      "tags": [
-      "Ecological Civilization",
-      "Yangtze River Economic Belt",
-      "Cultural Heritage"
+      "Transport Infrastructure",
+      "Revitalization of Old Revolutionary Areas",
+      "Regional Economy"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "World Politics",
+   "title": "International Politics",
    "icon": "🌍",
    "articles": [
     {
-     "id": "news-006",
-     "title": "Scholars: Amending the \"Three Non-Nuclear Principles\" Violates the Peace Constitution",
-     "summary": "Constitutional scholars have warned that amending the \"Three Non-Nuclear Principles\" runs counter to the spirit of the peace constitution, sparking debate over the policy's future direction.",
-     "detail": "The report focuses on legal and constitutional questions surrounding the proposed amendment to the \"Three Non-Nuclear Principles.\" Scholars point to tensions between the pacifist constitution and the government's policy orientation.",
-     "impact": "The issue concerns nuclear policy and regional security trends, making it worth continued attention.",
-     "importance": "important",
-     "tags": [
-      "Nuclear Safety",
-      "Peace Constitution",
-      "East Asian Security"
-     ]
-    },
-    {
-     "id": "news-007",
-     "title": "Global Times Editorial: Amid Chaos in France, Some Call for a Hard Line on China",
-     "summary": "A Global Times commentary noted that while France faces domestic turmoil, some voices still advocate a tougher stance on China, drawing public attention.",
-     "detail": "The commentary uses France's current situation as a backdrop to question the logic behind calls for a harder line against China. It focuses on China-EU relations and related debates on the international opinion stage.",
-     "impact": "The commentary offers a window into the climate of China-EU relations and the direction of international public opinion.",
-     "importance": "important",
-     "tags": [
-      "China-EU Relations",
-      "International Opinion",
-      "European Situation"
-     ]
-    },
-    {
-     "id": "news-008",
-     "title": "Man Who Threatened to Assassinate Trump at Rally Arrested",
-     "summary": "A man who threatened to assassinate Donald Trump at a campaign rally, claiming to have scouted rooftops around the venue, has been arrested.",
-     "detail": "Reports say the man threatened the assassination, claiming he knew the speech venue and had scouted surrounding rooftops. The suspect has been taken into custody.",
-     "impact": "The incident highlights public safety risks and social tensions at large-scale political events.",
-     "importance": "important",
-     "tags": [
-      "Overseas Security"
-     ]
-    },
-    {
      "id": "news-009",
-     "title": "Caribbean Nations' Social Media Delegation Visits Xinjiang",
-     "summary": "A social media delegation from Caribbean countries visited Xinjiang, with members saying they saw the real Xinjiang with their own eyes.",
-     "detail": "The delegation gained a firsthand understanding of Xinjiang's realities through on-site visits. The trip is part of international communication and people-to-people exchanges abroad.",
-     "impact": "The visit helps foster a more objective understanding of Xinjiang's development and expands external communication channels.",
+     "title": "Israel Spotted Simulating Strikes on Iran; US Officials Say Move May Aim to Bait Tehran into Firing First",
+     "summary": "Israel has been reported simulating strikes on Iran, with US officials suggesting the move could be intended to provoke Iran into firing first, raising concerns over rising tensions.",
+     "detail": "Reports say Israel has simulated military strikes on Iran, with US officials commenting that the exercise may be a deliberate bid to lure Iran into opening fire first. No official responses from either side were provided in the material.",
+     "impact": "The move heightens regional tensions, adding risk of further escalation in the Middle East.",
+     "importance": "hot",
+     "tags": [
+      "Middle East",
+      "International Security"
+     ]
+    },
+    {
+     "id": "news-010",
+     "title": "ASEAN Journalists Visit Hainan to See Cultural Heritage and Ecological Conservation in Action",
+     "summary": "ASEAN journalists visited Hainan to observe firsthand the island's efforts in preserving cultural heritage and protecting the environment.",
+     "detail": "The report documents an ASEAN journalists' trip to Hainan, covering practices ranging from cultural heritage preservation to ecological conservation and green development.",
+     "impact": "Such exchanges help build regional trust and broaden international circulation of China's green development experience.",
      "importance": "normal",
      "tags": [
-      "External Communication",
-      "International Communication",
-      "Frontier Development"
+      "Regional Cooperation",
+      "Environment",
+      "Cultural Exchange"
+     ]
+    },
+    {
+     "id": "news-011",
+     "title": "ASEAN Media Spotlight Ethnic Unity and Development of a Millennia-Old Tea Mountain",
+     "summary": "The story of a thousand-year-old tea mountain showcases ethnic unity and has become compelling material for China's external communications.",
+     "detail": "Using the thousand-year-old tea mountain as an entry point, the report illustrates how ethnic unity takes shape at the grassroots level, echoing the observation tour of ASEAN journalists in China.",
+     "impact": "Telling the story of ethnic unity through a focused angle helps showcase development achievements in China's multi-ethnic regions to the world.",
+     "importance": "normal",
+     "tags": [
+      "Ethnic Unity",
+      "Tea Industry",
+      "External Communications"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance",
+   "title": "Finance & Economy",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-010",
-     "title": "The Middle-Class Wardrobe Is Basically One Giant Anta",
-     "summary": "Examining the concept of the \"middle-class wardrobe,\" the report finds Anta's deep penetration among middle-class consumers.",
-     "detail": "The article discusses the relationship between middle-class consumption and apparel brands. The headline uses \"one giant Anta\" to describe the brand's outsized presence in middle-class closets.",
-     "impact": "Reflects the rising influence of domestic brands in the middle-class consumer market and shifts in consumption patterns.",
-     "importance": "important",
-     "tags": [
-      "Apparel Industry",
-      "Domestic Brand Consumption",
-      "Consumer Brands"
-     ]
-    },
-    {
-     "id": "news-011",
-     "title": "Rising Interest in Chinese-Style Experiences as Foreign Visitors Embrace \"Chinese Living\"",
-     "summary": "Demand for traditional Chinese-style experiences continues to grow, with more foreign visitors embracing \"Chinese living,\" emerging as a new bright spot in the cultural tourism market.",
-     "detail": "The report highlights foreign visitors' growing interest in Chinese traditional cultural experiences. Chinese-style experiences have become a key draw for inbound tourism and cultural exchange.",
-     "impact": "Expected to further boost cultural tourism spending and inbound tourist arrivals.",
-     "importance": "important",
-     "tags": [
-      "Cultural Tourism Spending",
-      "Inbound Tourism",
-      "Guochao Economy"
-     ]
-    },
-    {
      "id": "news-012",
-     "title": "China's \"Matchmaking Hierarchy\" Sparks Debate",
-     "summary": "A discussion about China's \"matchmaking hierarchy\" has drawn attention, touching on preferences and judgment criteria in the marriage market.",
-     "detail": "The topic centers on the ranking of preferences and hierarchies of judgment in matchmaking scenarios. Related debates extend to attitudes toward marriage and social standards of evaluation.",
-     "impact": "Reflects diverging views in the contemporary marriage market and shifting social attitudes.",
+     "title": "The Middle-Class Wardrobe Is Basically One Giant Anta",
+     "summary": "An opinion piece titled \"The Middle-Class Wardrobe Is Basically One Giant Anta\" examines how domestic sportswear brands are penetrating middle-class consumption.",
+     "detail": "Starting from changes in middle-class closets, the article discusses the growing presence and market standing of domestic apparel brands in everyday family wardrobes.",
+     "impact": "Reflects a shift in brand perception among middle-class consumers, with apparel spending increasingly tilting toward homegrown labels.",
      "importance": "normal",
      "tags": [
-      "Marriage Market",
-      "Consumer Phenomena",
-      "Social Attitudes"
+      "Apparel Consumption",
+      "Domestic Brands",
+      "Consumer Trends"
      ]
     },
     {
      "id": "news-013",
-     "title": "Dong Mingzhu: \"Calling Me Grandma Makes Me Very Unhappy\"",
-     "summary": "Gree Electric Chairwoman Dong Mingzhu said being called \"grandma\" makes her very unhappy, sparking online discussion.",
-     "detail": "The topic revolves around how entrepreneurs are addressed and how their public image is perceived. Discussion extends to the public image of corporate leaders and intergenerational communication.",
-     "impact": "Reflects public attention to and debate over the image of high-profile business executives.",
+     "title": "Audi China Appoints First Chinese-Born President",
+     "summary": "Audi China has named its first Chinese national as president, prompting industry attention to the localization of foreign automakers' China strategies.",
+     "detail": "The appointment of a local executive to Audi China's top management is seen as a shift in the governance structure of foreign carmakers operating in China.",
+     "impact": "Foreign automakers are accelerating the localization of senior management, which could improve decision-making speed and market responsiveness in China.",
+     "importance": "important",
+     "tags": [
+      "Automotive Industry",
+      "Foreign Automakers",
+      "Corporate Governance"
+     ]
+    },
+    {
+     "id": "news-014",
+     "title": "Jetta M6 Launches at Starting Price of 79,800 Yuan",
+     "summary": "The Jetta M6 has officially launched with prices starting at 79,800 yuan, adding another option to the entry-level car market.",
+     "detail": "The Jetta brand has rolled out the M6 model with a starting price of 79,800 yuan, targeting price-sensitive consumers.",
+     "impact": "Entry-level pricing is intensifying industry competition and may further boost value-for-money across the budget segment.",
      "importance": "normal",
      "tags": [
-      "Home Appliance Industry",
-      "Corporate Management",
-      "Entrepreneur Image"
+      "Auto Consumption",
+      "New Model Launch",
+      "Passenger Vehicle Market"
+     ]
+    },
+    {
+     "id": "news-015",
+     "title": "The Full Journey of a Single Coffee Bean",
+     "summary": "A field report traces coffee from a single seed through the entire value chain, showcasing how specialty agriculture can add value at every stage.",
+     "detail": "As part of the \"Vibrant China Field Survey\" series, the report uses coffee as a case study, following seeds, cultivation, processing and market distribution to illustrate the value added by chain extension.",
+     "impact": "Presents a blueprint for full value-chain development in specialty industries, offering lessons for the industrialization of other agricultural products.",
+     "importance": "normal",
+     "tags": [
+      "Coffee Industry",
+      "Specialty Agriculture",
+      "Value Chain Expansion"
+     ]
+    },
+    {
+     "id": "news-016",
+     "title": "From Contract Manufacturing to Co-Creation: Overseas Executives Seek a China Model for Robotics",
+     "summary": "Overseas executives are coming to China in search of a \"China model\" for robotics, as the industry shifts from contract manufacturing to collaborative innovation.",
+     "detail": "The report highlights overseas corporate leaders visiting China to negotiate robotics partnerships, reflecting the industry's transition from contract manufacturing to joint co-creation.",
+     "impact": "China's rising status in robotics could help it capture higher value within the global smart manufacturing division of labor.",
+     "importance": "important",
+     "tags": [
+      "Robotics Industry",
+      "Smart Manufacturing",
+      "High-End Manufacturing"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Tech Frontlines",
+   "title": "Tech Frontier",
    "icon": "💡",
    "articles": [
     {
-     "id": "news-014",
-     "title": "Critical PHP Flaw Prompts Emergency Shutdowns in Multiple Countries",
-     "summary": "A critical security vulnerability has been disclosed in PHP, prompting emergency shutdowns of affected systems in several countries and drawing attention across the cybersecurity community.",
-     "detail": "The flaw has a wide blast radius, leading multiple countries to take emergency measures including system shutdowns. The incident underscores the security risks of open-source infrastructure software and the importance of rapid incident response.",
-     "impact": "Expected to drive broader audits of open-source component security risks and stronger supply-chain governance across industries.",
-     "importance": "hot",
+     "id": "news-017",
+     "title": "70% of Websites Worldwide Are at Risk",
+     "summary": "Reports say 70% of websites worldwide face security risks, putting cybersecurity threats back in the spotlight.",
+     "detail": "A report titled \"70% of Websites Worldwide Are at Risk\" warns that website security threats are widespread and the defense outlook is severe.",
+     "impact": "As cybersecurity risks spill over into a wider scope, enterprises and institutions will step up spending on security protection and compliance.",
+     "importance": "important",
      "tags": [
       "Cybersecurity",
-      "Open-Source Software",
-      "Incident Response"
+      "Information Security",
+      "Digital Risk"
      ]
     },
     {
-     "id": "news-015",
-     "title": "Wuzhen Summit Audience Booking Platform Goes Live",
-     "summary": "The official audience booking platform for the Wuzhen Summit has launched, providing a digital service portal for conference attendance and visit activities.",
-     "detail": "The platform is designed to handle audience reservations and event coordination during the summit. The initiative forms part of the broader digital economy and exhibition services ecosystem.",
-     "impact": "Raises the level of digital service delivery and improves the attendee experience at large-scale conferences and events.",
+     "id": "news-018",
+     "title": "Can Six-Figure Stem Cell Infusions Really Fight Aging?",
+     "summary": "Reports question whether pricey stem cell infusions truly deliver anti-aging effects, focusing on the technological and ethical debates around anti-aging consumption.",
+     "detail": "The article raises doubts about stem cell infusion programs that cost upward of hundreds of thousands of yuan, examining their anti-aging efficacy and market chaos.",
+     "impact": "The anti-aging consumer market is a mixed bag, underscoring the growing need for industry standardization and science communication.",
      "importance": "normal",
      "tags": [
-      "Internet Conference",
-      "Digital Economy",
-      "Exhibition Services"
+      "Stem Cell Technology",
+      "Health Industry",
+      "Consumer Medicine"
      ]
     },
     {
-     "id": "news-016",
-     "title": "Joint Online Rumor-Refutation Platform Continues Operations",
-     "summary": "The joint online rumor-refutation platform continues to publish authoritative information, fulfilling roles in online information governance and rumor debunking.",
-     "detail": "The platform operates through a collaborative mechanism to verify information and counter rumors. Such mechanisms are a key component of online information ecosystem governance.",
-     "impact": "Helps clean up the online information environment and strengthens the public's ability to assess information credibility.",
+     "id": "news-019",
+     "title": "Global Security Risks on 70% of Websites Spark Industry Alert",
+     "summary": "Joint online rumor-debunking platforms and other channels continue to speak out, highlighting the importance of managing online information and security risks.",
+     "detail": "Data shows the joint online rumor-debunking platform has been pushing content throughout the day, reflecting the routine operation of online information governance and risk warnings.",
+     "impact": "Continued operation of cyberspace governance mechanisms helps clean up the information environment and improves the public's ability to identify risks.",
      "importance": "normal",
      "tags": [
-      "Internet Governance",
-      "Information Governance",
-      "Rumor Refutation"
+      "Cyberspace Governance",
+      "Information Security",
+      "Public Communication"
      ]
     }
    ]
@@ -253,68 +264,67 @@
    "icon": "📰",
    "articles": [
     {
-     "id": "news-017",
-     "title": "Venomous Mosquitoes From South China Are Migrating North in Droves",
-     "summary": "Reports highlight a mass northward migration of venomous mosquito species from southern China, sparking discussion over related health risks.",
-     "detail": "Using the metaphor of \"beipiao\" — a term for migrants moving to northern cities — reports describe venomous mosquitoes spreading northward. The trend is linked to climate and environmental factors, drawing attention from a public health perspective.",
-     "impact": "Northern regions are urged to strengthen vector control and raise awareness of preventive health measures.",
-     "importance": "important",
-     "tags": [
-      "Public Health",
-      "Vectors",
-      "Climate Change"
-     ]
-    },
-    {
-     "id": "news-018",
-     "title": "48 Hours Into the Flu, I Picked the \"Right\" Drug",
-     "summary": "The author shares experience choosing flu medication within 48 hours of symptom onset, discussing how to respond effectively during the critical window.",
-     "detail": "Drawing on a personal account, the article examines medication decisions in the early stages of influenza. Its core focus is on rational drug use and the pace of response during the first days of illness.",
-     "impact": "Helps improve public understanding of early flu management and rational medication use.",
-     "importance": "important",
-     "tags": [
-      "Respiratory Disease",
-      "Rational Drug Use",
-      "Public Health"
-     ]
-    },
-    {
-     "id": "news-019",
-     "title": "Can a Stem Cell Infusion Costing Hundreds of Thousands Actually Fight Aging?",
-     "summary": "Reports question whether stem cell infusion treatments costing hundreds of thousands of yuan truly deliver anti-aging benefits, focusing on the science behind such consumer medical services.",
-     "detail": "The article discusses the efficacy and justification of high-priced stem cell anti-aging programs, touching on the technological boundaries of regenerative medicine and the regulation of the consumer healthcare market.",
-     "impact": "Consumers are cautioned to view pricey anti-aging treatments critically and to weigh industry oversight and scientific evidence.",
-     "importance": "important",
-     "tags": [
-      "Regenerative Medicine",
-      "Consumer Healthcare",
-      "Medical Aesthetics & Health"
-     ]
-    },
-    {
      "id": "news-020",
-     "title": "Young People Are Eyeing New Careers in Nursing Homes",
-     "summary": "Reports spotlight young people turning to new types of jobs in nursing homes, reflecting a shift in hiring trends across the elder care industry.",
-     "detail": "The article focuses on emerging career opportunities within nursing homes. The entry of young workers into elder care offers a new lens on employment trends and the evolving care industry.",
-     "impact": "Highlights changing talent structures in the elder care sector, offering insights for employment and training programs.",
-     "importance": "normal",
+     "title": "China's Men's Table Tennis Team Sweeps South Korea 3-0 for Fourth Straight Asian Championships Title",
+     "summary": "China's men's table tennis team defeated South Korea 3-0 to claim a fourth consecutive Asian Championships team title, extending its dominance in the event.",
+     "detail": "In the men's team final, China beat South Korea 3-0 to secure its fourth straight Asian Championships team crown.",
+     "impact": "The win consolidates China's leading position in international table tennis and further strengthens its influence in the sport.",
+     "importance": "hot",
      "tags": [
-      "Elder Care Industry",
-      "Silver Economy",
-      "Career Development"
+      "Table Tennis",
+      "Sports Events",
+      "Competitive Sports"
      ]
     },
     {
      "id": "news-021",
-     "title": "300 Days and Nights at a Boot-Camp Style School",
-     "summary": "Structured around \"300 days and nights,\" the report recounts experiences at a special training school, prompting reflection on this model of education.",
-     "detail": "The article traces life and changes at a special training school over time. The topic extends into debates over youth education methods and choices within family education.",
-     "impact": "Sparks societal discussion on youth education approaches and the regulation of such institutions.",
+     "title": "China's Women's Table Tennis Team Falls 2-3 to Japan, Takes Asian Championships Silver",
+     "summary": "China's women's table tennis team lost 2-3 to Japan, settling for second place at the Asian Championships and sparking debate over the competitive landscape on the women's side.",
+     "detail": "In the women's team event, China was edged 2-3 by Japan, finishing as runner-up at this year's Asian Championships.",
+     "impact": "Intensifying international competition on the women's side may prompt adjustments in training preparation and squad combinations.",
+     "importance": "important",
+     "tags": [
+      "Table Tennis",
+      "Sports Events",
+      "Competitive Sports"
+     ]
+    },
+    {
+     "id": "news-022",
+     "title": "Aggressive Southern Mosquitoes Are Migrating North in Droves",
+     "summary": "Reports highlight a northward spread of aggressive mosquito species from southern China, raising public health concerns over shifting vector activity ranges.",
+     "detail": "Taking the trend of southern mosquitoes 'moving north en masse' as a starting point, the article examines changes in mosquito distribution and the climate and environmental factors behind them.",
+     "impact": "The northward shift in mosquito activity could increase the burden of mosquito control and vector-borne disease prevention in northern regions.",
+     "importance": "important",
+     "tags": [
+      "Public Health",
+      "Climate Change",
+      "Vector Control"
+     ]
+    },
+    {
+     "id": "news-023",
+     "title": "In the First 48 Hours of the Flu, I Picked the 'Right' Medicine",
+     "summary": "The author shares medication choices made within 48 hours of flu onset, offering practical guidance for the flu season.",
+     "detail": "Through a personal account, the article describes responses and medication decisions in the first 48 hours after flu symptoms appear, stressing the importance of timing.",
+     "impact": "Sharing real-world flu medication experience can help improve public awareness of seeking medical care and using medicines responsibly.",
      "importance": "normal",
      "tags": [
-      "Youth Education",
-      "Education & Training",
-      "Family Education"
+      "Respiratory Disease",
+      "Medication Safety",
+      "Health Education"
+     ]
+    },
+    {
+     "id": "news-024",
+     "title": "Woman Wins One Ton of Gasoline for 100 Days Without a Single Traffic Violation",
+     "summary": "A woman received one ton of gasoline as a reward for going 100 days without a single traffic violation, drawing attention to incentives for safe and courteous driving.",
+     "detail": "Reports say the woman was awarded one ton of gasoline for her 100-day clean driving record, becoming a showcase case for positive traffic safety incentives.",
+     "impact": "Reward-based incentives for law-abiding driving may encourage more regions to explore similar road safety reward programs.",
+     "importance": "normal",
+     "tags": [
+      "Traffic Safety",
+      "Courteous Driving"
      ]
     }
    ]

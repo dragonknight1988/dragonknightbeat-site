@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "contents": [
     {
-      "id": "prog-2026-10-22",
-      "date": "2026-10-22",
-      "title": "Go 高性能内存复用：sync.Pool、逃逸分析与 GC 协同调优",
-      "summary": "掌握 sync.Pool 的底层机制与正确用法，结合逃逸分析与 GC 行为，在高吞吐服务中系统性地减少堆分配与 GC 压力。",
-      "difficulty": "高级",
-      "concept": "在高吞吐的 Go 服务（网关、序列化层、日志管道）中，GC 压力往往比 CPU 逻辑本身更早成为瓶颈。每一次小对象分配都会增加 GC 的扫描与标记成本，当每秒分配达到几十万次时，即使 Go 的 GC 已经是亚毫秒级的并发标记-清扫，CPU 的 STW 与标记开销依然可观。解决思路不是\"关闭 GC\"，而是减少不必要的堆分配，而 sync.Pool 就是标准库提供的第一道武器。\n\nsync.Pool 本质是一个\"无锁优先\"的临时对象缓存池，它为每个逻辑处理器 P 维护一个 private slot 和一个 shared 双端队列（victim cache 在 GC 周期之间提供二级缓冲）。Get 时优先取本地 private，再偷取本地 shared，最后去其他 P 的 shared 队列中偷取；Put 优先放回本地。正因为这种 per-P 设计，sync.Pool 的吞吐极高，但它同时也意味着 Pool 中的对象随时可能被 GC 回收——每次 GC 时，victim cache 会被清空，一级缓存降级为 victim cache。所以 Pool 只适合缓存\"可能被再次使用、但丢了也不影响正确性\"的临时对象（如 buffer、encoder、临时结构体），绝不能用来管理连接池、限流令牌这类有生命周期约束的资源。\n\n使用 Pool 最容易犯的错误有两个。一是\"脏数据\"：归还对象前没有 Reset，下一个使用者会看到上一次的内容，这在 bytes.Buffer 上尤其隐蔽（拼接出 AAAABB 这类污染数据）。正确姿势是取出后立刻 Reset，而不是归还时 Reset（归还时 Reset 会让写路径多一次开销，且在 Put 与 Get 之间仍可能被他人改动）。二是\"逃逸出池\"：把从 Pool 拿到的 buffer 的底层 []byte 直接返回给调用方，这个 slice 会在对象被复用后指向被覆盖的内存，形成难以排查的数据竞争。必须在归还前 copy 出结果。\n\n要验证优化是否真的有效，不要靠感觉，用 go build -gcflags=\"-m\" 看逃逸分析结论，用 runtime.ReadMemStats 或 testing.AllocsPerRun 量化分配次数，再用 pprof 的 alloc_space 与 gc 指标做端到端验证。工程经验是：先把分配热点找出来（pprof alloc_space），只对高频路径做池化；过度池化会让代码充满 Get/Put 噪音，还可能因对象尺寸差异大反而拉高内存占用（sync.Pool 不会做尺寸分级，超大对象复用前要评估池的内存驻留）。\n\n最后注意 GC 协同：若服务开启了 GOGC 调优或使用了 GOMEMLIMIT（Go 1.19+），Pool 中驻留的对象会计入堆内存并触发更频繁的 GC，形成\"池化反而加剧 GC\"的负反馈。实践中推荐配合 SetFinalizer 不要用（它会拖慢 GC），而是用基准测试确认 Pool 的命中率与内存驻留都符合预期，并在压测中观察 GC CPU 占比（runtime/metrics 的 /gc/cycles:total 与 /cpu/classes/gc/total）。",
+      "id": "prog-2026-10-23",
+      "date": "2026-10-23",
+      "title": "Rust 变量、可变性与遮蔽（Shadowing）",
+      "summary": "掌握 Rust 中 let 变量默认不可变、mut 显式可变、const 常量与遮蔽（Shadowing）的语义差异与工程用法。",
+      "difficulty": "初级",
+      "concept": "Rust 把「不可变优先（immutability by default）」写进了语言的核心设计。当你写下 `let x = 5;` 时，`x` 是一个**不可变绑定**：不能重新赋值，也不能修改它指向的数据（对基础类型而言）。这与 C/C++/Java/Python 里「变量默认可改」的习惯完全相反。之所以这样设计，是因为不可变数据天生线程安全、易于推理，编译器可以做更激进的优化。在工程实践中，读到一个 `let` 声明，你就知道它后续不会被偷偷改掉——这是 Rust 代码可读性的一大来源。\n\n当你确实需要修改时，必须用 `let mut x = 5;` **显式声明可变性**。关键字 `mut` 是一个信号：它告诉代码阅读者「这个变量的状态在生命周期内会发生变化」，需要额外关注。代码评审（Code Review）里看到 `mut`，通常会下意识多看两眼，这正是 Rust 的设计意图。不要图省事给所有变量加 `mut`，那会丢掉 Rust 帮你做的一大半静态检查。Rust 编译器对未使用的 `mut` 还会给出 `unused_mut` 警告，强制你保持克制。\n\n第三种形态是**遮蔽（Shadowing）**：用 `let x = ...;` 再次声明同名变量。注意这不是「修改」，而是**新建了一个新的绑定，把旧的遮住**。遮蔽有两个非常实用的特性：一，它允许改变变量的**类型**（`mut` 不允许这样做，例如 `String` 变成 `usize`）；二，它天然适合「数据加工流水线」的写法——每一步用 `let` 覆盖一次，变量名不变，语义始终是「这个值经过了第 N 步处理」。典型的场景是解析用户输入：`let input = input.trim(); let input: i32 = input.parse()?;`，这比写 `input_str / input_trimmed / input_num` 一堆名字更清爽。\n\n最后是 `const`。常量**必须**显式标注类型，命名约定为 SCREAMING_SNAKE_CASE，且必须在编译期就能求值。它与 `let` 的区别在于：常量没有内存地址（会被内联到使用处）、不能使用 `mut`、作用域规则相同但语义上表示「全局不变的配置/魔法数字」。工程里推荐把配置阈值、容量上限、超时毫秒数抽成 `const`，而不是散落在代码里的字面量。另外 `const` 的求值发生在编译期，写错会在编译阶段就报错，而不是运行时才发现。\n\n一条经验法则：**优先 `let`，只有需要就地更新时才 `mut`；需要「重加工」或「换类型」时用遮蔽；全局配置常量用 `const`。** 理解这四者的边界，是写好 Rust 所有权与借用代码的前提。",
       "codeExample": {
-        "language": "go",
-        "code": "package main\n\nimport (\n\t\"bytes\"\n\t\"encoding/json\"\n\t\"fmt\"\n\t\"runtime\"\n\t\"sync\"\n)\n\n// Request 模拟业务请求体\ntype Request struct {\n\tID      int    `json:\"id\"`\n\tPayload string `json:\"payload\"`\n}\n\n// bufPool 复用 bytes.Buffer，显著减少堆分配\nvar bufPool = sync.Pool{\n\tNew: func() any {\n\t\treturn new(bytes.Buffer)\n\t},\n}\n\n// EncodeWithPool 使用对象池完成 JSON 编码\nfunc EncodeWithPool(req *Request) ([]byte, error) {\n\tbuf := bufPool.Get().(*bytes.Buffer) // 1. 从池中取出（可能触发 New）\n\tbuf.Reset()                          // 2. 复用前必须重置，防止脏数据\n\n\tif err := json.NewEncoder(buf).Encode(req); err != nil {\n\t\tbufPool.Put(buf) // 异常路径也要归还，避免对象泄漏\n\t\treturn nil, err\n\t}\n\n\tout := make([]byte, buf.Len())\n\tcopy(out, buf.Bytes()) // 3. 必须拷贝结果，buffer 即将被他人复用\n\tbufPool.Put(buf)       // 4. 归还对象供下一次复用\n\treturn out, nil\n}\n\n// EncodeNoPool 对照组：每次调用都新建 buffer\nfunc EncodeNoPool(req *Request) ([]byte, error) {\n\tvar buf bytes.Buffer\n\tif err := json.NewEncoder(&buf).Encode(req); err != nil {\n\t\treturn nil, err\n\t}\n\treturn buf.Bytes(), nil\n}\n\n// measureAllocs 粗略统计单次调用平均堆分配字节数\nfunc measureAllocs(f func(), n int) float64 {\n\tvar m1, m2 runtime.MemStats\n\truntime.GC()\n\truntime.ReadMemStats(&m1)\n\tfor i := 0; i < n; i++ {\n\t\tf()\n\t}\n\truntime.ReadMemStats(&m2)\n\treturn float64(m2.TotalAlloc-m1.TotalAlloc) / float64(n)\n}\n\nfunc main() {\n\treq := &Request{ID: 1001, Payload: \"hello sync.Pool\"}\n\n\tb, err := EncodeWithPool(req)\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"encoded: %s\", b)\n\n\tconst n = 100000\n\tfmt.Printf(\"with pool:    %.0f bytes/op\\n\", measureAllocs(func() { _, _ = EncodeWithPool(req) }, n))\n\tfmt.Printf(\"without pool: %.0f bytes/op\\n\", measureAllocs(func() { _, _ = EncodeNoPool(req) }, n))\n\n\truntime.GC()\n\tfmt.Println(\"注意：GC 之后 Pool 中的对象可能被清理，New 会被再次调用\")\n}\n",
-        "explanation": "1) bufPool 声明一个 sync.Pool，New 字段在池中无可用对象时创建新 *bytes.Buffer。\n2) EncodeWithPool 中 buf.Reset() 是防止脏数据的关键：不 Reset 会把上次遗留内容拼接进新结果。\n3) err 分支同样调用 Put，保证对象不泄漏；Go 没有 defer 自动归还机制，需要手动管理。\n4) copy(out, buf.Bytes()) 拷贝出结果后再 Put：若直接返回 buf.Bytes()，调用方会持有可被复用覆盖的内存，产生数据竞争。\n5) measureAllocs 利用 runtime.MemStats 的 TotalAlloc 差值估算单次堆分配字节数，配合 go build -gcflags=\"-m\" 可验证逃逸情况。\n6) 最后 runtime.GC() 演示 sync.Pool 的对象在 GC 时可能被回收这一特性。"
+        "language": "rust",
+        "code": "// 变量、可变性、遮蔽与常量 完整演示（可直接 rustc 运行）\nfn main() {\n    // 1. 默认不可变：下面这行如果取消注释会编译失败\n    // error[E0384]: cannot assign twice to immutable variable `max_retry`\n    let max_retry = 3;\n    // max_retry = 5;\n    println!(\"1) max_retry = {}\", max_retry);\n\n    // 2. mut 显式可变：状态会随时间变化的计数器\n    let mut counter = 0;\n    counter += 1;\n    counter += 1;\n    println!(\"2) counter = {}\", counter);\n\n    // 3. Shadowing：变量名不变，但每一步「加工」都新建绑定，甚至可以换类型\n    let input = \"  42  \";          // &str\n    let input = input.trim();      // &str（去掉首尾空白）\n    let input: i32 = input.parse().expect(\"数字解析失败\"); // i32（类型变了！）\n    println!(\"3) 解析后的数字 + 8 = {}\", input + 8);\n\n    // 4. const 常量：必须标注类型，编译期求值，SCREAMING_SNAKE_CASE\n    const MAX_POINTS: u32 = 100_000;\n    println!(\"4) MAX_POINTS = {}\", MAX_POINTS);\n\n    // 5. 作用域与遮蔽：内部 let 只在花括号块内生效\n    let price = 100;\n    println!(\"5) 块外 price = {}\", price);\n    {\n        let price = price * 2; // 遮蔽外层的 price\n        println!(\"   块内 price = {}\", price);\n    }\n    println!(\"   回到块外 price = {}\", price);\n\n    // 6. 未使用的 mut 会被编译器警告：unused_mut\n    let mut unnecessary_mut = 42;\n    unnecessary_mut = 43; // 这里确实用到了 mut\n    println!(\"6) unnecessary_mut = {}\", unnecessary_mut);\n}\n",
+        "explanation": "第 1 块：`let max_retry = 3;` 声明不可变绑定，重新赋值会触发 E0384 编译错误，注释掉才能通过。\n第 2 块：`let mut counter = 0;` 后 `counter += 1` 合法，因为 mut 显式声明了可变性。\n第 3 块：连续三次 `let input = ...` 是遮蔽。第一次是 `&str`，第二次 `trim()` 仍是 `&str`，第三次通过类型标注 `let input: i32` 变成整数——这是 `mut` 做不到的（`mut` 不能改类型）。\n第 4 块：`const MAX_POINTS: u32 = 100_000;` 必须写类型，数字中的下划线 `_` 只是视觉分隔符，不影响值。\n第 5 块：内层花括号里的 `let price = price * 2;` 创建了一个新的绑定，读取外层 `price` 计算后遮蔽它。离开花括号后内层绑定被销毁，外层 `price` 依然是 100。\n第 6 块：如果声明 `mut` 却从未修改，`rustc` 会给出 `unused_mut` 警告，提示你删掉多余的 `mut`。"
       },
       "keyPoints": [
-        "sync.Pool 是 per-P 的临时对象缓存，Get/Put 有 private slot + shared 队列 + victim cache 三级结构，高并发下几乎无锁竞争。",
-        "Pool 中的对象会在 GC 时被清理（victim cache 提供约一个 GC 周期的缓冲），因此只能缓存\"丢失无害\"的临时对象，不能管理连接池等有生命周期约束的资源。",
-        "复用对象必须 Reset：取出后立即 Reset 而非归还时 Reset，否则会出现 AAAABB 这类脏数据拼接问题。",
-        "归还前必须 copy 出结果，避免把可复用内存逃逸给调用方；异常分支也要 Put，防止对象泄漏。",
-        "优化前后用 go build -gcflags=\"-m\" 看逃逸、用 runtime.ReadMemStats 或 testing.AllocsPerRun 量化分配、用 pprof alloc_space 定位热点，并关注 GC CPU 占比与 GOMEMLIMIT 下的内存驻留。"
+        "Rust 变量默认不可变，需要修改必须写 `let mut`，这是安全性的第一道防线",
+        "遮蔽（Shadowing）是「新建绑定」而非「修改」，因此可以改变变量的类型和可变性",
+        "遮蔽常用于数据加工流水线：trim → parse → 校验，保持变量名不变、语义递进",
+        "`const` 必须标注类型、编译期求值、命名 SCREAMING_SNAKE_CASE，适合抽取配置常量",
+        "未使用的 `mut` 会触发 `unused_mut` 警告；反之忘记 `mut` 则报 E0384——两者都靠编译器兜底"
       ],
       "exercise": {
-        "description": "实现一个基于 sync.Pool 的 JSON 响应编码器 ResponseWriter：对外暴露 WriteJSON(w io.Writer, v any) error，内部复用 bytes.Buffer；写一个基准测试（testing.B）对比池化与非池化版本的 ns/op 与 allocs/op，并思考当请求体超过 1MB 时是否应该跳过池化（避免池内存驻留过高）。",
-        "hint": "先定义 var bufPool = sync.Pool{New: func() any { return new(bytes.Buffer) }}；WriteJSON 内部 Get → Reset → Encode → copy → Put。基准测试用 b.ReportAllocs()，并用 b.SetBytes 报告吞吐。对于超大 buffer，可在 Put 前判断 buf.Cap() > 1MB 则不归还（让 GC 回收），这就是 sync.Pool 的\"尺寸淘汰\"技巧。同时用 go test -bench=. -benchmem 验证 allocs/op 从 >3 降到 1。",
+        "description": "写一个 `parse_config` 函数：接收形如 \"timeout_ms=3000\" 的字符串，返回 (键名, 数值) 元组。要求：(1) 用遮蔽链式处理 `trim` → `split('=')` → `parse::<u64>()`；(2) 把默认超时抽成 `const DEFAULT_TIMEOUT_MS: u64 = 5000;`；(3) 解析失败时返回默认值。对比用 `mut` 实现的写法，体会两种风格的差异。",
+        "hint": "遮蔽写法形如：`let s = s.trim(); let s: Vec<&str> = s.split('=').collect(); let value = s[1].trim().parse().unwrap_or(DEFAULT_TIMEOUT_MS);`。注意 `unwrap_or` 可以优雅地处理解析失败并回退到常量默认值。返回类型写成 `(&str, u64)` 需要注意生命周期，初学阶段可返回 `(String, u64)` 更简单。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全从 sync.Pool 中安全复用对象的代码：取出、重置、归还。",
-            "codeContext": "var bufPool = sync.Pool{New: func() any { return new(bytes.Buffer) }}\n\nfunc encode(v []byte) []byte {\n\tbuf := bufPool.【1】\n\tbuf.【2】\n\tbuf.Write(v)\n\tout := make([]byte, buf.Len())\n\tcopy(out, buf.Bytes())\n\tbufPool.Put(buf)\n\treturn out\n}",
+            "question": "补全代码，让计数器可以累加，同时让第二个 `let` 成为一次合法的遮蔽（改变类型）。",
+            "codeContext": "fn main() {\n    let _______ count = 0;\n    count += 1;\n    let count: String = count.to_string();\n    println!(\"{}\", count);\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "buf := bufPool.",
+                "content": "let ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,75 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择方法]",
+                "placeholder": "[填入关键字]",
                 "options": [
-                  "Get().(*bytes.Buffer)",
-                  "Put().(*bytes.Buffer)",
-                  "New().(*bytes.Buffer)",
-                  "Pop().(*bytes.Buffer)"
+                  "mut",
+                  "const",
+                  "static",
+                  "ref"
                 ],
-                "correctAnswer": "Get().(*bytes.Buffer)"
+                "correctAnswer": "mut"
               },
               {
                 "type": "text",
-                "content": "\nbuf.",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择方法]",
-                "options": [
-                  "Reset()",
-                  "Flush()",
-                  "Clear()",
-                  "Close()"
-                ],
-                "correctAnswer": "Reset()"
-              },
-              {
-                "type": "text",
-                "content": "\nbuf.Write(v)\n...\nbufPool.Put(buf)",
+                "content": " count = 0;\n    count += 1;  // 修改变量，所以声明处必须允许可变\n    let count: String = count.to_string();  // 遮蔽并改变类型",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "Get().(*bytes.Buffer) / Reset()",
-            "explanation": "sync.Pool 用 Get() 取出对象并做类型断言，Put() 归还对象；bytes.Buffer 的清空方法是 Reset()（Clear 是 Go 1.21 引入的 slices/maps 风格误记，bytes.Buffer 没有 Flush/Close）。不 Reset 会导致上一次写入的内容残留，产生脏数据拼接。"
+            "correctAnswer": "mut",
+            "explanation": "`count += 1` 需要修改变量，因此声明处必须写 `let mut count`。第二行 `let count: String = ...` 是遮蔽，重新声明同名变量并把类型从整数变成 String，这在 Rust 中完全合法。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 sync.Pool 的使用场景，下列说法正确的是？",
-            "codeContext": "var connPool = sync.Pool{New: func() any { return dial() }} // 用 Pool 管理 TCP 连接",
+            "question": "关于 Rust 的遮蔽（Shadowing），下列说法正确的是？",
+            "codeContext": "let x = \"10\";\nlet x = x.len();\nprintln!(\"{}\", x);",
             "segments": null,
             "options": [
-              "适合管理数据库连接等长生命周期资源，因为 Get/Put 性能极高",
-              "适合缓存 bytes.Buffer、encoder 等临时对象，对象被 GC 回收不影响正确性",
-              "Pool 中的对象永远不会被回收，是完美的内存缓存",
-              "Put 之后必须立即 Get，否则会产生 goroutine 泄漏"
+              "遮蔽就是修改原变量，所以 x 的类型必须保持不变",
+              "遮蔽会创建一个新的绑定，因此可以改变变量的类型",
+              "遮蔽只在函数外有效，函数内部不能遮蔽",
+              "被遮蔽的变量仍占用同一块内存，编译器会报重复定义错误"
             ],
-            "correctAnswer": "适合缓存 bytes.Buffer、encoder 等临时对象，对象被 GC 回收不影响正确性",
-            "explanation": "sync.Pool 中的对象在 GC 时可能被清空，因此只能用于\"丢失无害\"的临时对象复用。用它管理连接池是常见反模式：连接会被 GC 随意回收、没有数量上限、也没有健康检查。连接池应使用 channel 或 database/sql 这类有生命周期管理的实现。"
+            "correctAnswer": "遮蔽会创建一个新的绑定，因此可以改变变量的类型",
+            "explanation": "Shadowing 不是赋值，而是新的 `let` 声明把旧绑定盖住。正因如此它可以改变类型：上面代码里 x 从 `&str` 变成 `usize`（`.len()` 的返回值），最后打印 2。若用 `let mut x` 则无法做这种类型变换。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码的输出是什么？",
-            "codeContext": "package main\n\nimport (\n\t\"bytes\"\n\t\"fmt\"\n\t\"sync\"\n)\n\nfunc main() {\n\tpool := sync.Pool{New: func() any { return new(bytes.Buffer) }}\n\n\tbuf := pool.Get().(*bytes.Buffer)\n\tbuf.WriteString(\"AAAA\")\n\tpool.Put(buf)\n\n\tbuf2 := pool.Get().(*bytes.Buffer)\n\tbuf2.WriteString(\"BB\")\n\tfmt.Println(buf2.String())\n}",
+            "question": "运行下面的 Rust 代码，控制台会输出什么？",
+            "codeContext": "fn main() {\n    let x = 5;\n    let x = x + 1;\n    let x = x * 2;\n    println!(\"x = {}\", x);\n\n    let y = 10;\n    {\n        let y = y - 4;\n        println!(\"y = {}\", y);\n    }\n    println!(\"y = {}\", y);\n}",
             "segments": null,
             "options": [
-              "BB",
-              "AAAABB",
-              "AAAA",
-              "panic: 重复写入"
+              "x = 12\\ny = 6\\ny = 6",
+              "x = 11\\ny = 6\\ny = 10",
+              "x = 12\\ny = 6\\ny = 10",
+              "编译错误：不能对 x 重复声明"
             ],
-            "correctAnswer": "AAAABB",
-            "explanation": "单 goroutine 场景下，Get 大率率取回同一个 *bytes.Buffer。由于归还前没有 Reset()，新写入的 \"BB\" 会追加到残留的 \"AAAA\" 之后，输出 \"AAAABB\"。这就是脏数据问题：正确做法是取出后立即 buf.Reset()。"
+            "correctAnswer": "x = 12\ny = 6\ny = 10",
+            "explanation": "x 经过两次遮蔽：5 → 6 → 12，最终打印 x = 12。y 的内层遮蔽只在花括号内生效：块内 y = 6；离开块后内层绑定被销毁，外层 y 仍是 10，因此依次输出 x = 12、y = 6、y = 10。"
           }
         ]
       }
