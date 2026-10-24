@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-23",
+  "date": "2026-10-24",
   "contents": [
     {
-      "id": "prog-2026-10-23",
-      "date": "2026-10-23",
-      "title": "Rust 变量、可变性与遮蔽（Shadowing）",
-      "summary": "掌握 Rust 中 let 变量默认不可变、mut 显式可变、const 常量与遮蔽（Shadowing）的语义差异与工程用法。",
-      "difficulty": "初级",
-      "concept": "Rust 把「不可变优先（immutability by default）」写进了语言的核心设计。当你写下 `let x = 5;` 时，`x` 是一个**不可变绑定**：不能重新赋值，也不能修改它指向的数据（对基础类型而言）。这与 C/C++/Java/Python 里「变量默认可改」的习惯完全相反。之所以这样设计，是因为不可变数据天生线程安全、易于推理，编译器可以做更激进的优化。在工程实践中，读到一个 `let` 声明，你就知道它后续不会被偷偷改掉——这是 Rust 代码可读性的一大来源。\n\n当你确实需要修改时，必须用 `let mut x = 5;` **显式声明可变性**。关键字 `mut` 是一个信号：它告诉代码阅读者「这个变量的状态在生命周期内会发生变化」，需要额外关注。代码评审（Code Review）里看到 `mut`，通常会下意识多看两眼，这正是 Rust 的设计意图。不要图省事给所有变量加 `mut`，那会丢掉 Rust 帮你做的一大半静态检查。Rust 编译器对未使用的 `mut` 还会给出 `unused_mut` 警告，强制你保持克制。\n\n第三种形态是**遮蔽（Shadowing）**：用 `let x = ...;` 再次声明同名变量。注意这不是「修改」，而是**新建了一个新的绑定，把旧的遮住**。遮蔽有两个非常实用的特性：一，它允许改变变量的**类型**（`mut` 不允许这样做，例如 `String` 变成 `usize`）；二，它天然适合「数据加工流水线」的写法——每一步用 `let` 覆盖一次，变量名不变，语义始终是「这个值经过了第 N 步处理」。典型的场景是解析用户输入：`let input = input.trim(); let input: i32 = input.parse()?;`，这比写 `input_str / input_trimmed / input_num` 一堆名字更清爽。\n\n最后是 `const`。常量**必须**显式标注类型，命名约定为 SCREAMING_SNAKE_CASE，且必须在编译期就能求值。它与 `let` 的区别在于：常量没有内存地址（会被内联到使用处）、不能使用 `mut`、作用域规则相同但语义上表示「全局不变的配置/魔法数字」。工程里推荐把配置阈值、容量上限、超时毫秒数抽成 `const`，而不是散落在代码里的字面量。另外 `const` 的求值发生在编译期，写错会在编译阶段就报错，而不是运行时才发现。\n\n一条经验法则：**优先 `let`，只有需要就地更新时才 `mut`；需要「重加工」或「换类型」时用遮蔽；全局配置常量用 `const`。** 理解这四者的边界，是写好 Rust 所有权与借用代码的前提。",
+      "id": "prog-2026-10-24",
+      "date": "2026-10-24",
+      "title": "Kotlin Flow 操作符实战：构建健壮的异步数据流",
+      "summary": "掌握 Flow 的中间/末端操作符、异常处理与调度器切换，把零散的 suspend 调用改造成可组合、可取消、可测试的响应式数据管道。",
+      "difficulty": "中级",
+      "concept": "在真实项目里，我们很少只做一次异步调用，更多的是“持续产生数据 → 加工 → 消费”的场景：搜索框的实时联想、WebSocket 消息推送、数据库变更监听、埋点批量上报。Kotlin 的 Flow 就是为这类「冷流（cold stream）」设计的类型安全抽象：它不是一个会立刻执行的集合，而是一段「描述如何产生数据」的可执行脚本，只有被 collect 时才真正启动，并且会随收集端协程的取消而自动停止。\n\nFlow 的核心价值在于**可组合性**。中间操作符（map / filter / transform / debounce / distinctUntilChanged / buffer / conflate / flowOn）都是通过「装饰器」模式层层包住上游 Flow，形成一条管道（pipeline）；末端操作符（collect / toList / first / launchIn / stateIn / shareIn）负责触发执行。理解这一点很关键：中间操作符本身不耗时、不启动协程，它只是返回一个新的 Flow 对象。因此你可以放心地把管道拆成若干函数分别复用与单测。\n\n**异常处理**是中级开发最容易踩坑的地方。Flow 中的异常会沿管道向下游传播，try/catch 包住 collect 只能捕获到末端的错误；而 `catch` 操作符只对**上游（它之前）**的异常生效，对下游无效。工程上的惯例是：把 `catch` 放在 `flowOn` 之后、业务 map 之前，用来把异常转成一个“错误态”的数据项，这样 UI 层拿到的永远是合法的状态对象（Loading / Success / Error），而不是需要到处 try/catch 的异常。如果需要在收集端做兜底，可以用 `onCompletion` 或在外层 CoroutineExceptionHandler。\n\n**背压（backpressure）**决定生产快于消费时怎么办。`buffer()` 在上下游之间开一个缓冲区，实现并发执行但会增加内存占用；`conflate()` 只保留最新值，适合“只关心最新状态”的场景（如实时温度、滚动位置）；`collectLatest()` 则会在新值到来时取消上一次的消费逻辑，适合搜索联想这种“新输入要作废旧请求”的场景。选错背压策略的典型症状是：内存增长（忘了 conflate）、UI 闪烁（该 latest 却 buffer）、或丢数据（该 buffer 却 conflate）。\n\n**调度器**方面，`flowOn(Dispatchers.X)` 只改变**它之前**的上游代码所处的协程上下文，并在管道中插入一个缓冲边界；它不是“整条流的线程切换”。CPU 密集的解析放在 Default，IO/网络放在 IO，UI 更新必须回到主线程（Android 上用 `flowWithLifecycle` + `repeatOnLifecycle` 收集）。最后提醒：Flow 是冷流，多次 collect 会重新执行；要“只请求一次、多处共享”请用 `shareIn` / `stateIn` 转成热流，这也是 MVI/ViewModel 中 StateFlow 的标准做法。",
       "codeExample": {
-        "language": "rust",
-        "code": "// 变量、可变性、遮蔽与常量 完整演示（可直接 rustc 运行）\nfn main() {\n    // 1. 默认不可变：下面这行如果取消注释会编译失败\n    // error[E0384]: cannot assign twice to immutable variable `max_retry`\n    let max_retry = 3;\n    // max_retry = 5;\n    println!(\"1) max_retry = {}\", max_retry);\n\n    // 2. mut 显式可变：状态会随时间变化的计数器\n    let mut counter = 0;\n    counter += 1;\n    counter += 1;\n    println!(\"2) counter = {}\", counter);\n\n    // 3. Shadowing：变量名不变，但每一步「加工」都新建绑定，甚至可以换类型\n    let input = \"  42  \";          // &str\n    let input = input.trim();      // &str（去掉首尾空白）\n    let input: i32 = input.parse().expect(\"数字解析失败\"); // i32（类型变了！）\n    println!(\"3) 解析后的数字 + 8 = {}\", input + 8);\n\n    // 4. const 常量：必须标注类型，编译期求值，SCREAMING_SNAKE_CASE\n    const MAX_POINTS: u32 = 100_000;\n    println!(\"4) MAX_POINTS = {}\", MAX_POINTS);\n\n    // 5. 作用域与遮蔽：内部 let 只在花括号块内生效\n    let price = 100;\n    println!(\"5) 块外 price = {}\", price);\n    {\n        let price = price * 2; // 遮蔽外层的 price\n        println!(\"   块内 price = {}\", price);\n    }\n    println!(\"   回到块外 price = {}\", price);\n\n    // 6. 未使用的 mut 会被编译器警告：unused_mut\n    let mut unnecessary_mut = 42;\n    unnecessary_mut = 43; // 这里确实用到了 mut\n    println!(\"6) unnecessary_mut = {}\", unnecessary_mut);\n}\n",
-        "explanation": "第 1 块：`let max_retry = 3;` 声明不可变绑定，重新赋值会触发 E0384 编译错误，注释掉才能通过。\n第 2 块：`let mut counter = 0;` 后 `counter += 1` 合法，因为 mut 显式声明了可变性。\n第 3 块：连续三次 `let input = ...` 是遮蔽。第一次是 `&str`，第二次 `trim()` 仍是 `&str`，第三次通过类型标注 `let input: i32` 变成整数——这是 `mut` 做不到的（`mut` 不能改类型）。\n第 4 块：`const MAX_POINTS: u32 = 100_000;` 必须写类型，数字中的下划线 `_` 只是视觉分隔符，不影响值。\n第 5 块：内层花括号里的 `let price = price * 2;` 创建了一个新的绑定，读取外层 `price` 计算后遮蔽它。离开花括号后内层绑定被销毁，外层 `price` 依然是 100。\n第 6 块：如果声明 `mut` 却从未修改，`rustc` 会给出 `unused_mut` 警告，提示你删掉多余的 `mut`。"
+        "language": "Kotlin",
+        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.flow.*\n\n// 模拟「用户输入搜索关键词」的事件流：持续产生数据\nclass SearchRepository {\n\n    // 冷流：只有被 collect 时才会执行 flow 体\n    fun queryFlow(): Flow<String> = flow {\n        val keystrokes = listOf(\"kot\", \"kotl\", \"kotlin\", \"kotlin\", \"kotlin协程\")\n        for (q in keystrokes) {\n            delay(150)                 // 模拟用户敲键盘的节奏\n            emit(q)                    // 发射一个上游数据\n        }\n    }\n\n    // 模拟网络请求：把关键词转成结果列表\n    suspend fun requestApi(query: String): List<String> {\n        delay(200)                     // 模拟网络延迟\n        return listOf(\"$query-result1\", \"$query-result2\")\n    }\n\n    // 把整条管道封装成一个可复用、可单测的函数\n    fun searchResults(): Flow<SearchUiState> = queryFlow()\n        .debounce(100)                 // 100ms 内没有新输入才放行，防抖\n        .distinctUntilChanged()        // 过滤掉连续重复的关键词\n        .map { it.trim().uppercase() } // 中间转换（纯函数，易测试）\n        .flowOn(Dispatchers.Default)   // 以上游跑在 Default 调度器\n        .map { query ->                // 发起 IO 请求\n            try {\n                SearchUiState.Success(requestApi(query))\n            } catch (e: CancellationException) {\n                throw e                // 协程取消必须原样抛出！\n            } catch (e: Exception) {\n                SearchUiState.Error(e.message ?: \"unknown\")\n            }\n        }\n        .onStart { emit(SearchUiState.Loading) }  // 起始状态\n        .catch { e -> emit(SearchUiState.Error(e.message ?: \"flow error\")) } // 只对上游生效\n}\n\n// UI 层只认识这三种状态，而不是异常\nsealed interface SearchUiState {\n    data object Loading : SearchUiState\n    data class Success(val items: List<String>) : SearchUiState\n    data class Error(val message: String) : SearchUiState\n}\n\nfun main() = runBlocking {\n    val repo = SearchRepository()\n    repo.searchResults().collect { state ->\n        when (state) {\n            is SearchUiState.Loading -> println(\"Loading...\")\n            is SearchUiState.Success -> println(\"结果: ${state.items}\")\n            is SearchUiState.Error -> println(\"错误: ${state.message}\")\n        }\n    }\n}",
+        "explanation": "1) `queryFlow()` 用 `flow { emit(...) }` 构造冷流：每次 collect 都会重新执行，`delay` 模拟用户输入节奏。\n2) `debounce(100)` 丢弃 100ms 内被后续输入覆盖的旧值，是搜索防抖的标准写法；`distinctUntilChanged()` 去掉连续重复的 \"kotlin\"。\n3) `map { it.trim().uppercase() }` 是纯转换，无副作用，便于单测。\n4) `flowOn(Dispatchers.Default)` 只让**它之前**的链路（queryFlow + debounce + map）在 Default 上运行，本身还会插入缓冲边界。\n5) 第二个 `map` 里发网络请求，把异常捕获后转成 `SearchUiState.Error`，UI 永远拿到合法状态；注意 `CancellationException` 必须重新抛出，否则会破坏协程取消机制。\n6) `onStart { emit(Loading) }` 在流开始前先发一个加载态，`catch` 作为最后防线处理上游漏网异常（它对下游无效，所以放在业务 map 之后）。\n7) `main` 中用 `runBlocking` + `collect` 消费，输出依次为 Loading 与 4 组搜索结果（重复的 \"KOTLIN\" 被去重）。"
       },
       "keyPoints": [
-        "Rust 变量默认不可变，需要修改必须写 `let mut`，这是安全性的第一道防线",
-        "遮蔽（Shadowing）是「新建绑定」而非「修改」，因此可以改变变量的类型和可变性",
-        "遮蔽常用于数据加工流水线：trim → parse → 校验，保持变量名不变、语义递进",
-        "`const` 必须标注类型、编译期求值、命名 SCREAMING_SNAKE_CASE，适合抽取配置常量",
-        "未使用的 `mut` 会触发 `unused_mut` 警告；反之忘记 `mut` 则报 E0384——两者都靠编译器兜底"
+        "Flow 是冷流：不 collect 就不执行，多次 collect 会重新执行；共享结果请用 stateIn / shareIn 转热流",
+        "中间操作符（map/filter/debounce/buffer/flowOn）只是返回新 Flow 的装饰器，末端操作符（collect/toList/first）才真正触发执行",
+        "catch 只能捕获上游异常，且会终止上游；下游异常需在 collect 外层或用 try/catch 处理",
+        "背压策略选型：buffer 提升吞吐、conflate 只留最新、collectLatest 新值取消旧消费",
+        "flowOn 只影响它之前的上游并插入缓冲边界；协程取消异常 CancellationException 必须原样抛出"
       ],
       "exercise": {
-        "description": "写一个 `parse_config` 函数：接收形如 \"timeout_ms=3000\" 的字符串，返回 (键名, 数值) 元组。要求：(1) 用遮蔽链式处理 `trim` → `split('=')` → `parse::<u64>()`；(2) 把默认超时抽成 `const DEFAULT_TIMEOUT_MS: u64 = 5000;`；(3) 解析失败时返回默认值。对比用 `mut` 实现的写法，体会两种风格的差异。",
-        "hint": "遮蔽写法形如：`let s = s.trim(); let s: Vec<&str> = s.split('=').collect(); let value = s[1].trim().parse().unwrap_or(DEFAULT_TIMEOUT_MS);`。注意 `unwrap_or` 可以优雅地处理解析失败并回退到常量默认值。返回类型写成 `(&str, u64)` 需要注意生命周期，初学阶段可返回 `(String, u64)` 更简单。",
+        "description": "实现一个 `temperatureFlow(): Flow<Double>`，模拟每 200ms 产生一次温度读数（可用 `flow { while(true) { emit(Random.nextDouble(20.0, 35.0))); delay(200) } }`）。要求构建一条管道：① 连续两次读数差值小于 0.1 的丢弃（用 distinctUntilChanged 的比较器版本）；② 每 3 个读数做一次滑动平均并输出；③ 当上游抛出异常时输出 -999.0 作为哨兵值；④ 用 flowOn 让生产端跑在 Dispatchers.Default。思考：若消费端每 500ms 才处理一个值，应该用 conflate 还是 buffer？",
+        "hint": "distinctUntilChanged { old, new -> abs(old - new) < 0.1 } 可以做“变化不大就丢弃”；窗口聚合可以用 transform 累积一个 ArrayDeque 或者 buffer(3, 1) + map { it.average() }；catch 放在异常可能发生的位置之后（通常在 flowOn 之后）；消费慢于生产且只关心最新状态时用 conflate。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，让计数器可以累加，同时让第二个 `let` 成为一次合法的遮蔽（改变类型）。",
-            "codeContext": "fn main() {\n    let _______ count = 0;\n    count += 1;\n    let count: String = count.to_string();\n    println!(\"{}\", count);\n}",
+            "question": "补全代码：让 Flow 只保留偶数并把它们乘以 10。",
+            "codeContext": "val numbers = flowOf(1, 2, 3, 4, 5, 6)",
             "segments": [
               {
                 "type": "text",
-                "content": "let ",
+                "content": "val result = numbers\n    .",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,55 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[填入关键字]",
+                "placeholder": "[ 选择操作符 ]",
                 "options": [
-                  "mut",
-                  "const",
-                  "static",
-                  "ref"
+                  "filter { it % 2 == 0 }",
+                  "map { it % 2 == 0 }",
+                  "distinctUntilChanged { it % 2 == 0 }"
                 ],
-                "correctAnswer": "mut"
+                "correctAnswer": "filter { it % 2 == 0 }"
               },
               {
                 "type": "text",
-                "content": " count = 0;\n    count += 1;  // 修改变量，所以声明处必须允许可变\n    let count: String = count.to_string();  // 遮蔽并改变类型",
+                "content": "\n    .map { it * 10 }\n    .toList()\n// result == listOf(20, 40, 60)",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "mut",
-            "explanation": "`count += 1` 需要修改变量，因此声明处必须写 `let mut count`。第二行 `let count: String = ...` 是遮蔽，重新声明同名变量并把类型从整数变成 String，这在 Rust 中完全合法。"
+            "correctAnswer": "filter { it % 2 == 0 }",
+            "explanation": "`filter` 会丢弃谓词为 false 的元素，是“筛选”语义；`map` 是“变换”语义，返回 Boolean 会得到 listOf(false,true,...)；`distinctUntilChanged` 是去重，不会过滤偶数。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Rust 的遮蔽（Shadowing），下列说法正确的是？",
-            "codeContext": "let x = \"10\";\nlet x = x.len();\nprintln!(\"{}\", x);",
+            "question": "关于 `flowOn`、`buffer`、`conflate` 的说法，哪一项是正确的？",
+            "codeContext": "upstream()\n    .map { heavyParse(it) }\n    .flowOn(Dispatchers.Default)\n    .conflate()\n    .collect { updateUi(it) }",
             "segments": null,
             "options": [
-              "遮蔽就是修改原变量，所以 x 的类型必须保持不变",
-              "遮蔽会创建一个新的绑定，因此可以改变变量的类型",
-              "遮蔽只在函数外有效，函数内部不能遮蔽",
-              "被遮蔽的变量仍占用同一块内存，编译器会报重复定义错误"
+              "flowOn 会把整条流（包括 collect 之后）都切换到指定调度器",
+              "flowOn 改变它之前上游的执行上下文，并在管道中引入缓冲边界",
+              "conflate 会等待消费端处理完每一个元素，保证不丢数据",
+              "buffer 会自动取消旧的消费任务，只处理最新元素"
             ],
-            "correctAnswer": "遮蔽会创建一个新的绑定，因此可以改变变量的类型",
-            "explanation": "Shadowing 不是赋值，而是新的 `let` 声明把旧绑定盖住。正因如此它可以改变类型：上面代码里 x 从 `&str` 变成 `usize`（`.len()` 的返回值），最后打印 2。若用 `let mut x` 则无法做这种类型变换。"
+            "correctAnswer": "flowOn 改变它之前上游的执行上下文，并在管道中引入缓冲边界",
+            "explanation": "flowOn 只作用于它**之前**的上游链路，且会插入一个 channel 缓冲；conflate 是“只保留最新、丢弃中间值”；“新值取消旧消费”是 collectLatest 的语义；buffer 只是增大缓冲区提升并发吞吐。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "运行下面的 Rust 代码，控制台会输出什么？",
-            "codeContext": "fn main() {\n    let x = 5;\n    let x = x + 1;\n    let x = x * 2;\n    println!(\"x = {}\", x);\n\n    let y = 10;\n    {\n        let y = y - 4;\n        println!(\"y = {}\", y);\n    }\n    println!(\"y = {}\", y);\n}",
+            "question": "运行下面的代码，控制台会输出什么？",
+            "codeContext": "runBlocking {\n    val result = flow {\n        emit(1)\n        emit(2)\n        throw IllegalStateException(\"boom\")\n    }\n    .map { it * 10 }\n    .catch { e -> emit(-1) }\n    .toList()\n    println(result)\n}",
             "segments": null,
             "options": [
-              "x = 12\\ny = 6\\ny = 6",
-              "x = 11\\ny = 6\\ny = 10",
-              "x = 12\\ny = 6\\ny = 10",
-              "编译错误：不能对 x 重复声明"
+              "[10, 20, -1]",
+              "[10, 20]",
+              "抛出异常 IllegalStateException: boom",
+              "[-1]"
             ],
-            "correctAnswer": "x = 12\ny = 6\ny = 10",
-            "explanation": "x 经过两次遮蔽：5 → 6 → 12，最终打印 x = 12。y 的内层遮蔽只在花括号内生效：块内 y = 6；离开块后内层绑定被销毁，外层 y 仍是 10，因此依次输出 x = 12、y = 6、y = 10。"
+            "correctAnswer": "[10, 20, -1]",
+            "explanation": "`catch` 位于异常发生点（flow 体）的下游，因此能捕获 IllegalStateException；此时 1、2 已经被 map 成 10、20 发出，catch 在异常后 `emit(-1)` 作为补充数据，随后流正常结束，最终 toList() 得到 [10, 20, -1]。若把 catch 放在 map 之前，它会截断上游，可能只得到 [-1]。"
           }
         ]
       }

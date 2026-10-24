@@ -1,16 +1,16 @@
 {
- "date": "2026-10-23",
- "weekday": "Friday",
- "overview": "The 90th anniversary of the Long March victory sparks nationwide commemoration, multiple earthquakes draw public concern, and the Middle East situation and cybersecurity risks heat up in parallel.",
+ "date": "2026-10-24",
+ "weekday": "Saturday",
+ "overview": "Long March spirit-themed publicity sweeps across the internet, while livelihood and foreign trade topics such as earthquake relief, the Canton Fair, and youth health also draw widespread attention.",
  "trendingTopics": [
   "Long March spirit",
-  "earthquake emergency response",
-  "Middle East situation",
-  "robotics industry",
-  "cybersecurity",
-  "table tennis",
-  "domestic-brand consumption",
-  "respiratory diseases"
+  "Earthquake relief",
+  "Canton Fair",
+  "Computing power infrastructure",
+  "New energy vehicles",
+  "Youth health",
+  "Public health",
+  "Inbound tourism"
  ],
  "sections": [
   {
@@ -20,137 +20,141 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "Commemoration Marking 90th Anniversary of Long March Victory Held, Key Speech Delivered",
-     "summary": "A grand commemorative meeting marking the 90th anniversary of the victory of the Chinese Workers' and Peasants' Red Army's Long March was held, with Xi Jinping in attendance delivering a key speech honoring the historic triumph.",
-     "detail": "The event celebrated the 90th anniversary of the Long March victory, with Xi Jinping attending and delivering an important address. Coverage centered on paying tribute to the great victory, as regions nationwide simultaneously rolled out programs retracing Long March landmarks and applying the Long March spirit to Chinese-style modernization.",
-     "impact": "The Long March spirit has become a key symbol for building consensus, set to provide spiritual impetus for advancing national rejuvenation across all sectors.",
+     "title": "习近平提出“五个必须”走好新的长征路",
+     "summary": "习近平就如何走好新的长征路提出“五个必须”，为新时代传承长征精神指明方向。",
+     "detail": "围绕走好新的长征路这一时代课题，习近平提出“五个必须”的重要要求。相关报道强调弘扬伟大长征精神，走好新时代的长征路。",
+     "impact": "为新时代弘扬长征精神、推进各方面工作提供方向指引。",
      "importance": "hot",
      "tags": [
-      "Long March Spirit",
-      "Ideological Development"
+      "党政要闻",
+      "长征精神",
+      "红色文化"
      ]
     },
     {
      "id": "news-002",
-     "title": "'15th Five-Year Plan' for Industrial Foundation Capabilities Released",
-     "summary": "The plan for upgrading industrial foundation capabilities under the 15th Five-Year Plan period has been officially released, focusing on strengthening the foundations of a modern industrial system.",
-     "detail": "The plan lays out initiatives for enhancing industrial foundation capabilities during the 15th Five-Year Plan period and is seen as a key document for pushing manufacturing and industrial chains to a higher level.",
-     "impact": "Provides policy guidance for improving the resilience and security of industrial and supply chains, benefiting manufacturing and high-tech industries.",
+     "title": "新一届新疆维吾尔自治区党委领导班子亮相",
+     "summary": "新一届新疆维吾尔自治区党委领导班子正式亮相，新一届领导集体受到关注。",
+     "detail": "新一届新疆维吾尔自治区党委领导班子集体亮相，相关报道关注新一届班子的组成与履新情况。",
+     "impact": "地方领导班子换届履新，将影响该区域后续治理与发展部署。",
      "importance": "important",
      "tags": [
-      "Industrial Policy",
-      "Manufacturing",
-      "Supply Chains"
+      "地方治理",
+      "党政建设",
+      "区域发展"
      ]
     },
     {
      "id": "news-003",
-     "title": "Magnitude 7.0 Earthquake Strikes Nagqu, Tibet; Residents Evacuate Outdoors",
-     "summary": "A magnitude 7.0 earthquake hit Nagqu in Tibet, prompting residents to flee outdoors for safety, with related footage circulating online.",
-     "detail": "Immediately after the quake, residents rushed outdoors to take cover. No further details on casualties or rescue operations were provided in the available materials.",
-     "impact": "The strong quake poses risks to livelihoods and infrastructure on the plateau, drawing attention to disaster prevention and emergency response capabilities.",
+     "title": "人民子弟兵投入西藏巴青抗震救灾",
+     "summary": "西藏巴青地震发生后，人民子弟兵迅速投入抗震救灾，全力开展救援工作。",
+     "detail": "西藏巴青发生地震后，人民子弟兵第一时间投入抗震救灾。消防员在那曲地震灾区支起锅灶，保障受灾群众与救援人员的热食供应。",
+     "impact": "军地力量快速集结投入救援，有助于稳定灾区秩序、保障群众基本生活。",
      "importance": "hot",
      "tags": [
-      "Earthquake Response",
-      "Disaster Prevention"
+      "抗震救灾",
+      "应急救援",
+      "消防救援"
      ]
     },
     {
      "id": "news-004",
-     "title": "Magnitude 4.3 Earthquake Hits Yushu, Qinghai",
-     "summary": "A magnitude 4.3 earthquake struck Yushu in Qinghai province, drawing attention to conditions in the affected area; no additional damage information was provided.",
-     "detail": "The magnitude 4.3 earthquake in Yushu, Qinghai was reported by multiple media outlets. No information on casualties or losses was available.",
-     "impact": "Recent seismic activity on the plateau has drawn attention and is expected to further drive disaster prevention and mitigation efforts.",
-     "importance": "normal",
+     "title": "福建前首富林秀成被批捕",
+     "summary": "福建前首富林秀成被批捕，相关案件进展引发社会关注。",
+     "detail": "福建前首富林秀成被批捕的消息引发关注。素材未披露案件更多细节。",
+     "impact": "涉及知名企业家的案件进展，或对企业经营与市场信心产生影响。",
+     "importance": "important",
      "tags": [
-      "Earthquake Response",
-      "Disaster Prevention"
+      "法治建设",
+      "企业合规",
+      "民营经济"
      ]
     },
     {
      "id": "news-005",
-     "title": "Autumn Grain Harvest Underway Nationwide as Local Specialty Industries Boost Farmer Incomes",
-     "summary": "Autumn grain harvesting is entering its peak season nationwide, while local specialty industries help raise farmer incomes as rural revitalization continues to advance.",
-     "detail": "Coverage tracked progress in the autumn grain harvest and highlighted how regions are expanding farmers' income channels through locally distinctive industries.",
-     "impact": "The combination of a strong autumn harvest and specialty industries supports food security and steady growth in farmer incomes.",
-     "importance": "important",
-     "tags": [
-      "Food Security",
-      "Rural Revitalization",
-      "Specialty Agriculture"
-     ]
-    },
-    {
-     "id": "news-006",
-     "title": "High-Speed Rail Reaches Revolutionary Old Areas, Opening New Chapter in Revitalization",
-     "summary": "High-speed rail service has reached China's revolutionary base areas, with improved transport injecting new momentum into regional revitalization and carrying forward the Long March spirit on the road to national rejuvenation.",
-     "detail": "Taking the launch of high-speed rail in old revolutionary areas as its starting point, the report explores how improved transport infrastructure drives revitalization and carries on the Long March spirit.",
-     "impact": "High-speed rail access will significantly improve the geographic advantages of these areas, boosting cultural tourism, logistics and industrial relocation capacity.",
+     "title": "互联网联合辟谣平台上线运行",
+     "summary": "互联网联合辟谣平台相关消息发布，聚焦网络信息治理与谣言澄清。",
+     "detail": "互联网联合辟谣平台相关消息受到关注，指向网络信息治理与谣言澄清机制建设。",
+     "impact": "有助于提升网络信息可信度、净化舆论环境。",
      "importance": "normal",
      "tags": [
-      "Transport Infrastructure",
-      "Revitalization of Old Revolutionary Areas",
-      "Regional Economy"
+      "网络治理",
+      "辟谣机制",
+      "公共信息"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "International Politics",
+   "title": "World Affairs",
    "icon": "🌍",
    "articles": [
     {
-     "id": "news-009",
-     "title": "Israel Spotted Simulating Strikes on Iran; US Officials Say Move May Aim to Bait Tehran into Firing First",
-     "summary": "Israel has been reported simulating strikes on Iran, with US officials suggesting the move could be intended to provoke Iran into firing first, raising concerns over rising tensions.",
-     "detail": "Reports say Israel has simulated military strikes on Iran, with US officials commenting that the exercise may be a deliberate bid to lure Iran into opening fire first. No official responses from either side were provided in the material.",
-     "impact": "The move heightens regional tensions, adding risk of further escalation in the Middle East.",
-     "importance": "hot",
+     "id": "news-006",
+     "title": "Japanese Citizens Rally Against Military Expansion and Constitutional Revision",
+     "summary": "Citizens across Japan held rallies opposing the Takaichi government's push for military buildup and constitutional amendment, citing growing risks of war.",
+     "detail": "Japanese citizens organized rallies to protest the Takaichi administration's drive to expand military capabilities and revise the constitution, with participants warning that such moves would raise the risk of conflict.",
+     "impact": "The developments have raised regional security concerns and may shape how neighboring countries assess the security environment.",
+     "importance": "important",
      "tags": [
-      "Middle East",
-      "International Security"
+      "East Asian Affairs",
+      "Pacifism",
+      "Constitutional Revision Controversy"
      ]
     },
     {
-     "id": "news-010",
-     "title": "ASEAN Journalists Visit Hainan to See Cultural Heritage and Ecological Conservation in Action",
-     "summary": "ASEAN journalists visited Hainan to observe firsthand the island's efforts in preserving cultural heritage and protecting the environment.",
-     "detail": "The report documents an ASEAN journalists' trip to Hainan, covering practices ranging from cultural heritage preservation to ecological conservation and green development.",
-     "impact": "Such exchanges help build regional trust and broaden international circulation of China's green development experience.",
-     "importance": "normal",
+     "id": "news-007",
+     "title": "An Open China Continues to Move Toward the World in Mutual Embrace",
+     "summary": "Reports note that an open China maintains a two-way, mutually beneficial engagement with the rest of the world.",
+     "detail": "Coverage emphasizes that an open China remains committed to moving toward the world in a two-way embrace, pursuing common development through mutually beneficial cooperation.",
+     "impact": "The message of continued opening-up helps stabilize expectations for international cooperation and trade ties.",
+     "importance": "important",
      "tags": [
-      "Regional Cooperation",
-      "Environment",
-      "Cultural Exchange"
+      "Opening-Up",
+      "International Cooperation",
+      "Mutual Benefit"
      ]
     },
     {
-     "id": "news-011",
-     "title": "ASEAN Media Spotlight Ethnic Unity and Development of a Millennia-Old Tea Mountain",
-     "summary": "The story of a thousand-year-old tea mountain showcases ethnic unity and has become compelling material for China's external communications.",
-     "detail": "Using the thousand-year-old tea mountain as an entry point, the report illustrates how ethnic unity takes shape at the grassroots level, echoing the observation tour of ASEAN journalists in China.",
-     "impact": "Telling the story of ethnic unity through a focused angle helps showcase development achievements in China's multi-ethnic regions to the world.",
+     "id": "news-008",
+     "title": "What Are Foreign Tourists Loading Into Their Suitcases in China?",
+     "summary": "Foreign visitors are shopping enthusiastically in China, drawing attention to the Chinese goods filling their luggage.",
+     "detail": "Coverage highlights the shopping spree by foreign tourists in China, showcasing the wide range of Chinese products packed in their suitcases.",
+     "impact": "The rise in inbound shopping reflects growing appeal of the domestic consumer market and Chinese brands.",
      "importance": "normal",
      "tags": [
-      "Ethnic Unity",
-      "Tea Industry",
-      "External Communications"
+      "Inbound Tourism",
+      "Cultural and Tourism Consumption",
+      "Chinese Brands Going Global"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance & Economy",
+   "title": "Finance & Business",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-012",
-     "title": "The Middle-Class Wardrobe Is Basically One Giant Anta",
-     "summary": "An opinion piece titled \"The Middle-Class Wardrobe Is Basically One Giant Anta\" examines how domestic sportswear brands are penetrating middle-class consumption.",
-     "detail": "Starting from changes in middle-class closets, the article discusses the growing presence and market standing of domestic apparel brands in everyday family wardrobes.",
-     "impact": "Reflects a shift in brand perception among middle-class consumers, with apparel spending increasingly tilting toward homegrown labels.",
+     "id": "news-009",
+     "title": "Phase II of the 140th Canton Fair Opens After a 76-Hour Switchover",
+     "summary": "Phase II of the 140th Canton Fair opened on schedule after completing a 76-hour \"extreme switchover,\" drawing wide attention.",
+     "detail": "Phase II of the 140th Canton Fair officially opened after a 76-hour \"extreme switchover,\" with booths and exhibition zones rapidly switched over to ensure the fair proceeded as planned.",
+     "impact": "The Canton Fair is a key window for China's foreign trade; a smooth rollout helps stabilize order expectations among exporters.",
+     "importance": "hot",
+     "tags": [
+      "Foreign Trade",
+      "Exhibition Economy",
+      "Cross-Border Trade"
+     ]
+    },
+    {
+     "id": "news-010",
+     "title": "The Middle-Class Wardrobe Is Essentially One Giant Anta",
+     "summary": "Using the middle-class wardrobe as a lens, the article examines the outsized presence of domestic brand Anta in apparel consumption.",
+     "detail": "Starting from the wardrobes of China's middle class, the article discusses the penetration and influence of domestic brands such as Anta in the apparel market.",
+     "impact": "Reflects a shift in consumer preference toward domestic brands, potentially reshaping competition in the apparel industry.",
      "importance": "normal",
      "tags": [
       "Apparel Consumption",
@@ -159,55 +163,16 @@
      ]
     },
     {
-     "id": "news-013",
-     "title": "Audi China Appoints First Chinese-Born President",
-     "summary": "Audi China has named its first Chinese national as president, prompting industry attention to the localization of foreign automakers' China strategies.",
-     "detail": "The appointment of a local executive to Audi China's top management is seen as a shift in the governance structure of foreign carmakers operating in China.",
-     "impact": "Foreign automakers are accelerating the localization of senior management, which could improve decision-making speed and market responsiveness in China.",
-     "importance": "important",
-     "tags": [
-      "Automotive Industry",
-      "Foreign Automakers",
-      "Corporate Governance"
-     ]
-    },
-    {
-     "id": "news-014",
-     "title": "Jetta M6 Launches at Starting Price of 79,800 Yuan",
-     "summary": "The Jetta M6 has officially launched with prices starting at 79,800 yuan, adding another option to the entry-level car market.",
-     "detail": "The Jetta brand has rolled out the M6 model with a starting price of 79,800 yuan, targeting price-sensitive consumers.",
-     "impact": "Entry-level pricing is intensifying industry competition and may further boost value-for-money across the budget segment.",
+     "id": "news-011",
+     "title": "Viral Perler Bead Shops Hit a Wave of Closures",
+     "summary": "Once-viral perler bead craft stores are shutting down en masse, drawing attention to the cooling of influencer-driven offline businesses.",
+     "detail": "Once-popular viral perler bead shops are facing a wave of closures, reflecting the operating pressures facing hands-on experience-based offline businesses.",
+     "impact": "Signals that influencer-driven offline formats need to focus on repeat purchases and costs to avoid business risks tied to a single burst of hype.",
      "importance": "normal",
      "tags": [
-      "Auto Consumption",
-      "New Model Launch",
-      "Passenger Vehicle Market"
-     ]
-    },
-    {
-     "id": "news-015",
-     "title": "The Full Journey of a Single Coffee Bean",
-     "summary": "A field report traces coffee from a single seed through the entire value chain, showcasing how specialty agriculture can add value at every stage.",
-     "detail": "As part of the \"Vibrant China Field Survey\" series, the report uses coffee as a case study, following seeds, cultivation, processing and market distribution to illustrate the value added by chain extension.",
-     "impact": "Presents a blueprint for full value-chain development in specialty industries, offering lessons for the industrialization of other agricultural products.",
-     "importance": "normal",
-     "tags": [
-      "Coffee Industry",
-      "Specialty Agriculture",
-      "Value Chain Expansion"
-     ]
-    },
-    {
-     "id": "news-016",
-     "title": "From Contract Manufacturing to Co-Creation: Overseas Executives Seek a China Model for Robotics",
-     "summary": "Overseas executives are coming to China in search of a \"China model\" for robotics, as the industry shifts from contract manufacturing to collaborative innovation.",
-     "detail": "The report highlights overseas corporate leaders visiting China to negotiate robotics partnerships, reflecting the industry's transition from contract manufacturing to joint co-creation.",
-     "impact": "China's rising status in robotics could help it capture higher value within the global smart manufacturing division of labor.",
-     "importance": "important",
-     "tags": [
-      "Robotics Industry",
-      "Smart Manufacturing",
-      "High-End Manufacturing"
+      "Cultural & Creative Consumption",
+      "Brick-and-Mortar Operations",
+      "Consumer Trends"
      ]
     }
    ]
@@ -218,42 +183,42 @@
    "icon": "💡",
    "articles": [
     {
-     "id": "news-017",
-     "title": "70% of Websites Worldwide Are at Risk",
-     "summary": "Reports say 70% of websites worldwide face security risks, putting cybersecurity threats back in the spotlight.",
-     "detail": "A report titled \"70% of Websites Worldwide Are at Risk\" warns that website security threats are widespread and the defense outlook is severe.",
-     "impact": "As cybersecurity risks spill over into a wider scope, enterprises and institutions will step up spending on security protection and compliance.",
+     "id": "news-012",
+     "title": "What It Really Takes to House Computing Power",
+     "summary": "A WIC forum discussion explores the considerations behind \"housing\" computing power, covering the layout and construction of computing infrastructure.",
+     "detail": "The WIC Talk column focuses on computing infrastructure, discussing the many factors involved in site selection, layout and construction for data center capacity.",
+     "impact": "Growing discussion around computing infrastructure is expected to drive further improvements in related industry chains and standards.",
      "importance": "important",
      "tags": [
-      "Cybersecurity",
-      "Information Security",
-      "Digital Risk"
+      "Computing Infrastructure",
+      "Data Centers",
+      "Information Technology"
      ]
     },
     {
-     "id": "news-018",
-     "title": "Can Six-Figure Stem Cell Infusions Really Fight Aging?",
-     "summary": "Reports question whether pricey stem cell infusions truly deliver anti-aging effects, focusing on the technological and ethical debates around anti-aging consumption.",
-     "detail": "The article raises doubts about stem cell infusion programs that cost upward of hundreds of thousands of yuan, examining their anti-aging efficacy and market chaos.",
-     "impact": "The anti-aging consumer market is a mixed bag, underscoring the growing need for industry standardization and science communication.",
+     "id": "news-013",
+     "title": "On the Ground: Tech Innovation Along the Long March Route",
+     "summary": "The report highlights technological innovation along the Long March route, showcasing a 90-year relay of spirit and scientific practice.",
+     "detail": "The report visits innovation hubs along the Long March route, observing how the transmission of revolutionary heritage intertwines with technological development.",
+     "impact": "The coverage highlights innovation vitality in old revolutionary base areas and沿线 regions, helping attract attention to related industries and talent.",
      "importance": "normal",
      "tags": [
-      "Stem Cell Technology",
-      "Health Industry",
-      "Consumer Medicine"
+      "Tech Innovation",
+      "Regional Development",
+      "Red Culture"
      ]
     },
     {
-     "id": "news-019",
-     "title": "Global Security Risks on 70% of Websites Spark Industry Alert",
-     "summary": "Joint online rumor-debunking platforms and other channels continue to speak out, highlighting the importance of managing online information and security risks.",
-     "detail": "Data shows the joint online rumor-debunking platform has been pushing content throughout the day, reflecting the routine operation of online information governance and risk warnings.",
-     "impact": "Continued operation of cyberspace governance mechanisms helps clean up the information environment and improves the public's ability to identify risks.",
+     "id": "news-014",
+     "title": "Beloved National Car Brand Launches Its First EV",
+     "summary": "A once-iconic domestic car brand has launched its first electric vehicle, officially entering the new energy vehicle market.",
+     "detail": "A brand long known as the people's car of China has unveiled its first EV model, entering the competitive new energy vehicle segment.",
+     "impact": "A classic brand's entry into the new energy space could intensify competition in the relevant market niche.",
      "importance": "normal",
      "tags": [
-      "Cyberspace Governance",
-      "Information Security",
-      "Public Communication"
+      "New Energy Vehicles",
+      "Auto Industry",
+      "Electrification"
      ]
     }
    ]
@@ -264,67 +229,68 @@
    "icon": "📰",
    "articles": [
     {
-     "id": "news-020",
-     "title": "China's Men's Table Tennis Team Sweeps South Korea 3-0 for Fourth Straight Asian Championships Title",
-     "summary": "China's men's table tennis team defeated South Korea 3-0 to claim a fourth consecutive Asian Championships team title, extending its dominance in the event.",
-     "detail": "In the men's team final, China beat South Korea 3-0 to secure its fourth straight Asian Championships team crown.",
-     "impact": "The win consolidates China's leading position in international table tennis and further strengthens its influence in the sport.",
-     "importance": "hot",
-     "tags": [
-      "Table Tennis",
-      "Sports Events",
-      "Competitive Sports"
-     ]
-    },
-    {
-     "id": "news-021",
-     "title": "China's Women's Table Tennis Team Falls 2-3 to Japan, Takes Asian Championships Silver",
-     "summary": "China's women's table tennis team lost 2-3 to Japan, settling for second place at the Asian Championships and sparking debate over the competitive landscape on the women's side.",
-     "detail": "In the women's team event, China was edged 2-3 by Japan, finishing as runner-up at this year's Asian Championships.",
-     "impact": "Intensifying international competition on the women's side may prompt adjustments in training preparation and squad combinations.",
+     "id": "news-015",
+     "title": "Scoliosis Is Taking a Heavy Toll on Chinese Students",
+     "summary": "The article highlights the growing prevalence of scoliosis among Chinese students, warning that this health risk is increasingly affecting adolescents.",
+     "detail": "The report focuses on scoliosis among students, noting that the condition warrants vigilance and greater attention across the student population.",
+     "impact": "Could spur greater emphasis on school health screenings, posture management and related rehabilitation services.",
      "importance": "important",
      "tags": [
-      "Table Tennis",
-      "Sports Events",
-      "Competitive Sports"
+      "Adolescent Health",
+      "Campus Health",
+      "Public Health"
      ]
     },
     {
-     "id": "news-022",
-     "title": "Aggressive Southern Mosquitoes Are Migrating North in Droves",
-     "summary": "Reports highlight a northward spread of aggressive mosquito species from southern China, raising public health concerns over shifting vector activity ranges.",
-     "detail": "Taking the trend of southern mosquitoes 'moving north en masse' as a starting point, the article examines changes in mosquito distribution and the climate and environmental factors behind them.",
-     "impact": "The northward shift in mosquito activity could increase the burden of mosquito control and vector-borne disease prevention in northern regions.",
+     "id": "news-016",
+     "title": "Southern Mosquito Species Are Migrating North in Droves",
+     "summary": "The article examines the northward spread of mosquito species from southern China, flagging potential health implications to watch.",
+     "detail": "The report covers the phenomenon of mosquitoes from southern China migrating northward in large numbers, and the possible impacts that could follow.",
+     "impact": "The shifting range of mosquito activity suggests northern regions need to step up surveillance and mosquito control measures.",
      "importance": "important",
      "tags": [
       "Public Health",
-      "Climate Change",
-      "Vector Control"
+      "Mosquito-Borne Diseases",
+      "Disease Control"
      ]
     },
     {
-     "id": "news-023",
-     "title": "In the First 48 Hours of the Flu, I Picked the 'Right' Medicine",
-     "summary": "The author shares medication choices made within 48 hours of flu onset, offering practical guidance for the flu season.",
-     "detail": "Through a personal account, the article describes responses and medication decisions in the first 48 hours after flu symptoms appear, stressing the importance of timing.",
-     "impact": "Sharing real-world flu medication experience can help improve public awareness of seeking medical care and using medicines responsibly.",
+     "id": "news-017",
+     "title": "Choosing Medication Within the First 48 Hours of the Flu",
+     "summary": "The author shares their experience selecting medications within the first 48 hours of catching the flu, focusing on rational drug use during flu season.",
+     "detail": "Drawing on personal experience, the author recounts medication choices made within 48 hours of flu onset, highlighting rational drug use and self-care during flu season.",
+     "impact": "As flu season approaches, such firsthand accounts can help raise public awareness of responsible medication use.",
      "importance": "normal",
      "tags": [
-      "Respiratory Disease",
-      "Medication Safety",
-      "Health Education"
+      "Flu Prevention",
+      "Rational Medication Use",
+      "Respiratory Infectious Diseases"
      ]
     },
     {
-     "id": "news-024",
-     "title": "Woman Wins One Ton of Gasoline for 100 Days Without a Single Traffic Violation",
-     "summary": "A woman received one ton of gasoline as a reward for going 100 days without a single traffic violation, drawing attention to incentives for safe and courteous driving.",
-     "detail": "Reports say the woman was awarded one ton of gasoline for her 100-day clean driving record, becoming a showcase case for positive traffic safety incentives.",
-     "impact": "Reward-based incentives for law-abiding driving may encourage more regions to explore similar road safety reward programs.",
+     "id": "news-018",
+     "title": "Beijing's Autumn Foliage Season Opens as Fragrant Hills Braces for Peak Crowds",
+     "summary": "Beijing's autumn leaf-viewing season has officially begun, with Fragrant Hills Park expected to see peak visitor numbers starting this weekend.",
+     "detail": "Beijing's autumn foliage season has officially kicked off, with Fragrant Hills set to welcome peak crowds from this weekend as demand for fall outings surges.",
+     "impact": "Rising autumn travel enthusiasm is expected to boost spending on local tourism, dining and transportation.",
      "importance": "normal",
      "tags": [
-      "Traffic Safety",
-      "Courteous Driving"
+      "Cultural & Tourism Spending",
+      "Autumn Travel",
+      "Urban Leisure"
+     ]
+    },
+    {
+     "id": "news-019",
+     "title": "Can Stem Cell Infusions Costing Hundreds of Thousands Really Fight Aging?",
+     "summary": "The article explores whether high-priced stem cell infusions can genuinely deliver anti-aging effects, examining a growing health-consumption trend.",
+     "detail": "The report investigates whether stem cell infusions costing several hundred thousand yuan truly combat aging, scrutinizing the reality behind this segment of health spending.",
+     "impact": "Could encourage consumers to take a more rational view of expensive anti-aging treatments and promote better regulation of the sector.",
+     "importance": "normal",
+     "tags": [
+      "Wellness Industry",
+      "Biotech",
+      "Health Spending"
      ]
     }
    ]

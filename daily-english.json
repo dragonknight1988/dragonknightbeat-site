@@ -1,181 +1,192 @@
 {
-  "date": "2026-10-23",
+  "date": "2026-10-24",
   "content": {
-    "id": "en-2026-10-23",
-    "date": "2026-10-23",
-    "topic": "职场与沟通",
+    "id": "en-2026-10-24",
+    "date": "2026-10-24",
+    "topic": "文化与旅行",
     "newsHighlights": [
       {
-        "title": "APEC ministers eye greater cooperation",
+        "title": "Diplomats explore Beijing culture, tech in Shijingshan",
         "source": "ChinaDaily",
-        "summary": "APEC ministers met to seek closer economic cooperation and stronger regional partnerships, showing that dialogue remains the key tool for solving shared problems.",
-        "translation": "亚太经合组织部长级会议寻求更深入的经济合作与更紧密的区域伙伴关系，这表明对话仍是解决共同问题的关键工具。",
+        "summary": "Diplomats from several countries toured Beijing's Shijingshan district to experience its cultural heritage and technological innovation.",
+        "translation": "多国驻华外交官走进北京石景山区，亲身感受当地的文化遗产与科技创新。",
         "keyWords": [
-          "cooperation",
-          "minister",
-          "partnership"
+          "diplomat",
+          "heritage",
+          "innovation"
         ]
       },
       {
-        "title": "China-Europe freight train service marks milestone",
+        "title": "Cultural exchanges connect Greece and China",
         "source": "ChinaDaily",
-        "summary": "A China-Europe freight train bound for Moscow departed Shenyang on Thursday, pushing the service's cumulative trips past 140,000 and carrying goods across the continent.",
-        "translation": "一列开往莫斯科的中欧班列周四从沈阳发出，使该服务累计开行突破14万列，货物跨越欧亚大陆。",
+        "summary": "Cultural exchanges between Greece and China are deepening mutual understanding and bringing the two ancient civilizations closer together.",
+        "translation": "中希文化交流不断深化，增进了两国人民的相互理解，让两大古老文明更加亲近。",
         "keyWords": [
-          "milestone",
-          "cumulative",
-          "freight"
+          "exchange",
+          "civilization",
+          "mutual understanding"
         ]
       },
       {
-        "title": "Shenzhen, a high-tech city serving people",
+        "title": "'China Haul' goes viral: Empty suitcase in, full load out",
         "source": "ChinaDaily",
-        "summary": "Shenzhen is often called a cyberpunk city, but unlike the 'high tech, low life' of science fiction, its technology is designed to serve ordinary people.",
-        "translation": "深圳常被称为“赛博朋克”城市，但与科幻作品中的“高科技、低生活”不同，它的技术是为普通人服务的。",
+        "summary": "The 'China Haul' trend has gone viral as foreign tourists arrive with empty suitcases and leave with them full of Chinese goods.",
+        "translation": "“中国购物”风潮走红网络：外国游客拖着空行李箱来华，满载中国商品而归。",
         "keyWords": [
-          "innovation",
-          "technology",
-          "serve"
+          "viral",
+          "souvenir",
+          "haul"
         ]
       },
       {
-        "title": "China to steadily expand intelligent connected vehicle applications",
+        "title": "90 years, mountains behind, stars ahead",
+        "source": "ChinaDaily",
+        "summary": "A journey along the Long March route, from the Jinsha River to the Xichang Satellite Launch Center, reveals how much has changed in 90 years.",
+        "translation": "沿着长征路线从金沙江一路走到西昌卫星发射中心，九十年沧桑巨变尽收眼底。",
+        "keyWords": [
+          "journey",
+          "route",
+          "landscape"
+        ]
+      },
+      {
+        "title": "Digital Xiongan: How AI is shaping the smart 'City of the Future'",
         "source": "CGTN",
-        "summary": "China announced plans to steadily expand the use of intelligent connected vehicles, an initiative that will require close coordination between companies and regulators.",
-        "translation": "中国宣布将稳步推进智能网联汽车应用，这项倡议需要企业与监管机构之间的密切协作。",
+        "summary": "AI and digital technologies are shaping Xiongan into a smart 'city of the future' that also attracts curious visitors.",
+        "translation": "人工智能与数字技术正把雄安打造为一座智慧的“未来之城”，也吸引着好奇的游客前来探访。",
         "keyWords": [
-          "expand",
-          "initiative",
-          "coordination"
+          "digital",
+          "smart city",
+          "destination"
         ]
       }
     ],
     "quote": {
-      "quote": "The art of communication is the language of leadership.",
-      "author": "James Humes",
-      "translation": "沟通的艺术，就是领导力的语言。",
-      "explanation": "真正的领导力不是发号施令，而是把复杂的想法说清楚、让团队愿意一起行动。APEC 部长们推动合作、中欧班列牵动无数合同与邮件，背后靠的都是清晰而真诚的沟通。"
+      "quote": "The world is a book and those who do not travel read only one page.",
+      "author": "Saint Augustine",
+      "translation": "世界是一本书，不旅行的人只读了其中的一页。",
+      "explanation": "旅行让人走出熟悉的环境，接触不同的文化与生活方式，从而拓宽视野。正如今日新闻中外交官走进北京街巷、游客满载而归，每一次出行都是在翻阅世界这本大书的新篇章。"
     },
     "vocabulary": [
       {
-        "word": "cooperation",
-        "phonetic": "/kəʊˌɒpəˈreɪʃn/",
+        "word": "heritage",
+        "phonetic": "/ˈherɪtɪdʒ/",
         "partOfSpeech": "n.",
-        "definition": "合作；协作",
-        "example": "APEC ministers eye greater cooperation to keep regional trade growing.",
-        "translation": "亚太经合组织部长们寻求更深入的合作，以保持区域贸易增长。",
-        "newsContext": "出自新闻标题 \"APEC ministers eye greater cooperation\"。"
+        "definition": "遗产（尤指文化遗产、传统）",
+        "example": "The diplomats visited Shijingshan to explore both its rich cultural heritage and its modern technology.",
+        "translation": "外交官们参观了石景山区，探寻这里丰厚的文化遗产与现代科技。",
+        "newsContext": "来自新闻《Diplomats explore Beijing culture, tech in Shijingshan》，指石景山区的历史文化遗存。"
       },
       {
-        "word": "milestone",
-        "phonetic": "/ˈmaɪlstəʊn/",
+        "word": "diplomat",
+        "phonetic": "/ˈdɪpləmæt/",
         "partOfSpeech": "n.",
-        "definition": "里程碑；重大事件",
-        "example": "The China-Europe freight train service marks a new milestone with 140,000 cumulative trips.",
-        "translation": "中欧班列累计开行14万列，标志着一个新的里程碑。",
-        "newsContext": "出自新闻 \"China-Europe freight train service marks milestone\"。"
+        "definition": "外交官",
+        "example": "Diplomats from several countries joined the tour of Beijing's Shijingshan district.",
+        "translation": "来自多个国家的外交官参加了北京石景山区的参观活动。",
+        "newsContext": "出现在标题《Diplomats explore Beijing culture, tech in Shijingshan》中。"
       },
       {
-        "word": "cumulative",
-        "phonetic": "/ˈkjuːmjələtɪv/",
+        "word": "exchange",
+        "phonetic": "/ɪksˈtʃeɪndʒ/",
+        "partOfSpeech": "n./v.",
+        "definition": "交流；交换",
+        "example": "Cultural exchanges between Greece and China are bringing the two ancient civilizations closer together.",
+        "translation": "中希之间的文化交流正让两大古老文明走得更近。",
+        "newsContext": "来自新闻《Cultural exchanges connect Greece and China》。"
+      },
+      {
+        "word": "viral",
+        "phonetic": "/ˈvaɪrəl/",
         "partOfSpeech": "adj.",
-        "definition": "累计的；累积的",
-        "example": "The service's cumulative trips have topped 140,000 since it was launched.",
-        "translation": "自开行以来，该服务的累计班次已超过14万列。",
-        "newsContext": "出自新闻中 \"bringing the service's cumulative trips to top 140,000\"。"
+        "definition": "（在网络上）迅速传播的，走红的",
+        "example": "The 'China Haul' trend has gone viral on social media platforms worldwide.",
+        "translation": "“中国购物”风潮在全球社交媒体上迅速走红。",
+        "newsContext": "来自新闻标题《'China Haul' goes viral: Empty suitcase in, full load out》。"
       },
       {
-        "word": "innovation",
-        "phonetic": "/ˌɪnəˈveɪʃn/",
+        "word": "souvenir",
+        "phonetic": "/ˌsuːvəˈnɪə(r)/",
         "partOfSpeech": "n.",
-        "definition": "创新；革新",
-        "example": "Shenzhen, one of China's innovation hubs, is known for turning ideas into products.",
-        "translation": "深圳作为中国的创新中心之一，以把想法变成产品而闻名。",
-        "newsContext": "出自新闻 \"Shenzhen, a high-tech city serving people\" 中 \"one of China's innovation hubs\"。"
+        "definition": "纪念品",
+        "example": "Tourists fill their suitcases with souvenirs and local products before flying home.",
+        "translation": "游客们在回国前把行李箱塞满纪念品和当地特产。",
+        "newsContext": "关联新闻《'China Haul' goes viral》，外国游客来华大量购买纪念品与伴手礼。"
       },
       {
-        "word": "expand",
-        "phonetic": "/ɪkˈspænd/",
-        "partOfSpeech": "v.",
-        "definition": "扩大；扩展",
-        "example": "China will steadily expand intelligent connected vehicle applications.",
-        "translation": "中国将稳步推进智能网联汽车应用的扩展。",
-        "newsContext": "出自新闻 \"China to steadily expand intelligent connected vehicle applications\"。"
-      },
-      {
-        "word": "initiative",
-        "phonetic": "/ɪˈnɪʃətɪv/",
+        "word": "itinerary",
+        "phonetic": "/aɪˈtɪnərəri/",
         "partOfSpeech": "n.",
-        "definition": "倡议；主动性；新方案",
-        "example": "The new initiative needs support from every department to succeed.",
-        "translation": "这项新倡议需要每个部门的支持才能成功。",
-        "newsContext": "关联新闻 \"China to steadily expand intelligent connected vehicle applications\" 中的政策倡议。"
+        "definition": "旅行路线；行程安排",
+        "example": "The diplomats' itinerary included museums, historic sites and tech companies in Shijingshan.",
+        "translation": "外交官们的行程包括参观石景山区的博物馆、历史遗迹和科技企业。",
+        "newsContext": "关联新闻《Diplomats explore Beijing culture, tech in Shijingshan》中的参观行程安排。"
       },
       {
-        "word": "delegate",
-        "phonetic": "/ˈdelɪɡət/ (n.)；/ˈdelɪɡeɪt/ (v.)",
-        "partOfSpeech": "n. / v.",
-        "definition": "代表；委派（任务）",
-        "example": "Delegates at the APEC meeting shared views on how to boost regional growth.",
-        "translation": "与会代表就如何促进区域增长交换了看法。",
-        "newsContext": "出自新闻 \"APEC ministers eye greater cooperation\" 中的部长级会议场景。"
-      },
-      {
-        "word": "negotiate",
-        "phonetic": "/nɪˈɡəʊʃieɪt/",
-        "partOfSpeech": "v.",
-        "definition": "谈判；协商",
-        "example": "Companies along the China-Europe route negotiate contracts in different time zones every day.",
-        "translation": "中欧班列沿线的企业每天都在不同时区进行合同谈判。",
-        "newsContext": "关联新闻 \"China-Europe freight train service marks milestone\" 中跨国贸易往来的沟通场景。"
-      },
-      {
-        "word": "consensus",
-        "phonetic": "/kənˈsensəs/",
+        "word": "landmark",
+        "phonetic": "/ˈlændmɑːk/",
         "partOfSpeech": "n.",
-        "definition": "共识；一致意见",
-        "example": "The ministers reached a consensus on closer economic cooperation.",
-        "translation": "部长们就深化经济合作达成了共识。",
-        "newsContext": "出自新闻 \"APEC ministers eye greater cooperation\" 的会议成果描述。"
+        "definition": "地标；里程碑",
+        "example": "The Jinsha River crossing is a landmark along the historic Long March route.",
+        "translation": "渡过金沙江是长征历史路线上的一个重要节点。",
+        "newsContext": "关联新闻《90 years, mountains behind, stars ahead》中长征路线上的重要地点。"
       },
       {
-        "word": "collaboration",
-        "phonetic": "/kəˌlæbəˈreɪʃn/",
+        "word": "destination",
+        "phonetic": "/ˌdestɪˈneɪʃn/",
         "partOfSpeech": "n.",
-        "definition": "合作；协作（尤指共同创作或研发）",
-        "example": "A Shanghai studio brings Chinese icons to the world through international collaboration.",
-        "translation": "上海一家工作室通过国际合作把中国文化符号带向世界。",
-        "newsContext": "出自新闻 \"Shanghai studio brings Chinese icons to the world\"。"
+        "definition": "目的地",
+        "example": "Xiongan is becoming a popular destination for visitors curious about the smart city of the future.",
+        "translation": "雄安正成为游客探寻未来智慧城市的热门目的地。",
+        "newsContext": "关联新闻《Digital Xiongan: How AI is shaping the smart 'City of the Future'》。"
+      },
+      {
+        "word": "craftsmanship",
+        "phonetic": "/ˈkrɑːftsmənʃɪp/",
+        "partOfSpeech": "n.",
+        "definition": "工艺；手艺",
+        "example": "Foreign shoppers say they are impressed by the quality and craftsmanship of Chinese products.",
+        "translation": "外国购物者表示，中国商品的质量与工艺令他们赞叹。",
+        "newsContext": "关联新闻《'China Haul' goes viral》，外国游客青睐中国制造的工艺与品质。"
+      },
+      {
+        "word": "landscape",
+        "phonetic": "/ˈlændskeɪp/",
+        "partOfSpeech": "n.",
+        "definition": "风景；地貌",
+        "example": "The landscape along the Long March route has changed dramatically over the past 90 years.",
+        "translation": "九十年来，长征沿线的风景面貌发生了翻天覆地的变化。",
+        "newsContext": "来自新闻《90 years, mountains behind, stars ahead》，描写长征沿线山川地貌。"
       }
     ],
     "pattern": {
-      "pattern": "eye + (greater/more) + 名词：表示“着眼于、寻求（更大的……）”，常用于新闻标题与职场目标表述",
-      "example": "APEC ministers eye greater cooperation.",
-      "translation": "亚太经合组织部长们寻求更深入的合作。",
-      "usage": "eye 在此作动词，意为“关注、谋求”。职场中可用于描述团队目标，例如 \"Our team eyes greater efficiency this quarter.\"（我们团队本季度着眼于更高效率。）也可替换名词：eye closer ties（谋求更紧密的联系）、eye new markets（瞄准新市场）。"
+      "pattern": "be bringing / connecting A and B + 比较级/介词短语（表示“正使A与B更加……”）",
+      "example": "Cultural exchanges are bringing the two ancient civilizations closer together.",
+      "translation": "文化交流正让两大古老文明走得更近。",
+      "usage": "该句型用现在进行时表示正在发生的积极趋势，后接“宾语 + 宾补（形容词比较级/介词短语）”。常用于描述文化、旅游、经贸等活动带来的持续性影响。例如：Tourism is connecting small towns with the wider world."
     },
     "grammar": {
-      "title": "现在分词作结果状语（Present Participle as a Result Adverbial）",
-      "explanation": "英语新闻中常用 \"doing...\" 现在分词短语放在句尾，补充说明前句动作带来的自然结果，相当于 \"and this brings/leads to...\"。使用时分词的逻辑主语必须与主句主语一致。",
+      "title": "现在完成时与 go + 形容词（go viral）的搭配",
+      "explanation": "1) 现在完成时（has/have + 过去分词）强调过去发生的动作对现在产生的影响或结果，常与 already、just、yet、recently 等连用。2) 'go + 形容词' 表示状态的转变，如 go viral（走红）、go global（走向世界）、go public（公开）。两者常结合使用，描述某个现象刚刚发生并持续影响当下。",
       "examples": [
-        "A China-Europe freight train bound for Moscow departed Puhe station in Shenyang, bringing the service's cumulative trips to top 140,000.",
-        "Macron called for a halt to demonstrations in the coming days, urging citizens to stay calm."
+        "The 'China Haul' trend has gone viral as foreign tourists arrive with empty suitcases.",
+        "Citi has received approval to establish a wholly owned securities company in China."
       ]
     },
     "pronunciation": {
-      "word": "cooperation",
-      "phonetic": "/kəʊˌɒpəˈreɪʃn/",
-      "tips": "注意重音在第三个音节 -ra- 上：co-o-PE-ra-tion。前两个音节要轻读、连读得快，/əʊ/ 与 /ɒ/ 之间自然过渡；结尾 -tion 发 /ʃn/，不要读成“提翁”。可拆解练习：koh-OP-uh-RAY-shun，再加速连读。",
+      "word": "heritage",
+      "phonetic": "/ˈherɪtɪdʒ/",
+      "tips": "重音在第一个音节 /ˈher-/，/h/ 要吐气，第二个音节的元音是短元音 /ɪ/，结尾 /ɪtɪdʒ/ 要读得轻快，不要读成 /herɪteidʒ/。注意 -age 在名词中通常读作 /ɪdʒ/，如 village、message。",
       "examples": [
-        "APEC ministers eye greater cooperation.",
-        "Good results come from close cooperation between teams."
+        "The city is proud of its cultural heritage.",
+        "We should protect our natural heritage for future generations."
       ]
     },
     "reading": {
-      "title": "Talk First, Build Together: Lessons in Workplace Communication",
-      "content": "When APEC ministers met this week to eye greater cooperation, they were doing what every successful team does: talking first, acting together. Their meeting is a useful lesson for anyone working in a modern office, because progress rarely comes from one person alone.\n\nThe same message appears in trade news. On Thursday, a China-Europe freight train left Shenyang for Moscow, pushing the service's cumulative trips past 140,000. Behind that number are thousands of emails, contracts and phone calls between partners in different cities and time zones.\n\nGood workplace communication is not about using big words. It is about being clear, listening carefully and following up. Leaders who state goals plainly, invite questions and confirm decisions in writing help their teams move faster and make fewer mistakes.\n\nIn a connected world, cooperation is a practical skill. Whether you are a minister at a summit or a new employee in a meeting room, the rule is the same: speak clearly, listen patiently, and build trust one conversation at a time.",
-      "translation": "本周亚太经合组织部长们开会寻求更深入的合作，他们所做的正是每个成功团队的做法：先沟通，再共同行动。这场会议对任何在现代职场工作的人都有启发，因为进步很少来自单打独斗。\n\n同样的道理也体现在经贸新闻中。周四，一列中欧班列从沈阳开往莫斯科，使累计班次突破14万列。这个数字背后，是身处不同城市、不同时区的伙伴之间成千上万封邮件、合同与电话。\n\n好的职场沟通不在于使用华丽的辞藻，而在于表达清晰、认真倾听并及时跟进。能够清楚说明目标、欢迎提问、并以书面形式确认决定的领导者，能帮助团队更快推进、减少失误。\n\n在一个紧密相连的世界里，合作是一项实用技能。无论你是峰会上的部长，还是会议室里的新人，规则都一样：说清楚、耐心听，用一次一次的对话积累信任。",
-      "sourceNote": "本文基于 2026-10-23 ChinaDaily《APEC ministers eye greater cooperation》与《China-Europe freight train service marks milestone》两则真实新闻改写，用于英语学习目的。"
+      "title": "Traveling China: From Ancient Culture to the 'China Haul'",
+      "content": "China is becoming one of the world's most exciting travel destinations. In Beijing's Shijingshan district, diplomats from several countries recently explored museums, historic sites and technology companies, discovering how ancient culture and modern innovation exist side by side. Meanwhile, cultural exchanges between Greece and China are bringing two of the world's oldest civilizations closer together.\n\nSomething new is also happening in the shopping world. The 'China Haul' trend has gone viral: foreign tourists arrive with empty suitcases and fly home with them full of local products, from tea and silk to smart gadgets. Many say the quality and craftsmanship of Chinese goods surprise them.\n\nAt the same time, journeys along the historic Long March route show visitors a landscape transformed over ninety years. Whether you come for history, technology or shopping, China offers a journey worth taking.",
+      "translation": "中国正成为世界上最令人兴奋的旅行目的地之一。在北京石景山区，多国驻华外交官走进博物馆、历史遗迹和科技企业，发现古老文化与现代创新在这里并存。与此同时，中希文化交流正让世界上两个最古老的文明越走越近。\n\n购物领域也出现了新潮流。“中国购物”风潮席卷网络：外国游客拖着空行李箱来华，回国时箱子里装满了茶叶、丝绸、智能小家电等当地特产。许多人说，中国商品的质量和工艺令他们惊喜。\n\n与此同时，沿着长征历史路线旅行的游客，看到的是九十年来沧桑巨变的山河。无论你为历史、科技还是购物而来，中国都值得一游。",
+      "sourceNote": "本文基于 2026 年 10 月 24 日 ChinaDaily 与 CGTN 新闻改写，包括《Diplomats explore Beijing culture, tech in Shijingshan》《Cultural exchanges connect Greece and China》《'China Haul' goes viral》《90 years, mountains behind, stars ahead》及《Digital Xiongan》。"
     }
   }
 }
