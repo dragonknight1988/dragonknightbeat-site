@@ -1,38 +1,39 @@
 {
-  "date": "2026-10-24",
+  "date": "2026-10-25",
   "contents": [
     {
-      "id": "prog-2026-10-24",
-      "date": "2026-10-24",
-      "title": "Kotlin Flow 操作符实战：构建健壮的异步数据流",
-      "summary": "掌握 Flow 的中间/末端操作符、异常处理与调度器切换，把零散的 suspend 调用改造成可组合、可取消、可测试的响应式数据管道。",
+      "id": "prog-2026-10-25",
+      "date": "2026-10-25",
+      "title": "Flutter 中的 Stream 与 StreamBuilder：构建实时数据流 UI",
+      "summary": "掌握 Dart Stream 的订阅机制，并用 StreamBuilder 高效驱动 UI 的实时更新。",
       "difficulty": "中级",
-      "concept": "在真实项目里，我们很少只做一次异步调用，更多的是“持续产生数据 → 加工 → 消费”的场景：搜索框的实时联想、WebSocket 消息推送、数据库变更监听、埋点批量上报。Kotlin 的 Flow 就是为这类「冷流（cold stream）」设计的类型安全抽象：它不是一个会立刻执行的集合，而是一段「描述如何产生数据」的可执行脚本，只有被 collect 时才真正启动，并且会随收集端协程的取消而自动停止。\n\nFlow 的核心价值在于**可组合性**。中间操作符（map / filter / transform / debounce / distinctUntilChanged / buffer / conflate / flowOn）都是通过「装饰器」模式层层包住上游 Flow，形成一条管道（pipeline）；末端操作符（collect / toList / first / launchIn / stateIn / shareIn）负责触发执行。理解这一点很关键：中间操作符本身不耗时、不启动协程，它只是返回一个新的 Flow 对象。因此你可以放心地把管道拆成若干函数分别复用与单测。\n\n**异常处理**是中级开发最容易踩坑的地方。Flow 中的异常会沿管道向下游传播，try/catch 包住 collect 只能捕获到末端的错误；而 `catch` 操作符只对**上游（它之前）**的异常生效，对下游无效。工程上的惯例是：把 `catch` 放在 `flowOn` 之后、业务 map 之前，用来把异常转成一个“错误态”的数据项，这样 UI 层拿到的永远是合法的状态对象（Loading / Success / Error），而不是需要到处 try/catch 的异常。如果需要在收集端做兜底，可以用 `onCompletion` 或在外层 CoroutineExceptionHandler。\n\n**背压（backpressure）**决定生产快于消费时怎么办。`buffer()` 在上下游之间开一个缓冲区，实现并发执行但会增加内存占用；`conflate()` 只保留最新值，适合“只关心最新状态”的场景（如实时温度、滚动位置）；`collectLatest()` 则会在新值到来时取消上一次的消费逻辑，适合搜索联想这种“新输入要作废旧请求”的场景。选错背压策略的典型症状是：内存增长（忘了 conflate）、UI 闪烁（该 latest 却 buffer）、或丢数据（该 buffer 却 conflate）。\n\n**调度器**方面，`flowOn(Dispatchers.X)` 只改变**它之前**的上游代码所处的协程上下文，并在管道中插入一个缓冲边界；它不是“整条流的线程切换”。CPU 密集的解析放在 Default，IO/网络放在 IO，UI 更新必须回到主线程（Android 上用 `flowWithLifecycle` + `repeatOnLifecycle` 收集）。最后提醒：Flow 是冷流，多次 collect 会重新执行；要“只请求一次、多处共享”请用 `shareIn` / `stateIn` 转成热流，这也是 MVI/ViewModel 中 StateFlow 的标准做法。",
+      "concept": "在 Flutter 中，当数据是「随时间不断产生」的——例如 WebSocket 消息、定位坐标、输入框的搜索词、传感器读数、数据库的实时监听——单次返回的 Future 就不够用了，这时就要用 Stream（数据流）。Stream 是 Dart 异步编程的核心抽象之一，可以把它理解为一条「会多次吐出数据的管道」：生产者通过 sink 把事件 add 进去，消费者通过 listen 或 await for 逐个接收。相比 Future 只能返回一次结果，Stream 能返回零次、一次甚至无限次事件，并且天然支持转换操作符（map、where、take、debounceTime 等），这让它非常适合做数据清洗与节流。\n\nStreamController 是创建 Stream 的常用方式。它有两个关键属性：sink（事件入口）和 stream（事件出口）。这里有一个非常容易踩坑的点：默认的 StreamController 是「单订阅（single-subscription）」的，只能被监听一次，第二次 listen 会直接抛出 StateError；而 StreamController.broadcast() 创建的广播流可以被多个监听者同时订阅，但代价是它不会缓存事件——如果没有监听者，add 进去的事件会被直接丢弃。实际工程中，如果一个流只需要喂给一个 StreamBuilder，用默认的即可；如果要同时喂给多个 Widget 或者做全局事件总线，就必须用 broadcast。\n\n与之配合的 StreamBuilder 是 Flutter 中最常用的「流驱动型」Widget。它在 build 中订阅 stream，并在每次收到新事件时调用 builder 重建局部 UI。它的 snapshot 参数是 AsyncSnapshot<T>，我们通常用 ConnectionState（none/waiting/active/done）、snapshot.hasData、snapshot.hasError、snapshot.data 来判断当前状态。一个常见的性能陷阱是：不要在 build 方法里直接调用 _controller.stream.map(...) 这样的链式转换来创建新的流，否则每次 rebuild 都会创建新的 Stream 对象，导致 StreamBuilder 反复取消并重新订阅，甚至造成数据错乱。正确的做法是在 State 的字段里把转换后的流提前算好，或者在 initState 中完成。\n\n生命周期管理是 Stream 的另一大重点。StreamController、Timer、Subscription 如果不在 dispose 中正确关闭，轻则内存泄漏，重则在 Widget 销毁后仍然收到事件导致 setState() called after dispose() 崩溃。黄金法则只有三条：在 initState 创建并订阅，在 dispose 中 cancel 订阅、cancel Timer、close controller。另外，如果你想把 Stream 转成 ValueNotifier 与其他状态管理方案（Provider、Riverpod）协作，可以用 rxdart 的 BehaviorSubject，它既能被多次订阅，又能缓存「最新一个值」，非常适合做状态容器。\n\n从架构角度看，Stream 是 Flutter 官方推荐的「响应式数据流」范式：业务层暴露 Stream<Model>，UI 层用 StreamBuilder 消费，两者彻底解耦。当你发现 setState 的粒度越来越难控制、整页 rebuild 越来越频繁时，把这块状态抽成一个 Stream 往往是性价比最高的重构方案。",
       "codeExample": {
-        "language": "Kotlin",
-        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.flow.*\n\n// 模拟「用户输入搜索关键词」的事件流：持续产生数据\nclass SearchRepository {\n\n    // 冷流：只有被 collect 时才会执行 flow 体\n    fun queryFlow(): Flow<String> = flow {\n        val keystrokes = listOf(\"kot\", \"kotl\", \"kotlin\", \"kotlin\", \"kotlin协程\")\n        for (q in keystrokes) {\n            delay(150)                 // 模拟用户敲键盘的节奏\n            emit(q)                    // 发射一个上游数据\n        }\n    }\n\n    // 模拟网络请求：把关键词转成结果列表\n    suspend fun requestApi(query: String): List<String> {\n        delay(200)                     // 模拟网络延迟\n        return listOf(\"$query-result1\", \"$query-result2\")\n    }\n\n    // 把整条管道封装成一个可复用、可单测的函数\n    fun searchResults(): Flow<SearchUiState> = queryFlow()\n        .debounce(100)                 // 100ms 内没有新输入才放行，防抖\n        .distinctUntilChanged()        // 过滤掉连续重复的关键词\n        .map { it.trim().uppercase() } // 中间转换（纯函数，易测试）\n        .flowOn(Dispatchers.Default)   // 以上游跑在 Default 调度器\n        .map { query ->                // 发起 IO 请求\n            try {\n                SearchUiState.Success(requestApi(query))\n            } catch (e: CancellationException) {\n                throw e                // 协程取消必须原样抛出！\n            } catch (e: Exception) {\n                SearchUiState.Error(e.message ?: \"unknown\")\n            }\n        }\n        .onStart { emit(SearchUiState.Loading) }  // 起始状态\n        .catch { e -> emit(SearchUiState.Error(e.message ?: \"flow error\")) } // 只对上游生效\n}\n\n// UI 层只认识这三种状态，而不是异常\nsealed interface SearchUiState {\n    data object Loading : SearchUiState\n    data class Success(val items: List<String>) : SearchUiState\n    data class Error(val message: String) : SearchUiState\n}\n\nfun main() = runBlocking {\n    val repo = SearchRepository()\n    repo.searchResults().collect { state ->\n        when (state) {\n            is SearchUiState.Loading -> println(\"Loading...\")\n            is SearchUiState.Success -> println(\"结果: ${state.items}\")\n            is SearchUiState.Error -> println(\"错误: ${state.message}\")\n        }\n    }\n}",
-        "explanation": "1) `queryFlow()` 用 `flow { emit(...) }` 构造冷流：每次 collect 都会重新执行，`delay` 模拟用户输入节奏。\n2) `debounce(100)` 丢弃 100ms 内被后续输入覆盖的旧值，是搜索防抖的标准写法；`distinctUntilChanged()` 去掉连续重复的 \"kotlin\"。\n3) `map { it.trim().uppercase() }` 是纯转换，无副作用，便于单测。\n4) `flowOn(Dispatchers.Default)` 只让**它之前**的链路（queryFlow + debounce + map）在 Default 上运行，本身还会插入缓冲边界。\n5) 第二个 `map` 里发网络请求，把异常捕获后转成 `SearchUiState.Error`，UI 永远拿到合法状态；注意 `CancellationException` 必须重新抛出，否则会破坏协程取消机制。\n6) `onStart { emit(Loading) }` 在流开始前先发一个加载态，`catch` 作为最后防线处理上游漏网异常（它对下游无效，所以放在业务 map 之后）。\n7) `main` 中用 `runBlocking` + `collect` 消费，输出依次为 Loading 与 4 组搜索结果（重复的 \"KOTLIN\" 被去重）。"
+        "language": "Dart",
+        "code": "import 'dart:async';\nimport 'package:flutter/material.dart';\n\nvoid main() => runApp(const MyApp());\n\nclass MyApp extends StatelessWidget {\n  const MyApp({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: 'StreamBuilder Demo',\n      theme: ThemeData(colorSchemeSeed: Colors.indigo, useMaterial3: true),\n      home: const StreamCounterPage(),\n    );\n  }\n}\n\n/// 用 StreamController 手动驱动的实时计数器\nclass StreamCounterPage extends StatefulWidget {\n  const StreamCounterPage({super.key});\n\n  @override\n  State<StreamCounterPage> createState() => _StreamCounterPageState();\n}\n\nclass _StreamCounterPageState extends State<StreamCounterPage> {\n  // 1) 广播流：可被多个 StreamBuilder 同时订阅\n  final StreamController<int> _controller = StreamController<int>.broadcast();\n  int _count = 0;\n  Timer? _timer;\n\n  // 2) 提前把「只取偶数 + 转字符串」的流算好，避免在 build 里反复创建\n  late final Stream<String> _evenText = _controller.stream\n      .where((n) => n % 2 == 0)\n      .map((n) => '当前是第 $n 次（偶数）');\n\n  @override\n  void initState() {\n    super.initState();\n    // 3) 每秒向流中推送一次自增数据\n    _timer = Timer.periodic(const Duration(seconds: 1), (_) {\n      _count += 1;\n      _controller.sink.add(_count);\n    });\n  }\n\n  @override\n  void dispose() {\n    // 4) 必须释放资源，否则内存泄漏 / 崩溃\n    _timer?.cancel();\n    _controller.close();\n    super.dispose();\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      appBar: AppBar(title: const Text('StreamBuilder 实战')),\n      body: Center(\n        child: Column(\n          mainAxisAlignment: MainAxisAlignment.center,\n          children: [\n            // 5) StreamBuilder 订阅流，收到事件就重建这个子树\n            StreamBuilder<int>(\n              stream: _controller.stream,\n              initialData: 0,\n              builder: (context, snapshot) {\n                if (snapshot.hasError) {\n                  return Text('出错了：${snapshot.error}');\n                }\n                if (snapshot.connectionState == ConnectionState.waiting) {\n                  return const CircularProgressIndicator();\n                }\n                return Text(\n                  '计数：${snapshot.data}',\n                  style: Theme.of(context).textTheme.headlineMedium,\n                );\n              },\n            ),\n            const SizedBox(height: 24),\n            // 6) 同一个广播流可以被第二个订阅者复用\n            StreamBuilder<String>(\n              stream: _evenText,\n              builder: (context, snapshot) => Text(\n                snapshot.data ?? '等待偶数……',\n                style: Theme.of(context).textTheme.bodyLarge,\n              ),\n            ),\n          ],\n        ),\n      ),\n    );\n  }\n}\n",
+        "explanation": "第 1 处用 StreamController<int>.broadcast() 创建广播流，允许两个 StreamBuilder 同时订阅同一个 _controller.stream。第 2 处把 where/map 的转换结果保存在 late final 字段中，只在首次访问时创建一次，避免每次 build 生成新流导致 StreamBuilder 重复订阅。第 3 处用 Timer.periodic 每秒通过 sink.add 把计数推入流，模拟「实时数据源」（真实项目里换成 WebSocket 或传感器回调即可）。第 4 处在 dispose 里 cancel Timer 并 close controller，这是必须写的收尾逻辑。第 5 处 StreamBuilder 根据 snapshot 的 hasError / connectionState / data 三种情况渲染不同 UI，initialData 提供了首次渲染的数据。第 6 处演示了广播流的复用能力：同一个数据源可以驱动多个独立 UI 片段，而不需要额外的状态提升。"
       },
       "keyPoints": [
-        "Flow 是冷流：不 collect 就不执行，多次 collect 会重新执行；共享结果请用 stateIn / shareIn 转热流",
-        "中间操作符（map/filter/debounce/buffer/flowOn）只是返回新 Flow 的装饰器，末端操作符（collect/toList/first）才真正触发执行",
-        "catch 只能捕获上游异常，且会终止上游；下游异常需在 collect 外层或用 try/catch 处理",
-        "背压策略选型：buffer 提升吞吐、conflate 只留最新、collectLatest 新值取消旧消费",
-        "flowOn 只影响它之前的上游并插入缓冲边界；协程取消异常 CancellationException 必须原样抛出"
+        "Stream 是「多次吐出事件」的异步管道，适合 WebSocket、搜索输入、传感器等持续数据源；Future 只返回一次结果",
+        "StreamController 默认是单订阅的，第二次 listen 会抛 StateError；需要多订阅者时必须用 .broadcast()，但广播流不缓存事件",
+        "不要在 build 方法里临时创建/转换 Stream，应在 initState 或 final 字段中提前算好，否则会反复订阅、造成数据错乱",
+        "StreamBuilder 通过 AsyncSnapshot 的 connectionState、hasData、hasError、data 来分支渲染，务必处理 loading 与 error 状态",
+        "必须在 dispose 中 cancel 订阅与 Timer 并 close controller，否则内存泄漏或触发 setState() after dispose 崩溃",
+        "需要缓存「最新值」时可换用 rxdart 的 BehaviorSubject，它同时具备多订阅和状态容器能力"
       ],
       "exercise": {
-        "description": "实现一个 `temperatureFlow(): Flow<Double>`，模拟每 200ms 产生一次温度读数（可用 `flow { while(true) { emit(Random.nextDouble(20.0, 35.0))); delay(200) } }`）。要求构建一条管道：① 连续两次读数差值小于 0.1 的丢弃（用 distinctUntilChanged 的比较器版本）；② 每 3 个读数做一次滑动平均并输出；③ 当上游抛出异常时输出 -999.0 作为哨兵值；④ 用 flowOn 让生产端跑在 Dispatchers.Default。思考：若消费端每 500ms 才处理一个值，应该用 conflate 还是 buffer？",
-        "hint": "distinctUntilChanged { old, new -> abs(old - new) < 0.1 } 可以做“变化不大就丢弃”；窗口聚合可以用 transform 累积一个 ArrayDeque 或者 buffer(3, 1) + map { it.average() }；catch 放在异常可能发生的位置之后（通常在 flowOn 之后）；消费慢于生产且只关心最新状态时用 conflate。",
+        "description": "实现一个「搜索框防抖（Debounce）」组件：用户在 TextField 中输入关键词，只有当停止输入 500 毫秒后，才把关键词交给模拟的搜索服务（Future<String>），并用 StreamBuilder 实时展示搜索结果。要求：用 Stream<String> 承接输入事件，自行实现 debounce 逻辑（可用 Timer），并在 dispose 中正确释放所有资源。",
+        "hint": "在 State 中维护一个 StreamController<String>（单订阅即可）和一个 Timer?。TextField 的 onChanged 把文本 add 进 sink；在监听到事件时先 _debounce?.cancel()，再启动一个 500ms 的 Timer，Timer 触发时才发起搜索并把结果 add 进结果 StreamController。注意把结果 Stream 也声明为 StreamController<String>，UI 只用一个 StreamBuilder 消费它。可以用 async* 或 stream.transform(StreamTransformer) 把 debounce 封装成可复用的操作符。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码：让 Flow 只保留偶数并把它们乘以 10。",
-            "codeContext": "val numbers = flowOf(1, 2, 3, 4, 5, 6)",
+            "question": "补全 StreamBuilder 的关键参数，让它正确订阅计数流并把数据显示出来。",
+            "codeContext": "final StreamController<int> _controller = StreamController<int>();",
             "segments": [
               {
                 "type": "text",
-                "content": "val result = numbers\n    .",
+                "content": "StreamBuilder<int>(\n  stream: _controller.stream,\n  ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,55 +41,73 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[ 选择操作符 ]",
+                "placeholder": "[选择]",
                 "options": [
-                  "filter { it % 2 == 0 }",
-                  "map { it % 2 == 0 }",
-                  "distinctUntilChanged { it % 2 == 0 }"
+                  "builder:",
+                  "initState:",
+                  "listen:"
                 ],
-                "correctAnswer": "filter { it % 2 == 0 }"
+                "correctAnswer": "builder:"
               },
               {
                 "type": "text",
-                "content": "\n    .map { it * 10 }\n    .toList()\n// result == listOf(20, 40, 60)",
+                "content": " (context, snapshot) {\n  return Text('",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "snapshot.data",
+                  "snapshot.value",
+                  "snapshot.state"
+                ],
+                "correctAnswer": "snapshot.data"
+              },
+              {
+                "type": "text",
+                "content": ".toString()');\n},\n)",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "filter { it % 2 == 0 }",
-            "explanation": "`filter` 会丢弃谓词为 false 的元素，是“筛选”语义；`map` 是“变换”语义，返回 Boolean 会得到 listOf(false,true,...)；`distinctUntilChanged` 是去重，不会过滤偶数。"
+            "correctAnswer": "builder: ... snapshot.data",
+            "explanation": "StreamBuilder 必须接收 stream（数据来源）和 builder（构建函数）两个参数；AsyncSnapshot 中承载最新事件的字段是 data，而不是 value 或 state。connectionState 描述的是连接状态（waiting/active/done），与数据本身无关。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 `flowOn`、`buffer`、`conflate` 的说法，哪一项是正确的？",
-            "codeContext": "upstream()\n    .map { heavyParse(it) }\n    .flowOn(Dispatchers.Default)\n    .conflate()\n    .collect { updateUi(it) }",
+            "question": "关于 StreamController 的单订阅流与广播流，下列说法正确的是？",
+            "codeContext": "final c1 = StreamController<int>();\nfinal c2 = StreamController<int>.broadcast();",
             "segments": null,
             "options": [
-              "flowOn 会把整条流（包括 collect 之后）都切换到指定调度器",
-              "flowOn 改变它之前上游的执行上下文，并在管道中引入缓冲边界",
-              "conflate 会等待消费端处理完每一个元素，保证不丢数据",
-              "buffer 会自动取消旧的消费任务，只处理最新元素"
+              "默认的单订阅流可以被多个 StreamBuilder 同时订阅，Flutter 会自动分发事件",
+              "广播流没有监听者时 add 的事件会被缓存，等到有订阅者后再补发",
+              "单订阅流第二次 listen 会抛出 StateError，而广播流支持多个订阅者",
+              "广播流性能更好，所有场景都应该优先使用 broadcast()"
             ],
-            "correctAnswer": "flowOn 改变它之前上游的执行上下文，并在管道中引入缓冲边界",
-            "explanation": "flowOn 只作用于它**之前**的上游链路，且会插入一个 channel 缓冲；conflate 是“只保留最新、丢弃中间值”；“新值取消旧消费”是 collectLatest 的语义；buffer 只是增大缓冲区提升并发吞吐。"
+            "correctAnswer": "单订阅流第二次 listen 会抛出 StateError，而广播流支持多个订阅者",
+            "explanation": "单订阅 Stream 只允许一个 listener，重复 listen 直接抛 StateError；广播（broadcast）流支持任意多个订阅者，但它是「即发即弃」的——没有订阅者时事件直接丢弃，不会缓存。只有当确实需要多订阅者或事件总线时才用 broadcast，单订阅流在内存和调度上更轻量。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "运行下面的代码，控制台会输出什么？",
-            "codeContext": "runBlocking {\n    val result = flow {\n        emit(1)\n        emit(2)\n        throw IllegalStateException(\"boom\")\n    }\n    .map { it * 10 }\n    .catch { e -> emit(-1) }\n    .toList()\n    println(result)\n}",
+            "question": "以下 Dart 代码运行后会输出什么？",
+            "codeContext": "Stream<int> numbers() async* {\n  for (var i = 1; i <= 5; i++) {\n    yield i;\n  }\n}\n\nFuture<void> main() async {\n  await for (final n in numbers().where((n) => n.isEven)) {\n    print(n);\n  }\n}",
             "segments": null,
             "options": [
-              "[10, 20, -1]",
-              "[10, 20]",
-              "抛出异常 IllegalStateException: boom",
-              "[-1]"
+              "1 2 3 4 5",
+              "2 4",
+              "2 4 6",
+              "只输出 1"
             ],
-            "correctAnswer": "[10, 20, -1]",
-            "explanation": "`catch` 位于异常发生点（flow 体）的下游，因此能捕获 IllegalStateException；此时 1、2 已经被 map 成 10、20 发出，catch 在异常后 `emit(-1)` 作为补充数据，随后流正常结束，最终 toList() 得到 [10, 20, -1]。若把 catch 放在 map 之前，它会截断上游，可能只得到 [-1]。"
+            "correctAnswer": "2 4",
+            "explanation": "async* + yield 构成一个会依次吐出 1~5 的 Stream。where((n) => n.isEven) 只放行偶数，因此下游只会收到 2 和 4。注意 .where 返回的是一个新的 Stream，并且是对原流的一层「懒」包装，只有 await for 真正开始消费时事件才会被拉取，所以不会打印 6（源流最大只到 5）。"
           }
         ]
       }

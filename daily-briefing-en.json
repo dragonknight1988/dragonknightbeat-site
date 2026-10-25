@@ -1,8 +1,8 @@
 {
- "date": "2026-10-24",
+ "date": "2026-10-25",
  "briefing": {
-  "date": "2026-10-24",
-  "quote": "The essence of a technology wave is taking capabilities that merely ",
+  "date": "2026-10-25",
+  "quote": "An agent's value lies not in how smart its model is, but in how many things it can actually get done.",
   "sections": [
    {
     "id": "openclaw",
@@ -11,193 +11,193 @@
     "articles": [
      {
       "id": "brief-oc-001",
-      "title": "OpenClaw v0.14 Released: Native Support for Multi-Agent Parallel Scheduling",
-      "summary": "OpenClaw has released v0.14, adding a multi-agent parallel scheduler and sandbox-level isolation, boosting long-task execution efficiency nearly threefold.",
-      "detail": "The OpenClaw community officially released v0.14 this week, headlined by the 'Swarm Scheduler' multi-agent parallel scheduling module. It lets developers describe multi-agent collaboration flows in declarative YAML, while the scheduler handles dependencies, concurrency, and failure retries. The new version also isolates each agent's tool calls in an independent lightweight sandbox (based on WebAssembly), preventing cross-session state contamination. Official benchmarks show end-to-end time on typical three-stage 'retrieve–analyze–write' tasks dropped about 68 percent versus v0.13. The release also drops Python 3.9 support, moving fully to 3.11+.",
-      "impact": "For developers, multi-agent orchestration shifts from hand-written glue code to configuration, significantly lowering the engineering barrier for complex workflows. For enterprise users, sandbox isolation makes OpenClaw easier to pass internal security and compliance reviews, potentially accelerating adoption in production environments.",
+      "title": "OpenClaw v0.9.4 Ships with Native Multi-Agent Collaboration Workflows",
+      "summary": "OpenClaw's latest release introduces an Agent orchestration layer that lets multiple sub-agents divide and conquer complex tasks, with officials claiming a 27% improvement in task success rates.",
+      "detail": "OpenClaw released v0.9.4 this week, headlined by a brand-new Orchestrator layer. Developers can declare multiple sub-agents with different tool permissions in a single YAML configuration, while the master agent handles task decomposition, dispatch and result aggregation. Official benchmarks show that on composite tasks with more than five steps — such as \"scrape data → generate report → send email → write to database\" — end-to-end success rates rose from 61% to 88%. A new Trace Viewer debugging panel also makes it easier to pinpoint failing sub-agent steps. The community broadly sees this as a critical step for OpenClaw in its evolution from a \"personal assistant\" to a \"workflow engine.\"",
+      "impact": "As multi-agent orchestration matures, enterprises can hand large volumes of cross-system processes directly to open-source agents, putting RPA and low-code automation vendors under disruptive competition from the open-source ecosystem.",
       "source": "OpenClaw GitHub Release Notes"
      },
      {
       "id": "brief-oc-002",
-      "title": "OpenClaw Plugin Marketplace Goes Live, 200+ Skills Available for One-Click Install",
-      "summary": "The official plugin marketplace ClawHub launches, covering productivity, data analysis, browser automation and more, with support for private repository hosting.",
-      "detail": "The official OpenClaw team announced that its plugin marketplace, ClawHub, has entered open beta, with more than 200 'Skill Packs' at launch, including Notion/Feishu sync, browser visual operations, natural-language SQL querying, and structured PDF extraction. All plugins carry digital signatures and permission declarations, so users can see exactly which tools and data scopes a plugin can access before installing. The enterprise edition supports private repository hosting, internal review workflows, and SSO integration. Community feedback shows the three most installed plugins are Browser Pilot, DocParsr, and CodeReviewBot.",
-      "impact": "The maturity of a plugin marketplace determines an agent framework's moat. ClawHub moves OpenClaw from 'framework' to 'ecosystem,' allowing ordinary users to assemble automation workflows without writing code, while giving independent developers a new monetization channel.",
-      "source": "OpenClaw Official Blog / TechCrunch"
+      "title": "OpenClaw Plugin Marketplace Tops 3,000 Tools as Ecosystem Enters Positive Flywheel",
+      "summary": "The official plugin marketplace has surpassed 3,000 tools, with third-party contributions exceeding 70% for the first time — a clear sign the ecosystem flywheel is spinning.",
+      "detail": "The OpenClaw Foundation announced that the plugin marketplace surpassed 3,000 tools this week, with third-party contributions accounting for 72% of the total — nearly triple year-on-year. The most popular categories are browser automation, office document processing, database access and API gateway integration. To incentivize contributors, the foundation launched a \"Bounty for Tools\" program offering prize pools for high-demand needs such as deep Office 365 integration and private vector database adapters. The plugin sandbox mechanism has also been upgraded with permission declarations and audit logs, easing enterprise security concerns about adoption.",
+      "impact": "The quantity and quality of plugins define an agent's practical capability boundary; OpenClaw's rapid ecosystem expansion will further erode the closed moats of commercial agent platforms.",
+      "source": "OpenClaw Foundation Official Blog"
      },
      {
       "id": "brief-oc-003",
-      "title": "Major Cloud Vendors Launch Hosted OpenClaw Services as Agent Runtimes Enter the 'Zero-Ops' Era",
-      "summary": "AWS, Alibaba Cloud and others have rolled out hosted OpenClaw services with usage-based pricing and built-in observability dashboards.",
-      "detail": "Following OpenClaw's adoption by a major open-source foundation last quarter, AWS and Alibaba Cloud this week each announced fully managed OpenClaw runtime services. Users simply upload an agent configuration to get automatic scaling, key management, call-chain tracing, and cost dashboards. Both offer two pricing models: per-task billing and monthly concurrent capacity. Notably, the hosted layers generally include prompt-injection detection, tool-call whitelists, and output audit logs, addressing enterprise concerns about agent controllability.",
-      "impact": "Managed services significantly cut the operational cost of deploying agents for enterprises, and shift the competitive focus from 'who can run it' to 'who has better orchestration and governance.' Smaller teams can integrate agents into business processes far more lightweight.",
-      "source": "AWS News Blog / Alibaba Cloud Official Announcement"
+      "title": "OpenClaw Adds Local Small-Model Support, Deploys with as Little as 8GB RAM",
+      "summary": "A reworked inference layer enables 7B-class local models to run on consumer-grade hardware, accelerating deployment in privacy-sensitive scenarios.",
+      "detail": "The OpenClaw team announced a completed refactor of the inference layer, cutting local model runtime overhead by roughly 40% through KV cache reuse, tool-call result caching and streaming truncation. In hands-on testing, a Mac mini with 16GB of RAM smoothly runs 7B-to-14B parameter models while performing everyday desktop automation tasks. The team also provides a \"local-first, cloud-as-fallback\" hybrid scheduling strategy: sensitive data is processed by local models, while complex reasoning requests can be routed to cloud-scale models as needed. Several healthcare and legal-tech startups have said they plan to build compliant internal assistants on this architecture.",
+      "impact": "Lower barriers to local deployment open up agent adoption in highly regulated sectors such as finance, healthcare and government, while strengthening the differentiated edge of open-source solutions over cloud-only SaaS.",
+      "source": "InfoQ Tech Weekly"
      }
     ]
    },
    {
     "id": "skills",
     "title": "Trending Skills to Watch",
-    "icon": "🧠",
+    "icon": "🛠️",
     "articles": [
      {
       "id": "brief-sk-001",
-      "title": "Browser-Use 类浏览器自动化技能成为本周下载榜首",
-      "summary": "让 AI 直接操作浏览器完成填表、比价、抓数据的技能包下载量周环比增长 210%。",
-      "detail": "浏览器自动化技能（如 Browser Pilot、Browser-Use）通过「视觉截图 + DOM 定位」双通道让模型直接操控网页，完成登录、表单填写、跨站比价、定期抓取等任务。本周多个技能包支持了 Chrome 扩展形式安装，用户无需起本地服务即可使用。社区还出现了「操作录制器」，可以把人工操作一次录制成可复用的 Agent 流程。典型用例包括每日电商比价、后台批量操作、舆情数据采集等。",
-      "impact": "浏览器是最大的 GUI 资产，掌握浏览器自动化等于掌握了绝大多数没有 API 的存量系统。对运营、客服、财务等重复性岗位，这是眼下 ROI 最直观的 AI 落地方向。",
-      "source": "ClawHub 排行榜 / Hacker News"
+      "title": "Context Engineering Becomes a Must-Have Skill for AI Engineers",
+      "summary": "From prompting to context engineering — mastering context organization, memory, and retrieval strategies is becoming the new currency in AI roles.",
+      "detail": "Data from multiple hiring platforms shows job postings mentioning \"Context Engineering\" have surged 210% quarter-over-quarter. The skill centers on systematic design around the model's context window, including information layering (system prompts, long-term memory, working context), retrieval timing, context compression, and conflict resolution. Industry observers note that as model capabilities converge, context quality has become the key variable determining the experience of agent products. Recommended learning path: start with the fundamentals of RAG and vector retrieval, then dive into memory management frameworks such as MemGPT and Mem0, and finally practice long-conversation and long-task state management in real-world business scenarios.",
+      "impact": "Mastering context engineering significantly boosts an individual's irreplaceability within AI application teams and marks the dividing line between \"calling APIs\" and \"building products.\"",
+      "source": "Lenny's Newsletter / LinkedIn Hiring Trends"
      },
      {
       "id": "brief-sk-002",
-      "title": "「本地知识库 + 向量检索」技能包走向开箱即用",
-      "summary": "新一代 RAG 技能内置混合检索、重排序与引用溯源，个人知识库搭建门槛大幅下降。",
-      "detail": "本周推荐的 LocalMind、RecallKit 等技能包将 Embedding、混合检索（BM25 + 向量）、Rerank、引用溯源打包成一条龙流程，支持 Markdown、PDF、网页、聊天记录等多源导入，并提供增量索引与去重。新版普遍加入「答案必带出处」机制，点击引用即可跳回原文段落，显著缓解了幻觉与可信度问题。轻量版可在 16GB 内存的笔记本上流畅运行。",
-      "impact": "个人与小团队终于可以低成本构建「第二大脑」，把散落的文档、笔记、会议记录变成可问答的资产。对咨询、法务、研究等重度依赖资料的行业价值尤为突出。",
-      "source": "GitHub Trending / 机器之心"
+      "title": "MCP (Model Context Protocol) Integration Becomes a Baseline Skill for SaaS Vendors",
+      "summary": "Major SaaS vendors are rolling out MCP Servers at a rapid pace, and developers who can build MCP clients and servers are in short supply.",
+      "detail": "Following GitHub, Slack, and Notion, tools including Figma, Linear, and Airtable released official MCP Servers this week. MCP has become the de facto standard protocol for models to access external tools, requiring developers to master JSON-RPC transport, tool schema definitions, OAuth authorization flows, and rate-limit handling. Chinese cloud providers are also keeping pace — Alibaba Cloud and Tencent Cloud have each launched their first batch of MCP service catalogs. Learning advice: start with the official SDK Quickstart; within two weeks you can independently build a production-grade MCP Server with authentication — one of the highest ROI skills available today.",
+      "impact": "As the MCP ecosystem matures, \"plug-and-play models\" will become reality. Developers fluent in the protocol's details will gain a first-mover advantage in the next wave of reshuffling at the tooling layer.",
+      "source": "Anthropic Developer Community"
      },
      {
       "id": "brief-sk-003",
-      "title": "结构化数据处理技能：让 Excel/SQL 不再是 AI 的短板",
-      "summary": "支持公式生成、复杂 SQL 生成与数据清洗的新技能，把「表格类」工作流的准确率提升到 90% 以上。",
-      "detail": "长期以来，LLM 在表格计算、日期处理、多表 Join 等结构化任务上表现不稳。本周上线的 SheetPilot 与 QuerySmith 通过「代码执行 + 自我校验」两阶段策略，在生成公式或 SQL 后自动跑一遍结果、对照行数与样例值，再决定是否重写。实测在常见的财务对账、销售报表生成场景中，一次性准确率从 60% 提升至 92%。两者均支持把生成结果直接回写到 Excel 或数据库。",
-      "impact": "这补齐了 Agent 在企业核心数据场景的最后一块短板，意味着「自然语言直接驱动业务报表」开始具备生产可用性，对财务、BI、运营岗位冲击最为直接。",
-      "source": "InfoQ / 开发者社区实测"
+      "title": "AI Video Generation Workflows (Runway / Kling / Sora) Become Standard Equipment for Content Teams",
+      "summary": "Script-to-storyboard pipelines, character consistency, and camera control — the new core competencies for AI video creators.",
+      "detail": "With models such as Kling 3.0 and Runway Gen-5 entering commercial use, AI video creation is shifting from single-shot showcases to full-length production. High-value skills currently concentrate on three areas: first, industrialized storyboard scripting using structured prompts to describe shot sizes, camera movement, and pacing; second, character and scene consistency control through reference images, LoRA, and seed locking to maintain style across shots; and third, post-production compositing that combines tools like CapCut and Premiere for lip sync, sound effects, and subtitles. Demand is strongest in e-commerce, short dramas, and game promotions — creators who command the full workflow typically charge rates above ¥500 per hour.",
+      "impact": "Mature AI video workflows will reshape content production cost structures, enabling small and mid-sized teams to deliver cinema-grade promotional material on a tenth of the traditional budget.",
+      "source": "NewRank / E-commerce Content Creation Community"
      }
     ]
    },
    {
     "id": "ios",
-    "title": "iOS App Trends",
+    "title": "iOS App Updates",
     "icon": "📱",
     "articles": [
      {
       "id": "brief-ios-001",
-      "title": "iOS 26.1 Rollout: Apple Intelligence Adds 'Screen Awareness' and Cross-App Actions",
-      "summary": "The new OS version lets Siri understand on-screen content and carry out multi-step tasks across apps, with developer integration via App Intents.",
-      "detail": "Apple has released the iOS 26.1 release candidate to developers, with a focus on strengthening on-device AI. The new 'Screen Awareness' feature lets the voice assistant read the current interface (with user permission) to answer questions or take actions accordingly, while 'Cross-App Actions' chains operations across multiple apps from a single command — for example, 'add the date in this email to my calendar and reply to confirm.' Apple has also opened up a revamped App Intents framework, allowing third-party apps to declare semantically meaningful actions that the system can invoke, with support for parameter passing and returning results.",
-      "impact": "By building 'agentic capabilities' into the OS layer rather than individual apps, Apple is creating both a traffic channel and competitive pressure for independent developers — apps that don't adopt App Intents risk being sidelined, and the on-device privacy route is beginning to differentiate itself from cloud-based agents.",
-      "source": "Apple Developer Website / 9to5Mac"
+      "title": "iOS 26.2 Beta 2 Released: Apple Intelligence Adds System-Level Agent Wake Words",
+      "summary": "The new beta lets third-party apps register system-level agent actions, allowing Siri to call in-app capabilities directly.",
+      "detail": "Apple has pushed iOS 26.2 Beta 2 to developers, with the headline change being a major expansion of the App Intents framework. Developers can now register \"Agent Actions\" for their apps, enabling Siri and Apple Intelligence to orchestrate cross-app tasks directly at the system level. A compound instruction such as \"file all of today's invoices and sync them to my bookkeeping app\" can be completed by the system coordinating Intents across multiple apps. Shortcuts automation also gains conditional branching and loops, pushing its capabilities close to those of a lightweight workflow engine. Analysts see the move as a defensive play by Apple against third-party rivals competing to become the default agent entry point.",
+      "impact": "Opening system-level agent capabilities will reshape how iOS app traffic is distributed, and early adopters of App Intents stand to gain an outsized share of Siri-driven discovery.",
+      "source": "MacRumors / Apple Developer Release Notes"
      },
      {
       "id": "brief-ios-002",
-      "title": "Is the Subscription Model Cooling Off? A Wave of iOS Utility Apps Shifts to 'One-Time Purchase + AI Add-Ons'",
-      "summary": "Facing subscription fatigue, developers are testing a new business model: one-time purchases for core features, pay-per-use for advanced AI capabilities.",
-      "detail": "Multiple mid-tier iOS developers have shared their transition experience in community forums: core features are now sold as one-time purchases priced at RMB 68–128, while AI-powered features such as batch processing and long-document parsing are billed per token or per use. Data shows first-month conversion rates rose by around 40% under this model, refund rates fell, and the costs of AI calls were effectively covered. The App Store also recently updated its review guidelines, explicitly permitting the 'one-time purchase plus consumable in-app purchase' combination, while requiring clear disclosure of AI feature pricing and data usage.",
-      "impact": "This offers indie developers a new path to counter subscription fatigue and gives users a more intuitive sense of what 'AI is actually worth.' Notably, cost transparency may become a key differentiator in the next phase of app competition.",
-      "source": "Indie iOS Dev Weekly / App Store Review Guidelines"
+      "title": "AI Memory App \"Recall\" Tops the US Paid App Chart",
+      "summary": "A localized personal knowledge base app, built on on-device models with iCloud sync, markets itself as \"a digital brain that never forgets.\"",
+      "detail": "An indie-developed app called Recall climbed to No. 1 on the US iOS paid charts this week. It uses an on-device large model to semantically index screenshots, chat logs and notes, supporting natural-language queries such as \"the budget figure mentioned in last month's meeting.\" Its core selling point is that all data stays local, syncing only via iCloud, and it offers a daily \"memory review\" push notification. Priced at $9.99 a month, the app has passed $2 million in annual recurring revenue just three weeks after launch. The industry broadly views personal memory management as the next high-frequency, must-have category after note-taking apps.",
+      "impact": "The breakout success of memory apps validates willingness to pay for \"on-device AI + privacy first,\" offering independent developers a replicable, high-price-point product template.",
+      "source": "Appfigures / sspai"
      },
      {
       "id": "brief-ios-003",
-      "title": "On-Device LLM SDK Opens Up, Local Inference Becomes a New Selling Point",
-      "summary": "Apple has opened more complete on-device model loading interfaces, and some apps already offer offline-capable summarization, translation, and image understanding.",
-      "detail": "In iOS 26.1, Apple further opened up the Foundation Models framework, allowing apps to load adapted on-device models directly and perform streaming inference, with support for LoRA-style lightweight fine-tuning and structured output. Several note-taking, reading, and camera apps have already shipped features such as offline summarization, full-text translation, and image captioning — all completed without uploading data. Tests show that devices with the new-generation chip can achieve generation speeds of roughly 20 tokens per second on 3B-scale models.",
-      "impact": "Offline capability is emerging as a core selling point in privacy-sensitive sectors such as healthcare, legal, and business, while also giving apps differentiated features without inference costs. An on-device-plus-cloud architecture is set to become the mainstream approach for iOS apps.",
-      "source": "Apple Developer Documentation / MacRumors"
+      "title": "Swift Assist Coding Assistant Opens to All; Xcode's Built-In Agent Capabilities Level Up",
+      "summary": "Swift Assist, integrated into Xcode 27.1, supports multi-file refactoring and test generation, delivering a clear boost to Swift development speed.",
+      "detail": "Apple has officially opened Swift Assist to all developers in Xcode 27.1, supporting multi-file code completion, automated refactoring, unit test generation and SwiftUI preview error fixes. In testing, it cuts coding time on typical CRUD business development by around 35%. Compared with third-party tools, Swift Assist is deeply integrated with SourceKit and Swift semantic analysis, accurately understanding project dependencies and macro expansions while hewing much more closely to a project's existing code style. It is currently free for paid developer accounts, with limits on model call frequency; Apple says an unlimited subscription tier will follow.",
+      "impact": "Apple's own entry into the AI-assisted coding arena will further deepen stickiness in the iOS developer ecosystem, squeezing the share of cross-platform IDE tools on Apple platforms.",
+      "source": "Apple Developer official announcement"
      }
     ]
    },
    {
     "id": "startups",
-    "title": "Rising Tech Startups",
+    "title": "Startups",
     "icon": "🚀",
     "articles": [
      {
       "id": "brief-st-001",
-      "title": "Agent Infrastructure Startup Runlayer Raises Series A, Bets on Agent Observability",
-      "summary": "Runlayer has raised tens of millions of dollars, centering its pitch on agent trace tracking, cost attribution and hallucination detection.",
-      "detail": "Startup Runlayer announced the completion of a Series A round led by a prominent fund. Its product offers full-chain agent call tracing, tool-call auditing, cost attribution (down to the model and tool spend of a single task) and output quality detection, with support for integration with mainstream frameworks such as OpenClaw and LangGraph. The founding team hails from the observability division of a major cloud vendor and stresses that \"the first hurdle for agents entering production is not intelligence, but explainability.\" The company already has early customers in finance and e-commerce.",
-      "impact": "As agents move from demos to production, observability and governance are among the first capabilities purchased. This track could replicate the market path taken by APM and logging platforms, making it one of the more certain bets in enterprise infrastructure today.",
-      "source": "The Information / Company press release"
+      "title": "Embodied AI Firm \"Lingyu Zhixing\" Raises 800 Million Yuan in Series B Round",
+      "summary": "Focuses on general-purpose manipulation robots for industrial settings; its dual-arm robots have been deployed in batch at three leading manufacturers.",
+      "detail": "Embodied AI company Lingyu Zhixing announced the completion of an 800 million yuan Series B round, co-led by a state-backed fund and a top-tier USD venture fund. The company develops general-purpose manipulation robots for industrial scenarios. Its dual-arm robot products use vision-language-action (VLA) models to achieve zero-shot transfer across grasping, assembly, and inspection tasks, and have already been deployed in batch at leading companies in the 3C electronics, auto parts, and new energy sectors. The founding team hails from Tsinghua University and ABB's robotics division. Proceeds will fund capacity expansion and overseas channel development, with the company planning to begin STAR Market listing guidance in 2027.",
+      "impact": "Capital continues to concentrate on leading embodied AI players. Industrial use cases, with measurable ROI, are first to prove out commercial models; component and full-system supply chains will benefit in step.",
+      "source": "36Kr / Company press release"
      },
      {
       "id": "brief-st-002",
-      "title": "Veridex's Medical Documentation Automation Surpasses $10M ARR in Six Months",
-      "summary": "The startup uses purpose-built models plus a strict citation mechanism to handle medical records and insurance paperwork, with a focus on traceability and auditability.",
-      "detail": "Medical documentation automation company Veridex disclosed that its ARR has surpassed $10 million within six months. At its core are purpose-built models for medical records, discharge summaries, insurance pre-authorizations and similar use cases, which require every generated passage to link back to the original source fragment. The company has passed information security reviews at multiple hospitals. It operates a dual model of per-document pricing plus private deployment, with revenue coming mainly from mid-to-large hospital groups and insurance providers. Next, it plans to expand into clinical trial documentation and real-world research data curation.",
-      "impact": "Healthcare is one of the industries with the highest barriers to AI adoption but also the strongest willingness to pay. Veridex's growth validates the \"vertical specialization plus auditability\" approach and offers a reference point for any AI company targeting highly regulated industries.",
-      "source": "Fierce Healthcare / Funding database"
+      "title": "AI Security Startup \"GuardLayer\" Lands Joint Investment from Nvidia and a16z",
+      "summary": "Focuses on LLM output safety and compliance auditing, offering real-time inference interception for financial and healthcare clients.",
+      "detail": "AI security startup GuardLayer announced a $65 million Series A round co-led by Nvidia and a16z. The company's product builds a \"security gateway\" around large-model inference pipelines, detecting risks such as prompt injection, sensitive data leakage, and unauthorized tool calls in real time, while generating compliance audit reports aligned with the EU AI Act and China's generative AI management measures. Its customer base is currently concentrated among Western financial institutions and healthcare groups, with annual revenue already in the tens of millions of dollars. As global AI regulation tightens, inference-layer security is becoming a must-have rather than an optional feature for LLM deployment.",
+      "impact": "AI security is shifting from a \"compliance cost\" to a \"procurement prerequisite.\" Related startups will quickly enter large-enterprise vendor ecosystems, with a market window of roughly two years.",
+      "source": "TechCrunch"
      },
      {
       "id": "brief-st-003",
-      "title": "Hardware Startup Halo Devices Launches Screenless AI Wearable, Sells Out on Preorder Day One",
-      "summary": "The matchbox-sized device focuses on all-day voice recording and on-device summarization; 50,000 units sold out on the first day of preorders.",
-      "detail": "Halo Devices unveiled its first screenless AI wearable, weighing under 30 grams, with all-day voice recording, speaker diarization, meeting summaries and action-item extraction. Core processing runs locally, and uploads happen only after user confirmation. Compared with earlier \"AI recording pendant\" products, it shows clear improvements in battery life (18 hours), pickup noise cancellation and local model efficiency, and the companion app syncs with mainstream calendar and task tools. All 50,000 units sold out on the first day of preorders, though comment sections have seen substantial debate over recording ethics and the duty to inform.",
-      "impact": "The decisive factor in AI hardware is shifting from \"does it look like a phone\" to \"does it solve a frequent, small pain point.\" It also serves as a reminder to the industry: always-on recording products must build notification and compliance mechanisms into the design, otherwise the faster they grow, the greater the regulatory risk.",
-      "source": "The Verge / Official store"
+      "title": "Open-Source Vector Database Startup \"VectorForge\" Gains 20,000 GitHub Stars in a Month",
+      "summary": "Wins on ultra-lightweight design and multimodal indexing, pitching single-node deployment with cloud-native scaling for RAG infrastructure.",
+      "detail": "The open-source project VectorForge saw its GitHub star count grow by more than 20,000 in a single month, emerging as a dark horse in the RAG infrastructure space. The project's selling point is \"zero-dependency, runs on a single machine,\" supporting tens of millions of vector queries in a single process, while natively integrating hybrid retrieval across sparse vectors, scalar quantization, and graph indexes. Core team members come from the Milvus and Qdrant communities. On the commercialization front, the company has completed a seed round and plans to monetize through managed cloud services and enterprise-grade security features. Multiple analysts say the vector database sector is entering a second phase of competition, shifting from \"does it exist\" to \"cheaper and better.\"",
+      "impact": "Lightweight vector databases lower the deployment barrier for RAG applications, further reducing the cost for small and mid-sized teams to build enterprise knowledge bases.",
+      "source": "GitHub Trending / The New Stack"
      }
     ]
    }
   ]
  },
  "hotProjects": {
-  "date": "October 24, 2026",
-  "quote": "Trends aren't meant to be chased — they're meant to reveal who solves the real problem first.",
-  "summary": "Biggest trend of the day: multi-agent orchestration and browser automation are pushing AI agents from \"demo-ready\" to \"delivery-ready,\" with observability and on-device inference rising alongside.",
+  "date": "2026-10-25",
+  "quote": "In a strong wind, even pigs can fly — but only those that grow wings will keep soaring after the wind dies down.",
+  "summary": "Agent infrastructure and embodied AI are both heating up. \"Letting AI actually get the job done\" has become the defining theme of this quarter's investment and startup activity.",
   "projects": [
    {
     "id": "hot-001",
     "rank": 1,
-    "name": "OpenClaw Swarm Scheduler (Multi-Agent Orchestration)",
+    "name": "MCP Tool Ecosystem (Model Context Protocol)",
     "heat": "🔥🔥🔥🔥🔥",
     "heatLevel": 5,
-    "oneLiner": "Turns multi-agent collaboration from hand-written code into declarative config, boosting long-task efficiency several-fold.",
-    "whyHot": "v0.14 ships parallel scheduling, sandbox isolation, and failure retries out of the box, hitting the pain point of \"complex workflows that won't build or run reliably.\" Paired with the ClawHub plugin ecosystem and cloud-hosted services, OpenClaw has evolved from a technical framework into a de facto standard candidate, with community PRs and plugin counts hitting record weekly growth.",
+    "oneLiner": "The universal protocol connecting models to everything — becoming the HTTP of the AI era.",
+    "whyHot": "The MCP protocol, led by Anthropic, has won sequential backing from OpenAI, Google, Microsoft and other giants. Major SaaS vendors have rolled out official MCP Servers in rapid succession over the past two months. Unification at the protocol layer has slashed the cost of tool integration, and a full commercial ecosystem around MCP — gateways, authentication, monitoring, and hosting services — is taking shape, positioning it as the most certain investment thesis in this wave of AI infrastructure.",
     "highlights": [
-     "Declarative YAML orchestration sharply lowers the multi-agent development bar",
-     "WebAssembly sandbox isolation meets enterprise security and compliance needs",
-     "ClawHub plugin marketplace forms an ecosystem moat",
-     "Hosted services from major cloud vendors are rolling out"
+     "Big-tech consensus reached; de facto standard status secured",
+     "Explosive demand for enterprise-grade MCP gateways and auditing tools",
+     "Domestic cloud providers accelerating integration, leaving a gap for localized services",
+     "Developers commanding the protocol gain significantly stronger bargaining power"
     ],
-    "riskTip": "Rapid ecosystem expansion could bring uneven plugin quality and supply-chain security risks; with no settled standard, a competing protocol from a tech giant could fork the road."
+    "riskTip": "The protocol is still iterating fast, so early implementations may face costly compatibility rework. Watch also for tech giants eventually closing the ecosystem through proprietary extensions."
    },
    {
     "id": "hot-002",
     "rank": 2,
-    "name": "Browser-Use-Style Browser Automation Skills",
+    "name": "Embodied AI Industrial Robots (VLA Models)",
     "heat": "🔥🔥🔥🔥🔥",
     "heatLevel": 5,
-    "oneLiner": "Lets AI drive browsers directly, bringing API-less legacy systems into automation.",
-    "whyHot": "The browser is the largest GUI asset, and the vast majority of enterprise systems, government portals, and e-commerce backends still have no API. With mature vision + DOM dual-channel targeting, high-frequency repetitive work — form filling, price comparison, data scraping — can be replaced reliably. Downloads up 210% week on week, with growing adoption cases in operations and finance roles.",
+    "oneLiner": "Putting large models into robotic arms to make \"lights-out\" factories a reality.",
+    "whyHot": "The maturation of vision-language-action (VLA) models has freed general-purpose manipulation robots from scene-by-scene programming. Zero-shot transfer capabilities have cut deployment cycles from months to weeks. Facing persistent labor shortages, manufacturers can now quantify ROI, and capital is flooding into leading projects — total funding in China's embodied AI sector this quarter has already exceeded RMB 10 billion.",
     "highlights": [
-     "Vision + DOM dual-channel targeting delivers high success rates on complex pages",
-     "Action recorder: capture a human workflow once and replay it as an agent flow",
-     "Chrome extension format — zero deployment to get started",
-     "Clear ROI in cross-border price comparison and bulk back-office operations"
+     "Consumer electronics, autos, and new energy lead the first wave of large-scale deployment",
+     "State-backed and industrial capital deeply involved; IPO pathways opening",
+     "Domestic substitution of core components accelerating, driving costs sharply lower",
+     "The data flywheel is becoming the key long-term moat"
     ],
-    "riskTip": "Uses like bypassing CAPTCHAs or bulk scraping carry compliance and account-ban risks; critical business processes still need human review — don't fully hand over."
+    "riskTip": "Fragmented application scenarios keep delivery costs high, and some companies' valuations are stretched. Focus on gross margins and genuine order quality to avoid speculative hype."
    },
    {
     "id": "hot-003",
     "rank": 3,
-    "name": "Agent Observability Platforms (Led by Runlayer)",
+    "name": "On-Device Personal Memory AI (Personal Memory Agent)",
     "heat": "🔥🔥🔥🔥",
     "heatLevel": 4,
-    "oneLiner": "An \"APM for agents\" offering call-chain tracing, cost attribution, and hallucination detection.",
-    "whyHot": "The biggest barrier to agents reaching production has shifted from \"not smart enough\" to \"not explainable, not controllable.\" Enterprises need to know what a task cost, which tools it called, and where it failed. The business path benchmarked against APM and logging platforms is clear, with strong willingness to pay: one startup has landed orders from multiple financial institutions within six months, and its funding pace has clearly accelerated.",
+    "oneLiner": "Your digital brain — privacy first, never forgets.",
+    "whyHot": "As on-device model capabilities improve alongside rising user privacy concerns, \"local personal knowledge bases + natural language search\" has become a new blue ocean for indie developers. Several products have reached $1M in monthly recurring revenue at roughly $10 subscription price points, validating the viability of high-price-point consumer offerings. Major note-taking apps have yet to complete their AI transformations, leaving a clear market window.",
     "highlights": [
-     "Full-chain call tracing with per-task cost attribution",
-     "Tool-call auditing and permission allowlists for compliance",
-     "Output quality and hallucination detection to support human-in-the-loop fallback",
-     "Compatible with mainstream frameworks including OpenClaw and LangGraph"
+     "On-device inference makes privacy-sensitive use cases viable",
+     "Subscription model with high retention — healthy unit economics",
+     "Integration with wearables spawning new interaction paradigms",
+     "Small indie teams can unlock scaled revenue"
     ],
-    "riskTip": "Barriers in this segment are relatively low, leaving it vulnerable to bundling by cloud vendors; early on, watch for revenue concentration risk from over-reliance on a few large customers."
+    "riskTip": "Retention for memory products depends on sustained value delivery — beware \"novelty fatigue.\" Once incumbents close the gap with system-level entry points (e.g., Apple Intelligence), the competitive pressure will be existential."
    },
    {
     "id": "hot-004",
     "rank": 4,
-    "name": "On-Device AI Wearables and Edge Inference SDKs",
+    "name": "AI Inference Security & Compliance Gateway",
     "heat": "🔥🔥🔥",
     "heatLevel": 3,
-    "oneLiner": "Local models plus portable hardware,主打 offline-ready, privacy-first voice and vision AI.",
-    "whyHot": "iOS 26.1 opening on-device model loading APIs and sell-out preorders for screenless devices like Halo point to one trend: inference costs and privacy anxiety are pushing AI local. Offline summarization and translation have become new selling points for note-taking, reading, and camera apps; on the hardware side, the market is won by solving one high-frequency pain point rather than form-factor innovation.",
+    "oneLiner": "The security checkpoint for LLM deployment — the tighter the regulation, the hotter the business.",
+    "whyHot": "The enforcement of the EU AI Act and the normalization of generative AI filing requirements in China have turned inference-side security from an option into a hard procurement threshold. Financial, healthcare, and government clients deploying large models must now include content auditing, privilege-abuse interception, and compliance logging. This has given rise to a distinct \"AI security gateway\" category, with leading startups already backed by top-tier firms and entering scaled revenue phases.",
     "highlights": [
-     "Mature on-device SDKs: 3B-class models hit roughly 20 tokens/s",
-     "Strong willingness to pay for offline capability in privacy-sensitive fields like healthcare and legal",
-     "Screenless/small-screen hardware breaking through with a single high-frequency use case",
-     "Edge-cloud hybrid becomes the mainstream architecture, cutting inference costs significantly"
+     "Policy-driven demand is inelastic; strong willingness to pay",
+     "Synergies with API gateways and data security products",
+     "Audit-reporting capabilities are a scoring bonus in government and enterprise tenders",
+     "Early-stage sector with an unsettled landscape; roughly a two-year window"
     ],
-    "riskTip": "Recording devices face disclosure obligations and privacy compliance pressure; hardware carries high supply-chain and inventory risk, and big players can undercut with system-level capabilities at any time."
+    "riskTip": "Demand is highly dependent on regulatory cadence — shifts in policy tightness could affect growth. Cloud providers are also likely to build in basic security capabilities themselves, leaving room for differentiation as the main challenge."
    }
   ]
  }

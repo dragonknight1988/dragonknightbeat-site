@@ -1,16 +1,15 @@
 {
- "date": "2026-10-24",
- "weekday": "Saturday",
- "overview": "Long March spirit-themed publicity sweeps across the internet, while livelihood and foreign trade topics such as earthquake relief, the Canton Fair, and youth health also draw widespread attention.",
+ "date": "2026-10-25",
+ "weekday": "Sunday",
+ "overview": "The Long March spirit remains ever vital, the economy steadied with progress in the first three quarters, and emergency rescue, AI manufacturing, and sporting breakthroughs together sketch the picture of development.",
  "trendingTopics": [
   "Long March spirit",
-  "Earthquake relief",
-  "Canton Fair",
-  "Computing power infrastructure",
-  "New energy vehicles",
-  "Youth health",
-  "Public health",
-  "Inbound tourism"
+  "Emergency rescue",
+  "Xiongan New Area",
+  "Foreign trade exports",
+  "AI manufacturing",
+  "Paralympic sports",
+  "Civil service exam"
  ],
  "sections": [
   {
@@ -20,205 +19,202 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "习近平提出“五个必须”走好新的长征路",
-     "summary": "习近平就如何走好新的长征路提出“五个必须”，为新时代传承长征精神指明方向。",
-     "detail": "围绕走好新的长征路这一时代课题，习近平提出“五个必须”的重要要求。相关报道强调弘扬伟大长征精神，走好新时代的长征路。",
-     "impact": "为新时代弘扬长征精神、推进各方面工作提供方向指引。",
-     "importance": "hot",
+     "title": "In-Depth: Four Forces Behind the Long March Spirit",
+     "summary": "An in-depth feature examines the four forces embedded in the Long March spirit, reflecting its inheritance and value in the new era.",
+     "detail": "The in-depth column focuses on the Long March spirit, interpreting it through four dimensions of force. The report places the Long March spirit in a contemporary context, highlighting its guiding role for the new era.",
+     "impact": "A contemporary interpretation of the Long March spirit helps build social consensus and provides moral momentum for overcoming challenges.",
+     "importance": "important",
      "tags": [
-      "党政要闻",
-      "长征精神",
-      "红色文化"
+      "Long March Spirit",
+      "Civic-Moral Development"
      ]
     },
     {
      "id": "news-002",
-     "title": "新一届新疆维吾尔自治区党委领导班子亮相",
-     "summary": "新一届新疆维吾尔自治区党委领导班子正式亮相，新一届领导集体受到关注。",
-     "detail": "新一届新疆维吾尔自治区党委领导班子集体亮相，相关报道关注新一届班子的组成与履新情况。",
-     "impact": "地方领导班子换届履新，将影响该区域后续治理与发展部署。",
-     "importance": "important",
+     "title": "From the Epicenter in Baxing: A Hearth Fire and a Guardian's Watch",
+     "summary": "Dispatches from the epicenter in Baxing capture a hearth fire, a bowl of dumplings and a guardian's watch, showing the warmth and steadfastness on the frontline of rescue operations.",
+     "detail": "The report opens with on-the-ground accounts from the epicenter in Baxing, describing scenes of a hearth fire, a bowl of dumplings and a guardian's watch. It highlights the warm details and unwavering commitment on the disaster relief frontline. A related report captured the rescuers' refrain: \"Get the trapped people out as fast as possible.\"",
+     "impact": "Frontline coverage of disaster relief spreads positive energy and underscores the importance of grassroots emergency response and humanitarian care.",
+     "importance": "hot",
      "tags": [
-      "地方治理",
-      "党政建设",
-      "区域发展"
+      "Emergency Rescue",
+      "Natural Disasters"
      ]
     },
     {
      "id": "news-003",
-     "title": "人民子弟兵投入西藏巴青抗震救灾",
-     "summary": "西藏巴青地震发生后，人民子弟兵迅速投入抗震救灾，全力开展救援工作。",
-     "detail": "西藏巴青发生地震后，人民子弟兵第一时间投入抗震救灾。消防员在那曲地震灾区支起锅灶，保障受灾群众与救援人员的热食供应。",
-     "impact": "军地力量快速集结投入救援，有助于稳定灾区秩序、保障群众基本生活。",
-     "importance": "hot",
+     "title": "Xiongan Presents Its \"City of the Future\" Brand to the World",
+     "summary": "Xionga New Area unveils its \"city of the future\" image to the world, showcasing the progress of its construction and a new urban development philosophy.",
+     "detail": "The report focuses on Xiong'an New Area's external presentation as a \"city of the future.\" Xiong'an is showcasing its urban construction and development achievements to the world under this flagship brand.",
+     "impact": "Xiong'an New Area's brand showcase is set to draw greater international attention, boosting coordinated regional development and the creation of an urban model.",
+     "importance": "important",
      "tags": [
-      "抗震救灾",
-      "应急救援",
-      "消防救援"
+      "Xiong'an New Area",
+      "Urban Development",
+      "Regional Coordination"
      ]
     },
     {
      "id": "news-004",
-     "title": "福建前首富林秀成被批捕",
-     "summary": "福建前首富林秀成被批捕，相关案件进展引发社会关注。",
-     "detail": "福建前首富林秀成被批捕的消息引发关注。素材未披露案件更多细节。",
-     "impact": "涉及知名企业家的案件进展，或对企业经营与市场信心产生影响。",
-     "importance": "important",
+     "title": "New Guangzhou Rule: E-Bikes Can Be Impounded for Repeat Offenses",
+     "summary": "Guangzhou introduces a new rule allowing electric bicycles to be impounded for repeated violations, tightening enforcement of road traffic order.",
+     "detail": "Guangzhou has issued a new rule under which electric bicycles — locally known as \"dian ji\" — can be impounded for repeat violations. The rule aims to intensify enforcement against e-bike traffic offenses.",
+     "impact": "The new local traffic rule is expected to improve urban commuting order and raise compliance requirements for the electric bicycle industry.",
+     "importance": "normal",
      "tags": [
-      "法治建设",
-      "企业合规",
-      "民营经济"
+      "Electric Bicycles",
+      "Traffic Enforcement",
+      "Local Legislation"
      ]
     },
     {
      "id": "news-005",
-     "title": "互联网联合辟谣平台上线运行",
-     "summary": "互联网联合辟谣平台相关消息发布，聚焦网络信息治理与谣言澄清。",
-     "detail": "互联网联合辟谣平台相关消息受到关注，指向网络信息治理与谣言澄清机制建设。",
-     "impact": "有助于提升网络信息可信度、净化舆论环境。",
-     "importance": "normal",
+     "title": "Civil Service Exam Registration Closes with Over 3 Million Approved",
+     "summary": "Registration for the national civil service exam has closed, with over 3 million applicants passing review. The most popular position drew a competition ratio of 5,840 to 1.",
+     "detail": "Registration for the national civil service exam has concluded. More than 3 million applicants have passed the eligibility review. The hottest position saw a competition ratio of 5,840 applicants per opening.",
+     "impact": "The continued rise of the national civil service exam reflects the appeal of public sector employment and offers a window into the job market.",
+     "importance": "important",
      "tags": [
-      "网络治理",
-      "辟谣机制",
-      "公共信息"
+      "Civil Service Exam",
+      "Job Market",
+      "Public Sector"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "World Affairs",
+   "title": "International Politics",
    "icon": "🌍",
    "articles": [
     {
      "id": "news-006",
-     "title": "Japanese Citizens Rally Against Military Expansion and Constitutional Revision",
-     "summary": "Citizens across Japan held rallies opposing the Takaichi government's push for military buildup and constitutional amendment, citing growing risks of war.",
-     "detail": "Japanese citizens organized rallies to protest the Takaichi administration's drive to expand military capabilities and revise the constitution, with participants warning that such moves would raise the risk of conflict.",
-     "impact": "The developments have raised regional security concerns and may shape how neighboring countries assess the security environment.",
-     "importance": "important",
+     "title": "Japan Accelerates Push Toward Remilitarization",
+     "summary": "One year into Takaichi's premiership, Japan's government is speeding ahead on the path of remilitarization, drawing regional concern.",
+     "detail": "Reports indicate that on the one-year mark of Takaichi's time in office, the Japanese government is advancing more rapidly in the direction of remilitarization. Commentators described the current trend as a \"full-speed sprint,\" expressing concern over the regional security landscape.",
+     "impact": "Remilitarization trends heighten regional security uncertainty; neighboring parties must remain vigilant and maintain strategic resolve.",
+     "importance": "hot",
      "tags": [
-      "East Asian Affairs",
-      "Pacifism",
-      "Constitutional Revision Controversy"
+      "Regional Security",
+      "Northeast Asia Situation"
      ]
     },
     {
      "id": "news-007",
-     "title": "An Open China Continues to Move Toward the World in Mutual Embrace",
-     "summary": "Reports note that an open China maintains a two-way, mutually beneficial engagement with the rest of the world.",
-     "detail": "Coverage emphasizes that an open China remains committed to moving toward the world in a two-way embrace, pursuing common development through mutually beneficial cooperation.",
-     "impact": "The message of continued opening-up helps stabilize expectations for international cooperation and trade ties.",
+     "title": "Philippine Defense Chief's Provocations Toward China Draw Attention",
+     "summary": "The Philippine defense chief charges at China carrying a paper shield, with coverage depicting his provocative posture in satirical tones.",
+     "detail": "Reports use the metaphor of the defense chief \"charging at China while carrying a paper shield\" to portray his words and actions. The commentary is written with a satirical edge, criticizing the bluster behind his provocative posture.",
+     "impact": "Provocative rhetoric in the South China Sea undermines regional stability; concerned parties need to maintain strategic readiness and countermeasure preparedness.",
      "importance": "important",
      "tags": [
-      "Opening-Up",
-      "International Cooperation",
-      "Mutual Benefit"
-     ]
-    },
-    {
-     "id": "news-008",
-     "title": "What Are Foreign Tourists Loading Into Their Suitcases in China?",
-     "summary": "Foreign visitors are shopping enthusiastically in China, drawing attention to the Chinese goods filling their luggage.",
-     "detail": "Coverage highlights the shopping spree by foreign tourists in China, showcasing the wide range of Chinese products packed in their suitcases.",
-     "impact": "The rise in inbound shopping reflects growing appeal of the domestic consumer market and Chinese brands.",
-     "importance": "normal",
-     "tags": [
-      "Inbound Tourism",
-      "Cultural and Tourism Consumption",
-      "Chinese Brands Going Global"
+      "South China Sea Situation",
+      "Regional Security",
+      "Defense Developments"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance & Business",
+   "title": "Finance News",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-009",
-     "title": "Phase II of the 140th Canton Fair Opens After a 76-Hour Switchover",
-     "summary": "Phase II of the 140th Canton Fair opened on schedule after completing a 76-hour \"extreme switchover,\" drawing wide attention.",
-     "detail": "Phase II of the 140th Canton Fair officially opened after a 76-hour \"extreme switchover,\" with booths and exhibition zones rapidly switched over to ensure the fair proceeded as planned.",
-     "impact": "The Canton Fair is a key window for China's foreign trade; a smooth rollout helps stabilize order expectations among exporters.",
+     "id": "news-008",
+     "title": "Exports Top 8 Trillion Yuan for First Time, 'New' Drivers Lead the Way",
+     "summary": "China's export value has surpassed 8 trillion yuan for the first time, with 'new' growth drivers emerging as the core highlight of foreign trade growth.",
+     "detail": "Data shows China's exports have crossed the 8 trillion yuan mark for the first time. Reports highlight the leading role of 'new' drivers, underscoring their central contribution to foreign trade growth.",
+     "impact": "Breaking the export threshold for the first time reflects an optimized trade structure, with emerging industries set to serve as a key pillar in stabilizing foreign trade.",
      "importance": "hot",
      "tags": [
-      "Foreign Trade",
-      "Exhibition Economy",
-      "Cross-Border Trade"
+      "Foreign Trade Exports",
+      "New Growth Drivers",
+      "Foreign Trade"
+     ]
+    },
+    {
+     "id": "news-009",
+     "title": "Tax Big Data Offers a Window into Q1-Q3 Economic Performance",
+     "summary": "Xinhua's authoritative briefing uses tax big data as a lens to examine China's economic performance in the first three quarters.",
+     "detail": "Xinhua's authoritative briefing column uses tax big data as an observational angle, interpreting China's economic performance over the first three quarters from a tax perspective.",
+     "impact": "Tax big data provides important evidence for macroeconomic assessment and helps the market form stable expectations.",
+     "importance": "important",
+     "tags": [
+      "Macroeconomy",
+      "Tax Data",
+      "Economic Performance"
      ]
     },
     {
      "id": "news-010",
-     "title": "The Middle-Class Wardrobe Is Essentially One Giant Anta",
-     "summary": "Using the middle-class wardrobe as a lens, the article examines the outsized presence of domestic brand Anta in apparel consumption.",
-     "detail": "Starting from the wardrobes of China's middle class, the article discusses the penetration and influence of domestic brands such as Anta in the apparel market.",
-     "impact": "Reflects a shift in consumer preference toward domestic brands, potentially reshaping competition in the apparel industry.",
-     "importance": "normal",
+     "title": "Reading the Quality of the Industrial Economy in the First Three Quarters",
+     "summary": "The report focuses on industrial economic performance in the first three quarters, analyzing the quality and structural highlights of industrial operations.",
+     "detail": "The report examines overall industrial economic performance in the first three quarters, using 'quality' as the entry point to analyze the caliber and structure of industrial operations.",
+     "impact": "Industrial economic performance is a key indicator for gauging manufacturing sentiment and offers guidance for investment along the supply chain.",
+     "importance": "important",
      "tags": [
-      "Apparel Consumption",
-      "Domestic Brands",
-      "Consumer Trends"
+      "Industrial Economy",
+      "Manufacturing",
+      "Economic Performance"
      ]
     },
     {
      "id": "news-011",
-     "title": "Viral Perler Bead Shops Hit a Wave of Closures",
-     "summary": "Once-viral perler bead craft stores are shutting down en masse, drawing attention to the cooling of influencer-driven offline businesses.",
-     "detail": "Once-popular viral perler bead shops are facing a wave of closures, reflecting the operating pressures facing hands-on experience-based offline businesses.",
-     "impact": "Signals that influencer-driven offline formats need to focus on repeat purchases and costs to avoid business risks tied to a single burst of hype.",
+     "title": "The Middle-Class Wardrobe Is Basically One Big Anta",
+     "summary": "Under the headline 'The Middle-Class Wardrobe Is Basically One Big Anta,' the report focuses on the deep penetration of domestic sportswear brands into middle-class consumption.",
+     "detail": "The article, titled 'The Middle-Class Wardrobe Is Basically One Big Anta,' focuses on sportswear brands and middle-class consumption trends, highlighting the deep penetration of domestic brands into middle-class wardrobes.",
+     "impact": "The rise of domestic sportswear brands in the middle-class market reflects consumption upgrading and growing brand strength of Chinese labels.",
      "importance": "normal",
      "tags": [
-      "Cultural & Creative Consumption",
-      "Brick-and-Mortar Operations",
-      "Consumer Trends"
+      "Sportswear",
+      "Consumption Trends",
+      "Domestic Brands"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Tech Frontier",
+   "title": "Tech Frontiers",
    "icon": "💡",
    "articles": [
     {
      "id": "news-012",
-     "title": "What It Really Takes to House Computing Power",
-     "summary": "A WIC forum discussion explores the considerations behind \"housing\" computing power, covering the layout and construction of computing infrastructure.",
-     "detail": "The WIC Talk column focuses on computing infrastructure, discussing the many factors involved in site selection, layout and construction for data center capacity.",
-     "impact": "Growing discussion around computing infrastructure is expected to drive further improvements in related industry chains and standards.",
-     "importance": "important",
+     "title": "AI Reshapes Manufacturing: APEC Spotlight on the Greater Bay Area",
+     "summary": "Coverage focuses on how AI is transforming manufacturing under the APEC framework, showcasing applications that blend wearable mechs and creative design on the factory floor.",
+     "detail": "Through an 'APEC in the Bay Area' segment, the report examines how AI is reshaping manufacturing. Using vivid imagery of mechs donned on the body and creativity brought to the table, it illustrates AI applications across the production chain.",
+     "impact": "Deep integration of AI and manufacturing will accelerate industrial upgrading and speed up the emergence of a smart manufacturing ecosystem.",
+     "importance": "hot",
      "tags": [
-      "Computing Infrastructure",
-      "Data Centers",
-      "Information Technology"
+      "AI Manufacturing",
+      "Smart Manufacturing",
+      "Industrial Upgrading"
      ]
     },
     {
      "id": "news-013",
-     "title": "On the Ground: Tech Innovation Along the Long March Route",
-     "summary": "The report highlights technological innovation along the Long March route, showcasing a 90-year relay of spirit and scientific practice.",
-     "detail": "The report visits innovation hubs along the Long March route, observing how the transmission of revolutionary heritage intertwines with technological development.",
-     "impact": "The coverage highlights innovation vitality in old revolutionary base areas and沿线 regions, helping attract attention to related industries and talent.",
+     "title": "Can Stem Cell Infusions Costing Hundreds of Thousands Really Fight Aging?",
+     "summary": "The report questions whether stem cell infusions priced at hundreds of thousands of yuan truly deliver anti-aging effects, scrutinizing the science behind high-cost longevity treatments.",
+     "detail": "The report investigates anti-aging services involving stem cell infusions costing up to hundreds of thousands of yuan. It critically examines the scientific basis of such high-priced longevity consumption.",
+     "impact": "A science-based scrutiny of the anti-aging market can guide more rational consumer choices and underscores the need for stronger regulation and industry standards.",
      "importance": "normal",
      "tags": [
-      "Tech Innovation",
-      "Regional Development",
-      "Red Culture"
+      "Regenerative Medicine",
+      "Medical Aesthetics & Health",
+      "Health Spending"
      ]
     },
     {
      "id": "news-014",
-     "title": "Beloved National Car Brand Launches Its First EV",
-     "summary": "A once-iconic domestic car brand has launched its first electric vehicle, officially entering the new energy vehicle market.",
-     "detail": "A brand long known as the people's car of China has unveiled its first EV model, entering the competitive new energy vehicle segment.",
-     "impact": "A classic brand's entry into the new energy space could intensify competition in the relevant market niche.",
+     "title": "Does General Anesthesia Impair Memory After Surgery?",
+     "summary": "A science explainer addresses whether memory declines after general anesthesia under surgery, offering the public a medically grounded reference.",
+     "detail": "The article uses the question 'Does memory worsen after general anesthesia?' as an entry point to respond to common public concerns about the side effects of anesthesia.",
+     "impact": "Anesthesia literacy helps ease patients' pre-surgical anxiety and improves public medical awareness and doctor-patient communication.",
      "importance": "normal",
      "tags": [
-      "New Energy Vehicles",
-      "Auto Industry",
-      "Electrification"
+      "Anesthesiology",
+      "Health Education",
+      "Clinical Medicine"
      ]
     }
    ]
@@ -230,67 +226,67 @@
    "articles": [
     {
      "id": "news-015",
-     "title": "Scoliosis Is Taking a Heavy Toll on Chinese Students",
-     "summary": "The article highlights the growing prevalence of scoliosis among Chinese students, warning that this health risk is increasingly affecting adolescents.",
-     "detail": "The report focuses on scoliosis among students, noting that the condition warrants vigilance and greater attention across the student population.",
-     "impact": "Could spur greater emphasis on school health screenings, posture management and related rehabilitation services.",
-     "importance": "important",
+     "title": "Chinese Para-Athletes Deliver Best-Ever Asian Para Games Performance",
+     "summary": "China's Paralympic delegation posted its best-ever result at an overseas Asian Para Games, showcasing elite sporting prowess.",
+     "detail": "China's Paralympic delegation achieved its best performance at an Asian Para Games held outside China, marking a major breakthrough in para-athletics.",
+     "impact": "The breakthrough in para-sports is expected to further advance accessible athletics and draw greater attention from across society.",
+     "importance": "hot",
      "tags": [
-      "Adolescent Health",
-      "Campus Health",
-      "Public Health"
+      "Para-Sports",
+      "Elite Athletics",
+      "Asian Para Games"
      ]
     },
     {
      "id": "news-016",
-     "title": "Southern Mosquito Species Are Migrating North in Droves",
-     "summary": "The article examines the northward spread of mosquito species from southern China, flagging potential health implications to watch.",
-     "detail": "The report covers the phenomenon of mosquitoes from southern China migrating northward in large numbers, and the possible impacts that could follow.",
-     "impact": "The shifting range of mosquito activity suggests northern regions need to step up surveillance and mosquito control measures.",
-     "importance": "important",
+     "title": "Xu Jiayu Breaks World Record in 50m Backstroke",
+     "summary": "Xu Jiayu set a world record in the 50m backstroke, delivering another landmark breakthrough for Chinese swimming.",
+     "detail": "Chinese swimmer Xu Jiayu broke the world record in the 50m backstroke, a significant milestone in the event.",
+     "impact": "The world-record swim boosts China's standing in international swimming and raises the profile of the event.",
+     "importance": "hot",
      "tags": [
-      "Public Health",
-      "Mosquito-Borne Diseases",
-      "Disease Control"
+      "Swimming",
+      "Elite Athletics",
+      "World Record"
      ]
     },
     {
      "id": "news-017",
-     "title": "Choosing Medication Within the First 48 Hours of the Flu",
-     "summary": "The author shares their experience selecting medications within the first 48 hours of catching the flu, focusing on rational drug use during flu season.",
-     "detail": "Drawing on personal experience, the author recounts medication choices made within 48 hours of flu onset, highlighting rational drug use and self-care during flu season.",
-     "impact": "As flu season approaches, such firsthand accounts can help raise public awareness of responsible medication use.",
-     "importance": "normal",
+     "title": "Scoliosis Weighs Heavy on Chinese Students",
+     "summary": "Coverage spotlights scoliosis among Chinese students, warning that the health threat is placing growing pressure on young people.",
+     "detail": "Under the headline \"Scoliosis Is Crushing Chinese Students,\" reports focus on spinal health problems among students, highlighting the real pressures the condition places on this group.",
+     "impact": "The student scoliosis problem underscores the need to strengthen youth fitness programs and school health management.",
+     "importance": "important",
      "tags": [
-      "Flu Prevention",
-      "Rational Medication Use",
-      "Respiratory Infectious Diseases"
+      "Youth Health",
+      "School Health",
+      "Public Health"
      ]
     },
     {
      "id": "news-018",
-     "title": "Beijing's Autumn Foliage Season Opens as Fragrant Hills Braces for Peak Crowds",
-     "summary": "Beijing's autumn leaf-viewing season has officially begun, with Fragrant Hills Park expected to see peak visitor numbers starting this weekend.",
-     "detail": "Beijing's autumn foliage season has officially kicked off, with Fragrant Hills set to welcome peak crowds from this weekend as demand for fall outings surges.",
-     "impact": "Rising autumn travel enthusiasm is expected to boost spending on local tourism, dining and transportation.",
+     "title": "Southern China's Dangerous Mosquitoes Are Migrating North",
+     "summary": "Reports track the northward spread of disease-carrying mosquitoes from southern China, reflecting shifts in insect distribution and climate conditions.",
+     "detail": "With the headline \"Southern China's Toxic Mosquitoes Are Migrating North in Droves,\" coverage examines the northward expansion of mosquito populations and its links to climate and environmental change.",
+     "impact": "Changes in mosquito distribution suggest public-health control measures need adjustment, while public awareness of mosquito prevention should be raised.",
      "importance": "normal",
      "tags": [
-      "Cultural & Tourism Spending",
-      "Autumn Travel",
-      "Urban Leisure"
+      "Public Health",
+      "Mosquito Control",
+      "Climate Change"
      ]
     },
     {
      "id": "news-019",
-     "title": "Can Stem Cell Infusions Costing Hundreds of Thousands Really Fight Aging?",
-     "summary": "The article explores whether high-priced stem cell infusions can genuinely deliver anti-aging effects, examining a growing health-consumption trend.",
-     "detail": "The report investigates whether stem cell infusions costing several hundred thousand yuan truly combat aging, scrutinizing the reality behind this segment of health spending.",
-     "impact": "Could encourage consumers to take a more rational view of expensive anti-aging treatments and promote better regulation of the sector.",
+     "title": "Choosing the Right Flu Medication Within 48 Hours",
+     "summary": "An author chronicles their medication choices during the first 48 hours of the flu, offering readers a personal reference for dealing with the virus.",
+     "detail": "The article recounts, from a personal perspective, the first 48 hours of dealing with the flu, sharing the author's experience in choosing the \"right\" medication.",
+     "impact": "Sharing flu medication experience helps the public respond rationally during flu season, though actual use should still follow medical advice.",
      "importance": "normal",
      "tags": [
-      "Wellness Industry",
-      "Biotech",
-      "Health Spending"
+      "Flu Prevention and Treatment",
+      "Public Health",
+      "Health Education"
      ]
     }
    ]
