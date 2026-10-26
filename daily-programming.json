@@ -1,39 +1,38 @@
 {
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "contents": [
     {
-      "id": "prog-2026-10-25",
-      "date": "2026-10-25",
-      "title": "Flutter 中的 Stream 与 StreamBuilder：构建实时数据流 UI",
-      "summary": "掌握 Dart Stream 的订阅机制，并用 StreamBuilder 高效驱动 UI 的实时更新。",
-      "difficulty": "中级",
-      "concept": "在 Flutter 中，当数据是「随时间不断产生」的——例如 WebSocket 消息、定位坐标、输入框的搜索词、传感器读数、数据库的实时监听——单次返回的 Future 就不够用了，这时就要用 Stream（数据流）。Stream 是 Dart 异步编程的核心抽象之一，可以把它理解为一条「会多次吐出数据的管道」：生产者通过 sink 把事件 add 进去，消费者通过 listen 或 await for 逐个接收。相比 Future 只能返回一次结果，Stream 能返回零次、一次甚至无限次事件，并且天然支持转换操作符（map、where、take、debounceTime 等），这让它非常适合做数据清洗与节流。\n\nStreamController 是创建 Stream 的常用方式。它有两个关键属性：sink（事件入口）和 stream（事件出口）。这里有一个非常容易踩坑的点：默认的 StreamController 是「单订阅（single-subscription）」的，只能被监听一次，第二次 listen 会直接抛出 StateError；而 StreamController.broadcast() 创建的广播流可以被多个监听者同时订阅，但代价是它不会缓存事件——如果没有监听者，add 进去的事件会被直接丢弃。实际工程中，如果一个流只需要喂给一个 StreamBuilder，用默认的即可；如果要同时喂给多个 Widget 或者做全局事件总线，就必须用 broadcast。\n\n与之配合的 StreamBuilder 是 Flutter 中最常用的「流驱动型」Widget。它在 build 中订阅 stream，并在每次收到新事件时调用 builder 重建局部 UI。它的 snapshot 参数是 AsyncSnapshot<T>，我们通常用 ConnectionState（none/waiting/active/done）、snapshot.hasData、snapshot.hasError、snapshot.data 来判断当前状态。一个常见的性能陷阱是：不要在 build 方法里直接调用 _controller.stream.map(...) 这样的链式转换来创建新的流，否则每次 rebuild 都会创建新的 Stream 对象，导致 StreamBuilder 反复取消并重新订阅，甚至造成数据错乱。正确的做法是在 State 的字段里把转换后的流提前算好，或者在 initState 中完成。\n\n生命周期管理是 Stream 的另一大重点。StreamController、Timer、Subscription 如果不在 dispose 中正确关闭，轻则内存泄漏，重则在 Widget 销毁后仍然收到事件导致 setState() called after dispose() 崩溃。黄金法则只有三条：在 initState 创建并订阅，在 dispose 中 cancel 订阅、cancel Timer、close controller。另外，如果你想把 Stream 转成 ValueNotifier 与其他状态管理方案（Provider、Riverpod）协作，可以用 rxdart 的 BehaviorSubject，它既能被多次订阅，又能缓存「最新一个值」，非常适合做状态容器。\n\n从架构角度看，Stream 是 Flutter 官方推荐的「响应式数据流」范式：业务层暴露 Stream<Model>，UI 层用 StreamBuilder 消费，两者彻底解耦。当你发现 setState 的粒度越来越难控制、整页 rebuild 越来越频繁时，把这块状态抽成一个 Stream 往往是性价比最高的重构方案。",
+      "id": "prog-2026-10-26",
+      "date": "2026-10-26",
+      "title": "Git 交互式 Rebase 与 Autosquash：构建可审计的提交历史与 CI 质量门禁",
+      "summary": "用 --autosquash 与 GIT_SEQUENCE_EDITOR 自动化整理提交历史，并把提交规范校验下沉到 CI 门禁中，实现「本地灵活、远端干净」的工程化提交流。",
+      "difficulty": "高级",
+      "concept": "在大型团队协作中，提交历史不是「个人笔记」，而是「可审计的工程资产」。Code Review、二分定位（git bisect）、自动化回滚、合规审计、Release Note 生成，全都依赖线性、语义清晰、粒度合理的 commit 序列。然而开发者在编码过程中必然会产生大量 WIP、fix typo、address review comments 之类的中间提交——如果直接推送，历史会被噪声淹没；如果每次手动 squash，又会打断心流。Git 的交互式 rebase（git rebase -i）配合 --autosquash 就是解决这一矛盾的关键机制：本地允许「脏历史」，推送前一键收敛为「干净历史」。\n\n--autosquash 的核心是与 git commit --fixup=<sha> / --squash=<sha> 的约定：当你执行 git commit --fixup=abc1234 时，Git 会生成一条 subject 为「fixup! <abc1234 的原 subject>」的提交；在 rebase -i --autosquash 时，Git 的 todo 序列会自动把这些 fixup! 提交移动到目标提交之后并标记为 fixup（内容合入但不保留独立消息）。--squash 则会额外把两条提交消息合并为一条，适合「补充实现 + 完善说明」的场景。两者的工程含义不同：fixup! 用于「代码补丁，消息无需变更」，squash! 用于「代码补丁，且原提交消息也需要修订」。\n\n自动化 rebase 的另一个关键点是 GIT_SEQUENCE_EDITOR。交互式 rebase 默认会打开编辑器让用户编辑 todo list，这在 CI/本地脚本中是阻塞的。把 GIT_SEQUENCE_EDITOR 设为 true（一个恒返回 0 的 shell 内建命令），Git 就会以「接受默认 todo 序列」的方式执行 rebase，从而实现完全非交互的 autosquash。这在 pre-push 钩子、CI 的 rebase 机器人（例如自研的 rebase-bot 或 GitHub Actions 中的 auto-update-branch）中是标准做法。注意必须配合 GIT_EDITOR 或 GIT_SEQUENCE_EDITOR 环境变量的隔离，避免污染开发者全局配置。\n\n在 DevOps 链路上，历史整理只是「提交质量门禁」的一半；另一半是提交消息的机器可读性。业界通行的 Conventional Commits（feat|fix|docs|refactor|test|chore|perf|ci + 可选 scope + 描述）能被 standard-version / release-please / semantic-release 直接消费，自动生成 CHANGELOG 与语义化版本号。因此 CI 中必须有一步强制校验 commit message 正则，否则版本自动化会在夜间发布时崩溃。经验表明：把这一步放在 PR 的 lint job（而非 commit-msg 钩子）上，既能保证「合并进主干的历史合规」，又不会阻碍开发者频繁 amend——本地钩子做「提示」，CI 做「强制」。\n\n最后是团队层面的分支策略协同。Trunk-Based Development（TBD）要求小步提交、频繁变基、短生命周期分支，这与 autosquash 天然契合：每天 rebase 一次主干，冲突最小、fixup 提交也最少。相对地，Git Flow 的长生命周期分支会让 rebase 成本指数上升，此时更适合用 merge + squash merge 保持主干线性。团队应在 CONTRIBUTING.md 中明确「变基责任归属」：谁的分支谁负责 rebase，rebase 后必须 force-with-lease 推送（绝不用 --force，防止覆盖他人推送），reviewer 只 review 增量 diff，不要求 rebase 后重新全量 review。",
       "codeExample": {
-        "language": "Dart",
-        "code": "import 'dart:async';\nimport 'package:flutter/material.dart';\n\nvoid main() => runApp(const MyApp());\n\nclass MyApp extends StatelessWidget {\n  const MyApp({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: 'StreamBuilder Demo',\n      theme: ThemeData(colorSchemeSeed: Colors.indigo, useMaterial3: true),\n      home: const StreamCounterPage(),\n    );\n  }\n}\n\n/// 用 StreamController 手动驱动的实时计数器\nclass StreamCounterPage extends StatefulWidget {\n  const StreamCounterPage({super.key});\n\n  @override\n  State<StreamCounterPage> createState() => _StreamCounterPageState();\n}\n\nclass _StreamCounterPageState extends State<StreamCounterPage> {\n  // 1) 广播流：可被多个 StreamBuilder 同时订阅\n  final StreamController<int> _controller = StreamController<int>.broadcast();\n  int _count = 0;\n  Timer? _timer;\n\n  // 2) 提前把「只取偶数 + 转字符串」的流算好，避免在 build 里反复创建\n  late final Stream<String> _evenText = _controller.stream\n      .where((n) => n % 2 == 0)\n      .map((n) => '当前是第 $n 次（偶数）');\n\n  @override\n  void initState() {\n    super.initState();\n    // 3) 每秒向流中推送一次自增数据\n    _timer = Timer.periodic(const Duration(seconds: 1), (_) {\n      _count += 1;\n      _controller.sink.add(_count);\n    });\n  }\n\n  @override\n  void dispose() {\n    // 4) 必须释放资源，否则内存泄漏 / 崩溃\n    _timer?.cancel();\n    _controller.close();\n    super.dispose();\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      appBar: AppBar(title: const Text('StreamBuilder 实战')),\n      body: Center(\n        child: Column(\n          mainAxisAlignment: MainAxisAlignment.center,\n          children: [\n            // 5) StreamBuilder 订阅流，收到事件就重建这个子树\n            StreamBuilder<int>(\n              stream: _controller.stream,\n              initialData: 0,\n              builder: (context, snapshot) {\n                if (snapshot.hasError) {\n                  return Text('出错了：${snapshot.error}');\n                }\n                if (snapshot.connectionState == ConnectionState.waiting) {\n                  return const CircularProgressIndicator();\n                }\n                return Text(\n                  '计数：${snapshot.data}',\n                  style: Theme.of(context).textTheme.headlineMedium,\n                );\n              },\n            ),\n            const SizedBox(height: 24),\n            // 6) 同一个广播流可以被第二个订阅者复用\n            StreamBuilder<String>(\n              stream: _evenText,\n              builder: (context, snapshot) => Text(\n                snapshot.data ?? '等待偶数……',\n                style: Theme.of(context).textTheme.bodyLarge,\n              ),\n            ),\n          ],\n        ),\n      ),\n    );\n  }\n}\n",
-        "explanation": "第 1 处用 StreamController<int>.broadcast() 创建广播流，允许两个 StreamBuilder 同时订阅同一个 _controller.stream。第 2 处把 where/map 的转换结果保存在 late final 字段中，只在首次访问时创建一次，避免每次 build 生成新流导致 StreamBuilder 重复订阅。第 3 处用 Timer.periodic 每秒通过 sink.add 把计数推入流，模拟「实时数据源」（真实项目里换成 WebSocket 或传感器回调即可）。第 4 处在 dispose 里 cancel Timer 并 close controller，这是必须写的收尾逻辑。第 5 处 StreamBuilder 根据 snapshot 的 hasError / connectionState / data 三种情况渲染不同 UI，initialData 提供了首次渲染的数据。第 6 处演示了广播流的复用能力：同一个数据源可以驱动多个独立 UI 片段，而不需要额外的状态提升。"
+        "language": "Bash",
+        "code": "#!/usr/bin/env bash\n# tools/commit-gate.sh —— 提交历史质量门禁\n# 用法: ./commit-gate.sh [base_branch]\n# 功能: 1) 自动 autosquash 整理历史  2) 校验 Conventional Commits  3) 限制单次 PR 提交数\nset -euo pipefail\n\nBASE_BRANCH=\"${1:-main}\"\nMAX_COMMITS=\"${MAX_COMMITS:-15}\"\n\nlog()  { printf '[%s] %s\\n' \"$(date +%H:%M:%S)\" \"$*\"; }\nfail() { printf '✗ %s\\n' \"$*\" >&2; exit 1; }\n\n# ---------- 1. 同步主干并计算差异 ----------\ngit fetch origin \"$BASE_BRANCH\" --quiet\nMERGE_BASE=$(git merge-base HEAD \"origin/$BASE_BRANCH\")\nCOMMIT_COUNT=$(git rev-list --count \"${MERGE_BASE}..HEAD\")\nlog \"分支相对 ${BASE_BRANCH} 共有 ${COMMIT_COUNT} 个提交\"\n\n[ \"$COMMIT_COUNT\" -le \"$MAX_COMMITS\" ] \\\n  || fail \"提交数 ${COMMIT_COUNT} 超过上限 ${MAX_COMMITS}，请合并零散提交\"\n\n# ---------- 2. 自动压缩 fixup!/squash! 提交 ----------\nif git log --format=%s \"${MERGE_BASE}..HEAD\" | grep -qE '^(fixup|squash)!'; then\n  log \"检测到 fixup/squash 提交，执行非交互 autosquash 变基\"\n  # GIT_SEQUENCE_EDITOR=true 表示「接受默认 todo 序列」，从而实现全自动 rebase\n  GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash \"origin/$BASE_BRANCH\"\nelse\n  log \"无待合并的 fixup 提交，跳过变基\"\nfi\n\n# ---------- 3. 校验 Conventional Commits ----------\nPATTERN='^(feat|fix|docs|refactor|test|chore|perf|ci|build)(\\([a-z0-9._/-]+\\))?!?: .{1,72}$'\nFAILED=0\nwhile read -r sha subject; do\n  if ! printf '%s' \"$subject\" | grep -qE \"$PATTERN\"; then\n    printf '✗ %s  提交信息不合规: %s\\n' \"$sha\" \"$subject\"\n    FAILED=1\n  fi\ndone < <(git log --format='%h %s' \"${MERGE_BASE}..HEAD\")\n\n[ \"$FAILED\" -eq 0 ] || fail \"提交信息校验失败，请参考 CONTRIBUTING.md 修正后重新 push\"\nlog \"✓ 提交历史通过全部质量门禁，可以发起 PR\"\n",
+        "explanation": "1) 顶部 set -euo pipefail 保证脚本在任何命令失败时立即退出，避免 CI 静默通过；BASE_BRANCH / MAX_COMMITS 支持环境变量覆盖，便于在不同仓库复用。\n2) git fetch origin \"$BASE_BRANCH\" 后用 git merge-base 计算三方合并基线，rev-list --count 统计本分支独有提交数；这是所有「PR 范围」判断的标准做法。\n3) 通过 git log --format=%s 检测是否存在 fixup!/squash! 前缀提交；若存在，执行 GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash，其中 GIT_SEQUENCE_EDITOR=true 让 Git 直接接受默认 todo 序列、不打开编辑器，实现完全非交互的自动变基与提交合并。\n4) 变基后重新以 MERGE_BASE 为基准扫描提交信息，用正则强制 Conventional Commits 格式（type(scope)!: description，描述 ≤72 字符）。注意 scope 为小写字母/数字/._-/\n5) while read 通过进程替换 < <(...) 读取 git log 输出，避免管道导致子 shell 中 FAILED=1 丢失；这是 Bash 脚本里最常见的坑。\n6) 最后 FAILED 为 0 时输出通过信息，否则以非零码退出，让 CI job 失败并阻断合并。"
       },
       "keyPoints": [
-        "Stream 是「多次吐出事件」的异步管道，适合 WebSocket、搜索输入、传感器等持续数据源；Future 只返回一次结果",
-        "StreamController 默认是单订阅的，第二次 listen 会抛 StateError；需要多订阅者时必须用 .broadcast()，但广播流不缓存事件",
-        "不要在 build 方法里临时创建/转换 Stream，应在 initState 或 final 字段中提前算好，否则会反复订阅、造成数据错乱",
-        "StreamBuilder 通过 AsyncSnapshot 的 connectionState、hasData、hasError、data 来分支渲染，务必处理 loading 与 error 状态",
-        "必须在 dispose 中 cancel 订阅与 Timer 并 close controller，否则内存泄漏或触发 setState() after dispose 崩溃",
-        "需要缓存「最新值」时可换用 rxdart 的 BehaviorSubject，它同时具备多订阅和状态容器能力"
+        "git commit --fixup=<sha> 生成「fixup! 原消息」提交，rebase -i --autosquash 会自动把它合并进目标提交且不保留独立消息；--squash 则会额外合并提交消息。",
+        "GIT_SEQUENCE_EDITOR=true 让交互式 rebase 非交互执行（接受默认 todo 序列），是 CI 中自动 rebase/autosquash 的标准技巧。",
+        "rebase 后推送必须用 git push --force-with-lease 而非 --force，防止覆盖同事已推送的提交。",
+        "Conventional Commits 正则校验应放在 CI 的 lint job 上做「强制门禁」，本地钩子只做「提示」，兼顾灵活性与历史合规。",
+        "Trunk-Based + 频繁 rebase 让 autosquash 成本最低；长生命周期分支（Git Flow）下应改用 squash merge 保持主干线性。"
       ],
       "exercise": {
-        "description": "实现一个「搜索框防抖（Debounce）」组件：用户在 TextField 中输入关键词，只有当停止输入 500 毫秒后，才把关键词交给模拟的搜索服务（Future<String>），并用 StreamBuilder 实时展示搜索结果。要求：用 Stream<String> 承接输入事件，自行实现 debounce 逻辑（可用 Timer），并在 dispose 中正确释放所有资源。",
-        "hint": "在 State 中维护一个 StreamController<String>（单订阅即可）和一个 Timer?。TextField 的 onChanged 把文本 add 进 sink；在监听到事件时先 _debounce?.cancel()，再启动一个 500ms 的 Timer，Timer 触发时才发起搜索并把结果 add 进结果 StreamController。注意把结果 Stream 也声明为 StreamController<String>，UI 只用一个 StreamBuilder 消费它。可以用 async* 或 stream.transform(StreamTransformer) 把 debounce 封装成可复用的操作符。",
+        "description": "在你自己的练习仓库中模拟一次「评审返工」流程：先做一个正常提交 A（feat: add health check endpoint），再用 git commit --fixup=A 创建补丁提交，接着用一条非交互命令完成 autosquash 变基，最后用 git log --oneline 验证历史中只剩一条提交 A'（消息仍为 feat: add health check endpoint，内容已包含补丁）。在此基础上，把上面的 commit-gate.sh 加到 .pre-commit-config.yaml 或 CI 的 lint stage 中，并故意造一条不合规的提交消息（如 update code）验证门禁能拦截。",
+        "hint": "关键命令是 git commit --fixup=<A 的短 SHA> 与 GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash origin/main。若仓库还没有 main，可用 git branch main HEAD~3 之类的空提交历史造一个基准分支。验证合并结果时可对比 git show A' 与原 A 的 diff 之和。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全 StreamBuilder 的关键参数，让它正确订阅计数流并把数据显示出来。",
-            "codeContext": "final StreamController<int> _controller = StreamController<int>();",
+            "question": "补全命令：让交互式 rebase 以「接受默认 todo 序列」的方式非交互执行 autosquash。",
+            "codeContext": "$ git commit --fixup=abc1234\n$ _______ git rebase -i --autosquash origin/main",
             "segments": [
               {
                 "type": "text",
-                "content": "StreamBuilder<int>(\n  stream: _controller.stream,\n  ",
+                "content": "$ ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -41,73 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[填入环境变量赋值]",
                 "options": [
-                  "builder:",
-                  "initState:",
-                  "listen:"
+                  "GIT_SEQUENCE_EDITOR=true",
+                  "GIT_EDITOR=true",
+                  "GIT_SEQUENCE_EDITOR=vim",
+                  "EDITOR=/bin/true GIT_PAGER=cat"
                 ],
-                "correctAnswer": "builder:"
+                "correctAnswer": "GIT_SEQUENCE_EDITOR=true"
               },
               {
                 "type": "text",
-                "content": " (context, snapshot) {\n  return Text('",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "snapshot.data",
-                  "snapshot.value",
-                  "snapshot.state"
-                ],
-                "correctAnswer": "snapshot.data"
-              },
-              {
-                "type": "text",
-                "content": ".toString()');\n},\n)",
+                "content": " git rebase -i --autosquash origin/main",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "builder: ... snapshot.data",
-            "explanation": "StreamBuilder 必须接收 stream（数据来源）和 builder（构建函数）两个参数；AsyncSnapshot 中承载最新事件的字段是 data，而不是 value 或 state。connectionState 描述的是连接状态（waiting/active/done），与数据本身无关。"
+            "correctAnswer": "GIT_SEQUENCE_EDITOR=true",
+            "explanation": "交互式 rebase 由两个编辑器控制：GIT_SEQUENCE_EDITOR 负责编辑 todo list，GIT_EDITOR 负责编辑提交消息。autosquash 需要 Git 按自动生成的 todo 序列执行，因此只需把 GIT_SEQUENCE_EDITOR 设为恒成功的 true 即可跳过人工编辑；GIT_EDITOR=true 只影响提交消息编辑，无法跳过 todo 编辑。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 StreamController 的单订阅流与广播流，下列说法正确的是？",
-            "codeContext": "final c1 = StreamController<int>();\nfinal c2 = StreamController<int>.broadcast();",
+            "question": "关于 git commit --fixup 与 --squash 的区别，下列说法正确的是？",
+            "codeContext": "$ git commit --fixup=abc1234     # 生成 fixup! <原消息>\n$ git commit --squash=abc1234    # 生成 squash! <原消息>",
             "segments": null,
             "options": [
-              "默认的单订阅流可以被多个 StreamBuilder 同时订阅，Flutter 会自动分发事件",
-              "广播流没有监听者时 add 的事件会被缓存，等到有订阅者后再补发",
-              "单订阅流第二次 listen 会抛出 StateError，而广播流支持多个订阅者",
-              "广播流性能更好，所有场景都应该优先使用 broadcast()"
+              "fixup! 提交变基后会保留为独立提交，只调整顺序",
+              "squash! 提交变基后会把补丁合入目标提交，并把两条提交消息合并供再次编辑",
+              "两者变基后都会自动生成一条 merge commit",
+              "--fixup 只修改提交消息，不会包含工作区的代码改动"
             ],
-            "correctAnswer": "单订阅流第二次 listen 会抛出 StateError，而广播流支持多个订阅者",
-            "explanation": "单订阅 Stream 只允许一个 listener，重复 listen 直接抛 StateError；广播（broadcast）流支持任意多个订阅者，但它是「即发即弃」的——没有订阅者时事件直接丢弃，不会缓存。只有当确实需要多订阅者或事件总线时才用 broadcast，单订阅流在内存和调度上更轻量。"
+            "correctAnswer": "squash! 提交变基后会把补丁合入目标提交，并把两条提交消息合并供再次编辑",
+            "explanation": "fixup! 与 squash! 在 autosquash 时都会把补丁合并进目标提交，区别在于消息处理：fixup 直接丢弃补丁提交的消息；squash 会把两条消息拼接起来并打开编辑器（非交互场景下需配合 GIT_EDITOR=true）让你修订最终消息。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下 Dart 代码运行后会输出什么？",
-            "codeContext": "Stream<int> numbers() async* {\n  for (var i = 1; i <= 5; i++) {\n    yield i;\n  }\n}\n\nFuture<void> main() async {\n  await for (final n in numbers().where((n) => n.isEven)) {\n    print(n);\n  }\n}",
+            "question": "以下脚本的输出是什么？",
+            "codeContext": "#!/usr/bin/env bash\nPATTERN='^(feat|fix|docs|refactor|test|chore|perf|ci|build)(\\([a-z0-9._/-]+\\))?!?: .{1,72}$'\n\nfor subject in \"feat(api): add health check\" \"feat:add api\" \"chore(deps): bump lodash to 4.17.21\"; do\n  if printf '%s' \"$subject\" | grep -qE \"$PATTERN\"; then\n    echo \"PASS\"\n  else\n    echo \"FAIL\"\n  fi\ndone",
             "segments": null,
             "options": [
-              "1 2 3 4 5",
-              "2 4",
-              "2 4 6",
-              "只输出 1"
+              "PASS\nFAIL\nPASS",
+              "PASS\nPASS\nFAIL",
+              "FAIL\nFAIL\nPASS",
+              "PASS\nFAIL\nFAIL"
             ],
-            "correctAnswer": "2 4",
-            "explanation": "async* + yield 构成一个会依次吐出 1~5 的 Stream。where((n) => n.isEven) 只放行偶数，因此下游只会收到 2 和 4。注意 .where 返回的是一个新的 Stream，并且是对原流的一层「懒」包装，只有 await for 真正开始消费时事件才会被拉取，所以不会打印 6（源流最大只到 5）。"
+            "correctAnswer": "PASS\nFAIL\nPASS",
+            "explanation": "第一条 feat(api): add health check 符合 type(scope): description，PASS。第二条 feat:add api 在 type 后缺少必需的空格（正则要求 !?: 后跟一个空格再接描述），FAIL。第三条 chore(deps): bump lodash to 4.17.21 的 scope 为小写字母 deps，符合 [a-z0-9._/-]+，且描述长度 <72，PASS。"
           }
         ]
       }

@@ -1,192 +1,181 @@
 {
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "content": {
-    "id": "en-2026-10-25",
-    "date": "2026-10-25",
-    "topic": "健康与生活",
+    "id": "en-2026-10-26",
+    "date": "2026-10-26",
+    "topic": "环境与可持续发展",
     "newsHighlights": [
       {
-        "title": "Warm meals and shelter for quake-hit areas",
-        "source": "China Daily",
-        "summary": "Temporary housing units have been rushed in from Lhasa to provide warm meals and shelter for people affected by the magnitude-7.0 earthquake in Nagqu, Xizang.",
-        "translation": "为西藏那曲地震灾区送去热饭和住所：大批临时安置房从拉萨紧急运抵灾区，为受灾群众提供热食和栖身之所。",
-        "keyWords": [
-          "temporary housing",
-          "shelter",
-          "quake-hit areas"
-        ]
-      },
-      {
         "title": "Relief efforts intensify after Xizang quake kills 16, injures 76",
-        "source": "CGTN",
-        "summary": "Relief work has been stepped up across Xizang after the magnitude-7.0 earthquake killed 16 people and injured 76 others.",
-        "translation": "西藏地震致16人遇难、76人受伤，救援工作全面加强。",
+        "source": "ChinaDaily",
+        "summary": "Relief and rescue efforts have intensified after a 7.0-magnitude earthquake struck Xizang, killing 16 people and injuring 76 others.",
+        "translation": "西藏发生7.0级地震，造成16人遇难、76人受伤，救援救灾工作正在加紧进行。",
         "keyWords": [
           "relief efforts",
-          "injure",
-          "magnitude"
+          "magnitude",
+          "rescue"
         ]
       },
       {
-        "title": "Xizang quake relief steps up to keep survivors warm",
+        "title": "Communication services restored in quake-hit Xizang",
+        "source": "ChinaDaily",
+        "summary": "Repair crews have restored home broadband and dedicated line services in the county seat of Drachen, as well as a key mobile base station near the epicenter.",
+        "translation": "抢修队伍已恢复定日县县城的家庭宽带和专线服务，以及震中附近的一座关键移动基站。",
+        "keyWords": [
+          "restore",
+          "repair crew",
+          "infrastructure"
+        ]
+      },
+      {
+        "title": "Xi orders all-out rescue work in Xizang",
+        "source": "ChinaDaily",
+        "summary": "President Xi Jinping ordered all-out rescue work and urged efforts to minimize casualties and losses after the earthquake.",
+        "translation": "习近平主席要求全力开展救援工作，努力把人员伤亡和损失降到最低。",
+        "keyWords": [
+          "all-out",
+          "casualties",
+          "minimize"
+        ]
+      },
+      {
+        "title": "Israel launches army operation in West Bank, Hebron families displaced",
         "source": "CGTN",
-        "summary": "Workers distributed blankets, heating equipment and hot food to keep survivors warm as night temperatures dropped sharply on the plateau.",
-        "translation": "西藏地震救援加紧进行，向受灾群众发放棉被、取暖设备和热食，帮助幸存者抵御高原严寒。",
+        "summary": "Families in Hebron were displaced as the Israeli army launched an operation in the West Bank, worsening the humanitarian situation.",
+        "translation": "以色列军队在约旦河西岸发起军事行动，希伯伦的家庭被迫流离失所，人道主义局势恶化。",
         "keyWords": [
-          "survivor",
-          "keep warm",
-          "plateau"
-        ]
-      },
-      {
-        "title": "Kenya records second Ebola death as outbreak reaches nine cases",
-        "source": "CGTN",
-        "summary": "Kenya has confirmed a second Ebola death as the outbreak grows to nine cases, prompting tighter health screening at borders and in local communities.",
-        "translation": "肯尼亚埃博拉疫情已累计9例病例、2人死亡，当地加强了边境和社区的卫生筛查。",
-        "keyWords": [
-          "Ebola",
-          "outbreak",
-          "health screening"
-        ]
-      },
-      {
-        "title": "China's snow leopard population doubles",
-        "source": "China Daily",
-        "summary": "Thanks to decades of conservation work, China's snow leopard population has doubled, making the country home to the largest number of the endangered cats in the world.",
-        "translation": "经过数十年的保护努力，中国雪豹种群数量翻倍，成为全球雪豹数量最多的国家。",
-        "keyWords": [
-          "population",
-          "conservation",
-          "endangered"
+          "displaced",
+          "humanitarian",
+          "operation"
         ]
       }
     ],
     "quote": {
-      "quote": "The greatest wealth is health.",
-      "author": "Virgil",
-      "translation": "健康是最大的财富。",
-      "explanation": "这句拉丁诗人维吉尔的名言提醒我们：无论物质多么丰富，健康始终是生活中最宝贵的财富。今日新闻中灾区群众需要热饭、棉被和医疗救治，正说明在灾难与疾病面前，守护生命与健康永远是第一位的。"
+      "quote": "In nature, nothing exists alone.",
+      "author": "Rachel Carson",
+      "translation": "在自然界中，没有什么是孤立存在的。",
+      "explanation": "这句名言提醒我们，人类社会、基础设施与自然环境彼此相连。灾害发生时，环境的脆弱会直接转化为人的损失，因此可持续发展必须重视生态保护与防灾减灾。"
     },
     "vocabulary": [
+      {
+        "word": "quake",
+        "phonetic": "/kweɪk/",
+        "partOfSpeech": "n.",
+        "definition": "地震（earthquake 的非正式说法）",
+        "example": "A powerful quake struck Xizang early Sunday morning.",
+        "translation": "一场强烈地震于周日清晨袭击了西藏。",
+        "newsContext": "来自标题「Rescue efforts continue after 7.0-magnitude quake in Xizang」。"
+      },
       {
         "word": "magnitude",
         "phonetic": "/ˈmæɡnɪtjuːd/",
         "partOfSpeech": "n.",
-        "definition": "震级；巨大，重要性",
-        "example": "A magnitude-7.0 earthquake struck Drachen county in Nagqu, Xizang on Oct 22.",
-        "translation": "10月22日，西藏那曲巴青县发生7.0级地震。",
-        "newsContext": "China Daily: \"Following the magnitude-7.0 earthquake in Drachen county, Nagqu, Xizang autonomous region, on Oct 22...\""
+        "definition": "（地震的）震级；巨大，重大",
+        "example": "The 7.0-magnitude earthquake caused serious damage to local infrastructure.",
+        "translation": "这场7.0级地震对当地基础设施造成了严重破坏。",
+        "newsContext": "来自「a 7.0-magnitude quake in Xizang」的报道。"
       },
       {
-        "word": "shelter",
-        "phonetic": "/ˈʃeltər/",
-        "partOfSpeech": "n. & v.",
-        "definition": "庇护所，住所；庇护，遮蔽",
-        "example": "Rescue teams offered warm meals and shelter to families whose homes were destroyed.",
-        "translation": "救援队为家园被毁的家庭提供热饭和住所。",
-        "newsContext": "China Daily 标题：\"Warm meals and shelter for quake-hit areas\""
-      },
-      {
-        "word": "temporary",
-        "phonetic": "/ˈtemprəri/",
-        "partOfSpeech": "adj.",
-        "definition": "临时的，暂时的",
-        "example": "Many temporary housing units have been rushed in from Lhasa for the quake survivors.",
-        "translation": "大批临时安置房从拉萨紧急运往灾区，供地震幸存者使用。",
-        "newsContext": "China Daily: \"...many temporary housing units have been rushed in from Lhasa...\""
+        "word": "restore",
+        "phonetic": "/rɪˈstɔː(r)/",
+        "partOfSpeech": "v.",
+        "definition": "恢复；修复",
+        "example": "Repair crews have restored communication services in the quake-hit area.",
+        "translation": "抢修队伍已恢复地震灾区的通信服务。",
+        "newsContext": "来自标题「Communication services restored in quake-hit Xizang」。"
       },
       {
         "word": "relief",
         "phonetic": "/rɪˈliːf/",
         "partOfSpeech": "n.",
-        "definition": "救援（物资/工作）；（痛苦等的）缓解，减轻",
-        "example": "Relief efforts have intensified as more rescue workers arrived in the quake-hit area.",
-        "translation": "随着更多救援人员抵达灾区，救援工作不断加强。",
-        "newsContext": "CGTN 标题：\"Relief efforts intensify after Xizang quake kills 16, injures 76\""
+        "definition": "救济，救援；（痛苦等的）减轻",
+        "example": "Relief efforts intensified as more rescue teams arrived at the scene.",
+        "translation": "随着更多救援队抵达现场，救灾工作不断加强。",
+        "newsContext": "来自标题「Relief efforts intensify after Xizang quake kills 16」。"
       },
       {
-        "word": "survivor",
-        "phonetic": "/səˈvaɪvər/",
-        "partOfSpeech": "n.",
-        "definition": "幸存者，生还者",
-        "example": "Volunteers handed out thick blankets to keep survivors warm during the freezing night.",
-        "translation": "志愿者发放厚棉被，帮助幸存者度过寒冷的夜晚。",
-        "newsContext": "CGTN 标题：\"Xizang quake relief steps up to keep survivors warm\""
-      },
-      {
-        "word": "injure",
-        "phonetic": "/ˈɪndʒər/",
+        "word": "displace",
+        "phonetic": "/dɪsˈpleɪs/",
         "partOfSpeech": "v.",
-        "definition": "使受伤，损害",
-        "example": "The quake killed 16 people and injured 76 others, many of whom needed immediate medical care.",
-        "translation": "地震造成16人遇难、76人受伤，其中许多人需要紧急救治。",
-        "newsContext": "CGTN 标题：\"Xizang quake kills 16, injures 76\""
+        "definition": "使流离失所；使离开原居地",
+        "example": "Hundreds of families were displaced by the conflict and the disaster.",
+        "translation": "数百个家庭因冲突和灾害而流离失所。",
+        "newsContext": "来自「Hebron families displaced」的报道。"
       },
       {
-        "word": "outbreak",
-        "phonetic": "/ˈaʊtbreɪk/",
+        "word": "resilient",
+        "phonetic": "/rɪˈzɪliənt/",
+        "partOfSpeech": "adj.",
+        "definition": "有韧性的；能迅速恢复的",
+        "example": "Building resilient infrastructure is essential for sustainable development.",
+        "translation": "建设有韧性的基础设施对可持续发展至关重要。",
+        "newsContext": "与地震灾后通信、交通等基础设施快速抢修恢复的新闻内容相关。"
+      },
+      {
+        "word": "infrastructure",
+        "phonetic": "/ˈɪnfrəstrʌktʃə(r)/",
         "partOfSpeech": "n.",
-        "definition": "（战争、疾病等的）爆发，突然发生",
-        "example": "The Ebola outbreak has reached nine cases in Kenya, raising fears about public health.",
-        "translation": "肯尼亚埃博拉疫情已累计9例病例，引发公众对健康的担忧。",
-        "newsContext": "CGTN 标题：\"Kenya records second Ebola death as outbreak reaches nine cases\""
+        "definition": "基础设施",
+        "example": "The quake damaged roads, bridges and other vital infrastructure.",
+        "translation": "地震损坏了道路、桥梁和其他重要基础设施。",
+        "newsContext": "与西藏地震后宽带、专线、移动基站等基础设施受损抢修的报道相关。"
       },
       {
-        "word": "rescue",
-        "phonetic": "/ˈreskjuː/",
-        "partOfSpeech": "v. & n.",
-        "definition": "营救，救援；抢救行动",
-        "example": "President Xi ordered all-out rescue work to save lives in Xizang.",
-        "translation": "习近平总书记要求全力以赴开展西藏救援工作，全力抢救生命。",
-        "newsContext": "China Daily 标题：\"Xi orders all-out rescue work in Xizang\""
-      },
-      {
-        "word": "intensify",
-        "phonetic": "/ɪnˈtensɪfaɪ/",
-        "partOfSpeech": "v.",
-        "definition": "加强，加剧，增强",
-        "example": "Doctors stepped up health screenings as relief work intensified in the quake zone.",
-        "translation": "随着灾区救援工作加强，医生们也加大了健康筛查力度。",
-        "newsContext": "CGTN: \"Relief efforts intensify after Xizang quake...\""
-      },
-      {
-        "word": "population",
-        "phonetic": "/ˌpɒpjuˈleɪʃn/",
+        "word": "casualty",
+        "phonetic": "/ˈkæʒuəlti/",
         "partOfSpeech": "n.",
-        "definition": "人口；（某地区的）全体居民；（动植物的）种群",
-        "example": "China's snow leopard population has doubled thanks to decades of conservation work.",
-        "translation": "得益于数十年的保护工作，中国的雪豹种群数量翻了一番。",
-        "newsContext": "China Daily 标题：\"China's snow leopard population doubles\"；另见 \"Efforts urged for population development\""
+        "definition": "伤亡人员；伤亡",
+        "example": "Rescuers worked around the clock to keep casualties to a minimum.",
+        "translation": "救援人员昼夜奋战，力求把伤亡降到最低。",
+        "newsContext": "来自「Xi orders all-out rescue work」中要求最大限度减少伤亡的表述。"
+      },
+      {
+        "word": "hazard",
+        "phonetic": "/ˈhæzəd/",
+        "partOfSpeech": "n.",
+        "definition": "危险；危害，灾害隐患",
+        "example": "Earthquakes are a natural hazard that sustainable planning must take into account.",
+        "translation": "地震是可持续规划必须考虑的自然灾害隐患。",
+        "newsContext": "与西藏7.0级地震引发的次生灾害风险相关。"
+      },
+      {
+        "word": "sustainable",
+        "phonetic": "/səˈsteɪnəbl/",
+        "partOfSpeech": "adj.",
+        "definition": "可持续的",
+        "example": "Sustainable reconstruction should combine safety with environmental protection.",
+        "translation": "可持续的重建应把安全与环境保护结合起来。",
+        "newsContext": "与今日地震灾后重建相关的可持续发展主题相呼应。"
       }
     ],
     "pattern": {
-      "pattern": "keep + 宾语 + 形容词（使……保持某种状态）",
-      "example": "Xizang quake relief steps up to keep survivors warm.",
-      "translation": "西藏地震救援加紧进行，以使幸存者保持温暖。",
-      "usage": "该句型表示“使某人/某物保持某种状态”，形容词作宾语补足语。常见搭配如 keep the room clean（保持房间干净）、keep children healthy（让孩子保持健康）、keep food fresh（保持食物新鲜）。否定式为 keep sb. from doing sth.（阻止某人做某事），注意区分。"
+      "pattern": "Efforts to do sth. intensify / continue after ...",
+      "example": "Relief efforts intensify after Xizang quake kills 16, injures 76.",
+      "translation": "西藏地震造成16人遇难、76人受伤，救援工作正在加紧进行。",
+      "usage": "该句型用于描述某事发生后，相关行动不断加强或持续。结构为「名词 + 动词 + after + 事件」，常见于新闻标题。也可以说：Efforts to restore communication services continue after the earthquake."
     },
     "grammar": {
-      "title": "with 复合结构（with + 名词 + 现在分词）",
-      "explanation": "在英语新闻中，常用 \"with + 宾语 + 现在分词\" 构成独立主格结构，表示伴随状况或背景，相当于一个补充说明的状语从句。句中 with 后的名词与后面的动词是主动关系，因此用现在分词（-ing）形式。例如 \"with workers racing to complete their...\" 意为“工人们正争分夺秒地完成……”。若名词与动词是被动关系，则用过去分词（如 with the road blocked by snow）；若表状态，可用介词短语（如 with blankets in their hands）。",
+      "title": "现在完成时（Present Perfect）在新闻报道中的运用",
+      "explanation": "现在完成时（have/has + 过去分词）用于强调过去发生的动作对现在造成的结果或影响，在新闻英语中非常常见，尤其在报道刚刚完成的救援、抢修等行动时。与一般过去时相比，现在完成时更突出「目前的状态」。",
       "examples": [
-        "Temporary housing units have been rushed in from Lhasa, with workers racing to complete their construction before nightfall.",
-        "Rescue teams worked around the clock, with medical staff treating the injured and checking on residents' health."
+        "Repair crews from China Mobile Tietong's Xizang branch have restored home broadband and dedicated line services in the county seat of Drachen.",
+        "Rescue teams have arrived at the epicenter and emergency supplies have been delivered to affected residents."
       ]
     },
     "pronunciation": {
-      "word": "shelter",
-      "phonetic": "/ˈʃeltər/",
-      "tips": "注意首音 /ʃ/ 与汉语“湿”相似但需扁唇送气；重音在第一音节 /ˈʃel-/，元音为短音 /e/，不要读成 /ʃeɪl/；词尾的 -ter 浊化成轻快的 /tər/，舌尖轻触上齿龈后迅速放开，不要读成清晰的“特”。整词节奏为“前重后轻”。",
+      "word": "resilience",
+      "phonetic": "/rɪˈzɪliəns/",
+      "tips": "重音在第二个音节 -si- 上，读作 ri-ZIL-yuhns。注意 /l/ 后接 /j/（y 音），舌尖抵上齿龈，气流从舌两侧通过，不要读成「re-zil-ee-ens」。中间的 /ɪ/ 是短元音，发音短促。",
       "examples": [
-        "The government built temporary shelter for the quake-hit families.",
-        "Warm meals and shelter were offered to everyone in need."
+        "Community resilience is key to surviving natural disasters.",
+        "The country showed great resilience in the face of the earthquake."
       ]
     },
     "reading": {
-      "title": "Warmth on the Plateau: Health and Life After the Xizang Quake",
-      "content": "After a magnitude-7.0 earthquake struck Drachen county in Nagqu, Xizang, on Oct 22, rescue and relief efforts have intensified across the region. The quake killed 16 people and injured 76 others, leaving many families without homes just as night temperatures dropped sharply on the plateau. Temporary housing units were rushed in from Lhasa, and workers raced against time to set up tents and provide warm meals and shelter for survivors. Medical teams treated the injured and checked on residents' health day and night, paying special attention to children and older people. Volunteers distributed blankets and heating equipment to keep everyone warm during the freezing nights. Doctors said that staying warm, eating hot food and getting enough rest are all important for people living in disaster areas. In Kenya, meanwhile, health workers are fighting another battle against the Ebola outbreak, reminding us that protecting public health is everyone's responsibility.",
-      "translation": "10月22日，7.0级地震袭击西藏那曲巴青县后，全区救援与救灾工作不断加强。地震造成16人遇难、76人受伤，许多家庭失去住所，而高原夜间气温骤降。大批临时安置房从拉萨紧急运抵，工人们争分夺秒地搭建帐篷，为幸存者提供热饭和住所。医疗队昼夜不停地救治伤员、关注居民健康，尤其重视儿童和老人。志愿者发放棉被和取暖设备，帮助大家度过寒冷的夜晚。医生表示，保暖、吃热食、充分休息，对灾区群众都很重要。与此同时，在肯尼亚，医护人员正在抗击埃博拉疫情，这提醒我们：保护公共健康，人人有责。",
-      "sourceNote": "本文基于 China Daily（Warm meals and shelter for quake-hit areas；Xi orders all-out rescue work in Xizang）及 CGTN（Xizang quake relief steps up to keep survivors warm；Relief efforts intensify after Xizang quake；Kenya records second Ebola death）2026年10月25日的报道改写，用词与句型已简化以适应英语学习者。"
+      "title": "Rebuilding After the Quake: Toward a More Resilient and Sustainable Future",
+      "content": "A 7.0-magnitude earthquake struck Xizang on Sunday, killing 16 people and injuring 76. Rescue and relief efforts intensified immediately, as President Xi Jinping ordered all-out rescue work to minimize casualties and losses.\n\nCommunication was quickly restored in the affected areas. Repair crews from China Mobile Tietong's Xizang branch have restored home broadband and dedicated line services in the county seat of Drachen, as well as a key mobile base station near the epicenter.\n\nDisasters like this remind us that sustainable development is not only about clean energy and green growth. It also means building resilient infrastructure that can withstand natural hazards and protecting the environment that shelters us all. As Rachel Carson wrote, \"In nature, nothing exists alone.\" Truly sustainable reconstruction must therefore respect nature while keeping people safe.",
+      "translation": "周日，西藏发生7.0级地震，造成16人遇难、76人受伤。习近平主席要求全力开展救援工作，把人员伤亡和损失降到最低，救援救灾工作随即迅速展开。\n\n受灾地区的通信很快得到恢复。中国铁通西藏分公司的抢修队伍已恢复定日县县城的家庭宽带和专线服务，以及震中附近的一座关键移动基站。\n\n这样的灾害提醒我们，可持续发展不仅仅是清洁能源和绿色增长，它还意味着建设能够抵御自然灾害的韧性基础设施，以及保护庇护我们所有人的环境。正如蕾切尔·卡森所写：「在自然界中，没有什么是孤立存在的。」因此，真正可持续的重建必须在保障人民安全的同时尊重自然。",
+      "sourceNote": "本文根据 ChinaDaily《Relief efforts intensify after Xizang quake kills 16, injures 76》《Communication services restored in quake-hit Xizang》《Xi orders all-out rescue work in Xizang》等今日真实新闻改写，并结合「环境与可持续发展」主题拓展。"
     }
   }
 }

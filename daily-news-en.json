@@ -1,15 +1,16 @@
 {
- "date": "2026-10-25",
- "weekday": "Sunday",
- "overview": "The Long March spirit remains ever vital, the economy steadied with progress in the first three quarters, and emergency rescue, AI manufacturing, and sporting breakthroughs together sketch the picture of development.",
+ "date": "2026-10-26",
+ "weekday": "Monday",
+ "overview": "Strict Party governance and shifting demographics share the spotlight on the same day; relief efforts warm hearts in the quake zone; a flurry of space launches and a mixed picture in gold consumption.",
  "trendingTopics": [
-  "Long March spirit",
-  "Emergency rescue",
-  "Xiongan New Area",
-  "Foreign trade exports",
-  "AI manufacturing",
-  "Paralympic sports",
-  "Civil service exam"
+  "Strict Party governance",
+  "Demographic shifts",
+  "Earthquake relief",
+  "Space launches",
+  "Gold consumption",
+  "New drivers of foreign trade",
+  "Youth health",
+  "Flu prevention and control"
  ],
  "sections": [
   {
@@ -19,202 +20,232 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "In-Depth: Four Forces Behind the Long March Spirit",
-     "summary": "An in-depth feature examines the four forces embedded in the Long March spirit, reflecting its inheritance and value in the new era.",
-     "detail": "The in-depth column focuses on the Long March spirit, interpreting it through four dimensions of force. The report places the Long March spirit in a contemporary context, highlighting its guiding role for the new era.",
-     "impact": "A contemporary interpretation of the Long March spirit helps build social consensus and provides moral momentum for overcoming challenges.",
-     "importance": "important",
+     "title": "Political Watch: Three Dimensions for Understanding Full and Strict Party Self-Governance",
+     "summary": "The report interprets full and strict Party self-governance through three dimensions, helping readers grasp the strategy's deeper significance.",
+     "detail": "Presented in the 'Political Watch' format, the report analyzes full and strict Party self-governance from three dimensions, outlining its core meaning and requirements.",
+     "impact": "The analysis deepens understanding of the strategy and supports the implementation of related measures under full and strict Party self-governance.",
+     "importance": "hot",
      "tags": [
-      "Long March Spirit",
-      "Civic-Moral Development"
+      "Anti-corruption"
      ]
     },
     {
      "id": "news-002",
-     "title": "From the Epicenter in Baxing: A Hearth Fire and a Guardian's Watch",
-     "summary": "Dispatches from the epicenter in Baxing capture a hearth fire, a bowl of dumplings and a guardian's watch, showing the warmth and steadfastness on the frontline of rescue operations.",
-     "detail": "The report opens with on-the-ground accounts from the epicenter in Baxing, describing scenes of a hearth fire, a bowl of dumplings and a guardian's watch. It highlights the warm details and unwavering commitment on the disaster relief frontline. A related report captured the rescuers' refrain: \"Get the trapped people out as fast as possible.\"",
-     "impact": "Frontline coverage of disaster relief spreads positive energy and underscores the importance of grassroots emergency response and humanitarian care.",
+     "title": "China's Total Population Set to Fall Below 1.4 Billion, Down by 3.39 Million",
+     "summary": "China's total population declined by 3.39 million in 2025, with the overall figure at risk of falling below 1.4 billion.",
+     "detail": "Data shows China's total population decreased by 3.39 million in 2025, putting the national total on the verge of dropping below 1.4 billion. The shift has drawn widespread attention.",
+     "impact": "A shrinking population will have lasting effects on consumer markets, labor supply and elderly care provisions.",
      "importance": "hot",
      "tags": [
-      "Emergency Rescue",
-      "Natural Disasters"
+      "Demographics",
+      "Livelihood Support",
+      "Elderly Care"
      ]
     },
     {
      "id": "news-003",
-     "title": "Xiongan Presents Its \"City of the Future\" Brand to the World",
-     "summary": "Xionga New Area unveils its \"city of the future\" image to the world, showcasing the progress of its construction and a new urban development philosophy.",
-     "detail": "The report focuses on Xiong'an New Area's external presentation as a \"city of the future.\" Xiong'an is showcasing its urban construction and development achievements to the world under this flagship brand.",
-     "impact": "Xiong'an New Area's brand showcase is set to draw greater international attention, boosting coordinated regional development and the creation of an urban model.",
+     "title": "First Batch of 60 Relief Housing Units Completed in Baxian, Tibet",
+     "summary": "After around-the-clock efforts, the first 60 prefab relief housing units in Baxian, Tibet, have been completed.",
+     "detail": "Relief work continues as the first batch of 60 prefab resettlement units in Baxian, Tibet, is finished for the temporary housing of disaster-affected residents.",
+     "impact": "Delivery of the units will accelerate resettlement and better meet the basic living needs of affected residents.",
      "importance": "important",
      "tags": [
-      "Xiong'an New Area",
-      "Urban Development",
-      "Regional Coordination"
+      "Emergency Relief",
+      "Post-disaster Reconstruction"
      ]
     },
     {
      "id": "news-004",
-     "title": "New Guangzhou Rule: E-Bikes Can Be Impounded for Repeat Offenses",
-     "summary": "Guangzhou introduces a new rule allowing electric bicycles to be impounded for repeated violations, tightening enforcement of road traffic order.",
-     "detail": "Guangzhou has issued a new rule under which electric bicycles — locally known as \"dian ji\" — can be impounded for repeat violations. The rule aims to intensify enforcement against e-bike traffic offenses.",
-     "impact": "The new local traffic rule is expected to improve urban commuting order and raise compliance requirements for the electric bicycle industry.",
-     "importance": "normal",
+     "title": "Multiple Groups Rush Aid to Quake Zone as Warm Supplies Reach the Frontline",
+     "summary": "Heaters, warm clothing and hot meals are arriving in the quake zone, with support from many sides bringing warmth to those affected.",
+     "detail": "The quake zone has received heaters, warm clothing, hot meals and other relief supplies, with support pouring in from many quarters. Photo stories also documented the 'reverse journey' of 3,000 jin of dumplings.",
+     "impact": "Continued supplies and manpower will help quake-affected residents spend the winter safely and maintain stable living conditions.",
+     "importance": "important",
      "tags": [
-      "Electric Bicycles",
-      "Traffic Enforcement",
-      "Local Legislation"
+      "Emergency Relief",
+      "Social Mobilization"
      ]
     },
     {
      "id": "news-005",
-     "title": "Civil Service Exam Registration Closes with Over 3 Million Approved",
-     "summary": "Registration for the national civil service exam has closed, with over 3 million applicants passing review. The most popular position drew a competition ratio of 5,840 to 1.",
-     "detail": "Registration for the national civil service exam has concluded. More than 3 million applicants have passed the eligibility review. The hottest position saw a competition ratio of 5,840 applicants per opening.",
-     "impact": "The continued rise of the national civil service exam reflects the appeal of public sector employment and offers a window into the job market.",
-     "importance": "important",
+     "title": "How Robust Is China's National Water Network?",
+     "summary": "The report focuses on China's national water network, explaining its construction progress and overall strength.",
+     "detail": "The article introduces the development of the national water network through a question-and-answer format. Related material also highlights how 'six networks weave a new chapter' to underpin better living standards.",
+     "impact": "Building the national water network will improve water resource allocation and support agricultural production and urban development.",
+     "importance": "normal",
      "tags": [
-      "Civil Service Exam",
-      "Job Market",
-      "Public Sector"
+      "Water Conservancy",
+      "Infrastructure"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "International Politics",
+   "title": "World News",
    "icon": "🌍",
    "articles": [
     {
      "id": "news-006",
-     "title": "Japan Accelerates Push Toward Remilitarization",
-     "summary": "One year into Takaichi's premiership, Japan's government is speeding ahead on the path of remilitarization, drawing regional concern.",
-     "detail": "Reports indicate that on the one-year mark of Takaichi's time in office, the Japanese government is advancing more rapidly in the direction of remilitarization. Commentators described the current trend as a \"full-speed sprint,\" expressing concern over the regional security landscape.",
-     "impact": "Remilitarization trends heighten regional security uncertainty; neighboring parties must remain vigilant and maintain strategic resolve.",
-     "importance": "hot",
+     "title": "UN Coordinator in China: China Will Deliver a Leading Voice at APEC",
+     "summary": "The United Nations Coordinator in China said she believes China will send an important, leadership-oriented message at the APEC meeting.",
+     "detail": "The UN Coordinator in China stated that she is confident China will deliver a significant leading voice at the APEC meeting, expressing expectations for China's role on multilateral platforms.",
+     "impact": "The remarks reflect the international community's expectations for China to play a leading role in multilateral settings.",
+     "importance": "important",
      "tags": [
-      "Regional Security",
-      "Northeast Asia Situation"
+      "International Cooperation",
+      "Asia-Pacific Cooperation"
      ]
     },
     {
      "id": "news-007",
-     "title": "Philippine Defense Chief's Provocations Toward China Draw Attention",
-     "summary": "The Philippine defense chief charges at China carrying a paper shield, with coverage depicting his provocative posture in satirical tones.",
-     "detail": "Reports use the metaphor of the defense chief \"charging at China while carrying a paper shield\" to portray his words and actions. The commentary is written with a satirical edge, criticizing the bluster behind his provocative posture.",
-     "impact": "Provocative rhetoric in the South China Sea undermines regional stability; concerned parties need to maintain strategic readiness and countermeasure preparedness.",
+     "title": "Interview: Global Governance Initiative Upholds Positive Outcomes in International Relations",
+     "summary": "Vice Chairman of the UK's 48 Group Club discusses the positive significance of the Global Governance Initiative in an interview.",
+     "detail": "In an interview, the Vice Chairman of the UK's 48 Group Club said the Global Governance Initiative safeguards positive achievements in international relations.",
+     "impact": "The remarks show the initiative is receiving positive evaluations internationally, helping build consensus on cooperation.",
      "importance": "important",
      "tags": [
-      "South China Sea Situation",
-      "Regional Security",
-      "Defense Developments"
+      "Global Governance",
+      "International Cooperation"
+     ]
+    },
+    {
+     "id": "news-008",
+     "title": "Japanese Flag Displayed by Mistake as Chinese Table Tennis Players Receive Awards",
+     "summary": "Organizers of an international competition mistakenly displayed the Japanese flag during the award ceremony, in an operational blunder.",
+     "detail": "As Chinese table tennis players received their awards, organizers erroneously displayed the Japanese flag, drawing attention to the mishap during the ceremony.",
+     "impact": "The organizational error undermined the solemnity of the award ceremony and serves as a reminder for hosts to tighten procedural oversight.",
+     "importance": "normal",
+     "tags": [
+      "Sports Events",
+      "Event Operations"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance News",
+   "title": "Finance & Economy",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-008",
-     "title": "Exports Top 8 Trillion Yuan for First Time, 'New' Drivers Lead the Way",
-     "summary": "China's export value has surpassed 8 trillion yuan for the first time, with 'new' growth drivers emerging as the core highlight of foreign trade growth.",
-     "detail": "Data shows China's exports have crossed the 8 trillion yuan mark for the first time. Reports highlight the leading role of 'new' drivers, underscoring their central contribution to foreign trade growth.",
-     "impact": "Breaking the export threshold for the first time reflects an optimized trade structure, with emerging industries set to serve as a key pillar in stabilizing foreign trade.",
+     "id": "news-009",
+     "title": "New Growth Drivers Take Center Stage as China's Economy Picks Up Speed",
+     "summary": "Reports highlight new growth drivers playing the leading role in the economy, pushing development into higher gear.",
+     "detail": "Coverage focuses on the rapid rise of new growth drivers and their central role in economic development, driving faster momentum in China's economy.",
+     "impact": "The continued expansion of new growth drivers helps strengthen the economy's internal momentum and improve the quality and structure of growth.",
      "importance": "hot",
      "tags": [
-      "Foreign Trade Exports",
-      "New Growth Drivers",
-      "Foreign Trade"
-     ]
-    },
-    {
-     "id": "news-009",
-     "title": "Tax Big Data Offers a Window into Q1-Q3 Economic Performance",
-     "summary": "Xinhua's authoritative briefing uses tax big data as a lens to examine China's economic performance in the first three quarters.",
-     "detail": "Xinhua's authoritative briefing column uses tax big data as an observational angle, interpreting China's economic performance over the first three quarters from a tax perspective.",
-     "impact": "Tax big data provides important evidence for macroeconomic assessment and helps the market form stable expectations.",
-     "importance": "important",
-     "tags": [
       "Macroeconomy",
-      "Tax Data",
-      "Economic Performance"
+      "Industrial Upgrading"
      ]
     },
     {
      "id": "news-010",
-     "title": "Reading the Quality of the Industrial Economy in the First Three Quarters",
-     "summary": "The report focuses on industrial economic performance in the first three quarters, analyzing the quality and structural highlights of industrial operations.",
-     "detail": "The report examines overall industrial economic performance in the first three quarters, using 'quality' as the entry point to analyze the caliber and structure of industrial operations.",
-     "impact": "Industrial economic performance is a key indicator for gauging manufacturing sentiment and offers guidance for investment along the supply chain.",
-     "importance": "important",
+     "title": "Gold Jewelry Prices Fall 100 Yuan Per Gram in a Month as Shenzhen's Shuibei Overflows with Buyers",
+     "summary": "Per-gram gold jewelry prices dropped 100 yuan within a month, packing Shenzhen's Shuibei market with gold buyers.",
+     "detail": "Gold jewelry prices have pulled back, and Shenzhen's Shuibei market is mobbed, with online users remarking that there are more gold buyers than at a produce market.",
+     "impact": "Falling gold prices are stimulating physical gold consumption and are expected to boost the gold jewelry retail market in the short term.",
+     "importance": "hot",
      "tags": [
-      "Industrial Economy",
-      "Manufacturing",
-      "Economic Performance"
+      "Gold Market",
+      "Consumer Market",
+      "Jewelry"
      ]
     },
     {
      "id": "news-011",
-     "title": "The Middle-Class Wardrobe Is Basically One Big Anta",
-     "summary": "Under the headline 'The Middle-Class Wardrobe Is Basically One Big Anta,' the report focuses on the deep penetration of domestic sportswear brands into middle-class consumption.",
-     "detail": "The article, titled 'The Middle-Class Wardrobe Is Basically One Big Anta,' focuses on sportswear brands and middle-class consumption trends, highlighting the deep penetration of domestic brands into middle-class wardrobes.",
-     "impact": "The rise of domestic sportswear brands in the middle-class market reflects consumption upgrading and growing brand strength of Chinese labels.",
+     "title": "Could Lab-Made Gold Crash Prices?",
+     "summary": "Reports explore whether the widespread adoption of lab-made gold would put pressure on gold prices.",
+     "detail": "The article discusses whether lab-made gold could \"crash\" gold prices, focusing on its potential impact on gold supply and demand and price expectations.",
+     "impact": "If lab-made gold reaches scale, it could reshape the supply-demand balance for gold and weigh on price expectations.",
+     "importance": "important",
+     "tags": [
+      "Precious Metals",
+      "New Materials"
+     ]
+    },
+    {
+     "id": "news-012",
+     "title": "New Faces at the Canton Fair Connect Directly with Chinese Manufacturing, Reaping Full Orders",
+     "summary": "New buyers at the Canton Fair connect directly with Chinese manufacturers, scoring big gains from the show floor to the factory.",
+     "detail": "The Canton Fair builds a direct channel between Chinese manufacturers and overseas buyers, with new buyers moving from the exhibition floor to factory visits and coming away with strong results.",
+     "impact": "The direct-connection model helps convert foreign trade orders and improves the efficiency with which Chinese manufacturers link up internationally.",
+     "importance": "important",
+     "tags": [
+      "Foreign Trade",
+      "Exhibition Economy",
+      "Manufacturing"
+     ]
+    },
+    {
+     "id": "news-013",
+     "title": "The Middle-Class Closet Is One Giant Anta",
+     "summary": "The article observes the high penetration of domestic brands in the wardrobes of middle-class consumers.",
+     "detail": "Under the headline \"The Middle-Class Closet Is One Giant Anta,\" the report examines the share and influence of domestic brands in middle-class consumption.",
+     "impact": "This reflects the rising competitiveness of domestic brands in the mid-tier consumer market and ongoing shifts in consumption structure.",
      "importance": "normal",
      "tags": [
-      "Sportswear",
-      "Consumption Trends",
-      "Domestic Brands"
+      "Apparel Consumption",
+      "Domestic Brands",
+      "Consumption Trends"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Tech Frontiers",
+   "title": "Tech Frontier",
    "icon": "💡",
    "articles": [
     {
-     "id": "news-012",
-     "title": "AI Reshapes Manufacturing: APEC Spotlight on the Greater Bay Area",
-     "summary": "Coverage focuses on how AI is transforming manufacturing under the APEC framework, showcasing applications that blend wearable mechs and creative design on the factory floor.",
-     "detail": "Through an 'APEC in the Bay Area' segment, the report examines how AI is reshaping manufacturing. Using vivid imagery of mechs donned on the body and creativity brought to the table, it illustrates AI applications across the production chain.",
-     "impact": "Deep integration of AI and manufacturing will accelerate industrial upgrading and speed up the emergence of a smart manufacturing ecosystem.",
+     "id": "news-014",
+     "title": "Three Launch Missions in Three Days All Succeed",
+     "summary": "Three consecutive launch missions carried out within three days were all fully successful.",
+     "detail": "Three launch missions conducted back-to-back over three days all ended in success, demonstrating the high density and reliability of space launch operations.",
+     "impact": "The success of high-frequency launches reflects strong organization and support capabilities in space engineering, laying the groundwork for future missions.",
      "importance": "hot",
      "tags": [
-      "AI Manufacturing",
-      "Smart Manufacturing",
-      "Industrial Upgrading"
+      "Space Launch",
+      "Aerospace Technology"
      ]
     },
     {
-     "id": "news-013",
+     "id": "news-015",
+     "title": "\"23:59:60\" Will No Longer Exist",
+     "summary": "Following a rule adjustment, the time \"23:59:60\" will no longer occur in the future.",
+     "detail": "Reports indicate that \"23:59:60\" will no longer appear, meaning that the relevant timekeeping method is set to change.",
+     "impact": "Changes to timekeeping rules will affect standards synchronization across time dissemination, communications and navigation.",
+     "importance": "important",
+     "tags": [
+      "Timekeeping",
+      "Precision Measurement"
+     ]
+    },
+    {
+     "id": "news-016",
      "title": "Can Stem Cell Infusions Costing Hundreds of Thousands Really Fight Aging?",
-     "summary": "The report questions whether stem cell infusions priced at hundreds of thousands of yuan truly deliver anti-aging effects, scrutinizing the science behind high-cost longevity treatments.",
-     "detail": "The report investigates anti-aging services involving stem cell infusions costing up to hundreds of thousands of yuan. It critically examines the scientific basis of such high-priced longevity consumption.",
-     "impact": "A science-based scrutiny of the anti-aging market can guide more rational consumer choices and underscores the need for stronger regulation and industry standards.",
+     "summary": "A report questions whether high-priced stem cell infusions truly deliver anti-aging effects.",
+     "detail": "The article examines stem cell infusion anti-aging treatments, exploring the relationship between actual effects and steep prices.",
+     "impact": "The discussion helps the public take a rational view of anti-aging consumption and highlights the need for industry standards and regulation.",
      "importance": "normal",
      "tags": [
-      "Regenerative Medicine",
-      "Medical Aesthetics & Health",
-      "Health Spending"
+      "Biomedicine",
+      "Anti-Aging Industry",
+      "Health Consumerism"
      ]
     },
     {
-     "id": "news-014",
-     "title": "Does General Anesthesia Impair Memory After Surgery?",
-     "summary": "A science explainer addresses whether memory declines after general anesthesia under surgery, offering the public a medically grounded reference.",
-     "detail": "The article uses the question 'Does memory worsen after general anesthesia?' as an entry point to respond to common public concerns about the side effects of anesthesia.",
-     "impact": "Anesthesia literacy helps ease patients' pre-surgical anxiety and improves public medical awareness and doctor-patient communication.",
+     "id": "news-017",
+     "title": "Southern Mosquitoes Are Migrating North in Droves",
+     "summary": "A report focuses on mosquito species originally found in southern regions spreading northward.",
+     "detail": "The article uses the term \"migrating north\" to describe the trend of southern mosquito species moving north, signaling shifts in mosquito distribution.",
+     "impact": "A northward shift in mosquito distribution could expand the scope of related public health risks, calling for enhanced monitoring and control measures.",
      "importance": "normal",
      "tags": [
-      "Anesthesiology",
-      "Health Education",
-      "Clinical Medicine"
+      "Public Health",
+      "Vector-Borne Disease",
+      "Climate Change"
      ]
     }
    ]
@@ -225,68 +256,65 @@
    "icon": "📰",
    "articles": [
     {
-     "id": "news-015",
-     "title": "Chinese Para-Athletes Deliver Best-Ever Asian Para Games Performance",
-     "summary": "China's Paralympic delegation posted its best-ever result at an overseas Asian Para Games, showcasing elite sporting prowess.",
-     "detail": "China's Paralympic delegation achieved its best performance at an Asian Para Games held outside China, marking a major breakthrough in para-athletics.",
-     "impact": "The breakthrough in para-sports is expected to further advance accessible athletics and draw greater attention from across society.",
-     "importance": "hot",
-     "tags": [
-      "Para-Sports",
-      "Elite Athletics",
-      "Asian Para Games"
-     ]
-    },
-    {
-     "id": "news-016",
-     "title": "Xu Jiayu Breaks World Record in 50m Backstroke",
-     "summary": "Xu Jiayu set a world record in the 50m backstroke, delivering another landmark breakthrough for Chinese swimming.",
-     "detail": "Chinese swimmer Xu Jiayu broke the world record in the 50m backstroke, a significant milestone in the event.",
-     "impact": "The world-record swim boosts China's standing in international swimming and raises the profile of the event.",
-     "importance": "hot",
-     "tags": [
-      "Swimming",
-      "Elite Athletics",
-      "World Record"
-     ]
-    },
-    {
-     "id": "news-017",
-     "title": "Scoliosis Weighs Heavy on Chinese Students",
-     "summary": "Coverage spotlights scoliosis among Chinese students, warning that the health threat is placing growing pressure on young people.",
-     "detail": "Under the headline \"Scoliosis Is Crushing Chinese Students,\" reports focus on spinal health problems among students, highlighting the real pressures the condition places on this group.",
-     "impact": "The student scoliosis problem underscores the need to strengthen youth fitness programs and school health management.",
-     "importance": "important",
-     "tags": [
-      "Youth Health",
-      "School Health",
-      "Public Health"
-     ]
-    },
-    {
      "id": "news-018",
-     "title": "Southern China's Dangerous Mosquitoes Are Migrating North",
-     "summary": "Reports track the northward spread of disease-carrying mosquitoes from southern China, reflecting shifts in insect distribution and climate conditions.",
-     "detail": "With the headline \"Southern China's Toxic Mosquitoes Are Migrating North in Droves,\" coverage examines the northward expansion of mosquito populations and its links to climate and environmental change.",
-     "impact": "Changes in mosquito distribution suggest public-health control measures need adjustment, while public awareness of mosquito prevention should be raised.",
-     "importance": "normal",
+     "title": "Scoliosis Is Weighing Down Chinese Students",
+     "summary": "Reporting highlights the prevalence of scoliosis among students and its health burden.",
+     "detail": "The article focuses on scoliosis among students, noting that this health concern is placing a heavy burden on young people in China.",
+     "impact": "The issue underscores the urgency of spinal health management for adolescents, calling for stronger screening and early intervention.",
+     "importance": "hot",
      "tags": [
-      "Public Health",
-      "Mosquito Control",
-      "Climate Change"
+      "Adolescent Health",
+      "Spinal Health",
+      "School Health"
      ]
     },
     {
      "id": "news-019",
-     "title": "Choosing the Right Flu Medication Within 48 Hours",
-     "summary": "An author chronicles their medication choices during the first 48 hours of the flu, offering readers a personal reference for dealing with the virus.",
-     "detail": "The article recounts, from a personal perspective, the first 48 hours of dealing with the flu, sharing the author's experience in choosing the \"right\" medication.",
-     "impact": "Sharing flu medication experience helps the public respond rationally during flu season, though actual use should still follow medical advice.",
+     "title": "Flu Strikes: Why Choosing the Right Drug Within 48 Hours Matters",
+     "summary": "The author shares a personal account of how to choose the right medication within 48 hours of flu onset.",
+     "detail": "The article documents the response during the first 48 hours of influenza, focusing on how to select the right symptomatic treatment.",
+     "impact": "Provides the public with a reference for early flu medication, emphasizing the importance of timely and appropriate treatment.",
+     "importance": "important",
+     "tags": [
+      "Public Health",
+      "Flu Prevention and Control",
+      "Rational Drug Use"
+     ]
+    },
+    {
+     "id": "news-020",
+     "title": "Yu Lei Named Chief Director of CCTV Spring Festival Gala for Fifth Straight Year",
+     "summary": "Yu Lei has been confirmed as chief director of the Year of the Sheep CCTV Spring Festival Gala, her fifth consecutive year in the role.",
+     "detail": "Yu Lei has been confirmed as chief director of the Year of the Sheep CCTV Spring Festival Gala, marking her fifth consecutive year leading the production.",
+     "impact": "Continuity in the directorial team helps maintain consistency and stability in the gala's creative style.",
      "importance": "normal",
      "tags": [
-      "Flu Prevention and Treatment",
-      "Public Health",
-      "Health Education"
+      "Broadcasting",
+      "Entertainment",
+      "Cultural Festivals"
+     ]
+    },
+    {
+     "id": "news-021",
+     "title": "Li Tianyang Falls to Tomokazu Harimoto 2-3",
+     "summary": "Chinese table tennis player Li Tianyang lost to Japan's Tomokazu Harimoto 2-3.",
+     "detail": "Li Tianyang battled his opponent to the wire before narrowly falling 2-3 in the match.",
+     "impact": "The result reflects the fierce competition on the international stage, highlighting that young players still need to gain experience in major tournaments.",
+     "importance": "normal",
+     "tags": [
+      "Table Tennis",
+      "Sports"
+     ]
+    },
+    {
+     "id": "news-022",
+     "title": "76 Years On, the Bridge Over the Yalu River Will Never Forget",
+     "summary": "Using the bridge over the Yalu River as a thread, the report looks back on history and pays tribute to 'the most beloved people.'",
+     "detail": "Under the themes '76 Years On, Saluting the Most Beloved' and 'The Bridge Over the Yalu River Will Always Remember,' the piece revisits history and honors fallen heroes.",
+     "impact": "Commemorative coverage of this kind helps pass on historical memory and inspire patriotic sentiment.",
+     "importance": "important",
+     "tags": [
+      "Red Culture"
      ]
     }
    ]
