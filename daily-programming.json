@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "contents": [
     {
-      "id": "prog-2026-10-27",
-      "date": "2026-10-27",
-      "title": "SwiftUI 状态管理入门：@State 与 @Binding",
-      "summary": "掌握 SwiftUI 中数据从哪里来、改了之后界面为什么会跟着变——@State 拥有数据，@Binding 借用并修改数据。",
-      "difficulty": "初级",
-      "concept": "SwiftUI 的核心思想是「声明式 UI」：你不再手动去改 label 的 text，而是描述「界面应该长什么样」，当底层数据变了，SwiftUI 自动重新计算并刷新界面。为了让 SwiftUI 知道「哪些数据变了」，需要用属性包装器（Property Wrapper）标记这些变量，最常见的两个就是 @State 和 @Binding。\n\n@State 用来「拥有」一份数据。它把一个普通的值类型（Int、String、Bool、Array 等）存到 SwiftUI 的一个持久化存储区里，这样即使 View 因为重绘被重新创建，数据也不会丢失。规则很简单：谁声明 @State，谁就是这份数据的「唯一老板」，通常它应该被写成 private，防止别的地方乱改。\n\n@Binding 则完全相反——它不创建数据，只是「借」一个已经存在的 @State 的引用过来。当子 View 需要读取或修改父 View 的数据时，不应该复制一份（那样两边就不同步了），而是用 @Binding 建立一条双向通道：父改了，子界面跟着变；子改了，父的数据也跟着变。\n\n在实际工程里，你会看到一个非常典型的分层模式：顶层 View 用 @State 持有业务数据，中间/叶子 View 用 @Binding 接收它，纯展示的组件只接收普通参数（let）。这遵循了「状态应该放在离使用它最近的共同祖先」的原则，避免到处都是 @State 导致数据来源混乱、界面不更新的 bug。\n\n还要注意：@State 适合值类型和小规模的本地 UI 状态（比如开关状态、输入框文字、当前选中的 tab）。当数据需要跨很多页面共享、或者需要从网络层写入时，就该升级到 @ObservedObject / @StateObject（ObservableObject）或新版的 @Observable，那是明天的话题。另外，不要在 @State 的初始化里写复杂逻辑，它只应该保存「界面状态」，业务计算应该放到 ViewModel 或函数里。",
+      "id": "prog-2026-10-28",
+      "date": "2026-10-28",
+      "title": "Python 上下文管理器进阶：用 with 优雅管理资源与状态",
+      "summary": "掌握类实现与 @contextmanager 两种自定义上下文管理器写法，学会在实际工程中管理文件、连接、全局状态与异常语义。",
+      "difficulty": "中级",
+      "concept": "上下文管理器（Context Manager）是 Python 对「获取资源 → 使用 → 必定释放」这一模式的语言级抽象。任何实现了 `__enter__` 与 `__exit__` 的对象，或任何被 `@contextmanager` 装饰的生成器函数，都可以直接用在 with 语句中。它的核心价值不在于少写一行 close()，而在于把「必须执行的清理逻辑」从调用方转移到资源自身，从根本上消灭了忘记释放、异常路径漏清理、重复样板代码这三类高频 bug。\n\n先看类实现：`__enter__` 在进入代码块前执行，其返回值会绑定到 `as` 后面的变量；`__exit__(self, exc_type, exc_val, exc_tb)` 在代码块结束时执行，无论正常结束还是抛异常都会被调用。当代码块中发生异常时，三个参数分别携带异常类型、异常实例和 traceback 对象；没有异常时三者均为 None。`__exit__` 的返回值决定了异常的传播语义：返回 False（或不返回）表示「我处理不了，继续向上抛」，返回 True 表示「异常已被吞掉」。工程上一定要谨慎返回 True，除非你真的在实现 suppress 之类的语义，否则会把真实的错误藏起来，调试时让人抓狂。\n\n`@contextmanager` 则走另一条路：它把一个「只 yield 一次的生成器」包装成上下文管理器，yield 之前的代码相当于 `__enter__`，yield 的值绑定给 as 变量，yield 之后的代码相当于 `__exit__`。这种写法特别适合「只关心进入和退出两个动作」的短逻辑，可读性远高于类实现。但要注意一个经典陷阱：如果你想吞掉异常，必须在生成器内部用 try/except 包住 yield 并正常返回；如果只是 try/finally，异常会正常传播（这是通常想要的行为）。\n\n实际工程中，上下文管理器的应用远超文件读写：数据库事务（成功 commit、异常 rollback）、分布式锁的获取与释放、临时修改全局配置或环境变量、性能计时与埋点、临时切换工作目录、mock.patch、单元测试中的临时目录等等。凡是成对出现、且「不做清理就会出事」的操作，都值得抽象成上下文管理器。\n\n当需要一次性管理「数量不确定」的多个资源时，手动嵌套 with 会很难看，这时用 `contextlib.ExitStack`：它允许你在运行时动态 enter 多个上下文管理器，并保证退出时按逆序统一释放，是编写资源池、批量处理脚本时的利器。\n\n最后补充一点性能与语义经验：`with` 本质上只是语法糖，成本极低，不要因为「怕开销」而放弃它去写裸 try/finally；相反，应当把可复用的资源包装做成上下文管理器后在团队里共享，让调用方只写一行 with，从而降低整条代码路径的心智负担。",
       "codeExample": {
-        "language": "Swift",
-        "code": "import SwiftUI\n\n// MARK: - 子视图：通过 @Binding 借用父视图的数据\nstruct StepCounterView: View {\n    // @Binding：不拥有数据，只是和父视图建立双向绑定\n    @Binding var count: Int\n    \n    var body: some View {\n        HStack(spacing: 16) {\n            Button {\n                count -= 1          // 修改 binding，父视图的 @State 同步变化\n            } label: {\n                Image(systemName: \"minus.circle.fill\")\n                    .font(.title)\n            }\n            .buttonStyle(.borderless)\n            \n            // 只读展示当前值\n            Text(\"\\(count)\")\n                .font(.system(size: 36, weight: .bold, design: .rounded))\n                .frame(minWidth: 60)\n            \n            Button {\n                count += 1\n            } label: {\n                Image(systemName: \"plus.circle.fill\")\n                    .font(.title)\n            }\n            .buttonStyle(.borderless)\n        }\n    }\n}\n\n// MARK: - 父视图：用 @State 拥有数据\nstruct ContentView: View {\n    // @State：数据的「老板」，放在 SwiftUI 的持久化存储中\n    @State private var count: Int = 0\n    @State private var isShowingDetail: Bool = false\n    \n    var body: some View {\n        VStack(spacing: 24) {\n            Text(\"今天学了几个 SwiftUI 概念？\")\n                .font(.headline)\n            \n            // 把数据「借」给子视图，$count 生成 Binding<Int>\n            StepCounterView(count: $count)\n            \n            // 绑定到 Toggle：系统控件同样接受 Binding\n            Toggle(\"显示鼓励语\", isOn: $isShowingDetail)\n                .padding(.horizontal, 40)\n            \n            if isShowingDetail && count > 0 {\n                Text(count >= 5 ? \"🔥 你太强了！\" : \"💪 继续加油！\")\n                    .foregroundStyle(.secondary)\n                    .transition(.opacity)   // 条件渲染 + 简单动画\n            }\n            \n            Button(\"清零\") {\n                count = 0                 // 直接修改 @State，界面自动刷新\n            }\n            .buttonStyle(.borderedProminent)\n        }\n        .padding()\n        .animation(.easeInOut(duration: 0.2), value: isShowingDetail)\n    }\n}\n\n#Preview {\n    ContentView()\n}\n",
-        "explanation": "1) `@State private var count: Int = 0` 在 ContentView 中创建并拥有数据。private 表示只有这个视图能直接改它，符合「单一数据源」原则。\n2) `StepCounterView(count: $count)` 里的 `$count` 是 SwiftUI 的语法糖，会生成一个 `Binding<Int>` 传给子视图——这一步是连接父子的关键。\n3) 子视图用 `@Binding var count: Int` 接收它。子视图里写 `count += 1` 实际上是在修改父视图的 @State，SwiftUI 检测到变化后重新计算 body，界面自动更新。\n4) `Toggle(\"显示鼓励语\", isOn: $isShowingDetail)` 展示了系统控件也需要 `Binding`，因为它们既要读也要写状态。\n5) `if isShowingDetail && count > 0` 是 SwiftUI 的条件渲染写法，配合 `.transition` 和 `.animation` 可以做出自然的显隐动画。\n6) `#Preview` 宏提供了 Xcode 实时预览入口，写 UI 时可以立刻看到效果。"
+        "language": "Python",
+        "code": "import os\nimport time\nimport contextlib\nfrom contextlib import contextmanager\n\n\nclass Timer:\n    \"\"\"可复用的计时上下文管理器（类实现）\"\"\"\n\n    def __init__(self, label=\"block\"):\n        self.label = label\n        self.elapsed = 0.0\n\n    def __enter__(self):\n        self._start = time.perf_counter()   # 高精度计时\n        return self                          # as 后绑定的对象\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        self.elapsed = time.perf_counter() - self._start\n        print(f\"[{self.label}] 耗时 {self.elapsed:.6f}s\")\n        return False   # False/None: 异常继续向上传播\n\n\n@contextmanager\ndef temporary_config(config: dict, **overrides):\n    \"\"\"临时修改配置字典，退出时无条件恢复原状\"\"\"\n    backup = config.copy()          # 备份现场\n    try:\n        config.update(overrides)    # 进入 with 前生效\n        yield config                # yield 的值绑定给 as\n    finally:\n        config.clear()\n        config.update(backup)       # 即使内部抛异常也一定恢复\n\n\n@contextmanager\ndef chdir(path):\n    \"\"\"临时切换工作目录，退出后自动还原\"\"\"\n    prev = os.getcwd()\n    os.chdir(path)\n    try:\n        yield os.getcwd()\n    finally:\n        os.chdir(prev)\n\n\nif __name__ == \"__main__\":\n    # 1) 临时状态管理：退出后自动还原\n    settings = {\"timeout\": 30, \"retries\": 3}\n    with temporary_config(settings, timeout=60) as cfg:\n        print(\"内部配置:\", cfg)\n    print(\"外部配置:\", settings)          # 已恢复 timeout=30\n\n    # 2) 计时器：as 拿到的是 Timer 实例\n    with Timer(\"数据处理\") as t:\n        total = sum(i * i for i in range(200_000))\n        time.sleep(0.01)\n    print(\"elapsed =\", round(t.elapsed, 4))\n\n    # 3) ExitStack：运行时动态管理多个资源\n    with contextlib.ExitStack() as stack:\n        stack.enter_context(Timer(\"任务A\"))\n        stack.enter_context(Timer(\"任务B\"))\n        print(\"多个资源统一按逆序释放\")\n",
+        "explanation": "第 10-23 行是类实现：`__enter__` 记录起始时间并返回 self，因此 `as t` 绑定的是 Timer 实例本身；`__exit__` 计算耗时并打印，返回 False 表示不吞异常。\n\n第 26-36 行是 `@contextmanager` 写法：进入 with 时执行 backup 与 update，yield 把 config 抛给 as 变量；finally 中无条件还原，保证状态污染不会泄漏到 with 之外，即使内部抛出异常。\n\n第 39-46 行的 chdir 展示了「临时环境切换」这一高频模式：先记住旧目录，退出时 finally 还原。\n\n主程序第一段演示状态恢复，退出 with 后 settings 回到 timeout=30。\n第二段演示 as 变量的真实用途——用它读取 `t.elapsed`，这在做性能埋点、写日志时非常常见。\n第三段演示 ExitStack：资源数量在运行时才确定时，用 `stack.enter_context(...)` 动态登记，退出时自动按逆序清理。"
       },
       "keyPoints": [
-        "@State 用于「拥有」数据，是数据的唯一来源，通常声明为 private",
-        "@Binding 不创建数据，只建立一条父子视图之间的双向引用通道",
-        "$ 符号把 @State 变量转成 Binding 传给子视图，如 StepCounterView(count: $count)",
-        "状态应该放在使用它的最近共同祖先，子视图只借用不复制，避免数据不同步",
-        "@State 适合本地 UI 状态；跨页面共享或与网络/模型层交互时应升级到 @StateObject / @Observable"
+        "`__exit__` 在正常结束与异常结束时都会被调用，是释放资源的安全位置；返回 True 会吞掉异常，务必谨慎",
+        "`@contextmanager` 中 yield 之前=进入逻辑，yield 之后=清理逻辑；想吞异常必须在生成器内 except 掉 yield 抛出的异常",
+        "用 try/finally 包住 yield 之后的清理代码，才能保证异常路径下资源不泄漏",
+        "凡是「成对出现、不做清理就出事」的操作（事务、锁、临时状态、计时）都应抽象为上下文管理器",
+        "contextlib.ExitStack 用于运行时动态管理不定数量的上下文管理器，退出时按逆序统一释放"
       ],
       "exercise": {
-        "description": "制作一个「点赞卡片」：父视图 LikeCardView 用 @State 保存 isLiked（Bool）和 likeCount（Int），子视图 LikeButtonView 用 @Binding 接收这两个值。点击按钮时，isLiked 取反；当 isLiked 变为 true 时 likeCount +1，变为 false 时 likeCount -1（不能小于 0）。界面上同时显示爱心图标（isLiked ? \"heart.fill\" : \"heart\"）和当前点赞数。",
-        "hint": "先在子视图里定义 `@Binding var isLiked: Bool` 和 `@Binding var likeCount: Int`。按钮的 action 里先做 `isLiked.toggle()`，然后根据 isLiked 的新值来加减 likeCount，并用 `likeCount = max(0, likeCount)` 防止负数。父视图传值时记得加 `$`。",
+        "description": "实现一个 `transaction(conn)` 上下文管理器（用 @contextmanager 写），要求：进入时不做事；with 代码块正常结束时自动调用 conn.commit()；with 代码块内抛出任何异常时自动调用 conn.rollback()，且异常继续向上传播；无论哪种情况，退出时都必须打印 '事务结束'。可以假定 conn 是一个具有 commit() 与 rollback() 方法的鸭子类型对象（比如 sqlite3.Connection）。补充测试：写两个调用场景，一个正常提交，一个主动抛异常验证回滚被调用。",
+        "hint": "用 try/except/else/finally 组合：except 分支处理异常并 rollback（不要 return，让异常自然传播），else 分支在无异常时 commit，finally 保证打印语句一定执行。注意 @contextmanager 写法中，异常会在生成器的 yield 处被重新抛出。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，让子视图能读写父视图的 @State 数据。",
-            "codeContext": "struct ParentView: View {\n    @State private var score: Int = 0\n    var body: some View {\n        ChildView(score: [空1])\n    }\n}\n\nstruct ChildView: View {\n    [空2] var score: Int\n    var body: some View {\n        Button(\"+1\") { score += 1 }\n    }\n}",
+            "question": "补全下面的资源类，使其能正确用在 with 语句中并保留异常传播语义。",
+            "codeContext": "class FileHandle:\n    def __init__(self, path):\n        self.path = path\n        self.f = None\n\n    def ____A____(self):\n        self.f = open(self.path, \"w\")\n        return self.f\n\n    def ____B____(self, exc_type, exc_val, exc_tb):\n        self.f.close()\n        return False",
             "segments": [
               {
                 "type": "text",
-                "content": "ChildView(score: ",
+                "content": "class FileHandle:\n    def __init__(self, path):\n        self.path = path\n        self.f = None\n\n    def ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,18 +40,18 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[空1]",
+                "placeholder": "[选择方法名]",
                 "options": [
-                  "score",
-                  "$score",
-                  "@score",
-                  "self.score"
+                  "__enter__",
+                  "__exit__",
+                  "__init__",
+                  "open"
                 ],
-                "correctAnswer": "$score"
+                "correctAnswer": "__enter__"
               },
               {
                 "type": "text",
-                "content": ")\n}\n\nstruct ChildView: View {\n    ",
+                "content": "(self):\n        self.f = open(self.path, \"w\")\n        return self.f\n\n    def ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -59,56 +59,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[空2]",
+                "placeholder": "[选择方法名]",
                 "options": [
-                  "@State",
-                  "@Binding",
-                  "@ObservedObject",
-                  "let"
+                  "__enter__",
+                  "__exit__",
+                  "__close__",
+                  "cleanup"
                 ],
-                "correctAnswer": "@Binding"
+                "correctAnswer": "__exit__"
               },
               {
                 "type": "text",
-                "content": " var score: Int",
+                "content": "(self, exc_type, exc_val, exc_tb):\n        self.f.close()\n        return False",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "$score",
-            "explanation": "父视图用 `$score` 把 @State 转成 Binding 传出，子视图用 `@Binding` 接收。`score` 只是传值（拷贝），改它不会影响父视图；`@State` 放在子视图会创建一份全新的独立数据，同样无法同步。"
+            "correctAnswer": "__enter__",
+            "explanation": "上下文管理器协议要求实现 `__enter__` 与 `__exit__` 两个魔法方法。`__enter__` 的返回值绑定给 as 变量，因此这里 return self.f 使得 `with FileHandle('a.txt') as f` 拿到的是真正的文件对象；`__exit__` 接收三个异常参数，在此关闭文件。注意不存在 `__close__` 这个魔法方法。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 @State 和 @Binding，下面哪个说法是正确的？",
-            "codeContext": null,
+            "question": "关于 `__exit__` 的返回值，下列说法正确的是？",
+            "codeContext": "def __exit__(self, exc_type, exc_val, exc_tb):\n    self.cleanup()\n    return True",
             "segments": null,
             "options": [
-              "@Binding 会复制一份父视图的数据，两边互不影响",
-              "同一个数据可以同时在多个视图里用 @State 声明，它们会自动同步",
-              "@Binding 是对父视图 @State 的引用，修改它会同时更新父视图数据和界面",
-              "@State 只能用于 String 和 Int，不能用于 Bool 或 Array"
+              "返回 True 会让 with 代码块中的异常被吞掉，不再向外传播",
+              "返回 True 表示资源释放成功，返回 False 表示释放失败",
+              "返回值只在没有异常时有意义，有异常时会被忽略",
+              "必须返回 None，否则 Python 抛出 RuntimeError"
             ],
-            "correctAnswer": "@Binding 是对父视图 @State 的引用，修改它会同时更新父视图数据和界面",
-            "explanation": "@Binding 建立的是双向引用而非拷贝；同一份数据只能有一个 @State 作为唯一来源；@State 支持所有值类型（Bool、Array、Dictionary、自定义 struct 等），只要它们符合 SwiftUI 的状态要求。"
+            "correctAnswer": "返回 True 会让 with 代码块中的异常被吞掉，不再向外传播",
+            "explanation": "`__exit__` 的返回值是布尔语义的「是否抑制异常」：返回 True 表示异常已被处理完毕、不再向上传播；返回 False 或 None 则异常正常重新抛出。contextlib.suppress 正是利用这一机制实现的。第二个选项是常见误解——返回值与清理是否成功无关。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "运行这段代码，点击两次按钮后界面显示的数字是多少？",
-            "codeContext": "struct CounterView: View {\n    @State private var n = 0\n    var body: some View {\n        Button(\"点我\") {\n            n += 1\n            n += 1\n        }\n        Text(\"当前值: \\(n)\")\n    }\n}",
+            "question": "下面这段代码的输出是什么？",
+            "codeContext": "from contextlib import contextmanager\n\n@contextmanager\ndef tag(name):\n    print(f\"<{name}>\")\n    try:\n        yield\n    except ValueError:\n        print(\"已捕获 ValueError\")\n    finally:\n        print(f\"</{name}>\")\n\nwith tag(\"div\"):\n    raise ValueError(\"boom\")\n\nprint(\"程序继续\")",
             "segments": null,
             "options": [
-              "当前值: 1",
-              "当前值: 2",
-              "当前值: 4",
-              "当前值: 0，因为 n 是 let 常量"
+              "<div>\n已捕获 ValueError\n</div>\n程序继续",
+              "<div>\n</div>\n程序继续",
+              "<div>\n已捕获 ValueError\n程序继续",
+              "程序抛出 ValueError 后终止，仅输出 <div>"
             ],
-            "correctAnswer": "当前值: 4",
-            "explanation": "每次点击 action 内部把 n 加 2，两次点击共加 4。SwiftUI 只会在 action 执行完毕后统一刷新一次 body，所以不会出现中间状态闪烁，最终显示 4。@State 是 var，可以被修改。"
+            "correctAnswer": "<div>\n已捕获 ValueError\n</div>\n程序继续",
+            "explanation": "进入 with 时打印 `<div>`；代码块内 raise 的 ValueError 会在生成器的 yield 处被重新抛出，从而被 except ValueError 捕获并打印「已捕获 ValueError」；由于异常被吞掉（生成器正常结束），finally 打印 `</div>`，程序继续执行到最后一行。若去掉 except 分支，异常就会传播出去，程序在 `<div>` 之后终止。"
           }
         ]
       }

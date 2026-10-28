@@ -1,14 +1,16 @@
 {
- "date": "2026-10-27",
- "weekday": "Tuesday",
- "overview": "Plenum kicks off with a pro-growth tone; box office and foreign trade both on the rise; AI and public health continue to dominate the public agenda.",
+ "date": "2026-10-28",
+ "weekday": "Wednesday",
+ "overview": "Q3 earnings paint a picture of dual highlights in foreign trade and intelligent manufacturing, while artificial intelligence and new energy continue to advance. Public health and youth wellness are drawing growing attention.",
  "trendingTopics": [
-  "Strict Party Governance",
-  "Foreign Trade Exports",
+  "Intelligent Manufacturing",
+  "Foreign Trade",
   "Artificial Intelligence",
-  "Film & TV Consumption",
+  "New Energy Vehicles",
   "Public Health",
-  "Cultural & Tourism Development"
+  "Rural Revitalization",
+  "Clean Energy",
+  "Youth Health"
  ],
  "sections": [
   {
@@ -18,169 +20,179 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "Fifth Plenum of 20th CPC Central Committee Opens in Beijing",
-     "summary": "The Fifth Plenary Session of the 20th Central Committee of the Communist Party of China has opened in Beijing, drawing close attention from all sides.",
-     "detail": "The Fifth Plenary Session of the 20th Central Committee of the Communist Party of China has opened in Beijing. As a major item on the Party's agenda, the plenum marks a key stage for related decisions and deployments.",
-     "impact": "Policy signals released at the session will provide direction for next-phase economic and social development, warranting continued monitoring.",
-     "importance": "hot",
+     "title": "Baihetan Hydropower Station: Harnessing a Canyon Gorge to Turn River Currents into Clean Power",
+     "summary": "Built within a canyon gorge, the Baihetan hydropower station transforms rushing river waters into clean electricity, serving as a major pillar of China's clean energy supply.",
+     "detail": "The footage, titled \"Building a Hub in the Gorge,\" introduces the Baihetan hydropower station and its conversion of surging river currents into clean electricity. The project showcases China's capacity to manufacture and construct large-scale hydropower equipment.",
+     "impact": "The continued commissioning of large hydropower projects helps optimize the energy mix and boost clean energy supply capacity.",
+     "importance": "important",
      "tags": [
-      "Party Building",
-      "Policy Direction"
+      "Clean Energy",
+      "Hydropower Projects",
+      "Energy Infrastructure"
      ]
     },
     {
      "id": "news-002",
-     "title": "Names of 15 Central Inspection Team Heads Released",
-     "summary": "The heads of 15 central inspection teams have been announced as central inspection work expands further and intra-Party oversight deepens.",
-     "detail": "The heads of 15 central inspection teams have been announced. Central inspection is a key form of intra-Party oversight, and the formation of these teams reflects the continuing progress of supervision work.",
-     "impact": "Stronger intra-Party oversight helps promote the standard exercise of power and foster a clean political environment.",
+     "title": "Q3 Transport Data Reveals a China on the Move: Goods Flow Worldwide, People Travel Far",
+     "summary": "Third-quarter transport data shows cargo and passenger traffic remaining robust, reflecting the dynamism and mobility of the Chinese economy.",
+     "detail": "Drawing on the Q3 transport report, the footage depicts a picture of \"goods flowing to all corners, people traveling far and wide,\" with freight and passenger data jointly confirming the state of economic activity.",
+     "impact": "Improving transport data is widely seen as a key window into the vitality of the real economy.",
      "importance": "important",
      "tags": [
-      "Intra-Party Oversight",
-      "Full and Strict Party Self-Governance"
+      "Transportation",
+      "Logistics",
+      "Economic Performance"
      ]
     },
     {
      "id": "news-003",
-     "title": "Shenzhen Rolls Out the Red Carpet for APEC Summit",
-     "summary": "Shenzhen's preparations are complete, and the city is ready to welcome the APEC gathering in its best form as an open metropolis.",
-     "detail": "Shenzhen is ready. As an open city, Shenzhen is greeting the APEC summit in its finest form, with all related preparations in place.",
-     "impact": "Hosting the multilateral event showcases the city's openness while driving an overall improvement in urban services and support capabilities.",
+     "title": "A New Chapter in Party Governance: Advancing Full and Rigorous Party Self-Governance",
+     "summary": "The article stresses opening new frontiers in Party governance in the new era, focusing on the continued deepening of full and rigorous Party self-governance and institutional development.",
+     "detail": "The footage presents a commentary on Party governance in the new era, emphasizing sustained efforts to advance full and rigorous Party self-governance and improve the institutional framework for the Party's self-reform.",
+     "impact": "The continued deepening of full and rigorous Party self-governance will further strengthen the building of official ranks and the governance of the political environment.",
      "importance": "important",
      "tags": [
-      "Opening Up"
+      "Full and Rigorous Party Self-Governance"
      ]
     },
     {
      "id": "news-004",
-     "title": "PLA Rocket Force Conducts No-Notice Combat Launch Drill",
-     "summary": "The PLA Rocket Force has carried out a no-notice combat launch drill, with striking footage highlighting combat-realistic requirements.",
-     "detail": "The PLA Rocket Force conducted a no-notice combat launch drill, with dramatic footage released. The unannounced exercise emphasizes combat realism and tests the troops' rapid response and ad hoc handling capabilities.",
-     "impact": "Regular combat-realistic training helps strengthen national defense capabilities and strategic deterrence.",
-     "importance": "important",
+     "title": "Multi-Pronged Efforts to Tackle Challenges and Improve Life for New-Category Workers",
+     "summary": "By taking multi-pronged approaches to service and management challenges and improving support measures, food delivery riders and other new-category workers are seeing better living conditions.",
+     "detail": "The footage notes that efforts across multiple fronts are being made to resolve service and management challenges, improve working and living conditions for new-category workers, and enhance their sense of gain and belonging.",
+     "impact": "Stronger protection of labor rights in new forms of employment helps stabilize the overall job market and grassroots social governance.",
+     "importance": "normal",
      "tags": [
-      "Combat-Realistic Training"
+      "New Forms of Employment",
+      "Livelihood Security"
      ]
     },
     {
      "id": "news-005",
-     "title": "Nonstop on His Feet, Working for Quake-Hit Villagers' Wellbeing",
-     "summary": "Frontline officials keep moving without rest, tending to the safety and wellbeing of villagers in the quake zone, putting the people first.",
-     "detail": "In the quake zone, he keeps moving without pause, looking after the welfare of villagers. \"Always put the people first\" has become a vivid reflection of frontline work.",
-     "impact": "Grassroots efforts in disaster relief and reconstruction bear directly on the basic living needs of affected residents.",
+     "title": "From \"Sealing the Edge\" to \"Enriching the Edge\": Desert Industries Bear Fruit",
+     "summary": "Desert industries have evolved from ecological \"edge-sealing\" to \"edge-enriching,\" improving the environment while also boosting local incomes.",
+     "detail": "The footage reports on the achievements of industrial development in desert regions, delivering dual benefits of ecological improvement and higher rural incomes through a sustainable model combining desertification control with industry.",
+     "impact": "Combining ecological restoration with income-generating industry offers replicable experience for rural revitalization and desertification control.",
      "importance": "normal",
      "tags": [
-      "Earthquake Relief",
-      "Livelihood Protection"
+      "Ecological Restoration",
+      "Rural Revitalization",
+      "Desert Economy"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "World & Politics",
+   "title": "World Politics",
    "icon": "🌍",
    "articles": [
     {
      "id": "news-006",
-     "title": "Kim Jong Un Visits Dandong; Foreign Ministry Briefs Press",
-     "summary": "Kim Jong Un visited Dandong last week. China's Foreign Ministry briefed the press on the visit, drawing external attention.",
-     "detail": "Kim Jong Un visited Dandong last week, and the Foreign Ministry provided a briefing on the matter. No further details on arrangements or outcomes were disclosed.",
-     "impact": "Developments in border exchanges carry significance for observing regional dynamics and cooperation.",
-     "importance": "important",
+     "title": "习近平致电祝贺卢拉当选连任巴西总统",
+     "summary": "国家主席习近平致电祝贺卢拉当选连任巴西总统，表达对双边关系发展的重视与期待。",
+     "detail": "素材报道习近平就卢拉当选连任巴西总统致贺电，体现中方对中巴关系的高度重视，传递深化合作的积极信号。",
+     "impact": "元首层面互动有助于巩固双边关系，推动相关领域合作稳步发展。",
+     "importance": "hot",
      "tags": [
-      "Korean Peninsula"
+      "对外关系",
+      "拉美合作"
      ]
     },
     {
      "id": "news-007",
-     "title": "China's Foreign Ministry Responds to Indian Claims of Border Peace Violations",
-     "summary": "Following Indian accusations that Chinese forces undermined peace along the border, the Foreign Ministry issued a response.",
-     "detail": "India alleged that Chinese troops disrupted peace in the border area. The Foreign Ministry responded, though full details of the statement were not disclosed.",
-     "impact": "Statements on the border issue suggest dialogue between the two sides continues; the regional situation warrants ongoing attention.",
-     "importance": "important",
+     "title": "特朗普称巴西大选被操纵 外交部回应",
+     "summary": "针对特朗普称巴西总统选举被操纵的说法，中国外交部作出回应，表明中方立场。",
+     "detail": "素材显示，外交部就相关言论作出回应。素材未提供回应全文细节，仅记录了回应这一事实。",
+     "impact": "重要外交表态有助于澄清立场，避免国际舆论场出现误读与炒作。",
+     "importance": "hot",
      "tags": [
-      "Border Tensions"
+      "国际舆论",
+      "拉美局势"
      ]
     },
     {
      "id": "news-008",
-     "title": "Exclusive Interview with Klaus Schwab: Cooperation Is the Only Way in the Intelligent Age",
-     "summary": "In an exclusive interview with CCTV, World Economic Forum founder Klaus Schwab said cooperation is the only path forward in the intelligent age.",
-     "detail": "A CCTV reporter interviewed Klaus Schwab, founder of the World Economic Forum. On the development of the intelligent age, Schwab's verdict was: \"Cooperation alone suffices.\"",
-     "impact": "Amid rising intelligence-driven transformation and globalization, multilateral cooperation remains a vital route to addressing shared challenges.",
-     "importance": "normal",
+     "title": "菲军舰“跟踪”辽宁舰？各方广泛质疑",
+     "summary": "针对菲军舰“跟踪”辽宁舰的说法，舆论普遍予以质疑与嘲讽，事件引发广泛关注。",
+     "detail": "素材以“全世界都笑了”为题，对菲方相关说法予以驳斥，反映舆论对这一炒作行为的普遍态度。",
+     "impact": "涉海议题的舆论交锋或持续，凸显相关海域安全形势的复杂性。",
+     "importance": "important",
      "tags": [
-      "International Cooperation",
-      "Intelligent Economy"
+      "南海局势",
+      "海上安全"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Financial News",
+   "title": "Finance & Economy",
    "icon": "📈",
    "articles": [
     {
      "id": "news-009",
-     "title": "2026 China Box Office Tops RMB 31.5 Billion, Unlocking New Consumption Scenarios",
-     "summary": "China's total box office for 2026 has surpassed RMB 31.5 billion, with the trend of 'following the films to get active' driving the emergence of new consumption scenarios.",
-     "detail": "China's total box office for 2026 has surpassed RMB 31.5 billion. The 'following the films to get active' trend is unlocking new consumption scenarios and creating fresh linkages between the film industry and other consumer sectors.",
-     "impact": "Cross-sector integration between film, sports and cultural tourism can help sustain the momentum of cultural consumption.",
+     "title": "外贸稳中向好惠及全球：经济三季报亮点",
+     "summary": "中国经济三季报显示外贸稳中向好，既支撑国内增长，也为全球市场带来稳定与机遇。",
+     "detail": "素材解析中国经济三季报亮点，指出外贸运行稳中向好、惠及全球，体现出口韧性与对世界经济的正向外溢效应。",
+     "impact": "外贸向好为全年经济目标提供支撑，也增强全球产业链供应链的稳定预期。",
      "importance": "hot",
      "tags": [
-      "Film Consumption",
-      "Sports-Culture Integration",
-      "New Consumption Scenarios"
+      "外贸",
+      "宏观经济",
+      "经济运行"
      ]
     },
     {
      "id": "news-010",
-     "title": "'Made in China' Products Draw Strong Interest at Canton Fair",
-     "summary": "'Made in China' products are in high demand at the Canton Fair, with buyer feedback driving continuous product upgrades.",
-     "detail": "'Made in China' products are drawing strong interest at the Canton Fair. Buyer feedback is fueling product iteration, reflecting a demand-driven approach to product improvement.",
-     "impact": "The ability to iterate rapidly in response to demand is a key factor in maintaining the export competitiveness of manufacturers.",
+     "title": "前三季度中部地区外贸进出口值创新高",
+     "summary": "今年前三季度中部地区外贸进出口值创下新高，多个亮点领域表现突出。",
+     "detail": "素材指出，中部地区前三季度外贸进出口值创新高，并涌现出一批增长“亮点”，显示区域外向型经济加速成长。",
+     "impact": "中部外贸提速将带动区域产业升级与开放型经济布局优化。",
      "importance": "important",
      "tags": [
-      "Foreign Trade Exports",
-      "Made in China"
+      "外贸",
+      "区域经济",
+      "中部崛起"
      ]
     },
     {
      "id": "news-011",
-     "title": "'Invisible Foreign Trade' Expands Globally",
-     "summary": "'Invisible foreign trade' is thriving worldwide, showcasing a new form of trade that differs from traditional goods trade.",
-     "detail": "'Invisible foreign trade' is expanding rapidly across the globe. This term describes a form of trade that is growing faster outside the realm of conventional goods commerce.",
-     "impact": "Diversifying trade formats helps strengthen the resilience and vitality of foreign trade.",
-     "importance": "normal",
+     "title": "智能制造增速29.1% 感受澎湃动能",
+     "summary": "以29.1%的增速为切口，感受智能制造领域持续释放的澎湃发展动能。",
+     "detail": "素材以“尺素金声”评论形式，用29.1%的增速数据展现智能制造的强劲势头，反映制造业转型升级的进展。",
+     "impact": "智能制造加速发展，将持续带动制造业投资与技术改造需求。",
+     "importance": "important",
      "tags": [
-      "New Trade Formats",
-      "Cross-Border Trade"
+      "智能制造",
+      "装备制造",
+      "工业经济"
      ]
     },
     {
      "id": "news-012",
-     "title": "The Middle-Class Wardrobe Is Essentially One Giant Anta",
-     "summary": "Using the middle-class wardrobe as a lens, the article examines how sports brands are gaining presence in everyday wear.",
-     "detail": "'The middle-class wardrobe is essentially one giant Anta.' The article uses this perspective to explore the relationship between apparel consumption and sports brands.",
-     "impact": "Shifting presence of sports brands in apparel consumption reflects changes in consumer preferences and market dynamics.",
+     "title": "34年广交会之约：不锈钢杯走向“创造”",
+     "summary": "从一只不锈钢杯的34年广交会之约，看中国制造从“制造”迈向“创造”的升级轨迹。",
+     "detail": "素材以广交会上的不锈钢杯为样本，讲述企业多年参展历程，折射产品设计与技术含量提升带来的品牌溢价。",
+     "impact": "广交会成为观察中国制造转型升级的重要窗口，利好外贸品牌化发展。",
      "importance": "normal",
      "tags": [
-      "Apparel Consumption",
-      "Sports Brands"
+      "广交会",
+      "外贸",
+      "制造业升级"
      ]
     },
     {
      "id": "news-013",
-     "title": "RMB 1.5 Million Smoke-Free Bar Shuts Down; Founder Responds",
-     "summary": "The founder invested RMB 1.5 million to open a smoke-free bar, which has since closed; the founder has responded to the situation.",
-     "detail": "A smoke-free bar backed by RMB 1.5 million in investment has ultimately shut down, with the founder issuing a response. No operational details were disclosed.",
-     "impact": "Investments in offline dining and entertainment ventures call for rational assessment of market demand and operating costs.",
+     "title": "2026总票房超315亿元 影院服务多元化",
+     "summary": "2026年总票房已超315亿元，影院不断创新多元化服务，拓展经营空间。",
+     "detail": "素材显示，2026年电影总票房超315亿元，影院端通过多元化服务创新提升观影体验与经营能力。",
+     "impact": "票房回暖与服务升级并行，有助于文化消费市场进一步复苏。",
      "importance": "normal",
      "tags": [
-      "Dining Consumption",
-      "Startup Investment"
+      "电影市场",
+      "文化消费",
+      "服务业"
      ]
     }
    ]
@@ -192,50 +204,41 @@
    "articles": [
     {
      "id": "news-014",
-     "title": "Anthropic Files for IPO, Plans Nasdaq Listing",
-     "summary": "Anthropic has filed registration documents for an initial public offering, seeking to list on Nasdaq under the ticker \"ANT.\"",
-     "detail": "Anthropic filed registration documents for an IPO, planning to list on Nasdaq under the ticker \"ANT,\" marking a major step in the capitalization of the artificial intelligence industry.",
-     "impact": "AI companies are accelerating their push into public markets, which will reshape industry valuations and the financing environment.",
-     "importance": "important",
+     "title": "Google Unveils Genie 4, Hailed as the Most Capable World Model Yet",
+     "summary": "Google has released Genie 4, billed as the most powerful world model to date, drawing intense industry attention to world-model technology paths.",
+     "detail": "Reports cover the launch of Google's Genie 4 world model, positioned as the most capable world model currently available, signaling the evolution of generative technology toward world simulation.",
+     "impact": "Competition in world models is heating up, potentially accelerating the deployment of applications in embodied intelligence and content generation.",
+     "importance": "hot",
      "tags": [
       "Artificial Intelligence",
-      "Capital Markets"
+      "Large Models",
+      "Tech Frontier"
      ]
     },
     {
      "id": "news-015",
-     "title": "From \"Growing Potatoes\" to \"Growing Tokens\"",
-     "summary": "From \"growing potatoes\" to \"growing tokens,\" the article examines industrial change through the lens of computing resources.",
-     "detail": "From \"growing potatoes\" to \"growing tokens,\" the headline traces a shift in industry from traditional agriculture to computing power.",
-     "impact": "The growth of computing-power-related industries could open new drivers of local economic growth.",
-     "importance": "normal",
+     "title": "BYD's 'Rolls-Royce' Arrives",
+     "summary": "BYD has launched a high-end model dubbed the 'BYD Rolls-Royce,' making a push into the luxury car market.",
+     "detail": "Under the headline 'BYD's Rolls-Royce Arrives,' reports cover BYD's latest move into the high-end luxury segment, showcasing the brand's ambition to break upward.",
+     "impact": "Domestic brands extending into the premium market will further reshape China's luxury car landscape.",
+     "importance": "important",
      "tags": [
-      "Compute Economy",
-      "Digital Economy"
+      "New Energy Vehicles",
+      "Auto Industry",
+      "High-End Manufacturing"
      ]
     },
     {
      "id": "news-016",
-     "title": "\"Intellectual Property Is the Foundation for Sustained R&D Investment\"",
-     "summary": "\"Intellectual property is the confidence to keep investing in R&D\" highlights the role of IP in supporting research and innovation.",
-     "detail": "\"Intellectual property is the foundation for sustained R&D investment.\" The remarks underscore the link between IP protection and continuous investment in research and development.",
-     "impact": "Stronger intellectual property protection helps incentivize corporate R&D and raises overall industrial innovation capacity.",
-     "importance": "important",
-     "tags": [
-      "Intellectual Property",
-      "Tech Innovation"
-     ]
-    },
-    {
-     "id": "news-017",
-     "title": "The Kuaishou Streamer and His 4 Films",
-     "summary": "\"The Kuaishou Streamer and His 4 Films\" chronicles a short-video creator's foray into filmmaking.",
-     "detail": "The Kuaishou streamer and his 4 films illustrate how short-video creators are extending into the film and television sector.",
-     "impact": "The convergence of short-video platforms and film and television is reshaping content production and the path for creator development.",
+     "title": "New Products Shine at Canton Fair, Winning Favor from Overseas Buyers",
+     "summary": "A batch of new products at the Canton Fair have secured overseas orders thanks to advanced technology and strong value for money, with standout exhibits across the board.",
+     "detail": "Sources note that new products at the Canton Fair have won over overseas buyers with strong technological capabilities and competitive pricing, reflecting the rising competitiveness of Chinese exports.",
+     "impact": "Growing momentum for new products going global is injecting fresh momentum into foreign trade orders and industrial upgrading.",
      "importance": "normal",
      "tags": [
-      "Short Video",
-      "Film and Television"
+      "Tech Innovation",
+      "Smart Manufacturing",
+      "Foreign Trade"
      ]
     }
    ]
@@ -246,62 +249,68 @@
    "icon": "📰",
    "articles": [
     {
-     "id": "news-018",
-     "title": "Scoliosis Is Crushing China's Students",
-     "summary": "The article examines the impact of scoliosis on Chinese students, drawing attention to adolescent health concerns.",
-     "detail": "The piece \"Scoliosis Is Crushing China's Students\" focuses on the prevalence of scoliosis among students and its effects.",
-     "impact": "Addressing adolescent spinal health requires joint attention and intervention from schools, families and the medical sector.",
+     "id": "news-017",
+     "title": "Scoliosis Weighs Heavily on Chinese Students",
+     "summary": "Scoliosis is affecting a large number of Chinese students, emerging as a youth health threat that cannot be ignored.",
+     "detail": "Under the headline 'Scoliosis Is Crushing Chinese Students,' the report focuses on spinal health among students, highlighting the toll of prolonged sitting and poor posture.",
+     "impact": "Growing attention to adolescent spinal health could drive stronger screening, public education and campus health management.",
      "importance": "important",
      "tags": [
-      "Adolescent Health",
-      "Public Health"
+      "Youth Health",
+      "Public Health",
+      "Education"
+     ]
+    },
+    {
+     "id": "news-018",
+     "title": "48 Hours With the Flu: How to Pick the Right Medicine",
+     "summary": "The author documents their response and medication choices within the first 48 hours of catching the flu, sharing personal experience.",
+     "detail": "In first-person account, the piece recounts dealing with the flu over 48 hours, focusing on choosing the 'right' medicine — reflecting public concern about drug use during flu season.",
+     "impact": "As flu season arrives, demand for related medicines and public awareness of prevention are expected to rise.",
+     "importance": "important",
+     "tags": [
+      "Public Health",
+      "Respiratory Disease",
+      "Health Education"
      ]
     },
     {
      "id": "news-019",
-     "title": "Venomous Mosquitoes From South China Are Migrating North",
-     "summary": "Venomous mosquitoes from southern China are moving north en masse, marking a new shift in the distribution of disease-carrying mosquitoes.",
-     "detail": "Venomous mosquitoes from southern China are heading north. The report highlights a trend of these mosquitoes expanding their range northward.",
-     "impact": "Shifting mosquito distributions pose new challenges for disease control and public health efforts.",
+     "title": "Southern China's Aggressive Mosquitoes Are Heading North",
+     "summary": "Mosquitoes once concentrated in southern China are spreading northward, raising concerns about shifting risks of vector-borne diseases.",
+     "detail": "Under the headline 'China's Southern 'Toxic Mosquitoes' Are Migrating North in Droves,' the report examines the northward shift in mosquito activity, suggesting the public health risk landscape could change.",
+     "impact": "Shifting mosquito distribution may require stronger mosquito control and disease surveillance in northern regions.",
      "importance": "important",
      "tags": [
       "Public Health",
-      "Vector Control"
+      "Vector Control",
+      "Climate Change"
      ]
     },
     {
      "id": "news-020",
-     "title": "Choosing Medication in the First 48 Hours of the Flu",
-     "summary": "The author documents their choices of flu medication within the first 48 hours of illness, covering flu response and drug use.",
-     "detail": "Within 48 hours of flu onset, the author chose the \"right\" medication. The article presents a personal account of how to select flu remedies.",
-     "impact": "During peak respiratory illness season, proper medication use is as important as seeking timely medical care.",
+     "title": "Why China's TV Leads Keep Choking Their Female Co-Stars",
+     "summary": "The article asks why male leads in Chinese entertainment so often strangle their female leads, reflecting on gender expression in screenwriting.",
+     "detail": "The report questions the recurring physical confrontation trope in Chinese TV dramas, pointing to creative inertia and underlying gender attitudes.",
+     "impact": "Public debate may push the entertainment industry toward more careful handling of character relationships and plot design.",
      "importance": "normal",
      "tags": [
-      "Respiratory Infectious Diseases",
-      "Medication Safety"
+      "Film & TV Production",
+      "Entertainment Industry",
+      "Drama Market"
      ]
     },
     {
      "id": "news-021",
-     "title": "15 Years After World Heritage Inscription: Has West Lake Really Changed?",
-     "summary": "Fifteen years after winning World Heritage status, the changes at West Lake have drawn attention and debate.",
-     "detail": "Fifteen years after its successful World Heritage inscription, the article reviews and discusses how West Lake has changed.",
-     "impact": "Lessons from protecting and utilizing World Heritage sites offer valuable reference for the development of cultural tourism.",
+     "title": "People's Daily Weighs In on Mbappé Controversy",
+     "summary": "People's Daily published a commentary on the Mbappé-related controversy, sparking widespread discussion online.",
+     "detail": "People's Daily commented on the Mbappé incident, after which the TV program that interviewed the football star issued a public apology, as the story continues to unfold.",
+     "impact": "Risks tied to commercial partnerships and public statements by international sports stars are drawing closer scrutiny.",
      "importance": "normal",
      "tags": [
-      "World Heritage",
-      "Cultural Tourism"
-     ]
-    },
-    {
-     "id": "news-022",
-     "title": "300 Days in a Boot Camp",
-     "summary": "\"300 Days in a Boot Camp\" recounts time spent and observations made inside a so-called special training school.",
-     "detail": "\"300 Days in a Boot Camp\" presents experiences within such an educational institution. No further specific details were disclosed.",
-     "impact": "The management and regulation of such institutions warrants sustained attention from all sectors of society.",
-     "importance": "normal",
-     "tags": [
-      "Youth Education"
+      "Sports Industry",
+      "Brand Marketing",
+      "Public Opinion"
      ]
     }
    ]
