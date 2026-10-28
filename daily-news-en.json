@@ -1,16 +1,14 @@
 {
- "date": "2026-10-26",
- "weekday": "Monday",
- "overview": "Strict Party governance and shifting demographics share the spotlight on the same day; relief efforts warm hearts in the quake zone; a flurry of space launches and a mixed picture in gold consumption.",
+ "date": "2026-10-27",
+ "weekday": "Tuesday",
+ "overview": "Plenum kicks off with a pro-growth tone; box office and foreign trade both on the rise; AI and public health continue to dominate the public agenda.",
  "trendingTopics": [
-  "Strict Party governance",
-  "Demographic shifts",
-  "Earthquake relief",
-  "Space launches",
-  "Gold consumption",
-  "New drivers of foreign trade",
-  "Youth health",
-  "Flu prevention and control"
+  "Strict Party Governance",
+  "Foreign Trade Exports",
+  "Artificial Intelligence",
+  "Film & TV Consumption",
+  "Public Health",
+  "Cultural & Tourism Development"
  ],
  "sections": [
   {
@@ -20,175 +18,169 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "Political Watch: Three Dimensions for Understanding Full and Strict Party Self-Governance",
-     "summary": "The report interprets full and strict Party self-governance through three dimensions, helping readers grasp the strategy's deeper significance.",
-     "detail": "Presented in the 'Political Watch' format, the report analyzes full and strict Party self-governance from three dimensions, outlining its core meaning and requirements.",
-     "impact": "The analysis deepens understanding of the strategy and supports the implementation of related measures under full and strict Party self-governance.",
+     "title": "Fifth Plenum of 20th CPC Central Committee Opens in Beijing",
+     "summary": "The Fifth Plenary Session of the 20th Central Committee of the Communist Party of China has opened in Beijing, drawing close attention from all sides.",
+     "detail": "The Fifth Plenary Session of the 20th Central Committee of the Communist Party of China has opened in Beijing. As a major item on the Party's agenda, the plenum marks a key stage for related decisions and deployments.",
+     "impact": "Policy signals released at the session will provide direction for next-phase economic and social development, warranting continued monitoring.",
      "importance": "hot",
      "tags": [
-      "Anti-corruption"
+      "Party Building",
+      "Policy Direction"
      ]
     },
     {
      "id": "news-002",
-     "title": "China's Total Population Set to Fall Below 1.4 Billion, Down by 3.39 Million",
-     "summary": "China's total population declined by 3.39 million in 2025, with the overall figure at risk of falling below 1.4 billion.",
-     "detail": "Data shows China's total population decreased by 3.39 million in 2025, putting the national total on the verge of dropping below 1.4 billion. The shift has drawn widespread attention.",
-     "impact": "A shrinking population will have lasting effects on consumer markets, labor supply and elderly care provisions.",
-     "importance": "hot",
+     "title": "Names of 15 Central Inspection Team Heads Released",
+     "summary": "The heads of 15 central inspection teams have been announced as central inspection work expands further and intra-Party oversight deepens.",
+     "detail": "The heads of 15 central inspection teams have been announced. Central inspection is a key form of intra-Party oversight, and the formation of these teams reflects the continuing progress of supervision work.",
+     "impact": "Stronger intra-Party oversight helps promote the standard exercise of power and foster a clean political environment.",
+     "importance": "important",
      "tags": [
-      "Demographics",
-      "Livelihood Support",
-      "Elderly Care"
+      "Intra-Party Oversight",
+      "Full and Strict Party Self-Governance"
      ]
     },
     {
      "id": "news-003",
-     "title": "First Batch of 60 Relief Housing Units Completed in Baxian, Tibet",
-     "summary": "After around-the-clock efforts, the first 60 prefab relief housing units in Baxian, Tibet, have been completed.",
-     "detail": "Relief work continues as the first batch of 60 prefab resettlement units in Baxian, Tibet, is finished for the temporary housing of disaster-affected residents.",
-     "impact": "Delivery of the units will accelerate resettlement and better meet the basic living needs of affected residents.",
+     "title": "Shenzhen Rolls Out the Red Carpet for APEC Summit",
+     "summary": "Shenzhen's preparations are complete, and the city is ready to welcome the APEC gathering in its best form as an open metropolis.",
+     "detail": "Shenzhen is ready. As an open city, Shenzhen is greeting the APEC summit in its finest form, with all related preparations in place.",
+     "impact": "Hosting the multilateral event showcases the city's openness while driving an overall improvement in urban services and support capabilities.",
      "importance": "important",
      "tags": [
-      "Emergency Relief",
-      "Post-disaster Reconstruction"
+      "Opening Up"
      ]
     },
     {
      "id": "news-004",
-     "title": "Multiple Groups Rush Aid to Quake Zone as Warm Supplies Reach the Frontline",
-     "summary": "Heaters, warm clothing and hot meals are arriving in the quake zone, with support from many sides bringing warmth to those affected.",
-     "detail": "The quake zone has received heaters, warm clothing, hot meals and other relief supplies, with support pouring in from many quarters. Photo stories also documented the 'reverse journey' of 3,000 jin of dumplings.",
-     "impact": "Continued supplies and manpower will help quake-affected residents spend the winter safely and maintain stable living conditions.",
+     "title": "PLA Rocket Force Conducts No-Notice Combat Launch Drill",
+     "summary": "The PLA Rocket Force has carried out a no-notice combat launch drill, with striking footage highlighting combat-realistic requirements.",
+     "detail": "The PLA Rocket Force conducted a no-notice combat launch drill, with dramatic footage released. The unannounced exercise emphasizes combat realism and tests the troops' rapid response and ad hoc handling capabilities.",
+     "impact": "Regular combat-realistic training helps strengthen national defense capabilities and strategic deterrence.",
      "importance": "important",
      "tags": [
-      "Emergency Relief",
-      "Social Mobilization"
+      "Combat-Realistic Training"
      ]
     },
     {
      "id": "news-005",
-     "title": "How Robust Is China's National Water Network?",
-     "summary": "The report focuses on China's national water network, explaining its construction progress and overall strength.",
-     "detail": "The article introduces the development of the national water network through a question-and-answer format. Related material also highlights how 'six networks weave a new chapter' to underpin better living standards.",
-     "impact": "Building the national water network will improve water resource allocation and support agricultural production and urban development.",
+     "title": "Nonstop on His Feet, Working for Quake-Hit Villagers' Wellbeing",
+     "summary": "Frontline officials keep moving without rest, tending to the safety and wellbeing of villagers in the quake zone, putting the people first.",
+     "detail": "In the quake zone, he keeps moving without pause, looking after the welfare of villagers. \"Always put the people first\" has become a vivid reflection of frontline work.",
+     "impact": "Grassroots efforts in disaster relief and reconstruction bear directly on the basic living needs of affected residents.",
      "importance": "normal",
      "tags": [
-      "Water Conservancy",
-      "Infrastructure"
+      "Earthquake Relief",
+      "Livelihood Protection"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "World News",
+   "title": "World & Politics",
    "icon": "🌍",
    "articles": [
     {
      "id": "news-006",
-     "title": "UN Coordinator in China: China Will Deliver a Leading Voice at APEC",
-     "summary": "The United Nations Coordinator in China said she believes China will send an important, leadership-oriented message at the APEC meeting.",
-     "detail": "The UN Coordinator in China stated that she is confident China will deliver a significant leading voice at the APEC meeting, expressing expectations for China's role on multilateral platforms.",
-     "impact": "The remarks reflect the international community's expectations for China to play a leading role in multilateral settings.",
+     "title": "Kim Jong Un Visits Dandong; Foreign Ministry Briefs Press",
+     "summary": "Kim Jong Un visited Dandong last week. China's Foreign Ministry briefed the press on the visit, drawing external attention.",
+     "detail": "Kim Jong Un visited Dandong last week, and the Foreign Ministry provided a briefing on the matter. No further details on arrangements or outcomes were disclosed.",
+     "impact": "Developments in border exchanges carry significance for observing regional dynamics and cooperation.",
      "importance": "important",
      "tags": [
-      "International Cooperation",
-      "Asia-Pacific Cooperation"
+      "Korean Peninsula"
      ]
     },
     {
      "id": "news-007",
-     "title": "Interview: Global Governance Initiative Upholds Positive Outcomes in International Relations",
-     "summary": "Vice Chairman of the UK's 48 Group Club discusses the positive significance of the Global Governance Initiative in an interview.",
-     "detail": "In an interview, the Vice Chairman of the UK's 48 Group Club said the Global Governance Initiative safeguards positive achievements in international relations.",
-     "impact": "The remarks show the initiative is receiving positive evaluations internationally, helping build consensus on cooperation.",
+     "title": "China's Foreign Ministry Responds to Indian Claims of Border Peace Violations",
+     "summary": "Following Indian accusations that Chinese forces undermined peace along the border, the Foreign Ministry issued a response.",
+     "detail": "India alleged that Chinese troops disrupted peace in the border area. The Foreign Ministry responded, though full details of the statement were not disclosed.",
+     "impact": "Statements on the border issue suggest dialogue between the two sides continues; the regional situation warrants ongoing attention.",
      "importance": "important",
      "tags": [
-      "Global Governance",
-      "International Cooperation"
+      "Border Tensions"
      ]
     },
     {
      "id": "news-008",
-     "title": "Japanese Flag Displayed by Mistake as Chinese Table Tennis Players Receive Awards",
-     "summary": "Organizers of an international competition mistakenly displayed the Japanese flag during the award ceremony, in an operational blunder.",
-     "detail": "As Chinese table tennis players received their awards, organizers erroneously displayed the Japanese flag, drawing attention to the mishap during the ceremony.",
-     "impact": "The organizational error undermined the solemnity of the award ceremony and serves as a reminder for hosts to tighten procedural oversight.",
+     "title": "Exclusive Interview with Klaus Schwab: Cooperation Is the Only Way in the Intelligent Age",
+     "summary": "In an exclusive interview with CCTV, World Economic Forum founder Klaus Schwab said cooperation is the only path forward in the intelligent age.",
+     "detail": "A CCTV reporter interviewed Klaus Schwab, founder of the World Economic Forum. On the development of the intelligent age, Schwab's verdict was: \"Cooperation alone suffices.\"",
+     "impact": "Amid rising intelligence-driven transformation and globalization, multilateral cooperation remains a vital route to addressing shared challenges.",
      "importance": "normal",
      "tags": [
-      "Sports Events",
-      "Event Operations"
+      "International Cooperation",
+      "Intelligent Economy"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance & Economy",
+   "title": "Financial News",
    "icon": "📈",
    "articles": [
     {
      "id": "news-009",
-     "title": "New Growth Drivers Take Center Stage as China's Economy Picks Up Speed",
-     "summary": "Reports highlight new growth drivers playing the leading role in the economy, pushing development into higher gear.",
-     "detail": "Coverage focuses on the rapid rise of new growth drivers and their central role in economic development, driving faster momentum in China's economy.",
-     "impact": "The continued expansion of new growth drivers helps strengthen the economy's internal momentum and improve the quality and structure of growth.",
+     "title": "2026 China Box Office Tops RMB 31.5 Billion, Unlocking New Consumption Scenarios",
+     "summary": "China's total box office for 2026 has surpassed RMB 31.5 billion, with the trend of 'following the films to get active' driving the emergence of new consumption scenarios.",
+     "detail": "China's total box office for 2026 has surpassed RMB 31.5 billion. The 'following the films to get active' trend is unlocking new consumption scenarios and creating fresh linkages between the film industry and other consumer sectors.",
+     "impact": "Cross-sector integration between film, sports and cultural tourism can help sustain the momentum of cultural consumption.",
      "importance": "hot",
      "tags": [
-      "Macroeconomy",
-      "Industrial Upgrading"
+      "Film Consumption",
+      "Sports-Culture Integration",
+      "New Consumption Scenarios"
      ]
     },
     {
      "id": "news-010",
-     "title": "Gold Jewelry Prices Fall 100 Yuan Per Gram in a Month as Shenzhen's Shuibei Overflows with Buyers",
-     "summary": "Per-gram gold jewelry prices dropped 100 yuan within a month, packing Shenzhen's Shuibei market with gold buyers.",
-     "detail": "Gold jewelry prices have pulled back, and Shenzhen's Shuibei market is mobbed, with online users remarking that there are more gold buyers than at a produce market.",
-     "impact": "Falling gold prices are stimulating physical gold consumption and are expected to boost the gold jewelry retail market in the short term.",
-     "importance": "hot",
+     "title": "'Made in China' Products Draw Strong Interest at Canton Fair",
+     "summary": "'Made in China' products are in high demand at the Canton Fair, with buyer feedback driving continuous product upgrades.",
+     "detail": "'Made in China' products are drawing strong interest at the Canton Fair. Buyer feedback is fueling product iteration, reflecting a demand-driven approach to product improvement.",
+     "impact": "The ability to iterate rapidly in response to demand is a key factor in maintaining the export competitiveness of manufacturers.",
+     "importance": "important",
      "tags": [
-      "Gold Market",
-      "Consumer Market",
-      "Jewelry"
+      "Foreign Trade Exports",
+      "Made in China"
      ]
     },
     {
      "id": "news-011",
-     "title": "Could Lab-Made Gold Crash Prices?",
-     "summary": "Reports explore whether the widespread adoption of lab-made gold would put pressure on gold prices.",
-     "detail": "The article discusses whether lab-made gold could \"crash\" gold prices, focusing on its potential impact on gold supply and demand and price expectations.",
-     "impact": "If lab-made gold reaches scale, it could reshape the supply-demand balance for gold and weigh on price expectations.",
-     "importance": "important",
+     "title": "'Invisible Foreign Trade' Expands Globally",
+     "summary": "'Invisible foreign trade' is thriving worldwide, showcasing a new form of trade that differs from traditional goods trade.",
+     "detail": "'Invisible foreign trade' is expanding rapidly across the globe. This term describes a form of trade that is growing faster outside the realm of conventional goods commerce.",
+     "impact": "Diversifying trade formats helps strengthen the resilience and vitality of foreign trade.",
+     "importance": "normal",
      "tags": [
-      "Precious Metals",
-      "New Materials"
+      "New Trade Formats",
+      "Cross-Border Trade"
      ]
     },
     {
      "id": "news-012",
-     "title": "New Faces at the Canton Fair Connect Directly with Chinese Manufacturing, Reaping Full Orders",
-     "summary": "New buyers at the Canton Fair connect directly with Chinese manufacturers, scoring big gains from the show floor to the factory.",
-     "detail": "The Canton Fair builds a direct channel between Chinese manufacturers and overseas buyers, with new buyers moving from the exhibition floor to factory visits and coming away with strong results.",
-     "impact": "The direct-connection model helps convert foreign trade orders and improves the efficiency with which Chinese manufacturers link up internationally.",
-     "importance": "important",
+     "title": "The Middle-Class Wardrobe Is Essentially One Giant Anta",
+     "summary": "Using the middle-class wardrobe as a lens, the article examines how sports brands are gaining presence in everyday wear.",
+     "detail": "'The middle-class wardrobe is essentially one giant Anta.' The article uses this perspective to explore the relationship between apparel consumption and sports brands.",
+     "impact": "Shifting presence of sports brands in apparel consumption reflects changes in consumer preferences and market dynamics.",
+     "importance": "normal",
      "tags": [
-      "Foreign Trade",
-      "Exhibition Economy",
-      "Manufacturing"
+      "Apparel Consumption",
+      "Sports Brands"
      ]
     },
     {
      "id": "news-013",
-     "title": "The Middle-Class Closet Is One Giant Anta",
-     "summary": "The article observes the high penetration of domestic brands in the wardrobes of middle-class consumers.",
-     "detail": "Under the headline \"The Middle-Class Closet Is One Giant Anta,\" the report examines the share and influence of domestic brands in middle-class consumption.",
-     "impact": "This reflects the rising competitiveness of domestic brands in the mid-tier consumer market and ongoing shifts in consumption structure.",
+     "title": "RMB 1.5 Million Smoke-Free Bar Shuts Down; Founder Responds",
+     "summary": "The founder invested RMB 1.5 million to open a smoke-free bar, which has since closed; the founder has responded to the situation.",
+     "detail": "A smoke-free bar backed by RMB 1.5 million in investment has ultimately shut down, with the founder issuing a response. No operational details were disclosed.",
+     "impact": "Investments in offline dining and entertainment ventures call for rational assessment of market demand and operating costs.",
      "importance": "normal",
      "tags": [
-      "Apparel Consumption",
-      "Domestic Brands",
-      "Consumption Trends"
+      "Dining Consumption",
+      "Startup Investment"
      ]
     }
    ]
@@ -200,52 +192,50 @@
    "articles": [
     {
      "id": "news-014",
-     "title": "Three Launch Missions in Three Days All Succeed",
-     "summary": "Three consecutive launch missions carried out within three days were all fully successful.",
-     "detail": "Three launch missions conducted back-to-back over three days all ended in success, demonstrating the high density and reliability of space launch operations.",
-     "impact": "The success of high-frequency launches reflects strong organization and support capabilities in space engineering, laying the groundwork for future missions.",
-     "importance": "hot",
+     "title": "Anthropic Files for IPO, Plans Nasdaq Listing",
+     "summary": "Anthropic has filed registration documents for an initial public offering, seeking to list on Nasdaq under the ticker \"ANT.\"",
+     "detail": "Anthropic filed registration documents for an IPO, planning to list on Nasdaq under the ticker \"ANT,\" marking a major step in the capitalization of the artificial intelligence industry.",
+     "impact": "AI companies are accelerating their push into public markets, which will reshape industry valuations and the financing environment.",
+     "importance": "important",
      "tags": [
-      "Space Launch",
-      "Aerospace Technology"
+      "Artificial Intelligence",
+      "Capital Markets"
      ]
     },
     {
      "id": "news-015",
-     "title": "\"23:59:60\" Will No Longer Exist",
-     "summary": "Following a rule adjustment, the time \"23:59:60\" will no longer occur in the future.",
-     "detail": "Reports indicate that \"23:59:60\" will no longer appear, meaning that the relevant timekeeping method is set to change.",
-     "impact": "Changes to timekeeping rules will affect standards synchronization across time dissemination, communications and navigation.",
-     "importance": "important",
+     "title": "From \"Growing Potatoes\" to \"Growing Tokens\"",
+     "summary": "From \"growing potatoes\" to \"growing tokens,\" the article examines industrial change through the lens of computing resources.",
+     "detail": "From \"growing potatoes\" to \"growing tokens,\" the headline traces a shift in industry from traditional agriculture to computing power.",
+     "impact": "The growth of computing-power-related industries could open new drivers of local economic growth.",
+     "importance": "normal",
      "tags": [
-      "Timekeeping",
-      "Precision Measurement"
+      "Compute Economy",
+      "Digital Economy"
      ]
     },
     {
      "id": "news-016",
-     "title": "Can Stem Cell Infusions Costing Hundreds of Thousands Really Fight Aging?",
-     "summary": "A report questions whether high-priced stem cell infusions truly deliver anti-aging effects.",
-     "detail": "The article examines stem cell infusion anti-aging treatments, exploring the relationship between actual effects and steep prices.",
-     "impact": "The discussion helps the public take a rational view of anti-aging consumption and highlights the need for industry standards and regulation.",
-     "importance": "normal",
+     "title": "\"Intellectual Property Is the Foundation for Sustained R&D Investment\"",
+     "summary": "\"Intellectual property is the confidence to keep investing in R&D\" highlights the role of IP in supporting research and innovation.",
+     "detail": "\"Intellectual property is the foundation for sustained R&D investment.\" The remarks underscore the link between IP protection and continuous investment in research and development.",
+     "impact": "Stronger intellectual property protection helps incentivize corporate R&D and raises overall industrial innovation capacity.",
+     "importance": "important",
      "tags": [
-      "Biomedicine",
-      "Anti-Aging Industry",
-      "Health Consumerism"
+      "Intellectual Property",
+      "Tech Innovation"
      ]
     },
     {
      "id": "news-017",
-     "title": "Southern Mosquitoes Are Migrating North in Droves",
-     "summary": "A report focuses on mosquito species originally found in southern regions spreading northward.",
-     "detail": "The article uses the term \"migrating north\" to describe the trend of southern mosquito species moving north, signaling shifts in mosquito distribution.",
-     "impact": "A northward shift in mosquito distribution could expand the scope of related public health risks, calling for enhanced monitoring and control measures.",
+     "title": "The Kuaishou Streamer and His 4 Films",
+     "summary": "\"The Kuaishou Streamer and His 4 Films\" chronicles a short-video creator's foray into filmmaking.",
+     "detail": "The Kuaishou streamer and his 4 films illustrate how short-video creators are extending into the film and television sector.",
+     "impact": "The convergence of short-video platforms and film and television is reshaping content production and the path for creator development.",
      "importance": "normal",
      "tags": [
-      "Public Health",
-      "Vector-Borne Disease",
-      "Climate Change"
+      "Short Video",
+      "Film and Television"
      ]
     }
    ]
@@ -257,64 +247,61 @@
    "articles": [
     {
      "id": "news-018",
-     "title": "Scoliosis Is Weighing Down Chinese Students",
-     "summary": "Reporting highlights the prevalence of scoliosis among students and its health burden.",
-     "detail": "The article focuses on scoliosis among students, noting that this health concern is placing a heavy burden on young people in China.",
-     "impact": "The issue underscores the urgency of spinal health management for adolescents, calling for stronger screening and early intervention.",
-     "importance": "hot",
+     "title": "Scoliosis Is Crushing China's Students",
+     "summary": "The article examines the impact of scoliosis on Chinese students, drawing attention to adolescent health concerns.",
+     "detail": "The piece \"Scoliosis Is Crushing China's Students\" focuses on the prevalence of scoliosis among students and its effects.",
+     "impact": "Addressing adolescent spinal health requires joint attention and intervention from schools, families and the medical sector.",
+     "importance": "important",
      "tags": [
       "Adolescent Health",
-      "Spinal Health",
-      "School Health"
+      "Public Health"
      ]
     },
     {
      "id": "news-019",
-     "title": "Flu Strikes: Why Choosing the Right Drug Within 48 Hours Matters",
-     "summary": "The author shares a personal account of how to choose the right medication within 48 hours of flu onset.",
-     "detail": "The article documents the response during the first 48 hours of influenza, focusing on how to select the right symptomatic treatment.",
-     "impact": "Provides the public with a reference for early flu medication, emphasizing the importance of timely and appropriate treatment.",
+     "title": "Venomous Mosquitoes From South China Are Migrating North",
+     "summary": "Venomous mosquitoes from southern China are moving north en masse, marking a new shift in the distribution of disease-carrying mosquitoes.",
+     "detail": "Venomous mosquitoes from southern China are heading north. The report highlights a trend of these mosquitoes expanding their range northward.",
+     "impact": "Shifting mosquito distributions pose new challenges for disease control and public health efforts.",
      "importance": "important",
      "tags": [
       "Public Health",
-      "Flu Prevention and Control",
-      "Rational Drug Use"
+      "Vector Control"
      ]
     },
     {
      "id": "news-020",
-     "title": "Yu Lei Named Chief Director of CCTV Spring Festival Gala for Fifth Straight Year",
-     "summary": "Yu Lei has been confirmed as chief director of the Year of the Sheep CCTV Spring Festival Gala, her fifth consecutive year in the role.",
-     "detail": "Yu Lei has been confirmed as chief director of the Year of the Sheep CCTV Spring Festival Gala, marking her fifth consecutive year leading the production.",
-     "impact": "Continuity in the directorial team helps maintain consistency and stability in the gala's creative style.",
+     "title": "Choosing Medication in the First 48 Hours of the Flu",
+     "summary": "The author documents their choices of flu medication within the first 48 hours of illness, covering flu response and drug use.",
+     "detail": "Within 48 hours of flu onset, the author chose the \"right\" medication. The article presents a personal account of how to select flu remedies.",
+     "impact": "During peak respiratory illness season, proper medication use is as important as seeking timely medical care.",
      "importance": "normal",
      "tags": [
-      "Broadcasting",
-      "Entertainment",
-      "Cultural Festivals"
+      "Respiratory Infectious Diseases",
+      "Medication Safety"
      ]
     },
     {
      "id": "news-021",
-     "title": "Li Tianyang Falls to Tomokazu Harimoto 2-3",
-     "summary": "Chinese table tennis player Li Tianyang lost to Japan's Tomokazu Harimoto 2-3.",
-     "detail": "Li Tianyang battled his opponent to the wire before narrowly falling 2-3 in the match.",
-     "impact": "The result reflects the fierce competition on the international stage, highlighting that young players still need to gain experience in major tournaments.",
+     "title": "15 Years After World Heritage Inscription: Has West Lake Really Changed?",
+     "summary": "Fifteen years after winning World Heritage status, the changes at West Lake have drawn attention and debate.",
+     "detail": "Fifteen years after its successful World Heritage inscription, the article reviews and discusses how West Lake has changed.",
+     "impact": "Lessons from protecting and utilizing World Heritage sites offer valuable reference for the development of cultural tourism.",
      "importance": "normal",
      "tags": [
-      "Table Tennis",
-      "Sports"
+      "World Heritage",
+      "Cultural Tourism"
      ]
     },
     {
      "id": "news-022",
-     "title": "76 Years On, the Bridge Over the Yalu River Will Never Forget",
-     "summary": "Using the bridge over the Yalu River as a thread, the report looks back on history and pays tribute to 'the most beloved people.'",
-     "detail": "Under the themes '76 Years On, Saluting the Most Beloved' and 'The Bridge Over the Yalu River Will Always Remember,' the piece revisits history and honors fallen heroes.",
-     "impact": "Commemorative coverage of this kind helps pass on historical memory and inspire patriotic sentiment.",
-     "importance": "important",
+     "title": "300 Days in a Boot Camp",
+     "summary": "\"300 Days in a Boot Camp\" recounts time spent and observations made inside a so-called special training school.",
+     "detail": "\"300 Days in a Boot Camp\" presents experiences within such an educational institution. No further specific details were disclosed.",
+     "impact": "The management and regulation of such institutions warrants sustained attention from all sectors of society.",
+     "importance": "normal",
      "tags": [
-      "Red Culture"
+      "Youth Education"
      ]
     }
    ]

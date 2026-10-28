@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "contents": [
     {
-      "id": "prog-2026-10-26",
-      "date": "2026-10-26",
-      "title": "Git 交互式 Rebase 与 Autosquash：构建可审计的提交历史与 CI 质量门禁",
-      "summary": "用 --autosquash 与 GIT_SEQUENCE_EDITOR 自动化整理提交历史，并把提交规范校验下沉到 CI 门禁中，实现「本地灵活、远端干净」的工程化提交流。",
-      "difficulty": "高级",
-      "concept": "在大型团队协作中，提交历史不是「个人笔记」，而是「可审计的工程资产」。Code Review、二分定位（git bisect）、自动化回滚、合规审计、Release Note 生成，全都依赖线性、语义清晰、粒度合理的 commit 序列。然而开发者在编码过程中必然会产生大量 WIP、fix typo、address review comments 之类的中间提交——如果直接推送，历史会被噪声淹没；如果每次手动 squash，又会打断心流。Git 的交互式 rebase（git rebase -i）配合 --autosquash 就是解决这一矛盾的关键机制：本地允许「脏历史」，推送前一键收敛为「干净历史」。\n\n--autosquash 的核心是与 git commit --fixup=<sha> / --squash=<sha> 的约定：当你执行 git commit --fixup=abc1234 时，Git 会生成一条 subject 为「fixup! <abc1234 的原 subject>」的提交；在 rebase -i --autosquash 时，Git 的 todo 序列会自动把这些 fixup! 提交移动到目标提交之后并标记为 fixup（内容合入但不保留独立消息）。--squash 则会额外把两条提交消息合并为一条，适合「补充实现 + 完善说明」的场景。两者的工程含义不同：fixup! 用于「代码补丁，消息无需变更」，squash! 用于「代码补丁，且原提交消息也需要修订」。\n\n自动化 rebase 的另一个关键点是 GIT_SEQUENCE_EDITOR。交互式 rebase 默认会打开编辑器让用户编辑 todo list，这在 CI/本地脚本中是阻塞的。把 GIT_SEQUENCE_EDITOR 设为 true（一个恒返回 0 的 shell 内建命令），Git 就会以「接受默认 todo 序列」的方式执行 rebase，从而实现完全非交互的 autosquash。这在 pre-push 钩子、CI 的 rebase 机器人（例如自研的 rebase-bot 或 GitHub Actions 中的 auto-update-branch）中是标准做法。注意必须配合 GIT_EDITOR 或 GIT_SEQUENCE_EDITOR 环境变量的隔离，避免污染开发者全局配置。\n\n在 DevOps 链路上，历史整理只是「提交质量门禁」的一半；另一半是提交消息的机器可读性。业界通行的 Conventional Commits（feat|fix|docs|refactor|test|chore|perf|ci + 可选 scope + 描述）能被 standard-version / release-please / semantic-release 直接消费，自动生成 CHANGELOG 与语义化版本号。因此 CI 中必须有一步强制校验 commit message 正则，否则版本自动化会在夜间发布时崩溃。经验表明：把这一步放在 PR 的 lint job（而非 commit-msg 钩子）上，既能保证「合并进主干的历史合规」，又不会阻碍开发者频繁 amend——本地钩子做「提示」，CI 做「强制」。\n\n最后是团队层面的分支策略协同。Trunk-Based Development（TBD）要求小步提交、频繁变基、短生命周期分支，这与 autosquash 天然契合：每天 rebase 一次主干，冲突最小、fixup 提交也最少。相对地，Git Flow 的长生命周期分支会让 rebase 成本指数上升，此时更适合用 merge + squash merge 保持主干线性。团队应在 CONTRIBUTING.md 中明确「变基责任归属」：谁的分支谁负责 rebase，rebase 后必须 force-with-lease 推送（绝不用 --force，防止覆盖他人推送），reviewer 只 review 增量 diff，不要求 rebase 后重新全量 review。",
+      "id": "prog-2026-10-27",
+      "date": "2026-10-27",
+      "title": "SwiftUI 状态管理入门：@State 与 @Binding",
+      "summary": "掌握 SwiftUI 中数据从哪里来、改了之后界面为什么会跟着变——@State 拥有数据，@Binding 借用并修改数据。",
+      "difficulty": "初级",
+      "concept": "SwiftUI 的核心思想是「声明式 UI」：你不再手动去改 label 的 text，而是描述「界面应该长什么样」，当底层数据变了，SwiftUI 自动重新计算并刷新界面。为了让 SwiftUI 知道「哪些数据变了」，需要用属性包装器（Property Wrapper）标记这些变量，最常见的两个就是 @State 和 @Binding。\n\n@State 用来「拥有」一份数据。它把一个普通的值类型（Int、String、Bool、Array 等）存到 SwiftUI 的一个持久化存储区里，这样即使 View 因为重绘被重新创建，数据也不会丢失。规则很简单：谁声明 @State，谁就是这份数据的「唯一老板」，通常它应该被写成 private，防止别的地方乱改。\n\n@Binding 则完全相反——它不创建数据，只是「借」一个已经存在的 @State 的引用过来。当子 View 需要读取或修改父 View 的数据时，不应该复制一份（那样两边就不同步了），而是用 @Binding 建立一条双向通道：父改了，子界面跟着变；子改了，父的数据也跟着变。\n\n在实际工程里，你会看到一个非常典型的分层模式：顶层 View 用 @State 持有业务数据，中间/叶子 View 用 @Binding 接收它，纯展示的组件只接收普通参数（let）。这遵循了「状态应该放在离使用它最近的共同祖先」的原则，避免到处都是 @State 导致数据来源混乱、界面不更新的 bug。\n\n还要注意：@State 适合值类型和小规模的本地 UI 状态（比如开关状态、输入框文字、当前选中的 tab）。当数据需要跨很多页面共享、或者需要从网络层写入时，就该升级到 @ObservedObject / @StateObject（ObservableObject）或新版的 @Observable，那是明天的话题。另外，不要在 @State 的初始化里写复杂逻辑，它只应该保存「界面状态」，业务计算应该放到 ViewModel 或函数里。",
       "codeExample": {
-        "language": "Bash",
-        "code": "#!/usr/bin/env bash\n# tools/commit-gate.sh —— 提交历史质量门禁\n# 用法: ./commit-gate.sh [base_branch]\n# 功能: 1) 自动 autosquash 整理历史  2) 校验 Conventional Commits  3) 限制单次 PR 提交数\nset -euo pipefail\n\nBASE_BRANCH=\"${1:-main}\"\nMAX_COMMITS=\"${MAX_COMMITS:-15}\"\n\nlog()  { printf '[%s] %s\\n' \"$(date +%H:%M:%S)\" \"$*\"; }\nfail() { printf '✗ %s\\n' \"$*\" >&2; exit 1; }\n\n# ---------- 1. 同步主干并计算差异 ----------\ngit fetch origin \"$BASE_BRANCH\" --quiet\nMERGE_BASE=$(git merge-base HEAD \"origin/$BASE_BRANCH\")\nCOMMIT_COUNT=$(git rev-list --count \"${MERGE_BASE}..HEAD\")\nlog \"分支相对 ${BASE_BRANCH} 共有 ${COMMIT_COUNT} 个提交\"\n\n[ \"$COMMIT_COUNT\" -le \"$MAX_COMMITS\" ] \\\n  || fail \"提交数 ${COMMIT_COUNT} 超过上限 ${MAX_COMMITS}，请合并零散提交\"\n\n# ---------- 2. 自动压缩 fixup!/squash! 提交 ----------\nif git log --format=%s \"${MERGE_BASE}..HEAD\" | grep -qE '^(fixup|squash)!'; then\n  log \"检测到 fixup/squash 提交，执行非交互 autosquash 变基\"\n  # GIT_SEQUENCE_EDITOR=true 表示「接受默认 todo 序列」，从而实现全自动 rebase\n  GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash \"origin/$BASE_BRANCH\"\nelse\n  log \"无待合并的 fixup 提交，跳过变基\"\nfi\n\n# ---------- 3. 校验 Conventional Commits ----------\nPATTERN='^(feat|fix|docs|refactor|test|chore|perf|ci|build)(\\([a-z0-9._/-]+\\))?!?: .{1,72}$'\nFAILED=0\nwhile read -r sha subject; do\n  if ! printf '%s' \"$subject\" | grep -qE \"$PATTERN\"; then\n    printf '✗ %s  提交信息不合规: %s\\n' \"$sha\" \"$subject\"\n    FAILED=1\n  fi\ndone < <(git log --format='%h %s' \"${MERGE_BASE}..HEAD\")\n\n[ \"$FAILED\" -eq 0 ] || fail \"提交信息校验失败，请参考 CONTRIBUTING.md 修正后重新 push\"\nlog \"✓ 提交历史通过全部质量门禁，可以发起 PR\"\n",
-        "explanation": "1) 顶部 set -euo pipefail 保证脚本在任何命令失败时立即退出，避免 CI 静默通过；BASE_BRANCH / MAX_COMMITS 支持环境变量覆盖，便于在不同仓库复用。\n2) git fetch origin \"$BASE_BRANCH\" 后用 git merge-base 计算三方合并基线，rev-list --count 统计本分支独有提交数；这是所有「PR 范围」判断的标准做法。\n3) 通过 git log --format=%s 检测是否存在 fixup!/squash! 前缀提交；若存在，执行 GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash，其中 GIT_SEQUENCE_EDITOR=true 让 Git 直接接受默认 todo 序列、不打开编辑器，实现完全非交互的自动变基与提交合并。\n4) 变基后重新以 MERGE_BASE 为基准扫描提交信息，用正则强制 Conventional Commits 格式（type(scope)!: description，描述 ≤72 字符）。注意 scope 为小写字母/数字/._-/\n5) while read 通过进程替换 < <(...) 读取 git log 输出，避免管道导致子 shell 中 FAILED=1 丢失；这是 Bash 脚本里最常见的坑。\n6) 最后 FAILED 为 0 时输出通过信息，否则以非零码退出，让 CI job 失败并阻断合并。"
+        "language": "Swift",
+        "code": "import SwiftUI\n\n// MARK: - 子视图：通过 @Binding 借用父视图的数据\nstruct StepCounterView: View {\n    // @Binding：不拥有数据，只是和父视图建立双向绑定\n    @Binding var count: Int\n    \n    var body: some View {\n        HStack(spacing: 16) {\n            Button {\n                count -= 1          // 修改 binding，父视图的 @State 同步变化\n            } label: {\n                Image(systemName: \"minus.circle.fill\")\n                    .font(.title)\n            }\n            .buttonStyle(.borderless)\n            \n            // 只读展示当前值\n            Text(\"\\(count)\")\n                .font(.system(size: 36, weight: .bold, design: .rounded))\n                .frame(minWidth: 60)\n            \n            Button {\n                count += 1\n            } label: {\n                Image(systemName: \"plus.circle.fill\")\n                    .font(.title)\n            }\n            .buttonStyle(.borderless)\n        }\n    }\n}\n\n// MARK: - 父视图：用 @State 拥有数据\nstruct ContentView: View {\n    // @State：数据的「老板」，放在 SwiftUI 的持久化存储中\n    @State private var count: Int = 0\n    @State private var isShowingDetail: Bool = false\n    \n    var body: some View {\n        VStack(spacing: 24) {\n            Text(\"今天学了几个 SwiftUI 概念？\")\n                .font(.headline)\n            \n            // 把数据「借」给子视图，$count 生成 Binding<Int>\n            StepCounterView(count: $count)\n            \n            // 绑定到 Toggle：系统控件同样接受 Binding\n            Toggle(\"显示鼓励语\", isOn: $isShowingDetail)\n                .padding(.horizontal, 40)\n            \n            if isShowingDetail && count > 0 {\n                Text(count >= 5 ? \"🔥 你太强了！\" : \"💪 继续加油！\")\n                    .foregroundStyle(.secondary)\n                    .transition(.opacity)   // 条件渲染 + 简单动画\n            }\n            \n            Button(\"清零\") {\n                count = 0                 // 直接修改 @State，界面自动刷新\n            }\n            .buttonStyle(.borderedProminent)\n        }\n        .padding()\n        .animation(.easeInOut(duration: 0.2), value: isShowingDetail)\n    }\n}\n\n#Preview {\n    ContentView()\n}\n",
+        "explanation": "1) `@State private var count: Int = 0` 在 ContentView 中创建并拥有数据。private 表示只有这个视图能直接改它，符合「单一数据源」原则。\n2) `StepCounterView(count: $count)` 里的 `$count` 是 SwiftUI 的语法糖，会生成一个 `Binding<Int>` 传给子视图——这一步是连接父子的关键。\n3) 子视图用 `@Binding var count: Int` 接收它。子视图里写 `count += 1` 实际上是在修改父视图的 @State，SwiftUI 检测到变化后重新计算 body，界面自动更新。\n4) `Toggle(\"显示鼓励语\", isOn: $isShowingDetail)` 展示了系统控件也需要 `Binding`，因为它们既要读也要写状态。\n5) `if isShowingDetail && count > 0` 是 SwiftUI 的条件渲染写法，配合 `.transition` 和 `.animation` 可以做出自然的显隐动画。\n6) `#Preview` 宏提供了 Xcode 实时预览入口，写 UI 时可以立刻看到效果。"
       },
       "keyPoints": [
-        "git commit --fixup=<sha> 生成「fixup! 原消息」提交，rebase -i --autosquash 会自动把它合并进目标提交且不保留独立消息；--squash 则会额外合并提交消息。",
-        "GIT_SEQUENCE_EDITOR=true 让交互式 rebase 非交互执行（接受默认 todo 序列），是 CI 中自动 rebase/autosquash 的标准技巧。",
-        "rebase 后推送必须用 git push --force-with-lease 而非 --force，防止覆盖同事已推送的提交。",
-        "Conventional Commits 正则校验应放在 CI 的 lint job 上做「强制门禁」，本地钩子只做「提示」，兼顾灵活性与历史合规。",
-        "Trunk-Based + 频繁 rebase 让 autosquash 成本最低；长生命周期分支（Git Flow）下应改用 squash merge 保持主干线性。"
+        "@State 用于「拥有」数据，是数据的唯一来源，通常声明为 private",
+        "@Binding 不创建数据，只建立一条父子视图之间的双向引用通道",
+        "$ 符号把 @State 变量转成 Binding 传给子视图，如 StepCounterView(count: $count)",
+        "状态应该放在使用它的最近共同祖先，子视图只借用不复制，避免数据不同步",
+        "@State 适合本地 UI 状态；跨页面共享或与网络/模型层交互时应升级到 @StateObject / @Observable"
       ],
       "exercise": {
-        "description": "在你自己的练习仓库中模拟一次「评审返工」流程：先做一个正常提交 A（feat: add health check endpoint），再用 git commit --fixup=A 创建补丁提交，接着用一条非交互命令完成 autosquash 变基，最后用 git log --oneline 验证历史中只剩一条提交 A'（消息仍为 feat: add health check endpoint，内容已包含补丁）。在此基础上，把上面的 commit-gate.sh 加到 .pre-commit-config.yaml 或 CI 的 lint stage 中，并故意造一条不合规的提交消息（如 update code）验证门禁能拦截。",
-        "hint": "关键命令是 git commit --fixup=<A 的短 SHA> 与 GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash origin/main。若仓库还没有 main，可用 git branch main HEAD~3 之类的空提交历史造一个基准分支。验证合并结果时可对比 git show A' 与原 A 的 diff 之和。",
+        "description": "制作一个「点赞卡片」：父视图 LikeCardView 用 @State 保存 isLiked（Bool）和 likeCount（Int），子视图 LikeButtonView 用 @Binding 接收这两个值。点击按钮时，isLiked 取反；当 isLiked 变为 true 时 likeCount +1，变为 false 时 likeCount -1（不能小于 0）。界面上同时显示爱心图标（isLiked ? \"heart.fill\" : \"heart\"）和当前点赞数。",
+        "hint": "先在子视图里定义 `@Binding var isLiked: Bool` 和 `@Binding var likeCount: Int`。按钮的 action 里先做 `isLiked.toggle()`，然后根据 isLiked 的新值来加减 likeCount，并用 `likeCount = max(0, likeCount)` 防止负数。父视图传值时记得加 `$`。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全命令：让交互式 rebase 以「接受默认 todo 序列」的方式非交互执行 autosquash。",
-            "codeContext": "$ git commit --fixup=abc1234\n$ _______ git rebase -i --autosquash origin/main",
+            "question": "补全代码，让子视图能读写父视图的 @State 数据。",
+            "codeContext": "struct ParentView: View {\n    @State private var score: Int = 0\n    var body: some View {\n        ChildView(score: [空1])\n    }\n}\n\nstruct ChildView: View {\n    [空2] var score: Int\n    var body: some View {\n        Button(\"+1\") { score += 1 }\n    }\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "$ ",
+                "content": "ChildView(score: ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,75 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[填入环境变量赋值]",
+                "placeholder": "[空1]",
                 "options": [
-                  "GIT_SEQUENCE_EDITOR=true",
-                  "GIT_EDITOR=true",
-                  "GIT_SEQUENCE_EDITOR=vim",
-                  "EDITOR=/bin/true GIT_PAGER=cat"
+                  "score",
+                  "$score",
+                  "@score",
+                  "self.score"
                 ],
-                "correctAnswer": "GIT_SEQUENCE_EDITOR=true"
+                "correctAnswer": "$score"
               },
               {
                 "type": "text",
-                "content": " git rebase -i --autosquash origin/main",
+                "content": ")\n}\n\nstruct ChildView: View {\n    ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[空2]",
+                "options": [
+                  "@State",
+                  "@Binding",
+                  "@ObservedObject",
+                  "let"
+                ],
+                "correctAnswer": "@Binding"
+              },
+              {
+                "type": "text",
+                "content": " var score: Int",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "GIT_SEQUENCE_EDITOR=true",
-            "explanation": "交互式 rebase 由两个编辑器控制：GIT_SEQUENCE_EDITOR 负责编辑 todo list，GIT_EDITOR 负责编辑提交消息。autosquash 需要 Git 按自动生成的 todo 序列执行，因此只需把 GIT_SEQUENCE_EDITOR 设为恒成功的 true 即可跳过人工编辑；GIT_EDITOR=true 只影响提交消息编辑，无法跳过 todo 编辑。"
+            "correctAnswer": "$score",
+            "explanation": "父视图用 `$score` 把 @State 转成 Binding 传出，子视图用 `@Binding` 接收。`score` 只是传值（拷贝），改它不会影响父视图；`@State` 放在子视图会创建一份全新的独立数据，同样无法同步。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 git commit --fixup 与 --squash 的区别，下列说法正确的是？",
-            "codeContext": "$ git commit --fixup=abc1234     # 生成 fixup! <原消息>\n$ git commit --squash=abc1234    # 生成 squash! <原消息>",
+            "question": "关于 @State 和 @Binding，下面哪个说法是正确的？",
+            "codeContext": null,
             "segments": null,
             "options": [
-              "fixup! 提交变基后会保留为独立提交，只调整顺序",
-              "squash! 提交变基后会把补丁合入目标提交，并把两条提交消息合并供再次编辑",
-              "两者变基后都会自动生成一条 merge commit",
-              "--fixup 只修改提交消息，不会包含工作区的代码改动"
+              "@Binding 会复制一份父视图的数据，两边互不影响",
+              "同一个数据可以同时在多个视图里用 @State 声明，它们会自动同步",
+              "@Binding 是对父视图 @State 的引用，修改它会同时更新父视图数据和界面",
+              "@State 只能用于 String 和 Int，不能用于 Bool 或 Array"
             ],
-            "correctAnswer": "squash! 提交变基后会把补丁合入目标提交，并把两条提交消息合并供再次编辑",
-            "explanation": "fixup! 与 squash! 在 autosquash 时都会把补丁合并进目标提交，区别在于消息处理：fixup 直接丢弃补丁提交的消息；squash 会把两条消息拼接起来并打开编辑器（非交互场景下需配合 GIT_EDITOR=true）让你修订最终消息。"
+            "correctAnswer": "@Binding 是对父视图 @State 的引用，修改它会同时更新父视图数据和界面",
+            "explanation": "@Binding 建立的是双向引用而非拷贝；同一份数据只能有一个 @State 作为唯一来源；@State 支持所有值类型（Bool、Array、Dictionary、自定义 struct 等），只要它们符合 SwiftUI 的状态要求。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下脚本的输出是什么？",
-            "codeContext": "#!/usr/bin/env bash\nPATTERN='^(feat|fix|docs|refactor|test|chore|perf|ci|build)(\\([a-z0-9._/-]+\\))?!?: .{1,72}$'\n\nfor subject in \"feat(api): add health check\" \"feat:add api\" \"chore(deps): bump lodash to 4.17.21\"; do\n  if printf '%s' \"$subject\" | grep -qE \"$PATTERN\"; then\n    echo \"PASS\"\n  else\n    echo \"FAIL\"\n  fi\ndone",
+            "question": "运行这段代码，点击两次按钮后界面显示的数字是多少？",
+            "codeContext": "struct CounterView: View {\n    @State private var n = 0\n    var body: some View {\n        Button(\"点我\") {\n            n += 1\n            n += 1\n        }\n        Text(\"当前值: \\(n)\")\n    }\n}",
             "segments": null,
             "options": [
-              "PASS\nFAIL\nPASS",
-              "PASS\nPASS\nFAIL",
-              "FAIL\nFAIL\nPASS",
-              "PASS\nFAIL\nFAIL"
+              "当前值: 1",
+              "当前值: 2",
+              "当前值: 4",
+              "当前值: 0，因为 n 是 let 常量"
             ],
-            "correctAnswer": "PASS\nFAIL\nPASS",
-            "explanation": "第一条 feat(api): add health check 符合 type(scope): description，PASS。第二条 feat:add api 在 type 后缺少必需的空格（正则要求 !?: 后跟一个空格再接描述），FAIL。第三条 chore(deps): bump lodash to 4.17.21 的 scope 为小写字母 deps，符合 [a-z0-9._/-]+，且描述长度 <72，PASS。"
+            "correctAnswer": "当前值: 4",
+            "explanation": "每次点击 action 内部把 n 加 2，两次点击共加 4。SwiftUI 只会在 action 执行完毕后统一刷新一次 body，所以不会出现中间状态闪烁，最终显示 4。@State 是 var，可以被修改。"
           }
         ]
       }
