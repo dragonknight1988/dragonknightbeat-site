@@ -164,23 +164,38 @@ def fetch_weibo_hot():
 
 
 def fetch_finance_news():
-    """财经/全球市场专项新闻源（供财经专栏）"""
+    """财经/全球市场专项新闻源（供财经专栏）：新浪财经7x24快讯 + 东方财富备用"""
     results = []
-    queries = [
-        ("财经 股市 基金 楼市", "财经新闻"),
-        ("美股 全球市场 汇率 大宗商品", "全球财经"),
-    ]
-    for q, src_name in queries:
-        try:
-            resp = requests.get("https://cn.bing.com/news/search", params={"q": q}, headers=HEADERS, timeout=15)
-            resp.encoding = "utf-8"
-            items = re.findall(r'<a[^>]*href="(https?://[^"]*)"[^>]*><h2[^>]*>([^<]+)</h2>', resp.text)
-            for url, title in items[:12]:
-                title = title.strip()
-                if len(title) > 4:
-                    results.append({"title": title, "source": src_name, "url": url})
-        except Exception as e:
-            print(f"  ⚠️ {src_name} 抓取失败: {e}")
+
+    # 新浪财经7x24全球财经快讯（主力源）
+    try:
+        resp = requests.get(
+            "https://zhibo.sina.com.cn/api/zhibo/feed",
+            params={"page": 1, "page_size": 40, "zhibo_id": 152, "tag_id": 0, "dire": "f", "dpc": 1},
+            headers=HEADERS, timeout=15)
+        items = resp.json().get("result", {}).get("data", {}).get("feed", {}).get("list", [])
+        for it in items:
+            text = re.sub(r"<[^>]+>", "", (it.get("rich_text") or "")).strip()
+            text = text.lstrip("【】 ")
+            if len(text) >= 8:
+                results.append({"title": text[:80], "source": "财经快讯"})
+    except Exception as e:
+        print(f"  ⚠️ 新浪财经快讯失败: {e}")
+
+    # 东方财富全球财经（备用源）
+    try:
+        resp = requests.get(
+            "https://np-listapi.eastmoney.com/comm/web/getNewsByColumns",
+            params={"client": "web", "biz": "web_724", "column": 350, "order": 1,
+                    "needInteractData": 0, "page_index": 1, "page_size": 15, "req_trace": 1},
+            headers=HEADERS, timeout=15)
+        for it in resp.json().get("data", {}).get("list", []):
+            title = (it.get("title") or "").strip()
+            if len(title) >= 8:
+                results.append({"title": title[:80], "source": "财经新闻"})
+    except Exception as e:
+        print(f"  ⚠️ 东方财富财经失败: {e}")
+
     return results
 
 
@@ -294,7 +309,7 @@ def build_news_content():
             pass
 
     # 构造新闻素材字符串
-    news_text = "\n".join([f"- [{item['source']}] {item['title']}" for item in news_items[:60]])
+    news_text = "\n".join([f"- [{item['source']}] {item['title']}" for item in news_items[:80]])
 
     system_prompt = f"""你是一个资深新闻编辑。你的任务是【仅基于提供的真实新闻素材】进行分类和总结。
 
