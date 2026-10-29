@@ -1,8 +1,8 @@
 {
- "date": "2026-10-28",
+ "date": "2026-10-29",
  "briefing": {
-  "date": "October 28, 2026",
-  "quote": "An agent's value lies not in what it can answer, but in which task it can truly finish for you.",
+  "date": "2026-10-29",
+  "quote": "The core competitiveness of the AI agent era is no longer knowing how to use AI, but knowing how to train and fine-tune it.",
   "sections": [
    {
     "id": "openclaw",
@@ -10,59 +10,59 @@
     "icon": "🦞",
     "articles": [
      {
-      "id": "brief-oc-01",
-      "title": "OpenClaw Releases v0.9: Native Multi-Agent Orchestration and Major Sandbox Toolchain Overhaul",
-      "summary": "The new version introduces an Agent Graph orchestrator and fine-grained permission sandboxing, lifting long-task success rates by nearly 30%.",
-      "detail": "The official OpenClaw blog announced v0.9, with core changes focused on the multi-agent collaboration layer: a new Agent Graph orchestrator that supports declarative YAML definitions for master-agent task decomposition, fallbacks and parallel branches; and a rewritten tool-calling sandbox providing process-level permission isolation across file system, network and Shell capabilities. Official benchmarks show that on long-running tasks over 30 minutes, v0.9's end-to-end completion rate rose 28% versus v0.8, while repeated tool calls dropped by roughly 40%. The community's long-awaited MCP compatibility layer is also now built in.",
-      "impact": "Developers can for the first time build controllable multi-agent pipelines at low cost within an open-source framework, expected to siphon off some small and mid-sized customers from commercial orchestration platforms and give enterprises a clearer technical roadmap for private deployments.",
-      "source": "OpenClaw Official Blog / GitHub Releases"
+      "id": "brief-oc-001",
+      "title": "OpenClaw v2.7 Released: Major Overhaul of Multi-Agent Workflow Orchestration",
+      "summary": "OpenClaw launches a visual multi-agent orchestration canvas supporting parallel tasks and conditional branching, delivering a marked boost in agent collaboration efficiency.",
+      "detail": "The OpenClaw team has officially released v2.7, with a focus on upgraded multi-agent workflow orchestration. The new version includes a built-in visual Workflow Canvas, allowing developers to drag-and-drop Supervisor-Agent structures without writing large amounts of glue code, with support for parallel branches, conditional rollbacks, and human-in-the-loop nodes. Official figures show that task completion time in complex data processing scenarios has been cut by 42% on average. v2.7 also introduces a Memory Merging mechanism, enabling multiple agents to share context while retaining private memories, easing information cross-talk in long-running tasks.",
+      "impact": "For developers, the barrier to building multi-agent systems has dropped significantly, enabling small and mid-sized teams to quickly build Manus-style complex automation pipelines. For enterprise clients, visual agent orchestration makes it easier for business staff to participate in process design, accelerating AI adoption.",
+      "source": "OpenClaw Official Blog"
      },
      {
-      "id": "brief-oc-02",
-      "title": "OpenClaw Plugin Marketplace Tops 10 Million Monthly Downloads as Skill Ecosystem Enters a Virtuous Cycle",
-      "summary": "Third-party skill packages surpassed 10 million monthly downloads for the first time, with top plugin authors earning steady revenue shares.",
-      "detail": "The operator of the OpenClaw plugin marketplace disclosed that skill package downloads reached 10.2 million in October, up 62% month on month. Growth was driven mainly by office automation, code migration and data analysis skills. The marketplace now hosts more than 4,800 plugins, 37 of them maintained by enterprise teams. Since the revenue-sharing model launched in August, the platform has paid top authors over 2 million yuan in total, with the top single skill package earning more than 150,000 yuan per month. Automated security scanning has also been introduced on the review side, blocking over 200 plugins exhibiting data-exfiltration behavior.",
-      "impact": "The monetization loop of the skill ecosystem is beginning to close, signaling a shift for open-source Agent frameworks from 'usable' to 'sellable' — offering independent developers and small teams a new revenue path.",
-      "source": "OpenClaw Community Monthly Report"
+      "id": "brief-oc-002",
+      "title": "OpenClaw Skill Store Drops Quarterly Chart: Office Automation Skills Dominate",
+      "summary": "OpenClaw's official skill marketplace has released its Q3 rankings, with document processing, spreadsheet automation, and email assistants taking the top three spots by downloads.",
+      "detail": "OpenClaw Skill Store has published its Q3 2026 ecosystem data: total skills surpassed 8,000, with 1,200+ added in the quarter, and overall call volume up 210% quarter-on-quarter. The top three by downloads are DocSmith (document generation), SheetPilot (spreadsheet automation), and MailMuse (email assistant). Notably, revenue share from paid skills exceeded $3 million for the first time, with the top 50 developers earning over $4,000 per month on average — skill development is becoming a stable income source for independent developers. The company also announced a Skill Trust certification program for next quarter to address skill quality and security auditing.",
+      "impact": "With the skill ecosystem's commercialization path proven, more independent developers are likely to flock to the OpenClaw ecosystem. For enterprise users, reusable skills speed up deployment, but the security and trustworthiness of skill sources will become a key factor in procurement decisions.",
+      "source": "OpenClaw Skill Store Announcement"
      },
      {
-      "id": "brief-oc-03",
-      "title": "Multiple SaaS Vendors Announce OpenClaw Protocol Support, Making Agent-Driven Access to Existing Software a Reality",
-      "summary": "More than 20 SaaS vendors in ticketing, CRM and customer service have launched OpenClaw-compatible interfaces, letting agents directly operate business systems.",
-      "detail": "This week, 23 domestic and international SaaS vendors announced support for OpenClaw's Tool Schema standard, covering high-frequency business systems such as customer service ticketing, CRM, HR and expense reimbursement. By offering read-only and read-write permission tiers, vendors enable agents to query data, create tickets and initiate approvals within authorized scopes. Several vendors also launched operation audit logs that allow step-by-step replay of agent actions. Industry observers say this marks a key step in agents evolving from 'conversational tools' to an 'execution layer for business'.",
-      "impact": "The bar for enterprise IT teams evaluating agents drops significantly — existing software can be agent-accessible without refactoring, potentially accelerating agent adoption inside mid-sized and large organizations.",
-      "source": "TechFlow Tech Watch"
+      "id": "brief-oc-003",
+      "title": "OpenClaw Partners With Major Cloud Providers on Deep MCP Integration",
+      "summary": "AWS, Azure, GCP, and leading Chinese cloud providers have adopted the OpenClaw standard protocol, making cross-cloud agent scheduling an infrastructure-level selling point.",
+      "detail": "At the latest OpenClaw Community Call, officials announced completed Model Context Protocol (MCP) integrations with major cloud providers, letting developers call cloud databases, object storage, serverless functions, and model inference services directly from OpenClaw. A hosted cloud service, Claw Gateway, was also introduced, supporting enterprise-grade authentication, audit logging, and rate-limiting policies. The community responded enthusiastically — related GitHub issues grew by 300+ on the same day, with discussions concentrated on cross-cloud data compliance and private deployment.",
+      "impact": "MCP becoming a de facto standard signals that network effects are forming across the agent ecosystem, and players controlling the protocol entry points will capture significant gains. For enterprise IT teams, a unified access standard lowers the integration cost of multi-cloud agent applications.",
+      "source": "OpenClaw Community Call"
      }
     ]
    },
    {
     "id": "skills",
-    "title": "Trending Skills",
+    "title": "Trending Skills to Watch",
     "icon": "🧩",
     "articles": [
      {
-      "id": "brief-skill-01",
-      "title": "'Excel Automation Specialist' Skill Tops Weekly Chart: Handing Spreadsheets to Agents",
-      "summary": "Supports multi-sheet merging, formula repair and automated visual reports, topping the chart with over 120,000 downloads a week.",
-      "detail": "This skill package targets the most time-consuming spreadsheet tasks in daily office work: merging multiple workbooks, cleaning messy data, locating and auto-fixing formula errors, and generating templated weekly and monthly reports with charts. Its standout feature is a 'checkpoint' mechanism that prompts users for a second confirmation before irreversible actions such as deleting rows or overwriting cells. Community feedback shows finance and operations professionals save an average of 4–6 hours per week. The author says support for file formats of domestic office suites is coming next.",
-      "impact": "The maturation of office-focused skills is pushing agents into non-technical roles, and 'being able to describe requirements' is becoming a more valuable workplace skill than 'being able to write formulas.'",
-      "source": "OpenClaw Plugin Marketplace Weekly Chart"
+      "id": "brief-sk-001",
+      "title": "DeepResearch-Pro: End-to-End Deep Research Skills Become a New Must-Have",
+      "summary": "Research skills that combine search, scraping, cross-verification and structured output are becoming standard efficiency tools for consulting, investment and marketing roles.",
+      "detail": "Skills in the DeepResearch-Pro family have recently gone viral on both the OpenClaw and Claude Skills marketplaces. Their core value lies in chaining together what used to be fragmented steps — search, web scraping, literature comparison and report generation — into a single pipeline, with built-in fact cross-verification and citation traceability. Typical use cases include competitive analysis, weekly industry reports and investment due diligence preparation. According to developers, research that once took 2-3 days can now produce a structured first draft with 50+ citations in under 30 minutes. Advanced versions also support scheduled tasks and knowledge base syncing for continuous monitoring.",
+      "impact": "Research roles will be restructured: junior information-gathering work is rapidly devaluing, while skills in question design, fact vetting and insight synthesis are becoming far more valuable.",
+      "source": "SkillHub Community"
      },
      {
-      "id": "brief-skill-02",
-      "title": "'Codebase Archaeology' Skill Goes Viral: Taking Over Unfamiliar Projects No Longer Requires Manual Reading",
-      "summary": "Auto-generates architecture diagrams, call chains and change hotspots, helping engineers grasp large codebases in 30 minutes.",
-      "detail": "For scenarios such as inheriting legacy projects or collaborating across teams, the 'Codebase Archaeology' skill builds a semantic index of repositories locally and outputs module dependency graphs, core call chains, recent change hotspots, and annotation docs explaining 'why this code exists.' The skill runs fully offline with no code leaving the network, making it enterprise-friendly. In testing, first-time indexing of a monolithic repo with roughly 5 million lines takes about 20 minutes, with incremental updates in tens of seconds. Weekly downloads have reached 73,000, with over 400 related discussion threads on GitHub.",
-      "impact": "Code comprehension is a major share of software maintenance cost. If such skills prove reliably usable, they will significantly reduce the risks posed by technical debt management and staff turnover.",
-      "source": "Developer Community Trending"
+      "id": "brief-sk-002",
+      "title": "Browser-Use Agent Skills: Let AI Operate Real Web Pages for You",
+      "summary": "Browser-control skills are surging in popularity, automating tasks like booking tickets, filling forms and comparing prices — but security and compliance concerns are drawing growing debate.",
+      "detail": "Browser-control skills such as Browser-Use and Playwright-Agent have seen downloads double month-on-month. By combining structured DOM parsing with visual understanding, these skills enable agents to click, type, scroll and capture screenshots on live web pages. Common applications include e-commerce price comparison and ordering, government form submission and back-office data entry. New versions generally add \"human confirmation checkpoints\" and \"action replay\" features to reduce risk. Some vendors are beginning to roll out enterprise editions with operation whitelists and sensitive field masking.",
+      "impact": "Browser agents are closing the last mile between AI and legacy web services, putting pressure on the RPA industry to be rebuilt. However, account risk controls, operational compliance and data leakage remain critical blockers before large-scale deployment.",
+      "source": "GitHub Trending"
      },
      {
-      "id": "brief-skill-03",
-      "title": "Skill Benchmark SkillBench Launches, Finally Giving a Standard Answer on Whether a Skill Performs",
-      "summary": "A third-party benchmark introduces skill quality scoring across accuracy, safety and cost, with published rankings.",
-      "detail": "SkillBench, launched jointly by several universities and security labs, is now open. It comprises 1,200 standardized tasks covering office work, development and data analysis, plus 300 security adversarial cases (such as privilege escalation and data exfiltration). Evaluations produce three scores: task success rate, rate of privilege violations, and token cost per task. The first rankings show accuracy varying by up to 2.7 times among similar skills, with even wider gaps in safety. Several plugin authors have said they will optimize their implementations based on the results.",
-      "impact": "The arrival of benchmark evaluations signals that the skill ecosystem is entering a phase of quality competition. User selection is shifting from 'look at download counts' to 'look at scores,' and low-quality and dangerous plugins will be phased out faster.",
-      "source": "SkillBench Official Release"
+      "id": "brief-sk-003",
+      "title": "Localized Voice Skills: A Quantum Leap in Chinese TTS Emotional Expression",
+      "summary": "New-generation Chinese voice skills offer fine-grained control over emotion, speech rate and pausing, with podcasts, audiobooks and customer service among the first use cases.",
+      "detail": "Several Chinese text-to-speech skills have received major upgrades recently. Built on new voice foundation models, they can automatically infer emotional tone from text semantics — such as narrative, passionate or gentle — while allowing manual fine-tuning of speech rate, emphasis and pauses via tags. Developers have used these tools to produce automated podcast programs, two-voice audiobook dialogue, and customer service scripts with emotional variation. Some skills can run locally, ensuring usability for enterprise data and personal privacy scenarios. The community has also popularized use cases like \"clone my voice to do daily briefings,\" sparking debate over voice copyright.",
+      "impact": "The cost of content creation and audio consumption is dropping sharply, which will trigger an explosion in long-tail content supply. At the same time, voice cloning poses identity impersonation risks, making watermarking and licensing mechanisms on the platform side urgently necessary.",
+      "source": "AI Audio Community Weekly"
      }
     ]
    },
@@ -72,28 +72,28 @@
     "icon": "📱",
     "articles": [
      {
-      "id": "brief-ios-01",
-      "title": "iOS 26.2 Beta Opens More On-Device Model APIs, In-App AI Experiences Accelerate",
-      "summary": "Apple expands its on-device Foundation Model framework, supporting streaming output and custom adapter loading.",
-      "detail": "In the latest beta, Apple made significant extensions to the Foundation Model framework: it now supports streaming token output, enabling developers to build typewriter-style interactions; a new lightweight adapter loading interface allows domain fine-tuning to be injected without reloading the base model; and more granular privacy controls let users grant on-device AI permissions on a per-app basis. Productivity apps in the first wave of adopters report an average 35% reduction in response latency for summarization and rewriting features. The public release is expected in December.",
-      "impact": "Opening up on-device capabilities allows iOS apps to deliver usable AI features offline, and AI adoption in privacy-sensitive sectors such as healthcare, legal services, and finance is set to accelerate significantly.",
-      "source": "Developer documentation update / 9to5Mac"
+      "id": "brief-ios-001",
+      "title": "Apple Intelligence 4.0 Public Beta: Major Expansion of Siri Agent Capabilities",
+      "summary": "The new Siri supports cross-app intent orchestration and third-party Agent integration, letting users complete multi-step tasks with a single natural-language command.",
+      "detail": "Apple has pushed the public beta of Apple Intelligence 4.0 to developers, with a focus on strengthening Siri's agentic capabilities. The new version opens up deep orchestration APIs for App Intents, allowing developers to declare multi-step actions and preconditions, enabling Siri to complete complex cross-app chains such as \"check flights, rebook, sync to calendar, and notify colleagues.\" It also introduces a protocol for third-party Agent integration, enabling enterprises to deploy internal agents to managed devices via private configuration. Apple emphasized that all execution remains subject to the App Sandbox and permission gating, with sensitive operations requiring Face ID confirmation.",
+      "impact": "The battle for agent entry points in the iOS ecosystem is heating up. Apple's control of the intent layer could let it replicate the distribution dividends of the App Store; developers need to adapt to App Intents quickly to avoid being excluded from system-level orchestration.",
+      "source": "Apple Developer"
      },
      {
-      "id": "brief-ios-02",
-      "title": "Is the Subscription Model Peaking? A Wave of iOS Indie Developers Shift to a 'Lifetime Purchase + Pay-Per-Use' Hybrid",
-      "summary": "Subscription fatigue is evident among users; top indie apps now offer lifetime and usage-based options, winning positive feedback.",
-      "detail": "Several well-known independent apps — spanning writing, video editing, and fitness tracking — have adjusted pricing in updates over the past two weeks: alongside subscriptions, they now offer one-time 'lifetime licenses' and light tiers billed by export count or processing volume. A developer community survey found that more than half of respondents cite subscription fatigue as the main reason for declining paid conversion. Some apps saw 30-day paid retention rise by over 20% after the changes. Apple has also introduced more flexible configuration options for hybrid pricing in App Store Connect.",
-      "impact": "The swing back in pricing models reflects user resistance to 'renting software long-term.' The competitiveness of app monetization will increasingly hinge on transparency of value delivered rather than subscription lock-in.",
-      "source": "Independent developer community survey"
+      "id": "brief-ios-002",
+      "title": "App Store Charts Watch: AI Subscription Apps Claim Nearly Half of the Top 20",
+      "summary": "AI productivity, note-taking, and companion apps dominate the charts, with subscription prices clustered at 30–80 yuan per month; retention is the industry's core challenge.",
+      "detail": "The latest App Store top-grossing charts in China and the US show AI-related subscription apps occupying 9 of the top 20 spots, spanning categories such as AI note-taking, AI companions, AI photo editing, and AI voice assistants. Data disclosed by multiple development teams indicates that download conversion rates are generally solid, but the median 30-day retention rate is only 22%, suggesting strong willingness to try new apps but weak sustained payment intent. Leading teams are boosting LTV by building high-frequency, essential-use scenarios (such as schedule management and English-language practice) and offering family/team subscriptions. Apple is also adjusting App Store search and recommendation rules to give greater weight to long-term active apps.",
+      "impact": "The AI app race is shifting from competing on features to competing on retention and scenario depth; products lacking high-frequency use cases will be quickly weeded out. Subscription pricing and family-sharing strategies are emerging as new competitive dimensions.",
+      "source": "Sensor Tower / Appfigures"
      },
      {
-      "id": "brief-ios-03",
-      "title": "Health Apps Embrace New Sensor Data as Sleep and Stress Management Heats Up",
-      "summary": "New hardware opens more biometric data interfaces; health apps roll out stress trends and recovery scores.",
-      "detail": "With the latest generation of wearable devices opening APIs for daytime stress indices, skin temperature fluctuations, and blood oxygen trends, six of the top ten health apps on the App Store this week have added 'recovery score' and 'stress trend' features. These apps typically fuse multiple biometric signals into a single readable metric and provide actionable recommendations, such as breathing exercises and ideal nap durations. Medical professionals caution that such scores are lifestyle references rather than medical diagnoses, and users should interpret them rationally.",
-      "impact": "Richer biometric data is moving consumer health apps from 'tracking' to 'guiding,' but it also draws dual regulatory scrutiny over algorithmic accuracy and health anxiety.",
-      "source": "App Store health chart updates"
+      "id": "brief-ios-003",
+      "title": "iOS 27 Code Reveals \"Personal Context\" Framework",
+      "summary": "Developers have found a system-level personal context framework in the beta, potentially enabling AI services that understand users better but are also more sensitive.",
+      "detail": "Developers discovered a private framework named Personal Context in the system symbols of the latest iOS 27 beta, covering data types such as location habits, frequent contacts, app usage patterns, and calendar preferences. The industry speculates that this framework will provide the next-generation Siri with on-device long-term memory, allowing the AI assistant to build user profiles locally without sending data to the cloud. Apple has recently increased investment in on-device compute, with the new Neural Engine delivering significantly enhanced on-device inference. Privacy advocates are calling on Apple to publish a data-use white paper and clarify user-controlled deletion and opt-out options.",
+      "impact": "If true on-device personalization is achieved, Apple could widen its privacy-compliance lead over cloud providers; however, once user profiles involve sensitive behavioral data, any flaw in permission design could trigger a public backlash.",
+      "source": "9to5Mac / Developer Reverse Engineering"
      }
     ]
    },
@@ -103,93 +103,93 @@
     "icon": "🚀",
     "articles": [
      {
-      "id": "brief-startup-01",
-      "title": "Embodied AI startup Lingxi Robotics raises Series A+ round, targets warehouse sorting",
-      "summary": "The company raised several hundred million yuan. Its dual-arm robots are already running full-time at three logistics warehouses, processing around 10,000 parcels per day per site.",
-      "detail": "Lingxi Robotics focuses on warehouse sorting, a high-throughput and unstructured scenario. Its dual-arm system combines vision-force fusion algorithms to handle soft packages, irregularly shaped items and mixed SKUs. Official figures show the product has entered full-time operation at three regional logistics warehouses, with average daily throughput of about 12,000 parcels per site and a manual intervention rate below 5%. The round was co-led by industrial capital and state-backed funds, with proceeds earmarked for capacity expansion and pilot projects at overseas warehouses. The core team hails from robotics and automation production line backgrounds.",
-      "impact": "Warehouse sorting is one of the first scenarios where embodied AI can make the business case add up. If the model scales successfully, it could provide a credible commercial benchmark for the entire humanoid and dual-arm robotics sector.",
-      "source": "36Kr / Company official announcement"
+      "id": "brief-st-001",
+      "title": "Embodied AI firm Dome Robotics raises Series C, valuation tops $5B",
+      "summary": "Dome Robotics has closed a Series C round worth several hundred million dollars, with its humanoid robots now piloting in auto plants and logistics warehouses.",
+      "detail": "Chinese embodied AI company Dome Robotics announced the completion of a Series C round, with its post-money valuation surpassing $5 billion. Its flagship bipedal robot, D1, has entered small-batch pilots at two automakers and several logistics warehouses, primarily handling line-side material transport, inspections and exception handling. The company said its latest-generation model, trained on a mix of large-scale real-world and simulation data, has seen marked gains in task generalization, with a single robot capable of performing more than 30 workstation tasks. Investors generally believe 2027 will be the critical window for embodied AI to move from pilots to scaled replication.",
+      "impact": "Embodied AI is moving from demos to production-line validation, with industrial and logistics settings set to be the first large-scale deployment scenarios. However, per-unit costs, maintenance infrastructure and safety standards remain the core variables constraining volume growth.",
+      "source": "36Kr / Company announcement"
      },
      {
-      "id": "brief-startup-02",
-      "title": "AI security audit startup Beacon Audit lands seed round to police AI Agent operations",
-      "summary": "The company offers real-time auditing and interception to address risks of privilege escalation and data leakage from autonomous AI Agents.",
-      "detail": "As enterprises begin connecting AI Agents to real business systems, the question of who is accountable for an Agent's actions has become a pressing issue. Beacon Audit provides a middleware audit product that runs policy checks, maintains behavior logs and intercepts anomalies on every tool call made by an Agent, with support for private deployment. The founding team comes from security and compliance backgrounds, and the product has completed proof-of-concept pilots with two clients in finance and healthcare. An angel investor said the firm sees long-term demand in the 'Agent trust infrastructure' category.",
-      "impact": "Agent security and compliance is emerging as a standalone category. Such middleware could become a standard component of enterprise Agent deployments, much like API gateways and security auditing tools in an earlier era.",
-      "source": "Tech VC media"
+      "id": "brief-st-002",
+      "title": "AI healthcare startup MedBrief launches imaging report agent, deployed at 200+ primary care hospitals",
+      "summary": "MedBrief's imaging report agent auto-generates preliminary reports for primary care hospitals, cutting physician review time by 60%.",
+      "detail": "AI healthcare company MedBrief announced that its imaging report agent now covers more than 200 primary care hospitals nationwide, spanning X-ray, CT and ultrasound imaging. The agent reads scans using a multimodal model, outputs structured preliminary reports and flags suspect areas, leaving physicians to simply review and confirm. According to hospital feedback, per-case report writing time dropped from 8 minutes to under 3 minutes, while diagnostic consistency also improved. The company completed a Series B+ round in parallel and signed partnerships with several regional healthcare alliances, with plans to expand into pathology slides and ECG analysis next.",
+      "impact": "AI-generated imaging reports are easing staffing shortages in primary care and extending quality diagnostic capabilities to lower-tier facilities. However, regulators are still refining the boundaries and liability framework for AI involvement in diagnosis, and hospitals and vendors must establish clear quality control processes.",
+      "source": "VBP100 / Company press release"
      }
     ]
    }
   ]
  },
  "hotProjects": {
-  "date": "2026-10-28",
-  "quote": "Opportunities aren't caught by chasing them — they're caught by being prepared.",
-  "summary": "Multi-agent orchestration and agent trust infrastructure are rising in parallel, making 'getting agents to actually do the work' the week's dominant theme.",
+  "date": "2026-10-29",
+  "quote": "You don't chase a trend — you prepare ahead of the inflection point and wait for it to arrive.",
+  "summary": "Multi-agent orchestration and on-device personalization are today's hottest trends, as 'knowing how to use AI' rapidly evolves into 'knowing how to orchestrate AI.'",
   "projects": [
    {
-    "id": "hot-01",
+    "id": "hot-001",
     "rank": 1,
-    "name": "OpenClaw Multi-Agent Orchestration Ecosystem",
+    "name": "ClawFlow Multi-Agent Orchestration Platform",
     "heat": "🔥🔥🔥🔥🔥",
     "heatLevel": 5,
-    "oneLiner": "Open-source agent framework plus skills marketplace plus SaaS compatibility layer, forming a complete execution loop.",
-    "whyHot": "After v0.9 filled in multi-agent orchestration and sandbox security, monthly plugin marketplace downloads topped 10 million, revenue-sharing proved out, and 20-plus SaaS providers integrated its tool protocol. Framework, ecosystem, and commercialization are all strengthening at once, with community activity and enterprise adoption rising together — the most complete model in open-source AI infrastructure today.",
+    "oneLiner": "A visual multi-agent workflow orchestration platform for enterprises, enabling non-engineers to build complex automations.",
+    "whyHot": "OpenClaw v2.7 has democratized multi-agent development, triggering a surge in enterprise demand. ClawFlow offers drag-and-drop orchestration, approval nodes, and audit logs, and has achieved paid traction across three scenarios: e-commerce operations, financial review, and customer support tickets. GitHub Stars grew 12,000 in a single week, and multiple SaaS vendors now view it as the next-generation workflow engine.",
     "highlights": [
-     "The development paradigm shift brought by declarative Agent Graph orchestration",
-     "The appeal of marketplace revenue-sharing to independent developers",
-     "How SaaS compatibility interfaces are retrofitting existing software",
-     "Whether the sandbox permission model can become a de facto standard"
+     "Visual Supervisor-Agent orchestration lowers the barrier to multi-agent development",
+     "Built-in human-in-the-loop and approval nodes to meet enterprise compliance requirements",
+     "Supports private deployment and unified audit logs",
+     "Open plugin ecosystem compatible with mainstream MCP services"
     ],
-    "riskTip": "Plugin quality is uneven during the ecosystem's expansion phase, and a security incident could trigger a trust crisis; divergences may also emerge if the core team's pace diverges from community governance."
+    "riskTip": "The orchestration platform space has relatively low barriers to entry. If major tech giants enter with native orchestration capabilities, independent vendors may face being absorbed or replaced."
    },
    {
-    "id": "hot-02",
+    "id": "hot-002",
     "rank": 2,
-    "name": "Agent Trust & Compliance Audit Middleware",
-    "heat": "🔥🔥🔥🔥",
-    "heatLevel": 4,
-    "oneLiner": "Infrastructure providing permission checks, behavior logging, and anomaly interception for autonomous agents.",
-    "whyHot": "As agents begin executing real operations in ticketing, CRM, and finance systems, privilege escalation and data leak risks have spiked, sharply amplifying compliance departments' demands. Several startups have entered this 'trust layer,' offering on-premise auditing and policy engines. Investors liken it to an API gateway plus security audit opportunity; enterprise willingness to pay is clear, and POC-to-deal cycles are notably shorter than for general-purpose agent platforms.",
+    "name": "PersonalContext On-Device Memory Middleware",
+    "heat": "🔥🔥🔥🔥🔥",
+    "heatLevel": 5,
+    "oneLiner": "Localized personal context and long-term memory middleware that gives on-device AI privacy-friendly user profiling capabilities.",
+    "whyHot": "After Apple's Personal Context framework was revealed, on-device personalization has become the next must-win battleground. This project provides a cross-platform local memory layer supporting vector indexing, preference inference, and forgetting mechanisms — all processed on-device. It is in partnership talks with multiple smartphone makers and IoT teams, making it a rare asset at the intersection of the 'privacy + personalization' trends.",
     "highlights": [
-     "The compliance value of operation-level audit logs",
-     "Integration between policy engines and enterprise IAM systems",
-     "Early demand in heavily regulated sectors like finance and healthcare",
-     "Cooperation versus competition with agent framework vendors"
+     "Runs entirely on-device; sensitive data never leaves the hardware",
+     "Supports long-term memory, short-term context, and active forgetting",
+     "Cross-app intent layer integration compatible with assistants like Siri and Xiao Ai",
+     "Developer-friendly SDK with low integration cost"
     ],
-    "riskTip": "Demand hinges heavily on enterprise adoption of agents; if deployment slows, market education cycles will lengthen. Low standardization may also lead to excessive customization."
+    "riskTip": "Deep user profiling involves sensitive data. Any flaw in permissions or storage design could trigger regulatory and public backlash, making compliance costs high."
    },
    {
-    "id": "hot-03",
+    "id": "hot-003",
     "rank": 3,
-    "name": "On-Device AI Applications (iOS/Mobile)",
+    "name": "SkillStore Developer Ecosystem Toolchain",
     "heat": "🔥🔥🔥🔥",
     "heatLevel": 4,
-    "oneLiner": "System-level on-device model APIs have opened up, unlocking a boom window for AI features in privacy-sensitive scenarios.",
-    "whyHot": "Mobile operating systems keep expanding on-device model capabilities — streaming output, custom adapters, per-app privacy grants — letting developers deliver smooth AI experiences offline for the first time. Combined with pricing model reshuffles driven by subscription fatigue, on-device AI has become indie developers' main edge, with health, productivity, and creativity apps visibly accelerating their update cycles.",
+    "oneLiner": "An all-in-one toolchain for AI skill developers covering testing, pricing, distribution, and revenue analytics.",
+    "whyHot": "With OpenClaw Skill Store quarterly payouts surpassing $3 million, skill development has proven out as a viable business model for independent developers. SkillStore's toolchain offers skill debugging sandboxes, A/B pricing experiments, user retention analytics, and security audit reports, filling a gap in ecosystem infrastructure. Within two months of launch, it onboarded 800+ developers with a paid conversion rate above 15%.",
     "highlights": [
-     "Lightweight domain customization via on-device adapters",
-     "What offline availability means for privacy-sensitive use cases",
-     "Validation of mixed buy-once plus per-use pricing models",
-     "New product categories born from open hardware sensor data"
+     "Skill debugging sandbox with real call-chain replay support",
+     "Pricing and revenue analytics dashboards to help developers optimize LTV",
+     "Automated security and compliance auditing integrated with platform certification",
+     "Cross-platform distribution covering both OpenClaw and Claude Skills"
     ],
-    "riskTip": "On-device compute and model capability still have ceilings, and marketing often outruns actual experience; regulatory red lines around health data require extra caution."
+    "riskTip": "Ecosystem tools depend on upstream platform policies. If platform owners tighten access to APIs or build their own developer tooling, the independent toolchain's business model could be quickly disrupted."
    },
    {
-    "id": "hot-04",
+    "id": "hot-004",
     "rank": 4,
-    "name": "Warehouse Sorting Embodied AI",
-    "heat": "🔥🔥🔥",
-    "heatLevel": 3,
-    "oneLiner": "Dual-arm robots are running routine operations in logistics warehouses — embodied AI's first proven commercial loop.",
-    "whyHot": "With humanoid robotics still early overall, warehouse sorting got there first thanks to high throughput and quantifiable ROI: some companies report over 10,000 parcels processed per warehouse per day with under 5% human intervention. Industrial capital and state-backed funds are moving in heavily, with capacity expansion and overseas warehouse pilots advancing in parallel — currently the embodied AI vertical closest to scalable replication.",
+    "name": "EdgeVoice On-Device Emotional Speech Engine",
+    "heat": "🔥🔥🔥🔥",
+    "heatLevel": 4,
+    "oneLiner": "A localized Chinese emotional speech synthesis engine with fine-grained control over emotion, pace, and voice timbre.",
+    "whyHot": "Chinese TTS emotional expressiveness has taken a major leap, driving explosive demand across podcasts, audiobooks, customer service, and companion applications. EdgeVoice focuses on local inference and voice copyright protection, with built-in watermarking and licensing chain mechanisms, and is gaining rapid traction among enterprise clients. It has secured partnerships with two leading audio platforms, with a clear commercialization path.",
     "highlights": [
-     "Grasp stability for irregularly shaped items and mixed SKUs",
-     "Per-warehouse deployment cost and payback period modeling",
-     "Engineering capability for cross-warehouse replication",
-     "Depth of integration with existing WMS systems"
+     "On-device inference delivering strong privacy and low latency",
+     "Fine-grained control over emotion, pace, and emphasis",
+     "Voice cloning authorization chain and watermark-based traceability",
+     "Adaptable to podcasts, customer service, companion apps, and more"
     ],
-    "riskTip": "The scenario demands exacting throughput and reliability, and long-run operating data still needs validation; regional labor cost differences will affect the economics of overseas markets."
+    "riskTip": "Controversies around voice cloning copyright and identity impersonation continue to escalate. If regulations tighten, the company could face significant compliance retrofit costs."
    }
   ]
  }
