@@ -163,18 +163,40 @@ def fetch_weibo_hot():
     return results
 
 
+def fetch_finance_news():
+    """财经/全球市场专项新闻源（供财经专栏）"""
+    results = []
+    queries = [
+        ("财经 股市 基金 楼市", "财经新闻"),
+        ("美股 全球市场 汇率 大宗商品", "全球财经"),
+    ]
+    for q, src_name in queries:
+        try:
+            resp = requests.get("https://cn.bing.com/news/search", params={"q": q}, headers=HEADERS, timeout=15)
+            resp.encoding = "utf-8"
+            items = re.findall(r'<a[^>]*href="(https?://[^"]*)"[^>]*><h2[^>]*>([^<]+)</h2>', resp.text)
+            for url, title in items[:12]:
+                title = title.strip()
+                if len(title) > 4:
+                    results.append({"title": title, "source": src_name, "url": url})
+        except Exception as e:
+            print(f"  ⚠️ {src_name} 抓取失败: {e}")
+    return results
+
+
 def fetch_all_news():
     """并发抓取所有新闻源"""
     print("🚀 开始多源并发抓取新闻...")
     all_news = []
 
-    with ThreadPoolExecutor(max_workers=5) as executor:
+    with ThreadPoolExecutor(max_workers=6) as executor:
         futures = {
             executor.submit(fetch_baidu_news): "百度",
             executor.submit(fetch_bing_news): "必应",
             executor.submit(fetch_tencent_news): "腾讯",
             executor.submit(fetch_163_news): "网易",
             executor.submit(fetch_weibo_hot): "微博",
+            executor.submit(fetch_finance_news): "财经",
         }
         for future in as_completed(futures):
             name = futures[future]
@@ -272,7 +294,7 @@ def build_news_content():
             pass
 
     # 构造新闻素材字符串
-    news_text = "\n".join([f"- [{item['source']}] {item['title']}" for item in news_items[:50]])
+    news_text = "\n".join([f"- [{item['source']}] {item['title']}" for item in news_items[:60]])
 
     system_prompt = f"""你是一个资深新闻编辑。你的任务是【仅基于提供的真实新闻素材】进行分类和总结。
 
@@ -309,12 +331,14 @@ def build_news_content():
   ]
 }}
 
-分类要求（每个分类3-5条，从素材中挑选最重要的）：
+分类要求（每个分类3-5条，财经两个分类尽量多列，从素材中挑选最重要的）：
 1. domestic — 🇨🇳 国内时政（政策、民生、基建、法治）
 2. international — 🌍 国际时政（外交、冲突、国际组织）
-3. finance — 📈 财经动态（股市、楼市、消费、企业）
-4. tech — 💡 科技前沿（AI、芯片、新能源、互联网）
-5. other — 📰 其他要闻（体育、文娱、社会、健康）
+3. finance — 📈 财经动态（宏观政策、股市、楼市、消费、企业、基金理财，素材充足时尽量5-8条）
+4. global-finance — 🌐 全球财经（海外市场、美股、汇率、大宗商品、国际企业，素材充足时尽量3-6条）
+5. tech — 💡 科技前沿（AI、芯片、新能源、互联网）
+6. other — 📰 其他要闻（体育、文娱、社会、健康）
+财经专栏要求：优先从标注[财经新闻][全球财经]的素材中选材；素材不足时有多少列多少，绝不编造凑数
 
 tags 与 trendingTopics 规范（极其重要！tags 会进入「行业透视」模块做行业分析、并显示为行业热度榜，必须是行业/领域/主题词）：
 - ✅ 合格示例：新能源汽车、半导体、文旅消费、跨境电商、公共卫生、航空安全、中东局势、两岸关系、假日经济、禁毒工作、演艺界、电竞
@@ -327,7 +351,7 @@ tags 与 trendingTopics 规范（极其重要！tags 会进入「行业透视」
   6. 事件性短语与身份称谓 — "警方破案""退休教授""招待会"等禁止，改用领域词（如"公共安全""社会治理"）
 - 每条新闻 tags 2-3 个，优先行业/产业/领域/主题名词
 
-id格式: news-001 到 news-25，全局唯一
+id格式: news-001 到 news-35，全局唯一
 importance: hot=头条级 / important=值得关注 / normal=一般"""
 
     max_retries = 3

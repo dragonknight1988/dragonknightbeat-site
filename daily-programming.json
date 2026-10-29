@@ -1,38 +1,42 @@
 {
-  "date": "2026-10-29",
+  "date": "2026-10-30",
   "contents": [
     {
-      "id": "prog-2026-10-29",
-      "date": "2026-10-29",
-      "title": "TypeScript 类型收窄与判别联合（Discriminated Unions）实战",
-      "summary": "用判别联合建模业务状态，并借助类型收窄与穷尽性检查让编译器帮你消灭漏分支 bug。",
-      "difficulty": "中级",
-      "concept": "类型收窄（Type Narrowing）是 TypeScript 最有价值的能力之一：它允许编译器根据运行时的判断，把一个宽泛的联合类型在某个代码分支里“收窄”成更精确的类型，从而让属性访问变得安全。常见的收窄手段包括 typeof、instanceof、字面量相等比较（===）、in 操作符、真值检查，以及自定义的类型守卫（type predicate，形式为 value is T）。理解收窄的本质是“控制流分析”——编译器会跟踪变量的赋值与分支走向，而不是简单地看声明类型。\n\n在真实工程里，最常用的收窄范式是“判别联合”（Discriminated Union，也叫 Tagged Union）：给联合类型的每个成员都加上一个同名的字面量属性（通常叫 kind、type、status、tag），然后用 switch 或 if 对这个“标签”做比较。一旦比较成立，编译器就能把变量精确地定位到对应成员。相比用一堆可选属性拼装的“大对象类型”，判别联合能表达“互斥状态”——比如请求要么在加载、要么成功、要么失败，不可能同时持有 data 和 error，这让非法状态在类型层面就无法构造。\n\n穷尽性检查（Exhaustiveness Checking）是判别联合的搭档。写 switch 时在 default 分支里加一句 const _exhaustive: never = state;，如果将来有人给联合新增了一个成员却忘了处理，state 就不再是 never，编译期立刻报错。这在重构时极其有用：新增一个订单状态、新增一种支付渠道，编译器会把所有漏掉的分支列出来，而不是等到线上运行时才发现 undefined。很多团队会把它写进代码规范，配合 strict: true 一起强制执行。\n\n工程经验上要注意几点：第一，优先用“判别属性 + 联合”而不是布尔标志组合（isLoading / isError / isSuccess 三个布尔能产生 8 种组合，其中 5 种是非法的）；第二，跨函数边界传递时，尽量保持联合类型不被拓宽成 any 或 object，否则收窄信息会丢失；第三，收窄只对“可辨识”的变量生效——如果把 state 存进数组再取出来，或通过闭包异步访问，编译器通常会保守处理，这时需要显式类型断言或类型守卫；第四，自定义类型守卫 is T 是编译器的“信任声明”，如果实现写错（例如 return 'id' in value 就断言是 User），编译器不会帮你发现，必须配合单元测试。\n\n判别联合还天然适合状态机建模。把 UI 的加载态、表单的编辑态、WebSocket 的连接态都建模为联合类型后，配合 never 的穷尽检查，等于给业务流转上了一道编译期保险。配合 useReducer、XState 或 Redux Toolkit 的 reducer 使用时效果尤其好，因为 action 的 payload 结构同样可以用判别联合精确表达。",
+      "id": "prog-2026-10-30",
+      "date": "2026-10-30",
+      "title": "Next.js 流式渲染架构：Suspense 边界设计与 Partial Prerendering（PPR）",
+      "summary": "用 Suspense 边界 + PPR 把「静态外壳」和「动态数据」拆开，实现 TTFB 极低、内容渐进落地的高级渲染架构。",
+      "difficulty": "高级",
+      "concept": "在真实项目中，一个页面几乎永远是「混合体」：商品标题、SEO 描述、导航、Footer 是静态的（每个用户看到的一样），而实时价格、库存、个性化推荐、评论流是动态的（每次请求都不同）。传统做法只有两个极端：要么整页 SSR（TTFB 被最慢的那个请求拖死），要么整页静态化（动态数据只能靠客户端 useEffect 二次请求，造成 layout shift 和 SEO 缺失）。Next.js 15 提供的 Partial Prerendering（PPR）就是为了解决这个二元困境：构建期先把静态壳渲染成一段 HTML，随 CDN 直接下发；动态部分用 Suspense 边界标记，在请求时才由服务端流式补上。用户第一时间看到骨架和标题，慢数据随流到达，且全程是服务端渲染、可被爬虫抓取。",
+      "concept2": "设计 Suspense 边界本质上是在做「渲染优先级切分」，它有明确的工程经验：第一，边界要以「用户感知的数据块」为粒度，而不是以组件文件为粒度。价格一块、评论一块、推荐一块，各自独立 fallback，用户先看到价格也比整页白屏强。第二，把最贵的请求放到最外层的 await 之前是常见反模式——如果 page 顶部就 await 了慢接口，那么 PPR 失效，整个路由退化成全动态。正确做法是：在最外层只 await 那些可缓存/可预渲染的数据，慢的全部下沉到 Suspense 子组件内部。第三，fallback 的质量直接决定流式渲染的体验：fallback 应该和真实内容等高（防止 CLS），并体现品牌风格，而不是一个 spinner。",
+      "concept3": "缓存语义是这套架构的地基。Next.js 把缓存拆成四层：Request Memoization（同一次请求内去重）、Data Cache（跨请求、按 revalidate 或 tag 失效）、Full Route Cache（预渲染的 HTML/RSC payload）、Router Cache（客户端路由缓存）。fetch 上的 next: { revalidate: 60 } 或 cache: 'no-store' 直接决定一个数据是否参与 PPR。规则很清晰：只要组件树上任何一个 await 的数据是 no-store 或使用了 cookies()/headers()/searchParams，这块就会被打上动态标记，成为「动态洞」，其余部分仍然预渲染。理解这条「静态默认、动态例外」的规则，是高级 Next.js 工程师的分水岭。",
+      "concept4": "性能侧的收益可以用数字量化：一个电商详情页如果有 3 个并行的外部接口（平均 400ms、800ms、1200ms），整页 SSR 的 TTFB 至少 1200ms；改造后静态壳的 TTFB 可以降到 20-50ms（来自 CDN），LCP 元素（标题+主图）在 100ms 内可见，慢数据在 1.2s 内补齐。监控时要分别打点 TTFB、FCP、LCP 和 Suspense 边界的落地时间（用 onComplete 或 PerformanceObserver），才能验证边界切分是否合理。",
+      "concept5": "最后是落地陷阱清单：1）generateStaticParams + dynamicParams 的组合会决定未预生成路径的处理方式；2）Next 15 中 params、searchParams 都是 Promise，必须 await；3）Suspense 边界不要嵌套过深，否则 RSC payload 分片过多，反而增加解析开销；4）PPR 目前需要在 next.config 中开启 experimental.ppr 并在 segment 上导出 experimental_ppr = true；5）流式渲染时不要在客户端用 useEffect 重复拉取已经被服务端流式渲染的数据，会浪费一次请求并引发闪烁。",
       "codeExample": {
-        "language": "TypeScript",
-        "code": "// ===== 1. 定义判别联合：每个成员都有同名的字面量属性 status =====\ntype RequestState<T> =\n  | { status: 'idle' }\n  | { status: 'loading'; startedAt: number }\n  | { status: 'success'; data: T; duration: number }\n  | { status: 'error'; error: Error; retryCount: number };\n\n// ===== 2. 配套的“创建工厂”，让非法状态无法被构造 =====\nconst Request = {\n  idle: <T>(): RequestState<T> => ({ status: 'idle' }),\n  loading: <T>(startedAt = Date.now()): RequestState<T> => ({ status: 'loading', startedAt }),\n  success: <T>(data: T, duration: number): RequestState<T> => ({ status: 'success', data, duration }),\n  fail: <T>(error: Error, retryCount: number): RequestState<T> => ({\n    status: 'error', error, retryCount,\n  }),\n};\n\n// ===== 3. 类型收窄 + 穷尽性检查 =====\nfunction describe<T>(state: RequestState<T>): string {\n  switch (state.status) {\n    case 'idle':\n      // 这里 state 被收窄为 { status: 'idle' }\n      return '尚未发起请求';\n    case 'loading':\n      // 只有 loading 成员才拥有 startedAt\n      return `加载中… 已耗时 ${Date.now() - state.startedAt}ms`;\n    case 'success':\n      // 只有 success 成员才拥有 data 与 duration\n      return `成功：拿到 ${String(state.data).length} 个字符，耗时 ${state.duration}ms`;\n    case 'error':\n      // 只有 error 成员才拥有 error 与 retryCount\n      return `失败（第 ${state.retryCount} 次重试）：${state.error.message}`;\n    default: {\n      // 穷尽性检查：新增分支却未处理时，这一行会在编译期报错\n      const _exhaustive: never = state;\n      return _exhaustive;\n    }\n  }\n}\n\n// ===== 4. 自定义类型守卫：在“无法自动收窄”的场景下手动收窄 =====\ninterface SuccessPayload { data: string }\ninterface ErrorPayload { reason: string }\ntype Payload = SuccessPayload | ErrorPayload;\n\nfunction isSuccessPayload(p: Payload): p is SuccessPayload {\n  return (p as SuccessPayload).data !== undefined;\n}\n\n// ===== 5. 运行验证 =====\nconst states: RequestState<string>[] = [\n  Request.idle<string>(),\n  Request.loading<string>(Date.now() - 800),\n  Request.success<string>('hello typescript', 120),\n  Request.fail<string>(new Error('网络超时'), 2),\n];\n\nfor (const s of states) {\n  console.log(describe(s));\n}\n\nconst payload: Payload = { data: 'ok' };\nif (isSuccessPayload(payload)) {\n  console.log('收窄成功 ->', payload.data.toUpperCase());\n}\n",
-        "explanation": "第 1 段定义 RequestState<T> 为判别联合，四个成员共享 status 字面量属性，分别对应请求的空闲、加载、成功、失败四种互斥状态。第 2 段的 Request 工厂把构造过程封装起来，调用方无法写出 { status: 'success' } 却不带 data 这样的非法对象。\n\n第 3 段是核心：switch (state.status) 后，每个 case 内的 state 都被收窄到具体成员，可以安全访问 startedAt、data、error 等独有字段。default 分支中 const _exhaustive: never = state 起穷尽性检查作用——因为四种情况都已处理，state 的类型才可能是 never；一旦联合新增成员而 switch 没跟进，这行就会编译报错，提示我们漏了分支。\n\n第 4 段演示自定义类型守卫 isSuccessPayload，它用 p is SuccessPayload 告诉编译器“若返回 true，则参数就是 SuccessPayload”。这在处理来自后端的未知结构、或联合类型没有公共判别属性时特别有用。注意守卫内部的判断逻辑编译器不会校验，务必配合测试。\n\n第 5 段构造四种状态并逐一打印，同时演示守卫收窄后可以安全调用 payload.data.toUpperCase()。把这段代码保存为 narrowing.ts 后用 npx tsx narrowing.ts 或 npx tsc narrowing.ts --strict && node narrowing.js 即可运行。"
+        "language": "tsx",
+        "code": "/* next.config.ts —— 开启 Partial Prerendering */\nimport type { NextConfig } from 'next';\n\nconst nextConfig: NextConfig = {\n  experimental: {\n    ppr: 'incremental', // 允许按 route segment 逐个启用 PPR\n  },\n};\n\nexport default nextConfig;\n\n/* ------------------------------------------------------------ */\n/* app/products/[id]/page.tsx                                   */\n/* ------------------------------------------------------------ */\nimport { Suspense } from 'react';\n\n// 1) 该 route segment 参与 Partial Prerendering\nexport const experimental_ppr = true;\n\n// 2) 构建期预生成静态外壳的路径\nexport function generateStaticParams() {\n  return [{ id: 'keyboard-01' }, { id: 'mouse-02' }];\n}\n\n// 3) 静态数据：构建期渲染，60s 后台重新验证（ISR）\nasync function getProduct(id: string) {\n  const res = await fetch(`https://api.example.com/products/${id}`, {\n    next: { revalidate: 60 },\n  });\n  return res.json();\n}\n\n// 4) 动态数据：强制动态，必须在请求时渲染\nasync function getLivePrice(id: string) {\n  const res = await fetch(`https://api.example.com/price/${id}`, {\n    cache: 'no-store',\n  });\n  return res.json();\n}\n\nasync function getReviews(id: string) {\n  const res = await fetch(`https://api.example.com/reviews/${id}`, {\n    cache: 'no-store',\n  });\n  return res.json();\n}\n\n// 5) 动态子组件：内部 await 一个 no-store 的请求，形成「动态洞」\nasync function PricePanel({ id }: { id: string }) {\n  const price = await getLivePrice(id);\n  return (\n    <section className=\"rounded-xl border p-4\" style={{ height: 80 }}>\n      实时价格：￥{price.amount}\n    </section>\n  );\n}\n\nasync function Reviews({ id }: { id: string }) {\n  const reviews = await getReviews(id);\n  return (\n    <ul className=\"space-y-2\" style={{ minHeight: 200 }}>\n      {reviews.map((r: { id: string; text: string }) => (\n        <li key={r.id}>{r.text}</li>\n      ))}\n    </ul>\n  );\n}\n\n// fallback 必须与真实内容等高，避免布局抖动（CLS）\nfunction PriceSkeleton() {\n  return <div className=\"animate-pulse bg-gray-200 rounded-xl\" style={{ height: 80 }} />;\n}\nfunction ReviewsSkeleton() {\n  return <div className=\"animate-pulse bg-gray-200 rounded-xl\" style={{ minHeight: 200 }} />;\n}\n\nexport default async function ProductPage({\n  params,\n}: {\n  params: Promise<{ id: string }>;\n}) {\n  const { id } = await params;          // Next 15：params 是 Promise\n  const product = await getProduct(id); // 静态：进入预渲染外壳\n\n  return (\n    <main className=\"mx-auto max-w-3xl p-6 space-y-6\">\n      {/* 静态外壳：随首字节立刻下发 */}\n      <h1 className=\"text-3xl font-bold\">{product.name}</h1>\n      <p className=\"text-gray-600\">{product.description}</p>\n\n      {/* 两个独立的流式边界：互不阻塞，各自按速度落地 */}\n      <Suspense fallback={<PriceSkeleton />}>\n        <PricePanel id={id} />\n      </Suspense>\n\n      <Suspense fallback={<ReviewsSkeleton />}>\n        <Reviews id={id} />\n      </Suspense>\n    </main>\n  );\n}\n",
+        "explanation": "【next.config.ts】experimental.ppr = 'incremental' 表示 PPR 采用渐进式启用，只有显式 opt-in 的 segment 才参与，便于在老项目里灰度。\n\n【export const experimental_ppr = true】这是 route segment 级别的开关，告诉 Next.js 该页面要按「静态壳 + 动态洞」的方式构建与响应。\n\n【generateStaticParams】在构建期把已知的商品 id 预渲染出静态外壳，命中的路径直接走 CDN。\n\n【getProduct】使用 next: { revalidate: 60 }，属于可缓存数据，因此 page 组件顶部的 await 不会把路由变成全动态，外壳仍可预渲染。\n\n【getLivePrice / getReviews】显式 cache: 'no-store'，是真正的动态数据。它们只在 Suspense 子组件内部被 await，形成两个独立的「动态洞」。\n\n【两个 Suspense 边界】价格和评论互不阻塞：价格接口 200ms 就先落地，评论 1200ms 到达也不会拖住价格。这就是流式渲染的核心价值。\n\n【fallback 组件】用与真实内容等高的骨架块，保证流式补位时不产生布局偏移（CLS）。\n\n【params: Promise<{ id: string }>】Next.js 15 起 params 变为异步，必须 await，否则 TypeScript 报错、运行时拿不到值。"
       },
       "keyPoints": [
-        "判别联合 = 联合类型 + 同名的字面量判别属性（kind/status/type），用 switch 或 === 即可精确收窄",
-        "穷尽性检查写法：default 分支中执行 const _exhaustive: never = state，新增成员却漏处理时编译期即报错",
-        "用 never 建模“互斥状态”优于多个布尔标志，能把 8 种非法组合在类型层面直接排除",
-        "自定义类型守卫（value is T）用于编译器无法自动收窄的场景，但其正确性需由单测保障",
-        "注意收窄的边界：跨函数异步访问、存入数组后再取出、被 any 污染的变量都会丢失收窄信息"
+        "PPR 的本质是把页面拆成「构建期静态壳」与「请求期动态洞」，用 Suspense 边界精确标记动态洞的位置与粒度",
+        "Suspense 边界应按用户感知的数据块切分（价格、评论、推荐各自独立），避免整页被最慢的接口拖死",
+        "数据的缓存语义（next.revalidate / cache: 'no-store'）决定它是否参与预渲染：任何 no-store 或 cookies()/headers() 的使用都会把该子树标记为动态",
+        "fallback 必须与真实内容等高、风格一致，否则流式补位会引发 CLS，反而拉低 Core Web Vitals",
+        "Next 15 中 params / searchParams 均为 Promise，必须 await；PPR 需在 next.config 开启 experimental.ppr 并在 segment 导出 experimental_ppr = true"
       ],
       "exercise": {
-        "description": "实现一个订单状态机：定义 OrderState 判别联合，包含 created（含 createdAt 时间戳）、paid（含 amount 金额）、shipped（含 trackingNo 运单号）、cancelled（含 reason 原因）四种状态；编写 renderOrder(state: OrderState): string 使用 switch 处理全部分支，并加入 never 穷尽性检查；最后写一个 canShip(state: OrderState): boolean 类型守卫（返回值为 state is Extract<OrderState, { status: 'paid' }>），判断订单是否可以发货。",
-        "hint": "先用字面量 status 把四个成员写成联合，注意 cancelled 和 shipped 都不含 amount，不要把字段提升到联合外层；renderOrder 的 default 分支返回 const _never: never = state 来保证漏分支会编译报错；canShip 可以直接 return state.status === 'paid'，TypeScript 会自动识别这样的收窄并匹配类型守卫签名。",
+        "description": "实现一个「实时大盘仪表盘」页面：顶部是可缓存的站点标题和指数列表（构建期渲染，revalidate 300 秒）；下方有三个动态卡片——实时成交额、异动提醒、用户自选列表，分别模拟 300ms / 900ms / 1500ms 的慢接口。要求：静态壳首字节即可渲染，三个动态卡片各自独立流式落地且互不阻塞，每个卡片提供等高骨架 fallback，并为该路由开启 PPR。",
+        "hint": "把三个慢接口分别放进三个 async 组件，并在组件内部 await 一个 cache: 'no-store' 的 fetch（可用 setTimeout 模拟延迟）；page 顶部只 await 可缓存数据；每个卡片用 <Suspense fallback={等高骨架}> 包裹。记得在 next.config.ts 打开 experimental.ppr，并在 page.tsx 导出 experimental_ppr = true。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全下面的穷尽性检查代码，使得 switch 漏掉分支时会产生编译错误。",
-            "codeContext": "type Status = 'idle' | 'loading' | 'done';\nfunction f(s: { status: Status }) {\n  switch (s.status) {\n    case 'idle': return 0;\n    case 'loading': return 1;\n    case 'done': return 2;\n    default:\n      const _exhaustive: ____ = s;\n      return _exhaustive;\n  }\n}",
+            "question": "补全 PPR 与流式渲染的关键代码。",
+            "codeContext": "export const ______ = true;\n\nexport default async function Page({ params }) {\n  const { id } = await params;\n  return (\n    <______ fallback={<Skeleton />}>\n      <LivePrice id={id} />\n    </______>\n  );\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "      default:\n        const _exhaustive: ",
+                "content": "在 route segment 中导出 ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +44,73 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择类型]",
+                "placeholder": "[选择]",
                 "options": [
-                  "never",
-                  "any",
-                  "unknown",
-                  "Status"
+                  "experimental_ppr",
+                  "dynamic",
+                  "revalidate"
                 ],
-                "correctAnswer": "never"
+                "correctAnswer": "experimental_ppr"
               },
               {
                 "type": "text",
-                "content": " = s;\n        return _exhaustive;",
+                "content": " = true 来启用部分预渲染；用 ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "<Suspense>",
+                  "<ErrorBoundary>",
+                  "<React.StrictMode>"
+                ],
+                "correctAnswer": "<Suspense>"
+              },
+              {
+                "type": "text",
+                "content": " 包裹慢数据组件，使静态外壳可以先于动态洞下发。",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "never",
-            "explanation": "switch 处理完所有分支后，s 的类型被收窄为 never。只有把变量声明为 never 才能触发穷尽性检查：若联合新增了分支而 switch 未处理，s 就不再是 never，赋值给 never 类型的变量会编译报错。用 any/unknown 会静默通过，失去保护；用 Status 则永远不会报错。"
+            "correctAnswer": "experimental_ppr / <Suspense>",
+            "explanation": "experimental_ppr 是 Next.js 中开启 Partial Prerendering 的 segment 级开关；<Suspense> 的 fallback 会在动态子组件数据就绪前先渲染，从而让其余静态部分随首字节流式下发。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "下列关于类型收窄的说法，哪一项是不正确的？",
-            "codeContext": "",
+            "question": "下面哪种写法最可能让整个路由退化成「全动态」，导致 PPR 失效？",
+            "codeContext": "export default async function Page() {\n  const user = await getUser(); // getUser 内部调用了 cookies()\n  const product = await getProduct();\n  return <Shell product={product} user={user} />;\n}",
             "segments": null,
             "options": [
-              "typeof 运算符可以把 unknown 收窄为 string、number 等具体基础类型",
-              "instanceof 可以把对象类型收窄到具体的 class 实例类型",
-              "对判别属性做 s.status === 'success' 的比较，可把联合类型收窄到对应成员",
-              "把变量赋值给一个 any 类型的别名后，原变量的收窄信息会变得更强"
+              "在 page 顶部 await 一个内部调用了 cookies() 的函数，然后才渲染其余内容",
+              "把慢接口放在 Suspense 子组件内部 await，并使用 cache: 'no-store'",
+              "为 fetch 添加 next: { revalidate: 60 } 让数据进入 Data Cache",
+              "使用 generateStaticParams 预生成部分路径的静态外壳"
             ],
-            "correctAnswer": "把变量赋值给一个 any 类型的别名后，原变量的收窄信息会变得更强",
-            "explanation": "any 是类型系统的“逃生舱”，它会抹除一切类型信息，赋值给 any 别名只会让收窄信息完全丢失（事实上连类型检查都关掉了）。前三项都是标准且有效的收窄手段：typeof 处理基础类型、instanceof 处理类实例、字面量相等比较处理判别联合。"
+            "correctAnswer": "在 page 顶部 await 一个内部调用了 cookies() 的函数，然后才渲染其余内容",
+            "explanation": "cookies()、headers()、searchParams 等 API 会让最近的整个渲染边界变成动态。如果它们出现在 page 顶部的 await 链路里，整个页面都必须等到请求时才能渲染，静态壳无法预生成。正确做法是把依赖请求上下文的逻辑下沉到 Suspense 子组件内部，只留下局部动态洞。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "运行下面的代码，控制台会输出什么？",
-            "codeContext": "type Shape =\n  | { kind: 'circle'; radius: number }\n  | { kind: 'rect'; width: number; height: number };\n\nfunction area(s: Shape): number {\n  if (s.kind === 'circle') {\n    return Math.PI * s.radius ** 2;\n  }\n  // 此处 s 已被自动收窄为 rect\n  return s.width * s.height;\n}\n\nconsole.log(area({ kind: 'circle', radius: 2 }).toFixed(2));",
+            "question": "假设三个接口分别耗时 300ms / 900ms / 1500ms，用户大约在什么时间点看到「实时价格」卡片的真实内容？",
+            "codeContext": "export default async function Page() {\n  return (\n    <main>\n      <h1>Dashboard</h1>\n      <Suspense fallback={<SkeletonA />}>\n        <Price />     {/* 300ms */}\n      </Suspense>\n      <Suspense fallback={<SkeletonB />}>\n        <Alerts />    {/* 900ms */}\n      </Suspense>\n      <Suspense fallback={<SkeletonC />}>\n        <Watchlist /> {/* 1500ms */}\n      </Suspense>\n    </main>\n  );\n}",
             "segments": null,
             "options": [
-              "\"12.57\"",
-              "\"12.56\"",
-              "\"NaN\"",
-              "编译错误：Property 'radius' does not exist"
+              "约 300ms（静态壳下发后不久，价格独立流式落地）",
+              "约 900ms（要等第二块一起到达）",
+              "约 1500ms（必须等最慢的接口全部完成）",
+              "约 2400ms（三个接口串行执行的总和）"
             ],
-            "correctAnswer": "\"12.57\"",
-            "explanation": "if (s.kind === 'circle') 把 s 收窄为 circle 成员，可安全访问 radius；else 分支被编译器自动收窄为 rect，可安全访问 width/height。Math.PI * 2^2 = 12.5663706…，toFixed(2) 按四舍五入保留两位小数得到 \"12.57\"。"
+            "correctAnswer": "约 300ms（静态壳下发后不久，价格独立流式落地）",
+            "explanation": "三个 Suspense 边界彼此独立，服务端会在各自数据就绪后立即通过同一条流推送对应的 RSC 分片，互不阻塞。因此最快的价格卡片在约 300ms 时替换掉 SkeletonA，而无需等待 Alerts（900ms）或 Watchlist（1500ms）。这正是流式渲染相比整页 SSR 的核心优势：体验按「最快可用数据块」渐进优化，而不是被最慢接口支配。"
           }
         ]
       }
