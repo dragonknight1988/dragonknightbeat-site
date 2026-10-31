@@ -1,42 +1,38 @@
 {
-  "date": "2026-10-30",
+  "date": "2026-10-31",
   "contents": [
     {
-      "id": "prog-2026-10-30",
-      "date": "2026-10-30",
-      "title": "Next.js 流式渲染架构：Suspense 边界设计与 Partial Prerendering（PPR）",
-      "summary": "用 Suspense 边界 + PPR 把「静态外壳」和「动态数据」拆开，实现 TTFB 极低、内容渐进落地的高级渲染架构。",
-      "difficulty": "高级",
-      "concept": "在真实项目中，一个页面几乎永远是「混合体」：商品标题、SEO 描述、导航、Footer 是静态的（每个用户看到的一样），而实时价格、库存、个性化推荐、评论流是动态的（每次请求都不同）。传统做法只有两个极端：要么整页 SSR（TTFB 被最慢的那个请求拖死），要么整页静态化（动态数据只能靠客户端 useEffect 二次请求，造成 layout shift 和 SEO 缺失）。Next.js 15 提供的 Partial Prerendering（PPR）就是为了解决这个二元困境：构建期先把静态壳渲染成一段 HTML，随 CDN 直接下发；动态部分用 Suspense 边界标记，在请求时才由服务端流式补上。用户第一时间看到骨架和标题，慢数据随流到达，且全程是服务端渲染、可被爬虫抓取。",
-      "concept2": "设计 Suspense 边界本质上是在做「渲染优先级切分」，它有明确的工程经验：第一，边界要以「用户感知的数据块」为粒度，而不是以组件文件为粒度。价格一块、评论一块、推荐一块，各自独立 fallback，用户先看到价格也比整页白屏强。第二，把最贵的请求放到最外层的 await 之前是常见反模式——如果 page 顶部就 await 了慢接口，那么 PPR 失效，整个路由退化成全动态。正确做法是：在最外层只 await 那些可缓存/可预渲染的数据，慢的全部下沉到 Suspense 子组件内部。第三，fallback 的质量直接决定流式渲染的体验：fallback 应该和真实内容等高（防止 CLS），并体现品牌风格，而不是一个 spinner。",
-      "concept3": "缓存语义是这套架构的地基。Next.js 把缓存拆成四层：Request Memoization（同一次请求内去重）、Data Cache（跨请求、按 revalidate 或 tag 失效）、Full Route Cache（预渲染的 HTML/RSC payload）、Router Cache（客户端路由缓存）。fetch 上的 next: { revalidate: 60 } 或 cache: 'no-store' 直接决定一个数据是否参与 PPR。规则很清晰：只要组件树上任何一个 await 的数据是 no-store 或使用了 cookies()/headers()/searchParams，这块就会被打上动态标记，成为「动态洞」，其余部分仍然预渲染。理解这条「静态默认、动态例外」的规则，是高级 Next.js 工程师的分水岭。",
-      "concept4": "性能侧的收益可以用数字量化：一个电商详情页如果有 3 个并行的外部接口（平均 400ms、800ms、1200ms），整页 SSR 的 TTFB 至少 1200ms；改造后静态壳的 TTFB 可以降到 20-50ms（来自 CDN），LCP 元素（标题+主图）在 100ms 内可见，慢数据在 1.2s 内补齐。监控时要分别打点 TTFB、FCP、LCP 和 Suspense 边界的落地时间（用 onComplete 或 PerformanceObserver），才能验证边界切分是否合理。",
-      "concept5": "最后是落地陷阱清单：1）generateStaticParams + dynamicParams 的组合会决定未预生成路径的处理方式；2）Next 15 中 params、searchParams 都是 Promise，必须 await；3）Suspense 边界不要嵌套过深，否则 RSC payload 分片过多，反而增加解析开销；4）PPR 目前需要在 next.config 中开启 experimental.ppr 并在 segment 上导出 experimental_ppr = true；5）流式渲染时不要在客户端用 useEffect 重复拉取已经被服务端流式渲染的数据，会浪费一次请求并引发闪烁。",
+      "id": "prog-2026-10-31",
+      "date": "2026-10-31",
+      "title": "Node.js / Deno 文件读写入门：fs/promises 与 async/await 实战",
+      "summary": "学会用 Node.js 的 node:fs/promises 与 Deno 的内置 API 进行文件的创建、追加和读取，并理解异步 API 的基本用法。",
+      "difficulty": "初级",
+      "concept": "几乎所有后端程序都离不开文件读写：写日志、读配置、导出 CSV、缓存接口结果……在 Node.js 中，最常用的文件 API 来自内置模块 fs（file system）。早期的 fs 提供的是「回调风格」的 API，比如 fs.readFile(path, cb)，嵌套深、容易写出「回调地狱」。从 Node.js 10 开始，官方提供了 fs/promises 版本，所有方法都返回 Promise，配合 async/await 可以像写同步代码一样写异步逻辑，这也是今天推荐的写法。\n\n使用时建议从 'node:fs/promises' 导入，这个 node: 前缀是 Node.js 的内置模块协议，好处是永远不会和 npm 上的同名第三方包（比如一个叫 fs 的包）冲突，团队协作时一眼就能看出这是官方模块。常用的四个方法是：readFile（读取）、writeFile（写入，会覆盖已有内容）、appendFile（追加，不会覆盖）、mkdir（创建目录）。它们都接受一个可选的 encoding 参数，比如 'utf8'。\n\n一个非常重要的细节是编码参数：如果 readFile 不传编码，返回的是 Buffer（二进制数据），打印出来是 <Buffer 68 65 6c 6c 6f> 这样的形式；传了 'utf8' 才会得到我们熟悉的字符串。同理，writeFile 既能写字符串，也能写 Buffer，这让我们既能存文本也能存图片。很多初学者在这里栽跟头：读出来的内容和预期不一样，多半就是忘了传编码。\n\n在 Deno 中，文件 API 直接挂在全局的 Deno 对象上，比如 await Deno.readFile('a.txt')（返回 Uint8Array）和 await Deno.readTextFile('a.txt')（返回字符串），不需要 require 或 import 任何东西，也没有 node_modules。这是 Deno「内置工具链」设计哲学的体现——常见能力开箱即用。理解了 Node.js 的写法后，迁移到 Deno 几乎是零成本的。\n\n工程实践上有两条经验值得注意：第一，永远不要把路径写死成绝对路径，用 path.join 或 new URL 拼接，保证代码在不同操作系统和不同机器上都能跑；第二，异步调用务必 try/catch 或 .catch 兜底，文件不存在、权限不足、磁盘满都会抛错，没有兜底的 Promise 会让进程直接崩溃。",
       "codeExample": {
-        "language": "tsx",
-        "code": "/* next.config.ts —— 开启 Partial Prerendering */\nimport type { NextConfig } from 'next';\n\nconst nextConfig: NextConfig = {\n  experimental: {\n    ppr: 'incremental', // 允许按 route segment 逐个启用 PPR\n  },\n};\n\nexport default nextConfig;\n\n/* ------------------------------------------------------------ */\n/* app/products/[id]/page.tsx                                   */\n/* ------------------------------------------------------------ */\nimport { Suspense } from 'react';\n\n// 1) 该 route segment 参与 Partial Prerendering\nexport const experimental_ppr = true;\n\n// 2) 构建期预生成静态外壳的路径\nexport function generateStaticParams() {\n  return [{ id: 'keyboard-01' }, { id: 'mouse-02' }];\n}\n\n// 3) 静态数据：构建期渲染，60s 后台重新验证（ISR）\nasync function getProduct(id: string) {\n  const res = await fetch(`https://api.example.com/products/${id}`, {\n    next: { revalidate: 60 },\n  });\n  return res.json();\n}\n\n// 4) 动态数据：强制动态，必须在请求时渲染\nasync function getLivePrice(id: string) {\n  const res = await fetch(`https://api.example.com/price/${id}`, {\n    cache: 'no-store',\n  });\n  return res.json();\n}\n\nasync function getReviews(id: string) {\n  const res = await fetch(`https://api.example.com/reviews/${id}`, {\n    cache: 'no-store',\n  });\n  return res.json();\n}\n\n// 5) 动态子组件：内部 await 一个 no-store 的请求，形成「动态洞」\nasync function PricePanel({ id }: { id: string }) {\n  const price = await getLivePrice(id);\n  return (\n    <section className=\"rounded-xl border p-4\" style={{ height: 80 }}>\n      实时价格：￥{price.amount}\n    </section>\n  );\n}\n\nasync function Reviews({ id }: { id: string }) {\n  const reviews = await getReviews(id);\n  return (\n    <ul className=\"space-y-2\" style={{ minHeight: 200 }}>\n      {reviews.map((r: { id: string; text: string }) => (\n        <li key={r.id}>{r.text}</li>\n      ))}\n    </ul>\n  );\n}\n\n// fallback 必须与真实内容等高，避免布局抖动（CLS）\nfunction PriceSkeleton() {\n  return <div className=\"animate-pulse bg-gray-200 rounded-xl\" style={{ height: 80 }} />;\n}\nfunction ReviewsSkeleton() {\n  return <div className=\"animate-pulse bg-gray-200 rounded-xl\" style={{ minHeight: 200 }} />;\n}\n\nexport default async function ProductPage({\n  params,\n}: {\n  params: Promise<{ id: string }>;\n}) {\n  const { id } = await params;          // Next 15：params 是 Promise\n  const product = await getProduct(id); // 静态：进入预渲染外壳\n\n  return (\n    <main className=\"mx-auto max-w-3xl p-6 space-y-6\">\n      {/* 静态外壳：随首字节立刻下发 */}\n      <h1 className=\"text-3xl font-bold\">{product.name}</h1>\n      <p className=\"text-gray-600\">{product.description}</p>\n\n      {/* 两个独立的流式边界：互不阻塞，各自按速度落地 */}\n      <Suspense fallback={<PriceSkeleton />}>\n        <PricePanel id={id} />\n      </Suspense>\n\n      <Suspense fallback={<ReviewsSkeleton />}>\n        <Reviews id={id} />\n      </Suspense>\n    </main>\n  );\n}\n",
-        "explanation": "【next.config.ts】experimental.ppr = 'incremental' 表示 PPR 采用渐进式启用，只有显式 opt-in 的 segment 才参与，便于在老项目里灰度。\n\n【export const experimental_ppr = true】这是 route segment 级别的开关，告诉 Next.js 该页面要按「静态壳 + 动态洞」的方式构建与响应。\n\n【generateStaticParams】在构建期把已知的商品 id 预渲染出静态外壳，命中的路径直接走 CDN。\n\n【getProduct】使用 next: { revalidate: 60 }，属于可缓存数据，因此 page 组件顶部的 await 不会把路由变成全动态，外壳仍可预渲染。\n\n【getLivePrice / getReviews】显式 cache: 'no-store'，是真正的动态数据。它们只在 Suspense 子组件内部被 await，形成两个独立的「动态洞」。\n\n【两个 Suspense 边界】价格和评论互不阻塞：价格接口 200ms 就先落地，评论 1200ms 到达也不会拖住价格。这就是流式渲染的核心价值。\n\n【fallback 组件】用与真实内容等高的骨架块，保证流式补位时不产生布局偏移（CLS）。\n\n【params: Promise<{ id: string }>】Next.js 15 起 params 变为异步，必须 await，否则 TypeScript 报错、运行时拿不到值。"
+        "language": "JavaScript",
+        "code": "// file-demo.js —— Node.js 文件读写入门\n// 运行方式：node file-demo.js（需 package.json 中 \"type\": \"module\"，\n// 或者把文件命名为 file-demo.mjs）\n\nimport { mkdir, writeFile, appendFile, readFile } from 'node:fs/promises';\nimport { join } from 'node:path';\n\n// 1. 用 path.join 拼路径，跨平台安全（Windows 用反斜杠，Linux 用正斜杠）\nconst dir = './notes';\nconst file = join(dir, '2026-10-31.txt');\n\nasync function main() {\n  // 2. 递归创建目录；已存在时不会报错\n  await mkdir(dir, { recursive: true });\n\n  // 3. 写入文件（若已存在会被覆盖），'utf8' 表示按文本处理\n  await writeFile(file, '今天学习 Node.js 文件读写\\n', 'utf8');\n\n  // 4. 追加内容，不影响已有内容\n  await appendFile(file, 'fs/promises 配合 async/await 很好用\\n', 'utf8');\n\n  // 5. 读取并指定 utf8，得到字符串而非 Buffer\n  const content = await readFile(file, 'utf8');\n  console.log('---- 读取结果 ----');\n  console.log(content);\n\n  // 6. 做点小加工：统计行数\n  const lines = content.trim().split('\\n');\n  console.log(`一共 ${lines.length} 行`);\n}\n\n// 7. 统一的错误兜底：文件权限、磁盘错误都会走到这里\nmain().catch((err) => {\n  console.error('出错了：', err.message);\n  process.exit(1);\n});\n",
+        "explanation": "第 1 段：从 'node:fs/promises' 导入四个异步方法，从 'node:path' 导入 join；node: 前缀标明这是内置模块。第 2 段：定义目录 notes 和目标文件路径，用 join 拼接避免硬编码分隔符。\n\nmain() 是一个 async 函数，内部可以顺序地 await 每一步。mkdir 的 { recursive: true } 表示「像 mkdir -p 一样」逐层创建目录，目录已存在时不抛错。\n\nwriteFile 会覆盖旧内容，appendFile 则在末尾追加，两者都传入 'utf8' 保证按文本写入。readFile 同样传 'utf8'，因此 content 是字符串，可以直接 split('\\n') 统计行数——如果不传编码，content 会是 Buffer，split 方法的行为完全不同。\n\n最后 main().catch(...) 捕获整个流程中的任何异常，打印友好信息并以退出码 1 结束进程，这是命令行工具的标准做法。\n\n对应 Deno 写法：await Deno.mkdir('./notes', { recursive: true }); await Deno.writeTextFile(file, '...'); await Deno.readTextFile(file)。功能等价，只是 API 挂在全局 Deno 对象上。"
       },
       "keyPoints": [
-        "PPR 的本质是把页面拆成「构建期静态壳」与「请求期动态洞」，用 Suspense 边界精确标记动态洞的位置与粒度",
-        "Suspense 边界应按用户感知的数据块切分（价格、评论、推荐各自独立），避免整页被最慢的接口拖死",
-        "数据的缓存语义（next.revalidate / cache: 'no-store'）决定它是否参与预渲染：任何 no-store 或 cookies()/headers() 的使用都会把该子树标记为动态",
-        "fallback 必须与真实内容等高、风格一致，否则流式补位会引发 CLS，反而拉低 Core Web Vitals",
-        "Next 15 中 params / searchParams 均为 Promise，必须 await；PPR 需在 next.config 开启 experimental.ppr 并在 segment 导出 experimental_ppr = true"
+        "优先从 'node:fs/promises' 导入异步 API，用 async/await 代替回调，代码可读性远高于 fs.readFile 回调版本",
+        "readFile 不传编码返回 Buffer，传 'utf8' 才返回字符串；这是初学者最常见的坑",
+        "writeFile 覆盖文件、appendFile 追加内容，两者都能写字符串或 Buffer",
+        "路径用 path.join 拼接，目录用 mkdir({ recursive: true }) 创建，避免跨平台和目录不存在导致的报错",
+        "所有文件操作都要 try/catch 或 .catch 兜底；Deno 中对应 API 为 Deno.readTextFile / Deno.writeTextFile，无需引入模块"
       ],
       "exercise": {
-        "description": "实现一个「实时大盘仪表盘」页面：顶部是可缓存的站点标题和指数列表（构建期渲染，revalidate 300 秒）；下方有三个动态卡片——实时成交额、异动提醒、用户自选列表，分别模拟 300ms / 900ms / 1500ms 的慢接口。要求：静态壳首字节即可渲染，三个动态卡片各自独立流式落地且互不阻塞，每个卡片提供等高骨架 fallback，并为该路由开启 PPR。",
-        "hint": "把三个慢接口分别放进三个 async 组件，并在组件内部 await 一个 cache: 'no-store' 的 fetch（可用 setTimeout 模拟延迟）；page 顶部只 await 可缓存数据；每个卡片用 <Suspense fallback={等高骨架}> 包裹。记得在 next.config.ts 打开 experimental.ppr，并在 page.tsx 导出 experimental_ppr = true。",
+        "description": "写一个小工具 count-lines.js：它读取当前目录下的 notes.txt（若不存在则创建并写入三行示例文本），然后统计并输出文件的总行数与总字符数。要求所有文件操作使用 node:fs/promises，并对可能的错误做统一处理。",
+        "hint": "先用 access 或 try/catch 判断文件是否存在，不存在就 writeFile 创建；读取时记得传 'utf8' 拿到字符串，然后用 split('\\n') 得到行数、用 content.length 得到字符数。整个流程写在一个 async 函数里，最后用 main().catch(...) 兜底。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全 PPR 与流式渲染的关键代码。",
-            "codeContext": "export const ______ = true;\n\nexport default async function Page({ params }) {\n  const { id } = await params;\n  return (\n    <______ fallback={<Skeleton />}>\n      <LivePrice id={id} />\n    </______>\n  );\n}",
+            "question": "补全代码，使文件按文本方式写入并按字符串读取。",
+            "codeContext": "import { writeFile, readFile } from 'node:fs/promises';\n\nawait writeFile('a.txt', 'hello', '[编码]');\nconst text = await readFile('a.txt', '[编码]');\nconsole.log(text.toUpperCase());",
             "segments": [
               {
                 "type": "text",
-                "content": "在 route segment 中导出 ",
+                "content": "await writeFile('a.txt', 'hello', '",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -44,17 +40,18 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[选择编码]",
                 "options": [
-                  "experimental_ppr",
-                  "dynamic",
-                  "revalidate"
+                  "utf8",
+                  "buffer",
+                  "ascii-only",
+                  "text"
                 ],
-                "correctAnswer": "experimental_ppr"
+                "correctAnswer": "utf8"
               },
               {
                 "type": "text",
-                "content": " = true 来启用部分预渲染；用 ",
+                "content": "');\nconst text = await readFile('a.txt', '",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -62,55 +59,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[选择编码]",
                 "options": [
-                  "<Suspense>",
-                  "<ErrorBoundary>",
-                  "<React.StrictMode>"
+                  "utf8",
+                  "buffer",
+                  "ascii-only",
+                  "text"
                 ],
-                "correctAnswer": "<Suspense>"
+                "correctAnswer": "utf8"
               },
               {
                 "type": "text",
-                "content": " 包裹慢数据组件，使静态外壳可以先于动态洞下发。",
+                "content": "');\nconsole.log(text.toUpperCase());",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "experimental_ppr / <Suspense>",
-            "explanation": "experimental_ppr 是 Next.js 中开启 Partial Prerendering 的 segment 级开关；<Suspense> 的 fallback 会在动态子组件数据就绪前先渲染，从而让其余静态部分随首字节流式下发。"
+            "correctAnswer": "utf8",
+            "explanation": "Node.js 的 fs API 中，表示文本编码的参数值是字符串 'utf8'（也接受 'utf-8'）。'buffer' 不是合法编码名，readFile 若想得到 Buffer 应该直接不传编码；'text' 与 'ascii-only' 都不存在。传入 'utf8' 后 writeFile 按文本写入、readFile 返回字符串，text.toUpperCase() 才能正常工作。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "下面哪种写法最可能让整个路由退化成「全动态」，导致 PPR 失效？",
-            "codeContext": "export default async function Page() {\n  const user = await getUser(); // getUser 内部调用了 cookies()\n  const product = await getProduct();\n  return <Shell product={product} user={user} />;\n}",
+            "question": "关于 node:fs/promises，下面哪一项说法是正确的？",
+            "codeContext": "import { readFile, mkdir } from 'node:fs/promises';\n\nconst data = await readFile('a.txt');\nconst text = await readFile('a.txt', 'utf8');\nawait mkdir('x/y/z', { recursive: true });",
             "segments": null,
             "options": [
-              "在 page 顶部 await 一个内部调用了 cookies() 的函数，然后才渲染其余内容",
-              "把慢接口放在 Suspense 子组件内部 await，并使用 cache: 'no-store'",
-              "为 fetch 添加 next: { revalidate: 60 } 让数据进入 Data Cache",
-              "使用 generateStaticParams 预生成部分路径的静态外壳"
+              "readFile 不传编码时返回的是字符串",
+              "readFile 不传编码时返回的是 Buffer",
+              "writeFile 只能写入字符串，不能写入 Buffer",
+              "mkdir 的 recursive 选项为 true 时，目录已存在会抛出 EEXIST 错误"
             ],
-            "correctAnswer": "在 page 顶部 await 一个内部调用了 cookies() 的函数，然后才渲染其余内容",
-            "explanation": "cookies()、headers()、searchParams 等 API 会让最近的整个渲染边界变成动态。如果它们出现在 page 顶部的 await 链路里，整个页面都必须等到请求时才能渲染，静态壳无法预生成。正确做法是把依赖请求上下文的逻辑下沉到 Suspense 子组件内部，只留下局部动态洞。"
+            "correctAnswer": "readFile 不传编码时返回的是 Buffer",
+            "explanation": "readFile 不指定 encoding 时返回 Buffer（二进制数据），指定 'utf8' 等编码才返回字符串。writeFile 同样接受字符串和 Buffer，因此可用于保存图片等二进制文件。mkdir({ recursive: true }) 的行为等同于 shell 的 mkdir -p，目录已存在时不会抛错，只有 recursive 为 false（默认）时才会因 EEXIST 报错。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "假设三个接口分别耗时 300ms / 900ms / 1500ms，用户大约在什么时间点看到「实时价格」卡片的真实内容？",
-            "codeContext": "export default async function Page() {\n  return (\n    <main>\n      <h1>Dashboard</h1>\n      <Suspense fallback={<SkeletonA />}>\n        <Price />     {/* 300ms */}\n      </Suspense>\n      <Suspense fallback={<SkeletonB />}>\n        <Alerts />    {/* 900ms */}\n      </Suspense>\n      <Suspense fallback={<SkeletonC />}>\n        <Watchlist /> {/* 1500ms */}\n      </Suspense>\n    </main>\n  );\n}",
+            "question": "假设 log.txt 事先不存在，执行下面的代码，控制台输出什么？",
+            "codeContext": "import { writeFile, appendFile, readFile } from 'node:fs/promises';\n\nawait writeFile('log.txt', '1');\nawait appendFile('log.txt', '2');\nconst s = await readFile('log.txt', 'utf8');\nconsole.log(s.length, s);",
             "segments": null,
             "options": [
-              "约 300ms（静态壳下发后不久，价格独立流式落地）",
-              "约 900ms（要等第二块一起到达）",
-              "约 1500ms（必须等最慢的接口全部完成）",
-              "约 2400ms（三个接口串行执行的总和）"
+              "2 12",
+              "3 1\\n2",
+              "12 12",
+              "抛出异常：文件不存在"
             ],
-            "correctAnswer": "约 300ms（静态壳下发后不久，价格独立流式落地）",
-            "explanation": "三个 Suspense 边界彼此独立，服务端会在各自数据就绪后立即通过同一条流推送对应的 RSC 分片，互不阻塞。因此最快的价格卡片在约 300ms 时替换掉 SkeletonA，而无需等待 Alerts（900ms）或 Watchlist（1500ms）。这正是流式渲染相比整页 SSR 的核心优势：体验按「最快可用数据块」渐进优化，而不是被最慢接口支配。"
+            "correctAnswer": "2 12",
+            "explanation": "writeFile 先创建文件并写入字符 '1'（文件内容为 \"1\"），appendFile 在末尾追加 '2'（内容变为 \"12\"，中间没有换行符）。readFile 以 utf8 读回字符串 \"12\"，其 length 为 2，因此先打印 2，再打印 12。appendFile 在文件不存在时会自动创建文件，不会抛错。"
           }
         ]
       }

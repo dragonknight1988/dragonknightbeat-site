@@ -1,84 +1,85 @@
 {
- "date": "2026-10-30",
- "weekday": "Friday",
- "overview": "The plenum communique sets the tone for the development blueprint, measures to boost domestic demand are being rolled out in quick succession, while overseas monetary policy and geopolitical developments remain the key market focus.",
+ "date": "2026-10-31",
+ "weekday": "Saturday",
+ "overview": "Intensive interpretations of the Fifth Plenum spirit; renewed push for strict Party governance; global AI stocks volatile; policies on childbirth and infrastructure ramp up.",
  "trendingTopics": [
-  "Macroeconomic policy",
-  "Expanding domestic demand",
-  "New consumption scenarios",
-  "Monetary policy",
-  "China International Import Expo",
-  "Short-drama industry",
-  "Extreme weather"
+  "Fifth Plenum spirit",
+  "Full and strict Party governance",
+  "Major engineering projects",
+  "CIIE",
+  "AI regulation",
+  "US stock volatility",
+  "Digital asset security",
+  "Childbirth support"
  ],
  "sections": [
   {
    "id": "domestic",
-   "title": "China Politics",
+   "title": "Domestic Politics",
    "icon": "🇨🇳",
    "articles": [
     {
      "id": "news-001",
-     "title": "Communique Released from Fifth Plenary Session of 20th CPC Central Committee",
-     "summary": "The communiqué of the fifth plenary session of the 20th Central Committee of the Communist Party of China has been released, setting out key priorities for the next phase of national development.",
-     "detail": "The plenary session communiqué has been officially released, offering a comprehensive review of current work and laying out plans for future development. The document outlines major directional arrangements for the overall national development agenda.",
-     "impact": "The plenary communiqué provides top-level guidance for economic and social development in the period ahead and serves as a key bellwether for reading policy direction.",
+     "title": "CPC Central Committee Holds Symposium with Non-CPC Figures",
+     "summary": "The CPC Central Committee convened a symposium with non-party figures to seek input on a decision draft on persistently advancing full and rigorous Party self-governance. President Xi Jinping chaired the meeting and delivered a key speech.",
+     "detail": "The symposium sought opinions from non-Party figures on the draft of the CPC Central Committee Decision on Major Issues Concerning the Persistent Advancement of Full and Rigorous Party Self-Governance. Xi Jinping chaired the session and delivered a keynote speech, reflecting the consultative democratic process behind major decision-making.",
+     "impact": "Helps build broad consensus and pool joint momentum for implementing the deployment on full and rigorous Party self-governance.",
      "importance": "hot",
      "tags": [
-      "Macroeconomic Policy",
-      "National Governance"
+      "Full and Rigorous Party Self-Governance",
+      "Consultative Democracy"
      ]
     },
     {
      "id": "news-002",
-     "title": "China's Longest Metro Loop Line Opens in Full",
-     "summary": "China's longest metro loop line has opened along its entire route, further upgrading the urban rail transit network and making daily commutes more convenient.",
-     "detail": "The metro loop line is the longest of its kind in China. Its full opening is expected to improve urban transport connectivity. Loop lines help ease traffic pressure in core urban areas while linking multiple key districts.",
-     "impact": "A connected rail transit network will boost commuting and commercial vitality along its corridors, enhancing the city's overall carrying capacity.",
+     "title": "Discipline and Conduct Enforcement Must Be Sustained Over the Long Haul",
+     "summary": "A CPC Central Committee press conference stressed that efforts to enforce discipline and improve conduct must be persistent and sustained, demonstrating a firm commitment to advancing rigorous Party governance.",
+     "detail": "The press conference offered an authoritative interpretation of full and rigorous Party self-governance, emphasizing the long-term and continuous nature of discipline and conduct enforcement. The remarks highlighted a determination to see work style improvements through to the end.",
+     "impact": "Signals strict discipline enforcement and helps drive sustained improvement in Party and government conduct.",
      "importance": "important",
      "tags": [
-      "Urban Rail Transit",
-      "Infrastructure",
-      "Urban Development"
+      "Full and Rigorous Party Self-Governance",
+      "Party Conduct and Clean Governance",
+      "Work Style Improvements"
      ]
     },
     {
      "id": "news-003",
-     "title": "Inclusive Elderly Care Services Expand in Quality and Coverage",
-     "summary": "Inclusive elderly care services are being upgraded and expanded, with service supply and coverage continuing to grow to benefit a wider population of seniors.",
-     "detail": "Inclusive elderly care services have made new progress in improving quality and expanding coverage. The measures focus on increasing service supply and raising service standards, addressing elderly care needs in the context of an aging population.",
-     "impact": "The expansion of elderly care services helps ease the supply-demand gap and drives growth in industries related to the silver economy.",
+     "title": "Major Water Conservancy and Transport Projects in Full Swing",
+     "summary": "Major projects in water conservancy, transport and other sectors are advancing, providing strong hard infrastructure support for economic growth.",
+     "detail": "From water conservancy to transport, a series of major projects have entered critical construction phases. Reports indicate these projects are becoming a solid pillar for stabilizing growth and driving industrial development. The Decision also sets out plans for a Chinese-style anti-corruption path across four areas.",
+     "impact": "Helps expand effective investment, strengthen the infrastructure base, and drive demand across upstream and downstream industries.",
      "importance": "important",
      "tags": [
-      "Elderly Care Services",
-      "Livelihood Security",
-      "Silver Economy"
+      "Infrastructure Construction",
+      "Major Projects",
+      "Stabilizing Growth"
      ]
     },
     {
      "id": "news-004",
-     "title": "Full and Strict Party Self-Governance Starts Close to Home",
-     "summary": "Coverage focuses on the implementation of full and strict Party self-governance at the grassroots level, highlighting the importance of discipline building and day-to-day oversight.",
-     "detail": "Reports illustrate how full and strict Party self-governance is reflected in daily work and life. The material stresses that strict Party self-governance concerns every Party member and cadre, with the emphasis on consistent, long-term enforcement.",
-     "impact": "Continued strengthening of discipline building helps foster a sound political environment and improve governance effectiveness.",
-     "importance": "normal",
+     "title": "China Aims to Make Childbirth Essentially Cost-Free Nationwide This Year",
+     "summary": "Policy plans set a goal of making childbirth essentially free of charge across the country this year, treating it as a major livelihood issue to be firmly addressed.",
+     "detail": "Childbirth security has been clearly defined as a major livelihood concern that must be handled well. The target is to effectively eliminate financial burdens during childbirth and ease families' child-rearing pressures.",
+     "impact": "Helps lower the cost of having children, boost families' willingness to have babies, and stabilize demographic trends.",
+     "importance": "hot",
      "tags": [
-      "Party Conduct and Integrity",
-      "Discipline Inspection and Supervision",
-      "National Governance"
+      "Childbirth Security",
+      "Livelihood Policy",
+      "Healthcare"
      ]
     },
     {
      "id": "news-005",
-     "title": "Decoding the Red Legacy of Jiangtaibao Red Army Stronghold",
-     "summary": "From the site of a historic Red Army junction to a place of shared prosperity, the Jiangtaibao Red Army Stronghold is leveraging red tourism resources to explore new development paths and energize rural revitalization.",
-     "detail": "The report explains how the Jiangtaibao Red Army Stronghold has turned red revolutionary resources into a development advantage. The locality has evolved from a historic Red Army junction site into a place pursuing common prosperity, pioneering a model that channels red resources into rural development.",
-     "impact": "The integration of red tourism resources and rural revitalization offers a reference model for revolutionary base areas to develop cultural tourism industries and achieve common prosperity.",
-     "importance": "normal",
+     "title": "CIIE Setup Enters Final Sprint as Global Buyers Arrive in Shanghai",
+     "summary": "Preparations for the China International Import Expo have entered the final setup phase, with global products and exhibitors accelerating their arrivals in Shanghai.",
+     "detail": "Purchasing by the world's 'super buyers' is characterized by greater volume, faster delivery, wider coverage and more balanced sourcing, sharing development opportunities with the world. On-site booth construction is in its final stretch, with exhibits and buyers arriving in Shanghai.",
+     "impact": "Boosts confidence in consumption and foreign trade, showcasing the open opportunities and procurement appeal of the Chinese market.",
+     "importance": "important",
      "tags": [
-      "Red Tourism",
-      "Rural Revitalization",
-      "Cultural Tourism Integration"
+      "CIIE",
+      "Cross-Border E-Commerce",
+      "Foreign Trade and Consumption"
      ]
     }
    ]
@@ -90,160 +91,138 @@
    "articles": [
     {
      "id": "news-006",
-     "title": "Ukraine Says Ready to Discuss Territorial and Other Sensitive Issues with Russia",
-     "summary": "Ukraine's foreign minister publicly stated that the president is willing to hold talks with Russian leadership on the most complex and sensitive core issues, including territory.",
-     "detail": "On October 29 local time, Ukraine's foreign minister publicly stated that Ukrainian leaders are ready to engage in discussions with the other side on the most complex and sensitive issues, including territory. The materials did not mention specific negotiation timelines or details of proposals.",
-     "impact": "If such dialogue moves forward, it could open a window for a diplomatic resolution to the long-running conflict.",
+     "title": "Foreign Media Highlight CPC's Resolve on Strict Party Governance",
+     "summary": "Multiple foreign media outlets have taken note of the Fifth Plenary Session of the 20th CPC Central Committee, saying it demonstrates the Communist Party of China's firm resolve to enforce strict Party governance.",
+     "detail": "Overseas media focused on the plenary session and the Decision's contents, interpreting China's ongoing efforts to exercise full and rigorous Party self-governance and its institutionalization roadmap.",
+     "impact": "Helps the international community better understand China's governance approach and raises global attention to related issues.",
      "importance": "important",
      "tags": [
-      "Russia-Ukraine Conflict",
-      "International Security"
+      "International Communication",
+      "Strict Party Governance",
+      "Institutional Development"
      ]
     },
     {
      "id": "news-007",
-     "title": "Ruling Bloc Leads as Israel Completes Vote Count",
-     "summary": "Israel has finished counting regular ballots, with final results showing the bloc led by the incumbent prime minister in the lead.",
-     "detail": "According to Israeli media reports, the counting of regular ballots has concluded, with final results showing the Netanyahu bloc in the lead. The materials did not disclose specific seat allocation results.",
-     "impact": "The election outcome will shape the country's future policy direction and influence subsequent developments in the Middle East.",
-     "importance": "important",
+     "title": "Head of ICCPCC Meets Uzbek and German Guests",
+     "summary": "Liu Haixing, Minister of the International Department of the CPC Central Committee, separately met with Uzbek President's Advisor Davlatov and Konrad Adenauer Foundation President Paulsen in Beijing.",
+     "detail": "The meetings were held in Beijing on October 30, during which the two sides exchanged views on implementing relevant cooperation initiatives. The meetings involved bilateral exchanges and inter-party diplomatic engagement.",
+     "impact": "Helps consolidate bilateral relations and sustain inter-party exchanges and practical cooperation.",
+     "importance": "normal",
      "tags": [
-      "Middle East"
+      "Bilateral Relations",
+      "International Cooperation"
      ]
     },
     {
      "id": "news-008",
-     "title": "Venezuelan Opposition Leader Speaks Publicly After Returning Home",
-     "summary": "Venezuelan opposition leader Machado delivered her first address since returning home, vowing to safeguard voters' right to vote and push for elections.",
-     "detail": "In her first speech after returning home, Machado said justice will be served and thanked US President Trump and Secretary of State Rubio. She said a three-stage plan is underway and expressed hope of attracting investment, while noting she had not yet received news of any meeting. The US has proposed holding elections in 2027.",
-     "impact": "Uncertainty over the electoral timeline and investment environment will persist, with implications for Latin American dynamics and international relations.",
+     "title": "Saudi-Led Coalition Intercepts Houthi Ballistic Missile",
+     "summary": "The Saudi-led coalition announced it intercepted and destroyed a ballistic missile fired by Houthi forces toward southern regions.",
+     "detail": "The Saudi-led multi-nation coalition reported the successful interception of a ballistic missile launched by Houthi forces and headed for a southern region. The incident underscores that regional military confrontation continues.",
+     "impact": "Reflects the ongoing tension in regional security, with energy and shipping-related risks requiring continued attention.",
      "importance": "important",
      "tags": [
-      "Latin America",
-      "International Relations"
-     ]
-    },
-    {
-     "id": "news-009",
-     "title": "France to Deploy Large Security Force Ahead of Protests",
-     "summary": "France's interior minister said 70,000 security personnel will be mobilized to maintain order during planned protests, warning that unrest will not be tolerated.",
-     "detail": "France's interior minister said there has been a surge of calls on social media from far-left groups urging violent rallies on October 31. He stressed that security forces will take extremely firm measures and will not tolerate any unrest.",
-     "impact": "The risk of large-scale protests is rising, potentially causing short-term disruptions to social order and economic activity.",
-     "importance": "important",
-     "tags": [
-      "Public Order",
-      "Europe"
-     ]
-    },
-    {
-     "id": "news-010",
-     "title": "German President's China Visit Sends Signal of Pragmatic Cooperation",
-     "summary": "Foreign media highlighted the German president's visit to China, viewing it as a positive signal with broad prospects for pragmatic China-Germany cooperation.",
-     "detail": "Multiple foreign media outlets followed the German president's visit to China, generally viewing it as sending a positive signal. Reports noted that there is broad scope for pragmatic cooperation between China and Germany, and that collaboration between the two sides is widely anticipated.",
-     "impact": "Steady momentum in China-Germany relations will help advance China-EU trade ties and industrial supply chain cooperation.",
-     "importance": "important",
-     "tags": [
-      "China-Germany Cooperation",
-      "International Relations",
-      "Foreign Trade"
+      "Middle East Situation",
+      "International Security",
+      "Regional Conflict"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance Update",
+   "title": "Financial News",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-011",
-     "title": "Green and Smart Consumption Drives Domestic Demand",
-     "summary": "Related consumption has topped 2 trillion yuan, benefiting over 250 million person-times, making green and smart consumption a key driver of domestic demand expansion.",
-     "detail": "Data shows that green and smart-related consumption has exceeded 2 trillion yuan, with over 250 million person-times of participation. Consumption of green and smart products has become a major direction for unlocking domestic demand, while the consumption structure continues to upgrade.",
-     "impact": "The accelerating adoption of green and smart consumption will sustain growth across related manufacturing and service industry chains.",
+     "id": "news-009",
+     "title": "Stock Chat Groups Fall Silent Again",
+     "summary": "Reports say stock trading chat groups have fallen quiet once more, reflecting weakened investor sentiment and lower market activity.",
+     "detail": "Seen as a direct barometer of market sentiment, declining activity in stock chat groups is viewed as a sign that retail investor participation is fading. With no clear market narrative in recent weeks, discussion volume has cooled in tandem.",
+     "impact": "If sentiment stays subdued, short-term trading activity on A-shares could remain under pressure.",
      "importance": "hot",
      "tags": [
-      "Domestic Demand",
-      "Consumption Upgrade",
-      "Green Consumption"
+      "Stock Market",
+      "Investor Sentiment",
+      "A-Shares"
+     ]
+    },
+    {
+     "id": "news-010",
+     "title": "Dollar Rally Expected to Weather Midterm Election Stalemate",
+     "summary": "Analysts believe the rate-driven dollar rally is likely to shrug off midterm election outcomes, as elevated rates and surging AI spending continue to draw capital inflows.",
+     "detail": "Nathan Thooft, senior portfolio manager at Manulife Investment Management, noted that election results may affect market sentiment in the near term but their long-term impact on the dollar should not be overstated. Markets broadly view high interest rates and AI-related spending as the primary supports.",
+     "impact": "If the dollar stays strong, emerging market currencies and cross-border capital flows could remain under pressure.",
+     "importance": "important",
+     "tags": [
+      "Foreign Exchange",
+      "Dollar Trends",
+      "Global Capital Flows"
+     ]
+    },
+    {
+     "id": "news-011",
+     "title": "Binance Says Hot Wallet Incident Net Impact Exceeds $3 Billion",
+     "summary": "Binance co-founder He Yi said the hot wallet breach affected a net amount of over $3 billion, representing just over 2% of user assets and reserves.",
+     "detail": "He Yi disclosed the scale of funds affected by the hot wallet incident and outlined its share of user assets and disclosed reserves. The disclosure is a direct response to market concerns.",
+     "impact": "The incident could prompt exchanges to upgrade security audits and custody mechanisms, raising compliance standards across the industry.",
+     "importance": "hot",
+     "tags": [
+      "Crypto Assets",
+      "Digital Asset Security",
+      "Fintech"
      ]
     },
     {
      "id": "news-012",
-     "title": "Four Ministries Move to Ease Trade at Hainan Free Trade Port",
-     "summary": "Four ministries jointly issued a document to further raise trade liberalization and facilitation at the Hainan Free Trade Port and improve the foreign trade business environment.",
-     "detail": "Four government departments issued a document outlining further measures to improve trade liberalization and facilitation at the Hainan Free Trade Port. The policy focuses on lowering trade costs and boosting customs clearance and trade convenience.",
-     "impact": "Implementation of the policy will further strengthen Hainan Free Trade Port's role as an open hub and help lift the quality and efficiency of foreign trade.",
+     "title": "CD&R Seeks to Acquire Payment Processor Global Payment",
+     "summary": "Investment firm CD&R is seeking to acquire payment processor Global Payment, valued at $40 billion.",
+     "detail": "The potential deal involves the payment processing sector, with the target valued at $40 billion. If completed, it would be a landmark transaction in the payments space.",
+     "impact": "A deal would further concentrate the payments industry and trigger a re-rating of comparable players.",
      "importance": "important",
      "tags": [
-      "Free Trade Port",
-      "Foreign Trade",
-      "Business Environment"
+      "Payments Industry",
+      "M&A",
+      "Fintech"
      ]
     },
     {
      "id": "news-013",
-     "title": "China Accelerates Push to Upgrade Railway Logistics",
-     "summary": "China is stepping up efforts to improve the quality and efficiency of its railway logistics, with continuous gains in transport organization and service capacity.",
-     "detail": "Work to upgrade the quality and efficiency of railway logistics is advancing rapidly, with steady improvements in transport efficiency and service levels. The role of rail freight in serving industrial and supply chains has been further strengthened.",
-     "impact": "Higher railway logistics efficiency will help cut overall societal logistics costs and support the real economy.",
+     "title": "JPMorgan Flags Near-Term Supply-Demand Pressure on Short-Dated Treasuries",
+     "summary": "JPMorgan strategists warn that demand for short-dated Treasuries may fail to keep pace with supply growth in 2027, making it unlikely for valuations to strengthen significantly next year.",
+     "detail": "Strategists including Jay Barry and Pankaj Vohra said in a report that valuations for short-dated Treasuries will face rising pressure as supply expands sharply in 2027. The strain could also spill over into funding markets.",
+     "impact": "Short-term funding costs may rise and feed through to money markets and corporate financing.",
      "importance": "important",
      "tags": [
-      "Modern Logistics",
-      "Rail Freight",
-      "Supply Chain"
+      "Treasury Market",
+      "Fixed Income",
+      "Liquidity"
      ]
     },
     {
      "id": "news-014",
-     "title": "A 'Three-Ledger' Breakdown Demystifies Pension System",
-     "summary": "Using a three-ledger framework, the article breaks down the pension system to help the public cut through confusion and view retirement security rationally.",
-     "detail": "Addressing concerns over whether pensions will be sufficient, the analysis maps out pension income, expenditures, and reserves through a three-ledger approach. The content aims to clear up misconceptions and strengthen public understanding of the pension system.",
-     "impact": "A more rational public understanding of the pension system supports personal retirement planning and stable market expectations.",
-     "importance": "important",
+     "title": "Shandong Yida New Materials Launches IPO Pre-Listing Guidance",
+     "summary": "Shandong Yida New Materials Co., Ltd. officially began IPO pre-listing guidance on October 30, 2026, with Sino-German Securities serving as the advisor.",
+     "detail": "According to the CSRC website, Shandong Yida New Materials has entered the pre-listing guidance phase, with Sino-German Securities Co., Ltd. as the advisor. The move marks another step for the new materials company in tapping capital markets.",
+     "impact": "The move adds another IPO pipeline project to the new materials sector, reflecting continued active linkage between industry and capital.",
+     "importance": "normal",
      "tags": [
-      "Pensions",
-      "Pension Insurance",
-      "Social Security"
+      "New Materials",
+      "IPO",
+      "Capital Markets"
      ]
     },
     {
      "id": "news-015",
-     "title": "Transport Tickets Link to New Consumption Scenarios",
-     "summary": "Transport tickets are emerging as a new bridge to consumption, spurring innovation by integrating travel with cultural tourism, retail, and other scenarios.",
-     "detail": "Field visits show that transport tickets are linking to more new consumption scenarios, extending the travel chain into the consumption chain. The ticket economy is driving synergy across transport, cultural tourism, and commercial sectors.",
-     "impact": "The ticket economy could unlock the value of travel traffic and provide new growth points for the consumption recovery.",
+     "title": "Korean Won Expected to Stay Firm; Turkey Extends Margin Measures",
+     "summary": "Fitch Ratings says the semiconductor boom supports the Korean won at recent highs, while Turkish regulators extended margin trading measures to November 13.",
+     "detail": "Fitch Ratings said the Korean won is expected to hold near recent highs, driven by the booming semiconductor sector. Turkish regulators, meanwhile, announced an extension of margin trading-related measures.",
+     "impact": "The moves reflect emerging market regulators' continued effort to guard against trading risks, while exchange rates are supported by sector strength.",
      "importance": "normal",
      "tags": [
-      "New Consumption Scenarios",
-      "Cultural Tourism Spending",
-      "Travel"
-     ]
-    },
-    {
-     "id": "news-016",
-     "title": "Ten-Yuan Quick Haircuts Disrupt Traditional Salons",
-     "summary": "The rapid expansion of low-price quick-cut services is challenging the mid-to-high-end positioning and business models of traditional hair salons.",
-     "detail": "Ten-yuan quick-cut outlets are capturing market share with low prices and speed, dealing a clear blow to traditional hair salons. Price and positioning polarization within the industry is intensifying, forcing business models to adapt.",
-     "impact": "The rise of low-price formats reflects a consumption stratification trend that will push lifestyle service providers to improve value for money and efficiency.",
-     "importance": "normal",
-     "tags": [
-      "Lifestyle Services",
-      "Chain Consumption",
-      "Service Industry"
-     ]
-    },
-    {
-     "id": "news-017",
-     "title": "Chrome Hearts' Hype-Luxury Myth Under Pressure",
-     "summary": "Chrome Hearts, known for jeans at sky-high prices, has sparked debate over whether its hype-luxury myth can hold up under growing skepticism.",
-     "detail": "Chrome Hearts, famed for its high-priced items, has once again become a topic of discussion. Coverage examines the brand's premium pricing and trend credentials, questioning the sustainability of its hype-luxury mythology.",
-     "impact": "The pricing logic of luxury and streetwear brands is facing consumer scrutiny, and the brand-premium model may be in for adjustment.",
-     "importance": "normal",
-     "tags": [
-      "Luxury Industry",
-      "Trend Consumption",
-      "Brand Management"
+      "FX Markets",
+      "Semiconductor Industry",
+      "Financial Regulation"
      ]
     }
    ]
@@ -254,140 +233,127 @@
    "icon": "🌐",
    "articles": [
     {
-     "id": "news-018",
-     "title": "Trump Says Fed Unwilling to Cut Rates",
-     "summary": "US President Donald Trump publicly stated that the Federal Reserve is unwilling to lower interest rates, once again pressuring the central bank over monetary policy.",
-     "detail": "Trump said in his latest remarks that the Fed is unwilling to cut rates. The statement followed the Fed's decision to hold rates steady, with the debate over the pace of easing continuing to draw market attention.",
-     "impact": "If the rift between the White House and monetary policymakers persists, it could heighten volatility in rate expectations and increase market uncertainty.",
+     "id": "news-016",
+     "title": "Nvidia Loses $1.27 Trillion in Market Value in a Single Day",
+     "summary": "Growing market concerns over returns on AI infrastructure investment put broad pressure on US chip stocks, with Nvidia losing $1.27 trillion in market value.",
+     "detail": "The chip sector fell across the board on the day. Intel shares dropped more than 30% intraday, primarily driven by its latest earnings guidance. Prospects for AI investment returns have become the market's key focus.",
+     "impact": "If doubts over AI capital spending returns persist, global tech stock valuations could face further repricing.",
+     "importance": "hot",
+     "tags": [
+      "Semiconductors",
+      "Artificial Intelligence",
+      "US Stocks"
+     ]
+    },
+    {
+     "id": "news-017",
+     "title": "Snowflake Falls Over 10% Intraday",
+     "summary": "US-listed Snowflake fell as much as 10.02% intraday to $297.18, giving it a market capitalization of $104.845 billion.",
+     "detail": "Data-services related stocks declined sharply intraday, in line with the broader tech sector correction. Trading price and market cap figures are based on real-time intraday data.",
+     "impact": "Reflects heightened short-term volatility in US cloud computing and data services stocks.",
      "importance": "important",
      "tags": [
-      "Monetary Policy",
-      "Interest Rate Policy",
-      "Global Rates"
+      "US Stocks",
+      "Cloud Computing",
+      "Data Services"
+     ]
+    },
+    {
+     "id": "news-018",
+     "title": "Cost of Default Protection on US Tech Giants' Bonds Hits Record High",
+     "summary": "Credit default insurance costs for several major US tech companies hit record highs on Friday, with earnings from Intel and Amazon fanning fears over the AI financing boom.",
+     "detail": "Concerns over the AI financing wave reached new highs, with credit default swap costs rising in tandem. The market is growing worried about debt-servicing pressures stemming from massive capital expenditures.",
+     "impact": "Rising financing costs may limit the room for tech giants to further increase leverage.",
+     "importance": "important",
+     "tags": [
+      "Credit Bonds",
+      "Artificial Intelligence",
+      "Tech Companies"
      ]
     },
     {
      "id": "news-019",
-     "title": "Silver Futures Main Contract Plunges Intraday",
-     "summary": "The most-active silver futures contract fell 4% intraday, marking a sharp pullback in precious metals prices.",
-     "detail": "The front-month silver futures contract dropped 4% on the day to 12,401.00 yuan. The precious metals market saw a rapid short-term selloff, with volatility expanding notably.",
-     "impact": "The steep decline in precious metals may signal a shift in investor sentiment, raising the risk of short-term volatility in related assets.",
-     "importance": "important",
+     "title": "South African Stocks Close Down Over 2.4%, Led by Gold and Silver Miners",
+     "summary": "South Africa's FTSE/JSE Africa Leading 40 Tradable Index closed down 2.42% at 99,412.34 points on Friday, with gold and silver mining stocks leading the decline.",
+     "detail": "A major African equity index fell more than 2% in a single session, with precious metals-related mining stocks driving the bulk of the losses. Overall performance remained under pressure for the week.",
+     "impact": "Weakness in the precious metals sector may reflect an adjustment in commodity price expectations.",
+     "importance": "normal",
      "tags": [
-      "Precious Metals",
+      "Overseas Markets",
       "Commodities",
-      "Futures Market"
+      "Precious Metals"
      ]
     },
     {
      "id": "news-020",
-     "title": "Rockfall at Rio Tinto Mine Injures Multiple Workers",
-     "summary": "A rockfall at Rio Tinto's Oyu Tolgoi mine following seismic activity left 15 employees injured; the whereabouts of all personnel have been confirmed.",
-     "detail": "Rio Tinto said a rockfall occurred at its Oyu Tolgoi mine after seismic activity, with all personnel accounted for and 15 employees injured. Following the announcement, Rio Tinto's ADRs extended losses, as investors monitor the latest developments at the site.",
-     "impact": "The safety incident could disrupt mine operations and weigh on sentiment toward related mining stocks.",
-     "importance": "important",
-     "tags": [
-      "Mining Safety",
-      "International Mining",
-      "Workplace Safety"
-     ]
-    },
-    {
-     "id": "news-021",
-     "title": "Citi Lowers Euro-Dollar Exchange Rate Forecast",
-     "summary": "Citigroup lowered its euro-dollar exchange rate forecast, citing multiple risks facing Europe and elevated oil prices.",
-     "detail": "Citigroup cut its euro-dollar forecast in a latest report, pointing to a range of risks facing Europe and the drag from high oil prices on the currency pair.",
-     "impact": "An institution trimming its currency forecast could weigh on foreign exchange market sentiment, putting the euro under short-term pressure.",
+     "title": "Reliance and Chevron Send Optimistic Signals on Energy Operations",
+     "summary": "Reliance Industries executives said gasoline crack spreads may stay elevated and the chemicals business is expected to perform strongly, while Chevron said exploration confidence is the highest in years.",
+     "detail": "Reliance Industries executives said the petrochemicals business could deliver an exceptionally strong performance this year. Chevron's vice chairman said the company's confidence in its exploration outlook is the highest in years, adding that logistics advantages from shipping contracts signed before the conflict will persist until the conflict is resolved.",
+     "impact": "Improving sentiment in the energy and refining sectors could support the earnings outlook for related companies.",
      "importance": "normal",
      "tags": [
-      "Foreign Exchange Market",
-      "Currency Volatility",
-      "European Economy"
-     ]
-    },
-    {
-     "id": "news-022",
-     "title": "Chevron Returns to Remote-Region Oil and Gas Exploration",
-     "summary": "After years of cutting spending on frontier exploration, cash-rich Chevron is once again heading into remote, undeveloped areas in search of oil and gas resources.",
-     "detail": "Chevron is returning to remote, undeveloped regions to hunt for oil and gas after years of focusing on drilling closer to home. The No. 2 US oil major currently enjoys strong cash flow as it re-enters frontier exploration.",
-     "impact": "Major international oil companies stepping up upstream exploration suggest a more positive outlook for medium- to long-term oil and gas demand.",
-     "importance": "normal",
-     "tags": [
-      "Oil and Gas Exploration",
       "International Energy",
-      "Energy Investment"
-     ]
-    },
-    {
-     "id": "news-023",
-     "title": "US Seven-Year Treasury Yields Extend Decline",
-     "summary": "Yields on US seven-year Treasuries continued to fall after the auction, down 5.46 basis points to 4.894%.",
-     "detail": "Following the completion of the US seven-year Treasury auction, yields kept declining, latest at 4.894%. Buying sentiment in the bond market was relatively firm, with interest rate levels easing.",
-     "impact": "Falling Treasury yields reflect growing expectations of policy easing, with spillover effects for global rates and asset pricing.",
-     "importance": "normal",
-     "tags": [
-      "US Treasury Market",
-      "Bond Market",
-      "Global Rates"
+      "Petrochemicals",
+      "Oil and Gas Exploration"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Technology Frontiers",
+   "title": "Tech Frontiers",
    "icon": "💡",
    "articles": [
     {
+     "id": "news-021",
+     "title": "OpenAI Tightens ChatGPT Teen Safety Policies",
+     "summary": "OpenAI announced new teen safeguards that will automatically end conversations involving violent fixations, with repeated triggers leading to account suspensions and parental notifications.",
+     "detail": "OpenAI has partnered with mental health and violence prevention experts to develop automated methods for earlier intervention on signs of violence. Further restrictions will be placed on weapons-related information accessible to teens, alongside tighter policies around recreating past mass attacks. The first community safety report will be released in early 2027, followed by updates every six months.",
+     "impact": "Protection standards for minors on AI platforms may be formalized faster, accelerating industry self-regulation and regulatory follow-up.",
+     "importance": "hot",
+     "tags": [
+      "Artificial Intelligence",
+      "Youth Protection",
+      "AI Ethics"
+     ]
+    },
+    {
+     "id": "news-022",
+     "title": "'Six Networks' Reshape Digital Infrastructure Landscape",
+     "summary": "From a single drop of water to a single kilowatt-hour of power, the 'Six Networks' are reshaping the digital infrastructure landscape, spanning energy, water conservancy and more.",
+     "detail": "The report reviews integrated applications of digital infrastructure across water conservancy, energy and other scenarios, demonstrating how the 'Six Networks' permeate production and daily life. Digital infrastructure is increasingly seen as the foundation of a new development model.",
+     "impact": "Accelerating digital infrastructure build-out will drive demand for related hardware and software and advance industrial digitalization.",
+     "importance": "important",
+     "tags": [
+      "Digital Infrastructure",
+      "Industrial Digitalization",
+      "New Infrastructure"
+     ]
+    },
+    {
+     "id": "news-023",
+     "title": "Strengthening Foundational Tech Supply to Build New Industrial Advantages",
+     "summary": "Related commentary emphasizes strengthening the supply of foundational technologies to build new competitive advantages in industrial development.",
+     "detail": "The article argues for starting with foundational technology supply to forge new competitive strengths in the industrial system, highlighting the role of innovation in driving industrial upgrading.",
+     "impact": "This should help push key technology breakthroughs and accelerate the industry's transition toward the mid-to-high end.",
+     "importance": "important",
+     "tags": [
+      "Technological Innovation",
+      "Industrial Upgrading",
+      "Key Technology Breakthroughs"
+     ]
+    },
+    {
      "id": "news-024",
-     "title": "AI Agents Deployed to Safeguard Communications at CIIE",
-     "summary": "AI agents are deployed at the China International Import Expo for the first time, ensuring 24-hour uninterrupted venue communications and raising the level of intelligent services at the expo.",
-     "detail": "At this year's China International Import Expo (CIIE), AI agents have been put into use, taking on 24-hour venue communications support duties. Smart operations tools have improved the efficiency and stability of on-site services at the expo.",
-     "impact": "The deployment of AI agents in a large-scale expo setting provides a new model for the commercialization of artificial intelligence.",
+     "title": "European and US Central Bank Officials Focus on AI's Policy Impact",
+     "summary": "Officials from the European Central Bank and the US Federal Reserve have stated that AI is supporting activity in the eurozone and is crucial to price stability and monetary policy.",
+     "detail": "ECB Chief Economist Philip Lane noted that AI has begun supporting eurozone activity, that AI firms are more sensitive to monetary policy, and that related price pressures are visible but limited in their impact on overall inflation. Fed official Mary Daly said AI is critical to price stability, the employment mandate, and near- and medium-term policy.",
+     "impact": "Major central banks are beginning to incorporate AI into their policy frameworks, making future interest rate path assessments more complex.",
      "importance": "important",
      "tags": [
       "Artificial Intelligence",
-      "Exhibition Economy",
-      "Intelligent Operations"
-     ]
-    },
-    {
-     "id": "news-025",
-     "title": "OpenAI Updates Model Spec to Clarify Value Guidelines",
-     "summary": "OpenAI has updated its Model Spec, restructuring guidelines around five core values, while exploring new training methods to better align model behavior with its code of conduct.",
-     "detail": "OpenAI has released an update to its Model Spec, its public statement on how it wants models to behave. The update restructures guidance around five values: serving human intent, minimizing harm, honesty and transparency, respect for human autonomy, and care for humanity. OpenAI also said it is exploring new training methods to help models better understand and follow the code of conduct outlined in the spec.",
-     "impact": "A leading institution's refinement of model behavior guidelines is expected to push the industry toward clearer safety and ethics standards.",
-     "importance": "important",
-     "tags": [
-      "Artificial Intelligence",
-      "Foundation Model Governance",
-      "Tech Ethics"
-     ]
-    },
-    {
-     "id": "news-026",
-     "title": "Wuzhen Summit Finals Qualifier Enters Final Preparations",
-     "summary": "With participation at a record high, preparations for the finals of the Wuzhen Summit qualifier are in their final sprint, highlighting the innovative vitality of the digital economy.",
-     "detail": "Related events for this year's Wuzhen Summit qualifier have reached a record scale. Preparations for the finals are now in the final sprint stage, with both the number of competing projects and public attention on the rise.",
-     "impact": "The competition platform helps pool innovation in the digital economy and promotes industry matchmaking and the commercialization of results.",
-     "importance": "normal",
-     "tags": [
-      "Internet Conference",
-      "Digital Economy",
-      "Innovation and Entrepreneurship"
-     ]
-    },
-    {
-     "id": "news-027",
-     "title": "Short-Drama Platform Hongguo Slows Its Own Expansion",
-     "summary": "Short-drama platform Hongguo is applying the brakes, voluntarily slowing its expansion pace and prompting industry reflection on its growth model.",
-     "detail": "After a period of rapid growth, Hongguo has begun to apply the brakes and adjust its pace. The move is seen as a signal that the short-drama industry is shifting from unchecked expansion to regulated development.",
-     "impact": "The platform's self-imposed cooling-off could push the short-drama sector toward competition based on content quality and compliance.",
-     "importance": "normal",
-     "tags": [
-      "Short-Drama Industry",
-      "Content Regulation",
-      "Digital Content"
+      "Monetary Policy",
+      "Macroeconomics"
      ]
     }
    ]
@@ -398,68 +364,68 @@
    "icon": "📰",
    "articles": [
     {
-     "id": "news-028",
-     "title": "Scoliosis Becomes Growing Health Concern Among Chinese Students",
-     "summary": "Reports highlight the high prevalence of scoliosis among students, noting its growing impact on adolescents' physical health.",
-     "detail": "Coverage focuses on the widespread occurrence of scoliosis among student populations. Sources say the condition is increasingly troubling Chinese students and requires joint attention from schools, families and society.",
-     "impact": "Rising adolescent spinal health issues could drive growth in screening, intervention and orthopedic correction services.",
+     "id": "news-025",
+     "title": "Choosing Medication in the First 48 Hours of the Flu",
+     "summary": "The author shares their experience of selecting medication within 48 hours of flu onset, highlighting the importance of timing in antiviral treatment.",
+     "detail": "Using their own flu case as an example, the author recounts how they chose medication within 48 hours of symptom onset and what their recovery was like, reflecting growing public interest in self-care during flu season.",
+     "impact": "Helps raise public awareness about rational medication use and seeking timely medical care during flu season.",
+     "importance": "normal",
+     "tags": [
+      "Public Health",
+      "Respiratory Disease",
+      "Health Education"
+     ]
+    },
+    {
+     "id": "news-026",
+     "title": "Scoliosis Weighs Heavy on Chinese Students",
+     "summary": "The report highlights how prevalent scoliosis is among Chinese students and its impact, calling for greater attention to adolescent spinal health.",
+     "detail": "The article notes that scoliosis is affecting a large number of students' physical and mental well-being as well as their academic lives, requiring a joint response from families, schools and the medical sector.",
+     "impact": "Helps push adolescent spinal screening, posture correction and other health interventions into wider public view.",
      "importance": "important",
      "tags": [
       "Adolescent Health",
       "Public Health",
-      "Healthcare"
+      "Campus Health"
+     ]
+    },
+    {
+     "id": "news-027",
+     "title": "Can a Stem Cell Infusion Costing Hundreds of Thousands Really Combat Aging?",
+     "summary": "The article questions whether stem cell infusions priced at hundreds of thousands of yuan per shot truly deliver anti-aging effects.",
+     "detail": "The report examines the actual efficacy of high-priced stem cell anti-aging programs, shedding light on the controversy and information asymmetry in the medical aesthetics and anti-aging consumer market.",
+     "impact": "Helps drive greater regulation and disclosure of information in consumer-facing anti-aging medical services.",
+     "importance": "normal",
+     "tags": [
+      "Medical Aesthetics & Health",
+      "Anti-Aging Consumption",
+      "Health Education"
+     ]
+    },
+    {
+     "id": "news-028",
+     "title": "33-Year-Old Man Suffers Brain Hemorrhage After Insisting on 'Autumn Cold Exposure'",
+     "summary": "A 33-year-old man suffered a brain hemorrhage after insisting on the traditional practice of 'autumn cold exposure,' serving as a warning for health protection during seasonal transitions.",
+     "detail": "The report walks through how the case unfolded, cautioning that blindly following 'autumn cold exposure' during seasonal changes can pose serious health risks, particularly for people with underlying conditions.",
+     "impact": "Reminds the public to take a rational view of wellness habits and to prioritize cardiovascular and cerebrovascular protection during seasonal transitions.",
+     "importance": "normal",
+     "tags": [
+      "Health Education",
+      "Cardiovascular & Cerebrovascular Health",
+      "Seasonal Wellness"
      ]
     },
     {
      "id": "news-029",
-     "title": "Heavy to Record-Breaking Snowfall Forecast in Multiple Regions",
-     "summary": "Weather forecasts indicate some areas will see heavy and exceptionally heavy snowfall, prompting calls for early preparedness.",
-     "detail": "Forecasts predict heavy and record-breaking snowfall in affected regions. The intense snow could disrupt transportation, agricultural production and daily life.",
-     "impact": "Extreme snowfall may affect transport networks and supply chains, requiring stronger emergency response measures nationwide.",
-     "importance": "important",
-     "tags": [
-      "Extreme Weather",
-      "Meteorological Disasters",
-      "Disaster Prevention"
-     ]
-    },
-    {
-     "id": "news-030",
-     "title": "Southern China's Mosquitoes Shifting North in Large Numbers",
-     "summary": "Disease-carrying mosquitoes from southern China are migrating north, raising public health concerns over changing vector distribution.",
-     "detail": "Reports say mosquito vectors in southern China are expanding their range northward. The shift, linked to environmental and climatic factors, may pose new public health challenges.",
-     "impact": "Northward vector expansion calls for enhanced monitoring and control, boosting demand for vector-borne disease prevention.",
+     "title": "Beijing International Theater Showcase Season Launches Charity Opera Tour",
+     "summary": "The City Theater Carnival and charity opera tour of the 2026 Beijing International Theater Showcase Season have kicked off, alongside Beijing's autumn scenery and a rich lineup of civic activities.",
+     "detail": "The showcase season features the City Theater Carnival and a charity opera tour, enriching residents' cultural life. In addition, the interview program 'Citizens Dialogue with Top Officials: Face-to-Face on Policy Proposals' was released online nationwide on October 30, while Beijing's autumn landscapes have also become popular check-in spots for residents.",
+     "impact": "Enriches public cultural offerings and boosts momentum in the performing arts and cultural tourism sectors.",
      "importance": "normal",
      "tags": [
-      "Vector Control",
-      "Public Health",
-      "Climate Change"
-     ]
-    },
-    {
-     "id": "news-031",
-     "title": "Questions Raised Over Pricey Stem Cell Infusions Marketed as Anti-Aging Therapy",
-     "summary": "Stem cell infusion treatments costing hundreds of thousands of yuan are being promoted as anti-aging solutions, but their efficacy and compliance are under scrutiny.",
-     "detail": "Reports question whether stem cell infusion programs costing upward of RMB 200,000-300,000 truly deliver anti-aging effects. Coverage examines the scientific basis and legitimacy of such high-priced treatments, urging the public to remain skeptical.",
-     "impact": "Consumer confusion in the anti-aging market is drawing attention and may lead to tighter regulation and standards in cell therapy.",
-     "importance": "normal",
-     "tags": [
-      "Cell Therapy",
-      "Medical Aesthetics",
-      "Healthcare Regulation"
-     ]
-    },
-    {
-     "id": "news-032",
-     "title": "Neck-Grabbing Scenes in TV Dramas Spark Controversy",
-     "summary": "Debate over frequent scenes of male leads grabbing female leads' necks in Chinese entertainment has raised questions about gender portrayal and content boundaries in film and TV.",
-     "detail": "Discussions center on the recurring neck-grabbing trope in Chinese drama series. Critics point to concerns over violent depiction, gender dynamics and content standards in creative works.",
-     "impact": "Public scrutiny may push the entertainment industry to pay greater attention to creative boundaries and value orientation in content.",
-     "importance": "normal",
-     "tags": [
-      "Entertainment Industry",
-      "Content Creation",
-      "Cultural Commentary"
+      "Cultural Tourism Consumption",
+      "Performing Arts",
+      "Public Culture"
      ]
     }
    ]

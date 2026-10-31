@@ -1,185 +1,194 @@
 {
-  "date": "2026-10-30",
+  "date": "2026-10-31",
   "content": {
-    "id": "en-2026-10-30",
-    "date": "2026-10-30",
-    "topic": "职场与沟通",
+    "id": "en-2026-10-31",
+    "date": "2026-10-31",
+    "topic": "文化与旅行",
     "newsHighlights": [
       {
-        "title": "Vice-minister Liao's name proposed for IMF role",
-        "source": "China Daily",
-        "summary": "The expected succession of IMF Deputy Managing Director Li Bo by a veteran Chinese fiscal policymaker would maintain continuity in China's representation, experts said.",
-        "translation": "专家表示，中国资深财政政策制定者有望接替国际货币基金组织副总裁李波，这将保持中国在该机构代表权的连续性。",
+        "title": "German president plays ping-pong at PKU",
+        "source": "ChinaDaily",
+        "summary": "German President Frank-Walter Steinmeier visited Peking University and played friendly table tennis matches with students and faculty at the Khoo Teck Puat Gymnasium on Oct 29.",
+        "translation": "10月29日，德国总统施泰因迈尔访问北京大学，并在邱德拔体育馆与北大师生进行了友好的乒乓球友谊赛。",
         "keyWords": [
-          "succession",
-          "continuity",
-          "veteran",
-          "representation"
+          "campus visit",
+          "table tennis",
+          "cultural exchange",
+          "faculty"
         ]
       },
       {
-        "title": "China expands foreign business access at Hainan FTP",
-        "source": "China Daily",
-        "summary": "China has expanded foreign business access at the Hainan Free Trade Port, opening more sectors to overseas companies and sending a clear signal to international investors.",
-        "translation": "中国扩大了海南自由贸易港的外资准入范围，向海外企业开放更多领域，向国际投资者发出明确信号。",
+        "title": "Xi holds talks with German president",
+        "source": "ChinaDaily",
+        "summary": "President Xi Jinping held talks with German President Frank-Walter Steinmeier, calling for closer cultural and people-to-people exchanges between the two countries.",
+        "translation": "国家主席习近平同德国总统施泰因迈尔举行会谈，呼吁两国进一步加强人文与民间交流。",
         "keyWords": [
-          "expand",
-          "access",
-          "foreign business",
-          "investment"
+          "talks",
+          "people-to-people exchange",
+          "bilateral ties"
         ]
       },
       {
-        "title": "Global South to become active builder of new order",
-        "source": "China Daily",
-        "summary": "\"The Global South is no longer a silent partner. It has become an active architect of the new world order,\" former Kyrgyz prime minister Djoomart Otorbaev said at the Global Strategic Dialogue.",
-        "translation": "吉尔吉斯共和国前总理奥托尔巴耶夫在全球战略对话上表示：\"全球南方不再是沉默的伙伴，而已成为世界新秩序的积极构建者。\"",
+        "title": "Business representatives discover opportunities in Linyi",
+        "source": "ChinaDaily",
+        "summary": "Overseas business representatives visited Linyi in Shandong province and discovered new trade and investment opportunities in the city's markets and logistics hubs.",
+        "translation": "海外商务代表走进山东临沂，在当地的市场与物流枢纽中发现了新的贸易与投资机遇。",
         "keyWords": [
-          "architect",
-          "dialogue",
-          "Global South",
-          "partner"
+          "business representatives",
+          "opportunities",
+          "logistics",
+          "trade"
         ]
       },
       {
-        "title": "'Super students' ride tide of AI innovation",
-        "source": "China Daily",
-        "summary": "A new generation of Chinese students is riding the tide of AI innovation, turning classroom ideas into startups and new forms of international collaboration.",
-        "translation": "新一代中国学生正乘着人工智能创新的浪潮，把课堂创意转化为创业项目和新的国际合作形式。",
+        "title": "Peaceful reunification positive for Taiwan youth",
+        "source": "ChinaDaily",
+        "summary": "Experts said that peaceful reunification would bring more study, work and travel opportunities for young people across the Taiwan Strait.",
+        "translation": "专家表示，和平统一将为海峡两岸青年带来更多求学、就业与出行的机会。",
         "keyWords": [
-          "innovation",
-          "collaboration",
-          "start-up",
-          "generation"
+          "peaceful reunification",
+          "youth",
+          "Taiwan Strait"
+        ]
+      },
+      {
+        "title": "UAE says environmental cleanup operations continue along affected coastlines",
+        "source": "CGTN",
+        "summary": "The United Arab Emirates said cleanup operations are continuing along affected coastlines to protect beaches and marine life.",
+        "translation": "阿联酋方面表示，受影响海岸线的清理工作仍在继续，以保护海滩与海洋生物。",
+        "keyWords": [
+          "coastline",
+          "cleanup",
+          "marine environment"
         ]
       }
     ],
     "quote": {
-      "quote": "The single biggest problem in communication is the illusion that it has taken place.",
-      "author": "George Bernard Shaw",
-      "translation": "沟通中最大的问题，就是误以为沟通已经发生了。",
-      "explanation": "很多时候我们以为自己已经把话说清楚了，但对方其实并没有接收到。在职场中，确认对方是否真正理解，比单纯地传达信息更重要。"
+      "quote": "The world is a book, and those who do not travel read only one page.",
+      "author": "Saint Augustine",
+      "translation": "世界是一本书，不旅行的人只读了其中一页。",
+      "explanation": "这句话把世界比作一本大书，强调旅行与文化交流能让人获得书本上学不到的知识。正如德国总统走进北大校园、海外商人走进临沂市场，亲身的到访与互动，往往比任何文字都更能增进理解。"
     },
     "vocabulary": [
       {
-        "word": "succession",
-        "phonetic": "/səkˈseʃn/",
-        "partOfSpeech": "noun",
-        "definition": "继任；接替；连续不断",
-        "example": "The expected succession of Li Bo by a veteran policymaker would keep China's seat stable.",
-        "translation": "李波由一位资深政策制定者接任，预计将使中国的席位保持稳定。",
-        "newsContext": "China Daily: \"The expected succession of International Monetary Fund Deputy Managing Director Li Bo...\""
+        "word": "gymnasium",
+        "phonetic": "/dʒɪmˈneɪziəm/",
+        "partOfSpeech": "名词 n.",
+        "definition": "体育馆，健身房",
+        "example": "The president played friendly table tennis matches with students at the Khoo Teck Puat Gymnasium.",
+        "translation": "总统在邱德拔体育馆与学生们进行了友好的乒乓球比赛。",
+        "newsContext": "出自 ChinaDaily 报道《German president plays ping-pong at PKU》中的 \"the Khoo Teck Puat Gymnasium\"。"
       },
       {
-        "word": "continuity",
-        "phonetic": "/ˌkɒntɪˈnjuːəti/",
-        "partOfSpeech": "noun",
-        "definition": "连续性；持续性",
-        "example": "The move would maintain continuity in China's representation at the IMF.",
-        "translation": "这一安排将保持中国在国际货币基金组织代表权的连续性。",
-        "newsContext": "China Daily: \"...would maintain continuity in China's representation, experts said.\""
+        "word": "faculty",
+        "phonetic": "/ˈfækəlti/",
+        "partOfSpeech": "名词 n.",
+        "definition": "（大学的）全体教员；能力，才能",
+        "example": "He played table tennis with students and faculty during his campus visit.",
+        "translation": "他在校园访问期间与学生和教工一起打乒乓球。",
+        "newsContext": "出自 ChinaDaily《German president plays ping-pong at PKU》中的 \"played friendly table tennis matches with students and faculty\"。"
       },
       {
-        "word": "veteran",
-        "phonetic": "/ˈvetərən/",
-        "partOfSpeech": "noun / adjective",
-        "definition": "经验丰富的人；资深的",
-        "example": "A veteran Chinese fiscal policymaker has been proposed for the IMF post.",
-        "translation": "一位资深的中国财政政策制定者被提名为国际货币基金组织的人选。",
-        "newsContext": "China Daily: \"...by a veteran Chinese fiscal policymaker...\""
+        "word": "exchange",
+        "phonetic": "/ɪksˈtʃeɪndʒ/",
+        "partOfSpeech": "名词/动词 n./v.",
+        "definition": "交流，交换；兑换",
+        "example": "The two leaders called for closer cultural and people-to-people exchanges.",
+        "translation": "两位领导人呼吁加强文化与民间交流。",
+        "newsContext": "出自 ChinaDaily《Xi holds talks with German president》中关于加强双边人文交流的表述。"
       },
       {
-        "word": "proposal",
-        "phonetic": "/prəˈpəʊzl/",
-        "partOfSpeech": "noun",
-        "definition": "提议；建议；提名",
-        "example": "The proposal of the vice-minister's name was welcomed by economists.",
-        "translation": "提名这位副部长的建议受到了经济学家的欢迎。",
-        "newsContext": "China Daily: \"Vice-minister Liao's name proposed for IMF role.\""
+        "word": "opportunity",
+        "phonetic": "/ˌɒpəˈtjuːnəti/",
+        "partOfSpeech": "名词 n.",
+        "definition": "机会，机遇",
+        "example": "Visiting business representatives discovered new opportunities in Linyi's markets and logistics hubs.",
+        "translation": "来访的商务代表在临沂的市场和物流枢纽发现了新机遇。",
+        "newsContext": "出自 ChinaDaily《Business representatives discover opportunities in Linyi》标题与正文。"
       },
       {
-        "word": "architect",
-        "phonetic": "/ˈɑːkɪtekt/",
-        "partOfSpeech": "noun",
-        "definition": "建筑师；设计师；缔造者",
-        "example": "The Global South has become an active architect of the new world order.",
-        "translation": "全球南方已成为世界新秩序的积极构建者。",
-        "newsContext": "China Daily: \"It has become an active architect of the new world order.\""
+        "word": "reunification",
+        "phonetic": "/ˌriːjuːnɪfɪˈkeɪʃn/",
+        "partOfSpeech": "名词 n.",
+        "definition": "重新统一，（国家的）统一",
+        "example": "Peaceful reunification would be positive for young people on both sides of the Taiwan Strait.",
+        "translation": "和平统一对海峡两岸年轻人具有积极意义。",
+        "newsContext": "出自 ChinaDaily《Peaceful reunification positive for Taiwan youth》。"
       },
       {
-        "word": "access",
-        "phonetic": "/ˈækses/",
-        "partOfSpeech": "noun",
-        "definition": "（使用或进入的）机会；通道；准入",
-        "example": "Foreign firms will enjoy wider access to the Hainan Free Trade Port.",
-        "translation": "外资企业将获得进入海南自由贸易港的更广泛机会。",
-        "newsContext": "China Daily: \"China expands foreign business access at Hainan FTP.\""
+        "word": "coastline",
+        "phonetic": "/ˈkəʊstlaɪn/",
+        "partOfSpeech": "名词 n.",
+        "definition": "海岸线，沿海地带",
+        "example": "Cleanup operations continue along the affected coastlines to protect beaches and marine life.",
+        "translation": "清理工作在受影响的海岸线持续进行，以保护海滩和海洋生物。",
+        "newsContext": "出自 CGTN 快讯 \"UAE says environmental cleanup operations continue along affected coastlines\"。"
       },
       {
-        "word": "expand",
-        "phonetic": "/ɪkˈspænd/",
-        "partOfSpeech": "verb",
-        "definition": "扩大；扩展；发展",
-        "example": "China is expanding market access for overseas businesses in several sectors.",
-        "translation": "中国正在多个行业扩大海外企业的市场准入。",
-        "newsContext": "China Daily: \"China expands foreign business access at Hainan FTP.\""
+        "word": "transnational",
+        "phonetic": "/ˌtrænzˈnæʃnəl/",
+        "partOfSpeech": "形容词 adj.",
+        "definition": "跨国的，超越国界的",
+        "example": "The three countries cracked a major transnational case through trilateral cooperation.",
+        "translation": "三国通过三方合作破获了一起重大跨国案件。",
+        "newsContext": "出自 ChinaDaily《Trilateral cooperation helps bust major drug ring》中的 \"a major transnational drug manufacturing and trafficking case\"。"
       },
       {
-        "word": "dialogue",
-        "phonetic": "/ˈdaɪəlɒɡ/",
-        "partOfSpeech": "noun",
-        "definition": "对话；交流；讨论",
-        "example": "The remarks were made at the Global Strategic Dialogue in Beijing.",
-        "translation": "这些话是在北京举行的战略全球对话上发表的。",
-        "newsContext": "China Daily: Djoomart Otorbaev spoke \"at the Global Strategic Dialogue.\""
+        "word": "trafficking",
+        "phonetic": "/ˈtræfɪkɪŋ/",
+        "partOfSpeech": "名词 n.",
+        "definition": "非法交易，走私（尤指毒品、人口）",
+        "example": "Joint operations can help prevent cross-border trafficking and protect travelers.",
+        "translation": "联合行动有助于打击跨境走私，保护出行人员的安全。",
+        "newsContext": "出自 ChinaDaily《Trilateral cooperation helps bust major drug ring》中的 \"drug manufacturing and trafficking case\"。"
       },
       {
-        "word": "collaboration",
-        "phonetic": "/kəˌlæbəˈreɪʃn/",
-        "partOfSpeech": "noun",
-        "definition": "合作；协作",
-        "example": "Young innovators are building new forms of international collaboration through AI.",
-        "translation": "年轻创新者正通过人工智能建立新的国际合作形式。",
-        "newsContext": "China Daily: \"'Super students' ride tide of AI innovation\" highlights new modes of cross-border collaboration."
+        "word": "crackdown",
+        "phonetic": "/ˈkrækdaʊn/",
+        "partOfSpeech": "名词 n.",
+        "definition": "（采取严厉措施的）打击，镇压",
+        "example": "Hong Kong announced reforms to strengthen the crackdown on graft in building works.",
+        "translation": "香港宣布改革措施，加大对建筑工程贪腐行为的打击力度。",
+        "newsContext": "关联 ChinaDaily《HK reforms to restrain graft in building works》中关于加强监管与整治的表述。"
       },
       {
-        "word": "signal",
-        "phonetic": "/ˈsɪɡnəl/",
-        "partOfSpeech": "noun / verb",
-        "definition": "信号；标志；发信号表明",
-        "example": "The new rules signal a friendlier environment for foreign investors.",
-        "translation": "新规向外国投资者表明了更友好的营商环境。",
-        "newsContext": "China Daily: the Hainan FTP measures send a clear policy signal to international business."
+        "word": "diplomatic",
+        "phonetic": "/ˌdɪpləˈmætɪk/",
+        "partOfSpeech": "形容词 adj.",
+        "definition": "外交的；有手腕的，得体的",
+        "example": "The president's campus tour was seen as a warm diplomatic gesture toward Chinese youth.",
+        "translation": "总统的校园之行被视为向中国青年传递善意的外交姿态。",
+        "newsContext": "关联 ChinaDaily《German president plays ping-pong at PKU》与《Xi holds talks with German president》中的高层交往活动。"
       }
     ],
     "pattern": {
-      "pattern": "would + 动词原形：表示对预期结果的客观推测或说明",
-      "example": "The expected succession of Li Bo by a veteran Chinese fiscal policymaker would maintain continuity in China's representation.",
-      "translation": "李波由一位资深的中国财政政策制定者接任，将保持中国在该机构代表权的连续性。",
-      "usage": "在职场与新闻英语中，用 would + 动词原形可以委婉、客观地描述某一举措可能带来的结果，避免把话说得太绝对。常见结构：The move/policy/appointment would + 动词（maintain, reduce, improve, signal...）。例如：The new arrangement would reduce costs for the whole team."
+      "pattern": "On + 日期, 主语 + visited + 地点 + and + 过去式动词 + with + 人物（用于描述一次访问、旅行或文化交流活动）",
+      "example": "On Oct 29, German President Frank-Walter Steinmeier visited Peking University and played friendly table tennis matches with students and faculty.",
+      "translation": "10月29日，德国总统弗兰克-瓦尔特·施泰因迈尔访问北京大学，并与师生进行了友好的乒乓球比赛。",
+      "usage": "这是新闻英语中描述\"到访+活动\"最常用的叙事框架。写作时先用 On + 时间 点明背景，再用 visited 引出地点，用 and 连接具体的活动细节，最后用 with 引出互动对象。旅行日记、游记、校园活动报道均可套用，例如：On Oct 20, our class visited the city museum and joined a guided tour with local volunteers."
     },
     "grammar": {
-      "title": "现在完成时表示\"变化的结果\"",
-      "explanation": "现在完成时（have/has + 过去分词）常用来强调从过去某个时间点到现在所发生的变化及其结果。在职场沟通中，用它可以突出\"如今的状态与过去不同\"，常与 no longer、already、recently 等词搭配。",
+      "title": "现在完成时（Present Perfect）：强调已经发生且与现在相关的事件",
+      "explanation": "现在完成时由 have/has + 过去分词 构成。新闻报道中常用它来陈述\"刚刚完成、结果仍然有效\"的事实，既说明事件已发生，又强调其对当下的影响。常与 already, just, so far, jointly, recently 等时间副词连用。若主语是三个并列的机构或国家，谓语仍用复数 have。",
       "examples": [
-        "The Global South is no longer a silent partner. It has become an active architect of the new world order.",
-        "China has expanded foreign business access at the Hainan Free Trade Port, and overseas companies have already started to respond."
+        "Chinese, Indonesian and Malaysian anti-drug authorities have jointly cracked a major transnational drug manufacturing and trafficking case.",
+        "Business representatives from abroad have discovered new opportunities in Linyi's markets and logistics hubs."
       ]
     },
     "pronunciation": {
-      "word": "succession",
-      "phonetic": "/səkˈseʃn/",
-      "tips": "重音在第二个音节 /ˈseʃ/ 上，首音节 /sək/ 读得轻而短。注意结尾是 /ʃn/，舌尖不接触上齿，气流从舌面与上颚之间摩擦而出，类似中文\"申\"但更轻。整词节奏为：轻—重—轻。",
+      "word": "gymnasium",
+      "phonetic": "/dʒɪmˈneɪziəm/",
+      "tips": "重音落在第三个音节 /neɪ/ 上，读作 jim-NAY-zee-um。开头 /dʒ/ 类似汉语拼音的\"j\"，但声带振动更充分；注意 -sium 发 /ziəm/ 而不是 /ʃəm/。整词共 4 个音节，前面两个音节要读得轻而快，把声音的\"高峰\"留给 /neɪ/。",
       "examples": [
-        "The expected succession would not change China's overall approach.",
-        "A smooth succession of leadership is important for any team."
+        "The students welcomed the guests at the Khoo Teck Puat Gymnasium.",
+        "Our school gymnasium is open to visitors during the sports festival."
       ]
     },
     "reading": {
-      "title": "China Opens Doors Wider and Keeps Its Seat Steady",
-      "content": "China is widening the door for foreign companies. China Daily reports that the Hainan Free Trade Port has expanded foreign business access in several sectors, allowing overseas firms to enter markets that were once restricted. At the same time, the expected succession of IMF Deputy Managing Director Li Bo by a veteran Chinese fiscal policymaker would maintain continuity in China's representation, experts said.\n\nFor professionals, the two stories share one message: clear communication and stable partnerships matter. When policy signals are consistent, companies can plan ahead and negotiate with confidence. As former Kyrgyz prime minister Djoomart Otorbaev told the Global Strategic Dialogue, the Global South has become an active architect of the new world order.\n\nIn short, whether you are writing an email to a foreign client or presenting a proposal to your team, the ability to express ideas clearly and to listen carefully is what turns a simple conversation into real collaboration.",
-      "translation": "中国正为外资企业敞开更宽的大门。据《中国日报》报道，海南自由贸易港已扩大多个领域的外资准入，让海外企业得以进入过去受限的市场。与此同时，专家表示，中国资深财政政策制定者有望接替国际货币基金组织副总裁李波，这将保持中国在该机构代表权的连续性。\n\n对职场人士来说，这两条新闻传递着同一个信息：清晰的沟通与稳定的合作关系至关重要。当政策信号保持一致时，企业就能提前规划、自信谈判。正如吉尔吉斯共和国前总理奥托尔巴耶夫在全球战略对话上所说，全球南方已成为世界新秩序的积极构建者。\n\n总之，无论你是给外国客户写邮件，还是向团队汇报方案，清晰表达想法并认真倾听的能力，才是把一次普通对话变成真正合作的关键。",
-      "sourceNote": "本文改写自 China Daily 2026年10月30日新闻：《China expands foreign business access at Hainan FTP》《Vice-minister Liao's name proposed for IMF role》《Global South to become active builder of new order》，用于英语学习目的。"
+      "title": "Cultural Travel: When a Ping-Pong Rally Opens a Door",
+      "content": "On Oct 29, German President Frank-Walter Steinmeier visited Peking University and played friendly table tennis matches with students and faculty at the Khoo Teck Puat Gymnasium. The rally across the net reminded many people of the \"ping-pong diplomacy\" of the 1970s, when small sporting gestures opened the door to big conversations between nations.\n\nCultural travel is not only about sightseeing. Campus visits, language learning and youth dialogue give young people a chance to see the world from a different angle. In Linyi, Shandong province, business representatives from abroad discovered new opportunities in a city famous for its markets and logistics. Along the UAE coastline, cleanup work continues so that future travelers can still enjoy clean beaches.\n\nTravel teaches what textbooks cannot. A handshake, a rally, or a walk through a strange city can build trust faster than any speech. That is the true value of cultural travel: it turns strangers into partners.",
+      "translation": "10月29日，德国总统弗兰克-瓦尔特·施泰因迈尔访问北京大学，并在邱德拔体育馆与北大师生进行了友好的乒乓球比赛。球网两侧的来回对攻让许多人想起上世纪70年代的\"乒乓外交\"——小小的体育互动为国家之间的大对话打开了大门。\n\n文化旅行不只是观光。校园访问、语言学习和青年对话，让年轻人有机会从不同的角度看世界。在山东临沂，来自海外的商务代表在一座以市场和物流闻名的城市里发现了新机遇。在阿联酋海岸线，清理工作仍在继续，好让未来的旅行者依然能享受洁净的海滩。\n\n旅行能教会书本教不了的东西。一次握手、一局对打，或是在陌生城市的一次漫步，都比任何演讲更快地建立信任。这正是文化旅行的真正价值：它把陌生人变成伙伴。",
+      "sourceNote": "本文根据 2026年10月31日 ChinaDaily《German president plays ping-pong at PKU》《Business representatives discover opportunities in Linyi》及 CGTN 关于阿联酋海岸线清理工作的报道改写，为学习目的进行了语言简化与整合。"
     }
   }
 }
