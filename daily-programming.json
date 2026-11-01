@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-31",
+  "date": "2026-11-01",
   "contents": [
     {
-      "id": "prog-2026-10-31",
-      "date": "2026-10-31",
-      "title": "Node.js / Deno 文件读写入门：fs/promises 与 async/await 实战",
-      "summary": "学会用 Node.js 的 node:fs/promises 与 Deno 的内置 API 进行文件的创建、追加和读取，并理解异步 API 的基本用法。",
-      "difficulty": "初级",
-      "concept": "几乎所有后端程序都离不开文件读写：写日志、读配置、导出 CSV、缓存接口结果……在 Node.js 中，最常用的文件 API 来自内置模块 fs（file system）。早期的 fs 提供的是「回调风格」的 API，比如 fs.readFile(path, cb)，嵌套深、容易写出「回调地狱」。从 Node.js 10 开始，官方提供了 fs/promises 版本，所有方法都返回 Promise，配合 async/await 可以像写同步代码一样写异步逻辑，这也是今天推荐的写法。\n\n使用时建议从 'node:fs/promises' 导入，这个 node: 前缀是 Node.js 的内置模块协议，好处是永远不会和 npm 上的同名第三方包（比如一个叫 fs 的包）冲突，团队协作时一眼就能看出这是官方模块。常用的四个方法是：readFile（读取）、writeFile（写入，会覆盖已有内容）、appendFile（追加，不会覆盖）、mkdir（创建目录）。它们都接受一个可选的 encoding 参数，比如 'utf8'。\n\n一个非常重要的细节是编码参数：如果 readFile 不传编码，返回的是 Buffer（二进制数据），打印出来是 <Buffer 68 65 6c 6c 6f> 这样的形式；传了 'utf8' 才会得到我们熟悉的字符串。同理，writeFile 既能写字符串，也能写 Buffer，这让我们既能存文本也能存图片。很多初学者在这里栽跟头：读出来的内容和预期不一样，多半就是忘了传编码。\n\n在 Deno 中，文件 API 直接挂在全局的 Deno 对象上，比如 await Deno.readFile('a.txt')（返回 Uint8Array）和 await Deno.readTextFile('a.txt')（返回字符串），不需要 require 或 import 任何东西，也没有 node_modules。这是 Deno「内置工具链」设计哲学的体现——常见能力开箱即用。理解了 Node.js 的写法后，迁移到 Deno 几乎是零成本的。\n\n工程实践上有两条经验值得注意：第一，永远不要把路径写死成绝对路径，用 path.join 或 new URL 拼接，保证代码在不同操作系统和不同机器上都能跑；第二，异步调用务必 try/catch 或 .catch 兜底，文件不存在、权限不足、磁盘满都会抛错，没有兜底的 Promise 会让进程直接崩溃。",
+      "id": "prog-2026-11-01",
+      "date": "2026-11-01",
+      "title": "Go Context 深度实践：取消传播、超时控制与 goroutine 生命周期管理",
+      "summary": "掌握 context 包的四种派生方式与协作式取消机制，写出不会泄漏 goroutine、能正确响应超时的并发代码。",
+      "difficulty": "中级",
+      "concept": "context.Context 是 Go 并发编程中用于跨 API 边界传递「取消信号、截止时间、请求级元数据」的标准接口。它的核心只有四个方法：Deadline() 返回截止时间；Done() 返回一个在 context 结束时被关闭的 channel，配合 select 可以让阻塞操作立刻醒过来；Err() 返回结束原因（Canceled 或 DeadlineExceeded）；Value() 读取只读的键值对。理解 context 的关键是把它看成一棵「派生树」：父 context 被取消时，所有子 context 会级联取消，但子 context 的取消不会影响父级。\n\n创建 context 有四种方式，各自适用不同场景。context.Background() 是根节点，通常只在 main、init 或顶层入口使用；context.TODO() 用于「暂时不知道该传什么」的占位符，本质和 Background 一样，但语义上提醒后续补充。context.WithCancel(parent) 返回可手动调用 cancel 的子 context，适合需要提前终止的长任务；context.WithTimeout(parent, d) 和 context.WithDeadline(parent, t) 会在指定时间后自动取消，是 HTTP 客户端、数据库查询、RPC 调用的标配；context.WithValue(parent, key, val) 用来携带请求 ID、traceID、认证信息等元数据。\n\n所谓「协作式取消」，是指 context 本身不会强行杀死 goroutine，它只是把 Done() 关闭，剩下的工作由你的代码来收尾。所有可能阻塞的操作都应该写成 select 三路分支：一路做正常工作，一路监听 ctx.Done()，必要时再加一路默认分支做非阻塞轮询。如果你的函数里有 for 循环、channel 收发、time.Sleep 或同步 IO，就一定要在循环体内检查 ctx.Err() 或 select ctx.Done()，否则 goroutine 会一直跑到天荒地老——这就是 goroutine 泄漏的主要来源。\n\n工程上有几条硬性经验必须遵守：第一，context 必须作为函数的第一个参数显式传递，形如 func DoSomething(ctx context.Context, ...)，绝不要存进 struct；第二，无论业务逻辑走哪个分支，defer cancel() 必须调用，否则 context 内部的 timer 和引用链会泄漏，golangci-lint 的 lostcancel 检查就是专门抓这个的；第三，WithValue 的 key 应该用包内定义的未导出自定义类型（type ctxKey struct{}），避免不同包之间 key 冲突，而且只放请求作用域的数据（traceID、认证主体），不要放业务参数；第四，判断错误类型要用 errors.Is(ctx.Err(), context.DeadlineExceeded)，而不是 ==，因为中间层可能用 %w 包装过错误；第五，Go 1.20 起推荐在需要传错误原因时使用 context.WithCancelCause / context.WithTimeoutCause，配合 context.Cause(ctx) 取消时能拿到更精确的失败原因，便于排查线上问题。\n\n在真实项目中，context 几乎总是和 errgroup、超时熔断、优雅退出联动。例如 HTTP 服务收到 SIGTERM 后，用 signal.NotifyContext 创建根 context，所有下游调用都挂在它下面，就能实现「新请求不再进入 + 存量请求在 N 秒内跑完 + 超时强制取消」的标准优雅关闭流程。理解这套模型，是把 Go 并发代码从「能跑」提升到「可运维」的关键一步。",
       "codeExample": {
-        "language": "JavaScript",
-        "code": "// file-demo.js —— Node.js 文件读写入门\n// 运行方式：node file-demo.js（需 package.json 中 \"type\": \"module\"，\n// 或者把文件命名为 file-demo.mjs）\n\nimport { mkdir, writeFile, appendFile, readFile } from 'node:fs/promises';\nimport { join } from 'node:path';\n\n// 1. 用 path.join 拼路径，跨平台安全（Windows 用反斜杠，Linux 用正斜杠）\nconst dir = './notes';\nconst file = join(dir, '2026-10-31.txt');\n\nasync function main() {\n  // 2. 递归创建目录；已存在时不会报错\n  await mkdir(dir, { recursive: true });\n\n  // 3. 写入文件（若已存在会被覆盖），'utf8' 表示按文本处理\n  await writeFile(file, '今天学习 Node.js 文件读写\\n', 'utf8');\n\n  // 4. 追加内容，不影响已有内容\n  await appendFile(file, 'fs/promises 配合 async/await 很好用\\n', 'utf8');\n\n  // 5. 读取并指定 utf8，得到字符串而非 Buffer\n  const content = await readFile(file, 'utf8');\n  console.log('---- 读取结果 ----');\n  console.log(content);\n\n  // 6. 做点小加工：统计行数\n  const lines = content.trim().split('\\n');\n  console.log(`一共 ${lines.length} 行`);\n}\n\n// 7. 统一的错误兜底：文件权限、磁盘错误都会走到这里\nmain().catch((err) => {\n  console.error('出错了：', err.message);\n  process.exit(1);\n});\n",
-        "explanation": "第 1 段：从 'node:fs/promises' 导入四个异步方法，从 'node:path' 导入 join；node: 前缀标明这是内置模块。第 2 段：定义目录 notes 和目标文件路径，用 join 拼接避免硬编码分隔符。\n\nmain() 是一个 async 函数，内部可以顺序地 await 每一步。mkdir 的 { recursive: true } 表示「像 mkdir -p 一样」逐层创建目录，目录已存在时不抛错。\n\nwriteFile 会覆盖旧内容，appendFile 则在末尾追加，两者都传入 'utf8' 保证按文本写入。readFile 同样传 'utf8'，因此 content 是字符串，可以直接 split('\\n') 统计行数——如果不传编码，content 会是 Buffer，split 方法的行为完全不同。\n\n最后 main().catch(...) 捕获整个流程中的任何异常，打印友好信息并以退出码 1 结束进程，这是命令行工具的标准做法。\n\n对应 Deno 写法：await Deno.mkdir('./notes', { recursive: true }); await Deno.writeTextFile(file, '...'); await Deno.readTextFile(file)。功能等价，只是 API 挂在全局 Deno 对象上。"
+        "language": "Go",
+        "code": "package main\n\nimport (\n\t\"context\"\n\t\"errors\"\n\t\"fmt\"\n\t\"sync\"\n\t\"time\"\n)\n\n// worker 模拟一个耗时任务，通过 select 监听 ctx.Done() 实现「协作式取消」\nfunc worker(ctx context.Context, id int, wg *sync.WaitGroup, results chan<- int) {\n\tdefer wg.Done()\n\n\t// 不同 worker 模拟不同的处理耗时：1~5 号分别为 200ms / 400ms / 600ms / 800ms / 1000ms\n\tworkTime := time.Duration(id*200) * time.Millisecond\n\n\tselect {\n\tcase <-time.After(workTime):\n\t\tresults <- id\n\t\tfmt.Printf(\"worker-%d 完成（耗时 %v）\\n\", id, workTime)\n\tcase <-ctx.Done():\n\t\t// ctx 被取消或超时，立刻收尾返回，避免 goroutine 泄漏\n\t\tfmt.Printf(\"worker-%d 中止：%v\\n\", id, ctx.Err())\n\t}\n}\n\nfunc main() {\n\t// 1. 派生一个 500ms 超时的 context（超时后自动触发取消）\n\tctx, cancel := context.WithTimeout(context.Background(), 500*time.Millisecond)\n\t// 无论走哪个分支都必须调用 cancel，否则 ctx 内部的 timer 和引用链会泄漏\n\tdefer cancel()\n\n\tresults := make(chan int, 5) // 带缓冲，worker 写入不会阻塞\n\tvar wg sync.WaitGroup\n\n\t// 2. 启动 5 个 worker，全部共享同一个 ctx\n\tfor i := 1; i <= 5; i++ {\n\t\twg.Add(1)\n\t\tgo worker(ctx, i, &wg, results)\n\t}\n\n\t// 3. 等全部 worker 退出后再 close，主 goroutine 才能安全地 range\n\tgo func() {\n\t\twg.Wait()\n\t\tclose(results)\n\t}()\n\n\t// 4. 收集成功完成的结果\n\tvar done []int\n\tfor r := range results {\n\t\tdone = append(done, r)\n\t}\n\tfmt.Println(\"成功完成的 worker:\", done)\n\n\t// 5. 用 errors.Is 判断错误类型（兼容被 %w 包装过的错误）\n\tswitch {\n\tcase errors.Is(ctx.Err(), context.DeadlineExceeded):\n\t\tfmt.Println(\"结束原因：触发了超时（DeadlineExceeded）\")\n\tcase errors.Is(ctx.Err(), context.Canceled):\n\t\tfmt.Println(\"结束原因：被主动取消（Canceled）\")\n\t}\n\n\t// 6. 查看 context 的截止时间与剩余时间（常用于把 deadline 继续传给下游）\n\tif deadline, ok := ctx.Deadline(); ok {\n\t\tfmt.Printf(\"截止时间: %v, 剩余: %v\\n\",\n\t\t\tdeadline.Format(\"15:04:05.000\"), time.Until(deadline))\n\t}\n}\n",
+        "explanation": "【第 1 部分：worker 函数】worker 接收 ctx 作为第一个参数，这是 Go 的标准签名约定。函数体用 select 同时等待两路信号：time.After(workTime) 代表任务正常完成，ctx.Done() 代表外部要求中止。哪一路先就绪就走哪一路，因此任务耗时超过 deadline 时会立刻从 case <-ctx.Done() 分支退出，而不是傻等。defer wg.Done() 保证计数器一定被减一，否则 wg.Wait() 会永久阻塞。\n\n【第 2 部分：创建带超时的 ctx】context.WithTimeout 会返回子 context 和 cancel 函数。即使代码正常结束、不需要取消，也必须 defer cancel()，因为 WithTimeout 内部会启动一个计时器，只有调用 cancel 或计时器到期才会释放；lint 工具会强制检查这一点。\n\n【第 3 部分：启动 worker 与关闭 channel】5 个 goroutine 共享同一个 ctx，形成一个「取消域」：500ms 一到，所有人同时收到信号。results 使用 5 的缓冲，worker 写入不阻塞。单独起一个 goroutine 做 wg.Wait() + close(results)，是「多生产者单消费者」收尾的标准写法，避免主流程 range 永远不结束。\n\n【第 4 部分：收集结果】range results 会一直读到 channel 被 close。由于 500ms 截止，只有 worker-1（200ms）和 worker-2（400ms）能写入，done 切片结果为 [1 2]。\n\n【第 5 部分：错误判定】ctx.Err() 在超时场景下返回 context.DeadlineExceeded。使用 errors.Is 而不是 ==，是因为中间层经常用 fmt.Errorf(\"%w\", err) 包装错误，直接比较地址会失效。\n\n【第 6 部分：Deadline 查询】ctx.Deadline() 返回(ok bool) 元组，只有 WithTimeout / WithDeadline 创建的 ctx 才有截止时间。实际项目中常用 time.Until(deadline) 计算剩余预算，再传给下游 HTTP 客户端或 SQL 驱动，实现超时的逐层收窄。"
       },
       "keyPoints": [
-        "优先从 'node:fs/promises' 导入异步 API，用 async/await 代替回调，代码可读性远高于 fs.readFile 回调版本",
-        "readFile 不传编码返回 Buffer，传 'utf8' 才返回字符串；这是初学者最常见的坑",
-        "writeFile 覆盖文件、appendFile 追加内容，两者都能写字符串或 Buffer",
-        "路径用 path.join 拼接，目录用 mkdir({ recursive: true }) 创建，避免跨平台和目录不存在导致的报错",
-        "所有文件操作都要 try/catch 或 .catch 兜底；Deno 中对应 API 为 Deno.readTextFile / Deno.writeTextFile，无需引入模块"
+        "context 必须作为函数第一个参数显式传递，绝不存入 struct 字段；只有 WithTimeout / WithDeadline 创建的 ctx 才有 Deadline()。",
+        "defer cancel() 是硬性要求：未调用会导致 context 内部 timer 与引用链泄漏，lostcancel lint 会报错。",
+        "协作式取消靠 select 监听 ctx.Done()；for 循环、channel 收发、IO 阻塞处都要留出取消分支，否则产生 goroutine 泄漏。",
+        "WithValue 的 key 要用包内未导出自定义类型（type ctxKey struct{}）防止冲突，且只放 traceID、认证主体等请求级元数据，不放业务参数。",
+        "判断错误用 errors.Is(ctx.Err(), context.DeadlineExceeded)，需要携带取消原因时用 context.WithCancelCause / context.WithTimeoutCause 配合 context.Cause(ctx)。"
       ],
       "exercise": {
-        "description": "写一个小工具 count-lines.js：它读取当前目录下的 notes.txt（若不存在则创建并写入三行示例文本），然后统计并输出文件的总行数与总字符数。要求所有文件操作使用 node:fs/promises，并对可能的错误做统一处理。",
-        "hint": "先用 access 或 try/catch 判断文件是否存在，不存在就 writeFile 创建；读取时记得传 'utf8' 拿到字符串，然后用 split('\\n') 得到行数、用 content.length 得到字符数。整个流程写在一个 async 函数里，最后用 main().catch(...) 兜底。",
+        "description": "实现一个并发抓取函数 func FetchAll(ctx context.Context, urls []string, timeout time.Duration) ([]string, error)：为每个 URL 启动一个 goroutine 模拟耗时抓取（用 time.Sleep 随机 100~800ms），要求整体必须在 timeout 之内返回；超时后未完成的请求要立刻中止，函数返回已成功的结果切片和 ctx.Err()。再进一步：用 context.WithCancelCause 在「失败数达到一半」时主动取消剩余任务，并用 context.Cause(ctx) 把取消原因打印出来。",
+        "hint": "用 context.WithTimeout 派生总控 ctx，每个任务内部 select 监听 ctx.Done() 与完成信号；用 sync.WaitGroup + close(channel) 收尾；收集结果时不要在 for range 中直接 return，先让 wg.Wait() 跑完避免泄漏。主动取消场景用 context.WithCancelCause(ctx, fmt.Errorf(\"失败过多\")) 派生子 ctx，然后调用 cancel(err) 传入原因。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，使文件按文本方式写入并按字符串读取。",
-            "codeContext": "import { writeFile, readFile } from 'node:fs/promises';\n\nawait writeFile('a.txt', 'hello', '[编码]');\nconst text = await readFile('a.txt', '[编码]');\nconsole.log(text.toUpperCase());",
+            "question": "补全代码：创建一个 3 秒后自动取消的 context，并确保资源被正确释放。",
+            "codeContext": "ctx, ____ := context.____(context.Background(), 3*time.Second)\ndefer ____()\n\nresp, err := client.Do(req.WithContext(ctx))",
             "segments": [
               {
                 "type": "text",
-                "content": "await writeFile('a.txt', 'hello', '",
+                "content": "ctx, cancel := context.",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,75 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择编码]",
+                "placeholder": "[选择创建函数]",
                 "options": [
-                  "utf8",
-                  "buffer",
-                  "ascii-only",
-                  "text"
+                  "WithCancel",
+                  "WithTimeout",
+                  "WithValue",
+                  "Background"
                 ],
-                "correctAnswer": "utf8"
+                "correctAnswer": "WithTimeout"
               },
               {
                 "type": "text",
-                "content": "');\nconst text = await readFile('a.txt', '",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择编码]",
-                "options": [
-                  "utf8",
-                  "buffer",
-                  "ascii-only",
-                  "text"
-                ],
-                "correctAnswer": "utf8"
-              },
-              {
-                "type": "text",
-                "content": "');\nconsole.log(text.toUpperCase());",
+                "content": "(context.Background(), 3*time.Second)\ndefer cancel()\nresp, err := client.Do(req.WithContext(ctx))",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "utf8",
-            "explanation": "Node.js 的 fs API 中，表示文本编码的参数值是字符串 'utf8'（也接受 'utf-8'）。'buffer' 不是合法编码名，readFile 若想得到 Buffer 应该直接不传编码；'text' 与 'ascii-only' 都不存在。传入 'utf8' 后 writeFile 按文本写入、readFile 返回字符串，text.toUpperCase() 才能正常工作。"
+            "correctAnswer": "WithTimeout",
+            "explanation": "需要「一段时间之后自动取消」，语义上对应 context.WithTimeout(parent, d)。WithCancel 只能手动取消，没有定时能力；WithValue 用于传元数据；Background 是根 context，不具备派生超时的能力。WithTimeout 返回的 cancel 必须被调用（此处用 defer cancel()），否则内部计时器会泄漏。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 node:fs/promises，下面哪一项说法是正确的？",
-            "codeContext": "import { readFile, mkdir } from 'node:fs/promises';\n\nconst data = await readFile('a.txt');\nconst text = await readFile('a.txt', 'utf8');\nawait mkdir('x/y/z', { recursive: true });",
+            "question": "关于 context.WithValue 的使用，下面哪一项是符合 Go 工程规范的？",
+            "codeContext": "type ctxKey struct{}\nctx := context.WithValue(parent, ctxKey{}, \"trace-123\")\n\n// 另一种写法\nctx2 := context.WithValue(parent, \"traceID\", \"trace-123\")",
             "segments": null,
             "options": [
-              "readFile 不传编码时返回的是字符串",
-              "readFile 不传编码时返回的是 Buffer",
-              "writeFile 只能写入字符串，不能写入 Buffer",
-              "mkdir 的 recursive 选项为 true 时，目录已存在会抛出 EEXIST 错误"
+              "用字符串 \"traceID\" 作为 key 最直观，是官方推荐做法",
+              "用包内定义的未导出自定义类型作为 key，避免与其他包冲突",
+              "可以把数据库连接池等业务对象放进 context，方便随处取用",
+              "WithValue 创建的 context 可以替代函数参数传递业务数据"
             ],
-            "correctAnswer": "readFile 不传编码时返回的是 Buffer",
-            "explanation": "readFile 不指定 encoding 时返回 Buffer（二进制数据），指定 'utf8' 等编码才返回字符串。writeFile 同样接受字符串和 Buffer，因此可用于保存图片等二进制文件。mkdir({ recursive: true }) 的行为等同于 shell 的 mkdir -p，目录已存在时不会抛错，只有 recursive 为 false（默认）时才会因 EEXIST 报错。"
+            "correctAnswer": "用包内定义的未导出自定义类型作为 key，避免与其他包冲突",
+            "explanation": "context 是请求作用域的元数据载体，key 必须可比较且唯一。不同包若都用字符串 \"traceID\"，Value 取值会互相覆盖或取错，因此官方建议使用未导出的自定义类型（type ctxKey struct{}）作为 key。业务参数应走显式函数参数，数据库连接池等长生命周期对象应放在 struct 或依赖注入容器里，不应塞进 context。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "假设 log.txt 事先不存在，执行下面的代码，控制台输出什么？",
-            "codeContext": "import { writeFile, appendFile, readFile } from 'node:fs/promises';\n\nawait writeFile('log.txt', '1');\nawait appendFile('log.txt', '2');\nconst s = await readFile('log.txt', 'utf8');\nconsole.log(s.length, s);",
+            "question": "运行下面的代码，主程序最终会打印什么？",
+            "codeContext": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"time\"\n)\n\nfunc main() {\n\tctx, cancel := context.WithCancel(context.Background())\n\tdefer cancel()\n\n\tgo func() {\n\t\ttime.Sleep(100 * time.Millisecond)\n\t\tcancel()\n\t}()\n\n\tselect {\n\tcase <-time.After(1 * time.Second):\n\t\tfmt.Println(\"超时\")\n\tcase <-ctx.Done():\n\t\tfmt.Println(\"取消:\", ctx.Err())\n\t}\n}",
             "segments": null,
             "options": [
-              "2 12",
-              "3 1\\n2",
-              "12 12",
-              "抛出异常：文件不存在"
+              "取消: context canceled",
+              "超时",
+              "取消: context deadline exceeded",
+              "程序 panic 并报错"
             ],
-            "correctAnswer": "2 12",
-            "explanation": "writeFile 先创建文件并写入字符 '1'（文件内容为 \"1\"），appendFile 在末尾追加 '2'（内容变为 \"12\"，中间没有换行符）。readFile 以 utf8 读回字符串 \"12\"，其 length 为 2，因此先打印 2，再打印 12。appendFile 在文件不存在时会自动创建文件，不会抛错。"
+            "correctAnswer": "取消: context canceled",
+            "explanation": "goroutine 在 100ms 时调用 cancel()，此时 ctx.Done() 关闭，ctx.Err() 变为 context.Canceled。select 的两个分支中，ctx.Done() 在 100ms 时就绪，远早于 time.After(1s) 的 1000ms，因此先执行 case <-ctx.Done() 分支，打印 \"取消: context canceled\"。注意区别：deadline exceeded 只会由 WithTimeout / WithDeadline 到期产生。"
           }
         ]
       }

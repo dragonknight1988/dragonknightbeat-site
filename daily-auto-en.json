@@ -1,81 +1,81 @@
 {
- "date": "October 31, 2026",
- "summary": "China's domestic auto market saw a wave of new vehicle launches today: AITO's new M8 announced three trim levels for purchase, while the eπ 007, XPeng MONA L05, IM LS8 NEO, and Ford Edge L were launched or opened for pre-sale in a cluster, escalating competition on both pricing and technology.",
+ "date": "2026-11-01",
+ "summary": "AITO's new M8 unveiled three selectable configurations, BYD's Titanium 7 surpassed 300,000 units in annual sales, a wave of value-for-money new energy vehicles launched in quick succession, and AI-native vehicles and accessible safety have emerged as the industry's new focal points.",
  "sections": [
   {
    "id": "headline",
-   "title": "Today's Headlines",
+   "title": "Top News",
    "icon": "📰",
    "articles": [
     {
      "id": "auto-001",
-     "title": "AITO New M8 Unveiled in Max, Max+ and Ultra Trims, Available for Purchase Starting Today",
-     "summary": "The AITO New M8 has officially been unveiled in Max, Max+ and Ultra configurations, establishing a clear product lineup and opening orders to customers from today.",
-     "detail": "According to NetEase Auto, the AITO New M8 under Harmony Intelligent Mobility officially revealed its trim details today, launching Max, Max+ and Ultra variants with orders open immediately. As AITO's core offering in the mid-to-large SUV segment, the new M8 enters with three configuration tiers aimed at buyers with different budgets and needs — the Max focuses on value for money and mainstream equipment, the Max+ enhances comfort and smart features, and the Ultra carries the flagship role with premium specifications. Elsewhere in the market the same day, the eπ 007 launched from 109,900 yuan for a limited time, the XPeng MONA L05 entered the market from 139,800 yuan on a limited basis, and the IM Motors LS8 NEO pure-electric version opened pre-sales from 249,800 yuan — a notably faster pace of new model rollouts. AITO's decision to reveal trims and open orders at this juncture is both an effort to capture the fourth-quarter buying window and a sign that competition in the mid-to-large new-energy SUV market is shifting from a pure price war to more refined configuration tiering and product matrix management.",
-     "impact": "The three-tier trim strategy should help AITO cover a broader price range and strengthen its share in the mid-to-large new-energy SUV market, while intensifying competition on both specifications and pricing among rivals in the segment.",
+     "title": "AITO New M8 Reveals Max, Max+ and Ultra Trims; Configuration Selection Now Open",
+     "summary": "The AITO New M8 has launched three configurations — Max, Max+, and Ultra — now open for customer selection, further rounding out the brand's product lineup.",
+     "detail": "According to NetEase Auto, AITO has officially unveiled three configuration versions of the New M8 — Max, Max+, and Ultra — with selection open starting today. As the brand's core model in the mid-to-large new-energy SUV segment, the New M8 uses a three-tier configuration strategy to cover different budgets and needs: the Max focuses on essential smart features and comfort, the Max+ upgrades smart driving and cabin experience, while the Ultra targets users seeking advanced autonomous driving and a premium experience. The trim naming follows AITO's existing product system for easy understanding and comparison. The opening of configuration selection indicates the new model has entered the final stage before deliveries begin, allowing customers to lock in their preferred version. In the fiercely contested mid-to-large SUV segment, where rivals such as the Li Auto L series and Xiaomi are expanding aggressively, AITO's three-trim approach aims to sustain the sales momentum of the M9 and M7.",
+     "impact": "The three-tier configuration strategy spans different price bands and will intensify competition in the mid-to-large new-energy SUV market, offering consumers richer and more precise choices in the 300,000-yuan family SUV category.",
      "source": "NetEase Auto"
     }
    ]
   },
   {
-   "id": "china",
+   "id": "china-market",
    "title": "China Auto Market",
    "icon": "🇨🇳",
    "articles": [
     {
      "id": "auto-002",
-     "title": "XPeng MONA L05 Launches with Range-Extender and BEV Options from RMB 139,800 (Limited Time)",
-     "summary": "XPeng MONA L05 hits the market with both range-extended and battery-electric powertrains, priced from RMB 139,800 for a limited time, targeting the mainstream family car segment.",
-     "detail": "According to NetEase Auto, XPeng has officially launched the MONA L05, offering both range-extended and fully electric powertrains at a limited-time price starting at RMB 139,800. The dual-powertrain lineup is the biggest highlight of the launch: the BEV version targets urban users with convenient charging access, while the range-extended version addresses range anxiety and covers a broader range of use cases. The RMB 139,800 starting price places the MONA L05 squarely in the most competitive price band for compact NEVs and SUVs, going head-to-head with the Dongfeng 007 (from RMB 109,800 limited-time) and the Aeolus L8+ (from RMB 129,900), both launched the same day. XPeng had already positioned the MONA series as a high-volume, mass-market product line, and the L05's launch further deepens its footprint below the RMB 150,000 mark — a sign that new EV entrants are accelerating their push into mainstream price bands, using scaled deliveries to dilute costs and win market share.",
-     "impact": "The dual powertrain options and a starting price of RMB 139,800 will directly shake up the mainstream family car market, intensifying competition among rivals in the same price range on range, powertrain type and features.",
+     "title": "BYD Titanium 7 Surpasses 300,000 Sales in First Year; 27,000 Sold Overseas in Six Months",
+     "summary": "BYD's Titanium 7 has exceeded 300,000 cumulative sales in its first year on the market, with overseas sales reaching 27,000 in six months, marking strong performance.",
+     "detail": "According to NetEase Auto, BYD's Titanium 7 has surpassed 300,000 cumulative sales within a year of its launch, becoming another blockbuster product in the new energy vehicle market. Overseas performance has also been impressive, with six-month sales reaching 27,000 units. The annual sales volume of 300,000 units means stable monthly sales of over 25,000, placing it in the top tier of its segment. Against the backdrop of rising new energy penetration rates in China, the Titanium 7 has ramped up quickly thanks to its product positioning, pricing strategy, and BYD's vertically integrated supply chain advantages. The 27,000 overseas units sold in six months show that its global expansion strategy is bearing fruit, with overseas markets emerging as a new growth curve for BYD. Dual-track growth in exports and domestic sales has also further strengthened BYD's economies of scale and brand premium.",
+     "impact": "The Titanium 7's dual-market performance underscores BYD's scale advantages, putting simultaneous pricing and volume pressure on rivals in the same segment and accelerating Chinese brands' overseas expansion.",
      "source": "NetEase Auto"
     },
     {
      "id": "auto-003",
-     "title": "2027 Dongfeng 007 Launched: From RMB 109,800 (Limited Time), 675km BEV Range",
-     "summary": "The 2027 Dongfeng 007 officially launches at a limited-time price of RMB 109,800, offering a 675km electric range and standout value for money.",
-     "detail": "According to NetEase Auto, the 2027 Dongfeng 007 has officially launched with a limited-time starting price of RMB 109,800 and a pure-electric range of 675km. As a key NEV model under Dongfeng's 007 brand, the 2027 version's combination of a \"RMB 109,800 limited-time price + 675km range\" delivers strong competitiveness in the RMB 100,000–150,000 segment. Price competition in the same class was particularly fierce on the same day: the XPeng MONA L05 launched from RMB 139,800 (limited-time) and the Aeolus L8+ from RMB 129,900, continuing the downward slide of the entry price for mainstream electric sedans. The 675km range figure also highlights domestic brands' progress in battery energy management and vehicle-level energy efficiency — the Changan CS75 PLUS Blue Whale Super Engine logged a tested fuel consumption of just 3.6L/100km the same day, showing hybrid efficiency tech is iterating rapidly too. BEV and hybrid pathways are both lowering ownership costs for consumers, albeit in different ways.",
-     "impact": "A 675km-range model appearing in the RMB 100,000 price band will further lower the barrier to quality electric mobility and accelerate NEV substitution for gasoline cars at the same price point.",
+     "title": "2027 Dongfeng eπ 007 Launches at 109,900 Yuan Limited-Time Price with 675km Electric Range",
+     "summary": "The 2027 Dongfeng eπ 007 has launched with a limited-time starting price of 109,900 yuan and a 675km electric range, offering strong value for money.",
+     "detail": "According to NetEase Auto, the 2027 Dongfeng eπ 007 has officially launched with a limited-time starting price of 109,900 yuan and a pure-electric range of 675km. The new model is making simultaneous gains on the two core dimensions of price and range: the 109,900-yuan limited-time starting price has dropped into mainstream A-segment ICE territory, while the 675km range ranks among the best in its price bracket, directly easing range anxiety. As Dongfeng's new energy brand, eπ is accelerating its push into the 100,000–150,000-yuan electric sedan market with a high-spec, low-price strategy. This price range is one of the fastest-growing and most competitive segments in the new energy market, where BYD, Geely, and XPeng all have multiple offerings. The limited-time pricing also reflects the promotional tactics commonly used by automakers during the year-end sales drive.",
+     "impact": "A 675km range breaking into the 100,000-yuan price band will further squeeze rivals in the ICE and budget EV space, accelerating the electrification shift in the A-segment market.",
      "source": "NetEase Auto"
     },
     {
      "id": "auto-004",
-     "title": "IM LS8 NEO BEV Opens Pre-Sales from RMB 249,800 with CATL Batteries Standard Across All Trims",
-     "summary": "The IM LS8 NEO BEV opens pre-sales from RMB 249,800 with CATL batteries standard across the lineup, underscoring safety and quality in the premium EV segment.",
-     "detail": "According to NetEase Auto, IM Motors has opened pre-sales for the LS8 NEO battery-electric version, priced from RMB 249,800, with CATL batteries standard across all trims. With NEV safety incidents drawing frequent public attention, IM's decision to make CATL cells a lineup-wide standard feature rather than a top-trim exclusive is intended to leverage supply-chain credibility to strengthen consumer trust in battery safety and consistency. The RMB 249,800 pre-sale price also places the LS8 NEO in the 250,000-yuan premium NEV SUV segment where Li Auto, AITO and NIO are heavily focused — and with AITO's new M8 opening orders for its Max, Max+ and Ultra trims the same day, direct competition in the mid-to-high-end market appears inevitable. Analysts note that as CATL batteries gradually become a \"standard selling point\" for multiple brands, battery suppliers' brand pull is shifting from B2B to B2C, becoming an important factor in purchase decisions.",
-     "impact": "Standard CATL batteries raise the bar for safety credentials in premium electric SUVs, and may push rival brands to make their battery supply chains more transparent and standardized.",
+     "title": "700 TOPS Intelligent Driving Compute: Dongfeng Aeolus L8+ Launches at 129,900 Yuan",
+     "summary": "Dongfeng Aeolus L8+ launches at a starting price of 129,900 yuan, featuring a 700 TOPS intelligent driving system.",
+     "detail": "According to NetEase Auto, the Dongfeng Aeolus L8+ has officially launched at a starting price of 129,900 yuan, with its biggest highlight being a smart driving hardware platform delivering 700 TOPS of computing power. Compute at the 700 TOPS level previously appeared mostly in vehicles priced above 200,000 yuan; bringing it down to the 120,000-yuan price point marks the rapid popularization of advanced intelligent driving hardware. In line with Dongfeng's stated goal of making safety and intelligent technology widely accessible, the Aeolus L8+ uses hardware redundancy to leave room for future OTA upgrades and higher-level features. In the 120,000–150,000-yuan SUV market, intelligent driving capability is gradually replacing powertrain and cabin space as a key purchase decision factor. The Aeolus L8+'s pricing and configuration combination also reflects Dongfeng's strategy of trading technology features for market share during its new energy transition.",
+     "impact": "High-compute intelligent driving hardware reaching the 120,000-yuan tier will drive mass adoption of smart driving features and force rivals at the same price point to upgrade their own intelligent driving offerings.",
      "source": "NetEase Auto"
     },
     {
      "id": "auto-005",
-     "title": "Avatr 07L Max BEV Launched at RMB 215,900 After Limited-Time Benefits",
-     "summary": "The Avatr 07L Max BEV launches at RMB 215,900 after limited-time benefits, while a \"Cancelling the Launch Event\" hashtag trends on Baidu.",
-     "detail": "According to NetEase Auto, the Avatr 07L Max battery-electric version has officially launched, priced at RMB 215,900 after limited-time benefits. Meanwhile, a Baidu trending topic — \"Avatr cancelling its launch event can't save its unsellable cars\" — thrust the brand's market performance into the spotlight. On one hand, product momentum continues: the 07L Max BEV enters the mid-to-high-end electric market at RMB 215,900 after benefits, a competitive price. On the other, the public discussion reflects pressure on the brand's sales and visibility, with outside questions raised about its marketing cadence and channel efficiency. Objectively, backed by resources from Changan, Huawei and CATL, Avatr has a solid foundation in product capability and technology reserves. But facing an onslaught of launches — the AITO new M8 opening orders and the IM LS8 NEO pre-selling from RMB 249,800 — converting product value into sales and word-of-mouth is its most pressing challenge.",
-     "impact": "The contrast between product upgrades and lagging sales sentiment underscores that NEV brands need more than price — they must strengthen channels, marketing and user engagement capabilities.",
+     "title": "ID. ERA 5S Off to Strong Start; Max Version at 119,900 Yuan Becomes Best-Seller",
+     "summary": "The ID. ERA 5S has seen strong sales since launch, with the Max version at 119,900 yuan emerging as the volume driver of the lineup.",
+     "detail": "According to NetEase Auto, the ID. ERA 5S has shown active market performance since launch, with the Max version becoming the lineup's best-selling model at a price of 119,900 yuan. From a sales-mix perspective, the Max version has captured concentrated buyer interest thanks to its balance of price and features, indicating that today's new energy vehicle buyers prioritize the combination of value and practical equipment rather than simply opting for the cheapest entry-level version or the top-of-the-line trim. The ID. ERA series is entering the mainstream pure-electric market in the 110,000–130,000-yuan price band, facing intense competition from domestic brands. The Max version's strong sales also provide a clear market signal for future production planning and configuration adjustments, and it is expected to become the priority for capacity allocation. The rebound of joint-venture and new joint-venture brands in this price segment suggests their localization and product planning capabilities are improving.",
+     "impact": "The strong sales of a single configuration version reflect mainstream consumers' focus on value for money, prompting automakers to streamline SKUs and concentrate on breakout configurations to improve scale efficiency.",
      "source": "NetEase Auto"
     }
    ]
   },
   {
-   "id": "international",
-   "title": "International News",
+   "id": "global",
+   "title": "Global News",
    "icon": "🌍",
    "articles": [
     {
      "id": "auto-006",
-     "title": "New Ford Edge L Launched at 229,800–299,800 Yuan",
-     "summary": "Ford's new Edge L has officially launched with a price range of 229,800 to 299,800 yuan, as joint-venture midsize-to-large SUVs continue to counter competition with feature upgrades.",
-     "detail": "According to NetEase Auto, the new Ford Edge L has officially gone on sale, with an official guide price range of 229,800 to 299,800 yuan. As Ford's midsize-to-large SUV in the Chinese market, this facelift still centers on spacious interiors, multi-seat configurations, and family-use scenarios, covering the 220,000 to 300,000 yuan price band. Notably, this segment is facing intense pressure from Chinese-brand new energy vehicles: on the same day, AITO unveiled three available configurations of the new M8, while the IM LS8 NEO BEV opened pre-sales at 249,800 yuan, with extended-range and battery-electric products showing clear advantages in running costs and smart features. To hold share, joint-venture brands' fuel and hybrid SUVs can only compete on mechanical quality, reliability reputation, and dealer discounts. The Edge L's pricing strategy is a typical example of international automakers' 'trading value for share' approach in China, and reflects the defensive posture of joint-venture brands in the midsize-to-large SUV market.",
-     "impact": "Joint-venture SUVs holding the 220,000–300,000 yuan price band will face a prolonged standoff with domestic new energy models, making dealer discounts and feature upgrades the new competitive norm.",
+     "title": "New Ford Edge L: More Comfortable, Smarter and More Efficient — Still a Hit with the Whole Family",
+     "summary": "The new Ford Edge L delivers upgrades in comfort, intelligence and efficiency, targeting family users across all driving scenarios.",
+     "detail": "According to NetEase Auto, the new Ford Edge L brings simultaneous upgrades across three dimensions — comfort, smart features and efficiency — continuing to focus on the family user market. As Chongqing Ford's pillar model in the mid-to-large SUV segment, the Edge L has traditionally offered a spacious cabin, flexible seating layouts and American-style chassis tuning. The new version builds on those strengths by enhancing the smart cockpit and driver-assist functions, while also optimizing powertrain fuel economy to lower long-term ownership costs for families. With new-energy SUVs increasingly squeezing the joint-venture fuel SUV market, Ford has chosen to maintain competitiveness through product upgrades rather than simple price cuts, demonstrating its continued commitment to the mid-to-large family SUV segment. The Edge L's target users are highly sensitive to space, comfort and reliability, and the upgrade direction aligns well with those demands.",
+     "impact": "Joint-venture fuel SUVs are countering the new-energy wave with smarter, more efficient upgrades, offering options for family buyers who still prefer gasoline vehicles and slowing segment attrition.",
      "source": "NetEase Auto"
     },
     {
      "id": "auto-007",
-     "title": "Global NEV Industry Watch: Electrification Race Enters Deep Waters of Technology and Cost",
-     "summary": "Industry reports indicate that global competition in the new energy vehicle sector is shifting toward a combined contest of range, computing power, and supply chain costs.",
-     "detail": "Drawing on coverage from industry platforms such as OFweek New Energy Vehicle and Gasgoo, the global NEV industry's competition is moving beyond simple electrification adoption toward a combined contest of range capability, intelligent driving computing power, and supply chain costs. Take the latest products in the Chinese market for example: the 2027 model Yipai 007 offers a 675 km electric range, the Dongfeng Aeolus L8+ comes with a 700 TOPS intelligent driving system starting at 129,900 yuan, and the IM LS8 NEO comes standard with CATL batteries across the lineup — figures that reflect the speed of industry technological iteration. For international automakers, the rapid progress of Chinese brands in powertrain systems, intelligent driving, and cost control is forcing global supply chains and R&D systems to accelerate adjustments; the influence of Chinese suppliers such as CATL is also extending from vehicle integration to global markets. Looking ahead, the next phase of global competition will revolve around battery technology routes, intelligent driving computing platforms, and scaled cost advantages, with technology democratization and high-end breakthroughs advancing in parallel.",
-     "impact": "The rapid improvement of China's NEV technology benchmarks will compel global automakers to accelerate transformation, with supply chain and cost capabilities becoming key variables in international competition.",
-     "source": "OFweek New Energy Vehicle, Gasgoo"
+     "title": "Changan CS75 PLUS Blue Whale Super Engine Records Just 3.6L/100km in Real-World Testing",
+     "summary": "Real-world tests show the Changan CS75 PLUS Blue Whale Super Engine variant achieving fuel consumption as low as 3.6L per 100km, a standout in efficiency.",
+     "detail": "According to real-world test data from NetEase Auto, the Changan CS75 PLUS Blue Whale Super Engine variant achieved a tested fuel consumption of 3.6L/100km. The Blue Whale powertrain is Changan's self-developed core engine system; the Super Engine variant has significantly cut fuel consumption through optimized combustion efficiency, upgraded thermal management and improved transmission matching — all while maintaining strong power output. A figure of 3.6L/100km is exceptionally good for a compact SUV, and even accounting for potentially favorable test conditions, its efficiency potential remains impressive. The CS75 PLUS has long ranked among the top-selling domestic compact SUVs, with powertrain economy being one of its core selling points. As hybrid and pure-electric models penetrate the market rapidly, efficient gasoline powertrains remain a key choice for a large number of buyers in cities without license-plate restrictions.",
+     "impact": "Ultra-low real-world fuel consumption strengthens the economic competitiveness of gasoline SUVs, giving consumers who have not yet switched to new energy a more practical reason to buy.",
+     "source": "NetEase Auto"
     }
    ]
   },
@@ -86,41 +86,41 @@
    "articles": [
     {
      "id": "auto-008",
-     "title": "专访长安蒋平：安全不做高低配，要让安全技术普惠",
-     "summary": "长安汽车蒋平表示安全配置不应分高低配，主张将安全技术向全系车型普及，普惠消费者。",
-     "detail": "据网易汽车对长安汽车蒋平的专访，长安在产品安全理念上明确表态：安全不做高低配，要让安全技术普惠。这意味着主动安全、被动安全等核心安全配置不应只出现在高配或顶配车型上，而应尽可能下放到主销乃至入门版本，让更多用户以更低门槛获得安全保障。这一表态的背景，是当前新能源汽车市场价格战持续，部分车型为压低成本在安全配置上做减法，引发消费者与行业关注。长安同时以实测数据展示技术实力：CS75 PLUS蓝鲸超擎实测油耗仅3.6L/100km，体现出蓝鲸动力在节能上的竞争力。若“安全普惠”理念落实到全系产品，将对同价位竞品形成配置压力，也考验企业在成本与安全之间的平衡能力。",
-     "impact": "安全配置去等级化若成为行业共识，将提升入门车型安全标准，推动竞争从价格战转向价值战。",
-     "source": "网易汽车"
+     "title": "Exclusive Interview with Jiang Ping: No Safety Tiering — Changan Aims to Make Safety Tech Accessible to All",
+     "summary": "Changan Auto's Jiang Ping says safety features should not be split between trim levels, pledging to make safety technology standard across its entire lineup.",
+     "detail": "In an exclusive interview with NetEase Auto, Changan Auto's Jiang Ping outlined the company's principle of avoiding safety tiering, vowing to make safety technology universally accessible across its full product range rather than reserving it for higher trims. The remarks strike at a long-standing industry pain point: many automakers use active safety systems, airbag counts, and body structure as differentiators between trim levels, compromising safety performance on entry-level models. Changan's inclusive approach means even lower-priced volume models will come standard with core safety technology, restoring safety from a selling point to a non-negotiable baseline. This follows Changan's recent move to equip models such as the Fengshen L8+ with 700 TOPS computing power for intelligent driving, reflecting a broader strategy of pushing technology and safety features down the lineup to win consumer trust and market share. If implemented, the approach could set a benchmark that pressures the industry on equipment strategy.",
+     "impact": "Standardizing safety features across all models will raise the industry's safety baseline, forcing rivals to abandon trim-based safety differentiation and ultimately benefiting entry-level consumers.",
+     "source": "NetEase Auto"
     },
     {
      "id": "auto-009",
-     "title": "实测长安CS75 PLUS蓝鲸超擎油耗仅3.6L/100km",
-     "summary": "实测数据显示长安CS75 PLUS蓝鲸超擎百公里油耗仅3.6L，混动节能技术竞争再下一城。",
-     "detail": "据网易汽车实测数据，长安CS75 PLUS蓝鲸超擎版本的百公里油耗仅为3.6L/100km，节能表现相当突出。对于一款面向家庭用户的主流SUV而言，3.6L/100km的实测油耗意味着日常通勤成本大幅降低，也直接回应了消费者对用车经济性的核心关切。这一数据与同日上市的多款新能源车型形成呼应：奕派007以675km纯电续航主打出行半径，小鹏MONA L05用增程与纯电双动力解决续航焦虑，节能路径虽不同，但目标一致——降低全生命周期用车成本。从市场角度看，混动技术的持续进化让燃油车阵营依然保有竞争力，纯电、增程、混动三种技术路线将在相当长时间内共存竞争，最终由消费者根据补能条件与使用场景做出选择。",
-     "impact": "3.6L/100km的实测油耗强化了混动SUV的经济性优势，为燃油车阵营在新能源浪潮中保留了竞争筹码。",
-     "source": "网易汽车"
+     "title": "CCTV Interview with AIVA's Li Bo: Breaking Down the Product Logic of AI-Native Vehicles",
+     "summary": "CCTV interviews AIVA's Li Bo to unpack the product definition logic and technical architecture behind AI-native vehicles.",
+     "detail": "According to NetEase Auto, CCTV conducted an in-depth interview with AIVA's Li Bo on the product logic of AI-native vehicles. An AI-native vehicle refers to one redesigned from the ground up around artificial intelligence — from product definition and electronic/electrical architecture to software systems — rather than a traditional model with AI features layered on top. Li Bo explained how AI-native vehicles differ in interaction models, feature iteration, and user experience, emphasizing that AI capabilities will evolve from an assistive tool into a core product strength. CCTV's coverage itself signals that the convergence of AI and the automotive industry has risen to the agenda of mainstream media and industrial policy. With multiple automakers and tech companies racing on large-model integration, smart cockpits, and unified autonomous driving solutions, the AI-native concept offers the industry a new framework for product definition.",
+     "impact": "Mainstream adoption of the AI-native concept will reshape automotive product definition logic, pushing automakers from hardware competition toward AI software capability competition and accelerating industry consolidation.",
+     "source": "NetEase Auto"
     }
    ]
   },
   {
    "id": "outlook",
-   "title": "Outlook for Tomorrow",
+   "title": "Tomorrow's Outlook",
    "icon": "🔮",
    "articles": [
     {
      "id": "auto-010",
-     "title": "How NEVs Can Win Over China's Lower-Tier Markets",
-     "summary": "Taking new energy vehicles into county and township markets still faces multiple challenges — charging infrastructure, product fit and consumer awareness — requiring coordinated efforts across the industry.",
-     "detail": "According to Sogou News, how new energy vehicles can successfully penetrate lower-tier markets remains a key industry focus. NEV consumption is currently concentrated in first- and second-tier cities, with penetration in county and township markets still relatively limited. Constraints include insufficient charging infrastructure coverage, consumer concerns over battery safety and range degradation, an underdeveloped after-sales service network, and products whose pricing and dimensions may not suit lower-tier demand. Still, the potential of these markets is considerable. Recent market launches show the entry bar has largely been cleared: the eπ 007 is available from RMB 109,900 for a limited time, the XPeng MONA L05 from RMB 139,800, and the Dongfeng Aeolus L8+ from RMB 129,900 with 700 TOPS of intelligent driving computing power — meaning the RMB 100,000–150,000 band already offers products with strong range and smart features. The next critical steps are the roll-out of charging and battery-swap networks into lower-tier areas, the continuation of trade-in subsidy policies, and greater investment by automakers in county-level sales channels and services.",
-     "impact": "With product pricing and technology barriers falling, charging networks and channel services will become the decisive factors for NEVs breaking into lower-tier markets.",
-     "source": "Sogou News"
+     "title": "DeepSeek Unveils New Agent Architecture: AI Directing AI Could Reshape Smart Cockpits",
+     "summary": "DeepSeek has launched a new Agent architecture in which AI begins directing AI to collaborate on tasks, a shift poised to deeply impact automotive intelligence.",
+     "detail": "According to Baidu Hot Search, DeepSeek has unveiled a major new Agent architecture enabling a paradigm where AI directs AI to get work done, with multiple agents dividing labor and collaborating to complete complex tasks. While not directly an automotive story, the breakthrough carries profound implications for the car industry: multi-agent collaborative architectures can be introduced into smart cockpits and autonomous driving systems, allowing voice assistants, vehicle control, navigation and driving strategy modules to work together autonomously as agents — users issue a single instruction, and the system automatically decomposes and dispatches tasks internally. Combined with the AI-native automotive product logic presented today by AIVA's Li Bo, large language models and Agent capabilities are becoming the underlying variables shaping competition in the next generation of intelligent vehicles. Rapid iteration in domestic AI technology also supplies the technical foundation for Chinese brands to lead in smart cockpits and human-machine interaction.",
+     "impact": "Mature Agent architectures will accelerate the shift of smart cockpits from passive response to proactive service, giving domestic brands new tools to build software-based differentiation.",
+     "source": "Baidu Hot Search"
     },
     {
      "id": "auto-011",
-     "title": "New Launch Wave Opens as RMB 150,000-Class Market Heads for Fierce Competition",
-     "summary": "AITO, XPeng, eπ, IM Motors and Aeolus are rolling out new models in quick succession, with price cuts and technology upgrades advancing in parallel.",
-     "detail": "Today's wave of new model announcements marks the start of a major product launch surge across the mainstream price band: AITO has opened orders for three variants of the new M8 — Max, Max+ and Ultra; the XPeng MONA L05, offering both range-extended and pure-electric powertrains, starts at RMB 139,800 for a limited time; the 2027 eπ 007 is priced from RMB 109,900 with 675 km of pure-electric range; the Dongfeng Aeolus L8+ launched from RMB 129,900 with 700 TOPS of intelligent driving computing power; the IM LS8 NEO pure-electric version opened pre-sales from RMB 249,800; and the new Ford Edge L holds the joint-venture ground from RMB 229,800. Looking ahead, two trends are clear. First, price competition will concentrate further in the RMB 100,000–150,000 range, letting consumers access long range and advanced driver assistance on tighter budgets. Second, differentiation is shifting from price to value factors such as safety, intelligent driving computing power and battery brands — for example, Changan's pledge that \"safety is not tiered by trim\" and IM Motors' standard-fit CATL batteries. Expect brands to launch a new round of battles around configuration tiers and limited-time offers in the coming market window.",
-     "impact": "The dense wave of new launches will push prices further down while accelerating intelligent driving, safety and battery technology into standard features on mainstream models.",
+     "title": "Year-End Sales Push Begins: Value for Money and Technology for All to Define Next Phase of Competition",
+     "summary": "Multiple new models are entering the market with limited-time low prices and advanced configurations, while policy support boosts auto consumption — year-end competition is set to heat up further.",
+     "detail": "Across today's news, the 2027 Yipai 007 is on sale from 109,900 yuan for a limited time, the Fengshen L8+ packs 700 TOPS intelligent-driving compute at 129,900 yuan, and the ID. ERA 5S Max at 119,900 yuan has become a bestseller. New models are broadly launching with high specs at low prices, and combined with earlier national policy moves to expand auto consumption across the entire value chain, the price and configuration battle of the year-end volume push has officially begun. Meanwhile, Changan has championed a philosophy of democratizing safety regardless of trim level, and BYD's Tai 7 is ramping up sales both domestically and internationally — signs that leading automakers are building moats through scale effects and technology trickle-down. Looking ahead, the 100,000–150,000 yuan mainstream price segment is expected to become the most fiercely contested battleground for NEVs and fuel vehicles alike. The rollout of intelligent-driving compute, driving range and safety features will accelerate, and the survival space for weaker brands will continue to shrink.",
+     "impact": "Dual democratization of price and technology will benefit consumers while accelerating industry consolidation, with smaller brands lacking scale and technological depth facing greater pressure to exit the market.",
      "source": "NetEase Auto"
     }
    ]
