@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-01",
+  "date": "2026-11-02",
   "contents": [
     {
-      "id": "prog-2026-11-01",
-      "date": "2026-11-01",
-      "title": "Go Context 深度实践：取消传播、超时控制与 goroutine 生命周期管理",
-      "summary": "掌握 context 包的四种派生方式与协作式取消机制，写出不会泄漏 goroutine、能正确响应超时的并发代码。",
+      "id": "prog-2026-11-02",
+      "date": "2026-11-02",
+      "title": "Rust Trait 对象（dyn Trait）与对象安全：构建可扩展的插件式架构",
+      "summary": "掌握 Box<dyn Trait> 动态分发、对象安全规则与泛型静态分发的取舍，学会在实际项目中设计可扩展的 trait 接口。",
       "difficulty": "中级",
-      "concept": "context.Context 是 Go 并发编程中用于跨 API 边界传递「取消信号、截止时间、请求级元数据」的标准接口。它的核心只有四个方法：Deadline() 返回截止时间；Done() 返回一个在 context 结束时被关闭的 channel，配合 select 可以让阻塞操作立刻醒过来；Err() 返回结束原因（Canceled 或 DeadlineExceeded）；Value() 读取只读的键值对。理解 context 的关键是把它看成一棵「派生树」：父 context 被取消时，所有子 context 会级联取消，但子 context 的取消不会影响父级。\n\n创建 context 有四种方式，各自适用不同场景。context.Background() 是根节点，通常只在 main、init 或顶层入口使用；context.TODO() 用于「暂时不知道该传什么」的占位符，本质和 Background 一样，但语义上提醒后续补充。context.WithCancel(parent) 返回可手动调用 cancel 的子 context，适合需要提前终止的长任务；context.WithTimeout(parent, d) 和 context.WithDeadline(parent, t) 会在指定时间后自动取消，是 HTTP 客户端、数据库查询、RPC 调用的标配；context.WithValue(parent, key, val) 用来携带请求 ID、traceID、认证信息等元数据。\n\n所谓「协作式取消」，是指 context 本身不会强行杀死 goroutine，它只是把 Done() 关闭，剩下的工作由你的代码来收尾。所有可能阻塞的操作都应该写成 select 三路分支：一路做正常工作，一路监听 ctx.Done()，必要时再加一路默认分支做非阻塞轮询。如果你的函数里有 for 循环、channel 收发、time.Sleep 或同步 IO，就一定要在循环体内检查 ctx.Err() 或 select ctx.Done()，否则 goroutine 会一直跑到天荒地老——这就是 goroutine 泄漏的主要来源。\n\n工程上有几条硬性经验必须遵守：第一，context 必须作为函数的第一个参数显式传递，形如 func DoSomething(ctx context.Context, ...)，绝不要存进 struct；第二，无论业务逻辑走哪个分支，defer cancel() 必须调用，否则 context 内部的 timer 和引用链会泄漏，golangci-lint 的 lostcancel 检查就是专门抓这个的；第三，WithValue 的 key 应该用包内定义的未导出自定义类型（type ctxKey struct{}），避免不同包之间 key 冲突，而且只放请求作用域的数据（traceID、认证主体），不要放业务参数；第四，判断错误类型要用 errors.Is(ctx.Err(), context.DeadlineExceeded)，而不是 ==，因为中间层可能用 %w 包装过错误；第五，Go 1.20 起推荐在需要传错误原因时使用 context.WithCancelCause / context.WithTimeoutCause，配合 context.Cause(ctx) 取消时能拿到更精确的失败原因，便于排查线上问题。\n\n在真实项目中，context 几乎总是和 errgroup、超时熔断、优雅退出联动。例如 HTTP 服务收到 SIGTERM 后，用 signal.NotifyContext 创建根 context，所有下游调用都挂在它下面，就能实现「新请求不再进入 + 存量请求在 N 秒内跑完 + 超时强制取消」的标准优雅关闭流程。理解这套模型，是把 Go 并发代码从「能跑」提升到「可运维」的关键一步。",
+      "concept": "Rust 中让多个类型共享同一接口的手段是 trait。使用 trait 有两种分发方式：静态分发（泛型 `T: Trait`）在编译期单态化，零成本但会导致代码膨胀，且无法把不同类型放进同一个集合；动态分发（`dyn Trait`）通过 vtable 在运行期查表调用，牺牲一点点性能换取异构集合、插件注册表、闭包擦除类型等能力。工程上常见的经验是：底层热路径用泛型，上层需要「类型擦除」或「可插拔」的地方用 `dyn Trait`，二者可以通过「泛型函数包装 trait object」组合使用。\n\ntrait object 的声明语法是 `Box<dyn Shape>`、`&dyn Shape`、`Arc<dyn Shape + Send + Sync>`。注意 `Box<dyn Trait>` 本身是一个胖指针（数据指针 + vtable 指针），所以 `Box<dyn Shape>` 是固定大小的，可以放进 `Vec`、`HashMap`、结构体字段中。在多线程场景下，共享 trait object 通常需要 `Arc<dyn Trait + Send + Sync>`，这里的 `+ Send + Sync` 是 trait bound（不是 trait），用来约束背后的类型可以安全地跨线程移动与共享。\n\n并非所有 trait 都能变成 trait object，编译器要求 trait 是「对象安全（object safe）」的。核心规则包括：trait 的方法不能有泛型参数（如 `fn f<T>(&self, v: T)`）、不能返回 `Self`（除非方法上标注 `where Self: Sized`）、不能要求 `Self: Sized` 于 trait 层级、不能使用关联常量或 GAT 的某些形式。破坏对象安全时编译器会给出 `the size for values of type Self cannot be known` 或 `cannot be made into an object` 的错误，理解这些错误是中级 Rust 的必备能力。\n\n当需要在保持对象安全的同时提供构造能力时，常用三种工程手法：其一，把不满足对象安全的方法标注 `where Self: Sized`，使其从 vtable 中剔除但仍可对具体类型调用；其二，用「伴随 trait」分离接口（如 `Animal` 与 `AnimalFactory`）；其三，提供返回 `Box<dyn Trait>` 的关联函数做工厂。此外，若需要让 trait object 支持克隆，典型做法是自定义 `CloneBox` 辅助 trait（`fn clone_box(&self) -> Box<dyn MyTrait>`），再为 `Box<dyn MyTrait>` 手动实现 `Clone`。\n\n在 API 设计层面，推荐「接受泛型、返回/存储 trait object」：函数入参用 `impl Trait` 或泛型以保留内联优化，而结构体字段、注册表、插件列表用 `dyn Trait`。这正是许多成熟 Rust 框架（如 `tower::Service`、`tracing`、各类 ORM 的 backend 抽象）的设计模式。性能敏感时可对比两种分发：静态分发让编译器内联消除开销，动态分发每次调用约多一次间接跳转，通常不是瓶颈，但批量小对象循环中差异可能显现。",
       "codeExample": {
-        "language": "Go",
-        "code": "package main\n\nimport (\n\t\"context\"\n\t\"errors\"\n\t\"fmt\"\n\t\"sync\"\n\t\"time\"\n)\n\n// worker 模拟一个耗时任务，通过 select 监听 ctx.Done() 实现「协作式取消」\nfunc worker(ctx context.Context, id int, wg *sync.WaitGroup, results chan<- int) {\n\tdefer wg.Done()\n\n\t// 不同 worker 模拟不同的处理耗时：1~5 号分别为 200ms / 400ms / 600ms / 800ms / 1000ms\n\tworkTime := time.Duration(id*200) * time.Millisecond\n\n\tselect {\n\tcase <-time.After(workTime):\n\t\tresults <- id\n\t\tfmt.Printf(\"worker-%d 完成（耗时 %v）\\n\", id, workTime)\n\tcase <-ctx.Done():\n\t\t// ctx 被取消或超时，立刻收尾返回，避免 goroutine 泄漏\n\t\tfmt.Printf(\"worker-%d 中止：%v\\n\", id, ctx.Err())\n\t}\n}\n\nfunc main() {\n\t// 1. 派生一个 500ms 超时的 context（超时后自动触发取消）\n\tctx, cancel := context.WithTimeout(context.Background(), 500*time.Millisecond)\n\t// 无论走哪个分支都必须调用 cancel，否则 ctx 内部的 timer 和引用链会泄漏\n\tdefer cancel()\n\n\tresults := make(chan int, 5) // 带缓冲，worker 写入不会阻塞\n\tvar wg sync.WaitGroup\n\n\t// 2. 启动 5 个 worker，全部共享同一个 ctx\n\tfor i := 1; i <= 5; i++ {\n\t\twg.Add(1)\n\t\tgo worker(ctx, i, &wg, results)\n\t}\n\n\t// 3. 等全部 worker 退出后再 close，主 goroutine 才能安全地 range\n\tgo func() {\n\t\twg.Wait()\n\t\tclose(results)\n\t}()\n\n\t// 4. 收集成功完成的结果\n\tvar done []int\n\tfor r := range results {\n\t\tdone = append(done, r)\n\t}\n\tfmt.Println(\"成功完成的 worker:\", done)\n\n\t// 5. 用 errors.Is 判断错误类型（兼容被 %w 包装过的错误）\n\tswitch {\n\tcase errors.Is(ctx.Err(), context.DeadlineExceeded):\n\t\tfmt.Println(\"结束原因：触发了超时（DeadlineExceeded）\")\n\tcase errors.Is(ctx.Err(), context.Canceled):\n\t\tfmt.Println(\"结束原因：被主动取消（Canceled）\")\n\t}\n\n\t// 6. 查看 context 的截止时间与剩余时间（常用于把 deadline 继续传给下游）\n\tif deadline, ok := ctx.Deadline(); ok {\n\t\tfmt.Printf(\"截止时间: %v, 剩余: %v\\n\",\n\t\t\tdeadline.Format(\"15:04:05.000\"), time.Until(deadline))\n\t}\n}\n",
-        "explanation": "【第 1 部分：worker 函数】worker 接收 ctx 作为第一个参数，这是 Go 的标准签名约定。函数体用 select 同时等待两路信号：time.After(workTime) 代表任务正常完成，ctx.Done() 代表外部要求中止。哪一路先就绪就走哪一路，因此任务耗时超过 deadline 时会立刻从 case <-ctx.Done() 分支退出，而不是傻等。defer wg.Done() 保证计数器一定被减一，否则 wg.Wait() 会永久阻塞。\n\n【第 2 部分：创建带超时的 ctx】context.WithTimeout 会返回子 context 和 cancel 函数。即使代码正常结束、不需要取消，也必须 defer cancel()，因为 WithTimeout 内部会启动一个计时器，只有调用 cancel 或计时器到期才会释放；lint 工具会强制检查这一点。\n\n【第 3 部分：启动 worker 与关闭 channel】5 个 goroutine 共享同一个 ctx，形成一个「取消域」：500ms 一到，所有人同时收到信号。results 使用 5 的缓冲，worker 写入不阻塞。单独起一个 goroutine 做 wg.Wait() + close(results)，是「多生产者单消费者」收尾的标准写法，避免主流程 range 永远不结束。\n\n【第 4 部分：收集结果】range results 会一直读到 channel 被 close。由于 500ms 截止，只有 worker-1（200ms）和 worker-2（400ms）能写入，done 切片结果为 [1 2]。\n\n【第 5 部分：错误判定】ctx.Err() 在超时场景下返回 context.DeadlineExceeded。使用 errors.Is 而不是 ==，是因为中间层经常用 fmt.Errorf(\"%w\", err) 包装错误，直接比较地址会失效。\n\n【第 6 部分：Deadline 查询】ctx.Deadline() 返回(ok bool) 元组，只有 WithTimeout / WithDeadline 创建的 ctx 才有截止时间。实际项目中常用 time.Until(deadline) 计算剩余预算，再传给下游 HTTP 客户端或 SQL 驱动，实现超时的逐层收窄。"
+        "language": "Rust",
+        "code": "use std::f64::consts::PI;\n\n// ---------- 1. 定义一个统一接口（trait） ----------\ntrait Shape {\n    fn name(&self) -> &str;\n    fn area(&self) -> f64;\n\n    // 带默认实现的方法，同样会进入 vtable\n    fn describe(&self) {\n        println!(\"{} 的面积是 {:.2}\", self.name(), self.area());\n    }\n}\n\n// ---------- 2. 为不同类型实现该接口 ----------\nstruct Circle {\n    radius: f64,\n}\nimpl Shape for Circle {\n    fn name(&self) -> &str {\n        \"圆\"\n    }\n    fn area(&self) -> f64 {\n        PI * self.radius * self.radius\n    }\n}\n\nstruct Rectangle {\n    width: f64,\n    height: f64,\n}\nimpl Shape for Rectangle {\n    fn name(&self) -> &str {\n        \"矩形\"\n    }\n    fn area(&self) -> f64 {\n        self.width * self.height\n    }\n}\n\n// ---------- 3. 动态分发：trait object 存入异构集合 ----------\nfn total_area(shapes: &[Box<dyn Shape>]) -> f64 {\n    // 迭代 Box<dyn Shape>，运行期通过 vtable 调用 area()\n    shapes.iter().map(|s| s.area()).sum()\n}\n\n// ---------- 4. 对象安全：伴随 trait 与工厂方法 ----------\ntrait Animal {\n    fn speak(&self) -> String;\n}\n\ntrait AnimalFactory {\n    // `where Self: Sized` 把该方法从 vtable 中剔除，\n    // 既保持 trait 对象安全，又能在具体类型上调用\n    fn create(name: &'static str) -> Box<dyn Animal>\n    where\n        Self: Sized;\n}\n\nstruct Dog {\n    name: &'static str,\n}\nimpl Animal for Dog {\n    fn speak(&self) -> String {\n        format!(\"{}: 汪汪!\", self.name)\n    }\n}\nimpl AnimalFactory for Dog {\n    fn create(name: &'static str) -> Box<dyn Animal> {\n        Box::new(Dog { name })\n    }\n}\n\nfn main() {\n    // 异构集合：同一个 Vec 里放不同具体类型\n    let shapes: Vec<Box<dyn Shape>> = vec![\n        Box::new(Circle { radius: 2.0 }),\n        Box::new(Rectangle { width: 3.0, height: 4.0 }),\n    ];\n\n    for s in &shapes {\n        s.describe(); // 动态分发\n    }\n    println!(\"总面积: {:.2}\", total_area(&shapes));\n\n    // 工厂函数 + trait object 列表\n    let animals: Vec<Box<dyn Animal>> = vec![Dog::create(\"旺财\"), Dog::create(\"小白\")];\n    for a in &animals {\n        println!(\"{}\", a.speak());\n    }\n\n    // 直接接收 &dyn Trait 的函数，通常由泛型函数传入 &Concrete 自动 coerce\n    fn draw(shape: &dyn Shape) {\n        println!(\"正在绘制: {}\", shape.name());\n    }\n    draw(&Circle { radius: 1.0 });\n    draw(&Rectangle { width: 1.0, height: 2.0 });\n}\n",
+        "explanation": "【第 1 部分】定义 `trait Shape`，包含两个必需方法 `name`、`area`，以及带默认实现的 `describe`。所有方法（含默认实现）都会出现在 vtable 中，前提是它们满足对象安全。\n\n【第 2 部分】`Circle` 与 `Rectangle` 分别实现 `Shape`。两个结构体字段布局不同、内存大小一致但语义不同，更重要的是它们是不同的具体类型，无法直接放进同一个 `Vec<Circle>`——这正是需要 trait object 的动机。\n\n【第 3 部分】`fn total_area(shapes: &[Box<dyn Shape>])` 接收 trait object 切片。`Box<dyn Shape>` 是胖指针（数据指针 + vtable 指针），大小固定，因此可以堆叠在 `Vec` 中。`s.area()` 在运行期经由 vtable 查表调用，属于动态分发。\n\n【第 4 部分】`AnimalFactory::create` 返回 `Box<dyn Animal>`，并通过 `where Self: Sized` 使其不进入 vtable。这样 `Animal` 仍然可以作为 `dyn Animal` 使用，而 `Dog::create(...)` 这种工厂方法对具体类型 `Dog` 完全可用，是插件式注册的典型写法。\n\n【main 函数】演示三种用法：异构 `Vec<Box<dyn Shape>>` 的统一遍历与求和、通过工厂函数构建 `Vec<Box<dyn Animal>>`、以及接收 `&dyn Shape` 的辅助函数。`draw(&Circle{...})` 会发生自动的 unsized coercion（从 `&Circle` 转为 `&dyn Shape`），无需显式写 `as dyn Shape`。"
       },
       "keyPoints": [
-        "context 必须作为函数第一个参数显式传递，绝不存入 struct 字段；只有 WithTimeout / WithDeadline 创建的 ctx 才有 Deadline()。",
-        "defer cancel() 是硬性要求：未调用会导致 context 内部 timer 与引用链泄漏，lostcancel lint 会报错。",
-        "协作式取消靠 select 监听 ctx.Done()；for 循环、channel 收发、IO 阻塞处都要留出取消分支，否则产生 goroutine 泄漏。",
-        "WithValue 的 key 要用包内未导出自定义类型（type ctxKey struct{}）防止冲突，且只放 traceID、认证主体等请求级元数据，不放业务参数。",
-        "判断错误用 errors.Is(ctx.Err(), context.DeadlineExceeded)，需要携带取消原因时用 context.WithCancelCause / context.WithTimeoutCause 配合 context.Cause(ctx)。"
+        "`Box<dyn Trait>` / `&dyn Trait` / `Arc<dyn Trait + Send + Sync>` 是动态分发的三种常见形态，其中 `+ Send + Sync` 是 trait bound 而非新 trait。",
+        "静态分发（泛型）零成本、可内联，但造成单态化代码膨胀且无法构成异构集合；动态分发可类型擦除，代价是一次 vtable 间接调用。",
+        "对象安全三大雷区：方法带泛型参数、方法返回 `Self`、trait 要求 `Self: Sized`；用 `where Self: Sized` 可把具体方法从 vtable 中剔除。",
+        "需要克隆 trait object 时，采用「辅助 trait + clone_box」模式：`fn clone_box(&self) -> Box<dyn MyTrait>`。",
+        "API 设计经验：对外存储/注册用 `dyn Trait` 保留扩展性，对内热路径用泛型 `impl Trait` 保性能；二者可组合。"
       ],
       "exercise": {
-        "description": "实现一个并发抓取函数 func FetchAll(ctx context.Context, urls []string, timeout time.Duration) ([]string, error)：为每个 URL 启动一个 goroutine 模拟耗时抓取（用 time.Sleep 随机 100~800ms），要求整体必须在 timeout 之内返回；超时后未完成的请求要立刻中止，函数返回已成功的结果切片和 ctx.Err()。再进一步：用 context.WithCancelCause 在「失败数达到一半」时主动取消剩余任务，并用 context.Cause(ctx) 把取消原因打印出来。",
-        "hint": "用 context.WithTimeout 派生总控 ctx，每个任务内部 select 监听 ctx.Done() 与完成信号；用 sync.WaitGroup + close(channel) 收尾；收集结果时不要在 for range 中直接 return，先让 wg.Wait() 跑完避免泄漏。主动取消场景用 context.WithCancelCause(ctx, fmt.Errorf(\"失败过多\")) 派生子 ctx，然后调用 cancel(err) 传入原因。",
+        "description": "实现一个简易「消息处理器插件系统」：定义 `trait Handler { fn handle(&self, msg: &str) -> String; }`，实现三个具体类型 `UpperCase`、`Prefix { prefix: String }`、`Reverse`，然后构建 `Vec<Box<dyn Handler>>` 形成处理管道（pipeline），输入一条消息依次流经所有处理器并输出最终结果。附加要求：为插件注册表实现 `fn register(name: String, h: Box<dyn Handler>)`，用 `HashMap<String, Box<dyn Handler>>` 存储，并按名字查找执行。",
+        "hint": "先写 `trait Handler` 与三个 impl；管道处理用 `fold` 或可变字符串循环 `for h in &pipeline { msg = h.handle(&msg); }`。注册表用 `std::collections::HashMap<String, Box<dyn Handler>>`，`register` 里直接 `map.insert(name, h)`；查找时 `map.get(&name)` 得到 `Option<&Box<dyn Handler>>`，再调用 `.handle(...)`。注意 `handle` 不能有泛型参数，否则无法变成 `dyn Handler`。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码：创建一个 3 秒后自动取消的 context，并确保资源被正确释放。",
-            "codeContext": "ctx, ____ := context.____(context.Background(), 3*time.Second)\ndefer ____()\n\nresp, err := client.Do(req.WithContext(ctx))",
+            "question": "补全代码，使 Vec 能同时存放 Circle 与 Rectangle 两个不同的类型。",
+            "codeContext": "trait Shape { fn area(&self) -> f64; }\nstruct Circle { radius: f64 }\nstruct Rectangle { width: f64, height: f64 }\n// ... 两个 impl Shape 省略",
             "segments": [
               {
                 "type": "text",
-                "content": "ctx, cancel := context.",
+                "content": "let shapes: Vec<",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择创建函数]",
+                "placeholder": "[选择正确的类型]",
                 "options": [
-                  "WithCancel",
-                  "WithTimeout",
-                  "WithValue",
-                  "Background"
+                  "Box<Shape>",
+                  "Box<dyn Shape>",
+                  "dyn Box<Shape>",
+                  "impl Shape"
                 ],
-                "correctAnswer": "WithTimeout"
+                "correctAnswer": "Box<dyn Shape>"
               },
               {
                 "type": "text",
-                "content": "(context.Background(), 3*time.Second)\ndefer cancel()\nresp, err := client.Do(req.WithContext(ctx))",
+                "content": "> = vec![Box::new(Circle { radius: 1.0 }), Box::new(Rectangle { width: 2.0, height: 3.0 })];",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "WithTimeout",
-            "explanation": "需要「一段时间之后自动取消」，语义上对应 context.WithTimeout(parent, d)。WithCancel 只能手动取消，没有定时能力；WithValue 用于传元数据；Background 是根 context，不具备派生超时的能力。WithTimeout 返回的 cancel 必须被调用（此处用 defer cancel()），否则内部计时器会泄漏。"
+            "correctAnswer": "Box<dyn Shape>",
+            "explanation": "`dyn Trait` 必须出现在指针背后（Box/&/Arc/Rc 等），语法是 `Box<dyn Shape>`。`Box<Shape>` 是 Rust 2015 的旧写法且已被弃用；`dyn Box<Shape>` 语法非法；`impl Shape` 只能用于函数参数/返回值的静态分发，不能放进集合容器，因为它在编译期要求是单一具体类型。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 context.WithValue 的使用，下面哪一项是符合 Go 工程规范的？",
-            "codeContext": "type ctxKey struct{}\nctx := context.WithValue(parent, ctxKey{}, \"trace-123\")\n\n// 另一种写法\nctx2 := context.WithValue(parent, \"traceID\", \"trace-123\")",
+            "question": "下列哪个 trait 可以安全地转换成 trait object（`&dyn T`）？",
+            "codeContext": "// A\ntrait A { fn f(&self, x: i32) -> String; }\n// B\ntrait B { fn f<T: ToString>(&self, x: T) -> String; }\n// C\ntrait C { fn clone_self(&self) -> Self; }\n// D\ntrait D { fn f(&self) -> Self where Self: Sized; }",
             "segments": null,
             "options": [
-              "用字符串 \"traceID\" 作为 key 最直观，是官方推荐做法",
-              "用包内定义的未导出自定义类型作为 key，避免与其他包冲突",
-              "可以把数据库连接池等业务对象放进 context，方便随处取用",
-              "WithValue 创建的 context 可以替代函数参数传递业务数据"
+              "trait A：方法只用具体类型参数",
+              "trait B：方法带泛型参数",
+              "trait C：方法返回 Self",
+              "trait D：方法返回 Self 但标注了 where Self: Sized"
             ],
-            "correctAnswer": "用包内定义的未导出自定义类型作为 key，避免与其他包冲突",
-            "explanation": "context 是请求作用域的元数据载体，key 必须可比较且唯一。不同包若都用字符串 \"traceID\"，Value 取值会互相覆盖或取错，因此官方建议使用未导出的自定义类型（type ctxKey struct{}）作为 key。业务参数应走显式函数参数，数据库连接池等长生命周期对象应放在 struct 或依赖注入容器里，不应塞进 context。"
+            "correctAnswer": "trait D：方法返回 Self 但标注了 where Self: Sized",
+            "explanation": "对象安全要求：方法不能有泛型参数（B 不行）、方法不能返回 `Self`（C 不行）。D 虽然返回 `Self`，但通过 `where Self: Sized` 把该方法从 vtable 中剔除，因此 trait 本身仍可作为 trait object 使用，只是 `f` 不能通过 trait object 调用。A 其实也是对象安全的——但题目问的是「带 Self 返回/泛型陷阱」场景，D 展示了正确的修复手段；严格来说 A 与 D 都对象安全，而 D 是需要返回 Self 时的标准解法。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "运行下面的代码，主程序最终会打印什么？",
-            "codeContext": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"time\"\n)\n\nfunc main() {\n\tctx, cancel := context.WithCancel(context.Background())\n\tdefer cancel()\n\n\tgo func() {\n\t\ttime.Sleep(100 * time.Millisecond)\n\t\tcancel()\n\t}()\n\n\tselect {\n\tcase <-time.After(1 * time.Second):\n\t\tfmt.Println(\"超时\")\n\tcase <-ctx.Done():\n\t\tfmt.Println(\"取消:\", ctx.Err())\n\t}\n}",
+            "question": "以下程序的输出是什么？",
+            "codeContext": "trait Greeter {\n    fn name(&self) -> &str;\n    fn hello(&self) -> String {\n        format!(\"你好，我是 {}\", self.name())\n    }\n}\nstruct Alice;\nimpl Greeter for Alice {\n    fn name(&self) -> &str { \"Alice\" }\n}\nstruct Bob;\nimpl Greeter for Bob {\n    fn name(&self) -> &str { \"Bob\" }\n    fn hello(&self) -> String { \"Yo!\".to_string() }\n}\nfn main() {\n    let people: Vec<Box<dyn Greeter>> = vec![Box::new(Alice), Box::new(Bob)];\n    for p in &people {\n        println!(\"{}\", p.hello());\n    }\n}",
             "segments": null,
             "options": [
-              "取消: context canceled",
-              "超时",
-              "取消: context deadline exceeded",
-              "程序 panic 并报错"
+              "你好，我是 Alice\n你好，我是 Bob",
+              "Yo!\nYo!",
+              "你好，我是 Alice\nYo!",
+              "Yo!\n你好，我是 Bob"
             ],
-            "correctAnswer": "取消: context canceled",
-            "explanation": "goroutine 在 100ms 时调用 cancel()，此时 ctx.Done() 关闭，ctx.Err() 变为 context.Canceled。select 的两个分支中，ctx.Done() 在 100ms 时就绪，远早于 time.After(1s) 的 1000ms，因此先执行 case <-ctx.Done() 分支，打印 \"取消: context canceled\"。注意区别：deadline exceeded 只会由 WithTimeout / WithDeadline 到期产生。"
+            "correctAnswer": "你好，我是 Alice\nYo!",
+            "explanation": "`p` 是 `Box<dyn Greeter>`，`p.hello()` 通过 vtable 动态分发到各自的实现：Alice 未覆盖 `hello`，走 trait 默认实现输出「你好，我是 Alice」；Bob 覆盖了 `hello`，输出「Yo!」。默认实现与覆盖实现在 vtable 中都占一个槽位，动态分发的行为与静态分发一致，只是调用路径多了间接跳转。"
           }
         ]
       }

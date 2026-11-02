@@ -1,16 +1,17 @@
 {
- "date": "2026-11-01",
- "weekday": "Sunday",
- "overview": "The Fifth Plenum sets the tone for full and rigorous Party self-governance and the 15th Five-Year Plan agenda; Middle East tensions move oil prices; breakthroughs in AI and chips keep rolling out.",
+ "date": "2026-11-02",
+ "weekday": "Monday",
+ "overview": "Landmark decision on full and rigorous Party self-governance released; Yellow River governance begins a new chapter after 80 years; A-shares receive policy tailwinds, crypto market swings wildly, Middle East tensions persist.",
  "trendingTopics": [
-  "Party building",
-  "Five-Year Plan",
+  "Full and rigorous Party self-governance",
+  "Yellow River governance",
+  "A-share policy",
+  "Crypto asset security",
   "Middle East situation",
-  "Global crude oil",
-  "Artificial intelligence",
-  "Chip localization",
-  "Foreign trade growth",
-  "Public health"
+  "Open-source ecosystem",
+  "Crewed lunar landing",
+  "Autumn tourism economy",
+  "Export-oriented trade"
  ],
  "sections": [
   {
@@ -20,220 +21,206 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "Dispatch from the Fifth Plenary Session of the 20th CPC Central Committee: Advancing the Great New Project of Party Building",
-     "summary": "A dispatch from the Fifth Plenary Session of the 20th CPC Central Committee has been released, describing related documents as programmatic texts for advancing the great new project of Party building in the new era.",
-     "detail": "The report reviews the Fifth Plenary Session of the 20th CPC Central Committee in a dispatch format, positioning the documents adopted at the session as programmatic guidance for advancing the great new project of Party building in the new era. No further specific provisions were disclosed in the source material.",
-     "impact": "Provides programmatic guidance for Party building in the next phase and serves as a bellwether for future policy direction.",
+     "title": "Central Committee Issues Decision on Sustained Full and Strict Party Self-Governance",
+     "summary": "The CPC Central Committee has issued a decision on major issues concerning the sustained advancement of full and strict Party self-governance, laying out a systematic plan.",
+     "detail": "The decision sets out arrangements on major issues related to sustaining full and strict Party self-governance. Expert commentary notes that the Fifth Plenum demonstrates the Communist Party of China's confidence and resolve in enforcing strict Party discipline.",
+     "impact": "Provides institutional guidance for deeper advances in Party conduct, clean governance and anti-corruption work, further consolidating the Party's governing foundation.",
      "importance": "hot",
      "tags": [
-      "Party Building",
-      "Full and Rigorous Party Self-Governance",
-      "Policy Documents"
+      "Full and Strict Party Self-Governance",
+      "Party Conduct and Clean Governance",
+      "Institutional Development"
      ]
     },
     {
      "id": "news-002",
-     "title": "Systematic Deployments Made Under Full and Rigorous Party Self-Governance",
-     "summary": "The report outlines the systematic deployments under full and rigorous Party self-governance, focusing on the overall arrangements and direction of related work.",
-     "detail": "The report reviews systematic deployments under full and rigorous Party self-governance. The source material provided only the headline and did not include specific deployment items.",
-     "impact": "Helps the public understand the overall framework and priorities of the Party self-governance drive.",
-     "importance": "important",
+     "title": "Xi Jinping Delivers Explanation on Party Self-Governance Decision",
+     "summary": "Xi Jinping gave an explanation on the drafting of the CPC Central Committee Decision on Major Issues Concerning Sustained Full and Strict Party Self-Governance.",
+     "detail": "The explanation elaborated on the background and key content of the decision, helping Party members and officials accurately understand the document's spirit.",
+     "impact": "Helps unify thinking across the Party and deepen understanding and implementation of the full and strict Party self-governance agenda.",
+     "importance": "hot",
      "tags": [
-      "Full and Rigorous Party Self-Governance",
-      "Anti-Corruption"
+      "Full and Strict Party Self-Governance",
+      "Institutional Development"
      ]
     },
     {
      "id": "news-003",
-     "title": "\"Six Networks\" Development Viewed Through the 15th Five-Year Plan Special Plans",
-     "summary": "The report interprets the development of the \"six networks\" from the perspective of the 15th Five-Year Plan special plans, projecting the direction of related infrastructure layout.",
-     "detail": "The article uses the 15th Five-Year Plan special plans as a starting point to examine the development approach for the \"six networks.\" The source material did not elaborate on the specific composition of the \"six networks.\"",
-     "impact": "Special plan layouts will drive related infrastructure investment and demand for supporting industries.",
+     "title": "Turning the Yellow River into a River of Well-Being for the People",
+     "summary": "Marking 80 years of the Party leading the people in harnessing the Yellow River, a call was made to truly make the river a source of happiness for the people.",
+     "detail": "The article reviews 80 years of experience in Party-led Yellow River governance and sets direction for ecological protection and high-quality development of the Yellow River Basin.",
+     "impact": "Bodes well for basin ecological protection, flood control and sediment reduction, and high-quality development in regions along the river.",
      "importance": "important",
      "tags": [
-      "Five-Year Plan",
-      "Infrastructure",
-      "Planning and Layout"
+      "Yellow River Basin",
+      "Ecological Protection",
+      "Water Infrastructure"
      ]
     },
     {
      "id": "news-004",
-     "title": "Concerns Raised Over Workers From Sanya Construction Site Housed in Residential Area; Officials Confirm Relocation",
-     "summary": "Workers from a Sanya construction site with dengue fever risks were housed in a residential area, sparking concern; officials responded that the personnel involved have been relocated.",
-     "detail": "A construction site in Sanya linked to dengue fever risks housed workers in a residential area, raising concerns among nearby residents. Officials responded that the personnel involved have been relocated and handled.",
-     "impact": "The incident highlights the need to improve coordination between vector-borne disease control and personnel resettlement.",
-     "importance": "important",
+     "title": "Batch of New Regulations Take Effect from November",
+     "summary": "Multiple new rules formally take effect from November, covering a range of areas in public welfare and social governance.",
+     "detail": "The new regulations roll out from November 1, affecting businesses in relevant sectors and residents' daily behavior.",
+     "impact": "Brings new compliance guidance for corporate operations and everyday public life.",
+     "importance": "normal",
      "tags": [
-      "Public Health",
-      "Vector-Borne Disease Control"
+      "Rule of Law",
+      "Public Welfare Policy"
      ]
     },
     {
      "id": "news-005",
-     "title": "CCTV Exposé: Painkiller Ingredients Found in Honey Pills Priced at 2,388 Yuan",
-     "summary": "CCTV exposed a honey pill product priced at 2,388 yuan that tested positive for painkiller ingredients, drawing attention to related products.",
-     "detail": "CCTV reported that painkiller ingredients were detected in honey pills priced at 2,388 yuan. The source material did not disclose the name of the product involved or follow-up actions.",
-     "impact": "May prompt further regulatory inspections into drug ingredients added to high-priced health supplements.",
+     "title": "CCTV Exposes Wide Gap Between Cost and Price of Pain-Relief Honey Pills",
+     "summary": "CCTV revealed that pain-relief honey pills priced at 2,388 yuan cost only 40 yuan to produce, while a franchisee filed a real-name report alleging banned substances in the product.",
+     "detail": "The report disclosed a huge gap between the product's cost and retail price, with a franchisee formally reporting banned ingredients, drawing attention to health supplement products.",
+     "impact": "Could spur stronger regulation of the health supplement and traditional Chinese medicine consumer markets, along with greater consumer rights awareness.",
      "importance": "important",
      "tags": [
-      "Food and Drug Safety",
       "Consumer Rights",
-      "Media Oversight"
+      "Pharmaceutical Regulation",
+      "Market Order"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "World Politics",
+   "title": "World & Politics",
    "icon": "🌍",
    "articles": [
     {
      "id": "news-006",
-     "title": "US Says It Is Open to Resolving Iran War Through Diplomacy",
-     "summary": "US Secretary of State Rubio said Washington is willing to resolve the war with Iran through diplomatic channels, but said he did not know whether negotiations have a timeline.",
-     "detail": "Rubio said the US is willing to resolve the war with Iran diplomatically, while noting he was unaware of any timetable for negotiations with Tehran. He also highlighted the situation in which Iran targets commercial ships, saying vessels must be defended against drone and missile attacks almost every night.",
-     "impact": "The diplomatic overture signals a possible easing, but attacks on commercial shipping keep the situation highly uncertain.",
+     "title": "Saudi-Led Coalition Strikes Houthi Targets in Precision Strikes",
+     "summary": "The Saudi-led multinational coalition says it carried out precision military strikes on November 1, destroying targets linked to Yemen's Houthi forces.",
+     "detail": "A coalition spokesperson said precision strikes were carried out in the morning to destroy Houthi targets. The coalition also said it intercepted and destroyed drones and ballistic missiles fired by the Houthis toward southern regions. A missile struck near a government military facility in Yemen's Aden the same day.",
+     "impact": "Security risks in the Red Sea and the Gulf are rising, potentially affecting expectations for international shipping and energy supplies.",
      "importance": "hot",
      "tags": [
-      "Middle East Situation",
-      "Shipping Security"
-     ]
-    },
-    {
-     "id": "news-007",
-     "title": "Zelensky Says He Wants Turkey and Europe Involved in Peace Talks",
-     "summary": "Zelensky said Ukraine wants Turkey and Europe to take part in negotiations to end the Russia-Ukraine conflict, and that he discussed a related meeting with Erdogan.",
-     "detail": "Zelensky said he hopes Turkey and Europe will be involved in talks to end the Russia-Ukraine conflict, and that he has discussed upcoming meetings between US, Ukrainian and Russian peace negotiators with Turkish President Erdogan. Erdogan said he was glad to see peace efforts accelerating, and the two sides also discussed security in the Black Sea.",
-     "impact": "Willingness to broaden participation in talks is growing, and Black Sea navigation security has become one of the peace negotiation issues.",
-     "importance": "hot",
-     "tags": [
-      "Global Security Situation",
-      "Peace Talks",
-      "Black Sea Security"
-     ]
-    },
-    {
-     "id": "news-008",
-     "title": "Houthis Say Saudi Warplanes Struck Multiple Locations Across Yemen",
-     "summary": "The Houthis said Saudi warplanes carried out airstrikes and missile strikes on civilian targets in Sanaa and several provinces over the past 24 hours.",
-     "detail": "Houthi sources said Saudi warplanes carried out 66 airstrikes and missile strikes on civilian targets in the capital Sanaa as well as the provinces of Al-Jawf, Taiz, Saada, Al-Hudaydah and Lahij over the past 24 hours, adding that the attacks were launched from relevant military bases.",
-     "impact": "The ongoing regional conflict could heighten humanitarian concerns and escalate regional security tensions.",
-     "importance": "important",
-     "tags": [
-      "Middle East Situation",
-      "Regional Conflict",
+      "Middle East",
+      "Yemen",
       "International Security"
      ]
     },
     {
-     "id": "news-009",
-     "title": "Russia Says It Received US Intelligence on Possible Moscow Terror Attack",
-     "summary": "Russia's Federal Security Service (FSB) said it received intelligence from the United States about a possible terrorist attack in Moscow and has taken response measures.",
-     "detail": "Russian media reported that the FSB obtained intelligence from the United States regarding a possible terrorist attack in Moscow and that Russia has taken countermeasures. The US said it is coordinating response measures with the Russian side.",
-     "impact": "The case shows that counterterrorism intelligence channels remain functional, carrying symbolic significance for international counterterrorism cooperation.",
+     "id": "news-007",
+     "title": "Iran Foreign Minister Says Tehran Prepared for Both Defense and Diplomacy",
+     "summary": "Iran's foreign minister says Tehran is prepared on both the defense and diplomatic fronts, and hopes the US will remain rational.",
+     "detail": "Iran's foreign minister said the choice of path depends on whether the US acts rationally; Iran is conducting indirect negotiations via Qatar but has held no direct talks with the United States. Iran's president the same day called for designing mechanisms to deliver goods to impoverished regions at more appropriate prices.",
+     "impact": "Diplomatic room for resolving regional tensions remains open, though near-term market sentiment stays cautious.",
+     "importance": "hot",
+     "tags": [
+      "Middle East",
+      "Energy Security"
+     ]
+    },
+    {
+     "id": "news-008",
+     "title": "Ukraine Says Russian Strike on Kyiv Energy Infrastructure Cuts Water Supply",
+     "summary": "Ukraine says Russia struck Kyiv's energy infrastructure, triggering water supply disruptions and outages across parts of the city.",
+     "detail": "Kyiv's city military administration reported that a water supply facility lost power due to the strike, leaving multiple areas of the city facing water shutoffs.",
+     "impact": "With winter approaching, damage to energy infrastructure will intensify living and humanitarian pressures.",
      "importance": "important",
      "tags": [
-      "International Counterterrorism",
-      "Security Intelligence"
+      "Russia-Ukraine Conflict",
+      "Energy Infrastructure",
+      "International Humanitarian"
+     ]
+    },
+    {
+     "id": "news-009",
+     "title": "France Hits Third Consecutive Weekend of Nationwide Protests",
+     "summary": "Nationwide protests erupted in France for a third consecutive weekend, with riot police charging crowds multiple times to disperse them.",
+     "detail": "Protests continued across multiple parts of the country, with riot police launching repeated charges to disperse rioters.",
+     "impact": "Social unrest could weigh on European consumer and investment confidence and add pressure to policy debates.",
+     "importance": "important",
+     "tags": [
+      "European Society",
+      "Overseas Politics"
      ]
     },
     {
      "id": "news-010",
-     "title": "Around 70,000 Protest in Paris as Social Unrest Enters Third Phase",
-     "summary": "Paris police said about 70,000 protesters took to the streets as social unrest entered its third phase.",
-     "detail": "Paris police said approximately 70,000 protesters participated in demonstrations in the capital, marking the third phase of social unrest. The specific demands of the demonstrators were not disclosed.",
-     "impact": "Large-scale demonstrations may have a sustained impact on local social order and economic activity.",
+     "title": "US Air Force Refuelers Gather Again in Israel",
+     "summary": "A large number of US Air Force aerial refueling tankers have assembled again at Ramon Airport in the southern Israeli city of Eilat.",
+     "detail": "Photos taken at Ramon Airport in Eilat, southern Israel, show a large concentration of aerial refueling tankers.",
+     "impact": "The signal of regional military deployment is clear, raising uncertainty in the Middle East security situation.",
      "importance": "important",
      "tags": [
-      "Social Unrest",
-      "Public Order",
-      "European Situation"
+      "Middle East",
+      "International Defense",
+      "Aviation Security"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance Updates",
+   "title": "Finance & Markets",
    "icon": "📈",
    "articles": [
     {
      "id": "news-011",
-     "title": "Yellow River Basin Records 35.53 Trillion Yuan in Trade Over Five Years",
-     "summary": "The Yellow River basin posted impressive five-year trade results, with cumulative imports and exports reaching 35.53 trillion yuan.",
-     "detail": "The Yellow River basin released its five-year trade scorecard, showing cumulative imports and exports of 35.53 trillion yuan. Multiple media outlets reported on the data. Year-on-year growth rates and the breakdown of major commodity categories were not disclosed.",
-     "impact": "Reflects the sustained growth momentum of the open economy in the Yellow River basin.",
+     "title": "China's A-Shares Get Boost as Regulators Set to Hold Policy Symposium",
+     "summary": "Financial regulators will convene a symposium, fueling expectations of policy support for the A-share market.",
+     "detail": "Markets are watching for policy signals from the regulatory symposium, lifting sentiment among A-share investors.",
+     "impact": "Helps stabilize market expectations and improve confidence in investor sentiment and market liquidity.",
      "importance": "hot",
      "tags": [
-      "Trade Growth",
-      "Regional Economy",
-      "Yellow River Basin"
+      "A-Share Market",
+      "Macroeconomic Policy"
      ]
     },
     {
      "id": "news-012",
-     "title": "Multiple Sectors Highlight China's Economic Vitality",
-     "summary": "Reports say sustained performance across multiple sectors collectively underscores the vitality of China's economy.",
-     "detail": "The report observes the vitality of China's economy from multiple sectors. The source material only provided headline information, without listing specific sectors or data.",
-     "impact": "Strong performance across multiple sectors helps boost market confidence.",
+     "title": "Chinese Export Firms Shift Overseas Strategy from Selling Products to Building Brands",
+     "summary": "Chinese foreign trade companies are expanding abroad with greater confidence, transitioning from product exports to exporting brands and services.",
+     "detail": "Reports show trade firms are accelerating their push into overseas branding and services, strengthening competitiveness and pricing power.",
+     "impact": "Bodes well for supply chains tied to cross-border e-commerce, brand expansion and services trade.",
      "importance": "important",
      "tags": [
-      "Macroeconomy",
-      "Economic Vitality",
-      "Industry Watch"
+      "Export Expansion",
+      "Cross-Border E-Commerce",
+      "Brand Economy"
      ]
     },
     {
      "id": "news-013",
-     "title": "Jiangsu's Richest Couple Sees Wealth Jump 112 Billion Yuan in One Year",
-     "summary": "Reports say the wealth of Jiangsu's richest couple surged by 112 billion yuan within a year, drawing market attention.",
-     "detail": "Reports indicate that the net worth of Jiangsu's richest couple rose by 112 billion yuan in a single year. The source material did not disclose the industry they are in or the names of their companies.",
-     "impact": "The surge in wealth reflects the strength of the related sector and capital market performance.",
-     "importance": "important",
+     "title": "Autumn Tourism Boom Injects Fresh Momentum into Consumption",
+     "summary": "Commentary notes that the autumn sightseeing economy is in full swing, becoming a key source of fresh economic vitality.",
+     "detail": "Autumn culture and travel spending continues to heat up, driving related sectors including dining, lodging and transportation.",
+     "impact": "Further unlocks the potential of culture and travel consumption, supporting the recovery of domestic demand.",
+     "importance": "normal",
      "tags": [
-      "Wealth Ranking",
-      "Private Sector",
-      "Capital Market"
+      "Culture & Travel Spending",
+      "Holiday Economy",
+      "Domestic Demand Recovery"
      ]
     },
     {
      "id": "news-014",
-     "title": "\"Smart Brains\" Power Logistics Hubs, Cutting Postal Route Costs and Boosting Efficiency",
-     "summary": "\"Smart brain\" technology is empowering logistics hub construction, accelerating cost reduction and efficiency gains across postal routes.",
-     "detail": "Reports say \"smart brain\" technology has been applied to logistics hubs, driving faster cost reduction and efficiency improvement on postal routes. Specific technical solutions and cost figures were not disclosed.",
-     "impact": "Logistics digitalization will drive higher transport efficiency and lower distribution costs.",
-     "importance": "normal",
+     "title": "APEC China Year: High-Standard Opening Up Powers Asia-Pacific Cooperation",
+     "summary": "Experts debate how China's high-standard opening up can empower regional cooperation in the Asia-Pacific.",
+     "detail": "Against the backdrop of the APEC China Year, stakeholders are discussing opening up, cooperation and regional economic integration.",
+     "impact": "Helps strengthen Asia-Pacific supply chain coordination and benefits cross-border trade and investment.",
+     "importance": "important",
      "tags": [
-      "Smart Logistics",
-      "Digital Transformation",
-      "Supply Chain"
+      "Regional Economic Cooperation",
+      "High-Standard Opening Up",
+      "Multilateral Trade"
      ]
     },
     {
      "id": "news-015",
-     "title": "Marine Aquaculture Output Exceeds 20 Million Tonnes as Deep-Sea Fish Reach Consumers' Tables",
-     "summary": "China's marine aquaculture output has surpassed 20 million tonnes, drawing attention to how high-quality deep-sea farmed fish make their way to consumers' tables.",
-     "detail": "Reports say China's marine aquaculture output has exceeded 20 million tonnes, with a focus on how premium deep-sea farmed fish reach consumers' tables. Output data broken down by species was not disclosed.",
-     "impact": "Expansion of deep-sea and offshore aquaculture will enrich seafood supply and drive growth in related equipment industries.",
+     "title": "Authoritative Data Roundup: China in Focus (October 25–31)",
+     "summary": "Authoritative data reviews last week's economic performance and key livelihood trends in China.",
+     "detail": "The data roundup compiles key economic and social indicators from October 25 to October 31.",
+     "impact": "Provides a data reference for tracking economic performance and policy outcomes.",
      "importance": "normal",
      "tags": [
-      "Marine Fisheries",
-      "Deep-Sea Aquaculture",
-      "Food Supply"
-     ]
-    },
-    {
-     "id": "news-016",
-     "title": "Pet Food Business Gets Tougher to Win",
-     "summary": "Reports say competition in the pet food business is intensifying, making it harder for players to stay ahead.",
-     "detail": "The report focuses on competitive dynamics in the pet food sector. The source material only provided headline information, without disclosing specific industry data or company details.",
-     "impact": "Intensifying competition in pet food may lead to adjustments in industry concentration.",
-     "importance": "normal",
-     "tags": [
-      "Pet Economy",
-      "Consumer Market",
-      "Food Industry"
+      "Macroeconomy",
+      "Data Watch",
+      "Economic Performance"
      ]
     }
    ]
@@ -244,68 +231,42 @@
    "icon": "🌐",
    "articles": [
     {
-     "id": "news-017",
-     "title": "New York Crude Futures Slip Below $103, Down Over 1.2% on the Day",
-     "summary": "New York crude futures fell below $103, with intraday losses exceeding 1.2%.",
-     "detail": "New York crude futures broke below the $103 mark, down more than 1.2% on the day. A dense flow of statements related to Middle East developments has unsettled market sentiment.",
-     "impact": "Falling oil prices help ease energy cost pressures, but geopolitical factors could still trigger renewed volatility.",
+     "id": "news-016",
+     "title": "Binance Sees Over $3.5 Billion in Net Outflows After Hack",
+     "summary": "Binance recorded over $3.5 billion in net outflows following the theft of $6.3 billion in crypto assets, with the market gradually stabilizing.",
+     "detail": "DefiLlama data shows Binance recorded over $3.5 billion in net outflows on Sunday; the exchange said it processed $4.649 billion in withdrawals and $1.01 billion in deposits on November 1, resulting in net outflows of about $3.64 billion, or 2.1% of total assets under management. Withdrawal volumes have since declined and stabilized, with market conditions steady.",
+     "impact": "In the short term, it pressures crypto market confidence and stablecoin liquidity; in the long term, it tests the exchange's risk controls and compensation capacity.",
      "importance": "hot",
      "tags": [
-      "International Crude",
-      "Commodities",
-      "Energy Market"
+      "Crypto Assets",
+      "Digital Currencies",
+      "Financial Security"
+     ]
+    },
+    {
+     "id": "news-017",
+     "title": "Global Nuclear Reactors Under Construction Rise to 79",
+     "summary": "The number of nuclear reactors under construction worldwide has climbed to 79, with AI demand driving nuclear energy growth.",
+     "detail": "Market reports indicate that surging AI computing demand has become a key driver of accelerated nuclear power construction globally.",
+     "impact": "Positive for nuclear equipment, nuclear fuel, and related power infrastructure supply chains.",
+     "importance": "important",
+     "tags": [
+      "Nuclear Industry",
+      "AI Computing Power",
+      "Clean Energy"
      ]
     },
     {
      "id": "news-018",
-     "title": "Brent Crude Futures Fall Below $113, Down Over 1% on the Day",
-     "summary": "Brent crude futures dropped below $113, with intraday losses exceeding 1%.",
-     "detail": "Brent crude futures fell below $113, down more than 1% on the day, tracking New York crude lower in tandem.",
-     "impact": "International oil prices are declining in sync, potentially easing near-term energy-driven inflation pressures.",
+     "title": "Trump: If Democrats Win Majority, He May Have to Become 'Veto Man'",
+     "summary": "Trump said that if Democrats win a majority in the midterm elections, he may have to play the role of 'veto man.'",
+     "detail": "Trump also said he might reach a deal with Democrats at some point, setting the tone for post-midterm political maneuvering.",
+     "impact": "US midterm election outcomes will shape fiscal and regulatory policy direction, influencing risk appetite across global capital markets.",
      "importance": "important",
      "tags": [
-      "International Crude",
-      "Commodities",
-      "Energy Market"
-     ]
-    },
-    {
-     "id": "news-019",
-     "title": "Binance Says It Has Recovered 90% of Stolen Assets, Will Open Withdrawals on Sunday",
-     "summary": "Binance said it has recovered 90% of the assets stolen in a recent security incident and will open withdrawals on Sunday.",
-     "detail": "Binance said it has recovered 90% of the assets stolen in a recent security incident, up from a previous 80%, and has allocated more than $6.34 billion. It added that the SAFU fund transfer has been completed and withdrawals will open on Sunday.",
-     "impact": "The resumption of withdrawals helps restore user confidence, but the security incident may accelerate tighter risk controls across the industry.",
-     "importance": "important",
-     "tags": [
-      "Crypto Assets",
-      "Financial Security",
-      "Trading Platforms"
-     ]
-    },
-    {
-     "id": "news-020",
-     "title": "Rivian, Ford and Other Automakers Scale Up 3D Printing to Cut Costs and Speed Up Production",
-     "summary": "Rivian, Ford and other automakers are rolling out 3D printing technology to cut costs and accelerate production.",
-     "detail": "Reports say automakers including Rivian and Ford are applying 3D printing in production to lower costs and boost efficiency. The reports did not disclose the specific scale of adoption.",
-     "impact": "Rising adoption of additive manufacturing in the auto industry could reshape parts of the component supply chain.",
-     "importance": "normal",
-     "tags": [
-      "Auto Manufacturing",
-      "3D Printing",
-      "Smart Manufacturing"
-     ]
-    },
-    {
-     "id": "news-021",
-     "title": "Quad to Provide Over $85 Million to Advance Inclusive AI Technology",
-     "summary": "India said Quad ministers will provide more than $85 million in aid for artificial intelligence and inclusive technology.",
-     "detail": "India said Quad ministers will provide more than $85 million in aid for AI and inclusive technology. The foreign ministers of the four-nation grouping also stressed freedom of navigation in the Strait of Hormuz and expressed serious concern over cyber and telecom fraud.",
-     "impact": "Increased funding for regional tech cooperation makes inclusive AI a key focus of international collaboration.",
-     "importance": "normal",
-     "tags": [
-      "Artificial Intelligence",
-      "International Cooperation",
-      "Inclusive Technology"
+      "Overseas Politics",
+      "International Capital Markets",
+      "Policy Maneuvering"
      ]
     }
    ]
@@ -316,139 +277,101 @@
    "icon": "💡",
    "articles": [
     {
-     "id": "news-022",
-     "title": "DeepSeek's Major Release: AI Starts Delegating Tasks to Other AI Systems",
-     "summary": "DeepSeek unveiled major new developments, drawing attention to AI systems beginning to direct other AI systems to carry out tasks.",
-     "detail": "Reports say DeepSeek rolled out significant new developments, focusing on the evolution of AI-to-AI task delegation. No specific model parameters or technical details have been disclosed.",
-     "impact": "Progress in multi-agent collaboration could accelerate a paradigm shift in AI applications.",
+     "id": "news-019",
+     "title": "Manned Lunar Mission Adopts Dual-Launch Lunar-Orbit Rendezvous Plan",
+     "summary": "China's manned lunar exploration program has finalized a plan involving two launches and a lunar-orbit docking.",
+     "detail": "The plan clarifies the program's implementation roadmap, providing an overall design basis for subsequent development and mission progression.",
+     "impact": "Accelerates the development of technologies and supply chains in space launch vehicles, rendezvous and docking, and deep-space exploration.",
      "importance": "hot",
      "tags": [
-      "Artificial Intelligence",
-      "Large Language Models",
-      "AI Agents"
+      "Manned Spaceflight",
+      "Deep-Space Exploration",
+      "Aerospace Engineering"
      ]
     },
     {
-     "id": "news-023",
-     "title": "Domestic CMOS Chips Break Foreign Monopoly; Changchun Optoelectronics Industry Targets $160 Billion",
-     "summary": "Domestic CMOS chips have broken a foreign monopoly, with Changchun's optoelectronics sector targeting an industry scale of 160 billion yuan.",
-     "detail": "Reports say domestic CMOS chips have broken a foreign monopoly, with Changchun's optoelectronics industry targeting a scale of 160 billion yuan. Specific companies and product parameters have not been disclosed.",
-     "impact": "Domestic substitution in image sensors is accelerating, driving the clustering of the regional optoelectronics supply chain.",
-     "importance": "hot",
-     "tags": [
-      "Semiconductors",
-      "Chip Localization",
-      "Optoelectronics Industry"
-     ]
-    },
-    {
-     "id": "news-024",
-     "title": "Meta Partners with Chinese Startup to Build Humanoid Robot Prototype",
-     "summary": "Meta is collaborating with robotics firm Fourier Intelligence to develop a humanoid robot prototype for home use, stepping up its push into the sector.",
-     "detail": "According to people familiar with the matter, Meta is accelerating development of robots for home environments and has partnered with Chinese robotics company Fourier Intelligence on a prototype, intensifying its push into the robotics business.",
-     "impact": "A global tech giant is doubling down on the home robotics race, with industry-chain partnership models worth watching.",
+     "id": "news-020",
+     "title": "Leading Technology Awards Paint Global Picture of Digital and Intelligent Innovation",
+     "summary": "The Leading Technology Awards were announced at the Wuzhen Internet Conference, showcasing global achievements in digital and intelligent innovation.",
+     "detail": "Winning projects span frontier digital technology fields, reflecting the vibrancy of global tech innovation.",
+     "impact": "Boosts the commercialization of digital technologies and drives industrial digital and intelligent upgrading.",
      "importance": "important",
      "tags": [
-      "Humanoid Robots",
-      "Smart Manufacturing",
-      "Tech Companies"
+      "Digital Economy",
+      "Technology Innovation",
+      "Artificial Intelligence"
      ]
     },
     {
-     "id": "news-025",
-     "title": "Official Disclosure: Two Chinese Astronauts Will Land on the Moon",
-     "summary": "Official disclosures indicate that two Chinese citizens will set foot on the lunar surface.",
-     "detail": "Officials disclosed that two Chinese astronauts will land on the moon. No specific mission timeline or crew selection details have been released.",
-     "impact": "A milestone in crewed deep-space exploration is drawing near, expected to lift sentiment across the entire aerospace supply chain.",
-     "importance": "hot",
+     "id": "news-021",
+     "title": "Open Source Ecosystem Becomes the Strongest Voice in Tech Development",
+     "summary": "Commentary notes that openness brings vitality, with open source emerging as the strongest force driving technology development.",
+     "detail": "The open-source model promotes technology sharing and collaborative innovation, accelerating the flourishing of industrial ecosystems.",
+     "impact": "Helps lower barriers to innovation and accelerates the buildout of domestic software and hardware ecosystems.",
+     "importance": "normal",
      "tags": [
-      "Space Engineering",
-      "Crewed Spaceflight",
-      "Deep Space Exploration"
-     ]
-    },
-    {
-     "id": "news-026",
-     "title": "Breakthroughs Across Multiple Sectors as China's Cutting-Edge Achievements Keep Rolling Out",
-     "summary": "China reported a wave of breakthroughs across multiple sectors this week, with major tech achievements continuing to emerge.",
-     "detail": "Reports say China scored a series of breakthroughs across multiple sectors this week, with hard-tech achievements continuing to land. No specific list of accomplishments was included in the source material.",
-     "impact": "The dense pipeline of tech progress suggests the overall effectiveness of the national innovation system continues to improve.",
-     "importance": "important",
-     "tags": [
-      "Tech Innovation",
-      "Industrial Upgrading",
-      "Independent R&D"
+      "Open-Source Ecosystem",
+      "Software Industry",
+      "Tech Collaboration"
      ]
     }
    ]
   },
   {
    "id": "other",
-   "title": "Other Top News",
+   "title": "Other Top Stories",
    "icon": "📰",
    "articles": [
     {
-     "id": "news-027",
-     "title": "Sun Yingsha Defeats Hina Hayata 4-3",
-     "summary": "Sun Yingsha defeated Hina Hayata 4-3 in a table tennis match.",
-     "detail": "In a table tennis clash, Sun Yingsha beat Hina Hayata 4-3. The source did not disclose the specific tournament name.",
-     "impact": "The high-level matchup showcases the competitive form of China's national table tennis team and has drawn strong attention.",
+     "id": "news-022",
+     "title": "Sun Yingsha beats Wang Yidi 4-3 to reach final",
+     "summary": "Sun Yingsha defeated Wang Yidi 4-3 to book her place in the final.",
+     "detail": "The Chinese national team players battled through seven grueling games before a winner emerged, securing a spot in the final.",
+     "impact": "Intense competition within China's women's singles squad continues to drive growing interest in the tournament.",
      "importance": "important",
      "tags": [
-      "Sports Event",
+      "Sports",
       "Table Tennis",
       "Competitive Sports"
      ]
     },
     {
-     "id": "news-028",
-     "title": "People's Daily Comments on Zhu Zhiwen Reported by 'Haters'",
-     "summary": "People's Daily published a commentary on the reporting of singer Zhu Zhiwen by online 'haters'.",
-     "detail": "People's Daily weighed in on Zhu Zhiwen being reported by online 'haters'. The source did not disclose the full text of the commentary or the grounds for the reports.",
-     "impact": "The mainstream media's voice may fuel debate over the boundaries of online reporting and reputation rights.",
-     "importance": "normal",
+     "id": "news-023",
+     "title": "Scoliosis becoming a growing problem among Chinese students",
+     "summary": "Reports say scoliosis is affecting a large number of Chinese students, taking a toll on their physical and mental health.",
+     "detail": "The discussion centers on posture and health issues among students and their underlying causes.",
+     "impact": "Encourages schools, families and the medical sector to jointly address posture and health management among young people.",
+     "importance": "important",
      "tags": [
-      "Online Ecosystem",
-      "Public Opinion Oversight"
+      "Youth Health",
+      "School Health",
+      "Rehabilitation Medicine"
      ]
     },
     {
-     "id": "news-029",
-     "title": "Scoliosis Is Affecting Students Across China",
-     "summary": "Reports say scoliosis is affecting China's student population, drawing concern.",
-     "detail": "The report focuses on scoliosis among students. The source only provided headline information, without specific data or intervention measures.",
-     "impact": "The prominence of spinal health issues among young people may drive stronger campus health screening and intervention.",
+     "id": "news-024",
+     "title": "Anti-aging effects of stem cell infusions spark debate",
+     "summary": "Whether stem cell infusions costing hundreds of thousands of yuan per shot can truly slow aging is drawing scrutiny.",
+     "detail": "Coverage examines the actual efficacy of stem cell anti-aging treatments alongside the phenomenon of high-price marketing.",
+     "impact": "Could spur tighter regulation of the anti-aging consumer market and stronger public science education.",
      "importance": "normal",
      "tags": [
-      "Adolescent Health",
-      "Public Health",
-      "Campus Health"
+      "Health & Wellness",
+      "Regenerative Medicine",
+      "Consumer Healthcare"
      ]
     },
     {
-     "id": "news-030",
-     "title": "Drug Choices Within 48 Hours of Flu Onset Draw Attention",
-     "summary": "Amid the flu outbreak, drug choices within 48 hours of symptom onset are sparking discussion.",
-     "detail": "The report centers on treatment options during the first 48 hours after flu onset. The source did not disclose specific drug names or medical advice.",
-     "impact": "Public health education on flu-season medication can improve self-protection and the awareness of seeking timely care.",
+     "id": "news-025",
+     "title": "Flu season hits: drug choice within 48 hours sparks debate",
+     "summary": "How to choose medication within the first 48 hours of catching the flu has become a topic of public concern.",
+     "detail": "The article discusses timing and selection of flu medication during the peak season.",
+     "impact": "Raises public awareness of flu prevention and treatment, boosting demand for related drugs and vaccines.",
      "importance": "normal",
      "tags": [
       "Public Health",
-      "Flu Prevention and Control",
+      "Respiratory Disease",
       "Health Education"
-     ]
-    },
-    {
-     "id": "news-031",
-     "title": "Can Stem Cell Infusions Costing Hundreds of Thousands Really Slow Aging?",
-     "summary": "Reports question whether stem cell infusions costing hundreds of thousands of yuan truly deliver anti-aging effects.",
-     "detail": "The report examines whether anti-aging claims for expensive stem cell infusions hold up. The source did not disclose specific institutions or research conclusions.",
-     "impact": "May prompt scrutiny of the legality and scientific basis of high-priced anti-aging treatments.",
-     "importance": "normal",
-     "tags": [
-      "Health Industry",
-      "Aesthetic Anti-Aging",
-      "Consumer Warning"
      ]
     }
    ]
