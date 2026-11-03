@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-02",
+  "date": "2026-11-03",
   "contents": [
     {
-      "id": "prog-2026-11-02",
-      "date": "2026-11-02",
-      "title": "Rust Trait 对象（dyn Trait）与对象安全：构建可扩展的插件式架构",
-      "summary": "掌握 Box<dyn Trait> 动态分发、对象安全规则与泛型静态分发的取舍，学会在实际项目中设计可扩展的 trait 接口。",
-      "difficulty": "中级",
-      "concept": "Rust 中让多个类型共享同一接口的手段是 trait。使用 trait 有两种分发方式：静态分发（泛型 `T: Trait`）在编译期单态化，零成本但会导致代码膨胀，且无法把不同类型放进同一个集合；动态分发（`dyn Trait`）通过 vtable 在运行期查表调用，牺牲一点点性能换取异构集合、插件注册表、闭包擦除类型等能力。工程上常见的经验是：底层热路径用泛型，上层需要「类型擦除」或「可插拔」的地方用 `dyn Trait`，二者可以通过「泛型函数包装 trait object」组合使用。\n\ntrait object 的声明语法是 `Box<dyn Shape>`、`&dyn Shape`、`Arc<dyn Shape + Send + Sync>`。注意 `Box<dyn Trait>` 本身是一个胖指针（数据指针 + vtable 指针），所以 `Box<dyn Shape>` 是固定大小的，可以放进 `Vec`、`HashMap`、结构体字段中。在多线程场景下，共享 trait object 通常需要 `Arc<dyn Trait + Send + Sync>`，这里的 `+ Send + Sync` 是 trait bound（不是 trait），用来约束背后的类型可以安全地跨线程移动与共享。\n\n并非所有 trait 都能变成 trait object，编译器要求 trait 是「对象安全（object safe）」的。核心规则包括：trait 的方法不能有泛型参数（如 `fn f<T>(&self, v: T)`）、不能返回 `Self`（除非方法上标注 `where Self: Sized`）、不能要求 `Self: Sized` 于 trait 层级、不能使用关联常量或 GAT 的某些形式。破坏对象安全时编译器会给出 `the size for values of type Self cannot be known` 或 `cannot be made into an object` 的错误，理解这些错误是中级 Rust 的必备能力。\n\n当需要在保持对象安全的同时提供构造能力时，常用三种工程手法：其一，把不满足对象安全的方法标注 `where Self: Sized`，使其从 vtable 中剔除但仍可对具体类型调用；其二，用「伴随 trait」分离接口（如 `Animal` 与 `AnimalFactory`）；其三，提供返回 `Box<dyn Trait>` 的关联函数做工厂。此外，若需要让 trait object 支持克隆，典型做法是自定义 `CloneBox` 辅助 trait（`fn clone_box(&self) -> Box<dyn MyTrait>`），再为 `Box<dyn MyTrait>` 手动实现 `Clone`。\n\n在 API 设计层面，推荐「接受泛型、返回/存储 trait object」：函数入参用 `impl Trait` 或泛型以保留内联优化，而结构体字段、注册表、插件列表用 `dyn Trait`。这正是许多成熟 Rust 框架（如 `tower::Service`、`tracing`、各类 ORM 的 backend 抽象）的设计模式。性能敏感时可对比两种分发：静态分发让编译器内联消除开销，动态分发每次调用约多一次间接跳转，通常不是瓶颈，但批量小对象循环中差异可能显现。",
+      "id": "prog-2026-11-03",
+      "date": "2026-11-03",
+      "title": "Kotlin Flow 背压与调度设计：buffer、conflate、flowOn 的生产级实践",
+      "summary": "掌握 Flow 的背压语义与上下文切换机制，设计既不丢关键数据、又不拖垮上游的高性能响应式数据流。",
+      "difficulty": "高级",
+      "concept": "Kotlin Flow 是「冷」且「拉驱动」的：`emit` 是 suspend 函数，当下游处理不过来时上游会自动挂起，因此 Flow 天然具备背压能力——这种默认行为叫「零缓冲」（rendezvous）。零缓冲在正确性上是安全的，但在性能上常常是灾难：一个每 10ms 产生一条的传感器流，遇上一个每 300ms 才能渲染一次的 UI，会让上游协程长期处于挂起状态，占用调度器线程并放大延迟。工程上真正的难点不是「要不要加缓冲」，而是「在哪个环节加、加多大、满了怎么办」。\n\n`buffer(capacity)` 把生产者和消费者解耦到两个协程中，通过 Channel 传递数据，容量满了则上游挂起（`SUSPEND`）；它保证不丢数据，但会把内存压力转移给缓冲区，若长期消费速度 < 生产速度，最终会 OOM 或延迟无限累积。`conflate()` 等价于 `buffer(CONFLATED)`，用 DROP_OLDEST 策略只保留最新值，适合「只关心最新状态」的场景（UI 渲染、定位、电量）。`collectLatest` 则更激进：新值到达会取消正在执行的下游块并立即处理新值，适合可中断的昂贵操作（如网络搜索）。三者的选择标准只有一句话：**这条数据是「事件」还是「状态」？事件不能丢（用 buffer），状态只需最新（用 conflate / collectLatest）。**\n\n`flowOn(context)` 改变的是它**上游**（收集端到该操作符之间）的执行上下文，并且一定会引入一个 Channel 作为跨界桥梁——所以 `flowOn` 和 `buffer` 在实现上是同源的。两个关键工程经验：其一，`flowOn` 位置决定一切，放在 `map { 重计算 }` 之前还是之后，决定了重计算跑在哪个线程池；其二，多次 `flowOn` 会叠加多条 Channel，链路上每多一个 `flowOn` 就多一次跨协程拷贝，长链路中应合并上下文而不是层层切换。默认情况下 `flowOn` 使用 `BUFFERED`（64 条）容量，与 `buffer(capacity)` 显式声明相比更容易被忽略。\n\n在架构层面，建议区分三种模型：一次性/有限数据用 `Flow`（可 `toList`）；持续、可重放最新状态用 `StateFlow`（天然 conflated、`distinctUntilChanged` 语义）；广播式多订阅事件用 `SharedFlow`（可配置 `replay` 与 `extraBufferValues`）。`StateFlow` 的 `update { }` 保证原子性，比 `value = x` 更适合并发写入；`MutableStateFlow` 暴露为只读 `StateFlow` 是 ViewModel 层的标准封装手法。注意 `StateFlow` 会做 `equals` 去重，若数据类字段含 List 等引用类型，需要正确实现 `equals` 或改用 `SharedFlow`。\n\n性能与稳定性陷阱有三类。第一，异常与取消：Flow 中的异常会沿链路向上传播并取消上游，`catch` 操作符只能捕获上游异常、不能捕获下游 `collect` 内部异常；长循环里务必调用 `ensureActive()` 或 `yield()`，否则 `while(true)` 会吞掉取消信号。第二，内存：在 `flow { }` 里持有外部可变集合（如缓存 List）会导致内存泄漏，应使用 `channelFlow` 或不可变快照。第三，测试：冷流可用 `toList()` 断言，热流用 `Turbine` 库断言，切勿用 `delay` 猜时序。",
       "codeExample": {
-        "language": "Rust",
-        "code": "use std::f64::consts::PI;\n\n// ---------- 1. 定义一个统一接口（trait） ----------\ntrait Shape {\n    fn name(&self) -> &str;\n    fn area(&self) -> f64;\n\n    // 带默认实现的方法，同样会进入 vtable\n    fn describe(&self) {\n        println!(\"{} 的面积是 {:.2}\", self.name(), self.area());\n    }\n}\n\n// ---------- 2. 为不同类型实现该接口 ----------\nstruct Circle {\n    radius: f64,\n}\nimpl Shape for Circle {\n    fn name(&self) -> &str {\n        \"圆\"\n    }\n    fn area(&self) -> f64 {\n        PI * self.radius * self.radius\n    }\n}\n\nstruct Rectangle {\n    width: f64,\n    height: f64,\n}\nimpl Shape for Rectangle {\n    fn name(&self) -> &str {\n        \"矩形\"\n    }\n    fn area(&self) -> f64 {\n        self.width * self.height\n    }\n}\n\n// ---------- 3. 动态分发：trait object 存入异构集合 ----------\nfn total_area(shapes: &[Box<dyn Shape>]) -> f64 {\n    // 迭代 Box<dyn Shape>，运行期通过 vtable 调用 area()\n    shapes.iter().map(|s| s.area()).sum()\n}\n\n// ---------- 4. 对象安全：伴随 trait 与工厂方法 ----------\ntrait Animal {\n    fn speak(&self) -> String;\n}\n\ntrait AnimalFactory {\n    // `where Self: Sized` 把该方法从 vtable 中剔除，\n    // 既保持 trait 对象安全，又能在具体类型上调用\n    fn create(name: &'static str) -> Box<dyn Animal>\n    where\n        Self: Sized;\n}\n\nstruct Dog {\n    name: &'static str,\n}\nimpl Animal for Dog {\n    fn speak(&self) -> String {\n        format!(\"{}: 汪汪!\", self.name)\n    }\n}\nimpl AnimalFactory for Dog {\n    fn create(name: &'static str) -> Box<dyn Animal> {\n        Box::new(Dog { name })\n    }\n}\n\nfn main() {\n    // 异构集合：同一个 Vec 里放不同具体类型\n    let shapes: Vec<Box<dyn Shape>> = vec![\n        Box::new(Circle { radius: 2.0 }),\n        Box::new(Rectangle { width: 3.0, height: 4.0 }),\n    ];\n\n    for s in &shapes {\n        s.describe(); // 动态分发\n    }\n    println!(\"总面积: {:.2}\", total_area(&shapes));\n\n    // 工厂函数 + trait object 列表\n    let animals: Vec<Box<dyn Animal>> = vec![Dog::create(\"旺财\"), Dog::create(\"小白\")];\n    for a in &animals {\n        println!(\"{}\", a.speak());\n    }\n\n    // 直接接收 &dyn Trait 的函数，通常由泛型函数传入 &Concrete 自动 coerce\n    fn draw(shape: &dyn Shape) {\n        println!(\"正在绘制: {}\", shape.name());\n    }\n    draw(&Circle { radius: 1.0 });\n    draw(&Rectangle { width: 1.0, height: 2.0 });\n}\n",
-        "explanation": "【第 1 部分】定义 `trait Shape`，包含两个必需方法 `name`、`area`，以及带默认实现的 `describe`。所有方法（含默认实现）都会出现在 vtable 中，前提是它们满足对象安全。\n\n【第 2 部分】`Circle` 与 `Rectangle` 分别实现 `Shape`。两个结构体字段布局不同、内存大小一致但语义不同，更重要的是它们是不同的具体类型，无法直接放进同一个 `Vec<Circle>`——这正是需要 trait object 的动机。\n\n【第 3 部分】`fn total_area(shapes: &[Box<dyn Shape>])` 接收 trait object 切片。`Box<dyn Shape>` 是胖指针（数据指针 + vtable 指针），大小固定，因此可以堆叠在 `Vec` 中。`s.area()` 在运行期经由 vtable 查表调用，属于动态分发。\n\n【第 4 部分】`AnimalFactory::create` 返回 `Box<dyn Animal>`，并通过 `where Self: Sized` 使其不进入 vtable。这样 `Animal` 仍然可以作为 `dyn Animal` 使用，而 `Dog::create(...)` 这种工厂方法对具体类型 `Dog` 完全可用，是插件式注册的典型写法。\n\n【main 函数】演示三种用法：异构 `Vec<Box<dyn Shape>>` 的统一遍历与求和、通过工厂函数构建 `Vec<Box<dyn Animal>>`、以及接收 `&dyn Shape` 的辅助函数。`draw(&Circle{...})` 会发生自动的 unsized coercion（从 `&Circle` 转为 `&dyn Shape`），无需显式写 `as dyn Shape`。"
+        "language": "Kotlin",
+        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.flow.*\n\n// 1) 模拟传感器数据源：每 100ms 发射一条（生产者快，约 10 条/秒）\nfun sensorFlow(): Flow<Int> = flow {\n    var value = 0\n    while (true) {\n        delay(100)\n        println(\"emit -> $value  [${Thread.currentThread().name}]\")\n        emit(value++)\n    }\n}\n\nfun main() = runBlocking {\n    val job = launch {\n        sensorFlow()\n            // 2) 把上游切到 Default 线程池执行（注意：只影响它\"前面\"的部分）\n            .flowOn(Dispatchers.Default)\n            // 3) 解耦生产/消费速率：最多积压 8 条，满了上游才挂起\n            .buffer(capacity = 8)\n            // 4) 下游做一次轻量计算\n            .map { it * it }\n            // 5) 允许丢弃积压值，只保留最新一条（DROP_OLDEST）\n            .conflate()\n            // 6) 消费者很慢：约 3.3 条/秒\n            .collect { v ->\n                delay(300)\n                println(\"collect <- $v  [${Thread.currentThread().name}]\")\n            }\n    }\n\n    delay(1200)\n    job.cancelAndJoin()   // 协作式取消：flow 中的 delay 会被打断\n    println(\"done\")\n}\n\n/*\n预期现象（线程名略有差异）：\nemit -> 0 ... emit -> 11 大约发射 12 条\n但 collect 只看到 0, 25, 100 ... 这样的少数几条（中间值被 conflate 丢弃）\n并且 emit 的线程是 DefaultDispatcher-worker，collect 的线程是 main\n*/",
+        "explanation": "第 1 块：`flow { }` 构建器定义冷流，`delay(100)` 模拟数据源节流，`emit` 是 suspend 函数——下游消费不动时这里会自动挂起。注意 `flow{ }` 内禁止切换上下文（不能用 `withContext`），要切必须用 `flowOn` 或 `channelFlow`。\n\n第 2 块：`flowOn(Dispatchers.Default)` 把「`flowOn` 之前」的发射逻辑放到 Default 线程池，同时隐式创建一条容量默认 64 的 Channel。`flowOn` 之后的 `map`、`collect` 仍然运行在 `runBlocking` 的 main 线程，所以打印出来的线程名会变化。\n\n第 3 块：`buffer(capacity = 8)` 再次创建一条 8 容量的 Channel，把生产者协程与消费者协程真正并行起来。如果不写 buffer，`flowOn` 的默认缓冲也能解耦，但容量不可控。\n\n第 4 块：`map { it * it }` 是纯函数、同步执行，运行在下游上下文（main）。若这里改成重计算，应把它放在 `flowOn` 之前以并行执行。\n\n第 5 块：`conflate()` 使用 DROP_OLDEST 策略，当消费者每 300ms 才取一条而上游每 100ms 就产生一条时，中间值被静默丢弃，只有最新值被处理——这正是 UI 渲染想要的效果。若不能丢数据，请改为 `buffer(capacity = 64, onBufferOverflow = BufferOverflow.SUSPEND)`。\n\n第 6 块：`collect` 中的 `delay(300)` 模拟慢消费；`cancelAndJoin()` 触发取消，`flow` 内的 `delay` 会抛出 `CancellationException`，协程正常结束并打印 done。"
       },
       "keyPoints": [
-        "`Box<dyn Trait>` / `&dyn Trait` / `Arc<dyn Trait + Send + Sync>` 是动态分发的三种常见形态，其中 `+ Send + Sync` 是 trait bound 而非新 trait。",
-        "静态分发（泛型）零成本、可内联，但造成单态化代码膨胀且无法构成异构集合；动态分发可类型擦除，代价是一次 vtable 间接调用。",
-        "对象安全三大雷区：方法带泛型参数、方法返回 `Self`、trait 要求 `Self: Sized`；用 `where Self: Sized` 可把具体方法从 vtable 中剔除。",
-        "需要克隆 trait object 时，采用「辅助 trait + clone_box」模式：`fn clone_box(&self) -> Box<dyn MyTrait>`。",
-        "API 设计经验：对外存储/注册用 `dyn Trait` 保留扩展性，对内热路径用泛型 `impl Trait` 保性能；二者可组合。"
+        "Flow 默认是零缓冲（rendezvous）：下游慢则上游 suspend，绝不丢数据，但可能造成延迟累积",
+        "buffer 保序不丢数据（适合事件/日志/计费），conflate 与 collectLatest 允许丢中间值（适合状态/UI）",
+        "flowOn 只改变其上游的执行上下文，并且一定会引入 Channel；链路上每多一次 flowOn 就多一次跨协程拷贝",
+        "StateFlow 是 conflated + distinctUntilChanged 的热流，SharedFlow 可配 replay 与 extraBufferValues，选择取决于「状态 vs 事件」",
+        "长循环务必 ensureActive()/yield() 保证可取消；catch 只能捕获上游异常；并发写状态用 update { } 保证原子性"
       ],
       "exercise": {
-        "description": "实现一个简易「消息处理器插件系统」：定义 `trait Handler { fn handle(&self, msg: &str) -> String; }`，实现三个具体类型 `UpperCase`、`Prefix { prefix: String }`、`Reverse`，然后构建 `Vec<Box<dyn Handler>>` 形成处理管道（pipeline），输入一条消息依次流经所有处理器并输出最终结果。附加要求：为插件注册表实现 `fn register(name: String, h: Box<dyn Handler>)`，用 `HashMap<String, Box<dyn Handler>>` 存储，并按名字查找执行。",
-        "hint": "先写 `trait Handler` 与三个 impl；管道处理用 `fold` 或可变字符串循环 `for h in &pipeline { msg = h.handle(&msg); }`。注册表用 `std::collections::HashMap<String, Box<dyn Handler>>`，`register` 里直接 `map.insert(name, h)`；查找时 `map.get(&name)` 得到 `Option<&Box<dyn Handler>>`，再调用 `.handle(...)`。注意 `handle` 不能有泛型参数，否则无法变成 `dyn Handler`。",
+        "description": "实现一个「搜索建议」数据流：用户输入框每 50ms 产生一次 query（模拟快速打字），每次搜索是耗时 200ms 的 suspend 函数 `search(query): List<String>`。要求：1) 旧的搜索请求被新输入立即打断，永远只展示最新 query 的结果；2) 搜索工作跑在 Dispatchers.IO；3) 输出结果前做去重，避免连续相同结果重复渲染。请使用 Flow 操作符组合实现，并在 500ms 后取消。",
+        "hint": "关键在于「打断」语义：collectLatest 会在新值到达时取消正在执行的下游块，正好等于「取消旧请求」。用 flowOn(Dispatchers.IO) 让 search 执行在 IO 线程；用 distinctUntilChanged() 对最终结果（List<String>）去重时要注意 List 的 equals 是结构相等，可直接使用。整体链路顺序建议：debounce 可选 → collectLatest { emit(search(it)) } → flowOn(IO) → distinctUntilChanged() → collect。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，使 Vec 能同时存放 Circle 与 Rectangle 两个不同的类型。",
-            "codeContext": "trait Shape { fn area(&self) -> f64; }\nstruct Circle { radius: f64 }\nstruct Rectangle { width: f64, height: f64 }\n// ... 两个 impl Shape 省略",
+            "question": "补全代码：让上游在 Dispatchers.IO 执行，并允许下游丢弃积压、只处理最新值。",
+            "codeContext": "fun searchStream(): Flow<List<String>> = queryFlow()\n    .____(Dispatchers.IO)\n    .____()\n    .map { runBlocking { search(it) } }",
             "segments": [
               {
                 "type": "text",
-                "content": "let shapes: Vec<",
+                "content": "fun searchStream(): Flow<List<String>> = queryFlow()\n    .",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,75 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择正确的类型]",
+                "placeholder": "[选择]",
                 "options": [
-                  "Box<Shape>",
-                  "Box<dyn Shape>",
-                  "dyn Box<Shape>",
-                  "impl Shape"
+                  "flowOn",
+                  "withContext",
+                  "launchIn",
+                  "onContext"
                 ],
-                "correctAnswer": "Box<dyn Shape>"
+                "correctAnswer": "flowOn"
               },
               {
                 "type": "text",
-                "content": "> = vec![Box::new(Circle { radius: 1.0 }), Box::new(Rectangle { width: 2.0, height: 3.0 })];",
+                "content": "(Dispatchers.IO)\n    .",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "buffer(1024)",
+                  "conflate()",
+                  "flattenMerge()",
+                  "retryWhen()"
+                ],
+                "correctAnswer": "conflate()"
+              },
+              {
+                "type": "text",
+                "content": "()\n    .map { search(it) }",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "Box<dyn Shape>",
-            "explanation": "`dyn Trait` 必须出现在指针背后（Box/&/Arc/Rc 等），语法是 `Box<dyn Shape>`。`Box<Shape>` 是 Rust 2015 的旧写法且已被弃用；`dyn Box<Shape>` 语法非法；`impl Shape` 只能用于函数参数/返回值的静态分发，不能放进集合容器，因为它在编译期要求是单一具体类型。"
+            "correctAnswer": "flowOn, conflate()",
+            "explanation": "`flowOn` 是唯一合法的 Flow 上下文切换操作符（`withContext` 不能用在 `flow{ }` 内部，会改变上游语义并抛异常；`onContext` 不存在；`launchIn` 只是把收集转成协程启动）。第二空需要「丢中间值」语义，`conflate()` = `buffer(CONFLATED)`（DROP_OLDEST），符合「只处理最新」需求；`buffer(1024)` 只是缓冲不会丢弃，`flattenMerge` 用于合流，`retryWhen` 用于重试，均不符合。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "下列哪个 trait 可以安全地转换成 trait object（`&dyn T`）？",
-            "codeContext": "// A\ntrait A { fn f(&self, x: i32) -> String; }\n// B\ntrait B { fn f<T: ToString>(&self, x: T) -> String; }\n// C\ntrait C { fn clone_self(&self) -> Self; }\n// D\ntrait D { fn f(&self) -> Self where Self: Sized; }",
+            "question": "关于 `flowOn` 操作符，下列说法正确的是？",
+            "codeContext": "flow {\n    emit(1)           // A\n}\n.flowOn(Dispatchers.IO)\n.map { it * 2 }       // B\n.flowOn(Dispatchers.Default)\n.collect { }          // C",
             "segments": null,
             "options": [
-              "trait A：方法只用具体类型参数",
-              "trait B：方法带泛型参数",
-              "trait C：方法返回 Self",
-              "trait D：方法返回 Self 但标注了 where Self: Sized"
+              "它会影响其下游所有操作符的执行线程",
+              "它只影响它上游（之前）的操作符执行上下文，其下游仍在原上下文执行，且每使用一次就引入一个 Channel",
+              "它会创建一个新的协程作用域，可以脱离结构化并发",
+              "flowOn 与 buffer 功能完全相同，可以互相替代"
             ],
-            "correctAnswer": "trait D：方法返回 Self 但标注了 where Self: Sized",
-            "explanation": "对象安全要求：方法不能有泛型参数（B 不行）、方法不能返回 `Self`（C 不行）。D 虽然返回 `Self`，但通过 `where Self: Sized` 把该方法从 vtable 中剔除，因此 trait 本身仍可作为 trait object 使用，只是 `f` 不能通过 trait object 调用。A 其实也是对象安全的——但题目问的是「带 Self 返回/泛型陷阱」场景，D 展示了正确的修复手段；严格来说 A 与 D 都对象安全，而 D 是需要返回 Self 时的标准解法。"
+            "correctAnswer": "它只影响它上游（之前）的操作符执行上下文，其下游仍在原上下文执行，且每使用一次就引入一个 Channel",
+            "explanation": "A 段运行在 IO，B 段运行在 Default，C 段运行在 collect 所在的原始上下文。`flowOn` 是「向上」作用的，并且底层实现是把上游包成 producer 协程通过 Channel 传给下游，因此每次调用都有一次跨协程拷贝开销；`buffer` 只创建缓冲不改变上下文，两者不可互换。`flowOn` 受结构化并发约束，随所在协程取消而取消。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下程序的输出是什么？",
-            "codeContext": "trait Greeter {\n    fn name(&self) -> &str;\n    fn hello(&self) -> String {\n        format!(\"你好，我是 {}\", self.name())\n    }\n}\nstruct Alice;\nimpl Greeter for Alice {\n    fn name(&self) -> &str { \"Alice\" }\n}\nstruct Bob;\nimpl Greeter for Bob {\n    fn name(&self) -> &str { \"Bob\" }\n    fn hello(&self) -> String { \"Yo!\".to_string() }\n}\nfn main() {\n    let people: Vec<Box<dyn Greeter>> = vec![Box::new(Alice), Box::new(Bob)];\n    for p in &people {\n        println!(\"{}\", p.hello());\n    }\n}",
+            "question": "以下代码最终会打印出什么？",
+            "codeContext": "val f = flow {\n    (1..5).forEach {\n        delay(10)\n        emit(it)\n    }\n}\n\nrunBlocking {\n    f.conflate().collect {\n        delay(50)\n        println(it)\n    }\n}",
             "segments": null,
             "options": [
-              "你好，我是 Alice\n你好，我是 Bob",
-              "Yo!\nYo!",
-              "你好，我是 Alice\nYo!",
-              "Yo!\n你好，我是 Bob"
+              "1 2 3 4 5",
+              "1 5",
+              "1 3 5",
+              "5"
             ],
-            "correctAnswer": "你好，我是 Alice\nYo!",
-            "explanation": "`p` 是 `Box<dyn Greeter>`，`p.hello()` 通过 vtable 动态分发到各自的实现：Alice 未覆盖 `hello`，走 trait 默认实现输出「你好，我是 Alice」；Bob 覆盖了 `hello`，输出「Yo!」。默认实现与覆盖实现在 vtable 中都占一个槽位，动态分发的行为与静态分发一致，只是调用路径多了间接跳转。"
+            "correctAnswer": "1 5",
+            "explanation": "上游每 10ms 发射一条（1 在 t=10，2 在 t=20 … 5 在 t=50），下游每处理一条要 50ms。`conflate()` 只保留最新值：t=10 收到 1 并开始处理（t=60 完成）；在 10~60ms 之间到达的 2、3、4、5 被不断覆盖，只留下 5。t=60 时取出 5 处理完毕。上游在 t=50 完成，因此最终输出只有 1 和 5。注意若把 `conflate()` 换成 `collectLatest`，1 也可能被取消而不输出；换成 `buffer()` 则会完整输出 1 2 3 4 5。"
           }
         ]
       }

@@ -4,7 +4,9 @@
 用法: python3 generate_daily_language.py --lang russian --output /path/to/daily-russian.json
 """
 
-import json, os, sys, argparse, requests
+import json, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import json_sanitize, argparse, requests
 from datetime import datetime, timezone, timedelta
 
 BJ_TZ = timezone(timedelta(hours=8))
@@ -108,7 +110,11 @@ def generate_daily(lang, topic=None):
 
     try:
         content = json.loads(clean)
-        output = {"date": today, "content": content}
+        # 强制修正模型可能生成错误的内部日期/ID（2026-11-03 修复每日语言不更新）
+        if isinstance(content, dict):
+            content["id"] = "daily-" + lang + "-" + today
+            content["date"] = today
+        output = json_sanitize.sanitize({"date": today, "content": content}, lang)  # 字段名规范化+日期强制
         print("OK: " + content.get("topic", "N/A"))
         return output
     except json.JSONDecodeError as e:

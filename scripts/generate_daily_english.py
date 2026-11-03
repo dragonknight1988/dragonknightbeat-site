@@ -5,7 +5,9 @@
 用法: python3 generate_daily_english.py [--output 输出路径] [--topic 主题]
 """
 
-import json, os, sys, argparse, re, requests
+import json, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import json_sanitize, argparse, re, requests
 from datetime import datetime, timezone, timedelta
 from html.parser import HTMLParser
 
@@ -320,6 +322,7 @@ def main():
 
     content = generate_english_content(news_list, args.topic)
     if content:
+        content = json_sanitize.sanitize(content, "en")  # 字段名规范化+日期强制
         with open(args.output, "w", encoding="utf-8") as f:
             json.dump(content, f, ensure_ascii=False, indent=2)
         print(f"✅ 已写入: {args.output}")
