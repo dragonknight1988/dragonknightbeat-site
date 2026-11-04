@@ -1,193 +1,182 @@
 {
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "content": {
-    "id": "en-2026-11-03",
-    "date": "2026-11-03",
-    "topic": "教育与成长",
+    "id": "en-2026-11-04",
+    "date": "2026-11-04",
+    "topic": "人工智能与科技",
     "newsHighlights": [
       {
-        "title": "One day to go: 9th Silk Road cultural expo",
-        "source": "ChinaDaily",
-        "summary": "Known as the “Guardian of Dunhuang”, Chang Shuhong devoted his life to protecting the Mogao Caves and their priceless art, and today conservators carry on his mission.",
-        "translation": "被誉为“敦煌守护者”的常书鸿将毕生献给了莫高窟及其无价艺术的保护事业；如今，文物修复师们正延续着他的使命。",
-        "keyWords": [
-          "devote",
-          "heritage",
-          "conservator",
-          "Mogao Caves"
-        ]
-      },
-      {
-        "title": "Portugal-China chamber official on China's success",
-        "source": "ChinaDaily",
-        "summary": "Bernardo Mendia told China Daily's Global Lens that long-term planning and a governance system that promotes officials on merit explain China's success.",
-        "translation": "葡萄牙中国工商会秘书长贝尔纳多·门迪亚在接受《中国日报》“全球视野”采访时表示，长期规划与凭实绩选拔官员的治理体系是中国成功的关键。",
-        "keyWords": [
-          "governance",
-          "long-term planning",
-          "merit"
-        ]
-      },
-      {
-        "title": "US approves generic version of breakthrough HIV prevention shot",
+        "title": "From robot competitions to inclusive cross-border AI cooperation",
         "source": "CGTN",
-        "summary": "US regulators have approved a generic version of a breakthrough HIV prevention injection, a move expected to make the medicine far more affordable.",
-        "translation": "美国监管机构批准了一款突破性艾滋病预防针剂的仿制版本，此举有望大幅降低该药物的价格。",
+        "summary": "Robot contests are evolving into inclusive cross-border AI cooperation, with experts calling for shared standards, joint research and wider participation in the AI revolution.",
+        "translation": "机器人竞赛正演变为包容性的跨境人工智能合作，专家呼吁建立共同标准、开展联合研究，让更多人参与人工智能革命。",
         "keyWords": [
-          "breakthrough",
-          "generic",
-          "affordable"
+          "robotics",
+          "inclusive",
+          "cross-border",
+          "AI cooperation"
         ]
       },
       {
-        "title": "Xi calls for better protection, coordination to beautify Yellow River",
-        "source": "CGTN",
-        "summary": "President Xi Jinping called for better protection and coordination in the ecological management of the Yellow River.",
-        "translation": "习近平主席呼吁在黄河流域生态治理中加强保护与协调。",
-        "keyWords": [
-          "protection",
-          "coordination",
-          "ecological"
-        ]
-      },
-      {
-        "title": "Phantom Blade Zero makes a heroic debut",
+        "title": "Xi: Building a community with a shared future in cyberspace",
         "source": "ChinaDaily",
-        "summary": "Chinese-developed action game Phantom Blade Zero made a heroic debut, drawing global attention to the country's growing creative talent.",
-        "translation": "由中国团队开发的动作游戏《影之刃零》惊艳亮相，让世界关注到中国日益增长的创意人才力量。",
+        "summary": "China called for global coordination to build a community with a shared future in cyberspace, stressing open, fair and safe digital governance.",
+        "translation": "中国呼吁全球加强协调，共同构建网络空间命运共同体，强调开放、公平、安全的数字治理。",
         "keyWords": [
-          "debut",
-          "creative talent",
-          "action game"
+          "cyberspace",
+          "shared future",
+          "digital governance"
+        ]
+      },
+      {
+        "title": "Swap facility gives boost to A shares",
+        "source": "ChinaDaily",
+        "summary": "China's central bank is preparing a fresh round of funding support for institutional investors to bolster capital market liquidity and stability.",
+        "translation": "中国央行正准备新一轮资金支持，为机构投资者注入流动性，以增强资本市场的流动性与稳定性。",
+        "keyWords": [
+          "swap facility",
+          "liquidity",
+          "bolster"
+        ]
+      },
+      {
+        "title": "US to host trilateral talks with Russia, Ukraine next week in UAE",
+        "source": "CGTN",
+        "summary": "The United States will host trilateral talks with Russia and Ukraine in the UAE next week, with a US envoy mediating the negotiations.",
+        "translation": "美国将于下周在阿联酋主办与俄罗斯、乌克兰的三方会谈，由美国特使斡旋调解。",
+        "keyWords": [
+          "trilateral",
+          "envoy",
+          "mediation"
         ]
       }
     ],
     "quote": {
-      "quote": "Live as if you were to die tomorrow. Learn as if you were to live forever.",
-      "author": "Mahatma Gandhi",
-      "translation": "生活，如同明天就会离世；学习，如同生命没有尽头。",
-      "explation": "这句话强调两种态度的结合：对生活要全情投入、珍惜当下，对学习要持之以恒、永不满足。成长正来自于每天坚持学习一点点，日积月累便成就终身的智慧。"
+      "quote": "The best way to predict the future is to invent it.",
+      "author": "Alan Kay",
+      "translation": "预测未来最好的方式，就是去创造它。",
+      "explanation": "这句话强调：未来并非被动等待的结果，而是由创新者主动塑造的。它呼应了今日新闻中从机器人竞赛走向跨境AI合作的主题——技术的未来取决于我们今天如何合作与创造。"
     },
     "vocabulary": [
       {
-        "word": "devote",
-        "phonetic": "/dɪˈvəʊt/",
-        "partOfSpeech": "verb 动词",
-        "definition": "献身于，致力于，把……用于",
-        "example": "Chang Shuhong devoted his life to protecting the Mogao Caves and their priceless art.",
-        "translation": "常书鸿将毕生献给了莫高窟及其无价艺术的保护事业。",
-        "newsContext": "出自 ChinaDaily《One day to go: 9th Silk Road cultural expo》对“敦煌守护者”常书鸿的报道。"
+        "word": "cyberspace",
+        "phonetic": "/ˈsaɪbərspeɪs/",
+        "partOfSpeech": "n.",
+        "definition": "网络空间，赛博空间",
+        "example": "Countries should work together to build a community with a shared future in cyberspace.",
+        "translation": "各国应携手构建网络空间命运共同体。",
+        "newsContext": "出自新闻标题 “Xi: Building a community with a shared future in cyberspace”（ChinaDaily）。"
       },
       {
-        "word": "heritage",
-        "phonetic": "/ˈherɪtɪdʒ/",
-        "partOfSpeech": "noun 名词",
-        "definition": "（文化）遗产，传统",
-        "example": "Today, conservators carry on his mission and keep Dunhuang's heritage alive.",
-        "translation": "如今，文物修复师们延续着他的使命，让敦煌的文化遗产保持生机。",
-        "newsContext": "出自 ChinaDaily 关于敦煌莫高窟保护与丝绸之路文博会的报道。"
+        "word": "inclusive",
+        "phonetic": "/ɪnˈkluːsɪv/",
+        "partOfSpeech": "adj.",
+        "definition": "包容性的；涵盖广泛的",
+        "example": "Robot competitions are evolving into inclusive cross-border AI cooperation.",
+        "translation": "机器人竞赛正演变为包容性的跨境人工智能合作。",
+        "newsContext": "出自 CGTN 新闻 “From robot competitions to inclusive cross-border AI cooperation”。"
       },
       {
-        "word": "priceless",
-        "phonetic": "/ˈpraɪsləs/",
-        "partOfSpeech": "adjective 形容词",
-        "definition": "无价的，极珍贵的",
-        "example": "The Mogao Caves hold priceless art that took generations to create.",
-        "translation": "莫高窟保存着历经数代人才创造出来的无价艺术珍品。",
-        "newsContext": "出自 ChinaDaily 报道中“their priceless art”一语，形容莫高窟壁画的珍贵价值。"
+        "word": "cross-border",
+        "phonetic": "/ˌkrɒs ˈbɔːrdər/",
+        "partOfSpeech": "adj.",
+        "definition": "跨境的，跨越国界的",
+        "example": "Inclusive cross-border AI cooperation can help developing economies take part in the AI revolution.",
+        "translation": "包容性的跨境人工智能合作可以帮助发展中经济体参与人工智能革命。",
+        "newsContext": "出自 CGTN 新闻标题中的 “inclusive cross-border AI cooperation”。"
       },
       {
-        "word": "reiterate",
-        "phonetic": "/riˈɪtəreɪt/",
-        "partOfSpeech": "verb 动词",
-        "definition": "重申，反复说",
-        "example": "President Xi Jinping said on Monday, reiterating China's commitment to work for peace in the Middle East.",
-        "translation": "习近平主席周一发表讲话，重申中国致力于推动中东和平的承诺。",
-        "newsContext": "出自 ChinaDaily《Joint Mideast peace efforts urged》报道。"
+        "word": "robotics",
+        "phonetic": "/rəʊˈbɒtɪks/",
+        "partOfSpeech": "n.",
+        "definition": "机器人技术，机器人学",
+        "example": "Robotics competitions spark young people's interest in science and engineering.",
+        "translation": "机器人竞赛激发了年轻人对科学与工程的兴趣。",
+        "newsContext": "源自 CGTN 新闻 “From robot competitions...” 中的 robot competitions（机器人竞赛）。"
       },
       {
-        "word": "breakthrough",
-        "phonetic": "/ˈbreɪkθruː/",
-        "partOfSpeech": "noun / adjective 名词/形容词",
-        "definition": "突破（性进展）；突破性的",
-        "example": "US regulators approved a generic version of a breakthrough HIV prevention shot.",
-        "translation": "美国监管机构批准了一款突破性艾滋病预防针剂的仿制版本。",
-        "newsContext": "出自 CGTN 关于艾滋病预防药物获批的报道标题。"
+        "word": "bolster",
+        "phonetic": "/ˈbəʊlstər/",
+        "partOfSpeech": "v.",
+        "definition": "增强，支撑，巩固",
+        "example": "China's financial regulators are stepping up efforts to bolster capital market liquidity and stability.",
+        "translation": "中国金融监管部门正加大力度，以增强资本市场的流动性与稳定性。",
+        "newsContext": "出自 ChinaDaily 新闻 “Swap facility gives boost to A shares”。"
       },
       {
-        "word": "governance",
-        "phonetic": "/ˈɡʌvənəns/",
-        "partOfSpeech": "noun 名词",
-        "definition": "治理，管理方式",
-        "example": "A governance system that promotes officials on merit has contributed to China's success.",
-        "translation": "凭实绩选拔官员的治理体系是中国取得成功的重要原因。",
-        "newsContext": "出自 ChinaDaily 专访葡萄牙中国工商会秘书长门迪亚的报道。"
+        "word": "liquidity",
+        "phonetic": "/lɪˈkwɪdəti/",
+        "partOfSpeech": "n.",
+        "definition": "流动性（资产变现能力）",
+        "example": "The central bank is preparing a fresh round of funding support for institutional investors to improve liquidity.",
+        "translation": "央行正准备新一轮面向机构投资者的资金支持，以改善市场流动性。",
+        "newsContext": "出自 ChinaDaily 新闻 “Swap facility gives boost to A shares” 中的 “capital market liquidity”。"
       },
       {
-        "word": "coordination",
-        "phonetic": "/kəʊˌɔːdɪˈneɪʃn/",
-        "partOfSpeech": "noun 名词",
-        "definition": "协调，配合",
-        "example": "Xi calls for better protection and coordination to beautify the Yellow River.",
-        "translation": "习近平呼吁加强保护与协调，让黄河变得更美。",
-        "newsContext": "出自 CGTN《Xi calls for better protection, coordination to beautify Yellow River》报道。"
+        "word": "trilateral",
+        "phonetic": "/ˌtraɪˈlætərəl/",
+        "partOfSpeech": "adj.",
+        "definition": "三边的，三方的",
+        "example": "The US will host trilateral talks with Russia and Ukraine next week in the UAE.",
+        "translation": "美国将于下周在阿联酋主持与俄罗斯、乌克兰的三方会谈。",
+        "newsContext": "出自 CGTN 新闻 “US to host trilateral talks with Russia, Ukraine next week in UAE”。"
       },
       {
-        "word": "rollout",
-        "phonetic": "/ˈrəʊlaʊt/",
-        "partOfSpeech": "noun 名词",
-        "definition": "（新产品、政策的）推出，推广，铺开",
-        "example": "A new draft standard aims to speed the rollout of C-V2X technology on Chinese roads.",
-        "translation": "一份新的标准草案旨在加快车联网（C-V2X）技术在中国道路上的推广。",
-        "newsContext": "出自 ChinaDaily《Draft standard aiming to speed C-V2X rollout》报道。"
+        "word": "affluent",
+        "phonetic": "/ˈæfluənt/",
+        "partOfSpeech": "adj.",
+        "definition": "富裕的，富足的",
+        "example": "China's affluent population is on the rise despite uncertainties in the global market.",
+        "translation": "尽管全球市场存在不确定性，中国富裕人口仍在增长。",
+        "newsContext": "出自 ChinaDaily 新闻 “China's affluent population on the rise”。"
       },
       {
-        "word": "debut",
-        "phonetic": "/ˈdeɪbjuː/",
-        "partOfSpeech": "noun / verb 名词/动词",
-        "definition": "首次亮相，出道，处女作",
-        "example": "Phantom Blade Zero made a heroic debut and drew global attention.",
-        "translation": "《影之刃零》惊艳亮相，吸引了全球目光。",
-        "newsContext": "出自 ChinaDaily《Phantom Blade Zero makes a heroic debut》报道。"
+        "word": "headwind",
+        "phonetic": "/ˈhedwɪnd/",
+        "partOfSpeech": "n.",
+        "definition": "逆风；不利因素，阻力",
+        "example": "Despite headwinds in the global market, Chinese consumers remain financially confident.",
+        "translation": "尽管全球市场面临逆风，中国消费者在财务上依然充满信心。",
+        "newsContext": "出自 ChinaDaily 新闻摘要 “Despite uncertainties and headwinds in the global market...”。"
       },
       {
-        "word": "deposit",
-        "phonetic": "/dɪˈpɒzɪt/",
-        "partOfSpeech": "noun 名词",
-        "definition": "矿床，矿藏；存款；沉积物",
-        "example": "Geologists have found a major zircon deposit in Xinjiang.",
-        "translation": "地质学家在新疆发现了一处大型锆石矿床。",
-        "newsContext": "出自 ChinaDaily《Major zircon deposit found in Xinjiang》报道标题。"
+        "word": "initiative",
+        "phonetic": "/ɪˈnɪʃətɪv/",
+        "partOfSpeech": "n.",
+        "definition": "倡议；主动性，首创精神",
+        "example": "The initiative calls for open, fair and safe digital governance across borders.",
+        "translation": "该倡议呼吁建立跨越国界的开放、公平、安全的数字治理体系。",
+        "newsContext": "关联 ChinaDaily 新闻 “Building a community with a shared future in cyberspace” 中提出的全球数字合作倡议。"
       }
     ],
     "pattern": {
-      "pattern": "devote one's life / oneself / one's time to + 名词或动名词（把……奉献给……）",
-      "example": "Chang Shuhong devoted his life to protecting the Mogao Caves and their priceless art.",
-      "translation": "常书鸿把毕生奉献给了莫高窟及其无价艺术的保护事业。",
-      "usage": "注意 to 是介词，后面接名词或动名词（doing），不能接动词原形。同类表达还有 be devoted to doing、devote oneself to a cause。可用于描述学习目标：She devotes two hours a day to reading English news."
+      "pattern": "From A to B（从……到……，表示从一种状态/阶段演变为另一种）",
+      "example": "From robot competitions to inclusive cross-border AI cooperation, young engineers are now working on shared global challenges.",
+      "translation": "从机器人竞赛到包容性的跨境人工智能合作，年轻的工程师们正在共同应对全球性挑战。",
+      "usage": "常用于标题和段首，展示事物的发展历程或对比变化。A 和 B 结构应保持平行（均为名词短语）。例如：From surviving to thriving（从生存到繁荣）；From lab research to real-world application（从实验室研究到实际应用）。"
     },
     "grammar": {
-      "title": "过去分词作状语（Past Participle as Adverbial）",
-      "explation": "当句子的主语与分词之间是被动关系时，可用“过去分词 + 逗号”放在句首作状语，表示原因、时间、条件或补充说明，相当于一个省略的状语从句（如 Because he was known as…）。使用时，分词的逻辑主语必须与主句主语一致。",
+      "title": "with 复合结构（with + 宾语 + 宾补）",
+      "explanation": "“with + 名词/代词 + 现在分词/过去分词/介词短语/形容词” 构成独立主格结构，在句中作状语，表伴随、原因或补充说明。若宾语与补语之间是主动关系，用现在分词（doing）；被动关系用过去分词（done）。这一结构在英语新闻中极为常见，能使句子更紧凑。",
       "examples": [
-        "Known as the “Guardian of Dunhuang”, Chang Shuhong devoted his life to protecting the Mogao Caves.（被誉为“敦煌守护者”，常书鸿把毕生献给了莫高窟。）",
-        "Built to speed the rollout of C-V2X technology, the draft standard is now open for public comment.（为加快车联网技术推广而制定的草案现已公开征求意见。）"
+        "The central bank is preparing a fresh round of funding support, with institutional investors preparing to increase their positions in A shares.",
+        "Experts called for cross-border AI cooperation, with shared data standards and open-source tools helping developing economies catch up."
       ]
     },
     "pronunciation": {
-      "word": "heritage",
-      "phonetic": "/ˈherɪtɪdʒ/",
-      "tips": "重音在第一个音节 HE-；/h/ 要送气，/e/ 类似“诶”；中间的元音是短音 /ɪ/，不要读成“ai”；词尾是 /ɪdʒ/，与 judge、language 的结尾相同，舌尖抵住上颚再放开，声带振动。",
+      "word": "cooperation",
+      "phonetic": "/kəʊˌɒpəˈreɪʃn/",
+      "tips": "注意重音在第四个音节 -ra- 上，前面的 co-o-pə 要弱读、快速带过。/əʊ/ 是双元音，口型从半开滑向收圆；结尾 -tion 读作 /ʃn/，不要读成 “提翁”。常见错误是把重音放在第二音节（co-OP-er-a-tion），这是不对的。",
       "examples": [
-        "Conservators work hard to keep Dunhuang's heritage alive.",
-        "Cultural heritage is a bridge between the past and the future."
+        "Inclusive cross-border AI cooperation benefits every participating country.",
+        "International cooperation in science has accelerated in recent years."
       ]
     },
     "reading": {
-      "title": "Guardian of Dunhuang: A Life Devoted to Learning",
-      "content": "Known as the “Guardian of Dunhuang”, Chang Shuhong devoted his life to protecting the Mogao Caves and their priceless art. Born in 1904, he studied painting in France, but a glimpse of Dunhuang's murals in a Paris bookshop changed his path. He returned to China and settled in the desert, where he spent decades copying frescoes, cataloguing treasures and training young conservators.\n\nToday a new generation carries on his mission. The 9th Silk Road International Cultural Expo opens in Dunhuang this week, bringing together scholars, artists and students from across the world. For them, heritage is not only something to admire — it is something to study and pass on.\n\nChang's story shows that growth often begins with one decision: to keep learning, even when the road is long and lonely. Patience and devotion, he proved, can turn a fragile cave into a lasting school for the world.",
-      "translation": "被誉为“敦煌守护者”的常书鸿，把毕生都献给了莫高窟及其无价艺术的保护。他1904年出生，曾在法国学习绘画，但在巴黎一家书店里瞥见的敦煌壁画改变了他的命运。他回到中国，扎根大漠，数十年如一日地临摹壁画、整理珍宝、培养年轻的文物修复师。\n\n今天，新一代人正延续着他的使命。第九届丝绸之路（敦煌）国际文化博览会本周开幕，来自世界各地的学者、艺术家和学生齐聚一堂。对他们而言，文化遗产不仅是用来欣赏的，更是要学习并传承下去的。\n\n常书鸿的故事告诉我们：成长往往始于一个决定——即使道路漫长而孤独，也要坚持学习。他用一生证明，耐心与热爱可以把一座脆弱的洞窟变成一所属于全世界的永恒学堂。",
-      "sourceNote": "本文基于 ChinaDaily《One day to go: 9th Silk Road cultural expo》中关于常书鸿与莫高窟保护的报道改写，用于英语学习目的。"
+      "title": "From Robot Competitions to Cross-Border AI Cooperation",
+      "content": "What began as robot competitions among students and engineers is now evolving into inclusive cross-border AI cooperation. At a recent forum, experts urged countries to build a community with a shared future in cyberspace, arguing that artificial intelligence should serve people everywhere rather than widen the digital divide. Speakers noted that joint research projects, shared data standards and open-source tools can help developing economies take part in the AI revolution. China has called for stronger coordination on AI governance, safety and talent training. Observers say robot contests remain valuable because they spark young people's interest in science, but the real prize is cooperation: when laboratories in different countries work together, breakthroughs in healthcare, education and climate modeling arrive faster. The message is clear — technology thrives when it is shared, and the future of AI depends on how well nations can invent it together.",
+      "translation": "始于学生与工程师之间机器人竞赛的活动，如今正演变为包容性的跨境人工智能合作。在最近的一次论坛上，专家们呼吁各国共同构建网络空间命运共同体，认为人工智能应当服务于所有人，而不是扩大数字鸿沟。发言者指出，联合研究项目、共享数据标准和开源工具可以帮助发展中经济体参与人工智能革命。中国呼吁在人工智能治理、安全和人才培养方面加强协调。观察人士认为，机器人竞赛依然有价值，因为它们激发了年轻人对科学的兴趣；但真正的收获在于合作——当不同国家的实验室携手工作时，医疗、教育和气候建模领域的突破会来得更快。道理很清楚：技术因分享而繁荣，而人工智能的未来取决于各国能如何共同创造它。",
+      "sourceNote": "基于 CGTN 新闻 “From robot competitions to inclusive cross-border AI cooperation” 与 ChinaDaily 新闻 “Xi: Building a community with a shared future in cyberspace” 改写。"
     }
   }
 }

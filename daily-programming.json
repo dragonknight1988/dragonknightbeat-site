@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "contents": [
     {
-      "id": "prog-2026-11-03",
-      "date": "2026-11-03",
-      "title": "Kotlin Flow 背压与调度设计：buffer、conflate、flowOn 的生产级实践",
-      "summary": "掌握 Flow 的背压语义与上下文切换机制，设计既不丢关键数据、又不拖垮上游的高性能响应式数据流。",
-      "difficulty": "高级",
-      "concept": "Kotlin Flow 是「冷」且「拉驱动」的：`emit` 是 suspend 函数，当下游处理不过来时上游会自动挂起，因此 Flow 天然具备背压能力——这种默认行为叫「零缓冲」（rendezvous）。零缓冲在正确性上是安全的，但在性能上常常是灾难：一个每 10ms 产生一条的传感器流，遇上一个每 300ms 才能渲染一次的 UI，会让上游协程长期处于挂起状态，占用调度器线程并放大延迟。工程上真正的难点不是「要不要加缓冲」，而是「在哪个环节加、加多大、满了怎么办」。\n\n`buffer(capacity)` 把生产者和消费者解耦到两个协程中，通过 Channel 传递数据，容量满了则上游挂起（`SUSPEND`）；它保证不丢数据，但会把内存压力转移给缓冲区，若长期消费速度 < 生产速度，最终会 OOM 或延迟无限累积。`conflate()` 等价于 `buffer(CONFLATED)`，用 DROP_OLDEST 策略只保留最新值，适合「只关心最新状态」的场景（UI 渲染、定位、电量）。`collectLatest` 则更激进：新值到达会取消正在执行的下游块并立即处理新值，适合可中断的昂贵操作（如网络搜索）。三者的选择标准只有一句话：**这条数据是「事件」还是「状态」？事件不能丢（用 buffer），状态只需最新（用 conflate / collectLatest）。**\n\n`flowOn(context)` 改变的是它**上游**（收集端到该操作符之间）的执行上下文，并且一定会引入一个 Channel 作为跨界桥梁——所以 `flowOn` 和 `buffer` 在实现上是同源的。两个关键工程经验：其一，`flowOn` 位置决定一切，放在 `map { 重计算 }` 之前还是之后，决定了重计算跑在哪个线程池；其二，多次 `flowOn` 会叠加多条 Channel，链路上每多一个 `flowOn` 就多一次跨协程拷贝，长链路中应合并上下文而不是层层切换。默认情况下 `flowOn` 使用 `BUFFERED`（64 条）容量，与 `buffer(capacity)` 显式声明相比更容易被忽略。\n\n在架构层面，建议区分三种模型：一次性/有限数据用 `Flow`（可 `toList`）；持续、可重放最新状态用 `StateFlow`（天然 conflated、`distinctUntilChanged` 语义）；广播式多订阅事件用 `SharedFlow`（可配置 `replay` 与 `extraBufferValues`）。`StateFlow` 的 `update { }` 保证原子性，比 `value = x` 更适合并发写入；`MutableStateFlow` 暴露为只读 `StateFlow` 是 ViewModel 层的标准封装手法。注意 `StateFlow` 会做 `equals` 去重，若数据类字段含 List 等引用类型，需要正确实现 `equals` 或改用 `SharedFlow`。\n\n性能与稳定性陷阱有三类。第一，异常与取消：Flow 中的异常会沿链路向上传播并取消上游，`catch` 操作符只能捕获上游异常、不能捕获下游 `collect` 内部异常；长循环里务必调用 `ensureActive()` 或 `yield()`，否则 `while(true)` 会吞掉取消信号。第二，内存：在 `flow { }` 里持有外部可变集合（如缓存 List）会导致内存泄漏，应使用 `channelFlow` 或不可变快照。第三，测试：冷流可用 `toList()` 断言，热流用 `Turbine` 库断言，切勿用 `delay` 猜时序。",
+      "id": "prog-2026-11-04",
+      "date": "2026-11-04",
+      "title": "Flutter 状态管理入门：StatelessWidget、StatefulWidget 与 setState",
+      "summary": "搞懂 Flutter 中「无状态」与「有状态」组件的区别，并学会用 setState 驱动界面刷新，这是所有 Flutter 开发的第一块基石。",
+      "difficulty": "初级",
+      "concept": "在 Flutter 里，一切界面都是 Widget。Widget 本质上是「UI 的配置描述」，它本身是不可变的（immutable）。当数据变化时，Flutter 不会去修改旧的 Widget，而是根据新的配置重建一棵新的 Widget 树，再通过底层的 RenderObject 做高效的差异比对（diff）来更新真实界面。理解这一点，是理解 Flutter 一切刷新机制的前提。\n\nWidget 分为两大类：StatelessWidget 和 StatefulWidget。StatelessWidget 没有内部可变状态，它的 build 方法只依赖构造函数传入的参数，参数不变则界面不变，例如纯展示的 Text、Icon、静态卡片。StatefulWidget 则持有一个 State 对象，State 中可以保存随时间变化的数据（比如计数值、输入框文本、是否勾选），数据变了调用 setState，Flutter 就会标记该 Element 为 dirty，然后在下一帧重新调用 build。\n\n必须强调：StatefulWidget 自身依然是不可变的，真正「可变」的是它的 State 对象。这也是为什么 createState() 返回的 State 类要用下划线前缀（_CounterPageState）表示私有，并且 State 的字段不能写成 final（除非它们不会变）。初学者常犯的错误是把状态写进 StatelessWidget 里再试图修改，结果编译器直接报错，这是设计上的保护。\n\nsetState 的工作机制是：它接收一个回调函数，在回调中修改状态字段，回调执行完后通知框架「我需要重建」。注意两个工程经验：第一，setState 的回调里不要写耗时逻辑（如网络请求），它在主线程同步执行，会卡住 UI；正确的做法是先 await 网络请求，拿到结果后再 setState。第二，不要在 build 方法里调用 setState，会触发无限重建甚至崩溃。\n\n另一个实用经验是「状态下沉」。如果一个状态只被某个小组件用到，就放在这个组件的 State 里；如果多个兄弟组件都要用，才考虑把状态提升（State Lifting）到它们共同的父组件，通过构造函数向下传递数据、通过回调向上传递事件。初级阶段先把 setState 用熟，未来再学 Provider、Riverpod 等方案时会非常顺。",
       "codeExample": {
-        "language": "Kotlin",
-        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.flow.*\n\n// 1) 模拟传感器数据源：每 100ms 发射一条（生产者快，约 10 条/秒）\nfun sensorFlow(): Flow<Int> = flow {\n    var value = 0\n    while (true) {\n        delay(100)\n        println(\"emit -> $value  [${Thread.currentThread().name}]\")\n        emit(value++)\n    }\n}\n\nfun main() = runBlocking {\n    val job = launch {\n        sensorFlow()\n            // 2) 把上游切到 Default 线程池执行（注意：只影响它\"前面\"的部分）\n            .flowOn(Dispatchers.Default)\n            // 3) 解耦生产/消费速率：最多积压 8 条，满了上游才挂起\n            .buffer(capacity = 8)\n            // 4) 下游做一次轻量计算\n            .map { it * it }\n            // 5) 允许丢弃积压值，只保留最新一条（DROP_OLDEST）\n            .conflate()\n            // 6) 消费者很慢：约 3.3 条/秒\n            .collect { v ->\n                delay(300)\n                println(\"collect <- $v  [${Thread.currentThread().name}]\")\n            }\n    }\n\n    delay(1200)\n    job.cancelAndJoin()   // 协作式取消：flow 中的 delay 会被打断\n    println(\"done\")\n}\n\n/*\n预期现象（线程名略有差异）：\nemit -> 0 ... emit -> 11 大约发射 12 条\n但 collect 只看到 0, 25, 100 ... 这样的少数几条（中间值被 conflate 丢弃）\n并且 emit 的线程是 DefaultDispatcher-worker，collect 的线程是 main\n*/",
-        "explanation": "第 1 块：`flow { }` 构建器定义冷流，`delay(100)` 模拟数据源节流，`emit` 是 suspend 函数——下游消费不动时这里会自动挂起。注意 `flow{ }` 内禁止切换上下文（不能用 `withContext`），要切必须用 `flowOn` 或 `channelFlow`。\n\n第 2 块：`flowOn(Dispatchers.Default)` 把「`flowOn` 之前」的发射逻辑放到 Default 线程池，同时隐式创建一条容量默认 64 的 Channel。`flowOn` 之后的 `map`、`collect` 仍然运行在 `runBlocking` 的 main 线程，所以打印出来的线程名会变化。\n\n第 3 块：`buffer(capacity = 8)` 再次创建一条 8 容量的 Channel，把生产者协程与消费者协程真正并行起来。如果不写 buffer，`flowOn` 的默认缓冲也能解耦，但容量不可控。\n\n第 4 块：`map { it * it }` 是纯函数、同步执行，运行在下游上下文（main）。若这里改成重计算，应把它放在 `flowOn` 之前以并行执行。\n\n第 5 块：`conflate()` 使用 DROP_OLDEST 策略，当消费者每 300ms 才取一条而上游每 100ms 就产生一条时，中间值被静默丢弃，只有最新值被处理——这正是 UI 渲染想要的效果。若不能丢数据，请改为 `buffer(capacity = 64, onBufferOverflow = BufferOverflow.SUSPEND)`。\n\n第 6 块：`collect` 中的 `delay(300)` 模拟慢消费；`cancelAndJoin()` 触发取消，`flow` 内的 `delay` 会抛出 `CancellationException`，协程正常结束并打印 done。"
+        "language": "dart",
+        "code": "import 'package:flutter/material.dart';\n\n// 应用入口：runApp 把根 Widget 挂载到屏幕上\nvoid main() => runApp(const MyApp());\n\n/// 无状态组件：只负责搭建 MaterialApp 外壳，自身没有可变数据\nclass MyApp extends StatelessWidget {\n  const MyApp({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: 'setState Demo',\n      theme: ThemeData(primarySwatch: Colors.blue),\n      home: const CounterPage(),\n    );\n  }\n}\n\n/// 有状态组件：本身不可变，状态保存在它创建的 State 对象里\nclass CounterPage extends StatefulWidget {\n  const CounterPage({super.key});\n\n  @override\n  State<CounterPage> createState() => _CounterPageState();\n}\n\n/// 与 CounterPage 配对的 State 类，用 _ 前缀保持私有\nclass _CounterPageState extends State<CounterPage> {\n  // 可变状态：注意这里不能加 final\n  int _count = 0;\n\n  // 事件处理函数：在 setState 回调中修改状态，触发界面重建\n  void _increment() {\n    setState(() {\n      _count++; // 只在回调里改数据\n    });\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    // 每次 setState 后，Flutter 会重新调用这个 build 方法\n    return Scaffold(\n      appBar: AppBar(title: const Text('setState 入门')),\n      body: Center(\n        child: Column(\n          mainAxisAlignment: MainAxisAlignment.center,\n          children: [\n            // 字符串插值读取最新状态\n            Text('当前计数：$_count', style: const TextStyle(fontSize: 28)),\n            const SizedBox(height: 16),\n            ElevatedButton(\n              onPressed: _increment, // 点击时调用，触发重建\n              child: const Text('加 1'),\n            ),\n          ],\n        ),\n      ),\n    );\n  }\n}\n",
+        "explanation": "1) main 函数调用 runApp，把根 Widget MyApp 挂到屏幕。MyApp 是 StatelessWidget，因为它的数据（主题、标题）都是固定的。\n2) CounterPage 继承 StatefulWidget，它必须实现 createState()，返回一个 State<CounterPage>。StatefulWidget 本身只是配置，真正的状态在 State 里。\n3) _CounterPageState 中定义了 int _count = 0，这就是「可变状态」。它没有加 final，因为我们后续要修改它。\n4) _increment 方法调用 setState(() { _count++; })。setState 的回调执行完后，Flutter 会把这个 Element 标记为 dirty，并在下一帧重新执行 build。\n5) build 方法里用 '$_count' 做字符串插值显示当前值。每次重建都会读取最新的 _count，所以界面能实时更新。\n6) ElevatedButton 的 onPressed 传入 _increment 函数引用（注意不加括号），点击时才执行；如果写成 _increment() 就会立刻执行一次，属于常见错误。"
       },
       "keyPoints": [
-        "Flow 默认是零缓冲（rendezvous）：下游慢则上游 suspend，绝不丢数据，但可能造成延迟累积",
-        "buffer 保序不丢数据（适合事件/日志/计费），conflate 与 collectLatest 允许丢中间值（适合状态/UI）",
-        "flowOn 只改变其上游的执行上下文，并且一定会引入 Channel；链路上每多一次 flowOn 就多一次跨协程拷贝",
-        "StateFlow 是 conflated + distinctUntilChanged 的热流，SharedFlow 可配 replay 与 extraBufferValues，选择取决于「状态 vs 事件」",
-        "长循环务必 ensureActive()/yield() 保证可取消；catch 只能捕获上游异常；并发写状态用 update { } 保证原子性"
+        "Widget 是不可变的 UI 配置，状态变化时 Flutter 重建 Widget 树，而不是修改旧 Widget",
+        "StatelessWidget 用于无内部状态的展示组件；StatefulWidget 通过配对的 State 对象保存可变数据",
+        "setState 的回调中修改状态字段，回调结束后框架自动重新调用 build 刷新界面",
+        "不要在 build 中调用 setState，也不要在 setState 回调里做耗时操作（应先 await 再 setState）",
+        "状态就近保存：能放在子组件就不提升；需要共享时才把状态提升到共同父组件并通过回调上抛事件"
       ],
       "exercise": {
-        "description": "实现一个「搜索建议」数据流：用户输入框每 50ms 产生一次 query（模拟快速打字），每次搜索是耗时 200ms 的 suspend 函数 `search(query): List<String>`。要求：1) 旧的搜索请求被新输入立即打断，永远只展示最新 query 的结果；2) 搜索工作跑在 Dispatchers.IO；3) 输出结果前做去重，避免连续相同结果重复渲染。请使用 Flow 操作符组合实现，并在 500ms 后取消。",
-        "hint": "关键在于「打断」语义：collectLatest 会在新值到达时取消正在执行的下游块，正好等于「取消旧请求」。用 flowOn(Dispatchers.IO) 让 search 执行在 IO 线程；用 distinctUntilChanged() 对最终结果（List<String>）去重时要注意 List 的 equals 是结构相等，可直接使用。整体链路顺序建议：debounce 可选 → collectLatest { emit(search(it)) } → flowOn(IO) → distinctUntilChanged() → collect。",
+        "description": "实现一个「点赞」按钮：页面中间有一个心形图标（Icons.favorite_border）和一行文字「未点赞」。点击按钮后，图标变为 Icons.favorite（红色），文字变为「已点赞」；再次点击则恢复初始状态。要求使用 StatefulWidget + setState 实现，并额外显示点赞次数。",
+        "hint": "定义两个状态字段：bool _liked = false; 和 int _likeCount = 0;。在点击回调中用 setState 同时切换 _liked 并累加 _likeCount。图标用 Icon(_liked ? Icons.favorite : Icons.favorite_border, color: _liked ? Colors.red : null) 做条件渲染，文字同理用三元表达式。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码：让上游在 Dispatchers.IO 执行，并允许下游丢弃积压、只处理最新值。",
-            "codeContext": "fun searchStream(): Flow<List<String>> = queryFlow()\n    .____(Dispatchers.IO)\n    .____()\n    .map { runBlocking { search(it) } }",
+            "question": "补全代码，使点击按钮后计数能正确刷新界面。",
+            "codeContext": "class _CounterPageState extends State<CounterPage> {\n  int _count = 0;\n\n  void _increment() {\n    ______ {\n      _count++;\n    }\n  }\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "fun searchStream(): Flow<List<String>> = queryFlow()\n    .",
+                "content": "void _increment() {\n    ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,73 +42,54 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "flowOn",
-                  "withContext",
-                  "launchIn",
-                  "onContext"
+                  "setState(()",
+                  "rebuild()",
+                  "updateUI()",
+                  "notify()"
                 ],
-                "correctAnswer": "flowOn"
+                "correctAnswer": "setState(()"
               },
               {
                 "type": "text",
-                "content": "(Dispatchers.IO)\n    .",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "buffer(1024)",
-                  "conflate()",
-                  "flattenMerge()",
-                  "retryWhen()"
-                ],
-                "correctAnswer": "conflate()"
-              },
-              {
-                "type": "text",
-                "content": "()\n    .map { search(it) }",
+                "content": " {\n      _count++;\n    }\n  }",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "flowOn, conflate()",
-            "explanation": "`flowOn` 是唯一合法的 Flow 上下文切换操作符（`withContext` 不能用在 `flow{ }` 内部，会改变上游语义并抛异常；`onContext` 不存在；`launchIn` 只是把收集转成协程启动）。第二空需要「丢中间值」语义，`conflate()` = `buffer(CONFLATED)`（DROP_OLDEST），符合「只处理最新」需求；`buffer(1024)` 只是缓冲不会丢弃，`flattenMerge` 用于合流，`retryWhen` 用于重试，均不符合。"
+            "correctAnswer": "setState(()",
+            "explanation": "Flutter 中唯一标准的「修改状态并触发重建」方式就是 setState。rebuild()、updateUI()、notify() 都不是 Flutter 提供的 API。setState 的参数是一个无参回调函数，通常写成箭头或大括号形式。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 `flowOn` 操作符，下列说法正确的是？",
-            "codeContext": "flow {\n    emit(1)           // A\n}\n.flowOn(Dispatchers.IO)\n.map { it * 2 }       // B\n.flowOn(Dispatchers.Default)\n.collect { }          // C",
+            "question": "关于 StatelessWidget 和 StatefulWidget，下列说法正确的是？",
+            "codeContext": null,
             "segments": null,
             "options": [
-              "它会影响其下游所有操作符的执行线程",
-              "它只影响它上游（之前）的操作符执行上下文，其下游仍在原上下文执行，且每使用一次就引入一个 Channel",
-              "它会创建一个新的协程作用域，可以脱离结构化并发",
-              "flowOn 与 buffer 功能完全相同，可以互相替代"
+              "StatefulWidget 自身的属性可以在 build 里被直接修改",
+              "State 对象中的可变字段可以声明为 final",
+              "StatefulWidget 本身依然是不可变的，可变状态保存在其 State 对象中",
+              "StatelessWidget 也可以调用 setState 刷新界面"
             ],
-            "correctAnswer": "它只影响它上游（之前）的操作符执行上下文，其下游仍在原上下文执行，且每使用一次就引入一个 Channel",
-            "explanation": "A 段运行在 IO，B 段运行在 Default，C 段运行在 collect 所在的原始上下文。`flowOn` 是「向上」作用的，并且底层实现是把上游包成 producer 协程通过 Channel 传给下游，因此每次调用都有一次跨协程拷贝开销；`buffer` 只创建缓冲不改变上下文，两者不可互换。`flowOn` 受结构化并发约束，随所在协程取消而取消。"
+            "correctAnswer": "StatefulWidget 本身依然是不可变的，可变状态保存在其 State 对象中",
+            "explanation": "Widget 类被设计为 immutable（字段通常是 final）。StatefulWidget 只是「配置 + createState()」，真正的可变数据存在 State 里。StatelessWidget 没有 State，因此无法调用 setState；而 State 中要被修改的字段不能声明为 final，否则编译报错。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码最终会打印出什么？",
-            "codeContext": "val f = flow {\n    (1..5).forEach {\n        delay(10)\n        emit(it)\n    }\n}\n\nrunBlocking {\n    f.conflate().collect {\n        delay(50)\n        println(it)\n    }\n}",
+            "question": "点击按钮两次后，Text 显示的内容是什么？",
+            "codeContext": "class _DemoState extends State<Demo> {\n  int _count = 0;\n\n  @override\n  Widget build(BuildContext context) {\n    return Column(\n      children: [\n        Text('$_count'),\n        ElevatedButton(\n          onPressed: () {\n            _count = _count + 2;\n            setState(() {});\n          },\n          child: const Text('加 2'),\n        ),\n      ],\n    );\n  }\n}",
             "segments": null,
             "options": [
-              "1 2 3 4 5",
-              "1 5",
-              "1 3 5",
-              "5"
+              "0",
+              "2",
+              "4",
+              "界面不会更新，始终显示 0"
             ],
-            "correctAnswer": "1 5",
-            "explanation": "上游每 10ms 发射一条（1 在 t=10，2 在 t=20 … 5 在 t=50），下游每处理一条要 50ms。`conflate()` 只保留最新值：t=10 收到 1 并开始处理（t=60 完成）；在 10~60ms 之间到达的 2、3、4、5 被不断覆盖，只留下 5。t=60 时取出 5 处理完毕。上游在 t=50 完成，因此最终输出只有 1 和 5。注意若把 `conflate()` 换成 `collectLatest`，1 也可能被取消而不输出；换成 `buffer()` 则会完整输出 1 2 3 4 5。"
+            "correctAnswer": "4",
+            "explanation": "每次点击会把 _count 加 2。虽然状态修改写在 setState 回调外，但只要之后调用了 setState(() {})，框架仍会标记 dirty 并重建，因此界面会正确刷新。点击两次后 0 + 2 + 2 = 4。注意：把修改逻辑放进 setState 回调是更规范的写法，但不影响结果正确性。"
           }
         ]
       }
