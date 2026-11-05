@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-04",
+  "date": "2026-11-05",
   "contents": [
     {
-      "id": "prog-2026-11-04",
-      "date": "2026-11-04",
-      "title": "Flutter 状态管理入门：StatelessWidget、StatefulWidget 与 setState",
-      "summary": "搞懂 Flutter 中「无状态」与「有状态」组件的区别，并学会用 setState 驱动界面刷新，这是所有 Flutter 开发的第一块基石。",
-      "difficulty": "初级",
-      "concept": "在 Flutter 里，一切界面都是 Widget。Widget 本质上是「UI 的配置描述」，它本身是不可变的（immutable）。当数据变化时，Flutter 不会去修改旧的 Widget，而是根据新的配置重建一棵新的 Widget 树，再通过底层的 RenderObject 做高效的差异比对（diff）来更新真实界面。理解这一点，是理解 Flutter 一切刷新机制的前提。\n\nWidget 分为两大类：StatelessWidget 和 StatefulWidget。StatelessWidget 没有内部可变状态，它的 build 方法只依赖构造函数传入的参数，参数不变则界面不变，例如纯展示的 Text、Icon、静态卡片。StatefulWidget 则持有一个 State 对象，State 中可以保存随时间变化的数据（比如计数值、输入框文本、是否勾选），数据变了调用 setState，Flutter 就会标记该 Element 为 dirty，然后在下一帧重新调用 build。\n\n必须强调：StatefulWidget 自身依然是不可变的，真正「可变」的是它的 State 对象。这也是为什么 createState() 返回的 State 类要用下划线前缀（_CounterPageState）表示私有，并且 State 的字段不能写成 final（除非它们不会变）。初学者常犯的错误是把状态写进 StatelessWidget 里再试图修改，结果编译器直接报错，这是设计上的保护。\n\nsetState 的工作机制是：它接收一个回调函数，在回调中修改状态字段，回调执行完后通知框架「我需要重建」。注意两个工程经验：第一，setState 的回调里不要写耗时逻辑（如网络请求），它在主线程同步执行，会卡住 UI；正确的做法是先 await 网络请求，拿到结果后再 setState。第二，不要在 build 方法里调用 setState，会触发无限重建甚至崩溃。\n\n另一个实用经验是「状态下沉」。如果一个状态只被某个小组件用到，就放在这个组件的 State 里；如果多个兄弟组件都要用，才考虑把状态提升（State Lifting）到它们共同的父组件，通过构造函数向下传递数据、通过回调向上传递事件。初级阶段先把 setState 用熟，未来再学 Provider、Riverpod 等方案时会非常顺。",
+      "id": "prog-2026-11-05",
+      "date": "2026-11-05",
+      "title": "GitHub Actions 实战：构建可复用的 CI/CD 流水线",
+      "summary": "用 GitHub Actions 编排一条包含 Lint、测试矩阵、构建产物与条件部署的完整 CI/CD 流水线，并掌握缓存与安全加固的工程实践。",
+      "difficulty": "中级",
+      "concept": "CI/CD 的本质是把“人工验证代码是否可用”这件事自动化。持续集成（CI）在每次 push / pull_request 时执行静态检查与测试，持续交付（CD）则在此之上产出可部署的制品，持续部署则把制品自动发布到环境。在现代工程中，Git 仓库本身就是唯一事实源（Single Source of Truth）：分支事件、标签、Release 都是流水线的触发信号，代码评审（PR）是质量门禁，而 `.github/workflows/*.yml` 则是可版本化、可回滚、可 code review 的“基础设施代码”。\n\nGitHub Actions 的执行模型由四层构成：Workflow（一个 YAML 文件）→ Job（一个独立的 Runner 虚拟机，Job 之间默认并行）→ Step（Job 内顺序执行的命令或 Action）→ Runner（实际执行环境）。Job 之间通过 `needs` 形成有向无环图（DAG），比如 lint → test → build → deploy。理解这个分层非常关键：Job 之间不共享文件系统，跨 Job 传递数据必须用 `upload-artifact` / `download-artifact`；而 Job 内的 Step 共享工作目录，可以直接复用构建结果。\n\n当需要在多个 Node / Python / Java 版本上验证兼容性时，使用 `strategy.matrix` 声明维度组合，Actions 会自动展开成多个并行 Job。注意 `fail-fast: false` 的含义：默认情况下任一矩阵项失败会取消其余项，这在排查兼容性问题时反而有害，团队实践中通常关闭它以便一次拿到完整的失败分布。另一个必须掌握的概念是“缓存 vs 制品”：`actions/cache`（或 `setup-node` 的 `cache: npm`）缓存的是可再生的中间产物（如依赖包），用于加速下一次运行；`upload-artifact` 上传的是本次运行产生的、需要被下游 Job 消费的结果（如 `dist/`）。把 `node_modules` 作为 artifact 上传是常见的反模式。\n\n安全是流水线最容易被忽略的部分。最小权限原则要求显式声明 `permissions: contents: read`，需要发布时再对特定 Job 提权；敏感信息只能通过 `secrets.*` 注入，切勿硬编码；生产环境应配置 Environment Protection Rules，加上人工审批（required reviewers）作为最后一道闸门。第三方 Action 应固定到 commit SHA 而非浮动 tag，防止供应链攻击；同时利用 GitHub 的 OIDC 与云厂商联邦身份替代长期 AccessKey，可显著降低密钥泄露风险。\n\n工程实践上，一条健康的流水线应当满足：总时长控制在 10 分钟以内、失败信息可直接定位（把 lint 与 test 分成独立 Job，比合并成一个 Step 更易诊断）、支持并发取消（`concurrency` + `cancel-in-progress` 避免 PR 反复推送时浪费算力）、并且只在相关路径变更时运行（`paths` 过滤）。部署 Job 一定要带 `if` 条件，确保只有主分支的 push 才会触发生产发布，PR 仅仅跑 CI，这是防止把未合并代码推上生产的底线。",
       "codeExample": {
-        "language": "dart",
-        "code": "import 'package:flutter/material.dart';\n\n// 应用入口：runApp 把根 Widget 挂载到屏幕上\nvoid main() => runApp(const MyApp());\n\n/// 无状态组件：只负责搭建 MaterialApp 外壳，自身没有可变数据\nclass MyApp extends StatelessWidget {\n  const MyApp({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: 'setState Demo',\n      theme: ThemeData(primarySwatch: Colors.blue),\n      home: const CounterPage(),\n    );\n  }\n}\n\n/// 有状态组件：本身不可变，状态保存在它创建的 State 对象里\nclass CounterPage extends StatefulWidget {\n  const CounterPage({super.key});\n\n  @override\n  State<CounterPage> createState() => _CounterPageState();\n}\n\n/// 与 CounterPage 配对的 State 类，用 _ 前缀保持私有\nclass _CounterPageState extends State<CounterPage> {\n  // 可变状态：注意这里不能加 final\n  int _count = 0;\n\n  // 事件处理函数：在 setState 回调中修改状态，触发界面重建\n  void _increment() {\n    setState(() {\n      _count++; // 只在回调里改数据\n    });\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    // 每次 setState 后，Flutter 会重新调用这个 build 方法\n    return Scaffold(\n      appBar: AppBar(title: const Text('setState 入门')),\n      body: Center(\n        child: Column(\n          mainAxisAlignment: MainAxisAlignment.center,\n          children: [\n            // 字符串插值读取最新状态\n            Text('当前计数：$_count', style: const TextStyle(fontSize: 28)),\n            const SizedBox(height: 16),\n            ElevatedButton(\n              onPressed: _increment, // 点击时调用，触发重建\n              child: const Text('加 1'),\n            ),\n          ],\n        ),\n      ),\n    );\n  }\n}\n",
-        "explanation": "1) main 函数调用 runApp，把根 Widget MyApp 挂到屏幕。MyApp 是 StatelessWidget，因为它的数据（主题、标题）都是固定的。\n2) CounterPage 继承 StatefulWidget，它必须实现 createState()，返回一个 State<CounterPage>。StatefulWidget 本身只是配置，真正的状态在 State 里。\n3) _CounterPageState 中定义了 int _count = 0，这就是「可变状态」。它没有加 final，因为我们后续要修改它。\n4) _increment 方法调用 setState(() { _count++; })。setState 的回调执行完后，Flutter 会把这个 Element 标记为 dirty，并在下一帧重新执行 build。\n5) build 方法里用 '$_count' 做字符串插值显示当前值。每次重建都会读取最新的 _count，所以界面能实时更新。\n6) ElevatedButton 的 onPressed 传入 _increment 函数引用（注意不加括号），点击时才执行；如果写成 _increment() 就会立刻执行一次，属于常见错误。"
+        "language": "YAML (GitHub Actions)",
+        "code": "# .github/workflows/ci-cd.yml\n# 一条完整的 Node.js 项目 CI/CD 流水线\n\nname: Node.js CI/CD Pipeline\n\n# ---------- 1. 触发条件：仅 main 分支的 push 与 PR ----------\non:\n  push:\n    branches: [ main ]\n    paths-ignore:\n      - \"**.md\"          # 只改文档时不触发，节省算力\n  pull_request:\n    branches: [ main ]\n\n# ---------- 2. 默认最小权限（安全基线） ----------\npermissions:\n  contents: read\n\n# ---------- 3. 同一分支/PR 新提交到来时，取消旧的运行 ----------\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\n\njobs:\n  # ---------- 4. Lint：最快的失败反馈（Fail Fast） ----------\n  lint:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 20\n          cache: npm          # 以 package-lock.json 的 hash 为缓存 key\n      - run: npm ci           # 严格按 lockfile 安装，禁止改写版本\n      - run: npm run lint\n\n  # ---------- 5. 测试：多版本矩阵并行 ----------\n  test:\n    needs: lint             # lint 失败则不浪费测试机时\n    runs-on: ubuntu-latest\n    strategy:\n      fail-fast: false      # 任一版本失败，其余版本继续跑完\n      matrix:\n        node-version: [18, 20, 22]\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: ${{ matrix.node-version }}\n          cache: npm\n      - run: npm ci\n      - run: npm test -- --coverage\n      # 仅在主版本上上传覆盖率，避免 3 份重复制品\n      - name: Upload coverage artifact\n        if: matrix.node-version == 20\n        uses: actions/upload-artifact@v4\n        with:\n          name: coverage-report\n          path: coverage/\n          retention-days: 7\n\n  # ---------- 6. 构建：产出可部署制品 ----------\n  build:\n    needs: test\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 20\n          cache: npm\n      - run: npm ci\n      - run: npm run build\n      - uses: actions/upload-artifact@v4\n        with:\n          name: dist            # 下游 Job 按名字下载\n          path: dist/\n          retention-days: 3\n\n  # ---------- 7. 部署：仅 main 的 push，且需要生产环境保护 ----------\n  deploy:\n    needs: build\n    if: github.ref == 'refs/heads/main' && github.event_name == 'push'\n    runs-on: ubuntu-latest\n    permissions:\n      contents: read\n      id-token: write         # 用于 OIDC 联邦身份，替代长期密钥\n    environment:\n      name: production\n      url: https://app.example.com\n    steps:\n      - uses: actions/download-artifact@v4\n        with:\n          name: dist\n          path: dist/\n      - name: Deploy to S3\n        env:\n          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}\n          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}\n        run: aws s3 sync ./dist s3://my-prod-bucket --delete\n",
+        "explanation": "【触发部分】`on.push` / `on.pull_request` 限定在 main 分支，配合 `paths-ignore` 让纯文档改动跳过流水线。`concurrency` 中的 `cancel-in-progress: true` 会在同一 PR 推送新 commit 时自动取消旧运行，避免排队浪费 Runner 分钟数。\n\n【权限部分】工作流顶层声明 `permissions: contents: read`，这是 GitHub 的安全最佳实践：未显式声明时权限可能过宽。deploy Job 额外申请 `id-token: write`，用于向 AWS / GCP 换取短期凭证。\n\n【lint Job】先跑最快的静态检查，让格式错误在 30 秒内反馈，而不是等 5 分钟测试跑完。`npm ci` 比 `npm install` 更适合 CI：它严格按 lockfile 安装且先清空 node_modules，保证可重现。\n\n【test Job】`needs: lint` 建立依赖。`matrix.node-version` 会展开出 3 个并行 Job，`${{ matrix.node-version }}` 是表达式注入。`fail-fast: false` 让三个版本都跑完，便于一次性看清所有兼容性问题。`if: matrix.node-version == 20` 避免上传 3 份相同的覆盖率报告。\n\n【build Job】`needs: test`，只有测试全绿才构建。产物通过 `upload-artifact` 以 `dist` 命名上传，`retention-days` 控制存储成本。\n\n【deploy Job】`if` 双条件是最关键的一行：它同时要求 `refs/heads/main` 与 `push` 事件，因此 PR 永远不会触发生产部署。`environment: production` 关联仓库里的环境保护规则，可配置人工审批与部署密钥作用域。制品通过 `download-artifact` 取回后用 `aws s3 sync --delete` 发布，`--delete` 保证远端与构建结果一致，避免残留旧文件。"
       },
       "keyPoints": [
-        "Widget 是不可变的 UI 配置，状态变化时 Flutter 重建 Widget 树，而不是修改旧 Widget",
-        "StatelessWidget 用于无内部状态的展示组件；StatefulWidget 通过配对的 State 对象保存可变数据",
-        "setState 的回调中修改状态字段，回调结束后框架自动重新调用 build 刷新界面",
-        "不要在 build 中调用 setState，也不要在 setState 回调里做耗时操作（应先 await 再 setState）",
-        "状态就近保存：能放在子组件就不提升；需要共享时才把状态提升到共同父组件并通过回调上抛事件"
+        "Workflow → Job → Step → Runner 四层模型：Job 间默认并行且文件系统隔离，跨 Job 传数据必须用 upload-artifact / download-artifact",
+        "用 needs 构建 DAG（lint → test → build → deploy），把快速失败的检查放在最前，节省 CI 机时",
+        "strategy.matrix 实现多版本并行验证，配合 fail-fast: false 一次拿到完整失败分布",
+        "缓存（actions/cache / setup-node cache: npm）加速依赖安装，制品（artifact）传递构建结果，二者不可混用",
+        "安全三件套：最小 permissions、secrets 注入敏感信息、Environment Protection Rules 做生产审批与作用域隔离"
       ],
       "exercise": {
-        "description": "实现一个「点赞」按钮：页面中间有一个心形图标（Icons.favorite_border）和一行文字「未点赞」。点击按钮后，图标变为 Icons.favorite（红色），文字变为「已点赞」；再次点击则恢复初始状态。要求使用 StatefulWidget + setState 实现，并额外显示点赞次数。",
-        "hint": "定义两个状态字段：bool _liked = false; 和 int _likeCount = 0;。在点击回调中用 setState 同时切换 _liked 并累加 _likeCount。图标用 Icon(_liked ? Icons.favorite : Icons.favorite_border, color: _liked ? Colors.red : null) 做条件渲染，文字同理用三元表达式。",
+        "description": "为一个 Python Web 项目（FastAPI + pytest）编写 `.github/workflows/ci-cd.yml`，要求：(1) 仅在 main 分支的 push 与 pull_request 时触发，并忽略 *.md 变更；(2) 用 matrix 在 Python 3.10 / 3.11 / 3.12 上并行跑 pytest，且任一版本失败不影响其他版本；(3) pip 依赖使用缓存；(4) 只有 main 的 push 才构建 Docker 镜像并推送到 GHCR（ghcr.io），PR 只跑测试不推送；(5) 配置 concurrency 让同一 PR 的旧运行自动取消。",
+        "hint": "先把 Job 划分为 test 与 build-push 两个，用 `needs` 连起来。Python 版本矩阵写成 `matrix.python-version: ['3.10','3.11','3.12']`（注意 YAML 中带小数点的版本号要加引号，否则 3.10 会被解析成 3.1）。pip 缓存可直接用 `actions/setup-python@v5` 的 `cache: pip`。Docker 推送条件写成 `if: github.event_name == 'push' && github.ref == 'refs/heads/main'`，登录 GHCR 使用 `docker/login-action` 配合 `GITHUB_TOKEN`，镜像 tag 建议用 `${{ github.sha }}` 保证可追溯。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，使点击按钮后计数能正确刷新界面。",
-            "codeContext": "class _CounterPageState extends State<CounterPage> {\n  int _count = 0;\n\n  void _increment() {\n    ______ {\n      _count++;\n    }\n  }\n}",
+            "question": "补全触发器配置：让流水线在 main 分支的 push 和 pull_request 时运行。",
+            "codeContext": "on:\n  push:\n    branches: [ ... ]\n  pull_request:\n    branches: [ ... ]",
             "segments": [
               {
                 "type": "text",
-                "content": "void _increment() {\n    ",
+                "content": "on:\n  push:\n    branches: [ ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,73 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[填写分支名]",
                 "options": [
-                  "setState(()",
-                  "rebuild()",
-                  "updateUI()",
-                  "notify()"
+                  "main",
+                  "*",
+                  "HEAD"
                 ],
-                "correctAnswer": "setState(()"
+                "correctAnswer": "main"
               },
               {
                 "type": "text",
-                "content": " {\n      _count++;\n    }\n  }",
+                "content": " ]\n  pull_request:\n    branches: [ ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[填写分支名]",
+                "options": [
+                  "main",
+                  "develop",
+                  "all"
+                ],
+                "correctAnswer": "main"
+              },
+              {
+                "type": "text",
+                "content": " ]",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "setState(()",
-            "explanation": "Flutter 中唯一标准的「修改状态并触发重建」方式就是 setState。rebuild()、updateUI()、notify() 都不是 Flutter 提供的 API。setState 的参数是一个无参回调函数，通常写成箭头或大括号形式。"
+            "correctAnswer": "main",
+            "explanation": "`branches` 过滤器的值是分支名，写 `main` 表示只有目标为 main 的 push / PR 才触发。`*` 是通配所有分支，不符合“仅 main”的要求；`HEAD` 不是合法的分支过滤值。PR 事件中 `branches` 匹配的是 PR 的**目标分支**，不是来源分支，这一点常被误解。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 StatelessWidget 和 StatefulWidget，下列说法正确的是？",
-            "codeContext": null,
+            "question": "关于 GitHub Actions 中的依赖缓存，下列说法正确的是？",
+            "codeContext": "- uses: actions/setup-node@v4\n  with:\n    node-version: 20\n    cache: npm",
             "segments": null,
             "options": [
-              "StatefulWidget 自身的属性可以在 build 里被直接修改",
-              "State 对象中的可变字段可以声明为 final",
-              "StatefulWidget 本身依然是不可变的，可变状态保存在其 State 对象中",
-              "StatelessWidget 也可以调用 setState 刷新界面"
+              "缓存命中后，可以直接跳过 npm ci，因为 node_modules 已经恢复",
+              "setup-node 的 cache: npm 会把 package-lock.json 的 hash 纳入缓存 key，锁文件变化时缓存自动失效",
+              "缓存默认在所有仓库和所有分支之间完全共享",
+              "actions/cache 只能缓存 node_modules 目录，其他路径无法缓存"
             ],
-            "correctAnswer": "StatefulWidget 本身依然是不可变的，可变状态保存在其 State 对象中",
-            "explanation": "Widget 类被设计为 immutable（字段通常是 final）。StatefulWidget 只是「配置 + createState()」，真正的可变数据存在 State 里。StatelessWidget 没有 State，因此无法调用 setState；而 State 中要被修改的字段不能声明为 final，否则编译报错。"
+            "correctAnswer": "setup-node 的 cache: npm 会把 package-lock.json 的 hash 纳入缓存 key，锁文件变化时缓存自动失效",
+            "explanation": "缓存恢复的只是依赖下载内容（如 npm 的全局缓存目录），并不是工作区里的 node_modules，因此 `npm ci` 依然必须执行，只是它会命中本地缓存而不需要重新下载。缓存的作用域是“分支 + 默认分支”继承，主分支的缓存对 feature 分支可见，但反之不可，跨仓库更不共享。`actions/cache` 可以缓存任意路径，例如构建工具链、测试快照、编译缓存等。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "点击按钮两次后，Text 显示的内容是什么？",
-            "codeContext": "class _DemoState extends State<Demo> {\n  int _count = 0;\n\n  @override\n  Widget build(BuildContext context) {\n    return Column(\n      children: [\n        Text('$_count'),\n        ElevatedButton(\n          onPressed: () {\n            _count = _count + 2;\n            setState(() {});\n          },\n          child: const Text('加 2'),\n        ),\n      ],\n    );\n  }\n}",
+            "question": "当对 main 分支执行 git push（不是 PR）时，下面的工作流会执行哪些 Job、产生什么输出？",
+            "codeContext": "jobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"build done\"\n  test:\n    needs: build\n    if: github.event_name == 'pull_request'\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"test done\"\n  deploy:\n    needs: test\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"deploy done\"",
             "segments": null,
             "options": [
-              "0",
-              "2",
-              "4",
-              "界面不会更新，始终显示 0"
+              "输出 build done → test done → deploy done",
+              "仅输出 build done",
+              "仅输出 test done",
+              "三个 Job 全部被跳过，无输出"
             ],
-            "correctAnswer": "4",
-            "explanation": "每次点击会把 _count 加 2。虽然状态修改写在 setState 回调外，但只要之后调用了 setState(() {})，框架仍会标记 dirty 并重建，因此界面会正确刷新。点击两次后 0 + 2 + 2 = 4。注意：把修改逻辑放进 setState 回调是更规范的写法，但不影响结果正确性。"
+            "correctAnswer": "仅输出 build done",
+            "explanation": "push 事件下 `github.event_name` 为 'push'，test Job 的 `if` 条件不成立，因此被标记为 skipped。deploy Job `needs: test`，而其依赖被跳过时，deploy 默认也会被跳过（除非加上 `if: always()` 或 `!cancelled()` 这类显式覆盖）。build Job 没有任何条件，正常执行。这正是“PR 只跑 CI、主分支才部署”模式背后的机制，理解 skipped 的传播规则是写条件流水线的关键。"
           }
         ]
       }

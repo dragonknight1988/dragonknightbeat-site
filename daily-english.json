@@ -1,182 +1,192 @@
 {
-  "date": "2026-11-04",
+  "date": "2026-11-05",
   "content": {
-    "id": "en-2026-11-04",
-    "date": "2026-11-04",
-    "topic": "人工智能与科技",
+    "id": "en-2026-11-05",
+    "date": "2026-11-05",
+    "topic": "商业与金融",
     "newsHighlights": [
       {
-        "title": "From robot competitions to inclusive cross-border AI cooperation",
-        "source": "CGTN",
-        "summary": "Robot contests are evolving into inclusive cross-border AI cooperation, with experts calling for shared standards, joint research and wider participation in the AI revolution.",
-        "translation": "机器人竞赛正演变为包容性的跨境人工智能合作，专家呼吁建立共同标准、开展联合研究，让更多人参与人工智能革命。",
-        "keyWords": [
-          "robotics",
-          "inclusive",
-          "cross-border",
-          "AI cooperation"
-        ]
-      },
-      {
-        "title": "Xi: Building a community with a shared future in cyberspace",
+        "title": "AllianzGI sees growing A-share appeal",
         "source": "ChinaDaily",
-        "summary": "China called for global coordination to build a community with a shared future in cyberspace, stressing open, fair and safe digital governance.",
-        "translation": "中国呼吁全球加强协调，共同构建网络空间命运共同体，强调开放、公平、安全的数字治理。",
+        "summary": "German asset manager AllianzGI says foreign investors are showing growing interest in Chinese A-shares as market sentiment improves.",
+        "translation": "德国资产管理公司安联投资表示，随着市场情绪改善，外国投资者对中国A股的兴趣日益增长。",
         "keyWords": [
-          "cyberspace",
-          "shared future",
-          "digital governance"
+          "A-share appeal",
+          "asset manager",
+          "market sentiment"
         ]
       },
       {
-        "title": "Swap facility gives boost to A shares",
+        "title": "Step into the wonderful world of the CIIE",
         "source": "ChinaDaily",
-        "summary": "China's central bank is preparing a fresh round of funding support for institutional investors to bolster capital market liquidity and stability.",
-        "translation": "中国央行正准备新一轮资金支持，为机构投资者注入流动性，以增强资本市场的流动性与稳定性。",
+        "summary": "The China International Import Expo serves as a launchpad for cutting-edge technologies and a debut platform for new global exhibitors.",
+        "translation": "中国国际进口博览会不仅是进口商品的展会，更是前沿技术的起跳板和全球新展商的首秀平台。",
         "keyWords": [
-          "swap facility",
-          "liquidity",
-          "bolster"
+          "CIIE",
+          "launchpad",
+          "exhibitor"
         ]
       },
       {
-        "title": "US to host trilateral talks with Russia, Ukraine next week in UAE",
-        "source": "CGTN",
-        "summary": "The United States will host trilateral talks with Russia and Ukraine in the UAE next week, with a US envoy mediating the negotiations.",
-        "translation": "美国将于下周在阿联酋主办与俄罗斯、乌克兰的三方会谈，由美国特使斡旋调解。",
+        "title": "China's win-win philosophy is an ancient idea",
+        "source": "ChinaDaily",
+        "summary": "China's win-win approach to international relations traces back to an ancient reminder: when you reap fruits, remember the tree.",
+        "translation": "中国在国际关系中秉持的双赢理念源远流长，古语有云：饮水思源，得鱼忘筌不可取。",
         "keyWords": [
-          "trilateral",
-          "envoy",
-          "mediation"
+          "win-win",
+          "mutual benefit",
+          "philosophy"
+        ]
+      },
+      {
+        "title": "Democrats projected to win US Congress in midterm elections",
+        "source": "CGTN",
+        "summary": "US Democrats are projected to win control of Congress in the 2026 midterm elections, a result with major implications for markets and trade policy.",
+        "translation": "美国民主党预计赢得2026年中期选举并掌控国会，这一结果对市场和贸易政策影响重大。",
+        "keyWords": [
+          "midterm elections",
+          "projected",
+          "trade policy"
+        ]
+      },
+      {
+        "title": "US-Iran tensions persist amid US midterms, regional mediation",
+        "source": "CGTN",
+        "summary": "Tensions between the US and Iran continue even as regional mediation efforts try to ease the standoff.",
+        "translation": "尽管地区斡旋努力缓解僵局，美伊之间的紧张局势仍在持续。",
+        "keyWords": [
+          "tensions",
+          "mediation",
+          "geopolitics"
         ]
       }
     ],
     "quote": {
-      "quote": "The best way to predict the future is to invent it.",
-      "author": "Alan Kay",
-      "translation": "预测未来最好的方式，就是去创造它。",
-      "explanation": "这句话强调：未来并非被动等待的结果，而是由创新者主动塑造的。它呼应了今日新闻中从机器人竞赛走向跨境AI合作的主题——技术的未来取决于我们今天如何合作与创造。"
+      "quote": "Price is what you pay; value is what you get.",
+      "author": "Warren Buffett",
+      "translation": "价格是你付出的，价值才是你得到的。",
+      "explanation": "这句话提醒投资者：买入资产时关注的不应只是市场价格，而是资产本身的长期价值。正如今日新闻中安联投资看好A股，看的是中国经济与企业盈利的长期基本面，而非短期价格波动。"
     },
     "vocabulary": [
       {
-        "word": "cyberspace",
-        "phonetic": "/ˈsaɪbərspeɪs/",
-        "partOfSpeech": "n.",
-        "definition": "网络空间，赛博空间",
-        "example": "Countries should work together to build a community with a shared future in cyberspace.",
-        "translation": "各国应携手构建网络空间命运共同体。",
-        "newsContext": "出自新闻标题 “Xi: Building a community with a shared future in cyberspace”（ChinaDaily）。"
+        "word": "appeal",
+        "phonetic": "/əˈpiːl/",
+        "partOfSpeech": "noun",
+        "definition": "吸引力；感染力",
+        "example": "AllianzGI sees a growing appeal of Chinese A-shares among global investors.",
+        "translation": "安联投资认为，中国A股对全球投资者的吸引力正在增强。",
+        "newsContext": "出自标题 AllianzGI sees growing A-share appeal，appeal 在此表示“吸引力”。"
       },
       {
-        "word": "inclusive",
-        "phonetic": "/ɪnˈkluːsɪv/",
-        "partOfSpeech": "adj.",
-        "definition": "包容性的；涵盖广泛的",
-        "example": "Robot competitions are evolving into inclusive cross-border AI cooperation.",
-        "translation": "机器人竞赛正演变为包容性的跨境人工智能合作。",
-        "newsContext": "出自 CGTN 新闻 “From robot competitions to inclusive cross-border AI cooperation”。"
+        "word": "launchpad",
+        "phonetic": "/ˈlɔːntʃpæd/",
+        "partOfSpeech": "noun",
+        "definition": "起跳板；（事业发展的）起点、平台",
+        "example": "The CIIE has become a launchpad for cutting-edge technologies from global firms.",
+        "translation": "进博会已成为全球企业前沿技术的起跳板。",
+        "newsContext": "出自新闻摘要：\"it's also a launchpad for cutting-edge technologies from global firms\"。"
       },
       {
-        "word": "cross-border",
-        "phonetic": "/ˌkrɒs ˈbɔːrdər/",
-        "partOfSpeech": "adj.",
-        "definition": "跨境的，跨越国界的",
-        "example": "Inclusive cross-border AI cooperation can help developing economies take part in the AI revolution.",
-        "translation": "包容性的跨境人工智能合作可以帮助发展中经济体参与人工智能革命。",
-        "newsContext": "出自 CGTN 新闻标题中的 “inclusive cross-border AI cooperation”。"
+        "word": "cutting-edge",
+        "phonetic": "/ˌkʌtɪŋ ˈedʒ/",
+        "partOfSpeech": "adjective",
+        "definition": "前沿的；最先进的",
+        "example": "Startups use the expo to showcase their cutting-edge products to Chinese buyers.",
+        "translation": "初创企业借助展会向中国买家展示其最前沿的产品。",
+        "newsContext": "出自新闻摘要：\"a launchpad for cutting-edge technologies\"。"
       },
       {
-        "word": "robotics",
-        "phonetic": "/rəʊˈbɒtɪks/",
-        "partOfSpeech": "n.",
-        "definition": "机器人技术，机器人学",
-        "example": "Robotics competitions spark young people's interest in science and engineering.",
-        "translation": "机器人竞赛激发了年轻人对科学与工程的兴趣。",
-        "newsContext": "源自 CGTN 新闻 “From robot competitions...” 中的 robot competitions（机器人竞赛）。"
+        "word": "exhibitor",
+        "phonetic": "/ɪɡˈzɪbɪtə(r)/",
+        "partOfSpeech": "noun",
+        "definition": "参展商；展出者",
+        "example": "Thousands of exhibitors from around the world gather in Shanghai for the CIIE.",
+        "translation": "成千上万来自世界各地的参展商齐聚上海参加进博会。",
+        "newsContext": "出自新闻摘要：\"a debut platform for new exhibitors\"。"
       },
       {
-        "word": "bolster",
-        "phonetic": "/ˈbəʊlstər/",
-        "partOfSpeech": "v.",
-        "definition": "增强，支撑，巩固",
-        "example": "China's financial regulators are stepping up efforts to bolster capital market liquidity and stability.",
-        "translation": "中国金融监管部门正加大力度，以增强资本市场的流动性与稳定性。",
-        "newsContext": "出自 ChinaDaily 新闻 “Swap facility gives boost to A shares”。"
+        "word": "debut",
+        "phonetic": "/ˈdeɪbjuː/",
+        "partOfSpeech": "noun / verb",
+        "definition": "首次亮相；（产品）面世",
+        "example": "Several foreign brands chose the CIIE for their China debut.",
+        "translation": "多个外国品牌选择在进博会完成其在中国的首次亮相。",
+        "newsContext": "出自新闻摘要：\"a debut platform for new exhibitors stepping into...\"。"
       },
       {
-        "word": "liquidity",
-        "phonetic": "/lɪˈkwɪdəti/",
-        "partOfSpeech": "n.",
-        "definition": "流动性（资产变现能力）",
-        "example": "The central bank is preparing a fresh round of funding support for institutional investors to improve liquidity.",
-        "translation": "央行正准备新一轮面向机构投资者的资金支持，以改善市场流动性。",
-        "newsContext": "出自 ChinaDaily 新闻 “Swap facility gives boost to A shares” 中的 “capital market liquidity”。"
+        "word": "reap",
+        "phonetic": "/riːp/",
+        "partOfSpeech": "verb",
+        "definition": "收获；获得（成果、利益）",
+        "example": "Firms that invest early in China reap the fruits of long-term growth.",
+        "translation": "较早在中国投资的企业收获了长期增长的成果。",
+        "newsContext": "出自新闻引用的古语：\"When you reap fruits, you remember the tree\"。"
       },
       {
-        "word": "trilateral",
-        "phonetic": "/ˌtraɪˈlætərəl/",
-        "partOfSpeech": "adj.",
-        "definition": "三边的，三方的",
-        "example": "The US will host trilateral talks with Russia and Ukraine next week in the UAE.",
-        "translation": "美国将于下周在阿联酋主持与俄罗斯、乌克兰的三方会谈。",
-        "newsContext": "出自 CGTN 新闻 “US to host trilateral talks with Russia, Ukraine next week in UAE”。"
+        "word": "equity",
+        "phonetic": "/ˈekwəti/",
+        "partOfSpeech": "noun",
+        "definition": "股票；股权（常用复数 equities）",
+        "example": "Foreign funds have increased their allocation to Chinese equity markets.",
+        "translation": "外国基金加大了对中国股票市场的配置。",
+        "newsContext": "与新闻 AllianzGI sees growing A-share appeal 相关，A-share 指中国 A 股股票市场（equity market）。"
       },
       {
-        "word": "affluent",
-        "phonetic": "/ˈæfluənt/",
-        "partOfSpeech": "adj.",
-        "definition": "富裕的，富足的",
-        "example": "China's affluent population is on the rise despite uncertainties in the global market.",
-        "translation": "尽管全球市场存在不确定性，中国富裕人口仍在增长。",
-        "newsContext": "出自 ChinaDaily 新闻 “China's affluent population on the rise”。"
+        "word": "sentiment",
+        "phonetic": "/ˈsentɪmənt/",
+        "partOfSpeech": "noun",
+        "definition": "情绪；（市场）信心、氛围",
+        "example": "Market sentiment improved after the release of strong economic data.",
+        "translation": "强劲经济数据发布后，市场情绪有所改善。",
+        "newsContext": "与新闻 AllianzGI sees growing A-share appeal 相关，market sentiment 是金融新闻高频搭配。"
       },
       {
-        "word": "headwind",
-        "phonetic": "/ˈhedwɪnd/",
-        "partOfSpeech": "n.",
-        "definition": "逆风；不利因素，阻力",
-        "example": "Despite headwinds in the global market, Chinese consumers remain financially confident.",
-        "translation": "尽管全球市场面临逆风，中国消费者在财务上依然充满信心。",
-        "newsContext": "出自 ChinaDaily 新闻摘要 “Despite uncertainties and headwinds in the global market...”。"
+        "word": "projection",
+        "phonetic": "/prəˈdʒekʃn/",
+        "partOfSpeech": "noun",
+        "definition": "预测；预计结果",
+        "example": "The projection of a Democratic victory sent shockwaves through global markets.",
+        "translation": "民主党获胜的预测在全球市场引起震动。",
+        "newsContext": "出自新闻：\"Democrats projected to win US Congress in midterm elections\"，projected 是其动词形式。"
       },
       {
-        "word": "initiative",
-        "phonetic": "/ɪˈnɪʃətɪv/",
-        "partOfSpeech": "n.",
-        "definition": "倡议；主动性，首创精神",
-        "example": "The initiative calls for open, fair and safe digital governance across borders.",
-        "translation": "该倡议呼吁建立跨越国界的开放、公平、安全的数字治理体系。",
-        "newsContext": "关联 ChinaDaily 新闻 “Building a community with a shared future in cyberspace” 中提出的全球数字合作倡议。"
+        "word": "tension",
+        "phonetic": "/ˈtenʃn/",
+        "partOfSpeech": "noun",
+        "definition": "紧张局势；紧张关系",
+        "example": "Geopolitical tension often drives investors toward safer assets.",
+        "translation": "地缘政治紧张局势常促使投资者转向避险资产。",
+        "newsContext": "出自新闻：\"US-Iran tensions persist amid US midterms, regional mediation\"。"
       }
     ],
     "pattern": {
-      "pattern": "From A to B（从……到……，表示从一种状态/阶段演变为另一种）",
-      "example": "From robot competitions to inclusive cross-border AI cooperation, young engineers are now working on shared global challenges.",
-      "translation": "从机器人竞赛到包容性的跨境人工智能合作，年轻的工程师们正在共同应对全球性挑战。",
-      "usage": "常用于标题和段首，展示事物的发展历程或对比变化。A 和 B 结构应保持平行（均为名词短语）。例如：From surviving to thriving（从生存到繁荣）；From lab research to real-world application（从实验室研究到实际应用）。"
+      "pattern": "A is far more than (a) ..., it's also ..., and a ... （A 远不止是……，它还是……，以及……）",
+      "example": "The China International Import Expo is far more than an expo for imported goods, it's also a launchpad for cutting-edge technologies from global firms, and a debut platform for new exhibitors.",
+      "translation": "中国国际进口博览会远不止是一个进口商品展会，它还是全球企业前沿技术的起跳板，以及新展商的首秀平台。",
+      "usage": "用于强调某事物的多重价值和意义，语气比 not only...but also 更有表现力。写作或演讲中常用来升华主题，例如：This policy is far more than a stimulus package; it is also a signal of confidence to global investors."
     },
     "grammar": {
-      "title": "with 复合结构（with + 宾语 + 宾补）",
-      "explanation": "“with + 名词/代词 + 现在分词/过去分词/介词短语/形容词” 构成独立主格结构，在句中作状语，表伴随、原因或补充说明。若宾语与补语之间是主动关系，用现在分词（doing）；被动关系用过去分词（done）。这一结构在英语新闻中极为常见，能使句子更紧凑。",
+      "title": "新闻标题中的省略与过去分词作后置定语（be projected to do）",
+      "explanation": "英文新闻标题常省略 be 动词，用过去分词直接作表语或定语，以求简洁。\"Democrats projected to win US Congress\" 实际是 \"Democrats are projected to win US Congress\"。be projected to do 表示“预计会……”，常用于经济与政治预测；同类结构还有 be expected to、be estimated to、be scheduled to。",
       "examples": [
-        "The central bank is preparing a fresh round of funding support, with institutional investors preparing to increase their positions in A shares.",
-        "Experts called for cross-border AI cooperation, with shared data standards and open-source tools helping developing economies catch up."
+        "Democrats projected to win US Congress in midterm elections.",
+        "China's GDP is projected to grow steadily over the next five years."
       ]
     },
     "pronunciation": {
-      "word": "cooperation",
-      "phonetic": "/kəʊˌɒpəˈreɪʃn/",
-      "tips": "注意重音在第四个音节 -ra- 上，前面的 co-o-pə 要弱读、快速带过。/əʊ/ 是双元音，口型从半开滑向收圆；结尾 -tion 读作 /ʃn/，不要读成 “提翁”。常见错误是把重音放在第二音节（co-OP-er-a-tion），这是不对的。",
+      "word": "exhibitor",
+      "phonetic": "/ɪɡˈzɪbɪtə(r)/",
+      "tips": "重音落在第二音节 -hi-：/ɪɡ-ˈzɪ-bɪ-tə/。词首 ex- 在此发 /ɪɡ/（受后接浊辅音 /z/ 影响），不要读成 /eks/。中间音节 /zɪb/ 短促清晰，结尾 -tor 弱读为 /tə/。同类词：exhibition /ˌeksɪˈbɪʃn/（重音在第三音节），注意两者重音位置不同。",
       "examples": [
-        "Inclusive cross-border AI cooperation benefits every participating country.",
-        "International cooperation in science has accelerated in recent years."
+        "Over 3,000 exhibitors attended the China International Import Expo.",
+        "Each exhibitor prepared a debut product for the Chinese market."
       ]
     },
     "reading": {
-      "title": "From Robot Competitions to Cross-Border AI Cooperation",
-      "content": "What began as robot competitions among students and engineers is now evolving into inclusive cross-border AI cooperation. At a recent forum, experts urged countries to build a community with a shared future in cyberspace, arguing that artificial intelligence should serve people everywhere rather than widen the digital divide. Speakers noted that joint research projects, shared data standards and open-source tools can help developing economies take part in the AI revolution. China has called for stronger coordination on AI governance, safety and talent training. Observers say robot contests remain valuable because they spark young people's interest in science, but the real prize is cooperation: when laboratories in different countries work together, breakthroughs in healthcare, education and climate modeling arrive faster. The message is clear — technology thrives when it is shared, and the future of AI depends on how well nations can invent it together.",
-      "translation": "始于学生与工程师之间机器人竞赛的活动，如今正演变为包容性的跨境人工智能合作。在最近的一次论坛上，专家们呼吁各国共同构建网络空间命运共同体，认为人工智能应当服务于所有人，而不是扩大数字鸿沟。发言者指出，联合研究项目、共享数据标准和开源工具可以帮助发展中经济体参与人工智能革命。中国呼吁在人工智能治理、安全和人才培养方面加强协调。观察人士认为，机器人竞赛依然有价值，因为它们激发了年轻人对科学的兴趣；但真正的收获在于合作——当不同国家的实验室携手工作时，医疗、教育和气候建模领域的突破会来得更快。道理很清楚：技术因分享而繁荣，而人工智能的未来取决于各国能如何共同创造它。",
-      "sourceNote": "基于 CGTN 新闻 “From robot competitions to inclusive cross-border AI cooperation” 与 ChinaDaily 新闻 “Xi: Building a community with a shared future in cyberspace” 改写。"
+      "title": "China's Markets and the CIIE Keep Drawing Global Business",
+      "content": "The China International Import Expo has grown into far more than a trade fair for imported goods. For global companies, it is a launchpad for cutting-edge technologies, a debut platform for new exhibitors, and a gateway to one of the world's largest consumer markets. Financial firms are watching closely as well. AllianzGI, the German asset manager, says the appeal of Chinese A-shares is growing as market sentiment improves and corporate earnings recover. In a year marked by geopolitical tension — from the US midterms to US-Iran standoffs — China's long-standing win-win philosophy offers a familiar reminder: when you reap fruits, remember the tree. That spirit of mutual benefit runs through both the expo floor and the capital markets. For international businesses and investors, the message of 2026 is clear: engagement, not isolation, remains the most profitable strategy.",
+      "translation": "中国国际进口博览会早已不只是一个进口商品交易会。对全球企业而言，它是前沿技术的起跳板，是新展商的首秀平台，也是通往全球最大消费市场之一的门户。金融机构同样密切关注。德国资产管理公司安联投资表示，随着市场情绪改善、企业盈利回升，中国A股的吸引力不断增强。在这样一个地缘政治紧张的一年——从美国中期选举到美伊僵局——中国一贯秉持的双赢理念给出了一句熟悉的提醒：饮水思源。这种互利共赢的精神既体现在进博会的展台上，也体现在资本市场上。对国际企业和投资者而言，2026年的信号很明确：参与而非孤立，才是最有利可图的策略。",
+      "sourceNote": "本文基于 ChinaDaily《Step into the wonderful world of the CIIE》《AllianzGI sees growing A-share appeal》《China's win-win philosophy is an ancient idea》及 CGTN《Democrats projected to win US Congress in midterm elections》《US-Iran tensions persist》改写整合，专为英语学习设计。"
     }
   }
 }

@@ -1,86 +1,72 @@
 {
- "date": "2026-11-04",
- "weekday": "Wednesday",
- "overview": "Domestic market-stabilization policies and implementation of the Fifth Plenum are moving in sync, while Middle East tensions and a surge in US chip stocks jointly shape global market sentiment.",
+ "date": "2026-11-05",
+ "weekday": "Thursday",
+ "overview": "The CIIE and the World Internet Conference follow back to back, domestic demand and infrastructure policies roll out in rapid succession, while overseas semiconductor stocks and oil prices swing sharply.",
  "trendingTopics": [
-  "Market-stabilization policies",
-  "Capital markets",
-  "Middle East situation",
+  "China International Import Expo",
   "World Internet Conference",
-  "Semiconductors",
-  "Cross-border trade",
-  "Public health",
-  "Consumer goods going global"
+  "Domestic Demand and Consumption",
+  "Services Trade",
+  "Semiconductor Sector",
+  "International Oil Prices",
+  "Commodities"
  ],
  "sections": [
   {
    "id": "domestic",
-   "title": "China Domestic Affairs",
+   "title": "Domestic Politics",
    "icon": "🇨🇳",
    "articles": [
     {
      "id": "news-001",
-     "title": "Political Watch: Ensuring the Mother River Benefits Generations to Come",
-     "summary": "A political commentary on the protection and governance of major rivers, stressing the need to let the mother river sustainably benefit future generations.",
-     "detail": "The article focuses on the protection and governance of the mother river, arguing that ecological protection should be given priority. Looking long-term, it stresses that river basin governance must stand the test of history and the people. The remarks reflect continued planning for ecological civilization development.",
-     "impact": "Reinforces policy direction on basin ecological protection, benefiting environmental governance and green industry development in related regions.",
-     "importance": "important",
+     "title": "Strengthen, Optimize and Expand the Real Economy",
+     "summary": "Deployments on real economy development stress shifting the focus of economic growth to the real economy, reflecting a people-centered development philosophy.",
+     "detail": "The coverage centers on making the real economy stronger, better and larger, explaining its significance for safeguarding livelihoods and stabilizing employment. The reports combine macro-level planning with concern for the people, highlighting the real economy's foundational role in modernization.",
+     "impact": "Sends a policy signal of building the nation on the real economy, stabilizes expectations for manufacturing and supply chains, and steers resources toward the real economy.",
+     "importance": "hot",
      "tags": [
-      "Ecological Protection",
-      "Basin Governance",
-      "Green Development"
+      "Real Economy",
+      "Macroeconomic Policy",
+      "Industrial Development"
      ]
     },
     {
      "id": "news-002",
-     "title": "Spirit of the Fifth Plenum Inspires Cadres and Citizens to Work Hard and Build the Future",
-     "summary": "The spirit of the Fifth Plenum has sparked strong responses among cadres and citizens across the country, inspiring them to work pragmatically and open up the future.",
-     "detail": "Cadres and citizens said they will take the plenum spirit as guidance and turn deployments into concrete action. Many regions are planning their next steps with a down-to-earth approach. The coverage presents an atmosphere combining study of the spirit with its implementation.",
-     "impact": "Builds consensus on development and pushes regions to translate planning and deployments into concrete action.",
+     "title": "Multiple Departments Roll Out Plans to Bolster Consumption Infrastructure",
+     "summary": "Several departments jointly unveiled plans to strengthen consumption infrastructure, providing support for expanding consumption and improving the consumption environment.",
+     "detail": "The plans target gaps in consumption infrastructure, boosting consumption capacity by upgrading facilities and supporting services. The move aligns with the policy orientation of expanding domestic demand and creates conditions for a sustained recovery in the consumer market.",
+     "impact": "Expected to drive related investment and broaden consumption scenarios, supporting steady growth in retail sales of consumer goods.",
      "importance": "important",
      "tags": [
-      "Policy Implementation",
-      "Cadre Development",
-      "Development Planning"
+      "Consumption Infrastructure",
+      "Expanding Domestic Demand",
+      "Livelihood Protection"
      ]
     },
     {
      "id": "news-003",
-     "title": "Nearly 200 CIIE 'Perfect Attendance' Enterprises and Institutions Set to Appear",
-     "summary": "Nearly 200 enterprises and institutions that have attended multiple consecutive editions of the CIIE will appear at the ninth China International Import Expo.",
-     "detail": "So-called 'perfect attendance' exhibitors are enterprises and institutions that have taken part in every edition of the CIIE. This group of exhibitors will soon appear together at the new edition. The CIIE continues to attract global buyers and sellers.",
-     "impact": "Demonstrates the CIIE's enduring appeal, creating more matching opportunities for import consumption and international sourcing.",
-     "importance": "normal",
+     "title": "China's Services Trade Posts Solid Performance in First Nine Months",
+     "summary": "China's services trade showed steady progress with overall solid performance during the first nine months of this year.",
+     "detail": "Data show services trade displaying both stability and progress, with imports and exports performing well. Steady growth in services trade has supported the optimization of the foreign trade structure and the development of an open economy.",
+     "impact": "Demonstrates strong resilience in services trade, helping offset external uncertainties and stabilize the overall foreign trade picture.",
+     "importance": "important",
      "tags": [
-      "CIIE",
-      "Exhibition Economy",
-      "Import Trade"
+      "Services Trade",
+      "Foreign Trade Conditions",
+      "Open Economy"
      ]
     },
     {
      "id": "news-004",
-     "title": "9th Dunhuang Cultural Expo Opens as Chinese and Foreign Guests Gather for Civilizational Dialogue",
-     "summary": "The ninth Dunhuang Cultural Expo has opened, bringing together Chinese and foreign guests for a dialogue among civilizations.",
-     "detail": "This edition of the cultural expo centers on exchanges around the theme of civilizational dialogue, with Chinese and foreign guests taking part in related activities. Dunhuang's role as a platform for cultural exchange has been further highlighted.",
-     "impact": "Promotes cultural exchange and mutual learning between China and the world, boosting foreign cooperation in culture and tourism-related fields.",
+     "title": "Efforts to Make China's Mother River Ever More Beautiful",
+     "summary": "Ongoing efforts are advancing ecological protection across river basins, with the goal of continuously improving the environment of China's mother rivers.",
+     "detail": "Coverage focuses on the ecological protection and management of major rivers, emphasizing sustained progress in pollution control and ecological restoration. Improvements in water quality and ecosystems of mother rivers are a key part of building an ecological civilization.",
+     "impact": "Continued basin governance will improve riparian ecosystems and advance the implementation of green development principles.",
      "importance": "normal",
      "tags": [
-      "Cultural Exchange",
-      "Culture-Tourism Integration",
-      "Exhibition Economy"
-     ]
-    },
-    {
-     "id": "news-005",
-     "title": "People's Viewpoint: From 'Flood Safety' to 'Open Thoroughfares'",
-     "summary": "A People's Viewpoint article traces the shift from 'flood safety' to 'open thoroughfares,' setting out how governance achievements have transformed development.",
-     "detail": "The article builds its argument around the transformation from 'flood safety' to 'open thoroughfares,' emphasizing the progressive relationship between governance and development. It is a commentary piece in the People's Daily opinion section.",
-     "impact": "Provides a public-opinion perspective for understanding the results of basin and infrastructure governance.",
-     "importance": "normal",
-     "tags": [
-      "Infrastructure",
+      "Ecological Protection",
       "Basin Governance",
-      "Public Opinion Guidance"
+      "Green Development"
      ]
     }
    ]
@@ -91,189 +77,152 @@
    "icon": "🌍",
    "articles": [
     {
-     "id": "news-006",
-     "title": "Iran's Revolutionary Guard Declares High Alert, Warns of Unrestricted Response",
-     "summary": "Iran's Islamic Revolutionary Guard Corps issued a statement saying it is on high alert and will deliver an effective response to any threat immediately.",
-     "detail": "The statement said the other side's actions have exposed its hostility and its goals of regime change and territorial division. The Revolutionary Guard said it has carried out orders from the Supreme Leader and will respond to any threat immediately and without geographical limits. The remarks have further heightened regional tensions.",
-     "impact": "Regional security risks are rising, potentially fueling a flight-to-safety mood in international energy and financial markets.",
-     "importance": "hot",
+     "id": "news-005",
+     "title": "US Extends National Emergency Orders Tied to Iran, Nicaragua",
+     "summary": "The United States announced extensions of national emergency orders related to Iran and Nicaragua, continuing the existing sanctions and restrictions framework.",
+     "detail": "The extensions mean related sanctions and restrictions remain in effect, with policy arrangements unchanged. The move reflects continuity in foreign policy, and external pressure on the countries concerned is unlikely to ease in the short term.",
+     "impact": "Regional tensions and the sanctions environment persist, with trade ties and energy market sentiment likely to be affected.",
+     "importance": "important",
      "tags": [
-      "Middle East",
-      "Regional Security",
-      "Defense Developments"
+      "Middle East Situation",
+      "International Sanctions",
+      "Foreign Policy"
+     ]
+    },
+    {
+     "id": "news-006",
+     "title": "European Commission Unveils 2027 Work Programme",
+     "summary": "The European Commission published its 2027 work programme, proposing measures to deepen the single market, cut energy costs and reduce administrative burdens.",
+     "detail": "The work programme focuses on boosting economic competitiveness and strengthening defence security, easing the burden on businesses through lower energy costs and less red tape. Deepening the single market is seen as a key lever for driving internal growth.",
+     "impact": "EU policy priorities are shifting toward competitiveness and security, potentially affecting trade and investment conditions in Europe.",
+     "importance": "important",
+     "tags": [
+      "Regional Economy",
+      "Energy Policy",
+      "Industrial Competition"
      ]
     },
     {
      "id": "news-007",
-     "title": "Iranian Official: Mediators Working to Narrow Gap in Talks with US",
-     "summary": "A senior Iranian official said mediators are working to narrow differences with the United States over negotiating terms.",
-     "detail": "Iran said there is no deadline for exchanging messages with Washington through mediators or reviewing responses. Meanwhile, Iranian state television and news agencies broadcast videos instructing the public on how to respond in the event of a nuclear strike. Negotiations and emergency preparations are proceeding in parallel.",
-     "impact": "Uncertainty remains over the negotiation process, raising the risk of volatility in energy and commodity prices.",
-     "importance": "important",
+     "title": "Ethiopia Gives Sudanese Diplomats 48 Hours to Leave",
+     "summary": "Ethiopia has ordered six Sudanese diplomats to leave within 48 hours, as tensions between the two countries continue to escalate.",
+     "detail": "The move follows persistent strain in bilateral ties, with diplomatic personnel given a deadline to depart, further cooling relations. The development has drawn attention to the direction of the regional situation.",
+     "impact": "Regional diplomatic relations are tightening, potentially affecting stability and cross-border cooperation.",
+     "importance": "normal",
      "tags": [
-      "Middle East",
-      "International Negotiations",
-      "Energy Security"
+      "Regional Situation",
+      "International Security"
      ]
     },
     {
      "id": "news-008",
-     "title": "Ukraine Says Energy Facilities Hit by Massive Russian Attack, Widespread Power Cuts",
-     "summary": "Ukraine's state power company reported continued attacks on the energy system, causing emergency blackouts in multiple regions.",
-     "detail": "Ukraine said this was one of the largest waves of attacks. Russia's Defense Ministry reported the same day that its forces continued using drones to strike Ukrainian logistics centers and sea vessels carrying military supplies. The confrontation along energy and logistics lines continues to escalate.",
-     "impact": "Damage to energy infrastructure will affect regional power supply and winter energy security.",
-     "importance": "hot",
-     "tags": [
-      "Geopolitical Conflict",
-      "Energy Security",
-      "Infrastructure"
-     ]
-    },
-    {
-     "id": "news-009",
-     "title": "Ukraine-US-Russia Trilateral Meeting Format Expected to Resume Around November 10",
-     "summary": "Zelensky said the trilateral meeting format involving Ukraine, the US and Russia is expected to resume soon on November 10-11.",
-     "detail": "Zelensky said this would be a working-level format. He expressed hope that work under this format and other diplomatic steps would be effective. The arrangements still require follow-through by all parties.",
-     "impact": "If diplomatic contact takes place, it could provide a window for easing the situation; further developments are worth watching.",
-     "importance": "important",
-     "tags": [
-      "International Negotiations",
-      "Geopolitical Conflict"
-     ]
-    },
-    {
-     "id": "news-010",
-     "title": "US Midterm Elections Begin as Both Parties Contest Congressional Seats",
-     "summary": "Voting has begun in the US midterm elections, with Republicans and Democrats competing for all House seats and a number of Senate seats.",
-     "detail": "Voting started on November 3 local time. The two parties will contest all 435 seats in the House of Representatives and some of the 100 seats in the Senate. Results will be released on a rolling basis.",
-     "impact": "The election outcome could shape US policy direction and global market expectations.",
-     "importance": "important",
-     "tags": [
-      "Election Updates",
-      "Policy Expectations"
-     ]
-    },
-    {
-     "id": "news-011",
-     "title": "Greenland Parliament Approves Security Agreement with United States",
-     "summary": "Greenland's parliament has approved a security agreement reached with the United States.",
-     "detail": "The security agreement was passed by a vote in Greenland's parliament. The source material did not disclose the specific terms. The move concerns security cooperation arrangements in the relevant region.",
-     "impact": "It may affect the security cooperation landscape and geopolitical dynamics in the region.",
+     "title": "UK Reports Imported Ebola Case, Risk Still Low",
+     "summary": "A British citizen in the Democratic Republic of Congo tested positive for Ebola, and the UK said the risk to the public remains low.",
+     "detail": "The UK Foreign Office said established procedures are in place for handling such cases and that they have been activated. Officials stressed that the risk level to the public remains low.",
+     "impact": "Public health emergency response is under scrutiny, potentially prompting stronger cross-border epidemic control cooperation.",
      "importance": "normal",
      "tags": [
-      "International Security",
-      "Regional Cooperation"
+      "Public Health",
+      "Infectious Disease Control",
+      "International Health"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Financial News",
+   "title": "Finance Watch",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-012",
-     "title": "Pan Gongsheng: Maintain Stable Operations in Stock, Bond and Foreign Exchange Markets",
-     "summary": "PBOC Governor Pan Gongsheng delivered a report on financial work, calling for effective implementation of monetary policy tools supporting the capital market.",
-     "detail": "The report called for holding the line against systemic financial risks. It stressed implementing monetary policy tools that support the capital market and consolidating and improving market stabilization mechanisms. It also called for maintaining stable operations in stock, bond and foreign exchange markets.",
-     "impact": "Signals clear support for market stability, helping improve capital market expectations and the liquidity environment.",
+     "id": "news-009",
+     "title": "Total Retail Sales Expected to Hit RMB 60 Trillion by End of 15th Five-Year Plan",
+     "summary": "China's total retail sales of consumer goods are projected to reach around RMB 60 trillion by the end of the 15th Five-Year Plan period.",
+     "detail": "Assessments indicate considerable room for further expansion in the consumer market, with domestic demand potential set to be unleashed. A package of policies to boost consumption and improve the consumer environment is also being rolled out.",
+     "impact": "Consumption's role as the primary engine of economic growth is being further reinforced, boding well for the long-term prospects of related sectors.",
      "importance": "hot",
      "tags": [
-      "Monetary Policy",
-      "Capital Market",
-      "Financial Risk Prevention"
+      "Consumer Market",
+      "Domestic Demand Expansion",
+      "Five-Year Plan"
+     ]
+    },
+    {
+     "id": "news-010",
+     "title": "About 15,000 km of New Railways Planned for the 15th Five-Year Plan Period",
+     "summary": "China plans to build roughly 15,000 km of new railway during the 15th Five-Year Plan period, continuing to improve its national rail network layout.",
+     "detail": "Investment in railway construction is being ramped up, which is expected to drive economic growth and coordinated regional development along the routes. In a sign of major infrastructure's spillover effect on regional economies, electricity loads along the newly opened Pinglu Canal continued to climb one month after it began operations.",
+     "impact": "Infrastructure investment is expected to stay robust, benefiting rail transit, construction machinery and related supply chains.",
+     "importance": "hot",
+     "tags": [
+      "Infrastructure",
+      "Rail Transit",
+      "Investment and Construction"
+     ]
+    },
+    {
+     "id": "news-011",
+     "title": "CIIE Kicks Off as 4,100 Foreign Firms Tap into China's Opportunities",
+     "summary": "The ninth China International Import Expo (CIIE) has officially opened, with 4,100 foreign companies exhibiting to share in the opportunities of China's open market.",
+     "detail": "The CIIE and the Canton Fair have formed a back-to-back sequence, deepening win-win cooperation. The Ministry of Commerce held a roundtable with multinational exhibitors in Shanghai on the eve of the expo, while entrepreneurs from around the world gathered in Suzhou. A number of foreign firms, long-time regulars, continue to sink roots into the Chinese market.",
+     "impact": "High-level opening-up platforms keep delivering dividends, further strengthening expectations for stable foreign investment and trade.",
+     "importance": "hot",
+     "tags": [
+      "CIIE",
+      "Opening-Up and Cooperation",
+      "Foreign Trade and Investment"
+     ]
+    },
+    {
+     "id": "news-012",
+     "title": "Shenzhen-Listed Firms Launch Wave of Buybacks and Share Purchases",
+     "summary": "Listed companies are responding actively to market-stabilization policies, with Shenzhen-listed firms launching a wave of buybacks and share purchases that signals confidence in their own development.",
+     "detail": "Buybacks and insider share purchases are seen as a key tool for companies to support share prices and protect shareholder interests, and multiple Shenzhen-listed firms have moved in quick succession. Meanwhile, A-share listed companies are quietly starting to repair their three core financial statements, launching a campaign to bolster financial resilience.",
+     "impact": "A rise in buybacks and share purchases helps steady market sentiment and strengthens the financial quality of listed companies.",
+     "importance": "important",
+     "tags": [
+      "Capital Markets",
+      "Listed Companies",
+      "Market Capitalization Management"
      ]
     },
     {
      "id": "news-013",
-     "title": "Three Ministries Act in Rapid Succession to Stabilize Markets; Swap Facility Single Operation Hits Record 100 Billion Yuan",
-     "summary": "Three ministries rolled out a series of market-stabilizing measures, with a single swap facility operation reaching 100 billion yuan, a record high.",
-     "detail": "The three departments have spoken and acted frequently in recent days to stabilize markets. The single operation scale of the swap facility hit a new record. The policy package aims to stabilize market expectations and liquidity.",
-     "impact": "Stronger policy support helps boost market confidence and smooth short-term volatility.",
-     "importance": "hot",
+     "title": "Curbing Agricultural Illegal Fundraising Requires Shifting Regulation and Services Upstream",
+     "summary": "Commentary argues that tackling agricultural illegal fund-raising requires moving both the regulatory and service touchpoints forward to prevent problems before they arise.",
+     "detail": "Illegal fund-raising targeting rural areas infringes on farmers' interests, making stronger monitoring and services necessary before risks surface. Shifting regulatory and service frontlines closer to the ground helps defuse risks at the grassroots and at an early stage.",
+     "impact": "Rural financial risk controls are expected to be strengthened, safeguarding farmers' property and rural financial order.",
+     "importance": "normal",
      "tags": [
-      "Market Stabilization Policy",
-      "Capital Market",
-      "Financial Instruments"
+      "Rural Finance",
+      "Risk Control",
+      "Financial Regulation"
      ]
     },
     {
      "id": "news-014",
-     "title": "Xiao Yuanqi: AI Bubble Can Be Absorbed by Markets Long Term, but Excessive Capital Concentration Warrants Vigilance",
-     "summary": "NFRA Deputy Administrator Xiao Yuanqi said the AI bubble can be absorbed by the market over the long term, while excessive capital concentration creates a crowding-out effect.",
-     "detail": "Xiao Yuanqi believes the AI bubble can be absorbed by markets over time. He also noted that excessive concentration of capital in the tech sector and leading firms will create a crowding-out effect on traditional industries. His remarks balanced tech development with structural balance.",
-     "impact": "Highlights the need to watch risks of overheated tech investment while maintaining financing conditions for traditional industries.",
+     "title": "Carbon Tariffs Force Industrial Transformation: How Companies Can Cement Their Edge",
+     "summary": "With carbon tariff pressure mounting, the push toward industrial transformation is accelerating, and companies need to reinforce their competitive advantages.",
+     "detail": "Facing the cost and compliance pressures of carbon tariffs, exporters are confronting new challenges and a window for adjustment. How to lift competitiveness through technological innovation and green upgrades has become a question companies must answer.",
+     "impact": "The need for green and low-carbon transformation is urgent, opening growth opportunities for carbon management and clean technology industries.",
      "importance": "important",
      "tags": [
-      "Financial Regulation",
-      "Artificial Intelligence",
-      "Industry Finance"
+      "Carbon Tariffs",
+      "Green Transition",
+      "Export Trade"
      ]
     },
     {
      "id": "news-015",
-     "title": "China's October Logistics Activity Index at 51.2%, Staying in Expansion Territory",
-     "summary": "Data show China's logistics activity index came in at 51.2% in October, remaining in expansion territory.",
-     "detail": "The logistics activity index recorded 51.2% in October. With the index above 50%, the sector maintained expansion, and logistics operations continued a steady trend.",
-     "impact": "Sustained expansion in logistics activity reflects ongoing momentum in economic operations and goods circulation.",
-     "importance": "important",
-     "tags": [
-      "Logistics Industry",
-      "Economic Activity",
-      "Macroeconomic Data"
-     ]
-    },
-    {
-     "id": "news-016",
-     "title": "Shanghai's First Land Auction After New Policy Takes Effect Sends Fresh Signals from Two Residential Plots",
-     "summary": "Shanghai's first land auction after the new policy took effect serves as a key test, with two small, premium residential plots sending fresh signals.",
-     "detail": "After a two-month gap, Shanghai released two residential plots positioned as small but refined to match market demand. Pre-sale standards were also raised. The first land auction under the new policy has drawn significant market attention.",
-     "impact": "Changes to land auction rules may steer developers' land acquisition strategies and reshape new home supply.",
-     "importance": "important",
-     "tags": [
-      "Real Estate Market",
-      "Land Market",
-      "Housing Policy"
-     ]
-    },
-    {
-     "id": "news-017",
-     "title": "Shenzhen's Tax-Refund Stores Surpass 3,000; Departure Tax Refund Sales Hit 1.53 Billion Yuan in First 9 Months",
-     "summary": "The number of tax-refund stores in Shenzhen has surpassed 3,000, with departure tax refund sales reaching 1.53 billion yuan in the first nine months.",
-     "detail": "From January to September, Shenzhen processed departure tax refund sales of 1.53 billion yuan, while the number of refund stores exceeded 3,000. Convenience for departure tax refunds continues to expand.",
-     "impact": "A wider array of duty-free and tax-refund shopping options is expected to drive growth in inbound consumption.",
+     "title": "Guangzhou Unveils First Batch of 2026 'City Partners'",
+     "summary": "Guangzhou has unveiled its first batch of 2026 city partners, with 15 institutions joining the city to build a community of shared endeavor.",
+     "detail": "The city partner mechanism aims to pool institutional resources to jointly participate in urban construction and industrial development. Central-local cooperation is also advancing high-quality development of the marine economy, with regional coordination picking up pace.",
+     "impact": "Local investment attraction and partnership models are being innovated faster, helping cluster regional industrial ecosystems.",
      "importance": "normal",
      "tags": [
-      "Consumer Market",
-      "Duty-Free Retail",
-      "Cross-Border Consumption"
-     ]
-    },
-    {
-     "id": "news-018",
-     "title": "Beijing's Actual Foreign Capital Use Up 67.9% Year on Year in First 9 Months",
-     "summary": "Beijing's actual use of foreign capital rose 67.9% year on year in the first nine months of this year.",
-     "detail": "Data show Beijing's actual use of foreign capital maintained relatively fast growth in the first nine months of the year, up 67.9% year on year, reflecting strong foreign investor activity in related sectors.",
-     "impact": "Accelerating foreign capital inflows underscore the attractiveness of the business environment and the results of services sector opening-up.",
-     "importance": "important",
-     "tags": [
-      "Foreign Investment",
-      "Business Environment",
-      "Open Economy"
-     ]
-    },
-    {
-     "id": "news-019",
-     "title": "Guangzhou's Nansha Builds One-Stop Cross-Border Trade Gateway for Going Global",
-     "summary": "Guangzhou's Nansha is using a 'one building linked to the world' model to build a one-stop gateway for cross-border trade going global.",
-     "detail": "Nansha is integrating services to link one building with global trade resources, aiming to build a one-stop gateway for cross-border trade and provide convenient services for foreign trade enterprises.",
-     "impact": "Helps lower overseas expansion costs for foreign trade firms and raises the level of cross-border trade facilitation.",
-     "importance": "normal",
-     "tags": [
-      "Cross-Border E-Commerce",
-      "Foreign Trade Services",
-      "Opening-Up Platform"
+      "Regional Economy",
+      "City Partnerships",
+      "Investment Promotion"
      ]
     }
    ]
@@ -284,81 +233,67 @@
    "icon": "🌐",
    "articles": [
     {
-     "id": "news-020",
-     "title": "Philadelphia Semiconductor Index Rises 4% as Chip Stocks Rally",
-     "summary": "The Philadelphia Semiconductor Index gained 4% intraday, with NVIDIA, Broadcom, Micron, Intel and other chip stocks advancing.",
-     "detail": "The Philadelphia Semiconductor Index rose 4.00% to 10,741.56 points. NVIDIA added 3.03%, Broadcom 3.90%, Micron 3.62%, and Intel 3.28%. The semiconductor sector posted broad strength.",
-     "impact": "The surge in chip stocks lifts sentiment across global technology shares and could drive a valuation recovery in related supply chains.",
+     "id": "news-016",
+     "title": "Philadelphia Semiconductor Index Plunges, Chip Stocks Tumble Broadly",
+     "summary": "The Philadelphia Semiconductor Index extended intraday losses to 5%, with chip stocks falling across the board and several leading names down sharply.",
+     "detail": "The index broke through multiple levels during the session, while chip stocks including Nvidia, Broadcom, Micron and Intel broadly declined, and Marvell Technology shares were set to hit a fresh stage low. Semiconductor sector volatility increased as market sentiment turned cautious.",
+     "impact": "Global chip stock valuations are under pressure, which could weigh on risk appetite across the technology sector.",
      "importance": "hot",
      "tags": [
       "Semiconductors",
-      "US Stock Market",
+      "Overseas Markets",
       "Tech Stocks"
      ]
     },
     {
-     "id": "news-021",
-     "title": "US Stocks Extend Gains: Nasdaq Up 1%, Dow Edges Lower",
-     "summary": "US stocks extended their rally, with the Nasdaq up 1%, the S&P 500 up 0.56%, and the Dow slightly lower.",
-     "detail": "The Nasdaq Composite rose 1.00% to 25,416.387 points. The S&P 500 gained 0.56% to 7,583.470 points. The Dow dipped 0.19% to 51,887.430 points. The Russell 2000 gained 1%.",
-     "impact": "Growth stocks and small caps outperformed, reflecting a rebound in market risk appetite.",
+     "id": "news-017",
+     "title": "Oil Prices Slide Sharply, Brent Crude Falls Below $100",
+     "summary": "International oil prices dropped sharply, with Brent crude sinking below $100 a barrel for the first time since October 7.",
+     "detail": "Brent crude fell more than 4% intraday, while WTI also broke below $92 a barrel and Shanghai crude's main contract followed suit. Signs of loosening supply emerged in energy markets, with prices retreating markedly from highs.",
+     "impact": "Falling oil prices may help ease inflation pressures, but energy assets remain under near-term pressure.",
      "importance": "hot",
      "tags": [
-      "US Stock Market",
-      "Global Equities",
-      "Market Sentiment"
+      "International Oil Prices",
+      "Commodities",
+      "Energy Markets"
      ]
     },
     {
-     "id": "news-022",
-     "title": "Marathon Petroleum Sees Resilient Refined Product Demand, High Refining Margins",
-     "summary": "Marathon Petroleum expects global demand for gasoline, diesel and jet fuel to remain resilient.",
-     "detail": "The company expects global refined product demand to hold up well. It also forecasts refining margins will stay elevated at least through mid-2027, taking a broadly optimistic view of industry conditions.",
-     "impact": "Steady refined product demand expectations support the earnings outlook for the refining sector.",
-     "importance": "normal",
+     "id": "news-018",
+     "title": "Palladium Futures Surge Past $1,000",
+     "summary": "Palladium futures jumped more than 7% intraday, breaking above the $1,000 per ounce mark, with the precious metals sector active.",
+     "detail": "As crude oil and other commodities declined, palladium futures bucked the trend to rally strongly, posting one of the largest gains. Clear divergence emerged within the precious metals market, with capital flows showing structural shifts.",
+     "impact": "Heightened precious metals volatility will affect costs across related supply chains and investment sentiment.",
+     "importance": "important",
      "tags": [
-      "International Energy",
-      "Refining Industry",
-      "Refined Products Market"
+      "Precious Metals",
+      "Futures Markets",
+      "Commodities"
      ]
     },
     {
-     "id": "news-023",
-     "title": "Honda's October US Sales Hit 119,952 Units, Up 8% Month-on-Month",
-     "summary": "Honda sold 119,952 vehicles in the US in October, up 8% from the previous month.",
-     "detail": "Honda reported US sales of 119,952 units in October, an 8% increase from the prior month. Sales performance continued its recovery trend.",
-     "impact": "A recovery in overseas sales underpins the overall performance of Japanese automakers.",
-     "importance": "normal",
+     "id": "news-019",
+     "title": "Democrats Control the Senate, Fed Policy Path in Question",
+     "summary": "Democrats won control of the Senate, complicating efforts to reshape the Federal Reserve and bend interest rate policy to their will.",
+     "detail": "Senate Democratic leaders said they would push to lower costs and warned of investigations if the public's wishes are disregarded. The statements signal intensifying friction between the executive and legislative branches, with monetary policy independence back in focus.",
+     "impact": "Rising policy uncertainty could affect rate expectations and risk appetite in global capital markets.",
+     "importance": "important",
      "tags": [
-      "Auto Market",
-      "Sales Data",
-      "Consumer Market"
+      "Monetary Policy",
+      "Rate Expectations"
      ]
     },
     {
-     "id": "news-024",
-     "title": "SK Hynix Discloses Stake in Penguin Solutions, Sending Shares Up 12.5%",
-     "summary": "Penguin Solutions shares jumped 12.5% after SK Hynix disclosed a 9.1% stake in the company.",
-     "detail": "SK Hynix disclosed that it holds a 9.1% stake in Penguin Solutions. Following the announcement, Penguin Solutions' stock rose 12.5%. The market reacted positively to supply-chain investment moves.",
-     "impact": "Cross-shareholdings in the semiconductor supply chain draw attention and may trigger a re-rating of related companies.",
+     "id": "news-020",
+     "title": "European and US Treasury Yields Decline, US Card Stocks Fall",
+     "summary": "Italian and German 10-year government bond yields both fell, while shares of US credit card companies declined broadly.",
+     "detail": "European bond yields retreated, reflecting stronger safe-haven demand and growing rate-cut expectations. In the US, shares of several credit card companies slid, with sentiment weak across consumer credit-related sectors.",
+     "impact": "Falling bond yields and weakness in consumer credit stocks point to concerns over growth expectations and credit risk.",
      "importance": "normal",
      "tags": [
-      "Semiconductors",
-      "Supply Chain Investment",
-      "Overseas Markets"
-     ]
-    },
-    {
-     "id": "news-025",
-     "title": "Palantir's US Government Segment Quarterly Revenue Surges 96%",
-     "summary": "Palantir's quarterly revenue from US government agencies grew 96% to $953 million.",
-     "detail": "Earnings showed Palantir's quarterly revenue from US government agencies reached $953 million, a 96% year-on-year surge. Government digitalization and data services demand was a key driver.",
-     "impact": "Strong demand for data services across government and enterprise clients offers a growth benchmark for similar software firms.",
-     "importance": "normal",
-     "tags": [
-      "Software Services",
-      "Government and Enterprise Digitalization",
-      "Earnings Data"
+      "Bond Markets",
+      "Consumer Credit",
+      "Overseas Equities"
      ]
     }
    ]
@@ -369,68 +304,42 @@
    "icon": "💡",
    "articles": [
     {
-     "id": "news-026",
-     "title": "Wuzhen Summit: Tech for Good, Smart Technology Enters Everyday Life",
-     "summary": "The Wuzhen Summit focuses on technology for good, showcasing how smart technology is being integrated into daily public services.",
-     "detail": "[Wuzhen Watch] Focused on the theme of technology for good. The coverage presents the deployment of smart technology in livelihood-related fields, emphasizing that technology should serve people's real needs.",
-     "impact": "Drives the implementation of AI and other technologies in public service scenarios, improving the efficiency of public services.",
-     "importance": "important",
+     "id": "news-021",
+     "title": "World Internet Conference Blue Book Released",
+     "summary": "The 2026 World Internet Conference Blue Book was unveiled in Wuzhen, outlining trends and governance directions for the digital-intelligent future.",
+     "detail": "This year's conference, themed \"From Interconnection of All Things to Smart Benefits for All,\" explored the intelligent internet through the lens of networks and AI. Guests gathered in Wuzhen to envision a digital-intelligent future and discuss how AI can be integrated into production and daily life.",
+     "impact": "The development direction of the intelligent internet is becoming clearer, which will drive the integration and implementation of network and AI applications.",
+     "importance": "hot",
      "tags": [
-      "World Internet Conference",
       "Artificial Intelligence",
-      "Smart Livelihood"
+      "Internet Conference",
+      "Digital Economy"
      ]
     },
     {
-     "id": "news-027",
-     "title": "Starting From Wuzhen: One Network, Charting the Future",
-     "summary": "The report focuses on starting from Wuzhen, using a single network to map out the development outlook for the digital future.",
-     "detail": "The article revolves around digital network construction and future prospects. Wuzhen, as the host of the Internet Conference, continues to draw attention, highlighting the role of network interconnectivity in future development.",
-     "impact": "Strengthens consensus on digital infrastructure construction and supports related initiatives for building a strong cyber nation.",
-     "importance": "normal",
-     "tags": [
-      "Digital Infrastructure",
-      "World Internet Conference",
-      "Network Construction"
-     ]
-    },
-    {
-     "id": "news-028",
-     "title": "Tech for Good: From 'Compensating for Deficits' to 'Enhancing Capabilities'",
-     "summary": "The report argues that the warmth of technology lies not in cold parameters, and that it should shift from 'compensating for deficits' to 'enhancing capabilities'.",
-     "detail": "The article holds that the value of technology should not be measured solely by spec comparisons. It proposes a philosophical shift from compensating deficits to enhancing capabilities, stressing that technology should serve people with greater warmth.",
-     "impact": "Provides a value orientation for tech product development and drives innovation in accessibility and age-friendly design.",
-     "importance": "normal",
-     "tags": [
-      "Tech Ethics",
-      "Age-Friendly Design",
-      "Product Innovation"
-     ]
-    },
-    {
-     "id": "news-029",
-     "title": "Japan to Unify Missile and Artillery Systems, Fujitsu to Lead Integration",
-     "summary": "Japan will unify its missile and artillery systems to strengthen defense, with Fujitsu leading the integration effort.",
-     "detail": "The integrated missile and artillery systems cover air defense, anti-ship missiles and artillery, among other systems grouped by function. Fujitsu will lead the integration work. Artificial intelligence will not initially be incorporated into decision-making; launch and other decisions will remain under commanders' control.",
-     "impact": "Defense system integration accelerates, reflecting the growing emphasis countries place on integrated defense capabilities.",
-     "importance": "normal",
-     "tags": [
-      "Defense Technology",
-      "System Integration",
-      "Equipment Upgrade"
-     ]
-    },
-    {
-     "id": "news-030",
-     "title": "Countries Building Their Own 'Starlink' Variants Draw Attention",
-     "summary": "Zelensky said different countries are building their own versions of Starlink, and the key question is who controls the switch.",
-     "detail": "Zelensky said countries are right to build their own satellite communication systems, stressing that the critical issue is who controls the switch. The remarks underscore the importance of autonomy and self-reliance.",
-     "impact": "Demand for autonomous and self-reliant satellite communications rises, benefiting related constellation and communications industry chains.",
+     "id": "news-022",
+     "title": "Chinese Team Releases Open-Source RNA Sequence Foundation Model",
+     "summary": "A Chinese research team has released an open-source foundation model for ribonucleic acid (RNA) sequences, providing a foundational tool for related research.",
+     "detail": "The model was developed by a team at the University of Science and Technology of China, offering open-source foundational capabilities for RNA sequence research. The release of open-source foundation models is expected to boost research efficiency in the life sciences.",
+     "impact": "Open-source life science foundation models are expected to accelerate research and industrial translation in related fields.",
      "importance": "important",
      "tags": [
-      "Satellite Communications",
-      "Tech Autonomy",
-      "Communications Security"
+      "Biotechnology",
+      "Foundation Models",
+      "Open-Source Ecosystem"
+     ]
+    },
+    {
+     "id": "news-023",
+     "title": "Rising Cyber Risks Put Software Vulnerability Sharing in Spotlight",
+     "summary": "As cyber risks continue to rise, Japan's demand that U.S. tech companies share undisclosed software vulnerabilities has drawn attention.",
+     "detail": "With the growing threat of cyberattacks, countries are demanding better access to and sharing of critical software vulnerability information. The move underscores the increasing importance of cybersecurity in the digital economy era.",
+     "impact": "Tightening cybersecurity compliance requirements are expected to boost demand for the security industry and vulnerability management.",
+     "importance": "normal",
+     "tags": [
+      "Cybersecurity",
+      "Software Vulnerabilities",
+      "Digital Governance"
      ]
     }
    ]
@@ -441,67 +350,54 @@
    "icon": "📰",
    "articles": [
     {
-     "id": "news-031",
-     "title": "Scoliosis Is Affecting a Growing Number of Chinese Students",
-     "summary": "Reporting highlights the rising prevalence of scoliosis among students, underscoring the physical and psychological burden it carries.",
-     "detail": "The article focuses on spinal health among students. It illustrates how scoliosis affects study and daily life. It calls for greater societal attention to posture and health among young people.",
-     "impact": "Drives growth in campus health screenings, posture management, and related rehabilitation services.",
+     "id": "news-024",
+     "title": "Scoliosis Problems Plague Student Population",
+     "summary": "Scoliosis is increasingly common among students, posing a significant and growing threat to adolescent health.",
+     "detail": "Coverage of the issue highlights spinal health problems among students, pointing to risks posed by long-term poor posture and academic pressure. Adolescent spinal health requires joint attention from families, schools and the medical community.",
+     "impact": "Growing concern over adolescent health could drive improvements in campus health screening and intervention programs.",
      "importance": "important",
      "tags": [
-      "Youth Health",
-      "Campus Health",
-      "Rehabilitation Medicine"
-     ]
-    },
-    {
-     "id": "news-032",
-     "title": "48 Hours of Flu: I Chose the 'Right' Medicine",
-     "summary": "The author recounts medication choices during the first 48 hours of flu onset, emphasizing the importance of timing in treatment.",
-     "detail": "The article recounts a first-person experience of fighting off the flu. It highlights the timing and choice of medication in the early stages of illness. It serves as a personal health experience sharing.",
-     "impact": "Raises public awareness of science-based flu medication and supports seasonal disease prevention.",
-     "importance": "normal",
-     "tags": [
-      "Flu Prevention",
+      "Adolescent Health",
       "Public Health",
-      "Rational Medication Use"
+      "Campus Health"
      ]
     },
     {
-     "id": "news-033",
-     "title": "Can a Stem Cell Infusion costing Hundreds of Thousands Really Fight Aging?",
-     "summary": "The report questions whether stem cell infusions costing hundreds of thousands of yuan truly deliver anti-aging effects.",
-     "detail": "The article examines high-priced stem cell infusion services on the market. It raises doubts about their anti-aging efficacy. It touches on the applicability and regulation of related technologies.",
-     "impact": "Sparks rational scrutiny and regulatory debate over consumer-oriented cell therapy offerings.",
+     "id": "news-025",
+     "title": "Stem Cell Infusion Anti-Aging Claims Spark Debate",
+     "summary": "Whether costly stem cell infusions truly slow aging is sparking public debate over their efficacy and compliance with regulations.",
+     "detail": "Reports examine the booming anti-aging consumer market, questioning the actual effects and scientific basis of stem cell infusions. The discussion reflects the heated state of the health consumption market and the regulatory challenges it presents.",
+     "impact": "The health consumption sector urgently needs regulation, which may prompt stronger oversight and public science education.",
      "importance": "normal",
      "tags": [
-      "Cell Therapy",
       "Health Consumption",
-      "Medical Aesthetics"
+      "Biotechnology",
+      "Industry Regulation"
      ]
     },
     {
-     "id": "news-034",
+     "id": "news-026",
+     "title": "How to Use Medication Wisely During Flu Season",
+     "summary": "The first 48 hours of influenza are a critical window for medication, and choosing the right drugs can significantly shorten the illness.",
+     "detail": "Coverage offers medication tips and precautions for peak flu season, stressing the importance of acting early after symptoms appear. With respiratory infections on the rise, public awareness of proper drug use and seeking medical care is under the spotlight.",
+     "impact": "Health demand climbs during flu season, drawing attention to respiratory disease prevention and drug supply.",
+     "importance": "normal",
+     "tags": [
+      "Respiratory Disease",
+      "Medication Safety",
+      "Public Health"
+     ]
+    },
+    {
+     "id": "news-027",
      "title": "300 Days and Nights in a Boot Camp School",
-     "summary": "The report chronicles 300 days and nights inside a boot camp school, shedding light on youth education and correction programs.",
-     "detail": "The article provides an extensive account of life inside a boot camp school. It covers youth behavior correction and educational approaches. It draws attention to regulation of the industry.",
-     "impact": "Drives public attention to the oversight and regulation of youth education and correction institutions.",
+     "summary": "A feature report chronicles 300 days and nights inside a disciplinary training school, raising questions about this education model and adolescent development.",
+     "detail": "The report presents experiences and observations from within a boot camp school through a documentary lens, prompting reflection on youth education methods. The topic touches on family education, psychological development and industry standards.",
+     "impact": "Youth education models are drawing public debate, with attention on the need to standardize the industry.",
      "importance": "normal",
      "tags": [
       "Youth Education",
-      "Education and Training"
-     ]
-    },
-    {
-     "id": "news-035",
-     "title": "New Business Models Give Umbrellas a Shot at a Big Market",
-     "summary": "Empowered by new business models, the small umbrella industry is opening up a large market, showcasing how traditional manufacturing can upgrade.",
-     "detail": "The report focuses on industry changes in umbrellas, a small commodity. New business models are injecting fresh momentum into traditional manufacturing. Even small products can carve out large market opportunities.",
-     "impact": "Provides a template for upgrading traditional light manufacturing and boosts the overseas expansion of consumer goods.",
-     "importance": "normal",
-     "tags": [
-      "Light Manufacturing",
-      "New Business Models",
-      "Consumer Goods Going Global"
+      "Family Education"
      ]
     }
    ]
