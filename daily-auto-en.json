@@ -1,6 +1,6 @@
 {
- "date": "2026-11-05",
- "summary": "Volkswagen's recall of more than 580,000 vehicles in China draws attention; Tesla shares plunge, BMW faces margin pressure; domestic brands roll out new models in rapid succession, and Zeekr hits its full-year delivery target early.",
+ "date": "November 6, 2026",
+ "summary": "US tech stocks fell sharply across the board, with Tesla plunging more than 10%. On the domestic front, multiple new models launched in quick succession; Zeekr delivered over 320,000 units in the first 10 months, hitting its target early as price wars and technology democratization advance side by side.",
  "sections": [
   {
    "id": "headline",
@@ -9,49 +9,49 @@
    "articles": [
     {
      "id": "auto-001",
-     "title": "Volkswagen Recalls Over 580,000 Vehicles in China in Unusually Large Move",
-     "summary": "Volkswagen has recalled more than 580,000 vehicles in the Chinese market, marking one of the largest recall events in the country in recent years.",
-     "detail": "According to Baidu Hot Search, Volkswagen has launched a large-scale recall in the Chinese market involving more than 580,000 vehicles. The scale ranks high among domestic recall cases in recent years, covering a wide range of vehicles and affecting a large number of owners. As one of the foreign brands with the largest vehicle parc in China, Volkswagen has long relied on the product portfolios of its two joint ventures — FAW-Volkswagen and SAIC-Volkswagen — to cover mainstream segments such as sedans and SUVs, and the size of this recall is directly related to its massive installed base. Recalls typically involve defective parts batches or software flaws, and automakers are required to file with the State Administration for Market Regulation and notify owners in accordance with the Regulations on the Recall of Defective Automotive Products. For consumers, a recall means free inspection, repair or replacement of relevant components, which may short-term lead to queues at service centers and pressure on parts supply; for companies, recall costs and brand image management pose additional challenges. The specific models affected, the root cause of the defects and the remedial measures remain subject to further disclosure in official announcements.",
-     "impact": "The 580,000-vehicle recall will directly test Volkswagen's after-sales capacity in China, while also reminding consumers to watch for official recall notices and schedule timely inspections to ensure vehicle safety.",
-     "source": "Baidu Hot Search"
+     "title": "Tesla Plunges Over 10%, SpaceX Down Over 7% as US Tech Stocks Whipsaw",
+     "summary": "US equities opened sharply lower with Tesla down more than 10% and SpaceX off over 7%, sending tech stocks broadly under pressure and drawing market attention.",
+     "detail": "According to Baidu Trending, US markets saw violent swings, with Tesla's shares falling more than 10% in a single session and SpaceX, owned by Elon Musk, slumping over 7% in valuation. The same day, chip giant Qualcomm dropped more than 12% after reporting earnings, while Nvidia's total market value slipped back to $4.5 trillion, signalling concentrated selling pressure on technology and growth stocks. As a global benchmark for electric vehicles and autonomous driving, a sharp Tesla sell-off is often viewed as a sentiment gauge for the new-energy and smart-vehicle sectors. With numerous Chinese automakers currently launching new models and racing toward full-year sales targets, whether turmoil in overseas capital markets will spill over into the整车 and auto-parts segments of the A-share and Hong Kong markets has become the day's key industry focus.",
+     "impact": "A single-day drop of over 10% for Tesla will directly weigh on sentiment and valuations across the global new-energy vehicle sector, potentially affecting domestic automakers' financing timelines and investment expectations for the intelligent-driving supply chain.",
+     "source": "Baidu Trending"
     }
    ]
   },
   {
-   "id": "china",
-   "title": "China Auto Market",
+   "id": "china-market",
+   "title": "China Market",
    "icon": "🇨🇳",
    "articles": [
     {
      "id": "auto-002",
-     "title": "Boxy SUV Gains Another Contender: All-New Freeland 7 Launches From ¥89,900 for Limited Time",
-     "summary": "The all-new Freeland 7 has officially launched at a limited-time price from ¥89,900, targeting the rugged, boxy-style SUV segment.",
-     "detail": "NetEase Auto reports that the all-new Freeland 7, billed as \"another heavyweight in the boxy SUV arena,\" has launched at a limited-time price from ¥89,900. Boxy SUVs have been a持续 hot trend in China's domestic market over the past two years, attracting large numbers of young buyers with their rugged body lines, strong visual identity, and relatively practical interior space. By pushing the price band below ¥90,000, the Freeland 7 cuts directly into the most fiercely competitive small and compact SUV segment for domestic brands. This pricing strategy is highly consistent with the overall \"trading price for volume\" trend in China's auto market: against the backdrop of dual competition between new energy vehicles and combustion-engine cars, entry-level boxy SUVs have become a key lever for many brands to drive sales. A limited-time starting price of ¥89,900 means consumers can get an SUV's ground clearance and styling premium on close to an A0-class sedan budget, offering clear value for money.",
-     "impact": "The Freeland 7's entry into the boxy SUV market from ¥89,900 will further intensify price competition in the entry-level SUV segment, giving consumers noticeably more choices under ¥100,000.",
+     "title": "New model launches pile up: Toyota Avalon from 133,800 yuan, Lynk & Co 08 EM-P limited-time offer from 159,800 yuan, Frelander 7 from 89,900 yuan",
+     "summary": "FAW Toyota's new Avalon, Lynk & Co 08 EM-P, smart #2, Frelander 7 and IM LS8 NEO all launched on the same day, with prices ranging from 89,900 to 239,800 yuan.",
+     "detail": "According to NetEase Auto, China's car market is seeing a wave of new model launches. FAW Toyota's new Avalon officially hit the market starting at 133,800 yuan, with its front fascia adopting a family design dubbed the \"Crown face.\" The 2027 Lynk & Co 08 EM-P launched simultaneously at a limited-time trade-in price from 159,800 yuan, continuing its push into the mid-size SUV segment with plug-in hybrid power. On the pure-electric side, the IM LS8 NEO launched from 239,800 yuan, equipped with CATL batteries and drive-by-wire chassis technology. The smart #2 Premium luxury edition is priced at 99,900 yuan for a limited time, with an official pure-electric range of 410 km. The new Frelander 7, featuring a boxy design, launched at a limited-time price from 89,900 yuan. Multiple new models released prices and configurations on the same day, covering sedans, plug-in hybrid SUVs, pure-electric SUVs and personalized off-road-style vehicles.",
+     "impact": "Dense price positioning from 89,900 to 239,800 yuan shows intensifying price competition across market segments. Consumers gain far more choices in the short term, while older models face inventory clearance pressure.",
      "source": "NetEase Auto"
     },
     {
      "id": "auto-003",
-     "title": "Dongfeng Yipai M8 Tianyuan Laser Edition Debuts: Tianyuan Smart Tech + CATL Batteries, ¥159,800 for Limited Time",
-     "summary": "The Yipai M8 Tianyuan Laser Edition has launched, featuring Tianyuan intelligent tech and CATL pure-electric technology, at a limited-time price of ¥159,800.",
-     "detail": "NetEase Auto reports that the Yipai M8 Tianyuan Laser Edition has officially launched at a limited-time price of ¥159,800. The new model's core selling points center on two areas: first, the \"Tianyuan\" smart driving and intelligent cockpit system; second, the pure-electric powertrain supplied by CATL. The \"Laser\" in its name also hints at LiDAR-equipped perception hardware, placing it on the mainstream high-level autonomous driving perception path. The ¥159,800 price lands squarely in the most competitive segment for domestic mid-to-large pure-electric sedans, going head-to-head with products from BYD, Changan Deepal, Leapmotor, and others. LiDAR trickling down from ¥200,000-class to ¥150,000-class models reflects the continuing decline in high-level autonomous driving hardware costs and improving supply chain maturity. Backed by CATL's battery credentials, the Yipai M8 Tianyuan Laser Edition has a certain foundation of trust in range and battery safety.",
-     "impact": "A LiDAR + CATL battery package at ¥159,800 accelerates the adoption of high-level autonomous driving features at mainstream price points, forcing competing models in the same bracket to upgrade their hardware in turn.",
-     "source": "NetEase Auto"
+     "title": "Zeekr delivers over 320,000 vehicles in first 10 months, hitting full-year 300,000 target early",
+     "summary": "Zeekr's cumulative deliveries exceeded 320,000 units in the first 10 months of this year, completing its full-year 300,000-unit delivery target ahead of schedule.",
+     "detail": "According to Sogou News, Zeekr's latest delivery figures show cumulative deliveries of more than 320,000 units from January to October this year, completing and surpassing its full-year target of 300,000 units ahead of schedule. Against the backdrop of intensifying competition in new energy vehicles and an ongoing price war, Zeekr's achievement indicates that its product lineup and channel efficiency have withstood market testing. On a disclosed basis, Zeekr has maintained monthly deliveries above 30,000 units, making it one of the top new entrants to hit its annual KPI. With the year-end volume-push season approaching, the industry is watching whether Zeekr will raise its full-year outlook and whether its delivery performance can boost the overall momentum of Geely's new energy portfolio.",
+     "impact": "Meeting the target early reinforces Zeekr's leading position in the high-end pure-electric market and provides strong backing for Geely Group's new energy transition, potentially spurring intensified year-end volume competition among peers.",
+     "source": "Sogou News"
     },
     {
      "id": "auto-004",
-     "title": "Dongfeng Aeolus L8+ Launches From ¥129,900 With 700 TOPS Autonomous Driving Platform",
-     "summary": "The Aeolus L8+ has launched from ¥129,900, headline feature being a smart driving platform with 700 TOPS of computing power.",
-     "detail": "NetEase Auto reports that the Aeolus L8+ has officially launched from ¥129,900, with its biggest highlight being a smart driving platform delivering 700 TOPS of computing power. Computing power is a key metric for measuring an autonomous driving system's processing capability; until now, 700 TOPS has mostly appeared in mid-to-high-end models priced above ¥200,000. Its arrival in a model starting at ¥129,900 shows that smart driving chips and domain controller costs are falling rapidly. A high-compute platform provides the hardware foundation for urban navigation assist, highway NOA, and more complex perception fusion algorithms, and also means the Aeolus L8+ has greater headroom for future OTA software upgrades. In the ¥120,000–150,000 price band — China's largest by sales volume — smart driving capability is gradually replacing powertrain specs as consumers' new point of comparison.",
-     "impact": "700 TOPS trickling down to the ¥129,900 level marks the start of \"compute parity\" in the autonomous driving race, as the gap in smart driving experience between models in the same price bracket will be quickly leveled off.",
+     "title": "Changan CS75 PLUS Blue Whale Super Engine posts 3.6L/100km real-world fuel use; executive Jiang Ping: No high- or low-spec split on safety",
+     "summary": "The Changan CS75 PLUS Blue Whale Super Engine variant was tested at 3.6L/100km, while a Changan executive stressed that safety technology should be universally available across all trims.",
+     "detail": "According to NetEase Auto, media testing of the Changan CS75 PLUS Blue Whale Super Engine variant recorded a fuel consumption of just 3.6L/100km, demonstrating the competitiveness of the Blue Whale powertrain in thermal efficiency and energy management. In a concurrent interview with NetEase Auto, Changan executive Jiang Ping explicitly set out the principle of \"no high- or low-spec split on safety,\" emphasizing that Changan aims to make safety technology a universally available capability rather than an exclusive selling point of top trims. In a market where competition largely revolves around price and spec sheets, Changan is choosing energy performance and safety parity as its core messaging, seeking to build a differentiated reputation in the 100,000-yuan-class fuel and hybrid SUV segment.",
+     "impact": "The combination of low tested fuel use and safety parity puts direct pressure on competing joint-venture and domestic SUVs at similar price points, and could also push the industry to bring active and passive safety features down to entry-level models.",
      "source": "NetEase Auto"
     },
     {
      "id": "auto-005",
-     "title": "ID. ERA 5S Sells Strong After Launch, Max Version at ¥119,900 Becomes a Blockbuster",
-     "summary": "The ID. ERA 5S has seen strong sales since launch, with the Max version at ¥119,900 emerging as the volume driver.",
-     "detail": "NetEase Auto reports that the ID. ERA 5S has enjoyed an enthusiastic market response since launch, with the Max version at ¥119,900 becoming a best-seller. As a key model in the ID. series' China rollout, the ERA 5S carries over the series' technical strengths in pure-electric platforms and battery, motor, and electronic control systems. The Max version becoming the top-selling trim shows that in the ¥100,000–120,000 pure-electric market, consumers prefer fully loaded mid-to-high trims over the cheapest entry-level versions. The ¥119,900 pricing also reflects a more pragmatic pricing approach from joint-venture EV brands, directly benchmarking domestic-brand rivals in the same class. Against the backdrop of steadily rising new energy penetration, a single trim becoming a blockbuster typically means the model's trim ladder and pricing have precisely hit mainstream demand.",
-     "impact": "The ID. ERA 5S's ¥119,900 Max version opens up sales channels, showing joint-venture EV brands are using more aggressive pricing to fight for the mainstream market; competition in the ¥100,000–120,000 EV segment will heat up further.",
+     "title": "Dongfeng Aeolus L8+ launches from 129,900 yuan with 700 TOPS high-compute intelligent driving",
+     "summary": "Dongfeng Aeolus L8+ launched at 129,900 yuan, featuring a 700 TOPS intelligent driving system.",
+     "detail": "According to NetEase Auto, the Dongfeng Aeolus L8+ has officially launched, priced from 129,900 yuan. The car's biggest highlight is its intelligent driving hardware, featuring a computing platform with a total processing power of 700 TOPS — a level of compute previously seen only in vehicles priced above 200,000 yuan, now offered at the 120,000-yuan price point. Advanced intelligent driving compute has long been regarded as a hallmark of mid-to-high-end EVs; the L8+ pricing strategy signals that high-compute intelligent driving is rapidly moving down into the mainstream family car market. Taken together with launches such as the IM LS8 NEO (CATL batteries plus drive-by-wire chassis), competition at the end of 2026 has evolved from a pure price war into a dual grind of \"price plus technical specifications.\" ",
+     "impact": "Bringing 700 TOPS intelligent driving down to the 129,900-yuan level will push rivals at similar price points to accelerate hardware upgrades and drive the popularization of advanced driver assistance.",
      "source": "NetEase Auto"
     }
    ]
@@ -63,27 +63,19 @@
    "articles": [
     {
      "id": "auto-006",
-     "title": "Tesla and SpaceX Shares Slide Sharply",
-     "summary": "Shares tied to Tesla and SpaceX fell sharply, drawing capital-market attention to the new energy and tech manufacturing sectors.",
-     "detail": "Baidu's trending searches show sharp declines in Tesla- and SpaceX-related shares. As a bellwether for the global EV industry, Tesla's stock moves are often seen as a sentiment gauge for the broader new energy vehicle (NEV) sector. Though SpaceX's core business is spaceflight, it shares Musk-linked ties with Tesla; a simultaneous slump in both typically reflects investor concerns over overall valuations, earnings prospects or the external environment for Musk-related companies. In recent months, debate across major global markets has intensified over the rollback of NEV subsidies, intensifying competition and the pace of autonomous-driving commercialization, while automakers' margins face broad pressure — factors that can spill over into capital markets. For domestic Chinese automakers, Tesla's stock swings affect both the export-competition landscape and the valuation benchmarks of NEV names listed in Shanghai and Hong Kong.",
-     "impact": "A steep Tesla sell-off would weigh on global NEV sector valuation expectations and could influence its pricing strategy in China, feeding through to domestic price competition.",
-     "source": "Baidu Hot Search"
+     "title": "US Automakers Push for Permanent Ban on Chinese Cars; US Media Warns It Would Turn the Industry into an Island",
+     "summary": "US automakers are pushing for a permanent ban on Chinese-made vehicles, with American media warning the move would leave the US auto industry isolated.",
+     "detail": "According to US media reports, some domestic automakers are lobbying for a permanent ban on Chinese-made cars, seeking to block Chinese vehicles through policy measures. US commentators have responded that building a permanent trade barrier would turn the US auto industry into an \"island\" — cut off from full competition and missing out on the cost and technology dividends of electrification and smart features. Chinese automakers currently hold significant advantages in EV supply chains, battery costs and intelligent features. While a blockade could protect domestic capacity in the short term, it may weaken the global competitiveness of US automakers over time and drive up vehicle prices for American consumers.",
+     "impact": "If the ban takes effect, Chinese automakers will need to accelerate diversification of their overseas expansion, while both vehicle prices and the pace of technology upgrades in the US market could come under pressure.",
+     "source": "US media reports"
     },
     {
      "id": "auto-007",
-     "title": "BMW Expects Auto Margin Near Zero as Luxury Brands Feel Profit Squeeze",
-     "summary": "BMW expects its automotive margin to approach zero, underscoring the earnings pressure facing traditional luxury automakers.",
-     "detail": "According to Baidu's trending searches, BMW expects its automotive business margin to approach zero. The outlook reflects a deep structural reset in the global luxury car market: on one hand, R&D spending for electrification, battery costs and production-line overhauls continue to consume profits; on the other, volatile demand in major markets, intensifying price competition and trade uncertainty are squeezing traditional luxury brands' pricing premiums. BMW has invested heavily in electrification, yet EV sales mix still lags the high-margin products of the combustion era. A near-zero margin signals that the luxury model of earning outsized returns through brand premium is being rewritten, with cost control, supply-chain efficiency and software profitability emerging as the new competitive battlegrounds.",
-     "impact": "BMW's margin pressure heralds the end of the high-margin era for luxury brands, potentially triggering a new round of cost cuts and product-mix restructuring with a demonstration effect on global luxury-car pricing.",
-     "source": "Baidu Hot Search"
-    },
-    {
-     "id": "auto-008",
-     "title": "News Analysis: What Three China-EU Principles on Hybrid Vehicles Signal",
-     "summary": "China and the EU have set out three principles on hybrid vehicles, framing future trade and technology cooperation in new energy vehicles.",
-     "detail": "News analysis reports that China and the EU have proposed three principles on hybrid vehicles, drawing wide industry attention. As a key transitional route between pure EVs and combustion engines, hybrid technology has grown rapidly in the Chinese market over the past two years and has become a major export product for Chinese automakers heading to Europe. The China-EU principles provide a basis for communication on technical standards, market access and fair competition — affecting both the export outlook for Chinese hybrid models and the market space for European automakers during their electrification transition. Against a complex and volatile global trade backdrop, a dialogue framework around a specific technology route helps reduce policy uncertainty and gives companies on both sides a clearer reference for planning capacity, investment and market布局.",
-     "impact": "A China-EU principled consensus on hybrids helps stabilize expectations for Chinese hybrid exports and offers a policy reference for related supply-chain players expanding overseas.",
-     "source": "News Analysis"
+     "title": "Tech Stocks Under Continued Pressure: Nvidia Market Cap Falls to $4.5 Trillion, Qualcomm Slides Over 12% After Earnings",
+     "summary": "Nvidia's market cap slipped back to $4.5 trillion, Qualcomm fell more than 12% post-earnings, and chip and tech stocks retreated broadly.",
+     "detail": "According to Baidu trending searches, the US tech sector extended its decline, with Nvidia's market cap falling to $4.5 trillion and Qualcomm's shares dropping more than 12% after releasing its earnings report. Chipmakers are the core upstream players in the intelligent driving, smart cockpit and connected vehicle supply chains — Nvidia's Orin and Thor platforms and Qualcomm's cockpit chips are widely adopted by automakers, and their share prices often reflect market expectations for demand in intelligent features. Combined with Tesla's plunge of over 10%, this round of adjustment signals a repricing of high-valuation tech assets by capital markets. For the auto industry, changes in the valuation and financing capacity of upstream chip companies could affect the supply pace and procurement costs of automotive-grade chips.",
+     "impact": "If the chip stock correction continues, it could affect the supply and pricing strategies for autonomous driving chips, feeding through to automakers' smart-feature costs and new vehicle plans.",
+     "source": "Baidu trending searches"
     }
    ]
   },
@@ -93,43 +85,43 @@
    "icon": "📊",
    "articles": [
     {
-     "id": "auto-009",
-     "title": "Zeekr Delivers Over 320,000 Units in First 10 Months, Beating Full-Year Target of 300,000 Early",
-     "summary": "Zeekr delivered more than 320,000 vehicles in the first 10 months of the year, surpassing its full-year target of 300,000 ahead of schedule.",
-     "detail": "Sogou News reports that Zeekr has delivered over 320,000 units in the first 10 months of this year, completing and exceeding its full-year target of 300,000 two months early. With the NEV market growing increasingly competitive and most brands sprinting toward their annual sales goals, Zeekr's ability to hit and beat its target ahead of schedule reflects the steady execution of its product lineup and distribution capabilities. Deliveries of 320,000 units mean Zeekr is consistently moving more than 30,000 vehicles per month, firmly placing it among the top tier of China's new EV makers. Finishing the target early also gives the brand greater flexibility for its Q4 strategy — it can either keep pushing volumes to expand market share or pivot toward improving per-vehicle profitability. In an industry broadly trading price for volume, the balance between delivery scale and profit quality will be the key metric to watch for Zeekr next.",
-     "impact": "Zeekr's early completion of its annual target confirms that scale effects among leading new EV entrants are taking shape, which will further intensify industry divergence and continue to squeeze the survival space of trailing brands.",
-     "source": "Sogou News"
+     "id": "auto-008",
+     "title": "Price War Rages On: From 89,900 to 239,800 Yuan — The 'Tech for All' Logic Behind New Car Launch Frenzy",
+     "summary": "Low-priced new models arrive alongside upgraded specs, as competition shifts from pure price cuts to a dual race on price and technology.",
+     "detail": "A review of today's new car launches reveals a clear trend: price floors keep falling while tech specs rise against the grain. The Freedomer 7 is limited to 89,900 yuan, the smart #2 Premium Luxury Edition at 99,900 yuan with 410 km of range, the Avalon from 133,800 yuan, the Lynk & Co 08 EM-P trade-in price from 159,800 yuan, and the IM LS8 NEO from 239,800 yuan comes standard with CATL batteries and drive-by-wire chassis. The Dongfeng Aeolus L8+ even brings 700 TOPS computing power into the 129,900 yuan range. Changan has also stated that 'safety should not be tiered,' aiming to make safety technology accessible to all. This means price cuts alone can no longer build a moat — automakers must pack in more tech within limited price ranges to win consumers during the year-end sales push.",
+     "impact": "'More for the same price' will become the norm. Weaker brands will see margins squeezed further, industry consolidation will accelerate, and consumer value for money will improve significantly.",
+     "source": "NetEase Auto"
     },
     {
-     "id": "auto-010",
-     "title": "Real-World Test Puts Changan CS75 PLUS Blue Whale at Just 3.6L/100km",
-     "summary": "Real-world testing of the Changan CS75 PLUS Blue Whale edition returned fuel consumption as low as 3.6L/100km, showcasing the fuel efficiency of Changan's Blue Whale powertrain.",
-     "detail": "NetEase Auto's real-world test data shows the Changan CS75 PLUS Blue Whale edition achieving fuel consumption of just 3.6L/100km. Blue Whale Power is Changan's in-house engine technology brand, and the Blue Whale edition has received targeted optimizations in combustion efficiency, thermal management and transmission matching to balance power output with fuel economy. A tested figure of 3.6L/100km is impressive for a compact SUV, meaning that amid continued fuel price volatility, the model's everyday running costs are significantly lower than those of comparable gasoline SUVs. For consumers still weighing gasoline, hybrid and battery-electric options, a low-consumption gasoline or hybrid vehicle remains a pragmatic choice. The release of real-world test data also shows automakers increasingly relying on verifiable third-party test results rather than mere rated specifications when promoting powertrain technology.",
-     "impact": "The tested 3.6L/100km figure sets a new fuel-consumption benchmark for gasoline SUVs, helping Changan consolidate its share in the SUV market while boosting the technical credibility of the Blue Whale Power brand.",
-     "source": "NetEase Auto"
+     "id": "auto-009",
+     "title": "Volatile Capital Markets: Will the Shock Spill Over to the NEV Sector?",
+     "summary": "Tesla, Nvidia and Qualcomm fell in unison as the market watched for knock-on effects of overseas tech stock turbulence on China's NEV supply chain.",
+     "detail": "Multiple capital market headlines dominated Baidu's trending searches today: Tesla plunged over 10%, SpaceX fell over 7%, Nvidia's market cap dropped to $4.5 trillion, and Qualcomm slid over 12% after earnings. The NEV sector is closely tied to tech and chip stocks — Tesla serves as both a benchmark automaker and a valuation anchor, and its swings often shift sentiment across the global NEV sector worldwide. That said, fundamentals remain solid: Chinese automakers' delivery data is still strong — Zeekr delivered over 320,000 units in the first ten months, hitting its 300,000-unit target early, with new models rolling out in force. The divergence between short-term sentiment and fundamentals suggests the sector could see amplified volatility, but automakers with real delivery and profitability are more likely to chart independent rallies.",
+     "impact": "With sentiment under pressure coinciding with peak delivery season, the sector may see sharp divergence, with capital favoring top automakers and core component players that deliver proven earnings.",
+     "source": "Baidu Hot Search"
     }
    ]
   },
   {
    "id": "outlook",
-   "title": "Tomorrow's Outlook",
+   "title": "Outlook for Tomorrow",
    "icon": "🔮",
    "articles": [
     {
-     "id": "auto-011",
-     "title": "Lincoln Aviator EX8, New-Generation BMW 3 Series Spotted in Homologation Filings as New-Car Rollout Accelerates",
-     "summary": "Homologation filings for the Lincoln Aviator EX8, the new-generation BMW 3 Series and several other models have surfaced, signaling a new wave of product introductions is about to begin.",
-     "detail": "NetEase Auto reports that filing images for multiple upcoming models, including the Lincoln Aviator EX8 and the new-generation BMW 3 Series, have recently been revealed. The appearance of such filings typically means a vehicle has completed major development validation and entered the final public-announcement stage before mass production, putting its official launch within reach. The Lincoln Aviator EX8 targets the luxury mid-to-large SUV segment and is a key addition to Lincoln's China lineup; the new-generation BMW 3 Series, BMW's most iconic sedan, has a refresh cycle that directly affects the brand's performance in China and global sedan markets. With luxury-brand margins under pressure and electrification accelerating, the timing and pricing strategy for these two heavyweight launches are especially critical. Industry practice suggests that once filing images surface, new models typically proceed on schedule through launch and delivery.",
-     "impact": "Several luxury-brand models are nearing launch, and the market for premium vehicles will see a fresh wave of product launches from the fourth quarter into early next year, further expanding consumer choice in mid-to-large SUVs and luxury sedans.",
+     "id": "auto-010",
+     "title": "Lincoln Aviator EX8 and Next-Gen BMW 3 Series Spotted in Homologation Filings, New-Cycle Momentum Heats Up",
+     "summary": "MIIT filing images reveal the Lincoln Aviator EX8 and next-generation BMW 3 Series, signaling a wave of upcoming luxury launches.",
+     "detail": "According to NetEase Auto, homologation filing images for the Lincoln Aviator EX8, the next-generation BMW 3 Series and several other models have recently surfaced, indicating these vehicles are in the final stage of preparation before mass production. The release of filing images typically precedes an official debut or market launch within the coming months. Against the backdrop of a packed launch schedule today — including the Toyota Avalon, Lynk & Co 08 EM-P and IM LS8 NEO — new-car density in the market is expected to remain elevated from year-end into early next year. On the luxury front, Lincoln and BMW's new models will bolster their competitiveness in the mid-to-large SUV and midsize sedan segments respectively, offering consumers fresh choices within the traditional premium camp.",
+     "impact": "The flood of filing images signals the start of a new product cycle and intensifying competition in the luxury segment; consumers should watch for official launch and pricing announcements.",
      "source": "NetEase Auto"
     },
     {
-     "id": "auto-012",
-     "title": "Technology Trickle-Down Becomes the Theme: Supercar Suspension and Smart Charging Accelerate Into the Mainstream",
-     "summary": "The second-generation Seal 07 rides on supercar-grade suspension while AITO delivers a premium charging experience — high-end technology is rapidly spreading to the mainstream market.",
-     "detail": "Recent NetEase Auto coverage shows a range of technologies once reserved for high-end models are fast trickling down to the mainstream. The second-generation Seal 07 claims to feature \"suspension shared with million-yuan supercars,\" benchmarking chassis hardware against high-performance vehicles and underscoring BYD's ambitions in chassis tuning and component specs. Meanwhile, AITO's focus on a luxury experience and Yianqi's pitch of \"making charging an enjoyment\" reflect how the refueling experience is evolving from a pure charging-speed race into a broader competition over service quality and scenario-based experience. Changan's proposal to \"avoid trim-based safety tiers and make safety technology accessible to all\" likewise points to the broader tech downshift trend. Taken together — whether suspension hardware, intelligent-driving computing power, charging services or safety features — the democratization of high-end technology is emerging as the core narrative of the auto industry in 2026.",
-     "impact": "The rapid spread of high-end technology into the 100,000–200,000-yuan market will significantly boost the overall competitiveness of mainstream models, allowing consumers to access technology experiences once exclusive to luxury cars on a smaller budget.",
-     "source": "NetEase Auto"
+     "id": "auto-011",
+     "title": "Claims of 'Multiple Cities Banning Electric Scooter Windguards' Are Misread; Winter Riding Safety and Compliance Draw Attention",
+     "summary": "Officials clarify that reports of multiple cities banning electric two-wheeler windguards are a misreading, sparking discussion on winter riding safety and compliance.",
+     "detail": "According to Baidu Hot Search, recent claims that 'multiple cities have banned electric scooter windguards' were verified as a misreading, and the related topic trended widely online. With winter approaching, demand for add-on windguards and screens to keep warm has surged among two-wheeler riders, but some modifications do pose safety hazards such as impaired handling and obstructed vision, and enforcement standards vary by region. The clarification serves as a reminder to consumers to follow the official regulations of local traffic authorities and choose compliant warming and safety equipment. For the industry, the enormous fleet of two-wheeler EVs makes standardized winter-use management an ongoing priority for urban traffic governance.",
+     "impact": "Clearing up the misreading helps stabilize market expectations while pushing consumers toward compliant modifications and safer winter riding; the aftermarket for warming accessories is also set to enter its peak demand season.",
+     "source": "Baidu Hot Search"
     }
    ]
   }

@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-06",
   "contents": [
     {
-      "id": "prog-2026-11-05",
-      "date": "2026-11-05",
-      "title": "GitHub Actions 实战：构建可复用的 CI/CD 流水线",
-      "summary": "用 GitHub Actions 编排一条包含 Lint、测试矩阵、构建产物与条件部署的完整 CI/CD 流水线，并掌握缓存与安全加固的工程实践。",
+      "id": "prog-2026-11-06",
+      "date": "2026-11-06",
+      "title": "SwiftUI 异步数据加载：async/await、.task 与任务取消",
+      "summary": "掌握在 SwiftUI 中用 async/await + .task 修饰符优雅地加载远程数据，并正确处理视图生命周期带来的任务取消与竞态问题。",
       "difficulty": "中级",
-      "concept": "CI/CD 的本质是把“人工验证代码是否可用”这件事自动化。持续集成（CI）在每次 push / pull_request 时执行静态检查与测试，持续交付（CD）则在此之上产出可部署的制品，持续部署则把制品自动发布到环境。在现代工程中，Git 仓库本身就是唯一事实源（Single Source of Truth）：分支事件、标签、Release 都是流水线的触发信号，代码评审（PR）是质量门禁，而 `.github/workflows/*.yml` 则是可版本化、可回滚、可 code review 的“基础设施代码”。\n\nGitHub Actions 的执行模型由四层构成：Workflow（一个 YAML 文件）→ Job（一个独立的 Runner 虚拟机，Job 之间默认并行）→ Step（Job 内顺序执行的命令或 Action）→ Runner（实际执行环境）。Job 之间通过 `needs` 形成有向无环图（DAG），比如 lint → test → build → deploy。理解这个分层非常关键：Job 之间不共享文件系统，跨 Job 传递数据必须用 `upload-artifact` / `download-artifact`；而 Job 内的 Step 共享工作目录，可以直接复用构建结果。\n\n当需要在多个 Node / Python / Java 版本上验证兼容性时，使用 `strategy.matrix` 声明维度组合，Actions 会自动展开成多个并行 Job。注意 `fail-fast: false` 的含义：默认情况下任一矩阵项失败会取消其余项，这在排查兼容性问题时反而有害，团队实践中通常关闭它以便一次拿到完整的失败分布。另一个必须掌握的概念是“缓存 vs 制品”：`actions/cache`（或 `setup-node` 的 `cache: npm`）缓存的是可再生的中间产物（如依赖包），用于加速下一次运行；`upload-artifact` 上传的是本次运行产生的、需要被下游 Job 消费的结果（如 `dist/`）。把 `node_modules` 作为 artifact 上传是常见的反模式。\n\n安全是流水线最容易被忽略的部分。最小权限原则要求显式声明 `permissions: contents: read`，需要发布时再对特定 Job 提权；敏感信息只能通过 `secrets.*` 注入，切勿硬编码；生产环境应配置 Environment Protection Rules，加上人工审批（required reviewers）作为最后一道闸门。第三方 Action 应固定到 commit SHA 而非浮动 tag，防止供应链攻击；同时利用 GitHub 的 OIDC 与云厂商联邦身份替代长期 AccessKey，可显著降低密钥泄露风险。\n\n工程实践上，一条健康的流水线应当满足：总时长控制在 10 分钟以内、失败信息可直接定位（把 lint 与 test 分成独立 Job，比合并成一个 Step 更易诊断）、支持并发取消（`concurrency` + `cancel-in-progress` 避免 PR 反复推送时浪费算力）、并且只在相关路径变更时运行（`paths` 过滤）。部署 Job 一定要带 `if` 条件，确保只有主分支的 push 才会触发生产发布，PR 仅仅跑 CI，这是防止把未合并代码推上生产的底线。",
+      "concept": "在 iOS 开发的早期，异步请求几乎全部依赖闭包回调（completion handler）。代码里到处是嵌套的 dispatch、weak self、以及散落在各处的 isLoading 布尔值。当一个界面需要串行请求 3 个接口、再并行请求另外 2 个接口时，回调地狱会让逻辑完全失去可读性。Swift 5.5 引入的 async/await 与结构化并发（Structured Concurrency）从根本上改变了这一点：异步代码可以像同步代码一样自上而下书写，编译器会帮你保留调用栈，调试时断点可以直接跳回上层。SwiftUI 与它天然契合，因为 SwiftUI 的 body 本身就需要一个「状态 → 视图」的单向数据流，而 async/await 恰好让「取数据 → 改状态」这一过程变得线性清晰。\n\nasync 函数用 async 关键字标记，调用方必须使用 await，表示「这里可能挂起当前任务，等待结果」。需要注意的是 await 不会阻塞线程，它只是把当前任务挂起并让出执行权，底层线程可以去跑别的任务，这与传统的 Thread.sleep 完全不同。多个独立请求可以用 async let 并行发起，再统一 await 收集结果；而需要顺序依赖的请求则直接按顺序写 await 即可。抛错的异步函数标记为 async throws，调用点用 try await，错误处理与同步代码共用 do/catch 语法，不需要额外学习一套错误回调模式。\n\nSwiftUI 提供了 .task 修饰符，这是官方推荐的、与视图生命周期绑定的异步入口。它本质上是：在视图出现时创建一个 Task，在视图消失时自动取消该 Task。与手写 .onAppear { Task { ... } } 相比，.task 解决了一个高频线上 bug：用户快速返回上一页后，请求回来继续往已销毁的界面写状态，导致状态错乱、列表重复、甚至崩溃。更强大的是 .task(id:)——当 id 参数变化时，SwiftUI 会取消上一个任务并启动新任务。这天然适合搜索框：用户每敲一个字符就换一个关键词，旧请求自动作废，无需手写 debounce 和 token 校验。\n\n任务取消是协作式的（cooperative cancellation）。Swift 运行时只会把 Task.isCancelled 设为 true 并唤醒 await 点，你的代码必须主动检查并响应。标准写法是在循环中调用 try Task.checkCancellation()，或者在关键分支判断 Task.isCancelled。注意 Task.sleep 本身对取消敏感，被取消时会抛出 CancellationError；而 URLSession 的 async 方法在取消时会抛 URLError(.cancelled)。因此在 do/catch 中，务必单独识别并静默处理取消错误，不要把它当作失败展示给用户——否则用户每滑动一次列表就会闪一次错误页。\n\n工程实践中还有两个关键点。第一是主线程隔离：@Published 属性的变更会触发 UI 更新，必须在主线程，因此 ViewModel 建议用 @MainActor 标注整个类，或者在更新状态处使用 await MainActor.run。第二是竞态（race condition）：即使使用了 .task(id:)，如果数据源是共享的、或者有多个按钮同时触发加载，仍可能出现「后发先至」的旧数据覆盖新数据。成熟的做法是在 ViewModel 内部记录一个递增的 requestID，数据回来后比对 requestID，不一致就丢弃。这两点是把 Demo 代码与生产代码区分开的分水岭。",
       "codeExample": {
-        "language": "YAML (GitHub Actions)",
-        "code": "# .github/workflows/ci-cd.yml\n# 一条完整的 Node.js 项目 CI/CD 流水线\n\nname: Node.js CI/CD Pipeline\n\n# ---------- 1. 触发条件：仅 main 分支的 push 与 PR ----------\non:\n  push:\n    branches: [ main ]\n    paths-ignore:\n      - \"**.md\"          # 只改文档时不触发，节省算力\n  pull_request:\n    branches: [ main ]\n\n# ---------- 2. 默认最小权限（安全基线） ----------\npermissions:\n  contents: read\n\n# ---------- 3. 同一分支/PR 新提交到来时，取消旧的运行 ----------\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\n\njobs:\n  # ---------- 4. Lint：最快的失败反馈（Fail Fast） ----------\n  lint:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 20\n          cache: npm          # 以 package-lock.json 的 hash 为缓存 key\n      - run: npm ci           # 严格按 lockfile 安装，禁止改写版本\n      - run: npm run lint\n\n  # ---------- 5. 测试：多版本矩阵并行 ----------\n  test:\n    needs: lint             # lint 失败则不浪费测试机时\n    runs-on: ubuntu-latest\n    strategy:\n      fail-fast: false      # 任一版本失败，其余版本继续跑完\n      matrix:\n        node-version: [18, 20, 22]\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: ${{ matrix.node-version }}\n          cache: npm\n      - run: npm ci\n      - run: npm test -- --coverage\n      # 仅在主版本上上传覆盖率，避免 3 份重复制品\n      - name: Upload coverage artifact\n        if: matrix.node-version == 20\n        uses: actions/upload-artifact@v4\n        with:\n          name: coverage-report\n          path: coverage/\n          retention-days: 7\n\n  # ---------- 6. 构建：产出可部署制品 ----------\n  build:\n    needs: test\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 20\n          cache: npm\n      - run: npm ci\n      - run: npm run build\n      - uses: actions/upload-artifact@v4\n        with:\n          name: dist            # 下游 Job 按名字下载\n          path: dist/\n          retention-days: 3\n\n  # ---------- 7. 部署：仅 main 的 push，且需要生产环境保护 ----------\n  deploy:\n    needs: build\n    if: github.ref == 'refs/heads/main' && github.event_name == 'push'\n    runs-on: ubuntu-latest\n    permissions:\n      contents: read\n      id-token: write         # 用于 OIDC 联邦身份，替代长期密钥\n    environment:\n      name: production\n      url: https://app.example.com\n    steps:\n      - uses: actions/download-artifact@v4\n        with:\n          name: dist\n          path: dist/\n      - name: Deploy to S3\n        env:\n          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}\n          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}\n        run: aws s3 sync ./dist s3://my-prod-bucket --delete\n",
-        "explanation": "【触发部分】`on.push` / `on.pull_request` 限定在 main 分支，配合 `paths-ignore` 让纯文档改动跳过流水线。`concurrency` 中的 `cancel-in-progress: true` 会在同一 PR 推送新 commit 时自动取消旧运行，避免排队浪费 Runner 分钟数。\n\n【权限部分】工作流顶层声明 `permissions: contents: read`，这是 GitHub 的安全最佳实践：未显式声明时权限可能过宽。deploy Job 额外申请 `id-token: write`，用于向 AWS / GCP 换取短期凭证。\n\n【lint Job】先跑最快的静态检查，让格式错误在 30 秒内反馈，而不是等 5 分钟测试跑完。`npm ci` 比 `npm install` 更适合 CI：它严格按 lockfile 安装且先清空 node_modules，保证可重现。\n\n【test Job】`needs: lint` 建立依赖。`matrix.node-version` 会展开出 3 个并行 Job，`${{ matrix.node-version }}` 是表达式注入。`fail-fast: false` 让三个版本都跑完，便于一次性看清所有兼容性问题。`if: matrix.node-version == 20` 避免上传 3 份相同的覆盖率报告。\n\n【build Job】`needs: test`，只有测试全绿才构建。产物通过 `upload-artifact` 以 `dist` 命名上传，`retention-days` 控制存储成本。\n\n【deploy Job】`if` 双条件是最关键的一行：它同时要求 `refs/heads/main` 与 `push` 事件，因此 PR 永远不会触发生产部署。`environment: production` 关联仓库里的环境保护规则，可配置人工审批与部署密钥作用域。制品通过 `download-artifact` 取回后用 `aws s3 sync --delete` 发布，`--delete` 保证远端与构建结果一致，避免残留旧文件。"
+        "language": "Swift",
+        "code": "import SwiftUI\n\n// MARK: - 数据模型\nstruct Article: Identifiable, Decodable, Hashable {\n    let id: Int\n    let title: String\n}\n\n// MARK: - 网络服务（actor 保证内部可变状态的并发安全）\nactor ArticleService {\n    /// 模拟网络请求：延时 0.8 秒后返回数据\n    func fetchArticles(keyword: String) async throws -> [Article] {\n        // Task.sleep 对取消敏感，被取消时抛出 CancellationError\n        try await Task.sleep(nanoseconds: 800_000_000)\n\n        // 模拟业务校验失败\n        guard !keyword.trimmingCharacters(in: .whitespaces).isEmpty else {\n            throw URLError(.badURL)\n        }\n\n        // 模拟返回 5 条数据\n        return (1...5).map { Article(id: $0, title: \"\\($0). 关于 \\(keyword) 的文章\") }\n    }\n}\n\n// MARK: - 视图模型：@MainActor 保证状态更新发生在主线程\n@MainActor\nfinal class ArticleViewModel: ObservableObject {\n    enum State: Equatable {\n        case idle\n        case loading\n        case loaded([Article])\n        case failed(String)\n    }\n\n    @Published private(set) var state: State = .idle\n\n    private let service = ArticleService()\n    private var requestID = 0   // 用于丢弃过期的响应\n\n    func load(keyword: String) async {\n        requestID += 1\n        let currentID = requestID\n        state = .loading\n\n        do {\n            let articles = try await service.fetchArticles(keyword: keyword)\n\n            // 只接受最新一次请求的结果，防止旧数据覆盖新数据\n            guard currentID == requestID else { return }\n            state = .loaded(articles)\n        } catch is CancellationError {\n            // 视图消失 / 关键词变化导致的取消：静默处理，不打扰用户\n            return\n        } catch {\n            guard currentID == requestID else { return }\n            state = .failed(error.localizedDescription)\n        }\n    }\n}\n\n// MARK: - 视图\nstruct ArticleListView: View {\n    @StateObject private var viewModel = ArticleViewModel()\n    @State private var keyword = \"SwiftUI\"\n\n    var body: some View {\n        NavigationStack {\n            Group {\n                switch viewModel.state {\n                case .idle:\n                    ContentUnavailableView(\"输入关键词开始搜索\",\n                                           systemImage: \"magnifyingglass\")\n                case .loading:\n                    ProgressView(\"加载中…\")\n                case .loaded(let articles):\n                    List(articles) { article in\n                        Text(article.title)\n                    }\n                case .failed(let message):\n                    ContentUnavailableView(\"加载失败\",\n                                           systemImage: \"wifi.exclamationmark\",\n                                           description: Text(message))\n                }\n            }\n            .navigationTitle(\"文章\")\n            .searchable(text: $keyword)\n            // 关键词变化时：自动取消旧任务 → 启动新任务\n            // 视图消失时：自动取消正在运行的任务\n            .task(id: keyword) {\n                await viewModel.load(keyword: keyword)\n            }\n        }\n    }\n}\n\n#Preview {\n    ArticleListView()\n}\n",
+        "explanation": "【1】Article 是最简数据模型，遵循 Identifiable 供 List 使用，Decodable 为将来接入真实 JSON 做准备。\n【2】ArticleService 用 actor 修饰，actor 内部状态在同一时刻只允许一个任务访问，是并发安全的最小代价方案。fetchArticles 中的 Task.sleep 模拟网络延迟，它对取消敏感，被取消时抛 CancellationError。\n【3】ArticleViewModel 标注 @MainActor，确保所有 @Published 状态修改都在主线程，这是 SwiftUI 更新 UI 的硬性要求。内部的 requestID 是竞态保护：只有最新一次请求的结果才允许写入 state。\n【4】load 方法中，do/catch 把 CancellationError 单独拎出来静默返回，避免「用户滑走就闪错误页」的体验问题；其余错误才写入 .failed 状态。\n【5】视图用 @StateObject 持有 ViewModel（视图重建时不会重复初始化）。.searchable 提供搜索框绑定 keyword。\n【6】.task(id: keyword) 是核心：视图出现时启动任务；keyword 变化时自动取消旧任务并启动新任务；视图消失时自动取消——生命周期管理完全交给 SwiftUI，无需手写 onCancel 或 onDisappear。\n【7】body 中用 switch 对 state 做穷举渲染，四个状态（idle / loading / loaded / failed）各有明确 UI，这是可维护的加载状态机雏形。"
       },
       "keyPoints": [
-        "Workflow → Job → Step → Runner 四层模型：Job 间默认并行且文件系统隔离，跨 Job 传数据必须用 upload-artifact / download-artifact",
-        "用 needs 构建 DAG（lint → test → build → deploy），把快速失败的检查放在最前，节省 CI 机时",
-        "strategy.matrix 实现多版本并行验证，配合 fail-fast: false 一次拿到完整失败分布",
-        "缓存（actions/cache / setup-node cache: npm）加速依赖安装，制品（artifact）传递构建结果，二者不可混用",
-        "安全三件套：最小 permissions、secrets 注入敏感信息、Environment Protection Rules 做生产审批与作用域隔离"
+        "优先使用 .task / .task(id:) 替代 .onAppear { Task { ... } }，让异步任务自动绑定视图生命周期并被正确取消",
+        "任务取消是协作式的：在长循环或关键节点调用 try Task.checkCancellation()，并用 catch is CancellationError 静默处理取消，不要当错误展示",
+        "ViewModel 用 @MainActor 标注，保证 @Published 状态在主线程更新，避免后台线程改 UI 引发的警告与崩溃",
+        "用递增的 requestID（或取消旧 Task）防御「后发先至」竞态，防止过期响应覆盖最新数据",
+        "async let 用于并行独立请求，顺序 await 用于有依赖的链式请求；actor 用于封装共享可变状态，是并发安全的默认选择"
       ],
       "exercise": {
-        "description": "为一个 Python Web 项目（FastAPI + pytest）编写 `.github/workflows/ci-cd.yml`，要求：(1) 仅在 main 分支的 push 与 pull_request 时触发，并忽略 *.md 变更；(2) 用 matrix 在 Python 3.10 / 3.11 / 3.12 上并行跑 pytest，且任一版本失败不影响其他版本；(3) pip 依赖使用缓存；(4) 只有 main 的 push 才构建 Docker 镜像并推送到 GHCR（ghcr.io），PR 只跑测试不推送；(5) 配置 concurrency 让同一 PR 的旧运行自动取消。",
-        "hint": "先把 Job 划分为 test 与 build-push 两个，用 `needs` 连起来。Python 版本矩阵写成 `matrix.python-version: ['3.10','3.11','3.12']`（注意 YAML 中带小数点的版本号要加引号，否则 3.10 会被解析成 3.1）。pip 缓存可直接用 `actions/setup-python@v5` 的 `cache: pip`。Docker 推送条件写成 `if: github.event_name == 'push' && github.ref == 'refs/heads/main'`，登录 GHCR 使用 `docker/login-action` 配合 `GITHUB_TOKEN`，镜像 tag 建议用 `${{ github.sha }}` 保证可追溯。",
+        "description": "实现一个「用户资料」界面 UserProfileView：进入时异步加载当前用户信息并显示昵称与头像；界面顶部有一个搜索框输入 username，每次输入变化都要重新请求对应用户，且要求快速输入时旧请求自动作废；同时必须完整覆盖 加载中 / 成功 / 失败 / 空数据 四种状态。请使用 .task(id:) 与 async/await 完成，不允许使用 completion handler。",
+        "hint": "把取数逻辑放进 @MainActor 的 ViewModel，状态用 enum 表达；用 .task(id: username) 让 SwiftUI 自动取消旧请求。如果想进一步降低请求频率，可以在 load 方法开头用 try? await Task.sleep(nanoseconds: 300_000_000) 实现简易防抖——它同样会被取消打断，天然安全。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全触发器配置：让流水线在 main 分支的 push 和 pull_request 时运行。",
-            "codeContext": "on:\n  push:\n    branches: [ ... ]\n  pull_request:\n    branches: [ ... ]",
+            "question": "补全代码，使得搜索关键词变化时自动取消上一个异步任务并重新发起请求。",
+            "codeContext": "struct SearchView: View {\n    @State private var keyword = \"\"\n    var body: some View {\n        List { /* ... */ }\n        .____A____(____B____) {\n            await viewModel.search(keyword: keyword)\n        }\n    }\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "on:\n  push:\n    branches: [ ",
+                "content": "应使用的修饰符与参数是：",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,17 +40,18 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[填写分支名]",
+                "placeholder": "[选择修饰符]",
                 "options": [
-                  "main",
-                  "*",
-                  "HEAD"
+                  ".task(id:)",
+                  ".onAppear",
+                  ".background",
+                  ".onChange"
                 ],
-                "correctAnswer": "main"
+                "correctAnswer": ".task(id:)"
               },
               {
                 "type": "text",
-                "content": " ]\n  pull_request:\n    branches: [ ",
+                "content": "，其中 id 参数应当传入 ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -58,55 +59,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[填写分支名]",
+                "placeholder": "[选择参数]",
                 "options": [
-                  "main",
-                  "develop",
-                  "all"
+                  "viewModel",
+                  "keyword",
+                  "self",
+                  "true"
                 ],
-                "correctAnswer": "main"
+                "correctAnswer": "keyword"
               },
               {
                 "type": "text",
-                "content": " ]",
+                "content": "，这样 SwiftUI 才会在该值改变时重启任务。",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "main",
-            "explanation": "`branches` 过滤器的值是分支名，写 `main` 表示只有目标为 main 的 push / PR 才触发。`*` 是通配所有分支，不符合“仅 main”的要求；`HEAD` 不是合法的分支过滤值。PR 事件中 `branches` 匹配的是 PR 的**目标分支**，不是来源分支，这一点常被误解。"
+            "correctAnswer": ".task(id:)、keyword",
+            "explanation": ".task(id:) 接受一个 Equatable 值作为标识：标识不变就复用任务，标识改变就取消旧任务并启动新任务，视图消失时也会自动取消。这里希望「关键词一变就重新搜索」，所以 id 必须是 keyword，而不是固定的 viewModel 或字面量 true。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 GitHub Actions 中的依赖缓存，下列说法正确的是？",
-            "codeContext": "- uses: actions/setup-node@v4\n  with:\n    node-version: 20\n    cache: npm",
+            "question": "关于 .task { } 与 .onAppear { Task { ... } }，下列说法正确的是？",
+            "codeContext": "方案 A：\n.task { await viewModel.load() }\n\n方案 B：\n.onAppear { Task { await viewModel.load() } }",
             "segments": null,
             "options": [
-              "缓存命中后，可以直接跳过 npm ci，因为 node_modules 已经恢复",
-              "setup-node 的 cache: npm 会把 package-lock.json 的 hash 纳入缓存 key，锁文件变化时缓存自动失效",
-              "缓存默认在所有仓库和所有分支之间完全共享",
-              "actions/cache 只能缓存 node_modules 目录，其他路径无法缓存"
+              "两者完全等价，选哪个都一样",
+              "方案 A 会在视图消失时自动取消任务，方案 B 不会，容易造成过期响应写入状态",
+              "方案 B 才是官方推荐写法，性能更好",
+              "方案 A 只能用于列表，不能用于普通 View"
             ],
-            "correctAnswer": "setup-node 的 cache: npm 会把 package-lock.json 的 hash 纳入缓存 key，锁文件变化时缓存自动失效",
-            "explanation": "缓存恢复的只是依赖下载内容（如 npm 的全局缓存目录），并不是工作区里的 node_modules，因此 `npm ci` 依然必须执行，只是它会命中本地缓存而不需要重新下载。缓存的作用域是“分支 + 默认分支”继承，主分支的缓存对 feature 分支可见，但反之不可，跨仓库更不共享。`actions/cache` 可以缓存任意路径，例如构建工具链、测试快照、编译缓存等。"
+            "correctAnswer": "方案 A 会在视图消失时自动取消任务，方案 B 不会，容易造成过期响应写入状态",
+            "explanation": ".task 由 SwiftUI 托管任务生命周期：视图出现启动、消失取消、id 变化重启。而 .onAppear 里手动创建的 Task 不受 SwiftUI 管理，视图销毁后仍会跑完，可能触发「往已失效的界面写状态」的竞态问题。在 iOS 15+ 上应优先使用 .task。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "当对 main 分支执行 git push（不是 PR）时，下面的工作流会执行哪些 Job、产生什么输出？",
-            "codeContext": "jobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"build done\"\n  test:\n    needs: build\n    if: github.event_name == 'pull_request'\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"test done\"\n  deploy:\n    needs: test\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"deploy done\"",
+            "question": "以下 Swift 代码的控制台输出顺序是什么？",
+            "codeContext": "func slow() async -> String {\n    try? await Task.sleep(nanoseconds: 200_000_000)\n    return \"数据\"\n}\n\nprint(\"开始\")\nTask {\n    let result = await slow()\n    print(result)\n}\nprint(\"结束\")",
             "segments": null,
             "options": [
-              "输出 build done → test done → deploy done",
-              "仅输出 build done",
-              "仅输出 test done",
-              "三个 Job 全部被跳过，无输出"
+              "开始、结束、数据",
+              "开始、数据、结束",
+              "结束、开始、数据",
+              "开始、数据"
             ],
-            "correctAnswer": "仅输出 build done",
-            "explanation": "push 事件下 `github.event_name` 为 'push'，test Job 的 `if` 条件不成立，因此被标记为 skipped。deploy Job `needs: test`，而其依赖被跳过时，deploy 默认也会被跳过（除非加上 `if: always()` 或 `!cancelled()` 这类显式覆盖）。build Job 没有任何条件，正常执行。这正是“PR 只跑 CI、主分支才部署”模式背后的机制，理解 skipped 的传播规则是写条件流水线的关键。"
+            "correctAnswer": "开始、结束、数据",
+            "explanation": "print(\"开始\") 在当前线程立即执行。Task { } 会创建一个新的并发任务并立即被调度出去，但不会阻塞当前执行流，因此下一行 print(\"结束\") 会先执行。只有在 slow() 完成 0.2 秒的挂起后，才会打印「数据」。这说明 await 只是挂起当前任务并让出执行权，绝不会阻塞调用线程。"
           }
         ]
       }
