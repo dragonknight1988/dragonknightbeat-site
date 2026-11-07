@@ -1,185 +1,197 @@
 {
-  "date": "2026-11-06",
+  "date": "2026-11-07",
   "content": {
-    "id": "en-2026-11-06",
-    "date": "2026-11-06",
-    "topic": "职场与沟通",
+    "id": "en-2026-11-07",
+    "date": "2026-11-07",
+    "topic": "文化与旅行",
     "newsHighlights": [
       {
-        "title": "Ningbo through world mayors' eyes: Building bridges between cities",
+        "title": "'Mini-breaks' poised to boost tourism",
         "source": "China Daily",
-        "summary": "At the 2026 Global Mayors Dialogue in Ningbo, mayors from New Zealand, Lebanon and Mauritius shared their impressions of the city and reflected on the importance of friendly exchanges and mutual learning.",
-        "translation": "在2026宁波全球市长对话会上，来自新西兰、黎巴嫩和毛里求斯的市长们分享了他们对这座城市的印象，并就友好交流与互学互鉴的重要性畅谈感想。",
+        "summary": "China's tourism market is poised for a new wave of growth as primary and junior high school students begin their autumn \"mini-breaks\" this month.",
+        "translation": "随着中小学本月陆续开启秋季“短假”，中国旅游市场有望迎来新一轮增长。",
         "keyWords": [
-          "dialogue",
-          "exchange",
-          "mutual learning",
-          "impression"
+          "mini-break",
+          "tourism",
+          "poised",
+          "boost"
         ]
       },
       {
-        "title": "Wuzhen Summit: Understanding the deeper meaning of China's open source",
+        "title": "Guilin finds fresh ways to surprise",
         "source": "China Daily",
-        "summary": "At China's first open-source-themed ecosystem experience center at the 2026 World Internet Conference Wuzhen Summit, the idea of open source becomes strikingly clear as a spirit of sharing and cooperation.",
-        "translation": "在2026年世界互联网大会乌镇峰会的中国首个开源主题生态体验中心，开源的含义变得清晰可见——它是一种分享与合作的精神。",
+        "summary": "The scenic city of Guilin is rolling out creative cultural and travel experiences to keep surprising both domestic and international visitors.",
+        "translation": "风景名城桂林不断推出富有创意的文化与旅游体验，持续给国内外游客带来惊喜。",
         "keyWords": [
-          "open source",
-          "ecosystem",
-          "cooperation",
-          "sharing"
+          "scenic",
+          "creative",
+          "experience",
+          "visitor"
+        ]
+      },
+      {
+        "title": "Experience drone food delivery in Shenzhen",
+        "source": "China Daily",
+        "summary": "Journalists from APEC member economies experienced futuristic city life in Shenzhen, from drone-delivered bubble tea to exoskeleton robots.",
+        "translation": "来自亚太经合组织成员经济体的记者在深圳体验了未来城市生活：无人机送奶茶、试穿外骨骼机器人等。",
+        "keyWords": [
+          "drone delivery",
+          "futuristic",
+          "experience",
+          "innovation"
+        ]
+      },
+      {
+        "title": "Wushu Olympics debut inspires Kenyans",
+        "source": "China Daily",
+        "summary": "Wushu's historic debut at the Olympic Games has inspired a growing number of young Kenyans to take up the traditional Chinese martial art.",
+        "translation": "武术在奥运会上的历史性首秀，激励了越来越多肯尼亚年轻人习练这项中国传统武术。",
+        "keyWords": [
+          "debut",
+          "inspire",
+          "martial art",
+          "traditional"
         ]
       },
       {
         "title": "9th China International Import Expo opens in Shanghai",
         "source": "China Daily",
-        "summary": "The ninth edition of the China International Import Expo, the world's first national-level exhibition dedicated to imports, opened on Thursday in Shanghai.",
-        "translation": "全球首个以进口为主题的国家级展会——第九届中国国际进口博览会于周四在上海开幕。",
+        "summary": "The 9th China International Import Expo opened in Shanghai, drawing global businesses and cultural exhibitors to one of the world's largest trade and exchange platforms.",
+        "translation": "第九届中国国际进口博览会在上海开幕，吸引全球企业和文化展商齐聚这一世界最大的贸易与交流平台之一。",
         "keyWords": [
           "expo",
-          "import",
-          "exhibition",
-          "market"
-        ]
-      },
-      {
-        "title": "US companies' presence at CIIE expands",
-        "source": "China Daily",
-        "summary": "More US companies are taking part in the China International Import Expo this year, expanding their presence and deepening business dialogue with Chinese partners.",
-        "translation": "今年更多美国企业参与中国国际进口博览会，扩大参展规模，并深化与中国伙伴的商务对话。",
-        "keyWords": [
-          "presence",
-          "business dialogue",
-          "expand",
-          "partner"
+          "global",
+          "exhibitor",
+          "exchange"
         ]
       }
     ],
     "quote": {
-      "quote": "The single biggest problem in communication is the illusion that it has taken place.",
-      "author": "George Bernard Shaw",
-      "translation": "沟通中最大的问题，是人们误以为沟通已经发生了。",
-      "explanation": "职场中最常见的陷阱，是说完就以为对方听懂了。真正有效的沟通需要确认、反馈与持续的对话，正如本次宁波市长对话会所体现的——交流不是形式，而是彼此理解的过程。"
+      "quote": "The world is a book, and those who do not travel read only one page.",
+      "author": "Saint Augustine",
+      "translation": "世界是一本书，不旅行的人只读了其中的一页。",
+      "explanation": "这句名言强调旅行是拓宽视野、理解不同文化的重要方式。正如新闻中桂林不断推陈出新、深圳展示未来生活方式，走出去体验世界，才能真正读懂它的丰富与多元。"
     },
     "vocabulary": [
       {
-        "word": "dialogue",
-        "phonetic": "/ˈdaɪəlɒɡ/",
-        "partOfSpeech": "n.",
-        "definition": "对话；（尤指正式的）会谈、交流",
-        "example": "The 2026 Global Mayors Dialogue offered city leaders a chance to talk face to face.",
-        "translation": "2026全球市长对话会为城市领导者提供了面对面交谈的机会。",
-        "newsContext": "出自标题 Ningbo through world mayors' eyes: Building bridges between cities 中的 Global Mayors Dialogue。"
+        "word": "poised",
+        "phonetic": "/pɔɪzd/",
+        "partOfSpeech": "形容词",
+        "definition": "蓄势待发的；即将……的",
+        "example": "China's tourism market is poised for a new wave of growth this autumn.",
+        "translation": "今年秋天，中国旅游市场蓄势待发，即将迎来新一轮增长。",
+        "newsContext": "出自新闻 \"'Mini-breaks' poised to boost tourism\"，形容旅游市场处于增长前夜。"
       },
       {
-        "word": "mutual",
-        "phonetic": "/ˈmjuːtʃuəl/",
-        "partOfSpeech": "adj.",
-        "definition": "相互的；彼此的",
-        "example": "The mayors reflected on the importance of mutual learning between their cities.",
-        "translation": "市长们就城市之间互学互鉴的重要性交换了看法。",
-        "newsContext": "出自新闻摘要 friendly exchanges and mutual learning。"
+        "word": "boost",
+        "phonetic": "/buːst/",
+        "partOfSpeech": "动词 / 名词",
+        "definition": "促进；推动；提升",
+        "example": "Short autumn breaks are expected to boost tourism across the country.",
+        "translation": "秋季短假有望促进全国旅游业的发展。",
+        "newsContext": "出自新闻标题 \"'Mini-breaks' poised to boost tourism\"。"
       },
       {
-        "word": "exchange",
-        "phonetic": "/ɪksˈtʃeɪndʒ/",
-        "partOfSpeech": "n. / v.",
-        "definition": "交流；交换",
-        "example": "Friendly exchanges between cities often lead to long-term cooperation.",
-        "translation": "城市之间的友好交流常常带来长期合作。",
-        "newsContext": "出自新闻摘要 the importance of friendly exchanges。"
+        "word": "resilience",
+        "phonetic": "/rɪˈzɪliəns/",
+        "partOfSpeech": "名词",
+        "definition": "韧性；恢复力；适应力",
+        "example": "Young innovators are using technology to build climate resilience in tourism destinations.",
+        "translation": "年轻创新者正利用技术增强旅游目的地的气候韧性。",
+        "newsContext": "出自新闻 \"Young innovators harness tech to build climate resilience amid El Nino\"。"
       },
       {
-        "word": "impression",
-        "phonetic": "/ɪmˈpreʃn/",
-        "partOfSpeech": "n.",
-        "definition": "印象；感想",
-        "example": "Several mayors shared their impressions of Ningbo during the meeting.",
-        "translation": "几位市长在会上分享了他们对宁波的印象。",
-        "newsContext": "出自新闻摘要 mayors shared their impressions of the city。"
+        "word": "harness",
+        "phonetic": "/ˈhɑːnɪs/",
+        "partOfSpeech": "动词",
+        "definition": "利用（自然力、技术等）；驾驭",
+        "example": "The city harnesses digital tools to offer visitors smarter travel experiences.",
+        "translation": "这座城市利用数字工具为游客提供更智能的旅行体验。",
+        "newsContext": "出自新闻 \"Young innovators harness tech to build climate resilience\"，意为“利用技术”。"
       },
       {
-        "word": "expo",
-        "phonetic": "/ˈekspəʊ/",
-        "partOfSpeech": "n.",
-        "definition": "博览会；展览会（exposition 的缩写）",
-        "example": "The ninth China International Import Expo opened in Shanghai on Thursday.",
-        "translation": "第九届中国国际进口博览会于周四在上海开幕。",
-        "newsContext": "出自新闻 9th China International Import Expo opens in Shanghai。"
+        "word": "debut",
+        "phonetic": "/ˈdeɪbjuː/",
+        "partOfSpeech": "名词 / 动词",
+        "definition": "首次亮相；出道；处女作",
+        "example": "Wushu's Olympic debut inspired many young Kenyans to learn Chinese martial arts.",
+        "translation": "武术的奥运首秀激励了许多肯尼亚年轻人学习中国武术。",
+        "newsContext": "出自新闻 \"Wushu Olympics debut inspires Kenyans\"。"
       },
       {
-        "word": "presence",
-        "phonetic": "/ˈprezns/",
-        "partOfSpeech": "n.",
-        "definition": "出席；（企业、机构的）参与规模；存在",
-        "example": "US companies expanded their presence at this year's import expo.",
-        "translation": "美国企业扩大了在今年进口博览会上的参展规模。",
-        "newsContext": "出自新闻 US companies' presence at CIIE expands。"
+        "word": "inspire",
+        "phonetic": "/ɪnˈspaɪə(r)/",
+        "partOfSpeech": "动词",
+        "definition": "激励；鼓舞；启发",
+        "example": "Guilin's creative tourism projects inspire travelers to explore beyond the classic scenery.",
+        "translation": "桂林富有创意的旅游项目激励游客去探索经典山水之外的风景。",
+        "newsContext": "出自新闻 \"Wushu Olympics debut inspires Kenyans\"，意为“激励、鼓舞”。"
       },
       {
-        "word": "expand",
-        "phonetic": "/ɪkˈspænd/",
-        "partOfSpeech": "v.",
-        "definition": "扩大；扩展",
-        "example": "Businesses are working to expand their networks through international forums.",
-        "translation": "企业正通过国际论坛努力拓展自己的人脉网络。",
-        "newsContext": "出自新闻标题 US companies' presence at CIIE expands。"
+        "word": "innovative",
+        "phonetic": "/ˈɪnəveɪtɪv/",
+        "partOfSpeech": "形容词",
+        "definition": "创新的；革新的",
+        "example": "Shenzhen offers innovative travel experiences such as drone food delivery.",
+        "translation": "深圳提供诸如无人机送餐等创新的旅行体验。",
+        "newsContext": "出自新闻 \"Experience drone food delivery in Shenzhen\" 中提到的创新型城市体验。"
       },
       {
-        "word": "collaboration",
-        "phonetic": "/kəˌlæbəˈreɪʃn/",
-        "partOfSpeech": "n.",
-        "definition": "合作；协作",
-        "example": "Open source is built on collaboration rather than competition.",
-        "translation": "开源建立在协作而非竞争之上。",
-        "newsContext": "出自新闻 Wuzhen Summit: Understanding the deeper meaning of China's open source，体现分享与合作精神。"
+        "word": "destination",
+        "phonetic": "/ˌdestɪˈneɪʃn/",
+        "partOfSpeech": "名词",
+        "definition": "目的地；终点",
+        "example": "Guilin remains one of China's most popular travel destinations for foreign visitors.",
+        "translation": "桂林仍是外国游客最喜爱的中国旅游目的地之一。",
+        "newsContext": "出自新闻 \"Guilin finds fresh ways to surprise\" 中对旅游目的地的描述。"
       },
       {
-        "word": "forum",
-        "phonetic": "/ˈfɔːrəm/",
-        "partOfSpeech": "n.",
-        "definition": "论坛；讨论会",
-        "example": "The World Internet Conference Wuzhen Summit serves as a forum for global voices.",
-        "translation": "世界互联网大会乌镇峰会是汇聚全球声音的论坛。",
-        "newsContext": "出自新闻 Wuzhen Summit，指世界互联网大会这一交流平台。"
+        "word": "exhibit",
+        "phonetic": "/ɪɡˈzɪbɪt/",
+        "partOfSpeech": "动词 / 名词",
+        "definition": "展览；陈列；展出（品）",
+        "example": "Companies from around the world exhibit their products at the Import Expo in Shanghai.",
+        "translation": "来自世界各地的企业在上海的进博会上展出自己的产品。",
+        "newsContext": "出自新闻 \"9th China International Import Expo opens in Shanghai\" 中的参展与展示活动。"
       },
       {
-        "word": "initiative",
-        "phonetic": "/ɪˈnɪʃətɪv/",
-        "partOfSpeech": "n.",
-        "definition": "倡议；主动性；新方案",
-        "example": "The import expo is a major initiative for opening the Chinese market to the world.",
-        "translation": "进口博览会是中国向世界开放市场的一项重大倡议。",
-        "newsContext": "出自新闻 CIIE demonstrates potential of Chinese market，进博会被视为开放型国际合作的重要举措。"
+        "word": "immersive",
+        "phonetic": "/ɪˈmɜːsɪv/",
+        "partOfSpeech": "形容词",
+        "definition": "沉浸式的；身临其境的",
+        "example": "Travelers can enjoy immersive cultural shows that bring Guilin's history to life.",
+        "translation": "游客可以欣赏沉浸式文化演出，让桂林的历史鲜活呈现。",
+        "newsContext": "关联新闻 \"Guilin finds fresh ways to surprise\" 中提到的新型文化体验形式。"
       }
     ],
     "pattern": {
-      "pattern": "Rather than simply + V-ing ..., 主语 + 过去式 ... (与其只是……，不如/而是……)",
-      "example": "Rather than simply presenting data, the mayors shared their personal impressions and reflected on the value of mutual learning.",
-      "translation": "与其只是罗列数据，市长们不如分享个人感想，并思考互学互鉴的价值。",
-      "usage": "该句型用于对比两种做法，突出后者更可取，非常适合在工作汇报、邮件或演讲中表达自己的沟通理念。注意 Rather than 后接动名词或不加 to 的不定式，主句谓语与句子主语保持一致。"
+      "pattern": "be poised to do sth / be poised for sth（蓄势待发；即将迎来……）",
+      "example": "China's tourism market is poised for a new wave of growth as students start their autumn breaks.",
+      "translation": "随着学生们开始秋季短假，中国旅游市场即将迎来新一轮增长。",
+      "usage": "be poised to 后接动词原形，be poised for 后接名词，表示“准备好、即将发生”，常用于新闻报道和商务写作中描述趋势，比 be going to 更正式、更有画面感。"
     },
     "grammar": {
-      "title": "现在分词短语作结果状语（V-ing as an adverbial of result）",
-      "explanation": "当主句动作自然导致某种结果时，可用现在分词短语放在句末作结果状语，表示‘从而……、结果……’。与不定式作结果状语（常表示出乎意料）不同，现在分词表示顺理成章的结果。它逻辑上的主语必须是主句的主语或整个主句内容。",
+      "title": "as 引导原因/时间状语从句",
+      "explanation": "在新闻英语中，as 常用来引导原因或时间状语从句，表示“由于、随着”。当 as 表示“随着”时，强调两个变化同时发生，从句常用一般现在时，主句可用一般将来时或现在时。这种结构简洁紧凑，是新闻标题和导语中的高频句式。",
       "examples": [
-        "The ninth China International Import Expo opened in Shanghai, drawing more US companies than ever.",
-        "Mayors from New Zealand, Lebanon and Mauritius gathered in Ningbo, building bridges between cities and deepening mutual understanding."
+        "China's tourism market is poised for a new wave of growth as students start their autumn breaks this month.",
+        "As more young Kenyans take up wushu, the traditional martial art is gaining popularity across Africa."
       ]
     },
     "pronunciation": {
-      "word": "dialogue",
-      "phonetic": "/ˈdaɪəlɒɡ/",
-      "tips": "重音在第一个音节 /ˈdaɪ/，/aɪ/ 是双元音，要从 /a/ 滑向 /ɪ/，口型由大到小；中间音节弱读为 /ə/，几乎一带而过；结尾的 -gue 只发 /ɡ/，不发音的字母 u 不要读出。整体节奏是‘重—弱—轻’。",
+      "word": "tourism",
+      "phonetic": "/ˈtʊərɪzəm/",
+      "tips": "注意重音在第一个音节 /ˈtʊə/，/ʊ/ 音短促圆唇，不要读成 /tɔː/；结尾 -ism 发 /ɪzəm/，快速带过。可对比 tourist /ˈtʊərɪst/ 和 tour /tʊə(r)/ 一起练习。",
       "examples": [
-        "The Global Mayors Dialogue focused on friendly exchanges between cities.",
-        "Good dialogue in the workplace starts with careful listening."
+        "Guilin's tourism industry is finding fresh ways to surprise visitors.",
+        "Short breaks are expected to boost domestic tourism this season."
       ]
     },
     "reading": {
-      "title": "Dialogue as a Bridge: Lessons in Communication from Mayors and Business Leaders",
-      "content": "The 2026 Global Mayors Dialogue in Ningbo brought together city leaders from New Zealand, Lebanon and Mauritius. Rather than simply presenting data, they shared personal impressions and reflected on the value of mutual learning. Their conversations offer a useful lesson for the modern workplace: real communication begins with listening.\n\nMeanwhile, the ninth China International Import Expo opened in Shanghai, drawing more US companies than ever. Behind every contract lie hours of dialogue, negotiation and trust-building.\n\nThree habits stand out. First, speak clearly and avoid jargon. Second, show genuine interest in the other person's perspective. Third, follow up with actions, because trust grows from consistent behaviour.\n\nAs the Wuzhen Summit reminded participants, openness is not a weakness but a strength. In any office, an open ear and an honest reply can build bridges that last far longer than any single deal.",
-      "translation": "2026宁波全球市长对话会汇聚了来自新西兰、黎巴嫩和毛里求斯的城市领导人。他们没有仅仅罗列数据，而是分享了个人感想，思考互学互鉴的价值。他们的交流给现代职场带来了一个有用的启示：真正的沟通始于倾听。\n\n与此同时，第九届中国国际进口博览会在上海开幕，吸引了比以往更多的美国企业。每一份合同的背后，都是数小时的对话、谈判与信任建立。\n\n有三个习惯尤为突出：第一，表达清晰，避免行话；第二，真诚关注对方的视角；第三，用行动跟进，因为信任来自始终如一的行为。\n\n正如乌镇峰会提醒与会者的那样，开放不是软肋，而是力量。在任何办公室里，一双倾听的耳朵和一次真诚的回应，所能架起的桥梁，远比任何一单生意更长久。",
-      "sourceNote": "本文基于 2026 年 11 月 5 日至 6 日 China Daily 关于宁波全球市长对话会、第九届中国国际进口博览会开幕、美国企业扩大参展，以及世界互联网大会乌镇峰会开源主题生态体验中心的报道改写，用于英语学习，非原文转载。"
+      "title": "Short Breaks, Big Surprises: China's Tourism Gets a Fresh Boost",
+      "content": "As autumn arrives, China's tourism market is poised for a new wave of growth. With primary and junior high school students starting their short \"mini-breaks\" this month, families are looking for destinations that offer both relaxation and discovery. Guilin, long famous for its karst mountains and the Li River, is finding fresh ways to surprise visitors with immersive cultural shows and creative travel routes. Meanwhile, tech-savvy Shenzhen gives travelers a taste of the future, from bubble tea delivered by drone to helpful exoskeleton robots. For those interested in Chinese culture, wushu's historic Olympic debut has sparked new curiosity about traditional martial arts. Whether it is a weekend getaway or a longer holiday, these experiences show that travel is about more than sightseeing — it is about connecting with people, history, and innovation.",
+      "translation": "随着秋天来临，中国旅游市场蓄势待发，即将迎来新一轮增长。随着中小学本月开启“短假”，许多家庭正在寻找既能放松身心又能有所发现的目的地。素以喀斯特山峰和漓江闻名的桂林，正通过沉浸式文化演出和创意旅游线路给游客带来新的惊喜。与此同时，科技感十足的深圳让游客一窥未来：从无人机送来的奶茶到贴心的外骨骼机器人。对中国文化感兴趣的人而言，武术的历史性奥运首秀也激发了人们对传统武术的新好奇。无论是周末短途出行还是更长的假期，这些体验都表明，旅行不只是观光——更是与人、与历史、与创新的连接。",
+      "sourceNote": "本文基于 China Daily 2026-11-07 报道 \"'Mini-breaks' poised to boost tourism\"、\"Guilin finds fresh ways to surprise\"、\"Experience drone food delivery in Shenzhen\" 及 \"Wushu Olympics debut inspires Kenyans\" 改写，供英语学习使用。"
     }
   }
 }

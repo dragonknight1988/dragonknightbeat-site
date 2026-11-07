@@ -1,98 +1,85 @@
 {
- "date": "2026-11-06",
- "weekday": "Friday",
- "overview": "The China International Import Expo kicks off, underscoring the pull of openness, while overseas tech stocks plunge sharply; youth health and consumer issues continue to gain momentum.",
+ "date": "2026-11-07",
+ "weekday": "Saturday",
+ "overview": "CIIE sends signals of openness and certainty, cold wave and blizzard warnings issued, and dense releases of overseas oil price and monetary policy signals.",
  "trendingTopics": [
-  "China International Import Expo",
-  "global stock market volatility",
-  "semiconductor industry",
-  "internet governance",
-  "healthcare insurance reform",
-  "public health",
-  "youth health",
-  "energy prices"
+  "High-standard opening up",
+  "Autumn grain procurement",
+  "Cold wave warning",
+  "International oil prices",
+  "Overseas monetary policy",
+  "Memory chips",
+  "Artificial intelligence",
+  "Consumer market"
  ],
  "sections": [
   {
    "id": "domestic",
-   "title": "Domestic Politics",
+   "title": "国内时政",
    "icon": "🇨🇳",
    "articles": [
     {
      "id": "news-001",
-     "title": "Deepening Crackdown on Misconduct and Corruption Close to the People",
-     "summary": "An elaboration on addressing misconduct and corruption affecting ordinary citizens, focusing on the close link between work style and the public's vital interests.",
-     "detail": "Related reports stress the importance of deepening the campaign against grassroots misconduct and corruption, explaining from a people-centered perspective the requirement to extend full and strict Party governance to the grassroots level, with emphasis on resolving prominent issues of strong public concern.",
-     "impact": "Signals sustained efforts to enforce discipline and combat corruption, expected to further boost grassroots governance effectiveness and public sense of gain.",
+     "title": "习近平参加北京市区人大代表换届选举投票",
+     "summary": "习近平参加北京市区人大代表换届选举投票，行使宪法赋予的选举权利。",
+     "detail": "习近平参加北京市区人大代表换届选举投票。人大代表换届选举是基层民主政治生活中的重要环节，依法保障选民的选举权与被选举权。",
+     "impact": "体现国家领导人对基层民主选举的重视，对各地依法推进换届选举工作具有示范意义。",
      "importance": "hot",
      "tags": [
-      "Party Conduct and Clean Governance",
-      "Grassroots Governance",
-      "Full and Strict Party Self-Governance"
+      "民主法治",
+      "基层治理"
      ]
     },
     {
      "id": "news-002",
-     "title": "Upholding Rule-Based Governance of the Party",
-     "summary": "Reports focus on governing the Party through institutions and rules, stressing that institution-building underpins Party governance.",
-     "detail": "Commentaries note that Party spirit is a lifelong pursuit, requiring adherence to rule-based Party governance over time and better translation of the advantages of intra-Party regulations into governance effectiveness.",
-     "impact": "Helps establish long-term mechanisms for managing power, affairs and personnel through institutions, and strengthens the enforceability of intra-Party regulations.",
+     "title": "秋粮收购有序推进 让农户好收成落袋为安",
+     "summary": "秋粮收购工作正从进度、服务、政策三方面稳步推进，保障农户把好收成变为好收益。",
+     "detail": "秋粮收购有序推进，从看进度、看服务、看政策三个维度推进落实。相关工作旨在让农户\"好收成\"真正落袋为安，稳定种粮收益预期。",
+     "impact": "秋粮收购顺畅有助于保障粮食安全、保护农民种粮积极性，夯实全年粮食保供基础。",
      "importance": "important",
      "tags": [
-      "Intra-Party Regulations",
-      "Institutional Development"
+      "秋粮收购",
+      "粮食安全",
+      "农业经济"
      ]
     },
     {
      "id": "news-003",
-     "title": "Highlights of the 2026 World Internet Conference Wuzhen Summit",
-     "summary": "The 2026 World Internet Conference Wuzhen Summit opens, drawing wide attention with themes of convergence, openness and mutual benefit.",
-     "detail": "The Wuzhen Summit opens a window of convergence, openness and mutual benefit, featuring exchanges on digital economy development and internet governance, serving as a key venue for observing China's internet development and global digital cooperation.",
-     "impact": "Builds a platform for global digital cooperation and openness of China's internet industry, advancing discussions on digital economy policies.",
-     "importance": "hot",
+     "title": "中央气象台：北京北部等地将有中到大雪或暴雪",
+     "summary": "中央气象台预报，本周六北京北部等地有中到大雪或雨夹雪，部分地区有暴雪或大暴雪。",
+     "detail": "中央气象台发布预报，本周六北京北部等地将出现中到大雪或雨夹雪，部分地区有暴雪或大暴雪。暴雪大暴雪过程预计在周六强度达到巅峰。",
+     "impact": "需重点关注强降雪对交通出行、城市运行和农牧业的不利影响，提前做好防范应对。",
+     "importance": "important",
      "tags": [
-      "Digital Economy",
-      "Internet Governance",
-      "International Cooperation Platform"
+      "寒潮预警",
+      "气象服务",
+      "防灾减灾"
      ]
     },
     {
      "id": "news-004",
-     "title": "How River Basin Governance Results Translate into Better Lives",
-     "summary": "Reports examine how river basin governance outcomes convert into tangible livelihood benefits, exploring the link between ecological governance and daily life.",
-     "detail": "Drawing on river basin governance practices, the article discusses how ecological improvements can truly reach people's everyday lives, reflecting the development philosophy of ecology benefiting the people.",
-     "impact": "Provides a case study on converting ecological progress into livelihood gains, helping advance the green development model.",
+     "title": "石砭峪新村有了\"新账本\"",
+     "summary": "石砭峪新村通过建立\"新账本\"，记录和呈现乡村发展变迁与村民生活改善。",
+     "detail": "石砭峪新村有了\"新账本\"。报道聚焦村庄发展中的账目变化，折射乡村建设与村民生活的新面貌。",
+     "impact": "以小切口呈现乡村振兴成果，为观察基层发展提供真实样本。",
      "importance": "normal",
      "tags": [
-      "Ecological Civilization",
-      "River Basin Governance",
-      "Livelihood Improvement"
+      "乡村振兴",
+      "农村经济",
+      "基层治理"
      ]
     },
     {
      "id": "news-005",
-     "title": "New Stories of Liangshan: From 'Leaping a Millennium in One Step' to Rural Revitalization",
-     "summary": "Liangshan continues its historic 'leap of a millennium in one step,' telling new stories of consolidating poverty alleviation gains and advancing rural revitalization.",
-     "detail": "The report looks back at Liangshan's historic 'leap of a millennium in one step,' showcasing new changes and explorations in industrial development and livelihood improvement.",
-     "impact": "Offers a regional model for ethnic minority areas to effectively link poverty alleviation gains with rural revitalization.",
+     "title": "\"沉睡\"钱包变安居红利",
+     "summary": "多地探索让\"沉睡\"资金活起来，转化为支持居民安居的政策红利。",
+     "detail": "\"沉睡\"钱包变安居红利。通过盘活存量资金、优化使用方式，把闲置资金转化为助力居民安居的实惠。",
+     "impact": "有助于释放居民住房消费潜力，提升存量资金使用效率。",
      "importance": "normal",
      "tags": [
-      "Rural Revitalization",
-      "Regional Development",
-      "Ethnic Minority Area Development"
-     ]
-    },
-    {
-     "id": "news-006",
-     "title": "'Central Axis Night' Cultural Event of the World Media Summit Held in Beijing",
-     "summary": "The 'Central Axis Night' cultural event of the Seventh World Media Summit is held in Beijing, featuring the Central Axis World Heritage site and intangible cultural heritage displays.",
-     "detail": "Centered on Beijing's Central Axis World Cultural Heritage and live displays and experiences of intangible cultural heritage, the event presented the unique charm of Chinese culture to Chinese and international media guests.",
-     "impact": "Promotes international communication of cultural heritage through an international media platform, enhancing the global influence of Chinese culture.",
-     "importance": "normal",
-     "tags": [
-      "Cultural Heritage Protection",
-      "Intangible Heritage Transmission",
-      "International Communication"
+      "住房保障",
+      "金融服务",
+      "民生改善"
      ]
     }
    ]
@@ -103,176 +90,151 @@
    "icon": "🌍",
    "articles": [
     {
+     "id": "news-006",
+     "title": "Gabon President Nguema Looks to Deepen Cooperation with China",
+     "summary": "Gabon President Brice Oligui Nguema has expressed a desire to deepen cooperation with China and push bilateral relations further forward.",
+     "detail": "Gabon President Nguema publicly voiced his expectation to deepen cooperation with China, sending a positive signal of stronger bilateral exchanges and pragmatic cooperation.",
+     "impact": "Helps expand the scope of China-Africa cooperation and advance mutually beneficial partnership in trade, economics and other fields.",
+     "importance": "important",
+     "tags": [
+      "China-Africa Cooperation",
+      "International Cooperation"
+     ]
+    },
+    {
      "id": "news-007",
-     "title": "Russian and Ukrainian Representatives Meet at White House as Oleshky Ceasefire Draws Attention",
-     "summary": "The US First Lady welcomed Russian and Ukrainian representatives at the White House, with the Oleshky ceasefire seen as an opportunity to advance lasting peace.",
-     "detail": "The US side expressed hope that the Oleshky ceasefire would serve as a spark to ignite lasting peace. A senior Ukrainian lawmaker urged the US to continue pushing for de-escalation, while a Russian envoy praised the related peace efforts, saying the ceasefire shows cooperation can yield results.",
-     "impact": "Provides a phased window of relief for the prolonged Russia-Ukraine conflict, with the international community watching the trajectory of the peace process.",
+     "title": "What Three Reports Reveal About the Certainty China Brings to the World",
+     "summary": "Three reports released during the 9th China International Import Expo presented, from multiple angles, the certainty and openness opportunities China offers the world.",
+     "detail": "At the 9th CIIE, three reports were used to interpret the certainty China brings to the world. During the Hongqiao Insights session, participants from multiple countries also shared observations on how the CIIE connects the world.",
+     "impact": "Against a backdrop of rising global uncertainty, it highlights China's market as a stabilizer and driving force for growth.",
      "importance": "hot",
      "tags": [
-      "Russia-Ukraine situation",
-      "International peace mediation"
+      "Import Expo",
+      "High-Level Opening Up",
+      "International Trade Cooperation"
      ]
     },
     {
      "id": "news-008",
-     "title": "Ukrainian FM: US Involvement Needed for Ceasefire, Europe's Role Must Be Redefined",
-     "summary": "Ukraine's foreign minister said ending the war is impossible without US involvement, and that Europe's new role needs to be redefined.",
-     "detail": "Ukraine's foreign minister said the war cannot be ended without US participation, but Europe's new role must be redefined, and predicted that new US measures to support Ukraine would follow the midterm elections.",
-     "impact": "Highlights mounting pressure to reshape Europe's security architecture, potentially influencing the design of future multilateral security mechanisms.",
+     "title": "Bomb Threats Hit Multiple European Countries, Searches Underway",
+     "summary": "Flights and media outlets in France, Bulgaria, Czechia, Austria, Denmark and other countries have received security threats, prompting investigations across multiple nations.",
+     "detail": "Some flights across Europe have received threat messages since the 5th, while media organizations in Ireland and Britain also received similar security threats. Multiple countries have since launched relevant investigations.",
+     "impact": "Could disrupt European aviation and public security in the short term, raising security costs and travel uncertainty.",
      "importance": "important",
      "tags": [
-      "European security",
-      "International relations landscape"
+      "International Security",
+      "Aviation Security"
      ]
     },
     {
      "id": "news-009",
-     "title": "Sudanese Army Says It Regains Control of Three Central Cities",
-     "summary": "Sudan's armed forces say they have regained control of three cities in North Kordofan state and continue to advance.",
-     "detail": "Sudan's armed forces said they have retaken the cities of Abu Qouq, Kajjir and Umm Sumaima, and are continuing to advance toward Rapid Support Forces positions, indicating that the local armed conflict remains fluid.",
-     "impact": "Could affect the regional humanitarian situation and the security environment of neighboring countries; warrants continued monitoring.",
+     "title": "IAEA Warns of Persistent Safety Risks to Nuclear Facilities",
+     "summary": "IAEA Director General Rafael Grossi warned that increased military activity around Ukrainian nuclear facilities poses continuing safety risks.",
+     "detail": "IAEA Director General Grossi warned on the 6th that military activity around Ukrainian nuclear facilities has increased, leaving the plants and related infrastructure exposed to persistent safety risks.",
+     "impact": "If nuclear safety risks spill over, they would impact regional energy and ecological security, with international attention likely to keep rising.",
      "importance": "important",
      "tags": [
-      "Regional conflict",
-      "African security situation",
-      "Humanitarian"
+      "Nuclear Safety",
+      "International Organizations",
+      "Conflict Spillover"
      ]
     },
     {
      "id": "news-010",
-     "title": "Paraguay's President Resigns and Apologizes Amid Bank Collapse Pressure",
-     "summary": "Paraguay's president resigned under growing pressure over a bank collapse, saying he never intended to betray public trust.",
-     "detail": "Paraguay's president said no position is more important than national stability and apologized over the incident, stating he never intended to betray public trust — underscoring the transmission effect of financial risk on politics.",
-     "impact": "Reveals the tight link between financial stability and political stability, offering a cautionary lesson for risk governance in emerging markets.",
+     "title": "Negotiators Review Proposal to Limit Nuclear Program",
+     "summary": "Media reports say negotiators are reviewing a proposal to limit a nuclear program, though the plan falls short of full dismantlement.",
+     "detail": "According to media reports, negotiators are reviewing proposals to limit the nuclear program in question. Diplomats familiar with the talks added that these proposals do not amount to complete dismantlement.",
+     "impact": "The direction of the talks will affect the regional security landscape and risk appetite in global energy and financial markets.",
      "importance": "normal",
      "tags": [
-      "Financial risk",
-      "Political upheaval",
-      "Public governance"
-     ]
-    },
-    {
-     "id": "news-011",
-     "title": "Iran and Pakistan Foreign Ministers Discuss 'Diplomatic Initiative' in Phone Call",
-     "summary": "The foreign ministers of Iran and Pakistan held a phone call to review and communicate on a related 'diplomatic initiative.'",
-     "detail": "According to Iranian sources, the foreign ministers of Iran and Pakistan held a phone call to review a 'diplomatic initiative,' showing that regional diplomatic communication is ongoing.",
-     "impact": "Signals regional diplomatic engagement and could help advance dialogue on related issues.",
-     "importance": "normal",
-     "tags": [
-      "International communication",
-      "South Asian situation"
+      "Nuclear Non-Proliferation",
+      "Middle East Situation",
+      "International Negotiations"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance & Economy",
+   "title": "Finance Updates",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-012",
-     "title": "China International Import Expo Opens: Standing at China's Crossroads",
-     "summary": "The 9th China International Import Expo (CIIE) has opened, drawing attention with the theme \"Standing at China's Crossroads, Meeting an Open World.\"",
-     "detail": "The 9th CIIE officially opened, with this year's edition seen as a key window into China's continued opening-up. Traders and multinational firms from many countries gathered to witness the growing pull of China's market.",
-     "impact": "Reinforces China's image as an open market, bringing orders and partnership opportunities to foreign trade and consumer-related supply chains.",
+     "id": "news-011",
+     "title": "Household Deposits in 6 Cities Surpass RMB 3 Trillion",
+     "summary": "Data shows household deposits in six cities have each exceeded RMB 3 trillion, drawing attention to the scale of household savings.",
+     "detail": "Household deposits in six cities have surpassed RMB 3 trillion. The data highlights the sheer size of savings in major cities and points to significant room for converting savings into consumption and investment.",
+     "impact": "Large household deposit pools represent consumption potential while underpinning banks' wealth management and financial advisory businesses.",
      "importance": "hot",
      "tags": [
-      "CIIE",
-      "Opening-up",
-      "International Trade"
+      "Household Deposits",
+      "Consumer Market",
+      "Wealth Management"
+     ]
+    },
+    {
+     "id": "news-012",
+     "title": "New FX Rules for Payment Firms: How Big Is the Impact?",
+     "summary": "New foreign exchange rules for payment institutions have taken effect, with industry effects being watched across sectors from cross-border e-commerce to diversified operations.",
+     "detail": "New FX regulations for payment institutions cover multiple scenarios from cross-border e-commerce to multi-segment operations, with the industry focused on the specific impact on business models, compliance requirements and cross-border capital flows.",
+     "impact": "The rules will drive compliance upgrades at payment firms, and settlement flows for cross-border e-commerce and new foreign trade models may see adjustments.",
+     "importance": "important",
+     "tags": [
+      "Foreign Exchange Regulation",
+      "Cross-border E-commerce",
+      "Financial Regulation"
      ]
     },
     {
      "id": "news-013",
-     "title": "Multinational Executives: Investing in China Grew Business 10-Fold",
-     "summary": "At the opening ceremony, multinational executives shared their CIIE ambitions, saying investing in China has driven a surge in business.",
-     "detail": "At the CIIE opening ceremony, executives of multinational companies shared their experience operating in China, saying investment in the country has delivered substantial business growth and expressing a continued commitment to the Chinese market.",
-     "impact": "Signals foreign firms' confidence in China, a positive for stabilizing foreign investment in high-end manufacturing, consumer sectors and more.",
+     "title": "Global Zhejiang Entrepreneurs Gather in Hangzhou, Betting on Tech-Driven \"New\" Growth",
+     "summary": "Zhejiang business leaders gathered in Hangzhou to discuss harnessing sci-tech innovation and driving industry toward \"new\" growth drivers.",
+     "detail": "Global Zhejiang entrepreneurs convened in Hangzhou under the theme of pooling sci-tech innovation and moving toward \"new\" growth, exploring pathways to integrate the private economy with technological innovation.",
+     "impact": "The effort helps align private capital with sci-tech resources, spurring regional industrial upgrades and the development of new quality productive forces.",
      "importance": "important",
      "tags": [
-      "Foreign Investment",
-      "Multinational Corporations",
-      "China Market"
+      "Private Economy",
+      "Sci-tech Innovation",
+      "Industrial Upgrading"
      ]
     },
     {
      "id": "news-014",
-     "title": "Foreign Firms Shift From \"Selling In\" to \"Putting Down Roots\"",
-     "summary": "300 leading foreign companies gathered at CIIE as their China strategies pivot from trade exports to deep localization.",
-     "detail": "CIIE brought together 300 leading foreign enterprises, whose participation has shifted from simply \"selling into\" the market to \"putting down roots\" in China, reflecting a deeper change in foreign investment and cooperation models.",
-     "impact": "The trend toward deep localization by foreign firms could drive medium- and long-term development in domestic supply chains and employment.",
+     "title": "Foreign Firms: Seizing China's Opportunities, Sharing an Open Future",
+     "summary": "During the China International Import Expo, foreign corporate representatives voiced commitment to understanding China's opportunities and sharing the development prospects brought by openness.",
+     "detail": "In the \"Dialogue with Foreign Enterprises\" segment at CIIE, several companies shared their assessments of the Chinese market, emphasizing their willingness to read China's opportunities right and share in an open future.",
+     "impact": "Foreign firms' continued expansion in China will further reinforce the country's standing as a key global consumer and manufacturing market.",
      "importance": "important",
      "tags": [
-      "Foreign Investment Strategy",
-      "Supply Chain Cooperation",
-      "Localization"
+      "Foreign Investment",
+      "Import Expo",
+      "Open Economy"
      ]
     },
     {
      "id": "news-015",
-     "title": "World Openness Report 2026 Released at CIIE",
-     "summary": "The World Openness Report 2026 was released for the first time, offering a precise guide and framework for sharing in China's market.",
-     "detail": "As the first report released at CIIE, the World Openness Report 2026 analyzes the global openness landscape and China's market opportunities, providing decision-making reference for companies and investors.",
-     "impact": "Offers an authoritative reference for global investors assessing China's market and advances discussion on open-economy issues.",
-     "importance": "important",
+     "title": "A New Industry Track Seen Through a Pair of Glasses",
+     "summary": "A single pair of glasses reflects how smart wearables and the eyewear industry are forming a new growth track.",
+     "detail": "The report starts from a pair of glasses to examine the new tracks emerging in the eyewear industry, spanning product innovation, feature upgrades and expanding consumer scenarios.",
+     "impact": "The convergence of smart wearables and eyewear is expected to spawn new growth points in consumer electronics.",
+     "importance": "normal",
      "tags": [
-      "Open Economy",
-      "Think Tank Report",
-      "Investment Guide"
+      "Smart Hardware",
+      "Consumer Electronics",
+      "Eyewear Industry"
      ]
     },
     {
      "id": "news-016",
-     "title": "Medical Insurance Wallet 2.0 Launches, Cross-Provincial Use by Year-End",
-     "summary": "Medical Insurance Wallet 2.0 has launched, moving from \"cross-provincial sharing\" to \"cross-provincial use\" for out-of-province care within the year.",
-     "detail": "Addressing questions over whether pooled quota can be used for out-of-province treatment, Medical Insurance Wallet 2.0 officially launched, upgrading from \"cross-provincial sharing\" to \"cross-provincial use\" within the year to further facilitate settlement of medical care across provinces.",
-     "impact": "Expected to ease the financial burden of out-of-province care and advance more convenient, integrated public medical insurance services.",
-     "importance": "hot",
-     "tags": [
-      "Medical Insurance Reform",
-      "Out-of-Province Care",
-      "Public Services"
-     ]
-    },
-    {
-     "id": "news-017",
-     "title": "China-Europe Medical Devices Trade Matchmaking Event Held in Shanghai",
-     "summary": "The Ministry of Commerce held a dedicated China-Europe medical devices trade matchmaking event in Shanghai to boost sector cooperation.",
-     "detail": "The Ministry of Commerce led a dedicated China-Europe medical devices trade matchmaking event in Shanghai, building a supply-and-demand platform for Chinese and foreign device makers and supporting trade and technology cooperation.",
-     "impact": "Positive for the medical device supply chain and further deepens China-Europe cooperation in medical technology and trade.",
+     "title": "Retired Batteries from 125 Buses Fetch RMB 3 Million",
+     "summary": "Retired power batteries from 125 buses have been disposed of, generating roughly RMB 3 million and exploring pathways to monetize battery recycling.",
+     "detail": "Retired batteries from 125 buses sold for RMB 3 million. Standardized recycling and disposal of decommissioned power batteries unlocked residual value, giving transit operators a new asset disposal channel.",
+     "impact": "Provides a replicable commercial model for power battery recycling and the circular economy.",
      "importance": "normal",
      "tags": [
-      "Medical Devices",
-      "China-Foreign Trade",
-      "Industrial Cooperation"
-     ]
-    },
-    {
-     "id": "news-018",
-     "title": "Hainan Free Trade Port's Appeal Rises as Global Traders Seek Opportunities",
-     "summary": "Hainan Free Trade Port's attractiveness continues to grow, with buyers from multiple countries visiting the island to seek investment and trade opportunities.",
-     "detail": "Policy dividends from the Hainan Free Trade Port keep being released, drawing traders and businesspeople from many countries for talks and inspections, with the platform's opening-up effects gradually showing in trade, investment and other fields.",
-     "impact": "Helps accelerate industrial clustering in Hainan's free trade port and lifts the region's capacity for opening up.",
-     "importance": "normal",
-     "tags": [
-      "Free Trade Port Development",
-      "Regional Opening-up",
-      "Investment Promotion"
-     ]
-    },
-    {
-     "id": "news-019",
-     "title": "Small-City Airports Begin a Major Shake-Up",
-     "summary": "Reports highlight significant adjustments in the airport landscape for smaller cities as the regional aviation market enters a reshuffling phase.",
-     "detail": "Against the backdrop of structural change in civil aviation, airports in small and mid-sized cities face multiple adjustments in routes, passenger flows and operating models as the industry's landscape is reshaped.",
-     "impact": "Regional aviation and local transport networks may see a new round of consolidation, affecting connectivity and industrial support for smaller cities.",
-     "importance": "normal",
-     "tags": [
-      "Civil Aviation",
-      "Regional Transport",
-      "Infrastructure"
+      "Battery Recycling",
+      "Circular Economy",
+      "New Energy Industry"
      ]
     }
    ]
@@ -283,81 +245,81 @@
    "icon": "🌐",
    "articles": [
     {
-     "id": "news-020",
-     "title": "US Stocks Hit by Broad Selloff, Nasdaq Plunges Nearly 4%",
-     "summary": "US equities suffered a broad selloff, with the Nasdaq Composite and Nasdaq 100 leading losses and the S&P 500 falling sharply.",
-     "detail": "US tech stocks led the rout, with the Nasdaq Composite down nearly 4% and the S&P 500 off more than 2.7%. Market sentiment deteriorated sharply, with multiple AI supply-chain stocks posting steep declines.",
-     "impact": "Global risk appetite is under pressure, potentially spilling over into Asia-Pacific market openings and high-valuation growth sectors.",
+     "id": "news-017",
+     "title": "HSBC: Oil Price Risks Tilt Upside in the Short Term",
+     "summary": "HSBC says security risks and low inventories keep oil price risks skewed to the upside, with supply disruptions potentially returning the market to a deficit.",
+     "detail": "HSBC said persistent security risks and low inventory levels leave oil price risks tilted to the upside in the very short term, until new bypass capacity eases supply tightness in early 2027. If attacks on tankers or infrastructure disrupt 2 million to 3 million barrels per day of supply again, the market would return to a deficit. Despite broadly stable Middle East exports and little change in fundamentals, oil prices remain highly sensitive to geopolitical headlines.",
+     "impact": "Firmer oil price expectations could add to global inflation pressures and transport costs, while energy sector volatility may increase.",
      "importance": "hot",
      "tags": [
-      "US Equity Volatility",
-      "Global Capital Markets",
-      "Risk Appetite"
+      "International Oil Prices",
+      "Energy Market",
+      "Geopolitical Risk"
+     ]
+    },
+    {
+     "id": "news-018",
+     "title": "Overseas Central Bank Governor: Domestic Investment Expected to Rise",
+     "summary": "An overseas central bank governor said domestic investment is expected to increase, though the scale is highly uncertain, and corporate overseas investment is growing in importance.",
+     "detail": "The overseas central bank governor noted that after the bubble burst, companies cut investment and spent years repairing balance sheets, while population decline once depressed expected returns on the domestic market. Scarcity has only become a reality in recent years, corporate savings remain high, and overseas investment has become increasingly important. The speech did not comment on the economic or policy outlook.",
+     "impact": "Attention to corporate investment and overseas asset allocation reflects structural shifts in capital flows amid the global low-rate environment.",
+     "importance": "important",
+     "tags": [
+      "Overseas Central Bank Policy",
+      "Corporate Investment",
+      "Global Capital Flows"
+     ]
+    },
+    {
+     "id": "news-019",
+     "title": "Dollar Index Breaks Above 102, Up 0.61% on the Day",
+     "summary": "The dollar index broke above 102, rising 0.61% on the day, drawing attention in foreign exchange markets as the dollar strengthened in the near term.",
+     "detail": "The dollar index broke above 102, with a daily gain of 0.61%. The near-term dollar strength has created pressure on non-U.S. currencies, commodities and cross-border capital flows.",
+     "impact": "A stronger dollar could weigh on dollar-denominated commodity prices and affect capital flows to emerging markets.",
+     "importance": "important",
+     "tags": [
+      "Dollar Index",
+      "Foreign Exchange Market",
+      "Global Liquidity"
+     ]
+    },
+    {
+     "id": "news-020",
+     "title": "France Releases 3.6 Million Barrels of Strategic Diesel Reserves",
+     "summary": "France released 3.6 million barrels of diesel under an International Energy Agency plan, part of a 10 million barrel inventory drawdown program.",
+     "detail": "France's economy, finance and industry minister, Lescure, said France released 3.6 million barrels of diesel under the International Energy Agency plan, sold to date from France's strategic reserves. The release is part of a program to draw down 10 million barrels of inventory.",
+     "impact": "Releasing strategic reserves helps ease diesel market tightness in the short term, but also reflects ongoing disruptions on the energy supply side.",
+     "importance": "important",
+     "tags": [
+      "Strategic Reserves",
+      "International Energy",
+      "Energy Security"
      ]
     },
     {
      "id": "news-021",
-     "title": "Nasdaq 100 Plunges Over 6% as Chip Stocks Sink",
-     "summary": "The Nasdaq 100 index plunged more than 6% amid a slump in chip stocks, as markets weigh the outlook for cloud data center policy.",
-     "detail": "Tech stocks tumbled Thursday as traders assessed the potential impact of shifting political dynamics on cloud data centers. The Nasdaq 100 fell more than 6%, the chip selloff accelerated, European chip stocks extended losses, and the Philadelphia Semiconductor Index dropped sharply.",
-     "impact": "Semiconductor and AI computing sectors face near-term pressure; investors should watch for knock-on corrections in high-valuation tech stocks.",
-     "importance": "hot",
+     "title": "IMF Chief: Slower AI-Driven Growth Must Be Factored into Central Bank Decisions",
+     "summary": "IMF Managing Director Georgieva said that if AI-driven growth slows, central banks must take that factor into account when assessing anti-inflation measures.",
+     "detail": "International Monetary Fund Managing Director Kristalina Georgieva noted that widening imbalances often accompany fragile growth and have in some cases preceded financial crises. She also said that if the momentum from artificial intelligence-driven growth slows, central banks must take this factor into account when assessing measures to combat inflation.",
+     "impact": "Signals that global policymakers need to watch how the pace of AI growth payoffs affects inflation and financial stability.",
+     "importance": "important",
      "tags": [
-      "Semiconductor Industry",
-      "Tech Stock Volatility",
-      "AI Computing"
+      "International Financial Institutions",
+      "Monetary Policy",
+      "Artificial Intelligence"
      ]
     },
     {
      "id": "news-022",
-     "title": "European Chip Stocks Tumble as Volatility Index Hits Multi-Month High",
-     "summary": "European chip stocks extended losses, while the European equity volatility index posted its biggest single-day gain in months.",
-     "detail": "The chip selloff spread to Europe, with European chip stocks falling further and on track for their largest one-day decline in months. The EURO VIX stood at 22.7, set for its biggest single-day jump since March.",
-     "impact": "Signals panic is spreading globally, with valuations of European semiconductor supply-chain firms under pressure.",
-     "importance": "important",
-     "tags": [
-      "European Capital Markets",
-      "Semiconductor Industry",
-      "Market Volatility"
-     ]
-    },
-    {
-     "id": "news-023",
-     "title": "WTI Crude Rises 3% Intraday to $90.84/Barrel",
-     "summary": "WTI crude rose 3% intraday to $90.84 per barrel, drawing attention to energy price volatility.",
-     "detail": "International oil prices climbed, with WTI up 3% on the day at $90.84 per barrel. Industry players said the overall situation in the Middle East remains unstable, adding to uncertainty in energy price trends.",
-     "impact": "Rising oil prices will add to inflation pressure and feed through to costs in energy-intensive industries.",
-     "importance": "hot",
-     "tags": [
-      "International Energy",
-      "Commodities",
-      "Inflation Pressure"
-     ]
-    },
-    {
-     "id": "news-024",
-     "title": "ECB Chief: Must Watch Second-Order Effects of Energy Shock",
-     "summary": "ECB President Christine Lagarde said second-order effects of energy price shocks must be monitored, while demand-side shocks also persist.",
-     "detail": "ECB President Christine Lagarde noted that the second-order effects of energy price shocks warrant close attention, and that demand-side shocks are also present, requiring a comprehensive approach to policymaking.",
-     "impact": "Suggests the ECB's monetary policy path will remain flexibly calibrated to inflation and growth data.",
-     "importance": "important",
-     "tags": [
-      "Monetary Policy",
-      "European Economy",
-      "Energy Prices"
-     ]
-    },
-    {
-     "id": "news-025",
-     "title": "BOE: Inflation Risks Tilt to Upside, Watch Pass-Through",
-     "summary": "Bank of England Governor Andrew Bailey said the BOE is monitoring the degree of inflation pass-through, risks are skewed to the upside, and future decisions hinge on the pace of disinflation.",
-     "detail": "Bank of England Governor Andrew Bailey said inflation risks are tilted to the upside, though that could change. Future decisions will depend on how quickly inflation falls; peace efforts offer limited relief on inflation, with energy remaining the key variable.",
-     "impact": "UK rate cuts may be delayed, potentially increasing volatility in sterling assets and the gilt market.",
+     "title": "Emerging Market Nations Stress Fiscal Responsibility",
+     "summary": "Leaders of emerging market countries emphasized that they will continue to fulfill social responsibilities, with stronger fiscal responsibility than many nations.",
+     "detail": "Leaders of the relevant emerging market countries said they will continue to fulfill social responsibilities, stressing that their fiscal responsibility is stronger than that of many countries, offering a different perspective for global fiscal policy discussions.",
+     "impact": "Emerging markets' emphasis on fiscal discipline helps stabilize international investor confidence and offers a reference point for the global sovereign credit environment.",
      "importance": "normal",
      "tags": [
-      "Monetary Policy",
-      "Inflation Outlook",
-      "Advanced Economies"
+      "Fiscal Policy",
+      "Emerging Markets",
+      "International Trade and Economic Relations"
      ]
     }
    ]
@@ -368,55 +330,55 @@
    "icon": "💡",
    "articles": [
     {
-     "id": "news-026",
-     "title": "Nvidia Proposes Full-Stack Co-Design Approach for AI Memory",
-     "summary": "Nvidia has proposed a full-stack co-design approach for AI memory, delivering significant gains in inference throughput on its next-generation platform.",
-     "detail": "Nvidia published an article stating that as AI models scale up, a full-stack co-design approach for AI memory is needed. The new Vera Rubin platform increases memory capacity per GPU by only about 3%, yet boosts inference throughput by as much as tens of times.",
-     "impact": "Offers a new technical reference path for reducing AI inference costs and deploying large models at scale.",
+     "id": "news-023",
+     "title": "TSMC Weighs Entry Into Advanced Memory Chip Manufacturing",
+     "summary": "TSMC is reportedly considering expanding into advanced memory chip manufacturing, planning 3D DRAM to meet major customer demand.",
+     "detail": "TSMC is reportedly considering expanding its business into advanced memory chip manufacturing, developing 3D DRAM at the request of major customers. The move would further broaden the portfolio of the world's largest chipmaker.",
+     "impact": "If realized, the shift would reshape the competitive landscape of memory chips and spur investment across advanced packaging and the memory supply chain.",
      "importance": "hot",
      "tags": [
-      "AI Chips",
-      "Compute Infrastructure",
-      "Large Language Models"
+      "Semiconductors",
+      "Memory Chips",
+      "Advanced Manufacturing"
      ]
     },
     {
-     "id": "news-027",
-     "title": "Blueprint Paper Offers Insights into China's Internet Evolution",
-     "summary": "A blue paper systematically reviews the development of China's internet, mapping out the industry's evolution and future direction.",
-     "detail": "The blue paper examines the growth trajectory of China's internet from a development perspective, drawing lessons from milestones such as the Wuzhen Summit to provide systematic material for observing Digital China initiatives.",
-     "impact": "Provides a reference for policymakers and industry players to understand internet development trends, supporting healthy sector growth.",
-     "importance": "normal",
+     "id": "news-024",
+     "title": "OpenAI to Keep Investing in AI Data Centers",
+     "summary": "OpenAI's chief financial officer said the company will continue investing in AI data centers regardless of the election outcome.",
+     "detail": "OpenAI's chief financial officer said the company will continue investing in AI data centers regardless of the election outcome, signaling a long-term commitment to AI computing infrastructure.",
+     "impact": "Continued data center investment by AI leaders will boost demand across computing power, servers, power supply and related supply chains.",
+     "importance": "important",
      "tags": [
-      "Internet Industry",
-      "Digital China",
-      "Industry Research"
+      "Artificial Intelligence",
+      "Data Centers",
+      "Computing Infrastructure"
      ]
     },
     {
-     "id": "news-028",
-     "title": "A New Industry Race Emerges Inside a Pair of Glasses",
-     "summary": "Reporting starts from a single pair of glasses to explore how smart glasses and other wearable devices are spawning new industry tracks.",
-     "detail": "Using glasses as a starting point, the article analyzes emerging opportunities in smart wearables, optical components and AI interaction, outlining the growth potential of the related supply chains.",
-     "impact": "Rising interest in smart wearables is expected to drive growth in optical, chip and consumer electronics supply chains.",
+     "id": "news-025",
+     "title": "Intelligent Connectivity, Smarter Future",
+     "summary": "An event themed \"Intelligent Connectivity, Smarter Future\" focused on intelligent connectivity technologies and their future industrial applications.",
+     "detail": "Coverage under the theme \"Intelligent Connectivity, Smarter Future\" examined cutting-edge advances in intelligent connectivity technologies and their industrial applications.",
+     "impact": "The faster penetration of intelligent connectivity technologies will drive industrial digitalization and give rise to new business models.",
      "importance": "normal",
      "tags": [
-      "Smart Wearables",
-      "Consumer Electronics",
-      "Supply Chain Innovation"
+      "Intelligent Connectivity",
+      "Internet of Things",
+      "Digital Economy"
      ]
     },
     {
-     "id": "news-029",
-     "title": "Sony Launches Retro-Style Wired Headphones Priced at $60",
-     "summary": "Sony has launched retro-designed wired headphones, the MDR-3R, priced at around $60, inspired by a classic model.",
-     "detail": "Sony released the affordable wired MDR-3R headphones, hitting shelves on Thursday at $59.99 / C$99.99. The design draws inspiration from Sony's classic 1979 model,主打 an 80s retro style.",
-     "impact": "The return of retro consumer electronics could open up niche markets, offering differentiation opportunities for audio hardware brands.",
+     "id": "news-026",
+     "title": "17-Year-Old Vocational Student Builds Power Bank From Scratch, Principal Approves Support On-Site",
+     "summary": "A 17-year-old vocational school student built a power bank on their own, and the principal approved support on the spot, showcasing hands-on results in vocational education.",
+     "detail": "A 17-year-old vocational school student built a power bank through hands-on practice, with the principal approving support on the spot — a reflection of how vocational education fosters practical skills and an innovative mindset.",
+     "impact": "The case highlights vocational education's focus on practice and innovation, helping raise public attention to skills-based talent training.",
      "importance": "normal",
      "tags": [
-      "Consumer Electronics",
-      "Audio Devices",
-      "Retro Consumption"
+      "Vocational Education",
+      "Innovation and Entrepreneurship",
+      "Skills Talent Training"
      ]
     }
    ]
@@ -427,37 +389,37 @@
    "icon": "📰",
    "articles": [
     {
-     "id": "news-030",
-     "title": "Stress-Triggered \"Gut Reaction\" Plagues Young People",
-     "summary": "Reports highlight functional gastrointestinal issues triggered by emotional stress, which are widespread among young people.",
-     "detail": "The article focuses on gut symptoms brought on by tension and anxiety, reflecting the physical and mental pressures and digestive health concerns facing today's youth, and calls for greater attention to mental health and lifestyle adjustments.",
-     "impact": "Raises public awareness of psychosomatic disorders and digestive health, potentially driving demand for related health services.",
+     "id": "news-027",
+     "title": "The Vitamins Chinese People Lack Most — Women More Than Men",
+     "summary": "Reports show Chinese people are commonly deficient in certain vitamins, with women affected more than men, raising nutrition and health concerns.",
+     "detail": "The report highlights widespread vitamin deficiencies in China, noting that shortfalls are more pronounced among women than men, urging the public to pay attention to balanced daily nutrition.",
+     "impact": "Helps raise public awareness of nutrition and health, boosting demand for dietary supplements and health education.",
      "importance": "important",
      "tags": [
-      "Digestive Health",
-      "Mental Health",
-      "Youth"
+      "Nutrition & Health",
+      "Public Health",
+      "Health Education"
      ]
     },
     {
-     "id": "news-031",
-     "title": "Scoliosis Becomes a Growing Concern for Students",
-     "summary": "Reports focus on the prevalence of scoliosis among students and its long-term impact on adolescent health.",
-     "detail": "The article examines the causes and current state of adolescent scoliosis, pointing to health pressures from prolonged sitting and heavy schoolwork loads, and calls for joint intervention by schools, families and the medical system.",
-     "impact": "Could help advance campus health screening and measures for posture management among adolescents.",
-     "importance": "important",
+     "id": "news-028",
+     "title": "48 Hours After Flu Strikes: Choosing the Right Drug Is Critical",
+     "summary": "During peak flu season, the author documents the experience of selecting the right medication within the first 48 hours of illness.",
+     "detail": "The first 48 hours after flu onset are a critical window. The author shares lessons on choosing the right medication during this period, stressing the importance of acting quickly and using drugs responsibly.",
+     "impact": "Offers the public a reference for self-care during flu season, encouraging proper medication use and timely medical attention.",
+     "importance": "normal",
      "tags": [
-      "Adolescent Health",
-      "Campus Health",
+      "Flu Prevention & Treatment",
+      "Rational Drug Use",
       "Public Health"
      ]
     },
     {
-     "id": "news-032",
-     "title": "Can Six-Figure Stem Cell Infusions Really Slow Aging?",
-     "summary": "Reports focus on high-priced stem cell infusion anti-aging programs, examining their scientific basis and actual efficacy.",
-     "detail": "The article raises questions about stem cell infusion anti-aging services costing hundreds of thousands of yuan, reviews the current state and controversies surrounding the technology, and urges consumers to keep a rational view.",
-     "impact": "Helps regulate the anti-aging consumer market and warns the public against exaggerated claims and overpriced medical spending.",
+     "id": "news-029",
+     "title": "Stem Cell Infusions Costing Hundreds of Thousands — Can They Really Reverse Aging?",
+     "summary": "With stem cell anti-aging treatments costing upwards of hundreds of thousands of yuan, reports question their actual efficacy and scientific basis.",
+     "detail": "The report focuses on high-priced stem cell infusion anti-aging programs on the market, questioning whether they truly deliver anti-aging effects and sparking debate over the boundaries of regenerative medicine and regulation of consumer healthcare.",
+     "impact": "Helps consumers take a rational view of anti-aging treatments and drives discussion on regulation and oversight in the field.",
      "importance": "normal",
      "tags": [
       "Regenerative Medicine",
@@ -466,29 +428,29 @@
      ]
     },
     {
-     "id": "news-033",
-     "title": "Choosing Medication in the First 48 Hours of Flu",
-     "summary": "Reports share medication and response experience within the first 48 hours of influenza, emphasizing the importance of timely scientific treatment.",
-     "detail": "The article describes a personal experience of managing the first 48 hours after flu onset, discussing how to make appropriate medication choices within the critical window and offering a reference for the public.",
-     "impact": "Boosts public awareness of early flu treatment and supports seasonal respiratory disease prevention and control.",
+     "id": "news-030",
+     "title": "Stones Remember: The Continuation of Dazu Stone Carving",
+     "summary": "The report traces the passing on of Dazu stone carving, showcasing how traditional carving craft is preserved and innovated today.",
+     "detail": "\"Stones Remember\" focuses on the heritage lineage of Dazu stone carving, presenting the artisans who sustain this traditional craft and keep its techniques alive in modern times.",
+     "impact": "Helps raise public awareness of intangible cultural heritage and promotes the living transmission of traditional crafts.",
      "importance": "normal",
      "tags": [
-      "Respiratory Disease",
-      "Rational Medication Use",
-      "Health Education"
+      "Intangible Cultural Heritage",
+      "Traditional Crafts",
+      "Cultural Industry"
      ]
     },
     {
-     "id": "news-034",
-     "title": "300 Days and Nights at a Discipline School",
-     "summary": "Reports follow a 300-day experience at a discipline school, focusing on juvenile corrective education and family education issues.",
-     "detail": "The article records 300 days and nights inside a discipline school, reflecting the dilemmas and choices some families face in guiding teenagers, and sparking debate over corrective education models.",
-     "impact": "Promotes deeper societal reflection on youth education methods and juvenile protection mechanisms.",
+     "id": "news-031",
+     "title": "300 Days and Nights at a Boot Camp School",
+     "summary": "Through 300 days and nights at a special training school, the report offers a real-world glimpse into issues of youth education and development.",
+     "detail": "Centered on 300 days and nights at a special training school, the report uses firsthand perspectives to explore real issues in adolescent education, family relations, and growing-up environments.",
+     "impact": "Helps spark deeper societal discussion on approaches to youth education and psychological development.",
      "importance": "normal",
      "tags": [
+      "Youth Education",
       "Family Education",
-      "Juvenile Protection",
-      "Education Models"
+      "Social Issues"
      ]
     }
    ]
