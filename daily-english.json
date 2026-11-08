@@ -1,197 +1,181 @@
 {
-  "date": "2026-11-07",
+  "date": "2026-11-08",
   "content": {
-    "id": "en-2026-11-07",
-    "date": "2026-11-07",
-    "topic": "文化与旅行",
+    "id": "en-2026-11-08",
+    "date": "2026-11-08",
+    "topic": "健康与生活",
     "newsHighlights": [
       {
-        "title": "'Mini-breaks' poised to boost tourism",
-        "source": "China Daily",
-        "summary": "China's tourism market is poised for a new wave of growth as primary and junior high school students begin their autumn \"mini-breaks\" this month.",
-        "translation": "随着中小学本月陆续开启秋季“短假”，中国旅游市场有望迎来新一轮增长。",
+        "title": "With winter here, Inner Mongolia gets to the meat of the matter",
+        "source": "ChinaDaily",
+        "summary": "As winter sets in, Inner Mongolia serves up hearty mutton dishes that keep locals warm and well-nourished during the harsh cold season.",
+        "translation": "随着冬季来临，内蒙古端上丰盛的羊肉菜肴，帮助当地人在严寒中保持温暖与营养。",
         "keyWords": [
-          "mini-break",
-          "tourism",
-          "poised",
-          "boost"
-        ]
-      },
-      {
-        "title": "Guilin finds fresh ways to surprise",
-        "source": "China Daily",
-        "summary": "The scenic city of Guilin is rolling out creative cultural and travel experiences to keep surprising both domestic and international visitors.",
-        "translation": "风景名城桂林不断推出富有创意的文化与旅游体验，持续给国内外游客带来惊喜。",
-        "keyWords": [
-          "scenic",
-          "creative",
-          "experience",
-          "visitor"
+          "mutton",
+          "winter diet",
+          "nutrition"
         ]
       },
       {
         "title": "Experience drone food delivery in Shenzhen",
-        "source": "China Daily",
-        "summary": "Journalists from APEC member economies experienced futuristic city life in Shenzhen, from drone-delivered bubble tea to exoskeleton robots.",
-        "translation": "来自亚太经合组织成员经济体的记者在深圳体验了未来城市生活：无人机送奶茶、试穿外骨骼机器人等。",
+        "source": "ChinaDaily",
+        "summary": "Shenzhen residents can now have meals flown to them by drone, making food delivery faster, hotter and more convenient.",
+        "translation": "深圳市民如今可通过无人机送餐，让外卖更快、更热、更便捷。",
         "keyWords": [
-          "drone delivery",
-          "futuristic",
-          "experience",
-          "innovation"
+          "drone",
+          "delivery",
+          "technology"
         ]
       },
       {
-        "title": "Wushu Olympics debut inspires Kenyans",
-        "source": "China Daily",
-        "summary": "Wushu's historic debut at the Olympic Games has inspired a growing number of young Kenyans to take up the traditional Chinese martial art.",
-        "translation": "武术在奥运会上的历史性首秀，激励了越来越多肯尼亚年轻人习练这项中国传统武术。",
+        "title": "Giant pandas Ping Ping and Fu Shuang make public debut in Atlanta",
+        "source": "ChinaDaily",
+        "summary": "Two giant pandas made their first public appearance in Atlanta, charming thousands of fans and highlighting wildlife conservation.",
+        "translation": "两只大熊猫在亚特兰大首次公开亮相，萌翻数千名粉丝，也彰显了野生动物保护的意义。",
         "keyWords": [
           "debut",
-          "inspire",
-          "martial art",
-          "traditional"
+          "conservation",
+          "wildlife"
         ]
       },
       {
-        "title": "9th China International Import Expo opens in Shanghai",
-        "source": "China Daily",
-        "summary": "The 9th China International Import Expo opened in Shanghai, drawing global businesses and cultural exhibitors to one of the world's largest trade and exchange platforms.",
-        "translation": "第九届中国国际进口博览会在上海开幕，吸引全球企业和文化展商齐聚这一世界最大的贸易与交流平台之一。",
+        "title": "Governing the ocean, shaping our future",
+        "source": "ChinaDaily",
+        "summary": "At the 7th Symposium on Global Maritime Cooperation, experts stressed that a healthy ocean is central to humanity's shared future.",
+        "translation": "在全球海洋合作研讨会上，专家强调健康的海洋是人类共同未来的核心。",
         "keyWords": [
-          "expo",
-          "global",
-          "exhibitor",
-          "exchange"
+          "ocean",
+          "cooperation",
+          "environment"
         ]
       }
     ],
     "quote": {
-      "quote": "The world is a book, and those who do not travel read only one page.",
-      "author": "Saint Augustine",
-      "translation": "世界是一本书，不旅行的人只读了其中的一页。",
-      "explanation": "这句名言强调旅行是拓宽视野、理解不同文化的重要方式。正如新闻中桂林不断推陈出新、深圳展示未来生活方式，走出去体验世界，才能真正读懂它的丰富与多元。"
+      "quote": "To keep the body in good health is a duty, otherwise we shall not be able to keep the mind strong and clear.",
+      "author": "Buddha",
+      "translation": "保持身体健康是一种责任，否则我们将无法保持头脑坚强而清醒。",
+      "explanation": "这句话强调身心一体：健康的身体是清晰思维与高效生活的基础，正呼应今日新闻中冬季饮食、健康生活方式的主题。"
     },
     "vocabulary": [
       {
-        "word": "poised",
-        "phonetic": "/pɔɪzd/",
-        "partOfSpeech": "形容词",
-        "definition": "蓄势待发的；即将……的",
-        "example": "China's tourism market is poised for a new wave of growth this autumn.",
-        "translation": "今年秋天，中国旅游市场蓄势待发，即将迎来新一轮增长。",
-        "newsContext": "出自新闻 \"'Mini-breaks' poised to boost tourism\"，形容旅游市场处于增长前夜。"
-      },
-      {
-        "word": "boost",
-        "phonetic": "/buːst/",
-        "partOfSpeech": "动词 / 名词",
-        "definition": "促进；推动；提升",
-        "example": "Short autumn breaks are expected to boost tourism across the country.",
-        "translation": "秋季短假有望促进全国旅游业的发展。",
-        "newsContext": "出自新闻标题 \"'Mini-breaks' poised to boost tourism\"。"
-      },
-      {
-        "word": "resilience",
-        "phonetic": "/rɪˈzɪliəns/",
-        "partOfSpeech": "名词",
-        "definition": "韧性；恢复力；适应力",
-        "example": "Young innovators are using technology to build climate resilience in tourism destinations.",
-        "translation": "年轻创新者正利用技术增强旅游目的地的气候韧性。",
-        "newsContext": "出自新闻 \"Young innovators harness tech to build climate resilience amid El Nino\"。"
-      },
-      {
-        "word": "harness",
-        "phonetic": "/ˈhɑːnɪs/",
-        "partOfSpeech": "动词",
-        "definition": "利用（自然力、技术等）；驾驭",
-        "example": "The city harnesses digital tools to offer visitors smarter travel experiences.",
-        "translation": "这座城市利用数字工具为游客提供更智能的旅行体验。",
-        "newsContext": "出自新闻 \"Young innovators harness tech to build climate resilience\"，意为“利用技术”。"
-      },
-      {
         "word": "debut",
         "phonetic": "/ˈdeɪbjuː/",
-        "partOfSpeech": "名词 / 动词",
-        "definition": "首次亮相；出道；处女作",
-        "example": "Wushu's Olympic debut inspired many young Kenyans to learn Chinese martial arts.",
-        "translation": "武术的奥运首秀激励了许多肯尼亚年轻人学习中国武术。",
-        "newsContext": "出自新闻 \"Wushu Olympics debut inspires Kenyans\"。"
+        "partOfSpeech": "n./v.",
+        "definition": "首次亮相，初次登台",
+        "example": "The giant pandas made their public debut in Atlanta and won the hearts of visitors.",
+        "translation": "两只大熊猫在亚特兰大公开亮相，赢得了游客的喜爱。",
+        "newsContext": "出自新闻标题 \"Giant pandas Ping Ping and Fu Shuang make public debut in Atlanta\"。"
       },
       {
-        "word": "inspire",
-        "phonetic": "/ɪnˈspaɪə(r)/",
-        "partOfSpeech": "动词",
-        "definition": "激励；鼓舞；启发",
-        "example": "Guilin's creative tourism projects inspire travelers to explore beyond the classic scenery.",
-        "translation": "桂林富有创意的旅游项目激励游客去探索经典山水之外的风景。",
-        "newsContext": "出自新闻 \"Wushu Olympics debut inspires Kenyans\"，意为“激励、鼓舞”。"
+        "word": "protein",
+        "phonetic": "/ˈprəʊtiːn/",
+        "partOfSpeech": "n.",
+        "definition": "蛋白质",
+        "example": "Mutton is rich in protein, which helps the body stay strong through the cold months.",
+        "translation": "羊肉富含蛋白质，有助于身体在寒冷的月份保持强健。",
+        "newsContext": "关联新闻 \"Inner Mongolia gets to the meat of the matter\" 中冬季肉类饮食的营养价值。"
       },
       {
-        "word": "innovative",
-        "phonetic": "/ˈɪnəveɪtɪv/",
-        "partOfSpeech": "形容词",
-        "definition": "创新的；革新的",
-        "example": "Shenzhen offers innovative travel experiences such as drone food delivery.",
-        "translation": "深圳提供诸如无人机送餐等创新的旅行体验。",
-        "newsContext": "出自新闻 \"Experience drone food delivery in Shenzhen\" 中提到的创新型城市体验。"
+        "word": "harsh",
+        "phonetic": "/hɑːʃ/",
+        "partOfSpeech": "adj.",
+        "definition": "恶劣的，严酷的（指气候或环境）",
+        "example": "Inner Mongolia's harsh winter calls for a warmer and more nutritious diet.",
+        "translation": "内蒙古严酷的冬季需要更温暖、更有营养的饮食。",
+        "newsContext": "关联新闻中内蒙古冬季寒冷气候的描述。"
       },
       {
-        "word": "destination",
-        "phonetic": "/ˌdestɪˈneɪʃn/",
-        "partOfSpeech": "名词",
-        "definition": "目的地；终点",
-        "example": "Guilin remains one of China's most popular travel destinations for foreign visitors.",
-        "translation": "桂林仍是外国游客最喜爱的中国旅游目的地之一。",
-        "newsContext": "出自新闻 \"Guilin finds fresh ways to surprise\" 中对旅游目的地的描述。"
+        "word": "nutritious",
+        "phonetic": "/njuːˈtrɪʃəs/",
+        "partOfSpeech": "adj.",
+        "definition": "有营养的，滋养的",
+        "example": "A nutritious winter meal should include meat, vegetables and whole grains.",
+        "translation": "一顿有营养的冬季餐食应包含肉类、蔬菜和全谷物。",
+        "newsContext": "关联新闻 \"Inner Mongolia gets to the meat of the matter\" 中对冬季膳食营养的讨论。"
       },
       {
-        "word": "exhibit",
-        "phonetic": "/ɪɡˈzɪbɪt/",
-        "partOfSpeech": "动词 / 名词",
-        "definition": "展览；陈列；展出（品）",
-        "example": "Companies from around the world exhibit their products at the Import Expo in Shanghai.",
-        "translation": "来自世界各地的企业在上海的进博会上展出自己的产品。",
-        "newsContext": "出自新闻 \"9th China International Import Expo opens in Shanghai\" 中的参展与展示活动。"
+        "word": "delivery",
+        "phonetic": "/dɪˈlɪvəri/",
+        "partOfSpeech": "n.",
+        "definition": "递送，配送",
+        "example": "Drone food delivery in Shenzhen cuts waiting time and keeps meals hot.",
+        "translation": "深圳的无人机送餐减少了等待时间，让餐食保持热度。",
+        "newsContext": "出自新闻 \"Experience drone food delivery in Shenzhen\"。"
       },
       {
-        "word": "immersive",
-        "phonetic": "/ɪˈmɜːsɪv/",
-        "partOfSpeech": "形容词",
-        "definition": "沉浸式的；身临其境的",
-        "example": "Travelers can enjoy immersive cultural shows that bring Guilin's history to life.",
-        "translation": "游客可以欣赏沉浸式文化演出，让桂林的历史鲜活呈现。",
-        "newsContext": "关联新闻 \"Guilin finds fresh ways to surprise\" 中提到的新型文化体验形式。"
+        "word": "logistics",
+        "phonetic": "/ləˈdʒɪstɪks/",
+        "partOfSpeech": "n.",
+        "definition": "物流，后勤组织",
+        "example": "Modern logistics technology allows hot food to reach customers within minutes.",
+        "translation": "现代物流技术让热食在几分钟内送达顾客手中。",
+        "newsContext": "关联新闻中无人机送餐背后的物流配送体系。"
+      },
+      {
+        "word": "well-being",
+        "phonetic": "/ˌwelˈbiːɪŋ/",
+        "partOfSpeech": "n.",
+        "definition": "健康，福祉，身心安适",
+        "example": "Regular exercise and enough sleep are both essential to our well-being.",
+        "translation": "规律运动与充足睡眠对我们的身心健康都至关重要。",
+        "newsContext": "关联新闻主题「健康与生活」中对生活方式与身心健康的整体关注。"
+      },
+      {
+        "word": "immune",
+        "phonetic": "/ɪˈmjuːn/",
+        "partOfSpeech": "adj.",
+        "definition": "免疫的，有免疫力的",
+        "example": "A balanced diet helps strengthen the immune system during winter.",
+        "translation": "均衡的饮食有助于在冬季增强免疫系统。",
+        "newsContext": "关联冬季健康饮食新闻，强调抵御寒冷与疾病的免疫力。"
+      },
+      {
+        "word": "conservation",
+        "phonetic": "/ˌkɒnsəˈveɪʃn/",
+        "partOfSpeech": "n.",
+        "definition": "（对自然、动物的）保护",
+        "example": "The pandas' debut also draws attention to wildlife conservation efforts.",
+        "translation": "大熊猫的亮相也引起了人们对野生动物保护行动的关注。",
+        "newsContext": "出自新闻 \"Giant pandas Ping Ping and Fu Shuang make public debut in Atlanta\" 及相关熊猫保护议题。"
+      },
+      {
+        "word": "sustainable",
+        "phonetic": "/səˈsteɪnəbl/",
+        "partOfSpeech": "adj.",
+        "definition": "可持续的，能长期维持的",
+        "example": "A healthy ocean is the foundation of a sustainable future for everyone.",
+        "translation": "健康的海洋是所有人可持续未来的基础。",
+        "newsContext": "出自新闻 \"Governing the ocean, shaping our future\" 中关于海洋可持续发展的论述。"
       }
     ],
     "pattern": {
-      "pattern": "be poised to do sth / be poised for sth（蓄势待发；即将迎来……）",
-      "example": "China's tourism market is poised for a new wave of growth as students start their autumn breaks.",
-      "translation": "随着学生们开始秋季短假，中国旅游市场即将迎来新一轮增长。",
-      "usage": "be poised to 后接动词原形，be poised for 后接名词，表示“准备好、即将发生”，常用于新闻报道和商务写作中描述趋势，比 be going to 更正式、更有画面感。"
+      "pattern": "Keep ... out of ... （把……排除在……之外）",
+      "example": "Keep geopolitics out of marine science.",
+      "translation": "让地缘政治远离海洋科学。",
+      "usage": "该句型表示「使某事物不进入某个领域或不介入某事」。常见搭配：keep stress out of your life（让压力远离生活）、keep junk food out of your diet（把垃圾食品挡在饮食之外）。口语和书面语中都常用，语气坚定、表达简洁。"
     },
     "grammar": {
-      "title": "as 引导原因/时间状语从句",
-      "explanation": "在新闻英语中，as 常用来引导原因或时间状语从句，表示“由于、随着”。当 as 表示“随着”时，强调两个变化同时发生，从句常用一般现在时，主句可用一般将来时或现在时。这种结构简洁紧凑，是新闻标题和导语中的高频句式。",
+      "title": "with 复合结构（with + 名词 + 副词/形容词/分词）表伴随",
+      "explanation": "介词 with 后接名词，再跟补足语（副词、形容词、现在分词或过去分词），用来表示时间、伴随状态或原因，常置于句首作状语。例如 \"With winter here\" 中，winter 是名词，here 是副词作补足语，整体表示「随着冬天的到来」。这一结构能让句子更紧凑、信息更丰富，是新闻英语中的高频句式。",
       "examples": [
-        "China's tourism market is poised for a new wave of growth as students start their autumn breaks this month.",
-        "As more young Kenyans take up wushu, the traditional martial art is gaining popularity across Africa."
+        "With winter here, Inner Mongolia gets to the meat of the matter.",
+        "With drones buzzing overhead, hot meals reach Shenzhen customers in minutes."
       ]
     },
     "pronunciation": {
-      "word": "tourism",
-      "phonetic": "/ˈtʊərɪzəm/",
-      "tips": "注意重音在第一个音节 /ˈtʊə/，/ʊ/ 音短促圆唇，不要读成 /tɔː/；结尾 -ism 发 /ɪzəm/，快速带过。可对比 tourist /ˈtʊərɪst/ 和 tour /tʊə(r)/ 一起练习。",
+      "word": "debut",
+      "phonetic": "/ˈdeɪbjuː/",
+      "tips": "注意重音在第一音节，首音节发 /deɪ/（同 day），第二音节发 /bjuː/（同 view）。不要读成「de-but」，也不要按法语习惯发 /deˈby/。常见错误是把重音放在第二音节。",
       "examples": [
-        "Guilin's tourism industry is finding fresh ways to surprise visitors.",
-        "Short breaks are expected to boost domestic tourism this season."
+        "The giant pandas made their public debut in Atlanta.",
+        "Her debut novel became a bestseller within weeks."
       ]
     },
     "reading": {
-      "title": "Short Breaks, Big Surprises: China's Tourism Gets a Fresh Boost",
-      "content": "As autumn arrives, China's tourism market is poised for a new wave of growth. With primary and junior high school students starting their short \"mini-breaks\" this month, families are looking for destinations that offer both relaxation and discovery. Guilin, long famous for its karst mountains and the Li River, is finding fresh ways to surprise visitors with immersive cultural shows and creative travel routes. Meanwhile, tech-savvy Shenzhen gives travelers a taste of the future, from bubble tea delivered by drone to helpful exoskeleton robots. For those interested in Chinese culture, wushu's historic Olympic debut has sparked new curiosity about traditional martial arts. Whether it is a weekend getaway or a longer holiday, these experiences show that travel is about more than sightseeing — it is about connecting with people, history, and innovation.",
-      "translation": "随着秋天来临，中国旅游市场蓄势待发，即将迎来新一轮增长。随着中小学本月开启“短假”，许多家庭正在寻找既能放松身心又能有所发现的目的地。素以喀斯特山峰和漓江闻名的桂林，正通过沉浸式文化演出和创意旅游线路给游客带来新的惊喜。与此同时，科技感十足的深圳让游客一窥未来：从无人机送来的奶茶到贴心的外骨骼机器人。对中国文化感兴趣的人而言，武术的历史性奥运首秀也激发了人们对传统武术的新好奇。无论是周末短途出行还是更长的假期，这些体验都表明，旅行不只是观光——更是与人、与历史、与创新的连接。",
-      "sourceNote": "本文基于 China Daily 2026-11-07 报道 \"'Mini-breaks' poised to boost tourism\"、\"Guilin finds fresh ways to surprise\"、\"Experience drone food delivery in Shenzhen\" 及 \"Wushu Olympics debut inspires Kenyans\" 改写，供英语学习使用。"
+      "title": "Winter Health: More Than Just a Warm Meal",
+      "content": "As winter arrives in northern China, people naturally turn to richer, warmer food. In Inner Mongolia, local restaurants are serving hearty mutton dishes that provide the protein and energy the body needs to fight the cold. Nutritionists point out that a winter diet should balance meat with vegetables, grains and enough water, since dry indoor heating can easily dehydrate the body.\n\nAt the same time, technology is changing how we eat. In Shenzhen, residents can now order meals delivered by drone, cutting waiting time and keeping food hot. Faster delivery means fresher food and less waste.\n\nExperts say staying healthy in winter is not only about diet. Regular exercise, enough sleep and time spent outdoors all strengthen the immune system. Whether a meal comes from a local kitchen or from the sky, the goal is the same: a balanced lifestyle that keeps both body and mind well.",
+      "translation": "随着中国北方进入冬季，人们自然转向更丰盛、更温暖的食物。在内蒙古，当地餐馆供应热腾腾的羊肉菜肴，为身体提供抵御寒冷所需的蛋白质与能量。营养学家指出，冬季饮食应让肉类与蔬菜、谷物以及充足的水分保持平衡，因为室内供暖干燥容易使身体脱水。\n\n与此同时，科技正在改变我们的饮食方式。在深圳，市民如今可以下单由无人机送来的餐食，缩短等待时间并让食物保持热度。更快的配送意味着更新鲜的食物和更少的浪费。\n\n专家表示，冬季保持健康不仅仅关乎饮食。规律运动、充足睡眠以及户外活动时间都能增强免疫系统。无论一餐来自街边厨房还是来自天空，目标都是一致的：一种让身心皆安的平衡生活方式。",
+      "sourceNote": "本文基于 ChinaDaily 新闻 \"With winter here, Inner Mongolia gets to the meat of the matter\" 与 \"Experience drone food delivery in Shenzhen\" 改写，并结合冬季健康常识补充而成，仅供英语学习使用。"
     }
   }
 }
