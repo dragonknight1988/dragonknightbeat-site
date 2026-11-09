@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-08",
+  "date": "2026-11-09",
   "contents": [
     {
-      "id": "prog-2026-11-08",
-      "date": "2026-11-08",
-      "title": "数组三剑客：map、filter、reduce 的声明式数据处理",
-      "summary": "掌握 JavaScript 中最常用的三个数组方法，学会用声明式风格替代 for 循环来过滤、转换和汇总数据。",
-      "difficulty": "初级",
-      "concept": "在真实项目里，我们每天都在和「一堆数据」打交道：从后端接口拿到的用户列表、购物车里的商品、日志里的记录。处理这些数据时，新手最常用的是 for 循环，但 for 循环属于「命令式」写法——你要自己维护索引变量、自己声明结果数组、自己决定每一步怎么写，代码既长又容易出错（比如忘了 i++，或者越界）。JavaScript 提供了 map、filter、reduce 这三个数组方法，让我们可以用「声明式」的方式描述「我想要什么」，而不用关心「怎么一步步做到」。\n\nfilter 的作用是「筛选」。它接收一个回调函数，对数组中每个元素执行一次；回调返回 true 就保留这个元素，返回 false 就丢弃。注意 filter 一定会返回一个新数组，原数组不会被修改——这一点非常重要，因为直接修改原数组（也叫「可变操作」）是很多诡异 Bug 的来源，尤其在 React、Vue 这类框架中，状态数组被原地修改会导致界面不更新。如果回调对所有元素都返回 false，filter 返回空数组 []，而不是 null 或 undefined，所以后续代码可以放心继续调用 map。\n\nmap 的作用是「转换」。它同样返回一个新数组，新数组的长度和原数组完全一致，每个位置的值是回调函数的返回值。常见错误是把 map 当 forEach 用（只做副作用却不使用返回值），或者在回调里忘了 return——箭头函数如果只有一行且不带花括号，会自动返回表达式结果；一旦写了花括号，就必须手动 return，否则新数组会变成一串 undefined。\n\nreduce 的作用是「汇总」。它把整个数组「压缩」成一个值：累加求和、求平均、统计数量、把数组转成对象、把二维数组拍平，都能用它完成。reduce 接收两个参数：回调函数和「初始值」。回调的签名是 (accumulator, currentItem) => newAccumulator，accumulator 是上一次调用的结果。工程经验：永远显式传入初始值（求和传 0，拼字符串传 ''，转对象传 {}）。如果不传初始值，reduce 会拿数组第一个元素当初始值，遇到空数组会直接抛出 TypeError。\n\n这三个方法最强大的地方在于可以「链式调用」，因为它们都返回数组（reduce 除外）。比如「先过滤出成年用户，再提取姓名，最后拼成一句话」，可以写成 users.filter(...).map(...).join('、')。链式调用让数据处理流水线一目了然。性能上要注意：链式调用每一步都会创建一个中间数组，对于普通业务数据（几千条以内）完全可以忽略；只有在处理十万级以上数据时才需要考虑用 for 循环或 for...of 优化。日常开发中，可读性优先。",
+      "id": "prog-2026-11-09",
+      "date": "2026-11-09",
+      "title": "Next.js Server Actions + useActionState / useFormStatus：构建现代表单",
+      "summary": "用 Server Actions 处理表单提交，配合 useActionState 与 useFormStatus 实现免手写 fetch 的乐观 UI、服务端校验与 pending 状态。",
+      "difficulty": "中级",
+      "concept": "在 Pages Router 时代，一个表单的完整链路是：写 API Route → 客户端 fetch → 手动管理 loading / error / success 三种状态 → 处理序列化与错误边界。这条链路样板代码多、容易漏状态、且与渐进增强（Progressive Enhancement）彻底绝缘。\n\nServer Actions 是 React 19 与 Next.js App Router 给出的答案：你只要给一个异步函数加上 'use server' 指令，Next.js 就会自动生成一个 RPC 端点，客户端可以直接把它当作 <form action={fn}> 或 startTransition 的回调来调用。你不再手写 fetch、不再手写路由、不再手动序列化 FormData，参数会通过 React 的序列化协议自动传递。\n\n表单状态管理的核心是 useActionState(action, initialState)。它返回 [state, formAction, isPending]：state 是 action 的上一次返回值（用于渲染服务端校验错误、成功提示），formAction 是可直接绑定到 <form action> 的包装函数，isPending 则是这次提交是否仍在进行。注意这里有一个常见误区：useActionState 必须在客户端组件中调用（因为它持有状态），但传入的 action 依然运行在服务端——这是典型的「Client Component 调用 Server Action」边界。\n\n另一个容易被忽略的 API 是 useFormStatus()。它由 react-dom 提供，只能在 <form> 的后代组件中调用，返回 { pending, data, method, formAction }。它最大的工程价值是：你可以把提交按钮抽成独立组件（比如 <SubmitButton />），在按钮内部自动感知「它所属的 form 是否正在提交」，而不需要父组件通过 props 层层传递 isPending。这就是 Next.js 官方表单模式中 <SubmitButton /> 的由来。\n\n工程实践上有三条经验：第一，校验必须在服务端再做一遍，客户端校验只是体验优化，Server Action 是公开端点，永远不要信任入参；第二，action 的返回值设计成带状态的联合类型（如 { status, message, errors }），比抛异常更好用——异常会触发 error.tsx，而业务校验错误应该留在当前表单里展示；第三，涉及跳转、revalidatePath / revalidateTag 的副作用放在 action 内部完成，客户端只负责渲染 state，这样在 JS 未加载时表单依然可用（渐进增强）。",
       "codeExample": {
-        "language": "JavaScript",
-        "code": "// 一组用户数据（模拟从后端接口拿到的 JSON）\nconst users = [\n  { name: '小明', age: 17, role: 'student' },\n  { name: '小红', age: 25, role: 'admin' },\n  { name: '小刚', age: 31, role: 'user' },\n  { name: '小丽', age: 19, role: 'student' }\n];\n\n// 1. filter：筛选出成年用户（age >= 18），返回新数组，不改动 users\nconst adults = users.filter((user) => user.age >= 18);\nconsole.log('成年用户:', adults.map((u) => u.name));\n// 输出: 成年用户: [ '小红', '小刚', '小丽' ]\n\n// 2. map：把每个用户对象转换成 \"名字(年龄)\" 字符串\nconst labels = adults.map((user) => `${user.name}(${user.age})`);\nconsole.log('标签:', labels);\n// 输出: 标签: [ '小红(25)', '小刚(31)', '小丽(19)' ]\n\n// 3. reduce：汇总所有成年用户的总年龄（注意第二个参数 0 是初始值）\nconst totalAge = adults.reduce((sum, user) => sum + user.age, 0);\nconsole.log('总年龄:', totalAge);\n// 输出: 总年龄: 75\n\n// 4. 链式调用：一行完成「过滤 + 转换」，数据流水线一目了然\nconst studentNames = users\n  .filter((user) => user.role === 'student')\n  .map((user) => user.name);\nconsole.log('学生:', studentNames);\n// 输出: 学生: [ '小明', '小丽' ]\n\n// 5. 用 reduce 把数组转成对象：{ 小明: 17, 小红: 25, ... }\nconst ageMap = users.reduce((acc, user) => {\n  acc[user.name] = user.age;   // 往累加器对象上添加属性\n  return acc;                  // 必须返回新的累加器\n}, {});\nconsole.log('年龄表:', ageMap);\n// 输出: 年龄表: { 小明: 17, 小红: 25, 小刚: 31, 小丽: 19 }\n\n// 验证原数组没有被修改（filter/map/reduce 都是非破坏性的）\nconsole.log('原数组长度仍是:', users.length); // 输出: 4",
-        "explanation": "第 1 段定义了一个 users 数组，模拟真实项目中的接口数据。第 2 段使用 filter，回调 user.age >= 18 返回布尔值，true 的元素被保留到新数组 adults 中，原数组 users 保持不变。第 3 段用 map 把 adults 中的每个对象转换成模板字符串，得到同长度的字符串数组 labels。第 4 段用 reduce 求和，第二个参数 0 是累加器的初始值，回调把每个 user.age 累加到 sum 上并返回。第 5 段演示链式调用：filter 先筛出 role === 'student' 的用户，map 再取 name，两步连写等价于两次独立调用但更紧凑。第 6 段展示 reduce 的进阶用法——把数组转成对象，初始值传空对象 {}，回调里给 acc 添加键值对后一定要 return acc，否则下次调用 acc 就是 undefined 会报错。最后一段打印 users.length，验证三个方法都没有修改原数组。"
+        "language": "tsx",
+        "code": "// ============================================================\n// 1) app/actions.ts —— Server Action（运行在服务端）\n// ============================================================\n'use server'\n\nexport type FormState = {\n  status: 'idle' | 'success' | 'error'\n  message: string\n  errors: Record<string, string>\n}\n\n// useActionState 要求 action 的第一个参数是「上一次的 state」\nexport async function subscribe(\n  _prevState: FormState,\n  formData: FormData\n): Promise<FormState> {\n  const name = String(formData.get('name') ?? '').trim()\n  const email = String(formData.get('email') ?? '').trim()\n\n  // 服务端校验：永远不能省略，Server Action 是公开端点\n  const errors: Record<string, string> = {}\n  if (!name) errors.name = '姓名不能为空'\n  if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) errors.email = '邮箱格式不正确'\n\n  if (Object.keys(errors).length > 0) {\n    return { status: 'error', message: '请修正表单中的错误', errors }\n  }\n\n  // 模拟数据库 / 第三方 API 的耗时\n  await new Promise((r) => setTimeout(r, 800))\n\n  // 真实项目中可在这里调用 revalidatePath('/') 刷新缓存\n  return { status: 'success', message: `${name} 订阅成功！`, errors: {} }\n}\n\n\n// ============================================================\n// 2) app/components/SubmitButton.tsx —— 客户端组件\n//    useFormStatus 让按钮自己感知所属 form 的提交状态\n// ============================================================\n'use client'\n\nimport { useFormStatus } from 'react-dom'\n\nexport default function SubmitButton({ label = '提交' }: { label?: string }) {\n  const { pending } = useFormStatus() // 必须是 <form> 的后代组件\n\n  return (\n    <button\n      type=\"submit\"\n      disabled={pending}\n      aria-busy={pending}\n      style={{\n        padding: '8px 16px',\n        opacity: pending ? 0.6 : 1,\n        cursor: pending ? 'not-allowed' : 'pointer',\n      }}\n    >\n      {pending ? '提交中…' : label}\n    </button>\n  )\n}\n\n\n// ============================================================\n// 3) app/subscribe/page.tsx —— 客户端组件（持有表单状态）\n// ============================================================\n'use client'\n\nimport { useActionState } from 'react'\nimport { subscribe, type FormState } from '../actions'\nimport SubmitButton from '../components/SubmitButton'\n\nconst initialState: FormState = { status: 'idle', message: '', errors: {} }\n\nexport default function SubscribePage() {\n  const [state, formAction, isPending] = useActionState(subscribe, initialState)\n\n  return (\n    <form action={formAction} style={{ display: 'grid', gap: 12, maxWidth: 360 }}>\n      <h1 style={{ margin: 0 }}>订阅周报</h1>\n\n      {/* 提交结果提示：role=\"status\" 让屏幕阅读器播报 */}\n      {state.message && (\n        <p role=\"status\" style={{ color: state.status === 'error' ? 'crimson' : 'green' }}>\n          {state.message}\n        </p>\n      )}\n\n      <label style={{ display: 'grid', gap: 4 }}>\n        姓名\n        <input name=\"name\" placeholder=\"你的名字\" />\n        {state.errors.name && <small style={{ color: 'crimson' }}>{state.errors.name}</small>}\n      </label>\n\n      <label style={{ display: 'grid', gap: 4 }}>\n        邮箱\n        <input name=\"email\" type=\"email\" placeholder=\"you@example.com\" />\n        {state.errors.email && <small style={{ color: 'crimson' }}>{state.errors.email}</small>}\n      </label>\n\n      {/* isPending 来自 useActionState，可用于禁用整张表单 */}\n      <fieldset disabled={isPending} style={{ border: 0, padding: 0, margin: 0 }}>\n        <SubmitButton label=\"订阅\" />\n      </fieldset>\n    </form>\n  )\n}\n",
+        "explanation": "第一部分 app/actions.ts：'use server' 出现在文件顶部，表示本文件所有导出都是 Server Action。subscribe(prevState, formData) 的签名是 useActionState 的约定——第一个参数接收上一次返回的 state，第二个参数是表单自动传入的 FormData。函数返回一个 FormState 对象而不是抛异常，这样校验错误会留在表单内展示，而不会跳到 error.tsx。\n\n第二部分 SubmitButton.tsx：这是一个纯粹的客户端组件，通过 useFormStatus() 解构出 pending。因为它是 <form> 的后代，React 会自动把「所属表单是否正在提交」注入进来，父组件无需传递任何 props。同时禁用按钮并设置 aria-busy，避免重复提交并兼顾无障碍。\n\n第三部分 SubscribePage.tsx：useActionState(subscribe, initialState) 返回三元组 [state, formAction, isPending]。把 formAction 直接赋给 <form action>，React 会负责提交、序列化、调用服务端并把返回值写回 state。state.errors 用来渲染字段级错误，isPending 用来禁用整个 fieldset，覆盖了表单的三种状态而没有一行 fetch / useState 样板代码。注意 isPending 与 SubmitButton 内部的 pending 在这里是一致的，前者用于表单级禁用，后者用于按钮级 UI。"
       },
       "keyPoints": [
-        "filter 用于筛选、map 用于转换、reduce 用于汇总，三者都不会修改原数组，而是返回新结果",
-        "map 和 filter 返回的新数组长度：filter 可能变短，map 一定与原数组相同",
-        "reduce 的回调签名是 (accumulator, item) => newAccumulator，务必显式传入初始值（0、''、{} 等）",
-        "箭头函数写花括号时必须手动 return，否则 map 会得到一堆 undefined、reduce 会得到 undefined 累加器",
-        "链式调用可读性极佳：users.filter(...).map(...).join(' ')，普通业务数据下性能完全够用"
+        "'use server' 写在文件顶部则该文件所有导出为 Server Action；写在函数体顶部则仅该函数为 Server Action",
+        "useActionState(action, initialState) 返回 [state, formAction, isPending]，action 的第一个参数是上一次的 state",
+        "useFormStatus() 只能在 <form> 的后代组件中调用，返回 { pending, data, method, formAction }",
+        "业务校验错误应通过返回值（联合类型）返回，而不是 throw —— 抛异常会命中 error.tsx 边界",
+        "服务端必须重新做完整校验；Server Action 是公开可调用的 RPC 端点，永远不要信任客户端输入"
       ],
       "exercise": {
-        "description": "请编写一个函数 getAdultNames(users)，接收上面示例的 users 数组，要求：1) 用 filter 筛选出年龄大于等于 18 的用户；2) 用 map 提取他们的 name；3) 用 reduce 统计这些成年用户的总年龄并一起返回。最终返回格式为 { names: ['小红', '小刚', '小丽'], totalAge: 75 }。要求链式调用完成，不要使用 for 循环。",
-        "hint": "可以先写 names = users.filter(u => u.age >= 18).map(u => u.name)；统计总年龄时再单独用一次 users.filter(...).reduce((sum, u) => sum + u.age, 0)。或者用一次 filter 保存中间变量 adults，然后复用它，避免遍历两次。记得 reduce 一定要传初始值 0。",
+        "description": "实现一个「Newsletter 订阅表单」：包含 name 与 email 两个字段，提交后由 Server Action 校验（name 非空、email 符合格式），失败时在对应字段下方显示错误，成功时显示欢迎语并清空表单（提示：可用 key={state.message} 重置表单或在成功后用 form.reset()）。提交过程中按钮显示「提交中…」并禁用，且整个表单不可编辑。",
+        "hint": "把 action 设计成 (prev: FormState, formData: FormData) => Promise<FormState>，返回 { status, message, errors } 三元结构。按钮组件单独抽出来用 useFormStatus，表单级禁用用 useActionState 返回的 isPending。若要清空表单，可在提交成功后给 <form> 加 key 实现卸载重挂载。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码：用 reduce 计算数组中每个数字的平方和。",
-            "codeContext": "const nums = [1, 2, 3, 4];\nconst sum = nums.reduce((acc, n) => acc + n * n, ____);\nconsole.log(sum); // 期望输出 30",
+            "question": "补全 SubmitButton，使其能感知所属 form 的提交状态。",
+            "codeContext": "function SubmitButton() {\n  const { ______ } = useFormStatus()\n  return <button disabled={______}>{______ ? '提交中…' : '提交'}</button>\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "const sum = nums.reduce((acc, n) => acc + n * n, ",
+                "content": "function SubmitButton() {\n  const { ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择初始值]",
+                "placeholder": "[选择]",
                 "options": [
-                  "0",
-                  "1",
-                  "null",
-                  "undefined"
+                  "pending",
+                  "isPending",
+                  "isLoading",
+                  "status"
                 ],
-                "correctAnswer": "0"
+                "correctAnswer": "pending"
               },
               {
                 "type": "text",
-                "content": ");",
+                "content": " } = useFormStatus()\n  return <button disabled={pending}>{pending ? '提交中…' : '提交'}</button>\n}",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "0",
-            "explanation": "reduce 的第二个参数是累加器的初始值。做求和类运算时初始值应为 0，这样第一次回调是 0 + 1*1 = 1，最终得到 1+4+9+16 = 30。如果传 1 会多算 1 得到 31；传 null 会导致 null + 数字得到字符串拼接或 NaN；不传（undefined）在空数组时会直接抛出 TypeError。"
+            "correctAnswer": "pending",
+            "explanation": "useFormStatus() 返回的对象里表示进行中状态的字段名为 pending（可选字段还有 data、method、formAction）。useActionState 返回的三元组里那个才叫 isPending，两者不要混淆。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 map 和 forEach，下列说法正确的是？",
-            "codeContext": "const arr = [1, 2, 3];\nconst a = arr.map((n) => n * 2);\nconst b = arr.forEach((n) => n * 2);",
+            "question": "关于 'use server' 指令，下列说法正确的是？",
+            "codeContext": "// A\n'use server'\nexport async function createUser() { /* ... */ }\n\n// B\nexport async function createUser() {\n  'use server'\n  /* ... */\n}\n\n// C\n'use client'\nexport async function createUser() {\n  'use server'\n  /* ... */\n}",
             "segments": null,
             "options": [
-              "map 返回新数组，forEach 返回 undefined，因此 b 是 undefined",
-              "map 和 forEach 都返回一个新数组，a 和 b 结果相同",
-              "forEach 会修改原数组 arr，而 map 不会",
-              "map 只能用于数字数组，forEach 可以用于任意数组"
+              "A 和 B 都合法：写在文件顶部表示整文件导出都是 Server Action，写在函数体顶部表示仅该函数是 Server Action",
+              "只有 A 合法，'use server' 只能出现在文件顶部",
+              "只有 B 合法，'use server' 只能出现在函数体内",
+              "C 也合法，'use client' 与 'use server' 可以在同一文件中混合使用"
             ],
-            "correctAnswer": "map 返回新数组，forEach 返回 undefined，因此 b 是 undefined",
-            "explanation": "map 的核心作用是「转换」，它把回调的返回值收集起来组成新数组并返回；forEach 的作用只是「遍历执行副作用」，它不返回任何值（即 undefined）。两者都不会修改原数组。因此 a 是 [2, 4, 6]，b 是 undefined。map 适用于任何类型的数组，不限于数字。"
+            "correctAnswer": "A 和 B 都合法：写在文件顶部表示整文件导出都是 Server Action，写在函数体顶部表示仅该函数是 Server Action",
+            "explanation": "'use server' 是模块级或函数级指令，两种位置都有效。而 C 是错误的：'use client' 与 'use server' 不能混用在同一个模块中，一个模块要么是 Client 模块要么是 Server 模块；正确做法是把 Server Action 放到单独的 server 文件，由客户端组件 import 后调用。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "请问下面这段代码最终输出什么？",
-            "codeContext": "const nums = [1, 2, 3, 4];\nconst result = nums\n  .filter((n) => n % 2 === 0)\n  .map((n) => n * 10)\n  .reduce((acc, n) => acc + n, 0);\nconsole.log(result);",
+            "question": "页面渲染后（且未点击任何按钮），第一个按钮的文案是什么？",
+            "codeContext": "'use client'\nimport { useFormStatus } from 'react-dom'\n\nfunction DangerButton() {\n  const { pending } = useFormStatus()\n  return <button>{pending ? '提交中…' : '提交'}</button>\n}\n\nexport default function Page() {\n  return (\n    <div>\n      <DangerButton />\n      <form action={save}>\n        <input name=\"title\" />\n        <button type=\"submit\">保存</button>\n      </form>\n    </div>\n  )\n}",
             "segments": null,
             "options": [
-              "100",
-              "60",
-              "24",
-              "20"
+              "提交",
+              "提交中…",
+              "抛出错误：useFormStatus must be used inside a form",
+              "undefined"
             ],
-            "correctAnswer": "60",
-            "explanation": "分三步看：1) filter(n => n % 2 === 0) 只保留偶数，得到 [2, 4]；2) map(n => n * 10) 把每个元素乘以 10，得到 [20, 40]；3) reduce((acc, n) => acc + n, 0) 把它们累加，20 + 40 = 60。注意链式调用的执行顺序是从左到右，每一步的输出就是下一步的输入。"
+            "correctAnswer": "提交",
+            "explanation": "useFormStatus 只会追踪「最近的祖先 <form>」的提交状态。DangerButton 渲染在 form 之外，因此它看到的 pending 永远是 false，即使点击「保存」时它也仍是「提交」，并不会抛异常。这正是必须把 SubmitButton 放进 <form> 内部的原因——也是面试常考的陷阱。"
           }
         ]
       }

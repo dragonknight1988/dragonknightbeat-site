@@ -1,16 +1,16 @@
 {
- "date": "2026-11-08",
- "weekday": "Sunday",
- "overview": "CIIE releases dividends of openness, consumption and infrastructure policies gain momentum, Middle East tensions push up oil prices, energy and food security take center stage.",
+ "date": "2026-11-09",
+ "weekday": "Monday",
+ "overview": "The China International Import Expo releases dividends of openness and consumer momentum; Middle East tensions persist; capital markets eye Fed policy and opportunities for valuation recovery.",
  "trendingTopics": [
   "China International Import Expo",
-  "consumption and infrastructure",
-  "Middle East situation",
-  "international crude oil",
-  "renewable energy",
+  "cross-border trade",
   "artificial intelligence",
-  "extreme weather",
-  "corporate overseas expansion"
+  "Middle East situation",
+  "China-US relations",
+  "public health",
+  "cultural and tourism consumption",
+  "deep-sea technology"
  ],
  "sections": [
   {
@@ -20,232 +20,235 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "总书记投下庄严一票，率先垂范践行民主",
-     "summary": "第一观察指出，总书记投下庄严一票，以率先垂范的方式践行民主，展现民主实践的示范意义。",
-     "detail": "报道以\"第一观察\"形式聚焦这一投票场景，强调率先垂范践行民主的示范作用。素材未提供更多具体细节。",
-     "impact": "释放最高层重视民主实践、推进全过程人民民主的明确信号，具重要政治示范效应。",
+     "title": "Micro Observation: The Word 'Trust' Carries Immense Weight",
+     "summary": "The Micro Observation column published a commentary on the theme of 'trust,' emphasizing the immense weight carried by these two characters.",
+     "detail": "This is a commentary released by the Micro Observation column, built around the theme of 'trust.' Only the headline was provided; the specific arguments and context of the commentary were not further elaborated.",
+     "impact": "Commentaries in such columns typically signal policy and cooperation directions; subsequent specific wording merits continued attention.",
      "importance": "hot",
      "tags": [
-      "民主法治",
-      "选举工作"
+      "Policy Commentary",
+      "Social Trust",
+      "Governance Modernization"
      ]
     },
     {
      "id": "news-002",
-     "title": "国家发改委发布会聚焦能源和粮食安全",
-     "summary": "国家发展改革委举行新闻发布会，围绕筑牢安全底座、推动高质量发展，聚焦能源和粮食安全议题。",
-     "detail": "发布会主题为\"筑牢安全底座 推动高质量发展\"，重点就能源和粮食安全进行介绍与回应，强调统筹发展与安全。",
-     "impact": "为能源与粮食保供稳价提供政策指引，稳定市场预期，支撑经济高质量发展。",
+     "title": "Faster Integration of Culture, Tourism, Sports and Commerce Unlocks Consumer Potential",
+     "summary": "As part of the highlights analysis of China's Q3 economic report, the integration of culture, tourism, sports and commerce is seen as a key lever for unlocking consumer potential.",
+     "detail": "The report starts from the highlights of China's Q3 economic report, noting that culture, tourism, sports and commerce are integrating at a faster pace, driving the release of consumer potential. No specific sub-sector data was provided.",
+     "impact": "The expansion of integrated consumption scenarios is expected to boost growth in culture, tourism, sports and retail-related businesses.",
      "importance": "important",
      "tags": [
-      "能源安全",
-      "粮食安全",
-      "宏观政策"
+      "Culture & Tourism Consumption",
+      "Consumption Recovery",
+      "Industry Integration"
      ]
     },
     {
      "id": "news-003",
-     "title": "辽宁发布暴雪预警，多趟列车临时停运",
-     "summary": "受降雪影响，11月8日辽宁葫芦岛北站多趟列车临时停运，辽宁已发布暴雪预警。",
-     "detail": "停运车次包括G1797次、D8071次、D8072次、D8087次等。降雪天气对铁路运输造成明显影响，相关部门发布暴雪预警提示。",
-     "impact": "恶劣天气扰动春运前出行与物流节奏，提醒旅客关注车次调整并注意出行安全。",
+     "title": "Setting Hard Benchmarks and Strict Rules for Party Governance",
+     "summary": "In the context of studying and implementing the spirit of the Fifth Plenum of the 20th CPC Central Committee, an article stresses setting hard benchmarks and strict rules for Party governance.",
+     "detail": "The article focuses on studying and implementing the spirit of the Fifth Plenum of the 20th CPC Central Committee, centering on intra-Party institutional constraints and rule-building. Only the headline was provided.",
+     "impact": "Signals a continued tightening of discipline enforcement and institutional constraints, affecting the direction of cadre work-style building.",
      "importance": "important",
      "tags": [
-      "极端天气",
-      "交通运输",
-      "防灾减灾"
+      "Party Building",
+      "Institutional Development",
+      "Anti-Corruption"
      ]
     },
     {
      "id": "news-004",
-     "title": "中国第43次南极考察\"剧透\"来了",
-     "summary": "官方发布中国第43次南极考察的相关预告信息，提前透露本次考察的安排看点。",
-     "detail": "素材以\"剧透\"形式介绍第43次南极考察的内容，具体考察任务与细节以官方预告为准。",
-     "impact": "展示我国极地科考持续投入，提升极地科学研究与国际科考合作能级。",
+     "title": "13th 'Good Journalists Tell Good Stories' Event Opens in Beijing",
+     "summary": "Outstanding journalists kicked off the 13th 'Good Journalists Tell Good Stories' event in Beijing, sharing newsroom practices and reporting stories.",
+     "detail": "The event features outstanding journalists recounting stories from their own reporting experiences; this is the 13th edition. No details on participation scale or specific stories were provided.",
+     "impact": "Helps raise the influence of the journalism profession and the reach of mainstream public discourse.",
      "importance": "normal",
      "tags": [
-      "极地科考",
-      "科学研究"
+      "Journalism",
+      "Public Discourse",
+      "Industry Exchange"
      ]
     },
     {
      "id": "news-005",
-     "title": "为管党治党划硬标尺、立硬规矩",
-     "summary": "刊发评论文章，围绕学习贯彻党的二十届五中全会精神，强调为管党治党划硬标尺、立硬规矩。",
-     "detail": "文章从学习贯彻党的二十届五中全会精神切入，论述以硬标准硬规矩推进管党治党，强化制度约束。",
-     "impact": "推动全面从严治党向纵深发展，为党员干部行为划定更明确边界。",
+     "title": "Exploring CIIE: Finding the Answer to 'Difference' at the China International Import Expo",
+     "summary": "The 'Exploring CIIE' observation series focuses on the China International Import Expo, seeking the answer and new changes that set it 'apart' from other exhibitions.",
+     "detail": "The report uses 'difference' as an entry point to interpret the positioning and highlights of CIIE, as part of a series of CIIE observation pieces. No specific case details were provided.",
+     "impact": "This observational perspective helps understand the evolution of CIIE's functions and the growing value of the expo as an opening-up platform.",
      "importance": "normal",
      "tags": [
-      "党的建设",
-      "党风廉政",
-      "制度建设"
+      "CIIE",
+      "Opening-Up",
+      "Exhibition Economy"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "World Politics",
+   "title": "World News",
    "icon": "🌍",
    "articles": [
     {
      "id": "news-006",
-     "title": "Russia-Ukraine conflict escalates as Ukraine's energy facilities hit in massive strikes",
-     "summary": "Russia reported striking Ukrainian targets across multiple regions over the past day, while Ukraine said its energy facilities came under large-scale attacks and its interception capacity is under strain.",
-     "detail": "Russia's Defense Ministry said on the 7th that Russian forces repelled Ukrainian attacks in 33 regions and struck various Ukrainian targets across 139 regions. Zelensky said only 4 of 36 ballistic missiles were intercepted during Russian strikes, and that more Security Service personnel would be dismissed following the corruption scandal.",
-     "impact": "Rising conflict intensity coupled with damage to energy facilities will compound regional winter energy and humanitarian pressures.",
-     "importance": "hot",
+     "title": "Carrying Forward the 'Guling Bonds' to Fuel China-US Momentum Toward Each Other",
+     "summary": "A commentary under the pen name 'He Yin' calls for carrying forward the 'Guling Bonds' and pooling strength for China and the United States to move toward each other.",
+     "detail": "This commentary, signed 'He Yin,' centers on the 'Guling Bonds' as a people-to-people tie, emphasizing that both sides should move toward each other. No specific policy content was provided in the source material.",
+     "impact": "Signals a public-opinion stance favoring easing bilateral relations and building trust through people-to-people exchanges.",
+     "importance": "important",
      "tags": [
-      "Russia-Ukraine conflict",
-      "Energy infrastructure",
-      "International security"
+      "China-US Relations",
+      "People-to-People Exchange",
+      "Grassroots Friendship"
      ]
     },
     {
      "id": "news-007",
-     "title": "Yemen conflict escalates with exchanges of airstrikes and attacks on multiple sides",
-     "summary": "Houthi forces said Saudi airstrikes have killed 22 people and claimed strikes on Saudi oil facilities, while Yemen's armed forces reported results from large-scale airstrikes.",
-     "detail": "Houthis said they used ballistic missiles, cruise missiles and drones to strike oil facilities and military targets inside Saudi Arabia and Yemen, and claimed to have hit Riyadh airport (not confirmed by Saudi side). Yemen's armed forces said they carried out 875 airstrikes in the past hours, destroying 50 Houthi military vehicles and rocket launchers and killing about 130 Houthi fighters.",
-     "impact": "Attacks on oil facilities are pushing up international oil prices and regional security risks in the short term, raising the danger of spillover.",
-     "importance": "hot",
+     "title": "Global AI Governance: China Is the Right Participant",
+     "summary": "The report cites views that China is a constructive force in advancing the continuous improvement of global artificial intelligence governance.",
+     "detail": "The content focuses on global AI governance, highlighting China's role and contributions in improving the governance system. No further details on specific proposals were provided in the source material.",
+     "impact": "Helps enhance China's voice and influence in global AI rule-making.",
+     "importance": "important",
      "tags": [
-      "Middle East situation",
-      "International energy",
-      "Regional security"
+      "Artificial Intelligence",
+      "Global Governance",
+      "Tech Cooperation"
      ]
     },
     {
      "id": "news-008",
-     "title": "Palestinian factions call for enforcement of Gaza humanitarian protocol",
-     "summary": "Palestinian forces and factions issued a statement calling on mediators and guarantors to apply pressure to ensure full implementation of the humanitarian protocol.",
-     "detail": "The statement also called on the National Committee to travel to the Gaza Strip immediately to carry out its duties, and said that as winter approaches, the occupying authorities and the peace committee should be held responsible for the humanitarian disaster in the Gaza Strip.",
-     "impact": "The approach of winter is intensifying pressure on Gaza's humanitarian crisis, placing greater demands on international mediation and aid delivery.",
-     "importance": "important",
+     "title": "Iranian Navy: Tanker Struck by Mine, Catches Fire East of Strait of Hormuz",
+     "summary": "Iran's navy says a tanker struck a mine and caught fire in waters east of the Strait of Hormuz.",
+     "detail": "Iran's navy announced that the tanker caught fire after hitting a mine in waters east of the Strait of Hormuz. The source material provided no information on the vessel's ownership, casualties, or follow-up response.",
+     "impact": "The Strait of Hormuz is a critical corridor for global energy transit; such incidents would raise risk premiums for shipping and oil prices.",
+     "importance": "hot",
      "tags": [
-      "Middle East situation",
-      "Humanitarian",
-      "International mediation"
+      "Middle East",
+      "International Shipping",
+      "Energy Security"
      ]
     },
     {
      "id": "news-009",
-     "title": "Shooting in Kraków, Poland leaves multiple casualties",
-     "summary": "A shooting in Kraków, Poland on the 7th left 5 dead and more than 10 injured; police said the gunman has been subdued.",
-     "detail": "Polish police said the gunman used a long military-style firearm and wore military-style clothing, and was shot by police and taken to hospital. Polish Prime Minister Tusk said the Interior Ministry had briefed him and police are investigating; the prime minister called the incident a \"tragedy\".",
-     "impact": "The incident has drawn attention to public safety and gun control in Europe and may prompt discussions on related security policies.",
+     "title": "Death Toll in Egypt Train Collision Rises to 7",
+     "summary": "Egypt's health ministry says the death toll from the Ayat train accident in Giza province has risen to 7, with 112 injured.",
+     "detail": "A train traveling from Giza to Fayoum collided with another passenger train, derailing multiple carriages. Egypt's president said he would closely monitor the incident, hold those responsible accountable, and investigate the cause.",
+     "impact": "The accident may prompt reforms in local railway safety supervision and operational dispatch.",
      "importance": "important",
      "tags": [
-      "International public safety"
+      "Transport Safety",
+      "Emergency Management"
      ]
     },
     {
      "id": "news-010",
-     "title": "New Zealand's governing coalition wins majority of seats in parliamentary election",
-     "summary": "Preliminary vote counts from New Zealand's Electoral Commission show the National Party-led governing coalition has won a majority of seats in the parliamentary election.",
-     "detail": "New Zealand's Electoral Commission released preliminary results in the early hours of the 8th, showing that in the parliamentary election concluded on the 7th, the National Party-led governing coalition won a majority of seats.",
-     "impact": "The incumbent coalition is poised to remain in power, ensuring policy continuity, with markets watching the direction of future economic policy.",
-     "importance": "normal",
+     "title": "Israeli President Formally Authorizes Eisenkot to Form New Government",
+     "summary": "Israeli President Herzog has formally authorized Blue and White leader Eisenkot to form a new government.",
+     "detail": "Eisenkot, leader of the Blue and White party and former IDF chief of staff, has been authorized to form a government. He said Israel is in a state of emergency with fronts under urgent strain, that new leadership is desperately needed, and he called on all sides to make concessions.",
+     "impact": "The government formation process will shape the region's trajectory and the continuity of related policies.",
+     "importance": "important",
      "tags": [
-      "Election updates",
-      "Political outlook"
+      "Middle East",
+      "International Relations"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance Updates",
+   "title": "Finance News",
    "icon": "📈",
    "articles": [
     {
      "id": "news-011",
-     "title": "Five Ministries Unveil 20 Measures to Boost 'Consumption Infrastructure' and Stimulate Domestic Demand",
-     "summary": "Five ministries have rolled out 20 measures focused on 'consumption infrastructure' to energize the domestic demand cycle and smooth interactions between consumption and investment.",
-     "detail": "The deployment uses 'consumption infrastructure' as an entry point, aiming to fill gaps in infrastructure and services in the consumption sector through 20 measures. The goal is to unblock bottlenecks in the domestic demand cycle and foster a virtuous loop in which demand drives supply and supply creates demand.",
-     "impact": "Expected to lift sentiment in related investment and consumption-linked sectors, providing policy support for expanding domestic demand and stabilizing growth.",
+     "title": "Central SOEs' Overseas Assets Near RMB 10 Trillion, Spanning 100+ Countries",
+     "summary": "China's State-owned Assets Supervision and Administration Commission (SASAC) disclosed that central state-owned enterprises hold nearly RMB 10 trillion in overseas assets across more than 180 countries and regions.",
+     "detail": "Data released by SASAC shows that the scale of overseas assets held by central enterprises has approached RMB 10 trillion, with businesses and assets covering over 180 countries and regions. The source did not provide a breakdown by sector or growth rate.",
+     "impact": "Reflects the deepening internationalization of central SOEs and the growing importance of cross-border asset management and risk control.",
      "importance": "hot",
      "tags": [
-      "Domestic Demand",
-      "Infrastructure",
-      "Macro Policy"
+      "State-owned Enterprises",
+      "Cross-border Investment",
+      "Global Footprint"
      ]
     },
     {
      "id": "news-012",
-     "title": "Shanghai SOEs Sign $2.862 Billion in Intended Purchases at CIIE",
-     "summary": "The state-owned assets delegation of the Shanghai trade mission at the 9th China International Import Expo reached intended purchases of $2.862 billion, with 17 projects signed on site.",
-     "detail": "On November 7, the state-owned assets sub-delegation of the Shanghai trade mission at the 9th China International Import Expo held a collective signing ceremony alongside events on technological innovation and open cooperation among Shanghai SOEs. Other reports said 11 Shanghai SOE groups signed 17 projects worth $1.53 billion, as the city's state-owned sector actively integrates into global innovation networks.",
-     "impact": "Demonstrates the growing openness and global procurement drive of SOEs, helping bring in advanced technology and equipment and strengthening international cooperation.",
-     "importance": "hot",
+     "title": "Shanghai Jing'an's CIIE Intentional Purchase Orders Hit Record High",
+     "summary": "Intentional purchase orders secured by Shanghai's Jing'an District during the 9th China International Import Expo (CIIE) reached a record high.",
+     "detail": "Intentional purchase orders secured by Jing'an District through the CIIE platform set a record for the event's history in either number or scale. The source did not provide specific amounts or industry breakdown.",
+     "impact": "Demonstrates the expanding spillover effect of the CIIE, benefiting regional commerce and import-driven consumption.",
+     "importance": "important",
      "tags": [
       "CIIE",
-      "State-Owned Enterprises",
-      "Import Trade"
+      "Import Trade",
+      "Consumer Market"
      ]
     },
     {
      "id": "news-013",
-     "title": "2026 National 'Silk Road Products' E-Commerce Month Launches in Shanghai",
-     "summary": "On November 7, the launch ceremony for the 2026 National 'Silk Road Products' E-Commerce Month and a promotion event for innovative development of 'Silk Road E-commerce' cooperation were held in Shanghai.",
-     "detail": "The event aims to open new space for global e-commerce cooperation, advance innovation in 'Silk Road E-commerce' partnerships, and build a platform for goods from relevant countries and regions to enter the Chinese market.",
-     "impact": "Helps expand cross-border e-commerce and import consumption, opening new growth opportunities for digital trade cooperation.",
+     "title": "Guotai Haitong: Baijiu Valuations and Institutional Holdings Near Historic Lows",
+     "summary": "A research note from Guotai Haitong argues that baijiu stock prices have adjusted sufficiently, with valuations and institutional holdings both at historically low levels.",
+     "detail": "The report notes that the food and beverage sector has been adjusting since an earlier phase, pushing baijiu valuations and institutional holdings to historically low levels. Another report published the same day judged that the broad market's adjustment this year has been fairly thorough, though conditions for a strong rebound remain premature.",
+     "impact": "Offers a reference point for allocations to the consumer sector; near-term trends still hinge on demand and market catalysts.",
      "importance": "important",
      "tags": [
-      "Cross-Border E-Commerce",
-      "Silk Road E-Commerce",
-      "Consumption Promotion"
+      "Baijiu Industry",
+      "Consumer Sector",
+      "Securities Research"
      ]
     },
     {
      "id": "news-014",
-     "title": "CIIE Spillover Effect Index Released: The Closer to the 'Four-Leaf Clover,' the Faster the Conversion",
-     "summary": "A CIIE spillover effect index has been released, showing that the closer to the 'Four-Leaf Clover' venue, the faster the spillover effects convert.",
-     "detail": "The index focuses on quantitative assessment of CIIE spillover effects, revealing patterns in how areas around the venue and related districts capture expo dividends. The concurrent Hongqiao Forum focused on hot global economic issues, with discussions on openness, innovation, development and shared benefits.",
-     "impact": "Provides a quantitative reference for the exhibition economy and coordinated regional development, helping convert expo dividends into industrial momentum.",
+     "title": "Six Ministries Issue Guidelines to Foster Diverse Scenarios and Boost Age-friendly Consumption",
+     "summary": "Six ministries issued a document fostering diverse scenarios to promote consumption of age-friendly products and unlock the potential of the silver economy.",
+     "detail": "The document proposes promoting consumption of age-friendly products through the development of diverse application scenarios. The source, a China Securities Investment Information column, did not provide specific implementation details or target scale.",
+     "impact": "Bodes well for supply chains related to the silver economy, including eldercare products and rehabilitation aids.",
      "importance": "important",
      "tags": [
-      "CIIE",
-      "Exhibition Economy",
-      "Open Economy"
+      "Silver Economy",
+      "Consumption Policy",
+      "Eldercare Industry"
      ]
     },
     {
      "id": "news-015",
-     "title": "A New Age of Exploration: How Chinese Companies Can Stay in the Game Going Global",
-     "summary": "CIIE-related events in Shanghai focused on the pathways for Chinese companies expanding overseas, exploring how to 'stay in the game' amid globalized competition in this new age of exploration.",
-     "detail": "The forum, leveraging the CIIE platform, discussed the opportunities and challenges Chinese enterprises face going abroad, as well as competitive strategies and risk responses in global markets.",
-     "impact": "Offers strategic references for overseas-expanding enterprises, helping improve their international operations and global competitiveness.",
-     "importance": "important",
+     "title": "Financial Institutions Step Beyond Booths to Embed Services Across Cross-border Trade Chains",
+     "summary": "In its ninth edition, the CIIE sees financial institutions moving beyond exhibition booths to embed services across the entire cross-border trade chain.",
+     "detail": "Reporting observed that exhibiting financial institutions are no longer limiting themselves to booth displays, instead embedding services into every link of cross-border trade. The source did not provide details on specific products or partnership cases.",
+     "impact": "The deep integration of financial services with trade scenarios can help improve the efficiency of cross-border settlement and financing.",
+     "importance": "normal",
      "tags": [
-      "Going Global",
-      "International Operations",
-      "Opening Up"
+      "Cross-border Finance",
+      "Financial Services",
+      "Trade Facilitation"
      ]
     },
     {
      "id": "news-016",
-     "title": "Chinese Dining Tables Turn Southeast Asian Durian Into a Global Business, Imports Quintuple in Nine Years",
-     "summary": "CIIE coverage shows durian imports have quintupled over nine years, as Chinese consumers transform Southeast Asian durian into a major global business.",
-     "detail": "The report highlights the rapid growth of imported goods such as durian in the Chinese market under the lens of 'hot imported products,' showcasing the Chinese consumer market's pull on global agricultural trade.",
-     "impact": "Reflects the strong driving force of China's consumer market on global agricultural trade, benefiting cross-border fresh food supply chains.",
-     "importance": "normal",
+     "title": "Key Events for Capital Markets Next Week: China and US CPI Data Among Releases",
+     "summary": "A number of key events await capital markets next week, with attention on China and US CPI data and three-party talks.",
+     "detail": "Items flagged for next week include the release of China and US CPI data, related three-party talks, and a possible start of Anthropic's IPO roadshow. The source did not provide specific data forecasts.",
+     "impact": "The overlap of macroeconomic data and external events could heighten short-term volatility in capital markets.",
+     "importance": "important",
      "tags": [
-      "Agricultural Imports",
-      "Consumer Market",
-      "Fresh Food Supply Chain"
+      "Macroeconomy",
+      "Capital Markets",
+      "Data Releases"
      ]
     },
     {
      "id": "news-017",
-     "title": "China's First School of Technology Law Established",
-     "summary": "China's first school of technology law has been formally established, exploring a new talent training model that integrates technology and law.",
-     "detail": "Materials indicate this is the country's first school of technology law, focusing on legal issues arising from technological development and talent cultivation. Specific training programs were not disclosed in the materials.",
-     "impact": "Helps address shortages of legal talent in tech governance and intellectual property, serving the development of technological innovation.",
+     "title": "Shanghai Delegation's Major Retail Buyers Reach 72 Purchase Intentions",
+     "summary": "The alliance of large retail buyers under the Shanghai trade delegation at the CIIE reached 72 purchase intentions.",
+     "detail": "The alliance of large retail buyers under the Shanghai trade delegation reached 72 purchase intentions during the CIIE. The source did not disclose the product categories or amounts involved.",
+     "impact": "Indicates that purchasing demand from major domestic retail channels for high-quality imported goods remains active.",
      "importance": "normal",
      "tags": [
-      "Legal Education",
-      "Tech Innovation",
-      "Talent Development"
+      "CIIE",
+      "Retail Procurement",
+      "Import Consumption"
      ]
     }
    ]
@@ -257,125 +260,113 @@
    "articles": [
     {
      "id": "news-018",
-     "title": "Oil Prices Climb: Brent and WTI Crude Rise in After-Hours Trading",
-     "summary": "WTI crude broke above $90 in after-hours trading, up more than 0.1% on the day; Brent crude surpassed $97, gaining over 0.4%.",
-     "detail": "Both benchmark crude contracts moved higher in after-hours trading, with Brent posting a more notable gain. Recent tensions in the Middle East involving strikes on oil facilities have been a key backdrop to the rally.",
-     "impact": "Rising oil prices push up energy costs and inflation expectations, benefiting the energy sector while increasing cost pressures downstream.",
+     "title": "Guotai Haitong: Fed May Raise Rates by 25 Basis Points in December",
+     "summary": "A research report by Guotai Haitong judges that the Federal Reserve may raise interest rates by 25 basis points in December, with employment data as the main basis.",
+     "detail": "The report notes that nonfarm payrolls rose by 165,000 in October, far exceeding the market expectation of 70,000, driven mainly by professional and business services, education and other sectors. Based on this, it judges a 25 basis point hike in December is possible.",
+     "impact": "If the rate hike materializes, it will affect global liquidity expectations, exchange rates and commodity pricing.",
      "importance": "hot",
      "tags": [
-      "International Crude Oil",
-      "Commodities",
-      "Energy Market"
+      "Fed Policy",
+      "Monetary Policy",
+      "Global Liquidity"
      ]
     },
     {
      "id": "news-019",
-     "title": "ECB President: No Guarantee of Action in December",
-     "summary": "European Central Bank President Christine Lagarde said she cannot guarantee the ECB will act in December, but developments remain consistent with expectations.",
-     "detail": "Responding to views that the ECB reacted too slowly to earlier energy shocks and the Russia-Ukraine conflict, Lagarde pushed back, saying that was not the case. She stressed that December action is not set in stone, but current developments align with expectations.",
-     "impact": "Signals a cautious, wait-and-see policy stance, with markets closely watching upcoming data for guidance ahead of the December policy meeting.",
-     "importance": "important",
+     "title": "Silver Falls Below $47/Ounce in After-Hours Trading",
+     "summary": "In after-hours trading, silver slipped below $47 per ounce, down 0.4% on the day.",
+     "detail": "Market data shows after-hours silver prices broke below the $47 per ounce mark, falling 0.4% intraday. The source material provided no performance data for other precious metals or related assets.",
+     "impact": "Precious metals weakened short-term, possibly reflecting shifts in market risk appetite and rate expectations.",
+     "importance": "normal",
      "tags": [
-      "Monetary Policy",
-      "European Economy",
-      "Central Bank Moves"
+      "Commodities",
+      "Precious Metals",
+      "Global Markets"
      ]
     },
     {
      "id": "news-020",
-     "title": "Binance Names New CFO as Former Finance Chief Leaves to Start Up",
-     "summary": "Binance has appointed Justin Yek as its new chief financial officer, while former CFO Kaiser Ng departs to launch his own venture.",
-     "detail": "Cryptocurrency exchange Binance has completed a change at the top of its finance team, with Justin Yek taking over as CFO after Kaiser Ng left to pursue entrepreneurship.",
-     "impact": "The executive reshuffle could shape the platform's financial governance and compliance direction, with the industry watching for subsequent strategic adjustments.",
-     "importance": "normal",
+     "title": "Corporate M&A Expected to Accelerate After US Midterm Elections",
+     "summary": "The US Democratic Party's midterm election victory has prompted Wall Street and large corporations to reassess major merger and acquisition plans.",
+     "detail": "Several corporate executives said they are considering accelerating major deals, with market expectations that a changing policy environment could pave the way for an M&A surge. The source material did not disclose specific deal targets.",
+     "impact": "A rebound in M&A activity will boost demand for investment banking, legal and other professional services, and affect the pace of industry consolidation.",
+     "importance": "important",
      "tags": [
-      "Cryptocurrency",
-      "Fintech",
-      "Executive Changes"
+      "Corporate M&A",
+      "Capital Markets",
+      "Investment Banking"
      ]
     },
     {
      "id": "news-021",
-     "title": "Iranian President Urges Public to Help Cut Energy Consumption",
-     "summary": "Iran's president called on citizens to help reduce energy consumption, saying the country is working to escape a state that is 'neither war nor peace.'",
-     "detail": "Iran's president publicly urged the public to cooperate in lowering energy consumption. A spokesperson for Iran's Revolutionary Guard said restrictions on the range of Iranian missiles have been lifted, and that Iran is waging an asymmetric war.",
-     "impact": "Energy consumption controls combined with regional tensions could affect global energy supply-demand expectations and regional risk premiums.",
+     "title": "Chinese-German Auto Industries Seek Win-Win Amid Tariff Disputes",
+     "summary": "European headlines highlight how China and Germany's auto industries are maintaining dialogue and leveraging complementary strengths to seek win-win outcomes despite tariff disagreements.",
+     "detail": "Reports indicate that facing tariff disputes, the Chinese and German auto industries are still maintaining dialogue and leveraging their respective advantages to explore room for cooperation. The source material provided no specific negotiation or cooperation details.",
+     "impact": "Cooperation and disputes coexist in the auto industry, with trade policy direction remaining a key focus for the supply chain.",
      "importance": "normal",
      "tags": [
-      "International Energy",
-      "Energy Consumption",
-      "Middle East Tensions"
-     ]
-    },
-    {
-     "id": "news-022",
-     "title": "US Government Weighs Overhaul of National Parks and Wildlife Agencies",
-     "summary": "The Trump administration is reportedly considering reforms to the National Park Service, with changes to the U.S. Fish and Wildlife Service also drawing attention.",
-     "detail": "The reported reform efforts involve both the National Park Service and the U.S. Fish and Wildlife Service and remain at the stage of review and planning, with specific plans not yet disclosed.",
-     "impact": "If the reforms advance, they would affect public resource allocation and the landscape of environmental regulation, warranting continued attention.",
-     "importance": "normal",
-     "tags": [
-      "Public Policy",
-      "Ecological Conservation"
+      "Auto Industry",
+      "International Trade",
+      "Industrial Cooperation"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Technology Frontiers",
+   "title": "Tech Frontier",
    "icon": "💡",
    "articles": [
     {
-     "id": "news-023",
-     "title": "China's Renewable Energy Technology Dominates Globally",
-     "summary": "Reports say China's renewable energy technology is the world's largest and fastest-growing, holding a dominant position globally.",
-     "detail": "The report notes that China's renewable energy technology ranks among the world's top in both scale and growth pace, holding a dominant global position and highlighting its leading edge in green and low-carbon technology.",
-     "impact": "Consolidates China's say in the global green industrial chain and supports exports and the export of technical standards.",
+     "id": "news-022",
+     "title": "Anthropic to Spend $3.4 Billion on Power Generation Equipment",
+     "summary": "Anthropic has agreed to spend $3.4 billion on gas generators for its data centers, the largest known single power equipment purchase by an AI lab.",
+     "detail": "The purchase is intended to secure power supply for data centers, marking the biggest single power equipment order ever placed by a known AI lab. Details on delivery timelines and partners were not disclosed. Separately, reports say its IPO roadshow could launch as early as next week.",
+     "impact": "Highlights the power bottleneck created by compute expansion, with energy infrastructure becoming a key battleground in the AI infrastructure race.",
      "importance": "hot",
      "tags": [
-      "Renewable Energy",
-      "Green and Low-Carbon",
-      "Energy Technology"
+      "Artificial Intelligence",
+      "Data Centers",
+      "Energy Infrastructure"
      ]
     },
     {
-     "id": "news-024",
-     "title": "Open-Source AI Ecosystem Fuels Token Economy as Computing Power Sees New Boom",
-     "summary": "Observations at the Wuzhen Summit note that from consumption to production, the open-source AI ecosystem is catalyzing the token economy, with cloud-edge-device computing power entering a new boom.",
-     "detail": "Summit observations focus on the open-source AI ecosystem's catalytic role in the token economy, pointing out that computing demand is extending from the cloud toward edge and end devices, forming a new growth point of cloud-edge-device collaboration.",
-     "impact": "Accelerates investment in computing infrastructure and the commercialization of AI applications, benefiting cloud computing, chips and related industries.",
+     "id": "news-023",
+     "title": "Yangtze River Delta Accelerates 'AI Plus' to Unlock Application Momentum",
+     "summary": "A weekly roundup shows multiple regions rolling out 'AI Plus' use cases, with the Yangtze River Delta speeding up the release of new application-driven momentum.",
+     "detail": "The report reviews progress on 'AI Plus' deployments across multiple cities in the Yangtze River Delta, emphasizing the new momentum driven by expanding application scenarios. No specific city cases or scale figures were provided.",
+     "impact": "Faster regional AI deployment is expected to lift demand for software, hardware and industry-specific solutions.",
      "importance": "important",
      "tags": [
       "Artificial Intelligence",
-      "Computing Power Economy",
-      "Open-Source Ecosystem"
-     ]
-    },
-    {
-     "id": "news-025",
-     "title": "Shanghai's 'AI + Transportation' Achievements Debut at CIIE",
-     "summary": "Shanghai's 'AI + Transportation' achievements debuted at the China International Import Expo, unveiling three core technology platforms and two innovation platforms.",
-     "detail": "The showcase centered on three core technology platforms and two innovation platforms, presenting AI application achievements in the transportation sector and making a consolidated appearance at the CIIE.",
-     "impact": "Promotes deep integration of AI and transportation, offering replicable technical solutions for smart transportation and urban governance.",
-     "importance": "normal",
-     "tags": [
-      "Artificial Intelligence",
-      "Smart Transportation",
+      "Regional Economy",
       "Digital Economy"
      ]
     },
     {
-     "id": "news-026",
-     "title": "Commentary: A Major Power's Responsibility Seen Through Aerospace 'Firsts'",
-     "summary": "A commentary notes that a recent 'first' in China's space program reflects the sense of responsibility of a major power in the development of its space industry.",
-     "detail": "The commentary uses a 'first' in China's space program as a starting point to discuss the responsibility and international significance it embodies. The specific content of the 'first' was not disclosed.",
-     "impact": "Enhances the international image and influence of the space sector, showcasing the combination of technological strength and responsibility.",
+     "id": "news-024",
+     "title": "Tencent Health and Lundbeck China Sign Strategic Partnership",
+     "summary": "During the China International Import Expo, Tencent Health and Lundbeck China signed a strategic cooperation framework focused on brain health and patient care.",
+     "detail": "The two sides will collaborate on public education about brain health, disease management, care for patients with rare neurological diseases and corporate digitalization. Cooperation duration and investment scale were not disclosed.",
+     "impact": "Collaboration between digital platforms and pharmaceutical companies could improve public science communication and disease management efficiency in brain health.",
+     "importance": "normal",
+     "tags": [
+      "Digital Health",
+      "Pharma Partnership",
+      "Brain Health"
+     ]
+    },
+    {
+     "id": "news-025",
+     "title": "Zhejiang Bets on 500 Billion Yuan Deep-Sea Engineering and Technology Track",
+     "summary": "Zhejiang is laying out plans for deep-sea engineering and technology, aiming to capture a new market worth roughly 500 billion yuan.",
+     "detail": "Reports put the deep-sea engineering and technology market at around 500 billion yuan, with Zhejiang accelerating its push to gain an early foothold. No specific project list or investment plans were provided.",
+     "impact": "Increased local investment in deep-sea technology bodes well for upstream and downstream sectors such as marine engineering equipment and ocean exploration.",
      "importance": "important",
      "tags": [
-      "Aerospace Technology",
-      "Scientific Innovation",
-      "International Cooperation"
+      "Deep-Sea Technology",
+      "Ocean Economy",
+      "High-End Equipment"
      ]
     }
    ]
@@ -386,68 +377,68 @@
    "icon": "📰",
    "articles": [
     {
+     "id": "news-026",
+     "title": "Fire at Taiyuan Building Kills 5",
+     "summary": "A fire broke out at Haosheng International Apartment in Yingze District, Taiyan, leaving 5 dead. The blaze was extinguished that evening.",
+     "detail": "The fire started at 16:59 on November 8. Firefighters put out the flames by 19:00, and search and rescue operations concluded at 20:30. The injured were taken to hospital. Five people were killed. The cause of the fire has not been disclosed.",
+     "impact": "The incident again highlights fire safety risks in high-rise buildings and may prompt city-wide fire safety inspections and rectification campaigns.",
+     "importance": "hot",
+     "tags": [
+      "Fire Safety",
+      "Workplace Safety",
+      "Emergency Management"
+     ]
+    },
+    {
      "id": "news-027",
-     "title": "How to Choose Medication in the First 48 Hours of the Flu",
-     "summary": "The article shares experience on choosing flu medication within the first 48 hours of infection, stressing the importance of seizing the critical treatment window.",
-     "detail": "Written in the first person, the article recounts medication decisions made within 48 hours of a flu infection, urging the public to respond scientifically and use drugs rationally during flu season.",
-     "impact": "Raises public awareness of evidence-based flu medication use and supports respiratory disease prevention and control.",
+     "title": "Can Six-Figure Stem Cell Infusions Really Fight Aging?",
+     "summary": "A report examines whether stem cell infusion programs costing hundreds of thousands of yuan truly deliver anti-aging effects.",
+     "detail": "The article focuses on the efficacy and controversy of high-priced stem cell anti-aging treatments. Specific provider names, price ranges and research findings were not disclosed in the source material.",
+     "impact": "Sparks discussion on rational spending in cosmetic anti-aging services and regulation of the related market.",
      "importance": "important",
      "tags": [
-      "Public Health",
-      "Flu Prevention",
-      "Pharma & Health"
+      "Health Industry",
+      "Medical Aesthetics Spending",
+      "Biotechnology"
      ]
     },
     {
      "id": "news-028",
-     "title": "The Vitamin Chinese People Lack Most — Women More Than Men",
-     "summary": "The article highlights widespread vitamin deficiency among Chinese people, noting that the problem is more pronounced in women than in men.",
-     "detail": "Focusing on inadequate vitamin intake among the Chinese population, the article points out that deficiency is more striking among women and calls attention to daily nutritional supplementation.",
-     "impact": "Boosts public nutrition awareness and may drive interest in dietary supplements and health-related spending.",
-     "importance": "normal",
+     "title": "Drug Choices Within 48 Hours of Flu Onset",
+     "summary": "The author shares personal experience and reasoning on selecting medications within the first 48 hours of catching the flu.",
+     "detail": "The article recounts in the first person the process of choosing flu medication during the early stages of illness, stressing the importance of the critical time window. Specific drug names and medical advice were not provided in the source material.",
+     "impact": "Helps improve public understanding of early, science-based flu response and rational medication use.",
+     "importance": "important",
      "tags": [
       "Public Health",
-      "Nutrition",
-      "Health Consumption"
+      "Rational Medication Use",
+      "Health Education"
      ]
     },
     {
      "id": "news-029",
-     "title": "Can a Stem Cell Infusion Costing Hundreds of Thousands Really Fight Aging?",
-     "summary": "The article questions whether premium-priced stem cell infusions truly deliver anti-aging effects, amid growing controversy over consumer applications of regenerative medicine.",
-     "detail": "The article raises doubts about anti-aging stem cell infusion programs costing several hundred thousand yuan, scrutinizing their efficacy and risks. No specific research conclusions were provided.",
-     "impact": "Sparks debate over regulation of consumer medicine and regenerative medicine applications, urging a rational view of expensive anti-aging treatments.",
+     "title": "Why Are Young People Embracing 'Heritage Site Visits'?",
+     "summary": "A report looks at the growing trend of young people flocking to heritage sites, exploring why historical and cultural experiences are so popular.",
+     "detail": "The article starts from young people's travel preferences and analyzes the drivers behind the heritage-visit craze. No specific data or case details were provided in the source material.",
+     "impact": "Reflects an upgrading of cultural tourism consumption, benefiting museums, historic architecture and study-tour businesses.",
      "importance": "normal",
      "tags": [
-      "Regenerative Medicine",
-      "Consumer Medicine",
-      "Healthcare"
+      "Cultural Tourism Spending",
+      "Youth Culture",
+      "Museum Economy"
      ]
     },
     {
      "id": "news-030",
-     "title": "Start of Winter: All Things Turn Inward, Warmth Alongside",
-     "summary": "Marking the Start of Winter, the \"A Fine Time in the World\" column features the theme \"All Things Turn Inward, Warmth Alongside\" to capture the beauty of the solar term.",
-     "detail": "Through text and images, the column presents the phenological changes and cultural meaning of the Start of Winter season, conveying the theme of nature turning inward with warmth.",
-     "impact": "Promotes traditional seasonal culture and deepens public awareness of solar terms and natural rhythms.",
+     "title": "The Vitamin Chinese People Lack Most — Women Are More Deficient Than Men",
+     "summary": "A report breaks down the vitamins Chinese people are commonly deficient in, noting that deficiency levels are higher among women than men.",
+     "detail": "The article highlights inadequate vitamin intake among the Chinese public, pointing out that women are more affected than men. Specific nutrition survey data were not provided in the source material.",
+     "impact": "Raises public awareness of nutrition and health, potentially driving interest in dietary supplements and other nutritional products.",
      "importance": "normal",
      "tags": [
-      "Traditional Culture",
-      "Folk Culture",
-      "Cultural Communication"
-     ]
-    },
-    {
-     "id": "news-031",
-     "title": "\"Good Reporters Tell Good Stories\" 2026 Special to Air",
-     "summary": "The video special \"Good Reporters Tell Good Stories\" 2026 will air tomorrow evening, featuring journalists' reporting stories.",
-     "detail": "Themed \"Good Reporters Tell Good Stories,\" the special will air tomorrow evening, with media professionals recounting the stories behind their reporting.",
-     "impact": "Showcases professional journalism ethics and strengthens the reach and influence of mainstream media.",
-     "importance": "normal",
-     "tags": [
-      "Journalism",
-      "Media & Communication",
-      "Cultural Programs"
+      "Nutrition & Health",
+      "Public Health",
+      "Health Spending"
      ]
     }
    ]

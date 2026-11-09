@@ -1,181 +1,181 @@
 {
-  "date": "2026-11-08",
+  "date": "2026-11-09",
   "content": {
-    "id": "en-2026-11-08",
-    "date": "2026-11-08",
-    "topic": "健康与生活",
+    "id": "en-2026-11-09",
+    "date": "2026-11-09",
+    "topic": "环境与可持续发展",
     "newsHighlights": [
       {
-        "title": "With winter here, Inner Mongolia gets to the meat of the matter",
-        "source": "ChinaDaily",
-        "summary": "As winter sets in, Inner Mongolia serves up hearty mutton dishes that keep locals warm and well-nourished during the harsh cold season.",
-        "translation": "随着冬季来临，内蒙古端上丰盛的羊肉菜肴，帮助当地人在严寒中保持温暖与营养。",
+        "title": "China boasts world's largest renewable energy system: report",
+        "source": "CGTN",
+        "summary": "A new report shows that China now has the world's largest renewable energy system, playing a leading role in the global green transition.",
+        "translation": "最新报告显示，中国已建成全球最大的可再生能源体系，在全球绿色转型中发挥引领作用。",
         "keyWords": [
-          "mutton",
-          "winter diet",
-          "nutrition"
+          "renewable energy",
+          "green transition",
+          "largest system"
         ]
       },
       {
-        "title": "Experience drone food delivery in Shenzhen",
+        "title": "Crested ibis-themed pavilion debuts at 9th CIIE",
         "source": "ChinaDaily",
-        "summary": "Shenzhen residents can now have meals flown to them by drone, making food delivery faster, hotter and more convenient.",
-        "translation": "深圳市民如今可通过无人机送餐，让外卖更快、更热、更便捷。",
+        "summary": "A pavilion themed on the crested ibis, a bird once on the brink of extinction, made its debut at the 9th China International Import Expo.",
+        "translation": "以曾濒临灭绝的朱鹮为主题的展馆在第九届中国国际进口博览会上首次亮相。",
         "keyWords": [
-          "drone",
-          "delivery",
-          "technology"
+          "crested ibis",
+          "endangered species",
+          "debut"
         ]
       },
       {
-        "title": "Giant pandas Ping Ping and Fu Shuang make public debut in Atlanta",
+        "title": "A new chapter begins: Giant pandas return to Zoo Atlanta",
         "source": "ChinaDaily",
-        "summary": "Two giant pandas made their first public appearance in Atlanta, charming thousands of fans and highlighting wildlife conservation.",
-        "translation": "两只大熊猫在亚特兰大首次公开亮相，萌翻数千名粉丝，也彰显了野生动物保护的意义。",
+        "summary": "Giant pandas have returned to Zoo Atlanta, opening a new chapter in China-US wildlife conservation cooperation.",
+        "translation": "大熊猫重返亚特兰大动物园，开启了中美野生动物保护合作的新篇章。",
         "keyWords": [
-          "debut",
+          "giant panda",
           "conservation",
-          "wildlife"
+          "wildlife cooperation"
         ]
       },
       {
-        "title": "Governing the ocean, shaping our future",
+        "title": "When CIIE turns into an incubator?",
         "source": "ChinaDaily",
-        "summary": "At the 7th Symposium on Global Maritime Cooperation, experts stressed that a healthy ocean is central to humanity's shared future.",
-        "translation": "在全球海洋合作研讨会上，专家强调健康的海洋是人类共同未来的核心。",
+        "summary": "At the Innovation Incubation Zone of the 9th CIIE, young tech entrepreneurs gather in Shanghai, seeking partners to turn green ideas into reality.",
+        "translation": "在第九届进博会创新孵化专区，全球青年科技创业者齐聚上海，寻找合作伙伴，将绿色创意变为现实。",
         "keyWords": [
-          "ocean",
-          "cooperation",
-          "environment"
+          "innovation incubation",
+          "entrepreneur",
+          "turn ideas into reality"
         ]
       }
     ],
     "quote": {
-      "quote": "To keep the body in good health is a duty, otherwise we shall not be able to keep the mind strong and clear.",
-      "author": "Buddha",
-      "translation": "保持身体健康是一种责任，否则我们将无法保持头脑坚强而清醒。",
-      "explanation": "这句话强调身心一体：健康的身体是清晰思维与高效生活的基础，正呼应今日新闻中冬季饮食、健康生活方式的主题。"
+      "quote": "The greatest threat to our planet is the belief that someone else will save it.",
+      "author": "Robert Swan",
+      "translation": "地球面临的最大威胁，是人们相信会有别人来拯救它。",
+      "explanation": "这句话提醒我们：环境保护不是别人的责任，而是每个人的责任。正如今日新闻中中国建设全球最大可再生能源体系、保护朱鹮与大熊猫的行动所展示的，可持续发展需要每个国家、每个企业、每个个体从自身做起，主动行动而非等待他人。"
     },
     "vocabulary": [
       {
-        "word": "debut",
-        "phonetic": "/ˈdeɪbjuː/",
-        "partOfSpeech": "n./v.",
-        "definition": "首次亮相，初次登台",
-        "example": "The giant pandas made their public debut in Atlanta and won the hearts of visitors.",
-        "translation": "两只大熊猫在亚特兰大公开亮相，赢得了游客的喜爱。",
-        "newsContext": "出自新闻标题 \"Giant pandas Ping Ping and Fu Shuang make public debut in Atlanta\"。"
-      },
-      {
-        "word": "protein",
-        "phonetic": "/ˈprəʊtiːn/",
-        "partOfSpeech": "n.",
-        "definition": "蛋白质",
-        "example": "Mutton is rich in protein, which helps the body stay strong through the cold months.",
-        "translation": "羊肉富含蛋白质，有助于身体在寒冷的月份保持强健。",
-        "newsContext": "关联新闻 \"Inner Mongolia gets to the meat of the matter\" 中冬季肉类饮食的营养价值。"
-      },
-      {
-        "word": "harsh",
-        "phonetic": "/hɑːʃ/",
-        "partOfSpeech": "adj.",
-        "definition": "恶劣的，严酷的（指气候或环境）",
-        "example": "Inner Mongolia's harsh winter calls for a warmer and more nutritious diet.",
-        "translation": "内蒙古严酷的冬季需要更温暖、更有营养的饮食。",
-        "newsContext": "关联新闻中内蒙古冬季寒冷气候的描述。"
-      },
-      {
-        "word": "nutritious",
-        "phonetic": "/njuːˈtrɪʃəs/",
-        "partOfSpeech": "adj.",
-        "definition": "有营养的，滋养的",
-        "example": "A nutritious winter meal should include meat, vegetables and whole grains.",
-        "translation": "一顿有营养的冬季餐食应包含肉类、蔬菜和全谷物。",
-        "newsContext": "关联新闻 \"Inner Mongolia gets to the meat of the matter\" 中对冬季膳食营养的讨论。"
-      },
-      {
-        "word": "delivery",
-        "phonetic": "/dɪˈlɪvəri/",
-        "partOfSpeech": "n.",
-        "definition": "递送，配送",
-        "example": "Drone food delivery in Shenzhen cuts waiting time and keeps meals hot.",
-        "translation": "深圳的无人机送餐减少了等待时间，让餐食保持热度。",
-        "newsContext": "出自新闻 \"Experience drone food delivery in Shenzhen\"。"
-      },
-      {
-        "word": "logistics",
-        "phonetic": "/ləˈdʒɪstɪks/",
-        "partOfSpeech": "n.",
-        "definition": "物流，后勤组织",
-        "example": "Modern logistics technology allows hot food to reach customers within minutes.",
-        "translation": "现代物流技术让热食在几分钟内送达顾客手中。",
-        "newsContext": "关联新闻中无人机送餐背后的物流配送体系。"
-      },
-      {
-        "word": "well-being",
-        "phonetic": "/ˌwelˈbiːɪŋ/",
-        "partOfSpeech": "n.",
-        "definition": "健康，福祉，身心安适",
-        "example": "Regular exercise and enough sleep are both essential to our well-being.",
-        "translation": "规律运动与充足睡眠对我们的身心健康都至关重要。",
-        "newsContext": "关联新闻主题「健康与生活」中对生活方式与身心健康的整体关注。"
-      },
-      {
-        "word": "immune",
-        "phonetic": "/ɪˈmjuːn/",
-        "partOfSpeech": "adj.",
-        "definition": "免疫的，有免疫力的",
-        "example": "A balanced diet helps strengthen the immune system during winter.",
-        "translation": "均衡的饮食有助于在冬季增强免疫系统。",
-        "newsContext": "关联冬季健康饮食新闻，强调抵御寒冷与疾病的免疫力。"
-      },
-      {
-        "word": "conservation",
-        "phonetic": "/ˌkɒnsəˈveɪʃn/",
-        "partOfSpeech": "n.",
-        "definition": "（对自然、动物的）保护",
-        "example": "The pandas' debut also draws attention to wildlife conservation efforts.",
-        "translation": "大熊猫的亮相也引起了人们对野生动物保护行动的关注。",
-        "newsContext": "出自新闻 \"Giant pandas Ping Ping and Fu Shuang make public debut in Atlanta\" 及相关熊猫保护议题。"
+        "word": "renewable",
+        "phonetic": "/rɪˈnjuːəbl/",
+        "partOfSpeech": "adjective",
+        "definition": "可再生的；可更新的",
+        "example": "China has built the world's largest renewable energy system.",
+        "translation": "中国建成了全球最大的可再生能源体系。",
+        "newsContext": "出自 CGTN 报道标题 \"China boasts world's largest renewable energy system: report\"。"
       },
       {
         "word": "sustainable",
         "phonetic": "/səˈsteɪnəbl/",
-        "partOfSpeech": "adj.",
-        "definition": "可持续的，能长期维持的",
-        "example": "A healthy ocean is the foundation of a sustainable future for everyone.",
-        "translation": "健康的海洋是所有人可持续未来的基础。",
-        "newsContext": "出自新闻 \"Governing the ocean, shaping our future\" 中关于海洋可持续发展的论述。"
+        "partOfSpeech": "adjective",
+        "definition": "可持续的；能保持的",
+        "example": "Green technologies at the CIIE aim to support sustainable development worldwide.",
+        "translation": "进博会上的绿色技术旨在支持全球可持续发展。",
+        "newsContext": "与 CIIE 创新孵化专区报道中 \"turn ideas into reality\" 的绿色科技创业主题相关。"
+      },
+      {
+        "word": "conservation",
+        "phonetic": "/ˌkɒnsəˈveɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "（对自然、文物的）保护；保存",
+        "example": "The return of giant pandas opens a new chapter in wildlife conservation cooperation.",
+        "translation": "大熊猫的回归开启了野生动物保护合作的新篇章。",
+        "newsContext": "出自 ChinaDaily 报道 \"A new chapter begins: Giant pandas return to Zoo Atlanta\"。"
+      },
+      {
+        "word": "biodiversity",
+        "phonetic": "/ˌbaɪoʊdaɪˈvɜːrsəti/",
+        "partOfSpeech": "noun",
+        "definition": "生物多样性",
+        "example": "Protecting the crested ibis helps to preserve biodiversity in the region.",
+        "translation": "保护朱鹮有助于维护该地区的生物多样性。",
+        "newsContext": "出自 \"Crested ibis-themed pavilion debuts at 9th CIIE\" 一文中对濒危物种保护的报道。"
+      },
+      {
+        "word": "habitat",
+        "phonetic": "/ˈhæbɪtæt/",
+        "partOfSpeech": "noun",
+        "definition": "（动植物的）栖息地，生存环境",
+        "example": "Decades of habitat restoration brought the crested ibis back from the brink of extinction.",
+        "translation": "数十年的栖息地修复让朱鹮从灭绝边缘被拯救回来。",
+        "newsContext": "与朱鹮主题展馆新闻中物种恢复与栖息地保护内容相关。"
+      },
+      {
+        "word": "emission",
+        "phonetic": "/ɪˈmɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "（气体、光、热等的）排放；散发",
+        "example": "Expanding renewable energy helps the country cut carbon emissions.",
+        "translation": "扩大可再生能源有助于该国减少碳排放。",
+        "newsContext": "出自 CGTN 关于中国可再生能源体系的报道背景。"
+      },
+      {
+        "word": "milestone",
+        "phonetic": "/ˈmaɪlstoʊn/",
+        "partOfSpeech": "noun",
+        "definition": "里程碑；重大事件",
+        "example": "The report marks a milestone in the global green energy transition.",
+        "translation": "这份报告标志着全球绿色能源转型的一个里程碑。",
+        "newsContext": "用于描述 China \"boasts world's largest renewable energy system\" 这一成就。"
+      },
+      {
+        "word": "restoration",
+        "phonetic": "/ˌrestəˈreɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "恢复；修复",
+        "example": "Ecological restoration has improved the habitat of many endangered birds.",
+        "translation": "生态修复改善了许多濒危鸟类的栖息环境。",
+        "newsContext": "与朱鹮主题展馆所体现的生态恢复成果相关。"
+      },
+      {
+        "word": "pavilion",
+        "phonetic": "/pəˈvɪliən/",
+        "partOfSpeech": "noun",
+        "definition": "展馆；亭子",
+        "example": "A crested ibis-themed pavilion made its debut at the 9th CIIE.",
+        "translation": "一座朱鹮主题展馆在第九届进博会上首次亮相。",
+        "newsContext": "出自 ChinaDaily 报道 \"Crested ibis-themed pavilion debuts at 9th CIIE\"。"
+      },
+      {
+        "word": "eco",
+        "phonetic": "/ˈiːkoʊ/",
+        "partOfSpeech": "combining form / noun",
+        "definition": "生态的（eco-，构成词如 ecosystem 生态系统）",
+        "example": "The eco-friendly exhibits show how trade and nature can grow together.",
+        "translation": "这些环保展品展示了贸易与自然如何共同发展。",
+        "newsContext": "与进博会绿色展区及可再生能源、物种保护等新闻主题相关。"
       }
     ],
     "pattern": {
-      "pattern": "Keep ... out of ... （把……排除在……之外）",
-      "example": "Keep geopolitics out of marine science.",
-      "translation": "让地缘政治远离海洋科学。",
-      "usage": "该句型表示「使某事物不进入某个领域或不介入某事」。常见搭配：keep stress out of your life（让压力远离生活）、keep junk food out of your diet（把垃圾食品挡在饮食之外）。口语和书面语中都常用，语气坚定、表达简洁。"
+      "pattern": "主语 + boast + 宾语（以拥有……而自豪／拥有……）",
+      "example": "China boasts the world's largest renewable energy system.",
+      "translation": "中国拥有全球最大的可再生能源体系。",
+      "usage": "boast 在新闻英语中常表示「拥有（值得骄傲的事物）」，比 have 更有强调意味，多用于正面成就。常见搭配：boast the largest / the most advanced / a long history of 等。注意 boast 也可表示「吹嘘」，需根据语境判断褒贬。"
     },
     "grammar": {
-      "title": "with 复合结构（with + 名词 + 副词/形容词/分词）表伴随",
-      "explanation": "介词 with 后接名词，再跟补足语（副词、形容词、现在分词或过去分词），用来表示时间、伴随状态或原因，常置于句首作状语。例如 \"With winter here\" 中，winter 是名词，here 是副词作补足语，整体表示「随着冬天的到来」。这一结构能让句子更紧凑、信息更丰富，是新闻英语中的高频句式。",
+      "title": "现在完成时（Present Perfect）在新闻中的运用",
+      "explanation": "现在完成时由 have/has + 过去分词构成，用于强调过去发生的动作对现在造成的影响或结果，或表示从过去持续到现在的状态。新闻报道常借助它来突出「刚刚发生且具有现实意义」的成就与变化，常与 already, just, so far, over the past...years, after... 等时间状语连用。",
       "examples": [
-        "With winter here, Inner Mongolia gets to the meat of the matter.",
-        "With drones buzzing overhead, hot meals reach Shenzhen customers in minutes."
+        "The crested ibis population has recovered after decades of conservation.",
+        "China has built the world's largest renewable energy system, according to the report."
       ]
     },
     "pronunciation": {
-      "word": "debut",
-      "phonetic": "/ˈdeɪbjuː/",
-      "tips": "注意重音在第一音节，首音节发 /deɪ/（同 day），第二音节发 /bjuː/（同 view）。不要读成「de-but」，也不要按法语习惯发 /deˈby/。常见错误是把重音放在第二音节。",
+      "word": "sustainable",
+      "phonetic": "/səˈsteɪnəbl/",
+      "tips": "重音在第二个音节 /ˈsteɪn/ 上，首音节弱读为 /sə/。注意 /steɪ/ 中的双元音要饱满，结尾 /bl/ 轻快收尾，不要读成「sus-tain-a-ble」四个重音。可拆分练习：sə - STAY - nə - bl。",
       "examples": [
-        "The giant pandas made their public debut in Atlanta.",
-        "Her debut novel became a bestseller within weeks."
+        "Sustainable development is the theme of today's news.",
+        "The CIIE showcases sustainable technologies from around the world."
       ]
     },
     "reading": {
-      "title": "Winter Health: More Than Just a Warm Meal",
-      "content": "As winter arrives in northern China, people naturally turn to richer, warmer food. In Inner Mongolia, local restaurants are serving hearty mutton dishes that provide the protein and energy the body needs to fight the cold. Nutritionists point out that a winter diet should balance meat with vegetables, grains and enough water, since dry indoor heating can easily dehydrate the body.\n\nAt the same time, technology is changing how we eat. In Shenzhen, residents can now order meals delivered by drone, cutting waiting time and keeping food hot. Faster delivery means fresher food and less waste.\n\nExperts say staying healthy in winter is not only about diet. Regular exercise, enough sleep and time spent outdoors all strengthen the immune system. Whether a meal comes from a local kitchen or from the sky, the goal is the same: a balanced lifestyle that keeps both body and mind well.",
-      "translation": "随着中国北方进入冬季，人们自然转向更丰盛、更温暖的食物。在内蒙古，当地餐馆供应热腾腾的羊肉菜肴，为身体提供抵御寒冷所需的蛋白质与能量。营养学家指出，冬季饮食应让肉类与蔬菜、谷物以及充足的水分保持平衡，因为室内供暖干燥容易使身体脱水。\n\n与此同时，科技正在改变我们的饮食方式。在深圳，市民如今可以下单由无人机送来的餐食，缩短等待时间并让食物保持热度。更快的配送意味着更新鲜的食物和更少的浪费。\n\n专家表示，冬季保持健康不仅仅关乎饮食。规律运动、充足睡眠以及户外活动时间都能增强免疫系统。无论一餐来自街边厨房还是来自天空，目标都是一致的：一种让身心皆安的平衡生活方式。",
-      "sourceNote": "本文基于 ChinaDaily 新闻 \"With winter here, Inner Mongolia gets to the meat of the matter\" 与 \"Experience drone food delivery in Shenzhen\" 改写，并结合冬季健康常识补充而成，仅供英语学习使用。"
+      "title": "Green Power and Winged Messengers: China's Sustainability Story",
+      "content": "China now boasts the world's largest renewable energy system, according to a recent report highlighted by CGTN. The achievement marks a milestone in the global green transition and shows how clean energy can grow alongside the economy. Nature protection is advancing just as quickly. At the 9th China International Import Expo, a crested ibis-themed pavilion made its debut, telling the story of a bird that was once on the brink of extinction and has since recovered thanks to decades of habitat restoration and conservation. Meanwhile, giant pandas have returned to Zoo Atlanta, opening a new chapter in wildlife cooperation between China and the United States. At the expo's Innovation Incubation Zone, young entrepreneurs are also turning green ideas into reality, from emission-cutting technologies to eco-friendly materials. Together, these stories show that sustainable development is not a distant goal, but a practical path built on energy, innovation and respect for nature.",
+      "translation": "据 CGTN 近日报道，中国如今拥有全球最大的可再生能源体系。这一成就标志着全球绿色转型的里程碑，也表明清洁能源可以与经济增长并肩前行。自然保护同样进展迅速。在第九届中国国际进口博览会上，朱鹮主题展馆首次亮相，讲述了一种曾濒临灭绝、又因数十年栖息地修复与保护而重新恢复的鸟类的故事。与此同时，大熊猫重返美国亚特兰大动物园，开启了中美野生动物合作的新篇章。在进博会创新孵化专区，青年创业者们也在把绿色创意变为现实，从减排技术到环保材料，不一而足。这些故事共同表明：可持续发展并非遥远的目标，而是一条建立在能源、创新与尊重自然之上的切实之路。",
+      "sourceNote": "本文基于 CGTN《China boasts world's largest renewable energy system: report》、ChinaDaily《Crested ibis-themed pavilion debuts at 9th CIIE》《A new chapter begins: Giant pandas return to Zoo Atlanta》《When CIIE turns into an incubator?》等 2026 年 11 月 9 日真实新闻改写，用于英语学习。"
     }
   }
 }
