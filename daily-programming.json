@@ -1,38 +1,39 @@
 {
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "contents": [
     {
-      "id": "prog-2026-11-09",
-      "date": "2026-11-09",
-      "title": "Next.js Server Actions + useActionState / useFormStatus：构建现代表单",
-      "summary": "用 Server Actions 处理表单提交，配合 useActionState 与 useFormStatus 实现免手写 fetch 的乐观 UI、服务端校验与 pending 状态。",
+      "id": "prog-2026-11-10",
+      "date": "2026-11-10",
+      "title": "用 AsyncLocalStorage 实现 Node.js / Deno 的请求上下文追踪（TraceId）",
+      "summary": "学习如何在不手动传参的前提下，让任意深度的异步调用链都能读到当前请求的 traceId 与用户信息。",
       "difficulty": "中级",
-      "concept": "在 Pages Router 时代，一个表单的完整链路是：写 API Route → 客户端 fetch → 手动管理 loading / error / success 三种状态 → 处理序列化与错误边界。这条链路样板代码多、容易漏状态、且与渐进增强（Progressive Enhancement）彻底绝缘。\n\nServer Actions 是 React 19 与 Next.js App Router 给出的答案：你只要给一个异步函数加上 'use server' 指令，Next.js 就会自动生成一个 RPC 端点，客户端可以直接把它当作 <form action={fn}> 或 startTransition 的回调来调用。你不再手写 fetch、不再手写路由、不再手动序列化 FormData，参数会通过 React 的序列化协议自动传递。\n\n表单状态管理的核心是 useActionState(action, initialState)。它返回 [state, formAction, isPending]：state 是 action 的上一次返回值（用于渲染服务端校验错误、成功提示），formAction 是可直接绑定到 <form action> 的包装函数，isPending 则是这次提交是否仍在进行。注意这里有一个常见误区：useActionState 必须在客户端组件中调用（因为它持有状态），但传入的 action 依然运行在服务端——这是典型的「Client Component 调用 Server Action」边界。\n\n另一个容易被忽略的 API 是 useFormStatus()。它由 react-dom 提供，只能在 <form> 的后代组件中调用，返回 { pending, data, method, formAction }。它最大的工程价值是：你可以把提交按钮抽成独立组件（比如 <SubmitButton />），在按钮内部自动感知「它所属的 form 是否正在提交」，而不需要父组件通过 props 层层传递 isPending。这就是 Next.js 官方表单模式中 <SubmitButton /> 的由来。\n\n工程实践上有三条经验：第一，校验必须在服务端再做一遍，客户端校验只是体验优化，Server Action 是公开端点，永远不要信任入参；第二，action 的返回值设计成带状态的联合类型（如 { status, message, errors }），比抛异常更好用——异常会触发 error.tsx，而业务校验错误应该留在当前表单里展示；第三，涉及跳转、revalidatePath / revalidateTag 的副作用放在 action 内部完成，客户端只负责渲染 state，这样在 JS 未加载时表单依然可用（渐进增强）。",
+      "concept": "在真实的服务端工程里，一个 HTTP 请求往往会触发几十层函数调用：Controller → Service → Repository → 日志 → 监控上报。我们希望日志里自动带上 traceId、userId，但又不想把这些参数一层层透传下去——一旦透传，函数签名会被污染，重构成本极高。AsyncLocalStorage（来自 node:async_hooks）就是为此而生的：它提供了一个“随异步调用链自动传播的隐式上下文”。\n\n它的核心 API 只有两个。als.run(store, fn) 会创建一个新的上下文作用域，在 fn 内部（包括 fn 中 await 之后、setTimeout 回调、Promise.then、事件监听等所有派生的异步任务）als.getStore() 都会返回这个 store；作用域之外则拿不到，天然实现隔离。als.enterWith(store) 则是在“当前位置”直接替换当前上下文，语义更隐晦、边界不清晰，在中间件场景下容易污染后续逻辑，工程上更推荐显式的 run。\n\n底层原理是 async_hooks 的执行上下文跟踪：每个异步资源（Promise、Timer、TCP 句柄）被创建时，会从其父资源继承一份 context 快照。因此即使我们用 Promise.all 并行发起多个异步任务，每个任务仍然持有自己那份 store，不会互相串号。这一点在并发日志排错时极其重要——你可以放心地从任意工具函数里打印 traceId，而不必担心打成别人的。\n\n不过它不是免费的。早期 Node 版本中 ALS 会显著影响吞吐（上下文传播需要在每个异步资源创建时做拷贝），Node 16+ 引入了 AsyncContextFrame 优化，性能已经大幅提升，但在超高 QPS 的热路径（例如每秒几十万次的短 Promise）里仍应做压测。工程实践上常见的坑还有：不要把 store 存成全局可变对象被多个请求共享、不要在 run 之外调用 getStore 造成 undefined、以及跨 worker_threads / 子进程时上下文不会自动传播，需要显式用 traceId 传参。\n\nDeno 完整兼容 node:async_hooks，因此同一套代码在 Node.js 与 Deno 中都能运行（Deno 中直接 import { AsyncLocalStorage } from \"node:async_hooks\"）。这个模式非常通用：除了 traceId，你还可以放 userId、locale、请求级缓存、事务对象（如 Prisma $transaction）等，配合日志库（pino 的 mixin）即可实现零侵入的结构化日志。",
       "codeExample": {
-        "language": "tsx",
-        "code": "// ============================================================\n// 1) app/actions.ts —— Server Action（运行在服务端）\n// ============================================================\n'use server'\n\nexport type FormState = {\n  status: 'idle' | 'success' | 'error'\n  message: string\n  errors: Record<string, string>\n}\n\n// useActionState 要求 action 的第一个参数是「上一次的 state」\nexport async function subscribe(\n  _prevState: FormState,\n  formData: FormData\n): Promise<FormState> {\n  const name = String(formData.get('name') ?? '').trim()\n  const email = String(formData.get('email') ?? '').trim()\n\n  // 服务端校验：永远不能省略，Server Action 是公开端点\n  const errors: Record<string, string> = {}\n  if (!name) errors.name = '姓名不能为空'\n  if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) errors.email = '邮箱格式不正确'\n\n  if (Object.keys(errors).length > 0) {\n    return { status: 'error', message: '请修正表单中的错误', errors }\n  }\n\n  // 模拟数据库 / 第三方 API 的耗时\n  await new Promise((r) => setTimeout(r, 800))\n\n  // 真实项目中可在这里调用 revalidatePath('/') 刷新缓存\n  return { status: 'success', message: `${name} 订阅成功！`, errors: {} }\n}\n\n\n// ============================================================\n// 2) app/components/SubmitButton.tsx —— 客户端组件\n//    useFormStatus 让按钮自己感知所属 form 的提交状态\n// ============================================================\n'use client'\n\nimport { useFormStatus } from 'react-dom'\n\nexport default function SubmitButton({ label = '提交' }: { label?: string }) {\n  const { pending } = useFormStatus() // 必须是 <form> 的后代组件\n\n  return (\n    <button\n      type=\"submit\"\n      disabled={pending}\n      aria-busy={pending}\n      style={{\n        padding: '8px 16px',\n        opacity: pending ? 0.6 : 1,\n        cursor: pending ? 'not-allowed' : 'pointer',\n      }}\n    >\n      {pending ? '提交中…' : label}\n    </button>\n  )\n}\n\n\n// ============================================================\n// 3) app/subscribe/page.tsx —— 客户端组件（持有表单状态）\n// ============================================================\n'use client'\n\nimport { useActionState } from 'react'\nimport { subscribe, type FormState } from '../actions'\nimport SubmitButton from '../components/SubmitButton'\n\nconst initialState: FormState = { status: 'idle', message: '', errors: {} }\n\nexport default function SubscribePage() {\n  const [state, formAction, isPending] = useActionState(subscribe, initialState)\n\n  return (\n    <form action={formAction} style={{ display: 'grid', gap: 12, maxWidth: 360 }}>\n      <h1 style={{ margin: 0 }}>订阅周报</h1>\n\n      {/* 提交结果提示：role=\"status\" 让屏幕阅读器播报 */}\n      {state.message && (\n        <p role=\"status\" style={{ color: state.status === 'error' ? 'crimson' : 'green' }}>\n          {state.message}\n        </p>\n      )}\n\n      <label style={{ display: 'grid', gap: 4 }}>\n        姓名\n        <input name=\"name\" placeholder=\"你的名字\" />\n        {state.errors.name && <small style={{ color: 'crimson' }}>{state.errors.name}</small>}\n      </label>\n\n      <label style={{ display: 'grid', gap: 4 }}>\n        邮箱\n        <input name=\"email\" type=\"email\" placeholder=\"you@example.com\" />\n        {state.errors.email && <small style={{ color: 'crimson' }}>{state.errors.email}</small>}\n      </label>\n\n      {/* isPending 来自 useActionState，可用于禁用整张表单 */}\n      <fieldset disabled={isPending} style={{ border: 0, padding: 0, margin: 0 }}>\n        <SubmitButton label=\"订阅\" />\n      </fieldset>\n    </form>\n  )\n}\n",
-        "explanation": "第一部分 app/actions.ts：'use server' 出现在文件顶部，表示本文件所有导出都是 Server Action。subscribe(prevState, formData) 的签名是 useActionState 的约定——第一个参数接收上一次返回的 state，第二个参数是表单自动传入的 FormData。函数返回一个 FormState 对象而不是抛异常，这样校验错误会留在表单内展示，而不会跳到 error.tsx。\n\n第二部分 SubmitButton.tsx：这是一个纯粹的客户端组件，通过 useFormStatus() 解构出 pending。因为它是 <form> 的后代，React 会自动把「所属表单是否正在提交」注入进来，父组件无需传递任何 props。同时禁用按钮并设置 aria-busy，避免重复提交并兼顾无障碍。\n\n第三部分 SubscribePage.tsx：useActionState(subscribe, initialState) 返回三元组 [state, formAction, isPending]。把 formAction 直接赋给 <form action>，React 会负责提交、序列化、调用服务端并把返回值写回 state。state.errors 用来渲染字段级错误，isPending 用来禁用整个 fieldset，覆盖了表单的三种状态而没有一行 fetch / useState 样板代码。注意 isPending 与 SubmitButton 内部的 pending 在这里是一致的，前者用于表单级禁用，后者用于按钮级 UI。"
+        "language": "JavaScript (Node.js 18+ / Deno)",
+        "code": "// trace-context.mjs\n// 使用 AsyncLocalStorage 实现请求级上下文（traceId / 计时 / 并发隔离）\nimport { AsyncLocalStorage } from \"node:async_hooks\";\n// Deno 同样可用：import { AsyncLocalStorage } from \"node:async_hooks\";\n\n// 1. 创建一个上下文容器，泛型上通常存 { traceId, userId?, startedAt }\nconst als = new AsyncLocalStorage();\n\n// 2. 在任意深度读取上下文，无需传参\nexport function getTraceId() {\n  return als.getStore()?.traceId ?? \"unknown\";\n}\n\nexport function logger(msg) {\n  console.log(`[${getTraceId()}] ${msg}`);\n}\n\n// 3. 模拟一个耗时的异步调用链（Service 层）\nasync function queryUser(id) {\n  logger(`query user ${id}`);\n  await new Promise((r) => setTimeout(r, 30)); // 模拟 DB IO\n  return { id, name: \"Alice\" };\n}\n\n// 4. 模拟并发上报（互不干扰）\nasync function reportToApm() {\n  await new Promise((r) => setTimeout(r, 10));\n  logger(\"send metrics to APM\");\n}\n\nasync function writeAuditLog() {\n  logger(\"write audit log\");\n}\n\n// 5. 请求入口：用 als.run 建立上下文作用域\nasync function handleRequest(reqId) {\n  const traceId = `trace-${reqId}`;\n  return als.run({ traceId, startedAt: Date.now() }, async () => {\n    logger(\"request start\");\n\n    const user = await queryUser(reqId);\n\n    // 并行任务各自继承上下文，不会串号\n    await Promise.all([writeAuditLog(), reportToApm()]);\n\n    const cost = Date.now() - als.getStore().startedAt;\n    logger(`request done in ${cost}ms, user=${user.name}`);\n    return user;\n  });\n}\n\n// 6. 并发处理两个请求，验证上下文隔离\nawait Promise.all([handleRequest(1), handleRequest(2)]);\n\n/*\n预期输出（顺序可能交错，但 traceId 一定正确配对）：\n[trace-1] request start\n[trace-2] request start\n[trace-1] query user 1\n[trace-2] query user 2\n[trace-1] write audit log\n[trace-2] write audit log\n[trace-1] send metrics to APM\n[trace-2] send metrics to APM\n[trace-1] request done in ~31ms, user=Alice\n[trace-2] request done in ~31ms, user=Alice\n*/",
+        "explanation": "第 1 段：AsyncLocalStorage 实例是模块级单例，整个应用共用一个容器，但每个请求在 run 作用域内拿到的是独立的 store 快照。\n第 2 段：getTraceId() 不接收任何参数，直接从 ALS 读取。这正是该模式的价值——工具函数签名保持干净。\n第 5 段：als.run(store, fn) 的第一个参数是上下文数据，第二个参数是回调。回调里所有 await 之后的代码、派生的 Promise 与定时器，都能读到同一个 store。注意 run 会把 fn 的返回值原样返回，所以可以 await als.run(...) 直接拿结果。\n第 6 段：两个请求并发执行，queryUser 内部各自 await 30ms，日志交错输出，但每条日志的 traceId 都来自各自请求的 store，证明上下文做到了按异步链隔离。\n工程提示：在实际项目中，通常把它封装成 middleware，例如 app.use((ctx, next) => als.run({ traceId: ctx.requestId }, next))，并配合 pino 的 mixin 自动注入 traceId。"
       },
       "keyPoints": [
-        "'use server' 写在文件顶部则该文件所有导出为 Server Action；写在函数体顶部则仅该函数为 Server Action",
-        "useActionState(action, initialState) 返回 [state, formAction, isPending]，action 的第一个参数是上一次的 state",
-        "useFormStatus() 只能在 <form> 的后代组件中调用，返回 { pending, data, method, formAction }",
-        "业务校验错误应通过返回值（联合类型）返回，而不是 throw —— 抛异常会命中 error.tsx 边界",
-        "服务端必须重新做完整校验；Server Action 是公开可调用的 RPC 端点，永远不要信任客户端输入"
+        "als.run(store, fn) 创建显式上下文作用域，作用域内所有异步派生任务都能通过 als.getStore() 读到 store",
+        "上下文按异步调用链自动传播，Promise.all 并发任务之间互相隔离，不会串号",
+        "优先使用 run 而非 enterWith：后者作用域边界模糊，在中间件链中容易污染后续逻辑",
+        "als.getStore() 在作用域外返回 undefined，务必做兜底处理，避免运行时 TypeError",
+        "跨 worker_threads / child_process 时上下文不传播，需显式传递 traceId；超高 QPS 场景建议压测 AsyncContextFrame 开销",
+        "Node.js 与 Deno 均支持 node:async_hooks，同一套上下文封装可直接复用"
       ],
       "exercise": {
-        "description": "实现一个「Newsletter 订阅表单」：包含 name 与 email 两个字段，提交后由 Server Action 校验（name 非空、email 符合格式），失败时在对应字段下方显示错误，成功时显示欢迎语并清空表单（提示：可用 key={state.message} 重置表单或在成功后用 form.reset()）。提交过程中按钮显示「提交中…」并禁用，且整个表单不可编辑。",
-        "hint": "把 action 设计成 (prev: FormState, formData: FormData) => Promise<FormState>，返回 { status, message, errors } 三元结构。按钮组件单独抽出来用 useFormStatus，表单级禁用用 useActionState 返回的 isPending。若要清空表单，可在提交成功后给 <form> 加 key 实现卸载重挂载。",
+        "description": "把 AsyncLocalStorage 封装成一个可复用的 runWithTrace() 工具，并接入一个真实 HTTP 服务：为每个请求生成 uuid 作为 traceId，在处理函数的任意深度（包括一个 50ms 的模拟慢查询和一个并发的日志写入）都能打印出 traceId；最后输出包含总耗时的结构化日志。",
+        "hint": "导出 runWithTrace(meta, fn) 内部调用 als.run({ ...meta, startedAt: Date.now() }, fn)；HTTP 层在 Node 中用 http.createServer、在 Deno 中用 Deno.serve 包一层即可。日志函数里用 als.getStore()?.traceId 兜底为 'no-trace'。注意 runWithTrace 必须 return als.run(...)，否则拿不到处理函数的结果。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全 SubmitButton，使其能感知所属 form 的提交状态。",
-            "codeContext": "function SubmitButton() {\n  const { ______ } = useFormStatus()\n  return <button disabled={______}>{______ ? '提交中…' : '提交'}</button>\n}",
+            "question": "补全代码，使 doWork() 与 log() 在同一个上下文作用域中执行，并能读到 traceId。",
+            "codeContext": "const als = new AsyncLocalStorage();\n\nasync function handle() {\n  return als.______({ traceId: 't-1' }, async () => {\n    await doWork();\n    console.log(als.getStore().traceId);\n  });\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "function SubmitButton() {\n  const { ",
+                "content": "return als.",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +41,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[选择方法名]",
                 "options": [
-                  "pending",
-                  "isPending",
-                  "isLoading",
-                  "status"
+                  "run",
+                  "enterWith",
+                  "exit",
+                  "disable"
                 ],
-                "correctAnswer": "pending"
+                "correctAnswer": "run"
               },
               {
                 "type": "text",
-                "content": " } = useFormStatus()\n  return <button disabled={pending}>{pending ? '提交中…' : '提交'}</button>\n}",
+                "content": "({ traceId: 't-1' }, async () => { /* ... */ });",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "pending",
-            "explanation": "useFormStatus() 返回的对象里表示进行中状态的字段名为 pending（可选字段还有 data、method、formAction）。useActionState 返回的三元组里那个才叫 isPending，两者不要混淆。"
+            "correctAnswer": "run",
+            "explanation": "als.run(store, fn) 是建立上下文作用域的标准方式，并且会返回 fn 的返回值，因此可以 return/await 它。enterWith 是在当前位置替换上下文，不接受回调、不会自动恢复原上下文；exit 与 disable 与本题语义无关。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 'use server' 指令，下列说法正确的是？",
-            "codeContext": "// A\n'use server'\nexport async function createUser() { /* ... */ }\n\n// B\nexport async function createUser() {\n  'use server'\n  /* ... */\n}\n\n// C\n'use client'\nexport async function createUser() {\n  'use server'\n  /* ... */\n}",
+            "question": "关于 AsyncLocalStorage，下列说法正确的是？",
+            "codeContext": "const als = new AsyncLocalStorage();\nals.run({ id: 'A' }, async () => {\n  await someIo();\n  await Promise.all([task1(), task2()]);\n});",
             "segments": null,
             "options": [
-              "A 和 B 都合法：写在文件顶部表示整文件导出都是 Server Action，写在函数体顶部表示仅该函数是 Server Action",
-              "只有 A 合法，'use server' 只能出现在文件顶部",
-              "只有 B 合法，'use server' 只能出现在函数体内",
-              "C 也合法，'use client' 与 'use server' 可以在同一文件中混合使用"
+              "上下文只在同步代码中有效，await 之后就取不到了",
+              "Promise.all 中的每个任务都会继承调用点的 store，彼此之间不会互相覆盖",
+              "getStore() 在没有上下文时会抛出异常，必须 try/catch",
+              "上下文会自动跨 worker_threads 传播"
             ],
-            "correctAnswer": "A 和 B 都合法：写在文件顶部表示整文件导出都是 Server Action，写在函数体顶部表示仅该函数是 Server Action",
-            "explanation": "'use server' 是模块级或函数级指令，两种位置都有效。而 C 是错误的：'use client' 与 'use server' 不能混用在同一个模块中，一个模块要么是 Client 模块要么是 Server 模块；正确做法是把 Server Action 放到单独的 server 文件，由客户端组件 import 后调用。"
+            "correctAnswer": "Promise.all 中的每个任务都会继承调用点的 store，彼此之间不会互相覆盖",
+            "explanation": "ALS 的上下文沿异步资源（Promise、Timer、IO 句柄）自动传播，所以 await 之后依然有效；并行任务各自持有快照，互不干扰。getStore() 在无上下文时返回 undefined 而非抛错；worker_threads 之间的上下文不自动传播，需要显式传参。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "页面渲染后（且未点击任何按钮），第一个按钮的文案是什么？",
-            "codeContext": "'use client'\nimport { useFormStatus } from 'react-dom'\n\nfunction DangerButton() {\n  const { pending } = useFormStatus()\n  return <button>{pending ? '提交中…' : '提交'}</button>\n}\n\nexport default function Page() {\n  return (\n    <div>\n      <DangerButton />\n      <form action={save}>\n        <input name=\"title\" />\n        <button type=\"submit\">保存</button>\n      </form>\n    </div>\n  )\n}",
+            "question": "以下代码的输出顺序是什么？",
+            "codeContext": "const als = new AsyncLocalStorage();\n\nals.run({ id: 'A' }, () => {\n  setTimeout(() => console.log(als.getStore().id), 0);\n  Promise.resolve().then(() => console.log(als.getStore().id));\n});\n\nals.run({ id: 'B' }, () => {\n  console.log(als.getStore().id);\n});",
             "segments": null,
             "options": [
-              "提交",
-              "提交中…",
-              "抛出错误：useFormStatus must be used inside a form",
-              "undefined"
+              "A → A → B",
+              "B → A → A",
+              "A → B → A",
+              "B → B → A"
             ],
-            "correctAnswer": "提交",
-            "explanation": "useFormStatus 只会追踪「最近的祖先 <form>」的提交状态。DangerButton 渲染在 form 之外，因此它看到的 pending 永远是 false，即使点击「保存」时它也仍是「提交」，并不会抛异常。这正是必须把 SubmitButton 放进 <form> 内部的原因——也是面试常考的陷阱。"
+            "correctAnswer": "B → A → A",
+            "explanation": "两个 run 的回调都是同步执行的，因此 console.log('B') 立即输出。随后微任务队列先于宏任务：Promise.then 回调输出 'A'，最后 setTimeout 回调输出 'A'。两个 run 的上下文各自独立传播，即使交错执行也不会串号。"
           }
         ]
       }

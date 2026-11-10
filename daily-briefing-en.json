@@ -1,8 +1,8 @@
 {
- "date": "2026-11-09",
+ "date": "2026-11-10",
  "briefing": {
-  "date": "2026-11-09",
-  "quote": "As agents begin to take over screens and files, what is truly scarce is no longer model capability, but the taste required to engineer that capability into real-world deployment.",
+  "date": "November 10, 2026",
+  "quote": "When agents start signing contracts, writing code, and managing your bills for you, what becomes truly scarce is no longer compute power, but judgment.",
   "sections": [
    {
     "id": "openclaw",
@@ -10,186 +10,194 @@
     "icon": "🦞",
     "articles": [
      {
-      "id": "brief-001",
-      "title": "OpenClaw v2026.11 Released: Native Multi-Agent Orchestration, Gateway Adds Multi-Account Isolation",
-      "summary": "The new release builds multi-agent orchestration into the core, while the Gateway introduces tenant-level account isolation and significantly improves long-running task stability.",
-      "detail": "The OpenClaw community has released version 2026.11, with a major overhaul of multi-agent orchestration capabilities. Users can now declaratively orchestrate primary agents, sub-agents, and toolchains within a single workspace, without relying on external scripting for scheduling. The Gateway layer adds multi-account and multi-tenant isolation, supporting OAuth sessions and credentials managed at the agent level, resolving earlier pain points around shared tokens leaking across accounts. The team has also optimized heartbeat mechanisms and disconnection detection, cutting the average interruption rate of long-running automated tasks — such as scheduled inspections and daily report generation — by roughly 40 percent.",
-      "impact": "A genuine win for personal automation and small-team private deployments: account isolation makes sharing a single host safer for multiple users, while native multi-agent orchestration significantly lowers the barrier to building custom workflows.",
-      "source": "OpenClaw Official GitHub Releases"
+      "id": "brief-oc-001",
+      "title": "OpenClaw 0.14 Ships with Native Multi-Agent Workflow Orchestration",
+      "summary": "The new release introduces an Agent Graph orchestrator that lets users visually chain multiple agents to complete complex tasks.",
+      "detail": "OpenClaw officially released version 0.14 on November 9, with the core update being the Agent Graph orchestration engine. Users can combine nodes such as \"browser agent,\" \"file agent,\" and \"code agent\" via YAML or the WebUI according to conditional branching, parallel execution, and rollback logic, forming reusable workflow templates. The team also launched a Workflow Hub, where the community has already uploaded 300+ templates covering scenarios such as daily report generation, repository inspection, and customer support tickets. Compared with single-agent loops, the orchestration mode cuts failure rates on long tasks by around 40%.",
+      "impact": "For individual developers and small to mid-sized teams, this lowers the barrier to \"getting real work done with AI,\" shifting the focus from prompt tuning to process design. In the short term, it could drive workflow templates into a new form of content and commerce.",
+      "source": "OpenClaw GitHub Release Notes"
      },
      {
-      "id": "brief-002",
-      "title": "Skill Store Ecosystem Tops 10,000: 'File Manager' and 'Browser Driver' Become Must-Have Installs",
-      "summary": "The official skill repository has surpassed 10,000 total skills, with file management, browser automation, and scheduling leading the download charts.",
-      "detail": "OpenClaw's skill ecosystem passed the 10,000 mark this week, with third-party skills built via the Skill CLI and template generator accounting for more than 60 percent. Download charts show that file management (smart organization and deduplication), browser driving (Playwright-powered web operations), and scheduling and reminders are the most frequently installed categories. A clear trend toward skill bundling has also emerged in the community — multiple atomic skills are being combined into scenario-based suites, such as a 'cross-border e-commerce operations suite' that covers product selection, listing, and customer-service script generation in a single install.",
-      "impact": "The maturity of the skill marketplace signals OpenClaw's evolution from a geek toy into a distributable productivity platform, and scenario-based suites could spawn the first wave of independent developers monetizing skills.",
-      "source": "OpenClaw Skill Store Weekly Data Report"
+      "id": "brief-oc-002",
+      "title": "OpenClaw Sandbox Isolation Wins Security Audit Approval as Enterprise Rollouts Accelerate",
+      "summary": "Third-party security firm CertiK completed an audit of OpenClaw's sandbox execution layer and found no high-risk vulnerabilities.",
+      "detail": "Agent privilege escalation and prompt injection have long been the biggest concerns for enterprise adoption. OpenClaw's latest version uses a dual-layer sandbox based on namespaces plus seccomp, and introduces a \"permission declaration + secondary user confirmation\" mechanism for tool calls. CertiK's audit report confirmed that its filesystem and network access controls effectively block 27 common privilege-escalation paths. Several mid-sized SaaS vendors have said they plan to pilot deployments in internal customer service and operations scenarios within Q4.",
+      "impact": "Security validation will significantly speed OpenClaw's transition from a \"geek toy\" to an \"enterprise-ready purchasable solution,\" and also provides a reference point for the commercialization path of open-source agent frameworks.",
+      "source": "CertiK Audit Announcement / OpenClaw Official Blog"
      },
      {
-      "id": "brief-003",
-      "title": "Local Model Integration Improved: Lower Latency on llama.cpp and MLX Backends, Boosting On-Device Agent Usability",
-      "summary": "The team has optimized local inference backend scheduling, markedly improving long-context response latency on Apple Silicon, with privacy-sensitive use cases benefiting most.",
-      "detail": "OpenClaw has rewritten its local inference adaptation layer in the new release, introducing context chunk reuse and KV Cache warm-up strategies for the llama.cpp and MLX backends. Community tests show that running local models with a 32K context on MacBook Pro (M-series chips) yields an average first-token latency reduction of over 30 percent, with more stable memory usage during extended conversations. The team has also added a 'pure local mode' toggle that can fully disable outbound network requests, meeting the needs of healthcare, legal, and finance scenarios where cross-border data transfer is sensitive.",
-      "impact": "On-device agent usability has been dramatically raised, allowing privacy-sensitive industries to deploy agent automation on internal networks for the first time without sacrificing experience.",
-      "source": "OpenClaw Technical Blog"
+      "id": "brief-oc-003",
+      "title": "Community Buzz: ClawSurf Plugin for Deep OpenClaw-Browser Integration Enters Public Beta",
+      "summary": "A third-party team has released the ClawSurf browser extension, letting agents take over tabs to handle price comparisons, form filling, and subscription cancellations.",
+      "detail": "ClawSurf exposes the browser session to a local OpenClaw instance via the Chrome DevTools Protocol, supporting high-frequency scenarios such as \"select text to invoke,\" \"batch tab summarization,\" and \"auto-cancelling free-trial subscriptions.\" Downloads passed 120,000 in the first week of public beta, though some users reported instability in multi-factor login scenarios. The developer said version 1.0 will add visual action replay and one-click undo to ease concerns about the \"AI clicking around randomly.\"",
+      "impact": "The browser is the last mile for personal data and activity. Once such integrations mature, they could reshape traffic entry points in e-commerce shopping guides, ticket price comparison, and membership management.",
+      "source": "ClawSurf Official Website / X Platform Discussions"
      }
     ]
    },
    {
     "id": "skills",
-    "title": "Top Skills Picks",
-    "icon": "🧩",
+    "title": "Top Skills in Demand",
+    "icon": "🛠️",
     "articles": [
      {
-      "id": "brief-004",
-      "title": "browser-operator v3: Visual Element Locating + Anti-Bot Countermeasures Lower the Bar for Web Automation",
-      "summary": "Adds a visual selector recorder and fingerprint spoofing strategies, enabling non-engineers to reliably drive complex web tasks.",
-      "detail": "The browser-operator skill has been upgraded to v3, with its headline feature being visual element locating: users click on target areas in the browser, and the skill automatically generates robust selectors and writes them back into the task script, so page redesigns no longer break it. It also ships with built-in anti-bot countermeasures including browser fingerprint disguise, proxy rotation, and human-like interaction rhythm simulation, markedly improving success rates on heavily validated sites such as e-commerce backends and government portals. Community feedback shows that for bulk form filling and cross-site data comparison scenarios, script maintenance costs have dropped by more than half.",
-      "impact": "The stability of web-operation skills directly determines whether Agents can take on real business work. v3 could make 'the browser as the interface' the mainstream path for personal automation.",
-      "source": "Skill Store Trending Chart"
+      "id": "brief-sk-001",
+      "title": "MCP Tool Protocol Expertise Surges in Demand, Hottest Skill of the Quarter",
+      "summary": "Recruitment platform data shows that roles requiring MCP (Model Context Protocol) development experience command a 35% salary premium.",
+      "detail": "As mainstream clients including Claude, OpenClaw and Cursor achieve full MCP compatibility, companies are racing to wrap internal ERP, CRM and database systems into standard tool interfaces. A skilled MCP engineer can complete in two weeks what traditional API gateways typically take a month to deliver. Multiple training providers in China have launched crash courses, but industry insiders warn: real competitiveness lies in \"domain modeling ability,\" not the protocol itself.",
+      "impact": "A clear transition window for developers; for enterprises, mastering MCP means faster integration of legacy systems into the agent ecosystem, building a data-asset moat.",
+      "source": "Lagou / LinkedIn Hiring Trends Report"
      },
      {
-      "id": "brief-005",
-      "title": "doc-forge Document Factory Skill Goes Viral: One-Click Markdown to PPT/Contracts/Research Reports",
-      "summary": "Built around structured templates, it outputs multiple document formats directly from Markdown, covering high-frequency scenarios like presentations, contracts, and research reports.",
-      "detail": "The doc-forge skill has recently climbed into the top three of the productivity category download chart. It breaks document generation into a three-stage pipeline of 'structured outline — template filling — style rendering'; users only need to supply Markdown material to produce editable PPTX decks, DOCX contract templates, or industry research report PDFs. The skill comes with dozens of business templates and a compliance clause library, and supports brand color and logo injection. Many freelancers report that deliverables that used to take half a day can now get a first draft in twenty minutes.",
-      "impact": "Decoupling 'content creation' from 'layout and delivery' directly disrupts the low-end design outsourcing and document ghostwriting market, while also boosting individuals' professional delivery capability.",
-      "source": "Community Picks"
+      "id": "brief-sk-002",
+      "title": "Evals Engineering Becomes a Standard Role on AI Teams",
+      "summary": "How to prove AI outputs are reliable has become more valuable than how to make AI smarter — hence the rise of the evals engineer.",
+      "detail": "As agents enter high-stakes domains such as finance, healthcare and legal services, \"quantifiable reliability\" has become the core of procurement decisions. Evals engineers build test suites, design red-team cases, monitor production drift and produce quality reports. The role requires a combination of statistics, domain knowledge and prompt engineering. OpenAI, Anthropic and major Chinese tech firms have all listed the position as a standalone title in their job postings.",
+      "impact": "Evals capability will replace \"hyperparameter-tuning mysticism\" and become the entry ticket for AI products targeting the B2B market — also a high-ROI path for individual developers to build professional barriers.",
+      "source": "AI Product Manager Community / Major tech company career pages"
      },
      {
-      "id": "brief-006",
-      "title": "focus-metrics Skill: Agent Workload Visualization and Cost Accounting Emerge as New Essentials",
-      "summary": "Automatically tracks Token consumption, task duration, and success rate, helping users optimize prompts and skill combinations.",
-      "detail": "As more and more users integrate Agents into their daily work, the key question has become 'how much time and money has it actually saved me?'. The focus-metrics skill parses Gateway logs to automatically output task duration, Token costs, tool-call distribution, and failure-reason categories, generating week-over-week comparison charts. Users can quickly identify expensive prompts, retire inefficient skills, and even set 'automation ROI' KPIs for their teams. Within three weeks of launch, the skill has been adopted as standard configuration by multiple remote teams.",
-      "impact": "Moving automation from 'feels useful' to 'measurable' is a necessary step for Agents to enter enterprise workflows, and it also lays the data foundation for future paid subscriptions.",
-      "source": "Skill Store Editor's Choice"
+      "id": "brief-sk-003",
+      "title": "On-Premise Deployment Skills Make a Comeback: Quantization and Edge Inference Emerge as New Blue-Collar Dividends",
+      "summary": "Companies are returning to private, on-premises deployment for data compliance reasons, creating a talent shortage in vLLM, llama.cpp and domestic chip adaptation.",
+      "detail": "Tightening regulation combined with inference cost pressure is pushing more companies to deploy 7B–72B parameter models on their own servers or edge devices. Demand concentrates on model quantization (GPTQ/AWQ/GGUF), VRAM optimization, adaptation to domestic accelerators (such as Ascend and Cambricon), and inference service monitoring. Related roles are concentrated in manufacturing, energy and government sectors — stable jobs that are hard for AI to replace.",
+      "impact": "This offers a pragmatic path for engineers not chasing frontier research, while giving China's domestic compute ecosystem real-world deployment scenarios to feed back into.",
+      "source": "InfoQ Technology Radar / Industry headhunter interviews"
      }
     ]
    },
    {
     "id": "ios",
-    "title": "iOS App Updates",
+    "title": "iOS App Trends",
     "icon": "📱",
     "articles": [
      {
-      "id": "brief-007",
-      "title": "Apple Expands App Intents and Background Execution: iOS Apps Can Be Safely Invoked by Agents",
-      "summary": "The system-level intent framework opens up more capabilities, letting third-party apps declare tool interfaces for agents to call while retaining permission controls.",
-      "detail": "Apple continues to deepen its App Intents framework, allowing developers to declare structured tool interfaces for app features that Siri and third-party agents can invoke with user authorization, while preserving fine-grained permissions and foreground confirmation. Paired with new background execution quotas, apps can complete longer automation flows—such as organizing photo libraries or batch-processing files—after explicit user consent. The developer community broadly views this as a key move in Apple's 'system-level agent platform' strategy, expected to address the previous limitation that iOS automation could only rely on Shortcuts.",
-      "impact": "Agent capabilities in the iOS ecosystem are catching up. Developers who adapt App Intents early will gain distribution advantages in the race for agent entry points.",
+      "id": "brief-ios-001",
+      "title": "Apple Intelligence Opens More On-Device APIs, Opening New Opportunities for Indie Developers",
+      "summary": "The iOS 26.2 beta expands access to on-device large language models, supporting custom App Intents and local RAG retrieval.",
+      "detail": "The new APIs let developers call system-level language models for tasks such as summarization, rewriting, and classification without uploading user data, and build in-app documents into a local vector index for retrieval. Day One and Craft, among the first note-taking apps to adopt the changes, have shipped a \"Semantic Search\" feature. Apple stresses that all inference runs under Secure En Enclave protection and is not used for cloud training.",
+      "impact": "The combination of privacy and intelligence is becoming a core selling point for iOS apps. Small and mid-sized developers can bypass LLM subscription costs and ship lightweight yet high-frequency paid features.",
       "source": "Apple Developer Release Notes"
      },
      {
-      "id": "brief-008",
-      "title": "Beyond Subscriptions: Pay-Per-Use 'AI Features' Spread Rapidly Across the iOS Ecosystem",
-      "summary": "More productivity apps are adopting a hybrid model of base subscription plus AI usage billing, reshaping how users pay.",
-      "detail": "Driven by fluctuations in inference costs, iOS apps in categories such as note-taking, video editing, and photo retouching are shifting to hybrid pricing: a base subscription for core features, with AI capabilities billed per use or per token. New usage-based in-app purchases and consumable quota packs in StoreKit have made this model easier to implement. Developers report that the structure significantly reduces the 'subsidizing heavy users' problem, while light users can also try AI features at a lower cost. Some apps have introduced a 'local-model-first' strategy, keeping simple tasks on-device to cut costs.",
-      "impact": "Pricing logic is shifting from 'buying features' to 'buying capabilities,' raising the bar for developers' cost accounting and pricing design.",
-      "source": "App Store Developer Community"
+      "id": "brief-ios-002",
+      "title": "Subscription Fatigue Spreads as \"Lifetime Purchase + AI Add-On\" Model Returns to the App Store",
+      "summary": "Several leading utility apps have switched to one-time purchases with optional AI packs, lifting paid conversion by nearly 20%.",
+      "detail": "Data from research firm Appfigures shows that 18% of productivity apps moved from pure subscriptions to lifetime purchases in Q3 2026. Apps such as PDF Expert and Bear have introduced hybrid models combining a base lifetime purchase with pay-per-use AI credits, and users are more willing to pay when costs are controllable. Meanwhile, Apple has added AI usage metering tools to App Store Connect, making granular billing easier for developers.",
+      "impact": "Business models are returning to rationality, benefiting product teams with a long-term mindset. It also eases user resistance to the \"AI tax\" and lifts overall willingness to pay across the ecosystem.",
+      "source": "Appfigures Report / MacStories"
      },
      {
-      "id": "brief-009",
-      "title": "Indie Developer Hit: Lightweight Agent Diary App Ranks in Top 10 Productivity Charts Across Multiple Countries",
-      "summary": "Built around voice memos, auto-structuring, and weekly report generation, it offers a minimalist 'log your life with zero effort' experience.",
-      "detail": "A diary app from a three-person team has cracked the top 10 of productivity charts in the US, Japan, and China with voice note-taking, automatic structured archiving, and weekend-generated recaps. The product deliberately strips things down: no social features, no template marketplace—just solving the single problem of 'wanting to record but not wanting to write.' Its technical approach uses on-device ASR plus a lightweight model to extract event entities, only calling a cloud LLM when generating weekly reports, balancing privacy and cost. The team's published retention data shows second-month retention more than double the industry average.",
-      "impact": "Demonstrates that amid homogenized AI features, 'extreme focus on a single point plus controlled costs' remains a viable playbook for independent developers.",
-      "source": "App Store Chart Watch"
+      "id": "brief-ios-003",
+      "title": "Vision Pro 2 Rumors Swirl Again as Developers Bet on \"Spatial Productivity\" Apps",
+      "summary": "Supply chain sources say the new model will be 30% lighter with a lower price tag, and several spatial work apps have begun rewrites.",
+      "detail": "According to The Information and analyst Ming-Chi Kuo, the second-generation Vision Pro will use lighter composite materials and an M5 chip, with a lower-cost version targeting education and medical training. In the developer community, projects focused on multiplayer collaboration whiteboards, 3D data visualization, and surgical simulation have grown 60% quarter on quarter. Some teams are validating interaction paradigms on iPadOS first before porting over, to reduce trial-and-error costs.",
+      "impact": "If pricing and wearing comfort improve, spatial computing will shift from an early-adopter novelty to a vertical-industry tool, with education, healthcare, and industrial design the first sectors to find product-market fit.",
+      "source": "The Information / Ming-Chi Kuo Research Notes"
      }
     ]
    },
    {
     "id": "startups",
-    "title": "Tech Startups",
+    "title": "Rising Tech Startups",
     "icon": "🚀",
     "articles": [
      {
-      "id": "brief-010",
-      "title": "Startups Bet Big on 'Agent Infrastructure': Observability and Access Governance Become Funding Hotspots",
-      "summary": "Early investment is flowing into tools for agent auditing, permissions, cost control, and compliance, as the sector begins to specialize.",
-      "detail": "Entering Q4, infrastructure startups building for AI agents have been raising seed and A-round funding at a steady clip, concentrated in three areas: agent behavior observability and replay auditing, cross-system permission and credential governance, and inference cost scheduling with caching optimization. Investors broadly believe that as enterprises connect agents to real business workflows, 'who did what under which permissions' will become a compliance necessity. No clear leader has emerged yet, and most startups are acquiring customers quickly through an open-source core plus commercial hosting model.",
-      "impact": "The next wave of upside from the agent application boom is shifting toward tooling and governance layers, giving teams with security and compliance backgrounds a first-mover edge.",
-      "source": "Venture Capital Database Weekly"
+      "id": "brief-st-001",
+      "title": "Shenzhen Startup Lingxi Embodied Completes Series A to Build Home Service Robots",
+      "summary": "The company raised RMB 300 million, with its dual-arm robot capable of long-horizon household chores such as folding laundry and meal prep.",
+      "detail": "Lingxi Embodied's core edge lies in combining vision-language-action (VLA) models with proprietary tactile sensors, giving it a significantly higher success rate than the industry average at manipulating deformable objects. Its products are currently in beta testing in 200 households, completing an average of 12 household commands per day. Investors said they are bullish on its 'data flywheel' — long-tail data generated in home settings will further strengthen the model's generalization ability.",
+      "impact": "Embodied AI is moving from showroom demos into real homes, and supply chain and scenario data advantages will become a key differentiator for Chinese teams.",
+      "source": "36Kr / Company official announcement"
      },
      {
-      "id": "brief-011",
-      "title": "New Player Enters On-Device Inference Chip Race: Targets Low-Power, Long-Running Use Cases",
-      "summary": "A new generation of edge AI chips focuses on always-on inference and low-power standby, targeting the wearables and industrial terminal markets.",
-      "detail": "A low-profile chip startup has unveiled its first edge inference chip, claiming half the power consumption of comparable solutions in always-on scenarios, with native acceleration for sparsified and quantized models. Its target market is not training clusters, but wearables, industrial sensors, and home terminals that require long standby periods with occasional bursts of inference. The company has signed sampling agreements with several consumer electronics manufacturers and plans mass production in the second half of next year. Industry observers note that the falling marginal cost of on-device compute will directly determine whether personal agents can truly become 'always with you.'",
-      "impact": "Advances in on-device compute will move more agent capabilities from the cloud to local devices, reshaping the balance between privacy, latency, and cost.",
-      "source": "Industry Media"
+      "id": "brief-st-002",
+      "title": "AI Legal Assistant LitiGate Tops RMB 100 Million ARR in One Year, Driven by Small and Mid-Size Firms",
+      "summary": "The product entered the market via contract review and case law search, with paying law firms surpassing 4,000.",
+      "detail": "LitiGate chose not to build a general-purpose legal large model, instead focusing on a vertical workflow for civil and commercial litigation: automatically deconstructing chains of evidence, drafting cross-examination outlines, and predicting win rates. Pricing is RMB 399 per seat per month, far below the cost of a human assistant. The founding team hails from top-tier law firms and NLP research backgrounds, with its legal knowledge base serving as the core moat. The company is now expanding into corporate legal departments.",
+      "impact": "Vertical AI applications have validated the 'specialized data + workflow' path as easier to monetize than general models, providing a template for other professional services sectors.",
+      "source": "GeekPark / Company funding release"
+     },
+     {
+      "id": "brief-st-003",
+      "title": "Open-Source Time-Series Database TideDB Raises $10 Million Seed Round, Targets AI Agent Logs",
+      "summary": "The project is purpose-built for agent trajectories and tool-call logs, delivering 5x higher write performance than general-purpose solutions.",
+      "detail": "As agent deployments scale, the trajectory data they generate — each step of reasoning, tool call, and feedback — poses new storage and query challenges. TideDB offers native support for nested structures and a semantic search interface, helping developers debug, evaluate, and conduct compliance audits. The project surpassed 20,000 GitHub stars within six months of launch and is already used in production by several AI infrastructure companies.",
+      "impact": "Agent infrastructure is emerging as a new investment hotspot, with a wave of opportunities expected around observability, evaluation, and cost-optimization tooling.",
+      "source": "TechCrunch / GitHub Trending"
      }
     ]
    }
   ]
  },
  "hotProjects": {
-  "date": "2026-11-09",
-  "quote": "Opportunities are never chased — they blow in naturally once you nail a real pain point.",
-  "summary": "Personal agent infrastructure has entered deep waters of real-world deployment; the skill ecosystem around agents, observability-driven governance, and on-device compute are today's hottest trends.",
+  "date": "2026-11-10",
+  "quote": "You don't chase the trend — when you perfect a small thing, the trend comes to you.",
+  "summary": "AI agents are moving from \"chatting\" to \"doing,\" and infrastructure for orchestration, security, and observability has become this week's biggest hotspot.",
   "projects": [
    {
     "id": "hot-001",
     "rank": 1,
-    "name": "OpenClaw Skill Store Ecosystem",
+    "name": "AgentFlow — Agent Workflow Orchestration Platform",
     "heat": "🔥🔥🔥🔥🔥",
     "heatLevel": 5,
-    "oneLiner": "The skill marketplace for open-source personal agents is becoming the distribution gateway for automation capabilities.",
-    "whyHot": "Total skills have passed 10,000, scenario-based kits are replacing single-point tools as the mainstream, and indie developers are starting to monetize skills. Native multi-agent orchestration and account isolation give OpenClaw the ability to enter small-team collaboration scenarios, with community activity and contributor counts doubling month after month.",
+    "oneLiner": "Assemble multiple AI agents on a visual canvas into reusable, enterprise-grade automated workflows.",
+    "whyHot": "The limits of single agents are becoming clear, and what enterprises really need are multi-agent systems that are \"orchestrable, rollback-capable, and auditable.\" AgentFlow has seized this inflection point while supporting major foundations like OpenClaw, Claude, and GPT. Dubbed \"Zapier for the AI era\" by developers, it has seen weekly active developers grow 210% over the past three months.",
     "highlights": [
-     "Composition and distribution model for scenario-based skill kits",
-     "Skill CLI and template generator lower the contribution barrier",
-     "Review, revenue-share, and trust mechanisms for the skill store",
-     "Privacy-focused deployment combined with local model backends"
+     "Dual-track model: open-source core engine plus commercial hosting",
+     "Built-in failure retries and human-in-the-loop approval nodes",
+     "A template marketplace has fostered an active developer revenue-sharing ecosystem",
+     "Adopted by multiple SaaS vendors as their internal AI automation standard"
     ],
-    "riskTip": "Skill homogenization and the lack of security audits are the main risks; installing skills from unknown sources can leak credentials, so the maturity of official review mechanisms needs attention."
+    "riskTip": "The moat at the orchestration layer is shallow. If underlying model vendors natively offer similar capabilities, standalone platforms could be squeezed out. Beware of premature platformization spreading resources too thin."
    },
    {
     "id": "hot-002",
     "rank": 2,
-    "name": "Agent Observability & Permission Governance Toolchain",
-    "heat": "🔥🔥🔥🔥",
-    "heatLevel": 4,
-    "oneLiner": "An infrastructure-layer opportunity solving 'what did the agent do, how much did it cost, and who can authorize it.'",
-    "whyHot": "Enterprise-grade agent deployments have entered a phase of compliance necessity. Audit replay, cross-system credential governance, and cost scheduling have all secured early-stage funding. There is no clear leader yet; the open-source-core-plus-managed-pay path has proven effective, and teams with security backgrounds are most favored by capital.",
+    "name": "Lingxi Embodied — Dual-Arm Home Service Robot",
+    "heat": "🔥🔥🔥🔥🔥",
+    "heatLevel": 5,
+    "oneLiner": "Bringing robots into kitchens and living rooms to handle long-horizon, complex household chores.",
+    "whyHot": "Embodied AI is seen as the next trillion-dollar frontier after large language models. Lingxi Embodied has achieved a key breakthrough in deformable object manipulation and is accumulating rare real-world data through in-home beta testing. On the capital side, its RMB 300 million Series A was quickly oversubscribed, lifting the upstream and downstream supply chain (motors, tactile sensors) along the way.",
     "highlights": [
-     "Agent behavior replay and compliance auditing",
-     "Fine-grained permissions and credential custody solutions",
-     "Inference cost scheduling and caching optimization",
-     "Open-source core plus commercial managed hosting business model"
+     "In-house tactile sensors with industry-leading success rates on deformable objects",
+     "A data flywheel from real home scenarios is taking shape",
+     "Unit cost kept under RMB 100,000, with mass-production potential",
+     "Founding team combines robotics and large-model expertise"
     ],
-    "riskTip": "Demand is highly dependent on the pace of enterprise agent adoption; if application rollout slows, toolchain companies risk falling into a 'product without orders' trap."
+    "riskTip": "Hardware mass-production ramp-up, after-sales maintenance costs, and the definition of home safety liability remain tough challenges; scaled profitability is unlikely in the short term."
    },
    {
     "id": "hot-003",
     "rank": 3,
-    "name": "On-Device Inference & Always-on AI Chips",
+    "name": "LitiGate — Vertical AI Legal Assistant",
     "heat": "🔥🔥🔥🔥",
     "heatLevel": 4,
-    "oneLiner": "Shrinking large models into wearables and edge devices with a focus on low-power, long-duration inference.",
-    "whyHot": "Privacy and latency demands are pushing compute to the edge. New entrants are carving into wearables and industrial terminals with always-on capabilities at half the power draw, and have already secured sampling with consumer electronics OEMs. Falling on-device costs will directly unlock the long-term 'personal agent you always carry' narrative.",
+    "oneLiner": "Replaces 60% of junior lawyers' repetitive work with specialized legal workflows.",
+    "whyHot": "It proved that \"vertical domain + workflow\" beats \"general-purpose LLMs\" as a commercialization path. Small and mid-sized law firms show strong willingness to pay and short decision chains. LitiGate broke RMB 100 million ARR within a year, becoming a benchmark case for vertical AI applications in 2026 and triggering a wave of similar projects in healthcare, tax, and finance.",
     "highlights": [
-     "Ultra-low-power design for always-on scenarios",
-     "Native acceleration for sparse and quantized models",
-     "Hardware-software co-design with on-device agent frameworks",
-     "Mass-production partnerships in wearables and industrial terminals"
+     "A legal knowledge base forms a data moat",
+     "Per-seat subscription with high ARPU and high renewal rates",
+     "Expanding from law firms into corporate legal departments opens a larger market",
+     "Compliance and explainability designed to meet regulatory requirements"
     ],
-    "riskTip": "Chip projects are long-cycle and capital-intensive; production yield and customer adoption timing are the biggest uncertainties, with revenue unlikely to materialize short-term."
+    "riskTip": "The legal industry is tightly regulated, and a major erroneous recommendation could trigger liability disputes. It also faces substitution pressure as general-purpose model capabilities improve."
    },
    {
     "id": "hot-004",
     "rank": 4,
-    "name": "Document & Browser Automation Workflows",
-    "heat": "🔥🔥🔥",
-    "heatLevel": 3,
-    "oneLiner": "Agents connecting directly to web pages and documents to deliver results, reshaping productivity for individuals and small teams.",
-    "whyHot": "Skills like browser-operator and doc-forge keep topping the charts; the 'browser as interface, Markdown as deliverable' approach has been validated by a large base of real users. Freelancers and remote teams show clear willingness to pay, making it the automation direction closest to revenue today.",
+    "name": "TideDB — Purpose-Built Time-Series Database for Agent Trajectories",
+    "heat": "🔥🔥🔥🔥",
+    "heatLevel": 4,
+    "oneLiner": "A high-performance open-source database built specifically for AI agent logs.",
+    "whyHot": "Once agents are deployed at scale, storing, retrieving, evaluating, and auditing trajectory data becomes a critical pain point. TideDB targets the \"AI observability\" track precisely with nested structures and semantic search. With 20,000 GitHub stars in six months and production deployments at multiple AI infrastructure companies, it is one of this week's most-watched open-source projects.",
     "highlights": [
-     "Visual selector recording and anti-scraping capabilities",
-     "Markdown-to-multi-format document pipelines",
-     "Delivery scenario packs for freelancers",
-     "Local execution and privacy protection as selling points"
+     "5x write performance gain over general-purpose time-series databases",
+     "Native support for tool-call and chain-of-thought data structures",
+     "Active open-source community with 200+ contributors",
+     "Aims at paid use cases in agent evaluation and compliance auditing"
     ],
-    "riskTip": "Heavy reliance on third-party site structures and policies; redesigns or tighter risk controls can break skills, requiring ongoing maintenance and attention to compliance boundaries."
+    "riskTip": "The database market has a winner-takes-all dynamic; beware of disruption from ClickHouse and PostgreSQL ecosystem plugins. The pace of commercialization is the key test."
    }
   ]
  }
