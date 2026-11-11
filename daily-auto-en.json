@@ -1,6 +1,6 @@
 {
- "date": "2026-11-10",
- "summary": "Chinese supercar clocks 503.17 km/h in testing to set a new top-speed record; Zeekr delivers over 320,000 units in the first 10 months, hitting its target early; 700 TOPS of intelligent-driving compute power now reaches the 120,000-yuan segment as advanced ADAS enters the fast lane of mass adoption.",
+ "date": "November 11, 2026",
+ "summary": "Chinese supercar stuns industry with 503.17 km/h top-speed record, BYD rolls out its 19 millionth new energy vehicle, and power batteries set to carry \"ID cards\" to strengthen traceability management.",
  "sections": [
   {
    "id": "headline",
@@ -9,11 +9,11 @@
    "articles": [
     {
      "id": "auto-001",
-     "title": "503.17km/h！中国超跑实测极速捅破天花板",
-     "summary": "中国品牌超跑实测跑出503.17km/h极速，刷新国产车型极速纪录。",
-     "detail": "据网易汽车报道，一款中国品牌超级跑车在实测中跑出503.17km/h的极速成绩，首次将国产车型的极速纪录推至500km/h以上区间。这一数据意味着中国高性能车型在动力总成、空气动力学、轮胎与高速稳定性等核心领域已具备与全球顶级超跑同台竞技的技术储备。此前500km/h级别的极速几乎被布加迪、科尼赛克、SSC等少数海外超跑品牌垄断，中国品牌长期缺席。业内认为，这一成绩背后是中国在电驱系统、碳纤维车身、高速热管理以及底盘标定上的系统性突破，也是中国汽车工业从\"性价比\"走向\"技术溢价\"的标志性事件。网易汽车称此次实测\"把天花板捅穿了\"。",
-     "impact": "极速纪录的突破不仅提升中国品牌的技术形象，也将带动碳纤维、高性能电驱、高速轮胎等高端供应链的国产化投入，为整个中国汽车品牌向上打开新的估值空间。",
-     "source": "网易汽车"
+     "title": "503.17 km/h: Chinese Supercar Shatters Top-Speed Record, Redefining the Performance Ceiling",
+     "summary": "A Chinese supercar hit a verified top speed of 503.17 km/h, shattering the domestic speed record and officially placing Chinese brands in the global elite-speed club.",
+     "detail": "According to NetEase Auto, a Chinese supercar model clocked a top speed of 503.17 km/h, directly breaking through the speed ceiling long considered out of reach for domestic models. Speeds above 500 km/h have long been the exclusive domain of the world's top supercar makers such as Bugatti, Koenigsegg and Hennessey. Chinese brands entering and holding their own in this territory signals system-level capability across core performance technologies, including powertrains, aerodynamics, chassis tuning, tires and braking. In recent years, Chinese automakers have pushed hard on new-energy performance, with several models delivering impressive results in track and top-speed tests. The 503.17 km/h result further proves that China's auto industry no longer competes solely on value and smart features, but is also globally competitive in extreme mechanical performance. Industry observers say the record will accelerate the trickling-down of high-performance technology to domestic models and reshape overseas consumers' long-held stereotype that Chinese cars are \"only good for basic commuting.\"",
+     "impact": "Breaks international brands' monopoly on the top-speed narrative, boosts Chinese automakers' brand premium in the global high-end market, and sets a new benchmark for future high-performance R&D.",
+     "source": "NetEase Auto"
     }
    ]
   },
@@ -24,66 +24,66 @@
    "articles": [
     {
      "id": "auto-002",
-     "title": "Zeekr Delivers Over 320,000 Vehicles in First 10 Months, Beating 300,000 Annual Target Early",
-     "summary": "Zeekr's cumulative deliveries from January to October topped 320,000 units, hitting its full-year target of 300,000 ahead of schedule.",
-     "detail": "According to Sogou News, Zeekr delivered more than 320,000 vehicles between January and October this year, completing and exceeding its annual delivery target of 300,000 early. Against the backdrop of an intensely competitive China NEV market in 2026, where price wars and product battles rage side by side, Zeekr locked in its full-year KPI in just 10 months, demonstrating strong product portfolio and channel capabilities. In recent years, Zeekr has invested heavily in pure-electric architectures, 800V high-voltage fast charging, smart cockpits and advanced driver assistance, with products covering sedans, SUVs and shooting-brake segments. Beating the target also cements Zeekr's strategic position within the Geely group, providing ample delivery volume and cash flow foundations for upcoming model launches and overseas expansion.",
-     "impact": "Meeting the target ahead of time strengthens Zeekr's position at the forefront of the premium pure-electric segment and boosts confidence across Geely's NEV division as the year closes, potentially spurring other EV startups to accelerate their year-end delivery push.",
+     "title": "BYD Rolls Out 19 Millionth NEV, Setting Another Scale Record",
+     "summary": "BYD has officially rolled out its 19 millionth new energy vehicle, continuing to break global records for NEV production and sales scale.",
+     "detail": "According to Sogou News, BYD has officially rolled out its 19 millionth new energy vehicle. From the first 1 million to the current 19 million, BYD has continuously refreshed the global record for roll-off scale among NEV manufacturers at an accelerating pace. Analysts say what underpins this figure is BYD's vertical integration across core areas such as batteries, motors, electronic controls and chips, as well as its multi-brand product portfolio spanning entry-level to luxury segments. The report also notes that technological capability is a key factor driving BYD's global leadership, and that its systematic build-out in new energy is translating into sustained scale advantages. The 19-million milestone not only marks a production and sales achievement for BYD itself, but also signals that China's NEV industry as a whole has reached a new height in manufacturing and supply chain capacity.",
+     "impact": "Scale effects will further spread costs per vehicle, strengthening BYD's dual competitive edge in pricing and technology, while putting greater share pressure on joint-venture and second-tier NEV brands.",
      "source": "Sogou News"
     },
     {
      "id": "auto-003",
-     "title": "Dongfeng Aeolus L8+ Launches From RMB 129,900, Bringing 700TOPS Smart Driving Compute to the Mass Market",
-     "summary": "The Dongfeng Aeolus L8+ has launched from RMB 129,900, featuring a 700TOPS high-compute intelligent driving system.",
-     "detail": "According to NetEase Auto, Dongfeng Aeolus L8+ has officially launched with a starting price of RMB 129,900. Its headline feature is an intelligent driving hardware platform delivering 700TOPS of compute. Previously, 700TOPS-class computing power appeared mostly in high-end models priced above RMB 250,000; bringing it down to below RMB 130,000 means the rollout of advanced ADAS hardware is moving far faster than the industry expected. 700TOPS of compute can support end-to-end pilot-assisted driving across urban and highway scenarios, complex intersection negotiation and memory parking. Paired with a multi-sensor fusion setup, it can deliver an assisted driving experience close to L2++ level. The pricing strategy of the Aeolus L8+ shows Dongfeng is trying to build differentiated competitiveness in the mainstream family car market through an \"hardware pre-installation plus software iteration\" approach.",
-     "impact": "700TOPS compute entering the RMB 120,000 price bracket will force rivals at the same price point to follow suit on smart driving hardware, accelerating the shift of intelligent driving from a premium exclusive to a mass-market standard.",
+     "title": "Geely Xingyuan STAR Limited Series Launched, Priced From 88,800 Yuan for a Limited Time",
+     "summary": "Geely has launched the Xingyuan STAR limited series at a limited-time offer price of 88,800 yuan, stepping up competition in the A0-segment pure-electric city car market.",
+     "detail": "According to NetEase Auto, Geely has officially launched the Xingyuan STAR limited series, priced from 88,800 yuan as a limited-time offer. Xingyuan is a key volume model for Geely in the A0-segment pure-electric market, and the new STAR limited series strengthens its appeal through exclusive trims and time-limited pricing. The 88,8,800-yuan price further lowers the entry barrier for pure-electric city cars, putting it in close competition with rivals in the same class. The A0 pure-electric segment has remained hot this year, with several premium small cars becoming popular choices among young buyers and families adding a second vehicle. Geely's combination of a limited series and time-limited perks aims to maintain showroom momentum and expand market share. Specific benefits, configurations and sales windows are subject to Geely's official announcements.",
+     "impact": "Intensifies price competition in the A0 pure-electric segment, giving consumers a richer selection of high-quality EVs under 100,000 yuan.",
      "source": "NetEase Auto"
     },
     {
      "id": "auto-004",
-     "title": "Geely Xingyuan STAR Limited Series Debuts With RMB 88,800 Limited-Time Price",
-     "summary": "Geely's Xingyuan STAR limited series has been unveiled at a limited-time price of RMB 88,800, targeting the A0-segment pure-electric market.",
-     "detail": "According to NetEase Auto, Geely Auto has launched the Xingyuan STAR limited series at a limited-time price of RMB 88,800. Xingyuan is a key volume model for Geely in the A0 pure-electric segment. The STAR limited series aims to boost product freshness with exclusive exterior kits, interior color schemes and upgraded features, while the RMB 88,800 limited-time price further lowers the entry barrier. The A0 pure-electric segment has been fiercely contested in recent years, with models like the BYD Seagull and Wuling Bingo long dominating sales rankings. Geely's limited-edition strategy preserves price competitiveness while avoiding dilution of brand value through direct price cuts on its core model. The limited-time pricing approach also helps drive incremental orders during the Q4 year-end sales push.",
-     "impact": "The RMB 88,800 limited-time price further squeezes margins in the A0 pure-electric market and will intensify the share battle between Geely, BYD and Wuling in the entry-level EV segment.",
+     "title": "Dongfeng Peugeot 2027 Model 408 Launched From 99,700 Yuan Plus 16,000 Yuan Cash Incentives",
+     "summary": "The 2027 Dongfeng Peugeot 408 has launched from 99,700 yuan, with an additional 16,000 yuan in cash incentives, as joint-venture sedans continue trading price for volume.",
+     "detail": "According to NetEase Auto, the 2027 Dongfeng Peugeot 408 has officially launched from 99,700 yuan, with buyers also eligible for 16,000 yuan in cash incentives. A long-running nameplate in the joint-venture compact sedan market, the 408 is using a new model launch layered with cash benefits to push its effective purchase price to a more competitive level. Against the continued onslaught of domestic-brand NEVs, joint-venture gasoline sedans face a shrinking survival space, with price and incentives becoming the main tools for retaining buyers. The 99,700-yuan starting price combined with the 16,000-yuan cash incentive gives the 408 a clear value advantage over rivals, appealing to budget-conscious families who still prefer combustion-engine vehicles.",
+     "impact": "Reflects joint-venture brands' ongoing price concessions to defend share in the compact sedan segment, further depressing the price benchmark for gasoline sedans, with clear short-term benefits for consumers.",
      "source": "NetEase Auto"
     },
     {
      "id": "auto-005",
-     "title": "2027 Dongfeng Peugeot 408 Launches From RMB 99,700 With RMB 16,000 Cash Incentive",
-     "summary": "The 2027 Dongfeng Peugeot 408 has launched from RMB 99,700, backed by a RMB 16,000 cash benefit.",
-     "detail": "According to NetEase Auto, the 2027 Dongfeng Peugeot 408 has officially launched with a starting price of RMB 99,700, while buyers can also enjoy cash benefits of up to RMB 16,000. As Dongfeng Peugeot's core product in the compact family sedan market, this facelift of the 408 centers on price cuts and cash discounts, seeking to defend its sales base amid overall pressure on joint-venture family cars. With NEV penetration continuing to rise and domestic brands rolling out dense compact sedan refreshes, French carmakers' share in China has steadily narrowed in recent years. The RMB 16,000 cash benefit combined with a sub-RMB 100,000 starting price shows Dongfeng Peugeot is trading price for volume to hold on to its dealer and customer base, buying time and room for its subsequent electrification transition.",
-     "impact": "A joint-venture compact sedan entering the price war from RMB 99,700 reflects a defensive posture from the fuel-powered JV camp and will also apply competitive pressure on domestically branded NEV sedans at the same price point.",
-     "source": "NetEase Auto"
+     "title": "NEV Power Batteries to Get 'ID Cards' to Accelerate Full-Lifecycle Traceability",
+     "summary": "New energy vehicle power batteries will be equipped with 'ID cards' to enable cell-level identity recognition and full-lifecycle traceability management.",
+     "detail": "According to Sogou News, NEV power batteries will be fitted with 'ID cards' — unified coding that establishes a traceable identity file for every battery. The move means the entire lifecycle of a power battery, from production and installation to use and recycling, will fall under more granular management. As China's NEV parc grows rapidly, the pressure from decommissioned batteries entering second-life use and recycling is mounting. Battery identity recognition and data traceability are foundational to solving problems such as residual value assessment, liability determination and tracking recycling flows. Industry observers believe the battery 'ID card' system will connect data across the supply chain and provide a trustworthy basis for battery asset trading, used-car valuation and insurance claims assessment.",
+     "impact": "Bolsters the standardized battery recycling and second-life industry while improving transparency in residual value assessments for used EVs, giving buyers stronger post-purchase protection.",
+     "source": "Sogou News"
     }
    ]
   },
   {
-   "id": "global",
-   "title": "Global News",
+   "id": "international",
+   "title": "International Updates",
    "icon": "🌍",
    "articles": [
     {
      "id": "auto-006",
-     "title": "Range Rover Launches Three Special Editions Starting at ¥1.498 Million, Bespoke Collector's Edition Limited to 3 Units Worldwide",
-     "summary": "Land Rover Range Rover rolls out three special edition models starting at ¥1.498 million, with the Bespoke Edition limited to just 3 units.",
-     "detail": "According to NetEase Auto, Land Rover Range Rover has launched three special edition models in one go, priced from ¥1.498 million, with the Bespoke Collector's Edition limited to just 3 units globally. The special editions differentiate mainly through exterior color schemes, interior materials and exclusive badging, targeting collector-oriented buyers in the top-tier luxury SUV segment. Range Rover has long held a leading position in the million-yuan luxury SUV class; by pursuing a limited-run bespoke strategy, it not only boosts brand scarcity and pricing power but also caters to high-net-worth buyers' desire for personalization and exclusivity. Against a backdrop of slowing overall growth in the luxury car market, ultra-luxury brands have broadly adopted a \"limited plus bespoke\" approach to maintain their pricing structures and brand character, avoiding the passive situation of heavy terminal discounts.",
-     "impact": "The limited bespoke strategy reinforces Range Rover's scarcity premium in the ultra-luxury SUV market, and also reflects how luxury brands are relying on personalized services rather than price cuts to sustain their high-end positioning.",
-     "source": "NetEase Auto"
+     "title": "GM Global Senior Vice President: China Is a Key Force Driving Product Development and Technological Innovation",
+     "summary": "General Motors' global senior vice president said the Chinese market is a key force driving GM's product development and technological innovation.",
+     "detail": "According to The Paper, GM's global senior vice president stated in public remarks that China is an important force driving the company's product development and technological progress. The remarks extend the strategy multinational automakers have pursued in recent years of setting up R&D centers in China and feeding China's supply chain and engineering capabilities back into global models. The speed of iteration and engineering efficiency in electrification and smart technology in China is becoming one of the technical sources for the global product lines of multinational automakers. GM has repeatedly emphasized the strategic position of the Chinese market in its electrification transition, and this public affirmation by senior leadership of China's role in product R&D and technological innovation shows that multinational automakers now position China's auto industry capability as an \"innovation origin\" rather than merely a \"sales market.\"",
+     "impact": "China's technological and engineering capabilities are spilling over into global models at a faster pace, giving local parts and R&D suppliers more opportunities to enter the global systems of international automakers.",
+     "source": "The Paper"
     },
     {
      "id": "auto-007",
-     "title": "NVIDIA Slides 7% Against the Grain After a Higher Open, Smart Driving Chip Supply Chain Under Pressure",
-     "summary": "US indices opened higher, but NVIDIA fell 7% against the trend, while negative publicity surrounding its founder adds to concerns.",
-     "detail": "According to Baidu Hot Search, with all three major US indices opening higher collectively, NVIDIA's shares fell about 7% against the trend, drawing widespread market attention. Meanwhile, a trending topic on Baidu Hot Search read \"Jensen Huang Admits Extramarital Affair — Is NVIDIA Still Worth Investing In?\" Negative publicity over the company's founder, combined with share price volatility, has further deepened the market's divisions over NVIDIA's prospects. As the world's leading AI chip maker, NVIDIA's automotive-grade Orin and Thor smart driving chips are widely adopted by Chinese automakers and Tier 1 suppliers, making its share price and operational stability a bellwether for the global intelligent driving supply chain. ByteDance's release of the Seedream 5.5 large model on the same day also shows that the AI compute competition landscape is still changing rapidly.",
-     "impact": "NVIDIA's short-term share price volatility and reputational pressure may push domestic automakers to accelerate the domestic substitution of smart driving chips and adopt multi-supplier strategies, reducing reliance on a single chip giant.",
-     "source": "Baidu Hot Search"
+     "title": "China's NEV Exports Keep Growing, Driving Global Green Transport Transition",
+     "summary": "China's NEV exports continue to grow, providing products and technology to support the global transition to green transport.",
+     "detail": "According to Sogou News, sustained growth in China's new energy vehicle exports is advancing the global green transition. Backed by comprehensive strengths in batteries, electric drive systems, vehicle integration and smart features, China's NEV export volume continues to expand, with products reaching markets across Asia, Europe, Latin America and the Middle East. The export growth not only helps release domestic vehicle and parts capacity, but also offers overseas markets more cost-competitive electrified options, accelerating low-carbon shifts in local transport. The report noted that technological strength and the completeness of the supply chain are key factors keeping China's auto exports competitive, and Chinese NEVs are becoming a major driver of the global green transition.",
+     "impact": "Export growth will continue to support domestic capacity, but changes in overseas market policies and the trade environment remain the main uncertainty facing exporters.",
+     "source": "Sogou News"
     },
     {
      "id": "auto-008",
-     "title": "ByteDance Releases Seedream 5.5 as AI Large Models Accelerate Penetration Into Automotive Cockpits",
-     "summary": "ByteDance releases the Seedream 5.5 large model, with spillover AI capabilities set to affect smart cockpit and autonomous driving experiences.",
-     "detail": "According to Baidu Hot Search, ByteDance has officially released the Seedream 5.5 large model. As AI large models iterate rapidly, continuous upgrades in vision and multimodal capabilities are spilling over into the automotive industry at an accelerating pace. Several Chinese automakers have already integrated large model capabilities into their smart cockpits for voice interaction, scenario generation, vehicle control understanding and personalized services; on the intelligent driving side, large model-driven perception and decision-making capabilities are gradually being deployed. The release of Seedream 5.5 means underlying AI capabilities are still evolving quickly, and automakers that form deep partnerships with leading AI players will gain a clear edge in user experience and iteration speed. This also escalates the \"software-defined vehicle\" competition into an \"AI-defined vehicle\" competition.",
-     "impact": "Continued upgrades in large model capabilities will drive rapid iteration of smart cockpit and intelligent driving experiences, with AI capability becoming automakers' next core competitive moat after the battery-motor-electronics system and smart driving.",
-     "source": "Baidu Hot Search"
+     "title": "Three Range Rover Special Editions Launched, Starting at 1.498 Million Yuan; Bespoke Edition Limited to 3 Units",
+     "summary": "Land Rover has launched three special-edition Range Rover models starting at 1.498 million yuan, with just three units of the Bespoke Edition worldwide.",
+     "detail": "According to NetEase Auto, three special-edition Range Rover models have officially launched, priced from 1.498 million yuan, with the Bespoke Edition limited to just three units. As a benchmark model in the luxury SUV market, Range Rover continues to strengthen its exclusivity and collectibility through a combination of special and bespoke editions. In the ultra-luxury segment, limited runs and customization are core tools for brands to maintain price premiums and user loyalty; the extremely limited Bespoke Edition mainly serves brand image and话题-building functions. The launch also reflects that, amid structural divergence in the global luxury car market, ultra-luxury brands still rely on scarcity and personalized service to secure high-net-worth customers.",
+     "impact": "Further consolidates Range Rover's benchmark position in the ultra-luxury SUV market; scarcity-driven marketing will continue to lift brand premium potential.",
+     "source": "NetEase Auto"
     }
    ]
   },
@@ -94,19 +94,19 @@
    "articles": [
     {
      "id": "auto-009",
-     "title": "Road-Tested at 3.6L/100km, Changan CS75 PLUS Blue Whale Edition Plays the Tech-for-All Card",
-     "summary": "The Changan CS75 PLUS Blue Whale edition delivered a road-tested 3.6L/100km fuel figure while stressing that safety technology is not tiered by trim level.",
-     "detail": "According to NetEase Auto, the Changan CS75 PLUS Blue Whale edition returned a road-tested fuel consumption of just 3.6L/100km, a highly competitive figure in the compact SUV segment. NetEase Auto also published an interview with Changan executive Jiang Ping, who stated plainly that \"safety is not split into high and low tiers — Changan will make safety technology accessible to all,\" emphasizing that both active and passive safety equipment is identical across entry-level and top-spec versions. Against the backdrop of rapidly rising new-energy vehicle penetration and mounting pressure on fuel and hybrid models, Changan is using class-leading fuel efficiency and standard safety equipment across the lineup as a moat for its combustion and hybrid products. The Blue Whale powertrain platform's high-thermal-efficiency engine and hybrid system form the technical foundation for the low fuel figure, reflecting Changan's sustained investment in conventional powertrains.",
-     "impact": "A road-tested 3.6L/100km combined with standard safety equipment across the range establishes a clear value anchor for fuel and hybrid SUVs, helping Changan hold its core base of mainstream family buyers amid the new-energy onslaught.",
-     "source": "NetEase Auto"
+     "title": "Hainan's Monthly NEV Penetration Nears 80% as National Rollout Enters Critical Phase",
+     "summary": "Hainan's monthly NEV market penetration approaches 80%, leading the nation in adoption data with a significant demonstration effect.",
+     "detail": "According to Sogou News, Hainan Province's new energy vehicle (NEV) rollout data has been impressive, with monthly NEV market penetration nearing 80% — far above the national average. Thanks to its island geography, short travel radii, relatively mature charging infrastructure, and an island-wide clean energy system, Hainan naturally enjoys structural advantages for NEV adoption. Data shows Hainan ranks among the nation's leaders in both public-sector vehicle electrification and private NEV purchases. Industry analysts say Hainan's high penetration rate proves that, given adequate infrastructure and supporting policies, NEVs will replace fuel vehicles faster than expected, and its experience offers a valuable reference for rollout paths in other provinces and cities nationwide.",
+     "impact": "Provides a benchmark for further improving NEV penetration nationwide; charging infrastructure build-out and local policy support remain key to whether other regions can replicate the success.",
+     "source": "Sogou News"
     },
     {
      "id": "auto-010",
-     "title": "NEV Push Into Rural Areas Meets Combustion-Car Counterattack as Lower-Tier Markets Become the New Battleground",
-     "summary": "New-energy vehicles keep expanding into rural markets, while combustion models fight back with big screens, ventilated and heated seats in the 130,000-yuan price bracket.",
-     "detail": "Industry observations carried by Sogou News show that how new-energy vehicles can succeed in rural outreach remains a key focus for the sector. Meanwhile, NetEase Auto reported that a non-new-energy model priced at 133,800 yuan comes standard with segment-defying features such as a 15.6-inch screen and ventilated and heated front and rear seats, under the slogan \"If you're not buying an EV, look at this.\" Both strands of information point to the same fact: lower-tier cities and third- and fourth-tier markets are becoming the focal point of the next round of competition. New-energy models face practical constraints around charging infrastructure, purchase budgets and use cases, while fuel and hybrid vehicles are counterattacking through feature-heavy specifications, low running costs and mature sales channels. How well a brand balances price, equipment, refueling or recharging convenience and residual value will determine who wins the lower-tier market.",
-     "impact": "Competition in lower-tier markets will simultaneously test the charging networks of new-energy vehicles and the equipment generosity of combustion models. Whoever can deliver both low running costs and convenience will capture the next wave of incremental buyers.",
-     "source": "Sogou News, NetEase Auto"
+     "title": "BYD Owner Complaints About Wheels Fitted Backwards Accepted by Market Regulators, Quality Control Under Scrutiny Again",
+     "summary": "A BYD owner's complaint over wheels installed in the wrong direction has been accepted by local market regulators, drawing attention to quality control at the delivery stage.",
+     "detail": "According to Baidu Hot Search, a BYD owner filed a complaint over vehicle wheels that were installed backwards, and the local market supervision administration has received and accepted the complaint. Fitting wheels in the wrong orientation is a basic assembly error at the delivery stage; while it does not necessarily compromise core safety performance, it exposes gaps in final delivery inspection procedures. Against the backdrop of rapid sales expansion among NEV automakers, surging delivery volumes are placing higher demands on service standards and PDI (pre-delivery inspection) processes at dealerships and delivery centers. The brand has previously drawn public attention over other owner complaints, and this assembly issue again serves as a reminder that as automakers scale up quickly, service quality and delivery standards must improve in parallel.",
+     "impact": "Underscores the need for high-volume automakers to standardize delivery-stage checks and inspection processes; service quality issues can damage brand reputation and repeat purchase intent.",
+     "source": "Baidu Hot Search"
     }
    ]
   },
@@ -117,19 +117,19 @@
    "articles": [
     {
      "id": "auto-011",
-     "title": "700 TOPS compute lands in the 120,000-yuan segment: smart-driving parity to accelerate in 2027",
-     "summary": "High-compute smart-driving hardware is descending fast, with 2027 poised to become the tipping point for mass adoption of advanced driver assistance.",
-     "detail": "Judging by today's news — the Fengshen L8+ starting at 129,900 yuan with 700 TOPS of compute, and the ID. ERA 5S Max at 119,900 yuan becoming a breakout hit — advanced smart-driving hardware is penetrating the sub-150,000-yuan segment faster than expected. Once compute, sensors and algorithms are no longer exclusive to high-end vehicles, smart-driving capability will become a baseline feature of mainstream family cars rather than a differentiating selling point. This trend will drive three shifts: first, smart-driving software subscriptions and value-added services will emerge as a new business model; second, automakers lacking in-house smart-driving R&D will be weeded out faster; third, the cost curve for smart-driving chips and sensors will fall rapidly. By 2027, L2++ driver assistance is expected to become standard equipment in China's mainstream passenger-car market.",
-     "impact": "The rapid普及 of smart-driving hardware will reshape competitive dynamics among automakers, with software capability and data feedback loops becoming the next core moat, while consumers gain access to advanced smart-driving experiences at lower prices.",
-     "source": "NetEase Auto, Baidu Trending"
+     "title": "700TOPS Compute Reaches the 120,000-Yuan Class: ADAS Equality to Be the Next Battleground",
+     "summary": "The Fengshen L8+ launches from 129,900 yuan with 700TOPS smart-driving compute, while strong ID. ERA 5S sales accelerate the rollout of advanced ADAS.",
+     "detail": "According to NetEase Auto, the Fengshen L8+ has officially launched at a starting price of 129,900 yuan, featuring a 700TOPS smart-driving system. Meanwhile, the ID. ERA 5S has hit the market with strong sales, its Max trim becoming a bestseller at 119,900 yuan. Both models point to one trend: advanced ADAS features are rapidly moving down from vehicles priced above 200,000 yuan into the mainstream 100,000–150,000 yuan segment. Compute at the 700TOPS level was previously found mostly in mid-to-high-end smart EVs; appearing in a 129,900-yuan car means smart-driving hardware costs are falling fast and the chip and algorithm supply chain is maturing. With the ID. ERA 5S Max also selling strongly at 119,900 yuan, the 100,000–150,000 yuan range is set to become the main battlefield for ADAS competition, and models without advanced smart-driving capability will face a clear competitiveness gap.",
+     "impact": "Smart-driving hardware will quickly become standard in the 100,000–150,000 yuan segment; laggard brands face share pressure, while consumers gain advanced ADAS experiences at lower prices.",
+     "source": "NetEase Auto"
     },
     {
      "id": "auto-012",
-     "title": "From 503 km/h to 320,000 deliveries: Chinese autos enter a dual-engine era of brand uplift and scale expansion",
-     "summary": "Technology breakthroughs are advancing in step with scaled deliveries, ushering Chinese auto brands into a new phase of premiumization and overseas expansion.",
-     "detail": "Today's news presents a striking two-track picture: on one side, hardcore technical breakthroughs — a 503.17 km/h top-speed record, 700 TOPS compute reaching mass-market price points, and a measured 3.6 L/100 km fuel consumption; on the other, scaled deliveries and market expansion — Zeekr hitting its 300,000-unit annual target early, and the Geely Xingyuan offering a limited-time price of 88,800 yuan. Taken together, these threads show that China's auto industry has moved beyond simple \"trading price for volume\" into a new stage of \"technology premium + scale effect.\" Looking ahead, high-performance premium models will continue to lift brand ceilings, while the mainstream market will fight for share through smart features and cost control, and exports plus overseas localization will become the next growth engine. Lei Jun's announcement of a segment-leading sales rank further signals that the battle for niche-market positions among Chinese automakers will intensify.",
-     "impact": "The dual-engine drive of technological uplift and scale expansion will lift the overall competitiveness of China's auto industry and accelerate its shift from exporting products to exporting brands in global markets.",
-     "source": "NetEase Auto, Sogou News, Baidu Trending"
+     "title": "From 3.6L Fuel Consumption to \"No Tiered Safety\" — Technology for All to Reshape Family-Car Value",
+     "summary": "The Changan CS75 PLUS posts a real-world 3.6L/100km, while Changan's Jiang Ping stresses universal safety tech — value wars to replace price wars.",
+     "detail": "According to NetEase Auto, the Changan CS75 PLUS Blue Whale Super Engine Edition recorded a real-world fuel consumption of just 3.6L/100km, demonstrating the Blue Whale powertrain's significant fuel-economy advantage. In a concurrent interview, Changan's Jiang Ping said \"safety should not be tiered,\" calling for universal access to safety technology — meaning safety equipment should not vary by vehicle price. Taken together, class-leading fuel economy plus standard safety across the lineup shows that Chinese-brand family cars are shifting from a pure price war to \"technology for all\" — redefining the value standard for the 100,000–150,000 yuan family-car segment with superior energy efficiency, safety features and smart experiences. This trend will force all models on sale to raise their equipment levels, further squeezing the traditional advantages of joint-venture brands.",
+     "impact": "Consumers get lower fuel consumption and more comprehensive safety equipment at the same budget, as industry competition shifts from price discounting to real technological value.",
+     "source": "NetEase Auto"
     }
    ]
   }
