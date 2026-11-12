@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-11",
+  "date": "2026-11-12",
   "contents": [
     {
-      "id": "prog-2026-11-11",
-      "date": "2026-11-11",
-      "title": "sync.Pool 与对象复用：降低 GC 压力的高性能 Go 实战",
-      "summary": "掌握 sync.Pool 的内部机制与正确用法，用对象复用把高吞吐服务的分配量和 GC 停顿降到最低。",
-      "difficulty": "高级",
-      "concept": "在高吞吐的 Go 服务（API 网关、消息编解码、日志管道）中，性能瓶颈往往不是 CPU 计算，而是堆分配带来的 GC 压力。每次 make/new 都会推进堆增长，GC 扫描的存活对象越多、触发越频繁，P99 延迟毛刺就越明显。工程上第一条优化准则就是：先用 pprof（-benchmem、alloc_space）定位热点分配，再考虑对象复用，而不是盲目到处加池。经验上，如果一个对象大小超过几百字节、生命周期短、创建频率达到每秒数十万次，它就是复用的理想候选。\n\nsync.Pool 是 Go 标准库提供的「临时对象缓存」，它的核心设计目标是「无锁、可被 GC 随时回收」，而不是通用的对象池。每个 P（逻辑处理器）持有一个本地无锁缓存（private + shared 双端队列），Get 时优先取本地 private，其次取本地 shared，再次从其它 P 的 shared 偷（steal），最后才调用 New 兜底构造。Put 同理先写本地。这就是为什么 sync.Pool 在高并发下几乎不产生锁竞争——它把「共享」降级成了「分片 + 偷取」。\n\n关键语义有两个必须牢记。第一，Pool 中的对象不保证长期存活：每次 GC 时，池中对象会被清除（Go 1.13 起引入 victim cache，对象会在两次 GC 之间才被真正丢弃），所以它只适合缓存「可有可无」的临时对象，绝不适合做连接池、限流器这类必须保留状态的东西。第二，Get 返回的是 any，必须做类型断言，且取出后必须显式 Reset 重置对象状态，否则上一次调用遗留的数据（未截断的 buffer、脏 map、残留的 error 字段）会污染下一次使用，这类 bug 在并发场景极难排查。\n\n工程上还有几个容易踩的坑。不要 Put(nil)：Get 会返回 nil 或触发 New，语义混乱。不要把带大指针字段的对象直接丢进池里：对象本身被复用了，但它引用的底层数组/大 slice 会一直被 retain，导致 RSS 只增不减，这叫「retention 陷阱」，通常的解法是复用时显式置空关键指针字段。另外 sync.Pool 没有容量上限，极端情况下可能堆积大量对象，对超大 buffer（>1MB）建议自己封装一个带大小上限和分级（size class）的 freelist，而不是裸用 sync.Pool。\n\n最后，衡量才是优化的一半。正确做法是写 Benchmark（go test -bench=. -benchmem）对比 ns/op、B/op、allocs/op，或用 runtime.ReadMemStats 的 TotalAlloc 做粗测，再用 pprof alloc_space 验证复用是否真的命中。典型收益是：分配量下降 70%~95%，GC 频率显著降低，长尾延迟更平稳。但也要警惕过度优化：如果对象很小（<100B）或者调用频率低，池化的开销（类型断言、Reset、Get/Put）可能得不偿失。",
+      "id": "prog-2026-11-12",
+      "date": "2026-11-12",
+      "title": "Rust 变量、可变性与变量遮蔽：从 let 开始理解 Rust 的设计哲学",
+      "summary": "掌握 Rust 中 let 绑定、mut 可变性、变量遮蔽（shadowing）与常量 const 的用法与背后的设计意图。",
+      "difficulty": "初级",
+      "concept": "在大多数主流语言里（如 JavaScript、Python、C++），变量默认是可变的：你声明一个变量，之后随时可以改它。Rust 做了一个反直觉但非常有价值的决定——变量默认是不可变的（immutable）。写 `let x = 5;` 之后再写 `x = 6;`，编译器会直接报错 `cannot assign twice to immutable variable`。这不是编译器在找茬，而是 Rust 把「不可变优先」作为并发安全和可维护性的基石：一段没人能改的数据，就不需要锁，也不会被别的线程悄悄改掉，读代码时你看到 `let x = 5;` 就能确定 x 永远是 5。\n\n当你确实需要修改数据时，必须显式地写 `let mut x = 5;`。这个 `mut` 关键字相当于一份「契约声明」：它告诉阅读代码的人（以及未来的自己），这个值在生命周期中会发生变化。工程经验上有一个好习惯——只在真正需要被修改的地方加 mut。Rust 的编译器也会在 lint 中提示你：如果声明了 mut 却从未修改它，会给出 `unused_mut` 警告。这种「用得越少越好」的风格能显著降低代码的心智负担。\n\n初学者最容易混淆的是「变量遮蔽」（shadowing）。`let x = 5; let x = x + 1;` 中的第二行并不是对 x 赋值，而是创建了一个全新的变量，「遮蔽」掉之前的 x。遮蔽允许你重复使用同一个名字，甚至允许改变类型——比如 `let s = \"hello\"; let s = s.len();` 中 s 从字符串切片 `&str` 变成了 `usize`，这在使用 mut 时是不允许的（mut 变量不能改类型）。遮蔽在做「逐步转换」的场景中特别优雅：把用户输入的字符串一步步 trim、parse、校验，全程可以叫同一个名字，读起来意图清晰。\n\n与 let 不同，常量用 `const` 声明，必须标注类型、必须是编译期可求值的表达式，并且按惯例使用 SCREAMING_SNAKE_CASE 命名。常量没有遮蔽概念，也不能加 mut，它的作用域是全局的（只要在可见范围内）。经验上：固定的配置阈值（最大重试次数、超时毫秒数、分页大小）用 const；在函数内部被计算或被修改的中间状态用 let / let mut。另外注意，`let _x = 5;` 与 `let x = 5;` 不同，下划线开头显式告诉编译器「我故意不用这个值」，可以消除 unused_variables 警告。\n\n最后补充一点实践建议：当你写完一段 Rust 代码后，如果满屏都是 mut，通常意味着函数承担了太多职责，可以考虑拆分成多个小函数，让每个函数接收不可变输入、返回新值。这种「函数式风格」在 Rust 中非常自然，也是 Rust 代码质量高的一大原因。",
       "codeExample": {
-        "language": "Go",
-        "code": "package main\n\nimport (\n\t\"bytes\"\n\t\"fmt\"\n\t\"runtime\"\n\t\"sync\"\n\t\"time\"\n)\n\n// ---------- 1. 定义对象池 ----------\n// New 是兜底构造函数：池中无可用对象时才调用\nvar bufPool = sync.Pool{\n\tNew: func() any {\n\t\t// 预分配 64KB，避免复用过程中反复扩容\n\t\treturn bytes.NewBuffer(make([]byte, 0, 64*1024))\n\t},\n}\n\n// ---------- 2. 业务函数：模拟高频序列化 ----------\nfunc renderJSON(buf *bytes.Buffer, id int, name string) {\n\tbuf.WriteString(`{\"id\":`)\n\tfmt.Fprintf(buf, \"%d\", id)\n\tbuf.WriteString(`,\"name\":\"`)\n\tbuf.WriteString(name)\n\tbuf.WriteString(`\"}`)\n}\n\n// ---------- 3. 统计堆分配总量（字节） ----------\nfunc measureAlloc(f func()) uint64 {\n\tvar before, after runtime.MemStats\n\truntime.GC()\n\truntime.ReadMemStats(&before)\n\tf()\n\truntime.ReadMemStats(&after)\n\treturn after.TotalAlloc - before.TotalAlloc // 累计分配差值\n}\n\n// ---------- 4. 对照组：每次现场分配 ----------\nfunc withoutPool(n int) func() {\n\treturn func() {\n\t\tfor i := 0; i < n; i++ {\n\t\t\tbuf := bytes.NewBuffer(make([]byte, 0, 64*1024)) // 每次都分配\n\t\t\trenderJSON(buf, i, \"alice\")\n\t\t\t_ = buf.Bytes()\n\t\t} // buf 立刻成为垃圾，等待 GC\n\t}\n}\n\n// ---------- 5. 实验组：复用 buffer ----------\nfunc withPool(n int) func() {\n\treturn func() {\n\t\tfor i := 0; i < n; i++ {\n\t\t\tbuf := bufPool.Get().(*bytes.Buffer) // 从池中取出（类型断言）\n\t\t\tbuf.Reset()                          // 关键：清空内容但保留底层数组容量\n\t\t\trenderJSON(buf, i, \"alice\")\n\t\t\t_ = buf.Bytes()\n\t\t\tbufPool.Put(buf) // 用完归还，供其它 goroutine/后续迭代复用\n\t\t}\n\t}\n}\n\nfunc main() {\n\tconst n = 200000\n\n\tstart := time.Now()\n\ta1 := measureAlloc(withoutPool(n))\n\tt1 := time.Since(start)\n\n\tstart = time.Now()\n\ta2 := measureAlloc(withPool(n))\n\tt2 := time.Since(start)\n\n\tfmt.Printf(\"无池: 分配 %.2f MB, 耗时 %v\\n\", float64(a1)/1024/1024, t1)\n\tfmt.Printf(\"有池: 分配 %.2f MB, 耗时 %v\\n\", float64(a2)/1024/1024, t2)\n}\n",
-        "explanation": "第 1 段：用 sync.Pool{New: ...} 声明全局池，New 只在池空时被调用，这里预分配 64KB 容量，让复用后的 buffer 不再扩容。\n\n第 2 段：renderJSON 代表真实业务里高频、短生命周期的序列化工作，它只写入调用方传入的 buffer。\n\n第 3 段：measureAlloc 通过 runtime.MemStats.TotalAlloc 的差值测量一段逻辑累计分配了多少字节，是粗粒度但直观的分配量指标（正式项目建议用 testing.B + -benchmem）。\n\n第 4 段：对照组每次循环都 make 一块 64KB 的底层数组，n=20 万次意味着约 12GB 的累计分配，全部推给 GC。\n\n第 5 段：实验组 Get → 类型断言 → Reset → 使用 → Put。四步缺一不可：Get 取对象、断言得到具体类型、Reset 清除上一次的脏数据但保留容量、Put 归还对象。实测分配量通常从 GB 级降到 KB 级。\n\n第 6 段：main 中先后运行两组并打印分配量与耗时，直观看到复用带来的收益；注意计时受 GC 时机影响，权威结论应以 Benchmark 为准。"
+        "language": "Rust",
+        "code": "// Rust 变量与可变性完整示例\n// 保存为 main.rs 后执行：rustc main.rs && ./main\n\n// 常量：编译期求值，全局可见，必须标注类型\nconst MAX_RETRY: u32 = 3;\nconst APP_NAME: &str = \"daily-rust\";\n\nfn main() {\n    // 1. 默认不可变\n    let x = 5;\n    // x = 6; // ❌ 取消注释会编译失败：cannot assign twice to immutable variable\n    println!(\"x = {}\", x);\n\n    // 2. 显式声明可变\n    let mut count = 0;\n    count += 1;\n    count += 1;\n    println!(\"count = {}\", count);\n\n    // 3. 变量遮蔽：创建同名新变量，可以改变类型\n    let x = x + 1; // x 重新绑定为 6\n    let x = x * 2; // x 重新绑定为 12\n    println!(\"shadowed x = {}\", x);\n\n    let input = \"  42  \";\n    let input = input.trim();        // &str -> &str（去空格）\n    let input: u32 = input.parse().expect(\"解析失败\"); // &str -> u32\n    println!(\"parsed input = {}\", input);\n\n    // 4. 类型标注与不可变的类型固定\n    let age: u8 = 25;\n    println!(\"{}: age = {}, max retry = {}\", APP_NAME, age, MAX_RETRY);\n\n    // 5. 用下划线前缀显式忽略未使用变量，消除编译器警告\n    let _unused = 100;\n\n    // 6. 块作用域中的遮蔽只在该块内生效\n    let outer = \"before\";\n    {\n        let outer = \"inside\";\n        println!(\"inner scope: {}\", outer);\n    }\n    println!(\"outer scope: {}\", outer);\n}\n",
+        "explanation": "• 第 4 行 `const MAX_RETRY: u32 = 3;`：常量必须写明类型，值必须编译期可知，命名用全大写下划线。\n• 第 8 行 `let x = 5;`：默认不可变，第 9 行的赋值若取消注释会编译失败。\n• 第 13 行 `let mut count = 0;`：只有加了 mut 的变量才能被修改，`count += 1` 合法。\n• 第 18-19 行：`let x = x + 1;` 不是赋值而是遮蔽，用旧的 x 计算出新 x，值从 5 变成 6 再到 12。\n• 第 22-24 行：同名变量 `input` 先是 `&str`，经 trim 后仍是 `&str`，最后 parse 成 `u32`。这正是遮蔽最实用的场景——类型可以变，且无需想新名字。\n• 第 32 行 `let _unused = 100;`：下划线前缀表示「有意忽略」，编译器不再报 unused_variables。\n• 第 35-40 行：花括号 `{}` 是一个新作用域，内部的 `outer` 遮蔽外部的，出了块之后外部的值又「回来」了。"
       },
       "keyPoints": [
-        "sync.Pool 是「临时对象缓存」而非通用连接池：GC 会清空它（Go 1.13 起有 victim cache，对象约在两次 GC 后被丢弃），只适合可丢弃的短命对象。",
-        "内部为每个 P 维护 private + shared 双端队列，Get/Put 优先走本地、不足时从其它 P 偷取，因此高并发下几乎无锁竞争。",
-        "取出后必须 Reset/重置对象状态，否则上一次调用遗留的数据会污染下一次使用，这是并发场景最难排查的脏数据 bug。",
-        "警惕 retention 陷阱：池中对象引用的大底层数组/指针字段会导致 RSS 只增不减，必要时在归还前显式置空大字段。",
-        "优化前先量化：用 -benchmem、alloc_space pprof 定位热点，优化后用 Benchmark 对比 ns/op、B/op、allocs/op 验证收益；超大 buffer 建议自建带容量上限的分级 freelist。"
+        "Rust 中 let 绑定的变量默认不可变，这是并发安全与可读性的根基",
+        "要修改值必须显式写 `let mut`，且 mut 声明后实际不修改会触发 unused_mut 警告",
+        "变量遮蔽（shadowing）创建新变量，允许重复命名、允许改变类型、只在当前作用域生效",
+        "`const` 常量必须标注类型、编译期求值、命名用 SCREAMING_SNAKE_CASE，不可 mut 不可遮蔽",
+        "用 `_` 前缀显式忽略未使用变量；满屏 mut 往往意味着函数需要拆分"
       ],
       "exercise": {
-        "description": "为一个 HTTP 中间件实现基于 sync.Pool 的请求日志缓冲复用：每次请求需要拼接一段 100KB 级别的访问日志文本（method、path、headers、耗时），请封装一个 LogBuffer 类型，提供 Acquire()/Release() 方法，要求取出后自动重置状态、归还时清空可能持有大对象的字段，并写一个小的 Benchmark 或用 runtime.MemStats 对比「每请求分配」与「池化复用」的累计分配量，目标是把 allocs/op 降到接近 0。",
-        "hint": "1) 用 sync.Pool 的 New 返回 *bytes.Buffer 或自定义 struct；2) Acquire 中做类型断言并调用 Reset；3) Release 中如果 struct 内有 []byte/[]Header 这类引用大块内存的字段，先置 nil 或截断长度再 Put；4) 对比时固定请求数 n，用 runtime.ReadMemStats 的 TotalAlloc 差值或 testing.B 报告的 B/op 作为指标；5) 记得在 Benchmark 中使用 b.ReportAllocs()。",
+        "description": "编写一个小程序 `score_report.rs`：定义常量 `PASS_SCORE: u32 = 60;`，先用 let 绑定一个字符串 `raw = \"  85 \"`，通过变量遮蔽依次完成 trim 和 parse 成 u32，再声明一个可变变量 `bonus = 5;` 把它加到分数上，最后用 println! 输出「最终得分：{score}，是否通过：{pass}」，其中 pass 是一个布尔值，表示 score 是否 >= PASS_SCORE。",
+        "hint": "注意三点：1) const 必须标类型；2) 遮蔽时可以 `let raw = raw.trim();` 然后 `let raw: u32 = raw.parse().unwrap();`；3) bonus 需要 mut 才能被修改，比较结果可以用 `raw >= PASS_SCORE` 直接得到 bool。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "从 sync.Pool 取出复用对象后，应先执行哪一步再写入新数据？",
-            "codeContext": "buf := bufPool.Get().(*bytes.Buffer)\n____\nrenderJSON(buf, i, \"alice\")\nbufPool.Put(buf)",
+            "question": "补全代码，使变量 score 可以被重新赋值，并正确输出。",
+            "codeContext": "fn main() {\n    let ____ score = 60;\n    score = 80;\n    println!(\"{}\", score);\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "buf := bufPool.Get().(*bytes.Buffer)\n",
+                "content": "let ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,55 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[填空]",
+                "placeholder": "[选择关键字]",
                 "options": [
-                  "buf.Reset()",
-                  "buf = nil",
-                  "buf.Grow(0)"
+                  "mut",
+                  "const",
+                  "static",
+                  "var"
                 ],
-                "correctAnswer": "buf.Reset()"
+                "correctAnswer": "mut"
               },
               {
                 "type": "text",
-                "content": "\nrenderJSON(buf, i, \"alice\")\nbufPool.Put(buf)",
+                "content": " score = 60;\n    score = 80;",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "buf.Reset()",
-            "explanation": "池中对象可能带有上一次调用遗留的数据，Reset() 会清空内容并把读写位置归零，同时保留底层数组容量（这正是复用收益的来源）。buf = nil 会丢掉对象且后续解引用 panic；bytes.Buffer 也没有 Grow(0) 这种重置语义，Grow 只是扩容。"
+            "correctAnswer": "mut",
+            "explanation": "Rust 中变量默认不可变，第二次赋值 `score = 80` 会触发 `cannot assign twice to immutable variable`。只有在 let 后显式加上 `mut` 才能修改变量。`const`/`static` 不是 let 的修饰符，Rust 中也没有 `var` 关键字。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 sync.Pool 的语义，下面哪一项是正确的？",
-            "codeContext": "var pool = sync.Pool{New: func() any { return new(bigObj) }}",
+            "question": "关于 Rust 的变量遮蔽（shadowing），下列说法正确的是？",
+            "codeContext": "let s = \"hello\";\nlet s = s.len();",
             "segments": null,
             "options": [
-              "Pool 中的对象永远不会被回收，适合做数据库连接池",
-              "GC 触发时池中对象可能被清除，因此只适合缓存可丢弃的临时对象",
-              "Put(nil) 是推荐写法，Get 时会自动调用 New 生成新对象",
-              "Get 每次都返回新分配的对象，与 Put 无关"
+              "遮蔽是对原变量重新赋值，因此不能改变变量类型",
+              "遮蔽会创建一个全新的变量，可以改变类型，如 s 从 &str 变为 usize",
+              "遮蔽必须使用 mut 关键字才能实现",
+              "被遮蔽的变量在内存中会被立即销毁"
             ],
-            "correctAnswer": "GC 触发时池中对象可能被清除，因此只适合缓存可丢弃的临时对象",
-            "explanation": "sync.Pool 的设计目标是无锁且可被 GC 随时回收：每次 GC 都可能丢弃池中对象（Go 1.13 起有 victim cache，对象约在两次 GC 后消失）。所以它不能用于必须保留状态的场景（连接池、限流器）。Put(nil) 语义混乱应避免；Get 会优先返回 Put 进去的对象，只有池空时才调用 New。"
+            "correctAnswer": "遮蔽会创建一个全新的变量，可以改变类型，如 s 从 &str 变为 usize",
+            "explanation": "遮蔽不是赋值，而是新建绑定并覆盖旧名字，所以类型可以改变。若改成 `let mut s = \"hello\"; s = s.len();` 则会因类型不匹配而编译失败——mut 变量的类型在声明后是固定的。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "在单 goroutine 环境下运行下面的代码，fmt.Println 的输出是什么？",
-            "codeContext": "pool := sync.Pool{New: func() any { return bytes.NewBuffer(make([]byte, 0, 16)) }}\n\nb1 := pool.Get().(*bytes.Buffer)\nb1.WriteString(\"hello\")\npool.Put(b1)\n\nb2 := pool.Get().(*bytes.Buffer)\nfmt.Println(b2.String())",
+            "question": "以下代码的输出结果是什么？",
+            "codeContext": "fn main() {\n    let x = 10;\n    let x = x + 5;\n    {\n        let x = x * 2;\n        println!(\"inner = {}\", x);\n    }\n    println!(\"outer = {}\", x);\n}",
             "segments": null,
             "options": [
-              "hello",
-              "（空字符串）",
-              "hellohello",
-              "panic: nil pointer"
+              "inner = 30\nouter = 30",
+              "inner = 30\nouter = 15",
+              "inner = 20\nouter = 15",
+              "编译错误：不能在块内重新绑定 x"
             ],
-            "correctAnswer": "hello",
-            "explanation": "单 goroutine 下 Get 会命中刚 Put 回去的同一个 *bytes.Buffer，且代码中没有调用 Reset()，所以 b2 与 b1 是同一块底层数组，仍保留 \"hello\"。这正演示了「忘记 Reset 导致脏数据泄漏」的典型 bug；若在 b2 使用前加 b2.Reset()，输出才会是空。"
+            "correctAnswer": "inner = 30\nouter = 15",
+            "explanation": "外层 x 先被遮蔽为 15；进入内部块后再次遮蔽为 15*2=30，因此 inner = 30；但内层绑定只在该块作用域内有效，走出花括号后外层的 x=15 重新生效，所以 outer = 15。"
           }
         ]
       }
