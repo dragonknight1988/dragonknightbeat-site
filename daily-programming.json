@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "contents": [
     {
-      "id": "prog-2026-11-12",
-      "date": "2026-11-12",
-      "title": "Rust 变量、可变性与变量遮蔽：从 let 开始理解 Rust 的设计哲学",
-      "summary": "掌握 Rust 中 let 绑定、mut 可变性、变量遮蔽（shadowing）与常量 const 的用法与背后的设计意图。",
-      "difficulty": "初级",
-      "concept": "在大多数主流语言里（如 JavaScript、Python、C++），变量默认是可变的：你声明一个变量，之后随时可以改它。Rust 做了一个反直觉但非常有价值的决定——变量默认是不可变的（immutable）。写 `let x = 5;` 之后再写 `x = 6;`，编译器会直接报错 `cannot assign twice to immutable variable`。这不是编译器在找茬，而是 Rust 把「不可变优先」作为并发安全和可维护性的基石：一段没人能改的数据，就不需要锁，也不会被别的线程悄悄改掉，读代码时你看到 `let x = 5;` 就能确定 x 永远是 5。\n\n当你确实需要修改数据时，必须显式地写 `let mut x = 5;`。这个 `mut` 关键字相当于一份「契约声明」：它告诉阅读代码的人（以及未来的自己），这个值在生命周期中会发生变化。工程经验上有一个好习惯——只在真正需要被修改的地方加 mut。Rust 的编译器也会在 lint 中提示你：如果声明了 mut 却从未修改它，会给出 `unused_mut` 警告。这种「用得越少越好」的风格能显著降低代码的心智负担。\n\n初学者最容易混淆的是「变量遮蔽」（shadowing）。`let x = 5; let x = x + 1;` 中的第二行并不是对 x 赋值，而是创建了一个全新的变量，「遮蔽」掉之前的 x。遮蔽允许你重复使用同一个名字，甚至允许改变类型——比如 `let s = \"hello\"; let s = s.len();` 中 s 从字符串切片 `&str` 变成了 `usize`，这在使用 mut 时是不允许的（mut 变量不能改类型）。遮蔽在做「逐步转换」的场景中特别优雅：把用户输入的字符串一步步 trim、parse、校验，全程可以叫同一个名字，读起来意图清晰。\n\n与 let 不同，常量用 `const` 声明，必须标注类型、必须是编译期可求值的表达式，并且按惯例使用 SCREAMING_SNAKE_CASE 命名。常量没有遮蔽概念，也不能加 mut，它的作用域是全局的（只要在可见范围内）。经验上：固定的配置阈值（最大重试次数、超时毫秒数、分页大小）用 const；在函数内部被计算或被修改的中间状态用 let / let mut。另外注意，`let _x = 5;` 与 `let x = 5;` 不同，下划线开头显式告诉编译器「我故意不用这个值」，可以消除 unused_variables 警告。\n\n最后补充一点实践建议：当你写完一段 Rust 代码后，如果满屏都是 mut，通常意味着函数承担了太多职责，可以考虑拆分成多个小函数，让每个函数接收不可变输入、返回新值。这种「函数式风格」在 Rust 中非常自然，也是 Rust 代码质量高的一大原因。",
+      "id": "prog-2026-11-13",
+      "date": "2026-11-13",
+      "title": "Kotlin Flow 状态管理实战：冷流 / StateFlow / SharedFlow 的选型与陷阱",
+      "summary": "搞清 Flow、StateFlow、SharedFlow 三者的本质区别，并用它们搭建一套可直接落地的『状态 + 事件』双通道架构。",
+      "difficulty": "中级",
+      "concept": "Kotlin 协程解决了\"并发代码怎么写\"，而 Flow 解决的是\"随时间变化的一串数据怎么传递\"。在实际工程里，我们几乎不会自己写 Flow 操作符的复杂链路，真正每天在用的是它的三个形态：冷流 Flow<T>、StateFlow<T>、SharedFlow<T>。分不清这三者，就会写出\"UI 刷新不出来\"、\"事件丢失\"、\"页面旋转后重复请求\"这类难查的 Bug。\n\n首先是冷流（Cold Flow）：`flow { ... }` 构建器里的代码是\"懒执行\"的，只有调用 `collect` 时才会真正运行，而且**每个订阅者都会独立触发一次完整的执行**。这和 `suspend fun` 返回单个值非常像——它适合包装\"一次性、可重复执行\"的异步操作，比如分页拉取数据、读文件、数据库查询流。工程经验：把网络请求写成 `fun fetch(): Flow<Data>` 时要意识到，两个订阅者就会发两次网络请求，必要时用 `shareIn`/`stateIn` 把冷流转成热流共享结果。\n\n其次是 StateFlow：它是一个\"永远持有最新值\"的热流（State = 状态，单数）。三个硬性特征决定了它的用途——**必须有初始值**、**新订阅者立刻拿到当前值**、**会做去重（conflate 式的 equal 判断）**。因为\"新订阅者立即拿值\"，它天生适合表示 UI 状态：Activity 重建、配置变更后重新 collect，界面就能立刻恢复，不会闪一下空白。注意去重是用 `equals` 判断的，如果你想让每次都触发（比如每次都弹 Toast），用 StateFlow 发\"相同值\"是无效的，这正是它不适合当事件总线的原因。\n\n最后是 SharedFlow：它是\"事件广播器\"（Event = 事件，可复数、可无初值）。`MutableSharedFlow(replay = 0)` 表示不保留历史，没订阅者时 `emit` 的值会直接丢弃；`replay = 1` 则会给后来的订阅者补发最近一条。它适合\"一次性事件\"：Snackbar 提示、导航跳转、埋点上报。工程上最常见的坑是事件丢失——ViewModel 里 `post(\"登录成功\")`，但 Fragment 还没 collect，事件就没了；解决办法是把事件放到 `Channel(Channel.BUFFERED)` 或 `MutableSharedFlow(replay = 1)`，或用 `stateIn` 保证订阅先建立。\n\n一套被广泛验证的架构范式是\"双通道\"：**状态用 StateFlow（State，可重复读、可恢复），事件用 SharedFlow/Channel（Event，一次性、消费即焚）**。千万不要把 Snackbar 文案塞进 StateFlow，否则旋转屏幕会重复弹；也不要把 loading 状态塞进 SharedFlow，否则晚订阅的页面拿不到当前是否在加载。分清\"状态\"与\"事件\"，是 Kotlin 协程进阶的第一道分水岭。",
       "codeExample": {
-        "language": "Rust",
-        "code": "// Rust 变量与可变性完整示例\n// 保存为 main.rs 后执行：rustc main.rs && ./main\n\n// 常量：编译期求值，全局可见，必须标注类型\nconst MAX_RETRY: u32 = 3;\nconst APP_NAME: &str = \"daily-rust\";\n\nfn main() {\n    // 1. 默认不可变\n    let x = 5;\n    // x = 6; // ❌ 取消注释会编译失败：cannot assign twice to immutable variable\n    println!(\"x = {}\", x);\n\n    // 2. 显式声明可变\n    let mut count = 0;\n    count += 1;\n    count += 1;\n    println!(\"count = {}\", count);\n\n    // 3. 变量遮蔽：创建同名新变量，可以改变类型\n    let x = x + 1; // x 重新绑定为 6\n    let x = x * 2; // x 重新绑定为 12\n    println!(\"shadowed x = {}\", x);\n\n    let input = \"  42  \";\n    let input = input.trim();        // &str -> &str（去空格）\n    let input: u32 = input.parse().expect(\"解析失败\"); // &str -> u32\n    println!(\"parsed input = {}\", input);\n\n    // 4. 类型标注与不可变的类型固定\n    let age: u8 = 25;\n    println!(\"{}: age = {}, max retry = {}\", APP_NAME, age, MAX_RETRY);\n\n    // 5. 用下划线前缀显式忽略未使用变量，消除编译器警告\n    let _unused = 100;\n\n    // 6. 块作用域中的遮蔽只在该块内生效\n    let outer = \"before\";\n    {\n        let outer = \"inside\";\n        println!(\"inner scope: {}\", outer);\n    }\n    println!(\"outer scope: {}\", outer);\n}\n",
-        "explanation": "• 第 4 行 `const MAX_RETRY: u32 = 3;`：常量必须写明类型，值必须编译期可知，命名用全大写下划线。\n• 第 8 行 `let x = 5;`：默认不可变，第 9 行的赋值若取消注释会编译失败。\n• 第 13 行 `let mut count = 0;`：只有加了 mut 的变量才能被修改，`count += 1` 合法。\n• 第 18-19 行：`let x = x + 1;` 不是赋值而是遮蔽，用旧的 x 计算出新 x，值从 5 变成 6 再到 12。\n• 第 22-24 行：同名变量 `input` 先是 `&str`，经 trim 后仍是 `&str`，最后 parse 成 `u32`。这正是遮蔽最实用的场景——类型可以变，且无需想新名字。\n• 第 32 行 `let _unused = 100;`：下划线前缀表示「有意忽略」，编译器不再报 unused_variables。\n• 第 35-40 行：花括号 `{}` 是一个新作用域，内部的 `outer` 遮蔽外部的，出了块之后外部的值又「回来」了。"
+        "language": "Kotlin",
+        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.flow.*\n\n// ========== 1. 冷流 Flow：collect 时才执行，每次订阅都独立跑一遍 ==========\nfun numbers(): Flow<Int> = flow {\n    println(\">>> numbers() 开始执行\")\n    for (i in 1..3) {\n        delay(100)            // 模拟网络 / IO 耗时\n        emit(i)               // 向下游发射一条数据\n    }\n}\n\n// ========== 2. StateFlow：永远持有\"最新状态\"的热流（State 是状态，单数） ==========\nclass CounterViewModel {\n    private val _count = MutableStateFlow(0)          // 内部可变\n    val count: StateFlow<Int> = _count.asStateFlow()  // 对外只读，防止外部篡改\n\n    fun increment() {\n        _count.value += 1                             // 同步更新状态\n    }\n}\n\n// ========== 3. SharedFlow：广播\"一次性事件\"的热流（Event 可复数、可无初值） ==========\nclass EventBus {\n    // replay = 0：不补发历史事件，没订阅者时事件会丢\n    private val _events = MutableSharedFlow<String>(replay = 0)\n    val events: SharedFlow<String> = _events.asSharedFlow()\n\n    suspend fun post(msg: String) = _events.emit(msg)\n}\n\nfun main() = runBlocking {\n    // ---- A. 冷流：两个订阅者互不干扰，\"开始执行\"会打印两次 ----\n    val cold = numbers()\n    val jobs = listOf(\n        launch { cold.collect { println(\"订阅者A: $it\") } },\n        launch { cold.collect { println(\"订阅者B: $it\") } }\n    )\n    jobs.forEach { it.join() }\n\n    // ---- B. StateFlow：新订阅者立刻拿到当前值，相同值会被去重 ----\n    val vm = CounterViewModel()\n    val stateJob = launch { vm.count.collect { println(\"UI 状态 = $it\") } }\n    delay(50)\n    vm.increment()\n    vm.increment()\n    delay(50)\n    stateJob.cancel()          // 记得取消，否则 collect 永不结束，runBlocking 不会退出\n\n    // ---- C. SharedFlow：必须先有订阅者，否则事件丢失 ----\n    val bus = EventBus()\n    val eventJob = launch { bus.events.collect { println(\"收到事件: $it\") } }\n    delay(50)\n    bus.post(\"登录成功\")\n    bus.post(\"加载完成\")\n    delay(50)\n    eventJob.cancel()\n\n    println(\"全部演示结束\")\n}\n",
+        "explanation": "【冷流部分】`flow { }` 构建器内的 `println(\">>> numbers() 开始执行\")` 在 `collect` 之前不会运行。因为有 A、B 两个订阅者，所以该日志会打印两次，且各自独立延时发射 1、2、3——这直观展示了\"每次 collect 都重新执行\"的特性。`jobs.forEach { it.join() }` 等待两个发射流自然结束。\n\n【StateFlow 部分】`MutableStateFlow(0)` 必须给初始值；`asStateFlow()` 把它收窄为只读接口，这是 ViewModel 对外暴露状态的标准写法。`stateJob` 一 collect 就立刻打印 `UI 状态 = 0`（这就是\"新订阅者立即拿值\"），随后两次 `increment()` 变成 1、2。如果连续两次赋同样的值，第二条会被吞掉。最后 `stateJob.cancel()` 是必需的，因为 StateFlow 永不结束。\n\n【SharedFlow 部分】`MutableSharedFlow(replay = 0)` 表示不保留历史。必须先 `launch` 建立订阅、`delay(50)` 确认订阅生效，再 `post` 事件，否则事件会直接丢弃——这是线上最常见的\"弹窗偶发不显示\"Bug。`eventJob.cancel()` 同理用于收尾。\n\n【整体结构】这就是\"状态 + 事件\"双通道架构的最小可运行原型，可直接移植到 Android ViewModel 或 Ktor 后端的会话管理中。"
       },
       "keyPoints": [
-        "Rust 中 let 绑定的变量默认不可变，这是并发安全与可读性的根基",
-        "要修改值必须显式写 `let mut`，且 mut 声明后实际不修改会触发 unused_mut 警告",
-        "变量遮蔽（shadowing）创建新变量，允许重复命名、允许改变类型、只在当前作用域生效",
-        "`const` 常量必须标注类型、编译期求值、命名用 SCREAMING_SNAKE_CASE，不可 mut 不可遮蔽",
-        "用 `_` 前缀显式忽略未使用变量；满屏 mut 往往意味着函数需要拆分"
+        "冷流 Flow 是懒执行的：每次 collect 都重新跑一遍 `flow { }` 的代码体，多个订阅者 = 多次执行（多次网络请求）。",
+        "StateFlow 三大特征：必须有初始值、新订阅者立即收到当前值、按 equals 去重；因此它是\"状态\"的最佳载体。",
+        "SharedFlow 可无初值、可配置 replay；`replay = 0` 时无订阅者的事件会丢失，一次性事件务必考虑订阅时序。",
+        "对外暴露状态统一用 `asStateFlow()` / `asSharedFlow()` 收窄为只读，防止 View 层直接篡改 ViewModel 内部状态。",
+        "StateFlow / SharedFlow 都是热流且永不结束，collect 必须放在可取消的协程中并适时 `cancel()`，否则会内存泄漏或协程永不退出。"
       ],
       "exercise": {
-        "description": "编写一个小程序 `score_report.rs`：定义常量 `PASS_SCORE: u32 = 60;`，先用 let 绑定一个字符串 `raw = \"  85 \"`，通过变量遮蔽依次完成 trim 和 parse 成 u32，再声明一个可变变量 `bonus = 5;` 把它加到分数上，最后用 println! 输出「最终得分：{score}，是否通过：{pass}」，其中 pass 是一个布尔值，表示 score 是否 >= PASS_SCORE。",
-        "hint": "注意三点：1) const 必须标类型；2) 遮蔽时可以 `let raw = raw.trim();` 然后 `let raw: u32 = raw.parse().unwrap();`；3) bonus 需要 mut 才能被修改，比较结果可以用 `raw >= PASS_SCORE` 直接得到 bool。",
+        "description": "实现一个 `TodoRepository`：用 StateFlow 暴露当前待办列表状态 `data class TodoState(val items: List<String>, val loading: Boolean)`，用 SharedFlow 暴露一次性提示事件（如 \"任务已添加\"）。要求：新增任务时先置 loading=true，模拟 100ms 延迟后写入列表并置 loading=false，同时发出一条提示事件；并保证连续添加两个同名任务时列表中会有两条记录，但提示事件每次都发。",
+        "hint": "状态用 `MutableStateFlow(TodoState(emptyList(), false))`，注意更新状态要拷贝整个 data class（`_state.value = _state.value.copy(...)`），不能原地修改列表；事件用 `MutableSharedFlow<String>(replay = 0)` 并在 collect 建立后再 post。区分\"状态（可重复读）\"与\"事件（消费即焚）\"是本题核心。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，使变量 score 可以被重新赋值，并正确输出。",
-            "codeContext": "fn main() {\n    let ____ score = 60;\n    score = 80;\n    println!(\"{}\", score);\n}",
+            "question": "补全代码，使 Counter 对外暴露一个只读的、初值为 0 的状态流：",
+            "codeContext": "class Counter {\n    private val _count = MutableStateFlow(0)\n    val count: ________ = _count.asStateFlow()\n    fun inc() { _count.value += 1 }\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "let ",
+                "content": "val count: ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,55 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择关键字]",
+                "placeholder": "[填空]",
                 "options": [
-                  "mut",
-                  "const",
-                  "static",
-                  "var"
+                  "StateFlow<Int>",
+                  "SharedFlow<Int>",
+                  "Flow<Int>"
                 ],
-                "correctAnswer": "mut"
+                "correctAnswer": "StateFlow<Int>"
               },
               {
                 "type": "text",
-                "content": " score = 60;\n    score = 80;",
+                "content": " = _count.asStateFlow()",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "mut",
-            "explanation": "Rust 中变量默认不可变，第二次赋值 `score = 80` 会触发 `cannot assign twice to immutable variable`。只有在 let 后显式加上 `mut` 才能修改变量。`const`/`static` 不是 let 的修饰符，Rust 中也没有 `var` 关键字。"
+            "correctAnswer": "StateFlow<Int>",
+            "explanation": "`asStateFlow()` 的返回类型是 `StateFlow<Int>`，它继承自 `SharedFlow<Int>` 与 `Flow<Int>`，但这里必须写最具体的 `StateFlow<Int>` 才能表达\"状态语义\"（有初值、去重、新订阅者立即拿值）。写成 `Flow<Int>` 虽然能编译，但丢失了状态特性，不是工程上的正确做法；`SharedFlow<Int>` 类型上兼容但语义错误。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Rust 的变量遮蔽（shadowing），下列说法正确的是？",
-            "codeContext": "let s = \"hello\";\nlet s = s.len();",
+            "question": "关于 StateFlow 与 SharedFlow，下面哪一项说法是正确的？",
+            "codeContext": "private val _ui = MutableStateFlow(0)\nprivate val _event = MutableSharedFlow<String>(replay = 0)",
             "segments": null,
             "options": [
-              "遮蔽是对原变量重新赋值，因此不能改变变量类型",
-              "遮蔽会创建一个全新的变量，可以改变类型，如 s 从 &str 变为 usize",
-              "遮蔽必须使用 mut 关键字才能实现",
-              "被遮蔽的变量在内存中会被立即销毁"
+              "StateFlow 必须有初始值，且会用 equals 对连续相同的值去重",
+              "SharedFlow 也必须提供初始值，否则无法编译",
+              "StateFlow 的新订阅者会收到该状态曾经出现过的所有历史值",
+              "两者都是冷流，只有 collect 时才会产生数据"
             ],
-            "correctAnswer": "遮蔽会创建一个全新的变量，可以改变类型，如 s 从 &str 变为 usize",
-            "explanation": "遮蔽不是赋值，而是新建绑定并覆盖旧名字，所以类型可以改变。若改成 `let mut s = \"hello\"; s = s.len();` 则会因类型不匹配而编译失败——mut 变量的类型在声明后是固定的。"
+            "correctAnswer": "StateFlow 必须有初始值，且会用 equals 对连续相同的值去重",
+            "explanation": "StateFlow 的构造函数强制要求初始值（`MutableStateFlow(0)`），并且只在新值 `!=` 旧值时才通知下游，这正是它适合\"状态\"而不适合\"一次性事件\"的原因。SharedFlow 无初值要求；StateFlow 只保留最新值不保留历史；两者都是热流，创建后即开始工作，与 collect 时机无关（但 SharedFlow 在无订阅者时事件会丢）。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
             "question": "以下代码的输出结果是什么？",
-            "codeContext": "fn main() {\n    let x = 10;\n    let x = x + 5;\n    {\n        let x = x * 2;\n        println!(\"inner = {}\", x);\n    }\n    println!(\"outer = {}\", x);\n}",
+            "codeContext": "fun counter(): Flow<Int> = flow {\n    println(\"flow 开始\")\n    emit(1)\n    emit(2)\n}\n\nfun main() = runBlocking {\n    val f = counter()\n    f.collect { println(\"A: $it\") }\n    f.collect { println(\"B: $it\") }\n}",
             "segments": null,
             "options": [
-              "inner = 30\nouter = 30",
-              "inner = 30\nouter = 15",
-              "inner = 20\nouter = 15",
-              "编译错误：不能在块内重新绑定 x"
+              "flow 开始\nA: 1\nA: 2",
+              "flow 开始\nA: 1\nA: 2\nflow 开始\nB: 1\nB: 2",
+              "flow 开始\nA: 1\nA: 2\nB: 1\nB: 2",
+              "flow 开始\nB: 1\nB: 2\nA: 1\nA: 2"
             ],
-            "correctAnswer": "inner = 30\nouter = 15",
-            "explanation": "外层 x 先被遮蔽为 15；进入内部块后再次遮蔽为 15*2=30，因此 inner = 30；但内层绑定只在该块作用域内有效，走出花括号后外层的 x=15 重新生效，所以 outer = 15。"
+            "correctAnswer": "flow 开始\nA: 1\nA: 2\nflow 开始\nB: 1\nB: 2",
+            "explanation": "`flow { }` 构建的是冷流，构建器代码体只在 `collect` 被调用时执行，且每个订阅者都会独立触发一次完整执行。所以 `f.collect { A }` 触发第一遍（打印一次\"flow 开始\" + 1、2），`f.collect { B }` 触发第二遍（再次打印\"flow 开始\" + 1、2）。如果把 `counter()` 换成 `counter().shareIn(scope, SharingStarted.Eagerly)` 或 `MutableSharedFlow`，则构建器只执行一次。"
           }
         ]
       }

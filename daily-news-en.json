@@ -1,15 +1,16 @@
 {
- "date": "2026-11-12",
- "weekday": "Thursday",
- "overview": "Defense build-up and opening-up advance in parallel, APEC momentum builds, and a surge in US semiconductor stocks ignites global market sentiment",
+ "date": "2026-11-13",
+ "weekday": "Friday",
+ "overview": "Nvidia turmoil weighs on tech stocks as Fed inflation warnings intensify; domestic wind power tops 100 billion yuan, with lower-tier markets and hard tech advancing in parallel",
  "trendingTopics": [
-  "Opening-up",
-  "Monetary policy",
-  "Semiconductor rally",
-  "Middle East situation",
-  "Artificial intelligence",
-  "Culture and tourism spending",
-  "New energy vehicles"
+  "Semiconductor industry",
+  "Fed policy",
+  "Gold price trends",
+  "Offshore wind power",
+  "Lower-tier markets",
+  "Commercial spaceflight",
+  "AI applications",
+  "Middle East situation"
  ],
  "sections": [
   {
@@ -19,64 +20,65 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "No Strong Nation Without a Strong Military",
-     "summary": "The \"Xi Jinping Quote\" column highlights the fundamental importance of military strength to national power, noting that there can be no strong country without a strong armed forces.",
-     "detail": "The commentary argues that a powerful military is a key pillar supporting a nation's standing in the world. Military development is closely tied to the country's destiny and serves as a firm guarantee for national rejuvenation.",
-     "impact": "Further elevates defense and military building within the nation's overall strategy, providing direction for investment in related fields.",
+     "title": "Commemoration of Sun Yat-sen's 160th Birthday Held in Beijing",
+     "summary": "A commemorative meeting marking the 160th anniversary of Sun Yat-sen's birth was held in Beijing, with Xi Jinping attending and delivering a keynote address.",
+     "detail": "The meeting took place in Beijing, with Xi Jinping delivering a keynote speech. No further details were provided in the source material; the core message is honoring the pioneer and building consensus.",
+     "impact": "Signals an effort to carry forward the spirit of patriotism and national rejuvenation and to build consensus at home and abroad.",
      "importance": "hot",
      "tags": [
-      "National Security",
-      "Military Strength Goal"
+      "History and Culture"
      ]
     },
     {
      "id": "news-002",
-     "title": "Touring Exhibition Marks 90th Anniversary of the Long March Victory",
-     "summary": "The themed exhibition \"The Great Expedition, An Eternal Monument\" opens, reviewing the Long March through extensive displays and honoring its great spirit.",
-     "detail": "Titled \"The Great Expedition, An Eternal Monument,\" the exhibition uses historical materials and curated displays to take visitors back through the journey. It is seen as an important vehicle for patriotic education and spiritual heritage in the new era.",
-     "impact": "Helps advance the inheritance of revolutionary culture and patriotic education, boosting traffic to memorial venues and study-tour programs.",
-     "importance": "important",
+     "title": "China's Annual Offshore Wind Power Generation Tops 100 Billion kWh",
+     "summary": "China's annual offshore wind power generation has surpassed 100 billion kilowatt-hours, with the industry chain continuing to extend into deeper, farther waters.",
+     "detail": "Annual offshore wind generation has exceeded 100 billion kWh as the industry chain pushes into deep and distant sea areas, with installed capacity and output continuing to expand.",
+     "impact": "Marks a new phase in large-scale clean energy development and drives the deep-and-far-sea equipment and operations and maintenance supply chain.",
+     "importance": "hot",
      "tags": [
-      "Red Culture",
-      "Museum Exhibitions"
+      "Offshore Wind",
+      "Clean Energy",
+      "Renewable Energy"
      ]
     },
     {
      "id": "news-003",
-     "title": "National Water Network Construction Accelerates",
-     "summary": "Construction of the national water network is speeding up, with progress on a number of key water projects continually updated and infrastructure investment steadily landing.",
-     "detail": "Reports say water network construction is continuously updating its \"progress bar,\" reflecting a fast pace of water infrastructure development. Water network projects are a critical foundation for optimizing water resource allocation and ensuring flood control safety.",
-     "impact": "Accelerated water infrastructure will drive demand for engineering, building materials and equipment, while improving water resource allocation and security capacity.",
+     "title": "China Economic Roundtable Discusses New Outlook for Agriculture, Rural Areas and Farmers",
+     "summary": "The China Economic Roundtable focused on the 'three rural issues,' with participants discussing a new outlook for agricultural and rural development.",
+     "detail": "The event took the form of a roundtable dialogue, exploring new changes and directions in the development of agriculture, rural areas and farmers.",
+     "impact": "Provides public opinion support and ideas for agricultural modernization and rural revitalization.",
      "importance": "important",
      "tags": [
-      "Water Conservancy Projects",
-      "Infrastructure Construction",
-      "Investment"
+      "Agriculture, Rural Areas and Farmers",
+      "Rural Revitalization",
+      "Agricultural Economy"
      ]
     },
     {
      "id": "news-004",
-     "title": "Multiple Cities Roll Out Colorful Autumn Holiday Activities",
-     "summary": "Cities are offering a range of autumn holiday activities — including free scenic site admission, intangible cultural heritage experiences and dedicated study-tour routes — igniting travel and spending enthusiasm.",
-     "detail": "Localities have introduced diverse activities such as free scenic site admission, intangible heritage experiences and study-tour routes, enriching autumn holiday travel options. The programs span cultural tourism and study education, creating new scenarios for autumn consumption.",
-     "impact": "A rich supply of autumn holiday products is expected to drive scenic site attendance and surrounding spending, injecting seasonal momentum into the cultural tourism market.",
-     "importance": "normal",
+     "title": "County-Level Tourism Gains Momentum, Delivering Multi-Sector Wins in Lower-Tier Markets",
+     "summary": "County-level tourism continues to heat up, driving consumption in lower-tier markets and delivering wins across multiple industries.",
+     "detail": "A series of reports observing lower-tier markets points to county-level tourism driving multi-sector gains across culture and tourism, dining and retail.",
+     "impact": "Expanding county-level consumption could become a new pillar of domestic demand growth.",
+     "importance": "important",
      "tags": [
-      "Cultural Tourism Spending",
-      "Holiday Economy",
-      "Study Travel"
+      "Lower-Tier Markets",
+      "Culture and Tourism Consumption",
+      "County Economy"
      ]
     },
     {
-     "id": "news-005",
-     "title": "Shenzhen Dressed Up Citywide to Welcome APEC",
-     "summary": "Shenzhen has set up citywide festive installations to welcome the APEC meeting, with photo spots fully decked out to showcase the host city's image.",
-     "detail": "Shenzhen has arranged meeting-themed landscapes across the city, with multiple photo spots creating a strong atmosphere. City services and festive setups are advancing in step to welcome participants.",
-     "impact": "The event buildup enhances the city's international image while bringing a temporary boost to local dining, accommodation and consumption.",
-     "importance": "important",
+     "id": "id-dup",
+     "title": "Inner Mongolia Builds Institutional Framework for Pilot Free Trade Zone",
+     "summary": "Inner Mongolia has established an institutional framework for building a pilot free trade zone, forming a comprehensive support system.",
+     "detail": "Inner Mongolia is using institutional opening-up as a lever to construct the core architecture of its pilot free trade zone.",
+     "impact": "Helps advance institutional opening-up and regional economic cooperation in border areas.",
+     "importance": "normal",
      "tags": [
-      "International Conference",
-      "City Services"
+      "Pilot Free Trade Zone",
+      "Regional Economy",
+      "Institutional Opening-Up"
      ]
     }
    ]
@@ -88,63 +90,63 @@
    "articles": [
     {
      "id": "news-006",
-     "title": "Wang Yi Holds Phone Call with U.S. Secretary of State Rubio",
-     "summary": "Wang Yi, member of the Political Bureau of the CPC Central Committee and foreign minister, held a phone call with U.S. Secretary of State Rubio, exchanging views on China-U.S. relations and issues of mutual concern.",
-     "detail": "The two foreign ministers spoke by phone, discussing China-U.S. relations and other matters of mutual interest. The high-level call provides an important platform for maintaining communication channels between the two countries.",
-     "impact": "High-level China-U.S. contact helps manage differences and stabilize expectations for bilateral relations, setting a constructive tone for subsequent economic, trade and security dialogues.",
-     "importance": "hot",
+     "title": "Asia-Pacific Needs More Mutual Trust and Cooperation",
+     "summary": "On Asia-Pacific development, multiple parties are calling for stronger mutual trust and cooperation to advance shared regional prosperity.",
+     "detail": "Commentary focused on the Asia-Pacific region, stressing that mutual trust and cooperation are the precondition for regional stability and development.",
+     "impact": "Reflects rising demand for Asia-Pacific cooperation, which bodes well for multilateral economic and trade coordination.",
+     "importance": "important",
      "tags": [
-      "China-U.S. Relations"
+      "Asia-Pacific Cooperation",
+      "Regional Security"
      ]
     },
     {
      "id": "news-007",
-     "title": "Saudi Arabia Says It Intercepted Houthi Missiles and Drones",
-     "summary": "The Saudi-led coalition said it intercepted and destroyed drones fired by Houthi forces over Mecca and southern regions, and shot down three cruise missiles over Riyadh.",
-     "detail": "Saudi authorities said the coalition intercepted and destroyed two drones launched by Houthi forces over Mecca and southern areas. They also reported intercepting three Houthi cruise missiles over Riyadh.",
-     "impact": "Regional military confrontation continues, with security risks in the Red Sea and the Gulf remaining high, putting pressure on energy shipping and maritime insurance costs.",
-     "importance": "important",
+     "title": "Putin Meets US Presidential Envoy to Lay Out Position on Russia-Ukraine Conflict",
+     "summary": "Russian President Vladimir Putin met with a US presidential envoy in Moscow, setting out Russia's position and conditions for resolving the Russia-Ukraine conflict.",
+     "detail": "Putin said Russia would not accept foreign troops stationed inside Ukraine and described such forces as legitimate targets for the Russian military. The envoy's side said all issues were discussed in detail, a move that will influence negotiations next week.",
+     "impact": "Negotiating positions differ sharply, leaving short-term prospects for a ceasefire uncertain.",
+     "importance": "hot",
      "tags": [
-      "Middle East Situation",
-      "Regional Security",
-      "Air Defense and Missile Interception"
+      "Russia-Ukraine Situation",
+      "International Mediation"
      ]
     },
     {
      "id": "news-008",
-     "title": "Iran Says It Will Break the Deadlock Through Sustainable Deterrence",
-     "summary": "Iran's parliament speaker and head of the negotiating delegation said Tehran is determined to end a state of neither war nor peace — not necessarily through talks, but through sustainable deterrence.",
-     "detail": "Iranian parliament speaker Qalibaf said Iran is determined to break the current state of 'neither war nor peace.' He stressed that this goal does not necessarily have to be achieved through negotiations, but rather through sustainable deterrence. Iran's top security official also mentioned the design of nuclear-powered ships and submarines, and the consequent need for enriched material.",
-     "impact": "Iran's statements make an easing of regional tensions unlikely, raising uncertainty over the outlook for international nuclear negotiations.",
-     "importance": "hot",
+     "title": "Houthis Say Saudi Warplanes Strike Multiple Locations Across Yemen",
+     "summary": "A Houthi spokesperson said Saudi warplanes sortied and fired missiles, hitting multiple locations across Yemen.",
+     "detail": "According to the Houthi spokesperson, aircraft took off from multiple bases over the past 24 hours, with missiles fired from the direction of Jizan, striking Lahej, Taiz, Saada, al-Jawf and Marib, among other areas.",
+     "impact": "Signals that regional conflict intensity remains high, warranting attention to security risks along the Red Sea corridor.",
+     "importance": "important",
      "tags": [
       "Middle East Situation",
-      "International Nuclear Issue"
+      "Regional Security"
      ]
     },
     {
      "id": "news-009",
-     "title": "Russian Ambassador to the United States Dies Suddenly",
-     "summary": "According to the Russian Foreign Ministry, Russian Ambassador to the United States Alexander Darchiev died suddenly at the age of 66.",
-     "detail": "The Russian Foreign Ministry announced on November 11 that Alexander Darchiev, Russia's ambassador to the United States, had died suddenly that day at the age of 66. He had previously served as a key channel of communication between Moscow and Washington.",
-     "impact": "A change in this key diplomatic post may affect the pace of daily Russia-U.S. communication, with attention on forthcoming personnel arrangements.",
+     "title": "French and German Leaders Agree De Cos Should Succeed as ECB President",
+     "summary": "French President Emmanuel Macron and German Chancellor Friedrich Merz agreed that De Cos should succeed Christine Lagarde as president of the European Central Bank.",
+     "detail": "The French and German leaders reached consensus on the next ECB president, backing De Cos to replace Lagarde.",
+     "impact": "The direction of the transition in European monetary policy leadership is becoming clearer, shaping expectations for eurozone policy.",
      "importance": "important",
      "tags": [
-      "International Relations",
-      "Embassies and Consulates"
+      "European Central Bank",
+      "Monetary Policy",
+      "International Finance"
      ]
     },
     {
      "id": "news-010",
-     "title": "CSTO Strips Armenia of Voting Rights",
-     "summary": "A meeting of the Collective Security Treaty Organization (CSTO) Council in Moscow decided to strip Armenia of its voting rights and its right to nominate candidates for positions within the organization.",
-     "detail": "The CSTO Collective Security Council met on November 11 in Moscow, the capital of Russia. The meeting decided to remove Armenia's voting rights within the organization as well as its right to nominate candidates for posts.",
-     "impact": "Deepening rifts within the regional security organization may affect its decision-making efficiency and collective security arrangements.",
+     "title": "Belgian PM Convenes Inner Cabinet to Discuss Budget Issues",
+     "summary": "Belgium's prime minister will convene core cabinet members on Friday for a focused discussion on budget-related issues.",
+     "detail": "The meeting centers on budget matters and is limited to inner cabinet members; specific proposals were not disclosed in the source material.",
+     "impact": "A prolonged budget deadlock could weigh on the country's fiscal policy and market confidence.",
      "importance": "normal",
      "tags": [
-      "International Organizations",
-      "Regional Security",
-      "Multilateral Mechanisms"
+      "European Fiscal Affairs",
+      "Economic Policy"
      ]
     }
    ]
@@ -156,106 +158,93 @@
    "articles": [
     {
      "id": "news-011",
-     "title": "Central Bank Report Reveals Where the Money Is Going",
-     "summary": "The central bank released its latest report, answering questions about capital flows and highlighting recent shifts in how funds are deployed across society and in financial operations.",
-     "detail": "The report centers on the core question of \"where the money is going,\" mapping the flow structure of funds through the economic system. It offers a key window into monetary policy transmission and funding demand in the real economy.",
-     "impact": "The report helps markets understand the direction of capital allocation, providing a reference for gauging credit expansion and shifts in household asset allocation.",
+     "title": "PBOC Q3 Policy Report Breaks Down Surge in Non-Bank Deposits and Where the Money Went",
+     "summary": "The People's Bank of China's Q3 monetary policy report analyzes fund flows, noting that the surge in non-bank deposits does not equate to idle capital circulation.",
+     "detail": "The report explains the drivers behind the rise in non-bank deposits, stressing they should not be simply equated with capital arbitrage, and breaks down where the funds actually went.",
+     "impact": "Helps clear up market misconceptions about idle capital circulation and stabilizes policy expectations.",
      "importance": "hot",
      "tags": [
       "Monetary Policy",
-      "Macroeconomy",
-      "Financial Operations"
+      "Financial Regulation",
+      "Fund Flows"
      ]
     },
     {
      "id": "news-012",
-     "title": "Three Keywords to Read the First 10 Months of Trade Data",
-     "summary": "Officials used three keywords to interpret the highlights and trends in China's import and export performance over the first 10 months of the year.",
-     "detail": "The report breaks down China's trade figures for the first 10 months through three keywords. The data reflects how foreign trade has performed and how its structure has shifted against a complex external environment.",
-     "impact": "The trade data reading offers a basis for tracking full-year import and export trends and companies' order conditions.",
-     "importance": "hot",
+     "title": "Most Domestic Commodity Futures Rise in Night Session, Chemicals Lead Gains",
+     "summary": "Most contracts closed higher in the night session of the domestic commodity futures market, with chemicals posting the biggest gains.",
+     "detail": "Most commodities finished up in night trading, with the chemicals sector leading the advance.",
+     "impact": "Strength in chemicals may reflect restocking and cost-side support; sustainability of the rally warrants attention.",
+     "importance": "important",
      "tags": [
-      "Foreign Trade",
-      "Macroeconomy",
-      "Import and Export Data"
+      "Commodities",
+      "Futures Markets",
+      "Chemical Industry"
      ]
     },
     {
      "id": "news-013",
-     "title": "Top-Tier Cities Target a Quarter of National Capacity",
-     "summary": "In a \"City 24 Hours\" report, China's top-tier cities are moving to build out industries, aiming for roughly a quarter of the country's total capacity in a new round of industrial competition.",
-     "detail": "The report notes that first-tier cities are making fresh moves on the industrial front, targeting a significant share of national capacity. The contest for industrial resources and manufacturing links has become a new focal point of urban competition.",
-     "impact": "Industrial moves by top-tier cities could trigger a reshuffle of manufacturing and supply chain resources, reshaping the regional competitive landscape.",
+     "title": "Post-P2P Crackdown, Whale App Accused of Secret Deposit-Taking Disguise; Multiple Payment Channels Implicated",
+     "summary": "The Whale App has gone offline, accused of raising deposits covertly under a new guise after the P2P wind-down, with multiple payment channels drawn into the case.",
+     "detail": "Reports say the Whale App has disappeared and was covertly taking deposits under a new identity after the industry-wide P2P cleanup, implicating several payment channels.",
+     "impact": "Signals that clearing internet finance risks remains an ongoing task and that compliance screening of payment channels needs urgent strengthening.",
      "importance": "important",
      "tags": [
-      "Industrial Layout",
-      "Manufacturing",
-      "Urban Economy"
+      "Internet Finance",
+      "Financial Regulation",
+      "Payments Industry"
      ]
     },
     {
      "id": "news-014",
-     "title": "Shenyang Treats Bathing Culture as a Serious Business",
-     "summary": "Shenyang is promoting bathing and wellness services as a key business format, exploring how bathing consumption can boost urban services and tourism appeal.",
-     "detail": "The report says Shenyang is taking \"bathing\" seriously as an industry, aiming to turn this distinctive consumer offering into a city calling card. Behind the move is the city's desire to drive consumption and foot traffic through the services sector.",
-     "impact": "The niche service format is expected to lift local consumption and tourist flows, offering a model for northern cities to shore up domestic demand.",
-     "importance": "normal",
+     "title": "Indonesia's RMB Clearing Bank Officially Opens",
+     "summary": "An RMB clearing bank in Indonesia officially opened in Jakarta, with Bank of China serving as the clearing bank.",
+     "detail": "The RMB clearing bank in Indonesia officially opened in Jakarta on the 12th, with Bank of China as the clearing agent; around 100 representatives from government departments, enterprises and financial institutions of both countries attended.",
+     "impact": "Supports cross-border use of the renminbi and deepens regional financial infrastructure connectivity.",
+     "importance": "important",
      "tags": [
-      "Culture and Tourism Consumption",
-      "Services Sector",
-      "Urban Economy"
+      "RMB Internationalization",
+      "Cross-Border Clearing",
+      "Financial Opening"
      ]
     },
     {
      "id": "news-015",
-     "title": "CIIE Regulars Deliver a New Report Card",
-     "summary": "Returning exhibitors at the China International Import Expo showcased new results in China through three \"pictures,\" reflecting the fresh opportunities and room for cooperation that an open China offers.",
-     "detail": "Using three \"pictures\" as a thread, the report presents the latest achievements of CIIE veterans in China. Interviewed parties broadly expressed optimism about China's market opening, with cooperation continuing to deepen.",
-     "impact": "The CIIE keeps sending signals of openness, helping stabilize foreign investment and deepen supply chain cooperation.",
-     "importance": "important",
+     "title": "Tax Incentives and Compliance Support Help Hard-Tech Firms Accelerate",
+     "summary": "Tax policy support and compliance safeguards are helping hard-tech enterprises speed up their growth.",
+     "detail": "The report focuses on how tax services power hard-tech companies, while compliance systems guard their development.",
+     "impact": "Benefits hard-tech firms by cutting costs and boosting efficiency, strengthening the industrial innovation ecosystem.",
+     "importance": "normal",
      "tags": [
-      "China International Import Expo",
-      "Opening Up",
-      "Foreign Investment"
+      "Tax Policy",
+      "Hard-Tech",
+      "Enterprise Services"
      ]
     },
     {
      "id": "news-016",
-     "title": "Sam's Club's 399 Yuan Down Jacket Sells Out",
-     "summary": "A 399 yuan down jacket at Sam's Club was snapped up by shoppers after hitting shelves, as value-for-money products once again became a retail hot spot.",
-     "detail": "Sam's Club's 399 yuan down jacket drew a buying frenzy, drawing attention from the consumer market. The episode reflects pent-up demand for winter apparel and shoppers' pursuit of high-value bargains.",
-     "impact": "The blockbuster-product effect of membership retail continues to stand out, potentially driving winter apparel sales and traffic to warehouse clubs.",
+     "title": "Industrial Securities: Further Downside for Gold Prices May Be Limited",
+     "summary": "A research note from Industrial Securities argues that, before new signals of rate-hike expectations emerge, further downside for gold prices is relatively limited.",
+     "detail": "The note says gold is likely to trade range-bound in the short term amid a strong dollar and high interest rates, with investment demand for the metal still influenced by real rates and other factors.",
+     "impact": "Offers a reference for gold asset allocation; prices may hold in a range in the near term.",
      "importance": "normal",
      "tags": [
-      "Retail Consumption",
-      "Apparel Industry",
-      "Membership Retail"
+      "Gold Market",
+      "Investment Strategy",
+      "Macroeconomics"
      ]
     },
     {
      "id": "news-017",
-     "title": "BYD Responds to Owner Complaints Over Wheel Hub Issue",
-     "summary": "BYD responded to complaints from multiple vehicle owners concerning front and rear wheel hubs installed in reverse on its Datang model, issuing a statement.",
-     "detail": "BYD has responded to complaints from several owners about front and rear wheel hubs being fitted backwards on the Datang vehicle. The incident concerns assembly quality and how user feedback is handled.",
-     "impact": "A prompt response from the automaker helps protect brand reputation and serves as a reminder for the industry to prioritize assembly quality and after-sales service.",
+     "title": "County-Level Headquarters Spawn 'Reception Room' Effect",
+     "summary": "The county-level headquarters economy keeps growing, generating a reception-room-style clustering and spillover effect.",
+     "detail": "The report observes the shape of the county-level headquarters economy, noting it is forming a 'reception room' effect that attracts converging resources.",
+     "impact": "Provides a replicable model for county-level industrial upgrading and investment promotion.",
      "importance": "normal",
      "tags": [
-      "New Energy Vehicles",
-      "Consumer Rights",
-      "Quality Management"
-     ]
-    },
-    {
-     "id": "news-018",
-     "title": "Beijing Explores Turning Autumn Foliage Into Consumer Momentum",
-     "summary": "Beijing is exploring how to convert the beauty of autumn foliage into consumer momentum — one leaf painting autumn's colors, colorful leaves gathering drive — to power the autumn economy.",
-     "detail": "Beijing is exploring ways to transform autumn foliage resources into consumable culture and tourism products. The colorful-leaf economy has emerged as a new lever for spurring autumn consumption.",
-     "impact": "Commercializing scenic resources could extend the culture and tourism consumption chain and boost spending in the autumn and winter seasons.",
-     "importance": "normal",
-     "tags": [
-      "Culture and Tourism Consumption",
-      "Urban Economy",
-      "Ecological Resources"
+      "County Economy",
+      "Headquarters Economy",
+      "Investment Promotion"
      ]
     }
    ]
@@ -266,140 +255,179 @@
    "icon": "🌐",
    "articles": [
     {
-     "id": "news-019",
-     "title": "Dollar Index Rises to Highest Level Since April 2025",
-     "summary": "The dollar index touched an intraday high, hitting its strongest level since April 2025, up 0.63% at 102.86.",
-     "detail": "The dollar index hit an intraday high and reached its highest level since April 2025. It was last quoted at 102.86, up 0.63%. The strong dollar is pressuring non-US currencies and commodities.",
-     "impact": "A stronger dollar could weigh on commodity prices and increase capital outflow pressures on emerging markets.",
+     "id": "news-018",
+     "title": "Nvidia Leadership Shake-Up Sends Shares Lower, Founder's Wealth Slashes Billions",
+     "summary": "The founder has stepped down as CEO and from other posts, with Nvidia shares under sustained pressure and his fortune shrinking sharply based on public stake data.",
+     "detail": "On the evening of November 12, Nvidia's founder resigned as CEO, president and director, and the stock remained under pressure. The U.S. Department of Justice launched an antitrust investigation into Nvidia, while reports said there was no sign the DOJ planned a criminal case; the interim CEO has convened the executive team.",
+     "impact": "Compounding corporate governance and regulatory uncertainty may continue to weigh on sentiment across the semiconductor sector in the short term.",
      "importance": "hot",
      "tags": [
-      "FX Market",
-      "Dollar Index",
-      "Global Macro"
+      "Semiconductor Industry",
+      "Corporate Governance",
+      "Capital Markets"
+     ]
+    },
+    {
+     "id": "news-019",
+     "title": "U.S. Stocks Extend Gains, Nasdaq 100 Hits Intraday Record",
+     "summary": "All three major U.S. indices climbed, with the Nasdaq 100 rising to a fresh intraday high after opening lower.",
+     "detail": "The S&P 500, Nasdaq and Dow Jones all extended gains; the Nasdaq 100 rose 0.5% to an intraday record, having earlier fallen as much as 1.5% at the open.",
+     "impact": "Strong dip-buying appetite is evident; volatility has picked up but sentiment is recovering.",
+     "importance": "important",
+     "tags": [
+      "U.S. Equities",
+      "Tech Stocks",
+      "Financial Markets"
      ]
     },
     {
      "id": "news-020",
-     "title": "Philadelphia Semiconductor Index Surges 6% Intraday",
-     "summary": "The Philadelphia Semiconductor Index rose 6.02% to 10600.65, with chip stocks including NVIDIA, Broadcom, Micron and Intel broadly higher.",
-     "detail": "The Philadelphia Semiconductor Index gained 6.02% on the day, trading at 10600.65. Among individual stocks, NVIDIA rose 3.72%, Broadcom 5.79%, Micron 12.26% and Intel 8.32%. The chip sector led global markets higher on the day.",
-     "impact": "The sharp rally in semiconductors has lifted sentiment across global tech stocks and could drive valuation recovery across related supply chains.",
-     "importance": "hot",
+     "title": "AMD and Broadcom Extend Gains, Lead S&P 500 Higher",
+     "summary": "AMD and Broadcom widened their advances to more than 7%, becoming the leading gainers in the S&P 500.",
+     "detail": "Related semiconductor stocks extended intraday gains to over 7%, leading the S&P 500 higher.",
+     "impact": "Divergence is emerging within the sector as capital may rotate into peer names amid turmoil in the bellwether.",
+     "importance": "important",
      "tags": [
-      "Semiconductors",
-      "US Equities",
-      "Chip Industry"
+      "Semiconductor Industry",
+      "U.S. Equities",
+      "Tech Stocks"
      ]
     },
     {
      "id": "news-021",
-     "title": "S&P 500 and Nasdaq 100 Hit Record Highs Together",
-     "summary": "The S&P 500 rose 1.1% to a new intraday high, while the Nasdaq 100 gained 2.1% to a new session high.",
-     "detail": "The S&P 500 rose 1.1% on the day, setting a new intraday high. The Nasdaq 100 climbed 2.1%, reaching a new session high. Market risk appetite has clearly rebounded.",
-     "impact": "Record highs in US indexes signal improving risk appetite, but easing volatility also warrants attention to the risk of a pullback from elevated levels.",
+     "title": "Euro Slides to Lowest Level Since April 2025 Against Dollar",
+     "summary": "The euro fell to its lowest level against the dollar since April 2025, latest down 0.27% at $1.1059.",
+     "detail": "The euro continued to weaken against the dollar, down 0.27% at $1.1059, a low last seen in April 2025.",
+     "impact": "A weaker euro supports exports but heightens imported inflation and policy pressures.",
      "importance": "important",
      "tags": [
-      "US Equities",
-      "Global Markets",
-      "Risk Appetite"
+      "Foreign Exchange",
+      "Euro Exchange Rate",
+      "International Finance"
      ]
     },
     {
      "id": "news-022",
-     "title": "China-Germany Business Cooperation Extends to R&D and Manufacturing",
-     "summary": "A report by the Chinese Chamber of Commerce in Germany and KPMG Germany shows Germany remains a key destination for Chinese firms, with cooperation expanding into R&D and production.",
-     "detail": "The 2026 Survey Report on the Business Environment of Chinese Enterprises in Germany was jointly released by the Chinese Chamber of Commerce in Germany and KPMG Germany in Frankfurt on October 11. The report shows Germany remains an important investment destination for Chinese companies, and China-Germany business cooperation is extending into R&D and manufacturing.",
-     "impact": "Deeper industrial cooperation between China and Germany helps stabilize bilateral trade and investment fundamentals and promotes coordination in high-end manufacturing and R&D.",
+     "title": "Goolsbee: Inflation Report Not a One-Off",
+     "summary": "Chicago Fed President Austan Goolsbee said he sees signs of traditional overheating demand, and the hot inflation report is not a one-time event.",
+     "detail": "Goolsbee said a clear-headed view of inflation data and the Fed's response is necessary, adding that the central bank is gradually entering a historically difficult period.",
+     "impact": "Signals the easing path may be blocked, with rate expectations continuing to roil global risk assets.",
      "importance": "important",
      "tags": [
-      "China-EU Trade",
-      "Cross-border Investment",
-      "Manufacturing"
+      "Fed Policy",
+      "Inflation",
+      "Monetary Policy"
      ]
     },
     {
      "id": "news-023",
-     "title": "Eni Commits to About GBP 11 Billion Investment in the UK",
-     "summary": "Eni's CEO met with the UK Energy Secretary and committed to investing around GBP 11 billion in the UK, stepping up its energy sector presence.",
-     "detail": "The CEO of Italian energy company Eni met with the UK Energy Secretary. During the meeting, Eni committed to investing approximately GBP 11 billion in the UK, targeting the country's energy sector.",
-     "impact": "Major energy investments will drive demand for UK energy infrastructure and related supply chains.",
+     "title": "London Cocoa Futures Jump More Than 3%",
+     "summary": "London cocoa futures rose more than 3% to 4,011 pounds per metric ton.",
+     "detail": "London cocoa futures gained over 3% intraday, at 4,011 pounds per metric ton.",
+     "impact": "Higher cocoa prices could push up raw material costs for downstream food producers.",
      "importance": "normal",
      "tags": [
-      "International Energy",
-      "Cross-border Investment",
-      "Energy Infrastructure"
+      "Commodities",
+      "Futures Markets",
+      "Agriculture"
      ]
     },
     {
      "id": "news-024",
-     "title": "Venezuelan Oil Equipment to Be Sent to the US for Repairs",
-     "summary": "Venezuela's state oil company has approved shipping oil equipment to Houston for repairs in the United States, for the first time in years.",
-     "detail": "Venezuela's state oil company PDVSA has approved the shipment of oil equipment to Houston. The equipment will undergo repairs in the United States, marking the first such move in years. The step signals new changes in relevant energy cooperation.",
-     "impact": "Signs of easing in energy cooperation could have a marginal impact on crude supply expectations in the region.",
+     "title": "Mercedes-Benz Weighs Closing Some Plants in Germany",
+     "summary": "Mercedes-Benz is considering closing some of its plants in Germany, drawing industry attention.",
+     "detail": "Reports only mention that Mercedes-Benz is weighing closures of certain German plants; the specific scope and timeline were not disclosed.",
+     "impact": "If implemented, it would signal a contraction in Europe's auto industry, affecting local employment and supply chains.",
      "importance": "normal",
      "tags": [
-      "International Energy",
-      "Oil & Gas",
-      "Energy Equipment"
+      "Automotive Industry",
+      "Manufacturing Transformation",
+      "European Economy"
+     ]
+    },
+    {
+     "id": "news-025",
+     "title": "SpaceX Plans Massive Supercomputing Campus Investment",
+     "summary": "SpaceX plans to build supercomputing facilities in Arizona and the Rio Grande Valley, with investment running into the tens of billions of dollars.",
+     "detail": "SpaceX plans to build a $50 billion supercomputing campus in Arizona, creating 6,500 jobs; it will also invest more than $24 billion in new supercomputing infrastructure at Starbase in the Rio Grande Valley.",
+     "impact": "Compute infrastructure is becoming a focal point of competition among tech giants, driving demand across related supply chains.",
+     "importance": "important",
+     "tags": [
+      "Commercial Space",
+      "Compute Infrastructure",
+      "Tech Investment"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Tech Frontier",
+   "title": "Tech Frontiers",
    "icon": "💡",
    "articles": [
     {
-     "id": "news-025",
-     "title": "Google Tests New Fast Gemini Model",
-     "summary": "Google has let employees test a new \"fast\" Gemini AI model called Hydrogen, exploring more efficient model capabilities.",
-     "detail": "Google has allowed employees to test a new Gemini AI model internally codenamed Hydrogen. Described as \"fast,\" the model signals Google's push toward greater model speed and efficiency. It is currently in internal testing.",
-     "impact": "Faster iteration of large models will intensify competition in AI capabilities, driving continued optimization of inference costs and response speeds.",
+     "id": "news-026",
+     "title": "从Token热销看智能消费新动能",
+     "summary": "智能消费相关Token在电商大促期间热销，折射出智能消费新动能加速释放。",
+     "detail": "报道以电商大促期间Token热销现象为切口，观察智能消费领域的新增长动能。",
+     "impact": "智能消费有望成为拉动内需与AI落地的结合点。",
      "importance": "important",
      "tags": [
-      "Artificial Intelligence",
-      "Large Models",
-      "Tech Companies"
-     ]
-    },
-    {
-     "id": "news-026",
-     "title": "Meta's Infrastructure Chief to Step Down",
-     "summary": "Meta infrastructure chief Santosh Janardan will step down in 2027, with Dave Brown succeeding him in the role.",
-     "detail": "Meta's head of infrastructure, Santosh Janardan, will step down in 2027. Dave Brown will take over. The infrastructure team oversees key responsibilities including compute capacity and data centers.",
-     "impact": "A leadership change in compute infrastructure reflects shifts in personnel and strategy among tech giants as they invest in AI infrastructure.",
-     "importance": "normal",
-     "tags": [
-      "Artificial Intelligence",
-      "Cloud Compute",
-      "Data Centers"
+      "智能消费",
+      "人工智能应用",
+      "电商行业"
      ]
     },
     {
      "id": "news-027",
-     "title": "Marsh Lobbies to Ease AI Lending Capital Rules",
-     "summary": "Insurance broker Marsh is lobbying U.S. regulators to lower related capital requirement rules amid rapid growth in AI data center credit.",
-     "detail": "Marsh is lobbying U.S. regulators to reduce capital requirements for bank loans that purchase credit risk insurance. The push comes against a backdrop of rapidly expanding AI data center credit. The capital rules in question will affect banks' willingness to lend to AI infrastructure projects.",
-     "impact": "Looser capital rules could further unlock AI data center financing and accelerate buildout of compute capacity.",
+     "title": "赛博街景无人机交警 空中外卖落地深圳",
+     "summary": "赛博街景、无人机交警、空中外卖等新业态齐现，深圳成为智能制造与低空应用样板。",
+     "detail": "报道以深圳为观察对象，展示赛博街景、无人机交警、空中外卖等新场景。",
+     "impact": "为智慧城市与低空经济提供可推广的城市场景实践。",
      "importance": "important",
      "tags": [
-      "Artificial Intelligence",
-      "Financial Regulation",
-      "Data Centers"
+      "低空经济",
+      "智能制造",
+      "城市科技"
      ]
     },
     {
      "id": "news-028",
-     "title": "Amazon Opens AWS South America Region",
-     "summary": "Amazon has opened its AWS South America region to select customers, with full availability expected by the end of 2026.",
-     "detail": "Amazon announced it has opened the AWS South America region to select customers. The region is expected to reach full availability by the end of 2026. The move expands the global coverage of its cloud services.",
-     "impact": "Expanding cloud service regions lowers the barrier to cloud adoption for local enterprises and grows global cloud market share.",
+     "title": "北京范式领航商业航天",
+     "summary": "北京以范式引领商业航天产业发展，形成可借鉴的发展模式。",
+     "detail": "报道聚焦北京在商业航天领域的模式探索，以范式化路径推动产业发展。",
+     "impact": "有助于商业航天规模化、规范化发展，吸引产业集聚。",
+     "importance": "important",
+     "tags": [
+      "商业航天",
+      "航天产业",
+      "科技金融"
+     ]
+    },
+    {
+     "id": "news-029",
+     "title": "成都智能网联汽车产业对接活动举行",
+     "summary": "成都举办智能网联汽车产业1+N对接活动，车企透露广州车展将推纯电版新车型。",
+     "detail": "成都智能网联汽车产业1+N对接活动举行，曾清林在活动中透露广州车展将推出奕境X9纯电版。",
+     "impact": "推动产业链上下游对接，加速西南地区智能网联汽车产业落地。",
      "importance": "normal",
      "tags": [
-      "Cloud Computing",
-      "Tech Companies",
-      "Digital Infrastructure"
+      "智能网联汽车",
+      "新能源汽车",
+      "汽车产业"
+     ]
+    },
+    {
+     "id": "news-030",
+     "title": "上海先进制造业大会：打造全球领先智能制造体系",
+     "summary": "上海市先进制造业大会召开，提出打造全球领先智能制造体系的目标。",
+     "detail": "大会聚焦先进制造业发展，围绕打造全球领先智能制造体系展开部署与交流。",
+     "impact": "强化上海制造能级定位，带动长三角产业升级。",
+     "importance": "important",
+     "tags": [
+      "智能制造",
+      "先进制造业",
+      "产业升级"
      ]
     }
    ]
@@ -410,68 +438,68 @@
    "icon": "📰",
    "articles": [
     {
-     "id": "news-029",
-     "title": "The Vitamin Chinese People Lack Most — and Women Are Worse Off",
-     "summary": "The article highlights widespread vitamin deficiencies in China, noting that the shortfall is more pronounced among women, sparking debate over nutrition and health.",
-     "detail": "The article says Chinese people are generally deficient in a particular vitamin, with women affected more severely than men. The topic touches on daily dietary habits and nutritional supplementation.",
-     "impact": "Could raise public attention to dietary nutrition and health-check indicators, driving related health spending.",
-     "importance": "normal",
-     "tags": [
-      "Nutrition & Health",
-      "Public Health",
-      "Health Consumption"
-     ]
-    },
-    {
-     "id": "news-030",
-     "title": "Stress-Triggered Abdominal Pain Plagues Young People",
-     "summary": "Stomach pain and diarrhea brought on by anxiety are troubling a growing number of young people, drawing attention to the link between stress, emotions and gut health.",
-     "detail": "The article describes a gut symptom closely tied to anxiety that is affecting more and more young people. It is often linked to work and life pressure as well as emotional fluctuations.",
-     "impact": "Drives public focus on stress management and digestive health, reviving debate on workplace mental well-being.",
-     "importance": "normal",
-     "tags": [
-      "Digestive Health",
-      "Workplace Health",
-      "Mental Health"
-     ]
-    },
-    {
      "id": "news-031",
-     "title": "Can RMB 500,000 Stem Cell Infusions Really Slow Aging?",
-     "summary": "High-priced stem cell infusion programs for anti-aging are drawing scrutiny, with their actual efficacy and regulatory compliance under debate.",
-     "detail": "The article examines stem cell anti-aging treatment plans costing several hundred thousand yuan. The focus is on whether such programs truly deliver anti-aging effects. The topic touches on regenerative medicine and consumer healthcare.",
-     "impact": "Helps draw the line for marketing claims in consumer healthcare and urges the public to view anti-aging programs rationally.",
+     "title": "The Vitamin Chinese People Lack Most — Women More Deficient Than Men",
+     "summary": "The article focuses on widespread vitamin deficiencies in China, noting that women are more deficient than men.",
+     "detail": "The article examines vitamin intake levels across China, highlighting that deficiencies are more pronounced among women than men.",
+     "impact": "Raises public awareness of nutritional supplementation and boosts interest in related health consumer products.",
      "importance": "normal",
      "tags": [
-      "Regenerative Medicine",
-      "Consumer Healthcare",
-      "Health Industry"
+      "Public Nutrition",
+      "Health Education",
+      "Nutrition & Health"
      ]
     },
     {
      "id": "news-032",
-     "title": "Former Changhong Chairman Ni Runfeng Dies",
-     "summary": "Former Changhong chairman Ni Runfeng has died. He long led the home appliance maker and witnessed the industry's evolution.",
-     "detail": "Former Changhong chairman Ni Runfeng has died. He served as head of Changhong for many years and was one of the most representative entrepreneurs in China's home appliance sector. His passing has drawn tributes and attention across the industry.",
-     "impact": "China's home appliance industry loses an iconic figure as the sector reflects on his business legacy and contributions.",
-     "importance": "important",
+     "title": "48 Hours After Flu Strikes: Picking the Right Drug Is Key",
+     "summary": "During peak flu season, a patient shares their experience of choosing the right medication within 48 hours of symptom onset.",
+     "detail": "The article recounts in the first person the process of selecting flu medication during the critical 48 hours after onset.",
+     "impact": "Highlights the time-sensitivity of antiviral treatment and helps the public respond to flu season more effectively.",
+     "importance": "normal",
      "tags": [
-      "Home Appliance Industry",
-      "Corporate Governance",
-      "Business Figures"
+      "Flu Prevention & Treatment",
+      "Public Health",
+      "Pharmaceuticals & Health"
      ]
     },
     {
      "id": "news-033",
-     "title": "Zhao Liying Sues Short-Drama Platform Over Right of Publicity",
-     "summary": "Actress Zhao Liying is suing short-drama platform Hongguo for violation of her right of publicity, renewing attention on celebrity rights enforcement and content compliance in the short-drama sector.",
-     "detail": "Actress Zhao Liying has sued Hongguo Short Drama, alleging a violation of her right of publicity. The case concerns compliance boundaries around the use of others' images in short-drama content, prompting discussion across the entertainment and short-video industries.",
-     "impact": "Could push the short-drama industry to tighten content licensing management and improve compliance processes for rights such as the right of publicity.",
+     "title": "Are Stem Cell Infusions for Anti-Aging Really Effective?",
+     "summary": "The article examines stem cell infusion procedures costing hundreds of thousands of yuan and questions the scientific evidence behind their anti-aging claims.",
+     "detail": "The report uses stem cell infusions as a case study, focusing on the efficacy and controversy behind high-priced anti-aging treatments.",
+     "impact": "Sparks discussion on the regulatory compliance of commercialized regenerative medicine and the protection of consumer rights.",
      "importance": "normal",
      "tags": [
-      "Short-Drama Industry",
-      "Right of Publicity",
-      "Entertainment"
+      "Regenerative Medicine",
+      "Medical & Health",
+      "Health Consumerism"
+     ]
+    },
+    {
+     "id": "news-034",
+     "title": "Intangible Heritage Enters Everyday Life: Traditional Crafts Reach Modern Living",
+     "summary": "Intangible cultural heritage is blending into everyday life, with traditional crafts finding their way into modern living.",
+     "detail": "The report observes how intangible heritage is integrating with daily life, showcasing the new face of traditional crafts in contemporary society.",
+     "impact": "Drives mutual empowerment between cultural tourism consumption and cultural heritage preservation.",
+     "importance": "normal",
+     "tags": [
+      "Intangible Cultural Heritage",
+      "Cultural Heritage",
+      "Cultural Tourism"
+     ]
+    },
+    {
+     "id": "news-035",
+     "title": "300 Days and Nights in a Boot Camp School",
+     "summary": "The report documents 300 days in a controversial disciplinary training school, focusing on such education models and youth development issues.",
+     "detail": "The article follows a chronological account of experiences inside a boot camp school, centering on the social debate surrounding these institutions.",
+     "impact": "Prompts reflection on youth education approaches and the regulation of such institutions.",
+     "importance": "normal",
+     "tags": [
+      "Youth Education",
+      "Education Governance",
+      "Social Concerns"
      ]
     }
    ]
