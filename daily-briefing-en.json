@@ -1,8 +1,8 @@
 {
- "date": "2026-11-13",
+ "date": "2026-11-14",
  "briefing": {
-  "date": "November 13, 2026",
-  "quote": "When AI agents start thinking for us, humanity's most valuable skill becomes asking a good question.",
+  "date": "2026-11-14",
+  "quote": "When agents begin orchestrating tools autonomously, what becomes scarce is no longer compute, but the taste to define the right problems.",
   "sections": [
    {
     "id": "openclaw",
@@ -10,194 +10,194 @@
     "icon": "🦞",
     "articles": [
      {
-      "id": "brief-oc-01",
-      "title": "OpenClaw v2.8 Released: 'Task Orchestration Graph' Brings Visual Agent Workflows to Life",
-      "summary": "The new release replaces pure natural-language task descriptions with visual DAG orchestration, cutting debugging costs for complex multi-agent collaboration by more than half.",
-      "detail": "The official OpenClaw blog released v2.8 today, with its headline feature being the TaskGraph task orchestration map. Users can drag and drop the invocation relationships between multiple agents into node-edge form, and observe token consumption, tool calls, and failure retries for each step in real time at runtime. A new Local LLM Adapter also allows any OpenAI-compatible endpoint to serve as the primary control model, with closed-source APIs demoted to a fallback option. The development team said the release aims to move agents from 'mystical orchestration' toward 'engineered, operable infrastructure.'",
-      "impact": "For developers, workflow visualization makes it possible to take agents from demo to production; for enterprise IT departments, a controllable orchestration graph is also easier to pass internal audits and compliance reviews, accelerating deployment.",
-      "source": "OpenClaw Official Blog / GitHub Release"
+      "id": "brief-oc-001",
+      "title": "OpenClaw v0.9 Released: Built-In Multi-Agent Orchestrator Goes Live",
+      "summary": "The new version introduces a declarative agent orchestration DSL, letting multiple sub-agents collaborate on complex tasks with a single command.",
+      "detail": "The OpenClaw team released v0.9 overnight, headlined by a built-in Orchestrator. Developers can describe task graphs in YAML, assigning roles such as Planner, Executor, and Critic, while the framework automatically handles context isolation, tool permission allocation, and failure retries. Official benchmarks show the orchestration mode achieves a 27% higher pass rate on complex SWE-bench subtasks compared with single-agent setups, while cutting token costs by roughly 18%. The release also adds a sandbox-level MCP gateway supporting fine-grained auditing of third-party tool calls.",
+      "impact": "Multi-agent orchestration is shifting from hand-assembled pipelines to built-in framework support. Small and mid-sized teams can now build production-grade agent systems without building their own scheduling layer, significantly lowering the barrier to enterprise agent deployments.",
+      "source": "OpenClaw GitHub Release Notes"
      },
      {
-      "id": "brief-oc-02",
-      "title": "OpenClaw Plugin Marketplace Surpasses 3 Million Monthly Downloads as Enterprise Long-Tail Demand Surges",
-      "summary": "CRM, ERP, and low-code database plugins are growing fastest, while personal assistant plugins cool off — the ecosystem's center of gravity is shifting from consumer to enterprise.",
-      "detail": "Third-party statistics show that OpenClaw marketplace downloads exceeded 3 million in October for the first time, a fourfold year-on-year increase. Enterprise data integration plugins such as Salesforce, SAP, Notion, and Feishu Multi-Dimensional Bitable account for half of the top 30; by contrast, growth in personal assistant plugins like weather and schedule reminders has slowed to double digits. Multiple developers reported that custom enterprise plugin projects typically command quotes ranging from 50,000 to 300,000 yuan, already generating substantial independent developer income. Officials also announced a 'Certified Enterprise Plugin' badge to strengthen permission and data compliance assurance.",
-      "impact": "The ecosystem's shift toward the enterprise segment means agents are evolving from personal tools into organizational infrastructure, and small teams with industry know-how are poised to become the next wave of new arrivals.",
-      "source": "OpenClaw Community Data Weekly"
+      "id": "brief-oc-002",
+      "title": "OpenClaw Ecosystem: Official Plugin Marketplace ClawHub Tops 5,000 Skill Packs",
+      "summary": "Community-contributed skill packs have doubled in three months, covering high-frequency scenarios such as browser control, office automation, and data pipelines.",
+      "detail": "OpenClaw's official plugin marketplace ClawHub reported that listed skill packs have reached 5,120, with weekly downloads surpassing 4 million. Browser control, office/document processing, and database/ETL categories account for 62% combined. The platform simultaneously launched a skill pack signing and permission declaration mechanism, requiring all plugins to explicitly list the file, network, and credential permissions they need; plugins with undeclared permissions are blocked in default mode. For the first time, Chinese-community projects including DeepDoc-Parser and ExcelPilot broke into the top ten rankings.",
+      "impact": "Standardization of the plugin ecosystem signals that agent supply-chain security is now being taken seriously. Enterprises evaluating agent solutions can audit plugin trustworthiness much the same way they assess SaaS vendors.",
+      "source": "ClawHub Official Announcement"
      },
      {
-      "id": "brief-oc-03",
-      "title": "Security Team Exposes 'Toolchain Pollution' Attack Surface; OpenClaw Rushes Patch Enabling Sandbox by Default",
-      "summary": "Malicious MCP tools can steal local credentials while agents read files; the official release now force-isolates subprocess environments.",
-      "detail": "Cybersecurity firm Trailrun disclosed that some unverified third-party tool plugins bundle and exfiltrate sensitive paths such as ~/.ssh and browser cookies when agents perform file-read tasks. Because agents typically run with high privileges, the risk is far greater than traditional web vulnerabilities. OpenClaw released v2.8.1 within 24 hours, enabling subprocess sandboxing and file whitelisting by default, along with a new 'tool permission signing' mechanism that requires plugins to declare a minimum permission set. The incident sparked thousands of discussions on Hacker News and X.",
-      "impact": "The incident is a landmark moment for agent security and is expected to push 'least privilege and traceable tool calls' into becoming an industry-default standard.",
-      "source": "Trailrun Security / OpenClaw Security Advisory"
+      "id": "brief-oc-003",
+      "title": "Hands-On: Automating a Personal Knowledge Base with OpenClaw and Local Models",
+      "summary": "A community author shares a fully local deployment that runs 24/7 — automatically fetching, deduplicating, summarizing, and writing to a vector store.",
+      "detail": "A popular community tutorial demonstrates building a personal knowledge base bot on a 32GB Mac Studio using OpenClaw paired with a quantized 32B local model. The setup uses the Scheduler skill pack to periodically fetch RSS feeds and GitHub Releases, then deduplicates, tags, and generates summaries before writing them to a local vector database, with daily digests pushed via a Telegram Bot. The entire pipeline runs without cloud APIs, at near-zero daily cost and second-level latency. The author also open-sourced the configuration templates, which have been forked over 2,000 times.",
+      "impact": "Localized agent solutions are highly attractive to privacy-sensitive users and intranet-based enterprises, potentially turning 'personal AI infrastructure' into a new consumer-grade category.",
+      "source": "Juejin Community Tech Column"
      }
     ]
    },
    {
     "id": "skills",
-    "title": "Top Skills in Demand",
+    "title": "Trending Skills",
     "icon": "🛠️",
     "articles": [
      {
-      "id": "brief-sk-01",
-      "title": "Agent Evaluation Engineer Becomes Scarcest New Role, Commanding 40% Average Salary Premium",
-      "summary": "As the focus shifts from prompt tuning to evaluation system building, talent who can write evals and compute regression metrics are being snapped up by tech giants.",
-      "detail": "Data from multiple recruitment platforms shows that demand for roles related to AI Agent evaluation has grown 220% in six months. Core requirements include building reproducible test sets, designing end-to-end task success rate metrics, and analyzing failure cases to feed improvements back into prompts or toolchains. Unlike traditional QA, this role requires understanding both model uncertainty and business workflows. Industry experts suggest practitioners start with \"writing an eval script\" and accumulate hands-on experience with tools such as LangSmith, Braintrust, and OpenAI Evals.",
-      "impact": "As model capabilities converge, \"who can deploy models reliably\" is more scarce than \"whose model is stronger\" — evaluation skills are set to become the core dividing line for AI professionals.",
-      "source": "Liepin / LinkedIn job trends"
+      "id": "brief-sk-001",
+      "title": "MCP Server Development Emerges as a Core Skill: Three-Hour Tutorial Goes Viral",
+      "summary": "A Model Context Protocol server-side development tutorial has topped multiple platforms' charts, becoming a new must-have line item on AI engineers' resumes.",
+      "detail": "A hands-on tutorial titled 'Build a Production-Grade MCP Server in Three Hours' has ranked at the top of GitHub Trending for three consecutive days. It covers everything from protocol handshake, tool declaration and streaming responses to authentication and rate limiting, culminating in an MCP endpoint integrated with an enterprise internal ticketing system. Data from multiple job platforms shows postings mentioning MCP have grown 4.6-fold in six months, with an average salary premium of 15%-25%. The accompanying official SDKs already support four languages: TypeScript, Python, Go and Rust.",
+      "impact": "MCP is becoming the 'USB interface' standard for AI applications. Mastering its development means bridging models and enterprise systems, with significant short-term career returns.",
+      "source": "GitHub Trending / Job platform data"
      },
      {
-      "id": "brief-sk-02",
-      "title": "Local Small-Model Fine-Tuning Course Enrollment Triples; Hands-On 7B LoRA Becomes a New Baseline Skill for Developers",
-      "summary": "Driven by data privacy and inference cost pressures, developers skilled in QLoRA, distillation, and quantized deployment are increasingly favored by small and mid-sized firms.",
-      "detail": "Multiple domestic online education platforms report that enrollment in fine-tuning courses for 7B-14B open-source models such as Llama, Qwen, and Mistral has tripled quarter-on-quarter. Course focus areas include QLoRA low-VRAM fine-tuning, synthetic data construction, GGUF/AWQ quantization, and vLLM inference deployment. The enterprise-side motivation is straightforward: compared with routing all requests to closed-source APIs, self-built small models can cut per-call costs to one-tenth while keeping data within organizational boundaries. One manufacturing CIO said, \"We don't need the strongest model — we need the model that understands our business best.\"",
-      "impact": "The democratization of fine-tuning is reshaping the AI services landscape, with private deployment in vertical industries poised to become the largest commercial outlet for domestic open-source models.",
-      "source": "Geektime / DataTang course backend"
+      "id": "brief-sk-002",
+      "title": "Talent Gap Widens in Agent Evaluation Engineering (Agent Evals)",
+      "summary": "Enterprises are building continuous evaluation pipelines for agents, making eval set design and regression testing a sought-after skill set.",
+      "detail": "As agents move into core business processes, the question of 'how reliable is it really?' has become the top concern for CTOs. The Agent Evals field is heating up accordingly: building eval sets that cover edge cases, quantifying tool-call success rates and running prompt regression tests are all current pain points. Monthly active users on evaluation platforms like LangSmith and Braintrust have doubled, and the community has produced a flood of articles on 'eval set design patterns.' Many teams are now creating dedicated Prompt QA or Agent Reliability Engineer roles.",
+      "impact": "Evaluation capability is the dividing line between agents moving from demo to production. Engineers who master this methodology will become indispensable stabilizers within AI teams.",
+      "source": "InfoQ Tech Radar"
      },
      {
-      "id": "brief-sk-03",
-      "title": "MCP Certification Program Launches; \"Tool Integration Specialist\" Emerges as a New Favorite in the Freelance Market",
-      "summary": "The Model Context Protocol introduces official certification and compatibility testing, turning standardized interface design skills into a monetizable asset.",
-      "detail": "The MCP community announced an official Provider Certification program, offering compatibility test suites and security audit checklists; certified tools can be called with one click across multiple mainstream agent frameworks. This has spawned new career demand: consulting and development services to help traditional SaaS vendors undergo MCP transformation, with single projects priced between 20,000 and 150,000 yuan. The skill stack includes OpenAPI specifications, OAuth authorization, rate-limit design, and Tool Description Writing — the last of which multiple teams have shown directly impacts agent call accuracy.",
-      "impact": "Interface standardization will trigger a wave of \"SaaS secondary development,\" and early participants are expected to build significant technical and case-study moats.",
-      "source": "MCP community RFC forum"
+      "id": "brief-sk-003",
+      "title": "Local Small-Model Fine-Tuning (LoRA + Synthetic Data) Returns to the Spotlight",
+      "summary": "Driven by cost and compliance pressures, enterprises are fine-tuning 7B-32B models with synthetic data to replace some cloud API calls.",
+      "detail": "Inference costs and data-cross-border compliance pressures have revived the 'self-hosted small model' approach. New-generation synthetic data pipelines can mass-produce high-quality training sets from a handful of seed samples, and paired with LoRA fine-tuning, domain adaptation can be completed in 1-2 days. Tests show a fine-tuned 14B model can reach 95% of a general-purpose large model's performance on specific business tasks at just 1/20 the cost per call. Community open-source toolchains such as DataDreamer and DistillKit have seen downloads grow 80% week over week.",
+      "impact": "A hybrid architecture — large models for general knowledge, small models for specialization — will become the enterprise deployment standard. Teams mastering fine-tuning and data synthesis will gain a significant cost advantage.",
+      "source": "Hugging Face Community Weekly"
      }
     ]
    },
    {
     "id": "ios",
     "title": "iOS App Updates",
-    "icon": "🍎",
+    "icon": "📱",
     "articles": [
      {
-      "id": "brief-ios-01",
-      "title": "Apple Intelligence 2.0 Opens On-Device Agent SDK, Letting Third-Party Apps Invoke System-Level Intents",
-      "summary": "Developers can for the first time orchestrate cross-app tasks within the App Intents framework, but must pass a new privacy audit.",
-      "detail": "Apple has quietly released an Agent SDK for Apple Intelligence 2.0 in its developer documentation, allowing apps to declare Multi-step Intents that Siri and system agents can chain together automatically with user consent. For example, a user saying \"Turn this week's meeting notes into a weekly report and send it to the team\" could span Mail, Calendar and Notes. However, all cross-app calls must go through a new Privacy Manifest review channel, and apps cannot directly read other apps' data. It is expected to ship with the official release of iOS 26.2.",
-      "impact": "By folding agent capabilities into the system layer rather than letting third-party developers build their own agents, Apple may once again reshape traffic and distribution patterns on mobile.",
-      "source": "Apple Developer Documentation"
+      "id": "brief-ios-001",
+      "title": "Apple Releases iOS 26.2 Developer Preview: Full API Access for Siri Agent Capabilities",
+      "summary": "The new release opens up App Intents 3.0, allowing third-party apps to register multi-step tasks for Siri to autonomously orchestrate and execute.",
+      "detail": "The headline feature of the iOS 26.2 developer preview is App Intents 3.0 and an upgraded Siri execution framework. Developers can now declare \"composable intents\" for their apps, enabling Siri to complete chained tasks such as \"book flights + add to calendar + send notifications + generate an itinerary summary\" across multiple apps in a single voice command. Apple has also launched an observability dashboard and rate-limiting policies for intent invocation, emphasizing that all execution is on-device by default and sensitive parameters never leave the device. Beta feedback shows a marked improvement in task completion rates over the previous generation.",
+      "impact": "The battle for the \"agent entry point\" in the iOS ecosystem is officially underway. Apps that register high-quality App Intents early stand to gain a traffic boost from Siri recommendations.",
+      "source": "Apple Developer Release Notes"
      },
      {
-      "id": "brief-ios-02",
-      "title": "New Subscription Rules: Developers Can Sell via Web, 10% Commission Sparks Ripple Effects",
-      "summary": "Under compliance pressure in the US and Europe, Apple has eased its cut on external sales, and a wave of subscription apps have announced 15%-20% price cuts for users.",
-      "detail": "Apple has updated its App Store Review Guidelines to allow subscription apps to display links to external purchases, cutting the commission from 30% to 10% (down from a previous reduction to 17%). Top subscription products including Notability and Headspace announced within hours that they would lower web subscription prices by 15%-20%. Analysts predict the change will add roughly $4 billion to global subscription app developers' net revenue within a year, while also pressuring the App Store to make compensating improvements to its service experience.",
-      "impact": "Lower distribution costs give mid-sized and small subscription developers breathing room, but cross-platform subscription management and fraud prevention will become new operational challenges.",
-      "source": "App Store Review Guidelines / TechCrunch"
+      "id": "brief-ios-002",
+      "title": "On-Device AI Expense-Tracking App LedgerMind Tops US Paid Charts",
+      "summary": "Fully on-device receipt and bill recognition with automatic categorization; $9.99/month subscription still achieves high retention.",
+      "detail": "LedgerMind, an indie developer's creation, has gained rapid traction on its \"zero upload\" privacy selling point. The app uses an on-device vision model to recognize receipts, bills, and bank notifications, automatically setting up budget rules and generating spending insights. Because all data stays on the device, user trust is exceptionally high, with 30-day retention at 41% and paid conversion above 12%. The developer revealed that the core competitive edge lies in a locally fine-tuned dataset for multilingual receipts, along with deep integration with Apple Wallet and Shortcuts.",
+      "impact": "Privacy as a selling point is becoming a differentiation moat for indie developers. The maturation of on-device model capabilities now allows small teams to build highly sticky, paid products.",
+      "source": "App Store Chart Watch"
      },
      {
-      "id": "brief-ios-03",
-      "title": "'AI-Native Camera' Breaks Out on the US Paid Charts, Pitching Shoot-As-You-Edit, Edit-As-You-Ship",
-      "summary": "An indie app combining generative editing and automatic subtitles cracked the US top-ten paid charts in three weeks, with ARPU far above the tool-category average.",
-      "detail": "Frameflow, an independent studio's app of the same name, scaled rapidly in the US, Japan and Korea on the back of its minimal 'shoot and it's done' workflow: after users record raw footage, AI identifies highlight moments, matches background music, generates subtitles and outputs aspect ratios suited to short-video platforms. Its monetization uses a hybrid model of 'subscription plus one-time high-quality export,' with monthly revenue already exceeding $800,000. The developer revealed on X that the key technology is an on-device small video-understanding model rather than cloud APIs, keeping costs and latency under control.",
-      "impact": "The maturation of on-device multimodal small models is enabling 'one-person companies' to build products that once required entire video teams, significantly lowering the barrier in the creator-tools space.",
-      "source": "Sensor Tower / Developer Interview"
+      "id": "brief-ios-003",
+      "title": "Agent-Assisted Coding Plugin Ecosystem Emerges Around Swift 6.2",
+      "summary": "Xcode's new MCP interface is widely adopted by third-party plugins, significantly boosting the efficiency of refactoring and UI test generation.",
+      "detail": "The MCP debugging interface recently opened by Xcode has given rise to a wave of developer tool plugins. SwiftPilot, for instance, generates SwiftUI skeletons from design mockups and fills in accessibility labels, while TestForge can automatically produce UI test cases for existing view layers. Community feedback indicates an average 40% reduction in boilerplate coding time. Meanwhile, Apple has added an \"AI-Generated Code Review Guide\" to its official documentation, reminding developers to watch license compliance and privacy API usage audits to avoid rejection.",
+      "impact": "iOS development workflows are being reshaped by agents, but code compliance review standards are rising in tandem. Teams need new processes to balance productivity gains with App Store safety.",
+      "source": "Swift Forums"
      }
     ]
    },
    {
     "id": "startups",
-    "title": "Tech Startups",
+    "title": "Startup Radar",
     "icon": "🚀",
     "articles": [
      {
-      "id": "brief-st-01",
-      "title": "Embodied AI startup LingShu Power raises 800 million yuan Series B for industrial inspection bipedal robots",
-      "summary": "Rather than chasing the general-purpose humanoid narrative, LingShu is betting on standardized delivery in structured scenarios and has signed orders with three power grid groups.",
-      "detail": "LingShu Power announced completion of an 800 million yuan Series B, co-led by a state-capital-backed fund and a top-tier US dollar fund. The company sidesteps the general-purpose humanoid hype, focusing on bipedal inspection robots for high-risk industrial settings such as power and chemicals, with an emphasis on navigating narrow spaces and stairs. To date it has deployed over 300 units, charging roughly 400,000 yuan per unit in annual service fees, with gross margins held above 55%. The founder said, 'Only robots whose ROI customers can calculate have a shot at scale.'",
-      "impact": "The valuation bubble in embodied AI is gradually deflating, and companies focused on vertical scenarios and replicable delivery are beginning to win dual recognition from capital and orders.",
-      "source": "36Kr / Company announcement"
+      "id": "brief-st-001",
+      "title": "新锐公司 Vaultline 获 8000 万美元 B 轮，押注智能体身份与权限治理",
+      "summary": "为 AI 智能体提供『数字员工 ID』与最小权限执行框架，客户含多家头部金融机构。",
+      "detail": "Vaultline 主打智能体身份治理：为每个 Agent 颁发可审计的数字身份，绑定细粒度权限、调用配额与操作留痕。当 Agent 需要访问财务系统或客户数据时，必须通过 Vaultline 的策略引擎授权。公司披露 ARR 同比增长 5 倍，客户涵盖北美与欧洲的银行、保险与医疗集团。本轮融资由顶级安全基金领投，资金将用于扩展合规认证与亚太市场。",
+      "impact": "『谁来管住 AI』正在成为新的企业级刚需赛道，智能体安全与治理可能复制云安全的成长曲线。",
+      "source": "TechCrunch"
      },
      {
-      "id": "brief-st-02",
-      "title": "AI knowledge management tool Memora raises $30 million Series A, targets the 'second brain'",
-      "summary": "Its core pitch is cross-device long-term memory and proactive reminders; the team includes core contributors from Notion and Obsidian.",
-      "detail": "Memora announced completion of a $30 million Series A. The product is pitched as 'notes that find you': it records users' work context through an on-device memory model and proactively surfaces relevant information at the right moment, rather than waiting to be searched. Unlike traditional note-taking tools, Memora treats long-term memory (LLM memory) as a core product capability and offers an API that lets third-party agents read it. Seven months after launch, paying users surpassed 250,000, with enterprise pricing of about $200 per person per year.",
-      "impact": "'Memory' is becoming a core moat for AI applications, and the knowledge management space is shifting from tool competition to a battle over data assets and personalized models.",
-      "source": "The Information / Official press release"
+      "id": "brief-st-002",
+      "title": "华人团队创办的 FlowCraft 用自然语言生成自动化工作流，ARR 破千万美元",
+      "summary": "面向非技术员工的对话式自动化平台，号称『一句话搭建企业 Zapier』。",
+      "detail": "FlowCraft 让业务人员用中文或英文描述流程，即可自动生成可运行的自动化管道，并支持人工审批节点与异常回滚。与传统 iPaaS 相比，它的核心优势是内置的意图澄清对话与版本化工作流管理。公司披露年度经常性收入已突破 1000 万美元，客户以零售、物流与跨境电商为主。创始团队来自国内大厂与硅谷，正筹备新一轮融资以拓展多语言与私有化部署能力。",
+      "impact": "自动化的『对话式创建』正在把低代码推向更广泛的业务人员，企业 IT 部门的角色将转向治理与集成。",
+      "source": "36氪"
      },
      {
-      "id": "brief-st-03",
-      "title": "Synthetic data platform SyntheticWorks reportedly in acquisition talks, valued at $400-600 million",
-      "summary": "A shortage of high-quality training data is driving an M&A wave in synthetic data; the company's clients include three leading large model teams.",
-      "detail": "Multiple media outlets report that SyntheticWorks is in acquisition talks with a cloud provider, with a deal valuation ranging from $400 million to $600 million. The company's core product is a synthetic data generation and quality evaluation pipeline for multimodal models, able to produce training samples close to real-world distributions at one-fifth the cost. Its clients include three leading large-model research teams and two autonomous driving companies. Analysts note that as real corpora are consumed at scale, synthetic data and data quality evaluation are becoming a critical bottleneck for model capabilities.",
-      "impact": "'Data factories' are being revalued, and companies holding strong generation and evaluation capabilities will remain sought after by giants and become M&A hotspots.",
-      "source": "Bloomberg / 36Kr"
+      "id": "brief-st-003",
+      "title": "硬件新秀 Nimbus 发布可离线运行的桌面 AI 工作站",
+      "summary": "面向中小企业的本地推理盒子，主打数据不出门与一次性买断定价。",
+      "detail": "Nimbus 推出的桌面工作站搭载自研推理加速卡，可流畅运行 70B 级别量化模型，并预置文档问答、会议纪要与代码助手等企业套件。与订阅制云端方案不同，它采用一次性买断 + 按年付费支持的模式，对预算敏感的中小企业颇具吸引力。首批 5,000 台预售在 72 小时内售罄，主要买家为律所、会计师事务所与区域制造业客户。",
+      "impact": "本地化 AI 硬件的『买断制』商业模式为中小企业提供了可预期的成本结构，也可能倒逼云端厂商调整定价策略。",
+      "source": "The Verge"
      }
     ]
    }
   ]
  },
  "hotProjects": {
-  "date": "November 13, 2026",
-  "quote": "The wind doesn't wait for anyone — but once too many chase it, the wind becomes a rat race. Only the ability that compounds is the real wind.",
-  "summary": "Agent engineering and on-device small models are advancing in parallel. \"Using AI reliably and cheaply\" is replacing \"building AI bigger\" as the new main battlefield.",
+  "date": "November 14, 2026",
+  "quote": "The wind never rewards those who chase it — only those who stitched their parachute early.",
+  "summary": "The agent infrastructure layer (orchestration, evaluation, identity governance) is replacing single applications as the biggest opportunity that capital and developers are jointly backing this quarter.",
   "projects": [
    {
-    "id": "hot-01",
+    "id": "hot-001",
     "rank": 1,
-    "name": "OpenClaw Enterprise Agent Workflows",
+    "name": "Vaultline · Agent Identity & Access Governance Platform",
     "heat": "🔥🔥🔥🔥🔥",
     "heatLevel": 5,
-    "oneLiner": "Turning unpredictable agents into an operable, auditable enterprise workflow infrastructure.",
-    "whyHot": "v2.8's visual orchestration solves the biggest pain point of agent adoption — unpredictability and lack of debuggability. The plugin marketplace's 3 million monthly downloads prove the ecosystem has reached network effects, enterprise customization orders commonly run ¥50,000–300,000, and the business model is working. The open-source-plus-enterprise path is clear, and the security sandbox fills the compliance gap. The project is at the critical inflection point from early adopters to the mainstream market.",
+    "oneLiner": "Issue an auditable digital employee ID to every AI agent and govern every call it makes.",
+    "whyHot": "Once enterprise agents plug into core systems, 'unauthorised calls' and 'lack of accountability' instantly become the top risks. Vaultline has just closed an $80 million Series B, with ARR up fivefold year on year, serving banks, insurers, healthcare and other heavily regulated industries — squarely hitting the compliance pain point of AI deployment.",
     "highlights": [
-     "TaskGraph visual orchestration and end-to-end observability",
-     "Plugin marketplace network effects and enterprise customization revenue",
-     "Sandbox and tool signing closing the security and compliance gap",
-     "Local model adaptation to cut inference costs"
+     "Fine-grained permission and call-quota policy engine",
+     "Full-chain operation logging and audit export",
+     "Unified identity federation across multi-cloud and on-prem environments",
+     "Progress on SOC 2, ISO 27001 and other compliance certifications"
     ],
-    "riskTip": "Security incidents such as agent toolchain poisoning may recur; once leading cloud vendors launch managed competitors, the independent ecosystem's bargaining power could come under pressure."
+    "riskTip": "The category is still early-stage, and big cloud vendors are likely to ship native governance capabilities as bundled add-ons. Watch the platform's moat and migration costs."
    },
    {
-    "id": "hot-02",
+    "id": "hot-002",
     "rank": 2,
-    "name": "On-Device Multimodal Small-Model Apps (benchmarked by Frameflow)",
+    "name": "OpenClaw · Open-Source Multi-Agent Orchestration Framework",
     "heat": "🔥🔥🔥🔥🔥",
     "heatLevel": 5,
-    "oneLiner": "Cramming video and image understanding into the phone to deliver low-latency, low-cost experiences cloud APIs can't match.",
-    "whyHot": "Apple Intelligence 2.0 and the new-generation NPU have leapfrogged on-device inference, with quantized 7B-class models running smoothly on flagship devices. Frameflow's top-ten paid-chart debut in the US within three weeks and $800,000 in monthly revenue validate the \"on-device AI plus hybrid subscription\" commercial path. Compared with cloud APIs, on-device solutions hold decisive advantages in cost, privacy, and latency — and creator tools, health, and education all offer opportunities to be rebuilt.",
+    "oneLiner": "Orchestrate an AI team with a single YAML file, moving agent development from cottage workshops onto an assembly line.",
+    "whyHot": "With the built-in Orchestrator in v0.9, multi-agent collaboration no longer requires a homegrown scheduling layer. Paired with more than 5,000 skill packs on ClawHub, the community ecosystem has doubled in three months. GitHub star growth and enterprise PoC counts are climbing in lockstep, making it one of the most closely watched open-source AI infrastructure projects today.",
     "highlights": [
-     "On-device inference delivers one-tenth unit cost and millisecond latency",
-     "Hybrid monetization of subscriptions plus one-off exports validated",
-     "iOS 26 and the new NPU provide a hardware dividend",
-     "Data never leaving the device naturally fits privacy compliance"
+     "Declarative agent orchestration DSL with failure-retry mechanisms",
+     "Sandbox-level MCP gateway and plugin permission declarations",
+     "Skill-pack signing to harden supply-chain security",
+     "Seamless hybrid deployment of local models and cloud APIs"
     ],
-    "riskTip": "On-device model capability is capped by device compute; once big tech pushes system-level AI features down, the differentiation window for independent apps may be only one to two years."
+    "riskTip": "The commercialisation path for the open-source project is not yet fully clear; enterprise-grade support and plugin-ecosystem governance remain long-term tests."
    },
    {
-    "id": "hot-03",
+    "id": "hot-003",
     "rank": 3,
-    "name": "AI Long-Term Memory and Personal Knowledge Layers (Memora-type products)",
+    "name": "Agent Evals · Agent Evaluation Engineering Toolchain",
     "heat": "🔥🔥🔥🔥",
     "heatLevel": 4,
-    "oneLiner": "Making AI remember you — moving from one-off chats to a continuously present second brain.",
-    "whyHot": "As foundation models commoditize, personalized context becomes the deepest moat. Memora's 250,000 paying users in seven months and $200-per-user-per-year enterprise pricing prove willingness to pay for a memory layer. Meanwhile, agent frameworks largely lack long-term memory, and open-API memory middleware carries the potential to become \"the data infrastructure of the AI era,\" drawing major players and startups alike into the race.",
+    "oneLiner": "An evaluation pipeline that runs health checks on agents — the mandatory gate from demo to production.",
+    "whyHot": "As agents enter core business workflows, reliability has become the number-one criterion in procurement decisions. Demand has exploded for eval-set design, tool-call success rates and prompt regression testing. The platform's monthly active users have doubled, dedicated 'Agent Reliability' roles are emerging, and the talent gap will be hard to close in the short term.",
     "highlights": [
-     "On-device long-term memory models building personal data assets",
-     "Active push replacing passive search as a product paradigm",
-     "Open APIs becoming agent memory middleware",
-     "Strong enterprise subscription ARPU and renewal performance"
+     "Eval-set design patterns covering edge conditions",
+     "Quantified metrics for tool calls and task completion rates",
+     "Prompt and model-version regression testing pipelines",
+     "Replay of live production traffic and post-incident reviews"
     ],
-    "riskTip": "Privacy and ownership of memory data are highly contentious; if OS vendors absorb memory into the system layer, independent apps' room to survive will be severely squeezed."
+    "riskTip": "The field suffers from severe feature homogenisation; long-term value depends on whether it can accumulate industry benchmarks and data assets. Beware of pure feature stacking."
    },
    {
-    "id": "hot-04",
+    "id": "hot-004",
     "rank": 4,
-    "name": "Vertical-Scenario Embodied AI (Lingshu Power-type industrial inspection)",
-    "heat": "🔥🔥🔥🔥",
-    "heatLevel": 4,
-    "oneLiner": "Dodging the generic humanoid narrative to win high-risk industrial scenes with robots whose ROI actually adds up.",
-    "whyHot": "With the humanoid robot valuation bubble deflating, capital is refocusing on deliverable, replicable vertical solutions. Lingshu Power's ¥800 million Series B, 55% gross margin, and 300-plus units deployed at scale demonstrate embodied AI's commercial viability in power, chemicals, and similar settings. Policy support for \"new industrialization\" and \"machines replacing workers\" subsidies keep expanding, and order release from central SOEs in grid and energy is clearly scheduled — teams with hardware plus algorithm plus delivery capabilities enjoy a triple dividend.",
+    "name": "Nimbus · Local AI Workstation (Perpetual-Buyout Hardware)",
+    "heat": "🔥🔥🔥",
+    "heatLevel": 3,
+    "oneLiner": "Squeeze a 70B model into a desktop box and swap endless subscriptions for a one-time purchase.",
+    "whyHot": "Data never leaves the premises plus predictable costs hit a dual pain point for SMEs and heavily regulated industries. The first batch of 5,000 units sold out in 72 hours, validating real demand for the 'local inference hardware + enterprise suite' combination and bringing the buy-out business model back into view.",
     "highlights": [
-     "Dual policy and demand drivers in high-risk industrial scenes",
-     "A clear ROI model at ¥400,000 per unit in annual service fees",
-     "55% gross margin validating scaled delivery capability",
-     "Avoiding generic humanoid competition to focus on structured scenarios"
+     "In-house inference accelerator running quantised 70B models",
+     "Pre-installed enterprise suites: document Q&A, meeting minutes and more",
+     "One-time purchase plus annual support pricing model",
+     "Industry configurations for law firms, manufacturing, and tax/finance"
     ],
-    "riskTip": "Project-based delivery demands heavy staffing and after-sales networks, and margins may erode at scale; once general-purpose humanoid tech breaks through, vertical solutions could be outclassed outright."
+    "riskTip": "A mismatch between hardware iteration and model-upgrade speed could depreciate assets quickly, and sustained investment in after-sales and localised service is required."
    }
   ]
  }
