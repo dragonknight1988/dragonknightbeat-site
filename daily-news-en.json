@@ -1,16 +1,16 @@
 {
- "date": "2026-11-14",
- "weekday": "Saturday",
- "overview": "Central bank injects liquidity to stabilize expectations, global AI sector pullback draws attention, China-US multilateral engagement signals warmer cooperation",
+ "date": "2026-11-15",
+ "weekday": "Sunday",
+ "overview": "Deepening Asia-Pacific cooperation and rising domestic consumption advance side by side, while an aviation system failure and year-end auto sales push draw equal attention.",
  "trendingTopics": [
-  "Central bank liquidity injection",
-  "US tech stock pullback",
-  "AI computing industry",
-  "China-US trade and economics",
-  "New scenarios in cultural and tourism consumption",
-  "Innovative drug exports",
-  "Grassroots governance",
-  "Global monetary policy"
+  "Asia-Pacific Cooperation",
+  "Aviation Safety",
+  "Cultural and Tourism Consumption",
+  "Auto Industry",
+  "Dining Consumption",
+  "Esports",
+  "Public Health",
+  "New-Type Power System"
  ],
  "sections": [
   {
@@ -20,258 +20,221 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "United in Striving for National Strength and Renewal",
-     "summary": "Focusing on the theme of building a strong nation and national rejuvenation, the report stresses the spirit of united endeavor and strengthens development cohesion.",
-     "detail": "The report centers on the theme of advancing national strength and rejuvenation through united struggle, offering guidance on building consensus and pooling collective strength. It echoes the country's broader development agenda and its proactive momentum.",
-     "impact": "Strengthens mainstream public discourse and fosters a positive intellectual climate for economic and social development.",
-     "importance": "important",
+     "title": "China Charts the Course for the Asia-Pacific Family",
+     "summary": "The report highlights China's leading role in steering the Asia-Pacific family forward, showcasing ongoing regional cooperation and a shared development direction.",
+     "detail": "Taking the Asia-Pacific family as its entry point, the material presents China's leading role in regional cooperation. Related coverage echoes the APEC agenda, emphasizing the theme of moving forward together and jointly promoting development.",
+     "impact": "Helps build consensus on regional cooperation and injects stable expectations into Asia-Pacific economic integration.",
+     "importance": "hot",
      "tags": [
-      "Ideological Development"
+      "Asia-Pacific Cooperation",
+      "Regional Economy"
      ]
     },
     {
      "id": "news-002",
-     "title": "Targeted Measures and Ecological Restoration: Localities Combat Soil Erosion",
-     "summary": "Regions are tailoring anti-erosion efforts to local conditions through zoned interventions and ecological closure to restore ecosystems.",
-     "detail": "The report highlights how different areas adopt localized approaches — including zoned management and ecological enclosure — to fight soil erosion, coordinating ecological restoration with green development.",
-     "impact": "Ongoing soil and water conservation efforts help improve regional ecosystem quality and support sustainable agriculture.",
-     "importance": "normal",
+     "title": "China's Ecological Governance Experience Adds Green Momentum to the Asia-Pacific",
+     "summary": "APEC data-driven reporting examines how China's ecological governance experience brings green momentum to the Asia-Pacific region.",
+     "detail": "The material interprets China's ecological governance experience through a data-driven lens and explores its reference value for the Asia-Pacific region. The report links ecological governance with regional greening, highlighting the theme of green development.",
+     "impact": "Sharing ecological governance experience abroad can boost regional green cooperation and raise the profile of sustainable development issues.",
+     "importance": "important",
      "tags": [
-      "Ecological Protection",
-      "Soil and Water Conservation",
-      "Green Development"
+      "Ecological Governance",
+      "Green Development",
+      "Asia-Pacific Cooperation"
      ]
     },
     {
      "id": "news-003",
-     "title": "Bringing the 'Bench' to an Open-Air Forum: Community Officials and Residents Tackle Issues Face to Face",
-     "summary": "Communities are using open-air deliberation sessions to bring 52,000 residents into direct dialogue with officials on livelihood concerns.",
-     "detail": "Grassroots communities are moving their discussion benches into open-air venues, organizing direct conversations between cadres and residents to address shared problems, open channels for public input, and improve governance effectiveness.",
-     "impact": "Innovative grassroots deliberation formats boost public participation and residents' sense of gain.",
-     "importance": "normal",
+     "title": "Nationwide Joint Job Fair for College Gradues Continues Across Cities",
+     "summary": "The nationwide joint autumn recruitment drive for college graduates continues, building a matching platform between graduates and employers.",
+     "detail": "The material shows that the nationwide joint autumn recruitment event for college graduates is still underway. Organized through coordination among cities, the event serves to connect job-seeking graduates with hiring employers.",
+     "impact": "Helps ease employment pressure on graduates and promotes smoother mobility of talent between cities.",
+     "importance": "important",
      "tags": [
-      "Grassroots Governance",
-      "Community Services",
-      "Livelihood Improvement"
+      "Graduate Employment",
+      "Public Employment Services",
+      "Talent Market"
      ]
     },
     {
      "id": "news-004",
-     "title": "Holiday 'Classes' on the Rise: Travel-Based Interest Courses Unlock New Cultural Tourism Experiences",
-     "summary": "New offerings such as travel interest classes are emerging during holidays, bringing fresh experiences to cultural tourism consumption.",
-     "detail": "The report tracks new holiday trends in cultural tourism, with travel-based interest classes becoming a popular choice among consumers. By combining learning experiences with travel, they create new growth opportunities for the tourism market.",
-     "impact": "Continued innovation in cultural tourism offerings is expected to drive growth in the holiday economy and experiential consumption.",
+     "title": "Schools in Multiple Cities Adjust Daily Schedules",
+     "summary": "Primary and secondary schools in several cities have announced adjustments to student schedules, drawing attention from parents and society to the pace of school life.",
+     "detail": "The material reflects schedule adjustments made by schools in multiple cities. The changes affect students' in-school study and rest arrangements, with public concern over their impact on learning efficiency and physical and mental health.",
+     "impact": "Schedule adjustments may trigger a ripple effect on school teaching arrangements and family routines.",
      "importance": "normal",
      "tags": [
-      "Cultural Tourism Consumption",
-      "Holiday Economy",
-      "Experiential Consumption"
+      "Basic Education",
+      "Education Reform",
+      "Youth Health"
      ]
     },
     {
      "id": "news-005",
-     "title": "Magnitude 5.3 Earthquake Strikes Near Kuqa, Aksu, Xinjiang",
-     "summary": "A magnitude 5.3 earthquake occurred near Kuqa City in the Aksu Prefecture of Xinjiang in the early hours of November 14; updates are subject to the official bulletin.",
-     "detail": "The China Earthquake Networks Center automatically recorded a magnitude 5.3 quake near Kuqa City, Aksu Prefecture, Xinjiang, at 00:17 on November 14. Final figures will be confirmed by the official bulletin.",
-     "impact": "The affected area should monitor aftershocks and emergency response efforts to mitigate secondary risks.",
-     "importance": "hot",
-     "tags": [
-      "Natural Disaster",
-      "Emergency Response",
-      "Work Safety"
-     ]
-    },
-    {
-     "id": "news-006",
-     "title": "Attracting, Cultivating and Deploying Talent to Energize Youth on the Innovation Frontline",
-     "summary": "The report focuses on recruiting, training and utilizing talent to drive young people's contributions to the frontlines of scientific and technological innovation.",
-     "detail": "The content centers on talent cultivation and deployment mechanisms, emphasizing empowering young talent to join the innovation frontier, energizing creative momentum, and providing human resources for high-quality development.",
-     "impact": "Clear talent policy direction helps strengthen the human capital foundation for scientific and technological innovation.",
+     "title": "Beijing Lifts Orange Alert for Heavy Air Pollution",
+     "summary": "Beijing lifted its orange alert for heavy air pollution at midnight on November 14, 2026, bringing the air quality emergency response to an end.",
+     "detail": "The material shows that Beijing lifted its orange alert for heavy air pollution at midnight on November 14, 2026. Emergency measures during the orange alert period have accordingly been adjusted, and the city has returned to its normal pace of production and daily life.",
+     "impact": "Lifting the alert helps reduce emergency response costs and restores normal traffic and outdoor activities.",
      "importance": "normal",
      "tags": [
-      "Talent Policy",
-      "Scientific and Technological Innovation",
-      "Youth Development"
+      "Air Pollution Control",
+      "Environmental Protection",
+      "Urban Governance"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "World Politics",
+   "title": "World News",
    "icon": "🌍",
    "articles": [
     {
-     "id": "news-007",
-     "title": "Commentary: Let the 'Living Water' Nurturing China-US Relations Flow Freely",
-     "summary": "International commentary calls for continuously injecting fresh momentum into China-US relations to move the bilateral ties steadily forward.",
-     "detail": "The commentary notes that people-to-people exchanges and practical cooperation are the 'living water' nourishing China-US relations, and should keep flowing to create a favorable atmosphere for the development of bilateral ties.",
-     "impact": "Signals a positive push for stable China-US relations, benefiting trade and people-to-people exchanges.",
+     "id": "news-006",
+     "title": "US Aviation System Failure Grounds Flights Nationwide",
+     "summary": "A failure in the US aviation communications system grounded flights across the country, affecting about 12,000 flights; officials apologized for the disruption.",
+     "detail": "Reports show that a system equipment failure at the US Federal Aviation Administration triggered a nationwide ground stop. Around 3,500 aircraft were in the air at the time, and air traffic controllers guided all planes to land safely. Officials said 12,000 flights were affected and could not be recovered, and apologized to the public. A Chinese passenger diverted to Mexico recalled the tense moments. US authorities said no evidence of malicious activity has been found and are investigating the contractor's responsibility.",
+     "impact": "The mass grounding exposes the aging state of aviation communications infrastructure and could spur equipment upgrades and regulatory scrutiny.",
      "importance": "hot",
      "tags": [
-      "China-US Trade",
-      "Major-Country Relations",
-      "People-to-People Exchanges"
+      "Aviation Safety",
+      "International Aviation",
+      "Transportation"
+     ]
+    },
+    {
+     "id": "news-007",
+     "title": "Lebanon and UN Meet to Discuss Future UNIFIL Arrangements",
+     "summary": "The Lebanese president met with the UN deputy secretary-general to discuss the situation in southern Lebanon and future arrangements for UNIFIL.",
+     "detail": "Reports show that on October 14 local time, Lebanese President Joseph Aoun met with UN Deputy Secretary-General Amina Mohammed. The two sides discussed the situation in southern Lebanon and future arrangements for the UN Interim Force in Lebanon (UNIFIL).",
+     "impact": "The progress of communication between the UN and regional countries will shape the direction of local security arrangements.",
+     "importance": "normal",
+     "tags": [
+      "Middle East",
+      "International Peacekeeping",
+      "UN Affairs"
      ]
     },
     {
      "id": "news-008",
-     "title": "ASEAN Secretary-General Sees Inclusiveness in APEC's 'China Year'",
-     "summary": "The ASEAN Secretary-General sees an ethos of 'inclusiveness' in the APEC 'China Year' agenda, endorsing the orientation of regional cooperation.",
-     "detail": "The report focuses on the 'China Year' agenda under the APEC framework, with the ASEAN Secretary-General saying he sees an inclusive development concept in it, highlighting the positive direction of regional economic cooperation.",
-     "impact": "Reinforces multilateral economic and trade cooperation and an open, inclusive orientation.",
-     "importance": "important",
+     "title": "About 106,000 Protesters Take to the Streets in France",
+     "summary": "French media reported that about 106,000 people held protests across France as social issues heat up again.",
+     "detail": "Citing French media reports, the material said about 106,000 people held protests in various parts of France. Specific demands and follow-up developments were not disclosed.",
+     "impact": "Large-scale protests could bring short-term fluctuations to social operations and the policy agenda.",
+     "importance": "normal",
      "tags": [
-      "Multilateral Cooperation",
-      "Regional Economy",
-      "International Organizations"
+      "European Politics",
+      "Labor Rights"
      ]
     },
     {
      "id": "news-009",
-     "title": "Australian Business and Political Figures: Use APEC to Expand Cooperation with China",
-     "summary": "Australian political and business leaders hope to use the APEC platform to expand economic and trade cooperation with China.",
-     "detail": "Several Australian political and business figures said they expect to expand cooperation opportunities with China through APEC meetings, further deepening bilateral trade, economic and investment ties.",
-     "impact": "Conducive to warming China-Australia economic relations and the implementation of cooperation projects.",
+     "title": "Russian Defense Ministry Says It Struck Cargo Ship at Ukrainian Port",
+     "summary": "Russia's Defense Ministry said it struck a cargo ship at the Ukrainian port of Chornomorsk, putting Black Sea shipping safety back in focus.",
+     "detail": "Reports show that Russia's Defense Ministry said it struck a cargo ship at the Ukrainian port of Chornomorsk. The incident has renewed concerns over the safety of commercial vessel transit in the relevant waters.",
+     "impact": "Attacks on ports and ships could push up shipping risk premiums and affect regional cargo transport.",
      "importance": "important",
      "tags": [
-      "Multilateral Cooperation",
-      "Foreign Trade",
-      "Regional Economy"
+      "Russia-Ukraine Conflict",
+      "Shipping Safety"
      ]
     },
     {
      "id": "news-010",
-     "title": "Japanese Civil Group: Military Buildup Raises War Risk",
-     "summary": "Representatives of a Japanese civil group criticize the government's push for military expansion, saying it raises the risk of war.",
-     "detail": "Representatives of a Japanese civil group said the government's continued push for a military buildup has increased regional war risks, calling for a return to the path of peaceful development.",
-     "impact": "Highlights the complexity of the regional security situation; Asia-Pacific security trends warrant attention.",
+     "title": "Iran Disputes US Sanctions Threat, Says Trade With Neighbors Growing",
+     "summary": "Iran's economy minister rejected US threats of further sanctions, saying trade with neighboring countries continues to expand under pressure.",
+     "detail": "Reports show that Iranian Economy Minister Madanizadeh dismissed Washington's threat of further economic sanctions. He said that despite the pressure, Iran's trade with neighboring countries continues to expand steadily.",
+     "impact": "The ongoing sanctions standoff will affect regional trade patterns and related market expectations.",
      "importance": "important",
      "tags": [
-      "Asia-Pacific Security",
-      "Defense Policy",
-      "Peaceful Development"
-     ]
-    },
-    {
-     "id": "news-011",
-     "title": "Israeli Intelligence Chief Visits Washington as Middle East Situation Draws Attention",
-     "summary": "The head of Israel's intelligence agency visits Washington, drawing international attention to the Middle East situation and related issues.",
-     "detail": "According to people familiar with the matter, the head of Israel's intelligence agency arrived in Washington on Friday for discussions with senior US government officials, bringing the Middle East situation back into the international spotlight.",
-     "impact": "Uncertainty in the Middle East remains high; knock-on effects on international energy and security warrant monitoring.",
-     "importance": "important",
-     "tags": [
-      "Middle East Situation",
-      "International Security"
-     ]
-    },
-    {
-     "id": "news-012",
-     "title": "Russia: Europe's Participation in Ukraine Talks Not Discussed at US Meeting",
-     "summary": "The Russian Foreign Ministry says Europe's participation in Ukraine negotiations was not discussed during recent Russia-US talks.",
-     "detail": "A Russian Foreign Ministry spokesman said that during meetings with relevant US counterparts, the issue of Europe's participation in Ukraine talks was not discussed, and divisions remain on the relevant positions.",
-     "impact": "The outlook for Ukraine negotiations remains unclear; Europe's role is still a key unresolved variable.",
-     "importance": "normal",
-     "tags": [
-      "International Security"
+      "International Trade",
+      "Middle East",
+      "Foreign Trade"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance News",
+   "title": "Finance & Markets",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-013",
-     "title": "PBOC Launches 200 Billion Yuan Outright Reverse Repo",
-     "summary": "The People's Bank of China conducted a 200 billion yuan outright reverse repo operation, injecting medium- and long-term liquidity into the market.",
-     "detail": "The PBOC announced it would channel funds into the market through an outright reverse repo worth 200 billion yuan. The move is intended to stabilize liquidity in the banking system and anchor market expectations.",
-     "impact": "The liquidity injection is expected to ease funding pressures and lend support to sentiment in the bond and equity markets.",
+     "id": "news-011",
+     "title": "17 New Car Models in Two Days as Automakers Rush Year-End Sales Push",
+     "summary": "Seventeen new car models debuted or launched within two days as automakers flood the market at year-end to hit sales targets.",
+     "detail": "Data shows 17 new car models hit the market within the past two days, with automakers crowding in launches for a year-end sales sprint. The flurry of releases underscores the industry's focus on closing the year strongly amid intensifying market competition.",
+     "impact": "The dense year-end rollout of new models could stimulate consumption while sharpening price and marketing competition.",
      "importance": "hot",
      "tags": [
-      "Monetary Policy",
-      "PBOC Liquidity",
-      "Macroeconomic Management"
+      "Auto Industry",
+      "Consumer Market",
+      "Year-End Promotions"
+     ]
+    },
+    {
+     "id": "news-012",
+     "title": "Traffic Flows Turn into Cultural Tourism Spending and Regional Economic Gains",
+     "summary": "A single ticket becomes a full spending chain as traffic flows convert into cultural tourism consumption and regional economic growth.",
+     "detail": "The report highlights the link between transport and consumer spending, noting that one ticket can extend into an entire consumption chain. Traffic flows are being converted into cultural tourism spending and regional economic gains, driving food, lodging, travel, shopping and entertainment along routes.",
+     "impact": "Deeper integration of transport and cultural tourism is expected to unlock sustained regional consumer potential.",
+     "importance": "important",
+     "tags": [
+      "Cultural Tourism Spending",
+      "Holiday Economy",
+      "Regional Economy"
+     ]
+    },
+    {
+     "id": "news-013",
+     "title": "Shampoo Brand Faces 'Fake Foreign Brand' Controversy",
+     "summary": "A shampoo brand is embroiled in a fake foreign brand scandal, with executive Yu Donglai's direct response drawing attention.",
+     "detail": "A shampoo product has been caught up in a controversy over allegedly fake foreign branding, prompting a direct response from Yu Donglai. The dispute centers on the brand's origin and its marketing claims, sparking consumer debate.",
+     "impact": "The origin dispute may erode consumer trust and push the industry toward greater compliance in advertising.",
+     "importance": "important",
+     "tags": [
+      "Consumer Goods",
+      "Brand Marketing",
+      "Retail"
      ]
     },
     {
      "id": "news-014",
-     "title": "Chinese Cancer Drug Dethrones Global 'King of Drugs'",
-     "summary": "A Chinese cancer drug has delivered standout results, challenging the global incumbent's long-held 'king of drugs' title.",
-     "detail": "Reports highlight the strong performance of Chinese innovative drugs on the international stage, with one cancer drug challenging a global blockbuster based on efficacy and data, marking a new highlight for Chinese pharma's overseas expansion.",
-     "impact": "The rising international competitiveness of Chinese innovative drugs could boost the pharma sector and licensing deal activity.",
-     "importance": "hot",
+     "title": "Bitter Rivals Can't Save Juewei Duck Neck",
+     "summary": "The report focuses on Juewei Duck Neck's business struggles, exploring the pressures and transformation challenges it faces.",
+     "detail": "The report examines the current operating difficulties of Juewei Duck Neck, discussing how the brand is faring amid a changing market environment, though it offers no specific financial figures.",
+     "impact": "Pressure on a leading leisure braised-food brand may signal shifting industry competition and consumer preferences.",
+     "importance": "normal",
      "tags": [
-      "Innovative Drugs",
-      "Biopharma",
-      "Pharma Going Global"
+      "Leisure Food",
+      "Food & Beverage Industry",
+      "Consumer Market"
      ]
     },
     {
      "id": "news-015",
-     "title": "Nasdaq Golden Dragon China Index Rises Over 0.5%",
-     "summary": "The Nasdaq Golden Dragon China Index advanced, with several Chinese ADRs posting strong gains.",
-     "detail": "The Nasdaq Golden Dragon China Index rose more than 0.5%, with gains across multiple Chinese ADRs including Chagee, Tiger Brokers, ATRenew, BOSS Zhipin and Haichuan Securities.",
-     "impact": "The rebound in Chinese ADRs reflects a phased improvement in foreign investor sentiment toward Chinese assets.",
-     "importance": "important",
+     "title": "Why Are Mall Hotpot Restaurants So Expensive?",
+     "summary": "The report explores why hotpot restaurants in shopping malls price so high, fueling consumer debate over dining costs.",
+     "detail": "The report looks at the high pricing of hotpot restaurants inside shopping malls, analyzing their cost structure and the dining experience. The topic has triggered widespread consumer gripes about restaurant prices.",
+     "impact": "Rising debate over dining prices could intensify the value-for-money competition among mall restaurants.",
+     "importance": "normal",
      "tags": [
-      "Chinese ADRs",
-      "Overseas Markets",
-      "Capital Markets"
+      "Dining Consumption",
+      "Commercial Real Estate",
+      "Consumer Trends"
      ]
     },
     {
      "id": "news-016",
-     "title": "UBS Initiates Cambricon with Buy Rating",
-     "summary": "UBS launched coverage of Cambricon with a Buy rating, bullish on the AI chip market's prospects.",
-     "detail": "Investment bank UBS assigned an initial Buy rating to Cambricon and set a target price implying significant upside, signaling an optimistic view of the AI chip sector.",
-     "impact": "Positive ratings from foreign investment banks could lift sentiment in the semiconductor and AI chip sectors.",
+     "title": "Shenzhen's Land-and-Sea Logistics Network Runs Around the Clock",
+     "summary": "The report looks at how Shenzhen's land-and-sea logistics network operates day and night, showcasing the vitality of a major urban logistics hub.",
+     "detail": "The report focuses on Shenzhen's logistics system, presenting its land-and-sea network and nonstop round-the-clock operations. It highlights the hub's role in supporting goods circulation and the city's economy.",
+     "impact": "Efficient logistics networks underpin stable regional trade and consumer supply chains.",
      "importance": "important",
      "tags": [
-      "Semiconductors",
-      "Artificial Intelligence",
-      "AI Chips"
-     ]
-    },
-    {
-     "id": "news-017",
-     "title": "Juewei Duck Neck in Trouble, Transformation Challenges Remain",
-     "summary": "Reports examine the operational woes of Juewei Duck Neck, as the braised snack brand still faces multiple transformation hurdles.",
-     "detail": "The article analyzes the market and operational pressures currently facing Juewei Duck Neck, noting that its transformation path must still navigate challenges across branding, distribution and shifting consumer preferences.",
-     "impact": "Intensifying competition in the traditional braised snack segment is pushing brands to accelerate business model innovation.",
-     "importance": "normal",
-     "tags": [
-      "Consumer Brands",
-      "Food & Beverage",
-      "Retail & Consumption"
-     ]
-    },
-    {
-     "id": "news-018",
-     "title": "Folk Singer 'Da Yi Ge' Says No to Livestream Selling: Can't Control Products",
-     "summary": "Folk singer Da Yi Ge publicly said he will not do livestream e-commerce, citing an inability to control product quality.",
-     "detail": "Well-known grassroots singer Da Yi Ge said he would not take part in livestream selling, explaining that he cannot ensure the quality of promoted products — a cautious stance reflecting responsibility toward consumers.",
-     "impact": "The episode highlights rising demands on livestream e-commerce for supply chain control and product quality.",
-     "importance": "normal",
-     "tags": [
-      "Livestream E-commerce",
-      "Consumer Rights",
-      "Content Industry"
-     ]
-    },
-    {
-     "id": "news-019",
-     "title": "Why Mall-Based Hotpot Chains with a 'Mountain' Theme Are So Expensive",
-     "summary": "The article explores why hotpot restaurants with a 'mountain' theme inside shopping malls price themselves so steeply.",
-     "detail": "The report breaks down the logic behind the premium pricing of such mall hotpot restaurants, examining site selection, décor, brand positioning and cost structure.",
-     "impact": "Dining consumption is clearly polarizing, with brand premium and experiential settings remaining core to store competition.",
-     "importance": "normal",
-     "tags": [
-      "Dining Consumption",
-      "Consumption Upgrade",
-      "Commercial Retail"
+      "Modern Logistics",
+      "Transport Infrastructure",
+      "Urban Economy"
      ]
     }
    ]
@@ -282,238 +245,160 @@
    "icon": "🌐",
    "articles": [
     {
-     "id": "news-020",
-     "title": "US AI Stocks Sell-Off Deepens, Server Makers Plunge",
-     "summary": "US server manufacturers' shares fell as the sell-off in AI stocks gained momentum.",
-     "detail": "Selling pressure mounted on US AI stocks, with Dell down 9.7%, HP down 5.2%, and Super Micro down 3.3%, as market risk appetite cooled markedly.",
-     "impact": "AI hardware stocks under pressure; global tech volatility likely to widen further.",
-     "importance": "hot",
-     "tags": [
-      "US Stocks",
-      "Artificial Intelligence",
-      "Server Hardware"
-     ]
-    },
-    {
-     "id": "news-021",
-     "title": "Nasdaq 100 Falls 2.4%, S&P 500 Down 1.1%",
-     "summary": "Major US indices pulled back sharply, with both the Nasdaq 100 and S&P 500 posting declines.",
-     "detail": "The Nasdaq 100 fell 2.4% to an intraday low and the S&P 500 dropped 1.1%, led lower by heavyweight tech stocks as market sentiment turned cautious.",
-     "impact": "A US equity pullback could trigger correlated moves across global risk assets.",
-     "importance": "hot",
-     "tags": [
-      "US Stocks",
-      "Global Capital Markets",
-      "Risk Appetite"
-     ]
-    },
-    {
-     "id": "news-022",
-     "title": "AMD Plunges Over 10%, Broadcom Falls as Much as 7%",
-     "summary": "Semiconductor giants slid sharply, with AMD down more than 10% and Broadcom down as much as 7%.",
-     "detail": "US chip stocks were hit hard, with AMD touching an intraday low and falling more than 10%, while Broadcom dropped as much as 7%, making semiconductors the main driver of the decline.",
-     "impact": "Semiconductors under near-term pressure; attention needed on alignment between AI demand and valuations.",
+     "id": "news-017",
+     "title": "US Transportation Department Pushes Air Traffic Control Modernization",
+     "summary": "The US Transportation Department says 69% of aging air traffic control communications equipment has been replaced, and it is seeking Congressional funding to advance system modernization.",
+     "detail": "Sources show that US Transportation Secretary Duffy said about 69% of outdated air traffic control communications equipment has been replaced, with some units in service for 30 years and in urgent need of upgrades. He said the department is investigating whether contractor L3Harris should be held responsible for technical failures, and will partner with AT&T, Verizon and Lumen to develop a new communications architecture. US officials say air traffic has fully resumed operations.",
+     "impact": "Urgent demand for air traffic control infrastructure upgrades could drive growth in related communications and aviation equipment orders.",
      "importance": "important",
+     "tags": [
+      "Aviation Infrastructure",
+      "Communications Technology",
+      "Infrastructure Investment"
+     ]
+    },
+    {
+     "id": "news-018",
+     "title": "Sandisk Falls More Than 1% in After-Hours Trading",
+     "summary": "Sandisk shares fell more than 1% in after-hours trading to $846.315, putting market sentiment toward the memory chip sector in focus.",
+     "detail": "Financial news reports show Sandisk down more than 1% in after-hours trading, now at $846.315. The source did not disclose the specific reason for the decline.",
+     "impact": "Memory-related stocks weakening in the short term may weigh on market sentiment across the semiconductor sector.",
+     "importance": "normal",
      "tags": [
       "Semiconductors",
-      "US Stocks",
-      "AI Chips"
+      "Memory Chips",
+      "Overseas Markets"
      ]
     },
     {
-     "id": "news-023",
-     "title": "Crypto-Related Stocks Fall, Bitcoin Hits a Fresh Stage Low",
-     "summary": "Amid risk sentiment and rate concerns, crypto-related stocks and Bitcoin moved lower together.",
-     "detail": "Crypto-related stocks fell on Friday as cooling risk sentiment and rate worries weighed on the market, with Bitcoin sliding to its lowest level since August.",
-     "impact": "Digital asset volatility intensifies; markets remain sensitive to the rate path.",
+     "id": "news-019",
+     "title": "US Energy Department Orders Coal-Fired Units Kept Running for Winter Supply",
+     "summary": "The US Energy Department has issued an emergency order to ensure clean coal power remains available, keeping coal-fired generating units online through the winter.",
+     "detail": "Sources show the US Energy Department issued an emergency order requiring coal-fired generating units to keep running ahead of winter in the Midwest, ensuring clean coal power remains available for use.",
+     "impact": "Amid winter supply pressures, the backstop role of conventional power sources may be reemphasized.",
      "importance": "important",
      "tags": [
-      "Digital Assets",
-      "Cryptocurrency",
-      "Global Capital Markets"
-     ]
-    },
-    {
-     "id": "news-024",
-     "title": "ECB's Nagel: Outlook Has Deteriorated, High Chance of Further Action",
-     "summary": "ECB policymaker Nagel said the outlook has worsened since September, making further action highly likely.",
-     "detail": "ECB Governing Council member and Bundesbank President Nagel said the economic outlook has deteriorated since September, early stages of the pricing chain show upside pressure, underlying inflation remains high, short-term inflation expectations have risen, and the probability of further ECB action is high.",
-     "impact": "Easing expectations at the ECB rise; the eurozone monetary policy path merits attention.",
-     "importance": "important",
-     "tags": [
-      "European Central Bank",
-      "Global Monetary Policy",
-      "Inflation"
-     ]
-    },
-    {
-     "id": "news-025",
-     "title": "Spot Silver Slips Below $49/oz, Precious Metals Under Pressure",
-     "summary": "Spot silver broke below $49 per ounce, with precious metals under near-term pressure.",
-     "detail": "Spot silver fell below $49 per ounce, down 2.08% on the day, as the precious metals sector came under short-term pressure amid shifting dollar rate expectations and risk appetite.",
-     "impact": "Precious metal volatility rises; commodity trends hinge on dollar and rate developments.",
-     "importance": "normal",
-     "tags": [
-      "Commodities",
-      "Precious Metals",
-      "Global Capital Markets"
-     ]
-    },
-    {
-     "id": "news-026",
-     "title": "Cathie Wood Buys the Dip in CoreWeave, Trims Palantir Stake",
-     "summary": "Cathie Wood added to CoreWeave on weakness while reducing her Palantir holding.",
-     "detail": "Prominent fund manager Cathie Wood bought CoreWeave on the dip and trimmed her Palantir position, reflecting a reallocation between AI compute and software exposure.",
-     "impact": "A star fund manager's reshuffle highlights growing valuation divergence between AI compute and software names.",
-     "importance": "normal",
-     "tags": [
-      "Fund Portfolio Changes",
-      "AI Compute",
-      "Global Capital Markets"
+      "International Energy",
+      "Power Supply",
+      "Energy Security"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Tech Frontiers",
+   "title": "Tech Frontier",
    "icon": "💡",
    "articles": [
     {
-     "id": "news-027",
-     "title": "NVIDIA's 33-Year Leadership Era Ends as Industry Watches Next Move",
-     "summary": "NVIDIA's 33-year leadership era has come to a close, with employees petitioning for a farewell and attention turning to the company's future direction.",
-     "detail": "Reports focus on the end of NVIDIA's 33-year leadership era, as over a thousand employees have signed a petition urging the longtime leader to return, with the company's subsequent strategy and AI roadmap drawing industry attention.",
-     "impact": "A leadership shakeup at the AI chip giant could affect the global AI computing landscape and industry supply chain confidence.",
+     "id": "news-020",
+     "title": "Tesla Cybercab Opens to Individual Orders",
+     "summary": "Tesla has begun inviting select individual customers to order the Cybercab, a two-seat self-driving vehicle with no steering wheel or pedals.",
+     "detail": "Reports indicate that Tesla has started inviting certain customers to place orders for the Cybercab. The two-seat model features no steering wheel or pedals, with Tesla's AI head involved in advancing the project.",
+     "impact": "The push of self-driving vehicles into the consumer market could accelerate the commercialization of intelligent driving technology.",
      "importance": "hot",
      "tags": [
-      "AI Chips",
-      "Semiconductors",
+      "Autonomous Driving",
+      "New Energy Vehicles",
       "Artificial Intelligence"
      ]
     },
     {
-     "id": "news-028",
-     "title": "Microsoft Outage Lasts Hours, Hit Multiple AI Platforms",
-     "summary": "A large-scale Microsoft outage lasting several hours affected platforms including OpenAI and Anthropic.",
-     "detail": "Microsoft experienced a large-scale outage lasting several hours, impacting partner platforms including OpenAI and Anthropic. Anthropic later said the issue affecting multiple products had been resolved and error rates returned to normal.",
-     "impact": "Cloud service stability is once again under scrutiny, highlighting the importance of AI infrastructure reliability.",
-     "importance": "hot",
-     "tags": [
-      "Cloud Computing",
-      "Artificial Intelligence",
-      "Digital Infrastructure"
-     ]
-    },
-    {
-     "id": "news-029",
-     "title": "China's Homegrown 'Chips' Honor the Chinese Heart",
-     "summary": "Reports focus on progress in domestic chip self-innovation, showcasing achievements in China's chip industry.",
-     "detail": "The coverage centers on independent innovation in domestic chips, highlighting the industry's efforts to overcome challenges and pursue a self-reliant, controllable path.",
-     "impact": "Domestic substitution continues to advance, and the theme of semiconductor self-reliance is likely to remain in focus.",
-     "importance": "important",
-     "tags": [
-      "Semiconductors",
-      "Domestic Substitution",
-      "Chip Independence"
-     ]
-    },
-    {
-     "id": "news-030",
-     "title": "Inside China's First-Ever Science and Technology Achievement 'Supermarket'",
-     "summary": "An on-site visit to the country's first S&T achievement supermarket showcases a new model for commercializing research results.",
-     "detail": "The report visits China's first science and technology achievement supermarket, which displays achievements in a 'shelf-style' format to match supply with demand, offering a new practical model for technology transfer.",
-     "impact": "An innovative commercialization model that could bridge the gap between research and industry.",
+     "id": "news-021",
+     "title": "Can Six-Figure Stem Cell Infusions Really Reverse Aging?",
+     "summary": "The report examines whether stem cell infusions costing hundreds of thousands of yuan truly deliver anti-aging effects, prompting a more rational look at such spending.",
+     "detail": "The article explores the stem cell infusion anti-aging trend, discussing the actual efficacy and controversies behind investments of hundreds of thousands of yuan. It urges consumers to scrutinize the scientific basis and risks of such procedures.",
+     "impact": "With demand for anti-aging treatments staying strong, regulatory and oversight discussions around the technology may intensify.",
      "importance": "normal",
      "tags": [
-      "Technology Transfer",
-      "Industry-Academia Collaboration",
-      "Innovation Ecosystem"
+      "Stem Cell Technology",
+      "Biomedicine",
+      "Health Spending"
      ]
     },
     {
-     "id": "news-031",
-     "title": "Why Is Tape Storage Suddenly Making a Comeback?",
-     "summary": "The article analyzes the 'revival' of tape storage technology and the demand driving it.",
-     "detail": "The report examines, from the perspectives of long-term data archiving, cost advantages and energy efficiency, why tape storage has regained attention amid the data storage demands of large AI models.",
-     "impact": "AI is driving diversification in data storage demand, giving traditional storage technologies new opportunities.",
+     "id": "news-022",
+     "title": "A Beam of Light Rewrites China's Power Map",
+     "summary": "Using a beam of light as a narrative thread, the report explains how it is reshaping China's power landscape, spotlighting technological change in the electricity sector.",
+     "detail": "The report uses a beam of light as a lead-in to illustrate the shifts underway in China's power landscape. It focuses on technological and industrial transformation in the power sector, though specific technical details and data are not provided.",
+     "impact": "Advances in power technology could shape the long-term trajectory of the energy mix and grid operations.",
      "importance": "normal",
      "tags": [
-      "Data Storage",
-      "Artificial Intelligence",
-      "Information Technology"
+      "New Power Systems",
+      "Energy Technology",
+      "Power Industry"
      ]
     }
    ]
   },
   {
    "id": "other",
-   "title": "Other Top Stories",
+   "title": "Other Top News",
    "icon": "📰",
    "articles": [
     {
-     "id": "news-032",
-     "title": "Chinese Universities Are Looking More Like High Schools",
-     "summary": "The article examines the growing convergence of university management models and academic pace with those of high schools, and its implications.",
-     "detail": "From course scheduling, administrative practices and academic tempo, the article analyzes the blurring boundary between higher and secondary education, prompting reflection on how universities should train students.",
-     "impact": "Debate over higher education training models is heating up, which could drive a rethink of teaching and assessment mechanisms.",
-     "importance": "important",
+     "id": "news-023",
+     "title": "China Beat Malaysia 2-0 to End Three-Game Losing Streak",
+     "summary": "China's national team defeated Malaysia 2-0 to snap a three-game losing streak, with a heated clash erupting over a foul during the match.",
+     "detail": "Footage shows China defeating Malaysia 2-0 to end their previous run of three straight losses. The two sides were involved in a tense confrontation over a foul, briefly sparking a heated clash on the pitch.",
+     "impact": "A much-needed win helps steady team morale and ease outside pressure.",
+     "importance": "hot",
      "tags": [
-      "Higher Education",
-      "Education Reform",
-      "Talent Development"
+      "Football",
+      "Sports Events",
+      "Professional Sports"
      ]
     },
     {
-     "id": "news-033",
-     "title": "How to Choose the Right Flu Medication Within 48 Hours",
-     "summary": "With flu cases surging, how to scientifically select symptom-relief medication within 48 hours has drawn attention.",
-     "detail": "Using a personal experience of fighting the flu as a thread, the article shares how to choose appropriate drugs based on symptoms within 48 hours of infection, stressing the importance of evidence-based medication.",
-     "impact": "Public health education on flu-season medication can raise awareness of self-protection and rational drug use.",
+     "id": "news-024",
+     "title": "Beijing WB Claims KPL Season Championship",
+     "summary": "Beijing WB won the KPL annual championship, closing out the year's mobile esports season.",
+     "detail": "Footage shows Beijing WB clinching the KPL annual championship. The event brings the full-season professional mobile esports league to a close.",
+     "impact": "As the top-tier esports season wraps up, interest in esports content and commercialization is expected to rise further.",
      "importance": "important",
+     "tags": [
+      "Esports",
+      "Event Operations",
+      "Digital Entertainment"
+     ]
+    },
+    {
+     "id": "news-025",
+     "title": "How to Choose Flu Medication Within 48 Hours of Onset",
+     "summary": "Source material shares tips on selecting flu medication within the first 48 hours, focusing on proper drug use during peak season.",
+     "detail": "The article recounts a personal experience of how to choose medication within 48 hours of flu onset, stressing the importance of timing. It also covers responses and rational drug use during the peak flu season.",
+     "impact": "With flu season arriving, public demand for medication guidance is rising, potentially boosting attention on related drugs.",
+     "importance": "normal",
      "tags": [
       "Public Health",
-      "Respiratory Disease",
-      "Rational Medication"
+      "Respiratory Infections",
+      "Rational Drug Use"
      ]
     },
     {
-     "id": "news-034",
-     "title": "Femtosecond Surgery Hits 10 Million Cases Globally, With 7.5 Million in China",
-     "summary": "Cumulative femtosecond laser surgery cases worldwide have surpassed 10 million, with China accounting for 7.5 million.",
-     "detail": "Data shows global cumulative femtosecond surgery cases have exceeded 10 million, of which 7.5 million were performed in China, highlighting the rapid growth of the domestic refractive surgery market.",
-     "impact": "The ophthalmic refractive surgery market continues to expand, with steady growth in demand for medical services.",
-     "importance": "important",
-     "tags": [
-      "Ophthalmic Medicine",
-      "Medical Services",
-      "Consumer Healthcare"
-     ]
-    },
-    {
-     "id": "news-035",
-     "title": "Can RMB Hundreds of Thousands Stem Cell Infusions Really Fight Aging?",
-     "summary": "The article questions the actual anti-aging effects and scientific basis of high-priced stem cell infusions.",
-     "detail": "The report reviews anti-aging stem cell infusion programs costing hundreds of thousands of yuan, sorting through their scientific basis, clinical evidence and potential risks, and calls for a rational view of related marketing claims.",
-     "impact": "Rational spending on anti-aging aesthetic medicine is needed; public science literacy can help regulate the market and protect consumers.",
+     "id": "news-026",
+     "title": "Special Exhibition on China's Intangible Cultural Heritage Set for Shenzhen",
+     "summary": "CMG's \"China Through Intangible Cultural Heritage\" special exhibition is coming to Shenzhen, showcasing contemporary expressions of ICH culture.",
+     "detail": "Footage shows CMG's \"China Through Intangible Cultural Heritage\" special exhibition is set to debut in Shenzhen. Local authorities say preparations are complete, with flowers and light displays in place to welcome the event.",
+     "impact": "The ICH exhibition is expected to boost Shenzhen's cultural tourism spending and public interest in cultural exchange.",
      "importance": "normal",
      "tags": [
-      "Regenerative Medicine",
-      "Aesthetic Health",
-      "Consumer Healthcare"
+      "Intangible Cultural Heritage",
+      "Cultural Industries",
+      "Cultural-Tourism Integration"
      ]
     },
     {
-     "id": "news-036",
-     "title": "The Vitamin Chinese People Lack Most — and Women Are Worse Off Than Men",
-     "summary": "Surveys show widespread deficiency of a certain vitamin in China, with women more affected than men.",
-     "detail": "The report notes that insufficient intake of a specific vitamin is common across China's population, with women more severely affected than men, suggesting adjustments through diet and lifestyle.",
-     "impact": "Growing public awareness of nutrition and health is expected to boost demand for supplements and healthy eating.",
+     "id": "news-027",
+     "title": "Cold Air Front Schedule Released",
+     "summary": "A schedule for the next cold air mass has been released, urging the public to watch temperature changes and plan travel accordingly.",
+     "detail": "Source material presents an upcoming cold air process in the form of a schedule. It reminds the public to monitor temperature swings and arrange travel and daily life accordingly.",
+     "impact": "The cold snap could drive a seasonal uptick in warm clothing sales and heating demand.",
      "importance": "normal",
      "tags": [
-      "Public Nutrition",
-      "Health Management",
-      "Consumer Healthcare"
+      "Meteorological Services",
+      "Disaster Prevention and Reduction",
+      "Public Welfare"
      ]
     }
    ]

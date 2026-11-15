@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "contents": [
     {
-      "id": "prog-2026-11-14",
-      "date": "2026-11-14",
-      "title": "Riverpod 2.x 异步状态管理：用 AsyncNotifier 优雅处理加载 / 错误 / 数据",
-      "summary": "掌握 AsyncNotifier + AsyncValue 的组合，把网络请求的 loading、error、data 三种状态收敛到一个可测试、可刷新的状态容器中。",
-      "difficulty": "中级",
-      "concept": "在真实项目里，几乎每一个页面都离不开「发起请求 → 显示 loading → 成功渲染数据 / 失败显示错误 → 支持下拉刷新和重试」这条链路。早期 Flutter 开发者常用 StatefulWidget + setState 手工维护 isLoading、error、data 三个布尔/字段，结果就是状态机散落在 UI 层，容易出现「loading 还在转但数据已经到了」「报错了却没清空旧数据」这类 bug。Riverpod 2.x 提供的 AsyncNotifier 与 AsyncValue 正是为了解决这个问题：把异步请求的完整生命周期封装成一个不可变的代数数据类型（Loading / Data / Error），由状态容器统一驱动 UI。\n\nAsyncNotifier<T> 是 Notifier 的异步版本，你只需要实现 `Future<T> build()`。它的返回值会被自动包装成 AsyncValue<T> 并赋给 state——调用瞬间 state 是 AsyncLoading，Future 完成后自动变为 AsyncData 或 AsyncError。更重要的是，build() 会在 Provider 被首次读取时执行，并在其依赖（ref.watch 其他 Provider）变化时自动重新执行、自动 dispose 旧的订阅，这让你彻底告别手动的 initState / dispose 样板代码。\n\nAsyncValue 本身是 sealed 的三种子类型：AsyncLoading、AsyncData、AsyncError。UI 端推荐使用 `when(loading:, error:, data:)` 做穷举式渲染，编译器会强制你处理所有分支；如果只想局部更新，可以用 `whenOrNull` / `maybeWhen` / `map`。注意 AsyncValue 还带 `previous` 链，因此在刷新时它能同时保留旧数据（valueOrNull 不会立刻变 null），配合 `skipLoadingOnReload: true` 可以做出「后台静默刷新、列表不闪白屏」的体验。\n\n工程实践上有一条经验非常关键：把「读取状态」和「修改状态」分开。UI 层用 `ref.watch(provider)` 订阅重建，用 `ref.read(provider.notifier).someMethod()` 触发动作。绝不应该在 build 方法里用 ref.read 去拿状态，否则会丢失响应性。另外，用 AsyncValue.guard(fn) 可以把一段可能抛异常的异步代码自动转成 success / failure 两种 AsyncValue，比手写 try-catch 再分别赋值更安全，也更容易单元测试。\n\n最后是可测试性。AsyncNotifier 把业务逻辑从 Widget 中抽离出来，测试时只需要 ProviderContainer，不需要跑 WidgetTester 就能断言状态流转；而 UI 层只需断言「给定 AsyncError 时展示错误文案」。这种关注点分离是中大型 Flutter 项目能长期维护的基石。",
+      "id": "prog-2026-11-15",
+      "date": "2026-11-15",
+      "title": "Monorepo 增量 CI：用 Git Diff 驱动的智能构建矩阵",
+      "summary": "基于 git diff 三点比较精准定位受影响服务，自动生成 CI 构建矩阵，把 Monorepo 流水线从全量 40 分钟压缩到 5 分钟。",
+      "difficulty": "高级",
+      "concept": "Monorepo 在工程上有很多优势（原子提交、统一依赖、跨团队重构友好），但代价是 CI 成本随仓库规模线性甚至超线性增长。一个典型的中型 Monorepo 可能包含 30+ 服务，如果每次 PR 都触发全量 lint / test / build，流水线动辄 40 分钟以上，开发者开始习惯性关闭 CI，最终回归到「本地跑一下就合」的糟糕状态。增量 CI（Incremental / Affected CI）是解决这一问题的核心手段：只构建和测试受本次改动影响的服务。\n\n实现增量 CI 的第一步是精准地拿到「本次改动到底改了哪些文件」。这里最容易踩的坑是 diff 的比较方式。`git diff A..B` 是两点比较，会把两个 ref 之间所有差异都列出来；而在 PR 场景下我们真正关心的是「这条分支相对于分叉点改了什么」，也就是三点比较 `git diff A...B`（等价于 `git diff $(git merge-base A B) B`）。如果用两点比较，主干上其他人的提交也会被算进你的改动范围，导致 CI 范围虚胖甚至误报。\n\n第二步是建立「文件路径 -> 服务」的映射规则。工程实践中通常有三种策略：1）目录约定式，如 `services/api/` 归属 api 服务；2）配置声明式，每个服务目录下放 `ci.yaml` 声明自己的构建命令和依赖；3）依赖图解析式，读取 go.work / pnpm-workspace.yaml / Bazel BUILD 文件构建依赖图，做传递闭包分析。第三种最精确但实现成本最高，前两种在 80% 的场景下已经够用。关键工程经验是：基础设施目录（`infra/`、`.github/`、根级依赖清单）一旦变更，必须回退到全量构建，否则会漏掉隐性影响。\n\n第三步是把受影响的服务列表输出为 CI 平台的动态矩阵（GitHub Actions 的 `strategy.matrix`、GitLab 的 `parallel:matrix`、CircleCI 的 dynamic config）。这一步要输出合法 JSON，注意空数组的边界情况——如果没有受影响服务，不应该让 workflow 因为矩阵为空而失败，而是应该显式输出空矩阵并优雅退出，或者用一个 no-op job 占位。\n\n最后是工程上的稳定性问题。增量 CI 最大的风险是「漏测」：某个服务 A 依赖服务 B，B 改了但 A 没被触发测试，线上才崩。因此成熟的做法是：PR 阶段跑增量，主干合并后跑全量回归 + 依赖图校验；同时定期（比如每晚）跑一次全量对比，把增量结果和全量结果做 diff，一旦发现增量漏掉了某个失败用例，立刻告警回滚策略。此外，缓存（BuildKit cache、Turbo remote cache、Nx daemon）和增量 CI 是乘法关系，两者叠加才能把构建时间压到极致。",
       "codeExample": {
-        "language": "dart",
-        "code": "import 'package:flutter/material.dart';\nimport 'package:flutter_riverpod/flutter_riverpod.dart';\n\n/// 1. 数据模型\nclass User {\n  const User({required this.id, required this.name});\n\n  final int id;\n  final String name;\n\n  factory User.fromJson(Map<String, dynamic> json) =>\n      User(id: json['id'] as int, name: json['name'] as String);\n}\n\n/// 2. 模拟网络层（真实项目里换成 dio / http）\nFuture<List<User>> fetchUsers() async {\n  await Future<void>.delayed(const Duration(seconds: 1));\n  // 想观察 error 分支时，把下一行取消注释即可\n  // throw Exception('网络异常');\n  return const [\n    User(id: 1, name: 'Alice'),\n    User(id: 2, name: 'Bob'),\n    User(id: 3, name: 'Carol'),\n  ];\n}\n\n/// 3. AsyncNotifier：异步状态的唯一事实来源（Single Source of Truth）\nclass UsersNotifier extends AsyncNotifier<List<User>> {\n  @override\n  Future<List<User>> build() {\n    // 返回值会被 Riverpod 自动包装成 AsyncValue：loading -> data / error\n    // 依赖变化时 build 会自动重新执行，无需手动管理订阅\n    return fetchUsers();\n  }\n\n  /// 下拉刷新：guard 会自动把异常转成 AsyncError\n  Future<void> refresh() async {\n    // 如果想让刷新期间保留旧列表，就不要手动置为 loading\n    state = const AsyncValue.loading();\n    state = await AsyncValue.guard(fetchUsers);\n  }\n\n  /// 同步修改：直接写入 AsyncData，UI 立即响应\n  void remove(int id) {\n    final current = state.valueOrNull;\n    if (current == null) return;\n    state = AsyncValue.data(\n      current.where((user) => user.id != id).toList(),\n    );\n  }\n}\n\n/// 4. Provider 声明\nfinal usersProvider = AsyncNotifierProvider<UsersNotifier, List<User>>(\n  UsersNotifier.new,\n);\n\n/// 5. UI：watch 订阅重建，read.notifier 触发动作\nclass UserListPage extends ConsumerWidget {\n  const UserListPage({super.key});\n\n  @override\n  Widget build(BuildContext context, WidgetRef ref) {\n    final usersAsync = ref.watch(usersProvider);\n\n    return Scaffold(\n      appBar: AppBar(title: const Text('用户列表')),\n      body: RefreshIndicator(\n        onRefresh: () => ref.read(usersProvider.notifier).refresh(),\n        child: usersAsync.when(\n          // 穷举三分支，漏写分支会编译报错\n          loading: () => const Center(child: CircularProgressIndicator()),\n          error: (err, stack) => Center(child: Text('出错了：$err')),\n          data: (users) => ListView.builder(\n            // 保证列表不足一屏时也能触发下拉刷新\n            physics: const AlwaysScrollableScrollPhysics(),\n            itemCount: users.length,\n            itemBuilder: (context, index) {\n              final user = users[index];\n              return ListTile(\n                title: Text(user.name),\n                trailing: IconButton(\n                  icon: const Icon(Icons.delete_outline),\n                  onPressed: () =>\n                      ref.read(usersProvider.notifier).remove(user.id),\n                ),\n              );\n            },\n          ),\n        ),\n      ),\n    );\n  }\n}\n\nvoid main() {\n  // 根节点必须有 ProviderScope，否则所有 Provider 都无法解析\n  runApp(const ProviderScope(child: MaterialApp(home: UserListPage())));\n}\n",
-        "explanation": "【第 1-2 部分】User 是纯数据模型，fetchUsers() 模拟一次 1 秒延迟的网络请求，返回 Future<List<User>>；把它单独抽成函数，是为了让 Notifier 和单元测试都能复用。\n\n【第 3 部分】UsersNotifier 继承 AsyncNotifier<List<User>>，只重写 build()。注意 build() 直接 return fetchUsers()，不要写成 async + await 再 setState，Riverpod 会自动监听这个 Future。refresh() 里 state = const AsyncValue.loading() 让 UI 进入加载态，随后 AsyncValue.guard(fetchUsers) 会自动 try-catch：成功返回 AsyncData，抛异常返回 AsyncError，避免手写 try-catch 的样板。remove() 是同步操作，先用 state.valueOrNull 取出当前列表（注意：loading / error 态时它是 null，所以要判空），再把新列表包成 AsyncValue.data 赋回 state。\n\n【第 4 部分】AsyncNotifierProvider<UsersNotifier, List<User>> 把 Notifier 类型与暴露的数据类型绑定，泛型写错会在编译期报错，这是 Riverpod 2.x 相对 1.x 最大的类型安全提升。\n\n【第 5 部分】UserListPage 继承 ConsumerWidget（而不是 StatelessWidget），build 多了 WidgetRef ref 参数。ref.watch(usersProvider) 表示「订阅状态，状态变了就重建本 Widget」；ref.read(usersProvider.notifier) 拿到 UsersNotifier 实例去调用 refresh / remove，这种读法不会引起重建。usersAsync.when(...) 穷举 loading / error / data 三个分支，是渲染异步 UI 的推荐写法。RefreshIndicator 的 onRefresh 需要返回 Future，所以调用 notifier.refresh()。\n\n【main】最外层必须包 ProviderScope，它是所有 Provider 的容器；生产项目通常在这里用 overrides 注入 mock 数据源，方便测试与多环境切换。"
+        "language": "Bash",
+        "code": "#!/usr/bin/env bash\n# detect-changes.sh — Monorepo 增量 CI 触发器\n# 用法: ./detect-changes.sh [base-ref] [head-ref]\n# 输出: matrix.json，可直接喂给 GitHub Actions 的 fromJSON()\nset -euo pipefail\n\nBASE_REF=\"${1:-origin/main}\"\nHEAD_REF=\"${2:-HEAD}\"\nMATRIX_FILE=\"matrix.json\"\n\n# ---------- 1. 三点 diff：只取本分支相对分叉点的改动 ----------\n# 注意是三个点 ...，不是两点 ..\nmapfile -t CHANGED < <(git diff --name-only \"${BASE_REF}...${HEAD_REF}\")\n\nif [[ ${#CHANGED[@]} -eq 0 ]]; then\n  echo '{\"include\":[]}' > \"$MATRIX_FILE\"\n  echo \"No changes detected, CI will be skipped.\"\n  exit 0\nfi\n\necho \"Changed files (${#CHANGED[@]}):\"\nprintf '  %s\\n' \"${CHANGED[@]}\"\n\n# ---------- 2. 路径 -> 服务 映射表 ----------\ndeclare -A SERVICE_PATHS=(\n  [api]=\"services/api/\"\n  [worker]=\"services/worker/\"\n  [web]=\"apps/web/\"\n  [docs]=\"docs/\"\n)\n# 这些目录变更 = 影响全局，必须全量构建\nglobal_prefixes=(\"infra/\" \".github/\" \"package.json\" \"pnpm-lock.yaml\")\n\n# ---------- 3. 计算受影响的服务 ----------\ndeclare -A AFFECTED=()\nfor f in \"${CHANGED[@]}\"; do\n  hit_global=0\n  for p in \"${global_prefixes[@]}\"; do\n    if [[ \"$f\" == \"$p\"* ]]; then\n      hit_global=1\n      break\n    fi\n  done\n  if [[ $hit_global -eq 1 ]]; then\n    for svc in \"${!SERVICE_PATHS[@]}\"; do\n      AFFECTED[$svc]=1\n    done\n    continue\n  fi\n  for svc in \"${!SERVICE_PATHS[@]}\"; do\n    if [[ \"$f\" == \"${SERVICE_PATHS[$svc]}\"* ]]; then\n      AFFECTED[$svc]=1\n    fi\n  done\ndone\n\n# ---------- 4. 生成 GitHub Actions matrix JSON ----------\nitems=\"\"\nfor svc in \"${!AFFECTED[@]}\"; do\n  items+=\"{\\\"service\\\":\\\"${svc}\\\",\\\"path\\\":\\\"${SERVICE_PATHS[$svc]}\\\"},\"\ndone\nitems=\"${items%,}\"   # 去掉末尾逗号\nprintf '{\"include\":[%s]}' \"$items\" > \"$MATRIX_FILE\"\n\necho \"Affected services: ${!AFFECTED[*]}\"\necho \"Matrix written to $MATRIX_FILE:\"\ncat \"$MATRIX_FILE\"\n",
+        "explanation": "【第 1 部分：三点 diff】`git diff --name-only \"${BASE_REF}...${HEAD_REF}\"` 使用三点语法，只列出 HEAD_REF 相对 merge-base 的改动，排除主干上别人的提交；`mapfile` 把输出按行读入数组，方便后续遍历。空改动时输出 `{\"include\":[]}` 并优雅退出（exit 0），避免下游 job 因矩阵为空而报错。\n\n【第 2 部分：映射规则】`SERVICE_PATHS` 是路径前缀到服务名的关联数组；`global_prefixes` 列出影响全局的文件（基础设施、CI 配置、根级依赖锁文件），这些变更会触发全量构建。\n\n【第 3 部分：受影响判定】双重循环遍历变更文件：先判断是否命中全局前缀（命中则把所有服务都标记为受影响），否则按路径前缀归属到具体服务。`declare -A AFFECTED` 用作集合去重，同一个服务被多个文件命中也只记一次。\n\n【第 4 部分：矩阵生成】把受影响的服务拼成 `{\"include\":[{\"service\":\"api\",\"path\":\"services/api/\"},...]}` 格式，`items%,` 的写法用于去掉末尾多余逗号。在 GitHub Actions 中用 `matrix: ${{ fromJSON(needs.detect.outputs.matrix) }}` 即可驱动并行 job。\n\n【工作流中的用法】`strategy: matrix: ${{ fromJSON(...) }}`，配合 `fail-fast: false` 让单个服务失败不中断其他服务构建。"
       },
       "keyPoints": [
-        "AsyncNotifier<T> 的 build() 返回 Future<T>，Riverpod 自动把它包装成 AsyncValue<T> 并管理 loading → data/error 的状态流转",
-        "UI 端用 state.valueOrNull 安全取值，用 when(loading:, error:, data:) 穷举渲染，避免空指针与漏分支",
-        "AsyncValue.guard(fn) 自动捕获异常并转成 AsyncError，比手写 try-catch 更简洁、更不易漏状态",
-        "严格区分 ref.watch（订阅并重建）与 ref.read(provider.notifier)（触发动作），绝不在 build 里用 ref.read 读状态",
-        "AsyncValue 会保留 previous 数据，配合 skipLoadingOnReload / skipLoadingOnRefresh 可实现刷新时保留旧列表、不闪白屏"
+        "PR 场景必须用三点 diff（A...B，即 merge-base 到 B），两点 diff 会把主干上别人的改动误算进来",
+        "基础设施目录（infra/、.github/、根级 lock 文件）变更时必须回退到全量构建，这是漏测重灾区",
+        "增量 CI 要处理「矩阵为空」的边界情况，输出空 include 数组并优雅退出，而不是让 workflow 失败",
+        "PR 跑增量 + 主干合并后跑全量回归 + 每日全量对比校验，三段式策略才能真正防漏测",
+        "增量 CI 与远程构建缓存（BuildKit / Turbo / Nx）是乘法关系，叠加才能把构建时间压到分钟级"
       ],
       "exercise": {
-        "description": "实现一个「文章列表」页面：1) 用 AsyncNotifier 暴露 Future<List<String>> 的文章标题；2) 首次进入显示 CircularProgressIndicator；3) 请求失败显示错误文案和一个「重试」按钮；4) 支持下拉刷新；5) 用 AsyncValue.guard 完成刷新逻辑，并在刷新时保留旧列表（不闪 loading）。进阶：给 Notifier 增加 add(String title) 方法，让新文章插入到列表头部。",
-        "hint": "新建 ArticlesNotifier extends AsyncNotifier<List<String>>，build() 里 return fetchArticles()。刷新方法写成 state = await AsyncValue.guard(fetchArticles);（去掉手动 loading 赋值即可保留旧数据）。错误分支里用 onPressed: () => ref.read(articlesProvider.notifier).refresh() 实现重试。注意 RefreshIndicator 内的 ListView 要设 physics: AlwaysScrollableScrollPhysics()，否则数据少时下拉手势失效。",
+        "description": "为一个包含 services/api（Go）、services/worker（Go）、apps/web（React）的 Monorepo 编写增量 CI。要求：1) 扩展上面的脚本，新增「依赖传递」能力——当 services/api/ 的 .proto 文件变更时，services/worker 也要被构建（因为 worker 通过 gRPC 调用 api）；2) 输出矩阵中增加一个 `needs-proto` 字段标记是否需要先执行 protobuf 生成步骤；3) 编写对应的 GitHub Actions workflow 片段，用 fromJSON 消费该矩阵，并保证任意一个服务测试失败时其他服务仍会继续执行。",
+        "hint": "在第 3 部分的判定循环里增加一个特判分支：`if [[ \"$f\" == services/api/proto/* ]]; then AFFECTED[worker]=1; NEEDS_PROTO=1; fi`。proto 字段用一个全局变量标记，最后拼 JSON 时以 `\"needs-proto\":true/false` 的形式附加到每个 matrix item 上。workflow 中在 strategy 下加 `fail-fast: false`，并给 job 加 `if: always()` 或用 `continue-on-error: false` 配合独立 job 保证互不影响。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全刷新方法，使异常被自动捕获并转为 AsyncError：",
-            "codeContext": "class UsersNotifier extends AsyncNotifier<List<User>> {\n  @override\n  Future<List<User>> build() => fetchUsers();\n\n  Future<void> refresh() async {\n    state = await AsyncValue.guard(fetchUsers);\n  }\n}",
+            "question": "补全命令，使其只列出当前分支相对于与 origin/main 分叉点之后的改动文件（排除主干上其他人的提交）。",
+            "codeContext": "git diff --name-only origin/main______ HEAD",
             "segments": [
               {
                 "type": "text",
-                "content": "  Future<void> refresh() async {\n    state = await ",
+                "content": "git diff --name-only origin/main",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,55 +40,55 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[选择 diff 比较语法]",
                 "options": [
-                  "AsyncValue.guard(fetchUsers)",
-                  "AsyncValue.data(fetchUsers())",
-                  "AsyncValue.error(fetchUsers)"
+                  "..",
+                  "...",
+                  "@{u}"
                 ],
-                "correctAnswer": "AsyncValue.guard(fetchUsers)"
+                "correctAnswer": "..."
               },
               {
                 "type": "text",
-                "content": ";\n  }",
+                "content": " HEAD",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "AsyncValue.guard(fetchUsers)",
-            "explanation": "AsyncValue.guard 接收一个返回 Future 的函数，内部自动 try-catch：成功产出 AsyncData(value)，抛异常产出 AsyncError(error, stackTrace)。AsyncValue.data() 需要的是同步值而非 Future，用它会把 Future<List<User>> 当成数据本身；AsyncValue.error() 必须传入已捕获的错误对象，无法自行执行请求。"
+            "correctAnswer": "...",
+            "explanation": "三点比较 `A...B` 等价于 `git diff $(git merge-base A B) B`，只显示 B 侧自分叉点以来的改动。两点比较 `A..B` 会把 A 和 B 之间的所有差异（包括主干上其他人的提交）都算进来，在 PR 增量 CI 中会导致构建范围虚胖，甚至把无关服务纳入矩阵。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "在 ConsumerWidget 的 build 方法中，以下哪种写法是正确的？",
-            "codeContext": "@override\nWidget build(BuildContext context, WidgetRef ref) {\n  // ①\n  final users = ref.watch(usersProvider);\n  // ②\n  final notifier = ref.read(usersProvider.notifier);\n  // ③\n  final users2 = ref.read(usersProvider);\n}",
+            "question": "在增量 CI 中，以下哪种情况必须回退到全量构建？",
+            "codeContext": "# 变更文件列表\n.github/workflows/ci.yaml\nservices/api/handler.go",
             "segments": null,
             "options": [
-              "①② 正确：watch 订阅状态用于渲染，read.notifier 取实例用于调用方法",
-              "①③ 正确：watch 和 read 都可以读状态，效果完全相同",
-              "②③ 正确：build 中应尽量用 read 以减少重建",
-              "只有 ① 正确：build 中禁止使用 ref.read"
+              "只改动了 docs/ 目录下的 Markdown 文档",
+              "改动了 .github/workflows/ci.yaml，即 CI 流水线自身的定义",
+              "只改动了 services/worker/ 下的单元测试文件",
+              "改动了 apps/web/src/components/Button.tsx"
             ],
-            "correctAnswer": "①② 正确：watch 订阅状态用于渲染，read.notifier 取实例用于调用方法",
-            "explanation": "渲染必须用 ref.watch，这样状态变化才会触发重建；ref.read(usersProvider) 只读一次、不建立订阅，用在 build 中会导致状态更新后 UI 不刷新，是常见 bug。而 ref.read(provider.notifier) 取的是 Notifier 实例（它本身不随状态变化），用它调用 refresh()/remove() 不会引起额外重建，因此 ② 也是正确写法。"
+            "correctAnswer": "改动了 .github/workflows/ci.yaml，即 CI 流水线自身的定义",
+            "explanation": "CI 配置、基础设施目录（infra/）、根级依赖锁文件（pnpm-lock.yaml / go.work.sum）属于全局影响面，一旦变更可能改变所有服务的构建行为，必须全量构建。文档目录改动甚至可以完全跳过构建；单个服务内的测试文件或组件文件只影响该服务，属于增量范围。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "假设 build() 已完成并返回 10，随后连续调用 add() 两次，最后打印 state.valueOrNull 会输出什么？",
-            "codeContext": "class Counter extends AsyncNotifier<int> {\n  @override\n  Future<int> build() async {\n    await Future<void>.delayed(const Duration(milliseconds: 50));\n    return 10;\n  }\n\n  void add() {\n    state = AsyncValue.data((state.valueOrNull ?? 0) + 5);\n  }\n}\n\n// build 完成后：\nnotifier.add();\nnotifier.add();\nprint(notifier.state.valueOrNull);",
+            "question": "仓库历史如下：main 上有 A-B-C 三个提交，feature 分支从 A 分出并有提交 D（只改了 worker.go）。已知 B 改了 web.tsx，C 改了 api.go。执行以下命令会输出哪些文件？",
+            "codeContext": "# main:  A --- B(web.tsx) --- C(api.go)\n#              \\\n# feature:      D(worker.go)\n\ngit diff --name-only origin/main...feature\ngit diff --name-only origin/main..feature",
             "segments": null,
             "options": [
-              "10",
-              "15",
-              "20",
-              "抛出 StateError"
+              "两条命令都只输出 worker.go",
+              "第一条输出 worker.go；第二条输出 web.tsx、api.go、worker.go",
+              "第一条输出 web.tsx、api.go、worker.go；第二条输出 worker.go",
+              "两条命令都输出 web.tsx、api.go、worker.go"
             ],
-            "correctAnswer": "20",
-            "explanation": "build() 完成后 state 是 AsyncData(10)，valueOrNull 为 10。第一次 add() 计算 10 + 5 = 15 并写回 AsyncData(15)；第二次读到 15，计算 15 + 5 = 20。最终 state.valueOrNull 为 20。注意 add() 是同步方法，它直接赋值 state，不涉及异步等待；若把 add 改成 async 并 await，中间被并发调用时就可能出现读-改-写竞态。"
+            "correctAnswer": "第一条输出 worker.go；第二条输出 web.tsx、api.go、worker.go",
+            "explanation": "origin/main...feature 是三点比较，以 merge-base（即 A）为基准，只显示 feature 侧的改动，所以只有 worker.go。origin/main..feature 是两点比较，直接比较 main（C）和 feature（D）两个端点的差异，主干上 B、C 引入的 web.tsx 和 api.go 在 feature 中不存在，因此也会被列出来。这正是增量 CI 中误用两点比较导致构建范围虚胖的典型场景。"
           }
         ]
       }
