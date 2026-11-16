@@ -1,192 +1,181 @@
 {
-  "date": "2026-11-15",
+  "date": "2026-11-16",
   "content": {
-    "id": "en-2026-11-15",
-    "date": "2026-11-15",
-    "topic": "健康与生活",
+    "id": "en-2026-11-16",
+    "date": "2026-11-16",
+    "topic": "环境与可持续发展",
     "newsHighlights": [
       {
-        "title": "Second heat wave of summer hits South Africa",
-        "source": "CGTN",
-        "summary": "A second summer heat wave is sweeping across South Africa, pushing temperatures dangerously high and raising health warnings for the elderly and children.",
-        "translation": "南非迎来夏季第二轮热浪，气温飙升至危险水平，老年人与儿童的健康风险上升。",
-        "keyWords": [
-          "heat wave",
-          "temperature",
-          "health warning"
-        ]
-      },
-      {
-        "title": "FAA lifts nationwide ground stop after thousands of flights disrupted",
-        "source": "CGTN",
-        "summary": "US aviation authorities lifted a nationwide ground stop after thousands of flights were disrupted, leaving travelers exhausted and airports crowded.",
-        "translation": "美国航空当局在全国停飞令导致数千架次航班中断后解除禁令，旅客疲惫不堪，机场人满为患。",
-        "keyWords": [
-          "ground stop",
-          "disruption",
-          "travel"
-        ]
-      },
-      {
-        "title": "Microsoft apologizes for global outage, rules out cyberattack",
-        "source": "CGTN",
-        "summary": "Microsoft apologized for a global service outage that disrupted work and daily life worldwide, saying it was not caused by a cyberattack.",
-        "translation": "微软就一起波及全球、扰乱工作与日常生活的服务中断事件致歉，并排除了网络攻击的可能。",
-        "keyWords": [
-          "outage",
-          "apologize",
-          "cyberattack"
-        ]
-      },
-      {
-        "title": "At 95, American still speaks Qinghai dialect 'I miss you all'",
+        "title": "Protests reveal Europe's economic dilemma",
         "source": "ChinaDaily",
-        "summary": "At 95, American David Plymire still speaks with a distinct Qinghai accent and calls Huangyuan county his hometown after spending 17 years there.",
-        "translation": "95岁的美国人戴维·普莱米尔仍操着一口地道的青海话，在青海湟源县度过17年后，他把那里视作故乡。",
+        "summary": "Protests across Europe are exposing deeper economic challenges, from sluggish growth and declining industrial competitiveness to rising energy costs and mounting fiscal pressures.",
+        "translation": "欧洲各地的抗议活动暴露出更深层的经济困境，从增长乏力、工业竞争力下降，到能源成本攀升和财政压力加剧。",
         "keyWords": [
-          "dialect",
-          "hometown",
-          "healthy aging"
+          "energy costs",
+          "green transition",
+          "fiscal pressures"
         ]
       },
       {
-        "title": "Max Baucus: China, US should build more trust and maintain balance",
-        "source": "ChinaDaily",
-        "summary": "Former US ambassador Max Baucus said China and the US should build more trust and maintain balance, praising China's offer to convene AI cooperation.",
-        "translation": "美国前驻华大使博卡斯表示，中美应增进互信、保持平衡，并赞赏中方提出的人工智能合作倡议。",
+        "title": "Xi's article on building Asia-Pacific community to be published",
+        "source": "CGTN",
+        "summary": "President Xi's article on building an Asia-Pacific community with a shared future stresses openness, innovation and green, sustainable growth across the region.",
+        "translation": "习近平主席关于构建亚太命运共同体的文章强调地区的开放、创新以及绿色可持续增长。",
         "keyWords": [
-          "trust",
-          "balance",
-          "convene"
+          "Asia-Pacific community",
+          "sustainable growth",
+          "shared future"
+        ]
+      },
+      {
+        "title": "Former UNESCO chief: Shenzhen epitomizes China's dynamic growth",
+        "source": "ChinaDaily",
+        "summary": "A former UNESCO director-general said Shenzhen epitomizes China's dynamic growth, where technology and green industries are reshaping urban development.",
+        "translation": "联合国教科文组织前总干事表示，深圳是中国充满活力发展的缩影，科技与绿色产业正在重塑城市发展。",
+        "keyWords": [
+          "dynamic growth",
+          "urban development",
+          "green industries"
+        ]
+      },
+      {
+        "title": "12 leaders of APEC economies to attend APEC CEO Summit 2026",
+        "source": "ChinaDaily",
+        "summary": "Twelve leaders of APEC economies will attend the APEC CEO Summit 2026 in Shenzhen to discuss trade, energy security and sustainable development.",
+        "translation": "亚太经合组织12个经济体的领导人将出席在深圳举行的2026年APEC工商领导人峰会，共同探讨贸易、能源安全与可持续发展。",
+        "keyWords": [
+          "APEC",
+          "energy security",
+          "sustainable development"
         ]
       }
     ],
     "quote": {
-      "quote": "The greatest wealth is health.",
-      "author": "Virgil",
-      "translation": "最大的财富是健康。",
-      "explanation": "健康是一切的基础。无论是面对热浪、航班延误还是网络中断，良好的身体状态都是应对生活突发状况的本钱；这与今日新闻中95岁老人健康长寿的故事相呼应。"
+      "quote": "The greatest threat to our planet is the belief that someone else will save it.",
+      "author": "Robert Swan",
+      "translation": "对地球最大的威胁，是相信会有别人来拯救它。",
+      "explanation": "环保不是政府或他人的责任，每个人都应从自身行动开始。这与今日新闻中欧洲能源转型需要全社会共同承担的现实相呼应。"
     },
     "vocabulary": [
       {
-        "word": "heat wave",
-        "phonetic": "/ˈhiːt weɪv/",
-        "partOfSpeech": "n. (名词)",
-        "definition": "热浪；持续的异常高温天气",
-        "example": "A second heat wave of summer is putting the elderly at risk.",
-        "translation": "夏季第二轮热浪正让老年人面临风险。",
-        "newsContext": "出自CGTN新闻标题：'Second heat wave of summer hits South Africa'。"
+        "word": "sustainable",
+        "phonetic": "/səˈsteɪnəbl/",
+        "partOfSpeech": "形容词",
+        "definition": "可持续的；能长期维持的",
+        "example": "APEC leaders are calling for sustainable growth across the Asia-Pacific region.",
+        "translation": "亚太经合组织领导人呼吁实现亚太地区的可持续增长。",
+        "newsContext": "出自 CGTN 报道 Xi's article on building Asia-Pacific community，文中强调 green, sustainable growth。"
       },
       {
-        "word": "disrupt",
-        "phonetic": "/dɪsˈrʌpt/",
-        "partOfSpeech": "v. (动词)",
-        "definition": "扰乱；使中断",
-        "example": "Thousands of flights were disrupted by the nationwide ground stop.",
-        "translation": "全国停飞令导致数千架次航班中断。",
-        "newsContext": "出自CGTN新闻标题：'FAA lifts nationwide ground stop after thousands of flights disrupted'。"
+        "word": "transition",
+        "phonetic": "/trænˈzɪʃn/",
+        "partOfSpeech": "名词/动词",
+        "definition": "过渡；转变（如能源转型）",
+        "example": "Europe's green transition is colliding with rising energy costs.",
+        "translation": "欧洲的绿色转型正与不断上涨的能源成本发生冲突。",
+        "newsContext": "出自 ChinaDaily 报道 Protests reveal Europe's economic dilemma，涉及从传统能源向清洁能源的转型。"
       },
       {
-        "word": "outage",
-        "phonetic": "/ˈaʊtɪdʒ/",
-        "partOfSpeech": "n. (名词)",
-        "definition": "（供电、网络或服务的）中断，停止运行",
-        "example": "Microsoft apologized for a global outage that affected millions of users.",
-        "translation": "微软为一次影响数百万用户的全球服务中断事件道歉。",
-        "newsContext": "出自CGTN新闻：'Microsoft apologizes for global outage, rules out cyberattack'。"
+        "word": "emission",
+        "phonetic": "/ɪˈmɪʃn/",
+        "partOfSpeech": "名词",
+        "definition": "排放（尤指气体、污染物）",
+        "example": "Governments must cut carbon emissions without damaging livelihoods.",
+        "translation": "各国政府必须在不损害民生的前提下削减碳排放。",
+        "newsContext": "与今日新闻中欧洲能源困境相关：减排目标与工业成本之间存在矛盾。"
       },
       {
-        "word": "cancel",
-        "phonetic": "/ˈkænsl/",
-        "partOfSpeech": "v. (动词)",
-        "definition": "取消；撤销",
-        "example": "Passengers should expect more flight cancellations in the coming days.",
-        "translation": "乘客应做好未来几天更多航班取消的准备。",
-        "newsContext": "出自CGTN新闻标题：'Expect more flight cancellations, US transport chief says'。"
+        "word": "renewable",
+        "phonetic": "/rɪˈnjuːəbl/",
+        "partOfSpeech": "形容词",
+        "definition": "可再生的（能源）",
+        "example": "Investment in renewable energy can lower power bills in the long run.",
+        "translation": "对可再生能源的投资从长远看可以降低电费。",
+        "newsContext": "关联今日新闻中 rising energy costs 议题，可再生能源是缓解能源危机的关键路径。"
+      },
+      {
+        "word": "dilemma",
+        "phonetic": "/dɪˈlemə/",
+        "partOfSpeech": "名词",
+        "definition": "困境；两难局面",
+        "example": "Protests reveal Europe's economic dilemma over energy and industry.",
+        "translation": "抗议活动暴露出欧洲在能源与工业问题上的两难处境。",
+        "newsContext": "直接取自 ChinaDaily 标题 Protests reveal Europe's economic dilemma。"
+      },
+      {
+        "word": "competitiveness",
+        "phonetic": "/kəmˈpetɪtɪvnəs/",
+        "partOfSpeech": "名词",
+        "definition": "竞争力",
+        "example": "Declining industrial competitiveness is a core concern for European policymakers.",
+        "translation": "工业竞争力下降是欧洲政策制定者的核心忧虑。",
+        "newsContext": "出自 ChinaDaily 报道 Protests reveal Europe's economic dilemma，原文为 declining industrial competitiveness。"
+      },
+      {
+        "word": "fiscal",
+        "phonetic": "/ˈfɪskl/",
+        "partOfSpeech": "形容词",
+        "definition": "财政的；国库的",
+        "example": "Mounting fiscal pressures limit how fast governments can subsidize clean energy.",
+        "translation": "不断加剧的财政压力限制了政府补贴清洁能源的速度。",
+        "newsContext": "出自 ChinaDaily 报道 Protests reveal Europe's economic dilemma，原文为 mounting fiscal pressures。"
       },
       {
         "word": "resilience",
         "phonetic": "/rɪˈzɪliəns/",
-        "partOfSpeech": "n. (名词)",
-        "definition": "韧性；恢复力；适应力",
-        "example": "Daily exercise builds resilience against both heat and stress.",
-        "translation": "日常锻炼能增强抵御高温与压力的适应力。",
-        "newsContext": "关联今日热浪与航班中断新闻：极端天气与突发状况考验个人与社会的 resilience（应对与恢复能力）。"
+        "partOfSpeech": "名词",
+        "definition": "韧性；恢复力",
+        "example": "Energy resilience has become a priority for economies hit by supply shocks.",
+        "translation": "能源韧性已成为受供应冲击经济体的优先事项。",
+        "newsContext": "关联今日新闻中 Europe 的能源成本危机与 APEC 讨论的 energy security 议题。"
       },
       {
-        "word": "dialect",
-        "phonetic": "/ˈdaɪəlekt/",
-        "partOfSpeech": "n. (名词)",
-        "definition": "方言；地方话",
-        "example": "At 95, David Plymire still speaks the Qinghai dialect fluently.",
-        "translation": "95岁的戴维·普莱米尔仍能流利地说青海话。",
-        "newsContext": "出自ChinaDaily报道：'At 95, American still speaks Qinghai dialect'。"
+        "word": "mobilization",
+        "phonetic": "/ˌməʊbəlaɪˈzeɪʃn/",
+        "partOfSpeech": "名词",
+        "definition": "动员；调动",
+        "example": "The government ordered a rapid mobilization of resources after the disaster.",
+        "translation": "灾难发生后，政府下令迅速调动资源。",
+        "newsContext": "出自 CGTN 报道 Iran's VP orders medical mobilization after bus accident，体现资源应急动员的用法。"
       },
       {
-        "word": "hometown",
-        "phonetic": "/ˌhoʊmˈtaʊn/",
-        "partOfSpeech": "n. (名词)",
-        "definition": "故乡；家乡",
-        "example": "He spent 17 years in Huangyuan county and calls it his hometown.",
-        "translation": "他在湟源县生活了17年，并把那里称作故乡。",
-        "newsContext": "出自ChinaDaily报道：'He spent 17 years in Huangyuan county, Qinghai province, and considers it as his hometown.'"
-      },
-      {
-        "word": "expect",
-        "phonetic": "/ɪkˈspekt/",
-        "partOfSpeech": "v. (动词)",
-        "definition": "预料；预计；期待",
-        "example": "Travelers should expect more flight disruptions this week.",
-        "translation": "旅客应预计本周还会有更多航班中断。",
-        "newsContext": "出自CGTN新闻标题：'Expect more flight cancellations, US transport chief says'。"
-      },
-      {
-        "word": "apologize",
-        "phonetic": "/əˈpɒlədʒaɪz/",
-        "partOfSpeech": "v. (动词)",
-        "definition": "道歉；致歉",
-        "example": "Microsoft apologized to users affected by the global outage.",
-        "translation": "微软向受全球服务中断影响的用户致歉。",
-        "newsContext": "出自CGTN新闻：'Microsoft apologizes for global outage, rules out cyberattack'。"
-      },
-      {
-        "word": "balance",
-        "phonetic": "/ˈbæləns/",
-        "partOfSpeech": "n./v. (名词/动词)",
-        "definition": "平衡；使保持平衡",
-        "example": "A balanced diet and enough sleep help you maintain good health.",
-        "translation": "均衡饮食和充足睡眠有助于保持健康。",
-        "newsContext": "出自ChinaDaily新闻标题：'Max Baucus: China, US should build more trust and maintain balance'。"
+        "word": "dynamic",
+        "phonetic": "/daɪˈnæmɪk/",
+        "partOfSpeech": "形容词",
+        "definition": "充满活力的；动态的",
+        "example": "Shenzhen epitomizes China's dynamic growth in green technology.",
+        "translation": "深圳是中国绿色科技领域充满活力发展的缩影。",
+        "newsContext": "出自 ChinaDaily 报道 Former UNESCO chief: Shenzhen epitomizes China's dynamic growth。"
       }
     ],
     "pattern": {
-      "pattern": "Expect + 名词短语, ... says.（表示权威预测：预计将会……）",
-      "example": "Expect more flight cancellations, US transport chief says.",
-      "translation": "美国交通部门负责人表示，预计还会有更多航班取消。",
-      "usage": "这是新闻英语中的预告句型，用祈使句 Expect... 表达官方或专家的预测，随后用 ..., ... says 标明消息来源。日常中可用于提醒他人做好准备，如：Expect heavy traffic tomorrow, the weather service says（气象部门表示，明天交通会很拥堵）。"
+      "pattern": "from A and B to C and D（从……到……，用于列举一系列问题或变化的范围）",
+      "example": "Protests across Europe are exposing deeper economic challenges, from sluggish growth and declining industrial competitiveness to rising energy costs and mounting fiscal pressures.",
+      "translation": "欧洲各地的抗议活动暴露出更深层的经济困境，从增长乏力、工业竞争力下降，到能源成本攀升和财政压力加剧。",
+      "usage": "该结构用于概括性地列举一个范围内的多个事项，语气正式，适合写作与报告。A、B 与 C、D 常为平行结构（名词短语或动名词短语），中间可用 and 连接并列成分，读起来节奏感强。"
     },
     "grammar": {
-      "title": "after 引导的时间状语从句中的省略（省略 \"were\"）",
-      "explanation": "在 after, before, when, until 等连词引导的时间状语从句中，若从句主语与主句一致或为被动结构，常可省略 \"主语 + be 动词\"，仅保留过去分词，使表达更简洁。新闻标题尤其常用这一形式。原完整句为：FAA lifts nationwide ground stop after thousands of flights were disrupted，标题中省略了 were。",
+      "title": "现在进行时（Present Continuous）描述正在发生的趋势",
+      "explanation": "当描述当下持续演变的社会、经济或环境趋势时，英语常用现在进行时（be + doing），强调变化正在进行而非完成。常与 across、increasingly、currently 等词搭配，使论述更具现场感与时效性。",
       "examples": [
-        "FAA lifts nationwide ground stop after thousands of flights disrupted. (完整形式: after thousands of flights were disrupted)",
-        "Microsoft apologized for the global outage after (it was) investigated, ruling out a cyberattack."
+        "Protests across Europe are exposing deeper economic challenges.",
+        "Rising energy costs and mounting fiscal pressures are pushing governments to rethink their climate policies."
       ]
     },
     "pronunciation": {
-      "word": "disruption",
-      "phonetic": "/dɪsˈrʌpʃn/",
-      "tips": "重音在第二个音节 -rup-。注意 /ʌ/ 是短促的\"阿\"音，嘴唇放松；词尾 -tion 发 /ʃn/，不是 /tiən/。可拆解为 dis-RUP-shon 三拍，重读音节要读得更响、更长。",
+      "word": "sustainable",
+      "phonetic": "/səˈsteɪnəbl/",
+      "tips": "重音在第二个音节 -ˈstein-，首音节弱读为 /sə/，不要读成“苏斯”。注意 /steɪn/ 中的双元音 /eɪ/ 要饱满，结尾 /əbl/ 轻而短，语流中常被弱化。",
       "examples": [
-        "The outage caused serious disruption to daily life.",
-        "Thousands of flights were disrupted by the ground stop."
+        "APEC leaders are calling for sustainable growth.",
+        "Sustainable development requires international cooperation."
       ]
     },
     "reading": {
-      "title": "Staying Healthy When the Weather and the Web Break Down",
-      "content": "As a second heat wave grips South Africa, health experts remind people to drink more water, stay indoors at midday and check on elderly neighbors. Extreme heat is not just uncomfortable; it can be dangerous for young children and older adults. At the same time, travelers in the United States faced chaos after thousands of flights were disrupted, and a Microsoft outage affected work and daily life around the world. When systems fail, our own health becomes our best safety net. Doctors say the preparation is simple: sleep well, eat balanced meals, drink enough water and move every day. Good habits also help the mind stay calm during delays and uncertainty. At 95, American David Plymire still speaks the Qinghai dialect he learned decades ago. He credits a quiet life, close friends and a strong sense of belonging for his long and healthy life. Health, after all, is the quiet foundation beneath every journey.",
-      "translation": "随着第二轮热浪席卷南非，健康专家提醒人们多喝水、中午尽量待在室内，并关照年迈的邻居。极端高温不仅是不舒服，对幼儿和老年人来说还可能很危险。与此同时，美国的旅客因数千架航班中断而陷入混乱，一次微软服务中断也影响了全球的工作与日常生活。当系统失灵时，我们自身的健康就是最好的安全网。医生表示，准备工作其实很简单：睡好觉、饮食均衡、喝足水、每天运动。良好的习惯也能帮助我们在延误和不确定中保持心态平静。95岁的美国人戴维·普莱米尔至今仍会说几十年前学会的青海话。他把自己漫长而健康的人生归功于平静的生活、亲密的朋友和强烈的归属感。毕竟，健康是每一次旅程之下安静的基石。",
-      "sourceNote": "本文基于CGTN真实新闻《Second heat wave of summer hits South Africa》《FAA lifts nationwide ground stop after thousands of flights disrupted》《Microsoft apologizes for global outage》以及ChinaDaily报道《At 95, American still speaks Qinghai dialect》改写，用于英语学习。"
+      "title": "Energy Costs and the Green Transition: Finding the Balance",
+      "content": "Protests spreading across Europe have brought an uncomfortable truth into the open: the green transition cannot succeed if households and factories cannot afford energy. Sluggish growth, declining industrial competitiveness and rising power bills are pushing governments to rethink how quickly they can cut emissions without damaging livelihoods. Meanwhile, leaders gathering in Shenzhen for the APEC CEO Summit argue that sustainable growth and open trade are not rivals but partners. China's reform and opening-up experience, they suggest, shows that dynamic innovation can lower the cost of clean technology and speed up the transition worldwide. The lesson is clear: environmental goals must be paired with fiscal realism and international cooperation. Only then can the Asia-Pacific community turn climate commitments into measurable results, and prove that prosperity and a healthy planet can grow together.",
+      "translation": "席卷欧洲的抗议活动揭示了一个令人不安的事实：如果家庭和工厂负担不起能源，绿色转型就无法成功。增长乏力、工业竞争力下降和不断上涨的电价，正迫使各国政府重新思考：在不损害民生的前提下，减排能推进得多快。与此同时，齐聚深圳出席APEC工商领导人峰会的领导人认为，可持续增长与开放贸易并非对手，而是伙伴。他们认为，中国改革开放的经验表明，充满活力的创新能够降低清洁技术成本，加快全球转型步伐。教训显而易见：环境目标必须与财政现实和国际合作相结合。唯有如此，亚太命运共同体才能将气候承诺转化为可衡量的成果，并证明繁荣与健康的地球可以并肩同行。",
+      "sourceNote": "本文基于 ChinaDaily《Protests reveal Europe's economic dilemma》、CGTN《Xi's article on building Asia-Pacific community to be published》及 ChinaDaily《12 leaders of APEC economies to attend APEC CEO Summit 2026》等今日新闻改写，用于英语学习目的。"
     }
   }
 }

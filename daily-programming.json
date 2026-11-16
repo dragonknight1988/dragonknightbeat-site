@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-15",
+  "date": "2026-11-16",
   "contents": [
     {
-      "id": "prog-2026-11-15",
-      "date": "2026-11-15",
-      "title": "Monorepo 增量 CI：用 Git Diff 驱动的智能构建矩阵",
-      "summary": "基于 git diff 三点比较精准定位受影响服务，自动生成 CI 构建矩阵，把 Monorepo 流水线从全量 40 分钟压缩到 5 分钟。",
-      "difficulty": "高级",
-      "concept": "Monorepo 在工程上有很多优势（原子提交、统一依赖、跨团队重构友好），但代价是 CI 成本随仓库规模线性甚至超线性增长。一个典型的中型 Monorepo 可能包含 30+ 服务，如果每次 PR 都触发全量 lint / test / build，流水线动辄 40 分钟以上，开发者开始习惯性关闭 CI，最终回归到「本地跑一下就合」的糟糕状态。增量 CI（Incremental / Affected CI）是解决这一问题的核心手段：只构建和测试受本次改动影响的服务。\n\n实现增量 CI 的第一步是精准地拿到「本次改动到底改了哪些文件」。这里最容易踩的坑是 diff 的比较方式。`git diff A..B` 是两点比较，会把两个 ref 之间所有差异都列出来；而在 PR 场景下我们真正关心的是「这条分支相对于分叉点改了什么」，也就是三点比较 `git diff A...B`（等价于 `git diff $(git merge-base A B) B`）。如果用两点比较，主干上其他人的提交也会被算进你的改动范围，导致 CI 范围虚胖甚至误报。\n\n第二步是建立「文件路径 -> 服务」的映射规则。工程实践中通常有三种策略：1）目录约定式，如 `services/api/` 归属 api 服务；2）配置声明式，每个服务目录下放 `ci.yaml` 声明自己的构建命令和依赖；3）依赖图解析式，读取 go.work / pnpm-workspace.yaml / Bazel BUILD 文件构建依赖图，做传递闭包分析。第三种最精确但实现成本最高，前两种在 80% 的场景下已经够用。关键工程经验是：基础设施目录（`infra/`、`.github/`、根级依赖清单）一旦变更，必须回退到全量构建，否则会漏掉隐性影响。\n\n第三步是把受影响的服务列表输出为 CI 平台的动态矩阵（GitHub Actions 的 `strategy.matrix`、GitLab 的 `parallel:matrix`、CircleCI 的 dynamic config）。这一步要输出合法 JSON，注意空数组的边界情况——如果没有受影响服务，不应该让 workflow 因为矩阵为空而失败，而是应该显式输出空矩阵并优雅退出，或者用一个 no-op job 占位。\n\n最后是工程上的稳定性问题。增量 CI 最大的风险是「漏测」：某个服务 A 依赖服务 B，B 改了但 A 没被触发测试，线上才崩。因此成熟的做法是：PR 阶段跑增量，主干合并后跑全量回归 + 依赖图校验；同时定期（比如每晚）跑一次全量对比，把增量结果和全量结果做 diff，一旦发现增量漏掉了某个失败用例，立刻告警回滚策略。此外，缓存（BuildKit cache、Turbo remote cache、Nx daemon）和增量 CI 是乘法关系，两者叠加才能把构建时间压到极致。",
+      "id": "prog-2026-11-16",
+      "date": "2026-11-16",
+      "title": "SwiftUI 状态管理入门：@State 与 @Binding",
+      "summary": "掌握 SwiftUI 中数据如何驱动界面刷新，学会用 @State 持有状态、用 $ 传给子视图实现双向绑定。",
+      "difficulty": "初级",
+      "concept": "SwiftUI 是声明式 UI 框架：你不负责“移动按钮到某个坐标”，而是描述“在当前状态下界面长什么样”。每次状态变化，SwiftUI 会重新计算并刷新 body。理解这一点，是理解 @State 与 @Binding 的前提——它们本质上都是“状态从哪里来”的问题。\n\n@State 是最基础的属性包装器（Property Wrapper）。SwiftUI 里的 View 都是 struct（值类型），每次刷新都会被重新创建，如果把普通变量存在 struct 里，刷新后值就丢了。@State 的作用是把这块存储“托管”给 SwiftUI 的外部存储系统，让值在多次重建之间保持不变。约定上，@State 属性应声明为 private，因为它只属于当前视图，不该被外部随意修改。\n\n@Binding 解决的是另一个问题：子视图经常需要读取甚至修改父视图的数据。如果直接传值（例如 func Child(count: Int)），Swift 的值语义会复制一份副本，子视图改的只是副本，界面不会同步。@Binding 创建的是一个“双向引用”，它自己不持有数据，只是把读写能力借给子视图。父视图通过 $count 把 @State 转换成 Binding 传下去。\n\n工程实践中有一条核心原则：Single Source of Truth（单一数据源）。同一份数据只在一个地方用 @State（或后面的 @StateObject/@Observable）持有，其他所有视图都通过 @Binding 访问。如果父子都各存一份，就会出现“界面显示不一致”的经典 Bug。\n\n常见坑：第一，@State 只适合视图内部的轻量状态（开关、计数、输入文本），不要用它管理网络请求结果或大对象；第二，忘记写 $ 会得到编译错误“Cannot convert value of type 'Int' to expected argument type 'Binding<Int>'”；第三，子视图里用 @State 接收外部传入的初始值，会形成一份独立副本，父视图不会跟着变——初学者最常踩这一脚。",
       "codeExample": {
-        "language": "Bash",
-        "code": "#!/usr/bin/env bash\n# detect-changes.sh — Monorepo 增量 CI 触发器\n# 用法: ./detect-changes.sh [base-ref] [head-ref]\n# 输出: matrix.json，可直接喂给 GitHub Actions 的 fromJSON()\nset -euo pipefail\n\nBASE_REF=\"${1:-origin/main}\"\nHEAD_REF=\"${2:-HEAD}\"\nMATRIX_FILE=\"matrix.json\"\n\n# ---------- 1. 三点 diff：只取本分支相对分叉点的改动 ----------\n# 注意是三个点 ...，不是两点 ..\nmapfile -t CHANGED < <(git diff --name-only \"${BASE_REF}...${HEAD_REF}\")\n\nif [[ ${#CHANGED[@]} -eq 0 ]]; then\n  echo '{\"include\":[]}' > \"$MATRIX_FILE\"\n  echo \"No changes detected, CI will be skipped.\"\n  exit 0\nfi\n\necho \"Changed files (${#CHANGED[@]}):\"\nprintf '  %s\\n' \"${CHANGED[@]}\"\n\n# ---------- 2. 路径 -> 服务 映射表 ----------\ndeclare -A SERVICE_PATHS=(\n  [api]=\"services/api/\"\n  [worker]=\"services/worker/\"\n  [web]=\"apps/web/\"\n  [docs]=\"docs/\"\n)\n# 这些目录变更 = 影响全局，必须全量构建\nglobal_prefixes=(\"infra/\" \".github/\" \"package.json\" \"pnpm-lock.yaml\")\n\n# ---------- 3. 计算受影响的服务 ----------\ndeclare -A AFFECTED=()\nfor f in \"${CHANGED[@]}\"; do\n  hit_global=0\n  for p in \"${global_prefixes[@]}\"; do\n    if [[ \"$f\" == \"$p\"* ]]; then\n      hit_global=1\n      break\n    fi\n  done\n  if [[ $hit_global -eq 1 ]]; then\n    for svc in \"${!SERVICE_PATHS[@]}\"; do\n      AFFECTED[$svc]=1\n    done\n    continue\n  fi\n  for svc in \"${!SERVICE_PATHS[@]}\"; do\n    if [[ \"$f\" == \"${SERVICE_PATHS[$svc]}\"* ]]; then\n      AFFECTED[$svc]=1\n    fi\n  done\ndone\n\n# ---------- 4. 生成 GitHub Actions matrix JSON ----------\nitems=\"\"\nfor svc in \"${!AFFECTED[@]}\"; do\n  items+=\"{\\\"service\\\":\\\"${svc}\\\",\\\"path\\\":\\\"${SERVICE_PATHS[$svc]}\\\"},\"\ndone\nitems=\"${items%,}\"   # 去掉末尾逗号\nprintf '{\"include\":[%s]}' \"$items\" > \"$MATRIX_FILE\"\n\necho \"Affected services: ${!AFFECTED[*]}\"\necho \"Matrix written to $MATRIX_FILE:\"\ncat \"$MATRIX_FILE\"\n",
-        "explanation": "【第 1 部分：三点 diff】`git diff --name-only \"${BASE_REF}...${HEAD_REF}\"` 使用三点语法，只列出 HEAD_REF 相对 merge-base 的改动，排除主干上别人的提交；`mapfile` 把输出按行读入数组，方便后续遍历。空改动时输出 `{\"include\":[]}` 并优雅退出（exit 0），避免下游 job 因矩阵为空而报错。\n\n【第 2 部分：映射规则】`SERVICE_PATHS` 是路径前缀到服务名的关联数组；`global_prefixes` 列出影响全局的文件（基础设施、CI 配置、根级依赖锁文件），这些变更会触发全量构建。\n\n【第 3 部分：受影响判定】双重循环遍历变更文件：先判断是否命中全局前缀（命中则把所有服务都标记为受影响），否则按路径前缀归属到具体服务。`declare -A AFFECTED` 用作集合去重，同一个服务被多个文件命中也只记一次。\n\n【第 4 部分：矩阵生成】把受影响的服务拼成 `{\"include\":[{\"service\":\"api\",\"path\":\"services/api/\"},...]}` 格式，`items%,` 的写法用于去掉末尾多余逗号。在 GitHub Actions 中用 `matrix: ${{ fromJSON(needs.detect.outputs.matrix) }}` 即可驱动并行 job。\n\n【工作流中的用法】`strategy: matrix: ${{ fromJSON(...) }}`，配合 `fail-fast: false` 让单个服务失败不中断其他服务构建。"
+        "language": "Swift",
+        "code": "import SwiftUI\n\n// MARK: - 子视图：通过 @Binding “借用”父视图的数据\nstruct StepControlView: View {\n    // @Binding：这里不拥有数据，只拥有读写权限\n    @Binding var count: Int\n    var step: Int = 1\n\n    var body: some View {\n        HStack(spacing: 16) {\n            Button(\"-\\(step)\") { count -= step }\n            Button(\"+\\(step)\") { count += step }\n        }\n        .font(.title2)\n        .buttonStyle(.bordered)\n    }\n}\n\n// MARK: - 父视图：状态的唯一数据源（Source of Truth）\nstruct CounterView: View {\n    // @State：SwiftUI 负责保存该值，并在变化时自动刷新界面\n    @State private var count: Int = 0\n\n    var body: some View {\n        VStack(spacing: 24) {\n            Text(\"当前计数：\\(count)\")\n                .font(.largeTitle)\n                .foregroundStyle(count >= 0 ? .blue : .red)\n\n            // 用 $ 把 @State 转成 Binding 传给子视图\n            StepControlView(count: $count, step: 5)\n        }\n        .padding()\n    }\n}\n\n#Preview {\n    CounterView()\n}\n",
+        "explanation": "第 1 行导入 SwiftUI 框架。\n\nStepControlView 中的 @Binding var count: Int 表示这个视图不保存数据，只是对外部数据的一个“指针 + 读写权限”。step 是普通属性，只读不写，不需要包装器。\n\n按钮的 action 里直接写 count += step。因为 count 是 Binding，这一行实际上会把新值写回父视图的 @State，从而触发父视图刷新。\n\nCounterView 中的 @State private var count: Int = 0 是整个示例的唯一数据源。private 强调它只属于这个视图；SwiftUI 把真正的存储放在视图结构体之外，保证刷新后值不丢失。\n\nStepControlView(count: $count, step: 5) 中的 $ 是 Binding 的语法糖，等价于 StepControlView(count: _count.projectedValue, step: 5)。忘记写 $ 是最常见的编译错误来源。\n\nText(\"当前计数：\\(count)\") 会随 count 变化自动更新，无需手动 reload 或通知。"
       },
       "keyPoints": [
-        "PR 场景必须用三点 diff（A...B，即 merge-base 到 B），两点 diff 会把主干上别人的改动误算进来",
-        "基础设施目录（infra/、.github/、根级 lock 文件）变更时必须回退到全量构建，这是漏测重灾区",
-        "增量 CI 要处理「矩阵为空」的边界情况，输出空 include 数组并优雅退出，而不是让 workflow 失败",
-        "PR 跑增量 + 主干合并后跑全量回归 + 每日全量对比校验，三段式策略才能真正防漏测",
-        "增量 CI 与远程构建缓存（BuildKit / Turbo / Nx）是乘法关系，叠加才能把构建时间压到分钟级"
+        "@State 让 SwiftUI 托管视图私有状态，使值在视图重建后仍然存在，并在变化时自动刷新界面",
+        "@Binding 不拥有数据，只提供读写通道；父视图用 $ 符号把 @State 传成 Binding",
+        "遵循 Single Source of Truth：同一份数据只在一处持有，其他视图一律用 @Binding 访问",
+        "@State 属性应声明为 private，且只用于轻量的视图内部状态（开关、计数、输入文本等）",
+        "子视图用 @State 接收外部初始值会得到独立副本，父视图不会同步——这是初学者最常见的 Bug"
       ],
       "exercise": {
-        "description": "为一个包含 services/api（Go）、services/worker（Go）、apps/web（React）的 Monorepo 编写增量 CI。要求：1) 扩展上面的脚本，新增「依赖传递」能力——当 services/api/ 的 .proto 文件变更时，services/worker 也要被构建（因为 worker 通过 gRPC 调用 api）；2) 输出矩阵中增加一个 `needs-proto` 字段标记是否需要先执行 protobuf 生成步骤；3) 编写对应的 GitHub Actions workflow 片段，用 fromJSON 消费该矩阵，并保证任意一个服务测试失败时其他服务仍会继续执行。",
-        "hint": "在第 3 部分的判定循环里增加一个特判分支：`if [[ \"$f\" == services/api/proto/* ]]; then AFFECTED[worker]=1; NEEDS_PROTO=1; fi`。proto 字段用一个全局变量标记，最后拼 JSON 时以 `\"needs-proto\":true/false` 的形式附加到每个 matrix item 上。workflow 中在 strategy 下加 `fail-fast: false`，并给 job 加 `if: always()` 或用 `continue-on-error: false` 配合独立 job 保证互不影响。",
+        "description": "制作一个简单的“注册信息表单”：父视图 RegisterFormView 用两个 @State 保存用户名和密码；再封装一个子视图 LabeledField，内部包含标题 Text 和 TextField，通过 @Binding 绑定文本内容。要求：在子视图里输入内容时，父视图底部的实时预览区域能同步显示“用户名：xxx / 密码：xxx”，并在用户名为空时显示红色提示。",
+        "hint": "先在子视图里声明 @Binding var text: String，然后 TextField(\"placeholder\", text: $text)。父视图创建时写 LabeledField(title: \"用户名\", text: $username)。判断用户名为空可以用 username.isEmpty。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全命令，使其只列出当前分支相对于与 origin/main 分叉点之后的改动文件（排除主干上其他人的提交）。",
-            "codeContext": "git diff --name-only origin/main______ HEAD",
+            "question": "补全代码，让子视图 LabeledField 能读写父视图传入的文本。",
+            "codeContext": "struct LabeledField: View {\n    @____ var text: String\n    var title: String\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            Text(title)\n            TextField(\"请输入\", text: ____)\n        }\n    }\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "git diff --name-only origin/main",
+                "content": "struct LabeledField: View {\n    @",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,55 +40,75 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择 diff 比较语法]",
+                "placeholder": "[选择属性包装器]",
                 "options": [
-                  "..",
-                  "...",
-                  "@{u}"
+                  "State",
+                  "Binding",
+                  "ObservedObject",
+                  "Environment"
                 ],
-                "correctAnswer": "..."
+                "correctAnswer": "Binding"
               },
               {
                 "type": "text",
-                "content": " HEAD",
+                "content": " var text: String\n    var title: String\n\n    var body: some View {\n        VStack(alignment: .leading) {\n            Text(title)\n            TextField(\"请输入\", text: ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择参数写法]",
+                "options": [
+                  "text",
+                  "$text",
+                  "_text",
+                  "self.text"
+                ],
+                "correctAnswer": "$text"
+              },
+              {
+                "type": "text",
+                "content": ")\n        }\n    }\n}",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "...",
-            "explanation": "三点比较 `A...B` 等价于 `git diff $(git merge-base A B) B`，只显示 B 侧自分叉点以来的改动。两点比较 `A..B` 会把 A 和 B 之间的所有差异（包括主干上其他人的提交）都算进来，在 PR 增量 CI 中会导致构建范围虚胖，甚至把无关服务纳入矩阵。"
+            "correctAnswer": "Binding",
+            "explanation": "子视图需要读写外部数据，所以用 @Binding；@State 会让它变成一份独立副本。TextField 需要 Binding<String> 类型的参数，因此要写 $text（$ 会把包装属性投影成 Binding）。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "在增量 CI 中，以下哪种情况必须回退到全量构建？",
-            "codeContext": "# 变更文件列表\n.github/workflows/ci.yaml\nservices/api/handler.go",
+            "question": "关于 @State 与 @Binding，下面哪一项说法是正确的？",
+            "codeContext": "struct Parent: View {\n    @State private var name = \"\"\n    var body: some View {\n        Child(name: $name)\n    }\n}",
             "segments": null,
             "options": [
-              "只改动了 docs/ 目录下的 Markdown 文档",
-              "改动了 .github/workflows/ci.yaml，即 CI 流水线自身的定义",
-              "只改动了 services/worker/ 下的单元测试文件",
-              "改动了 apps/web/src/components/Button.tsx"
+              "@State 通常用在子视图中，用来修改父视图的数据",
+              "@Binding 会把数据复制一份给子视图，两边互不影响",
+              "$ 符号用于把 @State 包装的属性转换成 Binding 传给子视图",
+              "@State 属性必须声明为 public，否则无法被 SwiftUI 保存"
             ],
-            "correctAnswer": "改动了 .github/workflows/ci.yaml，即 CI 流水线自身的定义",
-            "explanation": "CI 配置、基础设施目录（infra/）、根级依赖锁文件（pnpm-lock.yaml / go.work.sum）属于全局影响面，一旦变更可能改变所有服务的构建行为，必须全量构建。文档目录改动甚至可以完全跳过构建；单个服务内的测试文件或组件文件只影响该服务，属于增量范围。"
+            "correctAnswer": "$ 符号用于把 @State 包装的属性转换成 Binding 传给子视图",
+            "explanation": "$name 等价于 name 的 projectedValue，类型为 Binding<String>。@Binding 不复制数据而是建立双向引用；@State 应声明为 private 并由数据拥有方（通常是父视图或 Model）持有。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "仓库历史如下：main 上有 A-B-C 三个提交，feature 分支从 A 分出并有提交 D（只改了 worker.go）。已知 B 改了 web.tsx，C 改了 api.go。执行以下命令会输出哪些文件？",
-            "codeContext": "# main:  A --- B(web.tsx) --- C(api.go)\n#              \\\n# feature:      D(worker.go)\n\ngit diff --name-only origin/main...feature\ngit diff --name-only origin/main..feature",
+            "question": "点击 Child 中的“加一”按钮一次后，父视图里的 Text 会显示什么？",
+            "codeContext": "struct Parent: View {\n    @State private var count = 0\n    var body: some View {\n        VStack {\n            Child(count: count)\n            Text(\"父视图: \\(count)\")\n        }\n    }\n}\n\nstruct Child: View {\n    @State private var count: Int\n    init(count: Int) { _count = State(initialValue: count) }\n    var body: some View {\n        Button(\"加一\") { count += 1 }\n    }\n}",
             "segments": null,
             "options": [
-              "两条命令都只输出 worker.go",
-              "第一条输出 worker.go；第二条输出 web.tsx、api.go、worker.go",
-              "第一条输出 web.tsx、api.go、worker.go；第二条输出 worker.go",
-              "两条命令都输出 web.tsx、api.go、worker.go"
+              "父视图: 0",
+              "父视图: 1",
+              "父视图: 2",
+              "编译报错，无法运行"
             ],
-            "correctAnswer": "第一条输出 worker.go；第二条输出 web.tsx、api.go、worker.go",
-            "explanation": "origin/main...feature 是三点比较，以 merge-base（即 A）为基准，只显示 feature 侧的改动，所以只有 worker.go。origin/main..feature 是两点比较，直接比较 main（C）和 feature（D）两个端点的差异，主干上 B、C 引入的 web.tsx 和 api.go 在 feature 中不存在，因此也会被列出来。这正是增量 CI 中误用两点比较导致构建范围虚胖的典型场景。"
+            "correctAnswer": "父视图: 0",
+            "explanation": "Child 用 @State 保存的是自己的一份独立副本（init 中通过 State(initialValue:) 初始化），修改它不会回写父视图。只有把 Child 的属性改成 @Binding 并在父视图中用 $count 传入，父视图的文本才会同步更新。这正是‘单一数据源’原则要避免的问题。"
           }
         ]
       }
