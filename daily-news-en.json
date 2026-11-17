@@ -1,16 +1,16 @@
 {
- "date": "November 16, 2026",
- "weekday": "Monday",
- "overview": "APEC China Year kicks off as chip rivalry intensifies, domestic aggregate financing structure improves, while overseas central bank policies and Middle East tensions shake markets in tandem.",
+ "date": "2026-11-17",
+ "weekday": "Tuesday",
+ "overview": "APEC summit kicks off in Shenzhen as major-power engagement heats up; China's economy steadies and pivots toward new drivers, while AI, quantum tech, and emerging-market volatility move in tandem.",
  "trendingTopics": [
   "APEC Summit",
-  "Chip Export Controls",
-  "Fed Policy",
-  "Inflation Expectations",
-  "Guangdong-Hong Kong-Macao Greater Bay Area",
-  "Clean Energy Heating",
-  "Cultural & Tourism Spending",
-  "Middle East Situation"
+  "Asia-Pacific Cooperation",
+  "Major-Power Relations",
+  "National Economy",
+  "Consumer Spending Trends",
+  "Quantum Computing",
+  "Large Model Safety",
+  "Strait of Hormuz"
  ],
  "sections": [
   {
@@ -20,233 +20,219 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "Tianjin Begins Winter Heating; Clean Energy Share Reaches 98.6%",
-     "summary": "Tianjin officially launched its heating season on November 15, covering 629 million square meters of centrally heated space, with clean energy accounting for 98.6% of the mix this winter.",
-     "detail": "According to the Tianjin Municipal Urban Management Committee, the city entered its heating season on November 15. Centralized heating covers 629 million square meters, and the share of clean energy in the heating mix rose to 98.6% this season, making green, low-carbon heating a highlight of the winter.",
-     "impact": "The cleaner heating season in northern China supports the clean-energy heating supply chain and boosts winter energy security efforts.",
-     "importance": "important",
+     "title": "Xi Jinping Inspects Zhongshan, Guangdong",
+     "summary": "The national leader visited Zhongshan in Guangdong for an inspection trip, focusing on local economic and social development.",
+     "detail": "Xi Jinping's inspection in Zhongshan, Guangdong, is one of the country's major research visits in recent weeks. The material did not disclose specific itinerary or focus areas, but it coincides with Guangdong hosting an international conference and ongoing development of the Guangdong-Hong Kong-Macao Greater Bay Area.",
+     "impact": "A senior-level visit to the Greater Bay Area sends a signal of continued attention to coordinated regional development and opening-up.",
+     "importance": "hot",
      "tags": [
-      "Clean Energy",
-      "Heating Supply",
-      "Public Welfare Project"
+      "Regional Development",
+      "Grassroots Inspection",
+      "Guangdong-Hong Kong-Macao Greater Bay Area"
      ]
     },
     {
      "id": "news-002",
-     "title": "National Fire and Rescue Administration: Self-Checks on Five Issue Categories Due by November 30",
-     "summary": "The National Fire and Rescue Administration has launched a special campaign requiring relevant parties to complete self-inspections and rectification of five categories of issues by November 30.",
-     "detail": "The National Fire and Rescue Administration set a clear deadline for self-inspections and rectification covering five categories of issues, to be completed by November 30. The source material did not specify the details of the five categories.",
-     "impact": "Workplace safety and fire hazard inspections enter a concentrated rectification phase, raising compliance pressure on relevant industries and organizations.",
-     "importance": "normal",
+     "title": "October Economic Performance Steady, Shifting Toward New, Higher-Quality Growth",
+     "summary": "Official data shows the economy maintained an overall steady performance in October, with emerging signs of newer, higher-quality growth.",
+     "detail": "The source headline indicates that a set of data revealed the economy's overall steady performance in October, trending toward new and higher-quality growth. As a monthly economic health check, the figures reflect positive momentum in the domestic macroeconomy driven by new quality productive forces.",
+     "impact": "Provides a reference point for closing out the fourth quarter and helps stabilize market expectations for full-year economic performance.",
+     "importance": "hot",
      "tags": [
-      "Fire Safety",
-      "Workplace Safety"
+      "Macroeconomy",
+      "Economic Performance",
+      "High-Quality Development"
      ]
     },
     {
      "id": "news-003",
-     "title": "Market Regulator Issues New National Standard for Smart Factory Construction",
-     "summary": "The State Administration for Market Regulation has released a new national standard, providing a unified benchmark for smart factory construction and standardizing the path for advancing smart manufacturing.",
-     "detail": "The State Administration for Market Regulation issued a new national standard on smart factory construction, addressing the previous lack of unified evaluation and construction criteria. With the new standard in place, smart manufacturing now has a common yardstick for assessment and development.",
-     "impact": "Unified standards help standardize the digital transformation of manufacturing and drive demand for smart manufacturing equipment and industrial software.",
-     "importance": "important",
+     "title": "Shenzhen Enters Countdown as APEC Summit Approaches",
+     "summary": "All preparations in Shenzhen are in place as the APEC meetings approach their opening, with the city greeting guests in a fresh new look.",
+     "detail": "The source headline notes that Shenzhen is ready and the APEC summit is entering its final countdown. Related material from the same period describes Shenzhen \"dressed up\" to welcome guests, highlighting the city's open and inclusive atmosphere.",
+     "impact": "Hosting a major international event upgrades Shenzhen's city image and convention services, driving spending in hospitality and tourism.",
+     "importance": "hot",
      "tags": [
-      "Smart Manufacturing",
-      "National Standards",
-      "Industrial Internet"
+      "International Conference",
+      "Convention Economy",
+      "City Image"
      ]
     },
     {
      "id": "news-004",
-     "title": "Over 100 A-Rated Tourist Attractions Stripped of or Downgraded in Rating",
-     "summary": "The culture and tourism sector is stepping up enforcement, with over 100 A-rated tourist attractions stripped of their ratings or downgraded for failing to meet standards.",
-     "detail": "The latest notifications show that over 100 A-rated tourist attractions have been stripped of their ratings or downgraded, reflecting continued tightening of quality rating management for scenic areas.",
-     "impact": "Dynamic adjustments to attraction ratings are becoming routine, pushing tourist destinations to improve service quality and management standards.",
-     "importance": "normal",
+     "title": "Super El Niño Incoming: Multiple Measures to Safeguard Winter Heating",
+     "summary": "Facing climate anomalies brought by a super El Niño, China has rolled out multiple measures to ensure stable energy supply and residential heating this winter.",
+     "detail": "The material shows that a super El Niño phenomenon is arriving, and China has deployed a range of measures to secure winter heating. Winter heating involves energy dispatch, livelihood protection and emergency response across multiple links.",
+     "impact": "Energy supply arrangements help stabilize winter electricity and gas supplies and reduce the impact of extreme weather on residents' lives.",
+     "importance": "important",
      "tags": [
-      "Culture and Tourism Consumption",
-      "Tourism Regulation",
-      "Service Quality"
+      "Energy Supply Security",
+      "Winter Heating",
+      "Climate Response"
      ]
     },
     {
      "id": "news-005",
-     "title": "CCTV Exposes Construction Waste Illegally Dumped on Farmland",
-     "summary": "CCTV has exposed the illegal dumping of construction waste on farmland, highlighting regulatory gaps in construction waste disposal.",
-     "detail": "A CCTV report disclosed instances of construction waste being illegally dumped onto farmland, drawing attention to construction waste disposal and arable land protection issues.",
-     "impact": "Oversight of construction waste recycling and arable land protection is expected to tighten, potentially leading to stricter industry rules.",
-     "importance": "normal",
+     "title": "Former Vice-Ministerial Official Probed Over Serious Discipline and Law Violations",
+     "summary": "An official notice involves a former vice-ministerial official suspected of leaking state secrets and taking bribes of an exceptionally huge amount.",
+     "detail": "The source headline mentions that the official is suspected of leaking secrets and accepting bribes of an exceptionally huge amount. The case is still in the processing stage and no further details have been disclosed.",
+     "impact": "Signals continued zero-tolerance enforcement of anti-corruption and confidentiality discipline, serving as a strong warning to public officials.",
+     "importance": "important",
      "tags": [
-      "Construction Waste Management",
-      "Arable Land Protection",
-      "Environmental Regulation"
-     ]
-    },
-    {
-     "id": "news-006",
-     "title": "China Establishes Over 30 Cooperation Mechanisms with Belt and Road Partners",
-     "summary": "China and its Belt and Road Initiative partners have set up more than 30 cooperation mechanisms spanning taxation, anti-corruption and other areas, deepening institutional cooperation.",
-     "detail": "Institutional cooperation under the Belt and Road Initiative continues to bear fruit, with China and its partners establishing over 30 cooperation mechanisms in areas including taxation and anti-corruption, providing institutional backing for economic and trade cooperation.",
-     "impact": "Connectivity at the rules and institutional level helps reduce cross-border business risks and stabilize companies' overseas expansion expectations.",
-     "importance": "normal",
-     "tags": [
-      "Belt and Road",
-      "International Cooperation Mechanisms",
-      "Cross-Border Investment"
+      "Anti-Corruption",
+      "National Security"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "World Politics",
+   "title": "World & Politics",
    "icon": "🌍",
    "articles": [
     {
-     "id": "news-007",
-     "title": "胡塞武装称沙特联军对多省民用目标实施75次空袭",
-     "summary": "胡塞武装称过去24小时沙特战机对萨达、塔伊兹等5省民用目标实施75次空袭和导弹打击，造成平民伤亡。",
-     "detail": "胡塞武装方面称，过去24小时内沙特领导的联军对萨达、塔伊兹、拉赫季、焦夫和马里卜等省的民用目标实施了75次空袭和导弹打击，并称袭击造成包括死伤在内的平民伤亡。素材同时提及沙特领导的联军相关表述。",
-     "impact": "地区冲突烈度不减，人道主义风险上升，能源与航运市场避险情绪或受扰动。",
+     "id": "news-006",
+     "title": "China, Russia and US Leaders Hold Historic First In-Person Summit",
+     "summary": "The leaders of China, Russia and the United States met face to face for the first time in history, making it the most closely watched diplomatic event of this round of international multilateral gatherings.",
+     "detail": "Source material describes the meeting as historically significant — the first face-to-face exchange between the three heads of state. No specific agenda was disclosed, but it comes amid a dense schedule of multilateral events including APEC.",
+     "impact": "High-level face-to-face communication among major powers helps ease strategic mistrust and opens a dialogue channel for political settlement of regional hotspot issues.",
      "importance": "hot",
      "tags": [
-      "中东局势",
-      "地区冲突",
-      "人道主义风险"
+      "Major-Power Relations"
+     ]
+    },
+    {
+     "id": "news-007",
+     "title": "International Community Hopes for a New Chapter in Asia-Pacific Cooperation",
+     "summary": "Multiple parties have expressed expectations that China will lead all sides in advancing cooperation across the Asia-Pacific and jointly open a new chapter in regional cooperation.",
+     "detail": "Source material indicates the international community hopes China will lead parties in launching a new chapter of Asia-Pacific cooperation. The remarks echo the theme of the world's eyes on China and the Asia-Pacific moving toward the future in unison.",
+     "impact": "Positive international expectations for Asia-Pacific cooperation could boost regional economic integration and inject vitality into multilateral mechanisms.",
+     "importance": "important",
+     "tags": [
+      "Asia-Pacific Cooperation",
+      "Regional Economic Integration"
      ]
     },
     {
      "id": "news-008",
-     "title": "沙特称在麦地那地区拦截并摧毁一架无人机",
-     "summary": "沙特阿拉伯称一架无人机在麦地那地区被拦截并摧毁，沙特领导的联军亦确认摧毁该无人机。",
-     "detail": "沙特方面通报称，一架无人机在麦地那地区被拦截并摧毁。沙特领导的联军随后也表示在麦地那地区摧毁了一架无人机。",
-     "impact": "无人机威胁向纵深地区扩散，沙特防空压力上升，地区安全形势趋于复杂。",
+     "title": "Chinese Honor Guard Appears at APEC Leaders' Arrival Ceremony",
+     "summary": "Chinese honor guards were present at the arrival ceremony for APEC economy leaders, showcasing the country's ceremonial image.",
+     "detail": "Source material shows Chinese honor guards appearing at the arrival ceremony for APEC economy leaders. Related material also notes that the Canadian prime minister and other foreign guests arrived in Shenzhen one after another.",
+     "impact": "Standardized ceremonial protocol displays the host's etiquette, enhancing the formality and international impression of host-country diplomacy.",
      "importance": "normal",
      "tags": [
-      "中东局势",
-      "防空安全",
-      "地区冲突"
+      "International Protocol",
+      "National Image"
      ]
     },
     {
      "id": "news-009",
-     "title": "俄外长：欧盟不考虑俄利益“绝对行不通”",
-     "summary": "俄外长拉夫罗夫表示，欧盟在解决乌克兰问题方案上如不考虑俄方利益，将“绝对行不通”。",
-     "detail": "据俄罗斯媒体15日报道，俄外长拉夫罗夫日前就乌克兰问题解决方案表态，称欧盟若不考虑俄罗斯的利益，相关方案“绝对行不通”。（新华社）",
-     "impact": "欧俄立场分歧明显，乌克兰问题政治解决进程仍面临较大阻力。",
+     "title": "Crimean Bridge Hit in Attack, Traffic Temporarily Restricted",
+     "summary": "Traffic was restricted after an attack on the Crimean Bridge; Russia says traffic later resumed, and repairs are under discussion.",
+     "detail": "Source material shows that an attack on the Crimean Bridge disrupted traffic, after which Russia reported that traffic had resumed. The Kremlin press secretary said the president had discussed the attack and the progress of repair work with the transport minister.",
+     "impact": "Damage to critical infrastructure once again highlights the spillover effects of the Russia-Ukraine conflict on regional logistics and security.",
      "importance": "important",
      "tags": [
-      "俄乌局势",
-      "欧洲安全"
+      "Russia-Ukraine Situation",
+      "Infrastructure Security",
+      "Regional Logistics"
      ]
     },
     {
      "id": "news-010",
-     "title": "法国周末全国性示威 404人被拘捕",
-     "summary": "法国内政部和巴黎检察院数据显示，14日全国性示威活动中共有404人被警方拘捕。",
-     "detail": "当地时间11月15日，法国内政部和巴黎检察院公布最新数据，在14日举行的全国性示威活动中，共有404人被警方拘捕。",
-     "impact": "社会抗议活动持续，或对法国国内公共秩序与政策议程形成压力。",
+     "title": "Multiple Oil Tankers Struck Mines in Strait of Hormuz, Raising Concerns",
+     "summary": "Iran says several oil tankers struck mines in the Strait of Hormuz and emphasized restrictions on unauthorized entry into restricted waters.",
+     "detail": "Source material shows the Islamic Revolutionary Guard Corps and the Iranian navy reporting that several oil tankers struck mines in the Strait of Hormuz. Iran also addressed the shutting down of navigation systems and unauthorized entry into restricted waters.",
+     "impact": "The Strait of Hormuz is a vital energy transit route; rising security risks could disrupt international oil shipping and energy price expectations.",
      "importance": "important",
      "tags": [
-      "欧洲局势"
-     ]
-    },
-    {
-     "id": "news-011",
-     "title": "黎巴嫩外长：致力将所有武器置于国家控制之下",
-     "summary": "黎巴嫩外长表示，正致力于将所有武器置于国家控制之下，并收回决定战争与和平的权力。",
-     "detail": "黎巴嫩外长表态称，黎方正努力实现将所有武器置于国家控制之下的目标，同时收回决定战争与和平的权力。",
-     "impact": "相关国家内部安全架构调整若推进，将影响地区力量格局与安全形势走向。",
-     "importance": "normal",
-     "tags": [
-      "中东局势",
-      "地区安全",
-      "国家治理"
+      "Middle East Situation",
+      "International Shipping",
+      "Energy Security"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance News",
+   "title": "Finance & Economy",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-012",
-     "title": "China's Aggregate Financing Hits 28.61 Trillion Yuan in First 10 Months as Direct Financing Share Rises",
-     "summary": "Aggregate social financing in the first 10 months of the year reached 28.61 trillion yuan, with the share of direct financing channels such as bonds and equities increasing.",
-     "detail": "Latest data shows aggregate social financing totaled 28.61 trillion yuan in the first 10 months of this year. The share of diversified financing channels including bonds and equities rose, indicating a continued optimization of the financing structure.",
-     "impact": "A higher proportion of direct financing helps reduce the real economy's reliance on credit and improves corporate financing structures and capital market activity.",
+     "id": "news-011",
+     "title": "Weekly Economic Review: How to Read the Current Consumption Landscape",
+     "summary": "This week's economic review analyzes the current consumption landscape, examining conditions on the demand side and key indicators to watch next.",
+     "detail": "Both NetEase and Baidu published special features on \"how to view the current consumption situation,\" focusing on assessments of the present environment. The material does not provide specific breakdown data and offers a macro-level trend interpretation.",
+     "impact": "Sustained focus by authoritative media on consumption trends reflects that boosting consumption and expanding domestic demand remain key priorities in current economic policymaking.",
      "importance": "hot",
      "tags": [
-      "Social Financing",
-      "Capital Markets",
-      "Macro Finance"
+      "Consumption Trends",
+      "Domestic Demand Expansion",
+      "Economic Watch"
+     ]
+    },
+    {
+     "id": "news-012",
+     "title": "China–ASEAN FTA 3.0 Upgrade Protocol Takes Effect",
+     "summary": "The upgrade protocol for the China–ASEAN Free Trade Area 3.0 has entered into force, with a senior Commerce Ministry official addressing questions from the press.",
+     "detail": "Reports indicate the China–ASEAN FTA 3.0 upgrade protocol has taken effect, with the head of the Ministry of Commerce's Department of International Trade and Economic Affairs answering media questions. The FTA upgrade will affect cooperation arrangements on goods, services, and rules between the two sides.",
+     "impact": "Upgraded regional trade rules are expected to lower institutional transaction costs, creating new opportunities for exporters and cross-border e-commerce businesses.",
+     "importance": "hot",
+     "tags": [
+      "Free Trade Area",
+      "Regional Trade",
+      "Cross-Border E-Commerce"
      ]
     },
     {
      "id": "news-013",
-     "title": "Guangdong Enters APEC Spotlight as Greater Bay Area Airport Cluster Captures Innovation Flows",
-     "summary": "The APEC meeting is being held in Guangdong, where the Greater Bay Area's world-class airport cluster is the first to capture global innovation flows, boosting the convention and exhibition economy.",
-     "detail": "Guangdong has officially entered its APEC moment, with the Guangdong-Hong Kong-Macao Greater Bay Area's world-class airport cluster serving as a key gateway for global innovation flows, supporting regional openness and innovation cooperation.",
-     "impact": "Hosting a high-profile international conference enhances the Greater Bay Area's global profile, benefiting the MICE sector, aviation hubs and the open economy.",
-     "importance": "hot",
+     "title": "Damai Entertainment Chairman and CEO Step Down",
+     "summary": "Fan Luyuan has resigned as chairman and chief executive of Damai Entertainment to focus on personal business ventures.",
+     "detail": "Reports say Fan Luyuan stepped down as chairman and CEO of Damai Entertainment to devote himself to personal ventures. No further details on succession arrangements have been disclosed.",
+     "impact": "Executive changes at the entertainment platform may lead to shifts in strategic pacing; attention is warranted on future business direction and portfolio adjustments.",
+     "importance": "normal",
      "tags": [
-      "APEC Summit",
-      "Greater Bay Area",
-      "Aviation Hub"
+      "Entertainment Industry",
+      "Corporate Governance",
+      "Show Business"
      ]
     },
     {
      "id": "news-014",
-     "title": "Chinese Assets Offer New Allocation Opportunities — How to Keep International Capital in the Market",
-     "summary": "Analysts say Chinese assets present new allocation opportunities, with attracting and retaining international capital over the long term emerging as a key market focus.",
-     "detail": "As the allocation value of Chinese assets gains attention, how to attract international capital and keep it in the market over the long term has become a central topic of discussion.",
-     "impact": "If international capital appetite rises, it would bring incremental funds and valuation support to A-shares and renminbi assets.",
-     "importance": "important",
+     "title": "Juewei Duck Neck's Operational Strains Spark Industry Debate",
+     "summary": "Media ran a piece titled \"A Sea of Hatred and Passion Can't Save Juewei Duck Neck,\" spotlighting the operational woes of the braised-food chain.",
+     "detail": "The headline points to operating challenges at well-known braised-food brand Juewei Duck Neck, using the phrase \"a sea of hatred and passion\" to describe a situation that has proven hard to reverse. No specific operating figures were provided.",
+     "impact": "The chain braised-food segment is entering a period of adjustment, with brand aging and consumer stratification becoming common industry challenges.",
+     "importance": "normal",
      "tags": [
-      "International Capital",
-      "Asset Allocation",
-      "Capital Markets"
+      "Foodservice Consumption",
+      "Chain Operations",
+      "Consumer Brands"
      ]
     },
     {
      "id": "news-015",
-     "title": "New World Development Plans Rights Issue to Raise About HK$24.9 Billion",
-     "summary": "New World Development plans to raise approximately HK$24.9 billion through a rights issue to strengthen its financial position.",
-     "detail": "New World Development announced plans to conduct a rights issue of about HK$24.9 billion. Details on the use of proceeds and the timetable have not been disclosed.",
-     "impact": "A financing move by a major property developer may ease funding pressure, while also reflecting that the sector's financing environment still needs to recover.",
-     "importance": "important",
+     "title": "High Prices at Mall-Based Hotpot Chains Spark Debate",
+     "summary": "Media spotlighted the high prices of branded hotpot restaurants inside shopping malls, exploring the commercial logic behind dining-sector pricing.",
+     "detail": "The headline — \"Why Are Hotpot Restaurants with Mountain Characters in Malls So Expensive?\" — opens a discussion on high mall dining prices, touching on the trade-off between commercial space and consumer experience.",
+     "impact": "Clear price stratification has emerged in foodservice consumption, which may push operators to reposition themselves between space efficiency and value for money.",
+     "importance": "normal",
      "tags": [
-      "Real Estate",
-      "Hong Kong Financing",
-      "Corporate Liquidity"
+      "Foodservice Consumption",
+      "Commercial Space",
+      "Consumer Stratification"
      ]
     },
     {
      "id": "news-016",
-     "title": "APEC Agricultural Imports Enrich Chinese Dinner Tables",
-     "summary": "Data shows agricultural products imported by APEC economies continue to diversify Chinese consumers' choices, highlighting progress in regional trade facilitation.",
-     "detail": "Relevant data indicates that agricultural imports from APEC member economies are continuously enriching Chinese consumers' dining options, reflecting deepening regional trade ties.",
-     "impact": "Diversified agricultural imports help stabilize food supply, benefiting the consumer market and cross-border agricultural trade.",
+     "title": "APEC in Infographics: How the Forum Connects to Daily Life",
+     "summary": "Media used visual explainers to introduce key facts about APEC and explore how close the international forum is to ordinary people's lives.",
+     "detail": "The material includes two popular-science pieces — \"How Much Do You Know About APEC? A Quick Visual Guide\" and \"How Close Is APEC to Our Lives?\" — introducing the basics of APEC to the public.",
+     "impact": "Public outreach on trade and economics through host-country events can help raise public understanding of and engagement with regional economic cooperation.",
      "importance": "normal",
      "tags": [
-      "Agricultural Trade",
-      "Consumer Market",
-      "Regional Cooperation"
-     ]
-    },
-    {
-     "id": "news-017",
-     "title": "APEC Goes Green: 100% Renewable Power Leads the Way",
-     "summary": "This year's APEC meeting is powered entirely by renewable electricity, delivering a low-carbon model for large-scale events.",
-     "detail": "How can a green event be put into practice? This APEC meeting has answered the question with 100% renewable power supply, integrating low-carbon principles throughout the entire organizing process.",
-     "impact": "The fully renewable-powered showcase has significant demonstration value, helping drive decarbonization of large-scale exhibitions and boost green power consumption.",
-     "importance": "normal",
-     "tags": [
-      "Green Energy",
-      "Low-Carbon Events",
-      "MICE Economy"
+      "Economic Literacy",
+      "Convention Economy",
+      "Public Engagement"
      ]
     }
    ]
@@ -257,140 +243,139 @@
    "icon": "🌐",
    "articles": [
     {
-     "id": "news-018",
-     "title": "US Treasury Secretary Presses Nvidia: Demands External Leadership Search, 10-Day Response Deadline",
-     "summary": "US Treasury Secretary Bessent urged Nvidia to seek a new leader from outside the company and gave the board and external counsel 10 days to respond on export compliance.",
-     "detail": "Amid recent Nvidia export restriction controversies, US Treasury Secretary Bessent took a tough stance, demanding that Nvidia find new leadership from outside and requiring its board and external counsel to respond \"within the next 10 days\" on the company's export compliance culture. He also praised Jensen Huang as a remarkable innovator and Nvidia as an outstanding company, while noting that romantic relationships between superiors and subordinates are a cardinal sin in the corporate world.",
-     "impact": "Escalating regulatory pressure could trigger governance overhauls at tech giants and deepen uncertainty over chip export policy.",
+     "id": "news-017",
+     "title": "Euro Falls Below 1.10 Against Dollar for First Time This Year",
+     "summary": "The euro slipped below the 1.10 mark against the US dollar, the first time it has traded at that level since 2025.",
+     "detail": "Financial wire reports show the euro falling below 1.10 against the dollar, the first such move since 2025. The source did not cite a specific cause, but European political and geopolitical issues have remained in focus over the same period.",
+     "impact": "A weaker euro could weigh on European import costs and multinational earnings, while also reflecting a temporary rebound in the dollar.",
      "importance": "hot",
      "tags": [
-      "Chip Export Controls",
-      "Corporate Governance",
-      "Semiconductor Industry"
+      "Currency Fluctuations",
+      "Foreign Exchange Market",
+      "European Economy"
+     ]
+    },
+    {
+     "id": "news-018",
+     "title": "Brazilian Real Extends Losses Against Dollar in Short-Term Trade",
+     "summary": "The Brazilian real weakened in spot trading, hitting about 5.77 per dollar, with losses at one point widening beyond 1.5% and breaking below the 5.75 level.",
+     "detail": "Financial wire records show the Brazilian real weakening 2% in spot trading to 5.77 per dollar, with losses later expanding beyond 1.5% and breaking below the 5.75 mark. The source did not provide a trigger for the move.",
+     "impact": "Heightened volatility in emerging market currencies reflects shifts in global risk appetite, with spillover effects to watch.",
+     "importance": "important",
+     "tags": [
+      "Emerging Markets",
+      "Foreign Exchange Market",
+      "Currency Fluctuations"
      ]
     },
     {
      "id": "news-019",
-     "title": "Jensen Huang Agrees to Attend US House Hearing",
-     "summary": "Nvidia CEO Jensen Huang has agreed to attend a US House hearing; lawmakers say the date is under discussion and Nvidia has pledged cooperation.",
-     "detail": "Market sources say Huang has agreed to attend a US House of Representatives hearing. US lawmakers indicated that the hearing date is being discussed and said Nvidia has committed to being forthcoming and cooperating with relevant committees.",
-     "impact": "Hearing developments will directly shape market expectations for the direction of chip export policy and sway sentiment across the semiconductor sector.",
-     "importance": "important",
+     "title": "Palladium Futures Fall 3% Intraday",
+     "summary": "Palladium futures dropped 3% on the day, with prices at about $977.05 per ounce.",
+     "detail": "Financial wire reports show palladium futures down 3% intraday at $977.05 per ounce. The source did not provide specific driving factors.",
+     "impact": "Precious metal price swings could influence cost expectations downstream in automotive catalytic converters, jewelry and other sectors.",
+     "importance": "normal",
      "tags": [
-      "Chip Export Controls",
-      "Congressional Hearing",
-      "Semiconductor Industry"
+      "Precious Metals",
+      "Commodities",
+      "Futures Market"
      ]
     },
     {
      "id": "news-020",
-     "title": "US Treasury Chief: Inflation Expected to Fall Sharply Next Month, Urges Fed to Look Ahead",
-     "summary": "Treasury Secretary Bessent said core inflation is mild and near target, forecast a steep decline next month, and warned the Fed against further tightening.",
-     "detail": "US Treasury Secretary Bessent said core inflation remains mild and is near the Federal Reserve's target, with inflation expected to drop significantly next month. He called on the Fed to \"look forward rather than dwell on the past,\" warned against further monetary tightening, and expressed confidence in Fed Chair Warsh's ability to fulfill the dual mandate.",
-     "impact": "The Treasury Secretary's policy signal reinforces easing expectations and could influence market pricing of the Fed's future rate path.",
-     "importance": "hot",
+     "title": "Mubadala Trims US Tech Stock Holdings",
+     "summary": "UAE state investor Mubadala disclosed its shareholdings: it reduced its stake in Nvidia and holds a certain volume of SpaceX Class A common stock.",
+     "detail": "Financial wire reports show Mubadala filed with the SEC disclosing ownership of 107,828 shares of SpaceX Class A common stock, while cutting its Nvidia stake by 6.7% to 60,929 shares.",
+     "impact": "A sovereign fund rebalancing positions in leading tech names reflects a reallocation by long-term global capital across AI computing and aerospace.",
+     "importance": "important",
      "tags": [
-      "Fed Policy",
-      "Inflation Expectations",
-      "Macroeconomics"
+      "Tech Stocks",
+      "Investment Strategy"
      ]
     },
     {
      "id": "news-021",
-     "title": "Russian Finance Ministry Proposes Excluding Four Metals from Windfall Tax",
-     "summary": "Russia's Finance Ministry proposed exempting mining of manganese, chromium, tungsten and molybdenum from the windfall tax calculation.",
-     "detail": "Russian Deputy Finance Minister Sazanov told a budget and tax committee meeting that the ministry has proposed excluding the mining of manganese, chromium, tungsten and molybdenum from the calculation of the windfall tax.",
-     "impact": "If passed, the measure would improve the tax outlook for relevant minor-metal miners and affect the rare metal supply landscape.",
+     "title": "Bunge's Ukraine Oilseed Processing Plant Hit in Drone Attack",
+     "summary": "A Bunge oilseed processing plant in Ukraine was struck in a drone attack, raising concerns over international grain and oilseed processing capacity.",
+     "detail": "Financial wire reports show a Bunge oilseed processing plant in Ukraine was hit in a drone attack. The source did not disclose the scale of damage or production recovery plans.",
+     "impact": "An attack on grain and oilseed processing facilities could disrupt regional supply and global agricultural trade expectations.",
      "importance": "normal",
      "tags": [
-      "Mineral Resources",
-      "Tax Policy",
-      "Commodities"
+      "Grain and Oilseed Processing",
+      "Global Supply Chains",
+      "Russia-Ukraine Conflict"
      ]
     },
     {
      "id": "news-022",
-     "title": "Delta Extends Flexible Rebooking Policy to November 16",
-     "summary": "Delta Air Lines extended flexible rebooking options to November 16 for passengers affected by the FAA nationwide ground stop; the policy applies only to affected travelers.",
-     "detail": "Delta Air Lines announced it would extend flexible rebooking options to Monday, November 16, for passengers affected by the US Federal Aviation Administration's nationwide ground stop. The airline noted the extension applies only to travelers impacted by the FAA order. Asked whether he should apologize to the public over the ground stop, US Transportation Secretary Duffy said, \"I can't apologize for what was handed to us.\"",
-     "impact": "The fallout from the nationwide flight groundings is still being absorbed; the pace of air travel normalization remains a key watchpoint.",
+     "title": "Poland Discloses Foreign Exchange Account Balances",
+     "summary": "Poland's Finance Ministry disclosed that funds held in its foreign exchange accounts as of end-October were worth about EUR 12.38 billion.",
+     "detail": "Financial wire reports show Poland's Finance Ministry published foreign exchange account balances equivalent to EUR 12.38 billion as of end-October. The source did not provide year-on-year comparison data.",
+     "impact": "Offers a reference point for observing fiscal and foreign reserve management in Central and Eastern European economies.",
      "importance": "normal",
      "tags": [
-      "Aviation Safety",
-      "Flight Operations",
-      "Travel Services"
-     ]
-    },
-    {
-     "id": "news-023",
-     "title": "US EV Executives Not Banking on Restored Federal Subsidies",
-     "summary": "CEOs of Rivian, Lucid and Scout do not expect federal EV support to be restored even if Democrats win the midterms.",
-     "detail": "The chief executives of three US electric vehicle makers — Rivian, Lucid and Scout — said they do not expect federal support for electric vehicles to be reinstated even if Democrats win the midterm elections.",
-     "impact": "Cooling expectations for US EV policy support could affect domestic automakers' investment timing and sales forecasts.",
-     "importance": "normal",
-     "tags": [
-      "New Energy Vehicles",
-      "Industrial Policy",
-      "EV Market"
+      "Foreign Reserves",
+      "Fiscal Management",
+      "European Economy"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Technology Frontier",
+   "title": "Tech Frontier",
    "icon": "💡",
    "articles": [
     {
+     "id": "news-023",
+     "title": "NVIDIA Partners With IBM on Quantum-Classical Co-Design Platform",
+     "summary": "NVIDIA announced a partnership with IBM and Fermilab to launch a quantum-classical co-design platform and achieve a breakthrough in error correction.",
+     "detail": "Financial news reports that NVIDIA has teamed up with IBM and Fermilab to introduce a quantum-classical co-design platform, marking a breakthrough in error correction to advance practical quantum computing. NVIDIA's DDGX B200 system will be linked to IBM's Quantum Nighthawk quantum computer.",
+     "impact": "Quantum-classical computing synergy could accelerate the path to practical deployment, providing a new computing foundation for scientific research and industrial applications.",
+     "importance": "hot",
+     "tags": [
+      "Quantum Computing",
+      "High-Performance Computing",
+      "Industry-Academia Collaboration"
+     ]
+    },
+    {
      "id": "news-024",
-     "title": "Shenzhen Pedestrian Street Turns Into Innovation Showcase During APEC, Boosting City's Tech Vitality",
-     "summary": "During APEC events, Shenzhen's pedestrian street became an innovation showcase, with new technologies, products and business models debuting together to energize the city's tech ecosystem.",
-     "detail": "At APEC event venues in Shenzhen, a pedestrian street was transformed into an innovation showcase, where new technologies, products and business models were displayed side by side, highlighting the city's vibrant innovation activity.",
-     "impact": "A high-profile international platform is expected to accelerate the commercialization of innovations and industry partnerships.",
+     "title": "NVIDIA Launches Nemotron Agent for Scientific Research",
+     "summary": "NVIDIA unveiled Nemotron for scientific research, using AI agents to accelerate discovery, and expanded its Vera CPU platform.",
+     "detail": "Financial news reports that NVIDIA has introduced the Nemotron agent for scientific research and expanded its Vera CPU platform to speed up scientific discovery. Vera CPU racks are expected to be supplied by Dell Technologies, HPE, Lenovo, and Supermicro starting early 2027.",
+     "impact": "Advances in AI research agents and next-generation CPUs in parallel will further deepen AI adoption across fundamental scientific research.",
      "importance": "important",
      "tags": [
-      "Technology Innovation",
-      "Emerging Industries",
-      "Showcase"
+      "Artificial Intelligence",
+      "AI Agents",
+      "AI Infrastructure"
      ]
     },
     {
      "id": "news-025",
-     "title": "Robots Now Outrun Bolt — How Many Hurdles Remain?",
-     "summary": "Humanoid and legged robots are breaking speed records, but commercialization still requires clearing multiple technical and application hurdles.",
-     "detail": "Media reports note that robots' running speeds have surpassed the record level set by sprint legend Usain Bolt, yet many challenges remain before they move from the lab into real-world use.",
-     "impact": "Breakthroughs in robotic mobility expand the industry's imagination, but mass production and real-world deployment remain key variables.",
-     "importance": "important",
+     "title": "OpenAI Grants External Experts Deep Access to Internal Models",
+     "summary": "OpenAI struck its first embedded evaluation deals, giving external experts deep access to internal models for safety testing.",
+     "detail": "Financial news reports that OpenAI has signed agreements with evaluation organizations including Apollo Research, as well as partnerships with Metr, Transluce, and Goodfire. Experts will investigate model alignment and test safety safeguards.",
+     "impact": "The establishment of an external deep-evaluation mechanism could push large-model safety assessment toward standardization and routine practice.",
+     "importance": "hot",
      "tags": [
-      "Robotics",
-      "Artificial Intelligence",
-      "Frontier Technology"
+      "Large Model Safety",
+      "AI Governance",
+      "AI Evaluation"
      ]
     },
     {
      "id": "news-026",
-     "title": "China's Hard-Tech Achievements Dominate Feeds Across Multiple Sectors This Week",
-     "summary": "This week, China logged a wave of first flights, first-ever milestones and record-breaking achievements across multiple sectors, flooding social feeds.",
-     "detail": "China achieved a string of first flights, firsts and record-breaking feats across multiple fields this week, drawing widespread attention. Specific project names were not disclosed in the source material.",
-     "impact": "A dense wave of technical breakthroughs underscores the country's overall research strength and may boost sentiment across related industrial chains.",
-     "importance": "normal",
-     "tags": [
-      "Tech Breakthroughs",
-      "Indigenous Innovation",
-      "Advanced Manufacturing"
-     ]
-    },
-    {
-     "id": "news-027",
-     "title": "US Treasury Secretary Says Legislation Not Needed on Advanced Chip Sales",
-     "summary": "US Treasury Secretary Bessent said legislation on advanced chip sales is unnecessary, reaffirming the Commerce Department's authority over export controls.",
-     "detail": "US Treasury Secretary Bessent said he does not believe legislation is needed on advanced chip sales, while reaffirming the Commerce Department's decisive authority over chip export controls. He also noted that reports show only 1% of chips sold in Singapore remain in the country.",
-     "impact": "Regulation is likely to rely mainly on administrative measures, giving chip export controls greater policy flexibility in timing.",
+     "title": "Microsoft Data Shows Claude Lagging Behind Copilot in Workplace AI",
+     "summary": "Microsoft data shows Claude accounts for less than one-tenth of Copilot's usage in Microsoft 365, and the gap is widening.",
+     "detail": "Financial news reports that Microsoft data indicates Claude's competition with Copilot in workplace scenarios has stalled, with the usage gap continuing to widen.",
+     "impact": "The battle for the enterprise AI entry point may become a winner-takes-all dynamic, with ecosystem lock-in emerging as a key competitive factor.",
      "importance": "important",
      "tags": [
-      "Chip Export Controls",
-      "Semiconductor Industry",
-      "Tech Regulation"
+      "Enterprise AI",
+      "Office Software",
+      "LLM Competition"
      ]
     }
    ]
@@ -401,55 +386,68 @@
    "icon": "📰",
    "articles": [
     {
+     "id": "news-027",
+     "title": "Media Watch: Chinese Universities Increasingly Like High Schools",
+     "summary": "A NetEase article discusses the growing resemblance of Chinese universities to high schools, sparking debate over the model of higher education.",
+     "detail": "The piece, titled \"Chinese Universities Are Increasingly Like High Schools,\" offers observations and reflections on current training models and the learning atmosphere in higher education. No specific survey data was disclosed.",
+     "impact": "Growing public attention to the substance of higher education may spur further discussion on talent cultivation models and evaluation systems.",
+     "importance": "important",
+     "tags": [
+      "Higher Education",
+      "Education Reform",
+      "Talent Development"
+     ]
+    },
+    {
      "id": "news-028",
-     "title": "Colorful Autumn Breaks Boost New Cultural and Tourism Scenarios",
-     "summary": "Sightseeing, market fairs and study tours debut for the autumn break, with diverse offerings enriching cultural and tourism consumption.",
-     "detail": "Regions rolled out a variety of autumn break activities including sightseeing, market visits and study tours, driving cultural and tourism spending through diversified offerings. Liping also continues to enrich its tourism products, activating travel in Dongxiang with a range of experiences.",
-     "impact": "Linking the holiday economy with new formats such as study tours and market fairs helps extend the tourism consumption chain.",
-     "importance": "normal",
-     "tags": [
-      "Cultural and Tourism Spending",
-      "Holiday Economy",
-      "Study Tours"
-     ]
-    },
-    {
-     "id": "news-029",
-     "title": "Let's Head North: Snow-Viewing and Winter Travel Heat Up",
-     "summary": "Winter ice-and-snow tourism routes are gaining popularity, with \"heading north\" to view, walk and play in snow becoming a top travel choice.",
-     "detail": "Media outlets are promoting \"head north\" trips centered on snow-viewing, snow-treading and snow play, lifting interest in ice-and-snow tourism.",
-     "impact": "With the ice-and-snow season approaching, northern winter destinations are expected to see rising visitor numbers.",
-     "importance": "normal",
-     "tags": [
-      "Ice and Snow Economy",
-      "Winter Tourism",
-      "Cultural and Tourism Spending"
-     ]
-    },
-    {
-     "id": "news-030",
-     "title": "First 48 Hours of Flu: Drug Choices Draw Attention",
-     "summary": "As flu season arrives, medication choices within 48 hours of onset are drawing focus, boosting interest in antiviral flu drugs.",
-     "detail": "Media coverage on drug choices in the first 48 hours of flu outlines a scientific approach to treatment, attracting reader interest.",
-     "impact": "With the peak respiratory disease season nearing, demand for flu prevention, treatment and related drugs may rise seasonally.",
+     "title": "Chinese Residents Fall Short on Vitamins, Shortfall More Pronounced in Women",
+     "summary": "Popular science content notes that Chinese people are broadly deficient in a certain vitamin, with the gap more evident among women than men.",
+     "detail": "The source highlights vitamin deficiency among the Chinese population, with women more affected than men. No specific vitamin type is identified; it serves only as a general nutritional health trend indicator.",
+     "impact": "Nutrition outreach could help improve residents' dietary profiles and draw attention to related health consumption.",
      "importance": "normal",
      "tags": [
       "Public Health",
-      "Respiratory Disease",
+      "Nutrition",
       "Health Education"
      ]
     },
     {
-     "id": "news-031",
-     "title": "Vitamin Deficiency: Women More Prone Than Men",
-     "summary": "Science content shows that Chinese people generally have inadequate vitamin intake, with women more affected than men.",
-     "detail": "A science report reviews vitamin intake among Chinese people, noting that several vitamins are widely deficient and that women are more susceptible than men.",
-     "impact": "Growing public awareness of nutrition and health may lift interest in supplements and health-related consumption.",
+     "id": "news-029",
+     "title": "First 48 Hours of Flu: How to Choose Medication",
+     "summary": "An author shares experience on choosing medications within the first 48 hours of flu onset, covering responses to respiratory illnesses.",
+     "detail": "A personal account of medication choices during the critical 48-hour window after flu symptoms appear. No specific drug names or clinical advice are provided.",
+     "impact": "With the peak season for respiratory illnesses approaching, public interest in rational medication use and scientific prevention is rising.",
      "importance": "normal",
      "tags": [
-      "Nutrition and Health",
-      "Health Education",
-      "Consumption Trends"
+      "Public Health",
+      "Respiratory Disease",
+      "Rational Medication Use"
+     ]
+    },
+    {
+     "id": "news-030",
+     "title": "¥60-a-Month Micro-Rental with Kitchen Storage Sparks Debate",
+     "summary": "A micro-space rental at 60 yuan per month, equipped with a kitchen storage cabinet, has sparked discussion: would you rent it?",
+     "detail": "Titled \"60 Yuan a Month, with a Kitchen Storage Cabinet — Would You Rent It?\", the piece showcases an ultra-low-cost micro-rental product. No specific city, operator or scale was disclosed.",
+     "impact": "Ultra-low-price micro spaces reflect housing cost pressures in major cities and a trend toward tiered rental products.",
+     "importance": "normal",
+     "tags": [
+      "Housing Rental",
+      "Living Costs",
+      "Consumption Stratification"
+     ]
+    },
+    {
+     "id": "news-031",
+     "title": "Hundred-Thousand-Yuan Stem Cell Infusions Questioned for Anti-Aging Claims",
+     "summary": "Media outlets question whether stem cell infusions costing hundreds of thousands of yuan truly deliver anti-aging effects, scrutiny focused on costly wellness treatments.",
+     "detail": "The source, headlined \"Do Stem Cell Infusions Costing Hundreds of Thousands Really Fight Aging?\", questions the efficacy of high-priced stem cell anti-aging programs. No specific institutions or clinical evidence are cited.",
+     "impact": "Irregularities in consumer healthcare are drawing attention, potentially prompting stronger regulation and public science outreach in tandem.",
+     "importance": "normal",
+     "tags": [
+      "Biomedicine",
+      "Consumer Healthcare",
+      "Health Education"
      ]
     }
    ]
