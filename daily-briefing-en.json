@@ -1,8 +1,8 @@
 {
- "date": "2026-11-17",
+ "date": "2026-11-18",
  "briefing": {
-  "date": "2026-11-17",
-  "quote": "While everyone is chasing the speed of agents, the real moat still lies in \"who can be trusted with tasks.\"",
+  "date": "2026-11-18",
+  "quote": "As AI evolves from \"answering\" to \"acting,\" what becomes truly scarce is no longer model capability, but the engineering backbone that makes agents reliably deployable.",
   "sections": [
    {
     "id": "openclaw",
@@ -10,59 +10,59 @@
     "icon": "🦞",
     "articles": [
      {
-      "id": "brief-oc-001",
-      "title": "OpenClaw 0.9.4 Released: Sub-Agent Orchestration Goes Stable, Workflow DSL Reaches Production Readiness",
-      "summary": "Parallel sub-agent orchestration moves from experimental to stable API; the DSL adds declarative workflows, significantly improving long-task reliability.",
-      "detail": "The OpenClaw team today released version 0.9.4, promoting the previously experimental Sub-Agent Orchestration to a stable API alongside a production-ready Workflow DSL. Developers can now declare multi-agent collaboration flows in YAML or code, including conditional branching, failure retries, checkpoint resumption, and tool whitelists. Official figures show success rates on long-running tasks (over 20 minutes) rising from 61% to 84%, while redundant token consumption dropped by roughly 27%. A companion Claw Inspector tool provides real-time tracking of every tool call and context handoff path.",
-      "impact": "For enterprise adoption, multi-agent systems move from \"demo toys\" to operable production components, significantly reducing the cost and risk of runaway long tasks; for toolchain vendors, it opens a new interface-layer opportunity.",
-      "source": "OpenClaw GitHub Release Notes"
+      "id": "brief-01",
+      "title": "OpenClaw Releases v0.9.4 with Built-in ClawGuard Sandbox and Tool-Call Audit Chain",
+      "summary": "OpenClaw ships a new version that makes permission sandboxing, tool-call auditing and rollback default capabilities for the first time.",
+      "detail": "The OpenClaw team has released v0.9.4, with the biggest change being the upgrade of the ClawGuard sandbox — previously available only as a plugin — into a core module enabled by default. The new version supports per-tool configuration of file, network and process permissions, and generates a traceable audit record for every tool call. Users can roll back to any checkpoint with one click after a session ends. The team also published a penetration testing report by independent security firm Trail of Bits, fixing three previously disclosed prompt injection escape vulnerabilities.",
+      "impact": "The biggest barrier to deploying agents in enterprise settings is lack of control. By making auditing and rollback default capabilities, OpenClaw is effectively giving enterprise customers a compliance narrative, which could help push agents into highly sensitive industries such as finance and legal services.",
+      "source": "OpenClaw Official Blog"
      },
      {
-      "id": "brief-oc-002",
-      "title": "OpenClaw Ecosystem Tops 6,000 Skills as Official \"Skill Security Audit Program\" Launches",
-      "summary": "The community skill library surpasses 6,000 entries; official partners launch tiered security audits and a signing mechanism.",
-      "detail": "OpenClaw's official Skill Registry surpassed 6,000 entries this week, spanning office automation, data analysis, content creation, DevOps, and more. Alongside this growth, risks from malicious or high-privilege skills have begun to emerge. The project announced a partnership with two independent security organizations to introduce a Skill Trust Tier system (S0-S3), requiring signatures and permission manifests for skills that access the file system, make outbound network calls, or read credentials. Unsigned skills will be downgraded under default configurations with a prominent warning.",
-      "impact": "The bar for installing third-party skills is higher but safer, and \"trusted signatures\" will become a core competitive advantage for skill distributors, pushing the ecosystem toward standardization.",
-      "source": "OpenClaw Official Blog / Security Advisory"
+      "id": "brief-02",
+      "title": "OpenClaw Marketplace Tops 2.4 Million Skill Package Downloads in First Month",
+      "summary": "The skill store posted strong debut-month numbers, with office automation and e-commerce operations packages accounting for nearly half of downloads.",
+      "detail": "OpenClaw's official skill store, the Marketplace, recorded 2.43 million downloads in its first month, with over 6,800 contributors. Data shows that three categories — office automation (document processing, email orchestration), e-commerce operations (product selection, customer service scripts), and data analysis (SQL generation, report interpretation) — together accounted for 47% of downloads. The team announced the launch of the 'Claw Fund' early support program, offering revenue advances of up to $50,000 and technical mentoring to the top 100 skill authors.",
+      "impact": "The skill store is essentially the 'app store' of the agent era. Once the distribution ecosystem takes shape, it will generate network effects similar to the App Store. For developers, now is a window of opportunity to get in, but homogeneous skill packages are already starting to saturate the market.",
+      "source": "TechCrunch"
      },
      {
-      "id": "brief-oc-003",
-      "title": "OpenClaw Unveils Enterprise Pricing for the First Time, Launches On-Premise Claw Edge Deployment Package",
-      "summary": "Enterprise plans use hybrid seat-plus-task billing; Claw Edge supports private deployment and local model integration.",
-      "detail": "OpenClaw officially unveiled its Enterprise plan, adopting a hybrid billing model of base seat fees plus per-task usage, and introduced the Claw Edge private deployment package for finance, healthcare, and government/enterprise clients. The package supports integration with local inference services (including vLLM and Ollama), keeps all task logs within the customer's internal network, and offers fine-grained audit trails and human-review workflow hooks. First customers include two regional banks and a manufacturing group, with compliance certifications (SOC 2, China's MLPS Level 3) expected to open before year-end.",
-      "impact": "The leap from open-source tool to enterprise-grade product is pivotal; compliance and private-deployment capabilities will determine whether it can enter high-value industries, while also creating new delivery business for integrators.",
-      "source": "TechCrunch / OpenClaw Enterprise Product Page"
+      "id": "brief-03",
+      "title": "Community Debate: OpenClaw's Multi-Agent Protocol ClawProtocol Sparks Standards Battle",
+      "summary": "A community-submitted multi-agent collaboration protocol proposal has drawn wide attention, surfacing a rift over its compatibility path with MCP and A2A.",
+      "detail": "Core contributors to the OpenClaw community have submitted RFC-228 'ClawProtocol,' proposing a communication protocol for multi-agent task orchestration, mutual identity recognition and result settlement. The proposal leans toward extending MCP rather than starting from scratch, but has still divided the community: supporters argue existing protocols lack task lifecycle management, while opponents worry that fragmentation will weaken ecosystem interoperability. Maintainers say a six-week public review will begin in December, and the MCP community has been invited to join alignment discussions.",
+      "impact": "Agent interoperability standards have yet to converge — whoever controls the protocol layer controls the ecosystem's leverage. In the short term, developers should avoid betting on a single protocol and prioritize compatibility with mainstream standards such as MCP.",
+      "source": "OpenClaw GitHub Discussions"
      }
     ]
    },
    {
     "id": "skills",
-    "title": "Top Skill Recommendations",
+    "title": "Recommended Top Skills",
     "icon": "🧩",
     "articles": [
      {
-      "id": "brief-sk-001",
-      "title": "Skill of the Week: DeepResearch-Pro, a Multi-Round Retrieval Research Assistant",
-      "summary": "Splits a single query into a structured retrieval plan, automatically cross-validates sources, and outputs a cited research report.",
-      "detail": "DeepResearch-Pro is the fastest-growing skill by downloads this week, focused on \"research, not search.\" It first breaks the user's question into 3-6 sub-questions, runs multi-round web and local document retrieval on each, cross-validates conclusions against sources, and finally outputs a research report in Markdown or Notion format, with jumpable citations on every claim. It supports custom trusted-source whitelists and word-count structure templates, making it well suited for investment research, competitive analysis, and industry studies. Official community feedback shows its citation accuracy is about 30% higher than general-purpose retrieval.",
-      "impact": "It truly productizes the high-frequency \"look up information\" workflow, making it a strong fit for embedding into the daily SOPs of consulting, investment research, and marketing teams, saving significant junior-level manpower.",
-      "source": "OpenClaw Skill Registry Trending"
+      "id": "brief-04",
+      "title": "Weekly Skills Chart: Browser Automation Tool 'ClawBrowser-Playwright' Claims Third Straight No. 1",
+      "summary": "A browser automation skill combining Playwright with visual understanding has topped the charts for three consecutive weeks, becoming a must-have for e-commerce and operations teams.",
+      "detail": "The ClawBrowser-Playwright skill pairs Playwright's DOM manipulation capabilities with a multimodal vision model, allowing it to 'see and act' to fill forms, scrape data, and compare prices across sites even when page structures change frequently. The author provides self-healing selectors and a retry mechanism, with a measured task success rate of 91% across the Top 50 e-commerce sites. This week added two features: 'login session persistence' and 'manual captcha takeover,' with downloads up 182% week over week.",
+      "impact": "Browser automation is currently one of the agent skills with the fastest ROI, ready for direct reuse by e-commerce, marketing, and customer service teams. However, teams should watch out for site anti-bot controls and compliance risks, and avoid unauthorized scraping.",
+      "source": "OpenClaw Marketplace"
      },
      {
-      "id": "brief-sk-002",
-      "title": "Skill Subscriptions Take Off: ClawMart Launches Paid Skill Marketplace with Revenue Share",
-      "summary": "Third-party skill store ClawMart launches a paid subscription model, with developers receiving a 70% revenue share.",
-      "detail": "ClawMart, the largest third-party store in the ecosystem, announced today the opening of a paid skill marketplace, supporting three billing models: monthly subscription, one-time purchase, and pay-per-call, with developers receiving a 70% revenue share. The first batch of paid skills focuses on high-value vertical use cases such as financial reconciliation, legal contract review, and bulk video script generation, priced between $9 and $49 per month. The platform also provides skill performance leaderboards and user retention data to help developers iterate.",
-      "impact": "Skills are moving from free sharing to a commercial closed loop, meaning independent developers and small teams can, for the first time, earn a stable income from \"building skills,\" and the ecosystem is entering a positive flywheel.",
-      "source": "ClawMart Official Announcement"
+      "id": "brief-05",
+      "title": "Skill Pick: 'DocMind-KB' Turns Enterprise Documents into a Searchable Knowledge Base in Seconds",
+      "summary": "A knowledge base skill supporting mixed parsing of PDFs, scans, and spreadsheets is surging, touting an out-of-the-box experience with zero vector database setup.",
+      "detail": "DocMind-KB is the fastest-rising skill package this week, with its core selling point being 'zero-config RAG': users simply drag in a folder to complete parsing, chunking, indexing, and retrieval-based Q&A — no self-hosted vector database required. Its accuracy in OCR for scanned documents, cross-page table reconstruction, and vertical Chinese text leads comparable skills by about 12 percentage points in community benchmarks. The author says the next version will add citation traceability and permission isolation for enterprise knowledge base use cases.",
+      "impact": "Knowledge bases are one of the shortest paths to deploying AI in the enterprise. This skill lowers the barrier for non-technical teams, but sensitive internal documents still require an assessment of data residency and access control measures.",
+      "source": "GitHub Trending"
      },
      {
-      "id": "brief-sk-003",
-      "title": "Skill Chaining Goes Mainstream: \"Meeting → Minutes → Tasks → Follow-Up\" Automation Becomes an Office Standard",
-      "summary": "A linked meeting closed-loop workflow built from multiple skills has gone viral, adopted by over 20,000 teams in a single week.",
-      "detail": "An automated meeting pipeline composed of three skills — MeetingScribe, TaskMiner, and FollowUpBot — went viral this week: it automatically transcribes meeting content, extracts to-dos and assigns owners, and generates follow-up reminders and weekly reports based on deadlines. Users only need to grant permission once to complete setup, with support for common tools such as Feishu, Slack, Notion, and Jira. The combination is popular because it chains multiple point skills into a complete closed loop, genuinely reducing the problem of \"nothing gets followed up after meetings.\"",
-      "impact": "AI adoption in the office is shifting from point tools to end-to-end processes, which will push enterprises to re-examine the efficiency structure of meetings and collaboration themselves.",
-      "source": "Community Trending List / ProductHunt Claw Category"
+      "id": "brief-06",
+      "title": "Developer Interviews: Why Are 'Prompt Template Library' Skills Cooling Off?",
+      "summary": "Multiple community authors say pure prompt-template skills are suffering from heavy commoditization and are being replaced by composite skills bundled with tools and workflows.",
+      "detail": "Several top-ranking skill authors recently shared their takeaways in the community: skill packages relying solely on prompt engineering have seen downloads drop by more than 30% on average over the past two months, while composite skills combining 'prompts + tool calls + workflow orchestration' continue to climb. The reason: models have largely internalized common prompting techniques themselves, and users would rather pay for capabilities that 'get real work done.' The authors suggest newcomers focus on specific industry verticals and build skills as end-to-end solutions rather than collections of templates.",
+      "impact": "The value of the skills marketplace is shifting from 'knowing how to write prompts' to 'understanding industry workflows.' For individual developers, domain knowledge is a stronger long-term competitive advantage than polishing wording.",
+      "source": "Dev.to Interview"
      }
     ]
    },
@@ -72,132 +72,124 @@
     "icon": "📱",
     "articles": [
      {
-      "id": "brief-ios-001",
-      "title": "Apple Updates App Store Review Guidelines: AI-Generated Content Must Disclose Sources and Training Data",
-      "summary": "AI-generated content in apps must carry traceable labels, and apps with AI features are required to submit training data statements.",
-      "detail": "Apple quietly updated its App Store Review Guidelines this week, adding a new 'AI Transparency' section: any feature displaying AI-generated text, images, or audio in an app must provide a prominent generation label or an accessible entry point to view sources. When submitting for review, developers must attach declarations on model provenance and training data compliance; features involving deepfake voices or faces must additionally implement a user consent flow. Violating apps will face account-level restrictions in addition to removal. The new rules will be mandatory for newly submitted apps starting January 2027.",
-      "impact": "The changes raise compliance costs for indie developers, but over the long term they raise the industry bar — high-quality, trustworthy AI apps will find it easier to earn user trust and featured placement.",
-      "source": "Apple Developer Website"
+      "id": "brief-07",
+      "title": "Apple Releases iOS 26.2 Beta 2: App Intents Opens Up More System-Level Calls",
+      "summary": "The new beta expands the boundaries of App Intents, giving developers access to more system services for agents to use.",
+      "detail": "Apple has pushed iOS 26.2 Beta 2 to developers, with a major update to the App Intents framework. It adds fine-grained intent registration for modules such as system settings, Calendar, and Reminders, and supports sustained calls during long-running background tasks. The industry widely reads this as Apple laying the groundwork for \"Siri as an agent\": intents registered by developers will become actions that a system-level agent can invoke directly. Apple also updated its review guidelines, explicitly requiring apps with AI-generated content to disclose the source of generation.",
+      "impact": "Apple is building its own agent moat through the system intent layer. iOS developers should audit which in-app actions can be exposed as early as possible to secure first-mover positions in intent registration.",
+      "source": "9to5Mac"
      },
      {
-      "id": "brief-ios-002",
-      "title": "iOS 26.2 Rolls Out: Apple Intelligence Supports Third-Party Model Backends and On-Device Agents",
-      "summary": "The system-level agent framework is opened up, allowing third-party models as alternative backends, with enhanced on-device long-task capabilities.",
-      "detail": "The iOS 26.2 release is now rolling out, with the most notable change being the opening of the Apple Intelligence framework: developers can register their own or third-party models as alternative backends for the system agent, and users can switch between them per scenario in Settings. On-device inference for long-running tasks has also been optimized, allowing apps to continue multi-step agent workflows on the lock screen and in the background. Together with the new App Intents 2.0, third-party apps gain significantly expanded automation capabilities. Initial launch partners include several note-taking, health, and photography apps.",
-      "impact": "Apple is moving from 'walled-garden intelligence' to 'pluggable intelligence,' opening new distribution channels for model vendors and app developers, and marking the true onset of the on-device agent era.",
-      "source": "Apple Release Notes / 9to5Mac"
+      "id": "brief-08",
+      "title": "App Store Annual Trends: AI-Native Apps Overtake Traditional Productivity Tools in Paid Conversion for the First Time",
+      "summary": "A third-party report shows AI-native iOS apps have overtaken traditional productivity apps in both subscription conversion and retention for the first time.",
+      "detail": "App intelligence firm Sensor Tower released its \"2026 iOS AI Apps Annual Outlook\": AI-native apps (those with AI features as their core selling point) posted an average paid conversion rate of 6.8%, surpassing traditional productivity apps' 5.9% for the first time; 30-day retention was also 4.2 percentage points higher. The report also notes that subscription pricing is polarizing — the $9.99/month entry tier and pro tiers above $49/month are growing fastest, while the mid-range price band has visibly collapsed.",
+      "impact": "The business model for AI apps has been validated, but pricing strategy puts greater考验 on user segmentation. Developers should quickly determine whether their target audience is \"curious mainstream users\" or \"professional power users,\" and avoid getting stuck in the middle on pricing.",
+      "source": "Sensor Tower"
      },
      {
-      "id": "brief-ios-003",
-      "title": "App Store Growth Standout This Week: Local-First Notes App 'Lattice' Tops 1M Downloads in a Week",
-      "summary": "Notes app Lattice, which focuses on local-first storage and on-device AI summaries, has surged to top the productivity charts in multiple countries.",
-      "detail": "Built by a five-person team, the notes app Lattice topped the productivity charts in the US, Japan, Germany, and other markets this week, surpassing one million downloads in a single week. Its core appeal is 'local-first plus on-device AI': all notes are stored on the user's device and a self-selected sync drive, while AI summaries, tagging, and related-note recommendations are handled entirely on-device with no cloud upload. Paired with iOS 26.2's on-device long-task capabilities, it can automatically organize a week's notes and generate a personal knowledge digest. Subscription pricing is $4.99 per month.",
-      "impact": "Amid rising concerns over data privacy, 'local-first plus on-device AI' is emerging as a new path to product differentiation — a trend worth watching and learning from for all utility app developers.",
-      "source": "Appfigures / Sensor Tower Rankings"
+      "id": "brief-09",
+      "title": "Indie Case Study: A Voice-First iOS Note App Hits 100,000 Downloads in Three Weeks",
+      "summary": "A voice note app by an independent developer went viral with a \"zero-interface interaction\" experience, built around structuring notes as you speak.",
+      "detail": "QuietNote, a voice note app launched by independent developer @mira_dev, surpassed 100,000 downloads within three weeks. The app strips away nearly all interface elements — users start recording on open and save on exit, while AI handles transcription, structured summaries, and tag categorization in the background. Its breakout appeal lies in its \"zero learning curve\" interaction design and high tolerance for mixed Chinese-English speech and dialect accents. The developer revealed the product was built by a single person, with costs mainly coming from inference API calls.",
+      "impact": "Voice interaction is emerging as one of the mainstream entry points for AI apps. The case shows that small teams can still scale quickly in the gaps between giants by focusing relentlessly on a single scenario.",
+      "source": "X / @mira_dev"
      }
     ]
    },
    {
     "id": "startups",
-    "title": "Startups & Emerging Tech",
+    "title": "Tech Startups",
     "icon": "🚀",
     "articles": [
      {
-      "id": "brief-st-001",
-      "title": "KernelMesh Raises $450 Million Series A for Multi-Agent Observability Platform",
-      "summary": "End-to-end tracing and cost attribution for multi-agent systems; ARR surpassed $10 million within six months of launch.",
-      "detail": "KernelMesh, founded in 2025, announced a $450 million Series A round led by a top-tier venture capital firm. Its product targets enterprise-grade multi-agent systems, offering call-chain tracing, prompt version management, cost attribution, failure replay, and A/B evaluation, with support for integration with mainstream frameworks such as OpenClaw and LangGraph. The company disclosed that ARR exceeded $10 million within six months of launch, with customers mainly in finance, e-commerce, and SaaS. The founding team hails from the observability divisions of two leading cloud providers.",
-      "impact": "The more multi-agent systems are deployed in production, the more urgent the need for observability and governance becomes. This segment could replay Datadog's story from the microservices era, making it one of the most compelling infrastructure opportunities to watch right now.",
-      "source": "The Information / Company press release"
+      "id": "brief-10",
+      "title": "Startup Loopstack Raises $42 Million Series B to Bet on Enterprise Agent Operations Platform",
+      "summary": "Loopstack focuses on agent runtime monitoring and cost governance; a 4x ARR increase in six months secured backing from top-tier funds.",
+      "detail": "Founded in 2024, Loopstack announced a $42 million Series B led by Redpoint, with participation from a16z and existing investors. The company provides an observability platform for enterprise AI agents, covering call-chain tracing, cost attribution, quality evaluation and failure replay. Its clients include two major North American banks and several SaaS vendors. The founder said enterprise agent counts are exploding, but the common pain point is that 'once they're running, nobody knows what they're doing or how much they cost.'",
+      "impact": "AgentOps is emerging as the next infrastructure track after MLOps. As agents scale, observability and governance will shift from optional to essential.",
+      "source": "The Information"
      },
      {
-      "id": "brief-st-002",
-      "title": "AI Hardware Upstart Halo Devices Unveils Second-Generation Ambient AI Pendant",
-      "summary": "Always-on sensing hardware with no wake word, battery life extended to three days, and a physical privacy switch winning praise.",
-      "detail": "Halo Devices released the second-generation ambient AI pendant, the Halo Halo 2, with comprehensive upgrades in battery life, audio pickup, and power consumption over the first generation. It runs for about three days on a single charge and adds a physical mute switch that cuts off the microphone and inference at the hardware level. The device performs wake detection and voice slicing locally, sending only valid segments to the cloud or phone for processing. Priced at $199, the first batch of 50,000 units sold out within 48 hours of pre-orders opening. The CEO said the next step is to open an SDK so third-party skills can be integrated into the device.",
-      "impact": "Ambient AI hardware is moving from a gadget for enthusiasts to a mass-market consumer product, but privacy design and the boundaries of always-on sensing remain the key factors determining whether it can scale.",
-      "source": "The Verge / Halo Devices launch event"
-     },
-     {
-      "id": "brief-st-003",
-      "title": "Veteran Founder's New Play: Former Cloud Executives Launch ForgeOps to Rebuild IT Operations with Agents",
-      "summary": "Agents automate alert diagnosis, change execution, and rollbacks; already serving dozens of mid-to-large enterprises.",
-      "detail": "ForgeOps, founded by former cloud provider executives, has raised a $28 million seed round to build 'agent-powered IT operations.' Once connected to monitoring, logging, and CI/CD systems, its agents automatically perform alert attribution, incident diagnosis, change execution, and failure rollback, while retaining human approval gates. Public case studies show customers cut mean time to recovery (MTTR) by 58% on average. The team emphasizes its edge in 'controlled execution,' with all operations carried out within predefined permission sandboxes that meet compliance requirements in finance and manufacturing.",
-      "impact": "IT operations is one of the highest-cost areas within enterprises most ripe for agent replacement, but trust and accountability remain barriers to adoption. Teams with strong compliance capabilities are better positioned to break through.",
-      "source": "Forbes / ForgeOps website"
+      "id": "brief-11",
+      "title": "Startup Watch: Hardware Bounces Back, AI Companions and Desktop Robots Become Funding Hotspots",
+      "summary": "AI hardware funding has clearly recovered since Q3, with companion devices and desktop robots accounting for nearly 40% of new capital raised.",
+      "detail": "According to PitchBook data, global AI hardware startup funding from Q3 2026 to date is up 67% year on year, with AI companion devices and desktop robots together making up 38% of the total. Unlike the previous wave of 'AI glasses hype,' this round places greater emphasis on emotional interaction, long-term memory and penetration into home scenarios. Several investors caution that hardware demands far more from supply chains, channels and after-sales support than pure software projects — there remains a huge gap between 'stunning demo' and 'surviving mass production.'",
+      "impact": "AI is moving from screens to physical objects, with hardware becoming the new medium. But hardware projects carry high failure rates and long cycles; founders should focus on supply chains and cash flow rather than just telling a story.",
+      "source": "PitchBook / Guixingren"
      }
     ]
    }
   ]
  },
  "hotProjects": {
-  "date": "2026-11-17",
-  "quote": "When a wave arrives, judgment matters more than chasing it: who is solving real problems, and who is merely solving their fundraising problem.",
-  "summary": "Today's biggest wave is multi-agent infrastructure — the trio of observability, orchestration, and compliance is displacing pure application-layer innovation as capital's new favorite.",
+  "date": "2026-11-18",
+  "quote": "On the right tailwind, even a pig can fly; but once the wind dies, only those who grew wings can keep moving forward.",
+  "summary": "Today's biggest tailwind: Agent infrastructure (AgentOps / sandboxes / protocol layers) has upgraded from \"optional plugin\" to \"essential foundation,\" and the enterprise adoption window is opening.",
   "projects": [
    {
-    "id": "hot-001",
+    "id": "hot-01",
     "rank": 1,
-    "name": "KernelMesh (Multi-Agent Observability Platform)",
+    "name": "OpenClaw ClawGuard Sandbox Ecosystem",
     "heat": "🔥🔥🔥🔥🔥",
     "heatLevel": 5,
-    "oneLiner": "Infrastructure providing end-to-end tracing, cost attribution, and evaluation governance for multi-agent systems.",
-    "whyHot": "As multi-agent deployments scale, enterprises' biggest pain points are \"can't see it, can't account for it, can't control it.\" KernelMesh hits this exact need: its ARR surpassed $10 million within six months, it just closed a $45-million Series A, and its customers span finance and e-commerce, giving it platform-level positioning potential.",
+    "oneLiner": "An enterprise-grade security sandbox that makes agent permissions, auditing and rollback default capabilities.",
+    "whyHot": "The biggest obstacle to bringing agents into the enterprise is \"uncontrollability.\" ClawGuard builds permission isolation, call auditing and checkpoint rollback into its core modules, and publishes third-party security assessment reports to directly address compliance anxiety. As the OpenClaw ecosystem's user base expands, security plugins, managed services and audit SaaS built around it are emerging rapidly.",
     "highlights": [
-     "Technical moat in call-chain tracing and failure replay",
-     "Deep integrations with mainstream frameworks like OpenClaw and LangGraph",
-     "Cost attribution directly addresses the ROI concerns of CFOs",
-     "Growth trajectory benchmarked against Datadog, with significant upside"
+     "File, network and process permissions configured per tool granularity",
+     "A traceable audit chain generated for every tool call",
+     "Session-level checkpoints with one-click rollback",
+     "Transparent publication of third-party penetration test reports"
     ],
-    "riskTip": "Big tech may enter the observability space with free or bundled offerings; independent vendors must keep building moats around depth and neutrality."
+    "riskTip": "Security capabilities are deeply tied to a single agent framework. If industry standards are ultimately led by MCP or cloud vendors, migration costs could become prohibitively high."
    },
    {
-    "id": "hot-002",
+    "id": "hot-02",
     "rank": 2,
-    "name": "ClawMart (Paid Skills Marketplace)",
+    "name": "AgentOps Platform",
     "heat": "🔥🔥🔥🔥",
     "heatLevel": 4,
-    "oneLiner": "The first scaled paid skills store in the OpenClaw ecosystem, with a 70% revenue share for developers.",
-    "whyHot": "The skills ecosystem shifting from free sharing to a commercial loop is a key signal of maturity. ClawMart captures demand on both sides — developer monetization and enterprise procurement — with first-wave paid skills concentrated in high-value areas like finance and legal, validating willingness to pay and hinting at two-sided network effects.",
+    "oneLiner": "Solves the observability and cost-governance problem of enterprise agents running with no one watching.",
+    "whyHot": "Enterprise agent counts are growing exponentially, but black-box call chains, runaway costs and unassessable quality have become bottlenecks to scaling. AgentOps companies such as Loopstack quadrupled ARR within six months and secured major funding, validating the business logic that \"the more agents, the costlier the ops.\" No monopolist has emerged in this track yet — the window is clearly open.",
     "highlights": [
-     "Three flexible billing models: monthly subscription, buyout, and per-call",
-     "Clear incentive structure with a 70% developer share",
-     "Transparent performance leaderboards and retention data",
-     "Willingness to pay validated in vertical, high-value scenarios"
+     "Call-chain tracing and incident replay",
+     "Cost attribution by team and project",
+     "Automated quality evaluation and regression testing",
+     "Open integration with mainstream agent frameworks"
     ],
-    "riskTip": "Skill homogenization and low-quality content could dilute the platform's reputation, and it faces direct competition from a commercialized official Registry."
+    "riskTip": "The track is still early, and customer willingness to pay scales with agent volume. If foundation-model vendors extend downstream with built-in monitoring, independent players may be squeezed."
    },
    {
-    "id": "hot-003",
+    "id": "hot-03",
     "rank": 3,
-    "name": "Lattice (Local-First AI Notes App)",
-    "heat": "🔥🔥🔥🔥",
-    "heatLevel": 4,
-    "oneLiner": "A local-first notes app with on-device AI summarization — topped productivity charts in multiple countries with over 1 million downloads in a single week.",
-    "whyHot": "Driven by both data-privacy anxiety and rising on-device compute, \"local-first + on-device AI\" has become a new differentiation path for productivity tools. Built by a five-person team, Lattice broke out fast on extreme privacy design and long-running on-device tasks, proving the explosive potential of small teams in the new-era tools race.",
-    "highlights": [
-     "Local storage plus on-device inference — zero privacy compromise",
-     "Leverages iOS 26.2's long-running on-device tasks to generate weekly knowledge digests",
-     "1 million downloads in one week for a 5-person team — remarkable growth efficiency",
-     "Reasonable subscription pricing with sizable conversion potential"
-    ],
-    "riskTip": "Tool apps have thin moats and are easily replicated by system-level features and big-tech note products; it must quickly build data stickiness and community loyalty."
-   },
-   {
-    "id": "hot-004",
-    "rank": 4,
-    "name": "ForgeOps (Agentic IT Operations)",
+    "name": "Zero-Config RAG Knowledge Base Skill Pack",
     "heat": "🔥🔥🔥",
     "heatLevel": 3,
-    "oneLiner": "A new IT operations platform using controlled agents to automate alert diagnosis, change execution, and rollback.",
-    "whyHot": "IT operations are costly, repetitive, and demand high fault tolerance — making them one of the most certain enterprise scenarios for agent adoption. ForgeOps solves the trust problem with \"permission sandboxes plus human approval,\" and hard evidence of a 58% MTTR reduction, backed by a stellar founding team, earned it $28 million in seed funding.",
+    "oneLiner": "Drop in a folder, get an enterprise knowledge base — zero-friction RAG for non-technical teams.",
+    "whyHot": "The shortest path to enterprise AI adoption is still \"making AI understand your own documents.\" Zero-config RAG skills like DocMind-KB package parsing, chunking, indexing and Q&A into an out-of-the-box experience, with leading accuracy on scanned files and complex tables. The skill-store distribution dividend plus genuine enterprise knowledge-management demand is producing a steep growth curve.",
     "highlights": [
-     "58% MTTR reduction — clearly quantified value",
-     "Permission sandboxes and human approval gates meet compliance needs in finance and manufacturing",
-     "Integrations across monitoring, logging, and CI/CD systems",
-     "Founding team with big-tech resources and industry credibility"
+     "Out-of-the-box experience with zero vector-DB configuration",
+     "Scanned-document OCR and cross-page table reconstruction",
+     "Answer citation tracing with permission isolation",
+     "Support for mixed-format document scenarios"
     ],
-    "riskTip": "Enterprises will build trust in agents executing changes automatically very slowly, sales cycles may be long, and there are no industry standards yet for defining liability."
+    "riskTip": "Technical moats are relatively limited and could be displaced by bundled offerings from cloud vendors and LLM platforms. Data compliance around internal sensitive documents remains the key factor in purchase decisions."
+   },
+   {
+    "id": "hot-04",
+    "rank": 4,
+    "name": "Voice-First AI Notes App",
+    "heat": "🔥🔥🔥",
+    "heatLevel": 3,
+    "oneLiner": "Strip away every interface — speak to record, finish speaking to get text. A minimal voice AI app.",
+    "whyHot": "Voice is replacing typing as the primary entry point for AI applications, especially in mobile and in-car scenarios. Products like QuietNote center on \"zero-interface interaction\" plus highly fault-tolerant transcription; a solo developer passed 100,000 downloads in three weeks, proving small teams can still scale fast through extreme focus on a single use case. Amid polarized subscription pricing, the $9.9 entry tier in particular is growing rapidly.",
+    "highlights": [
+     "Zero learning curve: record on open, save on exit",
+     "High fault tolerance for mixed Chinese-English speech and accented dialects",
+     "Automatic background structuring into summaries and tags",
+     "Subscription-based monetization path already validated"
+    ],
+    "riskTip": "Core capabilities depend heavily on upstream speech and LLM APIs, leaving weak bargaining power. Tech giants (Apple, ByteDance, Notion, etc.) could overwrite it with system-level capabilities at any time."
    }
   ]
  }

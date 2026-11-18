@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-17",
+  "date": "2026-11-18",
   "contents": [
     {
-      "id": "prog-2026-11-17",
-      "date": "2026-11-17",
-      "title": "Python 上下文管理器与 contextlib：把资源生命周期交给作用域",
-      "summary": "用 @contextmanager 与 contextlib 工具箱，写出可复用、异常安全的资源管理代码（计时、事务、批量文件、异常抑制）。",
+      "id": "prog-2026-11-18",
+      "date": "2026-11-18",
+      "title": "TypeScript 类型收窄（Type Narrowing）与类型守卫实战",
+      "summary": "掌握可辨识联合、自定义类型守卫与断言函数，让 TypeScript 在运行时帮你消除 null 与非法状态。",
       "difficulty": "中级",
-      "concept": "上下文管理器（Context Manager）是 Python 对「资源获取即初始化（RAII）」这一工程思想的语言级支持。当你写下 `with open('a.txt') as f:` 时，解释器实际上调用了 `f.__enter__()` 并把返回值绑定给 as 后的变量；离开 with 代码块时（无论是正常执行完、return、还是抛异常），都会调用 `f.__exit__(exc_type, exc_val, exc_tb)`。这意味着「申请资源」和「释放资源」被强制绑在同一个作用域上，读者一眼就能看出资源的存活边界，这在大型代码库里能显著降低泄漏类 Bug 的排查成本。\n\n实现上下文管理器有两条路线。第一条是写一个类，实现 `__enter__` / `__exit__` 两个方法，适合需要携带状态、或者本身就面向对象设计的场景（比如自定义的连接池、事务句柄）。第二条是用 `contextlib.contextmanager` 装饰一个生成器函数：`yield` 之前的部分相当于 `__enter__`，`yield` 的值就是 `as` 绑定的结果，`yield` 之后的部分相当于 `__exit__`。后者代码量通常少一半，是日常业务代码的首选。\n\n生成器版有一个非常关键的语义：with 块中如果抛出异常，异常会在 `yield` 那一行被重新抛出。因此你必须用 `try/finally`（保证清理）或 `try/except`（顺便吞掉/转换异常）把 `yield` 包起来。这是新手最常见的坑——写成 `yield` 后面裸跟一行清理代码，一旦 with 块内部出错，清理代码永远不会执行，连接、文件、锁就泄漏了。这条经验我在 code review 里抓过不下十次。\n\n`contextlib` 还提供了一批高频工具：`suppress(*exc)` 用于「预期可能失败」的场景（如 `with suppress(FileNotFoundError): os.remove(p)`），比裸写 try/except 更能表达意图；`nullcontext(obj)` 是一个什么都不做的上下文管理器，用于「有条件才需要资源」的分支，避免为了统一写法而写 if/else 两套逻辑；`closing(obj)` 让只有 `.close()` 方法的对象也能用 with。而 `ExitStack` 解决的是「资源数量在运行时才知道」的问题，比如要打开 N 个文件、或在循环里注册多个清理回调，它会在离开作用域时按逆序注销全部资源，等价于一个可动态扩展的 `with A() as a, B() as b, ...`。\n\n最后是几条工程实践：`__exit__` 只有在明确想吞掉异常时才返回 True，吞异常会掩盖真实错误，必须配日志；上下文管理器要保证「幂等关闭」，因为异常路径上清理可能被多次触发；涉及异步资源（aiohttp session、asyncpg connection）时用 `async with` 与 `AsyncExitStack`，不要在异步代码里混用同步的 contextmanager。",
+      "concept": "类型收窄（Type Narrowing）是 TypeScript 最核心、也最容易被低估的能力：编译器根据你的运行时判断（typeof、===、Array.isArray、in、instanceof 等），把一个宽泛的联合类型在某个代码块内“收窄”成更精确的类型。理解这一点之后，你会发现很多 as 断言其实都是多余的，甚至是有害的——as 只是让你闭嘴，而收窄是让编译器真的理解你的逻辑。\n\n在真实项目里，最实用的收窄武器是「可辨识联合（Discriminated Union）」：给联合类型的每个分支加一个共同的字面量字段（比如 kind / status / type / ok），然后用 switch 或 if 精确匹配。它特别适合描述 API 返回值、Redux action、状态机、组件的多种 props 形态。相比用一个大而全的可选字段对象（所有字段都可选），可辨识联合能让非法状态“无法被表示”，这就是所谓的 make impossible states impossible。\n\n当 TypeScript 内置的收窄规则不够用时，就要用「自定义类型守卫」（type predicate，语法是 x is T）和「断言函数」（asserts x is T）。前者返回 boolean 但告诉编译器：如果返回 true，参数就是 T；后者执行完后直接改变外部变量的类型。典型场景包括校验后端返回的 JSON、判断一个 unknown 是否是某个 DTO、以及框架层的参数校验函数。\n\n工程经验上有一个非常重要的技巧叫「穷尽性检查（Exhaustiveness Check）」：在 switch 的 default 分支里写 const _never: never = 变量。一旦未来有人给联合类型新增了一个分支但忘了处理，这里就会立刻编译报错，而不是把 undefined 传播到线上。这个小技巧在多人协作、长期维护的代码库里价值极高，相当于给类型加了一道“单元测试”。\n\n最后提醒几点容易踩的坑：其一，收窄只在同一个函数作用域内有效，把变量传给另一个函数后收窄信息会丢失（这也是断言函数存在的意义）；其二，回调里的变量如果可能被重新赋值，收窄会失效，解决办法是先 const 一份副本；其三，不要为了通过编译滥用 as unknown as T，它会把类型安全的收益全部抵消掉。",
       "codeExample": {
-        "language": "Python",
-        "code": "\"\"\"\nPython 上下文管理器实战：计时、异常抑制、ExitStack\n运行环境：Python 3.9+\n\"\"\"\nimport os\nimport time\nimport contextlib\nfrom contextlib import contextmanager, ExitStack, nullcontext\n\n\n# ---------- 1. 基于生成器的轻量上下文管理器 ----------\n@contextmanager\ndef timer(label: str, collector: list | None = None):\n    \"\"\"测量 with 代码块的耗时，可选地把结果收集到列表。\"\"\"\n    start = time.perf_counter()                # 进入：等价于 __enter__\n    try:\n        yield start                            # yield 的值绑定给 as 后的变量\n    finally:\n        cost = time.perf_counter() - start     # 退出：等价于 __exit__（必执行）\n        print(f\"[timer] {label}: {cost * 1000:.2f} ms\")\n        if collector is not None:\n            collector.append((label, cost))\n\n\n# ---------- 2. 可复用的异常抑制上下文管理器 ----------\n@contextmanager\ndef suppress_and_log(*exceptions, logger=print):\n    \"\"\"捕获并记录指定异常，而不是让程序崩溃。\"\"\"\n    try:\n        yield\n    except exceptions as exc:                  # 异常在 yield 处被重新抛出\n        logger(f\"[suppressed] {type(exc).__name__}: {exc}\")\n\n\n# ---------- 3. ExitStack：动态数量的资源管理 ----------\ndef read_many(filenames):\n    \"\"\"一次性打开多个文件，离开作用域时自动按逆序全部关闭。\"\"\"\n    with ExitStack() as stack:\n        handles = [\n            stack.enter_context(open(name, encoding=\"utf-8\"))\n            for name in filenames\n        ]\n        return [h.read().strip() for h in handles]\n\n\nif __name__ == \"__main__\":\n    # 3.1 计时 + 结果收集\n    stats: list = []\n    with timer(\"heavy computation\", stats):\n        total = sum(i * i for i in range(200_000))\n\n    # 3.2 预期内的异常被吞掉，程序继续执行\n    with suppress_and_log(ZeroDivisionError, ValueError):\n        _ = 1 / 0\n    print(\"异常被抑制后，程序依然活着\")\n\n    # 3.3 nullcontext：统一写法，去掉 if/else 分支\n    resource = \"real_db_conn\" if stats else None\n    with (nullcontext(\"default_resource\") if resource is None else timer(\"db\", stats)) as r:\n        print(\"获得资源上下文:\", type(r).__name__)\n\n    # 3.4 ExitStack 读多个文件\n    for name in (\"a.txt\", \"b.txt\"):\n        with open(name, \"w\", encoding=\"utf-8\") as f:\n            f.write(\"line-\" + name)\n    print(\"批量读取结果:\", read_many([\"a.txt\", \"b.txt\"]))\n    os.remove(\"a.txt\")\n    os.remove(\"b.txt\")\n\n    # 3.5 汇总\n    print(\"收集到的耗时记录:\", [(k, round(v, 6)) for k, v in stats])\n",
-        "explanation": "第 1 段 `timer` 展示了 `@contextmanager` 的标准形态：`yield` 之前是进入逻辑，`yield` 的返回值 `start` 会被 `as` 接住；`try/finally` 保证即使 with 块内部抛异常，耗时统计与收集逻辑也一定会执行。`time.perf_counter()` 比 `time.time()` 更适合测短耗时，因为它不受系统时钟调整影响。\n\n第 2 段 `suppress_and_log` 是 `contextlib.suppress` 的带日志版本。注意 `except exceptions as exc` 里的 `exceptions` 是一个元组，Python 允许用元组捕获多种异常。这解释了生成器版上下文管理器的异常语义：with 块中的异常会被 `throw()` 到 `yield` 那一行，所以在这里被 `except` 接住就等于 `__exit__` 返回了 True（吞掉异常）。\n\n第 3 段 `read_many` 用 `ExitStack` 处理数量不定的文件句柄。`stack.enter_context(...)` 立刻进入上下文并登记，`ExitStack` 退出时按注册的逆序逐个调用它们的 `__exit__`，等价于 `with open(a) as f1, open(b) as f2, ...`，但文件个数是运行时决定的。相比手写 try/finally 逐个 close，这样写几乎不可能漏关。\n\n第 4 段是运行示例：`stats` 列表在 `timer` 退出时被填充，展示了上下文管理器不仅能释放资源，还能做「埋点、收集、收尾统计」这类横切关注点；`suppress_and_log` 捕获了 `ZeroDivisionError`，所以程序不会中断；`nullcontext` 的用法体现了「用同一段代码兼容有资源/无资源两种情况」，避免复制粘贴两套 with 结构。运行后会看到计时毫秒数、被抑制的异常日志、以及两个文件的批量读取结果，可以整体验证资源都被正确关闭。"
+        "language": "TypeScript",
+        "code": "// ===== 1. 可辨识联合（Discriminated Union）+ switch 收窄 =====\ntype Shape =\n  | { kind: 'circle'; radius: number }\n  | { kind: 'rect'; width: number; height: number }\n  | { kind: 'triangle'; base: number; height: number };\n\nfunction calcArea(s: Shape): number {\n  switch (s.kind) {\n    case 'circle':\n      return Math.PI * s.radius ** 2; // s 已收窄为 circle 分支，可安全访问 radius\n    case 'rect':\n      return s.width * s.height;\n    case 'triangle':\n      return (s.base * s.height) / 2;\n    default: {\n      // 穷尽性检查：所有分支处理完后，s 必须是 never\n      // 若未来新增 kind 却忘了处理，这里会直接编译报错\n      const _exhaustive: never = s;\n      throw new Error(`未处理的形状: ${JSON.stringify(_exhaustive)}`);\n    }\n  }\n}\n\n// ===== 2. 自定义类型守卫（type predicate） =====\ntype Ok<T> = { ok: true; value: T };\ntype Err = { ok: false; message: string };\ntype Result<T> = Ok<T> | Err;\n\nfunction isOk<T>(r: Result<T>): r is Ok<T> {\n  return r.ok === true;\n}\n\nfunction unwrap<T>(r: Result<T>): T {\n  if (isOk(r)) {\n    return r.value; // 这里 r 自动收窄为 Ok<T>\n  }\n  throw new Error(r.message); // 否则分支收窄为 Err\n}\n\n// ===== 3. 断言函数（asserts x is T） =====\nfunction assertDefined<T>(\n  v: T | null | undefined,\n  msg = '值不能为空'\n): asserts v is T {\n  if (v === null || v === undefined) throw new Error(msg);\n}\n\n// ===== 4. 内置收窄：typeof / Array.isArray =====\nfunction describe(input: string | number | string[]): string {\n  if (Array.isArray(input)) return `数组，长度 ${input.length}`;\n  if (typeof input === 'string') return `字符串：${input}`;\n  return `数字：${input.toFixed(2)}`; // 剩余分支收窄为 number\n}\n\n// ===== 运行演示 =====\nconst shapes: Shape[] = [\n  { kind: 'circle', radius: 2 },\n  { kind: 'rect', width: 3, height: 4 },\n  { kind: 'triangle', base: 6, height: 5 },\n];\nconsole.log(shapes.map((s) => calcArea(s)));\n// => [ 12.566..., 12, 15 ]\n\nconst r: Result<number> = { ok: true, value: 42 };\nconsole.log(unwrap(r)); // => 42\n\nconst maybePort: number | undefined = 8080;\nassertDefined(maybePort, '缺少 port');\nconsole.log(maybePort + 1); // 断言后 maybePort 收窄为 number，可直接做运算\n// => 8081\n\nconsole.log(describe('hi'), describe(3.14159), describe(['a']));\n// => 字符串：hi 数字：3.14 数组，长度 1",
+        "explanation": "第 1 段：Shape 是带 kind 字面量标签的可辨识联合。switch (s.kind) 让每个 case 分支内 s 自动收窄，可以直接访问 radius/width 等字段而无需 as。default 分支中的 const _exhaustive: never = s 是穷尽性检查：只有当所有分支都被处理、s 的类型退化为 never 时才合法。\n\n第 2 段：Result<T> 用 ok: true / ok: false 作为判别标签。isOk 的返回类型 r is Ok<T> 是类型谓词，告诉编译器“返回 true 时 r 就是 Ok<T>”。unwrap 中 if (isOk(r)) 内部可以安全访问 r.value，else 分支则自动收窄为 Err，可访问 r.message。\n\n第 3 段：assertDefined 返回类型 asserts v is T，执行后调用处的变量类型会被永久收窄为 T，之后就能直接做算术、访问属性，不再需要可选链或非空断言。\n\n第 4 段：Array.isArray 和 typeof 是内置收窄手段，多分支 if 后 TS 会用排除法得出最后一个分支的精确类型。\n\n运行演示部分验证了四个机制在真实代码中的行为，全部输出符合预期。"
       },
       "keyPoints": [
-        "with 语句协议：进入调用 `__enter__()`，离开（含异常、return）必定调用 `__exit__(exc_type, exc_val, exc_tb)`；`__exit__` 返回 True 表示吞掉异常。",
-        "`@contextmanager` 生成器版：yield 之前 = `__enter__`，yield 的值 = as 绑定值，yield 之后 = `__exit__`；with 块中的异常会在 yield 处被重新抛出。",
-        "生成器版必须用 `try/finally` 或 `try/except` 包住 `yield`，否则异常路径下清理代码会被跳过，导致连接/文件/锁泄漏。",
-        "`contextlib` 工具箱：`suppress` 优雅吞预期异常、`nullcontext` 消除有无资源的分支、`closing` 适配仅有 `.close()` 的对象。",
-        "`ExitStack` / `AsyncExitStack` 用于运行时数量不定的资源，按逆序自动注销；异步资源请使用 `async with`，不要混用同步上下文管理器。"
+        "可辨识联合（Discriminated Union）通过字面量标签字段让非法状态无法被表示，是建模 API 响应、action、状态机的首选方案",
+        "自定义类型守卫的语法是 (x): x is T，返回 boolean 的同时把类型信息传给编译器",
+        "断言函数 asserts x is T 用于校验函数，调用后外部变量的类型被收窄，可替代非空断言 !",
+        "穷尽性检查 const _e: never = value 能在新增联合分支时立刻编译报错，是团队协作的防线",
+        "收窄只在当前函数作用域内有效，变量被重新赋值或传入回调后收窄会失效，避免滥用 as"
       ],
       "exercise": {
-        "description": "实现一个 `@contextmanager` 装饰的 `temp_env(key, value)`：进入时把环境变量 `os.environ[key]` 设置为 `value`（并保存旧值），退出时无论正常还是异常，都恢复到进入前的状态——如果进入前该变量不存在，则退出时将其删除。并用它验证：在一个 with 块内修改 `os.environ['APP_MODE']` 后，退出该块 `APP_MODE` 会精确恢复原样。",
-        "hint": "先用 `os.environ.get(key)` 判断旧值是否存在，把「是否存在」和「旧值」一起记录下来（比如用一个哨兵对象或元组）；然后在 `try` 中设置新值并 `yield`，在 `finally` 中根据记录决定是 `os.environ[key] = old` 还是 `os.environ.pop(key, None)`。注意 `os.environ.pop(key, None)` 的第二个参数用于避免 KeyError。",
+        "description": "实现一个安全的 JSON 解析工具：定义 Result<T> = { ok: true; value: T } | { ok: false; message: string }，编写 parseJsonSafe(input: string): Result<unknown>（捕获 JSON.parse 的异常）；再编写 formatResult(r: Result<unknown>): string，要求使用 switch 配合判别字段完成所有分支处理，并在 default 中加入 never 穷尽性检查。",
+        "hint": "先用 ok 字面量字段作为判别标签定义联合类型；parseJsonSafe 内部用 try/catch 包裹 JSON.parse；formatResult 里 switch (r.ok) 的 case true / case false 即可完成收窄，注意 default 分支要把 r 赋值给 never 类型的变量。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全下面的生成器上下文管理器，使其在进入时持有文件句柄并 yield 出去，退出时必定关闭文件。",
-            "codeContext": "from contextlib import contextmanager\n\n@contextmanager\ndef managed_open(path):\n    f = open(path, 'w', encoding='utf-8')\n    try:\n        ________\n    finally:\n        f.close()",
+            "question": "补全下面的自定义类型守卫，使 TS 能把 unknown 收窄为 string[]。",
+            "codeContext": "function isStringArray(v: unknown): ________ {\n  return Array.isArray(v) && v.every((x) => typeof x === 'string');\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "@contextmanager\ndef managed_open(path):\n    f = open(path, 'w', encoding='utf-8')\n    try:\n        ",
+                "content": "function isStringArray(v: unknown): ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[选择返回类型]",
                 "options": [
-                  "yield f",
-                  "return f",
-                  "print(f)",
-                  "pass"
+                  "v is string[]",
+                  "boolean",
+                  "string[]",
+                  "asserts v is string[]"
                 ],
-                "correctAnswer": "yield f"
+                "correctAnswer": "v is string[]"
               },
               {
                 "type": "text",
-                "content": "\n    finally:\n        f.close()",
+                "content": " {\n  return Array.isArray(v) && v.every((x) => typeof x === 'string');\n}",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "yield f",
-            "explanation": "`@contextmanager` 要求被装饰的函数是一个生成器函数：`yield` 的值就是 `with ... as f` 中 f 绑定的对象。`return f` 在生成器函数里意味着函数正常结束，`with` 拿到的是 StopIteration 的值且在 Python 3.7+ 中会触发 RuntimeError，无法把句柄传出去。`finally` 保证即使写入过程抛异常，文件也会被关闭。"
+            "correctAnswer": "v is string[]",
+            "explanation": "类型谓词的语法是「参数名 is 类型」，返回值在运行时仍是 boolean，但额外向编译器传递收窄信息。写 boolean 则调用方无法收窄；写 string[] 是错误的返回类型；asserts v is string[] 是断言函数语法，必须搭配无返回值（void）的函数使用。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "用类实现上下文管理器时，关于 `__exit__` 的签名与返回值语义，下列哪一项是正确的？",
-            "codeContext": "class Conn:\n    def __enter__(self):\n        ...\n    def __exit__(self, ...):\n        ...",
+            "question": "在 switch 的 default 分支写 const _e: never = value 这种「穷尽性检查」的主要目的是什么？",
+            "codeContext": "switch (action.type) {\n  case 'add': return state + 1;\n  case 'sub': return state - 1;\n  default: {\n    const _e: never = action;\n    return _e;\n  }\n}",
             "segments": null,
             "options": [
-              "def __exit__(self, exc_type, exc_val, exc_tb)；返回 True 表示吞掉异常，返回 False/None 表示异常继续向外传播",
-              "def __exit__(self)；返回 True 表示正常退出，返回 False 表示发生过异常",
-              "def __exit__(self, exc_type, exc_val, exc_tb)；返回 False 表示吞掉异常，返回 True 表示继续抛出",
-              "def __exit__(self, error)；返回被处理的异常对象即可吞掉异常"
+              "让 switch 语句在运行时执行得更快",
+              "在编译期强制要求联合类型的每个分支都被处理，未来新增分支时立刻报错",
+              "把变量的类型转换成 any，方便后续访问任意属性",
+              "允许 switch 的每个 case 省略 return 语句"
             ],
-            "correctAnswer": "def __exit__(self, exc_type, exc_val, exc_tb)；返回 True 表示吞掉异常，返回 False/None 表示异常继续向外传播",
-            "explanation": "CPython 约定 `__exit__` 接收三个参数：无异常时三者均为 None；有异常时分别是异常类型、实例和 traceback。返回值会被 bool() 判定，为真则抑制该异常。实际工程中几乎总是返回 None（让异常正常传播），只有在明确的「预期失败可忽略」场景才返回 True，且必须配日志，否则会掩盖真实故障。"
+            "correctAnswer": "在编译期强制要求联合类型的每个分支都被处理，未来新增分支时立刻报错",
+            "explanation": "当所有 case 都处理完后，value 的类型会退化为 never，赋值给 never 变量是合法的；一旦联合类型新增了分支却未处理，value 就不再是 never，赋值会立即编译失败。它是一种纯编译期的保护机制，与运行时性能无关，也不会改变类型语义。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "运行下面的代码，控制台最终的输出顺序是什么？",
-            "codeContext": "import contextlib\n\n@contextlib.contextmanager\ndef tag(name):\n    print(f\"<{name}>\")\n    try:\n        yield\n    finally:\n        print(f\"</{name}>\")\n\nwith tag(\"a\"):\n    with tag(\"b\"):\n        raise ValueError(\"boom\")",
+            "question": "假设 f 中所有收窄都合法，下面代码的控制台输出是什么？",
+            "codeContext": "function f(x: string | number | null): string {\n  if (x === null) return 'null';\n  if (typeof x === 'string') return `s:${x.toUpperCase()}`;\n  return `n:${x + 1}`;\n}\n\nconsole.log(f('ts'), f(2), f(null));",
             "segments": null,
             "options": [
-              "<a>\\n<b>\\n</b>\\n</a>，随后抛出 ValueError: boom",
-              "<a>\\n<b>\\n</a>\\n</b>，随后抛出 ValueError: boom",
-              "<a>\\n<b>\\n</b>\\n</a>，程序正常结束，无异常输出",
-              "只输出 <a>\\n<b> 就立即抛出 ValueError: boom"
+              "s:TS n:3 null",
+              "s:ts n:3 null",
+              "s:TS n:2 null",
+              "TS 3 null"
             ],
-            "correctAnswer": "<a>\\n<b>\\n</b>\\n</a>，随后抛出 ValueError: boom",
-            "explanation": "嵌套 with 的进入顺序是外层先、内层后，所以先打印 `<a>` 再打印 `<b>`。内层抛出的 ValueError 会在内层 `yield` 处被重新抛出，先触发内层 `finally` 打印 `</b>`；由于 `finally` 中没有 return 或捕获，异常继续向上传播到外层，触发外层 `finally` 打印 `</a>`；两层都没有抑制异常，最终 ValueError 冒泡到顶层。这正是 `try/finally` 保证清理顺序（LIFO，后进先出）的经典示例。"
+            "correctAnswer": "s:TS n:3 null",
+            "explanation": "f('ts')：'ts' 是 string，走 typeof 分支，toUpperCase() 后得到 's:TS'。f(2)：经过前两个判断后 x 收窄为 number，2 + 1 = 3，输出 'n:3'。f(null)：第一个判断直接命中，返回字符串 'null'。console.log 用空格拼接三个结果，最终为 s:TS n:3 null。"
           }
         ]
       }
