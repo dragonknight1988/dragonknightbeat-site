@@ -1,38 +1,39 @@
 {
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "contents": [
     {
-      "id": "prog-2026-11-18",
-      "date": "2026-11-18",
-      "title": "TypeScript 类型收窄（Type Narrowing）与类型守卫实战",
-      "summary": "掌握可辨识联合、自定义类型守卫与断言函数，让 TypeScript 在运行时帮你消除 null 与非法状态。",
-      "difficulty": "中级",
-      "concept": "类型收窄（Type Narrowing）是 TypeScript 最核心、也最容易被低估的能力：编译器根据你的运行时判断（typeof、===、Array.isArray、in、instanceof 等），把一个宽泛的联合类型在某个代码块内“收窄”成更精确的类型。理解这一点之后，你会发现很多 as 断言其实都是多余的，甚至是有害的——as 只是让你闭嘴，而收窄是让编译器真的理解你的逻辑。\n\n在真实项目里，最实用的收窄武器是「可辨识联合（Discriminated Union）」：给联合类型的每个分支加一个共同的字面量字段（比如 kind / status / type / ok），然后用 switch 或 if 精确匹配。它特别适合描述 API 返回值、Redux action、状态机、组件的多种 props 形态。相比用一个大而全的可选字段对象（所有字段都可选），可辨识联合能让非法状态“无法被表示”，这就是所谓的 make impossible states impossible。\n\n当 TypeScript 内置的收窄规则不够用时，就要用「自定义类型守卫」（type predicate，语法是 x is T）和「断言函数」（asserts x is T）。前者返回 boolean 但告诉编译器：如果返回 true，参数就是 T；后者执行完后直接改变外部变量的类型。典型场景包括校验后端返回的 JSON、判断一个 unknown 是否是某个 DTO、以及框架层的参数校验函数。\n\n工程经验上有一个非常重要的技巧叫「穷尽性检查（Exhaustiveness Check）」：在 switch 的 default 分支里写 const _never: never = 变量。一旦未来有人给联合类型新增了一个分支但忘了处理，这里就会立刻编译报错，而不是把 undefined 传播到线上。这个小技巧在多人协作、长期维护的代码库里价值极高，相当于给类型加了一道“单元测试”。\n\n最后提醒几点容易踩的坑：其一，收窄只在同一个函数作用域内有效，把变量传给另一个函数后收窄信息会丢失（这也是断言函数存在的意义）；其二，回调里的变量如果可能被重新赋值，收窄会失效，解决办法是先 const 一份副本；其三，不要为了通过编译滥用 as unknown as T，它会把类型安全的收益全部抵消掉。",
+      "id": "prog-2026-11-19",
+      "date": "2026-11-19",
+      "title": "React 19 useOptimistic + useActionState：Server Actions 的乐观更新架构",
+      "summary": "用 useOptimistic 与 useActionState 构建零等待反馈的表单与列表交互，并理解 React 19 中 Action 的并发、回滚与状态生命周期机制。",
+      "difficulty": "高级",
+      "concept": "在 Next.js App Router + React 19 的体系里，Server Actions 把「请求-响应-更新 UI」压缩成一次函数调用，但用户体验的核心矛盾并没有消失：网络往返仍然需要时间。乐观更新（Optimistic Update）的思路是「先相信用户是对的」，立即把变更写入本地视图，再用服务端真实结果替换或回滚。React 19 把这套模式内建为 useOptimistic 与 useActionState 两个原语，让乐观状态不再依赖手写 Redux/Zustand 的临时层。\n\nuseOptimistic(state, updateFn) 返回 [optimisticState, addOptimistic]。它有几个关键性质：第一，optimisticState 是派生值而非独立 store，当底层真实 state 更新时，所有未落地的乐观补丁会被自动丢弃，视图回落到服务端真相；第二，addOptimistic(payload) 只在某个 Action 执行期间生效，React 用 transition 追踪生命周期，Action 结束（无论成功或失败）即自动清理，因此你永远不需要手动「撤销」乐观状态；第三，updateFn 是纯函数 (currentState, payload) => nextState，必须不可变更新，否则并发时会出现难以复现的脏渲染。\n\nuseActionState(action, initialState, permalink?) 则是表单状态机：它把 Server Action 包装为带 pending / error 语义的派发函数，返回 [state, formAction, isPending]。注意 state 不只是表单字段，而是 action 的完整返回值，所以你可以把校验错误、写入后的实体、甚至 revalidate 之后的数据都塞进去。在 React 19 中，action 内部的 setState 同样会自动批处理并进入 transition，这意味着在 action 里 await 一个 fetch 不会阻塞 UI 卡死，而是优雅地保持 isPending。\n\n工程上最常见的坑有三个。其一，乐观状态与真实状态的键必须一致：如果服务端返回的实体 id 与临时 id 不同，要用 updateFn 里的映射替换，而不是简单 append，否则会出现「重复条目」。其二，revalidatePath/revalidateTag 与 useOptimistic 的顺序关系：Action 中应先写库再 revalidate，React 会在新的服务端数据到达后自动清空乐观补丁；若你额外手动 setState，容易与 RSC 的刷新产生两次渲染闪烁。其三，并发：用户快速连续点击提交时，多个 Action 并行，乐观补丁按调用顺序叠加，因此 updateFn 应基于 payload 的 id 做 upsert，而不是 push。\n\n再往上一层，这个模式适合与 Server Components 的流式渲染结合：列表数据由 RSC 提供，交互部分抽成 'use client' 的薄壳，乐观逻辑只存在于客户端壳内。这样既保留了服务端渲染的数据权威性，又拿到了客户端的即时反馈，是当前 Next.js 中「什么时候上客户端状态」的标准答案：只有交互产生的临时状态才进客户端，服务端数据尽量不复制到客户端 store。",
       "codeExample": {
-        "language": "TypeScript",
-        "code": "// ===== 1. 可辨识联合（Discriminated Union）+ switch 收窄 =====\ntype Shape =\n  | { kind: 'circle'; radius: number }\n  | { kind: 'rect'; width: number; height: number }\n  | { kind: 'triangle'; base: number; height: number };\n\nfunction calcArea(s: Shape): number {\n  switch (s.kind) {\n    case 'circle':\n      return Math.PI * s.radius ** 2; // s 已收窄为 circle 分支，可安全访问 radius\n    case 'rect':\n      return s.width * s.height;\n    case 'triangle':\n      return (s.base * s.height) / 2;\n    default: {\n      // 穷尽性检查：所有分支处理完后，s 必须是 never\n      // 若未来新增 kind 却忘了处理，这里会直接编译报错\n      const _exhaustive: never = s;\n      throw new Error(`未处理的形状: ${JSON.stringify(_exhaustive)}`);\n    }\n  }\n}\n\n// ===== 2. 自定义类型守卫（type predicate） =====\ntype Ok<T> = { ok: true; value: T };\ntype Err = { ok: false; message: string };\ntype Result<T> = Ok<T> | Err;\n\nfunction isOk<T>(r: Result<T>): r is Ok<T> {\n  return r.ok === true;\n}\n\nfunction unwrap<T>(r: Result<T>): T {\n  if (isOk(r)) {\n    return r.value; // 这里 r 自动收窄为 Ok<T>\n  }\n  throw new Error(r.message); // 否则分支收窄为 Err\n}\n\n// ===== 3. 断言函数（asserts x is T） =====\nfunction assertDefined<T>(\n  v: T | null | undefined,\n  msg = '值不能为空'\n): asserts v is T {\n  if (v === null || v === undefined) throw new Error(msg);\n}\n\n// ===== 4. 内置收窄：typeof / Array.isArray =====\nfunction describe(input: string | number | string[]): string {\n  if (Array.isArray(input)) return `数组，长度 ${input.length}`;\n  if (typeof input === 'string') return `字符串：${input}`;\n  return `数字：${input.toFixed(2)}`; // 剩余分支收窄为 number\n}\n\n// ===== 运行演示 =====\nconst shapes: Shape[] = [\n  { kind: 'circle', radius: 2 },\n  { kind: 'rect', width: 3, height: 4 },\n  { kind: 'triangle', base: 6, height: 5 },\n];\nconsole.log(shapes.map((s) => calcArea(s)));\n// => [ 12.566..., 12, 15 ]\n\nconst r: Result<number> = { ok: true, value: 42 };\nconsole.log(unwrap(r)); // => 42\n\nconst maybePort: number | undefined = 8080;\nassertDefined(maybePort, '缺少 port');\nconsole.log(maybePort + 1); // 断言后 maybePort 收窄为 number，可直接做运算\n// => 8081\n\nconsole.log(describe('hi'), describe(3.14159), describe(['a']));\n// => 字符串：hi 数字：3.14 数组，长度 1",
-        "explanation": "第 1 段：Shape 是带 kind 字面量标签的可辨识联合。switch (s.kind) 让每个 case 分支内 s 自动收窄，可以直接访问 radius/width 等字段而无需 as。default 分支中的 const _exhaustive: never = s 是穷尽性检查：只有当所有分支都被处理、s 的类型退化为 never 时才合法。\n\n第 2 段：Result<T> 用 ok: true / ok: false 作为判别标签。isOk 的返回类型 r is Ok<T> 是类型谓词，告诉编译器“返回 true 时 r 就是 Ok<T>”。unwrap 中 if (isOk(r)) 内部可以安全访问 r.value，else 分支则自动收窄为 Err，可访问 r.message。\n\n第 3 段：assertDefined 返回类型 asserts v is T，执行后调用处的变量类型会被永久收窄为 T，之后就能直接做算术、访问属性，不再需要可选链或非空断言。\n\n第 4 段：Array.isArray 和 typeof 是内置收窄手段，多分支 if 后 TS 会用排除法得出最后一个分支的精确类型。\n\n运行演示部分验证了四个机制在真实代码中的行为，全部输出符合预期。"
+        "language": "tsx",
+        "code": "// app/todos/actions.ts —— Server Action（服务端）\n'use server';\n\nimport { revalidatePath } from 'next/cache';\nimport { db } from '@/lib/db';\n\nexport type Todo = { id: string; text: string; done: boolean };\nexport type TodoState = { todos: Todo[]; error?: string };\n\nexport async function addTodo(\n  prevState: TodoState,\n  formData: FormData\n): Promise<TodoState> {\n  const text = String(formData.get('text') ?? '').trim();\n  if (!text) return { ...prevState, error: '内容不能为空' };\n\n  // 1. 持久化：返回真实 id，用于替换乐观临时 id\n  const created = await db.todo.create({ data: { text, done: false } });\n\n  // 2. 让服务端组件重新渲染，带上最新数据\n  revalidatePath('/todos');\n\n  // 3. 返回完整新状态，useActionState 会用它替换乐观状态\n  return {\n    todos: [...prevState.todos, { id: created.id, text, done: false }],\n  };\n}\n\n// app/todos/todo-form.tsx —— 客户端交互薄壳\n'use client';\n\nimport { useActionState, useOptimistic, useRef, useState } from 'react';\nimport { addTodo, type Todo, type TodoState } from './actions';\n\nexport function TodoForm({ initialTodos }: { initialTodos: Todo[] }) {\n  const [state, formAction, isPending] = useActionState<TodoState, FormData>(\n    addTodo,\n    { todos: initialTodos }\n  );\n\n  // 乐观状态：真实 state 更新后，未落地的补丁会被自动丢弃\n  const [optimisticTodos, addOptimistic] = useOptimistic(\n    state.todos,\n    (current: Todo[], newTodo: Todo) => {\n      // 用 id 做 upsert，保证并发提交不产生重复条目\n      const exists = current.some((t) => t.id === newTodo.id);\n      return exists\n        ? current.map((t) => (t.id === newTodo.id ? newTodo : t))\n        : [...current, newTodo];\n    }\n  );\n\n  const formRef = useRef<HTMLFormElement>(null);\n\n  return (\n    <div>\n      <form\n        ref={formRef}\n        action={async (formData) => {\n          const text = String(formData.get('text') ?? '').trim();\n          if (!text) return;\n\n          // 立刻写入乐观补丁，UI 零延迟反馈\n          addOptimistic({ id: `temp-${Date.now()}`, text, done: false });\n          formRef.current?.reset();\n          await formAction(formData);\n        }}\n      >\n        <input name=\"text\" placeholder=\"新待办...\" disabled={isPending} />\n        <button type=\"submit\" disabled={isPending}>\n          {isPending ? '提交中…' : '添加'}\n        </button>\n      </form>\n\n      {state.error && <p role=\"alert\">{state.error}</p>}\n\n      <ul>\n        {optimisticTodos.map((todo) => (\n          <li key={todo.id} style={{ opacity: todo.id.startsWith('temp-') ? 0.6 : 1 }}>\n            {todo.text}\n          </li>\n        ))}\n      </ul>\n    </div>\n  );\n}\n\n// app/todos/page.tsx —— Server Component 负责权威数据\nimport { db } from '@/lib/db';\nimport { TodoForm } from './todo-form';\n\nexport default async function TodosPage() {\n  const todos = await db.todo.findMany({ orderBy: { createdAt: 'desc' } });\n  return <TodoForm initialTodos={todos} />;\n}",
+        "explanation": "1) actions.ts 中的 addTodo 是 Server Action：它接收 useActionState 的上一个 state 与 FormData，写库后调用 revalidatePath 让 RSC 重新渲染，并返回新 state。注意返回的是完整 state 而非增量。\n2) useActionState(addTodo, { todos: initialTodos }) 建立表单状态机，返回的 isPending 来自 React 内建的 transition，无需自己维护 loading。\n3) useOptimistic(state.todos, updateFn) 创建派生的乐观列表。updateFn 必须纯函数、不可变更新；这里用 id upsert 防止快速连续提交时产生重复项。\n4) form 的 action 包装函数里，先 addOptimistic() 立即渲染，再 await formAction()。Action 一旦结束，React 会自动丢弃临时补丁，用服务端返回的 todos 替换，临时 id 自然消失。\n5) 临时条目用 id.startsWith('temp-') 降低 opacity，是常见 UX 手法，提示用户该条尚未落库。\n6) page.tsx 保持 Server Component，只有交互壳是客户端组件，数据权威性仍在服务端。"
       },
       "keyPoints": [
-        "可辨识联合（Discriminated Union）通过字面量标签字段让非法状态无法被表示，是建模 API 响应、action、状态机的首选方案",
-        "自定义类型守卫的语法是 (x): x is T，返回 boolean 的同时把类型信息传给编译器",
-        "断言函数 asserts x is T 用于校验函数，调用后外部变量的类型被收窄，可替代非空断言 !",
-        "穷尽性检查 const _e: never = value 能在新增联合分支时立刻编译报错，是团队协作的防线",
-        "收窄只在当前函数作用域内有效，变量被重新赋值或传入回调后收窄会失效，避免滥用 as"
+        "useOptimistic 返回的是派生值：真实 state 更新时未落地的乐观补丁自动丢弃，无需手动回滚",
+        "addOptimistic 只在 Action 执行期间生效，Action 结束（成功或失败）由 React 自动清理生命周期",
+        "updateFn 必须是纯函数且不可变更新，建议按业务 id 做 upsert 而非 push，以支持并发提交",
+        "useActionState 的 state 是 action 的完整返回值，可同时承载数据、校验错误与服务端结果",
+        "乐观临时 id 与服务端真实 id 的替换必须在 updateFn 或 action 返回值中完成，否则会出现重复条目",
+        "Server Component 负责权威数据 + 客户端薄壳负责交互与乐观状态，是 Next.js 中最小化客户端状态的标准架构"
       ],
       "exercise": {
-        "description": "实现一个安全的 JSON 解析工具：定义 Result<T> = { ok: true; value: T } | { ok: false; message: string }，编写 parseJsonSafe(input: string): Result<unknown>（捕获 JSON.parse 的异常）；再编写 formatResult(r: Result<unknown>): string，要求使用 switch 配合判别字段完成所有分支处理，并在 default 中加入 never 穷尽性检查。",
-        "hint": "先用 ok 字面量字段作为判别标签定义联合类型；parseJsonSafe 内部用 try/catch 包裹 JSON.parse；formatResult 里 switch (r.ok) 的 case true / case false 即可完成收窄，注意 default 分支要把 r 赋值给 never 类型的变量。",
+        "description": "实现一个「点赞」Server Action 的乐观更新版本：给定 Post 组件，用户点击爱心后立即看到数字 +1 且爱心变红（即使网络很慢），若服务端写入失败则数字自动恢复。要求支持快速连续点击多次。",
+        "hint": "用 useOptimistic 维护 { count, liked }，payload 直接传 delta（+1/-1）而不是布尔值，这样多次点击可以叠加。updateFn 中对 count 做 Math.max(0, ...) 保护下界。失败回滚无需写代码——只要 action 抛错或返回原 state，React 就会丢弃补丁；但要确保 action 不要把错误吞掉后返回错误的新 state。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全下面的自定义类型守卫，使 TS 能把 unknown 收窄为 string[]。",
-            "codeContext": "function isStringArray(v: unknown): ________ {\n  return Array.isArray(v) && v.every((x) => typeof x === 'string');\n}",
+            "question": "补全点赞组件中 useOptimistic 的调用与更新函数，使其支持并发点击叠加。",
+            "codeContext": "'use client';\nimport { useOptimistic } from 'react';\n\nfunction LikeButton({ count, liked }: { count: number; liked: boolean }) {\n  const [optimistic, addOptimistic] = __BLANK1__ (\n    { count, liked },\n    (state, delta: number) => ({\n      count: __BLANK2__,\n      liked: delta > 0,\n    })\n  );\n  // ...\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "function isStringArray(v: unknown): ",
+                "content": "const [optimistic, addOptimistic] = ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +41,75 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择返回类型]",
+                "placeholder": "[选择]",
                 "options": [
-                  "v is string[]",
-                  "boolean",
-                  "string[]",
-                  "asserts v is string[]"
+                  "useOptimistic",
+                  "useState",
+                  "useReducer",
+                  "useTransition"
                 ],
-                "correctAnswer": "v is string[]"
+                "correctAnswer": "useOptimistic"
               },
               {
                 "type": "text",
-                "content": " {\n  return Array.isArray(v) && v.every((x) => typeof x === 'string');\n}",
+                "content": "(\n  { count, liked },\n  (state, delta: number) => ({\n    count: ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "count + 1",
+                  "Math.max(0, state.count + delta)",
+                  "delta",
+                  "state.count"
+                ],
+                "correctAnswer": "Math.max(0, state.count + delta)"
+              },
+              {
+                "type": "text",
+                "content": ",\n    liked: delta > 0,\n  })\n);",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "v is string[]",
-            "explanation": "类型谓词的语法是「参数名 is 类型」，返回值在运行时仍是 boolean，但额外向编译器传递收窄信息。写 boolean 则调用方无法收窄；写 string[] 是错误的返回类型；asserts v is string[] 是断言函数语法，必须搭配无返回值（void）的函数使用。"
+            "correctAnswer": "useOptimistic, Math.max(0, state.count + delta)",
+            "explanation": "useOptimistic 是 React 19 提供的创建「派生乐观状态」的 Hook，签名 useOptimistic(state, updateFn)。count 不能写死 count + 1，因为并发多次点击要按 delta 叠加；同时用 Math.max(0, ...) 防止点赞/取消点赞快速交替时计数为负。注意 updateFn 中应使用入参 state 而不是外部的 count 闭包，否则并发场景会基于过期值计算。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "在 switch 的 default 分支写 const _e: never = value 这种「穷尽性检查」的主要目的是什么？",
-            "codeContext": "switch (action.type) {\n  case 'add': return state + 1;\n  case 'sub': return state - 1;\n  default: {\n    const _e: never = action;\n    return _e;\n  }\n}",
+            "question": "关于 useOptimistic 返回的乐观状态，下列说法正确的是？",
+            "codeContext": "const [optimisticTodos, addOptimistic] = useOptimistic(state.todos, updateFn);",
             "segments": null,
             "options": [
-              "让 switch 语句在运行时执行得更快",
-              "在编译期强制要求联合类型的每个分支都被处理，未来新增分支时立刻报错",
-              "把变量的类型转换成 any，方便后续访问任意属性",
-              "允许 switch 的每个 case 省略 return 语句"
+              "addOptimistic 会永久修改 state.todos，需要手动写 reset 逻辑恢复",
+              "当包裹它的 Action 完成、真实 state 更新时，未落地的乐观补丁会被 React 自动丢弃",
+              "updateFn 可以直接 push 到数组并返回同一引用以提升性能",
+              "useOptimistic 必须与 useState 一起使用，否则会报错"
             ],
-            "correctAnswer": "在编译期强制要求联合类型的每个分支都被处理，未来新增分支时立刻报错",
-            "explanation": "当所有 case 都处理完后，value 的类型会退化为 never，赋值给 never 变量是合法的；一旦联合类型新增了分支却未处理，value 就不再是 never，赋值会立即编译失败。它是一种纯编译期的保护机制，与运行时性能无关，也不会改变类型语义。"
+            "correctAnswer": "当包裹它的 Action 完成、真实 state 更新时，未落地的乐观补丁会被 React 自动丢弃",
+            "explanation": "useOptimistic 的核心设计就是「派生 + 自动清理」：乐观补丁的生命周期绑定在 transition/Action 上，结束后自动丢弃，失败时相当于自动回滚，因此不需要手动 reset。updateFn 必须返回新引用（不可变更新），否则 React 无法检测变化且在并发下会产生脏渲染；useOptimistic 也不依赖 useState，可直接基于 props/state 使用。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "假设 f 中所有收窄都合法，下面代码的控制台输出是什么？",
-            "codeContext": "function f(x: string | number | null): string {\n  if (x === null) return 'null';\n  if (typeof x === 'string') return `s:${x.toUpperCase()}`;\n  return `n:${x + 1}`;\n}\n\nconsole.log(f('ts'), f(2), f(null));",
+            "question": "网络较慢（约 2 秒）时，用户在 0ms、300ms、600ms 快速点击三次「点赞」，下面哪种描述符合最终 UI 表现？",
+            "codeContext": "function LikeButton({ count, liked }) {\n  const [optimistic, addOptimistic] = useOptimistic(\n    { count, liked },\n    (state, delta) => ({ count: Math.max(0, state.count + delta), liked: delta > 0 })\n  );\n\n  return (\n    <form action={async () => {\n      addOptimistic(1);\n      await likePost(); // Server Action，耗时 2s，最终 count 服务端 +3\n    }}>\n      <button type=\"submit\">❤ {optimistic.count}</button>\n    </form>\n  );\n}",
             "segments": null,
             "options": [
-              "s:TS n:3 null",
-              "s:ts n:3 null",
-              "s:TS n:2 null",
-              "TS 3 null"
+              "点击期间数字依次 +1 递增显示，三次 Action 结束后回落为服务端最终值（+3）",
+              "必须等第一次请求返回后才能第二次点击，否则按钮无效",
+              "乐观补丁会永久累加，最终显示原值 +6",
+              "点击后立即显示服务端最终值，中间过程无变化"
             ],
-            "correctAnswer": "s:TS n:3 null",
-            "explanation": "f('ts')：'ts' 是 string，走 typeof 分支，toUpperCase() 后得到 's:TS'。f(2)：经过前两个判断后 x 收窄为 number，2 + 1 = 3，输出 'n:3'。f(null)：第一个判断直接命中，返回字符串 'null'。console.log 用空格拼接三个结果，最终为 s:TS n:3 null。"
+            "correctAnswer": "点击期间数字依次 +1 递增显示，三次 Action 结束后回落为服务端最终值（+3）",
+            "explanation": "每次 addOptimistic(1) 都会在 Action 期间叠加一次补丁，UI 立即依次显示 +1、+2、+3，实现零延迟反馈。当三个 Action 陆续完成、真实 state 刷新后，所有未落地补丁被自动丢弃，显示服务端权威值。这正是用 delta 而非布尔值做 payload 的原因；若 payload 是 liked: true，多次点击就只会显示一次变化。"
           }
         ]
       }
