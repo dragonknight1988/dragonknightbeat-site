@@ -1,8 +1,8 @@
 {
- "date": "2026-11-19",
+ "date": "2026-11-20",
  "briefing": {
-  "date": "2026-11-19",
-  "quote": "As agents move from 'good at conversation' to 'good at getting things done,' the real threshold is no longer model capability, but the boundaries and trust of engineering.",
+  "date": "November 20, 2026",
+  "quote": "As agents begin making decisions on our behalf, every iteration of the toolchain is redefining the boundaries of productivity.",
   "sections": [
    {
     "id": "openclaw",
@@ -10,90 +10,90 @@
     "icon": "🦞",
     "articles": [
      {
-      "id": "brief-oc-01",
-      "title": "OpenClaw 0.9 Released: Sandbox Runtime and Official Skill Marketplace Go Live",
-      "summary": "OpenClaw 0.9 introduces a new sandbox runtime and skill marketplace, boosting both the safety and reusability of agent execution.",
-      "detail": "Open-source personal agent framework OpenClaw has released version 0.9, with core changes including a new process-level sandbox runtime, a fine-grained permission declaration mechanism, and an official skill marketplace. Developers can package common workflows into distributable skills that are safely loaded via signature verification and permission allowlists. Official figures show cold-start time is down about 40% in the new version, memory usage for long-running tasks is significantly optimized, and local deployment and end-to-end encryption capabilities are retained.",
-      "impact": "Competition among agent frameworks is shifting from prompt tuning to runtime engineering and ecosystem governance. For enterprises, sandboxing and permission declarations lower the compliance barrier to integrating agents into production systems; for indie developers, the skill marketplace offers a measurable path to monetization.",
+      "id": "brief-001",
+      "title": "OpenClaw 1.4 Released: Multi-Agent Orchestration Engine ClawFlow Goes Live",
+      "summary": "OpenClaw 1.4 introduces the ClawFlow orchestration engine, supporting parallel multi-agent collaboration and visual workflow debugging.",
+      "detail": "OpenClaw officially released version 1.4 today, with the headline feature being the built-in multi-agent orchestration engine ClawFlow. Developers can define agent roles, dependencies, and fallback strategies via declarative YAML or a visual canvas, while the runtime scheduler automatically handles task decomposition, context sharing, and result aggregation. The new version also cuts cold-start latency by around 40 percent and adds sandbox-level permission controls, allowing separate authorization for file, network, and shell operations.",
+      "impact": "Multi-agent collaboration is moving from hand-stitched scripts to engineered delivery, sharply lowering the cost for small and medium teams to build automated workflows and potentially accelerating enterprise agent adoption.",
       "source": "OpenClaw Official Release Notes / GitHub Releases"
      },
      {
-      "id": "brief-oc-02",
-      "title": "Deep OpenClaw–Home Assistant Integration Brings Home Automation Into the Agent Era",
-      "summary": "A community plugin enables OpenClaw to directly call Home Assistant device capabilities, unifying voice and intent interactions under a single agent.",
-      "detail": "The community-maintained openclaw-homebridge plugin has completed standardized mapping of Home Assistant devices and scenes, letting users trigger complex automation flows through natural language — for example, dynamically adjusting air conditioning and lighting after detecting the user has returned home, combining calendar, weather, and power-usage data. The plugin supports local inference fallback, allowing core commands to execute offline, and provides a full operation audit log.",
-      "impact": "Smart homes have long been plagued by fragmented voice commands and rigid rule engines. Agentic interaction unifies intent understanding with execution orchestration, potentially reshaping the form factor and user expectations of hub-style products.",
-      "source": "Home Assistant Community Forum / Open Source Repository"
+      "id": "brief-002",
+      "title": "ClawHub Skill Marketplace Tops 10,000; MCP Ecosystem Support Becomes Standard",
+      "summary": "ClawHub's total skill count has surpassed 10,000, with a new MCP compatibility layer that turns any MCP service into an OpenClaw skill in one click.",
+      "detail": "OpenClaw's community skill marketplace ClawHub announced that its skill count has surpassed 10,000, covering high-frequency scenarios such as browser automation, data analysis, office documents, CI/CD, and design mockup replication. This update adds an MCP (Model Context Protocol) compatibility layer, allowing any third-party service that implements an MCP Server to automatically register as an OpenClaw skill via a converter, preserving its original tool descriptions and permission model. The team also launched skill quality ratings and security audit badges to help users identify trusted plugins.",
+      "impact": "Protocol interoperability breaks down fragmentation in the skill ecosystem, letting developers reuse existing MCP assets instead of reinventing the wheel; tiered skill quality ratings also help reduce supply-chain security risks.",
+      "source": "ClawHub Official Announcement / Community Weekly"
      },
      {
-      "id": "brief-oc-03",
-      "title": "OpenClaw Surpasses 500,000 Weekly Active Agent Instances as Security Audit Framework Goes Open Source",
-      "summary": "OpenClaw's weekly active instance count is climbing rapidly, and the project has open-sourced an agent behavior audit and permission traceability framework in response to security concerns.",
-      "detail": "According to telemetry data disclosed by the project (opt-in), OpenClaw now has over 500,000 weekly active agent instances, with more than 60% deployed on personal computers and home servers. As scale grows, the project has open-sourced a companion audit framework that records every tool call, data access, and external request made by agents, supports timeline-based replay and anomaly alerting, and introduces skill signing and a trusted publisher mechanism.",
-      "impact": "The pace of agent adoption has outstripped the maturity of supporting security infrastructure. Open-source audit tools provide small and mid-sized teams with an actionable compliance baseline and will also push the industry toward a unified agent behavior logging format.",
-      "source": "OpenClaw Project Announcement / Tech Community Roundup"
+      "id": "brief-003",
+      "title": "OpenClaw Cloud Hosted Edition Opens Public Beta with Private VPC Deployment",
+      "summary": "The official hosted service OpenClaw Cloud has opened public beta, offering usage-based pricing and private VPC deployment for enterprises.",
+      "detail": "OpenClaw's official hosted service, OpenClaw Cloud, has entered public beta, allowing users to run agent tasks without maintaining their own runtime environment. The hosted edition provides task queues, concurrent scheduling, log replay, and a cost dashboard, and supports deploying execution nodes into an enterprise's private VPC so sensitive data never leaves the intranet. Pricing follows a hybrid 'compute + token' model, with free quotas available during the beta period. The team said a GA release is planned for next quarter, when SLA guarantees and compliance certifications will be added.",
+      "impact": "An official hosted offering lowers the adoption barrier for enterprises and standardizes operations, but it may also squeeze third-party hosting providers, reshaping the commercial landscape of the ecosystem.",
+      "source": "OpenClaw Cloud Beta Page / Official Blog"
      }
     ]
    },
    {
-    "id": "hot-skills",
-    "title": "Hot Skills to Watch",
-    "icon": "🧰",
+    "id": "skills",
+    "title": "Top Skill Recommendations",
+    "icon": "🧩",
     "articles": [
      {
-      "id": "brief-skill-01",
-      "title": "MCP Service Development and Debugging Becomes the New Baseline for High-Paying Engineering Roles",
-      "summary": "Proficiency in MCP service design, tool description engineering, and debugging pipelines is emerging as a core requirement for AI application jobs.",
-      "detail": "Model Context Protocol services have evolved from early-stage connectors into the standard interface for exposing business capabilities. Hiring data shows a clear salary premium for engineers with MCP service design experience. Key evaluation points include semantic clarity of tool descriptions, parameter schema design, error handling and idempotency, authentication and rate limiting, and end-to-end debugging against simulated models. Supporting mock clients and contract testing toolchains are also maturing rapidly.",
-      "impact": "Interface design skills are shifting from the REST era to the agent era. Whoever can write tool descriptions that are 'easy for models to understand and easy for systems to guard' gains new leverage in integration.",
-      "source": "Developer Community Hiring Trend Watch"
+      "id": "brief-004",
+      "title": "browser-operator: The Browser Skill That Lets Agents Actually Use the Web",
+      "summary": "A browser-operation skill supporting screenshot understanding, element locating, and parallel multi-tab control has claimed the No. 1 spot on the automation skills download chart.",
+      "detail": "The browser-operator skill topped this week's ClawHub download chart. It combines visual screenshot understanding with DOM structure parsing, enabling it to locate dynamic elements that are hard to describe with selectors, while supporting parallel multi-tab operations, resumable runs, and persistent login sessions. Built-in anti-detection strategies can bypass common CAPTCHA popups, and the skill also provides replayable action recordings for easier debugging and auditing. Community feedback shows its completion rates in e-commerce price comparison, back-office form filling, and report scraping far exceed pure text-based approaches.",
+      "impact": "Browsers are among the hardest parts of enterprise workflows to automate. This skill fills a critical gap, directly supporting the automation of routine repetitive tasks across operations, finance, and customer service roles.",
+      "source": "ClawHub Skill Rankings / Community Reviews"
      },
      {
-      "id": "brief-skill-02",
-      "title": "Long-Context Engineering and Memory Management: The New Backend Capability of the Agent Era",
-      "summary": "Context compression, hierarchical memory, and retrieval strategies have become key engineering skills for improving agent task success rates.",
-      "detail": "As agent task chains grow longer, simply stuffing the context window can no longer guarantee stability. Practitioner communities have converged on a layered memory architecture: short-term working memory handles the current task, episodic memory stores intermediate conclusions, and long-term memory preserves user preferences and domain facts — combined with importance scoring, forgetting curves, and retrieval-augmented strategies. Industry feedback generally indicates that mature memory solutions can lift multi-step task completion rates by tens of percentage points while significantly cutting costs.",
-      "impact": "Memory engineering is becoming an extension of backend development. Teams that master this skill hold a clear advantage when building long-horizon, cross-session agent products.",
-      "source": "AI Engineering Practice Community"
+      "id": "brief-005",
+      "title": "frontend-design-skill: Turning 'Functional' Interfaces into 'Beautiful' Ones",
+      "summary": "A frontend skill focused on UI aesthetics and design systems has gone viral, ending the sea of identical, generic AI-generated interfaces.",
+      "detail": "frontend-design-skill is a design-oriented skill that has spread rapidly through developer communities in recent weeks. It comes with built-in guidelines on typographic hierarchy, spacing rhythm, color contrast, and restrained motion, and can read design system configurations from Tailwind, shadcn/ui, and others to maintain style consistency. Users widely report that once attached, generated landing pages and admin dashboards go from 'usable' to 'production-ready,' saving a great deal of manual polish. The skill also supports syncing Figma tokens as code variables.",
+      "impact": "The competitive edge in generative frontend is shifting from feature implementation to aesthetics and consistency. Skills like this let developers without design backgrounds produce professional-grade interfaces, further squeezing demand for junior outsourcing work.",
+      "source": "Trending Developer Community Posts / GitHub Trending"
      },
      {
-      "id": "brief-skill-03",
-      "title": "Agent Observability and Evaluation Frameworks Gain Traction as AI Ops Roles Emerge",
-      "summary": "The tracing, evaluation, and regression testing trio has become mandatory for taking agents to production, with related job demand rising fast.",
-      "detail": "More teams are realizing that post-launch failures are often not model problems but pipeline problems. The industry is standardizing agent observability: full-chain tracing that logs every prompt and tool call, offline evaluation sets covering typical task scenarios, and canary rollouts paired with automated online regression testing. Engineers who can systematically build evaluation pipelines and define quality metrics and failure taxonomies are becoming scarce talent that companies compete to hire.",
-      "impact": "Without evaluation, there is no iteration. Observability and evaluation capabilities are determining whether agent products can move from demos to scaled commercial delivery.",
-      "source": "DevOps and AI Toolchain Watch"
+      "id": "brief-006",
+      "title": "deep-research-skill: A Deep Research Powerhouse for Long Documents and Multi-Source Information",
+      "summary": "A research skill supporting hundreds-of-pages document parsing and multi-source cross-verification has become a must-have install for knowledge workers.",
+      "detail": "deep-research-skill is optimized for long-document scenarios such as research reports, legal contracts, and academic papers, with capabilities including chunked indexing, structured extraction, citation tracing, and contradiction detection. It can pull from multiple web and PDF sources in parallel, automatically generate footnoted research reports, and flag evidence strength in its conclusions. The new version adds table understanding and chart OCR, noticeably improving extraction accuracy on financial documents, and can output in Markdown, Word, and PPT formats.",
+      "impact": "Research-oriented work has seen its time costs slashed dramatically. Junior analytical tasks in consulting, investment research, and legal roles face displacement, making 'asking the right questions + verifying conclusions' the new core competency.",
+      "source": "ClawHub Featured Skills / User Field Tests"
      }
     ]
    },
    {
     "id": "ios",
     "title": "iOS App Updates",
-    "icon": "🍎",
+    "icon": "📱",
     "articles": [
      {
-      "id": "brief-ios-01",
-      "title": "iOS 27.2 Beta Introduces App Intents 2.0, Letting Third-Party Apps Be Invoked by System-Level Agents",
-      "summary": "The new App Intents supports structured intent descriptions and cross-app orchestration, allowing app capabilities to be scheduled directly by system agents.",
-      "detail": "In the iOS 27.2 developer beta, the App Intents framework has been upgraded to 2.0, adding intent dependency declarations, parameter constraints, and side-effect annotations. This enables system-level agents to complete multi-step, cross-app operations without launching full interfaces. Developers can declare an intent's side-effect level and undo strategy, gaining higher priority for automated invocations. A companion simulator supports end-to-end debugging of intent chains.",
-      "impact": "An app's value is increasingly determined by its orchestration capabilities rather than time spent on screen. Developers need to reassess how they break down features and expose APIs.",
-      "source": "Apple Developer Documentation / Developer Community Feedback"
+      "id": "brief-007",
+      "title": "New iOS Version Opens Stronger On-Device Model APIs, Upgrading In-App Agent Capabilities",
+      "summary": "Apple is giving developers fuller access to on-device model calls and tool execution APIs, enabling lightweight agents to run inside apps.",
+      "detail": "According to developer documentation and beta feedback, the next iOS release will expose stronger on-device inference capabilities to third parties, including APIs for structured output, tool calling, and short background execution. Developers can build lightweight agents within their apps that use on-device user data to handle tasks such as schedule organization, message summarization, and photo search — all without uploading data to the cloud. A new \"Agent Execution Preview\" interface also lets users clearly see each step of an operation and undo it at any time.",
+      "impact": "On-device agents make privacy-sensitive use cases viable, and the iOS interaction model may shift from \"users tapping buttons\" to \"users issuing instructions.\" Developers will need to rethink app entry points and retention logic.",
+      "source": "Apple Developer Documentation / Beta Observations"
      },
      {
-      "id": "brief-ios-02",
-      "title": "Apple Opens On-Device Small Model APIs, Opening a New Window of Efficiency Tools for Indie Developers",
-      "summary": "The on-device inference interface now supports custom domain adaptation, sharply cutting the cost of low-latency, offline-capable smart experiences.",
-      "detail": "Apple has given developers more granular on-device model interfaces, supporting lightweight adaptation and quantized deployment for vertical scenarios. Inference runs entirely on-device, with no need to upload user data. Privacy reports and power-consumption monitoring have also become points of attention in app review. Several productivity apps have already shipped local summarization, semantic search, and smart fill features built on this capability, with users broadly praising their responsiveness and offline availability.",
-      "impact": "On-device intelligence gives small and mid-sized teams a cost advantage over big players in privacy-sensitive scenarios, but it also raises the bar for quantization and power optimization.",
-      "source": "Apple Developer Updates / App Market Watch"
+      "id": "brief-008",
+      "title": "AI Memory Apps Go Viral: From \"Tools\" to \"Second Brains\"",
+      "summary": "AI apps focused on personal memory and proactive reminders have climbed download charts across multiple regions, with user stickiness far exceeding that of traditional tools.",
+      "detail": "Several AI apps centered on \"personal memory\" have posted strong growth on App Store charts recently. These apps aggregate fragmented information — chat history, notes, schedules, screenshots — to build a personalized knowledge graph for each user, then push contextual reminders at the right moment, such as \"You haven't followed up on what you promised last month.\" Their common traits are local storage, explainable retrieval, and user-controlled forgetting mechanisms. Data shows month-two retention for such apps is more than twice that of ordinary productivity tools.",
+      "impact": "App value is shifting from \"features\" to \"context ownership.\" Whoever controls a user's long-term memory controls the entry point — but this also raises the bar for data security and privacy compliance.",
+      "source": "App Store Charts / Third-Party Data Platforms"
      },
      {
-      "id": "brief-ios-03",
-      "title": "New App Store Payment and Commission Rules Take Effect; Subscription Developers Adjust Pricing Strategies",
-      "summary": "Commission structures and external payment guidance rules have been updated, prompting many subscription apps to redesign pricing and user acquisition paths.",
-      "detail": "A new round of App Store payment rules has taken effect in multiple markets, adjusting how external payment guidance is displayed, commission rates in certain scenarios, and strengthening transparency requirements for subscription renewals. Several subscription-based apps have begun testing differentiated pricing and longer free trials in their onboarding flows, while migrating part of their conversion funnels to owned channels. Industry analysts believe pricing and user lifecycle management will matter more than user acquisition capability.",
-      "impact": "Channel rule changes are reshaping unit economics in the subscription economy, forcing developers to find a new balance between compliance, acquisition costs, and retention.",
-      "source": "App Store Policy Announcements / Developer Interviews"
+      "id": "brief-009",
+      "title": "Apple Updates Review Guidelines: AI-Generated Content Must Display Sources and Risk Warnings",
+      "summary": "New App Review guidelines require source attribution and risk disclosures for AI-generated content, with health and finance apps under heightened scrutiny.",
+      "detail": "Apple has recently updated its App Store Review Guidelines with explicit requirements for AI features: AI-generated text, images, audio, and video must display source attribution in the interface; recommendations in high-risk areas such as health, finance, and law must include disclaimers and an entry point for human review; and developers who train models on user data must provide clear consent and deletion mechanisms. Non-compliant apps will be rejected during review, while already-published apps must complete remediation within a specified deadline.",
+      "impact": "Higher compliance costs will flush out a wave of low-quality AI wrapper apps, which is a positive for teams building serious products — industry competition will increasingly focus on real value and user experience.",
+      "source": "App Store Review Guidelines Update / Developer Community"
      }
     ]
    },
@@ -103,101 +103,93 @@
     "icon": "🚀",
     "articles": [
      {
-      "id": "brief-startup-01",
-      "title": "Embodied AI Sector Heats Up as Dexterous Hand and Robot Body Makers Secure Major Funding",
-      "summary": "Multiple robot OEMs and core component makers have closed new funding rounds, with mass-production delivery capability emerging as a key valuation driver.",
-      "detail": "Several companies in the embodied AI space have recently announced new funding rounds, covering humanoid robot platforms, dexterous hands, joint modules, and tactile sensing. Unlike earlier rounds that emphasized demo videos, the current investment logic has clearly shifted to production line takt time, yield rates, cost curves, and order composition. Some manufacturers have already deployed in real-world scenarios such as factory inspection and material handling, and have publicly disclosed per-hour cost-replacement data.",
-      "impact": "Embodied AI is moving from proof of concept to commercial validation, with supply-chain investment opportunities concentrating at both ends — components and scenario operations.",
-      "source": "Public investment and financing disclosures / Industry media"
+      "id": "brief-010",
+      "title": "Embodied AI Data Factories Emerge as New Hot Sector, Multiple Startups Secure Funding",
+      "summary": "Startups focused on mass-producing robot training data have become a new favorite among investors.",
+      "detail": "The bottleneck in the embodied AI industry is shifting from algorithms to data. Several startups positioned as \"robot data factories\" have recently secured large funding rounds. Their models include teleoperation data capture, synthetic simulation, crowdsourced real-world collection, and standardized data annotation, outputting high-quality datasets ready for VLA model training. Some companies have already established collection bases in vertical scenarios such as logistics sorting, household services, and industrial inspection, and are beginning to offer subscription-based data services to robot OEMs.",
+      "impact": "Data has become the \"new oil\" of the embodied AI era, and specialized division of labor is taking shape. Teams with closed-loop scenario access and efficient data capture are best positioned to prove out viable business models first.",
+      "source": "Investment & Funding Database / Industry Interviews"
      },
      {
-      "id": "brief-startup-02",
-      "title": "AI-Native Data Infrastructure Sees Accelerating Consolidation as M&A and Partnerships Pick Up",
-      "summary": "New database and feature store vendors targeting agent workloads are consolidating to build unified data platforms.",
-      "detail": "As agentic applications demand a combination of real-time context, vector retrieval, and transactional consistency, single-capability vendors struggle to deliver on their own, driving a clear trend toward consolidation. Several startups focused on vector storage, streaming features, and semantic caching are completing product lines through acquisitions or deep partnerships, positioning a single platform to support retrieval, memory, and state management. Leading cloud providers have also rolled out managed services optimized for agent workloads.",
-      "impact": "Data infrastructure is being redefined, and the new query patterns introduced by agent workloads could give rise to next-generation database standards.",
-      "source": "Corporate announcements / Database community"
-     },
-     {
-      "id": "brief-startup-03",
-      "title": "Low-Altitude Economy Enters Critical Airworthiness Phase as eVTOL and Air Traffic Systems Advance in Tandem",
-      "summary": "Multiple eVTOL companies are pushing forward airworthiness certification while supporting low-altitude air traffic control and takeoff/landing networks accelerate.",
-      "detail": "Companies in the low-altitude economy have made phased progress in airworthiness certification, trial route operations, and network buildout, with some aircraft models entering the later stages of compliance validation. At the same time, digitalized air traffic control, vertiports, and energy replenishment networks for low-altitude operations are drawing capital attention, forming an early industry ecosystem of aircraft, infrastructure, management, and mapping. Multiple pilot cities have opened routes for regular testing flights.",
-      "impact": "Competition in the low-altitude economy is shifting from building aircraft to building systems; operational services and digitalized air traffic control may generate stable cash flows before complete aircraft do.",
-      "source": "Industry regulator briefings / Industry media"
+      "id": "brief-011",
+      "title": "Inference Costs Fall Further as New-Generation Inference Chip and Orchestration Startups Rise",
+      "summary": "Chip and orchestration-layer startups focused on \"driving down inference costs\" continue to attract attention.",
+      "detail": "As AI applications scale into production, inference costs have become one of the largest operating expenses for enterprises. New-generation startups are entering from two directions: one is designing inference chips and accelerator cards tailored to specific model architectures, emphasizing high cost-performance and low power consumption; the other is building inference orchestration layers that leverage dynamic batching, cache reuse, model routing, and hot-cold data separation to cut total costs by more than 30%. Some teams have already reached partnerships with cloud providers and large-model vendors and are moving into mass production and commercial deployment.",
+      "impact": "Inference cost is a key variable in whether AI applications can turn a profit. Lower costs directly unlock more use cases and expand commercialization opportunities for small and mid-sized developers.",
+      "source": "Industry Research / Investor Perspectives"
      }
     ]
    }
   ]
  },
  "hotProjects": {
-  "date": "2026-11-19",
-  "quote": "The opportunity belongs to those who build their supply chains in advance, not to those who chase the trend.",
-  "summary": "The personal AI agent ecosystem is industrializing at scale, with agent security and memory engineering emerging as this cycle's biggest convergence of technology and business.",
+  "date": "2026-11-20",
+  "quote": "Opportunities are never chased — they are planted before the value trough is verified.",
+  "summary": "Agents are moving from point tools to engineered orchestration and on-device deployment; infrastructure around cost, data and distribution is today's biggest hotspot.",
   "projects": [
    {
     "id": "hot-001",
     "rank": 1,
-    "name": "Personal AI Agent Operating Systems (epitomized by the OpenClaw ecosystem)",
+    "name": "Multi-Agent Orchestration & Agent Workflow Platforms",
     "heat": "🔥🔥🔥🔥🔥",
     "heatLevel": 5,
-    "oneLiner": "Unify capabilities scattered across apps to build a personal-grade agent execution foundation.",
-    "whyHot": "Agents are evolving from conversational tools into execution systems, requiring unified permission, sandbox, memory, and skill distribution mechanisms. The open-source ecosystem is rapidly converging on de facto standards, with weekly active instances and skill counts growing exponentially. Hardware makers and office software vendors alike have announced integrations, sparking a rare two-sided momentum among both developers and users.",
+    "oneLiner": "Turning scattered agents into deliverable, operable, billable enterprise workflows.",
+    "whyHot": "Single-point agents have proven workable, but enterprises need observable, rollback-capable, collaborative orchestration. Open-source projects like OpenClaw are iterating fast, and demand for hosting, auditing and billing has surged alongside them — forming a full toolchain and service ecosystem with a clear path to commercialization.",
     "highlights": [
-     "Distribution and revenue-sharing mechanisms for skill marketplaces",
-     "Differentiated positioning around local deployment and privacy protection",
-     "Industry standardization progress for sandboxes and permission declarations",
-     "Cross-device orchestration across desktop, mobile, and smart home"
+     "Visual orchestration and debugging experience",
+     "Permissions, sandboxing and security auditing",
+     "Task-level cost accounting and optimization",
+     "Enterprise private deployment and compliance support"
     ],
-    "riskTip": "A security incident could trigger a systemic crisis of trust, and giants carry built-in distribution advantages; the open-source ecosystem must guard against being absorbed and commoditized by platforms."
+    "riskTip": "Underlying model capabilities change fast; platform players risk being displaced by model vendors' official toolchains. The moat lies in industry know-how and stability."
    },
    {
     "id": "hot-002",
     "rank": 2,
-    "name": "Agent Security and Observability Toolchains",
+    "name": "On-Device AI Hardware (AI recording cards / AI glasses / personal assistants)",
     "heat": "🔥🔥🔥🔥🔥",
     "heatLevel": 5,
-    "oneLiner": "Provide tracing, auditing, evaluation, and circuit-breaking capabilities for every agent action.",
-    "whyHot": "The more capable agents become, the greater the potential cost of misoperation and data leaks. Enterprise procurement decisions now rank auditability as the top门槛, driving a surge in demand for tracing, evaluation, red-teaming, and access governance tools. Multiple open-source projects have seen rapid star growth, and commercialization teams have closed early funding rounds — the track is on the eve of an explosion.",
+    "oneLiner": "Next-generation wearables entering personal scenarios via passive capture and on-device understanding.",
+    "whyHot": "Rapid gains in on-device model capabilities give wearables real-time understanding and proactive alerting. High-frequency scenarios — meeting notes, health companionship, travel guidance — have clear demand, and stacking hardware margins with subscription revenue makes the business model more expansive than pure software, while the supply chain matures.",
     "highlights": [
-     "End-to-end tracing and standardized log formats",
-     "Offline evaluation sets and automated regression testing",
-     "Red-team testing for privilege escalation and prompt injection",
-     "Automated generation of compliance audit reports"
+     "Balancing on-device inference power and battery life",
+     "Microphone/camera arrays and noise cancellation",
+     "Personal data privacy and local storage",
+     "Hardware + subscription recurring monetization"
     ],
-    "riskTip": "Industry standards are not yet unified, leaving early investments vulnerable to technical路线 being overturned; the track also depends heavily on the budget cycles of large customers."
+    "riskTip": "Hardware startups face high capital and supply-chain barriers; competition is fierce. Beware of inventory risk and consumer-electronics cycle swings."
    },
    {
     "id": "hot-003",
     "rank": 3,
-    "name": "On-Device Small-Model Inference and Compression Tools",
+    "name": "Embodied AI Data Collection & Training Data Services",
     "heat": "🔥🔥🔥🔥",
     "heatLevel": 4,
-    "oneLiner": "Run intelligent experiences locally on devices, balancing latency, privacy, and cost.",
-    "whyHot": "Under dual pressure from privacy compliance and inference costs, on-device deployment has become a must-have. System vendors are opening finer-grained on-device interfaces, while maturing model quantization, distillation, and heterogeneous operator optimization technologies enable mass consumer apps to integrate intelligent features at low cost, forming a complete ecosystem from tools to applications.",
+    "oneLiner": "Scaling high-quality training data and labeling pipelines for robot makers.",
+    "whyHot": "Robotics bottlenecks have shifted from algorithms to data — real-world collection is expensive and poorly standardized. Specialized data factories cut unit costs sharply via teleoperation, simulation synthesis and crowdsourcing, charge on subscription, occupy a critical position in the value chain, and enjoy strong customer willingness to pay.",
     "highlights": [
-     "Automated pipelines for quantization and distillation",
-     "NPU/GPU heterogeneous scheduling optimization",
-     "Dynamic switching strategies for edge-cloud collaboration",
-     "Continuous monitoring of power consumption and thermals"
+     "Real-world collection sites and scale",
+     "Data standardization and quality control systems",
+     "Blending synthetic simulation with real data",
+     "Deep vertical focus (logistics, industrial, home)"
     ],
-    "riskTip": "Hardware fragmentation drives up adaptation costs, and upstream chip or system vendors could tighten interfaces or develop in-house alternatives at any time."
+    "riskTip": "The business model is highly tied to embodied AI's overall industrialization; if hardware OEMs scale slower than expected, data demand will contract cyclically."
    },
    {
     "id": "hot-004",
     "rank": 4,
-    "name": "AI-Native Video and Multimodal Content Workflows",
+    "name": "AI Inference Cost Optimization (inference chips + scheduling layer)",
     "heat": "🔥🔥🔥🔥",
     "heatLevel": 4,
-    "oneLiner": "Move from point generation to integrated production pipelines spanning storyboarding, editing, and dubbing.",
-    "whyHot": "Once generation quality crossed the usability threshold, competition shifted toward workflows and controllability. Storyboard consistency, character locking, timeline editing, and batch rendering have become product differentiators. Large-scale procurement in advertising, e-commerce, and education has begun, with per-unit content costs down an order of magnitude versus traditional production.",
+    "oneLiner": "Driving large-model inference costs to rock bottom with specialized hardware and smart scheduling.",
+    "whyHot": "At scale, inference cost is AI applications' largest operating expense, and cost reduction is a hard requirement for nearly every customer. Whether custom silicon or scheduling optimization, reliably saving 30%+ of costs commands strong willingness to pay, high stickiness and easy scale effects.",
     "highlights": [
-     "Consistency control for characters and styles",
-     "Fine-grained timeline-level editing",
-     "Batch generation and brand asset management",
-     "Automated copyright and content compliance review"
+     "Measured inference throughput and latency",
+     "Dynamic batching and cache reuse",
+     "Multi-model routing and hot/cold separation",
+     "Compatibility with mainstream clouds and model vendors"
     ],
-    "riskTip": "Copyright and likeness disputes remain unresolved, and base models iterate extremely fast — advantages in applications above the model layer can be quickly wiped out by capability upgrades."
+    "riskTip": "The chip path is capital-heavy and long-cycle, facing pressure from big-tech in-house efforts; the scheduling layer must track evolving model architectures, carrying significant technology-iteration risk."
    }
   ]
  }

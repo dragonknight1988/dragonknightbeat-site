@@ -1,39 +1,38 @@
 {
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "contents": [
     {
-      "id": "prog-2026-11-19",
-      "date": "2026-11-19",
-      "title": "React 19 useOptimistic + useActionState：Server Actions 的乐观更新架构",
-      "summary": "用 useOptimistic 与 useActionState 构建零等待反馈的表单与列表交互，并理解 React 19 中 Action 的并发、回滚与状态生命周期机制。",
-      "difficulty": "高级",
-      "concept": "在 Next.js App Router + React 19 的体系里，Server Actions 把「请求-响应-更新 UI」压缩成一次函数调用，但用户体验的核心矛盾并没有消失：网络往返仍然需要时间。乐观更新（Optimistic Update）的思路是「先相信用户是对的」，立即把变更写入本地视图，再用服务端真实结果替换或回滚。React 19 把这套模式内建为 useOptimistic 与 useActionState 两个原语，让乐观状态不再依赖手写 Redux/Zustand 的临时层。\n\nuseOptimistic(state, updateFn) 返回 [optimisticState, addOptimistic]。它有几个关键性质：第一，optimisticState 是派生值而非独立 store，当底层真实 state 更新时，所有未落地的乐观补丁会被自动丢弃，视图回落到服务端真相；第二，addOptimistic(payload) 只在某个 Action 执行期间生效，React 用 transition 追踪生命周期，Action 结束（无论成功或失败）即自动清理，因此你永远不需要手动「撤销」乐观状态；第三，updateFn 是纯函数 (currentState, payload) => nextState，必须不可变更新，否则并发时会出现难以复现的脏渲染。\n\nuseActionState(action, initialState, permalink?) 则是表单状态机：它把 Server Action 包装为带 pending / error 语义的派发函数，返回 [state, formAction, isPending]。注意 state 不只是表单字段，而是 action 的完整返回值，所以你可以把校验错误、写入后的实体、甚至 revalidate 之后的数据都塞进去。在 React 19 中，action 内部的 setState 同样会自动批处理并进入 transition，这意味着在 action 里 await 一个 fetch 不会阻塞 UI 卡死，而是优雅地保持 isPending。\n\n工程上最常见的坑有三个。其一，乐观状态与真实状态的键必须一致：如果服务端返回的实体 id 与临时 id 不同，要用 updateFn 里的映射替换，而不是简单 append，否则会出现「重复条目」。其二，revalidatePath/revalidateTag 与 useOptimistic 的顺序关系：Action 中应先写库再 revalidate，React 会在新的服务端数据到达后自动清空乐观补丁；若你额外手动 setState，容易与 RSC 的刷新产生两次渲染闪烁。其三，并发：用户快速连续点击提交时，多个 Action 并行，乐观补丁按调用顺序叠加，因此 updateFn 应基于 payload 的 id 做 upsert，而不是 push。\n\n再往上一层，这个模式适合与 Server Components 的流式渲染结合：列表数据由 RSC 提供，交互部分抽成 'use client' 的薄壳，乐观逻辑只存在于客户端壳内。这样既保留了服务端渲染的数据权威性，又拿到了客户端的即时反馈，是当前 Next.js 中「什么时候上客户端状态」的标准答案：只有交互产生的临时状态才进客户端，服务端数据尽量不复制到客户端 store。",
+      "id": "prog-2026-11-20",
+      "date": "2026-11-20",
+      "title": "Node.js 异步编程入门：从回调到 async/await",
+      "summary": "掌握 Node.js 中回调、Promise 与 async/await 三种异步写法，并学会串行与并行任务调度。",
+      "difficulty": "初级",
+      "concept": "Node.js 最大的特点之一是「单线程 + 事件循环（Event Loop）」。JavaScript 代码本身在一个线程上执行，但像文件读写、网络请求、定时器这类耗时操作并不会阻塞主线程——它们被交给操作系统的线程池或内核处理，完成后把「回调函数」放回事件队列，等待主线程空闲时执行。理解这一点很重要：Node.js 的高并发能力不是靠「多线程跑 JS」，而是靠「不阻塞」。所以任何耗时操作都必须写成异步形式，否则会拖垮整个进程。\n\n最早期的异步写法是「回调函数（Callback）」：把「事情做完之后要做的事」当作参数传进去。回调本身没问题，但当多个异步操作需要依次执行时，就会一层套一层，形成著名的「回调地狱（Callback Hell）」——代码向右无限缩进，错误处理要在每一层重复写，可读性和可维护性都很差。实际项目中如果看到三四层以上的嵌套回调，基本就该重构了。\n\n为了解决这个问题，ES2015 引入了 Promise。一个 Promise 对象代表一个「将来才会有的结果」，它只有三种状态：pending（进行中）、fulfilled（成功）、rejected（失败），且状态一旦改变就不会再变。Promise 的最大价值在于「链式调用」：.then() 返回新的 Promise，可以把嵌套结构拍平成一条直线；.catch() 则能统一捕获整条链上任意一环抛出的错误，不用每层都写一遍错误处理。\n\nES2017 的 async/await 是 Promise 的语法糖，让异步代码写起来像同步代码一样直观。async 函数一定返回 Promise；await 会「暂停」当前 async 函数，等 Promise 完成后再继续往下执行。配合 try/catch，错误处理也回归了我们熟悉的同步写法。需要提醒初学者：await 只能暂停它所在的 async 函数，并不会阻塞整个事件循环，其他请求依然可以被处理。\n\n工程上还必须区分「串行」和「并行」。如果任务 B 依赖任务 A 的结果，就用 await 依次执行；如果多个任务彼此独立，用 await 逐个写就会白白浪费等待时间，正确做法是 Promise.all([...]) 让它们同时发起、统一等待。一个常见性能陷阱是：在循环里对独立的 IO 操作逐个 await，比 Promise.all 慢好几倍。此外 Promise.allSettled() 适合「允许部分失败」的场景，Promise.race() 常用于给慢请求设置超时。\n\n最后是几条踩坑经验：一、永远不要吞掉错误，catch 里至少要打印日志，否则线上出了问题无从排查；二、注意未处理的 Promise 拒绝（unhandledRejection）会导致进程崩溃（新版本 Node.js 默认行为），务必给异步调用加 catch 或用 try/catch 包裹；三、async 函数里 return 的值会被自动包装成 Promise.resolve(值)，忘了 await 就会拿到 Promise 对象本身而不是结果；四、Node.js 内置的 fs、timers 等模块都提供了 promises 版本（如 node:fs/promises），新项目优先使用它们，比手动包一层 promisify 干净得多。",
       "codeExample": {
-        "language": "tsx",
-        "code": "// app/todos/actions.ts —— Server Action（服务端）\n'use server';\n\nimport { revalidatePath } from 'next/cache';\nimport { db } from '@/lib/db';\n\nexport type Todo = { id: string; text: string; done: boolean };\nexport type TodoState = { todos: Todo[]; error?: string };\n\nexport async function addTodo(\n  prevState: TodoState,\n  formData: FormData\n): Promise<TodoState> {\n  const text = String(formData.get('text') ?? '').trim();\n  if (!text) return { ...prevState, error: '内容不能为空' };\n\n  // 1. 持久化：返回真实 id，用于替换乐观临时 id\n  const created = await db.todo.create({ data: { text, done: false } });\n\n  // 2. 让服务端组件重新渲染，带上最新数据\n  revalidatePath('/todos');\n\n  // 3. 返回完整新状态，useActionState 会用它替换乐观状态\n  return {\n    todos: [...prevState.todos, { id: created.id, text, done: false }],\n  };\n}\n\n// app/todos/todo-form.tsx —— 客户端交互薄壳\n'use client';\n\nimport { useActionState, useOptimistic, useRef, useState } from 'react';\nimport { addTodo, type Todo, type TodoState } from './actions';\n\nexport function TodoForm({ initialTodos }: { initialTodos: Todo[] }) {\n  const [state, formAction, isPending] = useActionState<TodoState, FormData>(\n    addTodo,\n    { todos: initialTodos }\n  );\n\n  // 乐观状态：真实 state 更新后，未落地的补丁会被自动丢弃\n  const [optimisticTodos, addOptimistic] = useOptimistic(\n    state.todos,\n    (current: Todo[], newTodo: Todo) => {\n      // 用 id 做 upsert，保证并发提交不产生重复条目\n      const exists = current.some((t) => t.id === newTodo.id);\n      return exists\n        ? current.map((t) => (t.id === newTodo.id ? newTodo : t))\n        : [...current, newTodo];\n    }\n  );\n\n  const formRef = useRef<HTMLFormElement>(null);\n\n  return (\n    <div>\n      <form\n        ref={formRef}\n        action={async (formData) => {\n          const text = String(formData.get('text') ?? '').trim();\n          if (!text) return;\n\n          // 立刻写入乐观补丁，UI 零延迟反馈\n          addOptimistic({ id: `temp-${Date.now()}`, text, done: false });\n          formRef.current?.reset();\n          await formAction(formData);\n        }}\n      >\n        <input name=\"text\" placeholder=\"新待办...\" disabled={isPending} />\n        <button type=\"submit\" disabled={isPending}>\n          {isPending ? '提交中…' : '添加'}\n        </button>\n      </form>\n\n      {state.error && <p role=\"alert\">{state.error}</p>}\n\n      <ul>\n        {optimisticTodos.map((todo) => (\n          <li key={todo.id} style={{ opacity: todo.id.startsWith('temp-') ? 0.6 : 1 }}>\n            {todo.text}\n          </li>\n        ))}\n      </ul>\n    </div>\n  );\n}\n\n// app/todos/page.tsx —— Server Component 负责权威数据\nimport { db } from '@/lib/db';\nimport { TodoForm } from './todo-form';\n\nexport default async function TodosPage() {\n  const todos = await db.todo.findMany({ orderBy: { createdAt: 'desc' } });\n  return <TodoForm initialTodos={todos} />;\n}",
-        "explanation": "1) actions.ts 中的 addTodo 是 Server Action：它接收 useActionState 的上一个 state 与 FormData，写库后调用 revalidatePath 让 RSC 重新渲染，并返回新 state。注意返回的是完整 state 而非增量。\n2) useActionState(addTodo, { todos: initialTodos }) 建立表单状态机，返回的 isPending 来自 React 内建的 transition，无需自己维护 loading。\n3) useOptimistic(state.todos, updateFn) 创建派生的乐观列表。updateFn 必须纯函数、不可变更新；这里用 id upsert 防止快速连续提交时产生重复项。\n4) form 的 action 包装函数里，先 addOptimistic() 立即渲染，再 await formAction()。Action 一旦结束，React 会自动丢弃临时补丁，用服务端返回的 todos 替换，临时 id 自然消失。\n5) 临时条目用 id.startsWith('temp-') 降低 opacity，是常见 UX 手法，提示用户该条尚未落库。\n6) page.tsx 保持 Server Component，只有交互壳是客户端组件，数据权威性仍在服务端。"
+        "language": "JavaScript",
+        "code": "// index.mjs —— Node.js 异步编程三种写法对比\n// 运行方式：node index.mjs\n\nimport { readFile, writeFile } from 'node:fs/promises';\nimport { readFile as readFileByCallback } from 'node:fs';\nimport { setTimeout as delay } from 'node:timers/promises';\n\n// ========== 0. 准备一个测试文件（保证示例可直接运行） ==========\nawait writeFile('./demo.txt', 'Hello Node.js\\n今天学习 Promise 与 async/await');\n\n// ========== 1. 回调写法（Callback） ==========\nreadFileByCallback('./demo.txt', 'utf8', (err, data) => {\n  // 回调的第一个参数永远是 error（Error-First 约定）\n  if (err) {\n    console.error('[回调] 读取失败:', err.message);\n    return;\n  }\n  console.log('[回调] 读取成功:', data.split('\\n')[0]);\n});\n\n// ========== 2. Promise 写法 ==========\nconst firstLine = await readFile('./demo.txt', 'utf8')\n  .then((text) => text.split('\\n')[0])   // 成功时转换数据\n  .catch((e) => `出错了: ${e.message}`); // 任一环节失败都会走到这里\nconsole.log('[Promise] 第一行是:', firstLine);\n\n// ========== 3. async/await 写法（推荐） ==========\nasync function copyWithSummary(srcPath, destPath) {\n  try {\n    const text = await readFile(srcPath, 'utf8');\n    const summary = `字符数: ${text.length}，行数: ${text.split('\\\\n').length}`;\n    await writeFile(destPath, summary);\n    console.log('[await] 摘要已写入', destPath, '->', summary);\n    return summary;\n  } catch (err) {\n    // 统一的错误处理，比每层写 .catch() 清爽很多\n    console.error('[await] 处理失败:', err.code || err.message);\n    return null;\n  }\n}\n\nawait copyWithSummary('./demo.txt', './summary.txt');\n\n// ========== 4. 串行 vs 并行（性能关键点） ==========\nconsole.time('串行耗时');\nawait delay(200); // 假装是第一个 IO 请求\nawait delay(200); // 必须等第一个做完才开始\nconsole.timeEnd('串行耗时'); // 约 400ms+\n\nconsole.time('并行耗时');\nawait Promise.all([delay(200), delay(200)]); // 两个请求同时发出\nconsole.timeEnd('并行耗时'); // 约 200ms+\n\n// ========== 5. 小提醒：async 函数返回值会被自动包装成 Promise ==========\nasync function getName() {\n  return 'Alice';\n}\nconst maybeName = getName();\nconsole.log('[注意] 没有 await 时拿到的是 Promise:', maybeName);\nconsole.log('[注意] 加上 await 才是值:', await maybeName);\n",
+        "explanation": "【第 0 部分】用 node:fs/promises 的 writeFile 生成 demo.txt，保证示例不需要额外准备文件就能运行。注意这里使用了顶层 await（top-level await），它只在 ES Module（.mjs 或 package.json 中 type:\"module\"）中可用。\n\n【第 1 部分】传统的回调写法。Node.js 遵循 Error-First Callback 约定：回调函数第一个参数固定是错误对象，成功时为 null。多层嵌套时这种写法会迅速失控。\n\n【第 2 部分】Promise 链式调用。readFile 返回 Promise，.then 做数据转换，.catch 统一兜底。相比回调，代码从「纵向嵌套」变成了「横向链式」。\n\n【第 3 部分】async/await 写法，也是现代 Node.js 项目的标准写法。函数声明前加 async，函数体内用 await 等待 Promise；整个异步流程写在 try/catch 中，错误处理与同步代码一致。\n\n【第 4 部分】演示串行与并行的耗时差异。delay 来自 node:timers/promises，等价于包了一层 Promise 的 setTimeout。两个独立任务用 Promise.all 并发执行，总耗时接近单个任务耗时，而不是累加。\n\n【第 5 部分】常见坑点演示：async 函数即使 return 一个普通值，实际返回的也是 Promise 对象，必须 await 才能拿到真实值。"
       },
       "keyPoints": [
-        "useOptimistic 返回的是派生值：真实 state 更新时未落地的乐观补丁自动丢弃，无需手动回滚",
-        "addOptimistic 只在 Action 执行期间生效，Action 结束（成功或失败）由 React 自动清理生命周期",
-        "updateFn 必须是纯函数且不可变更新，建议按业务 id 做 upsert 而非 push，以支持并发提交",
-        "useActionState 的 state 是 action 的完整返回值，可同时承载数据、校验错误与服务端结果",
-        "乐观临时 id 与服务端真实 id 的替换必须在 updateFn 或 action 返回值中完成，否则会出现重复条目",
-        "Server Component 负责权威数据 + 客户端薄壳负责交互与乐观状态，是 Next.js 中最小化客户端状态的标准架构"
+        "Node.js 单线程 + 事件循环：耗时 IO 一律异步，否则阻塞整个进程",
+        "Promise 三态：pending / fulfilled / rejected，状态一旦落定不可逆转",
+        "async 函数一定返回 Promise，return 的值会被自动包装成 Promise.resolve(值)",
+        "await 只暂停当前 async 函数，不会阻塞事件循环；它只能写在 async 函数或 ES Module 顶层",
+        "独立任务用 Promise.all 并发执行，有依赖的任务才逐个 await，这是性能优化的基本功"
       ],
       "exercise": {
-        "description": "实现一个「点赞」Server Action 的乐观更新版本：给定 Post 组件，用户点击爱心后立即看到数字 +1 且爱心变红（即使网络很慢），若服务端写入失败则数字自动恢复。要求支持快速连续点击多次。",
-        "hint": "用 useOptimistic 维护 { count, liked }，payload 直接传 delta（+1/-1）而不是布尔值，这样多次点击可以叠加。updateFn 中对 count 做 Math.max(0, ...) 保护下界。失败回滚无需写代码——只要 action 抛错或返回原 state，React 就会丢弃补丁；但要确保 action 不要把错误吞掉后返回错误的新 state。",
+        "description": "写一个 async 函数 batchRead(urls)，接收一个文件路径数组，用 Promise.all 并发读取所有文件内容，返回一个包含各文件字符数的对象（如 { 'a.txt': 120, 'b.txt': 45 }）。要求：任一文件读取失败时不要让整个函数崩溃，该文件在结果中记为 -1（提示：可用 Promise.allSettled 或给每个 Promise 单独加 catch）。最后用 console.time/console.timeEnd 对比「逐个 await」和「并发读取」的耗时差异。",
+        "hint": "先用 readFile 包一层 async 函数 readLength(path)，内部 try/catch，成功返回文本长度，失败返回 -1。然后用 Promise.all(paths.map(readLength)) 并发执行。对比测试时可以造几个大文件，或用 delay 模拟 IO 延迟，效果更明显。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全点赞组件中 useOptimistic 的调用与更新函数，使其支持并发点击叠加。",
-            "codeContext": "'use client';\nimport { useOptimistic } from 'react';\n\nfunction LikeButton({ count, liked }: { count: number; liked: boolean }) {\n  const [optimistic, addOptimistic] = __BLANK1__ (\n    { count, liked },\n    (state, delta: number) => ({\n      count: __BLANK2__,\n      liked: delta > 0,\n    })\n  );\n  // ...\n}",
+            "question": "补全代码：让两个独立的延迟任务并发执行，而不是串行等待。",
+            "codeContext": "async function run() {\n  console.time('cost');\n  const [a, b] = await ______([\n    delay(200),\n    delay(200)\n  ]);\n  console.timeEnd('cost'); // 约 200ms\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "const [optimistic, addOptimistic] = ",
+                "content": "const [a, b] = await ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -43,73 +42,54 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "useOptimistic",
-                  "useState",
-                  "useReducer",
-                  "useTransition"
+                  "Promise.all",
+                  "Promise.race",
+                  "Promise.each",
+                  "await.all"
                 ],
-                "correctAnswer": "useOptimistic"
+                "correctAnswer": "Promise.all"
               },
               {
                 "type": "text",
-                "content": "(\n  { count, liked },\n  (state, delta: number) => ({\n    count: ",
-                "placeholder": null,
-                "options": null,
-                "correctAnswer": null
-              },
-              {
-                "type": "blank",
-                "content": null,
-                "placeholder": "[选择]",
-                "options": [
-                  "count + 1",
-                  "Math.max(0, state.count + delta)",
-                  "delta",
-                  "state.count"
-                ],
-                "correctAnswer": "Math.max(0, state.count + delta)"
-              },
-              {
-                "type": "text",
-                "content": ",\n    liked: delta > 0,\n  })\n);",
+                "content": "([delay(200), delay(200)]);",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "useOptimistic, Math.max(0, state.count + delta)",
-            "explanation": "useOptimistic 是 React 19 提供的创建「派生乐观状态」的 Hook，签名 useOptimistic(state, updateFn)。count 不能写死 count + 1，因为并发多次点击要按 delta 叠加；同时用 Math.max(0, ...) 防止点赞/取消点赞快速交替时计数为负。注意 updateFn 中应使用入参 state 而不是外部的 count 闭包，否则并发场景会基于过期值计算。"
+            "correctAnswer": "Promise.all",
+            "explanation": "Promise.all 接收一个 Promise 数组，等全部成功后按原顺序返回结果数组，各任务是并发执行的，总耗时约等于最慢的那个（200ms）。Promise.race 返回最先完成的结果，Promise.each 不存在（应为 for 循环或 Promise.all），await.all 不是合法 API。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 useOptimistic 返回的乐观状态，下列说法正确的是？",
-            "codeContext": "const [optimisticTodos, addOptimistic] = useOptimistic(state.todos, updateFn);",
+            "question": "关于 Node.js 中的 await，下列说法正确的是？",
+            "codeContext": "async function demo() {\n  console.log('A');\n  await delay(100);\n  console.log('B');\n}\ndemo();\nconsole.log('C');",
             "segments": null,
             "options": [
-              "addOptimistic 会永久修改 state.todos，需要手动写 reset 逻辑恢复",
-              "当包裹它的 Action 完成、真实 state 更新时，未落地的乐观补丁会被 React 自动丢弃",
-              "updateFn 可以直接 push 到数组并返回同一引用以提升性能",
-              "useOptimistic 必须与 useState 一起使用，否则会报错"
+              "await 会阻塞整个 Node.js 进程，直到 Promise 完成",
+              "await 只会暂停它所在的 async 函数，事件循环继续处理其他任务",
+              "await 只能用在同步函数里",
+              "await 后面只能跟 setTimeout"
             ],
-            "correctAnswer": "当包裹它的 Action 完成、真实 state 更新时，未落地的乐观补丁会被 React 自动丢弃",
-            "explanation": "useOptimistic 的核心设计就是「派生 + 自动清理」：乐观补丁的生命周期绑定在 transition/Action 上，结束后自动丢弃，失败时相当于自动回滚，因此不需要手动 reset。updateFn 必须返回新引用（不可变更新），否则 React 无法检测变化且在并发下会产生脏渲染；useOptimistic 也不依赖 useState，可直接基于 props/state 使用。"
+            "correctAnswer": "await 只会暂停它所在的 async 函数，事件循环继续处理其他任务",
+            "explanation": "await 只是让当前 async 函数「让出」执行权，事件循环仍然可以处理其他请求、定时器和回调，这正是 Node.js 高并发的基础。await 必须出现在 async 函数或 ES Module 顶层中，后面可以跟任何 Promise 或 thenable 对象。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "网络较慢（约 2 秒）时，用户在 0ms、300ms、600ms 快速点击三次「点赞」，下面哪种描述符合最终 UI 表现？",
-            "codeContext": "function LikeButton({ count, liked }) {\n  const [optimistic, addOptimistic] = useOptimistic(\n    { count, liked },\n    (state, delta) => ({ count: Math.max(0, state.count + delta), liked: delta > 0 })\n  );\n\n  return (\n    <form action={async () => {\n      addOptimistic(1);\n      await likePost(); // Server Action，耗时 2s，最终 count 服务端 +3\n    }}>\n      <button type=\"submit\">❤ {optimistic.count}</button>\n    </form>\n  );\n}",
+            "question": "以下代码在 Node.js 中的输出顺序是什么？",
+            "codeContext": "console.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');",
             "segments": null,
             "options": [
-              "点击期间数字依次 +1 递增显示，三次 Action 结束后回落为服务端最终值（+3）",
-              "必须等第一次请求返回后才能第二次点击，否则按钮无效",
-              "乐观补丁会永久累加，最终显示原值 +6",
-              "点击后立即显示服务端最终值，中间过程无变化"
+              "1 2 3 4",
+              "1 4 3 2",
+              "1 4 2 3",
+              "1 3 4 2"
             ],
-            "correctAnswer": "点击期间数字依次 +1 递增显示，三次 Action 结束后回落为服务端最终值（+3）",
-            "explanation": "每次 addOptimistic(1) 都会在 Action 期间叠加一次补丁，UI 立即依次显示 +1、+2、+3，实现零延迟反馈。当三个 Action 陆续完成、真实 state 刷新后，所有未落地补丁被自动丢弃，显示服务端权威值。这正是用 delta 而非布尔值做 payload 的原因；若 payload 是 liked: true，多次点击就只会显示一次变化。"
+            "correctAnswer": "1 4 3 2",
+            "explanation": "同步代码先执行，输出 1、4。然后事件循环进入微任务（Microtask）阶段，Promise.then 的回调优先执行，输出 3。最后才执行宏任务（Macrotask）定时器回调，输出 2。结论：同一批任务中，微任务（Promise/queueMicrotask）总是早于宏任务（setTimeout/setInterval/IO）。"
           }
         ]
       }
