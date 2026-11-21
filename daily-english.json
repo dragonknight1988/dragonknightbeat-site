@@ -1,192 +1,181 @@
 {
-  "date": "2026-11-20",
+  "date": "2026-11-21",
   "content": {
-    "id": "en-2026-11-20",
-    "date": "2026-11-20",
-    "topic": "职场与沟通",
+    "id": "en-2026-11-21",
+    "date": "2026-11-21",
+    "topic": "文化与旅行",
     "newsHighlights": [
       {
-        "title": "China-Russia-US summit positive, constructive, fruitful: Xi",
-        "source": "China Daily",
-        "summary": "President Xi Jinping said the China-Russia-US summit has been positive, constructive and fruitful while summarizing the main consensus reached at the talks.",
-        "translation": "习近平主席在总结会谈达成的主要共识时表示，中俄美峰会是积极的、建设性的、富有成果的。",
+        "title": "See you next time, Shenzhen!",
+        "source": "ChinaDaily",
+        "summary": "A city of innovation, a vibrant cityscape and warm hospitality have given visitors from around the world plenty of reasons to fall in love with Shenzhen as APEC China 2026 drew to a close.",
+        "translation": "创新之城、充满活力的城市风貌与热情好客，让来自世界各地的来宾在APEC中国2026落幕之际爱上了深圳。",
+        "keyWords": [
+          "innovation",
+          "hospitality",
+          "vibrant cityscape"
+        ]
+      },
+      {
+        "title": "Peng champions cultural bonds, mutual learning",
+        "source": "ChinaDaily",
+        "summary": "Peng Liyuan championed cultural bonds and mutual learning, calling for deeper people-to-people exchanges across the Asia-Pacific.",
+        "translation": "彭丽媛倡导文化纽带与文明互鉴，呼吁亚太地区深化人文交流。",
+        "keyWords": [
+          "cultural bonds",
+          "mutual learning",
+          "people-to-people exchange"
+        ]
+      },
+      {
+        "title": "Xi calls for inclusive regional co-op based on solidarity, openness, innovation",
+        "source": "ChinaDaily",
+        "summary": "President Xi called for inclusive regional cooperation built on solidarity, openness and innovation.",
+        "translation": "习近平主席呼吁构建基于团结、开放与创新的包容性区域合作。",
+        "keyWords": [
+          "inclusive",
+          "solidarity",
+          "openness"
+        ]
+      },
+      {
+        "title": "Wang Yi: APEC Shenzhen meeting a new peak in Asia-Pacific cooperation",
+        "source": "CGTN",
+        "summary": "Wang Yi said the APEC Shenzhen meeting marks a new peak in Asia-Pacific cooperation.",
+        "translation": "王毅表示，APEC深圳会议是亚太合作的新高峰。",
         "keyWords": [
           "summit",
-          "constructive",
-          "consensus"
-        ]
-      },
-      {
-        "title": "Xi meets Trump, calling for continued efforts to steer China-US relations on right course",
-        "source": "China Daily",
-        "summary": "Xi urged both sides to make continued efforts to steer China-US relations along the right course.",
-        "translation": "习近平呼吁双方继续努力，引领中美关系沿着正确方向前行。",
-        "keyWords": [
-          "steer",
-          "continued efforts",
-          "relations"
-        ]
-      },
-      {
-        "title": "Xi makes four points on how major countries should get along with each other",
-        "source": "China Daily",
-        "summary": "Xi put forward four points on how major countries should get along with one another, stressing mutual respect and win-win cooperation.",
-        "translation": "习近平就大国如何相处提出四点主张，强调相互尊重与合作共赢。",
-        "keyWords": [
-          "mutual respect",
           "cooperation",
-          "get along"
-        ]
-      },
-      {
-        "title": "Three postcards, one journey of opportunity in Shenzhen",
-        "source": "China Daily",
-        "summary": "Following three postmarks, a China Daily reporter set out to find their senders in Shenzhen and discovered a journey of opportunity and friendship.",
-        "translation": "《中国日报》记者循着三张明信片的邮戳，在深圳寻找寄信人，开启了一段充满机遇与友谊的旅程。",
-        "keyWords": [
-          "journey",
-          "opportunity",
-          "postmark"
-        ]
-      },
-      {
-        "title": "Xi's speech boosts confidence in Asia-Pacific cooperation",
-        "source": "China Daily",
-        "summary": "Xi's keynote speech at the APEC CEO Summit 2026 boosted confidence in Asia-Pacific economic cooperation and drew wide applause from business leaders.",
-        "translation": "习近平在2026年APEC工商领导人峰会的主旨演讲增强了亚太经济合作的信心，赢得商界领袖广泛赞誉。",
-        "keyWords": [
-          "confidence",
-          "keynote speech",
-          "cooperation"
+          "Asia-Pacific"
         ]
       }
     ],
     "quote": {
-      "quote": "The single biggest problem in communication is the illusion that it has taken place.",
-      "author": "George Bernard Shaw",
-      "translation": "沟通中最大的问题是人们误以为沟通已经发生了。",
-      "explanation": "很多时候我们以为自己已经说清楚了，其实对方并没有接收到关键信息。真正的沟通需要确认、倾听和反馈——正如峰会前各方反复确认共识，职场中也应主动复述与核实，避免'自以为沟通成功'。"
+      "quote": "The world is a book, and those who do not travel read only one page.",
+      "author": "Saint Augustine",
+      "translation": "世界是一本书，不旅行的人只读了其中一页。",
+      "explanation": "旅行让人接触不同的文化、风景与人群，拓宽视野。正如APEC来宾在深圳感受到的城市魅力，走出国门、拥抱世界才能读懂人类文明的丰富多样。"
     },
     "vocabulary": [
       {
-        "word": "summit",
-        "phonetic": "/ˈsʌmɪt/",
-        "partOfSpeech": "n.",
-        "definition": "峰会；最高级会议；顶点",
-        "example": "President Xi said the China-Russia-US summit has been positive, constructive and fruitful.",
-        "translation": "习主席表示，中俄美峰会是积极的、建设性的、富有成果的。",
-        "newsContext": "出自新闻标题 \"China-Russia-US summit positive, constructive, fruitful: Xi\"，指三国元首举行的最高级别会谈。"
+        "word": "hospitality",
+        "phonetic": "/ˌhɒspɪˈtæləti/",
+        "partOfSpeech": "noun",
+        "definition": "好客；热情款待",
+        "example": "Shenzhen has won visitors over with its warm hospitality.",
+        "translation": "深圳以热情好客赢得了来宾的喜爱。",
+        "newsContext": "出自 See you next time, Shenzhen!：a vibrant cityscape and warm hospitality"
       },
       {
-        "word": "constructive",
-        "phonetic": "/kənˈstrʌktɪv/",
-        "partOfSpeech": "adj.",
-        "definition": "建设性的；有助益的",
-        "example": "Both sides held a constructive dialogue on how to keep relations on the right course.",
-        "translation": "双方就如何保持关系沿正确方向前行进行了建设性对话。",
-        "newsContext": "出自 \"the China-Russia-US summit has been positive, constructive and fruitful\"，用于评价会谈的积极成效。"
+        "word": "vibrant",
+        "phonetic": "/ˈvaɪbrənt/",
+        "partOfSpeech": "adjective",
+        "definition": "充满活力的；生机勃勃的",
+        "example": "Visitors were impressed by the city's vibrant cityscape.",
+        "translation": "来宾们对这座城市充满活力的市容印象深刻。",
+        "newsContext": "出自 See you next time, Shenzhen!：a vibrant cityscape"
       },
       {
-        "word": "consensus",
-        "phonetic": "/kənˈsensəs/",
-        "partOfSpeech": "n.",
-        "definition": "共识；一致意见",
-        "example": "Xi made the remarks while summarizing the main consensus reached at the talks.",
-        "translation": "习近平在总结会谈达成的主要共识时发表了上述讲话。",
-        "newsContext": "出自新闻摘要 \"summarizing the main consensus reached at the talks\"，指会谈各方达成的一致意见。"
+        "word": "innovation",
+        "phonetic": "/ˌɪnəˈveɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "创新；革新",
+        "example": "Shenzhen is widely known as a city of innovation.",
+        "translation": "深圳被广泛誉为一座创新之城。",
+        "newsContext": "出自 See you next time, Shenzhen! 与 Xi calls for inclusive regional co-op：a city of innovation"
       },
       {
-        "word": "advocate",
-        "phonetic": "/ˈædvəkeɪt/",
-        "partOfSpeech": "v. & n.",
-        "definition": "提倡，主张；倡导者",
-        "example": "China is an advocate, promoter and forerunner in Asia-Pacific economic cooperation.",
-        "translation": "中国是亚太经济合作的倡导者、推动者和引领者。",
-        "newsContext": "出自新闻标题 \"China is advocate, promoter, forerunner in Asia-Pacific economic cooperation\"。"
+        "word": "foster",
+        "phonetic": "/ˈfɒstə(r)/",
+        "partOfSpeech": "verb",
+        "definition": "促进；培育",
+        "example": "China stands ready to foster greater momentum for cooperation.",
+        "translation": "中国愿为合作培育更强劲的势头。",
+        "newsContext": "出自 Xi says China ready for closer cooperation with Malaysia：foster greater momentum for cooperation"
       },
       {
-        "word": "steer",
-        "phonetic": "/stɪə(r)/",
-        "partOfSpeech": "v.",
-        "definition": "驾驶，掌舵；引导……的方向",
-        "example": "Xi called for continued efforts to steer China-US relations on the right course.",
-        "translation": "习近平呼吁继续努力，引领中美关系沿正确方向前行。",
-        "newsContext": "出自新闻标题 \"Xi meets Trump, calling for continued efforts to steer China-US relations on right course\"。"
+        "word": "inclusive",
+        "phonetic": "/ɪnˈkluːsɪv/",
+        "partOfSpeech": "adjective",
+        "definition": "包容的；包容性强的",
+        "example": "The region needs inclusive cooperation that benefits all economies.",
+        "translation": "该地区需要惠及各经济体的包容性合作。",
+        "newsContext": "出自 Xi calls for inclusive regional co-op based on solidarity, openness, innovation"
       },
       {
-        "word": "fruitful",
-        "phonetic": "/ˈfruːtfl/",
-        "partOfSpeech": "adj.",
-        "definition": "富有成效的；成果丰硕的",
-        "example": "The meeting was described as fruitful, with several agreements signed.",
-        "translation": "会议被形容为富有成果，签署了多项协议。",
-        "newsContext": "出自 \"the China-Russia-US summit has been positive, constructive and fruitful\"，强调会谈收获颇丰。"
+        "word": "solidarity",
+        "phonetic": "/ˌsɒlɪˈdærəti/",
+        "partOfSpeech": "noun",
+        "definition": "团结；齐心协力",
+        "example": "Regional cooperation should be based on solidarity and openness.",
+        "translation": "区域合作应建立在团结与开放的基础上。",
+        "newsContext": "出自 Xi calls for inclusive regional co-op：based on solidarity, openness, innovation"
       },
       {
-        "word": "promote",
-        "phonetic": "/prəˈməʊt/",
-        "partOfSpeech": "v.",
-        "definition": "促进，推动；晋升",
-        "example": "China has worked hard to promote economic cooperation across the Asia-Pacific region.",
-        "translation": "中国一直努力推动亚太地区的经济合作。",
-        "newsContext": "出自 \"China is advocate, promoter, forerunner in Asia-Pacific economic cooperation\"，promoter 为其名词形式。"
+        "word": "mutual",
+        "phonetic": "/ˈmjuːtʃuəl/",
+        "partOfSpeech": "adjective",
+        "definition": "相互的；彼此的",
+        "example": "Peng championed cultural bonds and mutual learning among civilizations.",
+        "translation": "彭丽媛倡导文明之间的文化纽带与互学互鉴。",
+        "newsContext": "出自 Peng champions cultural bonds, mutual learning：mutual learning"
       },
       {
-        "word": "forerunner",
-        "phonetic": "/ˈfɔːrʌnə(r)/",
-        "partOfSpeech": "n.",
-        "definition": "先行者，先驱；前兆",
-        "example": "The company has become a forerunner in green technology and digital communication.",
-        "translation": "该公司已成为绿色技术与数字化沟通领域的先行者。",
-        "newsContext": "出自 \"China is advocate, promoter, forerunner in Asia-Pacific economic cooperation\"。"
+        "word": "diplomacy",
+        "phonetic": "/dɪˈpləʊməsi/",
+        "partOfSpeech": "noun",
+        "definition": "外交；外交活动",
+        "example": "Head-of-state diplomacy is irreplaceable for China-US ties.",
+        "translation": "元首外交对中美关系而言不可替代。",
+        "newsContext": "出自 Xi: Head-of-state diplomacy irreplaceable for China-US ties"
       },
       {
-        "word": "venue",
-        "phonetic": "/ˈvenjuː/",
-        "partOfSpeech": "n.",
-        "definition": "举办地点，会场",
-        "example": "Trump arrived at the Shenzhen venue for talks with Xi.",
-        "translation": "特朗普抵达深圳会场，与习近平举行会谈。",
-        "newsContext": "出自 CGTN 新闻 \"Watch: Trump arrives at Shenzhen venue for talks with Xi\"。"
+        "word": "coordination",
+        "phonetic": "/kəʊˌɔːdɪˈneɪʃn/",
+        "partOfSpeech": "noun",
+        "definition": "协调；配合",
+        "example": "China and Singapore should enhance coordination on regional affairs.",
+        "translation": "中国与新加坡应加强在地区事务上的协调配合。",
+        "newsContext": "出自 Xi says China, Singapore should strengthen strategic communication, enhance coordination"
       },
       {
-        "word": "dialogue",
-        "phonetic": "/ˈdaɪəlɒɡ/",
-        "partOfSpeech": "n.",
-        "definition": "对话；对白",
-        "example": "Xi called for further efforts to build an Asia-Pacific community through open dialogue.",
-        "translation": "习近平呼吁通过开放对话进一步推动构建亚太共同体。",
-        "newsContext": "出自 CGTN 新闻 \"Xi calls for further efforts to build Asia-Pacific community\"，强调以对话促进合作。"
+        "word": "momentum",
+        "phonetic": "/məˈmentəm/",
+        "partOfSpeech": "noun",
+        "definition": "势头；动力",
+        "example": "The APEC meeting gave new momentum to cooperation across the Asia-Pacific.",
+        "translation": "APEC会议为亚太合作注入了新动力。",
+        "newsContext": "出自 Xi says China ready for closer cooperation with Malaysia：foster greater momentum for cooperation"
       }
     ],
     "pattern": {
-      "pattern": "call for / urge continued efforts to do sth.（呼吁/敦促继续努力做某事）",
-      "example": "Xi called for continued efforts to steer China-US relations on the right course.",
-      "translation": "习近平呼吁继续努力，引领中美关系沿正确方向前行。",
-      "usage": "常用于职场与外交沟通中表达'持续推进'的建议。结构：主语 + call for / urge + (continued) efforts + to do sth.。也可换成 make continued efforts to do sth.（主语为行动方）。例：Our manager urged continued efforts to improve team communication.（经理敦促大家继续努力改善团队沟通。）"
+      "pattern": "give sb plenty of reasons to do sth（给某人充分的理由去做某事）",
+      "example": "Shenzhen has given visitors from around the world plenty of reasons to fall in love with the city.",
+      "translation": "深圳给了世界各地的来宾充分的理由爱上这座城市。",
+      "usage": "reasons 后可接 to do 不定式表示做某事的理由，也可改为 plenty of reason to do。可用于描述城市、文化、美食、展览等给人留下的印象，例如 The museum gives tourists plenty of reasons to stay longer."
     },
     "grammar": {
-      "title": "并列形容词的表达：A, B and C（评价性排比）",
-      "explanation": "在总结会议、评价表现或给出反馈时，英语常用两到三个褒义形容词并列（逗号隔开，最后一个用 and 连接），使评价更有力、更正式。注意：形容词之间不用 and 连接前几项，顺序一般从抽象到具体、音节由短到长，读起来节奏感更好。职场中常用于绩效评估、会议总结和项目复盘。",
+      "title": "现在完成时（Present Perfect）：过去动作对现在造成的影响",
+      "explanation": "现在完成时由 have/has + 过去分词构成，强调过去发生的动作对现在产生的结果或影响，常与 already、yet、just、so far 等时间状语连用。在新闻英语中常用来描述事件带来的持续影响。",
       "examples": [
-        "President Xi Jinping said that the China-Russia-US summit has been positive, constructive and fruitful.",
-        "The APEC CEO Summit was described as open, pragmatic and forward-looking."
+        "Shenzhen has given visitors from around the world plenty of reasons to fall in love with the city.",
+        "APEC Shenzhen meeting has become a new peak in Asia-Pacific cooperation."
       ]
     },
     "pronunciation": {
-      "word": "constructive",
-      "phonetic": "/kənˈstrʌktɪv/",
-      "tips": "重音在第二个音节 /ˈstrʌk/。首音节弱读为 /kən/，不要读成 /ˈkɒn/。中间 /str/ 辅音连缀要一口气滑过，/k/ 短促有力，最后 /tɪv/ 轻快收尾。对比记忆：construct /kənˈstrʌkt/ → constructive /kənˈstrʌktɪv/，重音不变。",
+      "word": "hospitality",
+      "phonetic": "/ˌhɒspɪˈtæləti/",
+      "tips": "重音在第三个音节 /tæ/ 上，注意词中字母 t 在快速语流中常弱化为闪音。前三个音节读得较轻、较快，/ˌhɒs-/ 弱读为 /həs/。可拆分为 hos-pi-TAL-i-ty 慢读四遍后再连读。",
       "examples": [
-        "Both sides held a constructive dialogue during the summit.",
-        "We welcome any constructive suggestions on this project."
+        "The city is famous for its warm hospitality.",
+        "We were moved by the hospitality of the local people."
       ]
     },
     "reading": {
-      "title": "What the Shenzhen Summit Teaches Us About Workplace Communication",
-      "content": "At the APEC meeting in Shenzhen, leaders from China, Russia and the United States held a summit that President Xi Jinping described as positive, constructive and fruitful. Observers say the habits behind such talks work just as well in the office. First, the parties chose a neutral venue and met face to face. Second, each side stated its position in plain language before inviting a response. Third, they focused on the consensus they had reached instead of the points where they disagreed. Finally, they called for continued efforts to keep relations on the right course. For anyone leading a team or closing a deal, the lesson is simple: honest dialogue, careful listening and a shared goal can turn a difficult conversation into a journey of opportunity — much like the three postcards that led a reporter to new friends in Shenzhen.",
-      "translation": "在深圳举行的APEC会议上，中俄美三国领导人举行了峰会，习近平主席形容其为积极的、建设性的、富有成果的。观察人士认为，这类会谈背后的习惯在办公室里同样适用。第一，各方选择中立场地，面对面交流。第二，各方先用平实的语言陈述立场，再邀请对方回应。第三，他们聚焦已达成的共识，而非彼此的分歧。最后，双方呼吁继续努力，让关系保持在正确轨道上。对于任何带团队或谈合作的人来说，道理很简单：坦诚的对话、用心的倾听和共同的目标，能把一次艰难的谈话变成一段充满机遇的旅程——就像三张明信片引领一位记者在深圳结识新朋友那样。",
-      "sourceNote": "本文基于 China Daily 与 CGTN 于2026年11月20日发布的APEC深圳峰会系列报道改写，用于英语学习目的。"
+      "title": "Shenzhen Says Goodbye to APEC Guests",
+      "content": "As APEC China 2026 drew to a close, Shenzhen said goodbye to guests from across the Asia-Pacific. The southern city gave visitors plenty of reasons to fall in love with it: innovation, a vibrant cityscape and warm hospitality. Many guests walked along the waterfront, visited technology museums and tasted local Cantonese food. But the meeting was not only about trade and business. Cultural events encouraged mutual learning among civilizations, and people-to-people exchanges added fresh momentum to regional friendship. Guests said Shenzhen showed how a modern city can stay open and welcoming at the same time. As one visitor put it, arriving as a guest and leaving as a friend is the best memory of a journey. See you next time, Shenzhen!",
+      "translation": "随着APEC中国2026落下帷幕，深圳向来自亚太各地的来宾道别。这座南方城市给了来宾们爱上它的充分理由：创新、充满活力的市容和热情好客。许多来宾漫步海滨、参观科技馆、品尝粤菜。但此次会议不仅关乎贸易与商务。文化活动促进了文明互鉴，人文交流为地区友谊注入了新的动力。来宾们表示，深圳展示了一座现代城市如何同时保持开放与友好。正如一位来宾所说：以客人的身份到来，以朋友的身份离开，是一段旅程中最美好的回忆。深圳，下次再见！",
+      "sourceNote": "基于 ChinaDaily《See you next time, Shenzhen!》《Peng champions cultural bonds, mutual learning》等APEC相关报道改写，用于英语学习目的。"
     }
   }
 }

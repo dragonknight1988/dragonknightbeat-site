@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-20",
+  "date": "2026-11-21",
   "contents": [
     {
-      "id": "prog-2026-11-20",
-      "date": "2026-11-20",
-      "title": "Node.js 异步编程入门：从回调到 async/await",
-      "summary": "掌握 Node.js 中回调、Promise 与 async/await 三种异步写法，并学会串行与并行任务调度。",
-      "difficulty": "初级",
-      "concept": "Node.js 最大的特点之一是「单线程 + 事件循环（Event Loop）」。JavaScript 代码本身在一个线程上执行，但像文件读写、网络请求、定时器这类耗时操作并不会阻塞主线程——它们被交给操作系统的线程池或内核处理，完成后把「回调函数」放回事件队列，等待主线程空闲时执行。理解这一点很重要：Node.js 的高并发能力不是靠「多线程跑 JS」，而是靠「不阻塞」。所以任何耗时操作都必须写成异步形式，否则会拖垮整个进程。\n\n最早期的异步写法是「回调函数（Callback）」：把「事情做完之后要做的事」当作参数传进去。回调本身没问题，但当多个异步操作需要依次执行时，就会一层套一层，形成著名的「回调地狱（Callback Hell）」——代码向右无限缩进，错误处理要在每一层重复写，可读性和可维护性都很差。实际项目中如果看到三四层以上的嵌套回调，基本就该重构了。\n\n为了解决这个问题，ES2015 引入了 Promise。一个 Promise 对象代表一个「将来才会有的结果」，它只有三种状态：pending（进行中）、fulfilled（成功）、rejected（失败），且状态一旦改变就不会再变。Promise 的最大价值在于「链式调用」：.then() 返回新的 Promise，可以把嵌套结构拍平成一条直线；.catch() 则能统一捕获整条链上任意一环抛出的错误，不用每层都写一遍错误处理。\n\nES2017 的 async/await 是 Promise 的语法糖，让异步代码写起来像同步代码一样直观。async 函数一定返回 Promise；await 会「暂停」当前 async 函数，等 Promise 完成后再继续往下执行。配合 try/catch，错误处理也回归了我们熟悉的同步写法。需要提醒初学者：await 只能暂停它所在的 async 函数，并不会阻塞整个事件循环，其他请求依然可以被处理。\n\n工程上还必须区分「串行」和「并行」。如果任务 B 依赖任务 A 的结果，就用 await 依次执行；如果多个任务彼此独立，用 await 逐个写就会白白浪费等待时间，正确做法是 Promise.all([...]) 让它们同时发起、统一等待。一个常见性能陷阱是：在循环里对独立的 IO 操作逐个 await，比 Promise.all 慢好几倍。此外 Promise.allSettled() 适合「允许部分失败」的场景，Promise.race() 常用于给慢请求设置超时。\n\n最后是几条踩坑经验：一、永远不要吞掉错误，catch 里至少要打印日志，否则线上出了问题无从排查；二、注意未处理的 Promise 拒绝（unhandledRejection）会导致进程崩溃（新版本 Node.js 默认行为），务必给异步调用加 catch 或用 try/catch 包裹；三、async 函数里 return 的值会被自动包装成 Promise.resolve(值)，忘了 await 就会拿到 Promise 对象本身而不是结果；四、Node.js 内置的 fs、timers 等模块都提供了 promises 版本（如 node:fs/promises），新项目优先使用它们，比手动包一层 promisify 干净得多。",
+      "id": "prog-2026-11-21",
+      "date": "2026-11-21",
+      "title": "Go context 包：超时控制、取消传播与请求链路治理",
+      "summary": "掌握 context.WithCancel / WithTimeout 的工作机制，学会在 HTTP 服务、数据库调用与 goroutine 协作中正确传递取消信号，避免 goroutine 泄漏与资源浪费。",
+      "difficulty": "中级",
+      "concept": "在 Go 中，context（上下文）是跨 API 边界传递「请求作用域」元数据的标准方式，主要用于三件事：取消信号的传播（cancellation）、截止时间的控制（deadline/timeout）以及请求级键值对的传递（values）。当一个 HTTP 请求进来，它会触发一连串下游调用（数据库查询、RPC、缓存读取），如果客户端提前断开或上游设置了超时，我们必须有一种机制让整条链路上的所有 goroutine 都「感知到该停下了」，context 就是这个机制的核心载体。\n\ncontext.Context 是一个接口，核心方法有四个：Deadline() 返回截止时间；Done() 返回一个在 ctx 被取消或超时时关闭的 channel；Err() 返回取消原因（context.Canceled 或 context.DeadlineExceeded）；Value() 取出只读的键值对。其中 Done() 与 Err() 是并发协作中最常用的两个，几乎所有「等待 + 可中断」的代码都写成 select { case <-ctx.Done(): ... case result := <-ch: ... } 的形式。withCancel 创建的 ctx 被 cancel 后 Done() channel 关闭，Err() 返回 Canceled；withTimeout 创建的 ctx 超时后 Err() 返回 DeadlineExceeded。\n\n构造函数有四类：context.Background() 与 context.TODO() 是根节点；context.WithCancel(parent) 返回可手动取消的 ctx；context.WithTimeout(parent, d) 与 context.WithDeadline(parent, t) 返回带时间限制的 ctx；context.WithValue(parent, k, v) 用于附加请求级元数据（如 trace_id）。关键点是「取消是自上而下传播的」：父 ctx 取消时，所有子 ctx 一律被取消；但子 ctx 取消不会影响父 ctx，这就是「父不知道子死活」的经典面试题。另外，父 ctx 的 deadline 只会向更早的方向收紧——子 ctx 的 deadline 不能超过父 ctx。\n\n工程实践中有几条铁律：第一，ctx 永远作为函数的第一个参数传入，命名就叫 ctx，不要塞进 struct 里（会破坏 API 语义、导致生命周期混乱和数据竞争）。第二，WithCancel / WithTimeout / WithDeadline 返回的 cancel 函数必须被调用，通常写 defer cancel()，否则会导致 ctx 及其引用的对象无法被 GC 回收，长期运行的服务会内存泄漏。第三，WithValue 只放请求级的元数据（trace_id、认证信息），绝不要放业务参数或可选配置；且 key 必须是未导出的自定义类型，避免不同包之间 key 冲突。第四，下游函数应尊重 ctx：进入函数先 select 一下 ctx.Done()，避免在用户早已离开后还继续做无用功。\n\n在 HTTP 服务里，net/http 会为每个请求创建 ctx（r.Context()），客户端断开时该 ctx 自动取消，直接把它透传给数据库驱动（sql 支持 QueryContext）或 RPC 客户端，就能实现「用户关闭页面，后台立刻停止查询」。在并发扇出（fan-out）场景中，配合 golang.org/x/sync/errgroup，可以做到第一个出错就 cancel 所有兄弟 goroutine，这是 Go 服务端最常见的工程模式。",
       "codeExample": {
-        "language": "JavaScript",
-        "code": "// index.mjs —— Node.js 异步编程三种写法对比\n// 运行方式：node index.mjs\n\nimport { readFile, writeFile } from 'node:fs/promises';\nimport { readFile as readFileByCallback } from 'node:fs';\nimport { setTimeout as delay } from 'node:timers/promises';\n\n// ========== 0. 准备一个测试文件（保证示例可直接运行） ==========\nawait writeFile('./demo.txt', 'Hello Node.js\\n今天学习 Promise 与 async/await');\n\n// ========== 1. 回调写法（Callback） ==========\nreadFileByCallback('./demo.txt', 'utf8', (err, data) => {\n  // 回调的第一个参数永远是 error（Error-First 约定）\n  if (err) {\n    console.error('[回调] 读取失败:', err.message);\n    return;\n  }\n  console.log('[回调] 读取成功:', data.split('\\n')[0]);\n});\n\n// ========== 2. Promise 写法 ==========\nconst firstLine = await readFile('./demo.txt', 'utf8')\n  .then((text) => text.split('\\n')[0])   // 成功时转换数据\n  .catch((e) => `出错了: ${e.message}`); // 任一环节失败都会走到这里\nconsole.log('[Promise] 第一行是:', firstLine);\n\n// ========== 3. async/await 写法（推荐） ==========\nasync function copyWithSummary(srcPath, destPath) {\n  try {\n    const text = await readFile(srcPath, 'utf8');\n    const summary = `字符数: ${text.length}，行数: ${text.split('\\\\n').length}`;\n    await writeFile(destPath, summary);\n    console.log('[await] 摘要已写入', destPath, '->', summary);\n    return summary;\n  } catch (err) {\n    // 统一的错误处理，比每层写 .catch() 清爽很多\n    console.error('[await] 处理失败:', err.code || err.message);\n    return null;\n  }\n}\n\nawait copyWithSummary('./demo.txt', './summary.txt');\n\n// ========== 4. 串行 vs 并行（性能关键点） ==========\nconsole.time('串行耗时');\nawait delay(200); // 假装是第一个 IO 请求\nawait delay(200); // 必须等第一个做完才开始\nconsole.timeEnd('串行耗时'); // 约 400ms+\n\nconsole.time('并行耗时');\nawait Promise.all([delay(200), delay(200)]); // 两个请求同时发出\nconsole.timeEnd('并行耗时'); // 约 200ms+\n\n// ========== 5. 小提醒：async 函数返回值会被自动包装成 Promise ==========\nasync function getName() {\n  return 'Alice';\n}\nconst maybeName = getName();\nconsole.log('[注意] 没有 await 时拿到的是 Promise:', maybeName);\nconsole.log('[注意] 加上 await 才是值:', await maybeName);\n",
-        "explanation": "【第 0 部分】用 node:fs/promises 的 writeFile 生成 demo.txt，保证示例不需要额外准备文件就能运行。注意这里使用了顶层 await（top-level await），它只在 ES Module（.mjs 或 package.json 中 type:\"module\"）中可用。\n\n【第 1 部分】传统的回调写法。Node.js 遵循 Error-First Callback 约定：回调函数第一个参数固定是错误对象，成功时为 null。多层嵌套时这种写法会迅速失控。\n\n【第 2 部分】Promise 链式调用。readFile 返回 Promise，.then 做数据转换，.catch 统一兜底。相比回调，代码从「纵向嵌套」变成了「横向链式」。\n\n【第 3 部分】async/await 写法，也是现代 Node.js 项目的标准写法。函数声明前加 async，函数体内用 await 等待 Promise；整个异步流程写在 try/catch 中，错误处理与同步代码一致。\n\n【第 4 部分】演示串行与并行的耗时差异。delay 来自 node:timers/promises，等价于包了一层 Promise 的 setTimeout。两个独立任务用 Promise.all 并发执行，总耗时接近单个任务耗时，而不是累加。\n\n【第 5 部分】常见坑点演示：async 函数即使 return 一个普通值，实际返回的也是 Promise 对象，必须 await 才能拿到真实值。"
+        "language": "go",
+        "code": "package main\n\nimport (\n\t\"context\"\n\t\"errors\"\n\t\"fmt\"\n\t\"time\"\n)\n\n// queryDB 模拟一次可被 ctx 中断的数据库查询。\n// 核心模式：select 监听 ctx.Done() 与结果 channel，谁先到用谁。\nfunc queryDB(ctx context.Context, name string, cost time.Duration) (string, error) {\n\tresultCh := make(chan string, 1) // 带缓冲，避免 worker 协程永久阻塞\n\tgo func() {\n\t\ttime.Sleep(cost) // 模拟慢查询\n\t\tresultCh <- \"来自\" + name + \"的结果\"\n\t}()\n\n\tselect {\n\tcase <-ctx.Done():\n\t\treturn \"\", ctx.Err() // Canceled 或 DeadlineExceeded\n\tcase res := <-resultCh:\n\t\treturn res, nil\n\t}\n}\n\nfunc main() {\n\t// 1) 超时控制：整个操作最多 200ms\n\tctx, cancel := context.WithTimeout(context.Background(), 200*time.Millisecond)\n\tdefer cancel() // 必须调用，否则 ctx 无法被 GC，造成泄漏\n\n\tstart := time.Now()\n\tres, err := queryDB(ctx, \"user_table\", 500*time.Millisecond)\n\tif errors.Is(err, context.DeadlineExceeded) {\n\t\tfmt.Println(\"查询超时:\", err)\n\t} else if err != nil {\n\t\tfmt.Println(\"查询失败:\", err)\n\t} else {\n\t\tfmt.Println(\"查询成功:\", res)\n\t}\n\tfmt.Println(\"实际耗时:\", time.Since(start).Round(time.Millisecond))\n\n\t// 2) 手动取消：父 ctx 取消，子 ctx 自动跟随取消\n\tparent, cancelParent := context.WithCancel(context.Background())\n\tchild, cancelChild := context.WithCancel(parent)\n\tdefer cancelChild()\n\n\tgo func() {\n\t\ttime.Sleep(50 * time.Millisecond)\n\t\tcancelParent() // 关闭父 ctx\n\t}()\n\n\tselect {\n\tcase <-child.Done():\n\t\tfmt.Println(\"子 ctx 被取消:\", child.Err()) // context canceled\n\tcase <-time.After(200 * time.Millisecond):\n\t\tfmt.Println(\"子 ctx 未被取消\")\n\t}\n}\n",
+        "explanation": "1) queryDB 里开了一个 goroutine 模拟慢查询，结果写入带缓冲的 resultCh（缓冲为 1 是关键：即使主线程已放弃等待，worker 也不会因为无人接收而永久阻塞，从而避免 goroutine 泄漏）。\n2) 主逻辑用 select 同时监听 ctx.Done() 与 resultCh：若 200ms 到期，ctx 的 Done channel 关闭，立即返回 ctx.Err()，此时 DeadlineExceeded；500ms 的慢查询 goroutine 写完结果后自行结束。\n3) main 中 defer cancel() 是强制要求；不调用 cancel 会让 ctx 与它引用的定时器、父链表一直存活。\n4) errors.Is(err, context.DeadlineExceeded) 用于判断错误类型，比直接比较 err == context.DeadlineExceeded 更健壮（错误可能被 fmt.Errorf %w 包装过）。\n5) 第二段演示取消传播：cancelParent() 后 child 的 Done() 同步关闭，说明取消只向下传递；反向（cancelChild 影响 parent）则不会发生。"
       },
       "keyPoints": [
-        "Node.js 单线程 + 事件循环：耗时 IO 一律异步，否则阻塞整个进程",
-        "Promise 三态：pending / fulfilled / rejected，状态一旦落定不可逆转",
-        "async 函数一定返回 Promise，return 的值会被自动包装成 Promise.resolve(值)",
-        "await 只暂停当前 async 函数，不会阻塞事件循环；它只能写在 async 函数或 ES Module 顶层",
-        "独立任务用 Promise.all 并发执行，有依赖的任务才逐个 await，这是性能优化的基本功"
+        "ctx 必须作为函数第一个参数显式传递，命名固定为 ctx，禁止存入 struct 字段",
+        "WithCancel / WithTimeout / WithDeadline 返回的 cancel 必须调用，惯例是 defer cancel()，否则导致内存与定时器泄漏",
+        "取消自上而下传播：父取消子必取消，子取消不影响父；子 ctx 的 deadline 不能晚于父 ctx",
+        "监听取消的标准写法是 select { case <-ctx.Done(): ... case result := <-ch: ... }，goroutine 内写 channel 时务必带缓冲或额外监听 ctx.Done()",
+        "WithValue 仅放 trace_id、认证主体等请求级元数据，key 需用未导出自定义类型，业务参数仍应显式传参"
       ],
       "exercise": {
-        "description": "写一个 async 函数 batchRead(urls)，接收一个文件路径数组，用 Promise.all 并发读取所有文件内容，返回一个包含各文件字符数的对象（如 { 'a.txt': 120, 'b.txt': 45 }）。要求：任一文件读取失败时不要让整个函数崩溃，该文件在结果中记为 -1（提示：可用 Promise.allSettled 或给每个 Promise 单独加 catch）。最后用 console.time/console.timeEnd 对比「逐个 await」和「并发读取」的耗时差异。",
-        "hint": "先用 readFile 包一层 async 函数 readLength(path)，内部 try/catch，成功返回文本长度，失败返回 -1。然后用 Promise.all(paths.map(readLength)) 并发执行。对比测试时可以造几个大文件，或用 delay 模拟 IO 延迟，效果更明显。",
+        "description": "实现一个函数 FirstSuccess(ctx context.Context, timeout time.Duration, tasks map[string]func() string) (string, error)：同时并发调用多个模拟服务（task），只要任意一个先返回结果就立刻返回它；若在 timeout 内无人成功，则返回 context.DeadlineExceeded。要求：返回前必须确保所有未完成的 goroutine 都能退出（不许泄漏）。",
+        "hint": "用 context.WithTimeout(ctx, timeout) 创建派生 ctx，用带缓冲（容量为 1）的 channel 接收结果；主 goroutine 用 select 同时监听 resultCh 与 derivedCtx.Done()。由于结果 channel 有缓冲，先返回的 task 即使晚于主函数返回，写入也不会阻塞；每个 task 内部也应监听 derivedCtx.Done() 以便及时退出。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码：让两个独立的延迟任务并发执行，而不是串行等待。",
-            "codeContext": "async function run() {\n  console.time('cost');\n  const [a, b] = await ______([\n    delay(200),\n    delay(200)\n  ]);\n  console.timeEnd('cost'); // 约 200ms\n}",
+            "question": "补全代码，使其能正确创建带超时的 context 并保证资源释放。",
+            "codeContext": "func fetchData() (string, error) {\n    ctx, ______ := context.WithTimeout(context.Background(), 2*time.Second)\n    ______ cancel()\n    return queryDB(ctx, \"orders\", 5*time.Second)\n}",
             "segments": [
               {
                 "type": "text",
-                "content": "const [a, b] = await ",
+                "content": "ctx, ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,54 +42,73 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "Promise.all",
-                  "Promise.race",
-                  "Promise.each",
-                  "await.all"
+                  "cancel",
+                  "stop",
+                  "close",
+                  "release"
                 ],
-                "correctAnswer": "Promise.all"
+                "correctAnswer": "cancel"
               },
               {
                 "type": "text",
-                "content": "([delay(200), delay(200)]);",
+                "content": " := context.WithTimeout(context.Background(), 2*time.Second)\n    ",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择]",
+                "options": [
+                  "go",
+                  "defer",
+                  "call",
+                  "async"
+                ],
+                "correctAnswer": "defer"
+              },
+              {
+                "type": "text",
+                "content": " cancel()\n    return queryDB(ctx, \"orders\", 5*time.Second)",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "Promise.all",
-            "explanation": "Promise.all 接收一个 Promise 数组，等全部成功后按原顺序返回结果数组，各任务是并发执行的，总耗时约等于最慢的那个（200ms）。Promise.race 返回最先完成的结果，Promise.each 不存在（应为 for 循环或 Promise.all），await.all 不是合法 API。"
+            "correctAnswer": "cancel / defer",
+            "explanation": "context.WithTimeout 返回 (ctx, cancel) 两个值，第二个返回值约定命名为 cancel；无论后续逻辑是否报错，都必须调用它以释放 ctx 关联的定时器与引用，所以写成 defer cancel() 放在创建之后立即登记。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Node.js 中的 await，下列说法正确的是？",
-            "codeContext": "async function demo() {\n  console.log('A');\n  await delay(100);\n  console.log('B');\n}\ndemo();\nconsole.log('C');",
+            "question": "关于 Go 中 context 的使用，下列哪项做法是错误的？",
+            "codeContext": "type Server struct {\n    ctx context.Context\n}\n\nfunc (s *Server) Handle(w http.ResponseWriter, r *http.Request) {\n    id := r.Context().Value(\"trace_id\")\n    _ = id\n    s.ctx = r.Context()\n}",
             "segments": null,
             "options": [
-              "await 会阻塞整个 Node.js 进程，直到 Promise 完成",
-              "await 只会暂停它所在的 async 函数，事件循环继续处理其他任务",
-              "await 只能用在同步函数里",
-              "await 后面只能跟 setTimeout"
+              "把 r.Context() 保存到 struct 字段 s.ctx 中供其他方法使用",
+              "把 r.Context() 作为第一个参数传给下游函数",
+              "对调用 WithCancel 得到的 cancel 使用 defer cancel()",
+              "用 errors.Is(err, context.DeadlineExceeded) 判断超时"
             ],
-            "correctAnswer": "await 只会暂停它所在的 async 函数，事件循环继续处理其他任务",
-            "explanation": "await 只是让当前 async 函数「让出」执行权，事件循环仍然可以处理其他请求、定时器和回调，这正是 Node.js 高并发的基础。await 必须出现在 async 函数或 ES Module 顶层中，后面可以跟任何 Promise 或 thenable 对象。"
+            "correctAnswer": "把 r.Context() 保存到 struct 字段 s.ctx 中供其他方法使用",
+            "explanation": "context 是请求作用域对象，生命周期应由调用链显式控制。存入 struct 会造成：不同请求覆盖同一字段引发数据竞争、ctx 生命周期被拉长导致无法回收、API 语义不清晰。正确做法是让 ctx 沿函数参数自上而下传递。另外 Value 的 key 也不应用裸字符串 \"trace_id\"，而应使用未导出自定义类型防止冲突。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下代码在 Node.js 中的输出顺序是什么？",
-            "codeContext": "console.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');",
+            "question": "以下代码的输出是什么？",
+            "codeContext": "func main() {\n    parent, cancel := context.WithCancel(context.Background())\n    child, _ := context.WithCancel(parent)\n\n    go func() {\n        time.Sleep(30 * time.Millisecond)\n        cancel()\n    }()\n\n    select {\n    case <-child.Done():\n        fmt.Println(\"A:\", child.Err())\n    case <-time.After(200 * time.Millisecond):\n        fmt.Println(\"B: 超时\")\n    }\n}",
             "segments": null,
             "options": [
-              "1 2 3 4",
-              "1 4 3 2",
-              "1 4 2 3",
-              "1 3 4 2"
+              "A: context canceled",
+              "B: 超时",
+              "A: context deadline exceeded",
+              "panic: 所有 goroutine 都处于休眠状态"
             ],
-            "correctAnswer": "1 4 3 2",
-            "explanation": "同步代码先执行，输出 1、4。然后事件循环进入微任务（Microtask）阶段，Promise.then 的回调优先执行，输出 3。最后才执行宏任务（Macrotask）定时器回调，输出 2。结论：同一批任务中，微任务（Promise/queueMicrotask）总是早于宏任务（setTimeout/setInterval/IO）。"
+            "correctAnswer": "A: context canceled",
+            "explanation": "取消信号自上而下传播：parent 被 cancel 后，它的所有子 ctx（包括 child）的 Done() channel 立即关闭，Err() 变为 context.Canceled。30ms 远小于 200ms，所以 select 走第一个分支打印 \"A: context canceled\"。注意 child 的 cancel 未被调用虽不影响本次输出，但实际代码中应 defer cancelChild() 以符合规范。"
           }
         ]
       }
