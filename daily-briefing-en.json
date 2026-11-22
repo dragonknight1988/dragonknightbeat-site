@@ -1,8 +1,8 @@
 {
- "date": "2026-11-21",
+ "date": "2026-11-22",
  "briefing": {
-  "date": "November 21, 2026",
-  "quote": "When agents start making decisions for you, the biggest windfall won't go to those who can write code, but to those who can write requirements.",
+  "date": "2026-11-22",
+  "quote": "When agents start thinking through our workflows for us, human value shifts from \"execution\" to \"defining the problem\" — whoever articulates the problem first holds the leverage for the next decade.",
   "sections": [
    {
     "id": "openclaw",
@@ -10,194 +10,194 @@
     "icon": "🦞",
     "articles": [
      {
-      "id": "brief-oc-001",
-      "title": "OpenClaw v0.42 Released: Built-In Agent Cluster Scheduling, Up to 32 Concurrent Agents on a Single Machine",
-      "summary": "The new release introduces the Swarm Scheduler, supporting multi-agent concurrent collaboration and task decomposition, with the team claiming roughly 3x improvement in on-device efficiency.",
-      "detail": "The OpenClaw team pushed v0.42 overnight. The core update is the all-new Swarm Scheduler, which allows developers to run up to 32 agents in parallel on a single device and exchange context via a shared memory bus. A new Goal Planner module can automatically break a high-level instruction into a subtask graph. Community feedback shows long-running tasks such as bulk file organization and code migration saw average completion times cut by 40%. The team also open-sourced the scheduler's benchmark scripts.",
-      "impact": "Multi-agent systems are moving from 'demos' to 'productivity.' Developers can now run real multi-role collaboration workflows on consumer-grade hardware for the first time — directly eroding the moats of automation-script startups and giving hardware vendors a fresh selling point around memory and compute upgrades.",
-      "source": "OpenClaw GitHub Release Notes"
+      "id": "brief-claw-01",
+      "title": "OpenClaw v0.14 Released: Multi-Agent Orchestration and Long-Running Task Memory Take Center Stage",
+      "summary": "The new release introduces a Supervisor orchestrator and a persistent memory layer, enabling multi-day long-running tasks and bringing agent collaboration to production readiness.",
+      "detail": "OpenClaw released v0.14 this week, with a major focus on multi-agent collaboration: a new Supervisor orchestrator breaks down complex tasks for parallel execution by sub-agents, while the memory layer has been upgraded to persistent, hierarchical storage supporting three levels of context recall — within-session, within-project, and cross-project. The team also announced that long-running tasks can resume after the host machine sleeps, and combined with the new checkpoint mechanism, the system can theoretically support continuous workflows spanning several days. Community feedback shows that teams are already using it for automated code migrations and competitor daily report generation.",
+      "impact": "Multi-agent orchestration is moving from demo scripts to shippable products. Individual developers can now build digital-employee-like systems at low cost for the first time, directly disrupting the RPA and low-code automation markets.",
+      "source": "OpenClaw Official Release Notes / GitHub Discussion"
      },
      {
-      "id": "brief-oc-002",
-      "title": "Official Skills Marketplace SkillsHub Launches with 800+ Skills Supporting One-Click Install",
-      "summary": "OpenClaw's official skill store is now open, covering office work, ops, video editing, data analysis and more, with creators earning a revenue share.",
-      "detail": "SkillsHub listed over 800 community skill packages on its first day, covering high-frequency scenarios such as Notion automation, Excel batch processing, video subtitle generation and K8s inspections. Skills are packaged as declarative YAML plus prompts, and users can deploy them with `claw install skill-name`. The platform uses a subscription revenue-share model with a 20% platform cut; top skill authors have already earned over 10,000 yuan in a single day. A skill security rating system also launched, mandating sandbox execution for skills that touch system permissions.",
-      "impact": "The agent ecosystem has officially entered its 'app store moment,' creating a new class of content creators in skill authors. For enterprises, buying standardized skill packages is cheaper than building prompt chains in-house, and IT departments are shifting from development toward orchestration and review.",
-      "source": "OpenClaw Official Blog"
+      "id": "brief-claw-02",
+      "title": "Plugin Ecosystem Surpasses 5,000 as MCP Becomes the De Facto Tool Interface Standard",
+      "summary": "Official plugin marketplace count doubled in six months, with MCP protocol coverage exceeding 80%, as network effects begin to emerge in the tool ecosystem.",
+      "detail": "OpenClaw's plugin marketplace surpassed 5,000 entries this week, of which roughly 82% are built on the Model Context Protocol (MCP). Developers can wrap their SaaS products, databases, and hardware devices as MCP Servers, callable directly by OpenClaw and other compatible clients. The official team also launched a \"plugin quality rating\" system and a security sandbox that audits permission declarations, outbound network access, and file access in a unified manner, in an attempt to address the supply-chain security issues long criticized by the community.",
+      "impact": "Once the MCP ecosystem's network effects take hold, the tooling side will see a winner-takes-all dynamic. Independent developers should MCP-enable their services as early as possible to secure an advantageous position.",
+      "source": "OpenClaw Marketplace Data Page / InfoQ"
      },
      {
-      "id": "brief-oc-003",
-      "title": "Security Scandal: Third-Party Skill Caught Secretly Uploading Local Files, Emergency Takedown by Official Team",
-      "summary": "A skill named FastSync was found bypassing the sandbox to upload user documents; it has been removed and an official permission whitelist policy has been issued.",
-      "detail": "Security researchers disclosed that a third-party skill called FastSync, while syncing documents, also compressed PDF and DOCX files from the user's home directory and sent them to overseas servers. The SkillsHub team removed the skill within four hours and announced three new rules: all outbound network requests must declare an explicit domain whitelist; file read scopes must be declared in the manifest; and high-risk skills are subject to a community manual audit queue. About 12,000 users were affected, and officials advise rotating API keys immediately.",
-      "impact": "This is the first large-scale supply chain security incident in the booming agent ecosystem. It will push enterprise buyers to add skill source audits to compliance checklists and opens an entirely new category for security vendors: 'Agent Supply Chain Protection.'",
-      "source": "The Hacker News / OpenClaw Security Advisory"
+      "id": "brief-claw-03",
+      "title": "OpenClaw Workspace Enterprise Edition Opens Beta, Focused on \"Digital Employee\" Workflows",
+      "summary": "The team-oriented collaboration edition has opened a closed beta, offering permission isolation, audit logs, and private deployment, accelerating B2B commercialization.",
+      "detail": "The OpenClaw team announced that the Workspace Enterprise Edition has entered invite-only beta, positioned as \"giving every team its own digital employee.\" Features include an organization-level agent directory, role-based permission isolation, end-to-end audit logs, support for public cloud, on-premises, and hybrid deployment, plus built-in compliance guardrails tailored for heavily regulated sectors such as finance and healthcare. The first customers are concentrated in three areas: customer service automation, R&D productivity, and market intelligence. Pricing follows a hybrid model combining seats plus usage volume.",
+      "impact": "With an open-source project validating its path to B2B revenue, more capital is likely to flow into the agent infrastructure layer, while also pressuring similar open-source projects to accelerate their own commercialization.",
+      "source": "OpenClaw Official Blog / 36Kr"
      }
     ]
    },
    {
     "id": "skills",
-    "title": "Top Skill Picks",
-    "icon": "🧩",
+    "title": "Top Skill Recommendations",
+    "icon": "🛠️",
     "articles": [
      {
-      "id": "brief-skill-001",
-      "title": "Skill of the Week: Deep Research Kit Tops Chart, Delivers Industry Reports in 10 Minutes",
-      "summary": "The skill automates retrieval, cross-verification, chart generation, and citation marking, making it the most downloaded tool for consulting and investment roles.",
-      "detail": "Deep Research Kit surpassed 260,000 downloads this week. It breaks tasks into five stages — retrieval, deduplication, fact-checking, structured writing, and chart rendering — producing Markdown or PPTX reports with citation numbers in an average of 8-12 minutes per report. Most users come from brokerages, consultancies, VC firms, and corporate strategy teams. The author has also opened custom 'research scope' templates that lock down data sources and freshness requirements, significantly reducing hallucination rates.",
-      "impact": "Entry-level research workflows are being fundamentally rewritten; 'turning out reports fast' is no longer a scarce skill. Competition is shifting toward control of research scope, industry assumptions, and conclusion quality, moving analyst value up to judgment and resource allocation.",
-      "source": "SkillsHub Weekly Chart"
+      "id": "brief-skill-01",
+      "title": "MCP Server Development: The Interface-Layer Skill Most Worth Investing In for 2026",
+      "summary": "Building MCP Servers lets you serve all major agent clients at once, delivering a far better return than developing plugins for a single platform.",
+      "detail": "As OpenClaw, desktop agents, and IDE assistants adopt full MCP compatibility, MCP Server development has emerged as a high-value skill. The core essentials include designing clear tool schemas, handling permissions and resource declarations properly, implementing idempotency and error fallbacks, and providing observable logging. Unlike writing a proprietary plugin for one platform, a single MCP implementation can be reused across all clients — making it the classic low-input, high-leverage technology investment today.",
+      "impact": "For developers, this is the shortest path to distributing their skills and products across every agent entry point, and a new source of freelance work.",
+      "source": "Official MCP Documentation / Developer Community Practice"
      },
      {
-      "id": "brief-skill-002",
-      "title": "Automated Editing Skill ClipSmith Goes Viral, Turns Talking-Head Footage into Finished Videos with One Click",
-      "summary": "Supports silence removal, multi-camera alignment, subtitle generation, and automatic cover creation — a must-have for small and midsize creator teams.",
-      "detail": "ClipSmith offers a three-stage pipeline: rough cut, fine edit, and packaging. It automatically identifies dead air and verbal tics, splits shots by semantic meaning, generates bilingual subtitles matched with B-roll library assets, and batch-exports landscape and portrait versions to platform specs. Tests show a 60-minute talking-head clip is finished in an average of 9 minutes, with humans only making final tweaks. The team plans to add a digital avatar feature next month.",
-      "impact": "The barrier to short-video output has been lowered again, enabling solo creators to maintain daily posting. MCNs' scale-based editing advantage is weakened, and industry competition will further concentrate on topic selection and personal branding.",
-      "source": "Jike / Author's Release Page"
+      "id": "brief-skill-02",
+      "title": "From Vibe Coding to Spec Engineering: Writing Clear Requirements Has Become the New Bar",
+      "summary": "The stronger AI code generation gets, the scarcer spec-writing skills become — Spec Engineering is emerging as the key dividing line for senior engineers.",
+      "detail": "As code generation ceases to be scarce, engineers' value is shifting toward requirement specification. A good spec requires: clearly defined boundary conditions, explicit acceptance criteria, annotated non-functional requirements (performance, security, maintainability), and testable success signals. A growing number of teams treat specs as first-class documents in their repositories, reviewed alongside code. In the job market, engineers who can write high-quality specs command a clear salary premium, and related courses and templates are going viral in developer communities.",
+      "impact": "Skill value is shifting from writing to thinking. Entry-level coding roles are shrinking, while premiums are rising for roles in requirements analysis and architecture definition.",
+      "source": "Developer Community Discussions / Tech Media Columns"
      },
      {
-      "id": "brief-skill-003",
-      "title": "Ops Skill OpsPilot Introduces 'Pre-Change Simulation', Cuts Misoperation Rate by 70%",
-      "summary": "Generates a sandbox replay before executing database or server operations, accelerating enterprise adoption.",
-      "detail": "OpsPilot added a Change Simulator feature: before any write operation, it replays the change in a shadow environment, showing projected affected row counts, lock table duration, and a rollback plan — execution only proceeds after confirmation. An e-commerce SRE team reported that within two weeks of adoption, high-risk change incidents dropped from five per month to under one. The skill also supports integration with internal CMDBs, automatically identifying production environments and enforcing two-person review.",
-      "impact": "The key bottleneck for agents entering core production systems is 'controllability.' Replayable, auditable capabilities like this will become a hard threshold for enterprise procurement, also pushing platform vendors to build approval workflows natively into Agent frameworks.",
-      "source": "InfoQ Tech Community"
+      "id": "brief-skill-03",
+      "title": "Retrieval Quality Tuning: The Practical RAG 2.0 Skill Beyond Vector Databases",
+      "summary": "Hybrid retrieval, reranking, and evaluation loops have become critical to RAG deployment — engineers who can do retrieval evaluation are in critically short supply.",
+      "detail": "Enterprise RAG projects commonly stall at the stage of 'runs but isn't accurate.' The proven practical approach: anchor the system with hybrid BM25 and vector retrieval, introduce reranking models to boost top-k precision, build an evaluation loop with a golden question-and-answer set for continuous iteration, and apply structured document chunking (splitting semantically by headings, tables, and code blocks). In addition, caching and fallback strategies, along with hallucination detection and citation tracing, are becoming essential engineering components for production-grade RAG.",
+      "impact": "Engineers skilled in retrieval evaluation and tuning are in surging demand on enterprise AI projects — the most practical resume booster in the short term.",
+      "source": "Tech Blogs / Enterprise AI Case Studies"
      }
     ]
    },
    {
     "id": "ios",
     "title": "iOS App Updates",
-    "icon": "📱",
+    "icon": "🍎",
     "articles": [
      {
-      "id": "brief-ios-001",
-      "title": "Apple Opens iOS 26.2 Sideloading Pilot, First Third-Party Store Expansion Outside EU",
-      "summary": "Apple announces trials of alternative payments and third-party stores in select Asia-Pacific markets, with developer commission terms adjusted accordingly.",
-      "detail": "According to multiple reports, Apple will launch a one-year third-party app store pilot in Japan, South Korea, and Singapore with iOS 26.2, due in December, allowing app distribution through certified stores and opening alternative payment channels. Eligible developers see commissions cut to 15%, though they must pay a Core Technology Fee. The move is seen as a response to antitrust rulings in multiple jurisdictions, and three European stores have already expressed interest in entering the market.",
-      "impact": "iOS distribution faces its biggest shift in a decade, with acquisition costs for utility and subscription apps expected to fall; developers in China should watch whether the pilot expands locally and prepare multi-channel payment and compliance plans in advance.",
-      "source": "Bloomberg / 9to5Mac"
+      "id": "brief-ios-01",
+      "title": "Apple Intelligence On-Device Capabilities Open Up Further, App Intents Becomes the Entry Point for Agent Calls",
+      "summary": "More on-device model APIs are deeply integrated with App Intents, meaning your App will be proactively invoked by system-level agents.",
+      "detail": "Apple continues to expand the scope of Apple Intelligence. Developers can use App Intents to expose core in-app actions to the system-level assistant and Shortcuts ecosystem. This means users no longer need to 'open an App' — a single spoken instruction lets an agent complete cross-app task chains. Combined with small-scale on-device inference, sensitive data can undergo intent understanding without ever leaving the device. E-commerce, mobility, and notes apps have already seen increased call volumes originating from the system assistant via App Intents.",
+      "impact": "iOS distribution is shifting from 'download counts' to 'number of agent calls.' Beyond ASO, developers now need an 'intent optimization' strategy.",
+      "source": "Apple Developer Documentation / WWDC Coverage"
      },
      {
-      "id": "brief-ios-002",
-      "title": "App Store Annual Trends: AI-Native Apps Take 30% of Top Charts, On-Device Inference a Key Draw",
-      "summary": "The 2026 charts show AI apps focused on on-device inference and privacy growing fastest, while utility subscription revenue overtakes games for the first time.",
-      "detail": "Apple's annual retrospective found that 31 of the Top 100 grossing apps are AI-native, with note-taking, call transcription, and photo restoration growing fastest. Notably, apps touting 'fully offline inference' saw downloads jump 210% year on year, with willingness to pay clearly higher than cloud-based equivalents. Total utility subscription revenue surpassed mobile game in-app purchases for the first time, making it the App Store's largest revenue source.",
-      "impact": "'On-device + privacy' has moved from marketing pitch to a real driver of spending, with the opportunity for small and mid-sized developers lying in high-quality fine-tuned models for vertical scenarios; pure cloud wrapper apps will face a shrinking生存 space.",
-      "source": "Apple Newsroom"
+      "id": "brief-ios-02",
+      "title": "AI-Native iOS Apps Surge: Subscriptions Become the Dominant Monetization Model",
+      "summary": "AI tool apps continue to gain share in the charts, and hybrid pricing — weekly subscriptions plus free usage quotas — has proven effective.",
+      "detail": "In recent iOS utility charts, AI note-taking, speech transcription, and image-processing apps have risen sharply in share. Successful products converge on a similar pricing strategy: a free basic quota to build habits, weekly subscription or credit-based pricing for advanced features, and high-frequency scenarios such as 'export/share' to drive paid conversion. Notably, on-device inference lowers long-term API costs, allowing small and mid-sized teams to maintain healthy subscription margins.",
+      "impact": "The combination of subscriptions and on-device inference lowers the survival threshold for indie developers — small teams still have a window to ship products with meaningful monthly revenue.",
+      "source": "App Store Chart Observations / Indie Developer Communities"
      },
      {
-      "id": "brief-ios-003",
-      "title": "Xcode 27 Beta Adds Agentic Debugging Assistant, Cuts Crash Localization to Seconds",
-      "summary": "It can automatically read crash logs, correlate commit history, and generate fix suggestions, significantly boosting indie developer productivity.",
-      "detail": "The second beta of Xcode 27 adds an Agent Debug panel that automatically captures symbolicated crash logs, traces changes across the last 20 commits, flags suspect code lines with suggested patches, and supports one-click regression test runs. Early testers report typical null-pointer and out-of-bounds issues now take tens of seconds to locate instead of more than ten minutes. The feature can integrate third-party models and supports private on-premise deployment for enterprises.",
-      "impact": "Apple is embedding AI deep into the developer toolchain, making the IDE a new battleground for ecosystems; this will widen the productivity gap between professional and hobbyist developers, while also benefiting vendors offering private model integration solutions.",
-      "source": "MacRumors / Developer Forums"
+      "id": "brief-ios-03",
+      "title": "New SwiftUI and Background Task Features Make Long-Running Agent Apps Possible",
+      "summary": "System-level background execution and an improved concurrency model make long-task agent apps on iOS viable.",
+      "detail": "Apple has enhanced background task scheduling, BGTask, and Swift concurrency at the system level. Paired with more efficient on-device inference frameworks, this makes 'running a continuously working assistant on your phone' a reality rather than a fantasy. Typical scenarios include automatically sorting messages and email overnight, scheduled fetching and daily report generation, and cross-app data aggregation. During development, watch the triple constraints of battery budget, network quota, and user privacy prompts to avoid system downranking or App Review rejection.",
+      "impact": "Mobile agent apps are evolving from 'chat boxes' into 'always-on background assistants,' opening new product categories and user habits.",
+      "source": "Apple Developer Forums / Tech Blogs"
      }
     ]
    },
    {
     "id": "startups",
-    "title": "Startup Radar",
+    "title": "Tech Startups",
     "icon": "🚀",
     "articles": [
      {
-      "id": "brief-startup-001",
-      "title": "Embodied AI Firm Shendong Technology Raises Series B+, Valuation Tops $2 Billion",
-      "summary": "Its dual-arm robots have begun small-batch delivery to 3C production lines; the round was led by a national-level industry fund.",
-      "detail": "Shendong Technology announced completion of a several-hundred-million-yuan Series B+ round to fund mass production of its next-gen dexterous hands and the buildout of a training data factory. The company pursues a 'general-purpose manipulation base model + scenario fine-tuning' approach; its dual-arm robots have completed six months of small-batch trial production at two 3C contract manufacturers, replacing roughly 2.5 workers per station. The founder said the shipping target for next year is 3,000 units, with a focus on automotive parts and pharmaceutical warehousing.",
-      "impact": "Embodied AI is moving from lab prototypes into real production-line validation, with valuation benchmarks shifting toward replicable delivery capability. Upstream component makers and data-collection services stand to benefit first, while investors' focus has moved from technical specs to per-station payback periods.",
-      "source": "36Kr"
+      "id": "brief-start-01",
+      "title": "Agent Infrastructure Heats Up as Observability Startups Raise Fresh Funding",
+      "summary": "Demand for agent call-chain tracing and cost governance is surging, making the \"Datadog for Agents\" a hot startup thesis.",
+      "detail": "As enterprise agent deployments scale, tangled call chains, runaway token costs and untraceable hallucinations are surfacing at once. Several startups focused on agent observability have recently closed new funding rounds, with products spanning prompt version control, call-trace replay, cost-allocation dashboards and automated evaluation pipelines. The investment logic is straightforward: wherever enterprise-grade agents are deployed, a measurement and governance layer is inevitable — a classic \"picks and shovels\" business.",
+      "impact": "Competition in the agent application layer is fierce, but the supporting infrastructure offers more certainty, making it a safer entry point for founders and investors.",
+      "source": "TechCrunch / Crunchbase funding tracker"
      },
      {
-      "id": "brief-startup-002",
-      "title": "AI Recruiting Startup HireLoop Reportedly Acquired for $800 Million Just 22 Months After Launch",
-      "summary": "Its 'candidate experience agent' has penetrated mid-to-large enterprises rapidly, setting the fastest M&A record in the sector.",
-      "detail": "Reports say a global HR SaaS giant acquired HireLoop for roughly $800 million. The company's core product is a conversational agent for candidates that auto-schedules interviews, answers questions, and follows up on offer processes, cutting average enterprise hiring cycles by 35%. Just 22 months after founding, it surpassed $50 million in ARR, with clients including more than a dozen Fortune Global 500 companies. The deal is expected to close next month, with the team fully folded into the acquirer's AI division.",
-      "impact": "Platform giants are rapidly absorbing AI application-layer companies through 'buying time,' validating the 'vertical scenario + workflow embedding' exit path. This will significantly raise M&A expectations across similar tracks and spur more founders to target niche segments of traditional enterprise services.",
-      "source": "TechCrunch"
+      "id": "brief-start-02",
+      "title": "On-Device AI Chip Startups Win Strategic Capital, Inference Costs Drop Another Order of Magnitude",
+      "summary": "Inference chips for phones and edge devices are ramping up production, further clearing the path for on-device large models.",
+      "detail": "Several on-device AI chip startups have recently secured joint investments from device makers and industrial funds. Their new products deliver a marked jump in power efficiency over the previous generation and support INT4 quantized inference for leading open-source models. With chip production ramping and system-level scheduling improving, running models with tens of billions of parameters on phones, cars and industrial terminals is becoming practical — directly accelerating AI adoption in privacy-sensitive sectors such as healthcare, finance and automotive.",
+      "impact": "Lower inference costs make many \"cloud-unaffordable\" use cases viable, and on-device plus cloud hybrid architectures will become the mainstream design pattern.",
+      "source": "Industry media / semiconductor news outlets"
      },
      {
-      "id": "brief-startup-003",
-      "title": "Open-Source Vector Database Firm VectorBase Raises $120 Million Series C, Focused on Multimodal Retrieval",
-      "summary": "Supports unified indexing of text, images, and video; customer count grew fourfold in a year, making it a hot RAG infrastructure target.",
-      "detail": "VectorBase announced completion of a $120 million Series C round at a valuation above $1.5 billion. Its next-generation engine supports storing embedding vectors for text, images, and video clips in a single index, with millisecond-level hybrid retrieval. The company's customer base grew fourfold over the past year, mainly in e-commerce, security, and content platforms. The team said half the funds will go toward enterprise-grade permissions and multi-tenant isolation capabilities to push into finance and healthcare.",
-      "impact": "RAG is moving from 'usable' to 'at scale,' making multimodal retrieval and permission compliance must-haves, while the infrastructure layer regains investor attention. This also signals that enterprise knowledge-base projects will move from pilots to full-scale deployment.",
-      "source": "The Information"
+      "id": "brief-start-03",
+      "title": "AI Education and Healthcare Verticals Attract Capital as Compliance Becomes the Key Moat",
+      "summary": "With the general-purpose assistant space overcrowded, teams that go deep in verticals and can pass regulatory review win investor favor.",
+      "detail": "While funding for general-purpose AI assistants cools, vertical applications in education and healthcare are gaining attention against the trend. These teams share common traits: access to industry data or distribution channels, products that have cleared relevant regulatory review, and quantifiable efficiency or outcome metrics such as grading accuracy or follow-up completion rates. Investors broadly view compliance and trust barriers in vertical markets as moats in their own right — ones general-purpose model providers are unlikely to clear anytime soon.",
+      "impact": "The startup focus is shifting from \"building smarter models\" to \"building applications that understand the industry,\" with domain know-how emerging as the new scarce resource.",
+      "source": "Investor viewpoints / industry summit notes"
      }
     ]
    }
   ]
  },
  "hotProjects": {
-  "date": "2026-11-21",
-  "quote": "A trend isn't \"discovered\" — it's built by a crowd of early users with nothing to gain.",
-  "summary": "The biggest trend today remains \"making agents deliverable\" — from multi-agent orchestration and skill supply chains to enterprise-grade controlled execution, capital and developers are all betting on the same thing: letting AI genuinely take over an end-to-end workflow.",
+  "date": "2026-11-22",
+  "quote": "You don't chase a wave — you wait for it. Sharpen your tools in advance, and when the swell comes, you'll have earned your spot on the board.",
+  "summary": "The agent ecosystem is evolving from single-point tools into a full-stack stack of orchestration, governance, and delivery — and the supporting infrastructure is the most certain growth engine.",
   "projects": [
    {
     "id": "hot-001",
     "rank": 1,
-    "name": "Multi-Agent Cluster Scheduling Frameworks (Swarm-type)",
+    "name": "OpenClaw Multi-Agent Orchestration Platform",
     "heat": "🔥🔥🔥🔥🔥",
     "heatLevel": 5,
-    "oneLiner": "Enabling 32 agents to collaborate on a single machine and complete complex, long-running workflows.",
-    "whyHot": "OpenClaw v0.42's Swarm Scheduler pushed multi-agent concurrency from proof of concept to measurable productivity, with on-device efficiency gains of 3x breaking straight through the cost barrier. Star growth for related frameworks doubled in the past week, multiple automation vendors announced integrations, and capital markets have begun valuing on \"task throughput\" rather than \"model capability.\"",
+    "oneLiner": "An open-source multi-agent framework plus plugin marketplace that productizes personal automation.",
+    "whyHot": "v0.14 introduced Supervisor orchestration and persistent memory, plugin count surpassed 5,000, and enterprise edition beta testing launched simultaneously. The platform has upgraded from a personal productivity tool to a team-level 'digital workforce' platform, driven by a dual open-source plus commercial model, with ecosystem network effects beginning to emerge.",
     "highlights": [
-     "Implementation of the shared memory bus and task decomposition graph",
-     "Compute and memory cost curves under on-device concurrency",
-     "Failure retry and auditability for long-running workflows",
-     "Compatibility layers with mainstream agent frameworks"
+     "Supervisor-based multi-agent orchestration and task decomposition",
+     "MCP protocol as the de facto standard for tool integration",
+     "Security sandboxing and quality rating system for the plugin marketplace",
+     "Enterprise-grade permission isolation, auditing, and private deployment"
     ],
-    "riskTip": "Concurrency does not equal reliability — task-level consistency and error propagation remain unsolved. Early projects change their APIs frequently; production deployments need rollback plans in place."
+    "riskTip": "During rapid ecosystem expansion, plugin quality is uneven, and supply-chain security and compliance liability boundaries remain unclear; enterprise willingness to pay still needs validation."
    },
    {
     "id": "hot-002",
     "rank": 2,
-    "name": "Agent Skill Supply Chain Security",
-    "heat": "🔥🔥🔥🔥",
+    "name": "Agent Observability and Governance Toolchain",
+    "heat": "🔥🔥🔥🔥🔥",
     "heatLevel": 4,
-    "oneLiner": "Sandboxing, permission whitelists and outbound audit trails for agent skill packages.",
-    "whyHot": "The FastSync incident was a watershed moment — overnight it turned \"trusted skill provenance\" into a hard requirement for enterprise procurement. The official response, introducing domain whitelists and a human review queue, effectively conceded that this category must exist. Security vendors, cloud platforms and compliance teams are all looking for ready-made solutions; the market gap is large and competitors are few.",
+    "oneLiner": "Monitoring, evaluation, and cost governance for agents — the pick-and-shovel play for enterprise adoption.",
+    "whyHot": "As enterprise agent deployments scale, call-chain tracing, token cost allocation, and hallucination attribution have become critical pain points. Several companies recently completed funding rounds, and products are extending from debugging tools to evaluation pipelines and compliance audits — a classic high-certainty infrastructure business.",
     "highlights": [
-     "Standardized permission declarations in skill manifests",
-     "Behavioral baselines for outbound traffic and file reads",
-     "Skill signing and provenance tracing mechanisms",
-     "Enterprise skill asset inventories and compliance reporting"
+     "Call-trace replay and prompt version management",
+     "Cost dashboards and department-level expense allocation",
+     "Automated evaluation and regression testing pipelines",
+     "Hallucination detection, citation provenance, and compliance auditing"
     ],
-    "riskTip": "No unified standard exists yet; binding too early to a single platform format risks being superseded by built-in capabilities. A cross-platform strategy is advisable."
+    "riskTip": "Foundation model vendors may build basic observability capabilities directly into their platforms; independent tools must build moats around deep governance and multi-platform aggregation."
    },
    {
     "id": "hot-003",
     "rank": 3,
-    "name": "On-Device Inference + Privacy-Native AI Apps",
-    "heat": "🔥🔥🔥🔥",
+    "name": "MCP Server Ecosystem and Tool Wrapping Services",
+    "heat": "🔥🔥🔥🔥🔥",
     "heatLevel": 4,
-    "oneLiner": "Fully offline AI apps — downloads up 210% year on year, driving a new wave of paid conversions.",
-    "whyHot": "App Store annual data offers the clearest evidence: offline inference apps are growing several times faster than cloud-based peers, with markedly higher willingness to pay — subscription revenue from utility apps surpassed mobile game in-app purchases for the first time. Add the distribution shift brought by the iOS sideloading pilot, and small developers get their first real chance to bypass the compute advantage of giants by winning with vertically fine-tuned models.",
+    "oneLiner": "Wrapping enterprise SaaS and hardware services as MCP tools to capture the agent traffic gateway.",
+    "whyHot": "MCP is now widely supported by mainstream agent clients, and a single wrap enables network-wide distribution. The demand to retrofit existing software with MCP is enormous, creating new opportunities in standardized wrapping, permission custody, and tool stores — accessible to developers and small teams alike.",
     "highlights": [
-     "Small-model quantization and on-device performance optimization",
-     "Closed loops of vertical-scenario data and fine-tuning",
-     "How privacy promises become verifiable selling points",
-     "Compliance preparation for multi-channel distribution and payments"
+     "MCP retrofit services for existing SaaS products",
+     "Tool schema design and permission declaration standards",
+     "Usage-based billing and revenue-sharing models",
+     "Security sandboxes and call auditing"
     ],
-    "riskTip": "On-device compute is constrained, capping feature depth. If platform vendors integrate comparable capabilities at the OS level, standalone apps' differentiation will erode quickly."
+    "riskTip": "The standard is still evolving rapidly and interfaces may change repeatedly; leading platforms could steer the standard, leaving long-tail tools easily replaceable."
    },
    {
     "id": "hot-004",
     "rank": 4,
-    "name": "Embodied AI on the Production Line",
-    "heat": "🔥🔥🔥",
+    "name": "On-Device AI Inference Chips and Hybrid Architectures",
+    "heat": "🔥🔥🔥🔥",
     "heatLevel": 3,
-    "oneLiner": "Dual-arm robots officially entering 3C manufacturing lines — valuation anchors shift to per-station payback period.",
-    "whyHot": "DeepMove Technology's B+ round, backed by six months of real trial-production data, signals that embodied AI has moved past the \"demo video\" stage. Investor attention has shifted from degrees of freedom and precision to ROI and replicability, a signal reinforced by the entry of industrial funds. Supporting areas — data collection, dexterous hand components and line integration services — are heating up in tandem.",
+    "oneLiner": "Lower-power on-device inference unlocks AI applications in privacy-sensitive scenarios.",
+    "whyHot": "New-generation on-device chips deliver significantly better power efficiency and support quantized inference of mainstream open-source models. Demand is being unlocked in data-sovereignty sectors such as healthcare, finance, and automotive, making the 'on-device understanding plus cloud inference' hybrid architecture a new product design paradigm.",
     "highlights": [
-     "Labor replacement ratio and payback period per workstation",
-     "Transfer efficiency of general foundation models plus scenario fine-tuning",
-     "Supply chains for core components such as dexterous hands",
-     "Construction costs of training data factories"
+     "INT4/INT8 quantized inference and system-level scheduling",
+     "Cost and latency optimization for edge-cloud hybrid architectures",
+     "Deployment pathways for privacy-compliant scenarios",
+     "Developer toolchains and model adaptation ecosystem"
     ],
-    "riskTip": "Hardware delivery and on-site O&M costs are high, and orders depend heavily on a handful of large customers. The industry remains in a validation phase; revenue recognition may lag expectations."
+    "riskTip": "Hardware mass production and yield remain uncertain, and the trend of device makers developing in-house chips may squeeze the market for third-party silicon."
    }
   ]
  }

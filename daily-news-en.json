@@ -1,81 +1,83 @@
 {
- "date": "2026-11-21",
- "weekday": "Saturday",
- "overview": "Asia-Pacific cooperation embarks on a new chapter in Shenzhen, tensions flare across multiple Middle East flashpoints, global equities and cryptocurrencies retreat in tandem, and divergences deepen between consumer and manufacturing sectors.",
+ "date": "2026-11-22",
+ "weekday": "Sunday",
+ "overview": "Shenzhen hosts a密集 round of APEC diplomacy, with Middle East tensions and the chip rivalry intertwining, while the domestic economy moves toward new-quality growth and consumer potential continues to be unleashed.",
  "trendingTopics": [
-  "Asia-Pacific regional cooperation",
+  "APEC cooperation",
   "Middle East situation",
-  "Global stock market correction",
-  "AI industry",
-  "Consumer market divergence",
-  "High-end manufacturing",
-  "Cryptocurrency"
+  "Chip exports",
+  "Smart manufacturing",
+  "Culture and tourism consumption",
+  "State-owned enterprise reform",
+  "Public health"
  ],
  "sections": [
   {
    "id": "domestic",
-   "title": "China Domestic Politics",
+   "title": "Domestic Politics",
    "icon": "🇨🇳",
    "articles": [
     {
      "id": "news-001",
-     "title": "Shenzhen's Stunning Transformation Embodies APEC Cooperation Vision",
-     "summary": "A Xinhua editorial notes that Shenzhen's remarkable transformation vividly illustrates the cooperation and development ideals championed by APEC.",
-     "detail": "The commentary uses Shenzhen as a case study, arguing that the city's development trajectory and APEC's principles mutually reinforce each other. The source material also describes Shenzhen as \"a place with a big story,\" with \"tech-driven domestic brands\" emerging as the city's new calling card.",
-     "impact": "Telling the story of openness and cooperation through a city example helps bolster external confidence in China's market and industrial opportunities.",
-     "importance": "important",
+     "title": "President Xi Jinping's Shenzhen APEC Schedule",
+     "summary": "President Xi Jinping is attending related activities of the APEC Leaders' Meeting Week in Shenzhen, kicking off a home-ground diplomacy agenda.",
+     "detail": "Shenzhen, the host city of this year's APEC Meeting Week, has drawn wide international attention. Foreign correspondents praised Shenzhen as a true \"APEC City,\" with the packed home-ground diplomacy schedule becoming the center of focus.",
+     "impact": "Home-ground diplomacy injects certainty into regional cooperation and showcases a new image of China's urban development and openness to the world.",
+     "importance": "hot",
      "tags": [
-      "Urban Transformation",
-      "Tech Innovation",
-      "Regional Cooperation"
+      "APEC Cooperation",
+      "High-Level Opening Up"
      ]
     },
     {
      "id": "news-002",
-     "title": "Ideas Illuminate Lingnan: The 'China Bowl' Amid the Rice Fields",
-     "summary": "The \"Ideas Illuminate Lingnan\" series turns its focus to the \"China Bowl\" in the rice paddies, zeroing in on food as a foundational topic.",
-     "detail": "The report uses the fragrance of rice as an entry point to tell stories connected to the \"China Bowl.\" The source material offers no further specific data or policy details, so no further extrapolation is made.",
-     "impact": "Continued mainstream media attention to food security underscores the importance of agriculture's foundational role.",
-     "importance": "important",
+     "title": "Groundbreaking China-Russia-US Summit Sends Signals",
+     "summary": "A trilateral leaders' meeting between China, Russia and the US under the APEC framework has been described as groundbreaking, drawing attention to the direction of major-power relations.",
+     "detail": "Held during the APEC Leaders' Meeting Week, the summit is being closely watched for the political and economic signals sent by major-power engagement. Commentators noted that historical initiative by major powers \"writes a new chapter with every stroke.\"",
+     "impact": "Engagement among major-power leaders helps stabilize international expectations and sets the tone for subsequent dialogue on trade, economic and regional issues.",
+     "importance": "hot",
      "tags": [
-      "Food Security",
-      "Agricultural Modernization"
+      "Multilateral Cooperation",
+      "International Relations"
      ]
     },
     {
      "id": "news-003",
-     "title": "Regions Unveil New Autumn Holiday Experiences for Cultural Tourism",
-     "summary": "Cultural tourism markets across multiple regions are rolling out fresh autumn holiday offerings, injecting new scenarios into off-season consumption.",
-     "detail": "Reports show that local cultural tourism authorities and market players are developing innovative products and experiences around the autumn holiday period. The source material does not list specific cities or projects.",
-     "impact": "Innovative holiday products are expected to sustain momentum in cultural tourism spending and enrich residents' travel options.",
-     "importance": "normal",
+     "title": "Harmony in Diversity: Shenzhen Answers the Asia-Pacific Question",
+     "summary": "Shenzhen has offered its own development experience in response to regional cooperation agendas, becoming a key case study during APEC Meeting Week.",
+     "detail": "Coverage of the meeting week focused on the practical challenges of Asia-Pacific regional cooperation, with Shenzhen's urban development experience and open posture viewed as an answer to the \"Asia-Pacific question.\" The lychee iced wine served at the gala dinner even sold out and trended on social media.",
+     "impact": "Showcasing the city model helps strengthen Asia-Pacific partners' confidence in the Chinese market and its open environment.",
+     "importance": "important",
      "tags": [
-      "Cultural Tourism Spending",
-      "Holiday Economy"
+      "APEC Cooperation",
+      "Regional Economy",
+      "Urban Opening Up"
      ]
     },
     {
      "id": "news-004",
-     "title": "Gold Deposit Worth Over 6 Billion Yuan Discovered in Inner Mongolia",
-     "summary": "A gold deposit has been discovered in Inner Mongolia, reported to be worth more than 6 billion yuan, drawing market attention.",
-     "detail": "This is a mineral resource discovery disclosed in the source material. Beyond the location and stated value, no further information on reserves, ore grade, or development plans was provided.",
-     "impact": "The discovery of a large gold deposit is expected to lift expectations for regional mineral exploration and development, and attract attention from related industries.",
+     "title": "Magnitude 5.6 Earthquake in Delingha, Qinghai; Rescue Teams Reach Epicenter",
+     "summary": "A magnitude 5.6 earthquake struck Delingha in Qinghai Province. Rescue personnel have reached the epicenter, and no casualties have been reported.",
+     "detail": "The earthquake caused delays to some trains along the Golmud-Xining section of the Qinghai-Tibet Railway. Emergency response was launched swiftly after the quake, with communications and transport support deployed in parallel.",
+     "impact": "Emergency handling in the quake zone tests coordination between transport and rescue forces; aftershock monitoring and infrastructure inspections will be key priorities going forward.",
      "importance": "important",
      "tags": [
-      "Mineral Resources",
-      "Geological Exploration"
+      "Emergency Management",
+      "Earthquake Rescue",
+      "Transport Security"
      ]
     },
     {
      "id": "news-005",
-     "title": "Tongling's 'Cross Ridge': An Agricultural Version of the 'Six-Foot Alley'",
-     "summary": "The \"Why China · Harmony and Deference\" feature highlights Tongling's \"Cross Ridge,\" calling it the agricultural counterpart of the famed \"Six-Foot Alley.\"",
-     "detail": "The report interprets the agricultural heritage site \"Cross Ridge\" in Tongling through the lens of harmony and mutual deference, echoing the classic \"Six-Foot Alley\" story of yielding to neighbors. The source material offers no further details.",
-     "impact": "Modern expressions of traditional culture help promote local cultural brands and revitalize rural culture.",
+     "title": "\"Red Star Over China\" Free Trade Port Campaign Launched",
+     "summary": "The themed campaign \"Red Star Over China: From the Flames of Qiongya to an Open Free Trade Port\" has officially launched.",
+     "detail": "The campaign traces the historical arc from the Qiongya revolutionary struggles to today's free trade port, tied to the ongoing development of Hainan Free Trade Port.",
+     "impact": "The campaign blends red culture with the free trade port narrative, helping promote the region's open image.",
      "importance": "normal",
      "tags": [
-      "Traditional Culture",
-      "Agricultural Civilization"
+      "Free Trade Port Development",
+      "Red Culture",
+      "Themed Campaign"
      ]
     }
    ]
@@ -87,74 +89,66 @@
    "articles": [
     {
      "id": "news-006",
-     "title": "Xi Extends Cooperation Invite to Global Business Community",
-     "summary": "President Xi Jinping issued an invitation to the global business community, calling it a matter of new opportunities for worldwide commerce.",
-     "detail": "The report centers on the invitation addressed to the global business community, underscoring the new opportunities that cooperation brings. Commentary around the same period noted that the outcomes achieved in Shenzhen \"will lay the foundation for future prosperity in the Asia-Pacific region.\"",
-     "impact": "High-level signals of openness and cooperation help stabilize expectations among foreign investors and multinational companies regarding engagement with China.",
+     "title": "Qatar-Germany Joint Statement Focuses on Iran Nuclear Issue",
+     "summary": "Qatar and Germany issued a joint statement emphasizing that Iran must not develop or acquire nuclear weapons, urging it to fulfill its non-proliferation obligations.",
+     "detail": "The statement also called on Iran to stop supplying weapons and support to the Houthis, reaffirmed commitments to Yemen's unity and sovereignty, condemned attacks on commercial vessels, and opposed any actions obstructing shipping through the Strait of Hormuz.",
+     "impact": "The joint stance strengthens the international community's shared position on non-proliferation and Red Sea shipping security, laying the groundwork for further diplomatic pressure.",
      "importance": "hot",
      "tags": [
-      "Global Governance",
-      "Business Cooperation",
-      "Regional Economy"
+      "Middle East",
+      "Non-Proliferation",
+      "International Shipping Security"
      ]
     },
     {
      "id": "news-007",
-     "title": "Feature: The \"Shenzhen Moment\" of Major-Power Diplomacy",
-     "summary": "Media outlets documented diplomatic scenes under the theme of the \"Shenzhen Moment,\" while closely following progress on building an Asia-Pacific community.",
-     "detail": "Multiple media outlets focused on the diplomatic event, suggesting the Shenzhen Initiative could become an \"Asia-Pacific solution\" and that the building of an Asia-Pacific community has entered a new stage of substantive progress. The \"Harmony and Coexistence\" series also explored China's 50-year journey through the lens of one city's ambitions for the era.",
-     "impact": "The implementation of outcomes from multilateral host diplomacy helps boost certainty and expectations for regional economic and trade cooperation.",
+     "title": "US Says It Seeks Permanent Deal with Iran",
+     "summary": "The US president said in an interview that he would seek a permanent agreement with Iran and would not allow it to possess nuclear weapons.",
+     "detail": "Iran's foreign minister responded that the current situation cannot be resolved unless the US acknowledges its mistakes and honors previous commitments; regarding the Strait of Hormuz, Iran said all that is needed is for the US to accept reasonable conditions in line with international law. Tehran also said it is still exploring diplomatic opportunities.",
+     "impact": "The gap between US and Iranian positions remains wide; short-term maneuvering will likely continue through negotiation probes and mutual pressure.",
      "importance": "hot",
      "tags": [
-      "Asia-Pacific Cooperation"
+      "Middle East",
+      "Great Power Rivalry"
      ]
     },
     {
      "id": "news-008",
-     "title": "Takaichi Addresses Taiwan Issue, China Responds",
-     "summary": "Takaichi Sanae made remarks on the Taiwan issue in Shenzhen, and the Chinese side responded.",
-     "detail": "Available materials show the remarks were made during an event in Shenzhen, with China responding shortly afterward. The materials did not provide specific wording of the remarks or the response, so no further extrapolation is made.",
-     "impact": "Divergent statements on Taiwan may affect the atmosphere of the relevant bilateral relations and warrant continued monitoring.",
+     "title": "Yemen Hit by Airstrikes as Both Sides Accuse Each Other of Escalation",
+     "summary": "The Houthis said Saudi warplanes carried out multiple airstrikes and missile strikes against civilian targets in several Yemeni provinces, drawing attention to the escalating conflict.",
+     "detail": "The Qatar-Germany joint statement condemned Houthi attacks in Yemen and against Saudi Arabia, calling on the group to immediately cease all military operations.",
+     "impact": "Regional conflict and shipping security are intertwined, with risks persisting in the Red Sea and Strait of Hormuz corridors.",
      "importance": "important",
      "tags": [
-      "Taiwan Issue",
-      "China-Japan Relations"
+      "Middle East",
+      "Regional Conflict",
+      "Humanitarian"
      ]
     },
     {
      "id": "news-009",
-     "title": "Trump's 27-Hour Shenzhen Stopover Draws Attention",
-     "summary": "Reports described the trip as a \"visit beyond plan,\" with Trump spending 27 hours in Shenzhen.",
-     "detail": "Reports characterized the itinerary as a \"visit beyond plan,\" focusing on its duration and arrangements. The materials offered no further trip details. Separately, Mexico's president reportedly released a video thanking the Chinese female bodyguards who provided close protection during the Shenzhen stay.",
-     "impact": "On-site interactions between heads of state and senior officials, along with accompanying details, reflect the diplomatic intensity of this multilateral occasion.",
-     "importance": "important",
+     "title": "UK and Ukraine Establish New Industrial Arrangement",
+     "summary": "The UK government announced a new industrial arrangement with Ukraine, under which Kyiv will be able to set up production facilities in Britain.",
+     "detail": "The UK defense secretary met with Ukrainian President Volodymyr Zelensky. Meanwhile, Ukraine has nominated several potential candidates to compete for the next ambassador to the United States, a post vacant since August this year.",
+     "impact": "The industrial cooperation arrangement will deepen long-term ties in defense and manufacturing between the two sides.",
+     "importance": "normal",
      "tags": [
-      "Asia-Pacific Cooperation"
+      "European Security",
+      "Industrial Cooperation",
+      "Bilateral Relations"
      ]
     },
     {
      "id": "news-010",
-     "title": "Tanker Attacked and Catches Fire in Strait of Hormuz",
-     "summary": "The UK's Maritime Trade Operations office reported that a tanker was attacked and caught fire near the Strait of Hormuz.",
-     "detail": "The agency received a security incident report stating that a vessel was attacked approximately 8 nautical miles north of Seeb in the Gulf of Oman. The ship's security officer reported a fire on board, with no casualties reported.",
-     "impact": "Security incidents on critical shipping lanes may push up marine insurance costs and risk premiums for energy transport.",
-     "importance": "hot",
+     "title": "France Calls on UN Security Council to Discuss Enforcement of Ruling",
+     "summary": "France called on the UN Security Council to convene a meeting to discuss the enforcement of the International Court of Justice's ruling on Myanmar.",
+     "detail": "A statement showed that France is pushing to bring the enforcement of the relevant ICJ ruling before the Security Council for discussion.",
+     "impact": "The linkage between multilateral judicial mechanisms and the Security Council could trigger a new round of debate on international law enforcement.",
+     "importance": "normal",
      "tags": [
-      "Middle East Situation",
-      "International Shipping",
-      "Energy Security"
-     ]
-    },
-    {
-     "id": "news-011",
-     "title": "Iran's Qeshm Island Hit by Missile Strike, Explosions Reported",
-     "summary": "Iranian media reported a missile strike on Qeshm Island, followed by explosions heard locally.",
-     "detail": "Iran's Tasnim news agency reported that a missile struck the suburbs of Qeshm city on Qeshm Island in southern Iran. Fars news agency reported explosions on the island, while local sources said the blasts may be linked to the downing of an enemy aircraft.",
-     "impact": "Escalating regional military friction will heighten uncertainty in the Middle East situation and international energy markets.",
-     "importance": "important",
-     "tags": [
-      "Middle East Situation",
-      "Regional Security"
+      "Multilateral Mechanisms",
+      "International Law",
+      "Regional Governance"
      ]
     }
    ]
@@ -165,77 +159,107 @@
    "icon": "📈",
    "articles": [
     {
-     "id": "news-012",
-     "title": "Feitian Moutai Premium Narrows to 70 Yuan as Scalpers Exit",
-     "summary": "The premium on Feitian Moutai has narrowed, with reports saying the markup has shrunk to just 70 yuan as scalpers gradually exit the market.",
-     "detail": "The shrinking premium reflects more rational end-market pricing for premium baijiu and a squeeze on speculation. No further price or sales data was provided.",
-     "impact": "As premium baijiu prices return to rationality, distribution and dealership networks may face further adjustments.",
-     "importance": "hot",
+     "id": "news-011",
+     "title": "Economic Daily: The 'Gap' Between Data and Sentiment Must Be Closed — Confidence Cannot Be Lost",
+     "summary": "Economic Daily published a commentary noting that a 'temperature gap' persists in economic performance and must be genuinely closed to shore up market confidence.",
+     "detail": "The article stresses that confidence must not be lost at the current stage, calling for acknowledging and bridging the divide between headline economic data and grassroots sentiment.",
+     "impact": "The commentary sends a signal of stabilizing expectations, helping guide market players to view short-term volatility rationally.",
+     "importance": "important",
      "tags": [
-      "Baijiu Industry",
-      "Consumer Market"
+      "Macro Economy",
+      "Market Confidence",
+      "Policy Expectations"
+     ]
+    },
+    {
+     "id": "news-012",
+     "title": "China's Business Entities 'Upgrade and Innovate' in First Three Quarters",
+     "summary": "Data released by the State Administration for Market Regulation shows China's business entities trended toward higher quality and innovation in the first three quarters of 2026.",
+     "detail": "The figures indicate continued optimization in the structure and quality of business entities, with momentum from both new registrations and transformations.",
+     "impact": "The upgrading and innovation of business entities is a key indicator of improving endogenous economic momentum.",
+     "importance": "important",
+     "tags": [
+      "Business Entities",
+      "Market Environment",
+      "Business Climate"
      ]
     },
     {
      "id": "news-013",
-     "title": "315 Exposure Sparks Controversy Over Tinghua Liquor Claims",
-     "summary": "Reports have questioned Tinghua Liquor's claims of \"anti-tumor\" and \"immune-boosting\" effects, with the 315 exposure highlighting related issues.",
-     "detail": "Coverage focuses on questions raised over Tinghua Liquor's efficacy claims, including expressions such as \"anti-tumor\" and \"boosting immunity,\" linked to the 315 exposure. No further investigative findings were provided.",
-     "impact": "Irregular health-benefit claims are back in the spotlight, potentially prompting stricter compliance in liquor marketing and stronger consumer rights protection.",
+     "title": "AIIB to Establish Office in Hong Kong",
+     "summary": "The Asian Infrastructure Investment Bank announced it will set up an office in Hong Kong.",
+     "detail": "The move will further strengthen Hong Kong's positioning as an international financial center and a hub for multilateral institutions.",
+     "impact": "It helps bolster Hong Kong's role as a nexus for multilateral financial cooperation and its capacity to host related business.",
      "importance": "important",
      "tags": [
-      "Consumer Rights",
-      "Baijiu Industry",
-      "Advertising Compliance"
+      "Multilateral Finance",
+      "Hong Kong Finance",
+      "International Investment"
      ]
     },
     {
      "id": "news-014",
-     "title": "China's Largest Dumpling Chain Plans IPO",
-     "summary": "Reports say China's largest dumpling restaurant chain is planning a listing, drawing attention from the foodservice and capital markets.",
-     "detail": "The material only discloses the planned IPO, without details such as the company name, fundraising size, or listing venue.",
-     "impact": "A chain restaurant race to the capital markets could lift valuations and financing activity across the foodservice sector.",
+     "title": "Central China's Rise: From One-Tenth of Land to Over One-Fifth of Economy",
+     "summary": "The shift from 'one-tenth of China's land area' to 'over one-fifth of economic output' has sparked discussion on the value of the Central China Rise strategy.",
+     "detail": "The report traces the changing share of central China in land area and economic output, illustrating progress in coordinated regional development.",
+     "impact": "A rebalanced regional landscape opens new room for industrial relocation and deeper expansion of domestic demand.",
      "importance": "important",
      "tags": [
-      "Restaurant Industry",
-      "Capital Markets"
+      "Regional Economy",
+      "Central China Rise",
+      "Coordinated Development"
      ]
     },
     {
      "id": "news-015",
-     "title": "Meituan, JD.com, and Alibaba All Set Sights on the Kitchen",
-     "summary": "Internet platforms including Meituan, JD.com, and Alibaba are collectively turning their focus to the \"kitchen\" scenario.",
-     "detail": "Reports say the three platforms are simultaneously targeting kitchen-related businesses, pointing to competition in at-home delivery and restaurant supply chains. Specific strategies and investments were not disclosed.",
-     "impact": "Platform competition extending into the kitchen space could reshape service dynamics across restaurant supply chains and at-home consumption.",
-     "importance": "important",
+     "title": "RMB 233 Million in Zirconium-Hafnium Assets Injected into Yazhen Home Furnishings at Zero Consideration",
+     "summary": "Yazhen Home Furnishings received a 'free' asset injection from its controlling shareholder, with RMB 233 million worth of zirconium-hafnium assets transferred for zero consideration.",
+     "detail": "The injection was arranged by the listed company's controlling shareholder, with the target assets valued at zero consideration, drawing market attention to the deal structure.",
+     "impact": "The zero-consideration injection boosts the company's asset base in the near term, but integration results and compliance remain to be tracked.",
+     "importance": "normal",
      "tags": [
-      "Instant Retail",
-      "Restaurant Supply Chain",
-      "Internet Platforms"
+      "Capital Markets",
+      "Asset Restructuring",
+      "Rare Metals"
      ]
     },
     {
      "id": "news-016",
-     "title": "Young Shoppers Head Straight to Basement Level B1",
-     "summary": "Observers say young people still shop at malls — they just now go \"to the B1 level first.\"",
-     "detail": "The report approaches the topic from a consumer behavior angle, describing how young shoppers prefer to browse basement-level retail first. No footfall or sales data was provided.",
-     "impact": "With consumption stratification and value-for-money preferences persisting, commercial real estate tenant mixes may adjust accordingly.",
+     "title": "'Richest Man in Northwest China' to Acquire a Listed State-Owned Enterprise",
+     "summary": "Reports say a 'richest man in Northwest China' with a net worth of RMB 150 billion is set to acquire a listed state-owned enterprise.",
+     "detail": "The deal involves private capital acquiring a listed SOE; specific terms were not detailed in the source material.",
+     "impact": "If finalized, the deal would offer a new model for private capital participation in SOE mixed-ownership reform.",
      "importance": "normal",
      "tags": [
-      "Consumer Retail",
-      "Commercial Real Estate"
+      "SOE Reform",
+      "M&A",
+      "Mixed Ownership"
      ]
     },
     {
      "id": "news-017",
-     "title": "Prices for \"Mother of Machine Tools\" Also Slashed to Cabbage-Cheap Levels",
-     "summary": "Reports say prices for industrial machine tools — dubbed the \"mother of machine tools\" — have plunged dramatically, down to \"cabbage-cheap\" levels.",
-     "detail": "The report focuses on price competition in the industrial machine tool sector. Specific models, price declines, and company details were not provided.",
-     "impact": "Intensifying price competition in equipment manufacturing benefits procurement costs in the short term, but long-term industry profits and R&D investment warrant attention.",
+     "title": "Chongqing Unveils Fourth Batch of 'Four Chains' Projects by Municipal SOEs",
+     "summary": "Chongqing released the fourth batch of 'four chains' integrated innovation projects by municipal state-owned enterprises, with investment of about RMB 1.4 billion.",
+     "detail": "The projects focus on integrating innovation, industrial and other chains, led by municipal SOEs.",
+     "impact": "Local SOEs are using projects to concentrate innovation resources, supporting regional industrial upgrading.",
      "importance": "normal",
      "tags": [
-      "Advanced Manufacturing",
-      "Industrial Machine Tools"
+      "SOE Reform",
+      "Tech Innovation",
+      "Industrial Investment"
+     ]
+    },
+    {
+     "id": "news-018",
+     "title": "China's Consumer Market Keeps Unlocking Its Potential",
+     "summary": "China's consumer market shows improving structure and fresh momentum, with its potential continuously unleashed.",
+     "detail": "The report notes simultaneous improvements in consumption structure and new growth drivers, reflecting the resilience and vitality of domestic demand.",
+     "impact": "Structural gains on the consumption side offer positive validation of policies aimed at expanding domestic demand.",
+     "importance": "important",
+     "tags": [
+      "Consumer Market",
+      "Expanding Domestic Demand",
+      "Consumption Upgrading"
      ]
     }
    ]
@@ -246,240 +270,186 @@
    "icon": "🌐",
    "articles": [
     {
-     "id": "news-018",
-     "title": "U.S. Treasuries Surge as Investors Flee Equities",
-     "summary": "U.S. Treasury bonds extended this week's rally as investors pulled out of stocks amid growing doubts over the AI trade.",
-     "detail": "With skepticism over the AI trade intensifying and global equities slumping, U.S. Treasuries rose further on Friday, with yields falling across the curve. The 10-year yield dropped 10 basis points to 4.95%.",
-     "impact": "Safe-haven flows into bonds signal a clear contraction in global risk appetite.",
-     "importance": "hot",
-     "tags": [
-      "U.S. Treasuries",
-      "Global Capital Markets",
-      "Safe-Haven Assets"
-     ]
-    },
-    {
      "id": "news-019",
-     "title": "U.S. Stock Futures Tumble as Tech Slide Continues",
-     "summary": "U.S. stock futures fell sharply, with Nasdaq index futures down more than 3%, as the selloff in tech stocks is seen as \"not over yet.\"",
-     "detail": "Nasdaq futures fell 3.01%, Dow futures dropped 0.22%, and S&P 500 futures slid 1.52%. Capital Economics said the decline in tech stocks and the S&P 500 is \"not over yet.\"",
-     "impact": "If the tech stock correction continues, global growth stock valuations and risk asset sentiment will remain under pressure.",
+     "title": "US Treasury Secretary: Nvidia Chip Sales Will Face Scrutiny",
+     "summary": "The US Treasury Secretary said H200 chips can be sold, and that officials will review where Nvidia has been too loose in its chip sales.",
+     "detail": "Bessent said the president believes H200 chips can be sold, while vowing to examine Nvidia's sales practices as the company conducts its own investigation. He also responded to a bounty placed on him.",
+     "impact": "Shifts in US policy on advanced chip exports will directly affect the semiconductor supply chain and expectations across related companies.",
      "importance": "hot",
      "tags": [
-      "U.S. Stocks",
-      "Tech Stocks",
-      "Capital Markets"
+      "Semiconductors",
+      "Chip Exports",
+      "Tech Regulation"
      ]
     },
     {
      "id": "news-020",
-     "title": "European Shares Plummet, Tech Index Posts Biggest Drop in Over a Year",
-     "summary": "The STOXX 600 fell 2%, while the European tech index's decline deepened to 5%.",
-     "detail": "The STOXX 600 fell to 625.62 points. The European tech index extended its losses to 5%, on track for its largest single-day drop since October 2024.",
-     "impact": "The sharp sell-off in European tech reflects spillover of valuation pressure on AI-related assets worldwide.",
+     "title": "Meta Plans AI Device Bundled With 5G Service",
+     "summary": "Meta plans to price its Muse Charm AI device at $300 and offer up to one year of free 5G service to attract buyers.",
+     "detail": "The device's pricing and carrier partnership model represent a new playbook in the consumer AI hardware market.",
+     "impact": "Hardware subsidies combined with carrier partnerships could accelerate the adoption of consumer AI devices.",
      "importance": "important",
      "tags": [
-      "European Equities",
-      "Technology Sector",
-      "Capital Markets"
+      "Consumer Electronics",
+      "Artificial Intelligence",
+      "Smart Hardware"
      ]
     },
     {
      "id": "news-021",
-     "title": "Bitcoin Slides Below $60,000",
-     "summary": "Bitcoin fell below $60,000 for the first time since July, and later dropped below $59,000.",
-     "detail": "Bitcoin fell as much as 3.37% to breach $60,000 for the first time since July, then slipped below $59,000, with the intraday loss widening to 4.97%.",
-     "impact": "Crypto and risk assets are correcting in tandem, which could heighten volatility in digital asset markets in the short term.",
+     "title": "Overrunning Climate Summit Puts a Price Tag on the World",
+     "summary": "The overrunning climate summit wrestled over emissions cuts and funding, putting a price tag on the stakes for the whole world.",
+     "detail": "Talks continued to circle key issues through the closing stage, underscoring divisions among parties over climate responsibility and cost sharing.",
+     "impact": "Battles over climate finance and emissions arrangements will continue to shape the pace of investment in energy and green industries.",
      "importance": "important",
      "tags": [
-      "Cryptocurrency",
-      "Digital Assets"
+      "Global Climate Governance",
+      "Green Finance",
+      "Energy Transition"
      ]
     },
     {
      "id": "news-022",
-     "title": "AI Stocks Tumble, CoreWeave Falls Below IPO Price",
-     "summary": "AI-related stocks weakened broadly, with Anthropic down 12% and CoreWeave's stock briefly falling below its IPO price.",
-     "detail": "Anthropic fell 12% and hit a new session low. CoreWeave's shares fell below its March 2025 IPO price of $40.",
-     "impact": "Valuation pullbacks in AI-related names show the market is turning more cautious in pricing high-valuation computing assets.",
-     "importance": "important",
+     "title": "US Says Asia Trip Yielded Energy and Agricultural Purchases",
+     "summary": "The US president said his Asia trip delivered strong results, with the Philippines set to purchase American energy and agricultural products.",
+     "detail": "Trump said the Philippines must now buy energy from the United States and will also procure US agricultural products.",
+     "impact": "Bilateral trade arrangements could lift attention on related energy and agricultural export chains.",
+     "importance": "normal",
      "tags": [
-      "Artificial Intelligence",
-      "Compute Industry",
-      "U.S. Stocks"
+      "International Trade",
+      "Energy Cooperation",
+      "Agricultural Trade"
      ]
     },
     {
      "id": "news-023",
-     "title": "Apollo and Goldman Price SpaceX's $44 Billion GPU Financing",
-     "summary": "Apollo and Goldman Sachs announced the pricing of SpaceX's $44 billion GPU financing deal.",
-     "detail": "Apollo said the deal will supply SpaceX's ground-based compute buildout with next-generation Nvidia Vera Rubin chips. The leasing program is expected to launch after delivery of GPUs and related equipment in the first half of 2027.",
-     "impact": "The massive compute financing deal reflects leading institutions' willingness to make long-term investments in AI infrastructure.",
-     "importance": "important",
-     "tags": [
-      "Chip Industry",
-      "Compute Infrastructure",
-      "Private Financing"
-     ]
-    },
-    {
-     "id": "news-024",
-     "title": "European Natural Gas Futures Jump as Much as 5%",
-     "summary": "European natural gas futures rose as much as 5%, to €88.7 per megawatt-hour.",
-     "detail": "Against a backdrop of geopolitical tensions, European natural gas futures climbed intraday, with gains at one point reaching 5%.",
-     "impact": "Higher energy prices will add to inflation and industrial cost pressures in Europe.",
+     "title": "SpaceX Crew Dragon Set for Reentry and Splashdown",
+     "summary": "A SpaceX Crew Dragon capsule is expected to reenter the atmosphere around 2:05 p.m. Pacific time, splashing down off the Southern California coast.",
+     "detail": "The capsule will also announce its arrival with a brief sonic boom. The commercial crew return mission is proceeding as planned.",
+     "impact": "A commercial space mission completing on schedule will bolster market confidence across the related industry chain.",
      "importance": "normal",
      "tags": [
-      "International Energy",
-      "Commodities"
+      "Commercial Space",
+      "Space Launch",
+      "Advanced Manufacturing"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Tech Frontiers",
+   "title": "Tech Frontier",
    "icon": "💡",
    "articles": [
     {
-     "id": "news-025",
-     "title": "马斯克：我们不会提供开源模型",
-     "summary": "马斯克明确表示“我们不会提供开源模型”，引发对AI开源路线的讨论。",
-     "detail": "这是素材中披露的关于模型开放策略的表态，未提供更多背景信息。",
-     "impact": "头部企业对模型开放策略的选择，或将影响AI生态的开放程度与竞争格局。",
+     "id": "news-024",
+     "title": "Behind Tens of Thousands of Smart Factories: What Has AI Changed?",
+     "summary": "Behind the rollout of tens of thousands of smart factories, the changes AI has brought to manufacturing production methods are drawing attention.",
+     "detail": "The report focuses on the actual impact of AI in manufacturing processes and examines how the spread of smart factories is affecting industrial efficiency and organizational structures.",
+     "impact": "AI's deeper integration into manufacturing is expected to drive a leap in industrial efficiency and reshape upstream-downstream collaboration models.",
      "importance": "important",
      "tags": [
-      "人工智能",
-      "开源生态"
+      "Artificial Intelligence",
+      "Smart Manufacturing",
+      "Industrial Digitalization"
+     ]
+    },
+    {
+     "id": "news-025",
+     "title": "China's '5G + Industrial Internet' Projects Exceed 27,000",
+     "summary": "The number of China's '5G + Industrial Internet' projects has exceeded 27,000, with integrated applications continuing to scale up.",
+     "detail": "The growth in project numbers indicates that integrated applications of 5G and the industrial internet in manufacturing, energy and other sectors are accelerating.",
+     "impact": "The scaling of integrated applications will drive demand for industrial software, network equipment and system integration.",
+     "importance": "important",
+     "tags": [
+      "Industrial Internet",
+      "5G Applications",
+      "Digital Transformation"
      ]
     },
     {
      "id": "news-026",
-     "title": "五角大楼：AI供应链仍存风险并争取资金",
-     "summary": "五角大楼首席技术官称某AI企业仍是供应链风险，并为AI特别工作组争取更多国会资金。",
-     "detail": "五角大楼首席技术官迈克尔表示，Anthropic对五角大楼而言仍是一个供应链风险，同时正在为人工智能特别工作组争取更多国会资金。",
-     "impact": "AI技术进入国防采购体系的门槛与审查趋严，供应链安全成为焦点。",
+     "title": "National Data Administration: Expand Token Service Application Scenarios",
+     "summary": "China's National Data Administration said it will actively expand application scenarios for token services.",
+     "detail": "The remarks signal efforts to promote the application of data factors and new service formats across industries.",
+     "impact": "Under policy guidance, the application scope of the token service industry chain is expected to open up further.",
      "importance": "normal",
      "tags": [
-      "人工智能",
-      "供应链安全"
-     ]
-    },
-    {
-     "id": "news-027",
-     "title": "微软：新版Outlook出现附件上传问题",
-     "summary": "微软通报新版Outlook出现附件上传问题，网页版与经典版未受影响。",
-     "detail": "微软表示，网页版Outlook和经典版Outlook未受影响，问题出现在新版Outlook的附件上传功能上。",
-     "impact": "主流办公软件功能故障会影响企业日常协作，凸显云服务稳定性的重要性。",
-     "importance": "normal",
-     "tags": [
-      "企业软件",
-      "办公协同"
-     ]
-    },
-    {
-     "id": "news-028",
-     "title": "美批准进口无人机等产品，带动制造投资",
-     "summary": "美国联邦通信委员会批准进口部分新型无人机、路由器和机器人。",
-     "detail": "该机构表示，获批进口相关产品的71家公司已同意在美国制造业投资44亿美元。",
-     "impact": "准入与本土制造投资挂钩，可能改变相关硬件产品的供应链布局。",
-     "importance": "normal",
-     "tags": [
-      "智能制造",
-      "无人机",
-      "通信设备"
-     ]
-    },
-    {
-     "id": "news-029",
-     "title": "科技新国货成为“深圳特产”",
-     "summary": "报道称科技新国货正成为深圳的新“特产”，折射科技消费新趋势。",
-     "detail": "该报道与深圳的城市转型叙事相连，突出科技消费品的城市标签效应。素材未列出具体品牌与品类。",
-     "impact": "科技消费品牌的城市集聚效应，有助于国产科技消费品提升影响力。",
-     "importance": "normal",
-     "tags": [
-      "科技消费",
-      "国产创新",
-      "深圳经济"
-     ]
-    },
-    {
-     "id": "news-030",
-     "title": "ABB若出售失败或推动机器人业务上市",
-     "summary": "消息人士称，若向软银出售失败，ABB考虑将机器人业务部门上市。",
-     "detail": "这是素材中援引消息人士的说法，未提供交易进展与估值等信息。",
-     "impact": "工业机器人资产的归属与上市安排，或影响全球机器人产业竞争格局。",
-     "importance": "normal",
-     "tags": [
-      "机器人产业",
-      "工业自动化"
+      "Data Factors",
+      "Digital Economy",
+      "Policy Support"
      ]
     }
    ]
   },
   {
    "id": "other",
-   "title": "Other Top Stories",
+   "title": "Other Headlines",
    "icon": "📰",
    "articles": [
     {
-     "id": "news-031",
-     "title": "U17 World Cup: China Lose 0-5 to Spain",
-     "summary": "China's U17 national team suffered a 0-5 defeat to Spain in U17 World Cup action.",
-     "detail": "The match was a U17 World Cup group-stage clash with a lopsided scoreline. No further match details or upcoming fixtures were provided.",
-     "impact": "The heavy defeat has renewed attention on the development of youth football in China.",
-     "importance": "important",
-     "tags": [
-      "Youth Football",
-      "Sports"
-     ]
-    },
-    {
-     "id": "news-032",
-     "title": "Shen Teng Wins Best Actor",
-     "summary": "Shen Teng won the Best Actor award, becoming a trending topic in the entertainment world.",
-     "detail": "Only the outcome — Shen Teng winning Best Actor — was disclosed; no details on the award name, ceremony or the work involved were provided.",
-     "impact": "A top comedian receiving mainstream award recognition could boost market interest in related films.",
-     "importance": "normal",
-     "tags": [
-      "Film Industry",
-      "Entertainment"
-     ]
-    },
-    {
-     "id": "news-033",
-     "title": "Teen's Suspected Plasma Selling Spree Sparks Concern",
-     "summary": "A 19-year-old reportedly sold plasma 16 times in eight months before an accident occurred, raising concerns over plasma collection.",
-     "detail": "Reports say the teenager sold plasma 16 times over roughly eight months before an accident occurred. No further information on the investigation or follow-up was provided.",
-     "impact": "The case is expected to fuel public debate over the regulation of plasma collection centers and donor health protections.",
+     "id": "news-027",
+     "title": "Gala Exposes Tinghua Liquor Over Alleged False Advertising",
+     "summary": "The 315 Gala exposed Tinghua Liquor for promotional claims such as 'anti-tumor effects' and 'boosting immunity,' drawing public attention.",
+     "detail": "The marketing language is accused of exaggerating product efficacy, sparking debate over compliance in liquor marketing.",
+     "impact": "The incident serves as a warning for food and liquor advertising compliance and consumer rights protection.",
      "importance": "hot",
      "tags": [
-      "Blood Products",
-      "Public Health"
+      "Consumer Rights",
+      "Baijiu Industry",
+      "Advertising Regulation"
      ]
     },
     {
-     "id": "news-034",
-     "title": "The Vitamin Chinese People Lack Most — and Women Are Even More Deficient",
-     "summary": "A science feature says Chinese people are widely deficient in a certain vitamin, with women more affected than men.",
-     "detail": "The report, framed around nutritional intake, notes that deficiency is more pronounced among women. The specific vitamin and data sources were not identified.",
-     "impact": "Health education helps raise public nutrition awareness and may drive demand for dietary supplements.",
+     "id": "news-028",
+     "title": "19-Year-Old's Suspected Illness From Frequent Plasma Sales Sparks Concern",
+     "summary": "A 19-year-old reportedly suffered a medical incident after selling plasma multiple times within eight months, drawing public attention.",
+     "detail": "The case has brought plasma collection frequency management, health screening and regulation at plasma centers into the public spotlight.",
+     "impact": "The incident may push for further refinement of plasma collection management and medical oversight rules.",
+     "importance": "hot",
+     "tags": [
+      "Public Health",
+      "Medical Regulation",
+      "Plasma Collection Management"
+     ]
+    },
+    {
+     "id": "news-029",
+     "title": "Autumn Leave Meets Leaf-Viewing Boom: New Opportunities for Local Tourism",
+     "summary": "The overlap between autumn holidays and the leaf-viewing travel boom is opening new growth opportunities for local tourism consumption.",
+     "detail": "Reports focus on how the combination of holiday scheduling and seasonal travel demand is boosting local tourism markets.",
+     "impact": "The seasonal holiday economy is expected to drive simultaneous growth in local dining, lodging and transportation spending.",
      "importance": "normal",
      "tags": [
-      "Nutrition & Health",
-      "Public Health"
+      "Tourism Consumption",
+      "Holiday Economy",
+      "Local Economy"
      ]
     },
     {
-     "id": "news-035",
-     "title": "Chinese Universities Accused of 'Increasingly Resembling High Schools'",
-     "summary": "Commentary argues that the management and study culture of Chinese universities are 'increasingly resembling high schools.'",
-     "detail": "The topic focuses on management practices and changing student conditions in higher education. The source is an opinion-driven headline without further supporting evidence.",
-     "impact": "Debate over how universities train students may prompt reflection on campus management models and talent cultivation.",
+     "id": "news-030",
+     "title": "A Vitamin Chinese People普遍 Lack — More So Among Women",
+     "summary": "Reports indicate that Chinese people are generally deficient in a certain vitamin, with the deficiency notably more pronounced among women.",
+     "detail": "The article highlights differences in dietary structure and nutrient intake, urging the public to pay attention to daily nutritional supplementation.",
+     "impact": "The topic is expected to raise public awareness of nutrition and health, boosting interest in related health consumption.",
+     "importance": "normal",
+     "tags": [
+      "Public Health",
+      "Nutrition",
+      "Health Consumption"
+     ]
+    },
+    {
+     "id": "news-031",
+     "title": "Are Chinese Universities Becoming More Like High Schools? Debate Erupts",
+     "summary": "The topic of 'Chinese universities becoming more like high schools' has sparked widespread social discussion.",
+     "detail": "The debate centers on the direction of higher education management models and student cultivation approaches, presenting divergent views.",
+     "impact": "The discussion offers a public entry point for reflecting on talent cultivation models in higher education.",
      "importance": "normal",
      "tags": [
       "Higher Education",
-      "Talent Cultivation"
+      "Talent Development",
+      "Education"
      ]
     }
    ]
