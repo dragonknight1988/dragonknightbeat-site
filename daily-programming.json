@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-22",
+  "date": "2026-11-23",
   "contents": [
     {
-      "id": "prog-2026-11-22",
-      "date": "2026-11-22",
-      "title": "Rust 中的统一错误处理：自定义 Error 枚举与 From 转换链",
-      "summary": "学会用自定义错误枚举 + std::error::Error + From 实现工程级的错误处理，让 ? 运算符自动完成跨类型错误转换。",
-      "difficulty": "中级",
-      "concept": "Rust 没有异常机制，所有可恢复的失败都通过 Result<T, E> 显式传播。初级阶段我们常用 Box<dyn Error> 或 String 来当错误类型，写起来快，但到了真实项目就会出问题：调用方无法用 match 精确区分“文件不存在”“解析失败”“业务数据为空”这几种情况，日志里也丢失了原始错误链。工程上的标准做法是为每个 crate / 模块定义一个错误枚举，穷举所有可能的失败原因，并为每个变体保留底层错误作为 source。\n\n实现自定义错误类型需要做三件事：第一，让枚举派生 Debug（几乎所有的 Rust 错误处理基础设施都要求 Debug）；第二，实现 std::fmt::Display，给出面向用户的可读信息；第三，实现 std::error::Error trait，其中最关键的是 source() 方法，它返回“引发本次错误的底层错误”。有了 source()，日志库（如 tracing、anyhow）就能自动打印出完整的错误链：业务层说“解析失败”，底层说“invalid digit found in string”，排查问题时一眼看到根因。\n\n让 ? 运算符好用的关键是 From 转换。当函数返回 Result<T, AppError>，而内部表达式产生 io::Error 时，? 会自动调用 From::<io::Error>::from(e) 把它转成 AppError。所以只要你为常见底层错误实现了 From，代码里就不会出现大量 map_err 噪音。经验法则是：底层错误（io::Error、ParseIntError、serde_json::Error）用 From 自动转换，而需要额外上下文（比如“第几行解析失败”“哪个配置项非法”）时才手动 map_err。\n\n在实际工程中还有一个重要取舍：库 crate 与二进制 crate 的策略不同。库（library）应当导出自己的强类型错误枚举，方便下游 match；而二进制应用的 main 函数里，可以直接用 anyhow::Result 来聚合所有错误并打印上下文。另一个常见陷阱是枚举爆炸——如果错误变体超过 10 个，说明模块切分太大了，应该让每个模块有自己的 Error 类型，再在上层用 #[from]（thiserror）聚合。最后提醒：不要给错误类型实现 PartialEq 就直接用 assert_eq! 比较错误值，底层错误（如 io::Error）通常不可比较，正确的做法是用 matches! 或者检查 Display 文本。",
+      "id": "prog-2026-11-23",
+      "date": "2026-11-23",
+      "title": "Kotlin Flow 背压策略与并发扇出：buffer / conflate / collectLatest / channelFlow",
+      "summary": "用一个「快生产、慢消费」的帧处理管线，掌握 Flow 的背压语义与多 worker 扇出架构设计。",
+      "difficulty": "高级",
+      "concept": "在真实工程中（埋点上报、视频帧处理、传感器数据、WebSocket 消息流），生产速率几乎总是快于消费速率。Kotlin Flow 默认是「无缓冲、逐个发射」的冷流：emit 会挂起直到下游处理完毕，形成天然背压。这在保序场景下是正确语义，但在「实时数据」场景下会让延迟无限累积——10ms 产生一帧、50ms 处理一帧，队列会永远落后 40ms/帧。因此背压策略是 Flow 高阶编程的核心：你要先回答「数据丢失是否可接受」，再选操作符。\n\n三种主流策略语义截然不同：`buffer(capacity)` 在上下游之间插入有界队列，让生产与消费并行，满时上游挂起（不丢数据、保序、吞吐最优）；`conflate()` 是容量为 1、只保留最新的 buffer，上游不会被阻塞，中间值被丢弃（丢数据、但延迟最低）；`collectLatest { }` 更激进——新值到达时直接 cancel 正在执行的处理块（注意 suspend 点要能响应取消，比如 `delay`、`withContext` 里的 IO 调用，而纯 CPU 循环不检查 `ensureActive()` 就不会被打断）。工程上常见组合是「`buffer(64)` 保吞吐 + `conflate` 保实时 + `collectLatest` 做 UI 渲染」。\n\n另一个高频需求是扇出（fan-out）：把一个数据源分发给 N 个 worker 并发处理，再把结果汇回下游。`Flow.map` 是串行的，`flatMapMerge` 适合按元素并发但会打乱顺序，而当你要「固定数量 worker 竞争消费同一个有界队列」时，最可控的写法是 `channelFlow` + 显式 `Channel`：上游协程 `send` 填充队列（`Channel(capacity)` 本身就是背压边界），N 个 `launch` 的 worker 用 `for (frame in queue)` 消费，队列 `close()` 后 worker 自然退出，最后 `joinAll` 保证 `channelFlow` 不提前结束。这条模式可以直接改造成「限流下载器 / 批量入库 / 限并发重试」。\n\n还要区分 `flowOn` 与 `buffer`：`flowOn` 改变的是上游发射所处的调度器，并隐式引入缓冲；`buffer` 只加缓冲不改线程；`channelFlow` 则允许在内部自由 `launch` 子协程（受结构化并发约束，父作用域取消时全部取消）。把 `flowOn` 当性能优化到处加是常见反模式——它会改变异常传播与取消时序，且不解决「消费慢」的根本问题。\n\n最后给出性能判断框架：需要「每一条都处理」用 `buffer`（注意容量按 生产速率 × 可容忍延迟 估算）；需要「只要最新状态」用 `conflate` 或 `stateIn`；需要「新任务打断旧任务」用 `collectLatest` / `flatMapLatest`；需要「固定并发度」用 `Semaphore` 包 `flatMapMerge` 或 channelFlow + worker 池。四条选对，背压问题就解决了 95%。",
       "codeExample": {
-        "language": "Rust",
-        "code": "use std::error::Error;\nuse std::fmt;\nuse std::fs;\nuse std::io;\nuse std::num::ParseIntError;\n\n/// 1) 应用层统一错误类型：用枚举穷举所有可能的失败\n#[derive(Debug)]\nenum AppError {\n    /// 底层 I/O 失败（读文件、写文件）\n    Io(io::Error),\n    /// 某一行解析失败，保留行号上下文 + 原始错误\n    Parse { line_no: usize, source: ParseIntError },\n    /// 业务规则：输入为空\n    Empty,\n}\n\n/// 2) 实现 Display：给出面向用户的错误信息\nimpl fmt::Display for AppError {\n    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {\n        match self {\n            AppError::Io(e) => write!(f, \"I/O error: {}\", e),\n            AppError::Parse { line_no, .. } => {\n                write!(f, \"parse error at line {}\", line_no)\n            }\n            AppError::Empty => write!(f, \"input is empty\"),\n        }\n    }\n}\n\n/// 3) 实现 Error：通过 source() 串起错误链\nimpl Error for AppError {\n    fn source(&self) -> Option<&(dyn Error + 'static)> {\n        match self {\n            AppError::Io(e) => Some(e),\n            AppError::Parse { source, .. } => Some(source),\n            AppError::Empty => None,\n        }\n    }\n}\n\n/// 4) 为底层错误实现 From，让 `?` 自动完成类型转换\nimpl From<io::Error> for AppError {\n    fn from(e: io::Error) -> Self {\n        AppError::Io(e)\n    }\n}\n\n/// 读取文件，逐行解析成整数并求和\nfn sum_file(path: &str) -> Result<i32, AppError> {\n    // `?` 这里会调用 From::<io::Error>::from 转换成 AppError\n    let content = fs::read_to_string(path)?;\n\n    let mut total = 0;\n    let mut count = 0;\n\n    for (idx, line) in content.lines().enumerate() {\n        let line = line.trim();\n        if line.is_empty() {\n            continue;\n        }\n        // 需要额外上下文（行号）时手动 map_err\n        let n: i32 = line.parse().map_err(|source| AppError::Parse {\n            line_no: idx + 1,\n            source,\n        })?;\n        total += n;\n        count += 1;\n    }\n\n    // 业务级错误：直接构造枚举变体返回\n    if count == 0 {\n        return Err(AppError::Empty);\n    }\n    Ok(total)\n}\n\n/// 递归打印整条错误链，方便排查问题根因\nfn report(mut e: &dyn Error) {\n    eprintln!(\"error: {}\", e);\n    while let Some(src) = e.source() {\n        eprintln!(\"  caused by: {}\", src);\n        e = src;\n    }\n}\n\nfn main() {\n    // 准备一个示例文件\n    fs::write(\"numbers.txt\", \"10\\n20\\n30\\n\").unwrap();\n\n    match sum_file(\"numbers.txt\") {\n        Ok(v) => println!(\"sum = {}\", v),\n        Err(e) => report(&e),\n    }\n\n    // 演示错误链：文件不存在\n    match sum_file(\"missing.txt\") {\n        Ok(v) => println!(\"sum = {}\", v),\n        Err(e) => report(&e),\n    }\n\n    // 演示带上下文的解析错误\n    fs::write(\"bad.txt\", \"10\\nabc\\n30\\n\").unwrap();\n    match sum_file(\"bad.txt\") {\n        Ok(v) => println!(\"sum = {}\", v),\n        Err(e) => report(&e),\n    }\n}\n",
-        "explanation": "【第 1 部分】AppError 枚举定义了三种失败：Io 包装 std::io::Error，Parse 同时保存“第几行”这一业务上下文和原始 ParseIntError，Empty 是纯业务错误。保留 source 是后续能打印错误链的前提。\n\n【第 2 部分】Display 只负责给人看的简短描述，注意 Parse 变体在 Display 中不打印底层细节——那部分交给 source() 链，避免信息重复。\n\n【第 3 部分】impl Error 的 source() 是整套设计的灵魂：Io 和 Parse 都返回 Some(底层错误)，Empty 返回 None。这样 tracing / anyhow 之类工具可以自动展开整条因果链。\n\n【第 4 部分】impl From<io::Error> 让 `?` 能把 fs::read_to_string 的错误自动转成 AppError，函数体里就不需要再写 map_err。\n\n【sum_file 函数】读文件用 `?` 自动转换；解析行时为了补充“行号”上下文，手动 map_err 把 ParseIntError 包成 AppError::Parse；最后用 AppError::Empty 表达业务规则失败。\n\n【report 函数】从最外层错误开始，沿 source() 逐层打印，最终输出会是 “error: parse error at line 2 / caused by: invalid digit found in string”。\n\n【main】三组调用分别演示成功、文件不存在、某行解析失败三种场景，运行后能直接看到错误链效果。"
+        "language": "Kotlin",
+        "code": "import kotlinx.coroutines.*\nimport kotlinx.coroutines.channels.Channel\nimport kotlinx.coroutines.flow.*\n\n// 模拟一帧数据（视频帧 / 埋点事件 / 传感器读数）\ndata class Frame(val id: Int, val bytes: ByteArray = ByteArray(1024))\n\n// 生产端：每 10ms 产出一帧（快）\nfun frameSource(total: Int): Flow<Frame> = flow {\n    repeat(total) { i ->\n        delay(10)\n        emit(Frame(i))\n    }\n}\n\n// 消费端：每帧处理耗时 50ms（慢）\nsuspend fun processFrame(f: Frame) {\n    delay(50)\n}\n\n// 计时工具\nsuspend fun benchmark(name: String, block: suspend () -> Unit) {\n    val start = System.currentTimeMillis()\n    block()\n    println(\"%-12s %4d ms\".format(name, System.currentTimeMillis() - start))\n}\n\n// 并发扇出：1 个生产者 -> N 个 worker -> 结果汇回下游\nfun fanOut(frames: Flow<Frame>, workers: Int): Flow<String> = channelFlow {\n    val queue = Channel<Frame>(capacity = Channel.BUFFERED) // 有界队列 = 背压边界\n\n    // 上游协程：灌数据进队列\n    val producer = launch {\n        frames.collect { queue.send(it) }\n        queue.close() // 生产结束，关闭队列，worker 的 for 循环自然退出\n    }\n\n    // N 个 worker 竞争消费\n    val jobs = List(workers) { w ->\n        launch {\n            for (frame in queue) {          // 队列空时挂起，close 后结束\n                processFrame(frame)\n                send(\"worker-$w <- frame-${frame.id}\") // 汇回 channelFlow 下游\n            }\n        }\n    }\n\n    jobs.joinAll()\n    producer.join()\n}\n\nfun main() = runBlocking {\n    // 同一条管线，四种背压策略的耗时对比\n    benchmark(\"串行\")     { frameSource(20).collect { processFrame(it) } }\n    benchmark(\"buffer\")   { frameSource(20).buffer(64).collect { processFrame(it) } }\n    benchmark(\"conflate\") { frameSource(20).conflate().collect { processFrame(it) } }\n    benchmark(\"latest\")   { frameSource(20).collectLatest { processFrame(it) } }\n\n    println(\"\\n--- fan-out with 4 workers ---\")\n    fanOut(frameSource(8), 4).collect { println(it) }\n}\n",
+        "explanation": "「frameSource」每 10ms 发射一帧，「processFrame」每帧 50ms，构成典型快生产慢消费。串行模式下 emit 会被下游阻塞，20 帧约需 20×(10+50)=1200ms。加入 `buffer(64)` 后上下游并行，生产只受自身 10ms 限制，总耗时约 200ms+50ms，且不丢帧；`conflate()` 只保留最新帧，上游永不挂起，总耗时约 200ms，但中间帧被丢弃；`collectLatest` 在新帧到达时取消上一次 `processFrame`（`delay` 可取消），结果同样是只有最新帧被完整处理，适合渲染。`fanOut` 里 `Channel(capacity)` 充当有界队列：上游 `send` 满了就挂起（背压），4 个 worker 用 `for (frame in queue)` 竞争消费，天然实现固定并发度；`queue.close()` 让所有 worker 优雅退出，`joinAll` 保证 `channelFlow` 不会提前向下游发送完成信号。"
       },
       "keyPoints": [
-        "自定义错误三件套：derive(Debug) + impl Display + impl Error，其中 source() 负责串起错误链",
-        "为底层错误实现 From，让 ? 运算符自动完成跨错误类型的转换，减少 map_err 噪音",
-        "需要补充业务上下文（行号、字段名、ID）时，用 map_err 手动构造带上下文的变体",
-        "库 crate 应导出强类型错误枚举方便下游 match；二进制 crate 的 main 可用 anyhow 聚合",
-        "错误变体过多（>10）说明模块过大，应按模块拆分 Error 再用 thiserror 的 #[from] 聚合"
+        "Flow 默认无缓冲、逐个发射，emit 会等待下游处理完，形成天然背压——这是理解所有背压操作符的基准线",
+        "buffer(capacity) = 不丢数据 + 保序 + 上下游并行；容量应按「生产速率 × 可容忍延迟」估算，而非随手写 64",
+        "conflate() 保留最新值丢弃中间值，适合状态同步/实时预览；collectLatest 会取消正在执行的处理块，内部必须是可取消的 suspend 代码",
+        "固定并发度扇出优先用 channelFlow + 有界 Channel + N 个 worker，结构化并发保证取消传播；按元素并发用 flatMapMerge，按 key 最新用 flatMapLatest",
+        "flowOn 改变发射调度器并隐式缓冲，不能解决消费慢的问题；不要把它当性能万能药，注意它对异常与取消时序的影响"
       ],
       "exercise": {
-        "description": "为一个“配置解析器”编写统一错误类型 ConfigError。需求：(1) 至少包含两种变体：字段缺失 MissingField(&'static str) 和数值解析失败 BadValue { field: &'static str, source: ParseIntError }；(2) 实现 Display 与 Error（BadValue 要返回 source）；(3) 实现 From<ParseIntError> 让 `?` 可用；(4) 写一个 parse_port(raw: &str) -> Result<u16, ConfigError> 的函数，用 map_err 补充字段名上下文；(5) 在 main 中故意触发错误并打印错误链。",
-        "hint": "先照抄 AppError 的三件套结构；From<ParseIntError> 无法凭空得到字段名，可以实现成 ConfigError::BadValue { field: \"unknown\", source }，而在 parse_port 里仍用 map_err 补上准确的 field=\"port\"。注意 u16::from_str 的 Err 类型就是 ParseIntError，`?` 会用到你写的 From。",
+        "description": "实现一个「限并发的图片下载管线」：上游是 100 个 URL 的 Flow，要求最多 8 个协程并发下载（用 Semaphore 或 channelFlow + worker 池两种方式各写一遍），下载完成后按完成顺序（不保证输入顺序）把结果发射给下游，最后用 collectLatest 把进度写入一个 StateFlow<Int>（进度只关心最新值）。对比两种实现的代码复杂度与顺序语义差异。",
+        "hint": "方式一：`flow { urls.forEach { emit(it) } }.flatMapMerge(concurrency = 8) { url -> flow { emit(download(url)) } }`，或用 `Semaphore(8) { withPermit { download(url) } }` 包一层 flow；方式二：复用示例中的 channelFlow + Channel + N 个 worker 模式，把 send 换成下载结果。进度更新用 `_progress.collectLatest` 或直接 `_progress.value = n`（StateFlow 本身就有 conflate 语义）。注意下载函数要传入协程作用域或声明为 suspend，保证作用域取消时 IO 能被中断（OkHttp 用 `suspendCancellableCoroutine` + `call.cancel()`）。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全 From 实现，让 `?` 能把 io::Error 自动转换为 AppError。",
-            "codeContext": "impl From<io::Error> for AppError {\n    fn from(e: io::Error) -> Self {\n        AppError::____(e)\n    }\n}",
+            "question": "补全代码：当消费端渲染跟不上、且你只关心最新一帧（允许丢弃中间帧）时，应使用哪个操作符？",
+            "codeContext": "frameSource(100)\n    .________\n    .collect { render(it) }",
             "segments": [
               {
                 "type": "text",
-                "content": "        AppError::",
+                "content": "frameSource(100)\n    .",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择变体]",
+                "placeholder": "[选择操作符]",
                 "options": [
-                  "Io",
-                  "Parse",
-                  "Empty",
-                  "Error"
+                  "buffer(64)",
+                  "conflate()",
+                  "flowOn(Dispatchers.IO)",
+                  "retry(3)"
                 ],
-                "correctAnswer": "Io"
+                "correctAnswer": "conflate()"
               },
               {
                 "type": "text",
-                "content": "(e)",
+                "content": "\n    .collect { render(it) }",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "Io",
-            "explanation": "AppError::Io(io::Error) 是唯一直接持有 io::Error 的变体。Parse 变体的字段类型是 ParseIntError，Empty 无字段，因此只能填 Io。"
+            "correctAnswer": "conflate()",
+            "explanation": "conflate() 在上下游之间插入容量为 1、只保留最新值的缓冲：上游永不被阻塞，下游消费慢时中间值被丢弃，正好满足「只关心最新帧」的实时渲染需求。buffer(64) 不丢数据但会累积延迟；flowOn 只切换调度器；retry 只处理异常重试。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "在 sum_file 中执行 `fs::read_to_string(path)?` 时，`?` 运算符到底做了什么？",
-            "codeContext": "fn sum_file(path: &str) -> Result<i32, AppError> {\n    let content = fs::read_to_string(path)?;\n    // ...\n}",
+            "question": "关于 Flow 的 buffer / conflate / collectLatest，下列说法错误的是？",
+            "codeContext": "flow {\n    repeat(5) { emit(it); delay(10) }\n}.collectLatest {\n    heavyCpuWork(it) // 纯 CPU，无 suspend 点\n}",
             "segments": null,
             "options": [
-              "直接把 io::Error 当作 AppError 返回，无需任何转换",
-              "调用 From::<io::Error>::from 把 io::Error 转换成 AppError，再作为 Err 返回",
-              "内部触发 panic!，由上层 catch_unwind 捕获",
-              "自动把错误包装成 Box<dyn Error> 后返回"
+              "buffer(n) 会让上下游并行执行，但数据不丢失且保持顺序",
+              "conflate() 等价于 buffer(Channel.CONFLATED)，丢弃中间值只保留最新",
+              "collectLatest 能立即中断 heavyCpuWork 的执行，即使它没有任何 suspend 点",
+              "collectLatest 中使用 delay()、withContext(IO) 等可取消的挂起点时，新值到来才会真正打断旧任务"
             ],
-            "correctAnswer": "调用 From::<io::Error>::from 把 io::Error 转换成 AppError，再作为 Err 返回",
-            "explanation": "`?` 在 Err 分支等价于 return Err(From::from(e))。因为函数返回类型是 Result<i32, AppError> 且实现了 From<io::Error>，转换成立。若没有这个 From 实现，代码会编译失败。panic 与 Box 都不参与此处的机制。"
+            "correctAnswer": "collectLatest 能立即中断 heavyCpuWork 的执行，即使它没有任何 suspend 点",
+            "explanation": "协程取消是协作式的。collectLatest 会 cancel 上一个处理协程，但 heavyCpuWork 若没有任何挂起点也不调用 ensureActive()/isActive 检查，就无法响应取消，会继续执行到结束，导致『取消』形同虚设。其余三项均为正确语义。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "以下程序的输出是什么？",
-            "codeContext": "use std::error::Error;\nuse std::fmt;\n\n#[derive(Debug)]\nenum E { A, B }\n\nimpl fmt::Display for E {\n    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {\n        match self {\n            E::A => write!(f, \"alpha\"),\n            E::B => write!(f, \"beta\"),\n        }\n    }\n}\n\nimpl Error for E {}\n\nfn f() -> Result<i32, E> {\n    let n: i32 = \"12a\".parse().map_err(|_| E::B)?;\n    Ok(n)\n}\n\nfn main() {\n    match f() {\n        Ok(v) => println!(\"ok {}\", v),\n        Err(e) => println!(\"err {:?} {}\", e, e),\n    }\n}",
+            "question": "以下代码最终会打印出什么？（假设 delay 计时精确，无额外调度抖动）",
+            "codeContext": "runBlocking {\n    flow {\n        repeat(5) { i ->\n            emit(i)\n            delay(10)\n        }\n    }.conflate().collect {\n        delay(35)\n        println(it)\n    }\n}",
             "segments": null,
             "options": [
-              "ok 12",
-              "err B beta",
-              "err B alpha",
-              "编译错误"
+              "0 1 2 3 4",
+              "0 2 4",
+              "0 3 4",
+              "0 4"
             ],
-            "correctAnswer": "err B beta",
-            "explanation": "\"12a\".parse::<i32>() 失败，map_err 把 ParseIntError 替换成 E::B，`?` 把它作为 Err 返回。于是进入 Err 分支：{:?} 打印 Debug 表示 \"B\"，{} 打印 Display 表示 \"beta\"，最终输出 \"err B beta\"。"
+            "correctAnswer": "0 3 4",
+            "explanation": "t=0 发射 0，下游立即取走 0 并处理到 t=35；t=10 发射 1（缓冲区=[1]），t=20 发射 2 丢弃 1（缓冲区=[2]），t=30 发射 3 丢弃 2（缓冲区=[3]）；t=35 下游打印 0 并取走最新值 3，处理到 t=70；t=40 发射 4 丢弃 3（缓冲区=[4]）；t=70 打印 3 并取走 4，t=105 打印 4。因此输出为 0、3、4。"
           }
         ]
       }

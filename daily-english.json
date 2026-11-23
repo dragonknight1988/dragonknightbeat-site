@@ -1,181 +1,194 @@
 {
-  "date": "2026-11-22",
+  "date": "2026-11-23",
   "content": {
-    "id": "en-2026-11-22",
-    "date": "2026-11-22",
-    "topic": "健康与生活",
+    "id": "en-2026-11-23",
+    "date": "2026-11-23",
+    "topic": "环境与可持续发展",
     "newsHighlights": [
       {
-        "title": "APEC outcomes aim to boost trade and connectivity",
+        "title": "COP31 fails to reach consensus on Antalya Pact",
         "source": "ChinaDaily",
-        "summary": "APEC economic leaders agreed on measures to facilitate cross-border trade, strengthen regional connectivity and harness emerging technologies to promote employment.",
-        "translation": "亚太经合组织经济领导人就便利跨境贸易、加强区域互联互通、利用新兴技术促进就业等达成一致。",
+        "summary": "The 31st UN Climate Change Conference failed to reach consensus on the proposed Antalya Pact, COP31 President Murat Kurum said on Sunday.",
+        "translation": "《联合国气候变化框架公约》第三十一次缔约方会议（COP31）主席库鲁姆周日表示，会议未能就拟议中的《安塔利亚协定》达成共识。",
         "keyWords": [
-          "facilitate",
-          "connectivity",
-          "employment"
+          "COP31",
+          "consensus",
+          "Antalya Pact",
+          "climate change"
         ]
       },
       {
-        "title": "International network launched to streamline silk standards",
+        "title": "Where does the APEC venue get its power?",
         "source": "ChinaDaily",
-        "summary": "An international network has been launched to streamline silk standards, making quality and safety rules more consistent across borders.",
-        "translation": "一个旨在精简丝绸标准的国际网络正式启动，使质量安全规则在跨境范围内更加统一。",
+        "summary": "The APEC venue runs largely on renewable energy, showcasing how major international events can cut carbon emissions.",
+        "translation": "亚太经合组织会议场馆主要由可再生能源供电，展示了重大国际活动如何减少碳排放。",
         "keyWords": [
-          "streamline",
-          "standards",
-          "quality"
+          "APEC venue",
+          "renewable energy",
+          "carbon emissions"
         ]
       },
       {
-        "title": "Xi calls for inclusive regional cooperation based on solidarity, openness and innovation",
+        "title": "Xi calls for inclusive regional co-op based on solidarity, openness, innovation",
         "source": "ChinaDaily",
-        "summary": "President Xi called for inclusive regional cooperation rooted in solidarity, openness and innovation to deliver shared benefits for people in the Asia-Pacific.",
-        "translation": "习近平主席呼吁以团结、开放、创新为基础推进包容性区域合作，让亚太民众共享发展红利。",
+        "summary": "China called for inclusive regional cooperation grounded in solidarity, openness and innovation to advance shared prosperity in the Asia-Pacific.",
+        "translation": "中方倡导在团结、开放、创新基础上开展包容性区域合作，推动亚太共同繁荣。",
         "keyWords": [
           "inclusive",
           "solidarity",
-          "innovation"
+          "innovation",
+          "cooperation"
         ]
       },
       {
-        "title": "Iran's navy says oil tanker caught fire after hitting naval mine east of Strait of Hormuz",
-        "source": "CGTN",
-        "summary": "Iran's navy said an oil tanker caught fire after hitting a naval mine east of the Strait of Hormuz, raising safety and environmental concerns.",
-        "translation": "伊朗海军称，一艘油轮在霍尔木兹海峡以东触雷起火，引发安全与环境担忧。",
+        "title": "China-built cruise ship embarks on maiden voyage with over 3,800 guests",
+        "source": "ChinaDaily",
+        "summary": "The Adora Flora City, China's second domestically built large cruise ship, started its maiden commercial voyage, marking a step toward greener large-scale shipbuilding.",
+        "translation": "中国第二艘国产大型邮轮“爱达·花城号”开启商业首航，标志着中国在绿色大型船舶建造方面迈出一步。",
         "keyWords": [
-          "tanker",
-          "safety",
-          "environment"
+          "maiden voyage",
+          "domestically built",
+          "shipbuilding"
+        ]
+      },
+      {
+        "title": "Global experts discuss community with a shared future for humanity",
+        "source": "CGTN",
+        "summary": "Global experts discussed building a community with a shared future for humanity, stressing green development and global governance reform.",
+        "translation": "全球专家探讨构建人类命运共同体，强调绿色发展与全球治理改革。",
+        "keyWords": [
+          "shared future",
+          "green development",
+          "global governance"
         ]
       }
     ],
     "quote": {
-      "quote": "The first wealth is health.",
-      "author": "Ralph Waldo Emerson",
-      "translation": "健康是人生第一财富。",
-      "explanation": "爱默生把健康视为最根本的财富。今日新闻中，贸易便利化、统一的产品标准与区域合作，最终都是为了让人们获得更安全的食品、更稳定的就业与更洁净的环境——这些正是健康的基石。"
+      "quote": "The Earth is what we all have in common.",
+      "author": "Wendell Berry",
+      "translation": "地球是我们所有人的共同家园。",
+      "explanation": "美国作家温德尔·贝瑞提醒我们：无论国籍、文化或立场如何不同，人类共享同一个地球。这与今日新闻中COP31气候谈判的艰难进程相呼应——气候变化是全球性挑战，唯有共识与合作才能守护共同的家园。"
     },
     "vocabulary": [
       {
-        "word": "facilitate",
-        "phonetic": "/fəˈsɪlɪteɪt/",
-        "partOfSpeech": "动词",
-        "definition": "促进，使便利",
-        "example": "APEC leaders agreed to facilitate cross-border trade.",
-        "translation": "亚太经合组织领导人同意便利跨境贸易。",
-        "newsContext": "来自新闻：\"measures to facilitate cross-border trade\""
-      },
-      {
-        "word": "connectivity",
-        "phonetic": "/ˌkɒnekˈtɪvəti/",
+        "word": "consensus",
+        "phonetic": "/kənˈsensəs/",
         "partOfSpeech": "名词",
-        "definition": "互联互通；连接性",
-        "example": "Stronger regional connectivity makes travel and delivery faster and cheaper.",
-        "translation": "更强的区域互联互通让出行与运输更快更便宜。",
-        "newsContext": "来自新闻：\"strengthen regional connectivity\""
+        "definition": "共识；（意见的）一致",
+        "example": "COP31 failed to reach consensus on the proposed Antalya Pact after days of intense negotiation.",
+        "translation": "经过数日激烈谈判，COP31未能就拟议中的《安塔利亚协定》达成共识。",
+        "newsContext": "出自新闻标题“COP31 fails to reach consensus on Antalya Pact”。"
       },
       {
-        "word": "streamline",
-        "phonetic": "/ˈstriːmlaɪn/",
-        "partOfSpeech": "动词",
-        "definition": "精简，使高效化",
-        "example": "The new network was launched to streamline silk standards worldwide.",
-        "translation": "该新网络的启动旨在精简全球丝绸标准。",
-        "newsContext": "来自新闻：\"Intl network launched to streamline silk standards\""
+        "word": "pact",
+        "phonetic": "/pækt/",
+        "partOfSpeech": "名词",
+        "definition": "协定；公约；契约",
+        "example": "The proposed Antalya Pact aimed to set new targets for cutting global carbon emissions.",
+        "translation": "拟议中的《安塔利亚协定》旨在为削减全球碳排放设定新目标。",
+        "newsContext": "出自新闻“COP31 fails to reach consensus on Antalya Pact”，指会议讨论的气候协定草案。"
       },
       {
-        "word": "harness",
-        "phonetic": "/ˈhɑːnɪs/",
-        "partOfSpeech": "动词",
-        "definition": "利用（自然力、技术等）",
-        "example": "Countries should harness emerging technologies to promote employment.",
-        "translation": "各国应利用新兴技术促进就业。",
-        "newsContext": "来自新闻：\"harness emerging technologies to promote employment\""
+        "word": "renewable",
+        "phonetic": "/rɪˈnjuːəbl/",
+        "partOfSpeech": "形容词",
+        "definition": "可再生的；可更新的",
+        "example": "The APEC venue gets most of its power from renewable energy sources such as solar and wind.",
+        "translation": "亚太经合组织会议场馆的电力大部分来自太阳能、风能等可再生能源。",
+        "newsContext": "出自新闻“Where does the APEC venue get its power?”，描述场馆的清洁能源供电方案。"
+      },
+      {
+        "word": "emission",
+        "phonetic": "/ɪˈmɪʃn/",
+        "partOfSpeech": "名词",
+        "definition": "排放；散发（尤指气体、热量）",
+        "example": "Using clean electricity at the venue helped reduce carbon emissions during the summit.",
+        "translation": "会场使用清洁电力，有助于减少峰会期间的碳排放。",
+        "newsContext": "出自“APEC venue”相关新闻，谈及重大会议的减碳举措。"
+      },
+      {
+        "word": "sustainable",
+        "phonetic": "/səˈsteɪnəbl/",
+        "partOfSpeech": "形容词",
+        "definition": "可持续的；能保持的",
+        "example": "Leaders called for inclusive regional cooperation to build a more sustainable future for the Asia-Pacific.",
+        "translation": "各国领导人呼吁开展包容性区域合作，为亚太地区构建更可持续的未来。",
+        "newsContext": "关联新闻“Xi calls for inclusive regional co-op”，可持续发展是会议核心议题。"
+      },
+      {
+        "word": "transition",
+        "phonetic": "/trænˈzɪʃn/",
+        "partOfSpeech": "名词/动词",
+        "definition": "过渡；转变",
+        "example": "The energy transition is essential if the world wants to limit global warming.",
+        "translation": "若想限制全球变暖，能源转型至关重要。",
+        "newsContext": "出自COP31气候大会报道，指各国讨论的能源与经济低碳转型。"
+      },
+      {
+        "word": "commitment",
+        "phonetic": "/kəˈmɪtmənt/",
+        "partOfSpeech": "名词",
+        "definition": "承诺；投入；献身",
+        "example": "Reaching a global pact requires a stronger commitment from both developed and developing countries.",
+        "translation": "达成全球协定需要发达国家和发展中国家作出更坚定的承诺。",
+        "newsContext": "出自COP31相关报道，指各国在减排问题上的承诺力度。"
+      },
+      {
+        "word": "innovation",
+        "phonetic": "/ˌɪnəˈveɪʃn/",
+        "partOfSpeech": "名词",
+        "definition": "创新；革新",
+        "example": "China called for regional cooperation based on solidarity, openness and innovation.",
+        "translation": "中方倡导在团结、开放、创新的基础上开展区域合作。",
+        "newsContext": "出自新闻“Xi calls for inclusive regional co-op based on solidarity, openness, innovation”。"
       },
       {
         "word": "inclusive",
         "phonetic": "/ɪnˈkluːsɪv/",
         "partOfSpeech": "形容词",
-        "definition": "包容的；惠及全体的",
-        "example": "Inclusive regional cooperation benefits ordinary families as well as big firms.",
-        "translation": "包容性区域合作让普通家庭与大企业同样受益。",
-        "newsContext": "来自新闻：\"inclusive regional co-op based on solidarity, openness, innovation\""
+        "definition": "包容的；包括在内的",
+        "example": "Inclusive green growth ensures that no country is left behind in the fight against climate change.",
+        "translation": "包容性绿色发展确保在应对气候变化的行动中没有国家掉队。",
+        "newsContext": "出自新闻“Xi calls for inclusive regional co-op”，强调合作的包容性。"
       },
       {
-        "word": "solidarity",
-        "phonetic": "/ˌsɒlɪˈdærəti/",
-        "partOfSpeech": "名词",
-        "definition": "团结；齐心协力",
-        "example": "Solidarity among nations helps people recover faster after a crisis.",
-        "translation": "国家间的团结有助于人们在危机后更快恢复。",
-        "newsContext": "来自新闻：\"based on solidarity, openness, innovation\""
-      },
-      {
-        "word": "employment",
-        "phonetic": "/ɪmˈplɔɪmənt/",
-        "partOfSpeech": "名词",
-        "definition": "就业；雇用",
-        "example": "A stable job is closely linked to both mental and physical health.",
-        "translation": "稳定的工作与身心健康密切相关。",
-        "newsContext": "来自新闻：\"promote employment\""
-      },
-      {
-        "word": "governance",
-        "phonetic": "/ˈɡʌvərnəns/",
-        "partOfSpeech": "名词",
-        "definition": "治理；管理方式",
-        "example": "Better global governance can improve food and drug safety rules.",
-        "translation": "更完善的全球治理可以改善食品药品安全规则。",
-        "newsContext": "来自新闻：\"advance global governance reform\""
-      },
-      {
-        "word": "mutual",
-        "phonetic": "/ˈmjuːtʃuəl/",
-        "partOfSpeech": "形容词",
-        "definition": "相互的；共同的",
-        "example": "Stronger mutual trust makes long-term cooperation possible.",
-        "translation": "更强的互信使长期合作成为可能。",
-        "newsContext": "来自新闻：\"Stronger mutual trust with Australia emphasized\""
-      },
-      {
-        "word": "diplomacy",
-        "phonetic": "/dɪˈploʊməsi/",
-        "partOfSpeech": "名词",
-        "definition": "外交；外交手腕",
-        "example": "Head-of-state diplomacy was described as irreplaceable for China-US ties.",
-        "translation": "元首外交被形容为中美关系中不可替代的力量。",
-        "newsContext": "来自新闻：\"Xi: Head-of-state diplomacy 'irreplaceable' for China-US ties\""
+        "word": "embark",
+        "phonetic": "/ɪmˈbɑːk/",
+        "partOfSpeech": "动词",
+        "definition": "登上（船、飞机等）；着手，开始",
+        "example": "The Adora Flora City embarked on its maiden commercial voyage with more than 3,800 guests on Sunday.",
+        "translation": "“爱达·花城号”周日搭载3800多名乘客开启了商业首航。",
+        "newsContext": "出自新闻“China-built cruise ship embarks on maiden voyage”，也常用于 embark on a journey/plan（着手进行）。"
       }
     ],
     "pattern": {
-      "pattern": "call on sb. to do A and (to) do B（呼吁某人做……并做……）",
-      "example": "President Xi called on China and Malaysia to deepen strategic coordination and jointly advance global governance reform.",
-      "translation": "习主席呼吁中马深化战略协作，共同推进全球治理改革。",
-      "usage": "用于提出倡议或呼吁。结构为 call on + 人/组织 + to 动词原形 + and + to 动词原形，第二个 to 常省略。可用于写作中提出建议，如：The report calls on cities to invest in public transport and to protect green spaces."
+      "pattern": "mark a significant step toward (doing) sth —— 标志着朝……迈出的重要一步",
+      "example": "The maiden voyage of the Adora Flora City marked a significant step toward the large-scale, green development of China's cruise shipbuilding industry.",
+      "translation": "“爱达·花城号”的首航标志着中国邮轮制造业向规模化、绿色发展迈出了重要一步。",
+      "usage": "mark 在此意为“标志着”，step toward 后接名词或动名词，常用于新闻报道和写作中描述进展。类似表达还有：mark a milestone in...（标志着……的里程碑）、represent a major leap forward（代表重大飞跃）。"
     },
     "grammar": {
-      "title": "并列不定式（Parallel Infinitives）表示多重目的",
-      "explanation": "当一句话要表达多个并列的目的时，可用 to + 动词1、动词2、and 动词3 的结构，只保留第一个 to，后接动词原形平行排列。这种结构让句子简洁有力，是英语新闻标题与导语中的高频句式。注意并列成分必须保持相同的语法形式和逻辑层次。",
+      "title": "现在分词作结果状语（Present Participle as a Result Adverbial）",
+      "explanation": "当句子前半部分描述一个动作或情况，后半部分用“动词-ing”形式表示该动作自然导致的结果时，就构成了现在分词作结果状语。它相当于 which 引导的非限制性定语从句，语气更简洁，是英语新闻中的高频结构。注意：现在分词的逻辑主语必须与主句主语一致；若表示“意外结果”，常用 only + doing。",
       "examples": [
-        "APEC leaders agreed on measures to facilitate cross-border trade, strengthen regional connectivity and harness emerging technologies to promote employment.",
-        "The network was created to streamline silk standards, protect consumers and cut trade costs."
+        "The Adora Flora City embarked on its maiden commercial voyage with more than 3,800 guests on Sunday, marking a significant step toward large-scale cruise shipbuilding.",
+        "COP31 failed to reach consensus on the Antalya Pact, leaving the future of the global climate agenda uncertain."
       ]
     },
     "pronunciation": {
-      "word": "facilitate",
-      "phonetic": "/fəˈsɪlɪteɪt/",
-      "tips": "重音在第二个音节 /ˈsɪlɪ/，开头的 fa 弱读为 /fə/，不是 /feɪ/。注意 -ci- 在这里读 /s/，-ate 结尾读 /eɪt/。整个词可拆读为 fə-SIL-i-tate，四个音节均匀清晰。",
+      "word": "sustainable",
+      "phonetic": "/səˈsteɪnəbl/",
+      "tips": "重音在第二个音节 /ˈsteɪ/ 上，首音节弱读为 /sə/（schwa 音）。发音顺序为 suh-STAY-nuh-buhl，注意 /eɪ/ 是双元音，要饱满滑动，结尾的 -able 读作 /əbl/，不要读成“爱博”。常与 sustainable development（可持续发展）连用。",
       "examples": [
-        "New rules will facilitate cross-border travel and trade.",
-        "Standardized labels facilitate healthier choices for shoppers."
+        "Sustainable development has become a central topic at the UN climate conference.",
+        "The APEC venue's use of renewable energy shows a commitment to sustainable practices."
       ]
     },
     "reading": {
-      "title": "From Trade Talks to Everyday Well-being",
-      "content": "When APEC leaders agreed to facilitate cross-border trade and strengthen regional connectivity, the discussion sounded far from daily life. Yet the outcomes also aim to harness emerging technologies to promote employment, and a stable job is the first step toward a healthy life. Meanwhile, an international network has been launched to streamline silk standards, so that products crossing borders meet the same safety and quality rules. Clearer standards protect consumers and reduce health risks. Regional cooperation matters for safety at sea as well: after an oil tanker caught fire east of the Strait of Hormuz, better coordination and mutual trust can prevent disasters from harming coastal communities. Inclusive regional cooperation based on solidarity, openness and innovation is not only about growth figures. It is about affordable medicine, safer food, cleaner air and more secure jobs. Diplomacy, in the end, reaches our tables, our hospitals and our lungs.",
-      "translation": "当亚太经合组织领导人同意便利跨境贸易、加强区域互联互通时，这些讨论听起来似乎与日常生活相距甚远。然而，会议成果还提出利用新兴技术促进就业，而一份稳定的工作正是健康生活的第一步。与此同时，一个旨在精简丝绸标准的国际网络正式启动，使跨境商品遵循统一的安全与质量规则。更清晰的标准保护消费者、降低健康风险。区域合作对海上安全同样重要：在霍尔木兹海峡以东一艘油轮触雷起火之后，更有力的协调与互信能够防止灾难伤害沿海社区。以团结、开放、创新为基础的包容性区域合作，关乎的不只是增长数字，更是可负担的药品、更安全的食品、更洁净的空气和更稳定的工作。说到底，外交最终会抵达我们的餐桌、医院与呼吸之间。",
-      "sourceNote": "基于 ChinaDaily 关于 APEC 成果、丝绸标准国际网络、包容性区域合作，以及 CGTN 关于霍尔木兹海峡油轮起火的今日新闻改写，主题聚焦健康与生活。"
+      "title": "Climate Talks Stall, but Green Momentum Continues",
+      "content": "The 31st UN Climate Change Conference (COP31) ended in Antalya without consensus on the proposed Antalya Pact, reminding the world that global climate cooperation remains difficult. Yet progress outside the negotiating rooms is visible. The APEC venue, for example, runs largely on renewable energy, cutting carbon emissions and showing how major international events can be greener. China has also called for inclusive regional cooperation based on solidarity, openness and innovation, arguing that green development and economic growth can go hand in hand. Meanwhile, the launch of the Adora Flora City, a domestically built cruise ship, marked a significant step toward cleaner, large-scale shipbuilding. Experts say that even without a final pact, the energy transition is already under way. Reaching consensus takes time, but every solar panel installed and every clean technology adopted brings the world closer to a sustainable future.",
+      "translation": "第31届联合国气候变化大会（COP31）在安塔利亚落幕，未能就拟议中的《安塔利亚协定》达成共识，这提醒世人：全球气候合作依然艰难。然而谈判会场之外的进展清晰可见。例如，亚太经合组织会议场馆主要依靠可再生能源供电，减少了碳排放，展示了重大国际活动可以更加绿色。中方也倡导在团结、开放、创新的基础上开展包容性区域合作，主张绿色发展与经济增长可以并行不悖。与此同时，国产大型邮轮“爱达·花城号”的启航，标志着中国在更清洁的规模化造船方面迈出重要一步。专家表示，即便没有最终协定，能源转型已经在进行之中。达成共识需要时间，但每安装一块太阳能电池板、每采用一项清洁技术，都让世界离可持续的未来更近一步。",
+      "sourceNote": "本文基于2026年11月23日 ChinaDaily 与 CGTN 真实新闻改写：①COP31 fails to reach consensus on Antalya Pact；②Where does the APEC venue get its power?；③Xi calls for inclusive regional co-op；④China-built cruise ship embarks on maiden voyage；⑤Global experts discuss community with a shared future for humanity。"
     }
   }
 }
