@@ -1,16 +1,16 @@
 {
- "date": "2026-11-24",
- "weekday": "Tuesday",
- "overview": "A string of measures to stabilize the stock market takes effect, chip stocks surge worldwide, and the APEC group photo sends signals of openness and cooperation",
+ "date": "2026-11-25",
+ "weekday": "Wednesday",
+ "overview": "Escalating Middle East tensions, a sharp sell-off in U.S. stocks and a plunge in precious metals move in tandem, while the central bank injects large-scale liquidity tomorrow to shore up cross-month funding conditions.",
  "trendingTopics": [
-  "Stabilizing capital markets",
-  "Chip industry",
-  "Ice and snow economy",
-  "Drug access under medical insurance",
-  "Consumer rights protection",
-  "Low-altitude economy",
-  "Global stock markets",
-  "International oil prices"
+  "Middle East tensions",
+  "Precious metals prices",
+  "U.S. stock volatility",
+  "Liquidity injections",
+  "Space launches",
+  "Private sector economy",
+  "Green transportation",
+  "New property market policies"
  ],
  "sections": [
   {
@@ -20,274 +20,246 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "Package of Measures to Steady Stock Market; Margin Financing Ratio Cut to 80%",
-     "summary": "Multiple government departments rolled out a package of measures to stabilize capital markets, lowering the minimum margin financing ratio to 80% to further unlock market liquidity.",
-     "detail": "Regulators unveiled a series of steps to stabilize capital markets, including cutting the minimum margin financing ratio to 80%. The adjustment is part of a broader package aimed at lowering funding costs and boosting market activity.",
-     "impact": "The changes are expected to lower the barrier to leveraged trading and lift investor sentiment, benefiting brokerages and capital-market-related sectors.",
+     "title": "Shenzhou-24 Launch Imminent, Astronaut Crew Role Divisions Draw Attention",
+     "summary": "The Shenzhou-24 spacecraft has entered launch preparation, with the astronaut crew's task divisions becoming a key focus of outside attention.",
+     "detail": "As the launch of the Shenzhou-24 crewed spacecraft approaches, attention is on how the astronaut crew will divide and coordinate tasks. The mission continues the regular crewed flight cadence of the space station's application and development phase, with mission arrangements and crew coordination details sparking wide discussion.",
+     "impact": "The mission will further consolidate the space station's routine operational capacity and raise attention across the aerospace industry chain.",
      "importance": "hot",
      "tags": [
-      "Capital Markets",
-      "Securities Industry",
-      "Financial Policy"
+      "Space Program",
+      "Crewed Spaceflight",
+      "Space Station"
      ]
     },
     {
      "id": "news-002",
-     "title": "Step Up: New Wave of Measures to Stabilize Capital Markets",
-     "summary": "Authorities intensified support for capital markets, stepping up both the scale and pace of policy measures.",
-     "detail": "Building on earlier policies, authorities have ramped up efforts to stabilize capital markets. The policy package includes multiple supporting arrangements designed to underpin smooth market functioning.",
-     "impact": "Continued policy support is expected to improve market expectations and provide a better environment for the real economy and direct financing.",
+     "title": "Regions Continue to Improve Business Environment to Spur Private-Sector Innovation",
+     "summary": "Regions keep optimizing the business environment to energize private enterprises' innovative capacity and support stable growth.",
+     "detail": "Many localities are treating business environment improvement as a key lever for stabilizing expectations and boosting confidence, with continued efforts on administrative procedures, factor保障, and innovation support. The innovative vitality of private enterprises is seen as a major driver of high-quality economic development.",
+     "impact": "A better business environment helps stabilize market expectations and revive private-sector investment and innovation appetite.",
      "importance": "important",
      "tags": [
-      "Capital Markets",
-      "Macroeconomic Regulation",
-      "Financial Policy"
+      "Business Environment",
+      "Private Economy",
+      "Innovation-Driven Growth"
      ]
     },
     {
      "id": "news-003",
-     "title": "How Did a Drug Originally Priced at 1.29 Million Yuan Make It Into the Basic Medical Insurance Catalog?",
-     "summary": "A drug originally priced at 1.29 million yuan has been added to the basic medical insurance catalog, drawing attention to how high-priced drugs gain access through price negotiations.",
-     "detail": "Price negotiations for inclusion in the basic medical insurance catalog are a key channel through which high-priced drugs achieve deep discounts and enter reimbursement coverage. The case illustrates how the insurance access mechanism helps reduce patients' financial burden.",
-     "impact": "The case highlights the value of medical insurance negotiations and is expected to help more high-priced innovative drugs reach patients at affordable prices.",
-     "importance": "important",
+     "title": "Food Delivery Riders Emerge as New Force in Grassroots Governance",
+     "summary": "The unique street-level reach of food delivery riders is being tapped, turning them into a new force in grassroots governance.",
+     "detail": "The report follows the transformation of food delivery riders from mere urban runners into frontline sentinels of grassroots governance. Their broad coverage and high mobility enable them to play a role in information reporting and emergency response, serving as a useful supplement to social governance.",
+     "impact": "The integration of new employment groups into the governance system provides grassroots governance with sharper sensors and wider social coordination.",
+     "importance": "normal",
      "tags": [
-      "Healthcare Insurance",
-      "Pharmaceutical Industry",
-      "Public Health"
+      "Grassroots Governance",
+      "New Forms of Employment"
      ]
     },
     {
      "id": "news-004",
-     "title": "Small Gloves Build a Big Industry: Ski Gear Amplifies the Ice-and-Snow Economy",
-     "summary": "Niche equipment such as ski gloves has grown into a major industry, with ice-and-snow gear delivering a multiplier effect on the winter economy.",
-     "detail": "Small products in the ice-and-snow equipment sector are scaling into sizable industries. The extension of the equipment supply chain is driving growth across the broader winter economy.",
-     "impact": "Growth in ice-and-snow equipment manufacturing is expected to spur coordinated gains across tourism, sports and consumer sectors.",
+     "title": "Restoration of Over 3 Million Mu of Ecologically Damaged Land Advances",
+     "summary": "Xinhua Viewpoint examines the restoration path for over 3 million mu of ecologically damaged land, where progress and challenges coexist.",
+     "detail": "The report focuses on ecological restoration projects across more than 3 million mu of damaged land, exploring how these scars on the land are gradually healed through systematic treatment. The work spans mine sites, degraded land and other types, with balancing ecological benefits and sustainable use as the central focus.",
+     "impact": "Large-scale ecological restoration will drive demand in the eco-environmental protection industry and improve regional ecological foundations and living conditions.",
      "importance": "important",
      "tags": [
-      "Ice-and-Snow Economy",
-      "Sports Industry",
-      "Manufacturing"
+      "Ecological Restoration",
+      "Environmental Protection",
+      "Green Development"
      ]
     },
     {
      "id": "news-005",
-     "title": "Rule of Law Safeguards the Golden Years: Better Lives for the Elderly",
-     "summary": "Rule-of-law efforts continue to protect the rights of older people, with institutional safeguards for elderly care and related services steadily improving.",
-     "detail": "Legal measures are playing an increasingly important role in safeguarding elderly people's lives and protecting their rights, while institutional arrangements in elderly care continue to be refined.",
-     "impact": "The improvements are expected to raise the quality and sense of security in elderly care, addressing livelihood needs amid demographic change.",
-     "importance": "normal",
-     "tags": [
-      "Elderly Care",
-      "Rule of Law",
-      "Public Services"
-     ]
-    },
-    {
-     "id": "news-006",
-     "title": "Xie Jun Under Investigation; PetroChina Responds",
-     "summary": "PetroChina commented on the investigation of a related individual, stressing integrity in professional conduct and work style.",
-     "detail": "The state-owned energy giant continues to push internal efforts on integrity and work-style enforcement, and the company has responded to the situation.",
-     "impact": "The case reflects unwavering discipline enforcement among state-owned central enterprises; integrity and compliance in the sector will remain under close watch.",
+     "title": "Four Ministries Unveil Green Transport Plan for the 15th Five-Year Plan Period",
+     "summary": "Four ministries jointly issued a green transport plan, mapping out carbon reduction across the entire transport sector.",
+     "detail": "Four ministries released a green transport plan laying out a roadmap for full-chain carbon reduction in transport, covering freight structure optimization, equipment upgrades and greener infrastructure. The plan is viewed as a key guide for the transport industry's pursuit of the dual carbon goals.",
+     "impact": "Implementation will drive electrification and cleaner transport equipment, spurring investment and technology iteration across related industry chains.",
      "importance": "important",
      "tags": [
-      "Energy Sector",
-      "Integrity in Practice",
-      "Corporate Governance"
+      "Green Transport",
+      "Dual Carbon Goals",
+      "Transportation"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "International Politics",
+   "title": "World Politics",
    "icon": "🌍",
    "articles": [
     {
-     "id": "news-007",
-     "title": "这张“全家福”，APEC近十年来首次",
-     "summary": "APEC会议期间的领导人“全家福”合影，成为近十年来的首次，引发国际舆论关注。",
-     "detail": "此次APEC会议拍摄的领导人全家福合影为近十年来首次实现，被视作区域合作与多边沟通气氛回暖的重要象征。",
-     "impact": "合影的重现释放出区域合作积极信号，为后续经贸对话营造良好氛围。",
+     "id": "news-006",
+     "title": "时评聚焦中俄美元首历史性会晤为何在中国",
+     "summary": "评论文章关注中俄美元首历史性会晤选址中国的深意，引发国际舆论广泛关注。",
+     "detail": "时评围绕中俄美元首历史性会晤的背景与意义展开解读，讨论会晤安排在中国举行所传递的信号。文章认为此次会晤具有标志性意义，反映出国际格局演变下的外交互动新态势。",
+     "impact": "大国元首互动动向往往影响全球政治经济预期，值得持续跟踪后续成果。",
      "importance": "hot",
      "tags": [
-      "区域合作",
-      "开放合作"
+      "大国关系",
+      "国际格局"
+     ]
+    },
+    {
+     "id": "news-007",
+     "title": "中东局势紧张 对伊选项仍在权衡",
+     "summary": "中东局势升温，伊朗军方强硬表态，相关方面对下一步行动的选项仍在权衡之中。",
+     "detail": "伊朗伊斯兰革命卫队副司令伊扎迪表示，若对方对伊朗国防设施、基础设施或核设施采取任何行动，将予以毁灭性回应。与此同时，市场消息称相关方面尚未就下一步行动做出最终决定，正考虑一系列选项。",
+     "impact": "地区紧张态势持续推升避险情绪，对能源与金融市场波动形成扰动。",
+     "importance": "hot",
+     "tags": [
+      "中东局势",
+      "国际安全"
      ]
     },
     {
      "id": "news-008",
-     "title": "美学者：中国“电气化技术革命”撬动全球减排拐点",
-     "summary": "有学者指出，中国电气化技术革命正成为撬动全球减排进程的重要力量。",
-     "detail": "学者观点认为，中国在电气化技术方面的推进正在对全球减排格局产生结构性影响，可能推动减排曲线出现拐点。",
-     "impact": "将进一步强化电气化与绿色产业的国际讨论，推动相关技术与产业链合作。",
+     "title": "霍尔木兹海峡油轮遭不明投射物击中",
+     "summary": "英国海上贸易行动组织通报，一艘油轮在霍尔木兹海峡航行时被不明投射物击中。",
+     "detail": "英国海上贸易行动组织（UKMTO）收到一份迟报的霍尔木兹海峡事件通报。经核实的报告显示，一艘向东航行的油轮遭到不明投射物击中，油轮继续航行，全体船员均已确认安全。",
+     "impact": "关键航道安全事件可能推升航运保险成本与原油运输风险溢价。",
      "importance": "important",
      "tags": [
-      "绿色低碳",
-      "能源转型",
-      "国际气候治理"
+      "航运安全",
+      "国际能源",
+      "中东局势"
      ]
     },
     {
      "id": "news-009",
-     "title": "特朗普手持在深圳照片向众人展示",
-     "summary": "美方领导人手持在深圳拍摄的照片向现场展示，再度引发对城市发展与合作的讨论。",
-     "detail": "现场展示的深圳照片成为舆论关注点，被解读为对深圳现代化发展面貌的关注与展示。",
-     "impact": "为城市形象与开放合作议题增添新的话题热度，地方发展叙事走向国际场合。",
-     "importance": "normal",
+     "title": "俄乌冲突持续 打击能源设施与海上船只",
+     "summary": "俄罗斯国防部通报，使用无人机打击为乌军提供保障的能源基础设施和海上船只。",
+     "detail": "俄罗斯国防部24日晚间发布通报称，俄武装部队当天使用无人机打击了为乌克兰武装部队提供保障的能源基础设施和海上船只。另据报道，乌克兰方面表示已与匈牙利就能源和政治议题达成协议。",
+     "impact": "冲突对能源基础设施的打击持续影响区域能源供应与地缘风险定价。",
+     "importance": "important",
      "tags": [
-      "开放合作",
-      "城市形象",
-      "中美经贸"
+      "俄乌局势",
+      "能源安全"
      ]
     },
     {
      "id": "news-010",
-     "title": "秘鲁三个大区因地震进入紧急状态",
-     "summary": "因近期地震活动造成多处设施受损，秘鲁三个大区宣布进入紧急状态。",
-     "detail": "11月20日至21日发生的地震活动造成房屋、教育设施、交通基础设施及公共场所受损，瓦努科等地因此进入紧急状态安排。",
-     "impact": "当地救援与重建压力上升，可能对区域供应链与矿产运输带来短期扰动。",
+     "title": "外媒热议载人航天领域国际合作新进展",
+     "summary": "全球媒体聚焦载人航天领域国际合作新进展，航天合作成为国际传播热门话题。",
+     "detail": "全球媒体关注载人航天领域的国际合作动向，相关合作被评价为把两国友谊送入太空。同期，《天涯共此诗》的国际传播新范式也受到关注，文化与科技的国际传播路径同步拓宽。",
+     "impact": "航天与文化领域的国际传播互动有助于提升科技合作与人文交流的综合影响。",
      "importance": "normal",
      "tags": [
-      "自然灾害",
-      "应急管理",
-      "国际救援"
-     ]
-    },
-    {
-     "id": "news-011",
-     "title": "英国首相：未经公投重返欧盟不可想象",
-     "summary": "英国首相表示，未经公投就重返欧盟是不可想象的，欧盟格局或于明年生变。",
-     "detail": "英国首相就对欧关系表态，强调对相关方案尚无定论、也没有预设目标，并指出欧盟格局可能于明年发生变化。",
-     "impact": "为英欧关系走向定下基调，短期内双边经贸安排难有结构性突破。",
-     "importance": "normal",
-     "tags": [
-      "欧洲政局",
-      "国际关系",
-      "多边合作"
-     ]
-    },
-    {
-     "id": "news-012",
-     "title": "也门武装部队通报一枚弹道导弹发射情况",
-     "summary": "也门武装部队通报探测到一枚弹道导弹发射事件，指出相关风险波及平民与民用目标。",
-     "detail": "也门武装部队称探测到一枚弹道导弹发射并落在相关区域，强调此类弹道导弹对平民和民用物体构成威胁，风险波及多个省份。",
-     "impact": "地区安全形势依然脆弱，航运与能源通道风险需持续关注。",
-     "importance": "normal",
-     "tags": [
-      "中东局势",
-      "国际航运"
+      "航天国际合作",
+      "国际传播",
+      "文化交流"
      ]
     }
    ]
   },
   {
    "id": "finance",
-   "title": "Finance Watch",
+   "title": "Financial News",
    "icon": "📈",
    "articles": [
     {
-     "id": "news-013",
-     "title": "Margin Financing Ratio Floor Cut to 80% as Market-Support Package Takes Effect",
-     "summary": "Regulators rolled out a market-support package that lowers the minimum margin financing ratio to 80%, significantly cutting the cost of leveraged capital.",
-     "detail": "The adjustment reduces the margin financing ratio floor to 80% from its previous level and is a key part of a series of measures to stabilize capital markets. The related steps aim to provide more ample liquidity support to the market.",
-     "impact": "Benefits brokerages' margin trading business and encourages active capital to enter the market, boosting risk appetite in the short term.",
+     "id": "news-011",
+     "title": "Central Bank to Inject Over 1 Trillion Yuan, Keeping Banking System Liquidity Ample",
+     "summary": "The central bank will conduct large-scale operations tomorrow totaling more than 1 trillion yuan, keeping liquidity in the banking system reasonably ample.",
+     "detail": "The central bank is moving to stabilize funding conditions, planning to inject 500 billion yuan and 800 billion yuan through related tools tomorrow, totaling over 1 trillion yuan. The move aims to keep banking system liquidity reasonably ample and stabilize expectations around month-end and year-end funding conditions.",
+     "impact": "Large-scale liquidity injections help smooth funding volatility and steady sentiment in the bond and interbank markets.",
+     "importance": "hot",
+     "tags": [
+      "Monetary Policy",
+      "Liquidity Management",
+      "Banking System"
+     ]
+    },
+    {
+     "id": "news-012",
+     "title": "New Margin Trading Rules Take Effect November 30; Existing Contracts Directly Subject to New Ratios",
+     "summary": "New margin trading rules will take effect on November 30, with existing contracts automatically subject to the new ratio arrangements without adjustment.",
+     "detail": "The new rules for margin financing and securities lending are set to take effect on November 30. Regulators have confirmed that existing contracts require no changes and will directly apply the new ratio arrangements. The relatively smooth transition is expected to ease market concerns about adjustments to existing business.",
+     "impact": "The new rules are expected to boost activity in margin trading while reducing uncertainty over adjustments to existing contracts.",
      "importance": "hot",
      "tags": [
       "Capital Markets",
-      "Securities Industry",
-      "Financial Policy"
+      "Margin Trading",
+      "Securities Regulation"
+     ]
+    },
+    {
+     "id": "news-013",
+     "title": "Guangdong's Industrial Value Added Up 6.1% YoY in First 10 Months",
+     "summary": "Guangdong's new-growth-driver industries grew rapidly in the first 10 months of this year, with industrial value added above the designated size rising 6.1% year on year.",
+     "detail": "Data show that Guangdong province's industrial value added above the designated size grew 6.1% year on year in the first 10 months, with new-growth-driver industries posting strong and rapid expansion. The province's industrial economy maintained steady growth while its industrial structure continued to optimize.",
+     "impact": "Strong data from Guangdong, a major industrial province, carries significant reference value for national industrial growth stability.",
+     "importance": "important",
+     "tags": [
+      "Regional Economy",
+      "Industrial Economy",
+      "New-Growth Industries"
      ]
     },
     {
      "id": "news-014",
-     "title": "Stepping Up: Wave of Capital Market Stabilization Measures Unveiled",
-     "summary": "Multiple government departments have rolled out a concentrated series of support measures for capital markets, markedly increasing policy intensity.",
-     "detail": "Policy support for capital markets has been further intensified, forming a coordinated package of measures covering market operations, funding supply and other areas.",
-     "impact": "Helps shore up market confidence and improves the financing and valuation environment for listed companies.",
-     "importance": "hot",
+     "title": "Guangzhou and Huizhou Unveil New Property Market Rules",
+     "summary": "Guangzhou and Huizhou have issued new property market rules, adjusting local real estate regulation and support policies.",
+     "detail": "Guangzhou and Huizhou simultaneously rolled out new property market rules, setting out policy arrangements based on local real estate market conditions. The new measures are seen as another example of city-specific policies to stabilize the property market.",
+     "impact": "Fine-tuning of local property policies helps stabilize regional market expectations; attention turns to the response in transaction volumes going forward.",
+     "importance": "important",
      "tags": [
-      "Capital Markets",
-      "Macroeconomic Policy",
-      "Financial Policy"
+      "Real Estate Market",
+      "Housing Policy",
+      "City-Specific Policies"
      ]
     },
     {
      "id": "news-015",
-     "title": "How Did a ¥1.29 Million Pricey Drug Make It Into the Basic Medical Insurance Catalog?",
-     "summary": "A drug originally priced at 1.29 million yuan has entered the basic medical insurance catalog, with the reimbursement negotiation mechanism proving key to the sharp price cut.",
-     "detail": "The case illustrates how high-priced innovative drugs enter insurance reimbursement coverage through the negotiation process, significantly easing the burden on patients. Dynamic adjustments to the insurance catalog continue to deliver public benefits.",
-     "impact": "Provides a clear commercialization path for innovative drugmakers while further rationalizing the drug pricing system.",
-     "importance": "important",
+     "title": "Suifenhe Port on China-Europe Rail's Eastern Corridor Tops 5,000 Trains",
+     "summary": "Cumulative traffic through Suifenhe port on the eastern corridor of the China-Europe Railway Express has exceeded 5,000 trains, with cross-border logistics operations continuing to perform well.",
+     "detail": "Traffic through Suifenhe port on the eastern corridor of the China-Europe Railway Express has surpassed 5,000 trains, with customs clearance and transport organization efficiency continuing to improve. As a key logistics route to Europe, the jump in traffic volume reflects sustained momentum in cross-border trade.",
+     "impact": "Expanded traffic volumes will further strengthen cross-border logistics capacity, supporting the stability and quality improvement of foreign trade.",
+     "importance": "normal",
      "tags": [
-      "Healthcare Security",
-      "Pharmaceutical Industry",
-      "Insurance Negotiations"
+      "Cross-Border Logistics",
+      "China-Europe Railway Express",
+      "Foreign Trade"
      ]
     },
     {
      "id": "news-016",
-     "title": "Pangdonglai to Close a Store, Reveals Cost Price of Down Jackets",
-     "summary": "Pangdonglai announced the closure of one store while disclosing the cost price of its down jackets, drawing attention to its transparent business practices once again.",
-     "detail": "Pangdonglai released the cost price of its down jackets and announced that one store will close. Transparent pricing and store network restructuring are proceeding in parallel, drawing interest from the retail sector.",
-     "impact": "Offers a model for pricing transparency in retail and may push more companies to disclose cost structures.",
+     "title": "GaWC Ranking Shakeup Puts Guangzhou, Shenzhen and Hong Kong Among Global First-Tier Cities",
+     "summary": "The GaWC world city rankings have been reshuffled, with Guangzhou, Shenzhen and Hong Kong entering the ranks of global first-tier cities, a signal with significant implications.",
+     "detail": "The latest GaWC rankings have shifted, with Guangzhou, Shenzhen and Hong Kong joining the global first-tier city tier, drawing widespread attention. Analysts say the change signals rising capability in city clusters and stronger capacity for global resource allocation.",
+     "impact": "Upgraded city status helps attract global capital, talent and industrial resources, driving coordinated regional development.",
      "importance": "normal",
      "tags": [
-      "Retail Industry",
-      "Consumer Market",
-      "Business Models"
+      "Urban Development",
+      "Globalization",
+      "Regional Coordination"
      ]
     },
     {
      "id": "news-017",
-     "title": "315 Exposes Tinghua Liquor: Anti-Tumor Claims Under Scrutiny",
-     "summary": "The exposé targets claims by Tinghua Liquor about anti-tumor effects and boosting immunity, raising questions about the authenticity of the product's marketing.",
-     "detail": "Consumer protection attention is rising over Tinghua Liquor's claims of anti-tumor effects and immunity enhancement. The compliance of such marketing pitches has become a focal point of discussion.",
-     "impact": "Excessive marketing in the baijiu industry will face stricter scrutiny, with rising compliance pressure on advertising.",
-     "importance": "important",
+     "title": "Municipal Executive Meeting Calls for Year-End Push and Faster Affordable Rental Housing Supply",
+     "summary": "The municipal executive meeting called for intensified efforts to close out the year and emphasized accelerating the development of affordable rental housing.",
+     "detail": "The municipal executive meeting laid out plans for year-end economic work, calling for intensified efforts to complete all tasks on schedule. The meeting also stressed accelerating affordable rental housing development and improving the housing security system to meet the housing needs of new urban residents and young people.",
+     "impact": "The year-end push combined with expanded housing security helps stabilize investment, benefit livelihoods, and shore up the economy in the fourth quarter.",
+     "importance": "normal",
      "tags": [
-      "Consumer Rights",
-      "Baijiu Industry",
-      "Advertising Compliance"
+      "Housing Security",
+      "Growth Stabilization",
+      "Livelihood Projects"
      ]
     },
     {
      "id": "news-018",
-     "title": "Management and Services Catch Up as New Employment Groups Work with Greater Peace of Mind",
-     "summary": "Management and services for new employment groups are keeping pace, offering gig workers a more secure working environment.",
-     "detail": "Rights protection and supporting services for delivery riders, ride-hailing drivers and other new employment groups continue to improve, with management approaches becoming more refined.",
-     "impact": "Helps improve job stability for gig workers and supports the regulated development of the platform economy.",
+     "title": "Management Reshuffle at Central SOEs Finalized, Involving 14 Companies",
+     "summary": "The latest appointments and removals at central state-owned enterprises have been announced, with management changes at 14 SOEs drawing attention.",
+     "detail": "A latest round of personnel appointments and removals at central state-owned enterprises has been announced, involving position adjustments at 14 central SOEs. Management changes at central SOEs are typically closely tied to optimizing corporate governance structures and professional integration.",
+     "impact": "Personnel reshuffles at central SOEs help optimize governance structures and provide organizational support for subsequent reforms and business integration.",
      "importance": "normal",
      "tags": [
-      "New Forms of Employment",
-      "Livelihood Security",
-      "Platform Economy"
-     ]
-    },
-    {
-     "id": "news-019",
-     "title": "Ice and Snow Equipment Industry Scales Up, Multiplier Effects Keep Building",
-     "summary": "From small gloves to a major industry — ice and snow equipment manufacturing is driving expanding multiplier effects across the ice and snow economy.",
-     "detail": "Niche categories within the ice and snow equipment sector have grown into large-scale industries, with upstream and downstream coordination across the value chain visibly boosting the ice and snow economy.",
-     "impact": "With the ice and snow consumption season approaching, equipment and cultural tourism spending may see a seasonal upswing.",
-     "importance": "normal",
-     "tags": [
-      "Ice and Snow Economy",
-      "Sports Industry",
-      "Consumer Market"
-     ]
-    },
-    {
-     "id": "news-020",
-     "title": "Menstrual Sleep Pants Ad Fined 450,000 Yuan Over Controversial Copy",
-     "summary": "A sleep pants brand was fined 450,000 yuan for an ad with controversial copy, putting advertising content compliance back in the spotlight.",
-     "detail": "The ad was penalized by regulators for controversial statements relating to menstrual odor, fueling ongoing debate over the boundaries between ad creativity and compliance.",
-     "impact": "Ad copy for female hygiene products will become more cautious, with industry compliance costs on the rise.",
-     "importance": "normal",
-     "tags": [
-      "Advertising Regulation",
-      "Consumer Rights",
-      "Household Products Industry"
+      "State-Owned Enterprises",
+      "Corporate Governance",
+      "Central SOE Reform"
      ]
     }
    ]
@@ -298,212 +270,212 @@
    "icon": "🌐",
    "articles": [
     {
-     "id": "news-021",
-     "title": "Nvidia Board Restores Jensen Huang as CEO",
-     "summary": "Nvidia's board announced it has restored Jensen Huang as CEO. Huang said he is honored to return to the company and eager to get back to work.",
-     "detail": "Nvidia's board formally restored Jensen Huang as CEO. Huang responded that he is honored to return to the company and can't wait to get back to work. Corporate governance experts offered differing views on the governance implications of the leadership change.",
-     "impact": "Leadership stability at the leading chipmaker is expected to boost sentiment and capex expectations across the global semiconductor sector.",
+     "id": "news-019",
+     "title": "US Stocks Slide Sharply as Nasdaq 100 Losses Widen to 3%",
+     "summary": "Major US indexes fell across the board, with the Nasdaq 100 down 3% and the S&P 500 off 1.3%.",
+     "detail": "US markets posted a notable pullback, with the Nasdaq 100's decline widening to 3% and the S&P 500 down 1.3%. Meanwhile, AI-related stocks extended their losses, with Anthropic's stock falling 12%, as market risk appetite cooled significantly.",
+     "impact": "A sharp sell-off in overseas equities could weigh on emerging market risk assets through sentiment and capital flow channels.",
      "importance": "hot",
      "tags": [
-      "Chip Industry",
-      "Corporate Governance",
-      "Tech Companies"
-     ]
-    },
-    {
-     "id": "news-022",
-     "title": "Nasdaq 100 Surges 7%, S&P Futures Up 3.8%",
-     "summary": "US stock futures moved sharply higher, with the Nasdaq 100 index rising 7% and S&P 500 futures extending gains to 3.8%.",
-     "detail": "Lifted by positive news from a chipmaking leader, major US index futures rallied strongly. The Nasdaq 100 rose 7% and S&P 500 futures widened gains to 3.8%, marking a significant rebound in market risk appetite.",
-     "impact": "Sentiment in global equity markets is recovering, with valuations of tech and growth stocks poised for a rebound.",
-     "importance": "hot",
-     "tags": [
-      "Overseas Markets",
-      "Tech Sector",
-      "Market Sentiment"
-     ]
-    },
-    {
-     "id": "news-023",
-     "title": "Nvidia Shares Surge, Short Sellers Face Record Paper Losses",
-     "summary": "Nvidia shares climbed to $168.5, with short sellers facing an estimated $12.2 billion in paper losses — the largest single-day figure in recent years.",
-     "detail": "News of Huang's restoration as CEO drove Nvidia's stock sharply higher to $168.5. Short sellers are estimated to have racked up about $12.2 billion in paper losses, the biggest single-day loss since 2019.",
-     "impact": "Short-covering pressure could further amplify the rally, while volatility in the chip sector rises.",
-     "importance": "important",
-     "tags": [
-      "Chip Industry",
-      "Overseas Markets",
-      "Short Selling"
-     ]
-    },
-    {
-     "id": "news-024",
-     "title": "WTI Crude Falls Below $80 as Brent Drops Steeply",
-     "summary": "International oil prices fell sharply, with WTI crude slipping below $80 a barrel and Brent crude down about 4% on the day.",
-     "detail": "WTI crude fell below $80 a barrel for the first time since August, dropping around 4% intraday. Brent crude also declined, trading near $88 a barrel. Raw sugar futures, meanwhile, rose more than 3%.",
-     "impact": "Falling oil prices benefit downstream chemical and transportation costs but pressure earnings expectations for the energy sector.",
-     "importance": "important",
-     "tags": [
-      "International Oil Prices",
-      "Commodities",
-      "Energy Markets"
-     ]
-    },
-    {
-     "id": "news-025",
-     "title": "Dollar Index Breaks Above 104 as Pound Hits New Low",
-     "summary": "The dollar index broke above 104, while the pound fell 0.5% against the dollar to its lowest level since November 2025.",
-     "detail": "The dollar index rose 0.57% intraday and broke above 104. Meanwhile, sterling fell 0.5% against the dollar, hitting its lowest level since November 2025.",
-     "impact": "Non-dollar currencies are broadly under pressure; cross-border capital flows and foreign-exchange gains or losses at exporters warrant attention.",
-     "importance": "normal",
-     "tags": [
-      "Foreign Exchange",
-      "International Currencies",
-      "Cross-border Capital"
-     ]
-    },
-    {
-     "id": "news-026",
-     "title": "Musk: Renting Out Computing Power More Profitable Than Improving Own Products",
-     "summary": "Musk told employees that renting out computing power is currently more profitable than improving the company's own products, and that its AI efforts lag behind.",
-     "detail": "In a message to employees, Musk said renting out computing power is currently more profitable than investing in product improvements, while acknowledging that the company lags behind in artificial intelligence development.",
-     "impact": "Monetizing computing power has become a major revenue source for tech companies, and AI infrastructure investment may accelerate further.",
-     "importance": "normal",
-     "tags": [
-      "Computing Power Economy",
-      "Commercial Aerospace",
+      "Overseas Equities",
+      "Risk Appetite",
       "Artificial Intelligence"
      ]
     },
     {
-     "id": "news-027",
-     "title": "US Airlines Urge Congress to Fund Air Traffic Control Upgrades",
-     "summary": "Airlines are urging Congress to appropriate at least $30 billion to modernize the air traffic control system, saying it is under growing strain.",
-     "detail": "A major US airline group is pressing Congress for at least $30 billion to modernize the air traffic control system, warning that the system is coming under increasing pressure.",
-     "impact": "If funding is approved, it would drive procurement demand in aviation infrastructure and avionics.",
+     "id": "news-020",
+     "title": "Precious Metals Plunge Across the Board as Spot Silver Breaks Below $41",
+     "summary": "Precious metals fell broadly, with spot gold, silver, and New York gold and silver futures all dropping sharply, while palladium declined in tandem.",
+     "detail": "Spot gold fell 2% on the day, breaking below $3,570 per ounce, while New York gold futures slipped below $3,590. Spot silver broke below $41 per ounce, with New York silver futures down more than 6%; domestic silver's most-traded contract fell 7% intraday; palladium futures dropped 5%. Precious metals faced a collective sell-off.",
+     "impact": "The sudden drop in precious metals signals a concentrated unwinding of safe-haven positions, raising short-term volatility; attention is needed on subsequent dollar and rate linkages.",
+     "importance": "hot",
+     "tags": [
+      "Precious Metals",
+      "Commodities",
+      "Safe-Haven Assets"
+     ]
+    },
+    {
+     "id": "news-021",
+     "title": "US Natural Gas Futures Surge Over 6% Ahead of Option Expiry",
+     "summary": "US natural gas futures rallied more than 6% ahead of option expiry, trading near $3.700 per million British thermal units.",
+     "detail": "US natural gas futures rose sharply ahead of option expiry, climbing more than 6% to around $3.700 per million British thermal units. Position adjustments tied to option expiry, combined with supply-demand expectations, amplified short-term price swings.",
+     "impact": "Higher natural gas prices will affect winter energy costs and create cost-side pressures on the chemicals and power generation sectors.",
+     "importance": "important",
+     "tags": [
+      "Energy Markets",
+      "Natural Gas",
+      "Commodities"
+     ]
+    },
+    {
+     "id": "news-022",
+     "title": "IMF Expects Inflation to Return to Target by End-2028",
+     "summary": "The International Monetary Fund expects inflation to decline gradually, reaching the target level of around 3% by the end of 2028.",
+     "detail": "The International Monetary Fund projects that inflation will average 4.4% in 2026 and 3.9% in 2027, before falling back to the 3% target by the end of 2028. Meanwhile, growth in the relevant economies is expected to rise gradually to 1.8% over the medium term, with real GDP growth of 1% and 1.3% in 2026 and 2027 respectively.",
+     "impact": "A moderating global inflation path could provide room for major central banks' future policy decisions.",
+     "importance": "important",
+     "tags": [
+      "Global Economy",
+      "Inflation Expectations",
+      "International Organizations"
+     ]
+    },
+    {
+     "id": "news-023",
+     "title": "CME Group Sets Single-Day Volume Record as Rate Products Surge",
+     "summary": "CME Group set a single-day volume record of 71.5 million contracts, driven mainly by a surge in interest rate product trading.",
+     "detail": "CME Group set a single-day volume record of 71.5 million contracts, driven mainly by a surge in interest rate product trading. The spike in interest rate derivatives trading reflects a significant rise in market demand for positioning around the policy path and rate outlook.",
+     "impact": "Record volume in rate products shows a sharp increase in global capital flows' focus on the policy rate path and hedging demand.",
+     "importance": "important",
+     "tags": [
+      "Derivatives Markets",
+      "Interest Rates",
+      "Financial Trading"
+     ]
+    },
+    {
+     "id": "news-024",
+     "title": "Dollar Index Breaks Below 103",
+     "summary": "The dollar index broke below 103, falling 0.50% intraday as currency market volatility increased.",
+     "detail": "The dollar index broke below 103, down 0.50% on the day. Against a backdrop of simultaneous moves in precious metals and equities, trading sentiment in the foreign exchange market has also turned cautious, with volatility in major currency pairs widening.",
+     "impact": "A weaker dollar could provide interim support for commodities and emerging market capital flows.",
      "importance": "normal",
      "tags": [
-      "Air Transport",
-      "Infrastructure",
-      "Aviation Safety"
+      "Foreign Exchange Markets",
+      "Dollar Index",
+      "Global Capital"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Technology Frontiers",
+   "title": "Tech Frontiers",
    "icon": "💡",
    "articles": [
     {
-     "id": "news-028",
-     "title": "China's Wingless Flying Vehicle Completes Maiden Flight",
-     "summary": "China's wingless flying vehicle has completed its maiden flight, with the theoretical ability to simply take off and leave when encountering traffic jams.",
-     "detail": "The new-type flying car features a wingless configuration and has completed its maiden flight. Its envisioned use cases include ascending directly into the air to bypass congested roads.",
-     "impact": "Opens new ideas for urban three-dimensional mobility and the commercialization of flying cars, with rising attention along the industrial chain.",
+     "id": "news-025",
+     "title": "Microsoft Declares Red Alert for Core Cloud Services",
+     "summary": "An internal memo shows Microsoft has declared a red alert on core service health following a service outage.",
+     "detail": "An internal memo shows Microsoft declared a red alert on M365 core service health after a November 12 outage. Meanwhile, Microsoft has set a target for future incidents, aiming to achieve global mitigation within one hour to improve service resilience and recovery speed.",
+     "impact": "Cloud service reliability is back in focus, with enterprise customers expected to pay even closer attention to multi-cloud disaster recovery and SLA mechanisms.",
      "importance": "important",
      "tags": [
-      "Low-Altitude Economy",
-      "Smart Transportation",
-      "High-End Manufacturing"
+      "Cloud Computing",
+      "Service Reliability",
+      "Enterprise Services"
      ]
     },
     {
-     "id": "news-029",
-     "title": "Bay Area-Made 2mm Ultra-Thin Transparent Screen Debuts at APEC",
-     "summary": "A 2mm ultra-thin transparent screen drew media attention at an APEC event, showcasing the Bay Area's advanced display manufacturing capabilities.",
-     "detail": "A 2mm ultra-thin transparent screen product made its debut at an APEC-related occasion, attracting attention from attending journalists. The product reflects the Bay Area's technological accumulation in next-generation displays.",
-     "impact": "Next-generation display technologies are reaching the global stage faster, and companies along the related industrial chain stand to benefit.",
+     "id": "news-026",
+     "title": "HPE Says AI Chip Diversification Is a Natural Trend",
+     "summary": "HPE's CEO said customer diversification of AI chips is a natural long-term trend and that AI demand is durable.",
+     "detail": "Hewlett Packard Enterprise (HPE) CEO said that, over the long term, customers diversifying their AI chip sourcing is a natural trend and AI demand is sustained. He also noted that customers have not adjusted purchasing behavior in response to recent NVIDIA-related controversies.",
+     "impact": "The durability of AI computing demand has won industry endorsement, and the chip supply landscape may evolve toward greater diversification.",
      "importance": "important",
-     "tags": [
-      "Next-Gen Displays",
-      "Advanced Manufacturing",
-      "Technology Innovation"
-     ]
-    },
-    {
-     "id": "news-030",
-     "title": "Turning Laboratory Potential into Production-Line Capacity",
-     "summary": "With a focus on translating research results, various parties are accelerating the conversion of laboratory technologies into production-line capacity.",
-     "detail": "Through hands-on support and tackling key challenges, the pipeline from research to industry is being opened up, converting laboratory potential into actual production-line output.",
-     "impact": "Helps improve the efficiency of commercializing research results and strengthens the core competitiveness of the manufacturing sector.",
-     "importance": "normal",
-     "tags": [
-      "Technology Transfer",
-      "Manufacturing",
-      "Industry-Academia Collaboration"
-     ]
-    },
-    {
-     "id": "news-031",
-     "title": "Inside the Powerful 'Core' of China's High-Speed Rail",
-     "summary": "The report focuses on the core systems of China's high-speed rail, showcasing the key technologies and industrial chain capabilities that keep trains running.",
-     "detail": "The core systems and critical component capabilities of China's high-speed rail are drawing attention, reflecting the accumulation in systems integration and domestic self-reliance within high-end equipment manufacturing.",
-     "impact": "High-speed rail technology exports and industrial chain upgrades remain key highlights for the high-end manufacturing sector.",
-     "importance": "normal",
-     "tags": [
-      "Rail Transit",
-      "High-End Equipment",
-      "Self-Reliance"
-     ]
-    },
-    {
-     "id": "news-032",
-     "title": "Surging Computing Power Demand: New Data Centers Need to Be Built Faster",
-     "summary": "With AI computing demand at extremely high levels, computing power providers need to build new data centers just to fulfill orders.",
-     "detail": "Market intelligence indicates that one AI company's demand for computing power is so immense that relevant providers must complete construction of a new data center before October in order to fulfill its orders.",
-     "impact": "The AI infrastructure gap continues to drive prosperity across the data center and server supply chains.",
-     "importance": "normal",
      "tags": [
       "Artificial Intelligence",
-      "Data Centers",
-      "Computing Power Economy"
+      "Chip Industry",
+      "Computing Demand"
+     ]
+    },
+    {
+     "id": "news-027",
+     "title": "Shanxi Targets Boost in SOE Renewable Capacity During 15th Five-Year Plan",
+     "summary": "Shanxi has set a goal to raise provincial SOE renewable capacity to 28 million kW during the 15th Five-Year Plan period.",
+     "detail": "Shanxi has set a target to lift renewable energy installed capacity of provincial state-owned enterprises to 28 million kW during the 15th Five-Year Plan period. The goal will push provincial energy SOEs to accelerate the development and grid connection of wind, solar and other renewable projects.",
+     "impact": "Clear local renewable capacity targets are expected to drive regional renewable investment and the build-out of grid absorption capacity.",
+     "importance": "normal",
+     "tags": [
+      "Renewable Energy",
+      "Energy Transition",
+      "Capacity Target"
+     ]
+    },
+    {
+     "id": "news-028",
+     "title": "Guangdong Promotes Patent Open Licensing with Pay-After-Use Model",
+     "summary": "Guangdong is rolling out patent open licensing with a pay-after-use model to lower the barrier to commercializing tech achievements.",
+     "detail": "Guangdong is advancing the implementation of a patent open licensing mechanism, promoting a pay-after-use model to lower the barrier and cost for SMEs to access patented technologies. The move is seen as an important exploration to unblock bottlenecks in commercializing research achievements and unlock the value of patent assets.",
+     "impact": "Innovation in commercialization mechanisms is expected to raise patent utilization rates and boost industry-academia collaboration and technology diffusion.",
+     "importance": "normal",
+     "tags": [
+      "Intellectual Property",
+      "Commercialization of Research",
+      "Innovation Ecosystem"
      ]
     }
    ]
   },
   {
    "id": "other",
-   "title": "Other Top Stories",
+   "title": "Other Headlines",
    "icon": "📰",
    "articles": [
     {
-     "id": "news-033",
-     "title": "The Vitamin Chinese People Lack Most — Women More Deficient Than Men",
-     "summary": "Surveys show that Chinese people are generally deficient in a certain vitamin, with women affected more than men.",
-     "detail": "Nutrition and health surveys indicate that intake of certain vitamins falls short among Chinese populations, with deficiency more pronounced in women than in men.",
-     "impact": "Could raise public awareness of nutritional supplementation and boost interest in the dietary supplement market.",
-     "importance": "normal",
-     "tags": [
-      "Public Health",
-      "Nutrition and Wellness",
-      "Health Industry"
-     ]
-    },
-    {
-     "id": "news-034",
-     "title": "Death of 19-Year-Old After Suspected Frequent Plasma Sales Sparks Outrage",
-     "summary": "A 19-year-old reportedly died after selling plasma 16 times in eight months, raising concerns over plasma collection management.",
-     "detail": "The case highlights issues around the frequency and procedural oversight of plasma collection, with the public questioning compliance and regulation of collection facilities.",
-     "impact": "May prompt tighter regulations on the plasma collection industry, including stricter frequency limits and health screening requirements.",
+     "id": "news-029",
+     "title": "Tinghua Liquor's Health Claims Exposed, Drawing Skepticism",
+     "summary": "Claims about Tinghua Liquor's anti-tumor and immune-boosting effects have been exposed, prompting questions from consumers and the public about its efficacy claims.",
+     "detail": "The revelations concern the compliance of Tinghua Liquor's previous claims about anti-tumor, immune-boosting and other health benefits. Whether the product's efficacy claims cross the line for food or alcohol advertising has become a focal point for public opinion and regulators.",
+     "impact": "The incident may push regulators toward stricter oversight of efficacy claims for alcohol and health-related consumer products, tightening advertising compliance standards.",
      "importance": "important",
      "tags": [
-      "Blood Products Regulation",
-      "Public Health",
-      "Medical Oversight"
+      "Consumer Rights",
+      "Advertising Compliance",
+      "Food Industry"
      ]
     },
     {
-     "id": "news-035",
-     "title": "Budget Sushi Chain Dubbed 'Mixue of Japanese Food' Hit by Repeat Food Safety Scandals",
-     "summary": "A budget Japanese restaurant chain has faced repeated food safety controversies, putting its quality control under scrutiny amid low-price expansion.",
-     "detail": "The low-cost Japanese dining chain, which expanded rapidly on an affordable pricing model, has repeatedly been embroiled in food safety disputes and dubbed by media as the \"Mixue of Japanese food.\" Balancing low-price scaling with quality control has become an industry issue.",
-     "impact": "Supply chain quality control will become the key competitive factor for budget chain restaurants in the next phase.",
+     "id": "news-030",
+     "title": "Frequent Plasma Donations by Teen Spark Industry Regulatory Concern",
+     "summary": "A teenager is suspected to have suffered serious consequences from frequent plasma donations within eight months, drawing attention to standards and oversight in the blood collection industry.",
+     "detail": "Reports say a 19-year-old suffered serious health consequences after donating plasma as many as 16 times over eight months, sparking widespread public concern. Attention has focused on donation frequency management, informed consent obligations and regulatory responsibility at single-donor plasma centers.",
+     "impact": "The case may drive stricter rules on donation frequency, risk disclosure and local oversight in the plasma collection industry.",
+     "importance": "hot",
+     "tags": [
+      "Public Health",
+      "Blood Safety",
+      "Industry Regulation"
+     ]
+    },
+    {
+     "id": "news-031",
+     "title": "A Vitamin Widespread Deficient Among Chinese People — Shortfall Even More Acute in Women",
+     "summary": "Popular-science content notes that Chinese people commonly lack a certain vitamin, with women showing a more pronounced deficiency than men.",
+     "detail": "Science-focused reporting on vitamin intake in China highlights a widely deficient vitamin type, with women more affected than men. The public is advised to improve intake through balanced diets and necessary nutritional assessments.",
+     "impact": "Growing attention to nutrition and health is expected to raise public health awareness and boost interest in related dietary supplement categories.",
      "importance": "normal",
      "tags": [
-      "Restaurant Industry",
-      "Food Safety",
-      "Chain Operations"
+      "Public Health",
+      "Nutrition",
+      "Health Education"
+     ]
+    },
+    {
+     "id": "news-032",
+     "title": "Winter 'Heating Illness' Alert: Four Symptoms to Watch For",
+     "summary": "Dry throat, nosebleeds and other symptoms in winter may signal 'heating illness'; four symptoms warrant heightened vigilance.",
+     "detail": "Indoor air tends to be dry during the winter heating season, frequently causing dry throat and nosebleeds. Health educators warn that four such symptoms may indicate 'heating illness,' which can be prevented by adjusting temperature and humidity and staying hydrated.",
+     "impact": "Winter health advisories help the public guard against seasonal illnesses early, easing the burden on medical services.",
+     "importance": "normal",
+     "tags": [
+      "Winter Health",
+      "Disease Prevention",
+      "Health Education"
+     ]
+    },
+    {
+     "id": "news-033",
+     "title": "Court of Arbitration for Sport Restores African Team's Championship Title",
+     "summary": "The Court of Arbitration for Sport upheld an appeal by the relevant football association, overturning a prior CAF ruling and restoring the team's Africa Cup of Nations title.",
+     "detail": "The Court of Arbitration for Sport announced on the 24th that it had upheld the appeal filed by the relevant football association, annulling the Confederation of African Football's earlier ruling on the 2025 Africa Cup of Nations results and restoring the team's champion title. The ruling sets a precedent for international sports arbitration and tournament governance.",
+     "impact": "The decision reinforces the authority of international sports arbitration, and future rulings within sports bodies will face greater judicial scrutiny.",
+     "importance": "normal",
+     "tags": [
+      "International Sports Arbitration",
+      "Football",
+      "Sports Governance"
      ]
     }
    ]

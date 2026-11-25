@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "contents": [
     {
-      "id": "prog-2026-11-24",
-      "date": "2026-11-24",
-      "title": "Dart 变量声明、类型推断与空安全（Null Safety）入门",
-      "summary": "掌握 var / final / const 三种声明方式的区别，并学会用 ?、??、?.、! 安全地处理 null 值。",
-      "difficulty": "初级",
-      "concept": "Dart 是一门强类型语言，但它提供了非常友好的「类型推断」：你可以用 var 声明变量而不写类型，编译器会根据首次赋值推断出类型，并且这个类型从此固定。例如 `var name = 'Flutter';` 之后再写 `name = 42;` 会直接编译报错。这一点和 JavaScript 完全不同，理解它能帮你避开大量运行时错误。\n\n声明变量时有三种常用关键字：var、final 和 const。var 用于「类型推断的普通变量」；final 用于「运行时确定、只能赋值一次」的值，比如 `final now = DateTime.now();`；const 用于「编译期常量」，其值必须是字面量或常量表达式，比如 `const maxRetry = 3;`。工程经验上有一条实用准则：**能写 final 就写 final**，它能明确表达「这个变量不会被重新赋值」的意图，也让代码更容易被阅读和重构；只有真正需要编译期常量（例如固定配置、固定字符串）时才用 const。\n\n从 Dart 2.12 开始，语言默认启用「空安全（Null Safety）」。这意味着一个 `String` 类型的变量永远不可能是 null，如果允许为 null，必须显式写成 `String?`（读作「可空的 String」）。空安全把「空指针异常 NullPointerException」从运行时错误提前到了编译时错误，这是 Dart 最有价值的特性之一。\n\n处理可空值有四个核心工具：`?.`（空感知访问，对象为 null 时整体结果为 null，不再抛异常）、`??`（空合并运算符，左边为 null 时取右边默认值）、`??=`（左边为 null 时才赋值）、以及 `!`（非空断言，告诉编译器「我保证它不是 null」）。其中 `!` 是双刃剑：写起来省事，但如果值真的为 null，程序会在运行时抛出异常。实际项目中应当**尽量少用 `!`**，优先用 `??` 提供默认值或用 `if (x != null)` 做显式判空。\n\n另一个关键字是 late，用于「延迟初始化」：声明一个非空变量但稍后再赋值。它适合依赖注入、延迟加载等场景，但如果在赋值前就访问，同样会抛异常，所以初级阶段只在明确知道初始化时机时使用。结合实际开发，最常见的场景就是解析后端返回的 JSON：字段可能缺失或为 null，这时用 `as T?` 转换后再配合 `??` 取默认值，是既安全又简洁的写法。",
+      "id": "prog-2026-11-25",
+      "date": "2026-11-25",
+      "title": "Git Hooks 与 pre-commit 质量门禁：把检查前置到本地",
+      "summary": "学习用 Git Hooks（重点 pre-commit 与 commit-msg）在提交前自动执行格式化、静态检查和提交信息校验，配合 CI 形成双层质量门禁。",
+      "difficulty": "中级",
+      "concept": "Git Hooks 是 Git 在特定事件（pre-commit、commit-msg、pre-push、post-merge 等）触发时自动执行的脚本，存放在仓库的 .git/hooks 目录下。它们是 DevOps『左移（Shift-Left）』思想最便宜、最有效的落地手段：把代码风格、静态分析、敏感信息扫描等检查从 CI 流水线提前到开发者本机，反馈时间从几分钟缩短到几秒。\n\n关键认知：.git/hooks 目录不会被 git 跟踪，直接放脚本无法在团队间共享。工程上通常采用三种方案之一：1) 把脚本放在仓库内的 hooks/ 目录，用 `git config core.hooksPath hooks` 或安装脚本软链到 .git/hooks；2) 使用 pre-commit 框架（.pre-commit-config.yaml + `pre-commit install`）；3) 在 Makefile / npm prepare 中做初始化。任选其一都要在 README 写清楚 bootstrap 步骤，否则新成员会静默跳过所有检查。\n\npre-commit 钩子最常见的坑是『只检查暂存区』。当你 `git add` 之后又继续改文件，钩子里若用 `git diff` 而不是 `git diff --cached`，检查的就不是将要提交的内容。规范做法是：用 `git diff --cached --name-only` 拿文件列表，必要时用 `git stash --keep-index` 或 `git show :file` 取暂存版本做检查；如果检查失败，钩子以非 0 退出码返回，Git 会中止本次提交。注意 `--no-verify` 可以绕过钩子，因此钩子是『快速反馈』而不是『安全边界』，最终防线必须在 CI 上。\n\ncommit-msg 钩子用于校验提交信息格式，业界事实标准是 Conventional Commits（feat/fix/docs/refactor/test/chore + 可选 scope + 空行 + 正文）。统一格式的价值在于可以自动生成 CHANGELOG、自动判断语义化版本号（feat 升 minor、fix 升 patch、BREAKING CHANGE 升 major），并与 release-please、semantic-release 等工具无缝衔接。\n\n在团队落地时建议分级：本地钩子只跑快的检查（格式化、lint 增量、密钥扫描，控制在 5 秒内），耗时的单测、集成测试、镜像构建留给 CI。钩子里永远要打印清晰的失败原因和修复命令（例如 `run: make fmt`），否则开发者只会学会用 --no-verify 绕过。另外，pre-push 钩子适合跑一次全量测试或阻止直接 push 到 main/develop 保护分支，配合 GitLab/GitHub 的分支保护规则形成完整链路。",
       "codeExample": {
-        "language": "Dart",
-        "code": "// Dart 变量与空安全入门示例\n// 运行方式：dart run null_safety_demo.dart\n\nvoid main() {\n  // 1. var：类型推断，类型在首次赋值后固定\n  var name = 'Flutter';\n  // name = 42; // ❌ 编译错误：name 的类型已被推断为 String\n  print('1. var -> $name');\n\n  // 2. final：运行时确定、只能赋值一次\n  final DateTime now = DateTime.now();\n  print('2. final -> ${now.toIso8601String()}');\n\n  // 3. const：编译期常量，必须是字面量或常量表达式\n  const int maxRetry = 3;\n  const String tag = '[Demo]';\n  print('3. const -> $tag maxRetry = $maxRetry');\n\n  // 4. 可空类型：用 ? 声明变量可以为 null\n  String? nickname; // 未赋值，默认为 null\n  print('4. nickname = $nickname');\n\n  // 5. 空感知 + 空合并：?. 和 ??\n  final int length = nickname?.length ?? 0;\n  print('5. 长度 -> $length');\n\n  // 6. 赋值后可以安全使用；! 是非空断言（谨慎使用）\n  nickname = 'Dart';\n  print('6. 非空断言 -> ${nickname!.toUpperCase()}');\n\n  // 7. ?? 提供默认值，避免 null 流入 UI\n  final String displayName = nickname ?? '匿名用户';\n  print('7. displayName -> $displayName');\n\n  // 8. 实战：解析可能缺字段的 JSON（Map）\n  final Map<String, dynamic> json = {'id': 7, 'name': '小明'};\n  final int userId = json['id'] as int? ?? -1;\n  final String userName = json['name'] as String? ?? '未知';\n  final String email = json['email'] as String? ?? '未填写';\n  print('8. 解析结果 -> id: $userId, name: $userName, email: $email');\n}",
-        "explanation": "第 1 段（var）：`var name = 'Flutter';` 让编译器推断 name 的类型为 String。取消注释 `name = 42;` 会得到编译错误，说明类型一旦推断就不会改变。\n\n第 2 段（final）：`final DateTime now = DateTime.now();` 的值在运行时才产生，且只能赋值一次。如果尝试 `now = DateTime.now();` 会编译报错。\n\n第 3 段（const）：`maxRetry` 和 `tag` 都是编译期常量，写成 `const maxRetry = DateTime.now().year;` 就会报错，因为后者不是常量表达式。\n\n第 4 段（可空声明）：`String? nickname;` 中的 `?` 表示该变量允许为 null。如果没有 `?`，未赋值就使用会直接编译失败。\n\n第 5 段（?. 与 ??）：`nickname?.length` 在 nickname 为 null 时返回 null 而不是抛异常；`?? 0` 把 null 转成默认值 0，最终 length 一定是 int 类型。\n\n第 6 段（! 非空断言）：此时 nickname 已赋值为 'Dart'，`!` 让编译器按非空类型处理，`.toUpperCase()` 得到 'DART'。若 nickname 仍为 null，此处会抛出运行时异常。\n\n第 7 段（默认值）：`nickname ?? '匿名用户'` 是 UI 层最常用的写法，保证传给 Widget 的字符串永远不为 null。\n\n第 8 段（JSON 解析）：`json['id'] as int? ?? -1` 的顺序很重要——先用 `as int?` 宽容地转换成可空类型，再用 `??` 取默认值。这样即使后端缺少 email 字段，程序也不会崩溃。"
+        "language": "Shell / Bash",
+        "code": "#!/usr/bin/env bash\n# 文件位置: hooks/pre-commit  (团队共享, 通过 git config core.hooksPath hooks 启用)\n# 作用: 提交前自动格式化检查 + 禁止提交密钥, 失败则中止 commit\nset -euo pipefail\n\n# ---------- 1. 只取本次将要提交的文件(暂存区) ----------\nSTAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)\n\nif [[ -z \"$STAGED_FILES\" ]]; then\n  echo \"[pre-commit] 暂存区无文件, 跳过检查\"\n  exit 0\nfi\n\necho \"[pre-commit] 检查 ${STAGED_FILES} ...\"\n\n# ---------- 2. 只对 Python 文件做语法检查(逐文件, 快) ----------\nFAIL=0\nfor f in $STAGED_FILES; do\n  case \"$f\" in\n    *.py)\n      if ! python3 -m py_compile \"$f\" 2>/dev/null; then\n        echo \"  [错误] Python 语法错误: $f\"\n        FAIL=1\n      fi\n      ;;\n  esac\ndone\n\n# ---------- 3. 密钥扫描: 简单正则抓 AK/SK 与私钥块 ----------\nSECRET_PATTERN='(AKIA[0-9A-Z]{16}|BEGIN (RSA |OPENSSH )?PRIVATE KEY)'\nif git diff --cached | grep -E -q \"$SECRET_PATTERN\"; then\n  echo \"  [错误] 检测到疑似密钥/私钥, 禁止提交!\"\n  echo \"  修复: git reset HEAD <文件> 并移除敏感信息\"\n  FAIL=1\nfi\n\n# ---------- 4. 有任何失败则以非 0 退出, Git 会取消本次 commit ----------\nif [[ $FAIL -ne 0 ]]; then\n  echo \"[pre-commit] 检查未通过, 已中止提交 (临时跳过: git commit --no-verify)\"\n  exit 1\nfi\n\necho \"[pre-commit] 全部通过 ✓\"\nexit 0",
+        "explanation": "第 4 行 `set -euo pipefail` 让脚本在出错时立即退出、未定义变量报错、管道中任一环节失败整体失败，是写 CI/钩子脚本的标配。\n\n第 7 行 `git diff --cached --name-only --diff-filter=ACM` 只列出『暂存区相对于 HEAD』的新增/修改/拷贝文件，`--cached` 是关键，它保证检查的就是将被提交的内容。\n\n第 9-12 行：没有暂存文件时直接 exit 0，钩子返回 0 表示放行。\n\n第 17-27 行循环遍历暂存文件，仅对 `*.py` 跑 `python3 -m py_compile` 做秒级语法检查；`FAIL=1` 只做标记而不立即退出，这样一次就能报出所有问题，避免开发者反复试错。\n\n第 30-37 行用正则扫描暂存的 diff 内容，拦截 AWS AccessKey（AKIA 开头 16 位）和 PEM 私钥块。注意这里用 `git diff --cached`（不带 --name-only）拿到的是补丁文本。\n\n第 40-44 行：只要 `FAIL` 非 0 就 `exit 1`，Git 收到非 0 退出码会中止 commit；同时提示可用 `--no-verify` 临时跳过，避免把开发者逼进死胡同。"
       },
       "keyPoints": [
-        "var 依靠类型推断，类型在首次赋值后固定，不能再赋其它类型的值",
-        "final 表示运行时常量（只能赋一次），const 表示编译期常量；日常代码优先使用 final",
-        "空安全下，类型默认不可为 null，允许为 null 必须显式写 `T?`",
-        "`?.` 空感知访问、`??` 取默认值、`??=` 条件赋值，是处理 null 的三件套",
-        "`!` 非空断言有运行时崩溃风险，实际项目应尽量用 `??` 或显式判空替代"
+        ".git/hooks 不被版本控制，团队共享方案：core.hooksPath 指向仓库内 hooks/ 目录，或使用 pre-commit 框架",
+        "pre-commit 中必须用 git diff --cached 取暂存区内容，用 git diff 会检查到未 add 的改动",
+        "钩子以 exit 1 中止提交，exit 0 放行；--no-verify 可绕过，故钩子只是快速反馈，CI 才是最终门禁",
+        "提交信息规范推荐 Conventional Commits，可驱动 CHANGELOG 生成与语义化版本发布",
+        "本地钩子只跑快检查（<5s）并打印可执行的修复命令，重活留给 pre-push 与 CI 流水线"
       ],
       "exercise": {
-        "description": "编写一个函数 `String formatUserInfo(Map<String, dynamic> data)`：从 data 中读取 name（String）和 age（int），缺少字段或值为 null 时分别使用默认值 '匿名用户' 和 0，最终返回形如 `用户：匿名用户（0 岁）` 的字符串。要求全程不使用 `!` 断言，并写一个 main 函数分别用完整数据 `{name: 小明, age: 20}` 和空数据 `{}` 测试输出。",
-        "hint": "取值时先做可空转换再给默认值，例如 `final String name = data['name'] as String? ?? '匿名用户';`。注意 `as String?` 而不是 `as String`，因为字段可能为 null。函数体最后一行用字符串插值返回即可，无需使用 return null 之类的分支。",
+        "description": "编写一个 commit-msg 钩子（hooks/commit-msg），校验提交信息符合 Conventional Commits 格式：<type>(<scope>): <subject>。要求：type 只能是 feat|fix|docs|refactor|test|chore；subject 首字母小写且不超过 72 个字符；merge/ revert 提交直接放行。写完后用 `git commit -m \"add login page\"` 与 `git commit -m \"feat(auth): add login page\"` 分别验证失败与成功。",
+        "hint": "钩子第一个参数 $1 就是存放提交信息的临时文件路径（`MSG_FILE=$1`，用 `head -n1 \"$MSG_FILE\"` 取标题行）。用 Bash 的 [[ =~ ]] 做正则匹配：^((feat|fix|docs|refactor|test|chore)(\\([a-z0-9_-]+\\))?: .{1,69})$ ；再用 ${#line} 取长度判断 72 字符限制；以 Merge/Revert 开头的行直接 exit 0。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码：当 nickname 为 null 时，display 应得到默认值 '匿名用户'。",
-            "codeContext": "String? nickname = null;\nString display = nickname ______ '匿名用户';\nprint(display);",
+            "question": "补全 pre-commit 钩子中的命令，使其只获取本次将被提交（暂存区）的文件列表：",
+            "codeContext": "STAGED_FILES=$(git diff ______ --name-only --diff-filter=ACM)",
             "segments": [
               {
                 "type": "text",
-                "content": "String? nickname = null;\nString display = nickname ",
+                "content": "STAGED_FILES=$(git diff ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -42,53 +42,54 @@
                 "content": null,
                 "placeholder": "[选择]",
                 "options": [
-                  "?",
-                  "??",
-                  "!"
+                  "--cached",
+                  "--staged-all",
+                  "--worktree",
+                  "--HEAD"
                 ],
-                "correctAnswer": "??"
+                "correctAnswer": "--cached"
               },
               {
                 "type": "text",
-                "content": " '匿名用户';",
+                "content": " --name-only --diff-filter=ACM)",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "??",
-            "explanation": "`??` 是空合并运算符：当左边为 null 时取右边的值。`?` 只用于类型声明或空感知访问，`!` 是非空断言而不是默认值运算符。"
+            "correctAnswer": "--cached",
+            "explanation": "`git diff --cached`（等价于 `git diff --staged`）比较的是『暂存区 vs HEAD』，也就是即将写入提交的内容；`git diff` 比较的是『工作区 vs 暂存区』，会包含尚未 git add 的改动，用在钩子里会检查到根本不会被提交的代码。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 final 和 const，下列说法正确的是？",
-            "codeContext": "final now = DateTime.now();\nconst maxRetry = 3;",
+            "question": "关于 Git Hooks 在 DevOps 流水线中的定位，下列说法正确的是？",
+            "codeContext": "git commit -m \"feat: add api\"  # pre-commit 钩子 exit 1 → 提交失败\ngit commit --no-verify -m \"feat: add api\"  # 仍然可以提交成功",
             "segments": null,
             "options": [
-              "final 变量必须在编译期就知道值，const 可以在运行时赋值",
-              "const 必须是编译期常量，final 可以在运行时确定值且只能赋值一次",
-              "final 和 const 完全等价，只是写法不同",
-              "const 变量可以在运行时被重新赋值一次"
+              "Git Hooks 可以完全替代 CI 流水线中的测试与安全扫描",
+              "Git Hooks 属于本地快速反馈手段，可被 --no-verify 绕过，必须与 CI 上的强制检查配合使用",
+              "只要配置了 pre-commit 钩子，团队所有人都会自动获得该钩子（.git/hooks 会同步到远端）",
+              "pre-commit 钩子返回非 0 退出码时，Git 会忽略退出码并继续提交"
             ],
-            "correctAnswer": "const 必须是编译期常量，final 可以在运行时确定值且只能赋值一次",
-            "explanation": "const 要求值在编译期就能确定（字面量或常量表达式），而 final 允许运行时求值（例如 DateTime.now()），区别在于「求值时机」和「是否可变」：两者都不可重新赋值，但只有 const 是编译期常量。"
+            "correctAnswer": "Git Hooks 属于本地快速反馈手段，可被 --no-verify 绕过，必须与 CI 上的强制检查配合使用",
+            "explanation": "钩子的价值是把问题左移到本机、秒级反馈，但它不是安全边界：--no-verify 可绕过，且 .git/hooks 不入库不会自动同步。最终质量门禁必须放在 CI（并配合分支保护/Merge Request 必须通过流水线）。钩子返回非 0 会中止提交，所以 A/C/D 均错误。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "下面这段代码的输出依次是什么？",
-            "codeContext": "void main() {\n  String? name;\n  print(name?.length ?? 0);\n  name = 'Dart';\n  print(name!.length);\n  const list = [1, 2, 3];\n  print(list.length);\n}",
+            "question": "假设暂存区有一个 a.py（Python 2 风格 print 语法错误）和一个 README.md，执行下面的 pre-commit 钩子后，最终输出顺序是什么？",
+            "codeContext": "FAIL=0\nfor f in $(git diff --cached --name-only); do\n  case \"$f\" in\n    *.py) python3 -m py_compile \"$f\" 2>/dev/null || { echo \"bad: $f\"; FAIL=1; } ;;\n  esac\ndone\n[[ $FAIL -ne 0 ]] && echo \"commit blocked\" && exit 1\necho \"all good\"",
             "segments": null,
             "options": [
-              "0 / 5 / 3",
-              "null / 5 / 3",
-              "0 / 4 / 3",
-              "编译错误，无法运行"
+              "bad: a.py → commit blocked",
+              "bad: a.py → all good",
+              "bad: README.md → commit blocked",
+              "all good"
             ],
-            "correctAnswer": "0 / 5 / 3",
-            "explanation": "第一行：name 为 null，`name?.length` 结果是 null，`?? 0` 使其变为 0；第二行：name 被赋值为 'Dart'，长度为 5；第三行：常量列表 [1, 2, 3] 的长度为 3。"
+            "correctAnswer": "bad: a.py → commit blocked",
+            "explanation": "循环中 README.md 不匹配 *.py 被跳过，只有 a.py 走 py_compile 分支并失败，打印 `bad: a.py` 并把 FAIL 置 1。之后 `[[ $FAIL -ne 0 ]]` 为真，执行 `echo \"commit blocked\"`，且 `&&` 链短路后 exit 1 使钩子失败、提交被取消；`echo \"all good\"` 永远不会执行。"
           }
         ]
       }
