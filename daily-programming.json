@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-25",
+  "date": "2026-11-26",
   "contents": [
     {
-      "id": "prog-2026-11-25",
-      "date": "2026-11-25",
-      "title": "Git Hooks 与 pre-commit 质量门禁：把检查前置到本地",
-      "summary": "学习用 Git Hooks（重点 pre-commit 与 commit-msg）在提交前自动执行格式化、静态检查和提交信息校验，配合 CI 形成双层质量门禁。",
+      "id": "prog-2026-11-26",
+      "date": "2026-11-26",
+      "title": "SwiftUI 动画系统实战：withAnimation、.animation(value:) 与 .transition 的正确打开方式",
+      "summary": "掌握 SwiftUI 中「属性动画 / 显式动画 / 过渡动画」三套机制的分工、优先级与工程落地技巧。",
       "difficulty": "中级",
-      "concept": "Git Hooks 是 Git 在特定事件（pre-commit、commit-msg、pre-push、post-merge 等）触发时自动执行的脚本，存放在仓库的 .git/hooks 目录下。它们是 DevOps『左移（Shift-Left）』思想最便宜、最有效的落地手段：把代码风格、静态分析、敏感信息扫描等检查从 CI 流水线提前到开发者本机，反馈时间从几分钟缩短到几秒。\n\n关键认知：.git/hooks 目录不会被 git 跟踪，直接放脚本无法在团队间共享。工程上通常采用三种方案之一：1) 把脚本放在仓库内的 hooks/ 目录，用 `git config core.hooksPath hooks` 或安装脚本软链到 .git/hooks；2) 使用 pre-commit 框架（.pre-commit-config.yaml + `pre-commit install`）；3) 在 Makefile / npm prepare 中做初始化。任选其一都要在 README 写清楚 bootstrap 步骤，否则新成员会静默跳过所有检查。\n\npre-commit 钩子最常见的坑是『只检查暂存区』。当你 `git add` 之后又继续改文件，钩子里若用 `git diff` 而不是 `git diff --cached`，检查的就不是将要提交的内容。规范做法是：用 `git diff --cached --name-only` 拿文件列表，必要时用 `git stash --keep-index` 或 `git show :file` 取暂存版本做检查；如果检查失败，钩子以非 0 退出码返回，Git 会中止本次提交。注意 `--no-verify` 可以绕过钩子，因此钩子是『快速反馈』而不是『安全边界』，最终防线必须在 CI 上。\n\ncommit-msg 钩子用于校验提交信息格式，业界事实标准是 Conventional Commits（feat/fix/docs/refactor/test/chore + 可选 scope + 空行 + 正文）。统一格式的价值在于可以自动生成 CHANGELOG、自动判断语义化版本号（feat 升 minor、fix 升 patch、BREAKING CHANGE 升 major），并与 release-please、semantic-release 等工具无缝衔接。\n\n在团队落地时建议分级：本地钩子只跑快的检查（格式化、lint 增量、密钥扫描，控制在 5 秒内），耗时的单测、集成测试、镜像构建留给 CI。钩子里永远要打印清晰的失败原因和修复命令（例如 `run: make fmt`），否则开发者只会学会用 --no-verify 绕过。另外，pre-push 钩子适合跑一次全量测试或阻止直接 push 到 main/develop 保护分支，配合 GitLab/GitHub 的分支保护规则形成完整链路。",
+      "concept": "SwiftUI 的动画模型与 UIKit 完全不同：它不是「让某个图层动起来」，而是「描述状态变化后的最终界面，由框架自动插值出中间帧」。你只需要改变 @State，SwiftUI 会对比前后两棵树的差异（attribute graph diff），对 frame、opacity、color 等可插值属性生成动画。理解这一点，就能明白为什么动画写在「状态变更处」比写在「视图属性上」更可控。\n\nSwiftUI 提供三种主要写法。第一种是隐式动画 .animation(_:value:)，它绑定在某个视图上，只要 value 发生变化，该视图上受影响的属性就会动画；推荐使用带 value 参数的版本，避免旧版 .animation(_:) 无差别触发导致的「幽灵动画」和性能问题。第二种是显式动画 withAnimation { }，把状态变更包在闭包里，作用域覆盖整个视图树，是团队协作中最清晰、最推荐的写法。第三种是 .transition，专门描述「视图插入或移除时」的动画，必须与动画作用域配合使用，否则不生效。\n\n优先级与叠加规则是面试与 Debug 的高频点：同一个属性同时被 withAnimation 与 .animation(value:) 影响时，距离视图最近、粒度最细的动画描述通常优先生效；嵌套的 withAnimation 不会「叠加时长」，内层会覆盖外层作用域内的同名属性动画。如果动画「没生效」，90% 的原因有三个：1) transition 没有包在 withAnimation 里；2) 动画被应用到了「视图身份（identity）变化」上，例如 if/else 直接替换的是两个不同视图；3) 用 .animation 修饰了不参与插值的属性（比如 @State 之外的普通常量）。\n\n工程经验上，请把动画曲线收敛到项目内的 Animation 扩展（如 .appSpring），统一 dampingFraction 与时长，避免每个页面手感不一致；对列表优先用 matchedGeometryEffect 或 NavigationStack 原生转场做共享元素动画，比手写 offset 计算稳定得多；对 iOS 17+ 项目，简单反馈优先使用 .symbolEffect(.bounce)、.contentTransition(.symbolEffect(.replace)) 这类声明式 API，代码量极小且自带可访问性适配。最后，务必记得开启「减弱动态效果」适配（accessibilityReduceMotion），这是上线审核与用户体验的硬性要求。",
       "codeExample": {
-        "language": "Shell / Bash",
-        "code": "#!/usr/bin/env bash\n# 文件位置: hooks/pre-commit  (团队共享, 通过 git config core.hooksPath hooks 启用)\n# 作用: 提交前自动格式化检查 + 禁止提交密钥, 失败则中止 commit\nset -euo pipefail\n\n# ---------- 1. 只取本次将要提交的文件(暂存区) ----------\nSTAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)\n\nif [[ -z \"$STAGED_FILES\" ]]; then\n  echo \"[pre-commit] 暂存区无文件, 跳过检查\"\n  exit 0\nfi\n\necho \"[pre-commit] 检查 ${STAGED_FILES} ...\"\n\n# ---------- 2. 只对 Python 文件做语法检查(逐文件, 快) ----------\nFAIL=0\nfor f in $STAGED_FILES; do\n  case \"$f\" in\n    *.py)\n      if ! python3 -m py_compile \"$f\" 2>/dev/null; then\n        echo \"  [错误] Python 语法错误: $f\"\n        FAIL=1\n      fi\n      ;;\n  esac\ndone\n\n# ---------- 3. 密钥扫描: 简单正则抓 AK/SK 与私钥块 ----------\nSECRET_PATTERN='(AKIA[0-9A-Z]{16}|BEGIN (RSA |OPENSSH )?PRIVATE KEY)'\nif git diff --cached | grep -E -q \"$SECRET_PATTERN\"; then\n  echo \"  [错误] 检测到疑似密钥/私钥, 禁止提交!\"\n  echo \"  修复: git reset HEAD <文件> 并移除敏感信息\"\n  FAIL=1\nfi\n\n# ---------- 4. 有任何失败则以非 0 退出, Git 会取消本次 commit ----------\nif [[ $FAIL -ne 0 ]]; then\n  echo \"[pre-commit] 检查未通过, 已中止提交 (临时跳过: git commit --no-verify)\"\n  exit 1\nfi\n\necho \"[pre-commit] 全部通过 ✓\"\nexit 0",
-        "explanation": "第 4 行 `set -euo pipefail` 让脚本在出错时立即退出、未定义变量报错、管道中任一环节失败整体失败，是写 CI/钩子脚本的标配。\n\n第 7 行 `git diff --cached --name-only --diff-filter=ACM` 只列出『暂存区相对于 HEAD』的新增/修改/拷贝文件，`--cached` 是关键，它保证检查的就是将被提交的内容。\n\n第 9-12 行：没有暂存文件时直接 exit 0，钩子返回 0 表示放行。\n\n第 17-27 行循环遍历暂存文件，仅对 `*.py` 跑 `python3 -m py_compile` 做秒级语法检查；`FAIL=1` 只做标记而不立即退出，这样一次就能报出所有问题，避免开发者反复试错。\n\n第 30-37 行用正则扫描暂存的 diff 内容，拦截 AWS AccessKey（AKIA 开头 16 位）和 PEM 私钥块。注意这里用 `git diff --cached`（不带 --name-only）拿到的是补丁文本。\n\n第 40-44 行：只要 `FAIL` 非 0 就 `exit 1`，Git 收到非 0 退出码会中止 commit；同时提示可用 `--no-verify` 临时跳过，避免把开发者逼进死胡同。"
+        "language": "Swift",
+        "code": "import SwiftUI\n\n// MARK: - SwiftUI 动画系统三件套：属性动画 / 显式动画 / 过渡动画\nstruct AnimationShowcaseView: View {\n    @State private var isExpanded = false\n    @State private var isLiked = false\n\n    // 统一动画曲线：全局复用，保证产品手感一致\n    private var appSpring: Animation {\n        .spring(response: 0.45, dampingFraction: 0.72)\n    }\n\n    var body: some View {\n        VStack(spacing: 24) {\n\n            // 1) 隐式动画：只在 isExpanded 变化时，对该视图生效\n            RoundedRectangle(cornerRadius: isExpanded ? 24 : 8)\n                .fill(isExpanded ? Color.orange : Color.blue)\n                .frame(width: isExpanded ? 280 : 140,\n                       height: isExpanded ? 180 : 90)\n                .animation(appSpring, value: isExpanded)\n\n            // 2) 过渡动画：视图「插入 / 移除」时的表现，需配合 withAnimation\n            if isExpanded {\n                Text(\"详细信息已展开\")\n                    .font(.headline)\n                    .padding(10)\n                    .background(.thinMaterial, in: Capsule())\n                    .transition(.scale.combined(with: .opacity))\n            }\n\n            // 3) 显式动画：把状态变更包进 withAnimation，作用域覆盖整棵子树\n            Button {\n                withAnimation(appSpring) {\n                    isExpanded.toggle()\n                }\n            } label: {\n                Label(isExpanded ? \"收起\" : \"展开\",\n                      systemImage: isExpanded ? \"chevron.up\" : \"chevron.down\")\n                    .padding(.horizontal, 18)\n                    .padding(.vertical, 10)\n            }\n            .buttonStyle(.borderedProminent)\n\n            // 4) 状态 + 缩放联动：典型点赞反馈\n            Button {\n                withAnimation(.bouncy(extraBounce: 0.15)) { isLiked.toggle() }\n            } label: {\n                Image(systemName: isLiked ? \"heart.fill\" : \"heart\")\n                    .font(.system(size: 42))\n                    .foregroundStyle(isLiked ? Color.red : Color.secondary)\n                    .scaleEffect(isLiked ? 1.25 : 1.0)\n            }\n            .buttonStyle(.plain)\n        }\n        .padding(32)\n    }\n}\n\n#Preview {\n    AnimationShowcaseView()\n}",
+        "explanation": "1️⃣ appSpring 计算属性把动画曲线收敛到一处，团队里所有页面复用同一手感，改参数只需改一行。\n\n2️⃣ RoundedRectangle 使用 .animation(appSpring, value: isExpanded)：这是「隐式动画」，只有 isExpanded 变化时才会动画 cornerRadius、fill 颜色和 frame 尺寸；带 value 参数可以避免无关状态变化误触发动画。\n\n3️⃣ if isExpanded { ... }.transition(.scale.combined(with: .opacity))：transition 描述视图插入/移除时的效果，.scale 与 .opacity 用 .combined 合成「缩放 + 淡入淡出」。注意：transition 单独写不会动，必须有动画作用域（这里来自下面的 withAnimation）。\n\n4️⃣ Button 的 action 中用 withAnimation(appSpring) { isExpanded.toggle() }：显式动画对闭包内所有状态变更生效，同时驱动上面的隐式属性动画与过渡动画，是 SwiftUI 中最可控的写法。\n\n5️⃣ 点赞按钮用 .bouncy(extraBounce:) 制造轻快回弹，scaleEffect 随 isLiked 变化产生「心跳」效果；foregroundStyle 的颜色变化也会一起被动画插值。\n\n6️⃣ #Preview 宏提供 Xcode 画布实时预览，无需启动模拟器即可调参。"
       },
       "keyPoints": [
-        ".git/hooks 不被版本控制，团队共享方案：core.hooksPath 指向仓库内 hooks/ 目录，或使用 pre-commit 框架",
-        "pre-commit 中必须用 git diff --cached 取暂存区内容，用 git diff 会检查到未 add 的改动",
-        "钩子以 exit 1 中止提交，exit 0 放行；--no-verify 可绕过，故钩子只是快速反馈，CI 才是最终门禁",
-        "提交信息规范推荐 Conventional Commits，可驱动 CHANGELOG 生成与语义化版本发布",
-        "本地钩子只跑快检查（<5s）并打印可执行的修复命令，重活留给 pre-push 与 CI 流水线"
+        "SwiftUI 动画是「状态驱动」的：改变 @State，框架自动 diff 并插值，不需要手动操作图层",
+        ".animation(_:value:) 是隐式动画，务必带 value 参数，避免旧版 .animation(_:) 引发的幽灵动画",
+        "withAnimation { } 是显式动画，作用域覆盖子树，团队协作中最清晰的首选写法",
+        ".transition 只描述视图插入/移除的效果，必须配合 withAnimation 或 .animation 才会真正执行",
+        "统一动画曲线到 Animation 扩展、适配 accessibilityReduceMotion，是上线前的工程必做项"
       ],
       "exercise": {
-        "description": "编写一个 commit-msg 钩子（hooks/commit-msg），校验提交信息符合 Conventional Commits 格式：<type>(<scope>): <subject>。要求：type 只能是 feat|fix|docs|refactor|test|chore；subject 首字母小写且不超过 72 个字符；merge/ revert 提交直接放行。写完后用 `git commit -m \"add login page\"` 与 `git commit -m \"feat(auth): add login page\"` 分别验证失败与成功。",
-        "hint": "钩子第一个参数 $1 就是存放提交信息的临时文件路径（`MSG_FILE=$1`，用 `head -n1 \"$MSG_FILE\"` 取标题行）。用 Bash 的 [[ =~ ]] 做正则匹配：^((feat|fix|docs|refactor|test|chore)(\\([a-z0-9_-]+\\))?: .{1,69})$ ；再用 ${#line} 取长度判断 72 字符限制；以 Merge/Revert 开头的行直接 exit 0。",
+        "description": "实现一个「可展开卡片」：卡片默认只显示标题，点击后展开显示正文；展开时卡片高度增大、圆角变大、正文以 scale+opacity 过渡进入，收起时反向动画。要求：展开/收起动画使用统一的 spring 曲线，且在系统开启「减弱动态效果」时自动降级为淡入淡出（.opacity）。",
+        "hint": "用 @State private var isExpanded 控制状态；正文放在 if isExpanded 中并加 .transition(...)；在 Button 的 action 里用 withAnimation 包住 isExpanded.toggle()。降级动画可通过 @Environment(\\.accessibilityReduceMotion) 读取，为 true 时把 transition 换成 .opacity、把动画换成 .easeInOut(duration: 0.2)。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全 pre-commit 钩子中的命令，使其只获取本次将被提交（暂存区）的文件列表：",
-            "codeContext": "STAGED_FILES=$(git diff ______ --name-only --diff-filter=ACM)",
+            "question": "补全代码，使状态变更在 spring 动画作用域内执行，从而让上面的 .transition 真正生效：",
+            "codeContext": "Button(\"切换\") {\n    _______________________________\n        isExpanded.toggle()\n    }\n}\n.padding()\n.background(Color.blue)",
             "segments": [
               {
                 "type": "text",
-                "content": "STAGED_FILES=$(git diff ",
+                "content": "withAnimation(.spring(response: 0.45, dampingFraction: 0.72)) {\n    ",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,56 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[选择]",
+                "placeholder": "[填入状态变更代码]",
                 "options": [
-                  "--cached",
-                  "--staged-all",
-                  "--worktree",
-                  "--HEAD"
+                  "isExpanded.toggle()",
+                  "withAnimation(isExpanded)",
+                  "isExpanded.animate()",
+                  "animate(isExpanded.toggle())"
                 ],
-                "correctAnswer": "--cached"
+                "correctAnswer": "isExpanded.toggle()"
               },
               {
                 "type": "text",
-                "content": " --name-only --diff-filter=ACM)",
+                "content": "\n}",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "--cached",
-            "explanation": "`git diff --cached`（等价于 `git diff --staged`）比较的是『暂存区 vs HEAD』，也就是即将写入提交的内容；`git diff` 比较的是『工作区 vs 暂存区』，会包含尚未 git add 的改动，用在钩子里会检查到根本不会被提交的代码。"
+            "correctAnswer": "isExpanded.toggle()",
+            "explanation": "withAnimation(_:_:) 的闭包参数是普通的状态变更代码（inout 风格的 Void 闭包），里面直接写 isExpanded.toggle() 即可。SwiftUI 并不存在 isExpanded.animate() 或 animate(...) 这样的 API；动画是对「状态变化」的描述，不是状态对象的方法。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 Git Hooks 在 DevOps 流水线中的定位，下列说法正确的是？",
-            "codeContext": "git commit -m \"feat: add api\"  # pre-commit 钩子 exit 1 → 提交失败\ngit commit --no-verify -m \"feat: add api\"  # 仍然可以提交成功",
+            "question": "关于 .animation(_:value:) 与旧版 .animation(_:) 的区别，下列说法正确的是？",
+            "codeContext": "Circle()\n    .frame(width: isOn ? 100 : 50)\n    .animation(.easeOut, value: isOn)",
             "segments": null,
             "options": [
-              "Git Hooks 可以完全替代 CI 流水线中的测试与安全扫描",
-              "Git Hooks 属于本地快速反馈手段，可被 --no-verify 绕过，必须与 CI 上的强制检查配合使用",
-              "只要配置了 pre-commit 钩子，团队所有人都会自动获得该钩子（.git/hooks 会同步到远端）",
-              "pre-commit 钩子返回非 0 退出码时，Git 会忽略退出码并继续提交"
+              "带 value 的版本只在 isOn 变化时触发动画，可避免无关状态引起误动画",
+              "带 value 的版本会自动为所有子视图添加过渡动画",
+              "两者完全等价，带 value 只是为了代码可读性",
+              "旧版 .animation(_:) 在任何情况下都不会再编译通过"
             ],
-            "correctAnswer": "Git Hooks 属于本地快速反馈手段，可被 --no-verify 绕过，必须与 CI 上的强制检查配合使用",
-            "explanation": "钩子的价值是把问题左移到本机、秒级反馈，但它不是安全边界：--no-verify 可绕过，且 .git/hooks 不入库不会自动同步。最终质量门禁必须放在 CI（并配合分支保护/Merge Request 必须通过流水线）。钩子返回非 0 会中止提交，所以 A/C/D 均错误。"
+            "correctAnswer": "带 value 的版本只在 isOn 变化时触发动画，可避免无关状态引起误动画",
+            "explanation": ".animation(_:value:) 把动画绑定到具体值上，只有该值改变才插值，性能与行为都更可预测；旧版 .animation(_:) 会对该视图作用域内任何可插值变化都触发动画，容易产生「莫名其妙动了」的问题，SwiftUI 官方已标记为软弃用（仍可编译）。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "假设暂存区有一个 a.py（Python 2 风格 print 语法错误）和一个 README.md，执行下面的 pre-commit 钩子后，最终输出顺序是什么？",
-            "codeContext": "FAIL=0\nfor f in $(git diff --cached --name-only); do\n  case \"$f\" in\n    *.py) python3 -m py_compile \"$f\" 2>/dev/null || { echo \"bad: $f\"; FAIL=1; } ;;\n  esac\ndone\n[[ $FAIL -ne 0 ]] && echo \"commit blocked\" && exit 1\necho \"all good\"",
+            "question": "运行下面的代码，点击 Button 后界面会怎样变化？",
+            "codeContext": "struct Demo: View {\n    @State private var visible = true\n\n    var body: some View {\n        VStack {\n            if visible {\n                Text(\"Hello\")\n                    .transition(.scale.combined(with: .opacity))\n            }\n            Button(\"Toggle\") {\n                visible.toggle()\n            }\n        }\n    }\n}",
             "segments": null,
             "options": [
-              "bad: a.py → commit blocked",
-              "bad: a.py → all good",
-              "bad: README.md → commit blocked",
-              "all good"
+              "文本以「缩放 + 淡出」的方式动画消失，再以同样方式动画出现",
+              "文本瞬间消失或出现，没有任何动画效果",
+              "代码编译错误，transition 必须配合 if-else 使用",
+              "应用崩溃，因为缺少 withAnimation"
             ],
-            "correctAnswer": "bad: a.py → commit blocked",
-            "explanation": "循环中 README.md 不匹配 *.py 被跳过，只有 a.py 走 py_compile 分支并失败，打印 `bad: a.py` 并把 FAIL 置 1。之后 `[[ $FAIL -ne 0 ]]` 为真，执行 `echo \"commit blocked\"`，且 `&&` 链短路后 exit 1 使钩子失败、提交被取消；`echo \"all good\"` 永远不会执行。"
+            "correctAnswer": "文本瞬间消失或出现，没有任何动画效果",
+            "explanation": "关键点：.transition 只是「声明」视图插入/移除时的动画形式，真正让动画执行需要一个动画作用域。这里既没有 withAnimation，也没有 .animation(_:value:)，所以状态变化是瞬时的，文本会直接闪现/闪没。修复方式是把 visible.toggle() 包进 withAnimation { }，或给容器加 .animation(.default, value: visible)。"
           }
         ]
       }

@@ -1,16 +1,16 @@
 {
- "date": "2026-11-25",
- "weekday": "Wednesday",
- "overview": "Escalating Middle East tensions, a sharp sell-off in U.S. stocks and a plunge in precious metals move in tandem, while the central bank injects large-scale liquidity tomorrow to shore up cross-month funding conditions.",
+ "date": "2026-11-26",
+ "weekday": "Thursday",
+ "overview": "Successful Shenzhou launch ignites space enthusiasm, as weakening global equities and diverging domestic consumption run in parallel, with innovation and new professions emerging as key development themes.",
  "trendingTopics": [
-  "Middle East tensions",
-  "Precious metals prices",
-  "U.S. stock volatility",
-  "Liquidity injections",
-  "Space launches",
-  "Private sector economy",
-  "Green transportation",
-  "New property market policies"
+  "Space technology",
+  "Innovation-driven growth",
+  "New-profession talent",
+  "Global capital markets",
+  "Consumption divergence",
+  "Health education",
+  "Water infrastructure",
+  "Supply chain security"
  ],
  "sections": [
   {
@@ -20,135 +20,148 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "Shenzhou-24 Launch Imminent, Astronaut Crew Role Divisions Draw Attention",
-     "summary": "The Shenzhou-24 spacecraft has entered launch preparation, with the astronaut crew's task divisions becoming a key focus of outside attention.",
-     "detail": "As the launch of the Shenzhou-24 crewed spacecraft approaches, attention is on how the astronaut crew will divide and coordinate tasks. The mission continues the regular crewed flight cadence of the space station's application and development phase, with mission arrangements and crew coordination details sparking wide discussion.",
-     "impact": "The mission will further consolidate the space station's routine operational capacity and raise attention across the aerospace industry chain.",
+     "title": "In the Pioneer Zone of Reform and Opening Up, the General Secretary Keeps Innovation in Focus",
+     "summary": "In the pioneer zone of reform and opening up, the General Secretary has consistently prioritized innovation, placing it at the core of the overall development agenda.",
+     "detail": "The report highlights innovation practices in the pioneer zone of reform and opening up, underscoring the General Secretary's sustained attention to innovation-driven development. Related commentary notes that innovation has become a throughline of the overall development agenda and a key window for observing Chinese-style modernization.",
+     "impact": "Provides policy direction for advancing sci-tech innovation and industrial upgrading across regions, further strengthening the consensus on innovation-driven development.",
      "importance": "hot",
      "tags": [
-      "Space Program",
-      "Crewed Spaceflight",
-      "Space Station"
+      "Innovation-driven development",
+      "Reform and opening up",
+      "Industrial upgrading"
      ]
     },
     {
      "id": "news-002",
-     "title": "Regions Continue to Improve Business Environment to Spur Private-Sector Innovation",
-     "summary": "Regions keep optimizing the business environment to energize private enterprises' innovative capacity and support stable growth.",
-     "detail": "Many localities are treating business environment improvement as a key lever for stabilizing expectations and boosting confidence, with continued efforts on administrative procedures, factor保障, and innovation support. The innovative vitality of private enterprises is seen as a major driver of high-quality economic development.",
-     "impact": "A better business environment helps stabilize market expectations and revive private-sector investment and innovation appetite.",
+     "title": "Regions Push Ahead with Winter Water Infrastructure Repairs",
+     "summary": "Regions across the country are seizing the winter-spring season to accelerate repairs and construction of water conservancy facilities, laying groundwork for next year's agricultural production.",
+     "detail": "Winter water infrastructure work is a traditional peak season for farmland water conservancy construction. Materials show regions are pushing related projects at full speed to support agricultural production and boost flood control and drought resistance.",
+     "impact": "Helps improve agricultural infrastructure, safeguard grain production and ensure water security for the coming year.",
      "importance": "important",
      "tags": [
-      "Business Environment",
-      "Private Economy",
-      "Innovation-Driven Growth"
+      "Water conservancy construction",
+      "Agricultural infrastructure",
+      "Infrastructure investment"
      ]
     },
     {
      "id": "news-003",
-     "title": "Food Delivery Riders Emerge as New Force in Grassroots Governance",
-     "summary": "The unique street-level reach of food delivery riders is being tapped, turning them into a new force in grassroots governance.",
-     "detail": "The report follows the transformation of food delivery riders from mere urban runners into frontline sentinels of grassroots governance. Their broad coverage and high mobility enable them to play a role in information reporting and emergency response, serving as a useful supplement to social governance.",
-     "impact": "The integration of new employment groups into the governance system provides grassroots governance with sharper sensors and wider social coordination.",
-     "importance": "normal",
+     "title": "Talent Shortage Tops 1 Million as New Emerge of New Occupations Accelerates",
+     "summary": "Talent gaps in relevant fields have exceeded 1 million, and a wave of new occupations is emerging rapidly, becoming a bright spot in the job market.",
+     "detail": "Materials indicate the talent shortage has surpassed the million mark, with new occupations continuously appearing, creating new capacity and directions for the job market.",
+     "impact": "The expansion of new occupations is expected to widen employment channels while placing new demands on vocational education and skills training.",
+     "importance": "important",
      "tags": [
-      "Grassroots Governance",
-      "New Forms of Employment"
+      "New occupation talent",
+      "Job market",
+      "Vocational education"
      ]
     },
     {
      "id": "news-004",
-     "title": "Restoration of Over 3 Million Mu of Ecologically Damaged Land Advances",
-     "summary": "Xinhua Viewpoint examines the restoration path for over 3 million mu of ecologically damaged land, where progress and challenges coexist.",
-     "detail": "The report focuses on ecological restoration projects across more than 3 million mu of damaged land, exploring how these scars on the land are gradually healed through systematic treatment. The work spans mine sites, degraded land and other types, with balancing ecological benefits and sustainable use as the central focus.",
-     "impact": "Large-scale ecological restoration will drive demand in the eco-environmental protection industry and improve regional ecological foundations and living conditions.",
+     "title": "Taiwan Affairs Office: Mainland Remains the Best Choice for Taiwanese Business Investment",
+     "summary": "The Taiwan Affairs Office said the mainland remains the best choice for Taiwanese businesses to invest and grow, continuing to send positive signals for cooperation.",
+     "detail": "The Taiwan Affairs Office of the State Council responded on Taiwanese business investment, emphasizing the mainland market's attractiveness and long-term value to Taiwanese investors, and conveying a stance of continuously deepening cross-strait economic cooperation.",
+     "impact": "Helps stabilize Taiwanese investors' confidence in the mainland and promotes steady growth in cross-strait trade and economic ties.",
      "importance": "important",
      "tags": [
-      "Ecological Restoration",
-      "Environmental Protection",
-      "Green Development"
+      "Cross-strait relations",
+      "Trade and economic cooperation",
+      "Business environment"
      ]
     },
     {
      "id": "news-005",
-     "title": "Four Ministries Unveil Green Transport Plan for the 15th Five-Year Plan Period",
-     "summary": "Four ministries jointly issued a green transport plan, mapping out carbon reduction across the entire transport sector.",
-     "detail": "Four ministries released a green transport plan laying out a roadmap for full-chain carbon reduction in transport, covering freight structure optimization, equipment upgrades and greener infrastructure. The plan is viewed as a key guide for the transport industry's pursuit of the dual carbon goals.",
-     "impact": "Implementation will drive electrification and cleaner transport equipment, spurring investment and technology iteration across related industry chains.",
-     "importance": "important",
+     "title": "200,000 Cubic Meters of Stored Ice Put to Use: Ice and Snow World Highlights Revealed",
+     "summary": "Ice and Snow World has put 200,000 cubic meters of stored ice into use, with park highlights previewed ahead of the ice and snow tourism season.",
+     "detail": "Materials reveal that Ice and Snow World has activated 200,000 cubic meters of stored ice, with preparations underway and park highlights released to the public in advance.",
+     "impact": "Ice and snow tourism enters a warm-up phase, expected to drive momentum in winter tourism consumption.",
+     "importance": "normal",
      "tags": [
-      "Green Transport",
-      "Dual Carbon Goals",
-      "Transportation"
+      "Ice and snow economy",
+      "Cultural and tourism consumption",
+      "Winter tourism"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "World Politics",
+   "title": "World & Politics",
    "icon": "🌍",
    "articles": [
     {
      "id": "news-006",
-     "title": "时评聚焦中俄美元首历史性会晤为何在中国",
-     "summary": "评论文章关注中俄美元首历史性会晤选址中国的深意，引发国际舆论广泛关注。",
-     "detail": "时评围绕中俄美元首历史性会晤的背景与意义展开解读，讨论会晤安排在中国举行所传递的信号。文章认为此次会晤具有标志性意义，反映出国际格局演变下的外交互动新态势。",
-     "impact": "大国元首互动动向往往影响全球政治经济预期，值得持续跟踪后续成果。",
-     "importance": "hot",
+     "title": "Global Figures Praise China's Push for International Space Cooperation",
+     "summary": "International figures have praised China's active promotion of global space cooperation, saying the collaboration has delivered tangible, positive results.",
+     "detail": "Reports show international figures have commended China's efforts to advance international space cooperation, widely viewing space collaboration as producing positive outcomes and serving as a strong model for global science and technology cooperation.",
+     "impact": "Could boost the international influence of China's space program and expand room for multilateral tech collaboration.",
+     "importance": "important",
      "tags": [
-      "大国关系",
-      "国际格局"
+      "Space Technology",
+      "International Tech Cooperation",
+      "Multilateral Cooperation"
      ]
     },
     {
      "id": "news-007",
-     "title": "中东局势紧张 对伊选项仍在权衡",
-     "summary": "中东局势升温，伊朗军方强硬表态，相关方面对下一步行动的选项仍在权衡之中。",
-     "detail": "伊朗伊斯兰革命卫队副司令伊扎迪表示，若对方对伊朗国防设施、基础设施或核设施采取任何行动，将予以毁灭性回应。与此同时，市场消息称相关方面尚未就下一步行动做出最终决定，正考虑一系列选项。",
-     "impact": "地区紧张态势持续推升避险情绪，对能源与金融市场波动形成扰动。",
-     "importance": "hot",
+     "title": "Russia-Ukraine Talks Not Stalled, Next Round Date Undecided",
+     "summary": "Russia says trilateral talks between Moscow, Washington and Kyiv are not stalled, but the timing of the next round remains unclear.",
+     "detail": "A Russian deputy foreign minister said negotiations between Russia, the United States and Ukraine have not stalled, but it remains unclear when the next round of talks will take place.",
+     "impact": "Prospects for the talks remain uncertain, and the direction of the situation in the region is yet to be seen.",
+     "importance": "important",
      "tags": [
-      "中东局势",
-      "国际安全"
+      "Russia-Ukraine Conflict",
+      "International Mediation"
      ]
     },
     {
      "id": "news-008",
-     "title": "霍尔木兹海峡油轮遭不明投射物击中",
-     "summary": "英国海上贸易行动组织通报，一艘油轮在霍尔木兹海峡航行时被不明投射物击中。",
-     "detail": "英国海上贸易行动组织（UKMTO）收到一份迟报的霍尔木兹海峡事件通报。经核实的报告显示，一艘向东航行的油轮遭到不明投射物击中，油轮继续航行，全体船员均已确认安全。",
-     "impact": "关键航道安全事件可能推升航运保险成本与原油运输风险溢价。",
+     "title": "NATO Chief: We Are Applying Maximum Pressure on Russia",
+     "summary": "NATO Secretary General Rutte said the US has been testing Russia from day one, and that NATO is exerting maximum pressure on Moscow to seek peace through strength.",
+     "detail": "NATO Secretary General Mark Rutte said NATO is extremely strong and advocates peace through strength, adding that Russia had previously attacked Afghanistan, Georgia and Ukraine.",
+     "impact": "NATO's tough stance on Russia may heighten regional tensions and affect the global security landscape.",
      "importance": "important",
      "tags": [
-      "航运安全",
-      "国际能源",
-      "中东局势"
+      "NATO Developments",
+      "International Security"
      ]
     },
     {
      "id": "news-009",
-     "title": "俄乌冲突持续 打击能源设施与海上船只",
-     "summary": "俄罗斯国防部通报，使用无人机打击为乌军提供保障的能源基础设施和海上船只。",
-     "detail": "俄罗斯国防部24日晚间发布通报称，俄武装部队当天使用无人机打击了为乌克兰武装部队提供保障的能源基础设施和海上船只。另据报道，乌克兰方面表示已与匈牙利就能源和政治议题达成协议。",
-     "impact": "冲突对能源基础设施的打击持续影响区域能源供应与地缘风险定价。",
+     "title": "Ukraine Says It Downed Drone with Laser Air Defense System for First Time",
+     "summary": "Ukraine claims it has used a laser air defense system to shoot down a jet drone in combat for the first time.",
+     "detail": "Ukraine said it had for the first time used a laser air defense system to down a jet-powered drone. Reports also indicate that Starshield technology assisted in intercepting Russian drones, though related restrictions were imposed more than a week ago.",
+     "impact": "The deployment of new technologies such as laser air defense in combat could reshape tactical approaches to drone warfare.",
      "importance": "important",
      "tags": [
-      "俄乌局势",
-      "能源安全"
+      "Air Defense Systems",
+      "Russia-Ukraine Conflict"
      ]
     },
     {
      "id": "news-010",
-     "title": "外媒热议载人航天领域国际合作新进展",
-     "summary": "全球媒体聚焦载人航天领域国际合作新进展，航天合作成为国际传播热门话题。",
-     "detail": "全球媒体关注载人航天领域的国际合作动向，相关合作被评价为把两国友谊送入太空。同期，《天涯共此诗》的国际传播新范式也受到关注，文化与科技的国际传播路径同步拓宽。",
-     "impact": "航天与文化领域的国际传播互动有助于提升科技合作与人文交流的综合影响。",
+     "title": "Poland Plans No-Fly Zone Near Border with Ukraine",
+     "summary": "Poland plans to establish a no-fly zone near its border with Ukraine to tighten control over border airspace.",
+     "detail": "Reports show Poland is planning a no-fly zone near the border with Ukraine, with related security arrangements under preparation.",
+     "impact": "Stepped-up border controls by neighboring countries reflect continuing spillover of regional security pressure.",
      "importance": "normal",
      "tags": [
-      "航天国际合作",
-      "国际传播",
-      "文化交流"
+      "European Security",
+      "Border Controls"
+     ]
+    },
+    {
+     "id": "news-011",
+     "title": "Yemeni Government Forces Report Artillery Strike in Taiz Axis",
+     "summary": "Yemeni government forces said Houthi militants suffered casualties after a strike in the Al-Aghrud district along the Taiz axis.",
+     "detail": "Yemeni government forces reported being hit by artillery fire in the Al-Aghrud district along the Taiz axis, afterwards saying five Houthi fighters were killed or wounded.",
+     "impact": "Localized conflict in Yemen continues, and the regional humanitarian and security situation warrants attention.",
+     "importance": "normal",
+     "tags": [
+      "Middle East Situation",
+      "Regional Conflict",
+      "International Security"
      ]
     }
    ]
@@ -159,107 +172,94 @@
    "icon": "📈",
    "articles": [
     {
-     "id": "news-011",
-     "title": "Central Bank to Inject Over 1 Trillion Yuan, Keeping Banking System Liquidity Ample",
-     "summary": "The central bank will conduct large-scale operations tomorrow totaling more than 1 trillion yuan, keeping liquidity in the banking system reasonably ample.",
-     "detail": "The central bank is moving to stabilize funding conditions, planning to inject 500 billion yuan and 800 billion yuan through related tools tomorrow, totaling over 1 trillion yuan. The move aims to keep banking system liquidity reasonably ample and stabilize expectations around month-end and year-end funding conditions.",
-     "impact": "Large-scale liquidity injections help smooth funding volatility and steady sentiment in the bond and interbank markets.",
-     "importance": "hot",
-     "tags": [
-      "Monetary Policy",
-      "Liquidity Management",
-      "Banking System"
-     ]
-    },
-    {
      "id": "news-012",
-     "title": "New Margin Trading Rules Take Effect November 30; Existing Contracts Directly Subject to New Ratios",
-     "summary": "New margin trading rules will take effect on November 30, with existing contracts automatically subject to the new ratio arrangements without adjustment.",
-     "detail": "The new rules for margin financing and securities lending are set to take effect on November 30. Regulators have confirmed that existing contracts require no changes and will directly apply the new ratio arrangements. The relatively smooth transition is expected to ease market concerns about adjustments to existing business.",
-     "impact": "The new rules are expected to boost activity in margin trading while reducing uncertainty over adjustments to existing contracts.",
+     "title": "Nvidia's Stunning Reversal Splits Investor Fortunes",
+     "summary": "Nvidia's stock has staged a stunning reversal, with some investors sitting on gains of nearly 9,000% while short sellers are down as much as 92%.",
+     "detail": "Reports reveal a dramatic divergence in Nvidia-related positions, with some longs booking massive paper gains while short sellers suffer heavy losses, amid visibly volatile market sentiment.",
+     "impact": "The violent swings in a single stock reflect rapidly shifting risk appetite, and investors should be wary of elevated volatility risks.",
      "importance": "hot",
      "tags": [
+      "Semiconductors",
       "Capital Markets",
-      "Margin Trading",
-      "Securities Regulation"
+      "Investor Risk"
      ]
     },
     {
      "id": "news-013",
-     "title": "Guangdong's Industrial Value Added Up 6.1% YoY in First 10 Months",
-     "summary": "Guangdong's new-growth-driver industries grew rapidly in the first 10 months of this year, with industrial value added above the designated size rising 6.1% year on year.",
-     "detail": "Data show that Guangdong province's industrial value added above the designated size grew 6.1% year on year in the first 10 months, with new-growth-driver industries posting strong and rapid expansion. The province's industrial economy maintained steady growth while its industrial structure continued to optimize.",
-     "impact": "Strong data from Guangdong, a major industrial province, carries significant reference value for national industrial growth stability.",
+     "title": "Bears Keep Ranting, but Foreign Investors Keep Buying China",
+     "summary": "Despite persistent bearish commentary, foreign investors are doubling down on China's markets in practice, highlighting a gap between words and actions.",
+     "detail": "Reports note that bearish rhetoric has failed to stem the tide of foreign investors voting with their feet, as actual capital flows contrast sharply with negative commentary.",
+     "impact": "Actual foreign allocation trends offer a reference point for market sentiment and help bolster confidence in China's economy.",
      "importance": "important",
      "tags": [
-      "Regional Economy",
-      "Industrial Economy",
-      "New-Growth Industries"
+      "Foreign Investment Flows",
+      "Capital Markets",
+      "Chinese Economy"
      ]
     },
     {
      "id": "news-014",
-     "title": "Guangzhou and Huizhou Unveil New Property Market Rules",
-     "summary": "Guangzhou and Huizhou have issued new property market rules, adjusting local real estate regulation and support policies.",
-     "detail": "Guangzhou and Huizhou simultaneously rolled out new property market rules, setting out policy arrangements based on local real estate market conditions. The new measures are seen as another example of city-specific policies to stabilize the property market.",
-     "impact": "Fine-tuning of local property policies helps stabilize regional market expectations; attention turns to the response in transaction volumes going forward.",
+     "title": "¥399 Down Jackets Fly Off Shelves as Premium Brands Squeeze",
+     "summary": "Down jackets priced at 399 yuan are selling hot, putting premium-priced brands under clear value-for-money pressure.",
+     "detail": "Data shows budget down jackets are posting explosive sales, squeezing traditional high-end brands and highlighting a widening consumption divide.",
+     "impact": "The shift toward rational spending is accelerating, and a value-driven approach could reshape competitive dynamics in the down jacket industry.",
      "importance": "important",
      "tags": [
-      "Real Estate Market",
-      "Housing Policy",
-      "City-Specific Policies"
+      "Apparel",
+      "Consumer Segmentation",
+      "Value Consumption"
      ]
     },
     {
      "id": "news-015",
-     "title": "Suifenhe Port on China-Europe Rail's Eastern Corridor Tops 5,000 Trains",
-     "summary": "Cumulative traffic through Suifenhe port on the eastern corridor of the China-Europe Railway Express has exceeded 5,000 trains, with cross-border logistics operations continuing to perform well.",
-     "detail": "Traffic through Suifenhe port on the eastern corridor of the China-Europe Railway Express has surpassed 5,000 trains, with customs clearance and transport organization efficiency continuing to improve. As a key logistics route to Europe, the jump in traffic volume reflects sustained momentum in cross-border trade.",
-     "impact": "Expanded traffic volumes will further strengthen cross-border logistics capacity, supporting the stability and quality improvement of foreign trade.",
-     "importance": "normal",
+     "title": "Chinese Consumer Spending Is Being Reallocated",
+     "summary": "Reports indicate that Chinese consumers' spending structures are shifting, with money flowing into a new distribution pattern.",
+     "detail": "Coverage observes that how Chinese consumers allocate their money is changing, with consumption structures and preferences in the midst of a realignment.",
+     "impact": "Changes in consumption structure will feed through to sector-by-sector performance, making this a key focus for retailers and brands.",
+     "importance": "important",
      "tags": [
-      "Cross-Border Logistics",
-      "China-Europe Railway Express",
-      "Foreign Trade"
+      "Consumer Trends",
+      "Retail Sector",
+      "Domestic Demand"
      ]
     },
     {
      "id": "news-016",
-     "title": "GaWC Ranking Shakeup Puts Guangzhou, Shenzhen and Hong Kong Among Global First-Tier Cities",
-     "summary": "The GaWC world city rankings have been reshuffled, with Guangzhou, Shenzhen and Hong Kong entering the ranks of global first-tier cities, a signal with significant implications.",
-     "detail": "The latest GaWC rankings have shifted, with Guangzhou, Shenzhen and Hong Kong joining the global first-tier city tier, drawing widespread attention. Analysts say the change signals rising capability in city clusters and stronger capacity for global resource allocation.",
-     "impact": "Upgraded city status helps attract global capital, talent and industrial resources, driving coordinated regional development.",
-     "importance": "normal",
+     "title": "315 Exposé: Tinghua Liquor Claimed Anti-Tumor, Immunity-Boosting Benefits",
+     "summary": "A 315 consumer-rights exposé zeroed in on Tinghua Liquor, drawing attention to its claims of anti-tumor and immunity-boosting effects.",
+     "detail": "Reports show the 315 coverage flagged problematic efficacy claims in Tinghua Liquor's marketing, including assertions of anti-tumor and immunity-boosting benefits.",
+     "impact": "The case serves as a warning on marketing compliance in the baijiu industry and may spur closer regulatory scrutiny and consumer-rights attention.",
+     "importance": "important",
      "tags": [
-      "Urban Development",
-      "Globalization",
-      "Regional Coordination"
+      "Consumer Rights",
+      "Baijiu Industry",
+      "Advertising Compliance"
      ]
     },
     {
      "id": "news-017",
-     "title": "Municipal Executive Meeting Calls for Year-End Push and Faster Affordable Rental Housing Supply",
-     "summary": "The municipal executive meeting called for intensified efforts to close out the year and emphasized accelerating the development of affordable rental housing.",
-     "detail": "The municipal executive meeting laid out plans for year-end economic work, calling for intensified efforts to complete all tasks on schedule. The meeting also stressed accelerating affordable rental housing development and improving the housing security system to meet the housing needs of new urban residents and young people.",
-     "impact": "The year-end push combined with expanded housing security helps stabilize investment, benefit livelihoods, and shore up the economy in the fourth quarter.",
+     "title": "Sam's Club Jumps Into Down Jackets, Posing New Threat to Bosideng",
+     "summary": "Sam's Club has crossed into the down jacket market, creating competitive pressure for traditional brands such as Bosideng.",
+     "detail": "Reports, under the headline 'Sam's Club's side hustle spells trouble for Bosideng,' describe the retailer's cross-category entry into down jackets and its impact on leading legacy brands.",
+     "impact": "Retailers' private-label expansion across categories could intensify competition and reshape the existing brand landscape.",
      "importance": "normal",
      "tags": [
-      "Housing Security",
-      "Growth Stabilization",
-      "Livelihood Projects"
+      "Retail Sector",
+      "Apparel",
+      "Channel Competition"
      ]
     },
     {
      "id": "news-018",
-     "title": "Management Reshuffle at Central SOEs Finalized, Involving 14 Companies",
-     "summary": "The latest appointments and removals at central state-owned enterprises have been announced, with management changes at 14 SOEs drawing attention.",
-     "detail": "A latest round of personnel appointments and removals at central state-owned enterprises has been announced, involving position adjustments at 14 central SOEs. Management changes at central SOEs are typically closely tied to optimizing corporate governance structures and professional integration.",
-     "impact": "Personnel reshuffles at central SOEs help optimize governance structures and provide organizational support for subsequent reforms and business integration.",
+     "title": "New-Economy Momentum Surges as Market Players Pivot to New Growth",
+     "summary": "Market players are accelerating their shift toward new growth, with the 'four-new' economy showing robust vitality and momentum.",
+     "detail": "Commentary notes that market entities keep turning to new drivers, with the 'four-new' economy in full swing — a key lens for observing new sources of economic growth.",
+     "impact": "The expansion of new economic forms helps offset pressure from traditional industries and strengthens economic resilience.",
      "importance": "normal",
      "tags": [
-      "State-Owned Enterprises",
-      "Corporate Governance",
-      "Central SOE Reform"
+      "New Economy",
+      "Market Entities",
+      "Economic Transformation"
      ]
     }
    ]
@@ -271,211 +271,211 @@
    "articles": [
     {
      "id": "news-019",
-     "title": "US Stocks Slide Sharply as Nasdaq 100 Losses Widen to 3%",
-     "summary": "Major US indexes fell across the board, with the Nasdaq 100 down 3% and the S&P 500 off 1.3%.",
-     "detail": "US markets posted a notable pullback, with the Nasdaq 100's decline widening to 3% and the S&P 500 down 1.3%. Meanwhile, AI-related stocks extended their losses, with Anthropic's stock falling 12%, as market risk appetite cooled significantly.",
-     "impact": "A sharp sell-off in overseas equities could weigh on emerging market risk assets through sentiment and capital flow channels.",
+     "title": "Nasdaq 100 Down 20% From Peak, Entering Bear Market",
+     "summary": "The Nasdaq 100 has fallen 20% from its peak, technically entering bear market territory.",
+     "detail": "Sources show the Nasdaq 100 has retraced 20% from its high, a move widely viewed as the hallmark of a bear market.",
+     "impact": "Pressure on U.S. tech stocks could spill over into global risk assets through sentiment and capital channels.",
      "importance": "hot",
      "tags": [
-      "Overseas Equities",
-      "Risk Appetite",
-      "Artificial Intelligence"
+      "Global Capital Markets",
+      "U.S. Equities",
+      "Tech Stocks"
      ]
     },
     {
      "id": "news-020",
-     "title": "Precious Metals Plunge Across the Board as Spot Silver Breaks Below $41",
-     "summary": "Precious metals fell broadly, with spot gold, silver, and New York gold and silver futures all dropping sharply, while palladium declined in tandem.",
-     "detail": "Spot gold fell 2% on the day, breaking below $3,570 per ounce, while New York gold futures slipped below $3,590. Spot silver broke below $41 per ounce, with New York silver futures down more than 6%; domestic silver's most-traded contract fell 7% intraday; palladium futures dropped 5%. Precious metals faced a collective sell-off.",
-     "impact": "The sudden drop in precious metals signals a concentrated unwinding of safe-haven positions, raising short-term volatility; attention is needed on subsequent dollar and rate linkages.",
-     "importance": "hot",
+     "title": "U.S. 30-Year Treasury Yield Falls 10 Basis Points Intraday",
+     "summary": "The U.S. 30-year Treasury yield fell 10 basis points intraday, retreating to around 5.22%.",
+     "detail": "Sources show the U.S. 30-year Treasury yield dropped 10 basis points intraday to 5.22%. Meanwhile, in non-competitive bidding for U.S. Treasuries, both 4-month bills and 7-year notes drew a certain amount of subscriptions.",
+     "impact": "A pullback in long-end yields typically reflects rising safe-haven demand and serves as a reference for global asset pricing.",
+     "importance": "important",
      "tags": [
-      "Precious Metals",
-      "Commodities",
-      "Safe-Haven Assets"
+      "U.S. Treasuries",
+      "Interest Rate Trends",
+      "Global Capital Markets"
      ]
     },
     {
      "id": "news-021",
-     "title": "US Natural Gas Futures Surge Over 6% Ahead of Option Expiry",
-     "summary": "US natural gas futures rallied more than 6% ahead of option expiry, trading near $3.700 per million British thermal units.",
-     "detail": "US natural gas futures rose sharply ahead of option expiry, climbing more than 6% to around $3.700 per million British thermal units. Position adjustments tied to option expiry, combined with supply-demand expectations, amplified short-term price swings.",
-     "impact": "Higher natural gas prices will affect winter energy costs and create cost-side pressures on the chemicals and power generation sectors.",
-     "importance": "important",
+     "title": "Stoxx 600 Extends Decline to 1%",
+     "summary": "The STOXX 600 extended its decline to 1%, with European equities under broad pressure.",
+     "detail": "Sources show the STOXX 600's drop briefly widened to 1%, with regional market sentiment running weak.",
+     "impact": "Weakness in European stocks, combined with the U.S. market correction, could further compress global risk appetite.",
+     "importance": "normal",
      "tags": [
-      "Energy Markets",
-      "Natural Gas",
-      "Commodities"
+      "European Equities",
+      "Global Capital Markets",
+      "Market Sentiment"
      ]
     },
     {
      "id": "news-022",
-     "title": "IMF Expects Inflation to Return to Target by End-2028",
-     "summary": "The International Monetary Fund expects inflation to decline gradually, reaching the target level of around 3% by the end of 2028.",
-     "detail": "The International Monetary Fund projects that inflation will average 4.4% in 2026 and 3.9% in 2027, before falling back to the 3% target by the end of 2028. Meanwhile, growth in the relevant economies is expected to rise gradually to 1.8% over the medium term, with real GDP growth of 1% and 1.3% in 2026 and 2027 respectively.",
-     "impact": "A moderating global inflation path could provide room for major central banks' future policy decisions.",
-     "importance": "important",
+     "title": "Palladium Futures Fall 4% Intraday, Breaking Key Level",
+     "summary": "Palladium futures fell 4% intraday to around $819.66 per ounce, weighing on the precious metals sector.",
+     "detail": "Sources show palladium futures dropped 4% intraday to $819.66 per ounce, marking notable price volatility.",
+     "impact": "Precious metals volatility may signal shifts in industrial demand expectations, warranting attention from related supply chains.",
+     "importance": "normal",
      "tags": [
-      "Global Economy",
-      "Inflation Expectations",
-      "International Organizations"
+      "Commodities",
+      "Precious Metals",
+      "Futures Markets"
      ]
     },
     {
      "id": "news-023",
-     "title": "CME Group Sets Single-Day Volume Record as Rate Products Surge",
-     "summary": "CME Group set a single-day volume record of 71.5 million contracts, driven mainly by a surge in interest rate product trading.",
-     "detail": "CME Group set a single-day volume record of 71.5 million contracts, driven mainly by a surge in interest rate product trading. The spike in interest rate derivatives trading reflects a significant rise in market demand for positioning around the policy path and rate outlook.",
-     "impact": "Record volume in rate products shows a sharp increase in global capital flows' focus on the policy rate path and hedging demand.",
-     "importance": "important",
+     "title": "LME Adds Indonesian Aluminum as Deliverable Brand",
+     "summary": "The London Metal Exchange approved aluminum from a new Indonesian smelter for delivery to ease tight supply.",
+     "detail": "Sources show the LME approved aluminum produced by a newly built large smelter in Indonesia for delivery, aiming to alleviate historically tight supply conditions.",
+     "impact": "Expanding the list of deliverable brands should help improve the aluminum market's supply structure and ease near-term tightness.",
+     "importance": "normal",
      "tags": [
-      "Derivatives Markets",
-      "Interest Rates",
-      "Financial Trading"
+      "Industrial Metals",
+      "Commodities",
+      "Supply Chain"
      ]
     },
     {
      "id": "news-024",
-     "title": "Dollar Index Breaks Below 103",
-     "summary": "The dollar index broke below 103, falling 0.50% intraday as currency market volatility increased.",
-     "detail": "The dollar index broke below 103, down 0.50% on the day. Against a backdrop of simultaneous moves in precious metals and equities, trading sentiment in the foreign exchange market has also turned cautious, with volatility in major currency pairs widening.",
-     "impact": "A weaker dollar could provide interim support for commodities and emerging market capital flows.",
+     "title": "Japan Seeks Supply Chain Authorization for Chips and Other Key Goods",
+     "summary": "Japan is seeking a supply chain authorization regime for chips and other key goods to strengthen economic security.",
+     "detail": "Sources show Japan's parliament will review an amendment to the Economic Security Promotion Act at a regular session starting in January, seeking to establish supply chain authorization for chips and other key goods.",
+     "impact": "Major economies accelerating supply chain security legislation could reshape the global industrial layout for critical commodities.",
      "importance": "normal",
      "tags": [
-      "Foreign Exchange Markets",
-      "Dollar Index",
-      "Global Capital"
+      "Supply Chain Security",
+      "Economic Security",
+      "Semiconductors"
      ]
     }
    ]
   },
   {
    "id": "tech",
-   "title": "Tech Frontiers",
+   "title": "Tech Frontier",
    "icon": "💡",
    "articles": [
     {
      "id": "news-025",
-     "title": "Microsoft Declares Red Alert for Core Cloud Services",
-     "summary": "An internal memo shows Microsoft has declared a red alert on core service health following a service outage.",
-     "detail": "An internal memo shows Microsoft declared a red alert on M365 core service health after a November 12 outage. Meanwhile, Microsoft has set a target for future incidents, aiming to achieve global mitigation within one hour to improve service resilience and recovery speed.",
-     "impact": "Cloud service reliability is back in focus, with enterprise customers expected to pay even closer attention to multi-cloud disaster recovery and SLA mechanisms.",
-     "importance": "important",
+     "title": "Shenzhou-24 Launch Succeeds, Thunderous Applause in Mission Control",
+     "summary": "The Shenzhou-24 crewed launch mission was a complete success, greeted by thunderous applause in the command center.",
+     "detail": "Footage shows the Shenzhou-24 launch achieved full success, marking another 'big red screen' moment for China's space program. Related reports documented the entire crewed flight mission.",
+     "impact": "China's crewed space program continues steady progress, further strengthening the space station's capacity for routine operations.",
+     "importance": "hot",
      "tags": [
-      "Cloud Computing",
-      "Service Reliability",
-      "Enterprise Services"
+      "Crewed Spaceflight",
+      "Space Technology",
+      "Space Station"
      ]
     },
     {
      "id": "news-026",
-     "title": "HPE Says AI Chip Diversification Is a Natural Trend",
-     "summary": "HPE's CEO said customer diversification of AI chips is a natural long-term trend and that AI demand is durable.",
-     "detail": "Hewlett Packard Enterprise (HPE) CEO said that, over the long term, customers diversifying their AI chip sourcing is a natural trend and AI demand is sustained. He also noted that customers have not adjusted purchasing behavior in response to recent NVIDIA-related controversies.",
-     "impact": "The durability of AI computing demand has won industry endorsement, and the chip supply landscape may evolve toward greater diversification.",
+     "title": "27 Years of Shenzhou: Marking the Journey of Repeated Spaceflights",
+     "summary": "A look back at 27 years of Shenzhou spacecraft journeys to and from orbit, witnessing the development of China's crewed space program.",
+     "detail": "The material, titled '27 Years of Shenzhou: Marking the Journey of Repeated Spaceflights,' traces the historical arc and key milestones of the Shenzhou series'往返 flights into space.",
+     "impact": "A systematic review helps the public understand the technological accumulation and development path of China's crewed spaceflight program.",
      "importance": "important",
      "tags": [
-      "Artificial Intelligence",
-      "Chip Industry",
-      "Computing Demand"
+      "Crewed Spaceflight",
+      "Space Technology",
+      "History of Science and Technology"
      ]
     },
     {
      "id": "news-027",
-     "title": "Shanxi Targets Boost in SOE Renewable Capacity During 15th Five-Year Plan",
-     "summary": "Shanxi has set a goal to raise provincial SOE renewable capacity to 28 million kW during the 15th Five-Year Plan period.",
-     "detail": "Shanxi has set a target to lift renewable energy installed capacity of provincial state-owned enterprises to 28 million kW during the 15th Five-Year Plan period. The goal will push provincial energy SOEs to accelerate the development and grid connection of wind, solar and other renewable projects.",
-     "impact": "Clear local renewable capacity targets are expected to drive regional renewable investment and the build-out of grid absorption capacity.",
-     "importance": "normal",
+     "title": "Chinese and Foreign Astronauts Take Group Photo Aboard China's Space Station",
+     "summary": "Chinese and international astronauts posed for a group photo aboard China's space station, a vivid snapshot of international space cooperation.",
+     "detail": "Footage emerged of Chinese and foreign astronauts taking a group photo aboard China's space station, echoing the ongoing push for international space cooperation.",
+     "impact": "Scenes of cooperation aboard the space station help showcase China's open stance in space and attract broader partnerships.",
+     "importance": "important",
      "tags": [
-      "Renewable Energy",
-      "Energy Transition",
-      "Capacity Target"
+      "Space Station",
+      "International Science and Technology Cooperation",
+      "Crewed Spaceflight"
      ]
     },
     {
      "id": "news-028",
-     "title": "Guangdong Promotes Patent Open Licensing with Pay-After-Use Model",
-     "summary": "Guangdong is rolling out patent open licensing with a pay-after-use model to lower the barrier to commercializing tech achievements.",
-     "detail": "Guangdong is advancing the implementation of a patent open licensing mechanism, promoting a pay-after-use model to lower the barrier and cost for SMEs to access patented technologies. The move is seen as an important exploration to unblock bottlenecks in commercializing research achievements and unlock the value of patent assets.",
-     "impact": "Innovation in commercialization mechanisms is expected to raise patent utilization rates and boost industry-academia collaboration and technology diffusion.",
+     "title": "Anthropic Shares Narrow Losses, Down 2.3% Latest",
+     "summary": "AI company Anthropic's shares narrowed their decline, last down 2.3%, as volatility eased.",
+     "detail": "Financial news alerts show Anthropic's share losses narrowed, with the stock down 2.3% at the latest reading.",
+     "impact": "Volatility in individual AI stocks reflects ongoing market disagreement over artificial intelligence valuations.",
      "importance": "normal",
      "tags": [
-      "Intellectual Property",
-      "Commercialization of Research",
-      "Innovation Ecosystem"
+      "Artificial Intelligence",
+      "Tech Stocks",
+      "Capital Markets"
      ]
     }
    ]
   },
   {
    "id": "other",
-   "title": "Other Headlines",
+   "title": "Other Top Stories",
    "icon": "📰",
    "articles": [
     {
      "id": "news-029",
-     "title": "Tinghua Liquor's Health Claims Exposed, Drawing Skepticism",
-     "summary": "Claims about Tinghua Liquor's anti-tumor and immune-boosting effects have been exposed, prompting questions from consumers and the public about its efficacy claims.",
-     "detail": "The revelations concern the compliance of Tinghua Liquor's previous claims about anti-tumor, immune-boosting and other health benefits. Whether the product's efficacy claims cross the line for food or alcohol advertising has become a focal point for public opinion and regulators.",
-     "impact": "The incident may push regulators toward stricter oversight of efficacy claims for alcohol and health-related consumer products, tightening advertising compliance standards.",
+     "title": "Visual Explainer: 8 Q&As on Flu Prevention and Treatment",
+     "summary": "A visual Q&A breaks down eight key questions on flu prevention and treatment, offering practical guidance for the public.",
+     "detail": "Presented as a visual explainer, the piece answers eight common questions about flu prevention and treatment to help the public grasp the essentials.",
+     "impact": "The explainer helps raise public awareness and preparedness for self-protection during flu season.",
      "importance": "important",
      "tags": [
-      "Consumer Rights",
-      "Advertising Compliance",
-      "Food Industry"
+      "Public Health",
+      "Health Education",
+      "Respiratory Disease"
      ]
     },
     {
      "id": "news-030",
-     "title": "Frequent Plasma Donations by Teen Spark Industry Regulatory Concern",
-     "summary": "A teenager is suspected to have suffered serious consequences from frequent plasma donations within eight months, drawing attention to standards and oversight in the blood collection industry.",
-     "detail": "Reports say a 19-year-old suffered serious health consequences after donating plasma as many as 16 times over eight months, sparking widespread public concern. Attention has focused on donation frequency management, informed consent obligations and regulatory responsibility at single-donor plasma centers.",
-     "impact": "The case may drive stricter rules on donation frequency, risk disclosure and local oversight in the plasma collection industry.",
-     "importance": "hot",
+     "title": "19-Year-Old Dies After Suspected Frequent Plasma Donations",
+     "summary": "A 19-year-old reportedly died after donating plasma 16 times within eight months, sparking concern over blood collection safety.",
+     "detail": "Reports indicate a 19-year-old died after allegedly donating plasma 16 times in eight months, drawing public attention to donation frequency and regulatory oversight.",
+     "impact": "The case may prompt a closer review of operational standards and health screening at plasma collection stations.",
+     "importance": "important",
      "tags": [
       "Public Health",
-      "Blood Safety",
-      "Industry Regulation"
+      "Blood Products",
+      "Medical Regulation"
      ]
     },
     {
      "id": "news-031",
-     "title": "A Vitamin Widespread Deficient Among Chinese People — Shortfall Even More Acute in Women",
-     "summary": "Popular-science content notes that Chinese people commonly lack a certain vitamin, with women showing a more pronounced deficiency than men.",
-     "detail": "Science-focused reporting on vitamin intake in China highlights a widely deficient vitamin type, with women more affected than men. The public is advised to improve intake through balanced diets and necessary nutritional assessments.",
-     "impact": "Growing attention to nutrition and health is expected to raise public health awareness and boost interest in related dietary supplement categories.",
+     "title": "China's Most Deficient Vitamin — Women More Affected Than Men",
+     "summary": "A survey shows Chinese people are widely deficient in a particular vitamin, with women notably more deficient than men.",
+     "detail": "The report highlights a widespread vitamin deficiency in China, noting that the shortfall is more pronounced among women than men.",
+     "impact": "A reminder for the public to watch dietary nutrition balance, potentially boosting interest in the nutritional supplement market.",
      "importance": "normal",
      "tags": [
-      "Public Health",
-      "Nutrition",
-      "Health Education"
+      "Health Education",
+      "Nutrition and Wellness",
+      "Public Health"
      ]
     },
     {
      "id": "news-032",
-     "title": "Winter 'Heating Illness' Alert: Four Symptoms to Watch For",
-     "summary": "Dry throat, nosebleeds and other symptoms in winter may signal 'heating illness'; four symptoms warrant heightened vigilance.",
-     "detail": "Indoor air tends to be dry during the winter heating season, frequently causing dry throat and nosebleeds. Health educators warn that four such symptoms may indicate 'heating illness,' which can be prevented by adjusting temperature and humidity and staying hydrated.",
-     "impact": "Winter health advisories help the public guard against seasonal illnesses early, easing the burden on medical services.",
+     "title": "Study Claims to Have Found the 'Ideal Sleep Duration'",
+     "summary": "Research has offered a reference value for the 'ideal sleep duration,' fueling public debate on sleep health.",
+     "detail": "Titled 'The Ideal Sleep Duration Has Been Found,' the report shares research conclusions to help the public plan their schedules.",
+     "impact": "Growing attention to sleep health could help promote healthier lifestyles among the public.",
      "importance": "normal",
      "tags": [
-      "Winter Health",
-      "Disease Prevention",
-      "Health Education"
+      "Health Education",
+      "Sleep Health",
+      "Lifestyle"
      ]
     },
     {
      "id": "news-033",
-     "title": "Court of Arbitration for Sport Restores African Team's Championship Title",
-     "summary": "The Court of Arbitration for Sport upheld an appeal by the relevant football association, overturning a prior CAF ruling and restoring the team's Africa Cup of Nations title.",
-     "detail": "The Court of Arbitration for Sport announced on the 24th that it had upheld the appeal filed by the relevant football association, annulling the Confederation of African Football's earlier ruling on the 2025 Africa Cup of Nations results and restoring the team's champion title. The ruling sets a precedent for international sports arbitration and tournament governance.",
-     "impact": "The decision reinforces the authority of international sports arbitration, and future rulings within sports bodies will face greater judicial scrutiny.",
+     "title": "Eileen Gu Suffers Shoulder Dislocation in Training, Apologizes Publicly",
+     "summary": "Olympic skier Eileen Gu dislocated her shoulder in training and publicly apologized over the injury, concern among fans.",
+     "detail": "Reports show Eileen Gu suffered a shoulder dislocation and issued a public apology regarding the injury and its related impact.",
+     "impact": "An athlete's injury draws attention to winter sports and could affect upcoming competition schedules.",
      "importance": "normal",
      "tags": [
-      "International Sports Arbitration",
-      "Football",
-      "Sports Governance"
+      "Winter Sports",
+      "Sports Injuries",
+      "Competitive Sports"
      ]
     }
    ]
