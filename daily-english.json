@@ -1,192 +1,197 @@
 {
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "content": {
-    "id": "en-2026-11-26",
-    "date": "2026-11-26",
-    "topic": "商业与金融",
+    "id": "en-2026-11-27",
+    "date": "2026-11-27",
+    "topic": "职场与沟通",
     "newsHighlights": [
       {
-        "title": "A look at China's economic data in October",
+        "title": "Strokes of genius: Where innovation takes shape",
         "source": "ChinaDaily",
-        "summary": "China's economy remained stable in October, with new growth drivers strengthening and the economic structure improving under enhanced policy coordination.",
-        "translation": "中国10月经济数据发布：在政策协调加强的支撑下，中国经济10月保持稳定，新动能持续增强，经济结构不断优化。",
+        "summary": "Shanghai's Putuo district is building on its commercial roots to become a hub for innovation along the Shanghai-Nanjing corridor.",
+        "translation": "上海普陀区正依托商业根基，打造上海—南京走廊上的创新高地。",
         "keyWords": [
-          "economic data",
-          "growth drivers",
-          "policy coordination"
+          "innovation",
+          "hub",
+          "corridor",
+          "robotics"
         ]
       },
       {
-        "title": "Nation's opening-up fuels growth across Asia-Pacific",
-        "source": "ChinaDaily",
-        "summary": "China's continued opening-up is widely seen as a powerful engine fueling sustainable growth across the Asia-Pacific region.",
-        "translation": "中国持续扩大开放被视为推动亚太地区可持续增长的强大引擎。",
-        "keyWords": [
-          "opening-up",
-          "sustainable growth",
-          "Asia-Pacific"
-        ]
-      },
-      {
-        "title": "US lawmakers question Trump's involvement in Nvidia CEO's return",
+        "title": "Wang Yi says openness and pragmatism define China-Netherlands ties",
         "source": "CGTN",
-        "summary": "US lawmakers have raised questions over the president's reported involvement in Nvidia CEO Jensen Huang's return to the country's market.",
-        "translation": "美国国会议员就总统据报道介入英伟达CEO黄仁勋重返美国市场一事提出质疑。",
+        "summary": "Wang Yi said openness and pragmatism define the relationship between China and the Netherlands.",
+        "translation": "王毅表示，开放与务实是中荷关系的鲜明特征。",
         "keyWords": [
-          "lawmakers",
-          "question",
-          "involvement"
+          "openness",
+          "pragmatism",
+          "ties",
+          "define"
         ]
       },
       {
-        "title": "Weekly train service linking China, Mongolia and Russia launched",
+        "title": "Xi hails China-Pakistan milestone",
         "source": "ChinaDaily",
-        "summary": "A weekly international rail service connecting China, Mongolia and Russia has been launched, strengthening regional trade links.",
-        "translation": "连接中国、蒙古国和俄罗斯的每周国际班列正式开行，进一步强化区域贸易联系。",
+        "summary": "President Xi hailed the latest development as a new milestone in the all-weather cooperative partnership between China and Pakistan.",
+        "translation": "习近平主席称赞最新进展是中巴全天候合作伙伴关系的新里程碑。",
         "keyWords": [
-          "rail service",
-          "trade links",
-          "regional"
+          "milestone",
+          "partnership",
+          "bilateral",
+          "hail"
         ]
       },
       {
-        "title": "CAR-T expertise draws foreign cancer patients",
+        "title": "Nation further opens up vast market to imports",
         "source": "ChinaDaily",
-        "summary": "China's medical expertise in CAR-T cell therapy is attracting a growing number of foreign cancer patients seeking treatment.",
-        "translation": "中国在CAR-T细胞疗法方面的医疗专长正吸引越来越多前来求医的外国癌症患者。",
+        "summary": "China is further opening its vast market to imports, offering new opportunities for global businesses and their employees.",
+        "translation": "中国正进一步扩大市场开放，为全球企业及其员工提供新机遇。",
         "keyWords": [
-          "expertise",
-          "therapy",
-          "medical tourism"
+          "market",
+          "import",
+          "opportunity",
+          "trade"
+        ]
+      },
+      {
+        "title": "What will shape the China-US AI future? | Short documentary",
+        "source": "ChinaDaily",
+        "summary": "A short documentary explores what will shape the future of artificial intelligence cooperation and competition between China and the United States.",
+        "translation": "一部短片探讨了什么将塑造中美人工智能合作与竞争的未来。",
+        "keyWords": [
+          "artificial intelligence",
+          "cooperation",
+          "competition",
+          "documentary"
         ]
       }
     ],
     "quote": {
-      "quote": "Price is what you pay; value is what you get.",
-      "author": "Warren Buffett",
-      "translation": "价格是你付出的，价值是你得到的。",
-      "explanation": "投资大师巴菲特提醒我们：不要只盯着价格的高低，而要关注资产本身的价值。做商业决策时，短期的成本不应掩盖长期的回报，这一理念也呼应了今日新闻中'以开放换取长期增长'的逻辑。"
+      "quote": "The single biggest problem in communication is the illusion that it has taken place.",
+      "author": "George Bernard Shaw",
+      "translation": "沟通中最大的问题，是误以为沟通已经发生了。",
+      "explanation": "这句话提醒职场人：不要以为发过邮件、开过会就等于沟通到位。真正的沟通以对方理解并能够行动为标准，需要确认、反馈和复述。"
     },
     "vocabulary": [
       {
-        "word": "underpin",
-        "phonetic": "/ˌʌndərˈpɪn/",
-        "partOfSpeech": "verb",
-        "definition": "支撑；巩固（某事物的基础）",
-        "example": "Stable growth is underpinned by enhanced policy coordination.",
-        "translation": "稳定的增长由加强的政策协调所支撑。",
-        "newsContext": "出自《A look at China's economic data in October》：underpinned by enhanced policy coordination"
+        "word": "innovation",
+        "phonetic": "/ˌɪnəˈveɪʃn/",
+        "partOfSpeech": "n.",
+        "definition": "创新；革新",
+        "example": "Shanghai's Putuo district is becoming a hub where innovation takes shape.",
+        "translation": "上海普陀区正在成为一个创新成型的高地。",
+        "newsContext": "来自新闻标题 “Strokes of genius: Where innovation takes shape”。"
       },
       {
-        "word": "stable",
-        "phonetic": "/ˈsteɪbl/",
-        "partOfSpeech": "adjective",
-        "definition": "稳定的；稳固的",
-        "example": "China's economy remained stable in October despite external pressure.",
-        "translation": "尽管面临外部压力，中国经济在10月仍保持稳定。",
-        "newsContext": "出自10月经济数据报道：China's economy remained stable in October"
+        "word": "hub",
+        "phonetic": "/hʌb/",
+        "partOfSpeech": "n.",
+        "definition": "中心；枢纽",
+        "example": "The district aims to build itself into a hub for technology and business.",
+        "translation": "该区志在把自己打造成科技与商业的枢纽。",
+        "newsContext": "出自 “Shanghai's Putuo district is building on its commercial roots to become a hub for innovation”。"
       },
       {
-        "word": "coordination",
-        "phonetic": "/koʊˌɔːrdɪˈneɪʃn/",
-        "partOfSpeech": "noun",
-        "definition": "协调；配合",
-        "example": "Better coordination between fiscal and monetary policy supports business confidence.",
-        "translation": "财政与货币政策之间更好的协调有助于提振企业信心。",
-        "newsContext": "出自经济数据报道：enhanced policy coordination"
+        "word": "corridor",
+        "phonetic": "/ˈkɒrɪdɔː(r)/",
+        "partOfSpeech": "n.",
+        "definition": "走廊；（经济）走廊地带",
+        "example": "Along the Shanghai-Nanjing corridor, traditional business spaces are evolving.",
+        "translation": "沿着沪宁走廊，传统的商业空间正在演变。",
+        "newsContext": "出自新闻原文 “Along the Shanghai-Nanjing corridor, traditional business spaces are evolving”。"
       },
       {
-        "word": "expertise",
-        "phonetic": "/ˌekspɜːrˈtiːz/",
-        "partOfSpeech": "noun",
-        "definition": "专业知识；专长",
-        "example": "China's medical expertise in CAR-T therapy draws foreign cancer patients.",
-        "translation": "中国在CAR-T疗法方面的医疗专长吸引了外国癌症患者。",
-        "newsContext": "出自《CAR-T expertise draws foreign cancer patients》标题"
+        "word": "milestone",
+        "phonetic": "/ˈmaɪlstəʊn/",
+        "partOfSpeech": "n.",
+        "definition": "里程碑；重大事件",
+        "example": "The new agreement marks a milestone in our company's development.",
+        "translation": "这项新协议标志着我司发展的一个里程碑。",
+        "newsContext": "来自新闻标题 “Xi hails China-Pakistan milestone”。"
       },
       {
-        "word": "fuel",
-        "phonetic": "/ˈfjuːəl/",
-        "partOfSpeech": "verb",
-        "definition": "推动；激起（作动词时常读 /ˈfjuːəl/）",
-        "example": "China's opening-up fuels growth across the Asia-Pacific region.",
-        "translation": "中国的开放推动了整个亚太地区的增长。",
-        "newsContext": "出自《Nation's opening-up fuels growth across Asia-Pacific》标题"
+        "word": "pragmatism",
+        "phonetic": "/ˈpræɡmətɪzəm/",
+        "partOfSpeech": "n.",
+        "definition": "实用主义；务实精神",
+        "example": "Pragmatism, not slogans, is what makes a business deal work.",
+        "translation": "让商业合作运转的是务实精神，而非口号。",
+        "newsContext": "来自 “Wang Yi says openness and pragmatism define China-Netherlands ties”。"
       },
       {
-        "word": "launch",
-        "phonetic": "/lɔːntʃ/",
-        "partOfSpeech": "verb",
-        "definition": "启动；推出；发射",
-        "example": "A weekly train service linking China, Mongolia and Russia was launched.",
-        "translation": "一条连接中国、蒙古国和俄罗斯的每周列车服务正式开行。",
-        "newsContext": "出自《Weekly train service linking China, Mongolia and Russia launched》"
+        "word": "openness",
+        "phonetic": "/ˈəʊpənnəs/",
+        "partOfSpeech": "n.",
+        "definition": "开放；坦诚",
+        "example": "Openness in communication helps teams solve problems faster.",
+        "translation": "沟通中的坦诚有助于团队更快地解决问题。",
+        "newsContext": "同出自 “openness and pragmatism define China-Netherlands ties”。"
       },
       {
-        "word": "question",
-        "phonetic": "/ˈkwestʃən/",
-        "partOfSpeech": "verb",
-        "definition": "质疑；对……表示怀疑",
-        "example": "US lawmakers questioned the president's involvement in the Nvidia CEO's return.",
-        "translation": "美国国会议员质疑总统介入英伟达CEO的回归。",
-        "newsContext": "出自《US lawmakers question Trump's involvement in Nvidia CEO's return》标题"
+        "word": "bilateral",
+        "phonetic": "/ˌbaɪˈlætərəl/",
+        "partOfSpeech": "adj.",
+        "definition": "双边的；双方的",
+        "example": "Both sides agreed to strengthen bilateral cooperation in trade and technology.",
+        "translation": "双方同意加强贸易与科技领域的双边合作。",
+        "newsContext": "关联新闻 “Xi hails China-Pakistan milestone” 中的双边关系表述。"
       },
       {
-        "word": "lawmaker",
-        "phonetic": "/ˈlɔːmɔːkər/",
-        "partOfSpeech": "noun",
-        "definition": "立法者；议员",
-        "example": "Lawmakers called for greater transparency in business-related government decisions.",
-        "translation": "议员们呼吁政府在涉商决策上提高透明度。",
-        "newsContext": "出自CGTN报道：US lawmakers question Trump's involvement..."
+        "word": "deployment",
+        "phonetic": "/dɪˈplɔɪmənt/",
+        "partOfSpeech": "n.",
+        "definition": "部署；调配（人力、资源）",
+        "example": "The deployment of new staff across departments took three months.",
+        "translation": "新员工在各部门的调配花了三个月。",
+        "newsContext": "来自 “China warns US F-15EX deployment poses threat to regional stability”。"
       },
       {
-        "word": "sustainable",
-        "phonetic": "/səˈsteɪnəbl/",
-        "partOfSpeech": "adjective",
-        "definition": "可持续的",
-        "example": "Opening-up offers a path to sustainable growth for Asia-Pacific economies.",
-        "translation": "开放为亚太经济体提供了可持续增长的路径。",
-        "newsContext": "出自《Nation's opening-up fuels growth across Asia-Pacific》：sustainable growth"
+        "word": "meteoric",
+        "phonetic": "/ˌmiːtiˈɒrɪk/",
+        "partOfSpeech": "adj.",
+        "definition": "迅速的；飞速上升的",
+        "example": "Her meteoric rise in the company impressed all her colleagues.",
+        "translation": "她在公司里火箭般的晋升速度令所有同事印象深刻。",
+        "newsContext": "出自新闻原文 “China's meteoric rise in the past few decades”。"
       },
       {
-        "word": "structure",
-        "phonetic": "/ˈstrʌktʃər/",
-        "partOfSpeech": "noun",
-        "definition": "结构；构成",
-        "example": "The economic structure improved as new growth drivers strengthened.",
-        "translation": "随着新增长动能增强，经济结构得到优化。",
-        "newsContext": "出自10月经济数据报道：the economic structure improving"
+        "word": "assume",
+        "phonetic": "/əˈsjuːm/",
+        "partOfSpeech": "v.",
+        "definition": "承担，接管（职责）；假定",
+        "example": "She assumed responsibility for the whole marketing team last month.",
+        "translation": "她上个月接管了整个市场团队的工作。",
+        "newsContext": "出自 “the new airport began operations when it assumed all civil aviation services”。"
       }
     ],
     "pattern": {
-      "pattern": "主语 + remained + 形容词，with + 名词 + 现在分词（with复合结构作伴随状语）",
-      "example": "China's economy remained stable in October, with new growth drivers strengthening and the economic structure improving.",
-      "translation": "中国经济在10月保持稳定，新增长动能不断增强，经济结构持续优化。",
-      "usage": "该句型用 with + 名词 + V-ing 表示'伴随着……（同时发生）'，常见于经济与商业报道。使用时注意：with 后的名词是动作的发出者，故用现在分词（表主动/进行）；若为被动关系则用过去分词，如 with the policy implemented。"
+      "pattern": "A is building on X to become Y（A 以 X 为基础，发展成为 Y）",
+      "example": "Shanghai's Putuo district is building on its commercial roots to become a hub for innovation.",
+      "translation": "上海普陀区正依托商业根基，发展成为创新高地。",
+      "usage": "用于描述个人或组织依托既有优势实现升级转型。职场中可用于自我介绍或汇报：\"I am building on my experience in sales to become a project manager.\"（我正依托销售经验，转型成为项目经理。）"
     },
     "grammar": {
-      "title": "过去分词作后置定语与状语（Past Participle as Modifier & Adverbial）",
-      "explanation": "新闻标题和正文中大量使用'过去分词短语'来精简句子：放在名词后作定语，相当于省略了 which/that was；放在句首或句末作状语，表示被动或已完成的动作。这种结构能让商业新闻语言更紧凑、专业。",
+      "title": "现在完成时（Present Perfect）：描述从过去延续至今的变化",
+      "explanation": "现在完成时 have/has + 过去分词，强调过去发生的事情对现在仍有影响，常与 in the past few decades、so far、recently 等时间状语连用。新闻中常用它来描述国家、企业或行业的持续发展。",
       "examples": [
-        "A weekly train service linking China, Mongolia and Russia launched, strengthening regional trade links.",
-        "The growth, underpinned by enhanced policy coordination, beat market expectations."
+        "China has come a long way in the past few decades.",
+        "The nation has further opened up its vast market to imports."
       ]
     },
     "pronunciation": {
-      "word": "coordination",
-      "phonetic": "/koʊˌɔːrdɪˈneɪʃn/",
-      "tips": "重音落在第四个音节 -na- 上：co-or-di-NA-tion。前面的 co- 弱读为 /kə/，中间的 di 也弱读为 /dɪ/，最后的 -tion 读 /ʃn/ 且元音弱化为 /ə/。注意不要把重音错放在第一个音节。",
+      "word": "pragmatism",
+      "phonetic": "/ˈpræɡmətɪzəm/",
+      "tips": "重音在第一个音节 PRAG-，读 /præɡ/ 时口型扁平，/æ/ 类似“爱”的前半段；后缀 -matism 读 /mətɪzəm/，中间音节弱读为 /mə/。注意不要读成 pra-GMA-tism。",
       "examples": [
-        "Better policy coordination is essential for stable growth.",
-        "The launch required close coordination between three countries."
+        "Openness and pragmatism define the relationship.",
+        "We need pragmatism, not empty talk, in the workplace."
       ]
     },
     "reading": {
-      "title": "China's Steady Economy and Opening-Up Power Asia-Pacific Growth",
-      "content": "China's economy remained stable in October, with new growth drivers strengthening and the economic structure improving, underpinned by enhanced policy coordination. Analysts say the data point to resilient domestic demand and a healthy business environment. Meanwhile, the nation's continued opening-up is fueling growth across the Asia-Pacific region. The launch of a weekly train service linking China, Mongolia and Russia has strengthened regional trade links, while foreign patients are drawn by Chinese medical expertise in CAR-T therapy. At the same time, US lawmakers questioned political involvement in a business decision concerning Nvidia's CEO, reminding investors that policy risks still matter. For companies operating in Asia, the message is clear: stable markets, sustainable growth and open trade remain the foundations of long-term value.",
-      "translation": "中国经济在10月保持稳定，新动能持续增强，经济结构不断优化，这得益于政策协调的加强。分析人士认为，这些数据表明内需具有韧性，营商环境健康。与此同时，中国持续扩大开放正推动整个亚太地区的增长。连接中国、蒙古国和俄罗斯的每周列车服务开行，强化了区域贸易联系；外国患者也被中国在CAR-T疗法方面的医疗专长所吸引。与此同时，美国国会议员就涉及英伟达CEO的一项商业决策中的政治介入提出质疑，提醒投资者政策风险依然重要。对于在亚洲经营的企业而言，信息很明确：稳定的市场、可持续的增长和开放的贸易仍是长期价值的基础。",
-      "sourceNote": "本文基于 ChinaDaily《A look at China's economic data in October》《Nation's opening-up fuels growth across Asia-Pacific》《Weekly train service linking China, Mongolia and Russia launched》《CAR-T expertise draws foreign cancer patients》及 CGTN《US lawmakers question Trump's involvement in Nvidia CEO's return》改写，用于英语学习，非原文转载。"
+      "title": "Where Innovation Takes Shape: Communication at Work",
+      "content": "Shanghai's Putuo district is building on its commercial roots to become a hub for innovation. Along the Shanghai-Nanjing corridor, traditional office spaces are evolving into shared workspaces where engineers, designers and entrepreneurs work side by side. Advances in robotics and artificial intelligence are changing not only what people produce, but also how teams communicate.\n\nManagers say the most valuable skill in this new environment is clear communication. When a robotics startup pitches an idea to investors, it must translate complex technology into simple language. When Chinese and foreign partners sign a deal, they need openness and pragmatism rather than slogans.\n\nExperts note that the country has come a long way in building innovation clusters. But technology alone is not enough. Trust, dialogue and honest feedback still shape a company's success. As one engineer put it, innovation takes shape where people are willing to listen — and to be understood.",
+      "translation": "上海普陀区正依托商业根基，打造创新高地。沿着沪宁走廊，传统的办公空间正在演变为共享工作区，工程师、设计师和企业家并肩工作。机器人与人工智能的进步，不仅改变了人们生产什么，也改变了团队沟通的方式。\n\n管理者表示，新环境中最有价值的技能是清晰的沟通。当一家机器人初创公司向投资人推介创意时，必须把复杂的技术翻译成简单的语言；当中外伙伴签署协议时，他们需要的是开放与务实，而非口号。\n\n专家指出，中国在建设创新集群方面已走过很长的路。但仅有技术还不够。信任、对话和坦诚的反馈依然决定着一家公司的成败。正如一位工程师所说：创新在人们愿意倾听、也愿意被理解的地方成型。",
+      "sourceNote": "本文基于 ChinaDaily《Strokes of genius: Where innovation takes shape》《Nation further opens up vast market to imports》及 CGTN《Wang Yi says openness and pragmatism define China-Netherlands ties》等今日新闻改写，用于英语学习。"
     }
   }
 }
