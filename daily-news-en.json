@@ -1,16 +1,16 @@
 {
- "date": "2026-11-27",
- "weekday": "Friday",
- "overview": "China's economic resilience and industrial upgrading dominate the narrative, alongside university governance crackdowns, consumer rights disputes, a broad global equity rally, and jockeying over Middle East tensions — all unfolding the same day.",
+ "date": "2026-11-28",
+ "weekday": "星期六",
+ "overview": "A股强势反弹叠加货币金融新规密集落地，稳市与绿色基建、消费新趋势同频共振。",
  "trendingTopics": [
-  "Industrial Upgrading",
-  "High-Standard Opening Up",
-  "China-US Trade",
-  "Middle East Tensions",
-  "Memory Chips",
-  "University Governance",
-  "Global Capital Markets",
-  "Winter Sports Economy"
+  "A股大涨",
+  "国家队稳市",
+  "货币政策新规",
+  "绿色电力",
+  "高铁网络",
+  "存储芯片",
+  "厄尔尼诺",
+  "消费维权"
  ],
  "sections": [
   {
@@ -20,132 +20,136 @@
    "articles": [
     {
      "id": "news-001",
-     "title": "政府机关、事业单位带头过紧日子",
-     "summary": "政府机关、事业单位带头过紧日子成为舆论关注话题，强调行政开支从严从紧。",
-     "detail": "素材显示，政府机关与事业单位被要求带头过紧日子，压缩一般性支出。这一取向与当前财政收支平衡的现实压力相关，指向政务运行成本的持续压降。",
-     "impact": "有望带动行政运行成本下降，为民生与产业投入腾出更多财政空间。",
+     "title": "时政微观察丨依规治党 永远在路上",
+     "summary": "时政微观察栏目聚焦依规治党主题，强调制度治党、依规治党是长期课题，永远在路上。",
+     "detail": "文章围绕依规治党展开观察，指出党内法规制度建设持续推进。依规治党被强调为一项必须常抓不懈的工作，需要久久为功。",
+     "impact": "释放全面从严治党持续深化信号，对规范市场秩序、优化营商环境具有长期基础性意义。",
      "importance": "hot",
      "tags": [
-      "财政政策",
-      "行政成本",
-      "民生保障"
+      "制度建设",
+      "全面从严治党"
      ]
     },
     {
      "id": "news-002",
-     "title": "中国六座城市跻身世界一线城市",
-     "summary": "中国已有六座城市跻身世界一线城市行列，城市能级与全球影响力进一步提升。",
-     "detail": "素材显示，中国有六座城市进入世界一线城市名单。相关分析同时提出，头部城市开始比拼“旧”的存量更新与品质，而非单纯扩张。",
-     "impact": "城市全球排名提升有助于吸引资本与人才，带动城市群协同发展。",
+     "title": "长三角高铁营业里程突破8500公里",
+     "summary": "三线齐发推动长三角高铁营业里程突破8500公里，区域轨道交通网络进一步加密成型。",
+     "detail": "随着三条线路同时开通运营，长三角高铁营业里程迈上8500公里新台阶。区域一体化的交通骨架得到进一步巩固。",
+     "impact": "交通网络加密将持续释放长三角一体化红利，带动沿线城市产业与人口流动加速。",
      "importance": "important",
      "tags": [
-      "城市发展",
-      "城市群",
-      "区域经济"
+      "高铁网络",
+      "区域一体化",
+      "基础设施建设"
      ]
     },
     {
      "id": "news-003",
-     "title": "多所高校通报教师违规并作免职处理",
-     "summary": "武汉大学、安徽大学相继通报教师违规问题，相关责任人被免职处理。",
-     "detail": "素材显示，武汉大学通报一名教师被免职，安徽大学一名副校长亦被免职。此前有“86页PDF举报女教授”一事获得官方通报回应。多起通报显示高校师德师风与管理问题进入密集处置期。",
-     "impact": "密集通报体现高校治理与师德监督趋严，有助于净化高校育人环境。",
-     "importance": "important",
+     "title": "托育服务“升温” 托起美好未来",
+     "summary": "评论文章指出托育服务正在持续“升温”，以更完善的养育支持托起家庭与社会的美好“未来”。",
+     "detail": "青苗网评聚焦托育服务发展，肯定相关服务供给加快完善。托育被视为关乎千家万户的重要民生议题。",
+     "impact": "托育供给扩容有望缓解家庭养育压力，对婴幼儿照护相关产业与就业形成拉动。",
+     "importance": "normal",
      "tags": [
-      "高等教育",
-      "师德师风",
-      "高校治理"
+      "托育服务",
+      "民生保障",
+      "人口发展"
      ]
     },
     {
      "id": "news-004",
-     "title": "网民在群内造谣被依法处罚",
-     "summary": "湖北一名网民在微信群内编造传播谣言，被有关部门依法作出处罚。",
-     "detail": "素材显示，湖北一网民因在微信群内造谣被处罚。同期互联网联合辟谣平台持续发布辟谣信息，网络信息内容治理保持高压态势。",
-     "impact": "典型案例对网络空间造谣传谣行为形成警示，促进网络生态清朗。",
+     "title": "中国老年人口数量前10省份出炉",
+     "summary": "中国老年人口数量排名前10的省份名单出炉，区域老龄化格局引发关注。",
+     "detail": "榜单披露了老年人口规模居前的省份分布情况。数据呈现区域人口结构差异。",
+     "impact": "为各地养老服务体系建设、医疗资源布局与银发经济规划提供参考。",
      "importance": "normal",
      "tags": [
-      "网络治理"
+      "人口结构",
+      "养老服务",
+      "银发经济"
      ]
     },
     {
      "id": "news-005",
-     "title": "智慧口岸建设助力中越经贸往来提升",
-     "summary": "智慧口岸建设持续推进，为中越两国经贸往来通关效率再提升提供支撑。",
-     "detail": "素材显示，智慧口岸建设正在助力中越经贸往来水平进一步提升。口岸数字化、智能化改造有助于货物与人员通关提速，是区域互联互通的重要基础设施。",
-     "impact": "口岸智能化将降低跨境贸易成本，为跨境电商与边贸发展提供便利。",
+     "title": "“新版九年级教材多处错误”不实",
+     "summary": "互联网联合辟谣平台回应称“新版九年级教材多处错误”传闻不实，相关说法系谣言。",
+     "detail": "互联网联合辟谣平台对流传的教材错误说法作出澄清，指出内容不实。此类谣言干扰公众对教材编写工作的认知。",
+     "impact": "及时澄清有助于稳定社会预期，也为教育内容治理与辟谣机制建设提供样本。",
      "importance": "normal",
      "tags": [
-      "智慧口岸",
-      "跨境电商",
-      "区域合作"
+      "教育治理",
+      "网络辟谣",
+      "教材建设"
      ]
     }
    ]
   },
   {
    "id": "international",
-   "title": "World Politics",
+   "title": "International Affairs",
    "icon": "🌍",
    "articles": [
     {
      "id": "news-006",
-     "title": "Commerce Ministry Vehemently Opposes US Section 301 Tariffs",
-     "summary": "China's Ministry of Commerce stated it firmly opposes US measures imposing Section 301 tariffs on China and other economies.",
-     "detail": "The Ministry of Commerce expressed strong opposition to the US move to levy Section 301 tariffs on China and other economies. The step touches on the direction of China-US trade ties and the multilateral trading order, with the remarks continuing China's consistent position.",
-     "impact": "If tariff friction persists, expectations for stability in bilateral trade and related export supply chains could be affected.",
+     "title": "Commerce Ministry: Strongly Opposes US Section 301 Tariffs on China and Other Economies",
+     "summary": "China's Ministry of Commerce stated its position on the imposition of Section 301 tariffs on China and other economies, saying it firmly opposes the measures.",
+     "detail": "The Ministry of Commerce commented on the Section 301 tariff measures, making clear its firm opposition. The move targets tariff hikes imposed on multiple economies, including China.",
+     "impact": "The statement signals a commitment to upholding the multilateral trading system, as the trajectory of China-US trade friction remains a key issue to watch.",
      "importance": "hot",
      "tags": [
       "China-US Trade",
-      "International Trade",
-      "Tariff Policy"
+      "Tariff Battle",
+      "International Trade"
      ]
     },
     {
      "id": "news-007",
-     "title": "Iran Denies Carrying Out Military Operation in Kuwait",
-     "summary": "A spokesman for Iran's armed forces denied carrying out any military or offensive operation, responding to accusations by Kuwait's military.",
-     "detail": "A spokesman for Iran's armed forces said Iran had carried out no military or offensive operations in the region and denied Kuwaiti military allegations of attacks on key facilities. The incident has again drawn attention to the security situation in the Gulf.",
-     "impact": "Accusations paired with denials will heighten tensions in the Gulf, weighing on expectations for energy transit security.",
-     "importance": "hot",
+     "title": "Trump: Putin Is of Course Welcome at G20 Summit If He Wants to Attend",
+     "summary": "Trump commented on attendance at the G20 summit, saying that if Putin wants to come, he is of course welcome.",
+     "detail": "The remarks concern participation arrangements for the multilateral summit. The comments add fresh ground for discussion to a diplomatic issue drawing international attention.",
+     "impact": "Leader interactions at multilateral forums could shape the atmosphere in major-power relations and the direction of the global governance agenda.",
+     "importance": "important",
      "tags": [
-      "Middle East",
-      "International Energy",
-      "Regional Security"
+      "Major-Power Relations",
+      "International Summits"
      ]
     },
     {
      "id": "news-008",
-     "title": "US Arranging High-Level Meeting on Iran-Related Issues",
-     "summary": "According to Saudi media, the US is arranging a meeting with a former Israeli official, covering Iran-related issues and related consensus arrangements.",
-     "detail": "Saudi Al-Hadath TV reported that the US is arranging a meeting between Trump and Israel's Eisenkot, with agenda items covering the Iran issue and consensus arrangements involving Netanyahu. The diplomatic contacts touch on the regional security landscape.",
-     "impact": "If the meeting proceeds, it could influence policy coordination and subsequent security arrangements in the Middle East.",
+     "title": "Japan Speeds Up Push to Enshrine Self-Defense Forces in Constitution, Aiming to Reshape Postwar Peace Framework",
+     "summary": "Commentary says Japan is accelerating its push to enshrine the so-called Self-Defense Forces in its constitution, seeking to overturn existing arrangements of the postwar peace framework.",
+     "detail": "Analysts believe the development involves attempts to adjust the postwar peace framework, drawing attention and debate at the regional security level.",
+     "impact": "The regional security landscape and the direction of the peace framework may face new uncertainties, warranting continued observation.",
      "importance": "important",
      "tags": [
-      "Middle East"
+      "Regional Security",
+      "Peace Framework",
+      "Northeast Asia"
      ]
     },
     {
      "id": "news-009",
-     "title": "Deputy Commander of Russian Aerospace Forces Detained",
-     "summary": "The deputy commander of Russia's Aerospace Forces has been detained, drawing international attention to personnel and discipline issues within Russia's military leadership.",
-     "detail": "The deputy commander of Russia's Aerospace Forces was reported arrested. No further details were disclosed, and the incident has drawn international attention.",
-     "impact": "High-level personnel turmoil could affect the stability of military management and command structures.",
-     "importance": "normal",
+     "title": "Israeli Strikes Across Gaza Kill 1, Injure Several",
+     "summary": "Israeli forces launched military strikes in multiple areas of Gaza, reportedly killing one Palestinian and injuring several others.",
+     "detail": "According to a CGTN reporter, the strikes occurred at multiple locations in Gaza on the evening of the 27th local time. Casualties have been reported.",
+     "impact": "The ongoing conflict keeps the regional humanitarian situation and ceasefire prospects uncertain, while international mediation pressure remains high.",
+     "importance": "important",
      "tags": [
-      "Military Affairs"
+      "Middle East",
+      "Regional Conflict",
+      "Humanitarian"
      ]
     },
     {
      "id": "news-010",
-     "title": "Chinese Mission to EU Responds to European Parliament Motion",
-     "summary": "A spokesperson for the Chinese Mission to the EU responded to reporters on a negative motion passed by the European Parliament concerning the Ou Jinxin case.",
-     "detail": "On November 26, the European Parliament passed a negative motion concerning the Ou Jinxin case, and a spokesperson for the Chinese Mission to the EU responded when asked. The remarks touch on China-EU relations and China's position on Hong Kong-related issues.",
-     "impact": "The exchanges may have a short-term impact on the atmosphere of China-EU relations; further developments warrant attention.",
+     "title": "Chinese Mother and Daughter Robbed in Argentina; Mother Severely Injured",
+     "summary": "A Chinese mother and daughter were robbed in Argentina, with the mother seriously injured, raising concerns about overseas safety.",
+     "detail": "The incident occurred in Argentina, where the mother and daughter were robbed. The mother was seriously injured in the attack.",
+     "impact": "Safety issues for Chinese citizens and travelers overseas are back in focus, increasing the need for risk prevention when traveling abroad.",
      "importance": "normal",
      "tags": [
-      "China-EU Relations",
-      "International Relations"
+      "Overseas Safety",
+      "Travel Safety"
      ]
     }
    ]
@@ -157,92 +161,105 @@
    "articles": [
     {
      "id": "news-011",
-     "title": "The Industrial Upgrading Logic Behind Rising Power Consumption",
-     "summary": "An economic commentary argues that changes in power consumption reflect the deeper logic of China's industrial upgrading.",
-     "detail": "The commentary analyzes how the drivers behind power consumption data come from structural upgrades in the industrial mix rather than simple scale expansion. Shifts in the consumption structure point to manufacturing's move up the value chain.",
-     "impact": "Optimization of the power consumption mix can serve as a high-frequency gauge of the real economy's transformation, benefiting advanced manufacturing-related sectors.",
+     "title": "A-Shares Stage a 'Miracle Day' — What Comes Next?",
+     "summary": "Chinese A-shares surged sharply, sentiment rebounded noticeably, and market participants are debating the outlook.",
+     "detail": "The market rallied steeply, with the session dubbed a 'miracle day.' Investors and institutions are actively discussing the direction of the next move.",
+     "impact": "The rally has significantly boosted market confidence; short-term sentiment and trading volume trends will be key indicators to watch.",
      "importance": "hot",
      "tags": [
-      "Macro Economy",
-      "Industrial Upgrading",
-      "Manufacturing"
+      "A-Share Market",
+      "Stock Market",
+      "Investor Sentiment"
      ]
     },
     {
      "id": "news-012",
-     "title": "China Economy Roundtable Discusses High-Standard Opening Up",
-     "summary": "The \"China Economy Roundtable\" focused on high-standard opening up, exploring new pathways for openness.",
-     "detail": "Participants at the \"China Economy Roundtable\" discussed high-standard opening up, covering institutional opening, the business environment, and international trade and economic cooperation.",
-     "impact": "Continued signals on opening-up policy help stabilize foreign investment expectations and promote trade and investment facilitation.",
-     "importance": "important",
+     "title": "'National Team' Buying Has Surpassed the '924' Level",
+     "summary": "The market has noted that 'national team' interventions have exceeded the scale seen during the '924' episode, sending a market-stabilization signal.",
+     "detail": "Comparative data shows substantial capital support in this round of market stabilization, widely viewed as a significant policy signal.",
+     "impact": "Stronger stabilization funds help dampen volatility, shore up confidence, and provide support for the index's central range.",
+     "importance": "hot",
      "tags": [
-      "Opening Up",
-      "Macro Economy",
-      "Business Environment"
+      "Capital Markets",
+      "Market Stabilization",
+      "Long-Term Capital"
      ]
     },
     {
      "id": "news-013",
-     "title": "China's Economic Resilience Seen Through the World Economic Map",
-     "summary": "Analysis starts from the global economic landscape to explain where China's resilience in a complex environment comes from.",
-     "detail": "The analysis places China's economy within the world economic map, highlighting its resilient performance. Themed coverage such as \"Great River Surges into a New Chapter\" has echoed the main thread of economic development.",
-     "impact": "The resilience narrative helps stabilize market confidence and provides fundamental support for long-term capital allocation.",
-     "importance": "important",
+     "title": "Major Move: New Rules on RMB Deposit and Lending Rates Unveiled",
+     "summary": "Regulations governing RMB deposit and lending rates have been formally released, establishing a new institutional framework for rate management.",
+     "detail": "The new rules focus on the management of RMB deposit and lending rates. The institutionalized measures are seen as a key step toward improving market-oriented interest rate mechanisms.",
+     "impact": "The rules will affect bank pricing of deposits and loans, with implications for household savings returns and corporate financing costs.",
+     "importance": "hot",
      "tags": [
-      "Macro Economy",
-      "Economic Resilience",
-      "Global Economy"
+      "Monetary Policy",
+      "Interest Rate Liberalization",
+      "Financial Regulation"
      ]
     },
     {
      "id": "news-014",
-     "title": "\"Cars Selling Like Crazy, Where Did the Money Go?\" Draws Attention",
-     "summary": "With auto sales surging, questions over where the money is flowing have sparked discussion about funding across car consumption and the supply chain.",
-     "detail": "Under the topic \"Cars selling like crazy, where did the money go?\", the material focuses on capital flows behind booming car sales, including automaker profitability and distribution of gains across channels and upstream/downstream players.",
-     "impact": "Debates over capital flows concern profit distribution across the auto supply chain and affect business expectations of related companies.",
+     "title": "PBOC Removes Caps and Floors on Loan Penalty Interest Rates",
+     "summary": "The People's Bank of China issued new rules abolishing the upper and lower limits on loan penalty interest rates, adjusting how loan defaults are handled.",
+     "detail": "The new rules replace the cap-and-floor regime on loan penalty rates by removing the related restrictions, part of broader reform of interest rate management.",
+     "impact": "The change could improve financial institutions' flexibility in risk pricing and may alter the cost structure of borrower defaults.",
      "importance": "important",
      "tags": [
-      "Auto Consumption",
-      "Consumer Market",
-      "Supply Chain"
+      "Monetary Policy",
+      "Credit Management",
+      "Financial Regulation"
      ]
     },
     {
      "id": "news-015",
-     "title": "Dong Mingzhu Says Some Automakers Are \"Messing Around\" and Should Be Eliminated",
-     "summary": "Gree Electric's chair publicly criticized some automakers, saying \"they should be wiped out if they must be,\" sparking industry controversy.",
-     "detail": "Dong Mingzhu said \"some automakers are just messing around — they should be wiped out if they must be.\" She also addressed the controversy over not hiring international students, with her remarks continuing to draw public attention.",
-     "impact": "A home appliance giant's forceful stance on the auto industry reflects intensifying disputes over industry standards amid cross-sector competition.",
+     "title": "PBOC: Strictly Control New Exposure, Manage Legacy Risks, Prevent Blowups",
+     "summary": "The PBOC stressed strict control of new risks, proper handling of existing risks, and vigilance against blowups, underscoring the policy tone on risk prevention.",
+     "detail": "The policy language lays out three clear paths for risk prevention, centered on guarding against systemic risk.",
+     "impact": "The zero-tolerance stance on financial risk helps stabilize expectations around property and local government debt.",
      "importance": "important",
      "tags": [
-      "Auto Industry",
-      "Home Appliances",
-      "Corporate Competition"
+      "Risk Prevention",
+      "Financial Regulation",
+      "Macro Policy"
      ]
     },
     {
      "id": "news-016",
-     "title": "Company Adopts Pangdonglai Model, Raises Employee Pay 45%",
-     "summary": "A company emulating Pangdonglai's management model raised employee salaries by 45%, sparking discussion on reward distribution in retail.",
-     "detail": "A company raised employee pay by 45% after adopting the Pangdonglai model. Pangdonglai is known for high wages and high service standards, and its model is being copied by more retail enterprises.",
-     "impact": "If the pay-raise model spreads, it would lift overall salary levels and service standards across the retail sector.",
-     "importance": "normal",
+     "title": "Minimum Subscription for Individual Large-Amount Certificates of Deposit Cut to 100,000 Yuan",
+     "summary": "The minimum amount for individuals subscribing to large-amount certificates of deposit has been set at 100,000 yuan, changing the entry threshold for these products.",
+     "detail": "Certificates of deposit with a 100,000-yuan minimum are set to launch, giving households new options for savings and wealth allocation.",
+     "impact": "The change may influence household savings preferences and banks' liability structures, driving a reallocation of wealth management funds.",
+     "importance": "important",
      "tags": [
-      "Retail",
-      "Corporate Management",
-      "Compensation"
+      "Bank Wealth Management",
+      "Savings Products",
+      "Household Wealth Management"
      ]
     },
     {
      "id": "news-017",
-     "title": "Stock-Trading Course Loss Case Serves as a Wealth Management Warning",
-     "summary": "A man spent 27,000 yuan learning to trade stocks only to lose 250,000 yuan within a year, prompting discussion about chaos in investment education.",
-     "detail": "A man spent 27,000 yuan on stock trading lessons and lost 250,000 yuan over the course of a year. The case highlights issues around paid stock-trading courses and personal investment risk management.",
-     "impact": "The case serves as a warning against blindly enrolling in trading courses and underscores the importance of investor education.",
+     "title": "October Profits of Large Industrial Enterprises Released",
+     "summary": "Data for the first 10 months of profits at large-scale industrial enterprises paint a picture of the sector's earnings performance.",
+     "detail": "Coverage presents, through figures, the overall profit picture for large industrial enterprises over the January–October period, with industrial efficiency in focus.",
+     "impact": "Changes in industrial profitability are a key gauge of real economy conditions and influence market views on the pace of recovery.",
      "importance": "normal",
      "tags": [
-      "Personal Finance",
-      "Investor Education",
+      "Industrial Enterprises",
+      "Macroeconomic Data",
+      "Real Economy"
+     ]
+    },
+    {
+     "id": "news-018",
+     "title": "Evergrande Auto Delisted from the Stock Exchange",
+     "summary": "Evergrande Auto's listing status has been revoked, ending its run as a publicly traded company and drawing attention from the industry and investors.",
+     "detail": "The exchange decided to cancel its listing status. As a new-energy vehicle maker, the move marks the end of its capital market journey.",
+     "impact": "The development reflects intensifying consolidation in the NEV sector, with industry shakeout affecting the competitive landscape and supply chain confidence.",
+     "importance": "normal",
+     "tags": [
+      "New Energy Vehicles",
+      "Corporate Delisting",
       "Capital Markets"
      ]
     }
@@ -254,81 +271,68 @@
    "icon": "🌐",
    "articles": [
     {
-     "id": "news-018",
-     "title": "European Stocks Extend Gains Sharply",
-     "summary": "European equities rallied broadly, with both the FTSE 100 and the STOXX 600 extending gains to 2%.",
-     "detail": "Data showed the FTSE 100 rose 2% to 10,635.45 points, while the STOXX 600's advance widened to 2%, closing at 638.63 points. European risk assets posted strong performances on the day.",
-     "impact": "The European rally boosted global risk appetite and could feed positively into sentiment across Asia-Pacific markets.",
+     "id": "news-019",
+     "title": "US Memory Chip Stocks Rally, SanDisk Surges Over 15%",
+     "summary": "US-listed memory chip stocks extended gains, with SanDisk up more than 15% as multiple storage and hard drive makers rallied collectively.",
+     "detail": "Micron Technology and Seagate Technology rose more than 5%, while SK Hynix and Western Digital gained over 4%. The sector posted broad-based gains.",
+     "impact": "The memory chip price-hike outlook is converging with AI demand, potentially lifting sentiment across A-share storage supply chains.",
      "importance": "hot",
      "tags": [
-      "Global Capital Markets",
-      "European Economy",
-      "Equity Markets"
-     ]
-    },
-    {
-     "id": "news-019",
-     "title": "SAP Considers Cutting at Least 10,000 Jobs in Restructuring",
-     "summary": "Software giant SAP is considering slashing at least 10,000 jobs as part of a restructuring effort.",
-     "detail": "According to market sources, SAP is weighing cuts of at least 10,000 positions in its restructuring plan. The drive for cost reduction and efficiency across the tech and software sectors continues.",
-     "impact": "Large-scale layoffs at a leading software company may signal a continuing global tech industry cost-cutting trend.",
-     "importance": "important",
-     "tags": [
-      "Software Industry",
-      "Corporate Layoffs",
-      "Global Technology"
+      "Memory Chips",
+      "Semiconductors",
+      "US Equity Markets"
      ]
     },
     {
      "id": "news-020",
-     "title": "Iraq Raises Oil Exports to 3.6 Million Barrels Per Day",
-     "summary": "Iraq's oil minister said exports will be raised to 3.6 million barrels per day, with the majority shipped through the Strait of Hormuz.",
-     "detail": "Iraq's oil minister said the country will increase oil exports to 3.6 million barrels per day, most of it via the Strait of Hormuz, while remaining cargoes will be exported through Turkish ports.",
-     "impact": "Higher exports will add to international crude supply, putting some downward pressure on oil prices.",
+     "title": "Dollar Index Breaks Above 104",
+     "summary": "The dollar index broke above the 104 level, rising 0.21% intraday as the greenback strengthened in foreign exchange markets.",
+     "detail": "The dollar index climbed past the 104 mark, posting an intraday gain of 0.21%. The FX market showed short-term dollar strength.",
+     "impact": "A stronger dollar typically pressures non-US currencies and commodities; global capital flows warrant close monitoring.",
      "importance": "important",
      "tags": [
-      "International Energy",
-      "Crude Supply",
-      "Commodities"
+      "FX Market",
+      "Dollar Index",
+      "Global Capital Flows"
      ]
     },
     {
      "id": "news-021",
-     "title": "Angola Cuts January Crude Exports to Multi-Year Low",
-     "summary": "Angola has trimmed January crude exports to their lowest level since at least 2008.",
-     "detail": "Data showed Angola reduced January crude exports to their lowest level since at least 2008. The supply contraction among oil producers contrasts with Iraq's output increase.",
-     "impact": "Falling exports from the African producer will partly offset increases elsewhere, creating divergent signals on the supply side.",
-     "importance": "normal",
+     "title": "Eurozone Inflation Expected to Fall for First Time in Five Months",
+     "summary": "Eurozone inflation is expected to decline for the first time in five months, but the drop is unlikely to deter the central bank from another rate hike.",
+     "detail": "A media poll of 34 economists shows inflation is expected to slow somewhat. However, the scale of the decline is still unlikely to shift the policy tightening bias.",
+     "impact": "European monetary policy remains hawkish, continuing to constrain eurozone growth and the global liquidity environment.",
+     "importance": "important",
      "tags": [
-      "Crude Supply",
-      "Commodities",
-      "International Energy"
+      "European Economy",
+      "Inflation",
+      "Monetary Policy"
      ]
     },
     {
      "id": "news-022",
-     "title": "Trump Accuses Government of Underreporting Economic Growth",
-     "summary": "The U.S. president accused his government of 'deliberately' understating economic growth and called for an investigation.",
-     "detail": "The report said Trump accused his own administration of 'deliberately' understating U.S. economic growth, seizing on a routine data revision as the basis for his claims of election interference.",
-     "impact": "The data dispute could affect how markets view the credibility of official U.S. economic indicators.",
-     "importance": "important",
+     "title": "Fitch Assigns Stellantis 'BBB' Rating with Negative Outlook",
+     "summary": "Fitch has assigned Stellantis a credit rating of 'BBB' with a negative outlook, reflecting execution risks in its restructuring and product renewal efforts.",
+     "detail": "Fitch said the negative outlook reflects execution risks as the company reshapes its manufacturing footprint and refreshes its model lineup. It also expects prudent capital expenditure and shareholder returns to support an earnings recovery.",
+     "impact": "The outlook adjustment underscores mounting pressure on global automakers, with intensifying competition and widening profit divergence across the industry.",
+     "importance": "normal",
      "tags": [
-      "U.S. Economy",
-      "Macroeconomy",
-      "Policy Risk"
+      "Auto Industry",
+      "Credit Ratings",
+      "Multinational Corporations"
      ]
     },
     {
      "id": "news-023",
-     "title": "UBS Pledges to Maintain Global Footprint",
-     "summary": "Responding to tighter Swiss capital oversight, UBS's top management wrote to staff committing to its global business layout.",
-     "detail": "The report said a Swiss parliamentary committee backed stricter capital regulation, and UBS's top management assured employees in a letter that tightening efforts in Switzerland would not erode what the bank has built over decades.",
-     "impact": "Tighter regulation alongside institutional commitments could influence capital allocation strategies at major European banks.",
+     "title": "Nigeria Raises December Official Selling Price for Quaibo Crude",
+     "summary": "Nigeria has raised the December official selling price for Quaibo crude to a $1.15 per barrel premium over Dated Brent.",
+     "detail": "Nigeria adjusted its official selling price, setting Quaibo crude at a $1.15 per barrel premium to Dated Brent, reflecting the pricing stance of oil-producing nations.",
+     "impact": "Higher official selling prices by producers signal confidence in market supply-demand dynamics, with marginal implications for international oil price expectations.",
      "importance": "normal",
      "tags": [
-      "International Banking",
-      "Financial Regulation",
-      "Capital Management"
+      "International Energy",
+      "Crude Oil Pricing",
+      "Commodities"
      ]
     }
    ]
@@ -340,139 +344,137 @@
    "articles": [
     {
      "id": "news-024",
-     "title": "Chinese Memory Chip Makers Take on Samsung, SK Hynix",
-     "summary": "Huawei and CXMT are going head-to-head with Samsung and SK Hynix in the memory chip market.",
-     "detail": "Reports show Huawei and CXMT are locking horns with Samsung and SK Hynix in memory chips, as domestic players rapidly close the gap on global leaders. The competition centers on direct clashes over products and production capacity.",
-     "impact": "Domestic memory chips are accelerating their substitution of imports, potentially boosting the self-sufficiency of China's industrial chain.",
+     "title": "DeepSeek Starts Metered Billing",
+     "summary": "Chinese AI giant DeepSeek has begun rolling out a metered billing model, drawing industry attention to its commercialization pricing path.",
+     "detail": "DeepSeek's new billing approach is being described as \"metered billing,\" setting it apart from traditional monthly or subscription plans. The commercialization paths for large AI models are becoming more diverse.",
+     "impact": "If pay-as-you-go pricing for large models becomes widespread, it will drive finer-grained costing for AI applications, benefiting small and medium-sized enterprises in scaling up deployment.",
      "importance": "hot",
      "tags": [
-      "Memory Chips",
-      "Semiconductors",
-      "Import Substitution"
+      "Artificial Intelligence",
+      "Large Language Models",
+      "Tech Commercialization"
      ]
     },
     {
      "id": "news-025",
-     "title": "China Speeds Up New Materials R&D as Key Materials Move Toward Engineering",
-     "summary": "China's new materials R&D is accelerating, with key materials advancing rapidly toward engineering application.",
-     "detail": "Reports show China is speeding up new materials R&D, with key materials moving faster toward engineering applications. New materials are a critical foundation for high-end manufacturing and strategic emerging industries.",
-     "impact": "Engineering breakthroughs in key materials will underpin manufacturing upgrades and supply chain security.",
+     "title": "World's Largest 'Green Power Supermarket' Opens",
+     "summary": "The world's largest \"green power supermarket\" has officially opened, offering a new platform for green electricity trading and consumption.",
+     "detail": "The platform is described as the world's largest \"green power supermarket.\" Its launch signals a further expansion of market-based green electricity trading.",
+     "impact": "It will boost green power consumption and traceability, advancing new energy absorption mechanisms and making corporate green power procurement more routine.",
      "importance": "important",
      "tags": [
-      "New Materials",
-      "Advanced Manufacturing",
-      "Tech Innovation"
+      "Green Power",
+      "Energy Transition",
+      "Carbon Neutrality"
      ]
     },
     {
      "id": "news-026",
-     "title": "Qingdao Drives Industrial Innovation Through Technology",
-     "summary": "Qingdao is using tech innovation to lead industrial innovation, laying a solid foundation for a strong start to the 15th Five-Year Plan.",
-     "detail": "Reports show Qingdao is leveraging tech innovation to drive industrial innovation, a key lever for getting the 15th Five-Year Plan off to a strong start. Local governments are pursuing high-quality development through the integration of technology and industry.",
-     "impact": "Local tech innovation practices can serve as a reference model for industrial innovation nationwide.",
-     "importance": "normal",
+     "title": "Nio Plans Nearly 200 SKY Stores Next Year",
+     "summary": "Nio plans to open nearly 200 SKY stores next year, with founder William Li saying overseas expansion requires more patience.",
+     "detail": "In a media group interview during the Guangzhou Auto Show, Nio founder William Li discussed the company's store and overseas expansion plans. Nio plans to roll out close to 200 SKY stores next year.",
+     "impact": "Store expansion and overseas moves reflect a shift in NEV competition toward channel and brand depth, though long-term investment still needs to be validated.",
+     "importance": "important",
      "tags": [
-      "Tech Innovation",
-      "Industrial Innovation",
-      "Regional Economy"
+      "New Energy Vehicles",
+      "Auto Retail Channels",
+      "Overseas Strategy"
      ]
     },
     {
      "id": "news-027",
-     "title": "Chinese and Foreign Astronauts Meet for the First Time in 'Tiangong'",
-     "summary": "Chinese and foreign astronauts have flown together and met for the first time aboard the 'Tiangong' space station.",
-     "detail": "Reports show Chinese and foreign astronauts met aboard 'Tiangong' for the first time in a joint flight, a milestone for international cooperation in crewed spaceflight. A Pakistani media figure also expressed a desire to 'fly across the technological horizon together with China.'",
-     "impact": "Deeper international space cooperation will enhance the global reach and partnership opportunities of China's space program.",
-     "importance": "hot",
+     "title": "Child Actor in 'Fifteen Days in Two Capitals' Is AI",
+     "summary": "The young actor in the drama series 'Fifteen Days in Two Capitals' has been revealed as AI-generated, sparking debate over content production methods in film and television.",
+     "detail": "AI technology has been applied to character rendering in film and TV dramas. This technical approach to content production has drawn attention from both industry professionals and audiences.",
+     "impact": "AI's penetration into film and TV content production is accelerating, bringing structural changes to performers and content production models.",
+     "importance": "normal",
      "tags": [
-      "Crewed Spaceflight",
-      "Space Cooperation",
-      "Space Station"
+      "Artificial Intelligence",
+      "Digital Content",
+      "Film and TV Industry"
+     ]
+    },
+    {
+     "id": "news-028",
+     "title": "Artificial Flowers Move from Handcraft to Smart Manufacturing",
+     "summary": "The artificial flower industry is shifting from manual sampling to intelligent manufacturing, powering a market worth over 100 million yuan with notable results from its manufacturing upgrade.",
+     "detail": "Coverage has focused on the technological evolution in artificial flower production. Smart manufacturing has helped the industry scale beyond the 100-million-yuan level.",
+     "impact": "The smart upgrade of traditional manufacturing steps can be replicated across more light industry segments, driving industrial upgrades in county-level economies.",
+     "importance": "normal",
+     "tags": [
+      "Smart Manufacturing",
+      "Light Industry",
+      "Industrial Upgrading"
      ]
     }
    ]
   },
   {
    "id": "other",
-   "title": "Other Top News",
+   "title": "Other Top Stories",
    "icon": "📰",
    "articles": [
     {
-     "id": "news-028",
-     "title": "China Men's Basketball Falls 80-82 to Saudi Arabia",
-     "summary": "China's men's basketball team lost a heartbreaking 80-82 to Saudi Arabia, with Zhou Qi ejected for elbowing an opponent during the game.",
-     "detail": "Footage shows China's men's basketball team falling 80-82 to Saudi Arabia. Zhou Qi was ejected for elbowing an opponent, while head coach Guo Shiqiang's substitution decisions also became a post-game talking point.",
-     "impact": "The defeat combined with on-court controversy may prompt further reflection on roster and tactical adjustments.",
-     "importance": "hot",
-     "tags": [
-      "Basketball",
-      "Competitive Sports",
-      "National Team"
-     ]
-    },
-    {
      "id": "news-029",
-     "title": "China U17 Scores 4 Goals in 32 Minutes Against Fiji",
-     "summary": "China's U17 men's football team faced Fiji's U17 side and scored four goals within the opening 32 minutes for a dominant start.",
-     "detail": "Footage shows China's U17 men's football team taking on Fiji's U17 side, netting four goals in 32 minutes to display formidable attacking firepower.",
-     "impact": "A standout showing by the youth squad could help boost confidence in China's football development pipeline.",
-     "importance": "normal",
+     "title": "Strongest El Niño on Record: Extreme Weather Alerts Issued",
+     "summary": "As the strongest El Niño event arrives, meteorological authorities warn of potential extreme weather impacts and urge proactive preparedness.",
+     "detail": "The El Niño has been described as the \"strongest\" on record. Authorities stress advance planning to guard against the multiple risks posed by extreme weather.",
+     "impact": "Rising extreme weather risks raise the bar for agricultural production, energy supply security, insurance, and emergency management systems.",
+     "importance": "important",
      "tags": [
-      "Football",
-      "Youth Sports",
-      "Youth Development"
+      "Climate Change",
+      "Extreme Weather",
+      "Emergency Management"
      ]
     },
     {
      "id": "news-030",
-     "title": "Tinghua Liquor's Health Claims Exposed by 3.15 Gala",
-     "summary": "Tinghua Liquor claimed anti-tumor and immunity-boosting effects, and its promotional claims were exposed by the annual 3.15 consumer rights broadcast.",
-     "detail": "Footage shows Tinghua Liquor accused of promoting anti-tumor and immunity-boosting benefits, and exposed by the 3.15 broadcast. The case involves compliance issues around health claims for alcoholic products.",
-     "impact": "The exposure may help regulate health claims for food and alcohol and protect consumer rights.",
+     "title": "315 Gala Exposes False Claims by Tinghua Liquor",
+     "summary": "The annual 315 Gala exposed claims by Tinghua Liquor of \"anti-tumor\" and \"immune-boosting\" effects, sparking consumer rights concerns.",
+     "detail": "The exposé targeted Tinghua Liquor's advertising of purported anti-tumor and immunity-boosting benefits. The gap between these claims and the product's actual properties has become the focus.",
+     "impact": "Another warning shot for compliance in liquor and health supplement marketing, amid rising pressure on consumer protection and advertising regulation.",
      "importance": "important",
      "tags": [
       "Consumer Rights",
-      "Food & Beverage",
+      "Liquor Industry",
       "Advertising Compliance"
      ]
     },
     {
      "id": "news-031",
-     "title": "Chinese People Largely Deficient in Vitamins, Especially Women",
-     "summary": "A survey finds that Chinese people are broadly deficient in vitamins, with women more affected than men.",
-     "detail": "Footage shows growing attention to vitamin deficiencies among Chinese people, with women more deficient than men. Related health advisories call for attention to balanced daily nutrition.",
-     "impact": "Public attention to nutritional gaps could drive growth in the supplement and health consumption market.",
-     "importance": "normal",
+     "title": "19-Year-Old Suffers Incident After Frequent Plasma Donations",
+     "summary": "A 19-year-old reportedly suffered a serious incident after donating plasma 16 times within eight months, drawing public attention.",
+     "detail": "Reports say the teenager donated plasma 16 times over a roughly eight-month period. The frequency of donations and its health impact are under debate.",
+     "impact": "The case is expected to intensify scrutiny of plasma collection frequency regulations, informed consent, and professional standards.",
+     "importance": "important",
      "tags": [
       "Public Health",
-      "Nutrition",
-      "Consumer Trends"
+      "Blood Products",
+      "Medical Regulation"
      ]
     },
     {
      "id": "news-032",
-     "title": "Rare Warm-Up: Short Sleeves May Return in Many Areas",
-     "summary": "Many regions are experiencing a rare warm spell, with temperatures rebounding notably in some areas and short sleeves making a possible comeback.",
-     "detail": "Footage shows a rare warm-up arriving, with short sleeves back on the table in some places. Meanwhile, the ice-and-snow consumption boom continues, turning 'snowflakes at your doorstep' into an extra income source for local residents.",
-     "impact": "Unusual temperature swings may affect heating power demand and the pace of winter consumption.",
+     "title": "Woman Paying 799 Yuan for Connecting Hotel Room Woken Late at Night",
+     "summary": "A woman who booked a connecting hotel room for 799 yuan was woken by noise from the adjacent room late at night, sparking debate over the hotel's arrangements.",
+     "detail": "The consumer paid 799 yuan for a room with a connecting door. Late-night noise disturbances have raised questions about room-type management and disclosure practices.",
+     "impact": "Highlights issues of hotel room-category management and consumers' right to know; service quality and booking platform information display need improvement.",
      "importance": "normal",
      "tags": [
-      "Weather & Climate",
-      "Livelihood Services",
-      "Consumer Market"
+      "Hotel Services",
+      "Consumer Experience",
+      "Travel & Lodging"
      ]
     },
     {
      "id": "news-033",
-     "title": "Ice-and-Snow Consumption Boom Boosts Household Incomes",
-     "summary": "Commentary notes that the ice-and-snow boom has turned 'snowflakes at your doorstep' into a golden bowl for ordinary people.",
-     "detail": "A Zhong'an commentary observes that in the ice-and-snow craze, 'snowflakes at your doorstep' have become a golden bowl for locals. Ice-and-snow consumption is converging with cultural tourism and the sports industry, driving local employment and incomes.",
-     "impact": "The ice-and-snow economy continues to heat up, promising fresh momentum for winter cultural tourism consumption.",
+     "title": "Vehicle Full of Plainclothes Officers Accidentally Drives Itself Into Police Station",
+     "summary": "A vehicle packed with plainclothes police officers on duty accidentally delivered itself to a police station, going viral on social media.",
+     "detail": "Details show the vehicle, carrying a full load of plainclothes officers, ended up pulling into a police station by accident. The episode drew wide attention on social platforms.",
+     "impact": "Illustrates the diversity of scenarios in grassroots law enforcement, while suggesting room for improvement in operational coordination.",
      "importance": "normal",
      "tags": [
-      "Ice & Snow Economy",
-      "Cultural Tourism",
-      "Sports Industry"
+      "Law Enforcement"
      ]
     }
    ]

@@ -1,38 +1,38 @@
 {
-  "date": "2026-11-26",
+  "date": "2026-11-28",
   "contents": [
     {
-      "id": "prog-2026-11-26",
-      "date": "2026-11-26",
-      "title": "SwiftUI 动画系统实战：withAnimation、.animation(value:) 与 .transition 的正确打开方式",
-      "summary": "掌握 SwiftUI 中「属性动画 / 显式动画 / 过渡动画」三套机制的分工、优先级与工程落地技巧。",
-      "difficulty": "中级",
-      "concept": "SwiftUI 的动画模型与 UIKit 完全不同：它不是「让某个图层动起来」，而是「描述状态变化后的最终界面，由框架自动插值出中间帧」。你只需要改变 @State，SwiftUI 会对比前后两棵树的差异（attribute graph diff），对 frame、opacity、color 等可插值属性生成动画。理解这一点，就能明白为什么动画写在「状态变更处」比写在「视图属性上」更可控。\n\nSwiftUI 提供三种主要写法。第一种是隐式动画 .animation(_:value:)，它绑定在某个视图上，只要 value 发生变化，该视图上受影响的属性就会动画；推荐使用带 value 参数的版本，避免旧版 .animation(_:) 无差别触发导致的「幽灵动画」和性能问题。第二种是显式动画 withAnimation { }，把状态变更包在闭包里，作用域覆盖整个视图树，是团队协作中最清晰、最推荐的写法。第三种是 .transition，专门描述「视图插入或移除时」的动画，必须与动画作用域配合使用，否则不生效。\n\n优先级与叠加规则是面试与 Debug 的高频点：同一个属性同时被 withAnimation 与 .animation(value:) 影响时，距离视图最近、粒度最细的动画描述通常优先生效；嵌套的 withAnimation 不会「叠加时长」，内层会覆盖外层作用域内的同名属性动画。如果动画「没生效」，90% 的原因有三个：1) transition 没有包在 withAnimation 里；2) 动画被应用到了「视图身份（identity）变化」上，例如 if/else 直接替换的是两个不同视图；3) 用 .animation 修饰了不参与插值的属性（比如 @State 之外的普通常量）。\n\n工程经验上，请把动画曲线收敛到项目内的 Animation 扩展（如 .appSpring），统一 dampingFraction 与时长，避免每个页面手感不一致；对列表优先用 matchedGeometryEffect 或 NavigationStack 原生转场做共享元素动画，比手写 offset 计算稳定得多；对 iOS 17+ 项目，简单反馈优先使用 .symbolEffect(.bounce)、.contentTransition(.symbolEffect(.replace)) 这类声明式 API，代码量极小且自带可访问性适配。最后，务必记得开启「减弱动态效果」适配（accessibilityReduceMotion），这是上线审核与用户体验的硬性要求。",
+      "id": "prog-2026-11-28",
+      "date": "2026-11-28",
+      "title": "数组三剑客：map、filter 与 reduce",
+      "summary": "掌握 JavaScript 中最常用的三个数组方法，用声明式写法替代 for 循环，一次搞定数据的转换、筛选与汇总。",
+      "difficulty": "初级",
+      "concept": "在日常开发中，我们 80% 的数组操作都逃不出三类场景：把一个数组「变成」另一个数组（转换）、从数组中「挑出」满足条件的元素（筛选）、把数组「汇总」成一个值（聚合）。JavaScript 为这三类场景提供了三个内置方法：map、filter 和 reduce，它们统称为「函数式数组方法」，是每个前端开发者必须熟练掌握的基本功。\n\nmap 的作用是「一一映射」：它遍历原数组的每个元素，执行你提供的回调函数，并把每次的返回值收集到一个新数组里。关键点有三个：第一，它一定返回一个新数组，不会修改原数组（这叫「不可变性」，是避免 bug 的好习惯）；第二，新数组的长度与原数组完全相同；第三，回调函数必须写 return，否则新数组里全是 undefined——这是新手最常见的坑。\n\nfilter 的作用是「筛选」：回调函数需要返回一个布尔值，为 true 的元素会被保留到新数组中。它的返回值同样是一个新数组，但长度通常小于等于原数组。判断条件要写得明确，比如 price > 100 而不是 price，虽然 JS 会自动做真假转换，但显式写布尔表达式可读性更好。\n\nreduce 的作用是「累加 / 汇总」：它把整个数组「压缩」成一个值，比如求和、求最大值、拼接字符串，甚至把数组转成对象或 Map。它的回调有两个参数：第一个是「累加器」（accumulator，也就是上一次计算的结果），第二个是当前元素。reduce 还需要第二个参数作为累加器的「初始值」，初学者一定要养成写初始值的习惯——不写初始值时，空数组调用 reduce 会直接抛出 TypeError。\n\n在真实项目里，我们几乎总是把它们链式组合起来：先 filter 过滤掉脏数据，再 map 转换成视图需要的格式，最后 reduce 汇总成统计结果。例如订单列表页面要展示「高价值商品的总金额」，一行链式调用就完成了。相比 for 循环，这种写法意图更清晰、更不容易出错，也更方便做单元测试。\n\n性能方面有个实用经验：链式调用中每一步都会创建一个中间数组，对于普通业务列表（几千条以内）完全可以忽略；但如果要处理几万条以上的数据或在高频渲染中使用，就应当减少链长度，或者改用 for...of 一次性完成，避免不必要的内存分配。",
       "codeExample": {
-        "language": "Swift",
-        "code": "import SwiftUI\n\n// MARK: - SwiftUI 动画系统三件套：属性动画 / 显式动画 / 过渡动画\nstruct AnimationShowcaseView: View {\n    @State private var isExpanded = false\n    @State private var isLiked = false\n\n    // 统一动画曲线：全局复用，保证产品手感一致\n    private var appSpring: Animation {\n        .spring(response: 0.45, dampingFraction: 0.72)\n    }\n\n    var body: some View {\n        VStack(spacing: 24) {\n\n            // 1) 隐式动画：只在 isExpanded 变化时，对该视图生效\n            RoundedRectangle(cornerRadius: isExpanded ? 24 : 8)\n                .fill(isExpanded ? Color.orange : Color.blue)\n                .frame(width: isExpanded ? 280 : 140,\n                       height: isExpanded ? 180 : 90)\n                .animation(appSpring, value: isExpanded)\n\n            // 2) 过渡动画：视图「插入 / 移除」时的表现，需配合 withAnimation\n            if isExpanded {\n                Text(\"详细信息已展开\")\n                    .font(.headline)\n                    .padding(10)\n                    .background(.thinMaterial, in: Capsule())\n                    .transition(.scale.combined(with: .opacity))\n            }\n\n            // 3) 显式动画：把状态变更包进 withAnimation，作用域覆盖整棵子树\n            Button {\n                withAnimation(appSpring) {\n                    isExpanded.toggle()\n                }\n            } label: {\n                Label(isExpanded ? \"收起\" : \"展开\",\n                      systemImage: isExpanded ? \"chevron.up\" : \"chevron.down\")\n                    .padding(.horizontal, 18)\n                    .padding(.vertical, 10)\n            }\n            .buttonStyle(.borderedProminent)\n\n            // 4) 状态 + 缩放联动：典型点赞反馈\n            Button {\n                withAnimation(.bouncy(extraBounce: 0.15)) { isLiked.toggle() }\n            } label: {\n                Image(systemName: isLiked ? \"heart.fill\" : \"heart\")\n                    .font(.system(size: 42))\n                    .foregroundStyle(isLiked ? Color.red : Color.secondary)\n                    .scaleEffect(isLiked ? 1.25 : 1.0)\n            }\n            .buttonStyle(.plain)\n        }\n        .padding(32)\n    }\n}\n\n#Preview {\n    AnimationShowcaseView()\n}",
-        "explanation": "1️⃣ appSpring 计算属性把动画曲线收敛到一处，团队里所有页面复用同一手感，改参数只需改一行。\n\n2️⃣ RoundedRectangle 使用 .animation(appSpring, value: isExpanded)：这是「隐式动画」，只有 isExpanded 变化时才会动画 cornerRadius、fill 颜色和 frame 尺寸；带 value 参数可以避免无关状态变化误触发动画。\n\n3️⃣ if isExpanded { ... }.transition(.scale.combined(with: .opacity))：transition 描述视图插入/移除时的效果，.scale 与 .opacity 用 .combined 合成「缩放 + 淡入淡出」。注意：transition 单独写不会动，必须有动画作用域（这里来自下面的 withAnimation）。\n\n4️⃣ Button 的 action 中用 withAnimation(appSpring) { isExpanded.toggle() }：显式动画对闭包内所有状态变更生效，同时驱动上面的隐式属性动画与过渡动画，是 SwiftUI 中最可控的写法。\n\n5️⃣ 点赞按钮用 .bouncy(extraBounce:) 制造轻快回弹，scaleEffect 随 isLiked 变化产生「心跳」效果；foregroundStyle 的颜色变化也会一起被动画插值。\n\n6️⃣ #Preview 宏提供 Xcode 画布实时预览，无需启动模拟器即可调参。"
+        "language": "JavaScript",
+        "code": "// 模拟一组订单数据（实际项目中通常来自接口返回）\nconst orders = [\n  { id: 1, product: '键盘',   price: 299,  quantity: 2 },\n  { id: 2, product: '鼠标',   price: 99,   quantity: 3 },\n  { id: 3, product: '显示器', price: 1299, quantity: 1 },\n  { id: 4, product: '耳机',   price: 199,  quantity: 4 },\n];\n\n// 1. map：把每条订单映射成一段展示文案（生成等长的新数组）\nconst descriptions = orders.map((order) => `${order.product} x${order.quantity}`);\nconsole.log(descriptions);\n// [ '键盘 x2', '鼠标 x3', '显示器 x1', '耳机 x4' ]\n\n// 2. filter：挑出单价超过 100 元的订单\nconst expensive = orders.filter((order) => order.price > 100);\nconsole.log(expensive.length); // 3\n\n// 3. 链式组合：先筛选贵重商品，再算出每单的小计（price * quantity）\nconst expensiveTotals = orders\n  .filter((order) => order.price > 100)\n  .map((order) => order.price * order.quantity);\nconsole.log(expensiveTotals); // [ 598, 1299, 796 ]\n\n// 4. reduce：把所有订单汇总成一个总金额\nconst totalAmount = orders.reduce(\n  (sum, order) => sum + order.price * order.quantity,\n  0 // 累加器初始值，务必显式书写\n);\nconsole.log(totalAmount); // 2990\n\n// 5. reduce 也能做统计：计算所有商品的总件数\nconst totalQuantity = orders.reduce((sum, order) => sum + order.quantity, 0);\nconsole.log(totalQuantity); // 10\n\n// 验证：原数组没有被修改（map/filter/reduce 都是非破坏性的）\nconsole.log(orders.length); // 4",
+        "explanation": "第 1 段定义了一个订单数组，模拟后端返回的数据结构。\n\n`orders.map((order) => ...)` 遍历每个订单，返回模板字符串，最终得到长度为 4 的新数组 `descriptions`；注意箭头函数的返回值就是回调的返回值。\n\n`orders.filter((order) => order.price > 100)` 中回调返回布尔值，只有价格大于 100 的键盘、显示器、耳机被保留，所以 `expensive.length` 是 3。\n\n链式调用先 filter 后 map：filter 得到 3 条贵重订单，再对每条计算小计，得到 `[598, 1299, 796]`（299*2、1299*1、199*4）。\n\n`reduce` 的回调中 `sum` 是累加器，`order` 是当前元素，返回值会作为下一轮的 `sum`；第二个参数 `0` 是初始值，保证累加从 0 开始，也保证空数组不出错。总金额 = 598 + 297 + 1299 + 796 = 2990。\n\n最后一行打印 `orders.length` 验证原数组未被改动，体现这些方法的不可变性。"
       },
       "keyPoints": [
-        "SwiftUI 动画是「状态驱动」的：改变 @State，框架自动 diff 并插值，不需要手动操作图层",
-        ".animation(_:value:) 是隐式动画，务必带 value 参数，避免旧版 .animation(_:) 引发的幽灵动画",
-        "withAnimation { } 是显式动画，作用域覆盖子树，团队协作中最清晰的首选写法",
-        ".transition 只描述视图插入/移除的效果，必须配合 withAnimation 或 .animation 才会真正执行",
-        "统一动画曲线到 Animation 扩展、适配 accessibilityReduceMotion，是上线前的工程必做项"
+        "map 用于「一一转换」，返回等长新数组，回调必须有 return，否则新数组全是 undefined",
+        "filter 用于「筛选」，回调返回布尔值，返回的新数组长度小于等于原数组",
+        "reduce 用于「汇总」，把数组压缩成一个值，务必显式传入累加器初始值（如 0、[]、{}）",
+        "map / filter / reduce 都不会修改原数组，遵循不可变数据思想，可放心链式组合",
+        "链式调用可读性好但会创建中间数组，超大数据量（数万条以上）时考虑用 for...of 一次遍历完成"
       ],
       "exercise": {
-        "description": "实现一个「可展开卡片」：卡片默认只显示标题，点击后展开显示正文；展开时卡片高度增大、圆角变大、正文以 scale+opacity 过渡进入，收起时反向动画。要求：展开/收起动画使用统一的 spring 曲线，且在系统开启「减弱动态效果」时自动降级为淡入淡出（.opacity）。",
-        "hint": "用 @State private var isExpanded 控制状态；正文放在 if isExpanded 中并加 .transition(...)；在 Button 的 action 里用 withAnimation 包住 isExpanded.toggle()。降级动画可通过 @Environment(\\.accessibilityReduceMotion) 读取，为 true 时把 transition 换成 .opacity、把动画换成 .easeInOut(duration: 0.2)。",
+        "description": "给定一组学生成绩对象 `const students = [{ name: '小明', score: 85 }, { name: '小红', score: 92 }, { name: '小刚', score: 58 }, { name: '小丽', score: 76 }];`，请用一行链式调用完成：先筛选出及格（score >= 60）的学生，再提取他们的姓名得到新数组，并打印结果；然后用 reduce 计算全班的平均分（保留一位小数）。",
+        "hint": "第一部分用 `students.filter(...).map(...)`，注意 map 的回调返回 `student.name`；第二部分用 `students.reduce((sum, s) => sum + s.score, 0) / students.length`，最后用 `toFixed(1)` 保留一位小数。验证一下结果：及格者姓名应为 ['小明','小红','小丽']，平均分 77.8。",
         "challenges": [
           {
             "id": "ch-1",
             "type": "fillBlank",
-            "question": "补全代码，使状态变更在 spring 动画作用域内执行，从而让上面的 .transition 真正生效：",
-            "codeContext": "Button(\"切换\") {\n    _______________________________\n        isExpanded.toggle()\n    }\n}\n.padding()\n.background(Color.blue)",
+            "question": "补全代码，把价格数组中的每个价格翻倍后求总和。",
+            "codeContext": "const prices = [10, 20, 30];\nconst total = prices\n  .____((price) => price * 2)\n  .____((sum, price) => sum + price, 0);\nconsole.log(total); // 120",
             "segments": [
               {
                 "type": "text",
-                "content": "withAnimation(.spring(response: 0.45, dampingFraction: 0.72)) {\n    ",
+                "content": "const prices = [10, 20, 30];\nconst total = prices\n  .",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
@@ -40,56 +40,75 @@
               {
                 "type": "blank",
                 "content": null,
-                "placeholder": "[填入状态变更代码]",
+                "placeholder": "[选择方法]",
                 "options": [
-                  "isExpanded.toggle()",
-                  "withAnimation(isExpanded)",
-                  "isExpanded.animate()",
-                  "animate(isExpanded.toggle())"
+                  "map",
+                  "filter",
+                  "reduce",
+                  "forEach"
                 ],
-                "correctAnswer": "isExpanded.toggle()"
+                "correctAnswer": "map"
               },
               {
                 "type": "text",
-                "content": "\n}",
+                "content": "((price) => price * 2)\n  .",
+                "placeholder": null,
+                "options": null,
+                "correctAnswer": null
+              },
+              {
+                "type": "blank",
+                "content": null,
+                "placeholder": "[选择方法]",
+                "options": [
+                  "map",
+                  "filter",
+                  "reduce",
+                  "forEach"
+                ],
+                "correctAnswer": "reduce"
+              },
+              {
+                "type": "text",
+                "content": "((sum, price) => sum + price, 0);\nconsole.log(total); // 120",
                 "placeholder": null,
                 "options": null,
                 "correctAnswer": null
               }
             ],
             "options": null,
-            "correctAnswer": "isExpanded.toggle()",
-            "explanation": "withAnimation(_:_:) 的闭包参数是普通的状态变更代码（inout 风格的 Void 闭包），里面直接写 isExpanded.toggle() 即可。SwiftUI 并不存在 isExpanded.animate() 或 animate(...) 这样的 API；动画是对「状态变化」的描述，不是状态对象的方法。"
+            "correctAnswer": "map, reduce",
+            "explanation": "第一步需要把每个价格「转换」成两倍，属于一一映射，用 map 得到 [20, 40, 60]；第二步需要把数组「汇总」成一个总和，用 reduce 并传入初始值 0，得到 120。filter 是筛选、forEach 无返回值，都不能用于这两步。"
           },
           {
             "id": "ch-2",
             "type": "multipleChoice",
-            "question": "关于 .animation(_:value:) 与旧版 .animation(_:) 的区别，下列说法正确的是？",
-            "codeContext": "Circle()\n    .frame(width: isOn ? 100 : 50)\n    .animation(.easeOut, value: isOn)",
+            "question": "关于 map 方法，下面哪个说法是正确的？",
+            "codeContext": "const nums = [1, 2, 3];\nconst result = nums.map((n) => n * 2);",
             "segments": null,
             "options": [
-              "带 value 的版本只在 isOn 变化时触发动画，可避免无关状态引起误动画",
-              "带 value 的版本会自动为所有子视图添加过渡动画",
-              "两者完全等价，带 value 只是为了代码可读性",
-              "旧版 .animation(_:) 在任何情况下都不会再编译通过"
+              "map 会直接修改原数组 nums，并返回 undefined",
+              "map 返回一个新数组，长度与原数组相同，原数组不变",
+              "map 返回的数组长度一定比原数组短",
+              "map 的回调函数不需要返回值，也能得到正确结果"
             ],
-            "correctAnswer": "带 value 的版本只在 isOn 变化时触发动画，可避免无关状态引起误动画",
-            "explanation": ".animation(_:value:) 把动画绑定到具体值上，只有该值改变才插值，性能与行为都更可预测；旧版 .animation(_:) 会对该视图作用域内任何可插值变化都触发动画，容易产生「莫名其妙动了」的问题，SwiftUI 官方已标记为软弃用（仍可编译）。"
+            "correctAnswer": "map 返回一个新数组，长度与原数组相同，原数组不变",
+            "explanation": "map 是非破坏性方法：它遍历每个元素并收集回调的返回值，生成一个与原数组等长的新数组，原数组保持不变。如果回调忘记 return，新数组中会是 undefined（而不是长度变短），这正是 map 与 filter 的核心区别。"
           },
           {
             "id": "ch-3",
             "type": "codePrediction",
-            "question": "运行下面的代码，点击 Button 后界面会怎样变化？",
-            "codeContext": "struct Demo: View {\n    @State private var visible = true\n\n    var body: some View {\n        VStack {\n            if visible {\n                Text(\"Hello\")\n                    .transition(.scale.combined(with: .opacity))\n            }\n            Button(\"Toggle\") {\n                visible.toggle()\n            }\n        }\n    }\n}",
+            "question": "运行下面的代码，控制台会输出什么？",
+            "codeContext": "const nums = [1, 2, 3, 4, 5];\nconst result = nums\n  .filter((n) => n % 2 === 0)\n  .map((n) => n * 10);\nconsole.log(result);",
             "segments": null,
             "options": [
-              "文本以「缩放 + 淡出」的方式动画消失，再以同样方式动画出现",
-              "文本瞬间消失或出现，没有任何动画效果",
-              "代码编译错误，transition 必须配合 if-else 使用",
-              "应用崩溃，因为缺少 withAnimation"
+              "[ 10, 20, 30, 40, 50 ]",
+              "[ 20, 40 ]",
+              "[ 1, 3, 5 ]",
+              "[ 2, 4 ]"
             ],
-            "correctAnswer": "文本瞬间消失或出现，没有任何动画效果",
-            "explanation": "关键点：.transition 只是「声明」视图插入/移除时的动画形式，真正让动画执行需要一个动画作用域。这里既没有 withAnimation，也没有 .animation(_:value:)，所以状态变化是瞬时的，文本会直接闪现/闪没。修复方式是把 visible.toggle() 包进 withAnimation { }，或给容器加 .animation(.default, value: visible)。"
+            "correctAnswer": "[ 20, 40 ]",
+            "explanation": "链式调用从左到右执行：先 filter 保留偶数，得到 [2, 4]；再对 [2, 4] 执行 map 把每个元素乘以 10，得到 [20, 40]。注意 map 是在 filter 的结果上执行，而不是在原数组上执行，所以奇数项不会出现在结果中。"
           }
         ]
       }

@@ -1,197 +1,192 @@
 {
-  "date": "2026-11-27",
+  "date": "2026-11-28",
   "content": {
-    "id": "en-2026-11-27",
-    "date": "2026-11-27",
-    "topic": "职场与沟通",
+    "id": "en-2026-11-28",
+    "date": "2026-11-28",
+    "topic": "文化与旅行",
     "newsHighlights": [
       {
-        "title": "Strokes of genius: Where innovation takes shape",
+        "title": "In search of Bruce Lee: Legacy beyond the screen",
         "source": "ChinaDaily",
-        "summary": "Shanghai's Putuo district is building on its commercial roots to become a hub for innovation along the Shanghai-Nanjing corridor.",
-        "translation": "上海普陀区正依托商业根基，打造上海—南京走廊上的创新高地。",
+        "summary": "Fans and travellers are rediscovering Bruce Lee, whose legacy extends far beyond the screen and keeps drawing visitors to Hong Kong.",
+        "translation": "追寻李小龙：超越银幕的传奇——影迷与旅行者正在重新认识李小龙，他的影响力远超银幕，至今仍吸引着游客前往香港。",
         "keyWords": [
-          "innovation",
-          "hub",
-          "corridor",
-          "robotics"
+          "legacy",
+          "kung fu",
+          "cultural icon"
         ]
       },
       {
-        "title": "Wang Yi says openness and pragmatism define China-Netherlands ties",
-        "source": "CGTN",
-        "summary": "Wang Yi said openness and pragmatism define the relationship between China and the Netherlands.",
-        "translation": "王毅表示，开放与务实是中荷关系的鲜明特征。",
+        "title": "Belt and Road Documentary Forum bridges Xinjiang's perspectives to intl screens",
+        "source": "ChinaDaily",
+        "summary": "The Belt and Road Documentary Forum brings Xinjiang's perspectives to international screens and helps global audiences understand the region.",
+        "translation": "一带一路纪录片论坛将新疆的视角带上国际银幕，帮助全球观众了解这一地区。",
         "keyWords": [
-          "openness",
-          "pragmatism",
-          "ties",
-          "define"
+          "documentary",
+          "perspective",
+          "bridge"
         ]
       },
       {
-        "title": "Xi hails China-Pakistan milestone",
+        "title": "Pakistani minister: China's space mission shows its inclusive approach",
         "source": "ChinaDaily",
-        "summary": "President Xi hailed the latest development as a new milestone in the all-weather cooperative partnership between China and Pakistan.",
-        "translation": "习近平主席称赞最新进展是中巴全天候合作伙伴关系的新里程碑。",
+        "summary": "Pakistan's Muhammad Zeeshan Ali has become the first foreign astronaut to visit China's space station, showing an inclusive approach to cooperation.",
+        "translation": "巴基斯坦的穆罕默德·泽尚·阿里成为首位到访中国空间站的外国航天员，体现了包容合作的态度。",
         "keyWords": [
-          "milestone",
-          "partnership",
-          "bilateral",
-          "hail"
+          "inclusive",
+          "astronaut",
+          "cooperation"
         ]
       },
       {
-        "title": "Nation further opens up vast market to imports",
+        "title": "The past, present and future of thrift shame in Europe",
         "source": "ChinaDaily",
-        "summary": "China is further opening its vast market to imports, offering new opportunities for global businesses and their employees.",
-        "translation": "中国正进一步扩大市场开放，为全球企业及其员工提供新机遇。",
+        "summary": "Thrift shame in Europe reflects changing cultural attitudes towards saving, spending and the meaning of a good life.",
+        "translation": "欧洲的“节俭羞耻”现象反映了人们对储蓄、消费与美好生活定义的文化观念变迁。",
         "keyWords": [
-          "market",
-          "import",
-          "opportunity",
-          "trade"
+          "thrift",
+          "cultural attitudes",
+          "lifestyle"
         ]
       },
       {
-        "title": "What will shape the China-US AI future? | Short documentary",
+        "title": "Mayors in global dialogue share experiences and outcomes",
         "source": "ChinaDaily",
-        "summary": "A short documentary explores what will shape the future of artificial intelligence cooperation and competition between China and the United States.",
-        "translation": "一部短片探讨了什么将塑造中美人工智能合作与竞争的未来。",
+        "summary": "Mayors from around the world joined a global dialogue to share experiences on tourism, culture and urban development.",
+        "translation": "来自世界各地的市长参与全球对话，分享旅游、文化与城市发展的经验与成果。",
         "keyWords": [
-          "artificial intelligence",
-          "cooperation",
-          "competition",
-          "documentary"
+          "dialogue",
+          "urban",
+          "exchange"
         ]
       }
     ],
     "quote": {
-      "quote": "The single biggest problem in communication is the illusion that it has taken place.",
-      "author": "George Bernard Shaw",
-      "translation": "沟通中最大的问题，是误以为沟通已经发生了。",
-      "explanation": "这句话提醒职场人：不要以为发过邮件、开过会就等于沟通到位。真正的沟通以对方理解并能够行动为标准，需要确认、反馈和复述。"
+      "quote": "The world is a book and those who do not travel read only one page.",
+      "author": "Saint Augustine",
+      "translation": "世界是一本书，不旅行的人只读了其中一页。",
+      "explanation": "这句话把世界比作一本大书，把旅行比作阅读。它告诉我们：只待在一个地方，就像只读了书的第一页；走出去、接触不同的文化与人群，才能真正了解这个世界的丰富与多元。"
     },
     "vocabulary": [
       {
-        "word": "innovation",
-        "phonetic": "/ˌɪnəˈveɪʃn/",
-        "partOfSpeech": "n.",
-        "definition": "创新；革新",
-        "example": "Shanghai's Putuo district is becoming a hub where innovation takes shape.",
-        "translation": "上海普陀区正在成为一个创新成型的高地。",
-        "newsContext": "来自新闻标题 “Strokes of genius: Where innovation takes shape”。"
+        "word": "legacy",
+        "phonetic": "/ˈleɡəsi/",
+        "partOfSpeech": "名词",
+        "definition": "遗产；遗赠；（名人留下的）影响、精神财富",
+        "example": "Bruce Lee's legacy reaches far beyond the screen.",
+        "translation": "李小龙留下的影响远远超越了银幕。",
+        "newsContext": "来自新闻标题 \"In search of Bruce Lee: Legacy beyond the screen\"，指李小龙留下的文化影响与精神遗产。"
       },
       {
-        "word": "hub",
-        "phonetic": "/hʌb/",
-        "partOfSpeech": "n.",
-        "definition": "中心；枢纽",
-        "example": "The district aims to build itself into a hub for technology and business.",
-        "translation": "该区志在把自己打造成科技与商业的枢纽。",
-        "newsContext": "出自 “Shanghai's Putuo district is building on its commercial roots to become a hub for innovation”。"
+        "word": "documentary",
+        "phonetic": "/ˌdɒkjuˈmentəri/",
+        "partOfSpeech": "名词",
+        "definition": "纪录片；纪实作品",
+        "example": "The Belt and Road Documentary Forum brought Xinjiang's stories to international screens.",
+        "translation": "一带一路纪录片论坛把新疆的故事带上了国际银幕。",
+        "newsContext": "出自 \"Belt and Road Documentary Forum bridges Xinjiang's perspectives to intl screens\"，指纪录片这一文化传播载体。"
       },
       {
-        "word": "corridor",
-        "phonetic": "/ˈkɒrɪdɔː(r)/",
-        "partOfSpeech": "n.",
-        "definition": "走廊；（经济）走廊地带",
-        "example": "Along the Shanghai-Nanjing corridor, traditional business spaces are evolving.",
-        "translation": "沿着沪宁走廊，传统的商业空间正在演变。",
-        "newsContext": "出自新闻原文 “Along the Shanghai-Nanjing corridor, traditional business spaces are evolving”。"
+        "word": "perspective",
+        "phonetic": "/pəˈspektɪv/",
+        "partOfSpeech": "名词",
+        "definition": "视角；观点；看待事物的方式",
+        "example": "The forum bridges Xinjiang's perspectives to international screens.",
+        "translation": "该论坛将新疆的视角连接到国际银幕上。",
+        "newsContext": "出现在 \"Belt and Road Documentary Forum bridges Xinjiang's perspectives\" 中，强调文化交流中的视角互鉴。"
       },
       {
-        "word": "milestone",
-        "phonetic": "/ˈmaɪlstəʊn/",
-        "partOfSpeech": "n.",
-        "definition": "里程碑；重大事件",
-        "example": "The new agreement marks a milestone in our company's development.",
-        "translation": "这项新协议标志着我司发展的一个里程碑。",
-        "newsContext": "来自新闻标题 “Xi hails China-Pakistan milestone”。"
+        "word": "bridge",
+        "phonetic": "/brɪdʒ/",
+        "partOfSpeech": "动词",
+        "definition": "架桥；弥合（差距）；连接",
+        "example": "Documentaries can bridge the gap between different cultures.",
+        "translation": "纪录片可以弥合不同文化之间的鸿沟。",
+        "newsContext": "源自 \"bridges Xinjiang's perspectives to intl screens\"，此处 bridge 作动词，意为“连接、沟通”。"
       },
       {
-        "word": "pragmatism",
-        "phonetic": "/ˈpræɡmətɪzəm/",
-        "partOfSpeech": "n.",
-        "definition": "实用主义；务实精神",
-        "example": "Pragmatism, not slogans, is what makes a business deal work.",
-        "translation": "让商业合作运转的是务实精神，而非口号。",
-        "newsContext": "来自 “Wang Yi says openness and pragmatism define China-Netherlands ties”。"
+        "word": "inclusive",
+        "phonetic": "/ɪnˈkluːsɪv/",
+        "partOfSpeech": "形容词",
+        "definition": "包容的；包含在内的；开放的",
+        "example": "China's space mission shows its inclusive approach to international cooperation.",
+        "translation": "中国的航天任务体现了其国际合作中的包容态度。",
+        "newsContext": "来自 \"Pakistani minister: China's space mission shows its inclusive approach\"，形容开放包容的合作方式。"
       },
       {
-        "word": "openness",
-        "phonetic": "/ˈəʊpənnəs/",
-        "partOfSpeech": "n.",
-        "definition": "开放；坦诚",
-        "example": "Openness in communication helps teams solve problems faster.",
-        "translation": "沟通中的坦诚有助于团队更快地解决问题。",
-        "newsContext": "同出自 “openness and pragmatism define China-Netherlands ties”。"
+        "word": "dialogue",
+        "phonetic": "/ˈdaɪəlɒɡ/",
+        "partOfSpeech": "名词",
+        "definition": "对话；交流；对白",
+        "example": "Mayors from around the world joined a global dialogue on culture and tourism.",
+        "translation": "来自世界各地的市长参与了一场关于文化与旅游的全球对话。",
+        "newsContext": "出自 \"Mayors in global dialogue share experiences and outcomes\"，指城市之间的国际交流对话。"
       },
       {
-        "word": "bilateral",
-        "phonetic": "/ˌbaɪˈlætərəl/",
-        "partOfSpeech": "adj.",
-        "definition": "双边的；双方的",
-        "example": "Both sides agreed to strengthen bilateral cooperation in trade and technology.",
-        "translation": "双方同意加强贸易与科技领域的双边合作。",
-        "newsContext": "关联新闻 “Xi hails China-Pakistan milestone” 中的双边关系表述。"
+        "word": "restore",
+        "phonetic": "/rɪˈstɔː(r)/",
+        "partOfSpeech": "动词",
+        "definition": "恢复；修复；使复原",
+        "example": "The technology was developed for speech restoration in patients.",
+        "translation": "这项技术是为帮助患者恢复语言能力而研发的。",
+        "newsContext": "来自 \"China develops Mandarin BCI for speech restoration\"，指恢复患者的语言交流能力。"
       },
       {
-        "word": "deployment",
-        "phonetic": "/dɪˈplɔɪmənt/",
-        "partOfSpeech": "n.",
-        "definition": "部署；调配（人力、资源）",
-        "example": "The deployment of new staff across departments took three months.",
-        "translation": "新员工在各部门的调配花了三个月。",
-        "newsContext": "来自 “China warns US F-15EX deployment poses threat to regional stability”。"
+        "word": "thrift",
+        "phonetic": "/θrɪft/",
+        "partOfSpeech": "名词",
+        "definition": "节俭；节约",
+        "example": "Thrift shame in Europe reflects changing cultural attitudes towards money.",
+        "translation": "欧洲的“节俭羞耻”反映了人们对金钱的文化观念变化。",
+        "newsContext": "出自 \"The past, present and future of thrift shame in Europe\"，讨论欧洲社会对节俭的文化态度。"
       },
       {
-        "word": "meteoric",
-        "phonetic": "/ˌmiːtiˈɒrɪk/",
-        "partOfSpeech": "adj.",
-        "definition": "迅速的；飞速上升的",
-        "example": "Her meteoric rise in the company impressed all her colleagues.",
-        "translation": "她在公司里火箭般的晋升速度令所有同事印象深刻。",
-        "newsContext": "出自新闻原文 “China's meteoric rise in the past few decades”。"
+        "word": "migrant",
+        "phonetic": "/ˈmaɪɡrənt/",
+        "partOfSpeech": "名词",
+        "definition": "移民；移居者；迁徙者",
+        "example": "A migrant boat was rescued off Spain's El Hierro island.",
+        "translation": "一艘移民船在西班牙耶罗岛附近海域获救。",
+        "newsContext": "来自 \"At least eight dead after migrant boat rescued off Spain's El Hierro island\"，与跨境旅行、迁徙话题相关。"
       },
       {
-        "word": "assume",
-        "phonetic": "/əˈsjuːm/",
-        "partOfSpeech": "v.",
-        "definition": "承担，接管（职责）；假定",
-        "example": "She assumed responsibility for the whole marketing team last month.",
-        "translation": "她上个月接管了整个市场团队的工作。",
-        "newsContext": "出自 “the new airport began operations when it assumed all civil aviation services”。"
+        "word": "heritage",
+        "phonetic": "/ˈherɪtɪdʒ/",
+        "partOfSpeech": "名词",
+        "definition": "遗产（尤指文化遗产、传统）",
+        "example": "Travellers come to see the city's cultural heritage for themselves.",
+        "translation": "旅行者前来亲眼目睹这座城市的文化遗产。",
+        "newsContext": "与今日李小龙文化、一带一路纪录片论坛等文化遗产传播主题相关，是报道中反复出现的核心概念。"
       }
     ],
     "pattern": {
-      "pattern": "A is building on X to become Y（A 以 X 为基础，发展成为 Y）",
-      "example": "Shanghai's Putuo district is building on its commercial roots to become a hub for innovation.",
-      "translation": "上海普陀区正依托商业根基，发展成为创新高地。",
-      "usage": "用于描述个人或组织依托既有优势实现升级转型。职场中可用于自我介绍或汇报：\"I am building on my experience in sales to become a project manager.\"（我正依托销售经验，转型成为项目经理。）"
+      "pattern": "…, marking the first/only … (……，标志着首次/唯一的……)",
+      "example": "Chinese researchers have enabled a patient to communicate through thought alone, marking the country's first clinical trial of a wireless, invasive Mandarin brain-computer interface.",
+      "translation": "中国研究人员使一名患者仅凭意念即可交流，标志着该国首次开展无线侵入式中文脑机接口临床试验。",
+      "usage": "该句型用现在分词短语作结果或伴随状语，补充说明主句事件的意义、里程碑或后果。常见于新闻导语中，用于突出“首次”“创纪录”等亮点。可替换为 marking a milestone in… / marking the beginning of… 等。"
     },
     "grammar": {
-      "title": "现在完成时（Present Perfect）：描述从过去延续至今的变化",
-      "explanation": "现在完成时 have/has + 过去分词，强调过去发生的事情对现在仍有影响，常与 in the past few decades、so far、recently 等时间状语连用。新闻中常用它来描述国家、企业或行业的持续发展。",
+      "title": "现在完成时在新闻导语中的运用（Present Perfect in News Leads）",
+      "explanation": "英语新闻导语常用现在完成时（have/has + 过去分词），强调已经发生且对现在仍有影响的事件，突出新闻的“新近性”。常与 already, just, yet, so far, recently 等时间副词连用。当主语是第三人称单数时用 has + 过去分词。注意：若新闻中明确给出过去时间（如 yesterday、last week），则改用一般过去时。",
       "examples": [
-        "China has come a long way in the past few decades.",
-        "The nation has further opened up its vast market to imports."
+        "The successful launch of Shenzhou XXIV has captured global attention.",
+        "Pakistan's Muhammad Zeeshan Ali has become the first foreign astronaut aboard China's Tiangong space station."
       ]
     },
     "pronunciation": {
-      "word": "pragmatism",
-      "phonetic": "/ˈpræɡmətɪzəm/",
-      "tips": "重音在第一个音节 PRAG-，读 /præɡ/ 时口型扁平，/æ/ 类似“爱”的前半段；后缀 -matism 读 /mətɪzəm/，中间音节弱读为 /mə/。注意不要读成 pra-GMA-tism。",
+      "word": "documentary",
+      "phonetic": "/ˌdɒkjuˈmentəri/",
+      "tips": "重音在第三个音节 -men- 上，读作 /ˌdɒkjuˈmentəri/。前两个音节 /ˌdɒkju/ 要读得轻快、含糊，结尾的 -ary 弱读为 /əri/ 而不是 /eəri/。注意 doc-u-men-ta-ry 共五个音节，不要省略音节读成 \"doc-men-try\"。",
       "examples": [
-        "Openness and pragmatism define the relationship.",
-        "We need pragmatism, not empty talk, in the workplace."
+        "The Belt and Road Documentary Forum was held in Xinjiang.",
+        "She has directed a documentary about Bruce Lee's legacy."
       ]
     },
     "reading": {
-      "title": "Where Innovation Takes Shape: Communication at Work",
-      "content": "Shanghai's Putuo district is building on its commercial roots to become a hub for innovation. Along the Shanghai-Nanjing corridor, traditional office spaces are evolving into shared workspaces where engineers, designers and entrepreneurs work side by side. Advances in robotics and artificial intelligence are changing not only what people produce, but also how teams communicate.\n\nManagers say the most valuable skill in this new environment is clear communication. When a robotics startup pitches an idea to investors, it must translate complex technology into simple language. When Chinese and foreign partners sign a deal, they need openness and pragmatism rather than slogans.\n\nExperts note that the country has come a long way in building innovation clusters. But technology alone is not enough. Trust, dialogue and honest feedback still shape a company's success. As one engineer put it, innovation takes shape where people are willing to listen — and to be understood.",
-      "translation": "上海普陀区正依托商业根基，打造创新高地。沿着沪宁走廊，传统的办公空间正在演变为共享工作区，工程师、设计师和企业家并肩工作。机器人与人工智能的进步，不仅改变了人们生产什么，也改变了团队沟通的方式。\n\n管理者表示，新环境中最有价值的技能是清晰的沟通。当一家机器人初创公司向投资人推介创意时，必须把复杂的技术翻译成简单的语言；当中外伙伴签署协议时，他们需要的是开放与务实，而非口号。\n\n专家指出，中国在建设创新集群方面已走过很长的路。但仅有技术还不够。信任、对话和坦诚的反馈依然决定着一家公司的成败。正如一位工程师所说：创新在人们愿意倾听、也愿意被理解的地方成型。",
-      "sourceNote": "本文基于 ChinaDaily《Strokes of genius: Where innovation takes shape》《Nation further opens up vast market to imports》及 CGTN《Wang Yi says openness and pragmatism define China-Netherlands ties》等今日新闻改写，用于英语学习。"
+      "title": "When Cultures Meet: Stories That Travel Across Borders",
+      "content": "Cultural exchange is having a busy week. In southern China, fans are searching for Bruce Lee, whose legacy reaches far beyond the screen. His films turned kung fu into a global language and still draw travellers to Hong Kong. Meanwhile, the Belt and Road Documentary Forum in Xinjiang is bringing local perspectives to international screens, helping foreign audiences see a region they rarely visit. The story even extends into space: Pakistani astronaut Muhammad Zeeshan Ali has become the first foreign astronaut aboard China's Tiangong station, showing how inclusive cooperation can open new routes — even beyond Earth. For travellers, the lesson is simple. Every journey begins with a story, and every story invites us to look at the world from a different perspective. When cultures meet, the map grows larger for everyone.",
+      "translation": "文化交流本周格外热闹。在中国南方，人们正追寻李小龙的足迹，他的影响远远超越银幕。他把功夫变成了一门世界语言，至今仍吸引着旅行者前往香港。与此同时，在新疆举办的一带一路纪录片论坛把当地视角带上国际银幕，帮助外国观众了解一个他们很少踏足的地区。这个故事甚至延伸到了太空：巴基斯坦航天员穆罕默德·泽尚·阿里成为首位登上中国天宫空间站的外国航天员，展现了包容合作如何开启新的通道——哪怕是在地球之外。对旅行者的启示很简单：每段旅程都始于一个故事，而每个故事都邀请我们从不同的视角看世界。当文化相遇，每个人的世界版图都会变得更大。",
+      "sourceNote": "本文基于 2026 年 11 月 28 日 ChinaDaily 真实新闻素材改写，包括《追寻李小龙：超越银幕的传奇》《一带一路纪录片论坛将新疆视角带上国际银幕》以及《巴基斯坦部长：中国航天任务体现包容态度》等报道，语言难度经简化处理，适合中级英语学习者阅读。"
     }
   }
 }
